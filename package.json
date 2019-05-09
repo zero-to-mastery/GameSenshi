@@ -1,0 +1,91 @@
+{
+	"name": "game-senshi",
+	"version": "1.0.0",
+	"description": "Hire Your Favorite Player!",
+	"private": true,
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tylim88/GameSenshi.git"
+	},
+	"keywords": [
+		"react",
+		"reactjs",
+		"PWA",
+		"JSS",
+		"Game Senshi",
+		"social",
+		"service"
+	],
+	"author": "tylim",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/tylim88/GameSenshi/issues"
+	},
+	"homepage": "https://github.com/tylim88/GameSenshi/issues#readme",
+	"scripts": {
+		"start": "env-cmd ./.config/prod.env react-scripts start",
+		"dev": "env-cmd ./.config/dev.env react-scripts start",
+		"build": "env-cmd ./.config/prod.env react-scripts build",
+		"duild": "env-cmd ./.config/dev.env react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+		"compile-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.css",
+		"minify-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.min.css --output-style compressed",
+		"map-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.css --source-map true"
+	},
+	"dependencies": {
+		"@material-ui/core": "^3.9.3",
+		"@material-ui/icons": "^3.0.2",
+		"chart.js": "^2.7.3",
+		"classnames": "^2.2.6",
+		"ky": "^0.10.0",
+		"localforage": "^1.7.3",
+		"moment": "^2.24.0",
+		"node-sass": "^4.11.0",
+		"nouislider": "^13.1.1",
+		"perfect-scrollbar": "^1.4.0",
+		"react": "^16.8.3",
+		"react-bootstrap-switch": "^15.5.3",
+		"react-chartjs-2": "^2.7.4",
+		"react-datetime": "^2.16.3",
+		"react-dom": "^16.8.3",
+		"react-router-dom": "^4.3.1",
+		"react-scripts": "^2.1.5",
+		"reactstrap": "^7.1.0",
+		"unstated": "^2.1.1",
+		"validator": "^10.11.0"
+	},
+	"devDependencies": {
+		"env-cmd": "^8.0.2",
+		"eslint-config-prettier": "^4.1.0",
+		"eslint-plugin-prettier": "^3.0.1",
+		"husky": "^1.3.1",
+		"prettier": "^1.16.4",
+		"pretty-quick": "^1.10.0"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"prettier/react",
+			"prettier"
+		],
+		"settings": {
+			"import/resolver": {
+				"node": {
+					"moduleDirectory": [
+						"node_modules",
+						"src/"
+					]
+				}
+			}
+		}
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	]
+}
