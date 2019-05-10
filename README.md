@@ -1,4 +1,4 @@
-# Game Senshi
+# GAME [SENSHI(戦士)](https://en.wikipedia.org/wiki/Senshi)
 
 A platform for gamer to provide their casual service.
 
@@ -10,7 +10,7 @@ A step by step series of examples that tell you how to get a development env run
 npm i
 ```
 
-request the `.config` folder from `tylim#9831` in `Discord`
+request the `.config` folder(s) from `tylim#9831` in `Discord`
 
 ```bash
 npm run dev
@@ -20,7 +20,7 @@ npm run dev
 
 ### Setup firebase deployment (one time)
 
-Direct message `tylim#9831` in `Discord` to become member of the firebase project.
+Direct message `tylim#9831` in `Discord` your email to become user of this firebase project.
 
 ```bash
 npm i -g firebase-tools
