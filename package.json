@@ -22,7 +22,6 @@
 	"bugs": {
 		"url": "https://github.com/tylim88/GameSenshi/issues"
 	},
-	"homepage": "https://github.com/tylim88/GameSenshi/issues#readme",
 	"scripts": {
 		"start": "env-cmd ./.config/prod.env react-scripts start",
 		"dev": "env-cmd ./.config/dev.env react-scripts start",
