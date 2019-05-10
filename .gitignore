@@ -14,6 +14,9 @@
 # environment variable
 /.config
 
+# cache
+/.firebase
+
 # misc
 .DS_Store
 .env.local
