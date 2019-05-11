@@ -6,8 +6,24 @@ A platform for gamer to provide their casual service.
 
 A step by step series of examples that tell you how to get a development env running.
 
+install dependencies
+
 ```bash
 npm i
+```
+
+install dependencies for firebase functions
+
+```bash
+cd functions
+```
+
+```bash
+npm i
+```
+
+```bash
+cd..
 ```
 
 request the `.config` folder(s) from `tylim#9831` in `Discord`
@@ -18,9 +34,9 @@ npm run dev
 
 ## Deployment
 
-### Setup firebase deployment (one time)
+Direct message `tylim#9831` in `Discord` your email to become user of this firebase project. 
 
-Direct message `tylim#9831` in `Discord` your email to become user of this firebase project.
+If you skip this step you have to setup your own firebase project.
 
 ```bash
 npm i -g firebase-tools
@@ -30,11 +46,11 @@ npm i -g firebase-tools
 firebase login
 ```
 
-### Deploy
-
 ```bash
 firebase deploy
 ```
+
+make sure you are in your project root directory (not firebase function directory) when you run deploy.
 
 you can view it [here](https://game-senshi.firebaseapp.com).
 
