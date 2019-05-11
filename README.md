@@ -6,24 +6,10 @@ A platform for gamer to provide their casual service.
 
 A step by step series of examples that tell you how to get a development env running.
 
-install dependencies
+After git clone
 
 ```bash
-npm i
-```
-
-install dependencies for firebase functions
-
-```bash
-cd functions
-```
-
-```bash
-npm i
-```
-
-```bash
-cd ..
+node install.js
 ```
 
 request the `.config` folder(s) from `tylim#9831` in `Discord`
