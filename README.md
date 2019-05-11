@@ -23,7 +23,7 @@ npm i
 ```
 
 ```bash
-cd..
+cd ..
 ```
 
 request the `.config` folder(s) from `tylim#9831` in `Discord`
