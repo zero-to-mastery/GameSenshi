@@ -1,5 +1,6 @@
 {
 	"name": "functions",
+	"version": "1.0.0",
 	"description": "Cloud Functions for Firebase",
 	"scripts": {
 		"lint": "eslint .",
@@ -7,7 +8,8 @@
 		"shell": "firebase functions:shell",
 		"start": "npm run shell",
 		"deploy": "firebase deploy --only functions",
-		"logs": "firebase functions:log"
+		"logs": "firebase functions:log",
+		"install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
 	},
 	"engines": {
 		"node": "8"
