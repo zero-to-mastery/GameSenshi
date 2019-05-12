@@ -24,10 +24,12 @@
 		"url": "https://github.com/tylim88/GameSenshi/issues"
 	},
 	"scripts": {
-		"start": "env-cmd ./.config/prod.env react-scripts start",
-		"dev": "env-cmd ./.config/dev.env react-scripts start",
-		"build": "env-cmd ./.config/prod.env react-scripts build",
-		"duild": "env-cmd ./.config/dev.env react-scripts build",
+		"start": "react-scripts start",
+		"prod": "env-cmd ./.config/prod.env npm run start",
+		"dev": "env-cmd ./.config/dev.env npm run start",
+		"build": "react-scripts build && node ./src/sw-build.js",
+		"puild": "env-cmd ./.config/prod.env npm run build",
+		"duild": "env-cmd ./.config/dev.env npm run build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
@@ -63,7 +65,8 @@
 		"eslint-plugin-prettier": "^3.0.1",
 		"husky": "^1.3.1",
 		"prettier": "^1.16.4",
-		"pretty-quick": "^1.10.0"
+		"pretty-quick": "^1.10.0",
+		"workbox-build": "^4.3.1"
 	},
 	"prettier": {
 		"eslintIntegration": true,
