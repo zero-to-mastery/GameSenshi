@@ -13,8 +13,9 @@ If you have any library that you want to use, please discuss it with the team fi
 ## Working on Code
 
 1. Create a card and describe what you going to do.
-2. In the card also specify which main module you going to work on.
-3. Always let others in `Discord` know what you are working on.
+2. In the card also specify which main module you going to modify/create.
+3. Start a new branch.
+4. Always let others in `Discord` know what you are working on.
 
 ## Resources
 
