@@ -4,7 +4,7 @@ A platform for gamer to provide their casual service.
 
 ## Getting Started
 
-A step by step series of examples that tell you how to get a development env running.
+A step by step series of examples that tell you how to get the development env running.
 
 After git clone
 
@@ -46,7 +46,7 @@ you can view it [here](https://game-senshi.firebaseapp.com).
 * [Blk• Design System React](https://github.com/creativetimofficial/blk-design-system-react/) - Bootstrap
 * [Firebase](https://firebase.google.com/) - Backend
 
-Please read [DEV.md](https://github.com/tylim88/GameSenshi/blob/master/DEV.md) for details on our code, techs, guides and resources.
+Please read [wiki](https://github.com/tylim88/GameSenshi/blob/master/wiki) for details of our code, techs, guides and resources.
 
 ## Contributing
 

@@ -2,7 +2,7 @@
 
 Watch this [video](https://www.youtube.com/watch?v=C6MGKHkNtxU) on how to use Project in Github.
 
-Basically just add card card to the project, or pick the cards, you want to work on.
+Basically just add card (adn convert into issue) to the project, or pick a card, you want to work on.
 
 Go [here](https://github.com/tylim88/GameSenshi/projects) to see what you can do or what to do.
 
@@ -14,9 +14,10 @@ If you have any library that you want to use, please discuss it with the team fi
 
 1. Create a card and describe what you going to do.
 2. In the card also specify which main module you going to modify/create.
-3. Start a new branch.
-4. Always let others in `Discord` know what you are working on.
+3. Convert it into issues.
+4. Start a new branch.
+5. Always let others in `Discord` know what you are working on.
 
 ## Resources
 
-Please read [DEV.md](https://github.com/tylim88/GameSenshi/blob/master/DEV.md) for details on our code, techs, guides and resources.
+Please read [wiki](https://github.com/tylim88/GameSenshi/blob/master/wiki) for details of our code, techs, guides and resources.
