@@ -32,7 +32,9 @@ export function register(config) {
 		}
 
 		window.addEventListener('load', () => {
-			const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`
+			// const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+			// Add a custom service worker until CRA team provides a way to inject config into workbox.
+			const swUrl = `${process.env.PUBLIC_URL}/sw.js`
 
 			if (isLocalhost) {
 				// This is running on localhost. Let's check if a service worker still exists or not.
