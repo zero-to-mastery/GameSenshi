@@ -7,7 +7,7 @@
 		"indexes": "firestore.indexes.json"
 	},
 	"functions": {
-		"predeploy": ["npm run build && npm --prefix \"$RESOURCE_DIR\" run lint"]
+		"predeploy": ["npm run puild && npm --prefix \"$RESOURCE_DIR\" run lint"]
 	},
 	"hosting": {
 		"public": "build",
