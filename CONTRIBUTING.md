@@ -14,3 +14,8 @@ If you have any library that you want to use, please discuss it with the team fi
 
 1. Create a card and describe what you going to do.
 2. In the card also specify which main module you going to work on.
+3. Always let others in `Discord` know what you are working on.
+
+## Resources
+
+Please read [DEV.md](https://github.com/tylim88/GameSenshi/blob/master/DEV.md) for details on our code, techs, guides and resources.

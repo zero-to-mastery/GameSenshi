@@ -1,4 +1,6 @@
-# Techs
+# DEV
+
+## Techs
 
 Most that work on this project is new to web dev, so this page give you idea about the techs and possibly fast guide to it.
 
@@ -42,7 +44,7 @@ Backend:
 
 We prioritize developing experience, so we choose techs that are easy to use and rich in resources, if you have better suggestion you are free to voice it out.
 
-## Rendering
+### Rendering
 
 It is extremely unlikely we shift to Vue or Angular, we will implement React till the end.
 
@@ -50,20 +52,30 @@ You are free to use Class and Hook, but all cross component state must use Unsta
 
 May use isomorphic rendering like Nextjs in future but seem like bar is too high for most people to contribute.
 
-## Bootstrap
+### Bootstrap
 
 BLK currently is the best in the market now(as for 2019), this is not something that we should change easily however please let the team know if you found better, we can use it in other projects.
 
-## WorkBox
+### WorkBox
 
 Seem like there is no alternative to WorkBox, so we gonna stick with this one.
 
-## CSS
+### CSS
 
 We shall stick with CSS in JS tech, most likely JSS and Styled Component. We encourage you to write all your CSS in JS. As for components library, you are free to use any resources you want, as long as it doesn't bloated the app and it look nice.
 
-## Backend
+### Backend
 
 We decided to use firebase as it greatly reduces the workload, it is also a ground up solution with nice SDK plus it come with free plan (with is very rare for backend service).
 
 Other libraries are just standard libraries that we use, if you have better in mind, just let the team know.
+
+## Resources
+
+### Icons
+
+1. https://icons8.com/
+2. https://www.amcharts.com/free-animated-svg-weather-icons/
+3. https://www.iconfinder.com/iconsets/google-material-design-icons
+4. https://www.iconshock.com/material-design-icons/
+5. https://nucleoapp.com/
