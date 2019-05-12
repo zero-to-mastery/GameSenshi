@@ -1,12 +1,3 @@
----
-name: Pull Request
-about: Describe this pull request
-title: "[Pull Request]"
-labels: pull request
-assignees: ''
-
----
-
 What has been changed?
 1.
 2.
@@ -17,7 +8,11 @@ What has been achieved?
 2.
 3.
 
+From which issue(s) (link if any)?
+1.
+2.
+3.
+
 Is it tested?
 Yes/No
 
-From which issue (link if any)?
