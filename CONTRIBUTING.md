@@ -2,9 +2,7 @@
 
 Watch this [video](https://www.youtube.com/watch?v=C6MGKHkNtxU) on how to use Project in Github.
 
-Basically just add card (adn convert into issue) to the project, or pick a card, you want to work on.
-
-Go [here](https://github.com/tylim88/GameSenshi/projects) to see what you can do or what to do.
+Basically simply add card to a [Project](https://github.com/tylim88/GameSenshi/projects), or pick a card that you want to work on it.
 
 ## Adding Library
 
