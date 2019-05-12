@@ -20,7 +20,7 @@ npm run dev
 
 ## Deployment
 
-Direct message `tylim#9831` in `Discord` your email to become user of this firebase project. 
+Direct message `tylim#9831` in `Discord` your email to become user of this firebase project.
 
 If you skip this step you have to setup your own firebase project.
 
@@ -46,6 +46,8 @@ you can view it [here](https://game-senshi.firebaseapp.com).
 * [Blk• Design System React](https://github.com/creativetimofficial/blk-design-system-react/) - Bootstrap
 * [Firebase](https://firebase.google.com/) - Backend
 
+Please read [TECHS.md](https://github.com/tylim88/GameSenshi/blob/master/TECHS.md) for details on our code.
+
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/tylim88/GameSenshi/blob/master/CONTRIBUTING.md) for details on our code.
+Please read [CONTRIBUTING.md](https://github.com/tylim88/GameSenshi/blob/master/CONTRIBUTING.md) for details on how to contribute.
