@@ -84,8 +84,8 @@ class ComponentsNavbar extends React.Component {
 							rel='noopener noreferrer'
 							title='Designed and Coded by Creative Tim'
 							tag={Link}>
-							<span>BLK• </span>
-							Design System React
+							<span>*ICON*</span>
+							GAME SENSHI
 						</NavbarBrand>
 						<button
 							aria-expanded={this.state.collapseOpen}
