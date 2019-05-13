@@ -24,7 +24,7 @@
 		"url": "https://github.com/tylim88/GameSenshi/issues"
 	},
 	"scripts": {
-		"lint": "eslint --fix .",
+		"lint": "eslint . --ext=js,jsx --fix",
 		"start": "react-scripts start",
 		"prod": "env-cmd ./.config/prod.env npm run start",
 		"dev": "env-cmd ./.config/dev.env npm run start",
