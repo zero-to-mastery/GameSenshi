@@ -18,6 +18,8 @@ import {
 	Col,
 } from 'reactstrap'
 
+import logo from 'assets/img/favicon-32x32.png'
+
 class ComponentsNavbar extends React.Component {
 	constructor(props) {
 		super(props)
@@ -82,9 +84,10 @@ class ComponentsNavbar extends React.Component {
 							data-placement='bottom'
 							to='/'
 							rel='noopener noreferrer'
-							title='Designed and Coded by Creative Tim'
+							title='Back to front Page'
 							tag={Link}>
-							<span>*ICON*</span>
+							<img src={logo} alt='Smiley face' />
+							<span>&nbsp;&nbsp;&nbsp;</span>
 							GAME SENSHI
 						</NavbarBrand>
 						<button
