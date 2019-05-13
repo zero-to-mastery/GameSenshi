@@ -84,7 +84,6 @@ class ComponentsNavbar extends React.Component {
 							data-placement='bottom'
 							to='/'
 							rel='noopener noreferrer'
-							title='Back to front Page'
 							tag={Link}>
 							<img src={logo} alt='Smiley face' />
 							<span>&nbsp;&nbsp;&nbsp;</span>
@@ -124,74 +123,16 @@ class ComponentsNavbar extends React.Component {
 						</div>
 						<Nav navbar>
 							<NavItem className='p-0'>
-								<NavLink
-									data-placement='bottom'
-									href='https://twitter.com/CreativeTim'
-									rel='noopener noreferrer'
-									target='_blank'
-									title='Follow us on Twitter'>
-									<i className='fab fa-twitter' />
-									<p className='d-lg-none d-xl-none'>Twitter</p>
-								</NavLink>
-							</NavItem>
-							<NavItem className='p-0'>
-								<NavLink
-									data-placement='bottom'
-									href='https://www.facebook.com/CreativeTim'
-									rel='noopener noreferrer'
-									target='_blank'
-									title='Like us on Facebook'>
-									<i className='fab fa-facebook-square' />
-									<p className='d-lg-none d-xl-none'>Facebook</p>
-								</NavLink>
-							</NavItem>
-							<NavItem className='p-0'>
-								<NavLink
-									data-placement='bottom'
-									href='https://www.instagram.com/CreativeTimOfficial'
-									rel='noopener noreferrer'
-									target='_blank'
-									title='Follow us on Instagram'>
-									<i className='fab fa-instagram' />
-									<p className='d-lg-none d-xl-none'>Instagram</p>
-								</NavLink>
-							</NavItem>
-							<UncontrolledDropdown nav>
-								<DropdownToggle
-									caret
-									color='default'
-									data-toggle='dropdown'
-									href='#pablo'
-									nav
-									onClick={e => e.preventDefault()}>
-									<i className='fa fa-cogs d-lg-none d-xl-none' />
-									Getting started
-								</DropdownToggle>
-								<DropdownMenu className='dropdown-with-icons'>
-									<DropdownItem href='https://demos.creative-tim.com/blk-design-system-react/#/documentation/tutorial'>
-										<i className='tim-icons icon-paper' />
-										Documentation
-									</DropdownItem>
-									<DropdownItem tag={Link} to='/register-page'>
-										<i className='tim-icons icon-bullet-list-67' />
-										Register Page
-									</DropdownItem>
-									<DropdownItem tag={Link} to='/landing-page'>
-										<i className='tim-icons icon-image-02' />
-										Landing Page
-									</DropdownItem>
-									<DropdownItem tag={Link} to='/profile-page'>
-										<i className='tim-icons icon-single-02' />
-										Profile Page
-									</DropdownItem>
-								</DropdownMenu>
-							</UncontrolledDropdown>
-							<NavItem>
 								<Button
-									className='nav-link d-none d-lg-block'
-									color='default'
-									onClick={this.scrollToDownload}>
-									<i className='tim-icons icon-cloud-download-93' /> Download
+									className='btn-simple btn-round'
+									color='primary'
+									type='button'>
+									Sign in
+								</Button>
+							</NavItem>
+							<NavItem className='p-0'>
+								<Button className='btn-round' color='primary' type='button'>
+									Sign up
 								</Button>
 							</NavItem>
 						</Nav>
