@@ -1,9 +1,5 @@
-
-node_modules/*
-public/*
 build/*
-config/*
+.config/*
 functions/*
 .github/*
 .firebase/*
-.config/*
