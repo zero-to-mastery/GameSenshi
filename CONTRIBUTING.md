@@ -18,4 +18,4 @@ If you have any library that you want to use, please discuss it with the team fi
 
 ## Resources
 
-Please read [wiki](https://github.com/tylim88/GameSenshi/blob/master/wiki) for details of our code, techs, guides and resources.
+Please read [wiki](https://github.com/tylim88/GameSenshi/wiki) for details of our code, techs, guides and resources.

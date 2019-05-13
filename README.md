@@ -46,7 +46,7 @@ you can view it [here](https://game-senshi.firebaseapp.com).
 * [Blk• Design System React](https://github.com/creativetimofficial/blk-design-system-react/) - Bootstrap
 * [Firebase](https://firebase.google.com/) - Backend
 
-Please read [wiki](https://github.com/tylim88/GameSenshi/blob/master/wiki) for details of our code, techs, guides and resources.
+Please read [wiki](https://github.com/tylim88/GameSenshi/wiki) for details of our code, techs, guides and resources.
 
 ## Contributing
 
