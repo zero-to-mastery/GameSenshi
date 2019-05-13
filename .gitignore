@@ -17,6 +17,9 @@
 # cache
 /.firebase
 
+# editor
+/.vscode
+
 # misc
 .DS_Store
 .env.local
