@@ -18,16 +18,10 @@ ReactDOM.render(
 	<BrowserRouter>
 		<Switch>
 			<Route exact path='/' render={props => <Index {...props} />} />
-			<Route
-				path='/landing-page'
-				render={props => <LandingPage {...props} />}
-			/>
-			<Route path='/signUp-page' render={props => <SignUpPage {...props} />} />
-			<Route
-				path='/profile-page'
-				render={props => <ProfilePage {...props} />}
-			/>
-			<Route path='/signIn-page' render={props => <SignInPage {...props} />} />
+			<Route path='/landing' render={props => <LandingPage {...props} />} />
+			<Route path='/signUp' render={props => <SignUpPage {...props} />} />
+			<Route path='/profile' render={props => <ProfilePage {...props} />} />
+			<Route path='/signIn' render={props => <SignInPage {...props} />} />
 		</Switch>
 	</BrowserRouter>,
 	document.getElementById('root')
