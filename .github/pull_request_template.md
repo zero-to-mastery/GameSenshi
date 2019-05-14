@@ -8,10 +8,7 @@ What has been achieved?
 2.  
 3.  
 
-From which issue(s) (link if any)?  
+From which issue(s) or card(s) (link if any)?  
 1.  
 2.  
 3.  
-
-Is it tested?  
-Yes/No
