@@ -167,7 +167,7 @@ class ComponentsNavbar extends React.Component {
 								<>
 									<NavItem className='p-0'>
 										<Button
-											className='btn-simple'
+											className='btn-simple font-weight-bold'
 											color='primary'
 											type='button'>
 											Sign in
