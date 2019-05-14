@@ -6,11 +6,11 @@ import 'assets/css/nucleo-icons.css'
 import 'assets/scss/blk-design-system-react.scss?v=1.0.0'
 import 'assets/demo/demo.css'
 
-import Index from 'views/Index.jsx'
-import LandingPage from 'views/examples/LandingPage.jsx'
-import RegisterPage from 'views/examples/RegisterPage.jsx'
-import ProfilePage from 'views/examples/ProfilePage.jsx'
-import SigninPage from 'views/Signin/SigninPage'
+import Index from 'views/Index'
+import LandingPage from 'views/LandingPage'
+import SignUpPage from 'views/SignUpPage'
+import ProfilePage from 'views/ProfilePage'
+import SignInPage from 'views/SignInPage'
 
 import * as serviceWorker from 'serviceWorker'
 
@@ -22,15 +22,12 @@ ReactDOM.render(
 				path='/landing-page'
 				render={props => <LandingPage {...props} />}
 			/>
-			<Route
-				path='/register-page'
-				render={props => <RegisterPage {...props} />}
-			/>
+			<Route path='/signUp-page' render={props => <SignUpPage {...props} />} />
 			<Route
 				path='/profile-page'
 				render={props => <ProfilePage {...props} />}
 			/>
-			<Route path='/signin-page' render={props => <SigninPage {...props} />} />
+			<Route path='/signIn-page' render={props => <SignInPage {...props} />} />
 		</Switch>
 	</BrowserRouter>,
 	document.getElementById('root')
