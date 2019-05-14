@@ -10,6 +10,7 @@ import Index from 'views/Index.jsx'
 import LandingPage from 'views/examples/LandingPage.jsx'
 import RegisterPage from 'views/examples/RegisterPage.jsx'
 import ProfilePage from 'views/examples/ProfilePage.jsx'
+import SigninPage from 'views/Signin/SigninPage'
 
 import * as serviceWorker from 'serviceWorker'
 
@@ -29,6 +30,7 @@ ReactDOM.render(
 				path='/profile-page'
 				render={props => <ProfilePage {...props} />}
 			/>
+			<Route path='/signin-page' render={props => <SigninPage {...props} />} />
 		</Switch>
 	</BrowserRouter>,
 	document.getElementById('root')
