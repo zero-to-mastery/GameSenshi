@@ -38,7 +38,7 @@ firebase deploy
 
 make sure you are in your project root directory (not firebase function directory) when you run deploy.
 
-you can view it [here](https://game-senshi.firebaseapp.com).
+you can view it [here](https://gamesenshi.com/).
 
 ## Built With
 
