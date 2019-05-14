@@ -12,7 +12,8 @@
 /build
 
 # environments
-/.config
+/.config/dev.env
+/.config/prod.env
 
 # cache
 /.firebase
