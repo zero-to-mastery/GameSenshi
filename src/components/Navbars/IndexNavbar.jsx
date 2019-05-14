@@ -13,7 +13,6 @@ import {
 	Container,
 	Row,
 	Col,
-	ButtonGroup,
 } from 'reactstrap'
 
 import logo from 'assets/img/favicon-32x32.png'
