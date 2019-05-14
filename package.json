@@ -57,6 +57,7 @@
 		"react-router-dom": "^4.3.1",
 		"react-scripts": "^2.1.5",
 		"reactstrap": "^7.1.0",
+		"styled-components": "^4.2.0",
 		"unstated-next": "^1.0.1",
 		"validator": "^10.11.0"
 	},
