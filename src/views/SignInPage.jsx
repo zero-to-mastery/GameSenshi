@@ -20,7 +20,7 @@ import {
 } from 'reactstrap'
 
 // core components
-import ExamplesNavbar from 'components/Navbars/ExamplesNavbar.jsx'
+import IndexNavbar from 'components/Navbars/IndexNavbar.jsx'
 import Footer from 'components/Footer/Footer.jsx'
 
 class SignIn extends React.Component {
@@ -57,7 +57,7 @@ class SignIn extends React.Component {
 	render() {
 		return (
 			<>
-				<ExamplesNavbar />
+				<IndexNavbar />
 				<div className='wrapper'>
 					<div className='page-header'>
 						<div className='page-header-image' />
