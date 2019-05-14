@@ -1,13 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 // reactstrap components
 import {
 	Button,
 	Collapse,
-	DropdownToggle,
-	DropdownMenu,
-	DropdownItem,
-	UncontrolledDropdown,
 	NavbarBrand,
 	Navbar,
 	NavItem,
@@ -16,9 +13,12 @@ import {
 	Container,
 	Row,
 	Col,
+	ButtonGroup,
 } from 'reactstrap'
 
 import logo from 'assets/img/favicon-32x32.png'
+
+const widthBreakPoint = 991
 
 class ComponentsNavbar extends React.Component {
 	constructor(props) {
@@ -26,14 +26,33 @@ class ComponentsNavbar extends React.Component {
 		this.state = {
 			collapseOpen: false,
 			color: 'navbar-transparent',
+			overWidthBreakPoint: window.innerWidth > widthBreakPoint,
+			collapseExited: true,
 		}
 	}
 	componentDidMount() {
 		window.addEventListener('scroll', this.changeColor)
+		window.addEventListener('resize', this.onDimensionChange)
 	}
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this.changeColor)
+		window.removeListener('resize', this.onDimensionChange)
 	}
+
+	onDimensionChange = () => {
+		if (
+			window.innerWidth > widthBreakPoint &&
+			!this.state.overWidthBreakPoint
+		) {
+			this.setState({ overWidthBreakPoint: true })
+		} else if (
+			window.innerWidth <= widthBreakPoint &&
+			this.state.overWidthBreakPoint
+		) {
+			this.setState({ overWidthBreakPoint: false })
+		}
+	}
+
 	changeColor = () => {
 		if (
 			document.documentElement.scrollTop > 99 ||
@@ -57,6 +76,11 @@ class ComponentsNavbar extends React.Component {
 			collapseOpen: !this.state.collapseOpen,
 		})
 	}
+	onCollapseEntering = () => {
+		this.setState({
+			collapseExited: false,
+		})
+	}
 	onCollapseExiting = () => {
 		this.setState({
 			collapseOut: 'collapsing-out',
@@ -65,6 +89,7 @@ class ComponentsNavbar extends React.Component {
 	onCollapseExited = () => {
 		this.setState({
 			collapseOut: '',
+			collapseExited: true,
 		})
 	}
 	scrollToDownload = () => {
@@ -73,9 +98,17 @@ class ComponentsNavbar extends React.Component {
 			.scrollIntoView({ behavior: 'smooth' })
 	}
 	render() {
+		const {
+			state: { color, collapseOpen, collapseOut, overWidthBreakPoint },
+			toggleCollapse,
+			onCollapseExiting,
+			onCollapseExited,
+			onCollapseEntering,
+			collapseExited,
+		} = this
 		return (
 			<Navbar
-				className={'fixed-top ' + this.state.color}
+				className={'fixed-top ' + color}
 				color-on-scroll='100'
 				expand='lg'>
 				<Container>
@@ -85,56 +118,103 @@ class ComponentsNavbar extends React.Component {
 							to='/'
 							rel='noopener noreferrer'
 							tag={Link}>
-							<img src={logo} alt='Smiley face' />
+							<img src={logo} alt='Game Senshi' />
 							<span>&nbsp;&nbsp;&nbsp;</span>
 							GAME SENSHI
 						</NavbarBrand>
-						<button
-							aria-expanded={this.state.collapseOpen}
-							className='navbar-toggler navbar-toggler'
-							onClick={this.toggleCollapse}>
-							<span className='navbar-toggler-bar bar1' />
-							<span className='navbar-toggler-bar bar2' />
-							<span className='navbar-toggler-bar bar3' />
-						</button>
+						<div className='d-flex align-items-center'>
+							{!overWidthBreakPoint && (
+								<Button color='primary' type='button'>
+									Sign up
+								</Button>
+							)}
+							<button
+								aria-expanded={collapseOpen}
+								className='navbar-toggler navbar-toggler'
+								onClick={toggleCollapse}>
+								<span className='navbar-toggler-bar bar1' />
+								<span className='navbar-toggler-bar bar2' />
+								<span className='navbar-toggler-bar bar3' />
+							</button>
+						</div>
 					</div>
 					<Collapse
-						className={'justify-content-end ' + this.state.collapseOut}
+						className={'justify-content-end ' + collapseOut}
 						navbar
-						isOpen={this.state.collapseOpen}
-						onExiting={this.onCollapseExiting}
-						onExited={this.onCollapseExited}>
+						isOpen={collapseOpen}
+						onEntering={onCollapseEntering}
+						onExiting={onCollapseExiting}
+						onExited={onCollapseExited}>
 						<div className='navbar-collapse-header'>
 							<Row>
 								<Col className='collapse-brand' xs='6'>
 									<a href='#pablo' onClick={e => e.preventDefault()}>
-										BLK•React
+										GAME SENSHI
 									</a>
 								</Col>
 								<Col className='collapse-close text-right' xs='6'>
 									<button
-										aria-expanded={this.state.collapseOpen}
+										aria-expanded={collapseOpen}
 										className='navbar-toggler'
-										onClick={this.toggleCollapse}>
+										onClick={toggleCollapse}>
 										<i className='tim-icons icon-simple-remove' />
 									</button>
 								</Col>
 							</Row>
 						</div>
 						<Nav navbar>
-							<NavItem className='p-0'>
-								<Button
-									className='btn-simple btn-round'
-									color='primary'
-									type='button'>
-									Sign in
-								</Button>
-							</NavItem>
-							<NavItem className='p-0'>
-								<Button className='btn-round' color='primary' type='button'>
-									Sign up
-								</Button>
-							</NavItem>
+							{(!collapseOpen && collapseExited) || overWidthBreakPoint ? (
+								<>
+									<NavItem className='p-0'>
+										<Button
+											className='btn-simple'
+											color='primary'
+											type='button'>
+											Sign in
+										</Button>
+									</NavItem>
+									<NavItem className='p-0'>
+										<Button color='primary' type='button'>
+											Sign up
+										</Button>
+									</NavItem>
+								</>
+							) : (
+								<>
+									<NavItem className='p-0'>
+										<NavLink
+											data-placement='bottom'
+											href='https://twitter.com/CreativeTim'
+											rel='noopener noreferrer'
+											target='_blank'>
+											<Row>
+												<Col xs='2' sm='2' md='2'>
+													<i className='fab fas fa-sign-in-alt' />
+												</Col>
+												<Col>
+													<p className='d-lg-none d-xl-none'>Sign in</p>
+												</Col>
+											</Row>
+										</NavLink>
+									</NavItem>
+									<NavItem className='p-0'>
+										<NavLink
+											data-placement='bottom'
+											href='https://www.facebook.com/CreativeTim'
+											rel='noopener noreferrer'
+											target='_blank'>
+											<Row>
+												<Col xs='2' sm='2' md='2'>
+													<i className='fab fas fa-user-plus' />
+												</Col>
+												<Col>
+													<p className='d-lg-none d-xl-none'>Sign up</p>
+												</Col>
+											</Row>
+										</NavLink>
+									</NavItem>
+								</>
+							)}
 						</Nav>
 					</Collapse>
 				</Container>
