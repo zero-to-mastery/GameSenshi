@@ -39,11 +39,9 @@
 		"map-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.css --source-map true"
 	},
 	"dependencies": {
-		"@material-ui/core": "^3.9.3",
-		"@material-ui/icons": "^3.0.2",
 		"chart.js": "^2.7.3",
 		"classnames": "^2.2.6",
-		"firebaseui": "^4.0.0",
+		"firebase": "^6.0.2",
 		"formik": "^1.5.4",
 		"ky": "^0.10.0",
 		"localforage": "^1.7.3",
@@ -59,9 +57,9 @@
 		"react-router-dom": "^4.3.1",
 		"react-scripts": "^2.1.5",
 		"reactstrap": "^7.1.0",
-		"styled-components": "^4.2.0",
 		"unstated-next": "^1.0.1",
-		"validator": "^10.11.0"
+		"validator": "^10.11.0",
+		"yup": "^0.27.0"
 	},
 	"devDependencies": {
 		"env-cmd": "^8.0.2",
