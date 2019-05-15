@@ -1,5 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
+import { Link } from 'react-router-dom'
+
 // reactstrap components
 import {
 	Button,
@@ -19,12 +21,12 @@ import {
 	Container,
 	Row,
 	Col,
+	UncontrolledTooltip,
 } from 'reactstrap'
 
 // core components
 import IndexNavbar from 'components/Navbars/IndexNavbar.jsx'
 import Footer from 'components/Footer/Footer.jsx'
-
 class SignUpPage extends React.Component {
 	state = {
 		squares1to6: '',
@@ -82,52 +84,61 @@ class SignUpPage extends React.Component {
 												<CardImg
 													alt='...'
 													src={require('assets/img/square-purple-1.png')}
+													style={{ top: '-8%' }}
 												/>
 												<CardTitle tag='h4'>Sign up</CardTitle>
 											</CardHeader>
 											<CardBody>
-												<div
-													style={{
-														marginBottom: '10px',
-														display: 'flex',
-														flexDirection: 'row',
-														justifyContent: 'center',
-													}}>
-													<div style={{ marginRight: '10px' }}>
-														<Button
-															size='lg'
-															className='btn-icon btn-round'
-															color='facebook'
-															href=''
-															id='facebook'
-															target='_blank'>
-															<i className='fab fa-facebook-square' />
-														</Button>
-													</div>
-													<div style={{ marginRight: '10px' }}>
-														<Button
-															size='lg'
-															className='btn-icon btn-round'
-															color='warning'
-															href=''
-															id=''
-															target='_blank'>
-															<i className='fab fa-google' />
-														</Button>
-													</div>
-													<div>
-														<Button
-															size='lg'
-															className='btn-icon btn-round'
-															color='twitter'
-															href=''
-															id=''
-															target='_blank'>
-															<i className='fab fa-twitter' />
-														</Button>
-													</div>
+												<div className='text-muted text-center ml-auto mr-auto'>
+													<h3 className='mb-0'>Sign up with</h3>
 												</div>
-												<hr style={{ width: '100%' }} />
+											</CardBody>
+											<CardBody>
+												<div className='btn-wrapper text-center'>
+													<Button
+														size='lg'
+														className='btn-icon btn-round'
+														color='facebook'
+														href=''
+														id='facebook'
+														target='_blank'>
+														<i className='fab fa-facebook-square' />
+													</Button>
+													<UncontrolledTooltip delay={0} target='facebook'>
+														Sign up with Facebook!
+													</UncontrolledTooltip>
+													<Button
+														size='lg'
+														className='btn-icon btn-round'
+														color='warning'
+														href=''
+														id='google'
+														target='_blank'>
+														<i className='fab fa-google' />
+													</Button>
+													<UncontrolledTooltip delay={0} target='google'>
+														Sign up with Google!
+													</UncontrolledTooltip>
+													<Button
+														size='lg'
+														className='btn-icon btn-round'
+														color='twitter'
+														href=''
+														id='twitter'
+														target='_blank'>
+														<i className='fab fa-twitter' />
+													</Button>
+													<UncontrolledTooltip delay={0} target='twitter'>
+														Sign up with Twitter!
+													</UncontrolledTooltip>
+												</div>
+												<Row>
+													<Col />
+													<Col className='text-center text-muted mb-4 mt-3 col-auto'>
+														<small>Or Classically</small>
+													</Col>
+													<Col />
+												</Row>
 												<Form className='form'>
 													<InputGroup
 														className={classnames({
@@ -200,9 +211,29 @@ class SignUpPage extends React.Component {
 												</Form>
 											</CardBody>
 											<CardFooter>
-												<Button className='btn-round' color='primary' size='lg'>
-													Get Started
-												</Button>
+												<Row>
+													<Col />
+													<Col>
+														<Button
+															className='btn-round'
+															color='primary'
+															size='lg'>
+															Get Started
+														</Button>
+													</Col>
+													<Col />
+												</Row>
+												<Row>
+													<Col />
+													<Col className='col-auto'>
+														<Label check>
+															<span className='form-check-sign' />
+															Owned an account?{' '}
+															<Link to='/signIn'>Sign in</Link> instead.
+														</Label>
+													</Col>
+													<Col />
+												</Row>
 											</CardFooter>
 										</Card>
 									</Col>
