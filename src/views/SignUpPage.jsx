@@ -221,7 +221,6 @@ class SignUpPage extends React.Component {
 																			handleBlur(e)
 																			this.setState({ emailFocus: false })
 																		}}
-																		value={values.email}
 																	/>
 																</InputGroup>
 																<InputGroup
@@ -245,7 +244,6 @@ class SignUpPage extends React.Component {
 																			handleBlur(e)
 																			this.setState({ passwordFocus: false })
 																		}}
-																		value={values.password}
 																	/>
 																</InputGroup>
 																<FormGroup check className='text-left'>
