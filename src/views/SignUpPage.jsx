@@ -63,7 +63,7 @@ class SignUpPage extends React.Component {
 			<>
 				<IndexNavbar />
 				<div className='wrapper'>
-					<div className='page-header' style={{ 'max-height': '1200px' }}>
+					<div className='page-header' style={{ 'max-height': '1300px' }}>
 						<div className='page-header-image' />
 						<div className='content'>
 							<Container>

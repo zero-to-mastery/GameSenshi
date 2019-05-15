@@ -63,7 +63,7 @@ class SignInPage extends React.Component {
 			<>
 				<IndexNavbar />
 				<div className='wrapper'>
-					<div className='page-header' style={{ 'max-height': '1200px' }}>
+					<div className='page-header' style={{ 'max-height': '1250px' }}>
 						<div className='page-header-image' />
 						<div className='content'>
 							<Container>
@@ -203,7 +203,7 @@ class SignInPage extends React.Component {
 													<Col className='col-auto'>
 														<Label check>
 															<span className='form-check-sign' />
-															Dont have an account?{' '}
+															Don't have an account?{' '}
 															<Link to='/signUp'>Sign up</Link>.
 														</Label>
 													</Col>
