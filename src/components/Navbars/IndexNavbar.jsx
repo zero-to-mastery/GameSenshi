@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 // reactstrap components
 import {
@@ -35,7 +35,7 @@ class ComponentsNavbar extends React.Component {
 	}
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this.changeColor)
-		window.removeListener('resize', this.onDimensionChange)
+		window.removeEventListener('resize', this.onDimensionChange)
 	}
 
 	onDimensionChange = () => {
@@ -98,6 +98,7 @@ class ComponentsNavbar extends React.Component {
 	}
 	render() {
 		const {
+			props: { history },
 			state: { color, collapseOpen, collapseOut, overWidthBreakPoint },
 			toggleCollapse,
 			onCollapseExiting,
@@ -123,7 +124,12 @@ class ComponentsNavbar extends React.Component {
 						</NavbarBrand>
 						<div className='d-flex align-items-center'>
 							{!overWidthBreakPoint && (
-								<Button color='primary' type='button'>
+								<Button
+									color='primary'
+									type='button'
+									onClick={() => {
+										history.push('signup')
+									}}>
 									Sign up
 								</Button>
 							)}
@@ -168,12 +174,20 @@ class ComponentsNavbar extends React.Component {
 										<Button
 											className='btn-simple font-weight-bold'
 											color='primary'
-											type='button'>
+											type='button'
+											onClick={() => {
+												history.push('signin')
+											}}>
 											Sign in
 										</Button>
 									</NavItem>
 									<NavItem className='p-0'>
-										<Button color='primary' type='button'>
+										<Button
+											color='primary'
+											type='button'
+											onClick={() => {
+												history.push('signup')
+											}}>
 											Sign up
 										</Button>
 									</NavItem>
@@ -183,9 +197,13 @@ class ComponentsNavbar extends React.Component {
 									<NavItem className='p-0'>
 										<NavLink
 											data-placement='bottom'
-											href='https://twitter.com/CreativeTim'
+											href='/signin'
 											rel='noopener noreferrer'
-											target='_blank'>
+											target='_blank'
+											onClick={e => {
+												e.preventDefault()
+												history.push('signin')
+											}}>
 											<Row>
 												<Col xs='2' sm='2' md='2'>
 													<i className='fab fas fa-sign-in-alt' />
@@ -199,9 +217,13 @@ class ComponentsNavbar extends React.Component {
 									<NavItem className='p-0'>
 										<NavLink
 											data-placement='bottom'
-											href='https://www.facebook.com/CreativeTim'
+											href='/signup'
 											rel='noopener noreferrer'
-											target='_blank'>
+											target='_blank'
+											onClick={e => {
+												e.preventDefault()
+												history.push('signup')
+											}}>
 											<Row>
 												<Col xs='2' sm='2' md='2'>
 													<i className='fab fas fa-user-plus' />
@@ -222,4 +244,4 @@ class ComponentsNavbar extends React.Component {
 	}
 }
 
-export default ComponentsNavbar
+export default withRouter(ComponentsNavbar)
