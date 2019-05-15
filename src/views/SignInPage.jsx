@@ -1,6 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import { Link } from 'react-router-dom'
+import firebase from 'firebase'
 
 // reactstrap components
 import {
@@ -31,6 +32,7 @@ class SignInPage extends React.Component {
 	state = {
 		squares1to6: '',
 		squares7and8: '',
+		checked: true,
 	}
 	componentDidMount() {
 		document.body.classList.toggle('register-page')
@@ -59,11 +61,14 @@ class SignInPage extends React.Component {
 		})
 	}
 	render() {
+		const {
+			state: { checked },
+		} = this
 		return (
 			<>
 				<IndexNavbar />
 				<div className='wrapper'>
-					<div className='page-header' style={{ 'max-height': '1250px' }}>
+					<div className='page-header'>
 						<div className='page-header-image' />
 						<div className='content'>
 							<Container>
@@ -178,9 +183,18 @@ class SignInPage extends React.Component {
 													</InputGroup>
 													<FormGroup check className='text-left'>
 														<Label check>
-															<Input type='checkbox' checked={true} />
+															<Input
+																type='checkbox'
+																checked={checked}
+																onChange={() => {
+																	this.setState(state => {
+																		state.checked = !state.checked
+																		return state
+																	})
+																}}
+															/>
 															<span className='form-check-sign' />
-															Remember Me.
+															Remember Me
 														</Label>
 													</FormGroup>
 												</Form>
@@ -193,7 +207,7 @@ class SignInPage extends React.Component {
 															className='btn-round'
 															color='primary'
 															size='lg'>
-															Get Started
+															Sign In
 														</Button>
 													</Col>
 													<Col />
@@ -204,7 +218,7 @@ class SignInPage extends React.Component {
 														<Label check>
 															<span className='form-check-sign' />
 															Don't have an account?{' '}
-															<Link to='/signUp'>Sign up</Link>.
+															<Link to='/signUp'>Sign up</Link>
 														</Label>
 													</Col>
 													<Col />
