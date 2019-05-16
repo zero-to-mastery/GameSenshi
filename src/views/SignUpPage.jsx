@@ -2,8 +2,8 @@ import React from 'react'
 import classnames from 'classnames'
 import { Link } from 'react-router-dom'
 import firebase from 'firebase'
-import { Formik, yupToFormErrors } from 'formik'
-import { string, email, object } from 'yup'
+import { Form as FinalForm, Field } from 'react-final-form'
+import { string } from 'yup'
 
 // reactstrap components
 import {
@@ -96,7 +96,7 @@ class SignUpPage extends React.Component {
 													<h3 className='mb-0'>Sign up with</h3>
 												</div>
 											</CardBody>
-											<Formik
+											<FinalForm
 												initialValues={{ email: '', password: '' }}
 												onSubmit={(values, actions) => {
 													firebase
@@ -122,34 +122,9 @@ class SignUpPage extends React.Component {
 														})
 														.catch(error => {
 															console.log(error)
-															actions.setSubmitting(false)
-															actions.setErrors({ email: '', password: '' })
 														})
 												}}
-												validate={values => {
-													const schema = object().shape({
-														email: string()
-															.email('Invalid email')
-															.required('No email is provided'),
-														password: string()
-															.required('No password provided.')
-															.min(
-																8,
-																'Password is too short - should be 8 chars minimum.'
-															),
-													})
-													return schema.validate(values, { abortEarly: false }) // return promise
-												}}>
-												{({
-													values,
-													errors,
-													dirty,
-													touched,
-													handleChange,
-													handleBlur,
-													handleSubmit,
-													isSubmitting,
-												}) => (
+												render={({ handleSubmit, submitting }) => (
 													<>
 														<CardBody>
 															<div className='btn-wrapper text-center'>
@@ -200,57 +175,95 @@ class SignUpPage extends React.Component {
 																<Col />
 															</Row>
 															<Form className='form'>
-																<InputGroup
-																	className={classnames({
-																		'input-group-focus': this.state.emailFocus,
-																	})}>
-																	<InputGroupAddon addonType='prepend'>
-																		<InputGroupText>
-																			<i className='tim-icons icon-email-85' />
-																		</InputGroupText>
-																	</InputGroupAddon>
-																	<Input
-																		placeholder='Email Address'
-																		type='text'
-																		name='email'
-																		onChange={handleChange}
-																		onFocus={e =>
-																			this.setState({ emailFocus: true })
-																		}
-																		onBlur={e => {
-																			handleBlur(e)
-																			this.setState({ emailFocus: false })
-																		}}
-																	/>
-																</InputGroup>
-																<InputGroup
-																	className={classnames({
-																		'input-group-focus': this.state
-																			.passwordFocus,
-																	})}>
-																	<InputGroupAddon addonType='prepend'>
-																		<InputGroupText>
-																			<i className='tim-icons icon-lock-circle' />
-																		</InputGroupText>
-																	</InputGroupAddon>
-																	<Input
-																		placeholder='Password'
-																		type='text'
-																		name='password'
-																		onFocus={e =>
-																			this.setState({ passwordFocus: true })
-																		}
-																		onBlur={e => {
-																			handleBlur(e)
-																			this.setState({ passwordFocus: false })
-																		}}
-																	/>
-																</InputGroup>
+																<Field
+																	name='email'
+																	validate={value =>
+																		string()
+																			.required('Email is required')
+																			.email('Email not valid')
+																			.validate(value, {
+																				abortEarly: false,
+																			})
+																			.catch(err => err.errors)
+																	}
+																	render={({ input, meta }) => (
+																		<InputGroup
+																			className={classnames({
+																				'input-group-focus': this.state
+																					.emailFocus,
+																			})}
+																			onFocus={e =>
+																				this.setState({ emailFocus: true })
+																			}
+																			onBlur={e => {
+																				this.setState({ emailFocus: false })
+																			}}>
+																			{meta.touched && meta.error && (
+																				<p>{meta.error}</p>
+																			)}
+																			<InputGroupAddon addonType='prepend'>
+																				<InputGroupText>
+																					<i className='tim-icons icon-email-85' />
+																				</InputGroupText>
+																			</InputGroupAddon>
+																			<Input
+																				placeholder='Email Address'
+																				type='text'
+																				{...input} // will conflict with other props like name, onBlur and onChange
+																			/>
+																		</InputGroup>
+																	)}
+																/>
+																<Field
+																	name='password'
+																	validate={value =>
+																		string()
+																			.required('Password is required')
+																			.min(
+																				9,
+																				'Password must be 9 characters or longer'
+																			)
+																			.validate(value, {
+																				abortEarly: false,
+																			})
+																			.catch(err => err.errors)
+																	}
+																	render={({ input, meta }) => (
+																		<InputGroup
+																			className={classnames({
+																				'input-group-focus': this.state
+																					.passwordFocus,
+																			})}
+																			onFocus={e =>
+																				this.setState({ passwordFocus: true })
+																			}
+																			onBlur={e =>
+																				this.setState({
+																					passwordFocus: false,
+																				})
+																			}>
+																			{meta.touched && meta.error && (
+																				<p>{meta.error}</p>
+																			)}
+																			<InputGroupAddon addonType='prepend'>
+																				<InputGroupText>
+																					<i className='tim-icons icon-lock-circle' />
+																				</InputGroupText>
+																			</InputGroupAddon>
+																			<Input
+																				placeholder='Password'
+																				type='text'
+																				{...input}
+																			/>
+																		</InputGroup>
+																	)}
+																/>
 																<FormGroup check className='text-left'>
 																	<Label check>
 																		<Input type='checkbox' />
-																		<span className='form-check-sign' />I agree
-																		to the{' '}
+																		<span className='form-check-sign' />
+																		{`I agree
+																		to the `}
 																		<a
 																			href='#pablo'
 																			onClick={e => e.preventDefault()}>
@@ -268,7 +281,7 @@ class SignUpPage extends React.Component {
 																		className='btn-round'
 																		color='primary'
 																		size='lg'
-																		disabled={isSubmitting}
+																		disabled={submitting}
 																		onClick={handleSubmit}>
 																		Sign Up
 																	</Button>
@@ -280,7 +293,7 @@ class SignUpPage extends React.Component {
 																<Col className='col-auto'>
 																	<Label check>
 																		<span className='form-check-sign' />
-																		Already a member?{' '}
+																		{`Already a member? `}
 																		<Link to='/signIn'>Sign in</Link>
 																	</Label>
 																</Col>
@@ -289,7 +302,7 @@ class SignUpPage extends React.Component {
 														</CardFooter>{' '}
 													</>
 												)}
-											</Formik>
+											/>
 										</Card>
 									</Col>
 								</Row>
