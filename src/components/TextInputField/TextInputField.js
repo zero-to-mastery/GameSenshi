@@ -79,7 +79,6 @@ const TextInputField = props => {
 				const { errorList } = state
 				return (
 					<>
-						{console.log('test')}
 						<InputGroup
 							className={classnames({
 								'has-danger': touched && errorList && !active,

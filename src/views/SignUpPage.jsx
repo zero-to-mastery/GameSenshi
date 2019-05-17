@@ -40,7 +40,7 @@ class SignUpPage extends React.Component {
 	}
 	componentDidMount() {
 		document.body.classList.toggle('register-page')
-		// document.documentElement.addEventListener('mousemove', this.followCursor)
+		document.documentElement.addEventListener('mousemove', this.followCursor)
 		this.setState({ maxHeight: this.divElement.clientHeight })
 	}
 	componentWillUnmount() {
@@ -69,7 +69,6 @@ class SignUpPage extends React.Component {
 	render() {
 		const {
 			state: { squares7and8, squares1to6, maxHeight },
-			setState,
 		} = this
 		return (
 			<>
@@ -211,6 +210,18 @@ class SignUpPage extends React.Component {
 																				string()
 																					.required('Email is required')
 																					.email('Email not valid')
+																					.validate(value, {
+																						abortEarly: false,
+																					})
+																			}
+																		/>
+																		<TextInputField
+																			name='password'
+																			placeholder='Password'
+																			icon='tim-icons icon-lock-circle'
+																			asyncValidation={value =>
+																				string()
+																					.required('Password is required')
 																					.min(
 																						8,
 																						'Password must be 8 characters or longer'
@@ -220,22 +231,6 @@ class SignUpPage extends React.Component {
 																					})
 																			}
 																		/>
-																		{/* <TextInputField
-																	name='password'
-																	placeholder='Password'
-																	icon='tim-icons icon-lock-circle'
-																	asyncValidation={value =>
-																		string()
-																			.required('Password is required')
-																			.min(
-																				8,
-																				'Password must be 8 characters or longer'
-																			)
-																			.validate(value, {
-																				abortEarly: false,
-																			})
-																	}
-																/> */}
 																		<Field
 																			type='checkbox'
 																			name='term'
