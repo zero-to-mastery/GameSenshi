@@ -4,6 +4,10 @@ import firebase from 'firebase/app'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import * as serviceWorker from 'serviceWorker'
 
+// state management
+import { Provider } from 'unstated'
+import { signUp } from 'state'
+
 import 'assets/css/nucleo-icons.css'
 import 'assets/scss/blk-design-system-react.scss?v=1.0.0'
 import 'assets/demo/demo.css'
@@ -27,15 +31,17 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 ReactDOM.render(
-	<BrowserRouter>
-		<Switch>
-			<Route exact path='/' render={props => <Index {...props} />} />
-			<Route path='/landing' render={props => <LandingPage {...props} />} />
-			<Route path='/signUp' render={props => <SignUpPage {...props} />} />
-			<Route path='/profile' render={props => <ProfilePage {...props} />} />
-			<Route path='/signIn' render={props => <SignInPage {...props} />} />
-		</Switch>
-	</BrowserRouter>,
+	<Provider to={[signUp]}>
+		<BrowserRouter>
+			<Switch>
+				<Route exact path='/' render={props => <Index {...props} />} />
+				<Route path='/landing' render={props => <LandingPage {...props} />} />
+				<Route path='/signUp' render={props => <SignUpPage {...props} />} />
+				<Route path='/profile' render={props => <ProfilePage {...props} />} />
+				<Route path='/signIn' render={props => <SignInPage {...props} />} />
+			</Switch>
+		</BrowserRouter>
+	</Provider>,
 	document.getElementById('root')
 )
 

@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import React from 'react'
+import { Container } from 'unstated'
 
-const SignUpHook = (initialState = { maxHeight: undefined }) => {
-	let [state, setState] = useState(initialState)
-	return { state, setState }
+class SignUpContainer extends Container {
+	state = {}
 }
 
-export default SignUpHook
+export default SignUpContainer
