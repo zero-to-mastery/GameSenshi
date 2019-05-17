@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import classnames from 'classnames'
 import { Field } from 'react-final-form'
+import ReactResizeDetector from 'react-resize-detector'
+import { signUp } from 'state'
 
 import {
 	Row,
@@ -13,26 +15,21 @@ import {
 } from 'reactstrap'
 
 const TextInputField = props => {
-	const { name, asyncValidation, placeholder, icon, parentSetState } = props
+	const { name, asyncValidation, placeholder, icon } = props
 
 	const ref = useRef(null)
-
-	const heightName =
-		'extraHeight' + name.charAt(0).toUpperCase() + name.slice(1) // match the naming to parent state property
 
 	const [state, setState] = useState({
 		errorList: [],
 		timeOutID: 0,
 	})
 
-	// useEffect(() => {
-	// 	console.log('state change', state.errorList.length)
-	// 	parentSetState(state => {
-	// 		state[heightName] = ref.current.clientHeight
-	// 		//console.log('parent state', state)
-	// 		return state
-	// 	})
-	// }, [(ref.current && ref.current.clientHeight) || 0])
+	const onResize = () => {
+		signUp.setState(state => ({
+			...state,
+			[name + 'ExtraHeight']: ref.current.clientHeight,
+		}))
+	}
 
 	return (
 		<Field
@@ -57,7 +54,7 @@ const TextInputField = props => {
 													backgroundColor: 'transparent',
 												}}
 												// due to limitation of final form, we cannot use fade without sacrificing UX (flicking)
-												// it is very difficult to fix the flicking
+												// it is very difficult to fix the flicking(but possible, need more control)
 												fade={false} //https://github.com/reactstrap/reactstrap/pull/1078
 											>
 												<Row>
@@ -71,9 +68,7 @@ const TextInputField = props => {
 											</Alert>
 										)
 									})
-								// console.log('errorList', errorList)
 								setState({ timeOutID, errorList })
-								console.log(ref.current.clientHeight)
 								resolve(errMessages)
 							})
 					}, 500)
@@ -84,6 +79,7 @@ const TextInputField = props => {
 				const { errorList } = state
 				return (
 					<>
+						{console.log('test')}
 						<InputGroup
 							className={classnames({
 								'has-danger': touched && errorList && !active,
@@ -106,6 +102,11 @@ const TextInputField = props => {
 							ref={ref} // function component cannot have ref, class and html element can
 						>
 							{touched && errorList}
+							<ReactResizeDetector
+								handleWidth
+								handleHeight
+								onResize={onResize}
+							/>
 						</div>
 						<div className='w-100 mb-3' />
 					</>
