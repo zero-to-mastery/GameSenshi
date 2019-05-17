@@ -1,9 +1,8 @@
 import React from 'react'
-import classnames from 'classnames'
 import { Link } from 'react-router-dom'
 import firebase from 'firebase'
 import { Form as FinalForm, Field } from 'react-final-form'
-import { string } from 'yup'
+import { string, boolean } from 'yup'
 
 // reactstrap components
 import {
@@ -18,9 +17,6 @@ import {
 	FormGroup,
 	Form,
 	Input,
-	InputGroupAddon,
-	InputGroupText,
-	InputGroup,
 	Container,
 	Row,
 	Col,
@@ -30,14 +26,20 @@ import {
 // core components
 import IndexNavbar from 'components/Navbars/IndexNavbar.jsx'
 import Footer from 'components/Footer/Footer.jsx'
+import TextInputField from 'components/TextInputField/TextInputField'
+
 class SignUpPage extends React.Component {
 	state = {
 		squares1to6: '',
 		squares7and8: '',
+		maxHeight: 999,
+		extraHeightEmail: 0,
+		extraHeightPassword: 0,
 	}
 	componentDidMount() {
 		document.body.classList.toggle('register-page')
-		document.documentElement.addEventListener('mousemove', this.followCursor)
+		// document.documentElement.addEventListener('mousemove', this.followCursor)
+		this.setState({ maxHeight: this.divElement.clientHeight })
 	}
 	componentWillUnmount() {
 		document.body.classList.toggle('register-page')
@@ -61,26 +63,44 @@ class SignUpPage extends React.Component {
 				'deg)',
 		})
 	}
+
 	render() {
+		const {
+			state: {
+				squares7and8,
+				squares1to6,
+				maxHeight,
+				extraHeightEmail,
+				extraHeightPassword,
+			},
+			setState,
+		} = this
 		return (
 			<>
+				{console.log('parent')}
 				<IndexNavbar />
 				<div className='wrapper'>
-					<div className='page-header'>
+					<div
+						className='page-header'
+						style={{
+							maxHeight:
+								maxHeight + extraHeightEmail + extraHeightPassword + 'px',
+						}}
+						ref={divElement => (this.divElement = divElement)}>
 						<div className='page-header-image' />
 						<div className='content'>
-							<Container>
+							<Container className='container-fluid'>
 								<Row>
 									<Col className='offset-lg-0 offset-md-3' lg='5' md='6'>
 										<div
 											className='square square-7'
 											id='square7'
-											style={{ transform: this.state.squares7and8 }}
+											style={{ transform: squares7and8 }}
 										/>
 										<div
 											className='square square-8'
 											id='square8'
-											style={{ transform: this.state.squares7and8 }}
+											style={{ transform: squares7and8 }}
 										/>
 										<Card className='card-register'>
 											<CardHeader>
@@ -97,7 +117,7 @@ class SignUpPage extends React.Component {
 												</div>
 											</CardBody>
 											<FinalForm
-												initialValues={{ email: '', password: '' }}
+												initialValues={{ email: '', password: '', term: false }}
 												onSubmit={(values, actions) => {
 													firebase
 														.auth()
@@ -175,102 +195,85 @@ class SignUpPage extends React.Component {
 																<Col />
 															</Row>
 															<Form className='form'>
-																<Field
+																<TextInputField
 																	name='email'
-																	validate={value =>
+																	placeholder='Email Address'
+																	icon='tim-icons icon-email-85'
+																	parentSetState={setState.bind(this)}
+																	asyncValidation={value =>
 																		string()
 																			.required('Email is required')
 																			.email('Email not valid')
-																			.validate(value, {
-																				abortEarly: false,
-																			})
-																			.catch(err => err.errors)
-																	}
-																	render={({ input, meta }) => (
-																		<InputGroup
-																			className={classnames({
-																				'input-group-focus': this.state
-																					.emailFocus,
-																			})}
-																			onFocus={e =>
-																				this.setState({ emailFocus: true })
-																			}
-																			onBlur={e => {
-																				this.setState({ emailFocus: false })
-																			}}>
-																			{meta.touched && meta.error && (
-																				<p>{meta.error}</p>
-																			)}
-																			<InputGroupAddon addonType='prepend'>
-																				<InputGroupText>
-																					<i className='tim-icons icon-email-85' />
-																				</InputGroupText>
-																			</InputGroupAddon>
-																			<Input
-																				placeholder='Email Address'
-																				type='text'
-																				{...input} // will conflict with other props like name, onBlur and onChange
-																			/>
-																		</InputGroup>
-																	)}
-																/>
-																<Field
-																	name='password'
-																	validate={value =>
-																		string()
-																			.required('Password is required')
 																			.min(
-																				9,
-																				'Password must be 9 characters or longer'
+																				8,
+																				'Password must be 8 characters or longer'
 																			)
 																			.validate(value, {
 																				abortEarly: false,
 																			})
+																	}
+																/>
+																{/* <TextInputField
+																	name='password'
+																	placeholder='Password'
+																	icon='tim-icons icon-lock-circle'
+																	parentSetState={setState.bind(this)}
+																	asyncValidation={value =>
+																		string()
+																			.required('Password is required')
+																			.min(
+																				8,
+																				'Password must be 8 characters or longer'
+																			)
+																			.validate(value, {
+																				abortEarly: false,
+																			})
+																	}
+																/> */}
+																<Field
+																	type='checkbox'
+																	name='term'
+																	validate={value =>
+																		boolean()
+																			.oneOf(
+																				[true],
+																				'Must Accept Terms and Conditions'
+																			)
+																			.validate(value)
 																			.catch(err => err.errors)
 																	}
 																	render={({ input, meta }) => (
-																		<InputGroup
-																			className={classnames({
-																				'input-group-focus': this.state
-																					.passwordFocus,
-																			})}
-																			onFocus={e =>
-																				this.setState({ passwordFocus: true })
-																			}
-																			onBlur={e =>
-																				this.setState({
-																					passwordFocus: false,
-																				})
-																			}>
+																		<>
+																			<FormGroup check className='text-left'>
+																				<Label check>
+																					<Input
+																						type='checkbox'
+																						name='term'
+																						{...input}
+																						onChange={e => {
+																							// ! bug, workaround https://github.com/final-form/react-final-form/issues/134
+																							input.onBlur(e)
+																							input.onChange(e)
+																						}}
+																					/>
+																					<span className='form-check-sign' />
+																					{`I agree
+																		to the `}
+																					<a
+																						href='#pablo'
+																						onClick={e => e.preventDefault()}>
+																						terms and conditions
+																					</a>
+																				</Label>
+																			</FormGroup>
 																			{meta.touched && meta.error && (
-																				<p>{meta.error}</p>
+																				<p className='text-danger'>
+																					{meta.error}
+																				</p>
 																			)}
-																			<InputGroupAddon addonType='prepend'>
-																				<InputGroupText>
-																					<i className='tim-icons icon-lock-circle' />
-																				</InputGroupText>
-																			</InputGroupAddon>
-																			<Input
-																				placeholder='Password'
-																				type='text'
-																				{...input}
-																			/>
-																		</InputGroup>
+																		</>
 																	)}
 																/>
-																<FormGroup check className='text-left'>
-																	<Label check>
-																		<Input type='checkbox' />
-																		<span className='form-check-sign' />
-																		{`I agree
-																		to the `}
-																		<a
-																			href='#pablo'
-																			onClick={e => e.preventDefault()}>
-																			terms and conditions
-																		</a>
-																	</Label>
-																</FormGroup>
 															</Form>
 														</CardBody>
 														<CardFooter>
@@ -299,7 +302,7 @@ class SignUpPage extends React.Component {
 																</Col>
 																<Col />
 															</Row>
-														</CardFooter>{' '}
+														</CardFooter>
 													</>
 												)}
 											/>
@@ -310,32 +313,32 @@ class SignUpPage extends React.Component {
 								<div
 									className='square square-1'
 									id='square1'
-									style={{ transform: this.state.squares1to6 }}
+									style={{ transform: squares1to6 }}
 								/>
 								<div
 									className='square square-2'
 									id='square2'
-									style={{ transform: this.state.squares1to6 }}
+									style={{ transform: squares1to6 }}
 								/>
 								<div
 									className='square square-3'
 									id='square3'
-									style={{ transform: this.state.squares1to6 }}
+									style={{ transform: squares1to6 }}
 								/>
 								<div
 									className='square square-4'
 									id='square4'
-									style={{ transform: this.state.squares1to6 }}
+									style={{ transform: squares1to6 }}
 								/>
 								<div
 									className='square square-5'
 									id='square5'
-									style={{ transform: this.state.squares1to6 }}
+									style={{ transform: squares1to6 }}
 								/>
 								<div
 									className='square square-6'
 									id='square6'
-									style={{ transform: this.state.squares1to6 }}
+									style={{ transform: squares1to6 }}
 								/>
 							</Container>
 						</div>
