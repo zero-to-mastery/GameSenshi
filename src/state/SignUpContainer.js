@@ -1,8 +1,11 @@
-import React from 'react'
 import { Container } from 'unstated'
 
 class SignUpContainer extends Container {
-	state = {}
+	state = {
+		validating: true,
+		delay: 0,
+		timeOutID: 0,
+	}
 }
 
 export default SignUpContainer
