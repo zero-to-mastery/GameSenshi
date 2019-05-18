@@ -24,9 +24,6 @@ const InputField = props => {
 
 	const [state, setState] = useState({
 		errorList: [],
-		timeOutID: 0,
-		validating: true,
-		delay: 0,
 	})
 
 	const onResize = () => {
@@ -43,10 +40,9 @@ const InputField = props => {
 			validate={value =>
 				new Promise(resolve => {
 					// validate after user stop typing for 500ms
-					setState(state => ({ ...state, validating: true }))
-					//signUp.state.validating = true
-					clearTimeout(state.timeOutID)
-					console.log(signUp.state.delay)
+					signUp.state.validating = true
+					clearTimeout(signUp.state.timeOutID)
+					console.log(signUp.state.delay, signUp.state.timeOutID)
 					const timeOutID = setTimeout(() => {
 						asyncValidation(value)
 							.then(() => {}) // ! some weird final form behavior, need to run a `then` to render the change from error to non error
@@ -80,17 +76,18 @@ const InputField = props => {
 											)
 										})) ||
 									[]
-
-								setState(state => ({ ...state, errorList, validating: false }))
+								signUp.state.validating = false
+								setState(state => ({ ...state, errorList }))
 								resolve(errMessages)
 							})
 					}, signUp.state.delay)
-					setState(state => ({ ...state, timeOutID }))
+					signUp.state.timeOutID = timeOutID
 				})
 			}>
 			{({ input, meta }) => {
 				const { touched, active, modified } = meta
-				const { errorList, validating } = state
+				const { errorList } = state
+				const { validating } = signUp.state
 				return (
 					<>
 						{type !== 'checkbox' && (
@@ -116,7 +113,7 @@ const InputField = props => {
 								<Input
 									{...input} //name, type, onBlur, onChange, onFocus, overwrite it by creating prop after this prop
 									onChange={e => {
-										signUp.state.delay = 5000
+										signUp.state.delay = 1500
 										input.onChange(e)
 									}}
 									placeholder={placeholder}
