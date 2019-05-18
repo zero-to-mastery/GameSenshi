@@ -1,8 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import firebase from 'firebase'
-import { Form as FinalForm, Field } from 'react-final-form'
+
+// form validation
+import { Form as FinalForm } from 'react-final-form'
 import { string, boolean } from 'yup'
+import createDecorator from 'final-form-focus'
 
 // state management
 import { Subscribe } from 'unstated'
@@ -18,9 +21,7 @@ import {
 	CardImg,
 	CardTitle,
 	Label,
-	FormGroup,
 	Form,
-	Input,
 	Container,
 	Row,
 	Col,
@@ -30,7 +31,9 @@ import {
 // core components
 import IndexNavbar from 'components/Navbars/IndexNavbar.jsx'
 import Footer from 'components/Footer/Footer.jsx'
-import TextInputField from 'components/TextInputField/TextInputField'
+import InputField from 'components/InputField/InputField'
+
+const focusOnError = createDecorator()
 
 class SignUpPage extends React.Component {
 	state = {
@@ -121,6 +124,7 @@ class SignUpPage extends React.Component {
 															password: '',
 															term: false,
 														}}
+														decorators={[focusOnError]}
 														onSubmit={(values, actions) => {
 															firebase
 																.auth()
@@ -146,8 +150,8 @@ class SignUpPage extends React.Component {
 																.catch(error => {
 																	console.log(error)
 																})
-														}}
-														render={({ handleSubmit, submitting }) => (
+														}}>
+														{({ handleSubmit, submitting, validating }) => (
 															<>
 																<CardBody>
 																	<div className='btn-wrapper text-center'>
@@ -202,7 +206,8 @@ class SignUpPage extends React.Component {
 																		<Col />
 																	</Row>
 																	<Form className='form'>
-																		<TextInputField
+																		<InputField
+																			type='email'
 																			name='email'
 																			placeholder='Email Address'
 																			icon='tim-icons icon-email-85'
@@ -215,7 +220,8 @@ class SignUpPage extends React.Component {
 																					})
 																			}
 																		/>
-																		<TextInputField
+																		<InputField
+																			type='password'
 																			name='password'
 																			placeholder='Password'
 																			icon='tim-icons icon-lock-circle'
@@ -231,53 +237,19 @@ class SignUpPage extends React.Component {
 																					})
 																			}
 																		/>
-																		<Field
+																		<InputField
 																			type='checkbox'
 																			name='term'
-																			validate={value =>
+																			asyncValidation={value =>
 																				boolean()
 																					.oneOf(
 																						[true],
 																						'Must Accept Terms and Conditions'
 																					)
-																					.validate(value)
-																					.catch(err => err.errors)
+																					.validate(value, {
+																						abortEarly: false,
+																					})
 																			}
-																			render={({ input, meta }) => (
-																				<>
-																					<FormGroup
-																						check
-																						className='text-left'>
-																						<Label check>
-																							<Input
-																								type='checkbox'
-																								name='term'
-																								{...input}
-																								onChange={e => {
-																									// ! bug, workaround https://github.com/final-form/react-final-form/issues/134
-																									input.onBlur(e)
-																									input.onChange(e)
-																								}}
-																							/>
-																							<span className='form-check-sign' />
-																							{`I agree
-																		to the `}
-																							<a
-																								href='#pablo'
-																								onClick={e =>
-																									e.preventDefault()
-																								}>
-																								terms and conditions
-																							</a>
-																						</Label>
-																					</FormGroup>
-																					{meta.touched && meta.error && (
-																						<p className='text-danger'>
-																							{meta.error}
-																						</p>
-																					)}
-																				</>
-																			)}
 																		/>
 																	</Form>
 																</CardBody>
@@ -310,7 +282,7 @@ class SignUpPage extends React.Component {
 																</CardFooter>
 															</>
 														)}
-													/>
+													</FinalForm>
 												</Card>
 											</Col>
 										</Row>
