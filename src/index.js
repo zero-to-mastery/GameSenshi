@@ -39,7 +39,8 @@ ReactDOM.render(
 				<Route path='/signUp' render={props => <SignUpPage {...props} />} />
 				<Route path='/profile' render={props => <ProfilePage {...props} />} />
 				<Route path='/signIn' render={props => <SignInPage {...props} />} />
-			</Switch>		</BrowserRouter>
+			</Switch>{' '}
+		</BrowserRouter>{' '}
 	</Provider>,
 	document.getElementById('root')
 )
