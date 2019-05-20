@@ -24,6 +24,9 @@ const InputField = props => {
 
 	const [state, setState] = useState({
 		errorList: [],
+		validating: true,
+		delay: 0,
+		timeOutID: 0,
 	})
 
 	const onResize = () => {
@@ -40,9 +43,9 @@ const InputField = props => {
 			validate={value =>
 				new Promise(resolve => {
 					// validate after user stop typing for 500ms
-					signUp.state.validating = true
-					clearTimeout(signUp.state.timeOutID)
-					console.log(signUp.state.delay, signUp.state.timeOutID)
+					state.validating = true
+					clearTimeout(state.timeOutID)
+					console.log(state.delay, state.timeOutID)
 					const timeOutID = setTimeout(() => {
 						asyncValidation(value)
 							.then(() => {}) // ! some weird final form behavior, need to run a `then` to render the change from error to non error
@@ -76,27 +79,28 @@ const InputField = props => {
 											)
 										})) ||
 									[]
-								signUp.state.validating = false
+								state.validating = false
 								setState(state => ({ ...state, errorList }))
 								resolve(errMessages)
 							})
-					}, signUp.state.delay)
-					signUp.state.timeOutID = timeOutID
+					}, state.delay)
+					state.timeOutID = timeOutID
 				})
 			}>
 			{({ input, meta }) => {
 				const { touched, active, modified } = meta
 				const { errorList } = state
-				const { validating } = signUp.state
+				const { validating } = state
 				return (
 					<>
+						{console.log(meta)}
 						{type !== 'checkbox' && (
 							<InputGroup
 								className={classnames({
 									'has-danger':
+										!validating &&
 										errorList.length &&
-										((touched && !active) ||
-											(!validating && active && modified)),
+										((touched && !active) || (active && modified)),
 									'has-success':
 										!validating &&
 										!errorList.length &&
@@ -104,7 +108,6 @@ const InputField = props => {
 									'input-group-focus': active,
 									'mb-1': true,
 								})}>
-								{console.log(meta, input)}
 								<InputGroupAddon addonType='prepend'>
 									<InputGroupText>
 										<i className={icon} />
@@ -113,7 +116,7 @@ const InputField = props => {
 								<Input
 									{...input} //name, type, onBlur, onChange, onFocus, overwrite it by creating prop after this prop
 									onChange={e => {
-										signUp.state.delay = 1500
+										state.delay = 1500
 										input.onChange(e)
 									}}
 									placeholder={placeholder}
