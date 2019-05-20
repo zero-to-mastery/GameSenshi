@@ -9,7 +9,7 @@ This is project that temporary hire people to play game with you. You can imagin
 From consumer perspectives:
 
 1. You are a big fans of a professional/famous gamer, you want to play a game with him, either as sparring partner(opponent) or team mate.
-2. You are a fans of cute/handsome/interesting streamer, you want to play with her/him.
+2. You are a fans of good looking or fun streamer, you want to play with her/him.
 3. You are looking for game coach, gamer that systemized his knowledge and make you a better gamer.
 4. You are looking for booster, gamer that help you rank up by either playing your account or as your team mate.
 
