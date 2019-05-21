@@ -13,9 +13,11 @@ import {
 	InputGroupAddon,
 	InputGroupText,
 	InputGroup,
+	Spinner,
 } from 'reactstrap'
 
 import ReactResizeDetector from 'react-resize-detector'
+import { EXTRA_HEIGHT, VALID } from 'utils/constants'
 
 const InputField = props => {
 	const { name, asyncValidation, placeholder, icon, type } = props
@@ -30,11 +32,51 @@ const InputField = props => {
 		focused: true,
 	})
 
+	const [spinner, setSpinner] = useState(false)
+
 	const onResize = () => {
 		signUp.setState(state => ({
 			...state,
-			[name + 'ExtraHeight']: ref.current.clientHeight,
+			[name + EXTRA_HEIGHT]: ref.current.clientHeight,
 		}))
+	}
+	const generateErrorList = (errMessages, resolve) => {
+		const errorList =
+			(errMessages &&
+				errMessages.map(error => {
+					return (
+						<Alert
+							className={'mb-1 pb-0 pt-0'}
+							color='danger'
+							key={error}
+							style={{
+								backgroundColor: 'transparent',
+							}}
+							// due to limitation of final form, we cannot use fade without sacrificing UX (flicking)
+							// it is very difficult to fix the flicking(but possible, need more control)
+							fade={false} //https://github.com/reactstrap/reactstrap/pull/1078
+						>
+							<Row>
+								{type === 'checkbox' && (
+									<Col
+										className='col-1' // indent for checkbox
+									/>
+								)}
+								<Col className='col-1'>
+									<i className='tim-icons icon-alert-circle-exc text-success' />
+								</Col>
+								<Col className='col-auto'>
+									<small className='text-muted'>{error}</small>
+								</Col>
+							</Row>
+						</Alert>
+					)
+				})) ||
+			[]
+		state.validating = false
+		signUp.state[name + VALID] = !errMessages
+		setState(state => ({ ...state, errorList }))
+		resolve(errMessages)
 	}
 
 	return (
@@ -44,46 +86,27 @@ const InputField = props => {
 			validate={value => {
 				if (state.focused) {
 					return new Promise(resolve => {
-						// validate after user stop typing for 500ms
 						state.validating = true
+						signUp.state[name + VALID] = false
+						// validate after user stop typing for 500ms
 						clearTimeout(state.timeOutID)
 						// console.log(name, state.delay, state.timeOutID)
 						const timeOutID = setTimeout(() => {
 							asyncValidation(value)
-								.then(() => {}) // pass undefined to the next .then if the value is valid
-								.catch(err => err.errors)
-								.then(errMessages => {
-									const errorList =
-										(errMessages &&
-											errMessages.map((error, index) => {
-												return (
-													<Alert
-														className={'mb-1 pb-0 pt-0'}
-														color='danger'
-														key={error}
-														style={{
-															backgroundColor: 'transparent',
-														}}
-														// due to limitation of final form, we cannot use fade without sacrificing UX (flicking)
-														// it is very difficult to fix the flicking(but possible, need more control)
-														fade={false} //https://github.com/reactstrap/reactstrap/pull/1078
-													>
-														<Row>
-															{type === 'checkbox' && <Col className='col-1' />}
-															<Col className='col-1'>
-																<i className='tim-icons icon-alert-circle-exc text-success' />
-															</Col>
-															<Col className='col-auto'>
-																<small className='text-muted'>{error}</small>
-															</Col>
-														</Row>
-													</Alert>
-												)
-											})) ||
-										[]
-									state.validating = false
-									setState(state => ({ ...state, errorList }))
-									resolve(errMessages)
+								.then(async () => {
+									setSpinner(true)
+									// server validation mock(temporary)
+									new Promise(resolve2 =>
+										setTimeout(() => {
+											resolve2()
+											generateErrorList(undefined, resolve)
+											setSpinner(false)
+										}, 4000)
+									)
+									return
+								}) // pass undefined to the next .then if the value is valid
+								.catch(err => {
+									generateErrorList(err.errors, resolve)
 								})
 						}, state.delay)
 						state.timeOutID = timeOutID
@@ -123,7 +146,9 @@ const InputField = props => {
 										// because we don't want to re-render it until it is validated
 										// in react final form, re-render automatically happen after validation
 										// and validation automatically happen on every onChange event
+										// so the role of state here is just to pass value to Field's validate prop
 										state.delay = 1000
+										signUp.state[name] = e.target.value
 										input.onChange(e)
 									}}
 									onFocus={e => {
@@ -144,6 +169,7 @@ const InputField = props => {
 									<Input
 										{...input}
 										onChange={e => {
+											signUp.state[name] = e.target.value
 											// ! bug, workaround https://github.com/final-form/react-final-form/issues/134
 											input.onBlur(e)
 											input.onChange(e)
