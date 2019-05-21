@@ -27,6 +27,7 @@ const InputField = props => {
 		validating: true,
 		delay: 0,
 		timeOutID: 0,
+		focused: false,
 	})
 
 	const onResize = () => {
@@ -40,60 +41,62 @@ const InputField = props => {
 		<Field
 			type={type}
 			name={name}
-			validate={value =>
-				new Promise(resolve => {
-					// validate after user stop typing for 500ms
-					state.validating = true
-					clearTimeout(state.timeOutID)
-					console.log(state.delay, state.timeOutID)
-					const timeOutID = setTimeout(() => {
-						asyncValidation(value)
-							.then(() => {}) // ! some weird final form behavior, need to run a `then` to render the change from error to non error
-							.catch(err => err.errors)
-							.then(errMessages => {
-								const errorList =
-									(errMessages &&
-										errMessages.map((error, index) => {
-											return (
-												<Alert
-													className={'mb-1 pb-0 pt-0'}
-													color='danger'
-													key={error}
-													style={{
-														backgroundColor: 'transparent',
-													}}
-													// due to limitation of final form, we cannot use fade without sacrificing UX (flicking)
-													// it is very difficult to fix the flicking(but possible, need more control)
-													fade={false} //https://github.com/reactstrap/reactstrap/pull/1078
-												>
-													<Row>
-														{type === 'checkbox' && <Col className='col-1' />}
-														<Col className='col-1'>
-															<i className='tim-icons icon-alert-circle-exc text-success' />
-														</Col>
-														<Col className='col-auto'>
-															<small className='text-muted'>{error}</small>
-														</Col>
-													</Row>
-												</Alert>
-											)
-										})) ||
-									[]
-								state.validating = false
-								setState(state => ({ ...state, errorList }))
-								resolve(errMessages)
-							})
-					}, state.delay)
-					state.timeOutID = timeOutID
-				})
-			}>
+			validate={value => {
+				if (state.focused) {
+					return new Promise(resolve => {
+						// validate after user stop typing for 500ms
+						state.validating = true
+						clearTimeout(state.timeOutID)
+						// console.log(name, state.delay, state.timeOutID)
+						const timeOutID = setTimeout(() => {
+							asyncValidation(value)
+								.then(() => {}) // ! some weird final form behavior, need to run a `then` to render the change from error to non error
+								.catch(err => err.errors)
+								.then(errMessages => {
+									const errorList =
+										(errMessages &&
+											errMessages.map((error, index) => {
+												return (
+													<Alert
+														className={'mb-1 pb-0 pt-0'}
+														color='danger'
+														key={error}
+														style={{
+															backgroundColor: 'transparent',
+														}}
+														// due to limitation of final form, we cannot use fade without sacrificing UX (flicking)
+														// it is very difficult to fix the flicking(but possible, need more control)
+														fade={false} //https://github.com/reactstrap/reactstrap/pull/1078
+													>
+														<Row>
+															{type === 'checkbox' && <Col className='col-1' />}
+															<Col className='col-1'>
+																<i className='tim-icons icon-alert-circle-exc text-success' />
+															</Col>
+															<Col className='col-auto'>
+																<small className='text-muted'>{error}</small>
+															</Col>
+														</Row>
+													</Alert>
+												)
+											})) ||
+										[]
+									state.validating = false
+									setState(state => ({ ...state, errorList }))
+									resolve(errMessages)
+								})
+						}, state.delay)
+						state.timeOutID = timeOutID
+					})
+				}
+			}}>
 			{({ input, meta }) => {
 				const { touched, active, modified } = meta
 				const { errorList } = state
 				const { validating } = state
 				return (
 					<>
-						{console.log(meta)}
+						{/*console.log(name, meta)*/}
 						{type !== 'checkbox' && (
 							<InputGroup
 								className={classnames({
@@ -116,8 +119,19 @@ const InputField = props => {
 								<Input
 									{...input} //name, type, onBlur, onChange, onFocus, overwrite it by creating prop after this prop
 									onChange={e => {
+										// why mutate state directly?
+										// because we don't want to re-render it until it is validated
+										// in this component, re-render should only happen after validation
 										state.delay = 1500
 										input.onChange(e)
+									}}
+									onFocus={e => {
+										state.focused = true
+										input.onFocus(e)
+									}}
+									onBlur={e => {
+										state.focused = false
+										input.onBlur(e)
 									}}
 									placeholder={placeholder}
 								/>
@@ -133,6 +147,14 @@ const InputField = props => {
 											input.onBlur(e)
 											input.onChange(e)
 										}}
+										onFocus={e => {
+											state.focused = true
+											input.onFocus(e)
+										}}
+										onBlur={e => {
+											state.focused = false
+											input.onBlur(e)
+										}}
 									/>
 									<span className='form-check-sign' />
 									{`I agree
@@ -146,7 +168,7 @@ const InputField = props => {
 						<div
 							ref={ref} // function component cannot have ref, class and html element can
 						>
-							{touched && errorList}
+							{(touched || (!validating && active && modified)) && errorList}
 							<ReactResizeDetector
 								handleWidth
 								handleHeight
