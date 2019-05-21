@@ -117,7 +117,7 @@ class SignUpPage extends React.Component {
 				[EMAIL_EXTRA_HEIGHT]: emailExtraHeight,
 				[PASSWORD_EXTRA_HEIGHT]: passwordExtraHeight,
 			},
-		} = signUp.state
+		} = signUp
 
 		return (
 			<>
