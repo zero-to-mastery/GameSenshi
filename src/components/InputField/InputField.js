@@ -27,7 +27,7 @@ const InputField = props => {
 		validating: true,
 		delay: 0,
 		timeOutID: 0,
-		focused: false,
+		focused: true,
 	})
 
 	const onResize = () => {
@@ -121,7 +121,8 @@ const InputField = props => {
 									onChange={e => {
 										// why mutate state directly?
 										// because we don't want to re-render it until it is validated
-										// in this component, re-render should only happen after validation
+										// in react final form, re-render automatically happen after validation
+										// and validation automatically happen on every onChange event
 										state.delay = 1500
 										input.onChange(e)
 									}}
