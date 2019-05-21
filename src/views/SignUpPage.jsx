@@ -9,6 +9,16 @@ import { string, boolean } from 'yup'
 // state management
 import { Subscribe } from 'unstated'
 import { signUp } from 'state'
+import {
+	EMAIL,
+	PASSWORD,
+	TERM,
+	EMAIL_VALID,
+	PASSWORD_VALID,
+	TERM_VALID,
+	EMAIL_EXTRA_HEIGHT,
+	PASSWORD_EXTRA_HEIGHT,
+} from 'utils/constants'
 
 // reactstrap components
 import {
@@ -65,11 +75,50 @@ class SignUpPage extends React.Component {
 				'deg)',
 		})
 	}
+	handleSignUp = () => {
+		const {
+			state: {
+				[EMAIL]: email,
+				[PASSWORD]: password,
+				[EMAIL_VALID]: emailValid,
+				[PASSWORD_VALID]: passwordValid,
+				[TERM_VALID]: termValid,
+			},
+		} = signUp
+		if (emailValid && passwordValid && termValid) {
+			firebase
+				.auth()
+				.createUserWithEmailAndPassword(email, password)
+				.then(credential => {
+					if (credential.user && credential.user.emailVerified === false) {
+						credential.user
+							.sendEmailVerification()
+							.then(function() {
+								console.log('email verification sent to user')
+							})
+							.catch(error => {
+								console.log('email user failed', error)
+							})
+					}
+				})
+				.catch(error => {
+					console.log('submit failed', error)
+				})
+		}
+	}
 
 	render() {
 		const {
 			state: { squares7and8, squares1to6, maxHeight },
+			handleSignUp,
 		} = this
+		const {
+			state: {
+				[EMAIL_EXTRA_HEIGHT]: emailExtraHeight,
+				[PASSWORD_EXTRA_HEIGHT]: passwordExtraHeight,
+			},
+		} = signUp.state
+
 		return (
 			<>
 				<IndexNavbar />
@@ -81,8 +130,8 @@ class SignUpPage extends React.Component {
 								style={{
 									maxHeight:
 										maxHeight +
-										(signUp.state.emailExtraHeight || 0) +
-										(signUp.state.passwordExtraHeight || 0) +
+										(emailExtraHeight || 0) +
+										(passwordExtraHeight || 0) +
 										'px',
 								}}
 								ref={divElement => (this.divElement = divElement)}>
@@ -122,32 +171,7 @@ class SignUpPage extends React.Component {
 															term: false,
 														}}
 														onSubmit={values => {
-															return firebase
-																.auth()
-																.createUserWithEmailAndPassword(
-																	values.email,
-																	values.password
-																)
-																.then(credential => {
-																	if (
-																		credential.user &&
-																		credential.user.emailVerified === false
-																	) {
-																		credential.user
-																			.sendEmailVerification()
-																			.then(function() {
-																				console.log(
-																					'email verification sent to user'
-																				)
-																			})
-																			.catch(error => {
-																				console.log('email user failed', error)
-																			})
-																	}
-																})
-																.catch(error => {
-																	console.log('submit failed', error)
-																})
+															console.log('test')
 														}}>
 														{({ handleSubmit, submitting, validating }) => (
 															<>
@@ -205,8 +229,8 @@ class SignUpPage extends React.Component {
 																	</Row>
 																	<Form className='form'>
 																		<InputField
-																			type='email'
-																			name='email'
+																			type={EMAIL}
+																			name={EMAIL}
 																			placeholder='Email Address'
 																			icon='tim-icons icon-email-85'
 																			asyncValidation={value =>
@@ -219,8 +243,8 @@ class SignUpPage extends React.Component {
 																			}
 																		/>
 																		<InputField
-																			type='password'
-																			name='password'
+																			type={PASSWORD}
+																			name={PASSWORD}
 																			placeholder='Password'
 																			icon='tim-icons icon-lock-circle'
 																			asyncValidation={value =>
@@ -237,7 +261,7 @@ class SignUpPage extends React.Component {
 																		/>
 																		<InputField
 																			type='checkbox'
-																			name='term'
+																			name={TERM}
 																			asyncValidation={value =>
 																				boolean()
 																					.oneOf(
@@ -260,7 +284,10 @@ class SignUpPage extends React.Component {
 																				color='primary'
 																				size='lg'
 																				disabled={submitting}
-																				onClick={handleSubmit}>
+																				onClick={e => {
+																					handleSignUp()
+																					handleSubmit(e)
+																				}}>
 																				Sign Up
 																			</Button>
 																		</Col>
