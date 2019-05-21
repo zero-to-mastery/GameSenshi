@@ -5,7 +5,6 @@ import firebase from 'firebase'
 // form validation
 import { Form as FinalForm } from 'react-final-form'
 import { string, boolean } from 'yup'
-import createDecorator from 'final-form-focus'
 
 // state management
 import { Subscribe } from 'unstated'
@@ -32,8 +31,6 @@ import {
 import IndexNavbar from 'components/Navbars/IndexNavbar.jsx'
 import Footer from 'components/Footer/Footer.jsx'
 import InputField from 'components/InputField/InputField'
-
-const focusOnError = createDecorator()
 
 class SignUpPage extends React.Component {
 	state = {
@@ -124,16 +121,14 @@ class SignUpPage extends React.Component {
 															password: '',
 															term: false,
 														}}
-														decorators={[focusOnError]}
-														onSubmit={(values, actions) => {
-															firebase
+														onSubmit={values => {
+															return firebase
 																.auth()
 																.createUserWithEmailAndPassword(
 																	values.email,
 																	values.password
 																)
 																.then(credential => {
-																	actions.setSubmitting(false)
 																	if (
 																		credential.user &&
 																		credential.user.emailVerified === false
@@ -145,10 +140,13 @@ class SignUpPage extends React.Component {
 																					'email verification sent to user'
 																				)
 																			})
+																			.catch(error => {
+																				console.log('email user failed', error)
+																			})
 																	}
 																})
 																.catch(error => {
-																	console.log(error)
+																	console.log('submit failed', error)
 																})
 														}}>
 														{({ handleSubmit, submitting, validating }) => (
