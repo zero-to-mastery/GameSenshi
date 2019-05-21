@@ -50,7 +50,7 @@ const InputField = props => {
 						// console.log(name, state.delay, state.timeOutID)
 						const timeOutID = setTimeout(() => {
 							asyncValidation(value)
-								.then(() => {}) // ! some weird final form behavior, need to run a `then` to render the change from error to non error
+								.then(() => {}) // pass undefined to the next .then if the value is valid
 								.catch(err => err.errors)
 								.then(errMessages => {
 									const errorList =
@@ -123,7 +123,7 @@ const InputField = props => {
 										// because we don't want to re-render it until it is validated
 										// in react final form, re-render automatically happen after validation
 										// and validation automatically happen on every onChange event
-										state.delay = 1500
+										state.delay = 1000
 										input.onChange(e)
 									}}
 									onFocus={e => {
