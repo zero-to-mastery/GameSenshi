@@ -24,7 +24,9 @@ const InputField = props => {
 
 	const ref = useRef(null)
 
-	const [state, setState] = useState({
+	const [errorList, setErrorList] = useState([])
+
+	const [state] = useState({
 		errorList: [],
 		validating: true,
 		delay: 0,
@@ -75,7 +77,7 @@ const InputField = props => {
 			[]
 		state.validating = false
 		signUp.state[name + VALID] = !errMessages
-		setState(state => ({ ...state, errorList }))
+		setErrorList(errorList)
 		resolve(errMessages)
 	}
 
@@ -114,7 +116,6 @@ const InputField = props => {
 			}}>
 			{({ input, meta }) => {
 				const { touched, active, modified } = meta
-				const { errorList } = state
 				const { validating } = state
 				return (
 					<>
@@ -209,7 +210,7 @@ const InputField = props => {
 						<div
 							ref={ref} // function component cannot have ref, class and html element can
 						>
-							{(touched || (!validating && active && modified)) && errorList}
+							{!validating && (touched || (active && modified)) && errorList}
 							<ReactResizeDetector
 								handleWidth
 								handleHeight
