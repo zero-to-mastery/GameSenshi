@@ -233,7 +233,7 @@ class SignUpPage extends React.Component {
 																			name={EMAIL}
 																			placeholder='Email Address'
 																			icon='tim-icons icon-email-85'
-																			asyncValidation={value =>
+																			validation={value =>
 																				string()
 																					.required('Email is required')
 																					.email('Email not valid')
@@ -241,13 +241,14 @@ class SignUpPage extends React.Component {
 																						abortEarly: false,
 																					})
 																			}
+																			asyncValidation={() => {}}
 																		/>
 																		<InputField
 																			type={PASSWORD}
 																			name={PASSWORD}
 																			placeholder='Password'
 																			icon='tim-icons icon-lock-circle'
-																			asyncValidation={value =>
+																			validation={value =>
 																				string()
 																					.required('Password is required')
 																					.min(
@@ -262,7 +263,7 @@ class SignUpPage extends React.Component {
 																		<InputField
 																			type='checkbox'
 																			name={TERM}
-																			asyncValidation={value =>
+																			validation={value =>
 																				boolean()
 																					.oneOf(
 																						[true],
