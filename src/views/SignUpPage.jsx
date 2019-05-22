@@ -1,14 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import firebase from 'firebase'
+import { functions } from 'utils/firebase'
 
-// form validation
-import { Form as FinalForm } from 'react-final-form'
-import { string, boolean } from 'yup'
-
-// state management
-import { Subscribe } from 'unstated'
-import { signUp } from 'state'
 import {
 	EMAIL,
 	PASSWORD,
@@ -18,7 +11,18 @@ import {
 	TERM_VALID,
 	EMAIL_EXTRA_HEIGHT,
 	PASSWORD_EXTRA_HEIGHT,
-} from 'utils/constants'
+	EMAIL_VALIDATION,
+	PASSWORD_VALIDATION,
+	TERM_VALIDATION,
+} from 'utils/signUpConstants'
+
+// form validation
+import { Form as FinalForm } from 'react-final-form'
+import { signUpValidation } from 'utils/validation'
+
+// state management
+import { Subscribe } from 'unstated'
+import { signUp } from 'state'
 
 // reactstrap components
 import {
@@ -41,6 +45,12 @@ import {
 import IndexNavbar from 'components/Navbars/IndexNavbar.jsx'
 import Footer from 'components/Footer/Footer.jsx'
 import InputField from 'components/InputField/InputField'
+
+const {
+	[EMAIL_VALIDATION]: emailValidation,
+	[PASSWORD_VALIDATION]: passwordValidation,
+	[TERM_VALIDATION]: termValidation,
+} = signUpValidation
 
 class SignUpPage extends React.Component {
 	state = {
@@ -86,24 +96,28 @@ class SignUpPage extends React.Component {
 			},
 		} = signUp
 		if (emailValid && passwordValid && termValid) {
-			firebase
-				.auth()
-				.createUserWithEmailAndPassword(email, password)
-				.then(credential => {
-					if (credential.user && credential.user.emailVerified === false) {
-						credential.user
-							.sendEmailVerification()
-							.then(function() {
-								console.log('email verification sent to user')
-							})
-							.catch(error => {
-								console.log('email user failed', error)
-							})
-					}
-				})
-				.catch(error => {
-					console.log('submit failed', error)
-				})
+			const addUser = functions.httpsCallable('signUp')
+			addUser({ email, password }).then(result => {
+				console.log(result)
+			})
+			// firebase
+			// 	.auth()
+			// 	.createUserWithEmailAndPassword(email, password)
+			// 	.then(credential => {
+			// 		if (credential.user && credential.user.emailVerified === false) {
+			// 			credential.user
+			// 				.sendEmailVerification()
+			// 				.then(function() {
+			// 					console.log('email verification sent to user')
+			// 				})
+			// 				.catch(error => {
+			// 					console.log('email user failed', error)
+			// 				})
+			// 		}
+			// 	})
+			// 	.catch(error => {
+			// 		console.log('submit failed', error)
+			// 	})
 		}
 	}
 
@@ -234,12 +248,7 @@ class SignUpPage extends React.Component {
 																			placeholder='Email Address'
 																			icon='tim-icons icon-email-85'
 																			validation={value =>
-																				string()
-																					.required('Email is required')
-																					.email('Email not valid')
-																					.validate(value, {
-																						abortEarly: false,
-																					})
+																				emailValidation(value)
 																			}
 																			asyncValidation={() => {}}
 																		/>
@@ -249,29 +258,14 @@ class SignUpPage extends React.Component {
 																			placeholder='Password'
 																			icon='tim-icons icon-lock-circle'
 																			validation={value =>
-																				string()
-																					.required('Password is required')
-																					.min(
-																						8,
-																						'Password must be 8 characters or longer'
-																					)
-																					.validate(value, {
-																						abortEarly: false,
-																					})
+																				passwordValidation(value)
 																			}
 																		/>
 																		<InputField
 																			type='checkbox'
 																			name={TERM}
 																			validation={value =>
-																				boolean()
-																					.oneOf(
-																						[true],
-																						'Must Accept Terms and Conditions'
-																					)
-																					.validate(value, {
-																						abortEarly: false,
-																					})
+																				termValidation(value)
 																			}
 																		/>
 																	</Form>
