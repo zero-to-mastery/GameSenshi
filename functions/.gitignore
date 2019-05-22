@@ -4,3 +4,6 @@
 # environments
 /.config/dev.env
 /.config/prod.env
+
+# misc
+test.js
