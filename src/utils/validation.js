@@ -1,7 +1,7 @@
 // in future this should turn into npm library so that backend can use the same code using absolute path
-// need proper dependency management system
 
 import { string, boolean } from 'yup'
+
 import {
 	EMAIL_VALIDATION,
 	PASSWORD_VALIDATION,
