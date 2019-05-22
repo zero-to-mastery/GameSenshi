@@ -20,9 +20,9 @@ While some gamers/streamers do make big buck, but large majority of gamers or st
 
 It is very easy to get started, this project is beginner friendly (everything is in ES6+ !) and a lot of process is highly automated (comprehensive scripts, you can trust someone who made [this](https://github.com/tylim88/Create-Prisma-App/blob/master/template/package.json)).
 
-Ease of developing is always our top priority, easier and better developing tool is always our priority, but that doesn't mean we sacrifice quality, in fact it is the reverse, we make developing easier because we want more time spend on tinkering better website experience(such as [this](https://github.com/zero-to-mastery/GameSenshi/wiki/Form-State-Management)) not on learning hard tools.
+Ease of developing is always our top priority, easier and better developing tool is always our priority, but that doesn't mean we sacrifice quality, in fact it is the reverse, we make developing easier because we want more time spend on tinkering better website experience(such as [this](https://github.com/zero-to-mastery/GameSenshi/wiki/Form-State-Management)).
 
-Learning how to write good code and better implementation is much more important in long tun.
+You can expect to be able to write nicer code and apply better implementation in this project!.
 
 ## Installation
 
