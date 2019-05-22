@@ -8,5 +8,8 @@
 # build
 /dist
 
+# cache
+.cache
+
 # misc
 test.js
