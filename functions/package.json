@@ -22,7 +22,8 @@
 		"firebase-functions": "^2.3.0",
 		"got": "^9.6.0",
 		"uuid-v4": "^0.1.0",
-		"web-push": "^3.3.3"
+		"web-push": "^3.3.3",
+		"yup": "^0.27.0"
 	},
 	"devDependencies": {
 		"eslint": "^5.12.0",
