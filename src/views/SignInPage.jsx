@@ -1,7 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
 import { Link } from 'react-router-dom'
-import firebase from 'firebase'
 
 // reactstrap components
 import {
