@@ -5,5 +5,8 @@
 /.config/dev.env
 /.config/prod.env
 
+# build
+/dist
+
 # misc
 test.js
