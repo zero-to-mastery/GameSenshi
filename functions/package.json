@@ -29,28 +29,35 @@
 		"yup": "^0.27.0"
 	},
 	"devDependencies": {
-		"eslint": "^5.12.0",
-		"eslint-plugin-promise": "^4.0.1",
-		"firebase-functions-test": "^0.1.6",
-		"env-cmd": "^8.0.2",
-		"eslint-config-prettier": "^4.1.0",
-		"eslint-plugin-prettier": "^3.0.1",
-		"husky": "^1.3.1",
-		"prettier": "^1.16.4",
-		"pretty-quick": "^1.10.0",
 		"@babel/cli": "^7.4.3",
 		"@babel/core": "^7.4.3",
 		"@babel/node": "^7.2.2",
-		"@babel/preset-env": "^7.4.3"
+		"@babel/preset-env": "^7.4.3",
+		"babel-plugin-module-resolver": "^3.2.0",
+		"env-cmd": "^8.0.2",
+		"eslint": "^5.12.0",
+		"eslint-config-prettier": "^4.1.0",
+		"eslint-plugin-prettier": "^3.0.1",
+		"eslint-plugin-promise": "^4.0.1",
+		"firebase-functions-test": "^0.1.6",
+		"husky": "^1.3.1",
+		"prettier": "^1.16.4",
+		"pretty-quick": "^1.10.0"
 	},
 	"private": true,
 	"babel": {
 		"presets": [
 			"@babel/preset-env"
 		],
-		"ignore": [
-			"./test.js",
-			"./node_modules"
+		"plugins": [
+			[
+				"module-resolver",
+				{
+					"root": [
+						"./src"
+					]
+				}
+			]
 		]
 	},
 	"prettier": {
