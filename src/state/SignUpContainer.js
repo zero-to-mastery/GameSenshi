@@ -7,7 +7,7 @@ import {
 	PASSWORD_VALID,
 	TERM_VALID,
 	SUBMITTING,
-} from 'utils/constants'
+} from 'utils/signUpConstants'
 
 class SignUpContainer extends Container {
 	state = {

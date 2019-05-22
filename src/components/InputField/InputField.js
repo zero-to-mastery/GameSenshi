@@ -17,7 +17,7 @@ import {
 } from 'reactstrap'
 
 import ReactResizeDetector from 'react-resize-detector'
-import { EXTRA_HEIGHT, VALID } from 'utils/constants'
+import { EXTRA_HEIGHT, VALID } from 'utils/signUpConstants'
 
 const InputField = props => {
 	const { name, validation, placeholder, icon, type, asyncValidation } = props
