@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import classnames from 'classnames'
 import { Field } from 'react-final-form'
 import { signUp } from 'state'
+import Loader from 'react-loader-spinner'
 
 import {
 	Row,
@@ -13,14 +14,13 @@ import {
 	InputGroupAddon,
 	InputGroupText,
 	InputGroup,
-	Spinner,
 } from 'reactstrap'
 
 import ReactResizeDetector from 'react-resize-detector'
 import { EXTRA_HEIGHT, VALID } from 'utils/constants'
 
 const InputField = props => {
-	const { name, asyncValidation, placeholder, icon, type } = props
+	const { name, validation, placeholder, icon, type, asyncValidation } = props
 
 	const ref = useRef(null)
 
@@ -32,7 +32,7 @@ const InputField = props => {
 		focused: true,
 	})
 
-	const [spinner, setSpinner] = useState(false)
+	const [spinner, showSpinner] = useState(false)
 
 	const onResize = () => {
 		signUp.setState(state => ({
@@ -92,19 +92,18 @@ const InputField = props => {
 						clearTimeout(state.timeOutID)
 						// console.log(name, state.delay, state.timeOutID)
 						const timeOutID = setTimeout(() => {
-							asyncValidation(value)
+							validation(value)
 								.then(async () => {
-									setSpinner(true)
+									showSpinner(true)
 									// server validation mock(temporary)
 									new Promise(resolve2 =>
 										setTimeout(() => {
 											resolve2()
 											generateErrorList(undefined, resolve)
-											setSpinner(false)
+											showSpinner(false)
 										}, 4000)
 									)
-									return
-								}) // pass undefined to the next .then if the value is valid
+								})
 								.catch(err => {
 									generateErrorList(err.errors, resolve)
 								})
@@ -136,7 +135,20 @@ const InputField = props => {
 								})}>
 								<InputGroupAddon addonType='prepend'>
 									<InputGroupText>
-										<i className={icon} />
+										{spinner && asyncValidation ? (
+											<div
+												style={{ height: 16 }}
+												className='d-flex align-items-center'>
+												<Loader
+													type='Puff'
+													color='#00BFFF'
+													height='15px'
+													width='15px'
+												/>
+											</div>
+										) : (
+											<i className={icon} />
+										)}
 									</InputGroupText>
 								</InputGroupAddon>
 								<Input
@@ -144,9 +156,11 @@ const InputField = props => {
 									onChange={e => {
 										// why mutate state directly?
 										// because we don't want to re-render it until it is validated
+										// the state is not read in any component
 										// in react final form, re-render automatically happen after validation
 										// and validation automatically happen on every onChange event
 										// so the role of state here is just to pass value to Field's validate prop
+										// basically it is how you would use a plain variable
 										state.delay = 1000
 										signUp.state[name] = e.target.value
 										input.onChange(e)
