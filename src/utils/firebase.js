@@ -1,3 +1,5 @@
+// in future this should turn into npm library so that backend can use the same code using absolute path
+
 import firebase from 'firebase'
 
 const firebaseConfig = {
@@ -14,4 +16,4 @@ firebase.initializeApp(firebaseConfig)
 
 const functions = firebase.functions()
 
-export { functions }
+export { functions, firebase }
