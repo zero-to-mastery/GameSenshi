@@ -54,11 +54,21 @@ npm i -g firebase-tools
 firebase login
 ```
 
+above command is one time setup, anytime you want to run deploy, simply
+
+```bash
+npm run deploy
+```
+
+It will automatically inject production environment variable, build and deploy front end or back end (depend on which terminal you in)
+
+There is also command to deploy both end:
+
 ```bash
 firebase deploy
 ```
 
-you can view it [here](https://gamesenshi.com/).
+after deployment, you can view it [here](https://gamesenshi.com/).
 
 ## Built With
 
