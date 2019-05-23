@@ -100,24 +100,6 @@ class SignUpPage extends React.Component {
 			addUser({ email, password }).then(result => {
 				console.log(result)
 			})
-			// firebase
-			// 	.auth()
-			// 	.createUserWithEmailAndPassword(email, password)
-			// 	.then(credential => {
-			// 		if (credential.user && credential.user.emailVerified === false) {
-			// 			credential.user
-			// 				.sendEmailVerification()
-			// 				.then(function() {
-			// 					console.log('email verification sent to user')
-			// 				})
-			// 				.catch(error => {
-			// 					console.log('email user failed', error)
-			// 				})
-			// 		}
-			// 	})
-			// 	.catch(error => {
-			// 		console.log('submit failed', error)
-			// 	})
 		}
 	}
 
