@@ -1,22 +1,31 @@
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
-const functions = require('firebase-functions')
+import * as functions from 'firebase-functions' // https://stackoverflow.com/questions/51118943/cannot-read-property-https-of-undefined-error-in-firebase-functions
+import admin from 'firebase-admin'
+import { firebase } from 'utils/firebase'
+import { EMAIL, PASSWORD } from 'utils/signUpConstants'
 
-// setup for absolute path https://coderwall.com/p/th6ssq/absolute-paths-require
-global.base_dir = __dirname
-global.abs_path = function(path) {
-	return base_dir + path
-}
-global.include = function(file) {
-	return require(abs_path('/' + file))
-}
-
-const admin = require('firebase-admin')
 admin.initializeApp()
 
 exports.signUp = functions.https.onCall((data, context) => {
-	return { data }
+	const { [EMAIL]: email, [PASSWORD]: password } = data
+	firebase
+		.auth()
+		.createUserWithEmailAndPassword(email, password)
+		.then(credential => {
+			if (credential.user && credential.user.emailVerified === false) {
+				credential.user
+					.sendEmailVerification()
+					.then(() => {
+						console.log('email verification sent to user')
+					})
+					.catch(error => {
+						console.log('email user failed', error)
+					})
+			}
+		})
+		.catch(error => {
+			console.log('submit failed', error)
+		})
+	return { data: EMAIL }
 })
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-// 	response.send('Hello from Firebase!')
-// })

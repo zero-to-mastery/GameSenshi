@@ -1,3 +1,4 @@
+// https://medium.com/@AllanHasegawa/setting-config-for-firebase-cloud-functions-with-json-136f455e7c69
 import child_process from 'child_process'
 
 import {
