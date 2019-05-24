@@ -104,8 +104,8 @@ const InputField = props => {
 										asyncValidation().then(message => {
 											console.log(message)
 											generateErrorList(message, resolve)
-											showSpinner(false)
 											state.validating = false
+											showSpinner(false)
 										})
 									} else {
 										generateErrorList(undefined, resolve)
