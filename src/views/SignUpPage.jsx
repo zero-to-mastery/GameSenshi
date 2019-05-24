@@ -90,6 +90,7 @@ class SignUpPage extends React.Component {
 			state: {
 				[EMAIL]: email,
 				[PASSWORD]: password,
+				[TERM]: term,
 				[EMAIL_VALID]: emailValid,
 				[PASSWORD_VALID]: passwordValid,
 				[TERM_VALID]: termValid,
@@ -97,7 +98,7 @@ class SignUpPage extends React.Component {
 		} = signUp
 		if (emailValid && passwordValid && termValid) {
 			const addUser = functions.httpsCallable('signUp')
-			addUser({ email, password }).then(result => {
+			addUser({ email, password, term }).then(result => {
 				console.log(result)
 			})
 		}
