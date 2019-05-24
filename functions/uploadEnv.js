@@ -38,9 +38,7 @@ const obj = {
 		[VERIFY_EMAIL_API_KEY]: verify_email_api_key,
 	},
 }
-const isObj = x => {
-	return x !== null && typeof x === 'object'
-}
+const isObj = x => x !== null && typeof x === 'object'
 
 const parse = tree => {
 	const values = []
