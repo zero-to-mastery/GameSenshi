@@ -1,8 +1,8 @@
 // in future this should turn into npm library so that backend can use the same code
-const resObj = (status = false, errors = [], code = 9999, data = {}) => ({
+const resObj = (status = false, message = '', code = 9999, data = {}) => ({
 	status,
 	code,
-	errors,
+	message,
 	data,
 })
 
