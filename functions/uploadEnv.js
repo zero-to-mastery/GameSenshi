@@ -10,6 +10,7 @@ import {
 	REACT_APP_STORAGE_BUCKET,
 	REACT_APP_MESSAGING_SENDER_ID,
 	REACT_APP_APP_ID,
+	VERIFY_EMAIL_API_KEY,
 } from './src/utils/envKeyConstants'
 
 const spawn = child_process.spawn
@@ -22,6 +23,7 @@ const {
 	[REACT_APP_STORAGE_BUCKET]: react_app_storage_bucket,
 	[REACT_APP_MESSAGING_SENDER_ID]: react_app_messaging_sender_id,
 	[REACT_APP_APP_ID]: react_app_app_id,
+	[VERIFY_EMAIL_API_KEY]: verify_email_api_key,
 } = process.env
 
 const obj = {
@@ -33,6 +35,7 @@ const obj = {
 		[REACT_APP_STORAGE_BUCKET]: react_app_storage_bucket,
 		[REACT_APP_MESSAGING_SENDER_ID]: react_app_messaging_sender_id,
 		[REACT_APP_APP_ID]: react_app_app_id,
+		[VERIFY_EMAIL_API_KEY]: verify_email_api_key,
 	},
 }
 const isObj = x => {
