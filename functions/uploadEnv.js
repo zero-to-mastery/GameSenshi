@@ -35,9 +35,7 @@ const obj = {
 		[REACT_APP_APP_ID]: react_app_app_id,
 	},
 }
-const isObj = x => {
-	return x !== null && typeof x === 'object'
-}
+const isObj = x => x !== null && typeof x === 'object'
 
 const parse = tree => {
 	const values = []
