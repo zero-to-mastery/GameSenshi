@@ -1,5 +1,5 @@
-// in future this should turn into npm library so that backend can use the same code using absolute path
-import * as firebase from 'firebase/app'
+// in future this should turn into npm library so that backend can use the same code
+import * as firebase from 'firebase/app' // https://stackoverflow.com/questions/48592656/firebase-auth-is-not-a-function/56280110#56280110
 import 'firebase/auth'
 import * as functions from 'firebase-functions'
 

@@ -1,5 +1,4 @@
-// in future this should turn into npm library so that backend can use the same code using absolute path
-
+// in future this should turn into npm library so that backend can use the same code
 const EMAIL = 'email'
 const PASSWORD = 'password'
 const TERM = 'term'
