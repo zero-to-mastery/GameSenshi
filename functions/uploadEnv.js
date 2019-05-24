@@ -74,5 +74,4 @@ const runFirebaseConfigSet = properties => {
 		})
 	})
 }
-console.log(parse(obj))
 runFirebaseConfigSet(parse(obj))
