@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { handleSignUp } from 'api'
+import { handleSignUp, handleVerifyEmail } from 'api'
 
 import {
 	EMAIL,
@@ -141,9 +141,9 @@ class SignUpPage extends React.Component {
 													</CardBody>
 													<FinalForm
 														initialValues={{
-															email: '',
-															password: '',
-															term: false,
+															[EMAIL]: '',
+															[PASSWORD]: '',
+															[TERM]: false,
 														}}
 														onSubmit={values => {}}>
 														{({ handleSubmit, submitting, validating }) => (
@@ -209,7 +209,9 @@ class SignUpPage extends React.Component {
 																			validation={value =>
 																				emailValidation(value)
 																			}
-																			asyncValidation={() => {}}
+																			asyncValidation={() =>
+																				handleVerifyEmail(signUp.state)
+																			}
 																		/>
 																		<InputField
 																			type={PASSWORD}
@@ -239,7 +241,7 @@ class SignUpPage extends React.Component {
 																				size='lg'
 																				disabled={submitting}
 																				onClick={e => {
-																					handleSignUp()
+																					handleSignUp(signUp.state)
 																					handleSubmit(e)
 																				}}>
 																				Sign Up
