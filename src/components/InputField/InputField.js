@@ -106,8 +106,8 @@ const InputField = props => {
 										}, 4000)
 									)
 								})
-								.catch(err => {
-									generateErrorList(err.errors, resolve)
+								.catch(result => {
+									generateErrorList(result.errors, resolve)
 								})
 						}, state.delay)
 						state.timeOutID = timeOutID
