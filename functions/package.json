@@ -13,12 +13,14 @@
 		"start": "npm run shell",
 		"deploy": "firebase deploy --only functions",
 		"logs": "firebase functions:log",
+		"exp": "babel-node test.js",
 		"install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
 	},
 	"engines": {
 		"node": "8"
 	},
 	"dependencies": {
+		"@babel/polyfill": "^7.4.4",
 		"@google-cloud/storage": "^2.5.0",
 		"busboy": "^0.3.1",
 		"cors": "^2.8.5",
