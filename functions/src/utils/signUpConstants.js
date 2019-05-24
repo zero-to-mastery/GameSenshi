@@ -19,8 +19,10 @@ const EMAIL_VALIDATION = EMAIL + VALIDATION
 const PASSWORD_VALIDATION = PASSWORD + VALIDATION
 const TERM_VALIDATION = TERM + VALIDATION
 const ON = 'on'
-const ON_SIGN_UP = ON + 'SignUp'
-const ON_VERIFY_EMAIL = ON + 'VerifyEmail'
+const VERIFY_EMAIL = 'VerifyEmail'
+const SIGN_UP = 'SignUp'
+const ON_SIGN_UP = ON + SIGN_UP
+const ON_VERIFY_EMAIL = ON + VERIFY_EMAIL
 
 export {
 	EMAIL,
