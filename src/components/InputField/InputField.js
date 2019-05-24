@@ -37,6 +37,7 @@ const InputField = props => {
 	const [spinner, showSpinner] = useState(false)
 
 	const onResize = () => {
+		// change parent component height
 		signUp.setState(state => ({
 			...state,
 			[name + EXTRA_HEIGHT]: ref.current.clientHeight,
@@ -75,9 +76,10 @@ const InputField = props => {
 					)
 				})) ||
 			[]
-		state.validating = false
+		if (!asyncValidation) {
+			state.validating = false
+		}
 		signUp.state[name + VALID] = !errMessages
-		console.log('isValid', signUp.state[name + VALID])
 		setErrorList(errorList)
 		resolve(errMessages)
 	}
@@ -93,27 +95,23 @@ const InputField = props => {
 						signUp.state[name + VALID] = false
 						// validate after user stop typing for 500ms
 						clearTimeout(state.timeOutID)
-						// console.log(name, state.delay, state.timeOutID)
 						const timeOutID = setTimeout(() => {
 							validation(value)
-								.then(async () => {
+								.then(() => {
 									if (asyncValidation) {
 										showSpinner(true)
-										// server validation mock(temporary)
-										new Promise(resolve2 =>
-											setTimeout(() => {
-												resolve2()
-												generateErrorList(undefined, resolve)
-												showSpinner(false)
-											}, 4000)
-										)
+										// verify the existence of email
+										asyncValidation().then(message => {
+											console.log(message)
+											generateErrorList(message, resolve)
+											showSpinner(false)
+											state.validating = false
+										})
 									} else {
-										console.log('enter true')
 										generateErrorList(undefined, resolve)
 									}
 								})
 								.catch(result => {
-									console.log('enter false')
 									generateErrorList(result.errors, resolve)
 								})
 						}, state.delay)
@@ -126,7 +124,6 @@ const InputField = props => {
 				const { validating } = state
 				return (
 					<>
-						{/*console.log(name, meta)*/}
 						{type !== 'checkbox' && (
 							<InputGroup
 								className={classnames({
