@@ -44,9 +44,10 @@ const InputField = props => {
 		}))
 	}
 	const generateErrorList = (errMessages, resolve) => {
+		let errMsg = Array.isArray(errMessages) ? errMessages : [errMessages]
 		const errorList =
 			(errMessages &&
-				errMessages.map(error => {
+				errMsg.map(error => {
 					return (
 						<Alert
 							className={'mb-1 pb-0 pt-0'}
