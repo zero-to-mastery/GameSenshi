@@ -145,9 +145,7 @@ class SignUpPage extends React.Component {
 															password: '',
 															term: false,
 														}}
-														onSubmit={values => {
-															console.log('test')
-														}}>
+														onSubmit={values => {}}>
 														{({ handleSubmit, submitting, validating }) => (
 															<>
 																<CardBody>
@@ -241,7 +239,7 @@ class SignUpPage extends React.Component {
 																				size='lg'
 																				disabled={submitting}
 																				onClick={e => {
-																					handleSignUp(signUp.state)
+																					handleSignUp()
 																					handleSubmit(e)
 																				}}>
 																				Sign Up

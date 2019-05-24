@@ -1,4 +1,5 @@
 import { functions } from 'utils/firebase'
+import { signUp } from 'state'
 
 import {
 	EMAIL,
@@ -10,7 +11,7 @@ import {
 	ON_SIGN_UP,
 } from 'utils/signUpConstants'
 
-const handleSignUp = state => {
+const handleSignUp = () => {
 	const {
 		[EMAIL]: email,
 		[PASSWORD]: password,
@@ -18,7 +19,7 @@ const handleSignUp = state => {
 		[EMAIL_VALID]: emailValid,
 		[PASSWORD_VALID]: passwordValid,
 		[TERM_VALID]: termValid,
-	} = state
+	} = signUp.state
 
 	if (emailValid && passwordValid && termValid) {
 		const addUser = functions.httpsCallable(ON_SIGN_UP)
