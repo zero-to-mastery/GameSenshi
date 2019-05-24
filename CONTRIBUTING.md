@@ -10,7 +10,7 @@ If you have any library that you want to use, please discuss it with the team fi
 
 ## Working on Code
 
-1. Create a card and describe what you going to do.
+1. Create a card and describe what you are going to do.
 2. In the card also specify which main module you going to modify/create.
 3. Convert it into issues.
 4. Start a new branch.
