@@ -1,5 +1,4 @@
 // in future this should turn into npm library so that backend can use the same code
-
 const EMAIL = 'email'
 const PASSWORD = 'password'
 const TERM = 'term'
@@ -19,6 +18,9 @@ const VALIDATION = 'Validation'
 const EMAIL_VALIDATION = EMAIL + VALIDATION
 const PASSWORD_VALIDATION = PASSWORD + VALIDATION
 const TERM_VALIDATION = TERM + VALIDATION
+const ON = 'on'
+const ON_SIGN_UP = ON + 'SignUp'
+const ON_VERIFY_EMAIL = ON + 'VerifyEmail'
 
 export {
 	EMAIL,
@@ -38,4 +40,6 @@ export {
 	EMAIL_VALIDATION,
 	PASSWORD_VALIDATION,
 	TERM_VALIDATION,
+	ON_SIGN_UP,
+	ON_VERIFY_EMAIL,
 }
