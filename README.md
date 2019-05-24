@@ -40,7 +40,11 @@ request the `.config` folder(s) from `tylim#9831` in `Discord`
 npm run dev
 ```
 
+Now you can start hacking on front end!
+
 ## Deployment
+
+🛑 Ignore this deployment section if you don't want to work with back end (firebase).
 
 Direct message `tylim#9831` in `Discord` your email to become user of this firebase project.
 
