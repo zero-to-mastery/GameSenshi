@@ -38,4 +38,4 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
-export { firebase }
+export { firebase, functions }
