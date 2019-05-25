@@ -11,6 +11,7 @@ import { signUp } from 'state'
 import 'assets/css/nucleo-icons.css'
 import 'assets/scss/blk-design-system-react.scss?v=1.0.0'
 import 'assets/demo/demo.css'
+import 'assets/css/temporary-changes.css'
 
 // vies
 import Index from 'views/Index'
