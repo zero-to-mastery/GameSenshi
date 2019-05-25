@@ -1,0 +1,19 @@
+.modal {
+	&.modal-login .modal-dialog {
+		max-width: 320px;
+		background: $card-black-background;
+		.card-login {
+			.logo-container {
+				width: 65px;
+				margin-bottom: 38px;
+				margin-top: 27px;
+			}
+		}
+	}
+}
+
+@include media-breakpoint-down(xs) {
+	.modal.modal-login .modal-dialog {
+		margin: 0.5rem auto;
+	}
+}

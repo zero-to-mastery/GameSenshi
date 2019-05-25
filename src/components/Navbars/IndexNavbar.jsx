@@ -54,15 +54,15 @@ class ComponentsNavbar extends React.Component {
 
 	changeColor = () => {
 		if (
-			document.documentElement.scrollTop > 99 ||
-			document.body.scrollTop > 99
+			document.documentElement.scrollTop > 299 ||
+			document.body.scrollTop > 299
 		) {
 			this.setState({
 				color: 'bg-purple',
 			})
 		} else if (
-			document.documentElement.scrollTop < 100 ||
-			document.body.scrollTop < 100
+			document.documentElement.scrollTop < 300 ||
+			document.body.scrollTop < 300
 		) {
 			this.setState({
 				color: 'navbar-transparent',
@@ -108,6 +108,7 @@ class ComponentsNavbar extends React.Component {
 		} = this
 		return (
 			<Navbar
+				style={{ zIndex: 2147483647 }}
 				className={'fixed-top ' + color}
 				color-on-scroll='100'
 				expand='lg'>

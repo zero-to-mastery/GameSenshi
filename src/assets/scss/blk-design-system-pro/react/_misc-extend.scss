@@ -1,0 +1,14 @@
+button,
+* {
+	&:focus {
+		outline: none;
+	}
+}
+.navbar
+	.navbar-collapse
+	.nav-item.dropdown.show
+	.dropdown.show
+	.dropdown-menu.show {
+	opacity: 1 !important;
+	pointer-events: auto !important;
+}

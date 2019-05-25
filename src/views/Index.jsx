@@ -2,22 +2,26 @@ import React from 'react'
 
 // core components
 import IndexNavbar from 'components/Navbars/IndexNavbar.jsx'
-import PageHeader from 'components/PageHeader/PageHeader.jsx'
-import Footer from 'components/Footer/Footer.jsx'
+import IndexHeader from 'components/Headers/IndexHeader.jsx'
+import Footer from 'components/Footers/Footer.jsx'
 
 class Index extends React.Component {
 	componentDidMount() {
-		document.body.classList.toggle('index-page')
+		document.body.classList.add('index-page')
+		document.documentElement.scrollTop = 0
+		document.scrollingElement.scrollTop = 0
+		this.refs.wrapper.scrollTop = 0
 	}
 	componentWillUnmount() {
-		document.body.classList.toggle('index-page')
+		document.body.classList.remove('index-page')
 	}
 	render() {
 		return (
 			<>
 				<IndexNavbar />
-				<div className='wrapper'>
-					<PageHeader />
+				<div className='wrapper' ref='wrapper'>
+					<IndexHeader />
+					<div className='main'>{/* include stuff here in future */}</div>
 					<Footer />
 				</div>
 			</>

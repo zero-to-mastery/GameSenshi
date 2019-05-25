@@ -1,6 +1,9 @@
 import React from 'react'
+
+// routing and api
 import { Link } from 'react-router-dom'
 import { handleSignUp, handleIsUserExist } from 'api'
+// constant
 
 import {
 	EMAIL,
@@ -31,16 +34,16 @@ import {
 	CardImg,
 	CardTitle,
 	Label,
+	UncontrolledTooltip,
 	Form,
 	Container,
 	Row,
 	Col,
-	UncontrolledTooltip,
 } from 'reactstrap'
 
 // core components
 import IndexNavbar from 'components/Navbars/IndexNavbar.jsx'
-import Footer from 'components/Footer/Footer.jsx'
+import Footer from 'components/Footers/Footer.jsx'
 import InputField from 'components/InputField/InputField'
 
 const {
@@ -49,19 +52,21 @@ const {
 	[TERM_VALIDATION]: termValidation,
 } = signUpValidation
 
-class SignUpPage extends React.Component {
+class RegisterPage extends React.Component {
 	state = {
 		squares1to6: '',
 		squares7and8: '',
-		maxHeight: 999,
+		maxHeight: 1200,
 	}
 	componentDidMount() {
-		document.body.classList.toggle('register-page')
+		document.documentElement.scrollTop = 0
+		document.scrollingElement.scrollTop = 0
+		this.refs.wrapper.scrollTop = 0
+		document.body.classList.add('register-page')
 		document.documentElement.addEventListener('mousemove', this.followCursor)
-		this.setState({ maxHeight: this.divElement.clientHeight })
 	}
 	componentWillUnmount() {
-		document.body.classList.toggle('register-page')
+		document.body.classList.remove('register-page')
 		document.documentElement.removeEventListener('mousemove', this.followCursor)
 	}
 	followCursor = event => {
@@ -82,57 +87,50 @@ class SignUpPage extends React.Component {
 				'deg)',
 		})
 	}
-
 	render() {
-		const {
-			state: { squares7and8, squares1to6, maxHeight },
-		} = this
-		const {
-			state: {
-				[EMAIL_EXTRA_HEIGHT]: emailExtraHeight,
-				[PASSWORD_EXTRA_HEIGHT]: passwordExtraHeight,
-			},
-		} = signUp
-
 		return (
 			<>
 				<IndexNavbar />
-				<div className='wrapper'>
+				<div className='wrapper' ref='wrapper'>
 					<Subscribe to={[signUp]}>
 						{signUp => (
 							<div
 								className='page-header'
 								style={{
+									display: 'block',
 									maxHeight:
-										maxHeight +
-										(emailExtraHeight || 0) +
-										(passwordExtraHeight || 0) +
+										this.state.maxHeight +
+										(signUp.state[EMAIL_EXTRA_HEIGHT] || 0) +
+										(signUp.state[PASSWORD_EXTRA_HEIGHT] || 0) +
 										'px',
 								}}
 								ref={divElement => (this.divElement = divElement)}>
 								<div className='page-header-image' />
-								<div className='content'>
+								{/* <Container>
+									<Row>
+										<Col className='mx-auto' lg='5' md='12'> */}
+								<div className='content' style={{ marginTop: '5%' }}>
 									<Container className='container-fluid'>
 										<Row>
 											<Col className='offset-lg-0 offset-md-3' lg='5' md='6'>
 												<div
 													className='square square-7'
 													id='square7'
-													style={{ transform: squares7and8 }}
+													style={{ transform: this.state.squares7and8 }}
 												/>
 												<div
 													className='square square-8'
 													id='square8'
-													style={{ transform: squares7and8 }}
+													style={{ transform: this.state.squares7and8 }}
 												/>
 												<Card className='card-register'>
 													<CardHeader>
 														<CardImg
 															alt='...'
-															src={require('assets/img/square-purple-1.png')}
+															src={require('assets/img/square1.png')}
 															style={{ top: '-8%' }}
 														/>
-														<CardTitle tag='h4'>Sign up</CardTitle>
+														<CardTitle tag='h4'>Sign Up</CardTitle>
 													</CardHeader>
 													<CardBody>
 														<div className='text-muted text-center ml-auto mr-auto'>
@@ -232,9 +230,9 @@ class SignUpPage extends React.Component {
 																	</Form>
 																</CardBody>
 																<CardFooter>
-																	<Row>
-																		<Col />
-																		<Col>
+																	<Row className='d-flex'>
+																		<Col className='col-3' />
+																		<Col className='pl-0 pr-0 d-flex justify-content-center'>
 																			<Button
 																				className='btn-round'
 																				color='primary'
@@ -247,15 +245,19 @@ class SignUpPage extends React.Component {
 																				Sign Up
 																			</Button>
 																		</Col>
-																		<Col />
+																		<Col className='col-3' />
 																	</Row>
-																	<Row>
+																	<Row className='d-flex'>
 																		<Col />
 																		<Col className='col-auto'>
 																			<Label check>
 																				<span className='form-check-sign' />
 																				{`Already a member? `}
-																				<Link to='/signIn'>Sign in</Link>
+																				<Link
+																					to='/signIn'
+																					className='font-weight-bold'>
+																					Sign In
+																				</Link>
 																			</Label>
 																		</Col>
 																		<Col />
@@ -267,38 +269,38 @@ class SignUpPage extends React.Component {
 												</Card>
 											</Col>
 										</Row>
-										<div className='register-bg' />
-										<div
-											className='square square-1'
-											id='square1'
-											style={{ transform: squares1to6 }}
-										/>
-										<div
-											className='square square-2'
-											id='square2'
-											style={{ transform: squares1to6 }}
-										/>
-										<div
-											className='square square-3'
-											id='square3'
-											style={{ transform: squares1to6 }}
-										/>
-										<div
-											className='square square-4'
-											id='square4'
-											style={{ transform: squares1to6 }}
-										/>
-										<div
-											className='square square-5'
-											id='square5'
-											style={{ transform: squares1to6 }}
-										/>
-										<div
-											className='square square-6'
-											id='square6'
-											style={{ transform: squares1to6 }}
-										/>
 									</Container>
+									<div className='register-bg' />
+									<div
+										className='square square-1'
+										id='square1'
+										style={{ transform: this.state.squares1to6 }}
+									/>
+									<div
+										className='square square-2'
+										id='square2'
+										style={{ transform: this.state.squares1to6 }}
+									/>
+									<div
+										className='square square-3'
+										id='square3'
+										style={{ transform: this.state.squares1to6 }}
+									/>
+									<div
+										className='square square-4'
+										id='square4'
+										style={{ transform: this.state.squares1to6 }}
+									/>
+									<div
+										className='square square-5'
+										id='square5'
+										style={{ transform: this.state.squares1to6 }}
+									/>
+									<div
+										className='square square-6'
+										id='square6'
+										style={{ transform: this.state.squares1to6 }}
+									/>
 								</div>
 							</div>
 						)}
@@ -310,4 +312,4 @@ class SignUpPage extends React.Component {
 	}
 }
 
-export default SignUpPage
+export default RegisterPage
