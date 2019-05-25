@@ -31,7 +31,7 @@ const InputField = props => {
 		validating: true,
 		delay: 0,
 		timeOutID: 0,
-		focused: false,
+		focused: true,
 	})
 
 	const [spinner, showSpinner] = useState(false)
@@ -77,9 +77,7 @@ const InputField = props => {
 					)
 				})) ||
 			[]
-		if (!asyncValidation) {
-			state.validating = false
-		}
+		state.validating = false
 		signUp.state[name + VALID] = !errMessages
 		setErrorList(errorList)
 		resolve(errMessages)
@@ -94,7 +92,7 @@ const InputField = props => {
 					return new Promise(resolve => {
 						state.validating = true
 						signUp.state[name + VALID] = false
-						// validate after user stop typing for 500ms
+						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
 						const timeOutID = setTimeout(() => {
 							validation(value)
