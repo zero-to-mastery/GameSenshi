@@ -58,7 +58,7 @@ class ComponentsNavbar extends React.Component {
 			document.body.scrollTop > 99
 		) {
 			this.setState({
-				color: 'bg-info',
+				color: 'bg-purple',
 			})
 		} else if (
 			document.documentElement.scrollTop < 100 ||
