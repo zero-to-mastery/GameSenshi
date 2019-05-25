@@ -6,8 +6,7 @@
 	"scripts": {
 		"lint": "eslint src/ --ext=js,jsx --fix",
 		"build": "babel src/ --out-dir dist --source-maps --copy-files",
-		"env": "babel-node uploadEnv.js",
-		"puild": "env-cmd .config/prod.env npm run env && npm run build",
+		"env": "env-cmd .config/prod.env babel-node uploadEnv.js",
 		"serve": "firebase serve --only functions",
 		"shell": "firebase functions:shell",
 		"start": "npm run shell",
