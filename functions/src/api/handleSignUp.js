@@ -42,7 +42,7 @@ const handleSignUp = async (data, context) => {
 			.catch(result => result.errors)
 
 		if (emailInvalid || passwordInvalid || termInvalid) {
-			return resObj(false, 'Internal Error Code 5', 5, {
+			return resObj(false, 'Internal Error Code 2', 2, {
 				[EMAIL]: emailInvalid,
 				[PASSWORD]: passwordInvalid,
 				[TERM]: termInvalid,
@@ -60,12 +60,14 @@ const handleSignUp = async (data, context) => {
 				if (data[STATUS] === 1) {
 					return resObj(true)
 				} else {
-					return resObj(false, 'Invalid Email')
+					return resObj(false, 'Invalid Email', 3, { [EMAIL]: 'Invalid Email' })
 				}
 			})
 			.catch(err => {
 				console.log('email verifying error', err)
-				return resObj(false, 'Internal Error Code 2', 2)
+				return resObj(false, 'Internal Error Code 4', 4, {
+					[EMAIL]: 'Internal Error Code 4',
+				})
 			})
 
 		if (!isEmailExist[STATUS]) {
@@ -90,11 +92,11 @@ const handleSignUp = async (data, context) => {
 			})
 			.catch(err => {
 				console.log('submit error', err)
-				return resObj(false, 'Internal Error Code 3', 3)
+				return resObj(false, 'Internal Error Code 5', 5)
 			})
 	} catch (err) {
 		console.log(err)
-		return resObj(false, 'Internal Error Code 4', 4)
+		return resObj(false, 'Internal Error Code 6', 6)
 	}
 }
 
