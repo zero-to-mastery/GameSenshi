@@ -40,6 +40,7 @@ const InputField = props => {
 		focused: true,
 		invalid: true,
 		value: '',
+		promise: Promise.resolve(['Invalid']),
 		resolve: () => {},
 	})
 
@@ -119,7 +120,7 @@ const InputField = props => {
 			name={name}
 			validate={value => {
 				if (state.focused) {
-					return new Promise(resolve => {
+					return (state.promise = new Promise(resolve => {
 						// cancel and invalidate previous validation (did not cancel server validation)
 						// do not reject when doing server validation
 						!spinner2 && state.resolve(['validating'])
@@ -147,9 +148,12 @@ const InputField = props => {
 								})
 						}, state.delay)
 						state.timeOutID = timeOutID
-					})
+					}))
 				}
-				return state.invalid ? ['Invalid'] : undefined // this prevent from returning undefined which is valid when component is not focused
+				return state.promise
+				// this prevent from returning undefined which is valid when component is not focused
+				// this happen because final form run validation on all form even there is only one field is onChange
+				// so always return your own promise that has been made
 			}}>
 			{({ input, meta }) => {
 				const { touched, active, modified, invalid } = meta
