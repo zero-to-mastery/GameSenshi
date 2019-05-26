@@ -16,7 +16,7 @@ import {
 } from 'reactstrap'
 
 import ReactResizeDetector from 'react-resize-detector'
-import { EXTRA_HEIGHT, VALID } from 'utils/signUpConstants'
+import { EXTRA_HEIGHT } from 'utils/signUpConstants'
 import { WILL_UNMOUNT, STATUS, MESSAGE } from 'utils/commonConstants'
 
 const InputField = props => {
@@ -99,7 +99,6 @@ const InputField = props => {
 			[]
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, state.delay = 0 tell us that the component never been visited, this solve icon flickering
-		container.state[name + VALID] = !validationResult // as submit functionality is recovered, will removed this
 		!container.state[WILL_UNMOUNT] && setMessageList(messageList) // do not run setState if parent component going to unmount to prevent memory leak issue
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
@@ -125,7 +124,6 @@ const InputField = props => {
 						state.resolve = resolve
 						state.invalid = true
 						showSpinner(true)
-						container.state[name + VALID] = false // as submit functionality is recovered, will removed this
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
 						const timeOutID = setTimeout(() => {
@@ -200,7 +198,6 @@ const InputField = props => {
 										// so the role of state here is just to pass value to Field's validate prop
 										// basically it is how you would use a plain variable
 										state.delay = 1000
-										container.state[name] = e.target.value // as submit functionality is recovered, will removed this
 										input.onChange(e)
 									}}
 									onFocus={e => {
@@ -221,10 +218,7 @@ const InputField = props => {
 									<Input
 										{...input}
 										onChange={e => {
-											// ! React Final Form checkbox value is crazy, have to toggle it myself
-											// ! but the value in validation is correct, weird!
-											container.state[name] = !container.state[name] // as submit functionality is recovered, will removed this
-											// ! another bug, workaround https://github.com/final-form/react-final-form/issues/134
+											// ! bug, details https://github.com/final-form/react-final-form/issues/134
 											state.focused = true
 											input.onFocus(e)
 											input.onChange(e)
