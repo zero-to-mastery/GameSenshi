@@ -1,9 +1,8 @@
 import { functions } from 'utils/firebase'
-import { EMAIL, ON_IS_USER_EXIST } from 'utils/signUpConstants'
+import { ON_IS_USER_EXIST } from 'utils/signUpConstants'
 import { STATUS, MESSAGE, DATA } from 'utils/commonConstants'
 
-const handleIsUserExist = state => {
-	const { [EMAIL]: email } = state
+const handleIsUserExist = email => {
 	const verifyEmail = functions.httpsCallable(ON_IS_USER_EXIST)
 	return verifyEmail({ email })
 		.then(res => {

@@ -39,6 +39,7 @@ const InputField = props => {
 		timeOutID: 0,
 		focused: true,
 		invalid: true,
+		value: '',
 		resolve: () => {},
 	})
 
@@ -48,10 +49,11 @@ const InputField = props => {
 	const onResize = () => {
 		// change parent component height
 		// this code may be "extra" because some may not need it
-		container.setState(state => ({
-			...state,
-			[name + EXTRA_HEIGHT]: ref.current.clientHeight,
-		}))
+		container &&
+			container.setState(state => ({
+				...state,
+				[name + EXTRA_HEIGHT]: ref.current.clientHeight,
+			}))
 	}
 	const generateMessageList = (validationResult, resolve) => {
 		// if validationResult is undefined, it passed validation
@@ -132,7 +134,7 @@ const InputField = props => {
 									if (asyncValidation) {
 										showSpinner2(true)
 										// verify the existence of email
-										asyncValidation().then(validationResult => {
+										asyncValidation(value).then(validationResult => {
 											generateMessageList(validationResult, resolve)
 											showSpinner2(false)
 										})
@@ -198,6 +200,7 @@ const InputField = props => {
 										// so the role of state here is just to pass value to Field's validate prop
 										// basically it is how you would use a plain variable
 										state.delay = 1000
+										state.input = e.target.value
 										input.onChange(e)
 									}}
 									onFocus={e => {
@@ -218,6 +221,7 @@ const InputField = props => {
 									<Input
 										{...input}
 										onChange={e => {
+											state.input = e.target.value
 											// ! bug, details https://github.com/final-form/react-final-form/issues/134
 											state.focused = true
 											input.onFocus(e)
