@@ -35,14 +35,14 @@ const InputField = props => {
 	const [messageList, setMessageList] = useState([])
 
 	const [state] = useState({
-		validating: true,
 		delay: 0,
 		timeOutID: 0,
 		focused: true,
-		success: false,
+		resolver: () => {},
 	})
 
 	const [spinner, showSpinner] = useState(false)
+	const [spinner2, showSpinner2] = useState(false)
 
 	const onResize = () => {
 		// change parent component height
@@ -53,8 +53,8 @@ const InputField = props => {
 		}))
 	}
 	const generateMessageList = (validationResult, resolve) => {
-		state.success = validationResult[STATUS]
-		let msg = validationResult[STATUS]
+		const isObj = validationResult && validationResult[STATUS]
+		const msg = isObj
 			? Array.isArray(validationResult[MESSAGE])
 				? validationResult[MESSAGE]
 				: [validationResult[MESSAGE]]
@@ -93,10 +93,14 @@ const InputField = props => {
 					)
 				})) ||
 			[]
-		state.validating = false
+		showSpinner(false)
 		container.state[name + VALID] = !validationResult
 		!container.state[WILL_UNMOUNT] && setMessageList(messageList)
-		resolve(validationResult)
+		if (validationResult === undefined || validationResult[STATUS]) {
+			resolve()
+		} else {
+			resolve(validationResult)
+		}
 	}
 
 	return (
@@ -106,7 +110,11 @@ const InputField = props => {
 			validate={value => {
 				if (state.focused) {
 					return new Promise(resolve => {
-						state.validating = true
+						// cancel and invalidate previous validation (did not cancel server validation)
+						// do not reject when doing server validation
+						!spinner2 && state.resolver(['validating'])
+						state.resolver = resolve
+						showSpinner(true)
 						container.state[name + VALID] = false
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
@@ -114,13 +122,12 @@ const InputField = props => {
 							validation(value)
 								.then(() => {
 									if (asyncValidation) {
-										showSpinner(true)
+										showSpinner2(true)
 										// verify the existence of email
-										asyncValidation().then(message => {
-											console.log(message)
-											generateMessageList(message, resolve)
-											state.validating = false
-											showSpinner(false)
+										asyncValidation().then(validationResult => {
+											console.log(validationResult)
+											generateMessageList(validationResult, resolve)
+											showSpinner2(false)
 										})
 									} else {
 										generateMessageList(undefined, resolve)
@@ -135,32 +142,33 @@ const InputField = props => {
 				}
 			}}>
 			{({ input, meta }) => {
-				const { touched, active, modified } = meta
-				const { validating, success } = state
+				const { touched, active, modified, invalid } = meta
 				return (
 					<>
 						{type !== 'checkbox' && (
 							<InputGroup
 								className={classnames({
 									'has-danger':
-										!validating &&
-										!success &&
+										!spinner &&
+										invalid &&
 										((touched && !active) || (active && modified)),
 									'has-success':
-										!validating &&
-										success &&
+										!spinner &&
+										!invalid &&
 										((touched && !active) || (active && modified)),
 									'input-group-focus': active,
 									'mb-1': true,
 								})}>
 								<InputGroupAddon addonType='prepend'>
 									<InputGroupText>
-										{spinner && asyncValidation ? (
+										{spinner || spinner2 ? (
 											<div
 												style={{ height: 16 }}
 												className='d-flex align-items-center'>
 												<Loader
-													type='Puff'
+													type={
+														(spinner2 && 'Puff') || (spinner && 'ThreeDots')
+													}
 													color='#00BFFF'
 													height='15px'
 													width='15px'
@@ -237,7 +245,7 @@ const InputField = props => {
 						<div
 							ref={ref} // function component cannot have ref, class and html element can
 						>
-							{!validating && (touched || (active && modified)) && messageList}
+							{!spinner && (touched || (active && modified)) && messageList}
 							<ReactResizeDetector
 								handleWidth
 								handleHeight
