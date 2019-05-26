@@ -32,14 +32,14 @@ const InputField = props => {
 
 	const ref = useRef(null)
 
-	const [errorList, setErrorList] = useState([])
+	const [messageList, setMessageList] = useState([])
 
 	const [state] = useState({
-		errorList: [],
 		validating: true,
 		delay: 0,
 		timeOutID: 0,
 		focused: true,
+		success: false,
 	})
 
 	const [spinner, showSpinner] = useState(false)
@@ -52,11 +52,18 @@ const InputField = props => {
 			[name + EXTRA_HEIGHT]: ref.current.clientHeight,
 		}))
 	}
-	const generateErrorList = (errMessages, resolve) => {
-		let errMsg = Array.isArray(errMessages) ? errMessages : [errMessages]
-		const errorList =
-			(errMessages &&
-				errMsg.map(error => {
+	const generateMessageList = (validationResult, resolve) => {
+		state.success = validationResult.status
+		let msg = validationResult.status
+			? Array.isArray(validationResult.message)
+				? validationResult.message
+				: [validationResult.message]
+			: Array.isArray(validationResult)
+			? validationResult
+			: [validationResult]
+		const messageList =
+			(validationResult &&
+				msg.map(error => {
 					return (
 						<Alert
 							className={'mb-1 pb-0 pt-0'}
@@ -87,9 +94,9 @@ const InputField = props => {
 				})) ||
 			[]
 		state.validating = false
-		container.state[name + VALID] = !errMessages
-		!container.state[WILL_UNMOUNT] && setErrorList(errorList)
-		resolve(errMessages)
+		container.state[name + VALID] = !validationResult
+		!container.state[WILL_UNMOUNT] && setMessageList(messageList)
+		resolve(validationResult)
 	}
 
 	return (
@@ -111,16 +118,16 @@ const InputField = props => {
 										// verify the existence of email
 										asyncValidation().then(message => {
 											console.log(message)
-											generateErrorList(message, resolve)
+											generateMessageList(message, resolve)
 											state.validating = false
 											showSpinner(false)
 										})
 									} else {
-										generateErrorList(undefined, resolve)
+										generateMessageList(undefined, resolve)
 									}
 								})
 								.catch(result => {
-									generateErrorList(result.errors, resolve)
+									generateMessageList(result.errors, resolve)
 								})
 						}, state.delay)
 						state.timeOutID = timeOutID
@@ -128,8 +135,9 @@ const InputField = props => {
 				}
 			}}>
 			{({ input, meta }) => {
+				console.log(meta)
 				const { touched, active, modified } = meta
-				const { validating } = state
+				const { validating, success } = state
 				return (
 					<>
 						{type !== 'checkbox' && (
@@ -137,11 +145,11 @@ const InputField = props => {
 								className={classnames({
 									'has-danger':
 										!validating &&
-										errorList.length &&
+										!success &&
 										((touched && !active) || (active && modified)),
 									'has-success':
 										!validating &&
-										!errorList.length &&
+										success &&
 										((touched && !active) || (active && modified)),
 									'input-group-focus': active,
 									'mb-1': true,
@@ -230,7 +238,7 @@ const InputField = props => {
 						<div
 							ref={ref} // function component cannot have ref, class and html element can
 						>
-							{!validating && (touched || (active && modified)) && errorList}
+							{!validating && (touched || (active && modified)) && messageList}
 							<ReactResizeDetector
 								handleWidth
 								handleHeight
