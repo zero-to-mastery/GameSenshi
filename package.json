@@ -98,8 +98,12 @@
 		"extends": [
 			"react-app",
 			"prettier/react",
+			"eslint:recommended",
 			"plugin:prettier/recommended"
 		],
+		"rules": {
+			"no-console": "off"
+		},
 		"settings": {
 			"import/resolver": {
 				"node": {
