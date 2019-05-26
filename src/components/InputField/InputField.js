@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import classnames from 'classnames'
 import { Field } from 'react-final-form'
 import { signUp } from 'state'
@@ -32,6 +32,10 @@ const InputField = props => {
 		delay: 0,
 		timeOutID: 0,
 		focused: true,
+		cleanUp: false,
+	})
+	useEffect(() => () => {
+		state.cleanUp = true
 	})
 
 	const [spinner, showSpinner] = useState(false)
@@ -79,7 +83,8 @@ const InputField = props => {
 			[]
 		state.validating = false
 		signUp.state[name + VALID] = !errMessages
-		setErrorList(errorList)
+		// https://dev.to/juliang/cancelling-a-promise-with-react-useeffect-3062
+		!state.cleanUp && setErrorList(errorList)
 		resolve(errMessages)
 	}
 
