@@ -5,9 +5,13 @@ import { STATUS, DATA } from 'utils/commonConstants'
 
 const handleSignUp = values => {
 	const { [EMAIL]: email, [PASSWORD]: password, [TERM]: term } = values
-	const defaultValues = { [EMAIL]: '', [PASSWORD]: '', [TERM]: '' }
+	const defaultValues = {
+		[EMAIL]: undefined,
+		[PASSWORD]: undefined,
+		[TERM]: undefined,
+	}
 	const signUpUser = functions.httpsCallable(ON_SIGN_UP)
-	signUpUser({ email, password, term }).then(res => {
+	return signUpUser({ email, password, term }).then(res => {
 		console.log(res)
 		// return undefined if success
 		// return object with property same with initial values
