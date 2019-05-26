@@ -116,12 +116,10 @@ const InputField = props => {
 											showSpinner(false)
 										})
 									} else {
-										console.log('from entrance 1')
 										generateErrorList(undefined, resolve)
 									}
 								})
 								.catch(result => {
-									console.log('from entrance 2', name)
 									generateErrorList(result.errors, resolve)
 								})
 						}, state.delay)
