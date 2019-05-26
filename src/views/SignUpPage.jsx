@@ -148,6 +148,7 @@ class RegisterPage extends React.Component {
 														}}
 														onSubmit={values => {
 															console.log('submitted', values)
+															return handleSignUp(values)
 														}}>
 														{({ handleSubmit, submitting }) => (
 															<>
@@ -224,9 +225,7 @@ class RegisterPage extends React.Component {
 																			validation={value =>
 																				emailValidation(value)
 																			}
-																			asyncValidation={() =>
-																				handleIsUserExist(signUp.state)
-																			}
+																			asyncValidation={handleIsUserExist}
 																		/>
 																		<InputField
 																			type={PASSWORD}
@@ -257,10 +256,7 @@ class RegisterPage extends React.Component {
 																				color='primary'
 																				size='lg'
 																				disabled={submitting}
-																				onClick={e => {
-																					handleSignUp(signUp.state)
-																					handleSubmit(e)
-																				}}>
+																				onClick={handleSubmit}>
 																				Sign Up
 																			</Button>
 																		</Col>
