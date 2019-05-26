@@ -94,7 +94,8 @@ const InputField = props => {
 				})) ||
 			[]
 		showSpinner(false)
-		container.state[name + VALID] = !validationResult
+		!state.delay && (state.focused = false) // one time only, state.delay = 0 tell us that the component never been visited
+		container.state[name + VALID] = !validationResult // as submit functionality is recovered, will removed this
 		!container.state[WILL_UNMOUNT] && setMessageList(messageList)
 		if (validationResult === undefined || validationResult[STATUS]) {
 			resolve()
@@ -190,7 +191,7 @@ const InputField = props => {
 										// so the role of state here is just to pass value to Field's validate prop
 										// basically it is how you would use a plain variable
 										state.delay = 1000
-										container.state[name] = e.target.value
+										container.state[name] = e.target.value // as submit functionality is recovered, will removed this
 										input.onChange(e)
 									}}
 									onFocus={e => {
@@ -213,7 +214,7 @@ const InputField = props => {
 										onChange={e => {
 											// ! React Final Form checkbox value is crazy, have to toggle it myself
 											// ! but the value in validation is correct, weird!
-											container.state[name] = !container.state[name]
+											container.state[name] = !container.state[name] // as submit functionality is recovered, will removed this
 											// ! another bug, workaround https://github.com/final-form/react-final-form/issues/134
 											state.focused = true
 											input.onFocus(e)
