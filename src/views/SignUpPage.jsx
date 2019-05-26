@@ -3,8 +3,8 @@ import React from 'react'
 // routing and api
 import { Link } from 'react-router-dom'
 import { handleSignUp, handleIsUserExist } from 'api'
-// constant
 
+// constants
 import {
 	EMAIL,
 	PASSWORD,
@@ -15,6 +15,7 @@ import {
 	PASSWORD_VALIDATION,
 	TERM_VALIDATION,
 } from 'utils/signUpConstants'
+import { WILL_UNMOUNT } from 'utils/commonConstants'
 
 // form validation
 import { Form as FinalForm } from 'react-final-form'
@@ -64,10 +65,12 @@ class RegisterPage extends React.Component {
 		this.refs.wrapper.scrollTop = 0
 		document.body.classList.add('register-page')
 		document.documentElement.addEventListener('mousemove', this.followCursor)
+		signUp.state[WILL_UNMOUNT] = false
 	}
 	componentWillUnmount() {
 		document.body.classList.remove('register-page')
 		document.documentElement.removeEventListener('mousemove', this.followCursor)
+		signUp.state[WILL_UNMOUNT] = true
 	}
 	followCursor = event => {
 		let posX = event.clientX - window.innerWidth / 2
@@ -143,7 +146,9 @@ class RegisterPage extends React.Component {
 															[PASSWORD]: '',
 															[TERM]: false,
 														}}
-														onSubmit={values => {}}>
+														onSubmit={values => {
+															console.log('submitted', values)
+														}}>
 														{({ handleSubmit, submitting }) => (
 															<>
 																<CardBody>
@@ -199,9 +204,21 @@ class RegisterPage extends React.Component {
 																		<Col />
 																	</Row>
 																	<Form className='form'>
+																		{/** 
+																		// ! bug
+																		// ! whenever any of these two field components is render
+																		// ! and whenever component going to unmount (route to other page)
+																		// ! the field components will run validation
+																		// ! these is not good as the validation process involving steState in a promise
+																		// ! there will be memory leak warning if you try to setState on unmounted component
+																		// ! seem like problem of react final form
+																		// * implement life cycle method of parent component to solve these issue
+																		// * tested, above solution works, trace WILL_UNMOUNT in didComponentMount and willComponentUnmount method to get further insight
+																		*/}
 																		<InputField
 																			type={EMAIL}
 																			name={EMAIL}
+																			container={signUp}
 																			placeholder='Email Address'
 																			icon='tim-icons icon-email-85'
 																			validation={value =>
@@ -214,6 +231,7 @@ class RegisterPage extends React.Component {
 																		<InputField
 																			type={PASSWORD}
 																			name={PASSWORD}
+																			container={signUp}
 																			placeholder='Password'
 																			icon='tim-icons icon-lock-circle'
 																			validation={value =>
@@ -223,6 +241,7 @@ class RegisterPage extends React.Component {
 																		<InputField
 																			type='checkbox'
 																			name={TERM}
+																			container={signUp}
 																			validation={value =>
 																				termValidation(value)
 																			}

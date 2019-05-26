@@ -9,6 +9,8 @@ import {
 	SUBMITTING,
 } from 'utils/signUpConstants'
 
+import { WILL_UNMOUNT } from 'utils/commonConstants'
+
 class SignUpContainer extends Container {
 	state = {
 		[EMAIL]: '',
@@ -18,6 +20,7 @@ class SignUpContainer extends Container {
 		[PASSWORD_VALID]: false,
 		[TERM_VALID]: false,
 		[SUBMITTING]: false,
+		[WILL_UNMOUNT]: false,
 	}
 }
 

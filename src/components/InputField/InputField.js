@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react'
 import classnames from 'classnames'
 import { Field } from 'react-final-form'
-import { signUp } from 'state'
 import Loader from 'react-loader-spinner'
 
 import {
@@ -18,9 +17,18 @@ import {
 
 import ReactResizeDetector from 'react-resize-detector'
 import { EXTRA_HEIGHT, VALID } from 'utils/signUpConstants'
+import { WILL_UNMOUNT } from 'utils/commonConstants'
 
 const InputField = props => {
-	const { name, validation, placeholder, icon, type, asyncValidation } = props
+	const {
+		name,
+		validation,
+		placeholder,
+		icon,
+		type,
+		asyncValidation,
+		container,
+	} = props
 
 	const ref = useRef(null)
 
@@ -38,7 +46,8 @@ const InputField = props => {
 
 	const onResize = () => {
 		// change parent component height
-		signUp.setState(state => ({
+		// this code may be "extra" because some may not need it
+		container.setState(state => ({
 			...state,
 			[name + EXTRA_HEIGHT]: ref.current.clientHeight,
 		}))
@@ -78,8 +87,8 @@ const InputField = props => {
 				})) ||
 			[]
 		state.validating = false
-		signUp.state[name + VALID] = !errMessages
-		setErrorList(errorList)
+		container.state[name + VALID] = !errMessages
+		!container.state[WILL_UNMOUNT] && setErrorList(errorList)
 		resolve(errMessages)
 	}
 
@@ -91,7 +100,7 @@ const InputField = props => {
 				if (state.focused) {
 					return new Promise(resolve => {
 						state.validating = true
-						signUp.state[name + VALID] = false
+						container.state[name + VALID] = false
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
 						const timeOutID = setTimeout(() => {
@@ -107,10 +116,12 @@ const InputField = props => {
 											showSpinner(false)
 										})
 									} else {
+										console.log('from entrance 1')
 										generateErrorList(undefined, resolve)
 									}
 								})
 								.catch(result => {
+									console.log('from entrance 2', name)
 									generateErrorList(result.errors, resolve)
 								})
 						}, state.delay)
@@ -166,7 +177,7 @@ const InputField = props => {
 										// so the role of state here is just to pass value to Field's validate prop
 										// basically it is how you would use a plain variable
 										state.delay = 1000
-										signUp.state[name] = e.target.value
+										container.state[name] = e.target.value
 										input.onChange(e)
 									}}
 									onFocus={e => {
@@ -189,7 +200,7 @@ const InputField = props => {
 										onChange={e => {
 											// ! React Final Form checkbox value is crazy, have to toggle it myself
 											// ! but the value in validation is correct, weird!
-											signUp.state[name] = !signUp.state[name]
+											container.state[name] = !container.state[name]
 											// ! another bug, workaround https://github.com/final-form/react-final-form/issues/134
 											state.focused = true
 											input.onFocus(e)
