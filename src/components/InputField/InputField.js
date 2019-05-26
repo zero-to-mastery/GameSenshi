@@ -156,10 +156,17 @@ const InputField = props => {
 				// so always return your own promise that has been made
 			}}>
 			{({ input, meta }) => {
-				const { touched, active, modified, invalid } = meta
+				const {
+					touched,
+					active,
+					modified,
+					submitError,
+					dirtySinceLastSubmit,
+				} = meta
+				const { invalid } = state
+				console.log(meta)
 				return (
 					<>
-						{console.log(meta, name)}
 						{type !== 'checkbox' && (
 							<InputGroup
 								className={classnames({
@@ -258,7 +265,9 @@ const InputField = props => {
 						<div
 							ref={ref} // function component cannot have ref, class and html element can
 						>
-							{!spinner && (touched || (active && modified)) && messageList}
+							{!spinner &&
+								(touched || (active && modified)) &&
+								((!dirtySinceLastSubmit && submitError) || messageList)}
 							<ReactResizeDetector
 								handleWidth
 								handleHeight
