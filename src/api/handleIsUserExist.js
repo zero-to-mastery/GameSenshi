@@ -1,5 +1,6 @@
 import { functions } from 'utils/firebase'
 import { EMAIL, ON_IS_USER_EXIST } from 'utils/signUpConstants'
+import { STATUS, MESSAGE, DATA } from 'utils/commonConstants'
 
 const handleIsUserExist = state => {
 	const { [EMAIL]: email } = state
@@ -7,12 +8,12 @@ const handleIsUserExist = state => {
 	return verifyEmail({ email })
 		.then(res => {
 			console.log(res)
-			if (!res.data.status) {
-				return res.data.message
+			if (!res[DATA][STATUS]) {
+				return res[DATA][MESSAGE]
 			} else {
 				return {
-					status: true,
-					message: 'This email is available for registration!',
+					[STATUS]: true,
+					[MESSAGE]: 'This email is available for registration!',
 				}
 			}
 		})

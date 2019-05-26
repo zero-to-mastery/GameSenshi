@@ -17,7 +17,7 @@ import {
 
 import ReactResizeDetector from 'react-resize-detector'
 import { EXTRA_HEIGHT, VALID } from 'utils/signUpConstants'
-import { WILL_UNMOUNT } from 'utils/commonConstants'
+import { WILL_UNMOUNT, STATUS, MESSAGE } from 'utils/commonConstants'
 
 const InputField = props => {
 	const {
@@ -53,11 +53,11 @@ const InputField = props => {
 		}))
 	}
 	const generateMessageList = (validationResult, resolve) => {
-		state.success = validationResult.status
-		let msg = validationResult.status
-			? Array.isArray(validationResult.message)
-				? validationResult.message
-				: [validationResult.message]
+		state.success = validationResult[STATUS]
+		let msg = validationResult[STATUS]
+			? Array.isArray(validationResult[MESSAGE])
+				? validationResult[MESSAGE]
+				: [validationResult[MESSAGE]]
 			: Array.isArray(validationResult)
 			? validationResult
 			: [validationResult]
@@ -135,7 +135,6 @@ const InputField = props => {
 				}
 			}}>
 			{({ input, meta }) => {
-				console.log(meta)
 				const { touched, active, modified } = meta
 				const { validating, success } = state
 				return (
