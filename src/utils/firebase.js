@@ -1,6 +1,7 @@
 // in future this should turn into npm library so that backend can use the same code
 
-import firebase from 'firebase'
+import * as firebase from 'firebase/app'
+import 'firebase/functions'
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_API_KEY,
