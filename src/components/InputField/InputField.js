@@ -38,7 +38,8 @@ const InputField = props => {
 		delay: 0,
 		timeOutID: 0,
 		focused: true,
-		resolver: () => {},
+		invalid: true,
+		resolve: () => {},
 	})
 
 	const [spinner, showSpinner] = useState(false)
@@ -53,6 +54,9 @@ const InputField = props => {
 		}))
 	}
 	const generateMessageList = (validationResult, resolve) => {
+		// if validationResult is undefined, it passed validation
+		// if validationResult is {status:true/false, message:string/array of string} and if the status is true, it passed validation
+		// if validationResult is string or array of string, it failed validation
 		const isObj = validationResult && validationResult[STATUS]
 		const msg = isObj
 			? Array.isArray(validationResult[MESSAGE])
@@ -94,12 +98,16 @@ const InputField = props => {
 				})) ||
 			[]
 		showSpinner(false)
-		!state.delay && (state.focused = false) // one time only, state.delay = 0 tell us that the component never been visited
+		!state.delay && (state.focused = false) // one time only, state.delay = 0 tell us that the component never been visited, this solve icon flickering
 		container.state[name + VALID] = !validationResult // as submit functionality is recovered, will removed this
-		!container.state[WILL_UNMOUNT] && setMessageList(messageList)
+		!container.state[WILL_UNMOUNT] && setMessageList(messageList) // do not run setState if parent component going to unmount to prevent memory leak issue
 		if (validationResult === undefined || validationResult[STATUS]) {
+			// if validation passed
+			state.invalid = false
 			resolve()
 		} else {
+			// if validation failed
+			state.invalid = true
 			resolve(validationResult)
 		}
 	}
@@ -113,10 +121,11 @@ const InputField = props => {
 					return new Promise(resolve => {
 						// cancel and invalidate previous validation (did not cancel server validation)
 						// do not reject when doing server validation
-						!spinner2 && state.resolver(['validating'])
-						state.resolver = resolve
+						!spinner2 && state.resolve(['validating'])
+						state.resolve = resolve
+						state.invalid = true
 						showSpinner(true)
-						container.state[name + VALID] = false
+						container.state[name + VALID] = false // as submit functionality is recovered, will removed this
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
 						const timeOutID = setTimeout(() => {
@@ -126,7 +135,6 @@ const InputField = props => {
 										showSpinner2(true)
 										// verify the existence of email
 										asyncValidation().then(validationResult => {
-											console.log(validationResult)
 											generateMessageList(validationResult, resolve)
 											showSpinner2(false)
 										})
@@ -141,6 +149,7 @@ const InputField = props => {
 						state.timeOutID = timeOutID
 					})
 				}
+				return state.invalid ? ['Invalid'] : undefined // this prevent from returning undefined which is valid when component is not focused
 			}}>
 			{({ input, meta }) => {
 				const { touched, active, modified, invalid } = meta
