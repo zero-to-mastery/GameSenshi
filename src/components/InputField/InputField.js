@@ -159,6 +159,7 @@ const InputField = props => {
 				const { touched, active, modified, invalid } = meta
 				return (
 					<>
+						{console.log(meta, name)}
 						{type !== 'checkbox' && (
 							<InputGroup
 								className={classnames({
