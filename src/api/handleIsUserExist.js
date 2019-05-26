@@ -9,6 +9,11 @@ const handleIsUserExist = state => {
 			console.log(res)
 			if (!res.data.status) {
 				return res.data.message
+			} else {
+				return {
+					status: true,
+					message: 'This email is available for registration!',
+				}
 			}
 		})
 		.catch(() => 'Unexpected Error Code 1')
