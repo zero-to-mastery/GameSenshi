@@ -3,7 +3,7 @@ import req from 'request-promise'
 
 import { firebase } from 'utils/firebase'
 import { signUpValidation } from 'utils/validation'
-import { resObj, valObj } from 'utils/objects'
+import { resObj } from 'utils/objects'
 import { handleIsUserExist } from 'api'
 
 import { ENV, VERIFY_EMAIL_API_KEY } from 'utils/envKeyConstants'
@@ -15,6 +15,7 @@ import {
 	PASSWORD_VALIDATION,
 	TERM_VALIDATION,
 } from 'utils/signUpConstants'
+import { STATUS } from 'utils/commonConstants'
 
 const {
 	[ENV]: { [VERIFY_EMAIL_API_KEY]: verify_email_api_key },
@@ -32,41 +33,42 @@ const handleSignUp = async (data, context) => {
 	try {
 		const emailInvalid = await emailValidation(email)
 			.then(() => '')
-			.catch(result => valObj(EMAIL, result.errors))
+			.catch(result => result.errors)
 		const passwordInvalid = await passwordValidation(password)
 			.then(() => '')
-			.catch(result => valObj(PASSWORD, result.errors))
+			.catch(result => result.errors)
 		const termInvalid = await termValidation(term)
 			.then(() => '')
-			.catch(result => valObj(TERM, result.errors))
+			.catch(result => result.errors)
 
 		if (emailInvalid || passwordInvalid || termInvalid) {
-			return resObj(
-				false,
-				emailInvalid.message || passwordInvalid.message || termInvalid.message
-			)
+			return resObj(false, 'Internal Error Code 5', 5, {
+				[EMAIL]: emailInvalid,
+				[PASSWORD]: passwordInvalid,
+				[TERM]: termInvalid,
+			})
 		}
 		const isUserExist = await handleIsUserExist(data)
 
-		if (!isUserExist.status) {
+		if (!isUserExist[STATUS]) {
 			return isUserExist
 		}
 
 		const isEmailExist = await req(`${verify_email_api_key}${email}`)
 			.then(res => {
 				const data = JSON.parse(res)
-				if (data.status === 1) {
+				if (data[STATUS] === 1) {
 					return resObj(true)
 				} else {
 					return resObj(false, 'Invalid Email')
 				}
 			})
-			.catch(errors => {
-				console.log('email verifying error', errors)
+			.catch(err => {
+				console.log('email verifying error', err)
 				return resObj(false, 'Internal Error Code 2', 2)
 			})
 
-		if (!isEmailExist.status) {
+		if (!isEmailExist[STATUS]) {
 			return isEmailExist
 		}
 
@@ -80,18 +82,18 @@ const handleSignUp = async (data, context) => {
 						.then(() => {
 							console.log('email verification sent to user')
 						})
-						.catch(error => {
-							console.log('email user failed', error)
+						.catch(err => {
+							console.log('email user failed', err)
 						})
 				}
 				return resObj(true)
 			})
-			.catch(errors => {
-				console.log('submit error', errors)
+			.catch(err => {
+				console.log('submit error', err)
 				return resObj(false, 'Internal Error Code 3', 3)
 			})
-	} catch (e) {
-		console.log(e)
+	} catch (err) {
+		console.log(err)
 		return resObj(false, 'Internal Error Code 4', 4)
 	}
 }
