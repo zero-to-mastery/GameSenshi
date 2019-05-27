@@ -2,7 +2,11 @@ import React from 'react'
 
 // routing and api
 import { Link } from 'react-router-dom'
-import { handleSignUp, handleIsUserExist } from 'api'
+import {
+	handleSignUpWithEmailAndPassword,
+	handleIsUserExist,
+	handleSignInWithEmailAndPassword,
+} from 'api'
 import { withLastLocation } from 'react-router-last-location'
 
 // constants
@@ -17,6 +21,7 @@ import {
 	TERM_VALIDATION,
 	SUBMIT_ERRORS,
 	VALID,
+	SUCCEED,
 } from 'utils/signUpConstants'
 import { WILL_UNMOUNT, DATA, STATUS } from 'utils/commonConstants'
 
@@ -103,7 +108,6 @@ class RegisterPage extends React.Component {
 	render() {
 		const {
 			state: { maxHeight, squares7and8, squares1to6 },
-			setState,
 			props: { history, lastLocation },
 		} = this
 		return (
@@ -162,7 +166,7 @@ class RegisterPage extends React.Component {
 															const {
 																[STATUS]: status,
 																[DATA]: data,
-															} = await handleSignUp(values)
+															} = await handleSignUpWithEmailAndPassword(values)
 															for (let property in data) {
 																signUp.state[
 																	property + SUBMIT_ERRORS
@@ -178,8 +182,14 @@ class RegisterPage extends React.Component {
 																} else {
 																	history.push('/index')
 																}
-																// do redirection here
-																return // if undefined mean no error and the page will redirect
+																signUp.state[SUCCEED] = true
+																handleSignInWithEmailAndPassword(
+																	signUp.state[EMAIL],
+																	signUp.state[PASSWORD]
+																)
+																// if undefined mean no error
+																// but this not much point since it will redirect and unmount soon
+																return
 															}
 															return data
 														}}>
@@ -282,7 +292,7 @@ class RegisterPage extends React.Component {
 																</CardBody>
 																<CardFooter>
 																	<Row className='d-flex'>
-																		<Col className='col-3' />
+																		<Col className='col-2' />
 																		<Col className='pl-0 pr-0 d-flex justify-content-center'>
 																			<Button
 																				className='btn-round'
@@ -305,7 +315,7 @@ class RegisterPage extends React.Component {
 																				)}
 																			</Button>
 																		</Col>
-																		<Col className='col-3' />
+																		<Col className='col-2' />
 																	</Row>
 																	<Row className='d-flex'>
 																		<Col />
