@@ -16,8 +16,9 @@ import {
 } from 'reactstrap'
 
 import ReactResizeDetector from 'react-resize-detector'
-import { EXTRA_HEIGHT } from 'utils/signUpConstants'
-import { WILL_UNMOUNT, STATUS, MESSAGE } from 'utils/commonConstants'
+import MessageList from 'components/InputField/MessageList'
+import { EXTRA_HEIGHT, VALID, SUBMIT_ERRORS } from 'utils/signUpConstants'
+import { WILL_UNMOUNT, STATUS } from 'utils/commonConstants'
 
 const InputField = props => {
 	const {
@@ -38,7 +39,6 @@ const InputField = props => {
 		delay: 0,
 		timeOutID: 0,
 		focused: true,
-		invalid: true,
 		value: '',
 		promise: Promise.resolve(['Invalid']),
 		resolve: () => {},
@@ -56,62 +56,22 @@ const InputField = props => {
 				[name + EXTRA_HEIGHT]: ref.current.clientHeight,
 			}))
 	}
-	const generateMessageList = (validationResult, resolve) => {
-		// if validationResult is undefined, it passed validation
-		// if validationResult is {status:true/false, message:string/array of string} and if the status is true, it passed validation
-		// if validationResult is string or array of string, it failed validation
-		const isObj = validationResult && validationResult[STATUS]
-		const msg = isObj
-			? Array.isArray(validationResult[MESSAGE])
-				? validationResult[MESSAGE]
-				: [validationResult[MESSAGE]]
-			: Array.isArray(validationResult)
-			? validationResult
-			: [validationResult]
-		const messageList =
-			(validationResult &&
-				msg.map(error => {
-					return (
-						<Alert
-							className={'mb-1 pb-0 pt-0'}
-							color='danger'
-							key={error}
-							style={{
-								backgroundColor: 'transparent',
-							}}
-							// due to limitation of final form, we cannot use fade without sacrificing UX (flicking)
-							// it is very difficult to fix the flicking(but possible, need more control)
-							fade={false} //https://github.com/reactstrap/reactstrap/pull/1078
-						>
-							<Row>
-								{type === 'checkbox' && (
-									<Col
-										className='col-1' // indent for checkbox
-									/>
-								)}
-								<Col className='col-1'>
-									<i className='tim-icons icon-alert-circle-exc text-success' />
-								</Col>
-								<Col className='col-auto'>
-									<small className='text-muted'>{error}</small>
-								</Col>
-							</Row>
-						</Alert>
-					)
-				})) ||
-			[]
+
+	const generateMessageListWithState = (validationResult, resolve) => {
+		const messageList = MessageList({ validationResult, type })
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, state.delay = 0 tell us that the component never been visited, this solve icon flickering
 		!container.state[WILL_UNMOUNT] && setMessageList(messageList) // do not run setState if parent component going to unmount to prevent memory leak issue
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
-			state.invalid = false
+			container.state[name + VALID] = true
 			resolve()
 		} else {
 			// if validation failed
-			state.invalid = true
+			container.state[name + VALID] = false
 			resolve(validationResult)
 		}
+		return messageList
 	}
 
 	return (
@@ -125,7 +85,7 @@ const InputField = props => {
 						// do not reject when doing server validation
 						!spinner2 && state.resolve(['validating'])
 						state.resolve = resolve
-						state.invalid = true
+						container.state[name + VALID] = false
 						showSpinner(true)
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
@@ -134,17 +94,17 @@ const InputField = props => {
 								.then(() => {
 									if (asyncValidation) {
 										showSpinner2(true)
-										// verify the existence of email
+										// server side validation on typing
 										asyncValidation(value).then(validationResult => {
-											generateMessageList(validationResult, resolve)
+											generateMessageListWithState(validationResult, resolve)
 											showSpinner2(false)
 										})
 									} else {
-										generateMessageList(undefined, resolve)
+										generateMessageListWithState(undefined, resolve)
 									}
 								})
 								.catch(result => {
-									generateMessageList(result.errors, resolve)
+									generateMessageListWithState(result.errors, resolve)
 								})
 						}, state.delay)
 						state.timeOutID = timeOutID
@@ -160,11 +120,12 @@ const InputField = props => {
 					touched,
 					active,
 					modified,
-					submitError,
 					dirtySinceLastSubmit,
+					submitting,
+					submitSucceeded,
 				} = meta
-				const { invalid } = state
 				console.log(meta)
+
 				return (
 					<>
 						{type !== 'checkbox' && (
@@ -172,11 +133,13 @@ const InputField = props => {
 								className={classnames({
 									'has-danger':
 										!spinner &&
-										invalid &&
+										!spinner2 &&
+										!container.state[name + VALID] &&
 										((touched && !active) || (active && modified)),
 									'has-success':
 										!spinner &&
-										!invalid &&
+										!spinner2 &&
+										container.state[name + VALID] &&
 										((touched && !active) || (active && modified)),
 									'input-group-focus': active,
 									'mb-1': true,
@@ -266,8 +229,12 @@ const InputField = props => {
 							ref={ref} // function component cannot have ref, class and html element can
 						>
 							{!spinner &&
+								!submitSucceeded &&
 								(touched || (active && modified)) &&
-								((!dirtySinceLastSubmit && submitError) || messageList)}
+								((!dirtySinceLastSubmit &&
+									!submitting &&
+									container.state[name + SUBMIT_ERRORS]) ||
+									messageList)}
 							<ReactResizeDetector
 								handleWidth
 								handleHeight
