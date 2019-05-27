@@ -3,6 +3,7 @@ import React from 'react'
 // routing and api
 import { Link } from 'react-router-dom'
 import { handleSignUp, handleIsUserExist } from 'api'
+import { withLastLocation } from 'react-router-last-location'
 
 // constants
 import {
@@ -17,7 +18,7 @@ import {
 	SUBMIT_ERRORS,
 	VALID,
 } from 'utils/signUpConstants'
-import { WILL_UNMOUNT } from 'utils/commonConstants'
+import { WILL_UNMOUNT, DATA, STATUS } from 'utils/commonConstants'
 
 // form validation
 import { Form as FinalForm } from 'react-final-form'
@@ -50,6 +51,7 @@ import IndexNavbar from 'components/Navbars/IndexNavbar.jsx'
 import Footer from 'components/Footers/Footer.jsx'
 import InputField from 'components/InputField/InputField'
 import MessageList from 'components/InputField/MessageList'
+import Loader from 'react-loader-spinner'
 
 const {
 	[EMAIL_VALIDATION]: emailValidation,
@@ -70,7 +72,9 @@ class RegisterPage extends React.Component {
 		document.scrollingElement.scrollTop = 0
 		this.refs.wrapper.scrollTop = 0
 		document.body.classList.add('register-page')
-		document.documentElement.addEventListener('mousemove', this.followCursor)
+		// stop this listener in dev mode to ease development (it setState a LOT!)
+		process.env.REACT_APP_FOLLOW_CURSOR &&
+			document.documentElement.addEventListener('mousemove', this.followCursor)
 		signUp.state[WILL_UNMOUNT] = false
 	}
 	componentWillUnmount() {
@@ -97,6 +101,11 @@ class RegisterPage extends React.Component {
 		})
 	}
 	render() {
+		const {
+			state: { maxHeight, squares7and8, squares1to6 },
+			setState,
+			props: { history, lastLocation },
+		} = this
 		return (
 			<>
 				<IndexNavbar />
@@ -108,16 +117,12 @@ class RegisterPage extends React.Component {
 								style={{
 									display: 'block',
 									maxHeight:
-										this.state.maxHeight +
+										maxHeight +
 										(signUp.state[EMAIL_EXTRA_HEIGHT] || 0) +
 										(signUp.state[PASSWORD_EXTRA_HEIGHT] || 0) +
 										'px',
-								}}
-								ref={divElement => (this.divElement = divElement)}>
+								}}>
 								<div className='page-header-image' />
-								{/* <Container>
-									<Row>
-										<Col className='mx-auto' lg='5' md='12'> */}
 								<div className='content' style={{ marginTop: '5%' }}>
 									<Container className='container-fluid'>
 										<Row>
@@ -125,12 +130,12 @@ class RegisterPage extends React.Component {
 												<div
 													className='square square-7'
 													id='square7'
-													style={{ transform: this.state.squares7and8 }}
+													style={{ transform: squares7and8 }}
 												/>
 												<div
 													className='square square-8'
 													id='square8'
-													style={{ transform: this.state.squares7and8 }}
+													style={{ transform: squares7and8 }}
 												/>
 												<Card className='card-register'>
 													<CardHeader>
@@ -154,7 +159,10 @@ class RegisterPage extends React.Component {
 														}}
 														decorators={[focusOnError]}
 														onSubmit={async values => {
-															const data = await handleSignUp(values)
+															const {
+																[STATUS]: status,
+																[DATA]: data,
+															} = await handleSignUp(values)
 															for (let property in data) {
 																signUp.state[
 																	property + SUBMIT_ERRORS
@@ -164,8 +172,12 @@ class RegisterPage extends React.Component {
 																})
 																signUp.state[property + VALID] = !data[property]
 															}
-															if (!data) {
-																signUp.state[EMAIL] = data[EMAIL]
+															if (status) {
+																if (lastLocation) {
+																	history.goBack()
+																} else {
+																	history.push('/index')
+																}
 																// do redirection here
 																return // if undefined mean no error and the page will redirect
 															}
@@ -233,7 +245,7 @@ class RegisterPage extends React.Component {
 																		// ! the field components will run validation
 																		// ! these is not good as the validation process involving steState in a promise
 																		// ! there will be memory leak warning if you try to setState on unmounted component
-																		// ! seem like problem of react final form
+																		// ! seem like problem of either react final form or react router
 																		// * implement life cycle method of parent component to solve these issue
 																		// * tested, above solution works, trace WILL_UNMOUNT in didComponentMount and willComponentUnmount method to get further insight
 																		*/}
@@ -278,7 +290,19 @@ class RegisterPage extends React.Component {
 																				size='lg'
 																				disabled={submitting}
 																				onClick={handleSubmit}>
-																				Sign Up
+																				{submitting ? (
+																					<>
+																						<Loader
+																							type='Watch'
+																							color='#00BFFF'
+																							height='19px'
+																							width='19px'
+																						/>
+																						&nbsp;&nbsp;Signing Up
+																					</>
+																				) : (
+																					'Sign Up'
+																				)}
 																			</Button>
 																		</Col>
 																		<Col className='col-3' />
@@ -310,32 +334,32 @@ class RegisterPage extends React.Component {
 									<div
 										className='square square-1'
 										id='square1'
-										style={{ transform: this.state.squares1to6 }}
+										style={{ transform: squares1to6 }}
 									/>
 									<div
 										className='square square-2'
 										id='square2'
-										style={{ transform: this.state.squares1to6 }}
+										style={{ transform: squares1to6 }}
 									/>
 									<div
 										className='square square-3'
 										id='square3'
-										style={{ transform: this.state.squares1to6 }}
+										style={{ transform: squares1to6 }}
 									/>
 									<div
 										className='square square-4'
 										id='square4'
-										style={{ transform: this.state.squares1to6 }}
+										style={{ transform: squares1to6 }}
 									/>
 									<div
 										className='square square-5'
 										id='square5'
-										style={{ transform: this.state.squares1to6 }}
+										style={{ transform: squares1to6 }}
 									/>
 									<div
 										className='square square-6'
 										id='square6'
-										style={{ transform: this.state.squares1to6 }}
+										style={{ transform: squares1to6 }}
 									/>
 								</div>
 							</div>
@@ -348,4 +372,4 @@ class RegisterPage extends React.Component {
 	}
 }
 
-export default RegisterPage
+export default withLastLocation(RegisterPage)
