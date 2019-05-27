@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import * as serviceWorker from 'serviceWorker'
+
+// routing
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { LastLocationProvider } from 'react-router-last-location'
 
 // state management
 import { Provider } from 'unstated'
@@ -41,36 +44,41 @@ import SignUpPage from 'views/SignUpPage'
 ReactDOM.render(
 	<Provider to={[signUp]}>
 		<BrowserRouter>
-			<Switch>
-				<Route path='/index' render={props => <Index {...props} />} />
-				<Route
-					path='/presentation'
-					render={props => <Presentation {...props} />}
-				/>
-				<Route path='/sections' render={props => <Sections {...props} />} />
-				<Route path='/about' render={props => <AboutUs {...props} />} />
-				<Route path='/blog' render={props => <BlogPost {...props} />} />
-				<Route path='/blogs' render={props => <BlogPosts {...props} />} />
-				<Route path='/contact' render={props => <ContactUs {...props} />} />
-				<Route path='/landing' render={props => <LandingPage {...props} />} />
-				<Route path='/pricing' render={props => <Pricing {...props} />} />
-				<Route path='/eCommerce' render={props => <Ecommerce {...props} />} />
-				<Route path='/product' render={props => <ProductPage {...props} />} />
-				<Route path='/profile' render={props => <ProfilePage {...props} />} />
-				<Route path='/404' render={props => <Error404 {...props} />} />
-				<Route path='/500' render={props => <Error500 {...props} />} />
-				<Route
-					path='/settings'
-					render={props => <AccountSettings {...props} />}
-				/>
-				<Route path='/reset' render={props => <ResetPage {...props} />} />
-				<Route path='/invoice' render={props => <InvoicePage {...props} />} />
-				<Route path='/signUp' render={props => <SignUpPage {...props} />} />
-				<Route path='/signIn' render={props => <SignInPage {...props} />} />
-				<Route path='/checkOut' render={props => <CheckoutPage {...props} />} />
-				<Route path='/chat' render={props => <ChatPage {...props} />} />
-				<Redirect from='/' to='/index' />
-			</Switch>
+			<LastLocationProvider>
+				<Switch>
+					<Route path='/index' render={props => <Index {...props} />} />
+					<Route
+						path='/presentation'
+						render={props => <Presentation {...props} />}
+					/>
+					<Route path='/sections' render={props => <Sections {...props} />} />
+					<Route path='/about' render={props => <AboutUs {...props} />} />
+					<Route path='/blog' render={props => <BlogPost {...props} />} />
+					<Route path='/blogs' render={props => <BlogPosts {...props} />} />
+					<Route path='/contact' render={props => <ContactUs {...props} />} />
+					<Route path='/landing' render={props => <LandingPage {...props} />} />
+					<Route path='/pricing' render={props => <Pricing {...props} />} />
+					<Route path='/eCommerce' render={props => <Ecommerce {...props} />} />
+					<Route path='/product' render={props => <ProductPage {...props} />} />
+					<Route path='/profile' render={props => <ProfilePage {...props} />} />
+					<Route path='/404' render={props => <Error404 {...props} />} />
+					<Route path='/500' render={props => <Error500 {...props} />} />
+					<Route
+						path='/settings'
+						render={props => <AccountSettings {...props} />}
+					/>
+					<Route path='/reset' render={props => <ResetPage {...props} />} />
+					<Route path='/invoice' render={props => <InvoicePage {...props} />} />
+					<Route path='/signUp' render={props => <SignUpPage {...props} />} />
+					<Route path='/signIn' render={props => <SignInPage {...props} />} />
+					<Route
+						path='/checkOut'
+						render={props => <CheckoutPage {...props} />}
+					/>
+					<Route path='/chat' render={props => <ChatPage {...props} />} />
+					<Redirect from='/' to='/index' />
+				</Switch>
+			</LastLocationProvider>
 		</BrowserRouter>
 	</Provider>,
 	document.getElementById('root')
