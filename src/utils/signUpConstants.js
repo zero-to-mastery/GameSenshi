@@ -23,6 +23,7 @@ const IS_USER_EXIST = 'IsUserExist'
 const SIGN_UP = 'SignUp'
 const ON_SIGN_UP = ON + SIGN_UP
 const ON_IS_USER_EXIST = ON + IS_USER_EXIST
+const SUCCEED = 'succeed'
 
 export {
 	EMAIL,
@@ -45,4 +46,5 @@ export {
 	TERM_VALIDATION,
 	ON_SIGN_UP,
 	ON_IS_USER_EXIST,
+	SUCCEED,
 }
