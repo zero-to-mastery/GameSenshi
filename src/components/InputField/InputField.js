@@ -121,7 +121,6 @@ const InputField = props => {
 					submitting,
 					submitSucceeded,
 				} = meta
-				console.log(meta)
 
 				return (
 					<>
@@ -226,10 +225,11 @@ const InputField = props => {
 							ref={ref} // function component cannot have ref, class and html element can
 						>
 							{!spinner &&
+								!spinner2 &&
+								!submitting &&
 								!submitSucceeded &&
 								(touched || (active && modified)) &&
 								((!dirtySinceLastSubmit &&
-									!submitting &&
 									container.state[name + SUBMIT_ERRORS]) ||
 									messageList)}
 							<ReactResizeDetector

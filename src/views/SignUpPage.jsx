@@ -22,6 +22,7 @@ import { WILL_UNMOUNT } from 'utils/commonConstants'
 // form validation
 import { Form as FinalForm } from 'react-final-form'
 import { signUpValidation } from 'utils/validation'
+import createDecorator from 'final-form-focus'
 
 // state management
 import { Subscribe } from 'unstated'
@@ -55,6 +56,8 @@ const {
 	[PASSWORD_VALIDATION]: passwordValidation,
 	[TERM_VALIDATION]: termValidation,
 } = signUpValidation
+
+const focusOnError = createDecorator()
 
 class RegisterPage extends React.Component {
 	state = {
@@ -149,9 +152,9 @@ class RegisterPage extends React.Component {
 															[PASSWORD]: '',
 															[TERM]: false,
 														}}
+														decorators={[focusOnError]}
 														onSubmit={async values => {
 															const data = await handleSignUp(values)
-															console.log('i am here', data)
 															for (let property in data) {
 																signUp.state[
 																	property + SUBMIT_ERRORS
