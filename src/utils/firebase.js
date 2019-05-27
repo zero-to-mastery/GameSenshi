@@ -1,6 +1,5 @@
-// in future this should turn into npm library so that backend can use the same code
-
 import * as firebase from 'firebase/app'
+import 'firebase/auth'
 import 'firebase/functions'
 
 const firebaseConfig = {
@@ -15,6 +14,18 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
+const auth = firebase.auth
+
+// user auth listener
+auth().onAuthStateChanged(function(user) {
+	console.log(user, 'Signed In!')
+	if (user) {
+		// User is signed in.
+	} else {
+		// User is signed out.
+	}
+})
+
 const functions = firebase.functions()
 
-export { functions, firebase }
+export { functions, firebase, auth }
