@@ -4,9 +4,6 @@ import { Field } from 'react-final-form'
 import Loader from 'react-loader-spinner'
 
 import {
-	Row,
-	Col,
-	Alert,
 	Input,
 	FormGroup,
 	Label,
