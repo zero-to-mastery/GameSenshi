@@ -14,6 +14,8 @@ import {
 	EMAIL_VALIDATION,
 	PASSWORD_VALIDATION,
 	TERM_VALIDATION,
+	SUBMIT_ERRORS,
+	VALID,
 } from 'utils/signUpConstants'
 import { WILL_UNMOUNT } from 'utils/commonConstants'
 
@@ -46,6 +48,7 @@ import {
 import IndexNavbar from 'components/Navbars/IndexNavbar.jsx'
 import Footer from 'components/Footers/Footer.jsx'
 import InputField from 'components/InputField/InputField'
+import MessageList from 'components/InputField/MessageList'
 
 const {
 	[EMAIL_VALIDATION]: emailValidation,
@@ -146,9 +149,24 @@ class RegisterPage extends React.Component {
 															[PASSWORD]: '',
 															[TERM]: false,
 														}}
-														onSubmit={values => {
-															console.log('submitted', values)
-															return handleSignUp(values)
+														onSubmit={async values => {
+															const data = await handleSignUp(values)
+															console.log('i am here', data)
+															for (let property in data) {
+																signUp.state[
+																	property + SUBMIT_ERRORS
+																] = MessageList({
+																	validationResult: data[property],
+																	type: undefined,
+																})
+																signUp.state[property + VALID] = !data[property]
+															}
+															if (!data) {
+																signUp.state[EMAIL] = data[EMAIL]
+																// do redirection here
+																return // if undefined mean no error and the page will redirect
+															}
+															return data
 														}}>
 														{({ handleSubmit, submitting }) => (
 															<>
