@@ -171,7 +171,7 @@ const InputField = props => {
 										// so the role of state here is just to pass value to Field's validate prop
 										// basically it is how you would use a plain variable
 										state.delay = 1000
-										state.input = e.target.value
+										container.state[name] = e.target.value
 										input.onChange(e)
 									}}
 									onFocus={e => {
@@ -192,7 +192,7 @@ const InputField = props => {
 									<Input
 										{...input}
 										onChange={e => {
-											state.input = e.target.value
+											container.state[name] = e.target.value
 											// ! bug, details https://github.com/final-form/react-final-form/issues/134
 											state.focused = true
 											input.onFocus(e)
