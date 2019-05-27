@@ -21,7 +21,7 @@ const {
 	[ENV]: { [VERIFY_EMAIL_API_KEY]: verify_email_api_key },
 } = functions.config()
 
-const handleSignUp = async (data, context) => {
+const handleSignUpWithEmailAndPassword = async (data, context) => {
 	const {
 		[EMAIL_VALIDATION]: emailValidation,
 		[PASSWORD_VALIDATION]: passwordValidation,
@@ -100,4 +100,4 @@ const handleSignUp = async (data, context) => {
 	}
 }
 
-export default handleSignUp
+export default handleSignUpWithEmailAndPassword
