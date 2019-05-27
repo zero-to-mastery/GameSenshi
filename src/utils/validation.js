@@ -12,7 +12,7 @@ const signUpValidation = {
 	[EMAIL_VALIDATION]: value =>
 		string()
 			.required('Email is required')
-			.email('Email not valid')
+			.email('Bad email format')
 			.validate(value, {
 				abortEarly: false,
 			}),
