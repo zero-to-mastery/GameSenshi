@@ -6,7 +6,6 @@ const handleIsUserExist = email => {
 	const verifyEmail = functions.httpsCallable(ON_IS_USER_EXIST)
 	return verifyEmail({ email })
 		.then(res => {
-			console.log(res)
 			if (!res[DATA][STATUS]) {
 				return res[DATA][MESSAGE]
 			} else {
