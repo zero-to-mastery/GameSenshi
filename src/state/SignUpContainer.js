@@ -1,6 +1,5 @@
 import { Container } from 'unstated'
 import {
-	EMAIL,
 	SUBMITTING,
 	EMAIL_VALID,
 	PASSWORD_VALID,
@@ -14,7 +13,6 @@ import { WILL_UNMOUNT } from 'utils/commonConstants'
 
 class SignUpContainer extends Container {
 	state = {
-		[EMAIL]: '',
 		[EMAIL_VALID]: false,
 		[PASSWORD_VALID]: false,
 		[TERM_VALID]: false,
