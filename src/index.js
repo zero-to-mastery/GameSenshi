@@ -21,6 +21,7 @@ import 'assets/css/game-senshi.css'
 import Index from 'views/Index.jsx'
 import Presentation from 'views/Presentation.jsx'
 import Sections from 'views/Sections.jsx'
+
 // example pages
 import AboutUs from 'views/examples/AboutUs.jsx'
 import BlogPost from 'views/examples/BlogPost.jsx'
