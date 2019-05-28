@@ -61,11 +61,11 @@ const InputField = props => {
 		!container.state[WILL_UNMOUNT] && setMessageList(messageList) // do not run setState if parent component going to unmount to prevent memory leak issue
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
-			container.state[name + VALID] = true
+			container.setState({ [name + VALID]: true })
 			resolve()
 		} else {
 			// if validation failed
-			container.state[name + VALID] = false
+			container.setState({ [name + VALID]: false })
 			resolve(validationResult)
 		}
 		return messageList
@@ -82,7 +82,7 @@ const InputField = props => {
 						// do not reject when doing server validation
 						!spinner2 && state.resolve(['validating'])
 						state.resolve = resolve
-						container.state[name + VALID] = false
+						container.setState({ [name + VALID]: false })
 						showSpinner(true)
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
