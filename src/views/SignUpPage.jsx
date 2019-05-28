@@ -37,7 +37,7 @@ import createDecorator from 'final-form-focus'
 import { Subscribe } from 'unstated'
 import { signUp } from 'state'
 
-// reactstrap components
+// react libraries components
 import {
 	Button,
 	Card,
@@ -53,13 +53,10 @@ import {
 	Row,
 	Col,
 } from 'reactstrap'
+import Loader from 'react-loader-spinner'
 
 // core components
-import IndexNavbar from 'components/Navbars/IndexNavbar.jsx'
-import Footer from 'components/Footers/Footer.jsx'
-import InputField from 'components/InputField/InputField'
-import MessageList from 'components/InputField/MessageList'
-import Loader from 'react-loader-spinner'
+import { IndexNavbar, Footer, InputField, MessageList } from 'components'
 
 const {
 	[EMAIL_VALIDATION]: emailValidation,
