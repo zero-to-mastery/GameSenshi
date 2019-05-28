@@ -7,7 +7,7 @@ const buildSW = () => {
 			swSrc: 'src/sw-template.js', // this is your sw template file
 			swDest: 'build/sw.js', // this will be created in the build step
 			globDirectory: 'build',
-			globPatterns: ['**/*.{js,css,html,png}'],
+			globPatterns: ['**/*.{js,css,html}'],
 		})
 		.then(({ count, size, warnings }) => {
 			// Optionally, log any warnings and details.
