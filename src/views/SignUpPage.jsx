@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom'
 import {
 	handleSignUpWithEmailAndPassword,
 	handleIsUserExist,
+	handleSignInWithGoogle,
+	handleSignInWithFacebook,
 	handleSignInWithEmailAndPassword,
+	handleSignInWithTwitter,
 } from 'api'
 import { withLastLocation } from 'react-router-last-location'
 
@@ -203,7 +206,16 @@ class RegisterPage extends React.Component {
 																			color='facebook'
 																			href=''
 																			id='facebook'
-																			target='_blank'>
+																			target='_blank'
+																			onClick={e => {
+																				e.preventDefault()
+																				if (lastLocation) {
+																					history.goBack()
+																				} else {
+																					history.push('/index')
+																				}
+																				handleSignInWithFacebook()
+																			}}>
 																			<i className='fab fa-facebook-square' />
 																		</Button>
 																		<UncontrolledTooltip
@@ -217,7 +229,16 @@ class RegisterPage extends React.Component {
 																			color='warning'
 																			href=''
 																			id='google'
-																			target='_blank'>
+																			target='_blank'
+																			onClick={e => {
+																				e.preventDefault()
+																				if (lastLocation) {
+																					history.goBack()
+																				} else {
+																					history.push('/index')
+																				}
+																				handleSignInWithGoogle()
+																			}}>
 																			<i className='fab fa-google' />
 																		</Button>
 																		<UncontrolledTooltip
@@ -231,7 +252,16 @@ class RegisterPage extends React.Component {
 																			color='twitter'
 																			href=''
 																			id='twitter'
-																			target='_blank'>
+																			target='_blank'
+																			onClick={e => {
+																				e.preventDefault()
+																				if (lastLocation) {
+																					history.goBack()
+																				} else {
+																					history.push('/index')
+																				}
+																				handleSignInWithTwitter()
+																			}}>
 																			<i className='fab fa-twitter' />
 																		</Button>
 																		<UncontrolledTooltip
