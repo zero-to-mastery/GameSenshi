@@ -1,15 +1,19 @@
 import { Container } from 'unstated'
 import {
-	EMAIL,
-	PASSWORD,
-	TERM,
 	SUBMITTING,
+	EMAIL,
 	EMAIL_VALID,
-	PASSWORD_VALID,
-	TERM_VALID,
 	EMAIL_SUBMIT_ERRORS,
+	PASSWORD,
+	PASSWORD_VALID,
 	PASSWORD_SUBMIT_ERRORS,
+	TERM,
+	TERM_VALID,
 	TERM_SUBMIT_ERRORS,
+	USERNAME,
+	USERNAME_VALID,
+	USERNAME_VALIDATION,
+	USERNAME_SUBMIT_ERRORS,
 	SUCCEED,
 } from 'utils/signUpConstants'
 
@@ -17,18 +21,22 @@ import { WILL_UNMOUNT } from 'utils/commonConstants'
 
 class SignUpContainer extends Container {
 	state = {
-		[EMAIL]: '',
-		[PASSWORD]: '',
-		[TERM]: false,
-		[EMAIL_VALID]: false,
-		[PASSWORD_VALID]: false,
-		[TERM_VALID]: false,
+		[SUCCEED]: false,
 		[SUBMITTING]: false,
 		[WILL_UNMOUNT]: false,
+		[EMAIL]: '',
+		[EMAIL_VALID]: false,
 		[EMAIL_SUBMIT_ERRORS]: undefined,
+		[PASSWORD]: '',
+		[PASSWORD_VALID]: false,
 		[PASSWORD_SUBMIT_ERRORS]: undefined,
+		[TERM]: false,
+		[TERM_VALID]: false,
 		[TERM_SUBMIT_ERRORS]: undefined,
-		[SUCCEED]: false,
+		[USERNAME]: '',
+		[USERNAME_VALID]: false,
+		[USERNAME_VALIDATION]: false,
+		[USERNAME_SUBMIT_ERRORS]: undefined,
 	}
 }
 
