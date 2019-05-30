@@ -36,8 +36,6 @@ const ON_SIGN_UP = ON + SIGN_UP
 const SIGNED_IN = 'signed_in'
 const IS_EMAIL_EXIST = IS + EMAIL + EXIST
 const ON_IS_EMAIL_EXIST = ON + IS_EMAIL_EXIST
-const IS_USERNAME_EXIST = IS + USERNAME + EXIST
-const ON_IS_USERNAME_EXIST = ON + IS_USERNAME_EXIST
 
 // TODO: gonna remove extra height feature someday
 
@@ -67,6 +65,5 @@ export {
 	USERNAME_SUBMIT_ERRORS,
 	ON_SIGN_UP,
 	ON_IS_EMAIL_EXIST,
-	ON_IS_USERNAME_EXIST,
 	SIGNED_IN,
 }
