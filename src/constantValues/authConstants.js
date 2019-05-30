@@ -1,7 +1,7 @@
 const ON = 'On'
 const IS = 'Is'
 const VALID = 'Valid'
-const EXIST = 'Eist'
+const EXIST = 'Exist'
 const IS_VALID = IS + VALID
 const SUBMITTING = 'Submitting'
 const VALIDATION = 'Validation'

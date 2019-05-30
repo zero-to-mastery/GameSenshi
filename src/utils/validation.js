@@ -23,7 +23,7 @@ const nameValidation = value =>
 		.max(15, 'maximum length is 15')
 		.matches(
 			/^[a-z0-9-_]+$/,
-			'special characters other than underscore is not allowed'
+			'special characters other than underscore are not allowed'
 		)
 		.validate(value)
 
