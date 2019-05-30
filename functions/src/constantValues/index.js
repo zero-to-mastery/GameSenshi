@@ -46,7 +46,7 @@ import {
 	ON_SIGN_UP,
 	ON_IS_EMAIL_EXIST,
 	SIGNED_IN,
-} from 'constantValues'
+} from 'constantValues/authConstants'
 
 export {
 	ENV,
