@@ -1,7 +1,7 @@
 import { functions } from 'utils/firebase'
 
 import {
-	USERNAME,
+	DISPLAYNAME,
 	EMAIL,
 	PASSWORD,
 	TERM,
@@ -12,7 +12,7 @@ import {
 const handleSignUpWithEmailAndPassword = values => {
 	const defaultValues = {
 		// undefined = success
-		[USERNAME]: undefined,
+		[DISPLAYNAME]: undefined,
 		[EMAIL]: undefined,
 		[PASSWORD]: undefined,
 		[TERM]: undefined,
