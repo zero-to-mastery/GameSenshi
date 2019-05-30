@@ -13,41 +13,44 @@ import {
 import badWords from './badWords'
 import reservedUsername from './reservedUsername'
 
+const forbiddenName = [...badWords, ...reservedUsername]
+
 const nameValidation = value =>
 	string()
 		.lowercase()
-		.notOneOf(
-			[...badWords, ...reservedUsername],
-			'This username is not available'
-		)
+		.notOneOf(forbiddenName, 'This username is not available')
 		.required('username is required')
 		.max(15, 'maximum length is 15')
-		.matches(/^[a-zA-Z0-9-_]+$/, 'can only be alphanumeric or underscore')
-		.validate(value, {
-			abortEarly: true,
-		})
+		.matches(
+			/^[a-z0-9-_]+$/,
+			'special characters other than underscore is not allowed'
+		)
+		.validate(value)
 
 const signUpValidation = {
 	[EMAIL_VALIDATION]: value =>
 		string()
 			.required('Email is required')
 			.email('Bad email format')
-			.validate(value, {
-				abortEarly: true, //abort on first error
-			}),
+			.validate(value),
 	[PASSWORD_VALIDATION]: value =>
 		string()
-			.required('Password is required')
 			.min(8, 'Password must be 8 characters or longer')
+			.matches(
+				/^(?=.*[a-z])(?=.*[0-9]).*$/,
+				'must consist of number and alphabet'
+			)
+			.matches(
+				/^(?=.*\W)|(?=.*[A-Z]).*$/,
+				'must consist of one or more special character or uppercase'
+			)
 			.validate(value, {
-				abortEarly: true,
+				abortEarly: false,
 			}),
 	[TERM_VALIDATION]: value =>
 		boolean()
 			.oneOf([true], 'Must Accept Terms and Conditions')
-			.validate(value, {
-				abortEarly: true,
-			}),
+			.validate(value),
 	[USERNAME_VALIDATION]: nameValidation,
 }
 
