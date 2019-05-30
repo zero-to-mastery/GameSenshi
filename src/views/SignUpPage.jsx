@@ -29,7 +29,7 @@ import {
 	TERM,
 	TERM_VALIDATION,
 	SUBMIT_ERRORS,
-	VALID,
+	IS_VALID,
 	SIGNED_IN,
 } from 'constantValues'
 
@@ -181,7 +181,9 @@ class RegisterPage extends React.Component {
 																	validationResult: data[property],
 																	type: undefined,
 																})
-																signUp.state[property + VALID] = !data[property]
+																signUp.state[property + IS_VALID] = !data[
+																	property
+																]
 															}
 															if (status) {
 																if (lastLocation) {

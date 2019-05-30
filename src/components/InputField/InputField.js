@@ -16,7 +16,7 @@ import ReactResizeDetector from 'react-resize-detector'
 import MessageList from 'components/InputField/MessageList'
 import {
 	EXTRA_HEIGHT,
-	VALID,
+	IS_VALID,
 	SUBMIT_ERRORS,
 	WILL_UNMOUNT,
 	STATUS,
@@ -66,11 +66,11 @@ const InputField = props => {
 		!container.state[WILL_UNMOUNT] && setMessageList(messageList) // do not run setState if parent component going to unmount to prevent memory leak issue
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
-			container.setState({ [name + VALID]: true })
+			container.setState({ [name + IS_VALID]: true })
 			resolve()
 		} else {
 			// if validation failed
-			container.setState({ [name + VALID]: false })
+			container.setState({ [name + IS_VALID]: false })
 			resolve(validationResult)
 		}
 		return messageList
@@ -87,7 +87,7 @@ const InputField = props => {
 						// do not reject when doing server validation
 						!spinner2 && state.resolve(['validating'])
 						state.resolve = resolve
-						container.setState({ [name + VALID]: false })
+						container.setState({ [name + IS_VALID]: false })
 						showSpinner(true)
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
@@ -135,12 +135,12 @@ const InputField = props => {
 									'has-danger':
 										!spinner &&
 										!spinner2 &&
-										!container.state[name + VALID] &&
+										!container.state[name + IS_VALID] &&
 										((touched && !active) || (active && modified)),
 									'has-success':
 										!spinner &&
 										!spinner2 &&
-										container.state[name + VALID] &&
+										container.state[name + IS_VALID] &&
 										((touched && !active) || (active && modified)),
 									'input-group-focus': active,
 									'mb-1': true,
