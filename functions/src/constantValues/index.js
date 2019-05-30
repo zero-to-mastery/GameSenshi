@@ -45,7 +45,7 @@ import {
 	USERNAME_SUBMIT_ERRORS,
 	ON_SIGN_UP,
 	ON_IS_USER_EXIST,
-	SUCCEED,
+	SIGNED_IN,
 } from 'constantValues'
 
 export {
@@ -87,5 +87,5 @@ export {
 	USERNAME_SUBMIT_ERRORS,
 	ON_SIGN_UP,
 	ON_IS_USER_EXIST,
-	SUCCEED,
+	SIGNED_IN,
 }

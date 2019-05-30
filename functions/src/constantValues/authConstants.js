@@ -31,7 +31,7 @@ const SIGN_UP = 'SignUp'
 const IS_USER_EXIST = 'IsUserExist'
 const ON_IS_USER_EXIST = ON + IS_USER_EXIST
 const ON_SIGN_UP = ON + SIGN_UP
-const SUCCEED = 'succeed'
+const SIGNED_IN = 'succeed'
 
 // TODO: gonna remove extra height feature someday
 
@@ -60,5 +60,5 @@ export {
 	USERNAME_SUBMIT_ERRORS,
 	ON_SIGN_UP,
 	ON_IS_USER_EXIST,
-	SUCCEED,
+	SIGNED_IN,
 }
