@@ -38,8 +38,6 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 		[TERM]: term,
 		[USERNAME]: username,
 	} = data
-	console.log('data', data)
-	console.log(email, password, term, username)
 	try {
 		const usernameInvalid = await usernameValidation(username)
 			.then(() => '')
