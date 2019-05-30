@@ -164,6 +164,7 @@ class RegisterPage extends React.Component {
 													</CardBody>
 													<FinalForm
 														initialValues={{
+															[USERNAME]: '',
 															[EMAIL]: '',
 															[PASSWORD]: '',
 															[TERM]: false,

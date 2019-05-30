@@ -11,11 +11,13 @@ import {
 	VERIFY_EMAIL_API_KEY,
 	STATUS,
 	EMAIL,
-	PASSWORD,
-	TERM,
 	EMAIL_VALIDATION,
+	PASSWORD,
 	PASSWORD_VALIDATION,
+	TERM,
 	TERM_VALIDATION,
+	USERNAME,
+	USERNAME_VALIDATION,
 } from 'constantValues'
 
 const {
@@ -27,11 +29,21 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 		[EMAIL_VALIDATION]: emailValidation,
 		[PASSWORD_VALIDATION]: passwordValidation,
 		[TERM_VALIDATION]: termValidation,
+		[USERNAME_VALIDATION]: usernameValidation,
 	} = signUpValidation
 
-	const { [EMAIL]: email, [PASSWORD]: password, [TERM]: term } = data
-
+	const {
+		[EMAIL]: email,
+		[PASSWORD]: password,
+		[TERM]: term,
+		[USERNAME]: username,
+	} = data
+	console.log('data', data)
+	console.log(email, password, term, username)
 	try {
+		const usernameInvalid = await usernameValidation(username)
+			.then(() => '')
+			.catch(result => result.errors)
 		const emailInvalid = await emailValidation(email)
 			.then(() => '')
 			.catch(result => result.errors)
@@ -42,20 +54,21 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 			.then(() => '')
 			.catch(result => result.errors)
 
-		if (emailInvalid || passwordInvalid || termInvalid) {
+		if (usernameInvalid || emailInvalid || passwordInvalid || termInvalid) {
 			return resObj(false, 'Internal Error Code 2', 2, {
+				[USERNAME]: usernameInvalid,
 				[EMAIL]: emailInvalid,
 				[PASSWORD]: passwordInvalid,
 				[TERM]: termInvalid,
 			})
 		}
-		const isUserExist = await handleIsEmailExist(data)
+		const isEmailNew = await handleIsEmailExist(data)
 
-		if (!isUserExist[STATUS]) {
-			return isUserExist
+		if (!isEmailNew[STATUS]) {
+			return isEmailNew
 		}
 
-		const isEmailExist = await req(`${verify_email_api_key}${email}`)
+		const isEmailReal = await req(`${verify_email_api_key}${email}`)
 			.then(res => {
 				const data = JSON.parse(res)
 				if (data[STATUS] === 1) {
@@ -71,8 +84,8 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 				})
 			})
 
-		if (!isEmailExist[STATUS]) {
-			return isEmailExist
+		if (!isEmailReal[STATUS]) {
+			return isEmailReal
 		}
 
 		return firebase
@@ -80,13 +93,13 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 			.createUserWithEmailAndPassword(email, password)
 			.then(credential => {
 				if (credential.user && credential.user.emailVerified === false) {
+					credential.user.sendEmailVerification().catch(err => {
+						console.log('email user failed', err)
+					})
 					credential.user
-						.sendEmailVerification()
-						.then(() => {
-							console.log('email verification sent to user')
-						})
+						.updateProfile({ displayName: username })
 						.catch(err => {
-							console.log('email user failed', err)
+							console.log('update username failed', err)
 						})
 				}
 				return resObj(true)
