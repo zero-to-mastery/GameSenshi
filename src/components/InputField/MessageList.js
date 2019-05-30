@@ -35,13 +35,13 @@ const MessageList = props => {
 					<Row>
 						{type === 'checkbox' && (
 							<Col
-								className='col-1' // indent for checkbox
+								className={'col-1'} // indent for checkbox
 							/>
 						)}
 						<Col className='col-1'>
 							<i className='tim-icons icon-alert-circle-exc text-success' />
 						</Col>
-						<Col className='col-auto'>
+						<Col className={type === 'checkbox' ? 'col-10' : 'col-11'}>
 							<small className='text-muted'>{message}</small>
 						</Col>
 					</Row>
