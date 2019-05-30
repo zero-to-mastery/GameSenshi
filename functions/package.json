@@ -4,7 +4,7 @@
 	"description": "Cloud Functions for Firebase",
 	"main": "dist/index.js",
 	"scripts": {
-		"lint": "eslint src/ --ext=js,jsx --fix",
+		"lint": "eslint src/ --fix",
 		"build": "babel src/ --out-dir dist --source-maps --copy-files",
 		"env": "env-cmd .config/prod.env babel-node uploadEnv.js",
 		"serve": "firebase serve --only functions",
@@ -100,7 +100,7 @@
 			"no-debugger": "off",
 			"no-unused-vars": "off",
 			"no-mixed-spaces-and-tabs": "off",
-			"no-undef": "off",
+			"no-undef": 2,
 			"no-template-curly-in-string": 1,
 			"consistent-return": 1,
 			"array-callback-return": 1,
