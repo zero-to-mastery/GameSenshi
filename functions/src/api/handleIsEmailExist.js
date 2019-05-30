@@ -15,7 +15,7 @@ const handleIsEmailExist = data => {
 			console.log(err)
 			if (err.code === 'auth/user-not-found') {
 				// User doesn't exist yet...
-				return resObj(true, 'User is not exist')
+				return resObj(true, 'User does not exist')
 			} else {
 				return resObj(false, 'Internal Error Code 1', 1)
 			}
