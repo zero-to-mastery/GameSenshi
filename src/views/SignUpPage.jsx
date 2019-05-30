@@ -18,16 +18,19 @@ import {
 	DATA,
 	STATUS,
 	EMAIL,
-	PASSWORD,
-	TERM,
-	EMAIL_EXTRA_HEIGHT,
-	PASSWORD_EXTRA_HEIGHT,
 	EMAIL_VALIDATION,
+	EMAIL_EXTRA_HEIGHT,
+	USERNAME,
+	USERNAME_EXTRA_HEIGHT,
+	USERNAME_VALIDATION,
+	PASSWORD,
 	PASSWORD_VALIDATION,
+	PASSWORD_EXTRA_HEIGHT,
+	TERM,
 	TERM_VALIDATION,
 	SUBMIT_ERRORS,
 	VALID,
-	SUCCEED,
+	SIGNED_IN,
 } from 'constantValues'
 
 // form validation
@@ -64,6 +67,7 @@ const {
 	[EMAIL_VALIDATION]: emailValidation,
 	[PASSWORD_VALIDATION]: passwordValidation,
 	[TERM_VALIDATION]: termValidation,
+	[USERNAME_VALIDATION]: usernameValidation,
 } = signUpValidation
 
 const focusOnError = createDecorator()
@@ -124,8 +128,9 @@ class RegisterPage extends React.Component {
 									display: 'block',
 									maxHeight:
 										maxHeight +
-										(signUp.state[EMAIL_EXTRA_HEIGHT] || 0) +
-										(signUp.state[PASSWORD_EXTRA_HEIGHT] || 0) +
+										signUp.state[EMAIL_EXTRA_HEIGHT] +
+										signUp.state[PASSWORD_EXTRA_HEIGHT] +
+										signUp.state[USERNAME_EXTRA_HEIGHT] +
 										'px',
 								}}>
 								<div className='page-header-image' />
@@ -184,7 +189,7 @@ class RegisterPage extends React.Component {
 																} else {
 																	history.push('/index')
 																}
-																signUp.state[SUCCEED] = true
+																signUp.state[SIGNED_IN] = true
 																handleSignInWithEmailAndPassword(
 																	signUp.state[EMAIL],
 																	signUp.state[PASSWORD]
@@ -289,10 +294,20 @@ class RegisterPage extends React.Component {
 																		// * tested, above solution works, trace WILL_UNMOUNT in didComponentMount and willComponentUnmount method to get further insight
 																		*/}
 																		<InputField
+																			type={USERNAME}
+																			name={USERNAME}
+																			container={signUp}
+																			placeholder='Username'
+																			icon='tim-icons icon-single-02'
+																			validation={value =>
+																				usernameValidation(value)
+																			}
+																		/>
+																		<InputField
 																			type={EMAIL}
 																			name={EMAIL}
 																			container={signUp}
-																			placeholder='Email Address'
+																			placeholder='Email'
 																			icon='tim-icons icon-email-85'
 																			validation={value =>
 																				emailValidation(value)
