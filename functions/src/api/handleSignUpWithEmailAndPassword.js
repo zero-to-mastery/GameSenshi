@@ -16,8 +16,8 @@ import {
 	PASSWORD_VALIDATION,
 	TERM,
 	TERM_VALIDATION,
-	DISPLAYNAME,
-	DISPLAYNAME_VALIDATION,
+	USERNAME,
+	USERNAME_VALIDATION,
 } from 'constantValues'
 
 const {
@@ -29,14 +29,14 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 		[EMAIL_VALIDATION]: emailValidation,
 		[PASSWORD_VALIDATION]: passwordValidation,
 		[TERM_VALIDATION]: termValidation,
-		[DISPLAYNAME_VALIDATION]: usernameValidation,
+		[USERNAME_VALIDATION]: usernameValidation,
 	} = signUpValidation
 
 	const {
 		[EMAIL]: email,
 		[PASSWORD]: password,
 		[TERM]: term,
-		[DISPLAYNAME]: username,
+		[USERNAME]: username,
 	} = data
 	try {
 		const usernameInvalid = await usernameValidation(username)
@@ -54,7 +54,7 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 
 		if (usernameInvalid || emailInvalid || passwordInvalid || termInvalid) {
 			return resObj(false, 'Internal Error Code 2', 2, {
-				[DISPLAYNAME]: usernameInvalid,
+				[USERNAME]: usernameInvalid,
 				[EMAIL]: emailInvalid,
 				[PASSWORD]: passwordInvalid,
 				[TERM]: termInvalid,

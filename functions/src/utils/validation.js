@@ -6,7 +6,7 @@ import {
 	EMAIL_VALIDATION,
 	PASSWORD_VALIDATION,
 	TERM_VALIDATION,
-	DISPLAYNAME_VALIDATION,
+	USERNAME_VALIDATION,
 } from 'constantValues'
 
 // filter
@@ -51,7 +51,7 @@ const signUpValidation = {
 		boolean()
 			.oneOf([true], 'Must Accept Terms and Conditions')
 			.validate(value),
-	[DISPLAYNAME_VALIDATION]: nameValidation,
+	[USERNAME_VALIDATION]: nameValidation,
 }
 
 export { signUpValidation }

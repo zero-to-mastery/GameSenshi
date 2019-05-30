@@ -20,9 +20,9 @@ import {
 	EMAIL,
 	EMAIL_VALIDATION,
 	EMAIL_EXTRA_HEIGHT,
-	DISPLAYNAME,
-	DISPLAYNAME_EXTRA_HEIGHT,
-	DISPLAYNAME_VALIDATION,
+	USERNAME,
+	USERNAME_EXTRA_HEIGHT,
+	USERNAME_VALIDATION,
 	PASSWORD,
 	PASSWORD_VALIDATION,
 	PASSWORD_EXTRA_HEIGHT,
@@ -67,7 +67,7 @@ const {
 	[EMAIL_VALIDATION]: emailValidation,
 	[PASSWORD_VALIDATION]: passwordValidation,
 	[TERM_VALIDATION]: termValidation,
-	[DISPLAYNAME_VALIDATION]: usernameValidation,
+	[USERNAME_VALIDATION]: usernameValidation,
 } = signUpValidation
 
 const focusOnError = createDecorator()
@@ -130,7 +130,7 @@ class RegisterPage extends React.Component {
 										maxHeight +
 										signUp.state[EMAIL_EXTRA_HEIGHT] +
 										signUp.state[PASSWORD_EXTRA_HEIGHT] +
-										signUp.state[DISPLAYNAME_EXTRA_HEIGHT] +
+										signUp.state[USERNAME_EXTRA_HEIGHT] +
 										'px',
 								}}>
 								<div className='page-header-image' />
@@ -164,7 +164,7 @@ class RegisterPage extends React.Component {
 													</CardBody>
 													<FinalForm
 														initialValues={{
-															[DISPLAYNAME]: '',
+															[USERNAME]: '',
 															[EMAIL]: '',
 															[PASSWORD]: '',
 															[TERM]: false,
@@ -297,8 +297,8 @@ class RegisterPage extends React.Component {
 																		// * tested, above solution works, trace WILL_UNMOUNT in didComponentMount and willComponentUnmount method to get further insight
 																		*/}
 																		<InputField
-																			type={DISPLAYNAME}
-																			name={DISPLAYNAME}
+																			type={USERNAME}
+																			name={USERNAME}
 																			container={signUp}
 																			placeholder='Username'
 																			icon='tim-icons icon-single-02'
