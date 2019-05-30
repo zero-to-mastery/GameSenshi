@@ -208,7 +208,6 @@ const reservedUsername = [
 	'friend',
 	'friends',
 	'ftp',
-	'gamesenshi',
 	'get',
 	'git',
 	'go',
@@ -527,4 +526,4 @@ const reservedUsername = [
 	'zlib',
 ]
 
-export default reservedUsername
+export default ['gamesenshi', 'senshi', 'game', ...reservedUsername]
