@@ -4,7 +4,7 @@ import req from 'request-promise'
 import { firebase } from 'utils/firebase'
 import { signUpValidation } from 'utils/validation'
 import { resObj } from 'utils/objects'
-import { handleIsUserExist } from 'api'
+import { handleIsEmailExist } from 'api'
 
 import {
 	ENV,
@@ -49,7 +49,7 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 				[TERM]: termInvalid,
 			})
 		}
-		const isUserExist = await handleIsUserExist(data)
+		const isUserExist = await handleIsEmailExist(data)
 
 		if (!isUserExist[STATUS]) {
 			return isUserExist

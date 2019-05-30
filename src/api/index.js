@@ -1,5 +1,5 @@
 import handleSignUpWithEmailAndPassword from 'api/handleSignUpWithEmailAndPassword'
-import handleIsUserExist from 'api/handleIsUserExist'
+import handleIsEmailExist from 'api/handleIsEmailExist'
 import handleSignInWithEmailAndPassword from 'api/handleSignInWithEmailAndPassword'
 import handleSignInWithGoogle from 'api/handleSignInWithGoogle'
 import handleSignInWithFacebook from 'api/handleSignInWithFacebook'
@@ -7,7 +7,7 @@ import handleSignInWithTwitter from 'api/handleSignInWithTwitter'
 
 export {
 	handleSignUpWithEmailAndPassword,
-	handleIsUserExist,
+	handleIsEmailExist,
 	handleSignInWithGoogle,
 	handleSignInWithFacebook,
 	handleSignInWithEmailAndPassword,

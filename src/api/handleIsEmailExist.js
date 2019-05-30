@@ -1,7 +1,7 @@
 import { functions } from 'utils/firebase'
 import { ON_IS_USER_EXIST, STATUS, MESSAGE, DATA } from 'constantValues'
 
-const handleIsUserExist = email => {
+const handleIsEmailExist = email => {
 	const verifyEmail = functions.httpsCallable(ON_IS_USER_EXIST)
 	return verifyEmail({ email })
 		.then(res => {
@@ -17,4 +17,4 @@ const handleIsUserExist = email => {
 		.catch(() => 'Unexpected Error Code 1')
 }
 
-export default handleIsUserExist
+export default handleIsEmailExist

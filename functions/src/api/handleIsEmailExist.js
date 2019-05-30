@@ -5,7 +5,7 @@ import { EMAIL } from 'constantValues'
 // this function should merge with on sign up
 // it is waste to check this when user finish typing then check again when user submit
 // a better way is to replace this with check existing email in database
-const handleIsUserExist = data => {
+const handleIsEmailExist = data => {
 	return admin
 		.auth()
 		.getUserByEmail(data[EMAIL])
@@ -25,4 +25,4 @@ const handleIsUserExist = data => {
 		})
 }
 
-export default handleIsUserExist
+export default handleIsEmailExist

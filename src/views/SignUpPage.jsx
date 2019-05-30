@@ -4,7 +4,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {
 	handleSignUpWithEmailAndPassword,
-	handleIsUserExist,
+	handleIsEmailExist,
 	handleSignInWithGoogle,
 	handleSignInWithFacebook,
 	handleSignInWithEmailAndPassword,
@@ -314,7 +314,7 @@ class RegisterPage extends React.Component {
 																			validation={value =>
 																				emailValidation(value)
 																			}
-																			asyncValidation={handleIsUserExist}
+																			asyncValidation={handleIsEmailExist}
 																		/>
 																		<InputField
 																			type={PASSWORD}
