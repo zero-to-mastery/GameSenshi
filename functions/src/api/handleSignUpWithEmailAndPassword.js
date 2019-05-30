@@ -18,6 +18,7 @@ import {
 	TERM_VALIDATION,
 	USERNAME,
 	USERNAME_VALIDATION,
+	FIREBASE_DISPLAYNAME,
 } from 'constantValues'
 
 const {
@@ -95,7 +96,7 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 						console.log('email user failed', err)
 					})
 					credential.user
-						.updateProfile({ displayName: username })
+						.updateProfile({ [FIREBASE_DISPLAYNAME]: username })
 						.catch(err => {
 							console.log('update username failed', err)
 						})
