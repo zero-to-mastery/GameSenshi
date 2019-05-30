@@ -2,9 +2,6 @@ import * as admin from 'firebase-admin'
 import { resObj } from 'utils/objects'
 import { EMAIL } from 'constantValues'
 
-// this function should merge with on sign up
-// it is waste to check this when user finish typing then check again when user submit
-// a better way is to replace this with check existing email in database
 const handleIsEmailExist = data => {
 	return admin
 		.auth()
