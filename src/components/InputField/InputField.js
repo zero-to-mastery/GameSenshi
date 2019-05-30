@@ -29,7 +29,7 @@ const InputField = props => {
 		placeholder,
 		icon,
 		type,
-		asyncValidation,
+		serverValidation,
 		container,
 	} = props
 
@@ -94,10 +94,10 @@ const InputField = props => {
 						const timeOutID = setTimeout(() => {
 							validation(value)
 								.then(() => {
-									if (asyncValidation) {
+									if (serverValidation) {
 										showSpinner2(true)
 										// server side validation on typing
-										asyncValidation(value).then(validationResult => {
+										serverValidation(value).then(validationResult => {
 											generateMessageListWithState(validationResult, resolve)
 											showSpinner2(false)
 										})
