@@ -1,19 +1,28 @@
 import { functions } from 'utils/firebase'
 
-import { EMAIL, PASSWORD, TERM, ON_SIGN_UP, DATA } from 'constantValues'
+import {
+	USERNAME,
+	EMAIL,
+	PASSWORD,
+	TERM,
+	ON_SIGN_UP,
+	DATA,
+} from 'constantValues'
 
 const handleSignUpWithEmailAndPassword = values => {
-	const { [EMAIL]: email, [PASSWORD]: password, [TERM]: term } = values
+	console.log(values)
 	const defaultValues = {
 		// undefined = success
+		[USERNAME]: undefined,
 		[EMAIL]: undefined,
 		[PASSWORD]: undefined,
 		[TERM]: undefined,
 	}
 	return functions
-		.httpsCallable(ON_SIGN_UP)({ email, password, term })
+		.httpsCallable(ON_SIGN_UP)(values)
 		.then(res => {
 			res[DATA][DATA] = { ...defaultValues, ...res[DATA][DATA] }
+			console.log(res)
 			return res[DATA]
 		})
 }
