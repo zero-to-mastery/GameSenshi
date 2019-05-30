@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin'
 import { resObj } from 'utils/objects'
-import { EMAIL } from 'utils/signUpConstants'
+import { EMAIL } from 'constantValues'
 
 // this function should merge with on sign up
 // it is waste to check this when user finish typing then check again when user submit

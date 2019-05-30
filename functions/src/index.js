@@ -4,7 +4,7 @@ import * as functions from 'firebase-functions' // https://stackoverflow.com/que
 import * as admin from 'firebase-admin'
 import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
 import { handleSignUpWithEmailAndPassword, handleIsUserExist } from 'api'
-import { ON_SIGN_UP, ON_IS_USER_EXIST } from './utils/signUpConstants'
+import { ON_SIGN_UP, ON_IS_USER_EXIST } from 'constantValues'
 
 admin.initializeApp()
 

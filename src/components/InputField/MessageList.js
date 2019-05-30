@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Row, Col, Alert } from 'reactstrap'
-import { STATUS, MESSAGE } from 'utils/commonConstants'
+import { STATUS, MESSAGE } from 'constantValues'
 
 const MessageList = props => {
 	const { validationResult, type } = props

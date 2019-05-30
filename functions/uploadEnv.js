@@ -11,7 +11,7 @@ import {
 	REACT_APP_MESSAGING_SENDER_ID,
 	REACT_APP_APP_ID,
 	VERIFY_EMAIL_API_KEY,
-} from './src/utils/envKeyConstants'
+} from './src/constantValues'
 
 const spawn = child_process.spawn
 

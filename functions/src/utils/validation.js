@@ -5,7 +5,7 @@ import {
 	EMAIL_VALIDATION,
 	PASSWORD_VALIDATION,
 	TERM_VALIDATION,
-} from 'utils/signUpConstants'
+} from 'constantValues'
 
 const signUpValidation = {
 	[EMAIL_VALIDATION]: value =>

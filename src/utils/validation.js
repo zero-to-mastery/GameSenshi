@@ -7,7 +7,7 @@ import {
 	PASSWORD_VALIDATION,
 	TERM_VALIDATION,
 	USERNAME_VALIDATION,
-} from 'utils/signUpConstants'
+} from 'constantValues'
 
 // filter
 import badWords from './badWords'

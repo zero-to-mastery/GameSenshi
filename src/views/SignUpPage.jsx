@@ -14,6 +14,9 @@ import { withLastLocation } from 'react-router-last-location'
 
 // constants
 import {
+	WILL_UNMOUNT,
+	DATA,
+	STATUS,
 	EMAIL,
 	PASSWORD,
 	TERM,
@@ -25,8 +28,7 @@ import {
 	SUBMIT_ERRORS,
 	VALID,
 	SUCCEED,
-} from 'utils/signUpConstants'
-import { WILL_UNMOUNT, DATA, STATUS } from 'utils/commonConstants'
+} from 'constantValues'
 
 // form validation
 import { Form as FinalForm } from 'react-final-form'

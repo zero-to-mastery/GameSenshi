@@ -14,8 +14,13 @@ import {
 
 import ReactResizeDetector from 'react-resize-detector'
 import MessageList from 'components/InputField/MessageList'
-import { EXTRA_HEIGHT, VALID, SUBMIT_ERRORS } from 'utils/signUpConstants'
-import { WILL_UNMOUNT, STATUS } from 'utils/commonConstants'
+import {
+	EXTRA_HEIGHT,
+	VALID,
+	SUBMIT_ERRORS,
+	WILL_UNMOUNT,
+	STATUS,
+} from 'constantValues'
 
 const InputField = props => {
 	const {
@@ -202,12 +207,10 @@ const InputField = props => {
 										}}
 										// this event cannot be triggered
 										/*onFocus={e => {
-											console.log('focused')
 											state.focused = true
 											input.onFocus(e)
 										}}
 										onBlur={e => {
-											console.log('blured')
 											state.focused = false
 											input.onBlur(e)
 										}}*/

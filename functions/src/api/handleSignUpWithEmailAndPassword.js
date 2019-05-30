@@ -6,16 +6,17 @@ import { signUpValidation } from 'utils/validation'
 import { resObj } from 'utils/objects'
 import { handleIsUserExist } from 'api'
 
-import { ENV, VERIFY_EMAIL_API_KEY } from 'utils/envKeyConstants'
 import {
+	ENV,
+	VERIFY_EMAIL_API_KEY,
+	STATUS,
 	EMAIL,
 	PASSWORD,
 	TERM,
 	EMAIL_VALIDATION,
 	PASSWORD_VALIDATION,
 	TERM_VALIDATION,
-} from 'utils/signUpConstants'
-import { STATUS } from 'utils/commonConstants'
+} from 'constantValues'
 
 const {
 	[ENV]: { [VERIFY_EMAIL_API_KEY]: verify_email_api_key },

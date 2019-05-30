@@ -1,4 +1,3 @@
-// in future this should turn into npm library so that backend can use the same code
 const VALID = 'Valid'
 const SUBMITTING = 'Submitting'
 const VALIDATION = 'Validation'
