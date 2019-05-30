@@ -10,7 +10,6 @@ import {
 } from 'constantValues'
 
 const handleSignUpWithEmailAndPassword = values => {
-	console.log(values)
 	const defaultValues = {
 		// undefined = success
 		[USERNAME]: undefined,
