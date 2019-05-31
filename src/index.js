@@ -8,7 +8,7 @@ import { LastLocationProvider } from 'react-router-last-location'
 
 // state management
 import { Provider } from 'unstated'
-import { signUp } from 'state'
+import { authStore } from 'state'
 
 // styles
 import 'assets/css/nucleo-icons.css'
@@ -43,7 +43,7 @@ import SignInPage from 'views/SignInPage'
 import SignUpPage from 'views/SignUpPage'
 
 ReactDOM.render(
-	<Provider to={[signUp]}>
+	<Provider to={[authStore]}>
 		<BrowserRouter>
 			<LastLocationProvider>
 				<Switch>

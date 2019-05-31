@@ -27,7 +27,7 @@ const nameValidation = value =>
 		)
 		.validate(value)
 
-const signUpValidation = {
+const authValidation = {
 	[EMAIL_VALIDATION]: value =>
 		string()
 			.required('Email is required')
@@ -54,4 +54,4 @@ const signUpValidation = {
 	[USERNAME_VALIDATION]: nameValidation,
 }
 
-export { signUpValidation }
+export { authValidation }

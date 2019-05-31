@@ -35,12 +35,12 @@ import {
 
 // form validation
 import { Form as FinalForm } from 'react-final-form'
-import { signUpValidation } from 'utils/validation'
+import { authValidation } from 'utils/validation'
 import createDecorator from 'final-form-focus'
 
 // state management
 import { Subscribe } from 'unstated'
-import { signUp } from 'state'
+import { authStore } from 'state'
 
 // react libraries components
 import {
@@ -68,7 +68,7 @@ const {
 	[PASSWORD_VALIDATION]: passwordValidation,
 	[TERM_VALIDATION]: termValidation,
 	[USERNAME_VALIDATION]: usernameValidation,
-} = signUpValidation
+} = authValidation
 
 const focusOnError = createDecorator()
 
@@ -86,12 +86,12 @@ class RegisterPage extends React.Component {
 		// stop this listener in dev mode to ease development (it setState a LOT!)
 		process.env.REACT_APP_FOLLOW_CURSOR &&
 			document.documentElement.addEventListener('mousemove', this.followCursor)
-		signUp.state[WILL_UNMOUNT] = false
+		authStore.state[WILL_UNMOUNT] = false
 	}
 	componentWillUnmount() {
 		document.body.classList.remove('register-page')
 		document.documentElement.removeEventListener('mousemove', this.followCursor)
-		signUp.state[WILL_UNMOUNT] = true
+		authStore.state[WILL_UNMOUNT] = true
 	}
 	followCursor = event => {
 		let posX = event.clientX - window.innerWidth / 2
@@ -120,17 +120,17 @@ class RegisterPage extends React.Component {
 			<>
 				<IndexNavbar />
 				<div className='wrapper' ref='wrapper'>
-					<Subscribe to={[signUp]}>
-						{signUp => (
+					<Subscribe to={[authStore]}>
+						{authStore => (
 							<div
 								className='page-header'
 								style={{
 									display: 'block',
 									maxHeight:
 										maxHeight +
-										signUp.state[EMAIL_EXTRA_HEIGHT] +
-										signUp.state[PASSWORD_EXTRA_HEIGHT] +
-										signUp.state[USERNAME_EXTRA_HEIGHT] +
+										authStore.state[EMAIL_EXTRA_HEIGHT] +
+										authStore.state[PASSWORD_EXTRA_HEIGHT] +
+										authStore.state[USERNAME_EXTRA_HEIGHT] +
 										'px',
 								}}>
 								<div className='page-header-image' />
@@ -176,13 +176,13 @@ class RegisterPage extends React.Component {
 																[DATA]: data,
 															} = await handleSignUpWithEmailAndPassword(values)
 															for (let property in data) {
-																signUp.state[
+																authStore.state[
 																	property + SUBMIT_ERRORS
 																] = MessageList({
 																	validationResult: data[property],
 																	type: undefined,
 																})
-																signUp.state[property + IS_VALID] = !data[
+																authStore.state[property + IS_VALID] = !data[
 																	property
 																]
 															}
@@ -192,10 +192,10 @@ class RegisterPage extends React.Component {
 																} else {
 																	history.push('/index')
 																}
-																signUp.setState[SIGNED_IN] = true
+																authStore.setState[SIGNED_IN] = true
 																handleSignInWithEmailAndPassword(
-																	signUp.state[EMAIL],
-																	signUp.state[PASSWORD]
+																	authStore.state[EMAIL],
+																	authStore.state[PASSWORD]
 																)
 																// if undefined mean no error
 																// but this not much point since it will redirect and unmount soon
@@ -299,7 +299,7 @@ class RegisterPage extends React.Component {
 																		<InputField
 																			type={USERNAME}
 																			name={USERNAME}
-																			container={signUp}
+																			container={authStore}
 																			placeholder='Username'
 																			icon='tim-icons icon-single-02'
 																			validation={value =>
@@ -309,7 +309,7 @@ class RegisterPage extends React.Component {
 																		<InputField
 																			type={EMAIL}
 																			name={EMAIL}
-																			container={signUp}
+																			container={authStore}
 																			placeholder='Email'
 																			icon='tim-icons icon-email-85'
 																			validation={value =>
@@ -320,7 +320,7 @@ class RegisterPage extends React.Component {
 																		<InputField
 																			type={PASSWORD}
 																			name={PASSWORD}
-																			container={signUp}
+																			container={authStore}
 																			placeholder='Password'
 																			icon='tim-icons icon-lock-circle'
 																			validation={value =>
@@ -330,7 +330,7 @@ class RegisterPage extends React.Component {
 																		<InputField
 																			type='checkbox'
 																			name={TERM}
-																			container={signUp}
+																			container={authStore}
 																			validation={value =>
 																				termValidation(value)
 																			}

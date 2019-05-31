@@ -2,7 +2,7 @@ import * as functions from 'firebase-functions'
 import req from 'request-promise'
 
 import { firebase } from 'utils/firebase'
-import { signUpValidation } from 'utils/validation'
+import { authValidation } from 'utils/validation'
 import { resObj } from 'utils/objects'
 import { handleIsEmailExist } from 'api'
 
@@ -31,7 +31,7 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 		[PASSWORD_VALIDATION]: passwordValidation,
 		[TERM_VALIDATION]: termValidation,
 		[USERNAME_VALIDATION]: usernameValidation,
-	} = signUpValidation
+	} = authValidation
 
 	const {
 		[EMAIL]: email,
