@@ -37,7 +37,7 @@ const authValidation = {
 		string()
 			.min(8, 'Password must be 8 characters or longer')
 			.matches(
-				/^(?=.*[a-z])(?=.*[0-9]).*$/,
+				/^((?=.*[a-z])|(?=.*[A-Z]))(?=.*[0-9]).*$/,
 				'must consist of number and alphabet'
 			)
 			.matches(
