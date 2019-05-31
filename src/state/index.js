@@ -1,5 +1,5 @@
-import SignUpContainer from 'state/SignUpContainer'
+import AuthContainer from 'state/AuthContainer'
 
-const signUp = new SignUpContainer()
+const signUp = new AuthContainer()
 
 export { signUp }

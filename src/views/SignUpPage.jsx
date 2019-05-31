@@ -192,7 +192,7 @@ class RegisterPage extends React.Component {
 																} else {
 																	history.push('/index')
 																}
-																signUp.state[SIGNED_IN] = true
+																signUp.setState[SIGNED_IN] = true
 																handleSignInWithEmailAndPassword(
 																	signUp.state[EMAIL],
 																	signUp.state[PASSWORD]
