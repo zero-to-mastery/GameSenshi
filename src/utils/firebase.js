@@ -12,8 +12,6 @@ const firebaseConfig = {
 	appId: process.env.REACT_APP_APP_ID,
 }
 
-console.log('firebaseinitialized')
-
 firebase.initializeApp(firebaseConfig)
 
 const auth = firebase.auth
@@ -50,7 +48,6 @@ auth()
 		// As we have access to the pending credential, we can directly call the link method.
 		// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 		const provider2 = JSON.parse(sessionStorage.getItem('provider2'))
-		console.log('provider2', provider2)
 		if (provider2) {
 			result.user
 				.linkWithRedirect(new auth[provider2]())
