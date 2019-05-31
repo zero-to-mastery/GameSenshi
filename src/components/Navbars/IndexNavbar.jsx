@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
+// state
+import { Subscribe } from 'unstated'
+import { authStore } from 'state'
+
 // reactstrap components
 import {
 	Button,
@@ -13,7 +17,11 @@ import {
 	Container,
 	Row,
 	Col,
+	Alert,
 } from 'reactstrap'
+
+// constants
+import { EMAIL, USERNAME, SIGNED_IN, SIGNED_UP } from 'constantValues'
 
 import logo from 'assets/img/favicon-32x32.png'
 
@@ -27,11 +35,24 @@ class ComponentsNavbar extends React.Component {
 			color: 'navbar-transparent',
 			overWidthBreakPoint: window.innerWidth > widthBreakPoint,
 			collapseExited: true,
+			alertHeight: 0,
 		}
+		this.setState = this.setState.bind(this)
 	}
 	componentDidMount() {
 		window.addEventListener('scroll', this.changeColor)
 		window.addEventListener('resize', this.onDimensionChange)
+		document.getElementById('IndexNavbarAlert') &&
+			this.setState({
+				alertHeight: document.getElementById('IndexNavbarAlert').clientHeight,
+			})
+	}
+	componentDidUpdate(prevProps, prevState) {
+		prevState.alertHeight === 0 &&
+			document.getElementById('IndexNavbarAlert') &&
+			this.setState({
+				alertHeight: document.getElementById('IndexNavbarAlert').clientHeight,
+			})
 	}
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this.changeColor)
@@ -99,7 +120,14 @@ class ComponentsNavbar extends React.Component {
 	render() {
 		const {
 			props: { history },
-			state: { color, collapseOpen, collapseOut, overWidthBreakPoint },
+			state: {
+				color,
+				collapseOpen,
+				collapseOut,
+				overWidthBreakPoint,
+				alertHeight,
+			},
+			setState,
 			toggleCollapse,
 			onCollapseExiting,
 			onCollapseExited,
@@ -107,140 +135,179 @@ class ComponentsNavbar extends React.Component {
 			collapseExited,
 		} = this
 		return (
-			<Navbar
-				style={{ zIndex: 2147483647 }}
-				className={'fixed-top ' + color}
-				color-on-scroll='100'
-				expand='lg'>
-				<Container>
-					<div className='navbar-translate'>
-						<NavbarBrand
-							data-placement='bottom'
-							to='/'
-							rel='noopener noreferrer'
-							tag={Link}>
-							<img src={logo} alt='Game Senshi' />
-							<span>&nbsp;&nbsp;&nbsp;</span>
-							GAME SENSHI
-						</NavbarBrand>
-						<div className='d-flex align-items-center'>
-							{!overWidthBreakPoint && (
-								<Button
-									color='primary'
-									type='button'
-									onClick={() => {
-										history.push('signup')
-									}}>
-									Sign up
-								</Button>
-							)}
-							<button
-								aria-expanded={collapseOpen}
-								className='navbar-toggler navbar-toggler'
-								onClick={toggleCollapse}>
-								<span className='navbar-toggler-bar bar1' />
-								<span className='navbar-toggler-bar bar2' />
-								<span className='navbar-toggler-bar bar3' />
-							</button>
-						</div>
-					</div>
-					<Collapse
-						className={'justify-content-end ' + collapseOut}
-						navbar
-						isOpen={collapseOpen}
-						onEntering={onCollapseEntering}
-						onExiting={onCollapseExiting}
-						onExited={onCollapseExited}>
-						<div className='navbar-collapse-header'>
-							<Row>
-								<Col className='collapse-brand' xs='6'>
-									<a href='#pablo' onClick={e => e.preventDefault()}>
-										GAME SENSHI
+			<Subscribe to={[authStore]}>
+				{authStore => {
+					const {
+						[USERNAME]: username,
+						[EMAIL]: email,
+						[SIGNED_IN]: signedIn,
+						[SIGNED_UP]: signedUp,
+					} = authStore.state
+					return (
+						<>
+							<Alert
+								id='IndexNavbarAlert'
+								style={{ zIndex: 2147483647 }}
+								isOpen={signedUp}
+								toggle={() => {
+									authStore.setState({ [SIGNED_UP]: false })
+									setState({ alertHeight: 0 })
+								}}
+								color='primary'
+								className='d-flex align-items-center fixed-top'>
+								<Container>
+									{`Signed up successful, a verification email has sent to `}
+									<a
+										href={email}
+										target='_blank'
+										rel='noopener noreferrer'
+										className='alert-link'>
+										{email}
 									</a>
-								</Col>
-								<Col className='collapse-close text-right' xs='6'>
-									<button
-										aria-expanded={collapseOpen}
-										className='navbar-toggler'
-										onClick={toggleCollapse}>
-										<i className='tim-icons icon-simple-remove' />
-									</button>
-								</Col>
-							</Row>
-						</div>
-						<Nav navbar>
-							{(!collapseOpen && collapseExited) || overWidthBreakPoint ? (
-								<>
-									<NavItem className='p-0'>
-										<Button
-											className='btn-simple font-weight-bold'
-											color='primary'
-											type='button'
-											onClick={() => {
-												history.push('signin')
-											}}>
-											Sign in
-										</Button>
-									</NavItem>
-									<NavItem className='p-0'>
-										<Button
-											color='primary'
-											type='button'
-											onClick={() => {
-												history.push('signup')
-											}}>
-											Sign up
-										</Button>
-									</NavItem>
-								</>
-							) : (
-								<>
-									<NavItem className='p-0'>
-										<NavLink
+								</Container>
+							</Alert>
+							<Navbar
+								style={{
+									zIndex: 2147483647,
+									marginTop: alertHeight,
+								}}
+								className={'fixed-top ' + color}
+								color-on-scroll='100'
+								expand='lg'>
+								<Container>
+									<div className='navbar-translate'>
+										<NavbarBrand
 											data-placement='bottom'
-											href='/signin'
+											to='/'
 											rel='noopener noreferrer'
-											target='_blank'
-											onClick={e => {
-												e.preventDefault()
-												history.push('signin')
-											}}>
+											tag={Link}>
+											<img src={logo} alt='Game Senshi' />
+											<span>&nbsp;&nbsp;&nbsp;</span>
+											GAME SENSHI
+										</NavbarBrand>
+										<div className='d-flex align-items-center'>
+											{!overWidthBreakPoint && (
+												<Button
+													color='primary'
+													type='button'
+													onClick={() => {
+														history.push('signUp')
+													}}>
+													Sign up
+												</Button>
+											)}
+											<button
+												aria-expanded={collapseOpen}
+												className='navbar-toggler navbar-toggler'
+												onClick={toggleCollapse}>
+												<span className='navbar-toggler-bar bar1' />
+												<span className='navbar-toggler-bar bar2' />
+												<span className='navbar-toggler-bar bar3' />
+											</button>
+										</div>
+									</div>
+									<Collapse
+										className={'justify-content-end ' + collapseOut}
+										navbar
+										isOpen={collapseOpen}
+										onEntering={onCollapseEntering}
+										onExiting={onCollapseExiting}
+										onExited={onCollapseExited}>
+										<div className='navbar-collapse-header'>
 											<Row>
-												<Col xs='2' sm='2' md='2'>
-													<i className='fab fas fa-sign-in-alt' />
+												<Col className='collapse-brand' xs='6'>
+													<a href='#pablo' onClick={e => e.preventDefault()}>
+														GAME SENSHI
+													</a>
 												</Col>
-												<Col>
-													<p className='d-lg-none d-xl-none'>Sign in</p>
+												<Col className='collapse-close text-right' xs='6'>
+													<button
+														aria-expanded={collapseOpen}
+														className='navbar-toggler'
+														onClick={toggleCollapse}>
+														<i className='tim-icons icon-simple-remove' />
+													</button>
 												</Col>
 											</Row>
-										</NavLink>
-									</NavItem>
-									<NavItem className='p-0'>
-										<NavLink
-											data-placement='bottom'
-											href='/signup'
-											rel='noopener noreferrer'
-											target='_blank'
-											onClick={e => {
-												e.preventDefault()
-												history.push('signup')
-											}}>
-											<Row>
-												<Col xs='2' sm='2' md='2'>
-													<i className='fab fas fa-user-plus' />
-												</Col>
-												<Col>
-													<p className='d-lg-none d-xl-none'>Sign up</p>
-												</Col>
-											</Row>
-										</NavLink>
-									</NavItem>
-								</>
-							)}
-						</Nav>
-					</Collapse>
-				</Container>
-			</Navbar>
+										</div>
+										<Nav navbar>
+											{(!collapseOpen && collapseExited) ||
+											overWidthBreakPoint ? (
+												<>
+													<NavItem className='p-0'>
+														<Button
+															className='btn-simple font-weight-bold'
+															color='primary'
+															type='button'
+															onClick={() => {
+																history.push('signin')
+															}}>
+															Sign in
+														</Button>
+													</NavItem>
+													<NavItem className='p-0'>
+														<Button
+															color='primary'
+															type='button'
+															onClick={() => {
+																history.push('signup')
+															}}>
+															Sign up
+														</Button>
+													</NavItem>
+												</>
+											) : (
+												<>
+													<NavItem className='p-0'>
+														<NavLink
+															data-placement='bottom'
+															href='/signin'
+															rel='noopener noreferrer'
+															target='_blank'
+															onClick={e => {
+																e.preventDefault()
+																history.push('signin')
+															}}>
+															<Row>
+																<Col xs='2' sm='2' md='2'>
+																	<i className='fab fas fa-sign-in-alt' />
+																</Col>
+																<Col>
+																	<p className='d-lg-none d-xl-none'>Sign in</p>
+																</Col>
+															</Row>
+														</NavLink>
+													</NavItem>
+													<NavItem className='p-0'>
+														<NavLink
+															data-placement='bottom'
+															href='/signup'
+															rel='noopener noreferrer'
+															target='_blank'
+															onClick={e => {
+																e.preventDefault()
+																history.push('signup')
+															}}>
+															<Row>
+																<Col xs='2' sm='2' md='2'>
+																	<i className='fab fas fa-user-plus' />
+																</Col>
+																<Col>
+																	<p className='d-lg-none d-xl-none'>Sign up</p>
+																</Col>
+															</Row>
+														</NavLink>
+													</NavItem>
+												</>
+											)}
+										</Nav>
+									</Collapse>
+								</Container>
+							</Navbar>
+						</>
+					)
+				}}
+			</Subscribe>
 		)
 	}
 }
