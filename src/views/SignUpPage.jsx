@@ -31,6 +31,7 @@ import {
 	SUBMIT_ERRORS,
 	IS_VALID,
 	SIGNED_IN,
+	SIGNED_UP,
 } from 'constantValues'
 
 // form validation
@@ -111,10 +112,44 @@ class RegisterPage extends React.Component {
 				'deg)',
 		})
 	}
+
+	onSubmit = async (values, history, lastLocation) => {
+		const {
+			[STATUS]: status,
+			[DATA]: data,
+		} = await handleSignUpWithEmailAndPassword(values)
+		for (let property in data) {
+			authStore.state[property + SUBMIT_ERRORS] = MessageList({
+				validationResult: data[property],
+				type: undefined,
+			})
+			authStore.state[property + IS_VALID] = !data[property]
+		}
+		if (status) {
+			if (lastLocation) {
+				history.goBack()
+			} else {
+				history.push('/index')
+			}
+			authStore.setState({
+				[SIGNED_IN]: true,
+				[SIGNED_UP]: true,
+			})
+			handleSignInWithEmailAndPassword(
+				authStore.state[EMAIL],
+				authStore.state[PASSWORD]
+			)
+			// if undefined mean no error
+			// but this not much point since it will redirect and unmount soon
+			return
+		}
+		return data
+	}
 	render() {
 		const {
 			state: { maxHeight, squares7and8, squares1to6 },
 			props: { history, lastLocation },
+			onSubmit,
 		} = this
 		return (
 			<>
@@ -170,38 +205,8 @@ class RegisterPage extends React.Component {
 															[TERM]: false,
 														}}
 														decorators={[focusOnError]}
-														onSubmit={async values => {
-															const {
-																[STATUS]: status,
-																[DATA]: data,
-															} = await handleSignUpWithEmailAndPassword(values)
-															for (let property in data) {
-																authStore.state[
-																	property + SUBMIT_ERRORS
-																] = MessageList({
-																	validationResult: data[property],
-																	type: undefined,
-																})
-																authStore.state[property + IS_VALID] = !data[
-																	property
-																]
-															}
-															if (status) {
-																if (lastLocation) {
-																	history.goBack()
-																} else {
-																	history.push('/index')
-																}
-																authStore.setState[SIGNED_IN] = true
-																handleSignInWithEmailAndPassword(
-																	authStore.state[EMAIL],
-																	authStore.state[PASSWORD]
-																)
-																// if undefined mean no error
-																// but this not much point since it will redirect and unmount soon
-																return
-															}
-															return data
+														onSubmit={values => {
+															return onSubmit(values, history, lastLocation)
 														}}>
 														{({ handleSubmit, submitting }) => (
 															<>
