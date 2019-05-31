@@ -42,10 +42,14 @@ import ChatPage from 'views/examples/ChatPage.jsx'
 import SignInPage from 'views/SignInPage'
 import SignUpPage from 'views/SignUpPage'
 
+// component
+import { IndexNavbar } from 'components'
+
 ReactDOM.render(
 	<Provider to={[authStore]}>
 		<BrowserRouter>
 			<LastLocationProvider>
+				<IndexNavbar />
 				<Switch>
 					<Route path='/index' render={props => <Index {...props} />} />
 					<Route

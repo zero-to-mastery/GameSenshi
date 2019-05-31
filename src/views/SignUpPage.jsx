@@ -62,7 +62,7 @@ import {
 import Loader from 'react-loader-spinner'
 
 // core components
-import { IndexNavbar, Footer, InputField, MessageList } from 'components'
+import { Footer, InputField, MessageList } from 'components'
 
 const {
 	[EMAIL_VALIDATION]: emailValidation,
@@ -153,7 +153,6 @@ class RegisterPage extends React.Component {
 		} = this
 		return (
 			<>
-				<IndexNavbar />
 				<div className='wrapper' ref='wrapper'>
 					<Subscribe to={[authStore]}>
 						{authStore => (

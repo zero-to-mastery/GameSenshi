@@ -1,9 +1,7 @@
 import React from 'react'
 
 // core components
-import IndexNavbar from 'components/Navbars/IndexNavbar.jsx'
-import IndexHeader from 'components/Headers/IndexHeader.jsx'
-import Footer from 'components/Footers/Footer.jsx'
+import { IndexHeader, Footer } from 'components'
 
 class Index extends React.Component {
 	componentDidMount() {
@@ -18,7 +16,6 @@ class Index extends React.Component {
 	render() {
 		return (
 			<>
-				<IndexNavbar />
 				<div className='wrapper' ref='wrapper'>
 					<IndexHeader />
 					<div className='main'>{/* include stuff here in future */}</div>
