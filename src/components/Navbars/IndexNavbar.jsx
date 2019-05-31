@@ -20,6 +20,8 @@ import {
 	Alert,
 } from 'reactstrap'
 
+import ReactResizeDetector from 'react-resize-detector'
+
 // constants
 import { EMAIL, USERNAME, SIGNED_IN, SIGNED_UP } from 'constantValues'
 
@@ -42,17 +44,13 @@ class ComponentsNavbar extends React.Component {
 	componentDidMount() {
 		window.addEventListener('scroll', this.changeColor)
 		window.addEventListener('resize', this.onDimensionChange)
-		document.getElementById('IndexNavbarAlert') &&
-			this.setState({
-				alertHeight: document.getElementById('IndexNavbarAlert').clientHeight,
-			})
 	}
-	componentDidUpdate(prevProps, prevState) {
-		prevState.alertHeight === 0 &&
-			document.getElementById('IndexNavbarAlert') &&
-			this.setState({
-				alertHeight: document.getElementById('IndexNavbarAlert').clientHeight,
-			})
+	onResize = (width, height) => {
+		console.log('height', height)
+		console.log('width', width)
+		this.setState({
+			alertHeight: height,
+		})
 	}
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this.changeColor)
@@ -128,6 +126,7 @@ class ComponentsNavbar extends React.Component {
 				alertHeight,
 			},
 			setState,
+			onResize,
 			toggleCollapse,
 			onCollapseExiting,
 			onCollapseExited,
@@ -145,27 +144,33 @@ class ComponentsNavbar extends React.Component {
 					} = authStore.state
 					return (
 						<>
-							<Alert
-								id='IndexNavbarAlert'
-								style={{ zIndex: 2147483647 }}
-								isOpen={signedUp}
-								toggle={() => {
-									authStore.setState({ [SIGNED_UP]: false })
-									setState({ alertHeight: 0 })
-								}}
-								color='primary'
-								className='d-flex align-items-center fixed-top'>
-								<Container>
-									{`Signed up successful, a verification email has sent to `}
-									<a
-										href={email}
-										target='_blank'
-										rel='noopener noreferrer'
-										className='alert-link'>
-										{email}
-									</a>
-								</Container>
-							</Alert>
+							<div className='fixed-top'>
+								<Alert
+									style={{ zIndex: 2147483647 }}
+									isOpen={signedUp}
+									toggle={() => {
+										authStore.setState({ [SIGNED_UP]: false })
+										setState({ alertHeight: 0 })
+									}}
+									color='primary'
+									className='d-flex align-items-center'>
+									<Container>
+										{`Signed up successful, a verification email has sent to `}
+										<a
+											href={email}
+											target='_blank'
+											rel='noopener noreferrer'
+											className='alert-link'>
+											{email}
+										</a>
+									</Container>
+								</Alert>
+								<ReactResizeDetector
+									handleWidth
+									handleHeight
+									onResize={onResize}
+								/>
+							</div>
 							<Navbar
 								style={{
 									zIndex: 2147483647,
