@@ -1,9 +1,9 @@
 import { functions } from 'utils/firebase'
-import { ON_IS_EMAIL_EXIST, STATUS, MESSAGE, DATA } from 'constantValues'
+import { ON_IS_EMAIL_EXIST, STATUS, MESSAGE, DATA, EMAIL } from 'constantValues'
 
 const handleIsEmailExist = email => {
 	const verifyEmail = functions.httpsCallable(ON_IS_EMAIL_EXIST)
-	return verifyEmail({ email })
+	return verifyEmail({ [EMAIL]: email })
 		.then(res => {
 			if (!res[DATA][STATUS]) {
 				return res[DATA][MESSAGE]
