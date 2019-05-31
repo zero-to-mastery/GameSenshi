@@ -320,7 +320,7 @@ class RegisterPage extends React.Component {
 																			validation={value =>
 																				emailValidation(value)
 																			}
-																			asyncValidation={handleIsEmailExist}
+																			serverValidation={handleIsEmailExist}
 																		/>
 																		<InputField
 																			type={PASSWORD}
