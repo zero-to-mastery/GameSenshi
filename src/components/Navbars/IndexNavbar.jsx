@@ -39,7 +39,7 @@ class ComponentsNavbar extends React.Component {
 			color: (authStore && bgPurple) || 'navbar-transparent',
 			overWidthBreakPoint: window.innerWidth > widthBreakPoint,
 			collapseExited: true,
-			alertHeight: 0,
+			navbarHeight: 0,
 		}
 		this.setState = this.setState.bind(this)
 	}
@@ -51,7 +51,7 @@ class ComponentsNavbar extends React.Component {
 		console.log('height', height)
 		console.log('width', width)
 		this.setState({
-			alertHeight: height,
+			navbarHeight: height,
 		})
 	}
 	componentWillUnmount() {
@@ -125,7 +125,7 @@ class ComponentsNavbar extends React.Component {
 				collapseOpen,
 				collapseOut,
 				overWidthBreakPoint,
-				alertHeight,
+				navbarHeight,
 			},
 			setState,
 			onResize,
@@ -295,7 +295,7 @@ class ComponentsNavbar extends React.Component {
 								/>
 							</div>
 							<Alert
-								style={{ zIndex: 2147483647, marginTop: alertHeight }}
+								style={{ zIndex: 2147483647, marginTop: navbarHeight }}
 								isOpen={signedUp}
 								toggle={() => {
 									authStore.setState({ [SIGNED_UP]: false })
