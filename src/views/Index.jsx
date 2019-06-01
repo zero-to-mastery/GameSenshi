@@ -16,7 +16,6 @@ class Index extends React.Component {
 	render() {
 		return (
 			<>
-				{' '}
 				<IndexNavbar />
 				<div className='wrapper' ref='wrapper'>
 					<IndexHeader />
