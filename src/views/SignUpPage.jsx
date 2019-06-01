@@ -31,7 +31,11 @@ import {
 	SUBMIT_ERRORS,
 	IS_VALID,
 	SIGNED_IN,
-	SIGNED_UP,
+	ALERT_HREF,
+	ALERT_TEXT,
+	ALERT_COLOR,
+	ALERT_OPEN,
+	ALERT_HREF_TEXT,
 } from 'constantValues'
 
 // form validation
@@ -41,7 +45,7 @@ import createDecorator from 'final-form-focus'
 
 // state management
 import { Subscribe } from 'unstated'
-import { authStore } from 'state'
+import { authStore, alertStore } from 'state'
 
 // react libraries components
 import {
@@ -133,7 +137,14 @@ class RegisterPage extends React.Component {
 			}
 			authStore.setState({
 				[SIGNED_IN]: true,
-				[SIGNED_UP]: true,
+			})
+			alertStore.setState({
+				[ALERT_HREF]: authStore.state[EMAIL],
+				[ALERT_TEXT]:
+					'Registration Successful, an verification email has been sent to ',
+				[ALERT_COLOR]: 'success',
+				[ALERT_OPEN]: true,
+				[ALERT_HREF_TEXT]: authStore.state[EMAIL],
 			})
 			handleSignInWithEmailAndPassword(
 				authStore.state[EMAIL],
@@ -156,141 +167,147 @@ class RegisterPage extends React.Component {
 				<IndexNavbar />
 				<div className='wrapper' ref='wrapper'>
 					<Subscribe to={[authStore]}>
-						{authStore => (
-							<div
-								className='page-header'
-								style={{
-									display: 'block',
-									maxHeight:
-										maxHeight +
-										authStore.state[EMAIL_EXTRA_HEIGHT] +
-										authStore.state[PASSWORD_EXTRA_HEIGHT] +
-										authStore.state[USERNAME_EXTRA_HEIGHT] +
-										'px',
-								}}>
-								<div className='page-header-image' />
-								<div className='content' style={{ marginTop: '5%' }}>
-									<Container className='container-fluid'>
-										<Row>
-											<Col className='offset-lg-0 offset-md-3' lg='5' md='6'>
-												<div
-													className='square square-7'
-													id='square7'
-													style={{ transform: squares7and8 }}
-												/>
-												<div
-													className='square square-8'
-													id='square8'
-													style={{ transform: squares7and8 }}
-												/>
-												<Card className='card-register'>
-													<CardHeader>
-														<CardImg
-															alt='...'
-															src={require('assets/img/square1.png')}
-															style={{ top: '-8%' }}
-														/>
-														<CardTitle tag='h4'>Sign Up</CardTitle>
-													</CardHeader>
-													<CardBody>
-														<div className='text-muted text-center ml-auto mr-auto'>
-															<h3 className='mb-0'>Sign up with</h3>
-														</div>
-													</CardBody>
-													<FinalForm
-														initialValues={{
-															[USERNAME]: '',
-															[EMAIL]: '',
-															[PASSWORD]: '',
-															[TERM]: false,
-														}}
-														decorators={[focusOnError]}
-														onSubmit={values => {
-															return onSubmit(values, history, lastLocation)
-														}}>
-														{({ handleSubmit, submitting }) => (
-															<>
-																<CardBody>
-																	<div className='btn-wrapper text-center'>
-																		<Button
-																			size='lg'
-																			className='btn-icon btn-round'
-																			color='facebook'
-																			href=''
-																			id='facebook'
-																			target='_blank'
-																			onClick={e => {
-																				e.preventDefault()
-																				if (lastLocation) {
-																					history.goBack()
-																				} else {
-																					history.push('/index')
-																				}
-																				handleSignInWithFacebook()
-																			}}>
-																			<i className='fab fa-facebook-square' />
-																		</Button>
-																		<UncontrolledTooltip
-																			delay={0}
-																			target='facebook'>
-																			Sign up with Facebook!
-																		</UncontrolledTooltip>
-																		<Button
-																			size='lg'
-																			className='btn-icon btn-round'
-																			color='warning'
-																			href=''
-																			id='google'
-																			target='_blank'
-																			onClick={e => {
-																				e.preventDefault()
-																				if (lastLocation) {
-																					history.goBack()
-																				} else {
-																					history.push('/index')
-																				}
-																				handleSignInWithGoogle()
-																			}}>
-																			<i className='fab fa-google' />
-																		</Button>
-																		<UncontrolledTooltip
-																			delay={0}
-																			target='google'>
-																			Sign up with Google!
-																		</UncontrolledTooltip>
-																		<Button
-																			size='lg'
-																			className='btn-icon btn-round'
-																			color='twitter'
-																			href=''
-																			id='twitter'
-																			target='_blank'
-																			onClick={e => {
-																				e.preventDefault()
-																				if (lastLocation) {
-																					history.goBack()
-																				} else {
-																					history.push('/index')
-																				}
-																				handleSignInWithTwitter()
-																			}}>
-																			<i className='fab fa-twitter' />
-																		</Button>
-																		<UncontrolledTooltip
-																			delay={0}
-																			target='twitter'>
-																			Sign up with Twitter!
-																		</UncontrolledTooltip>
-																	</div>
-																	<Row>
-																		<Col />
-																		<Col className='text-center text-muted mb-4 mt-3 col-auto'>
-																			<small>Or Classically</small>
-																		</Col>
-																		<Col />
-																	</Row>
-																	<Form className='form'>
-																		{/** 
+						{authStore => {
+							const {
+								[EMAIL_EXTRA_HEIGHT]: emailExtraHeight,
+								[PASSWORD_EXTRA_HEIGHT]: passwordExtraHeight,
+								[USERNAME_EXTRA_HEIGHT]: usernameExtraHeight,
+							} = authStore.state
+							return (
+								<div
+									className='page-header'
+									style={{
+										display: 'block',
+										maxHeight:
+											maxHeight +
+											emailExtraHeight +
+											passwordExtraHeight +
+											usernameExtraHeight +
+											'px',
+									}}>
+									<div className='page-header-image' />
+									<div className='content' style={{ marginTop: '5%' }}>
+										<Container className='container-fluid'>
+											<Row>
+												<Col className='offset-lg-0 offset-md-3' lg='5' md='6'>
+													<div
+														className='square square-7'
+														id='square7'
+														style={{ transform: squares7and8 }}
+													/>
+													<div
+														className='square square-8'
+														id='square8'
+														style={{ transform: squares7and8 }}
+													/>
+													<Card className='card-register'>
+														<CardHeader>
+															<CardImg
+																alt='...'
+																src={require('assets/img/square1.png')}
+																style={{ top: '-8%' }}
+															/>
+															<CardTitle tag='h4'>Sign Up</CardTitle>
+														</CardHeader>
+														<CardBody>
+															<div className='text-muted text-center ml-auto mr-auto'>
+																<h3 className='mb-0'>Sign up with</h3>
+															</div>
+														</CardBody>
+														<FinalForm
+															initialValues={{
+																[USERNAME]: '',
+																[EMAIL]: '',
+																[PASSWORD]: '',
+																[TERM]: false,
+															}}
+															decorators={[focusOnError]}
+															onSubmit={values => {
+																return onSubmit(values, history, lastLocation)
+															}}>
+															{({ handleSubmit, submitting }) => (
+																<>
+																	<CardBody>
+																		<div className='btn-wrapper text-center'>
+																			<Button
+																				size='lg'
+																				className='btn-icon btn-round'
+																				color='facebook'
+																				href=''
+																				id='facebook'
+																				target='_blank'
+																				onClick={e => {
+																					e.preventDefault()
+																					if (lastLocation) {
+																						history.goBack()
+																					} else {
+																						history.push('/index')
+																					}
+																					handleSignInWithFacebook()
+																				}}>
+																				<i className='fab fa-facebook-square' />
+																			</Button>
+																			<UncontrolledTooltip
+																				delay={0}
+																				target='facebook'>
+																				Sign up with Facebook!
+																			</UncontrolledTooltip>
+																			<Button
+																				size='lg'
+																				className='btn-icon btn-round'
+																				color='warning'
+																				href=''
+																				id='google'
+																				target='_blank'
+																				onClick={e => {
+																					e.preventDefault()
+																					if (lastLocation) {
+																						history.goBack()
+																					} else {
+																						history.push('/index')
+																					}
+																					handleSignInWithGoogle()
+																				}}>
+																				<i className='fab fa-google' />
+																			</Button>
+																			<UncontrolledTooltip
+																				delay={0}
+																				target='google'>
+																				Sign up with Google!
+																			</UncontrolledTooltip>
+																			<Button
+																				size='lg'
+																				className='btn-icon btn-round'
+																				color='twitter'
+																				href=''
+																				id='twitter'
+																				target='_blank'
+																				onClick={e => {
+																					e.preventDefault()
+																					if (lastLocation) {
+																						history.goBack()
+																					} else {
+																						history.push('/index')
+																					}
+																					handleSignInWithTwitter()
+																				}}>
+																				<i className='fab fa-twitter' />
+																			</Button>
+																			<UncontrolledTooltip
+																				delay={0}
+																				target='twitter'>
+																				Sign up with Twitter!
+																			</UncontrolledTooltip>
+																		</div>
+																		<Row>
+																			<Col />
+																			<Col className='text-center text-muted mb-4 mt-3 col-auto'>
+																				<small>Or Classically</small>
+																			</Col>
+																			<Col />
+																		</Row>
+																		<Form className='form'>
+																			{/** 
 																		// ! bug
 																		// ! whenever any of these two field components is render
 																		// ! and whenever component going to unmount (route to other page)
@@ -301,131 +318,132 @@ class RegisterPage extends React.Component {
 																		// * implement life cycle method of parent component to solve these issue
 																		// * tested, above solution works, trace WILL_UNMOUNT in didComponentMount and willComponentUnmount method to get further insight
 																		*/}
-																		<InputField
-																			type={USERNAME}
-																			name={USERNAME}
-																			container={authStore}
-																			placeholder='Username'
-																			icon='tim-icons icon-single-02'
-																			validation={value =>
-																				usernameValidation(value)
-																			}
-																		/>
-																		<InputField
-																			type={EMAIL}
-																			name={EMAIL}
-																			container={authStore}
-																			placeholder='Email'
-																			icon='tim-icons icon-email-85'
-																			validation={value =>
-																				emailValidation(value)
-																			}
-																			serverValidation={handleIsEmailExist}
-																		/>
-																		<InputField
-																			type={PASSWORD}
-																			name={PASSWORD}
-																			container={authStore}
-																			placeholder='Password'
-																			icon='tim-icons icon-lock-circle'
-																			validation={value =>
-																				passwordValidation(value)
-																			}
-																		/>
-																		<InputField
-																			type='checkbox'
-																			name={TERM}
-																			container={authStore}
-																			validation={value =>
-																				termValidation(value)
-																			}
-																		/>
-																	</Form>
-																</CardBody>
-																<CardFooter>
-																	<Row className='d-flex'>
-																		<Col className='col-2' />
-																		<Col className='pl-0 pr-0 d-flex justify-content-center'>
-																			<Button
-																				className='btn-round'
-																				color='primary'
-																				size='lg'
-																				disabled={submitting}
-																				onClick={handleSubmit}>
-																				{submitting ? (
-																					<>
-																						<Loader
-																							type='Watch'
-																							color='#00BFFF'
-																							height='19px'
-																							width='19px'
-																						/>
-																						&nbsp;&nbsp;Signing Up
-																					</>
-																				) : (
-																					'Sign Up'
-																				)}
-																			</Button>
-																		</Col>
-																		<Col className='col-2' />
-																	</Row>
-																	<Row className='d-flex'>
-																		<Col />
-																		<Col className='col-auto'>
-																			<Label check>
-																				<span className='form-check-sign' />
-																				{`Already a member? `}
-																				<Link
-																					to='/signIn'
-																					className='font-weight-bold'>
-																					Sign In
-																				</Link>
-																			</Label>
-																		</Col>
-																		<Col />
-																	</Row>
-																</CardFooter>
-															</>
-														)}
-													</FinalForm>
-												</Card>
-											</Col>
-										</Row>
-									</Container>
-									<div className='register-bg' />
-									<div
-										className='square square-1'
-										id='square1'
-										style={{ transform: squares1to6 }}
-									/>
-									<div
-										className='square square-2'
-										id='square2'
-										style={{ transform: squares1to6 }}
-									/>
-									<div
-										className='square square-3'
-										id='square3'
-										style={{ transform: squares1to6 }}
-									/>
-									<div
-										className='square square-4'
-										id='square4'
-										style={{ transform: squares1to6 }}
-									/>
-									<div
-										className='square square-5'
-										id='square5'
-										style={{ transform: squares1to6 }}
-									/>
-									<div
-										className='square square-6'
-										id='square6'
-										style={{ transform: squares1to6 }}
-									/>
+																			<InputField
+																				type={USERNAME}
+																				name={USERNAME}
+																				container={authStore}
+																				placeholder='Username'
+																				icon='tim-icons icon-single-02'
+																				validation={value =>
+																					usernameValidation(value)
+																				}
+																			/>
+																			<InputField
+																				type={EMAIL}
+																				name={EMAIL}
+																				container={authStore}
+																				placeholder='Email'
+																				icon='tim-icons icon-email-85'
+																				validation={value =>
+																					emailValidation(value)
+																				}
+																				serverValidation={handleIsEmailExist}
+																			/>
+																			<InputField
+																				type={PASSWORD}
+																				name={PASSWORD}
+																				container={authStore}
+																				placeholder='Password'
+																				icon='tim-icons icon-lock-circle'
+																				validation={value =>
+																					passwordValidation(value)
+																				}
+																			/>
+																			<InputField
+																				type='checkbox'
+																				name={TERM}
+																				container={authStore}
+																				validation={value =>
+																					termValidation(value)
+																				}
+																			/>
+																		</Form>
+																	</CardBody>
+																	<CardFooter>
+																		<Row className='d-flex'>
+																			<Col className='col-2' />
+																			<Col className='pl-0 pr-0 d-flex justify-content-center'>
+																				<Button
+																					className='btn-round'
+																					color='primary'
+																					size='lg'
+																					disabled={submitting}
+																					onClick={handleSubmit}>
+																					{submitting ? (
+																						<>
+																							<Loader
+																								type='Watch'
+																								color='#00BFFF'
+																								height='19px'
+																								width='19px'
+																							/>
+																							&nbsp;&nbsp;Signing Up
+																						</>
+																					) : (
+																						'Sign Up'
+																					)}
+																				</Button>
+																			</Col>
+																			<Col className='col-2' />
+																		</Row>
+																		<Row className='d-flex'>
+																			<Col />
+																			<Col className='col-auto'>
+																				<Label check>
+																					<span className='form-check-sign' />
+																					{`Already a member? `}
+																					<Link
+																						to='/signIn'
+																						className='font-weight-bold'>
+																						Sign In
+																					</Link>
+																				</Label>
+																			</Col>
+																			<Col />
+																		</Row>
+																	</CardFooter>
+																</>
+															)}
+														</FinalForm>
+													</Card>
+												</Col>
+											</Row>
+										</Container>
+										<div className='register-bg' />
+										<div
+											className='square square-1'
+											id='square1'
+											style={{ transform: squares1to6 }}
+										/>
+										<div
+											className='square square-2'
+											id='square2'
+											style={{ transform: squares1to6 }}
+										/>
+										<div
+											className='square square-3'
+											id='square3'
+											style={{ transform: squares1to6 }}
+										/>
+										<div
+											className='square square-4'
+											id='square4'
+											style={{ transform: squares1to6 }}
+										/>
+										<div
+											className='square square-5'
+											id='square5'
+											style={{ transform: squares1to6 }}
+										/>
+										<div
+											className='square square-6'
+											id='square6'
+											style={{ transform: squares1to6 }}
+										/>
+									</div>
 								</div>
-							</div>
-						)}
+							)
+						}}
 					</Subscribe>
 					<Footer />
 				</div>

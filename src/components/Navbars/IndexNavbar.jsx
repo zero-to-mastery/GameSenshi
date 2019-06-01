@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 // state
 import { Subscribe } from 'unstated'
-import { authStore } from 'state'
+import { authStore, alertStore } from 'state'
 
 // reactstrap components
 import {
@@ -23,7 +23,16 @@ import {
 import ReactResizeDetector from 'react-resize-detector'
 
 // constants
-import { EMAIL, USERNAME, SIGNED_IN, SIGNED_UP } from 'constantValues'
+import {
+	EMAIL,
+	USERNAME,
+	SIGNED_IN,
+	ALERT_HREF,
+	ALERT_TEXT,
+	ALERT_COLOR,
+	ALERT_OPEN,
+	ALERT_HREF_TEXT,
+} from 'constantValues'
 
 import logo from 'assets/img/favicon-32x32.png'
 
@@ -36,7 +45,7 @@ class ComponentsNavbar extends React.Component {
 		super(props)
 		this.state = {
 			collapseOpen: false,
-			color: (authStore.state[SIGNED_UP] && bgPurple) || 'navbar-transparent',
+			color: 'navbar-transparent',
 			overWidthBreakPoint: window.innerWidth > widthBreakPoint,
 			collapseExited: true,
 			navbarHeight: 0,
@@ -46,13 +55,6 @@ class ComponentsNavbar extends React.Component {
 	componentDidMount() {
 		window.addEventListener('scroll', this.changeColor)
 		window.addEventListener('resize', this.onDimensionChange)
-	}
-	onResize = (width, height) => {
-		console.log('height', height)
-		console.log('width', width)
-		this.setState({
-			navbarHeight: height,
-		})
 	}
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this.changeColor)
@@ -86,14 +88,23 @@ class ComponentsNavbar extends React.Component {
 			document.body.scrollTop < 300
 		) {
 			this.setState({
-				color: (authStore.state[SIGNED_UP] && bgPurple) || 'navbar-transparent',
+				color:
+					(alertStore.state[ALERT_OPEN] && bgPurple) || 'navbar-transparent',
 			})
 		}
 	}
+
+	onResize = (width, height) => {
+		this.setState({
+			navbarHeight: height,
+		})
+	}
+
 	toggleCollapse = () => {
 		document.documentElement.classList.toggle('nav-open')
-		this.setState({
-			collapseOpen: !this.state.collapseOpen,
+		this.setState(state => {
+			state.collapseOpen = !state.collapseOpen
+			return state
 		})
 	}
 	onCollapseEntering = () => {
@@ -136,14 +147,20 @@ class ComponentsNavbar extends React.Component {
 			collapseExited,
 		} = this
 		return (
-			<Subscribe to={[authStore]}>
-				{authStore => {
+			<Subscribe to={[authStore, alertStore]}>
+				{(authStore, alertStore) => {
 					const {
 						[USERNAME]: username,
 						[EMAIL]: email,
 						[SIGNED_IN]: signedIn,
-						[SIGNED_UP]: signedUp,
 					} = authStore.state
+					const {
+						[ALERT_HREF]: alertHref,
+						[ALERT_TEXT]: alertText,
+						[ALERT_COLOR]: alertColor,
+						[ALERT_OPEN]: alertOpen,
+						[ALERT_HREF_TEXT]: alertHrefText,
+					} = alertStore.state
 					return (
 						<>
 							<div className='fixed-top'>
@@ -151,7 +168,7 @@ class ComponentsNavbar extends React.Component {
 									style={{
 										zIndex: 2147483647,
 									}}
-									className={color}
+									className={(alertOpen && bgPurple) || color}
 									color-on-scroll='100'
 									expand='lg'>
 									<Container>
@@ -296,20 +313,20 @@ class ComponentsNavbar extends React.Component {
 							</div>
 							<Alert
 								style={{ zIndex: 2147483647, marginTop: navbarHeight }}
-								isOpen={signedUp}
+								isOpen={alertOpen}
 								toggle={() => {
-									authStore.setState({ [SIGNED_UP]: false })
+									alertStore.setState({ [ALERT_OPEN]: false })
 								}}
-								color='success'
+								color={alertColor}
 								className='d-flex align-items-center fixed-top'>
 								<Container>
-									{`Signed up successful, a verification email has sent to `}
+									{alertText}
 									<a
-										href={email}
+										href={alertHref}
 										target='_blank'
 										rel='noopener noreferrer'
 										className='alert-link'>
-										{email}
+										{alertHrefText}
 									</a>
 								</Container>
 							</Alert>
