@@ -20,7 +20,7 @@ import {
 } from 'reactstrap'
 
 // core components
-import DemoFooter from 'components/Footers/DemoFooter.jsx'
+import { Footer, IndexNavbar } from 'components'
 
 class LoginPage extends React.Component {
 	state = {}
@@ -35,6 +35,7 @@ class LoginPage extends React.Component {
 	render() {
 		return (
 			<>
+				<IndexNavbar />
 				<div className='page-header'>
 					<div className='squares square1' />
 					<div className='squares square2' />
@@ -124,7 +125,7 @@ class LoginPage extends React.Component {
 						</Col>
 					</Container>
 				</div>
-				<DemoFooter />
+				<Footer />
 			</>
 		)
 	}
