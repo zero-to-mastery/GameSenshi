@@ -1,0 +1,10 @@
+import { OPEN, HREF, COLOR, TEXT } from 'constantValues/commonConstants'
+
+const ALERT = 'Alert'
+const ALERT_HREF = ALERT + HREF
+const ALERT_TEXT = ALERT + TEXT
+const ALERT_COLOR = ALERT + COLOR
+const ALERT_OPEN = ALERT + OPEN
+const ALERT_HREF_TEXT = ALERT_HREF + TEXT
+
+export { ALERT_HREF, ALERT_TEXT, ALERT_COLOR, ALERT_OPEN, ALERT_HREF_TEXT }

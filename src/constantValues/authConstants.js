@@ -1,5 +1,5 @@
-const ON = 'On'
-const IS = 'Is'
+import { IS, ON } from 'constantValues/commonConstants'
+
 const VALID = 'Valid'
 const EXIST = 'Exist'
 const IS_VALID = IS + VALID

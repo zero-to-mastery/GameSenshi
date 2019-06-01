@@ -1,7 +1,25 @@
-const WILL_UNMOUNT = 'willUnmount'
-const STATUS = 'status'
+const IS = 'Is'
+const ON = 'On'
 const CODE = 'code'
-const MESSAGE = 'message'
 const DATA = 'data'
+const HREF = 'href'
+const OPEN = 'Open'
+const TEXT = 'Text'
+const COLOR = 'Color'
+const STATUS = 'status'
+const MESSAGE = 'message'
+const WILL_UNMOUNT = 'willUnmount'
 
-export { WILL_UNMOUNT, STATUS, CODE, MESSAGE, DATA }
+export {
+	IS,
+	ON,
+	OPEN,
+	HREF,
+	TEXT,
+	COLOR,
+	WILL_UNMOUNT,
+	DATA,
+	STATUS,
+	CODE,
+	MESSAGE,
+}

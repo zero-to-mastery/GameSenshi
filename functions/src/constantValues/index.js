@@ -1,24 +1,27 @@
 // in future this should turn into npm library so that backend can use the same code
 // constants is a nodejs module, so the folder is named constantValues instead
+
 import {
+	IS,
+	ON,
+	OPEN,
+	HREF,
+	TEXT,
+	COLOR,
 	WILL_UNMOUNT,
+	DATA,
 	STATUS,
 	CODE,
 	MESSAGE,
-	DATA,
 } from 'constantValues/commonConstants'
 
 import {
-	ENV,
-	REACT_APP_API_KEY,
-	REACT_APP_AUTH_DOMAIN,
-	REACT_APP_DATABASE_URL,
-	REACT_APP_PROJECT_ID,
-	REACT_APP_STORAGE_BUCKET,
-	REACT_APP_MESSAGING_SENDER_ID,
-	REACT_APP_APP_ID,
-	VERIFY_EMAIL_API_KEY,
-} from 'constantValues/envKeyConstants'
+	ALERT_HREF,
+	ALERT_TEXT,
+	ALERT_COLOR,
+	ALERT_OPEN,
+	ALERT_HREF_TEXT,
+} from 'constantValues/alertConstants'
 
 import {
 	IS_VALID,
@@ -42,6 +45,7 @@ import {
 	USERNAME,
 	USERNAME_IS_VALID,
 	USERNAME_VALIDATION,
+	USERNAME_EXTRA_HEIGHT,
 	USERNAME_SUBMIT_ERRORS,
 	ON_SIGN_UP,
 	ON_IS_EMAIL_EXIST,
@@ -55,7 +59,7 @@ import {
 	FIREBASE_PROVIDER_DATA,
 } from 'constantValues/authConstants'
 
-export {
+import {
 	ENV,
 	REACT_APP_API_KEY,
 	REACT_APP_AUTH_DOMAIN,
@@ -65,11 +69,25 @@ export {
 	REACT_APP_MESSAGING_SENDER_ID,
 	REACT_APP_APP_ID,
 	VERIFY_EMAIL_API_KEY,
+} from 'constantValues/envKeyConstants'
+
+export {
+	IS,
+	ON,
+	OPEN,
+	HREF,
+	TEXT,
+	COLOR,
 	WILL_UNMOUNT,
+	DATA,
 	STATUS,
 	CODE,
 	MESSAGE,
-	DATA,
+	ALERT_HREF,
+	ALERT_TEXT,
+	ALERT_COLOR,
+	ALERT_OPEN,
+	ALERT_HREF_TEXT,
 	IS_VALID,
 	SUBMITTING,
 	SUBMIT_ERRORS,
@@ -91,6 +109,7 @@ export {
 	USERNAME,
 	USERNAME_IS_VALID,
 	USERNAME_VALIDATION,
+	USERNAME_EXTRA_HEIGHT,
 	USERNAME_SUBMIT_ERRORS,
 	ON_SIGN_UP,
 	ON_IS_EMAIL_EXIST,
@@ -102,4 +121,13 @@ export {
 	FIREBASE_PHOTO_URL,
 	FIREBASE_UID,
 	FIREBASE_PROVIDER_DATA,
+	ENV,
+	REACT_APP_API_KEY,
+	REACT_APP_AUTH_DOMAIN,
+	REACT_APP_DATABASE_URL,
+	REACT_APP_PROJECT_ID,
+	REACT_APP_STORAGE_BUCKET,
+	REACT_APP_MESSAGING_SENDER_ID,
+	REACT_APP_APP_ID,
+	VERIFY_EMAIL_API_KEY,
 }
