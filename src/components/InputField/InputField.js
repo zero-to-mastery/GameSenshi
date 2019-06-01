@@ -53,10 +53,9 @@ const InputField = props => {
 		// change parent component height
 		// this code may be "extra" because some may not need it
 		container &&
-			container.setState(state => ({
-				...state,
+			container.setState({
 				[name + EXTRA_HEIGHT]: ref.current.clientHeight,
-			}))
+			})
 	}
 
 	const generateMessageListWithState = (validationResult, resolve) => {
