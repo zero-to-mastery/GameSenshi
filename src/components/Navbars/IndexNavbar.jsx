@@ -36,7 +36,7 @@ class ComponentsNavbar extends React.Component {
 		super(props)
 		this.state = {
 			collapseOpen: false,
-			color: (authStore && bgPurple) || 'navbar-transparent',
+			color: (authStore.state[SIGNED_UP] && bgPurple) || 'navbar-transparent',
 			overWidthBreakPoint: window.innerWidth > widthBreakPoint,
 			collapseExited: true,
 			navbarHeight: 0,
@@ -86,7 +86,7 @@ class ComponentsNavbar extends React.Component {
 			document.body.scrollTop < 300
 		) {
 			this.setState({
-				color: (authStore && bgPurple) || 'navbar-transparent',
+				color: (authStore.state[SIGNED_UP] && bgPurple) || 'navbar-transparent',
 			})
 		}
 	}
