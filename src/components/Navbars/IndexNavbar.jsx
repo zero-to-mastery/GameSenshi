@@ -29,12 +29,14 @@ import logo from 'assets/img/favicon-32x32.png'
 
 const widthBreakPoint = 991
 
+const bgPurple = 'bg-purple'
+
 class ComponentsNavbar extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			collapseOpen: false,
-			color: 'navbar-transparent',
+			color: (authStore && bgPurple) || 'navbar-transparent',
 			overWidthBreakPoint: window.innerWidth > widthBreakPoint,
 			collapseExited: true,
 			alertHeight: 0,
@@ -77,14 +79,14 @@ class ComponentsNavbar extends React.Component {
 			document.body.scrollTop > 299
 		) {
 			this.setState({
-				color: 'bg-purple',
+				color: bgPurple,
 			})
 		} else if (
 			document.documentElement.scrollTop < 300 ||
 			document.body.scrollTop < 300
 		) {
 			this.setState({
-				color: 'navbar-transparent',
+				color: (authStore && bgPurple) || 'navbar-transparent',
 			})
 		}
 	}
@@ -145,170 +147,172 @@ class ComponentsNavbar extends React.Component {
 					return (
 						<>
 							<div className='fixed-top'>
-								<Alert
-									style={{ zIndex: 2147483647 }}
-									isOpen={signedUp}
-									toggle={() => {
-										authStore.setState({ [SIGNED_UP]: false })
-										setState({ alertHeight: 0 })
+								<Navbar
+									style={{
+										zIndex: 2147483647,
 									}}
-									color='primary'
-									className='d-flex align-items-center'>
+									className={color}
+									color-on-scroll='100'
+									expand='lg'>
 									<Container>
-										{`Signed up successful, a verification email has sent to `}
-										<a
-											href={email}
-											target='_blank'
-											rel='noopener noreferrer'
-											className='alert-link'>
-											{email}
-										</a>
+										<div className='navbar-translate'>
+											<NavbarBrand
+												data-placement='bottom'
+												to='/'
+												rel='noopener noreferrer'
+												tag={Link}>
+												<img src={logo} alt='Game Senshi' />
+												<span>&nbsp;&nbsp;&nbsp;</span>
+												GAME SENSHI
+											</NavbarBrand>
+											<div className='d-flex align-items-center'>
+												{!overWidthBreakPoint && (
+													<Button
+														color='primary'
+														type='button'
+														onClick={() => {
+															history.push('signUp')
+														}}>
+														Sign up
+													</Button>
+												)}
+												<button
+													aria-expanded={collapseOpen}
+													className='navbar-toggler navbar-toggler'
+													onClick={toggleCollapse}>
+													<span className='navbar-toggler-bar bar1' />
+													<span className='navbar-toggler-bar bar2' />
+													<span className='navbar-toggler-bar bar3' />
+												</button>
+											</div>
+										</div>
+										<Collapse
+											className={'justify-content-end ' + collapseOut}
+											navbar
+											isOpen={collapseOpen}
+											onEntering={onCollapseEntering}
+											onExiting={onCollapseExiting}
+											onExited={onCollapseExited}>
+											<div className='navbar-collapse-header'>
+												<Row>
+													<Col className='collapse-brand' xs='6'>
+														<a href='#pablo' onClick={e => e.preventDefault()}>
+															GAME SENSHI
+														</a>
+													</Col>
+													<Col className='collapse-close text-right' xs='6'>
+														<button
+															aria-expanded={collapseOpen}
+															className='navbar-toggler'
+															onClick={toggleCollapse}>
+															<i className='tim-icons icon-simple-remove' />
+														</button>
+													</Col>
+												</Row>
+											</div>
+											<Nav navbar>
+												{(!collapseOpen && collapseExited) ||
+												overWidthBreakPoint ? (
+													<>
+														<NavItem className='p-0'>
+															<Button
+																className='btn-simple font-weight-bold'
+																color='primary'
+																type='button'
+																onClick={() => {
+																	history.push('signin')
+																}}>
+																Sign in
+															</Button>
+														</NavItem>
+														<NavItem className='p-0'>
+															<Button
+																color='primary'
+																type='button'
+																onClick={() => {
+																	history.push('signup')
+																}}>
+																Sign up
+															</Button>
+														</NavItem>
+													</>
+												) : (
+													<>
+														<NavItem className='p-0'>
+															<NavLink
+																data-placement='bottom'
+																href='/signin'
+																rel='noopener noreferrer'
+																target='_blank'
+																onClick={e => {
+																	e.preventDefault()
+																	history.push('signin')
+																}}>
+																<Row>
+																	<Col xs='2' sm='2' md='2'>
+																		<i className='fab fas fa-sign-in-alt' />
+																	</Col>
+																	<Col>
+																		<p className='d-lg-none d-xl-none'>
+																			Sign in
+																		</p>
+																	</Col>
+																</Row>
+															</NavLink>
+														</NavItem>
+														<NavItem className='p-0'>
+															<NavLink
+																data-placement='bottom'
+																href='/signup'
+																rel='noopener noreferrer'
+																target='_blank'
+																onClick={e => {
+																	e.preventDefault()
+																	history.push('signup')
+																}}>
+																<Row>
+																	<Col xs='2' sm='2' md='2'>
+																		<i className='fab fas fa-user-plus' />
+																	</Col>
+																	<Col>
+																		<p className='d-lg-none d-xl-none'>
+																			Sign up
+																		</p>
+																	</Col>
+																</Row>
+															</NavLink>
+														</NavItem>
+													</>
+												)}
+											</Nav>
+										</Collapse>
 									</Container>
-								</Alert>
+								</Navbar>
 								<ReactResizeDetector
 									handleWidth
 									handleHeight
 									onResize={onResize}
 								/>
 							</div>
-							<Navbar
-								style={{
-									zIndex: 2147483647,
-									marginTop: alertHeight,
+							<Alert
+								style={{ zIndex: 2147483647, marginTop: alertHeight }}
+								isOpen={signedUp}
+								toggle={() => {
+									authStore.setState({ [SIGNED_UP]: false })
 								}}
-								className={'fixed-top ' + color}
-								color-on-scroll='100'
-								expand='lg'>
+								color='success'
+								className='d-flex align-items-center fixed-top'>
 								<Container>
-									<div className='navbar-translate'>
-										<NavbarBrand
-											data-placement='bottom'
-											to='/'
-											rel='noopener noreferrer'
-											tag={Link}>
-											<img src={logo} alt='Game Senshi' />
-											<span>&nbsp;&nbsp;&nbsp;</span>
-											GAME SENSHI
-										</NavbarBrand>
-										<div className='d-flex align-items-center'>
-											{!overWidthBreakPoint && (
-												<Button
-													color='primary'
-													type='button'
-													onClick={() => {
-														history.push('signUp')
-													}}>
-													Sign up
-												</Button>
-											)}
-											<button
-												aria-expanded={collapseOpen}
-												className='navbar-toggler navbar-toggler'
-												onClick={toggleCollapse}>
-												<span className='navbar-toggler-bar bar1' />
-												<span className='navbar-toggler-bar bar2' />
-												<span className='navbar-toggler-bar bar3' />
-											</button>
-										</div>
-									</div>
-									<Collapse
-										className={'justify-content-end ' + collapseOut}
-										navbar
-										isOpen={collapseOpen}
-										onEntering={onCollapseEntering}
-										onExiting={onCollapseExiting}
-										onExited={onCollapseExited}>
-										<div className='navbar-collapse-header'>
-											<Row>
-												<Col className='collapse-brand' xs='6'>
-													<a href='#pablo' onClick={e => e.preventDefault()}>
-														GAME SENSHI
-													</a>
-												</Col>
-												<Col className='collapse-close text-right' xs='6'>
-													<button
-														aria-expanded={collapseOpen}
-														className='navbar-toggler'
-														onClick={toggleCollapse}>
-														<i className='tim-icons icon-simple-remove' />
-													</button>
-												</Col>
-											</Row>
-										</div>
-										<Nav navbar>
-											{(!collapseOpen && collapseExited) ||
-											overWidthBreakPoint ? (
-												<>
-													<NavItem className='p-0'>
-														<Button
-															className='btn-simple font-weight-bold'
-															color='primary'
-															type='button'
-															onClick={() => {
-																history.push('signin')
-															}}>
-															Sign in
-														</Button>
-													</NavItem>
-													<NavItem className='p-0'>
-														<Button
-															color='primary'
-															type='button'
-															onClick={() => {
-																history.push('signup')
-															}}>
-															Sign up
-														</Button>
-													</NavItem>
-												</>
-											) : (
-												<>
-													<NavItem className='p-0'>
-														<NavLink
-															data-placement='bottom'
-															href='/signin'
-															rel='noopener noreferrer'
-															target='_blank'
-															onClick={e => {
-																e.preventDefault()
-																history.push('signin')
-															}}>
-															<Row>
-																<Col xs='2' sm='2' md='2'>
-																	<i className='fab fas fa-sign-in-alt' />
-																</Col>
-																<Col>
-																	<p className='d-lg-none d-xl-none'>Sign in</p>
-																</Col>
-															</Row>
-														</NavLink>
-													</NavItem>
-													<NavItem className='p-0'>
-														<NavLink
-															data-placement='bottom'
-															href='/signup'
-															rel='noopener noreferrer'
-															target='_blank'
-															onClick={e => {
-																e.preventDefault()
-																history.push('signup')
-															}}>
-															<Row>
-																<Col xs='2' sm='2' md='2'>
-																	<i className='fab fas fa-user-plus' />
-																</Col>
-																<Col>
-																	<p className='d-lg-none d-xl-none'>Sign up</p>
-																</Col>
-															</Row>
-														</NavLink>
-													</NavItem>
-												</>
-											)}
-										</Nav>
-									</Collapse>
+									{`Signed up successful, a verification email has sent to `}
+									<a
+										href={email}
+										target='_blank'
+										rel='noopener noreferrer'
+										className='alert-link'>
+										{email}
+									</a>
 								</Container>
-							</Navbar>
+							</Alert>
 						</>
 					)
 				}}
