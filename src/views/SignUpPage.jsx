@@ -44,8 +44,7 @@ import { authValidation } from 'utils/validation'
 import createDecorator from 'final-form-focus'
 
 // state management
-import { Subscribe } from 'unstated'
-import { authStore, alertStore } from 'state'
+import { authStore, alertStore, Subscribe } from 'state'
 
 // react libraries components
 import {

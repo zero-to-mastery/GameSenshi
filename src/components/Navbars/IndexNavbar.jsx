@@ -2,8 +2,7 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
 // state
-import { Subscribe } from 'unstated'
-import { authStore, alertStore } from 'state'
+import { authStore, alertStore, Subscribe } from 'state'
 
 // reactstrap components
 import {
@@ -305,11 +304,7 @@ class ComponentsNavbar extends React.Component {
 										</Collapse>
 									</Container>
 								</Navbar>
-								<ReactResizeDetector
-									handleWidth
-									handleHeight
-									onResize={onResize}
-								/>
+								<ReactResizeDetector handleHeight onResize={onResize} />
 							</div>
 							<Alert
 								style={{ zIndex: 2147483647, marginTop: navbarHeight }}
