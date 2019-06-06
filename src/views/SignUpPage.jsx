@@ -8,7 +8,6 @@ import {
 	handleSignInWithGoogle,
 	handleSignInWithFacebook,
 	handleSignInWithEmailAndPassword,
-	handleSignInWithTwitter,
 } from 'api'
 import { withLastLocation } from 'react-router-last-location'
 
@@ -199,7 +198,9 @@ class RegisterPage extends React.Component {
 														id='square8'
 														style={{ transform: squares7and8 }}
 													/>
-													<Card className='card-register'>
+													<Card
+														className='card-register'
+														style={{ zIndex: 1000 }}>
 														<CardHeader>
 															<CardImg
 																alt='...'
@@ -231,29 +232,6 @@ class RegisterPage extends React.Component {
 																			<Button
 																				size='lg'
 																				className='btn-icon btn-round'
-																				color='facebook'
-																				href=''
-																				id='facebook'
-																				target='_blank'
-																				onClick={e => {
-																					e.preventDefault()
-																					if (lastLocation) {
-																						history.goBack()
-																					} else {
-																						history.push('/index')
-																					}
-																					handleSignInWithFacebook()
-																				}}>
-																				<i className='fab fa-facebook-square' />
-																			</Button>
-																			<UncontrolledTooltip
-																				delay={0}
-																				target='facebook'>
-																				Sign up with Facebook!
-																			</UncontrolledTooltip>
-																			<Button
-																				size='lg'
-																				className='btn-icon btn-round'
 																				color='warning'
 																				href=''
 																				id='google'
@@ -277,9 +255,9 @@ class RegisterPage extends React.Component {
 																			<Button
 																				size='lg'
 																				className='btn-icon btn-round'
-																				color='twitter'
+																				color='facebook'
 																				href=''
-																				id='twitter'
+																				id='facebook'
 																				target='_blank'
 																				onClick={e => {
 																					e.preventDefault()
@@ -288,14 +266,14 @@ class RegisterPage extends React.Component {
 																					} else {
 																						history.push('/index')
 																					}
-																					handleSignInWithTwitter()
+																					handleSignInWithFacebook()
 																				}}>
-																				<i className='fab fa-twitter' />
+																				<i className='fab fa-facebook-square' />
 																			</Button>
 																			<UncontrolledTooltip
 																				delay={0}
-																				target='twitter'>
-																				Sign up with Twitter!
+																				target='facebook'>
+																				Sign up with Facebook!
 																			</UncontrolledTooltip>
 																		</div>
 																		<Row>
