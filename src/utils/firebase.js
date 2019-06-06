@@ -3,11 +3,11 @@ import 'firebase/auth'
 import 'firebase/functions'
 import { modalStore } from 'state'
 import {
-	SOCIAL_SIGN_UP_MODAL_OPEN,
-	SOCIAL_SIGN_UP_MODAL_TITLE,
-	SOCIAL_SIGN_UP_MODAL_CALLBACK,
-	SOCIAL_SIGN_UP_MODAL_PROVIDER_1,
-	SOCIAL_SIGN_UP_MODAL_PROVIDER_2,
+	SOCIAL_AUTH_MODAL_OPEN,
+	SOCIAL_AUTH_MODAL_TITLE,
+	SOCIAL_AUTH_MODAL_CALLBACK,
+	SOCIAL_AUTH_MODAL_PROVIDER_1,
+	SOCIAL_AUTH_MODAL_PROVIDER_2,
 } from 'constantValues'
 
 const firebaseConfig = {
@@ -55,16 +55,10 @@ auth()
 		// Link to Google credential.
 		// As we have access to the pending credential, we can directly call the link method.
 		// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
-		const provider2 = JSON.parse(sessionStorage.getItem('provider2'))
+		const provider2 = sessionStorage.getItem('provider2')
 		sessionStorage.removeItem('provider2')
 		if (provider2) {
-			result.user
-				.linkWithRedirect(new auth[provider2]())
-				.then(function(usercred) {
-					console.log('1233456')
-					// Google account successfully linked to the existing Firebase user.
-					//goToApp()
-				})
+			result.user.linkWithRedirect(new auth[provider2]())
 		}
 	})
 	.catch(err => {
@@ -100,22 +94,23 @@ auth()
 							''
 						)
 
-					const provider = getProvider(methods[0])
+					const provider1 = getProvider(methods[0])
 					const provider2 = getProvider(credential.signInMethod)
 					const name1 = getName(methods[0])
 					const name2 = getName(credential.signInMethod)
-					sessionStorage.setItem('provider2', JSON.stringify(provider2))
-					if (provider === 'password') {
+					if (provider1 === 'password') {
 						//handle password case
 					} else {
 						modalStore.setState({
-							[SOCIAL_SIGN_UP_MODAL_TITLE]: 'Linking Your Social Login',
-							[SOCIAL_SIGN_UP_MODAL_OPEN]: true,
-							[SOCIAL_SIGN_UP_MODAL_CALLBACK]: () => {
-								auth().signInWithRedirect(new auth[provider]())
+							[SOCIAL_AUTH_MODAL_TITLE]: 'Linking Your Social Login',
+							[SOCIAL_AUTH_MODAL_OPEN]: true,
+							[SOCIAL_AUTH_MODAL_CALLBACK]: () => {
+								auth().signInWithRedirect(new auth[provider1]())
+								sessionStorage.setItem('provider1', provider1)
+								sessionStorage.setItem('provider2', provider2)
 							},
-							[SOCIAL_SIGN_UP_MODAL_PROVIDER_1]: name1,
-							[SOCIAL_SIGN_UP_MODAL_PROVIDER_2]: name2,
+							[SOCIAL_AUTH_MODAL_PROVIDER_1]: name1,
+							[SOCIAL_AUTH_MODAL_PROVIDER_2]: name2,
 						})
 						//continue on getRedirectResult .then
 					}

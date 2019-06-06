@@ -3,7 +3,7 @@ import InputField from 'components/InputField/InputField'
 import MessageList from 'components/InputField/MessageList'
 import Footer from 'components/Footers/Footer'
 import IndexHeader from 'components/Headers/IndexHeader.jsx'
-import SocialAuthSignUpModal from 'components/Modal/SocialAuthSignUpModal'
+import SocialAuthModal from 'components/Modal/SocialAuthModal'
 
 export {
 	Footer,
@@ -11,5 +11,5 @@ export {
 	InputField,
 	IndexNavbar,
 	IndexHeader,
-	SocialAuthSignUpModal,
+	SocialAuthModal,
 }

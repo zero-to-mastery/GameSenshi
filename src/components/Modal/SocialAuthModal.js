@@ -4,21 +4,21 @@ import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
 
 // constants
 import {
-	SOCIAL_SIGN_UP_MODAL_OPEN,
-	SOCIAL_SIGN_UP_MODAL_TITLE,
-	SOCIAL_SIGN_UP_MODAL_CALLBACK,
-	SOCIAL_SIGN_UP_MODAL_PROVIDER_1,
-	SOCIAL_SIGN_UP_MODAL_PROVIDER_2,
+	SOCIAL_AUTH_MODAL_OPEN,
+	SOCIAL_AUTH_MODAL_TITLE,
+	SOCIAL_AUTH_MODAL_CALLBACK,
+	SOCIAL_AUTH_MODAL_PROVIDER_1,
+	SOCIAL_AUTH_MODAL_PROVIDER_2,
 } from 'constantValues'
 
 // state
 import { modalStore, Subscribe } from 'state'
 
 // toggle
-const SocialAuthSignUpModal = () => {
+const SocialAuthModal = () => {
 	const toggle = () => {
 		modalStore.setState(state => {
-			state[SOCIAL_SIGN_UP_MODAL_OPEN] = !state[SOCIAL_SIGN_UP_MODAL_OPEN]
+			state[SOCIAL_AUTH_MODAL_OPEN] = !state[SOCIAL_AUTH_MODAL_OPEN]
 			return state
 		})
 	}
@@ -27,11 +27,11 @@ const SocialAuthSignUpModal = () => {
 			{modalStore => {
 				const {
 					state: {
-						[SOCIAL_SIGN_UP_MODAL_OPEN]: open,
-						[SOCIAL_SIGN_UP_MODAL_TITLE]: title,
-						[SOCIAL_SIGN_UP_MODAL_CALLBACK]: callback,
-						[SOCIAL_SIGN_UP_MODAL_PROVIDER_1]: provider1,
-						[SOCIAL_SIGN_UP_MODAL_PROVIDER_2]: provider2,
+						[SOCIAL_AUTH_MODAL_OPEN]: open,
+						[SOCIAL_AUTH_MODAL_TITLE]: title,
+						[SOCIAL_AUTH_MODAL_CALLBACK]: callback,
+						[SOCIAL_AUTH_MODAL_PROVIDER_1]: provider1,
+						[SOCIAL_AUTH_MODAL_PROVIDER_2]: provider2,
 					},
 				} = modalStore
 				return (
@@ -47,12 +47,18 @@ const SocialAuthSignUpModal = () => {
 							</button>
 							<h5 className='modal-title'>{title}</h5>
 						</div>
-						<ModalBody>
-							It seem like you already registered with <b>{provider1}</b>, we
-							will now try to link both your <b>{provider1}</b> and{' '}
-							<b>{provider2}</b> social login by signing you in with{' '}
-							<b>{provider1}</b> first then <b>{provider2}</b>.
-						</ModalBody>
+						{provider2 ? (
+							<ModalBody>
+								It seem like you already registered with <b>{provider1}</b>, we
+								will now try to link both of your <b>{provider1}</b> and{' '}
+								<b>{provider2}</b> social login by signing you in with{' '}
+								<b>{provider1}</b> first then <b>{provider2}</b>.
+							</ModalBody>
+						) : (
+							<ModalBody>
+								Please wait while we signing you in with {provider1}
+							</ModalBody>
+						)}
 						<ModalFooter>
 							<Button color='primary' onClick={callback}>
 								Continue
@@ -65,4 +71,4 @@ const SocialAuthSignUpModal = () => {
 	)
 }
 
-export default SocialAuthSignUpModal
+export default SocialAuthModal

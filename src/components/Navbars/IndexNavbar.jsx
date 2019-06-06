@@ -33,7 +33,7 @@ import {
 	ALERT_HREF_TEXT,
 } from 'constantValues'
 
-import SocialAuthSignUpModal from 'components/Modal/SocialAuthSignUpModal'
+import SocialAuthModal from 'components/Modal/SocialAuthModal'
 
 import logo from 'assets/img/favicon-32x32.png'
 
@@ -164,7 +164,7 @@ class ComponentsNavbar extends React.Component {
 					} = alertStore.state
 					return (
 						<>
-							<SocialAuthSignUpModal />
+							<SocialAuthModal />
 							<div className='fixed-top'>
 								<Navbar
 									style={{
