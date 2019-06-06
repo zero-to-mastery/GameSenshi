@@ -33,6 +33,8 @@ import {
 	ALERT_HREF_TEXT,
 } from 'constantValues'
 
+import SocialAuthSignUpModal from 'components/Modal/SocialAuthSignUpModal'
+
 import logo from 'assets/img/favicon-32x32.png'
 
 const widthBreakPoint = 991
@@ -162,6 +164,7 @@ class ComponentsNavbar extends React.Component {
 					} = alertStore.state
 					return (
 						<>
+							<SocialAuthSignUpModal />
 							<div className='fixed-top'>
 								<Navbar
 									style={{

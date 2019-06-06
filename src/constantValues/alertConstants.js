@@ -1,6 +1,6 @@
 import { OPEN, HREF, COLOR, TEXT } from 'constantValues/commonConstants'
 
-const ALERT = 'Alert'
+const ALERT = 'alert'
 const ALERT_HREF = ALERT + HREF
 const ALERT_TEXT = ALERT + TEXT
 const ALERT_COLOR = ALERT + COLOR

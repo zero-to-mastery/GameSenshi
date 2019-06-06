@@ -1,6 +1,14 @@
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/functions'
+import { modalStore } from 'state'
+import {
+	SOCIAL_SIGN_UP_MODAL_OPEN,
+	SOCIAL_SIGN_UP_MODAL_TITLE,
+	SOCIAL_SIGN_UP_MODAL_CALLBACK,
+	SOCIAL_SIGN_UP_MODAL_PROVIDER_1,
+	SOCIAL_SIGN_UP_MODAL_PROVIDER_2,
+} from 'constantValues'
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_API_KEY,
@@ -48,10 +56,12 @@ auth()
 		// As we have access to the pending credential, we can directly call the link method.
 		// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 		const provider2 = JSON.parse(sessionStorage.getItem('provider2'))
+		sessionStorage.removeItem('provider2')
 		if (provider2) {
 			result.user
 				.linkWithRedirect(new auth[provider2]())
 				.then(function(usercred) {
+					console.log('1233456')
 					// Google account successfully linked to the existing Firebase user.
 					//goToApp()
 				})
@@ -73,56 +83,44 @@ auth()
 			auth()
 				.fetchSignInMethodsForEmail(email)
 				.then(methods => {
-					// Step 3.
-					// If the user has several sign-in methods,
-					// the first method in the list will be the "recommended" method to use.
-					// if (methods[0] === 'password') {
-					// 	// Asks the user their password.
-					// 	// In real scenario, you should handle this asynchronously.
-					// 	var password = promptUserForPassword() // TODO: implement promptUserForPassword.
-					// 	auth
-					// 		.signInWithEmailAndPassword(email, password)
-					// 		.then(function(user) {
-					// 			// Step 4a.
-					// 			return user.linkWithCredential(pendingCred)
-					// 		})
-					// 		.then(function() {
-					// 			// Google account successfully linked to the existing Firebase user.
-					// 			//goToApp()
-					// 		})
-					// 	return
-					// }
-					// All the other cases are external providers.
-					// Construct provider object for that provider.
-					// TODO: implement getProviderForProviderId.
-
-					const getProvider = method => {
-						return method === 'google.com'
+					const getProvider = method =>
+						method === 'google.com'
 							? 'GoogleAuthProvider'
 							: method === 'facebook.com'
 							? 'FacebookAuthProvider'
 							: method === 'twitter.com'
 							? 'TwitterAuthProvider'
+							: method === 'password'
+							? 'password'
 							: undefined
-					}
+
+					const getName = string =>
+						(string.charAt(0).toUpperCase() + string.slice(1)).replace(
+							'.com',
+							''
+						)
 
 					const provider = getProvider(methods[0])
 					const provider2 = getProvider(credential.signInMethod)
+					const name1 = getName(methods[0])
+					const name2 = getName(credential.signInMethod)
 					sessionStorage.setItem('provider2', JSON.stringify(provider2))
-
-					// At this point, you should let the user know that he already has an account
-					// but with a different provider, and let him validate the fact he wants to
-					// sign in with this provider.
-					// Sign in to provider. Note: browsers usually block popup triggered asynchronously,
-					// so in real scenario you should ask the user to click on a "continue" button
-					// that will trigger the signInWithPopup.
-					auth().signInWithRedirect(new auth[provider]())
-					//continue on getRedirectResult .then
+					if (provider === 'password') {
+						//handle password case
+					} else {
+						modalStore.setState({
+							[SOCIAL_SIGN_UP_MODAL_TITLE]: 'Linking Your Social Login',
+							[SOCIAL_SIGN_UP_MODAL_OPEN]: true,
+							[SOCIAL_SIGN_UP_MODAL_CALLBACK]: () => {
+								auth().signInWithRedirect(new auth[provider]())
+							},
+							[SOCIAL_SIGN_UP_MODAL_PROVIDER_1]: name1,
+							[SOCIAL_SIGN_UP_MODAL_PROVIDER_2]: name2,
+						})
+						//continue on getRedirectResult .then
+					}
 				})
 		}
-	})
-	.then(() => {
-		sessionStorage.removeItem('provider2')
 	})
 
 const functions = firebase.functions()
