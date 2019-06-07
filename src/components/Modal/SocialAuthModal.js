@@ -5,6 +5,7 @@ import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
 
 // constants
 import {
+	SOCIAL_AUTH_MODAL_BODY,
 	SOCIAL_AUTH_MODAL_OPEN,
 	SOCIAL_AUTH_MODAL_TITLE,
 	SOCIAL_AUTH_MODAL_CALLBACK,
@@ -28,6 +29,7 @@ const SocialAuthModal = () => {
 			{socialAuthModalStore => {
 				const {
 					state: {
+						[SOCIAL_AUTH_MODAL_BODY]: body,
 						[SOCIAL_AUTH_MODAL_OPEN]: open,
 						[SOCIAL_AUTH_MODAL_TITLE]: title,
 						[SOCIAL_AUTH_MODAL_CALLBACK]: callback,
@@ -54,7 +56,8 @@ const SocialAuthModal = () => {
 									It seem like you already registered with <b>{provider1}</b>,
 									we will try to link both of your <b>{provider1}</b> and{' '}
 									<b>{provider2}</b> social login by signing you in with{' '}
-									<b>{provider1}</b> first then <b>{provider2}</b>.
+									<b>{provider1}</b> first then <b>{provider2}</b>. Please click
+									Continue to link your account.
 								</ModalBody>
 								<ModalFooter className='d-flex justify-content-end'>
 									<Button color='primary' onClick={callback}>
@@ -65,7 +68,8 @@ const SocialAuthModal = () => {
 						) : (
 							<>
 								<ModalBody>
-									Please wait while we signing you in with <b>{provider1}</b>.
+									{body}
+									<b>{provider1}</b>.
 								</ModalBody>
 								<ModalFooter className='d-flex justify-content-center'>
 									<Loader type='Plane' color='#FFD700' height={80} width={80} />
