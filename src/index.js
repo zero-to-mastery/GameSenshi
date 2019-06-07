@@ -57,7 +57,9 @@ showSignInModal &&
 	socialAuthModalStore.setState({
 		[SOCIAL_AUTH_MODAL_BODY]: (
 			<>
-				Signing in with <b>{showSignInModal}</b>...Almost there!
+				Signing in with <b>{showSignInModal}</b>...
+				<br />
+				Almost there!
 			</>
 		),
 		[SOCIAL_AUTH_MODAL_OPEN]: true,
