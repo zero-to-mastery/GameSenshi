@@ -12,6 +12,7 @@ import { authStore, socialAuthModalStore } from 'state'
 
 // constants
 import {
+	SOCIAL_AUTH_MODAL_BODY,
 	SOCIAL_AUTH_MODAL_OPEN,
 	SOCIAL_AUTH_MODAL_TITLE,
 	SOCIAL_AUTH_MODAL_PROVIDER_1,
@@ -55,9 +56,20 @@ const showAuth = sessionStorage.getItem('showAuth')
 sessionStorage.removeItem('showAuth')
 showAuth &&
 	socialAuthModalStore.setState({
+		[SOCIAL_AUTH_MODAL_BODY]: 'Please wait while we signing you in with ',
 		[SOCIAL_AUTH_MODAL_OPEN]: true,
 		[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
 		[SOCIAL_AUTH_MODAL_PROVIDER_1]: showAuth,
+		[SOCIAL_AUTH_MODAL_PROVIDER_2]: '',
+	})
+// show auth after link redirect
+const isLinked = sessionStorage.getItem('linking successful?')
+isLinked &&
+	socialAuthModalStore.setState({
+		[SOCIAL_AUTH_MODAL_BODY]: 'Please wait while we linking your ',
+		[SOCIAL_AUTH_MODAL_OPEN]: true,
+		[SOCIAL_AUTH_MODAL_TITLE]: 'Linking...',
+		[SOCIAL_AUTH_MODAL_PROVIDER_1]: isLinked,
 		[SOCIAL_AUTH_MODAL_PROVIDER_2]: '',
 	})
 

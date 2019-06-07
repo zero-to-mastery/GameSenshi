@@ -1,13 +1,17 @@
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/functions'
-import { socialAuthModalStore } from 'state'
+import { alertStore, socialAuthModalStore } from 'state'
 import {
 	SOCIAL_AUTH_MODAL_OPEN,
 	SOCIAL_AUTH_MODAL_TITLE,
 	SOCIAL_AUTH_MODAL_CALLBACK,
 	SOCIAL_AUTH_MODAL_PROVIDER_1,
 	SOCIAL_AUTH_MODAL_PROVIDER_2,
+	ALERT_TEXT,
+	ALERT_COLOR,
+	ALERT_OPEN,
+	ALERT_HREF_TEXT,
 } from 'constantValues'
 
 const firebaseConfig = {
@@ -48,14 +52,33 @@ auth().onAuthStateChanged(function(user) {
 auth()
 	.getRedirectResult()
 	.then(result => {
+		const isLinked = sessionStorage.getItem('linking successful?')
+		sessionStorage.removeItem('linking successful?')
+		if (isLinked) {
+			socialAuthModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
+			alertStore.setState({
+				[ALERT_HREF_TEXT]: '',
+				[ALERT_TEXT]: 'linked successful!',
+				[ALERT_COLOR]: 'success',
+				[ALERT_OPEN]: true,
+			})
+		}
+
 		// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 		const provider2 = sessionStorage.getItem('provider2')
 		sessionStorage.removeItem('provider2')
 		if (provider2) {
+			// show modal on link redirect
+			sessionStorage.setItem(
+				'linking successful?',
+				provider2.replace('AuthProvider', '')
+			)
 			result.user.linkWithRedirect(new auth[provider2]())
 		}
 	})
 	.catch(err => {
+		// if linking not success
+		sessionStorage.removeItem('linking successful?')
 		console.log('failed auth', err)
 		// An error happened.
 		// need to save this credential before hand in cache, remember delete it later.
