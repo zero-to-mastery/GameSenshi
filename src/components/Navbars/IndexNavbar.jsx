@@ -25,7 +25,6 @@ import ReactResizeDetector from 'react-resize-detector'
 import {
 	EMAIL,
 	USERNAME,
-	SIGNED_IN,
 	ALERT_BODY,
 	ALERT_OPEN,
 	ALERT_COLOR,
@@ -148,11 +147,7 @@ class ComponentsNavbar extends React.Component {
 		return (
 			<Subscribe to={[authStore, alertStore]}>
 				{(authStore, alertStore) => {
-					const {
-						[USERNAME]: username,
-						[EMAIL]: email,
-						[SIGNED_IN]: signedIn,
-					} = authStore.state
+					const { [USERNAME]: username, [EMAIL]: email } = authStore.state
 					const {
 						[ALERT_BODY]: alertBody,
 						[ALERT_OPEN]: alertOpen,

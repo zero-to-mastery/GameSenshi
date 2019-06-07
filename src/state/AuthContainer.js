@@ -18,14 +18,10 @@ import {
 	USERNAME_VALIDATION,
 	USERNAME_EXTRA_HEIGHT,
 	USERNAME_SUBMIT_ERRORS,
-	SIGNED_IN,
-	SIGNED_UP,
 } from 'constantValues'
 
 class AuthContainer extends Container {
 	state = {
-		[SIGNED_IN]: false,
-		[SIGNED_UP]: false,
 		[SUBMITTING]: false,
 		[WILL_UNMOUNT]: false,
 		[EMAIL]: '',

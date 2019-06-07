@@ -27,7 +27,6 @@ import {
 	TERM_VALIDATION,
 	SUBMIT_ERRORS,
 	IS_VALID,
-	SIGNED_IN,
 	ALERT_BODY,
 	ALERT_OPEN,
 	ALERT_COLOR,
@@ -134,9 +133,6 @@ class RegisterPage extends React.Component {
 			} else {
 				history.push('/index')
 			}
-			authStore.setState({
-				[SIGNED_IN]: true,
-			})
 			alertStore.setState({
 				[ALERT_BODY]: (
 					<>
