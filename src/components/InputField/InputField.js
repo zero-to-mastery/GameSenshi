@@ -215,8 +215,7 @@ const InputField = props => {
 										}}*/
 									/>
 									<span className='form-check-sign' />
-									{`I agree
-																		to the `}
+									{`I agree to the `}
 									<a href='#pablo' onClick={e => e.preventDefault()}>
 										terms and conditions
 									</a>
