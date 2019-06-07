@@ -1,20 +1,12 @@
 import { Container } from 'unstated'
 
-import {
-	ALERT_HREF,
-	ALERT_TEXT,
-	ALERT_COLOR,
-	ALERT_OPEN,
-	ALERT_HREF_TEXT,
-} from 'constantValues'
+import { ALERT_BODY, ALERT_OPEN, ALERT_COLOR } from 'constantValues'
 
 class AlertContainer extends Container {
 	state = {
-		[ALERT_HREF]: '',
-		[ALERT_TEXT]: '',
-		[ALERT_COLOR]: 'success',
+		[ALERT_BODY]: '',
 		[ALERT_OPEN]: false,
-		[ALERT_HREF_TEXT]: '',
+		[ALERT_COLOR]: 'success',
 	}
 }
 

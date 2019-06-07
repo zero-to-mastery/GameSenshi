@@ -19,11 +19,9 @@ import {
 } from 'constantValues/CommonConstants'
 
 import {
-	ALERT_HREF,
-	ALERT_TEXT,
+	ALERT_BODY,
 	ALERT_COLOR,
 	ALERT_OPEN,
-	ALERT_HREF_TEXT,
 } from 'constantValues/AlertConstants'
 
 import {
@@ -104,11 +102,9 @@ export {
 	STATUS,
 	MESSAGE,
 	WILL_UNMOUNT,
-	ALERT_HREF,
-	ALERT_TEXT,
+	ALERT_BODY,
 	ALERT_COLOR,
 	ALERT_OPEN,
-	ALERT_HREF_TEXT,
 	IS_VALID,
 	SUBMITTING,
 	SUBMIT_ERRORS,

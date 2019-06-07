@@ -28,11 +28,9 @@ import {
 	SUBMIT_ERRORS,
 	IS_VALID,
 	SIGNED_IN,
-	ALERT_HREF,
-	ALERT_TEXT,
-	ALERT_COLOR,
+	ALERT_BODY,
 	ALERT_OPEN,
-	ALERT_HREF_TEXT,
+	ALERT_COLOR,
 } from 'constantValues'
 
 // form validation
@@ -140,12 +138,20 @@ class RegisterPage extends React.Component {
 				[SIGNED_IN]: true,
 			})
 			alertStore.setState({
-				[ALERT_HREF]: authStore.state[EMAIL],
-				[ALERT_TEXT]:
-					'Registration Successful, an verification email has been sent to ',
+				[ALERT_BODY]: (
+					<>
+						Registration successful, an verification email has been sent to{' '}
+						<a
+							href={'https://' + authStore.state[EMAIL]}
+							target='_blank'
+							rel='noopener noreferrer'
+							className='alert-link'>
+							{authStore.state[EMAIL]}
+						</a>
+					</>
+				),
 				[ALERT_COLOR]: 'success',
 				[ALERT_OPEN]: true,
-				[ALERT_HREF_TEXT]: authStore.state[EMAIL],
 			})
 			handleSignInWithEmailAndPassword(
 				authStore.state[EMAIL],

@@ -26,11 +26,9 @@ import {
 	EMAIL,
 	USERNAME,
 	SIGNED_IN,
-	ALERT_HREF,
-	ALERT_TEXT,
-	ALERT_COLOR,
+	ALERT_BODY,
 	ALERT_OPEN,
-	ALERT_HREF_TEXT,
+	ALERT_COLOR,
 } from 'constantValues'
 
 import { SocialAuthModal } from 'components'
@@ -156,11 +154,9 @@ class ComponentsNavbar extends React.Component {
 						[SIGNED_IN]: signedIn,
 					} = authStore.state
 					const {
-						[ALERT_HREF]: alertHref,
-						[ALERT_TEXT]: alertText,
-						[ALERT_COLOR]: alertColor,
+						[ALERT_BODY]: alertBody,
 						[ALERT_OPEN]: alertOpen,
-						[ALERT_HREF_TEXT]: alertHrefText,
+						[ALERT_COLOR]: alertColor,
 					} = alertStore.state
 					return (
 						<>
@@ -239,7 +235,7 @@ class ComponentsNavbar extends React.Component {
 																color='primary'
 																type='button'
 																onClick={() => {
-																	history.push('signin')
+																	history.push('signIn')
 																}}>
 																Sign in
 															</Button>
@@ -249,7 +245,7 @@ class ComponentsNavbar extends React.Component {
 																color='primary'
 																type='button'
 																onClick={() => {
-																	history.push('signup')
+																	history.push('signUp')
 																}}>
 																Sign up
 															</Button>
@@ -260,12 +256,12 @@ class ComponentsNavbar extends React.Component {
 														<NavItem className='p-0'>
 															<NavLink
 																data-placement='bottom'
-																href='/signin'
+																href='/signIn'
 																rel='noopener noreferrer'
 																target='_blank'
 																onClick={e => {
 																	e.preventDefault()
-																	history.push('signin')
+																	history.push('signIn')
 																}}>
 																<Row>
 																	<Col xs='2' sm='2' md='2'>
@@ -282,12 +278,12 @@ class ComponentsNavbar extends React.Component {
 														<NavItem className='p-0'>
 															<NavLink
 																data-placement='bottom'
-																href='/signup'
+																href='/signUp'
 																rel='noopener noreferrer'
 																target='_blank'
 																onClick={e => {
 																	e.preventDefault()
-																	history.push('signup')
+																	history.push('signUp')
 																}}>
 																<Row>
 																	<Col xs='2' sm='2' md='2'>
@@ -317,16 +313,7 @@ class ComponentsNavbar extends React.Component {
 								}}
 								color={alertColor}
 								className='d-flex align-items-center fixed-top'>
-								<Container>
-									{alertText}
-									<a
-										href={alertHref}
-										target='_blank'
-										rel='noopener noreferrer'
-										className='alert-link'>
-										{alertHrefText}
-									</a>
-								</Container>
+								<Container>{alertBody}</Container>
 							</Alert>
 						</>
 					)

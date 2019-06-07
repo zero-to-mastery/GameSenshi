@@ -9,10 +9,9 @@ import {
 	SOCIAL_AUTH_MODAL_TITLE,
 	SOCIAL_AUTH_MODAL_LOADER,
 	SOCIAL_AUTH_MODAL_CALLBACK,
-	ALERT_TEXT,
-	ALERT_COLOR,
+	ALERT_BODY,
 	ALERT_OPEN,
-	ALERT_HREF_TEXT,
+	ALERT_COLOR,
 } from 'constantValues'
 
 const firebaseConfig = {
@@ -59,10 +58,9 @@ auth()
 		sessionStorage.removeItem('linking successful?')
 		if (isLinked) {
 			alertStore.setState({
-				[ALERT_HREF_TEXT]: '',
-				[ALERT_TEXT]: 'Social login linked successful!',
-				[ALERT_COLOR]: 'success',
+				[ALERT_BODY]: 'Social login linked successful!',
 				[ALERT_OPEN]: true,
+				[ALERT_COLOR]: 'success',
 			})
 		}
 
@@ -133,7 +131,7 @@ auth()
 								auth().signInWithRedirect(new auth[provider1]())
 							},
 						})
-						//continue on getRedirectResult .then
+						//continue on getRedirectResult event listener
 					}
 				})
 		}
