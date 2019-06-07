@@ -15,8 +15,7 @@ import {
 	SOCIAL_AUTH_MODAL_BODY,
 	SOCIAL_AUTH_MODAL_OPEN,
 	SOCIAL_AUTH_MODAL_TITLE,
-	SOCIAL_AUTH_MODAL_PROVIDER_1,
-	SOCIAL_AUTH_MODAL_PROVIDER_2,
+	SOCIAL_AUTH_MODAL_LOADER,
 } from 'constantValues'
 
 // styles
@@ -56,32 +55,41 @@ const showSignInModal = sessionStorage.getItem('showSignInModal')
 sessionStorage.removeItem('showSignInModal')
 showSignInModal &&
 	socialAuthModalStore.setState({
-		[SOCIAL_AUTH_MODAL_BODY]: 'Please wait while we signing you in with ',
+		[SOCIAL_AUTH_MODAL_BODY]: (
+			<>
+				Signing in with <b>{showSignInModal}</b>...Almost there!
+			</>
+		),
 		[SOCIAL_AUTH_MODAL_OPEN]: true,
 		[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
-		[SOCIAL_AUTH_MODAL_PROVIDER_1]: showSignInModal,
-		[SOCIAL_AUTH_MODAL_PROVIDER_2]: '',
+		[SOCIAL_AUTH_MODAL_LOADER]: true,
 	})
 // do same thing as showSignInModal but this is specifically for account linking
 const showAuthLinkingModal = sessionStorage.getItem('showAuthLinkingModal')
 sessionStorage.removeItem('showAuthLinkingModal')
 showAuthLinkingModal &&
 	socialAuthModalStore.setState({
-		[SOCIAL_AUTH_MODAL_BODY]: 'Please wait while we signing you in with ',
+		[SOCIAL_AUTH_MODAL_BODY]: (
+			<>
+				Please wait while we signing you in with <b>{showAuthLinkingModal}</b>.
+			</>
+		),
 		[SOCIAL_AUTH_MODAL_OPEN]: true,
 		[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
-		[SOCIAL_AUTH_MODAL_PROVIDER_1]: showAuthLinkingModal,
-		[SOCIAL_AUTH_MODAL_PROVIDER_2]: '',
+		[SOCIAL_AUTH_MODAL_LOADER]: true,
 	})
 // show auth after link redirect
 const isLinked = sessionStorage.getItem('linking successful?')
 isLinked &&
 	socialAuthModalStore.setState({
-		[SOCIAL_AUTH_MODAL_BODY]: 'Please wait while we linking your ',
+		[SOCIAL_AUTH_MODAL_BODY]: (
+			<>
+				Please wait while we linking your <b>{isLinked}</b> account.
+			</>
+		),
 		[SOCIAL_AUTH_MODAL_OPEN]: true,
 		[SOCIAL_AUTH_MODAL_TITLE]: 'Linking...',
-		[SOCIAL_AUTH_MODAL_PROVIDER_1]: isLinked,
-		[SOCIAL_AUTH_MODAL_PROVIDER_2]: '',
+		[SOCIAL_AUTH_MODAL_LOADER]: true,
 	})
 
 ReactDOM.render(

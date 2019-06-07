@@ -14,8 +14,7 @@ import {
 	SOCIAL_AUTH_MODAL_BODY,
 	SOCIAL_AUTH_MODAL_OPEN,
 	SOCIAL_AUTH_MODAL_TITLE,
-	SOCIAL_AUTH_MODAL_PROVIDER_1,
-	SOCIAL_AUTH_MODAL_PROVIDER_2,
+	SOCIAL_AUTH_MODAL_LOADER,
 } from 'constantValues'
 
 const SocialAuthSignInButton = props => {
@@ -23,11 +22,14 @@ const SocialAuthSignInButton = props => {
 
 	const showSignInModal = (provider, api) => {
 		socialAuthModalStore.setState({
-			[SOCIAL_AUTH_MODAL_BODY]: 'Please wait while we signing you in with ',
+			[SOCIAL_AUTH_MODAL_BODY]: (
+				<>
+					Please wait while we signing you in with <b>{provider}</b>.
+				</>
+			),
 			[SOCIAL_AUTH_MODAL_OPEN]: true,
 			[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
-			[SOCIAL_AUTH_MODAL_PROVIDER_1]: provider,
-			[SOCIAL_AUTH_MODAL_PROVIDER_2]: '',
+			[SOCIAL_AUTH_MODAL_LOADER]: true,
 		})
 		sessionStorage.setItem('showSignInModal', provider)
 		if (lastLocation) {
@@ -37,7 +39,7 @@ const SocialAuthSignInButton = props => {
 		}
 		setTimeout(() => {
 			api()
-		}, 1000)
+		}, 3000)
 	}
 
 	return (

@@ -8,9 +8,8 @@ import {
 	SOCIAL_AUTH_MODAL_BODY,
 	SOCIAL_AUTH_MODAL_OPEN,
 	SOCIAL_AUTH_MODAL_TITLE,
+	SOCIAL_AUTH_MODAL_LOADER,
 	SOCIAL_AUTH_MODAL_CALLBACK,
-	SOCIAL_AUTH_MODAL_PROVIDER_1,
-	SOCIAL_AUTH_MODAL_PROVIDER_2,
 } from 'constantValues'
 
 // state
@@ -33,8 +32,7 @@ const SocialAuthModal = () => {
 						[SOCIAL_AUTH_MODAL_OPEN]: open,
 						[SOCIAL_AUTH_MODAL_TITLE]: title,
 						[SOCIAL_AUTH_MODAL_CALLBACK]: callback,
-						[SOCIAL_AUTH_MODAL_PROVIDER_1]: provider1,
-						[SOCIAL_AUTH_MODAL_PROVIDER_2]: provider2,
+						[SOCIAL_AUTH_MODAL_LOADER]: loader,
 					},
 				} = socialAuthModalStore
 				return (
@@ -50,31 +48,17 @@ const SocialAuthModal = () => {
 							</button>
 							<h5 className='modal-title'>{title}</h5>
 						</div>
-						{provider2 ? (
-							<>
-								<ModalBody>
-									It seem like you already registered with <b>{provider1}</b>,
-									we will try to link both of your <b>{provider1}</b> and{' '}
-									<b>{provider2}</b> social login by signing you in with{' '}
-									<b>{provider1}</b> first then <b>{provider2}</b>. Please click
-									<b>Continue</b> to link your account.
-								</ModalBody>
-								<ModalFooter className='d-flex justify-content-end'>
-									<Button color='primary' onClick={callback}>
-										Continue
-									</Button>
-								</ModalFooter>
-							</>
+						<ModalBody>{body}</ModalBody>
+						{loader ? (
+							<ModalFooter className='d-flex justify-content-center'>
+								<Loader type='Plane' color='#FFD700' height={80} width={80} />
+							</ModalFooter>
 						) : (
-							<>
-								<ModalBody>
-									{body}
-									<b>{provider1}</b>.
-								</ModalBody>
-								<ModalFooter className='d-flex justify-content-center'>
-									<Loader type='Plane' color='#FFD700' height={80} width={80} />
-								</ModalFooter>
-							</>
+							<ModalFooter className='d-flex justify-content-end'>
+								<Button color='primary' onClick={callback}>
+									Continue
+								</Button>
+							</ModalFooter>
 						)}
 					</Modal>
 				)

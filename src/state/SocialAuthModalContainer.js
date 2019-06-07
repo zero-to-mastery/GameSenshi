@@ -4,9 +4,8 @@ import {
 	SOCIAL_AUTH_MODAL_BODY,
 	SOCIAL_AUTH_MODAL_OPEN,
 	SOCIAL_AUTH_MODAL_TITLE,
+	SOCIAL_AUTH_MODAL_LOADER,
 	SOCIAL_AUTH_MODAL_CALLBACK,
-	SOCIAL_AUTH_MODAL_PROVIDER_1,
-	SOCIAL_AUTH_MODAL_PROVIDER_2,
 } from 'constantValues'
 
 class SocialAuthModalContainer extends Container {
@@ -14,9 +13,8 @@ class SocialAuthModalContainer extends Container {
 		[SOCIAL_AUTH_MODAL_BODY]: '',
 		[SOCIAL_AUTH_MODAL_TITLE]: '',
 		[SOCIAL_AUTH_MODAL_OPEN]: false,
+		[SOCIAL_AUTH_MODAL_LOADER]: false,
 		[SOCIAL_AUTH_MODAL_CALLBACK]: () => {},
-		[SOCIAL_AUTH_MODAL_PROVIDER_1]: '',
-		[SOCIAL_AUTH_MODAL_PROVIDER_2]: '',
 	}
 }
 

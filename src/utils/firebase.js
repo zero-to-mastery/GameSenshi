@@ -1,13 +1,14 @@
+import React from 'react'
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/functions'
 import { alertStore, socialAuthModalStore } from 'state'
 import {
+	SOCIAL_AUTH_MODAL_BODY,
 	SOCIAL_AUTH_MODAL_OPEN,
 	SOCIAL_AUTH_MODAL_TITLE,
+	SOCIAL_AUTH_MODAL_LOADER,
 	SOCIAL_AUTH_MODAL_CALLBACK,
-	SOCIAL_AUTH_MODAL_PROVIDER_1,
-	SOCIAL_AUTH_MODAL_PROVIDER_2,
 	ALERT_TEXT,
 	ALERT_COLOR,
 	ALERT_OPEN,
@@ -114,15 +115,23 @@ auth()
 						//handle password case
 					} else {
 						socialAuthModalStore.setState({
-							[SOCIAL_AUTH_MODAL_TITLE]: 'Linking Your Social Login',
+							[SOCIAL_AUTH_MODAL_BODY]: (
+								<>
+									It seem like you already registered with <b>{name1}</b>, we
+									will try to link both of your <b>{name1}</b> and{' '}
+									<b>{name2}</b> social login by signing you in with{' '}
+									<b>{name1}</b> first then <b>{name2}</b>. Please click{' '}
+									<b>Continue</b> to link your account.
+								</>
+							),
 							[SOCIAL_AUTH_MODAL_OPEN]: true,
+							[SOCIAL_AUTH_MODAL_TITLE]: 'Linking Your Social Login',
+							[SOCIAL_AUTH_MODAL_LOADER]: false,
 							[SOCIAL_AUTH_MODAL_CALLBACK]: () => {
 								sessionStorage.setItem('showAuthLinkingModal', name2)
 								sessionStorage.setItem('provider2', provider2)
 								auth().signInWithRedirect(new auth[provider1]())
 							},
-							[SOCIAL_AUTH_MODAL_PROVIDER_1]: name1,
-							[SOCIAL_AUTH_MODAL_PROVIDER_2]: name2,
 						})
 						//continue on getRedirectResult .then
 					}
