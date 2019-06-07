@@ -52,14 +52,25 @@ import SignInPage from 'views/SignInPage'
 import SignUpPage from 'views/SignUpPage'
 
 // show social auth modal after redirect back
-const showAuth = sessionStorage.getItem('showAuth')
-sessionStorage.removeItem('showAuth')
-showAuth &&
+const showSignInModal = sessionStorage.getItem('showSignInModal')
+sessionStorage.removeItem('showSignInModal')
+showSignInModal &&
 	socialAuthModalStore.setState({
 		[SOCIAL_AUTH_MODAL_BODY]: 'Please wait while we signing you in with ',
 		[SOCIAL_AUTH_MODAL_OPEN]: true,
 		[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
-		[SOCIAL_AUTH_MODAL_PROVIDER_1]: showAuth,
+		[SOCIAL_AUTH_MODAL_PROVIDER_1]: showSignInModal,
+		[SOCIAL_AUTH_MODAL_PROVIDER_2]: '',
+	})
+// do same thing as showSignInModal but this is specifically for account linking
+const showAuthLinkingModal = sessionStorage.getItem('showAuthLinkingModal')
+sessionStorage.removeItem('showAuthLinkingModal')
+showAuthLinkingModal &&
+	socialAuthModalStore.setState({
+		[SOCIAL_AUTH_MODAL_BODY]: 'Please wait while we signing you in with ',
+		[SOCIAL_AUTH_MODAL_OPEN]: true,
+		[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
+		[SOCIAL_AUTH_MODAL_PROVIDER_1]: showAuthLinkingModal,
 		[SOCIAL_AUTH_MODAL_PROVIDER_2]: '',
 	})
 // show auth after link redirect

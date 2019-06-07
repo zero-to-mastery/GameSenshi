@@ -52,13 +52,14 @@ auth().onAuthStateChanged(function(user) {
 auth()
 	.getRedirectResult()
 	.then(result => {
+		// close modal if successful
+		socialAuthModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
 		const isLinked = sessionStorage.getItem('linking successful?')
 		sessionStorage.removeItem('linking successful?')
 		if (isLinked) {
-			socialAuthModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
 			alertStore.setState({
 				[ALERT_HREF_TEXT]: '',
-				[ALERT_TEXT]: 'linked successful!',
+				[ALERT_TEXT]: 'Social login linked successful!',
 				[ALERT_COLOR]: 'success',
 				[ALERT_OPEN]: true,
 			})
@@ -77,13 +78,13 @@ auth()
 		}
 	})
 	.catch(err => {
-		// if linking not success
+		// close modal if error
+		socialAuthModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
+		// remove this item whether it is success or not
 		sessionStorage.removeItem('linking successful?')
-		console.log('failed auth', err)
 		// An error happened.
 		// need to save this credential before hand in cache, remember delete it later.
 		const { code, credential, email } = err
-		console.log(credential)
 		if (code === 'auth/account-exists-with-different-credential') {
 			auth()
 				.fetchSignInMethodsForEmail(email)
@@ -116,7 +117,7 @@ auth()
 							[SOCIAL_AUTH_MODAL_TITLE]: 'Linking Your Social Login',
 							[SOCIAL_AUTH_MODAL_OPEN]: true,
 							[SOCIAL_AUTH_MODAL_CALLBACK]: () => {
-								sessionStorage.setItem('showAuth', name2)
+								sessionStorage.setItem('showAuthLinkingModal', name2)
 								sessionStorage.setItem('provider2', provider2)
 								auth().signInWithRedirect(new auth[provider1]())
 							},
