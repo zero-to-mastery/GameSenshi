@@ -48,12 +48,6 @@ auth().onAuthStateChanged(function(user) {
 auth()
 	.getRedirectResult()
 	.then(result => {
-		// Remember that the user may have signed in with an account that has a different email
-		// address than the first one. This can happen as Firebase doesn't control the provider's
-		// sign in flow and the user is free to login using whichever account he owns.
-		// Step 4b.
-		// Link to Google credential.
-		// As we have access to the pending credential, we can directly call the link method.
 		// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 		const provider2 = sessionStorage.getItem('provider2')
 		sessionStorage.removeItem('provider2')
@@ -68,12 +62,6 @@ auth()
 		const { code, credential, email } = err
 		console.log(credential)
 		if (code === 'auth/account-exists-with-different-credential') {
-			// Step 2.
-			// User's email already exists.
-			// The pending Google credential.
-			// need to save this credential before hand in cache, remember delete it later.
-			// The provider account's email address.
-			// Get sign-in methods for this email.
 			auth()
 				.fetchSignInMethodsForEmail(email)
 				.then(methods => {
