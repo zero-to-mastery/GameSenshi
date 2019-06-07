@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom'
 import {
 	handleSignUpWithEmailAndPassword,
 	handleIsEmailExist,
-	handleSignInWithGoogle,
-	handleSignInWithFacebook,
 	handleSignInWithEmailAndPassword,
 } from 'api'
 import { withLastLocation } from 'react-router-last-location'
@@ -55,7 +53,6 @@ import {
 	CardImg,
 	CardTitle,
 	Label,
-	UncontrolledTooltip,
 	Form,
 	Container,
 	Row,
@@ -64,7 +61,13 @@ import {
 import Loader from 'react-loader-spinner'
 
 // core components
-import { Footer, InputField, MessageList, IndexNavbar } from 'components'
+import {
+	Footer,
+	InputField,
+	MessageList,
+	IndexNavbar,
+	SocialAuthButtonGroup,
+} from 'components'
 
 const {
 	[EMAIL_VALIDATION]: emailValidation,
@@ -228,54 +231,7 @@ class RegisterPage extends React.Component {
 															{({ handleSubmit, submitting }) => (
 																<>
 																	<CardBody>
-																		<div className='btn-wrapper text-center'>
-																			<Button
-																				size='lg'
-																				className='btn-icon btn-round'
-																				color='warning'
-																				href=''
-																				id='google'
-																				target='_blank'
-																				onClick={e => {
-																					e.preventDefault()
-																					if (lastLocation) {
-																						history.goBack()
-																					} else {
-																						history.push('/index')
-																					}
-																					handleSignInWithGoogle()
-																				}}>
-																				<i className='fab fa-google' />
-																			</Button>
-																			<UncontrolledTooltip
-																				delay={0}
-																				target='google'>
-																				Sign up with Google!
-																			</UncontrolledTooltip>
-																			<Button
-																				size='lg'
-																				className='btn-icon btn-round'
-																				color='facebook'
-																				href=''
-																				id='facebook'
-																				target='_blank'
-																				onClick={e => {
-																					e.preventDefault()
-																					if (lastLocation) {
-																						history.goBack()
-																					} else {
-																						history.push('/index')
-																					}
-																					handleSignInWithFacebook()
-																				}}>
-																				<i className='fab fa-facebook-square' />
-																			</Button>
-																			<UncontrolledTooltip
-																				delay={0}
-																				target='facebook'>
-																				Sign up with Facebook!
-																			</UncontrolledTooltip>
-																		</div>
+																		<SocialAuthButtonGroup />
 																		<Row>
 																			<Col />
 																			<Col className='text-center text-muted mb-4 mt-3 col-auto'>
