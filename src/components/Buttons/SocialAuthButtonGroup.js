@@ -21,7 +21,7 @@ import {
 const SocialAuthSignInButton = props => {
 	const { lastLocation, history } = props
 
-	const showSignInModal = provider => {
+	const showSignInModal = (provider, api) => {
 		socialAuthModalStore.setState({
 			[SOCIAL_AUTH_MODAL_BODY]: 'Please wait while we signing you in with ',
 			[SOCIAL_AUTH_MODAL_OPEN]: true,
@@ -35,6 +35,9 @@ const SocialAuthSignInButton = props => {
 		} else {
 			history.push('/index')
 		}
+		setTimeout(() => {
+			api()
+		}, 1000)
 	}
 
 	return (
@@ -47,8 +50,7 @@ const SocialAuthSignInButton = props => {
 				id='google'
 				target='_blank'
 				onClick={() => {
-					showSignInModal('Google')
-					handleSignInWithGoogle()
+					showSignInModal('Google', handleSignInWithGoogle)
 				}}>
 				<i className='fab fa-google' />
 			</Button>
@@ -63,8 +65,7 @@ const SocialAuthSignInButton = props => {
 				id='facebook'
 				target='_blank'
 				onClick={() => {
-					showSignInModal('Facebook')
-					handleSignInWithFacebook()
+					showSignInModal('Facebook', handleSignInWithFacebook)
 				}}>
 				<i className='fab fa-facebook-square' />
 			</Button>
