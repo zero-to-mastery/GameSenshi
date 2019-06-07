@@ -6,6 +6,6 @@ import { Subscribe } from 'unstated'
 
 const authStore = new AuthContainer()
 const alertStore = new AlertContainer()
-const modalStore = new SocialAuthModalContainer()
+const socialAuthModalStore = new SocialAuthModalContainer()
 
-export { authStore, alertStore, modalStore, Subscribe }
+export { authStore, alertStore, socialAuthModalStore, Subscribe }

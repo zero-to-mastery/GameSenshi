@@ -1,7 +1,7 @@
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/functions'
-import { modalStore } from 'state'
+import { socialAuthModalStore } from 'state'
 import {
 	SOCIAL_AUTH_MODAL_OPEN,
 	SOCIAL_AUTH_MODAL_TITLE,
@@ -101,13 +101,13 @@ auth()
 					if (provider1 === 'password') {
 						//handle password case
 					} else {
-						modalStore.setState({
+						socialAuthModalStore.setState({
 							[SOCIAL_AUTH_MODAL_TITLE]: 'Linking Your Social Login',
 							[SOCIAL_AUTH_MODAL_OPEN]: true,
 							[SOCIAL_AUTH_MODAL_CALLBACK]: () => {
-								auth().signInWithRedirect(new auth[provider1]())
-								sessionStorage.setItem('provider1', provider1)
+								sessionStorage.setItem('showAuth', name2)
 								sessionStorage.setItem('provider2', provider2)
+								auth().signInWithRedirect(new auth[provider1]())
 							},
 							[SOCIAL_AUTH_MODAL_PROVIDER_1]: name1,
 							[SOCIAL_AUTH_MODAL_PROVIDER_2]: name2,
