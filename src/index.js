@@ -8,7 +8,15 @@ import { LastLocationProvider } from 'react-router-last-location'
 
 // state management
 import { Provider } from 'unstated'
-import { authStore } from 'state'
+import { authStore, socialAuthModalStore } from 'state'
+
+// constants
+import {
+	SOCIAL_AUTH_MODAL_OPEN,
+	SOCIAL_AUTH_MODAL_TITLE,
+	SOCIAL_AUTH_MODAL_PROVIDER_1,
+	SOCIAL_AUTH_MODAL_PROVIDER_2,
+} from 'constantValues'
 
 // styles
 import 'assets/css/nucleo-icons.css'
@@ -41,6 +49,17 @@ import CheckoutPage from 'views/examples/CheckoutPage.jsx'
 import ChatPage from 'views/examples/ChatPage.jsx'
 import SignInPage from 'views/SignInPage'
 import SignUpPage from 'views/SignUpPage'
+
+// show social auth modal after redirect back
+const showAuth = sessionStorage.getItem('showAuth')
+sessionStorage.removeItem('showAuth')
+showAuth &&
+	socialAuthModalStore.setState({
+		[SOCIAL_AUTH_MODAL_OPEN]: true,
+		[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
+		[SOCIAL_AUTH_MODAL_PROVIDER_1]: showAuth,
+		[SOCIAL_AUTH_MODAL_PROVIDER_2]: '',
+	})
 
 ReactDOM.render(
 	<Provider to={[authStore]}>

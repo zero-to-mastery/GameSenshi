@@ -1,5 +1,6 @@
 // the purpose of this modal is to link user social auth
 import React from 'react'
+import Loader from 'react-loader-spinner'
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
 
 // constants
@@ -12,19 +13,19 @@ import {
 } from 'constantValues'
 
 // state
-import { modalStore, Subscribe } from 'state'
+import { socialAuthModalStore, Subscribe } from 'state'
 
 // toggle
 const SocialAuthModal = () => {
 	const toggle = () => {
-		modalStore.setState(state => {
+		socialAuthModalStore.setState(state => {
 			state[SOCIAL_AUTH_MODAL_OPEN] = !state[SOCIAL_AUTH_MODAL_OPEN]
 			return state
 		})
 	}
 	return (
-		<Subscribe to={[modalStore]}>
-			{modalStore => {
+		<Subscribe to={[socialAuthModalStore]}>
+			{socialAuthModalStore => {
 				const {
 					state: {
 						[SOCIAL_AUTH_MODAL_OPEN]: open,
@@ -33,7 +34,7 @@ const SocialAuthModal = () => {
 						[SOCIAL_AUTH_MODAL_PROVIDER_1]: provider1,
 						[SOCIAL_AUTH_MODAL_PROVIDER_2]: provider2,
 					},
-				} = modalStore
+				} = socialAuthModalStore
 				return (
 					<Modal isOpen={open} toggle={toggle} backdrop='static'>
 						<div className='modal-header'>
@@ -48,22 +49,29 @@ const SocialAuthModal = () => {
 							<h5 className='modal-title'>{title}</h5>
 						</div>
 						{provider2 ? (
-							<ModalBody>
-								It seem like you already registered with <b>{provider1}</b>, we
-								will now try to link both of your <b>{provider1}</b> and{' '}
-								<b>{provider2}</b> social login by signing you in with{' '}
-								<b>{provider1}</b> first then <b>{provider2}</b>.
-							</ModalBody>
+							<>
+								<ModalBody>
+									It seem like you already registered with <b>{provider1}</b>,
+									we will now try to link both of your <b>{provider1}</b> and{' '}
+									<b>{provider2}</b> social login by signing you in with{' '}
+									<b>{provider1}</b> first then <b>{provider2}</b>.
+								</ModalBody>
+								<ModalFooter className='d-flex justify-content-end'>
+									<Button color='primary' onClick={callback}>
+										Continue
+									</Button>
+								</ModalFooter>
+							</>
 						) : (
-							<ModalBody>
-								Please wait while we signing you in with {provider1}
-							</ModalBody>
+							<>
+								<ModalBody>
+									Please wait while we signing you in with <b>{provider1}</b>.
+								</ModalBody>
+								<ModalFooter className='d-flex justify-content-center'>
+									<Loader type='Plane' color='#FFD700' height={80} width={80} />
+								</ModalFooter>
+							</>
 						)}
-						<ModalFooter>
-							<Button color='primary' onClick={callback}>
-								Continue
-							</Button>
-						</ModalFooter>
 					</Modal>
 				)
 			}}
