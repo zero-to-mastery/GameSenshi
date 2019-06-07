@@ -33,7 +33,7 @@ import {
 	ALERT_HREF_TEXT,
 } from 'constantValues'
 
-import SocialAuthModal from 'components/Modal/SocialAuthModal'
+import { SocialAuthModal } from 'components'
 
 import logo from 'assets/img/favicon-32x32.png'
 
