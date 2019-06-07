@@ -7,10 +7,12 @@ const HREF = 'href'
 const OPEN = 'Open'
 const TEXT = 'Text'
 const COLOR = 'Color'
+const EMAIL = 'Email'
 const MODAL = 'Modal'
 const TITLE = 'Title'
 const STATUS = 'status'
 const MESSAGE = 'message'
+const PROVIDER = 'Provider'
 const WILL_UNMOUNT = 'willUnmount'
 
 export {
@@ -23,9 +25,11 @@ export {
 	OPEN,
 	TEXT,
 	COLOR,
+	EMAIL,
 	MODAL,
 	TITLE,
 	STATUS,
 	MESSAGE,
+	PROVIDER,
 	WILL_UNMOUNT,
 }

@@ -1,4 +1,4 @@
-import { OPEN, HREF, COLOR, TEXT } from 'constantValues/commonConstants'
+import { OPEN, HREF, COLOR, TEXT } from 'constantValues/CommonConstants'
 
 const ALERT = 'alert'
 const ALERT_HREF = ALERT + HREF

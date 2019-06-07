@@ -1,8 +1,7 @@
-import { OPEN, TITLE, MODAL } from 'constantValues/commonConstants'
+import { OPEN, TITLE, MODAL, PROVIDER } from 'constantValues/CommonConstants'
 
 const SOCIAL_AUTH = 'socialSignUp'
 const SOCIAL_AUTH_MODAL = SOCIAL_AUTH + MODAL
-const PROVIDER = 'Provider'
 const SOCIAL_AUTH_MODAL_PROVIDER_1 = SOCIAL_AUTH_MODAL + PROVIDER + 1
 const SOCIAL_AUTH_MODAL_PROVIDER_2 = SOCIAL_AUTH_MODAL + PROVIDER + 2
 const SOCIAL_AUTH_MODAL_OPEN = SOCIAL_AUTH_MODAL + OPEN

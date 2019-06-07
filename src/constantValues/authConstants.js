@@ -1,4 +1,4 @@
-import { IS, ON } from 'constantValues/commonConstants'
+import { IS, ON, EMAIL } from 'constantValues/CommonConstants'
 
 const VALID = 'Valid'
 const EXIST = 'Exist'
@@ -8,7 +8,6 @@ const VALIDATION = 'Validation'
 const EXTRA_HEIGHT = 'ExtraHeight'
 const SUBMIT_ERRORS = 'SubmitErrors'
 
-const EMAIL = 'Email'
 const EMAIL_IS_VALID = EMAIL + IS_VALID
 const EMAIL_VALIDATION = EMAIL + VALIDATION
 const EMAIL_EXTRA_HEIGHT = EMAIL + EXTRA_HEIGHT
