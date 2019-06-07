@@ -57,7 +57,7 @@ const SocialAuthModal = () => {
 									we will try to link both of your <b>{provider1}</b> and{' '}
 									<b>{provider2}</b> social login by signing you in with{' '}
 									<b>{provider1}</b> first then <b>{provider2}</b>. Please click
-									Continue to link your account.
+									<b>Continue</b> to link your account.
 								</ModalBody>
 								<ModalFooter className='d-flex justify-content-end'>
 									<Button color='primary' onClick={callback}>
