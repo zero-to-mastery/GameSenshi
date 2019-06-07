@@ -52,7 +52,7 @@ const SocialAuthModal = () => {
 							<>
 								<ModalBody>
 									It seem like you already registered with <b>{provider1}</b>,
-									we will now try to link both of your <b>{provider1}</b> and{' '}
+									we will try to link both of your <b>{provider1}</b> and{' '}
 									<b>{provider2}</b> social login by signing you in with{' '}
 									<b>{provider1}</b> first then <b>{provider2}</b>.
 								</ModalBody>
