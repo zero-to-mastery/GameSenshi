@@ -2,7 +2,7 @@ import React from 'react'
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/functions'
-import { alertStore, socialAuthModalStore } from 'state'
+import { alertStore, socialAuthModalStore, userStore } from 'state'
 import {
 	SOCIAL_AUTH_MODAL_BODY,
 	SOCIAL_AUTH_MODAL_OPEN,
@@ -12,6 +12,12 @@ import {
 	ALERT_BODY,
 	ALERT_OPEN,
 	ALERT_COLOR,
+	USER_UID,
+	USER_EMAIL,
+	USER_PHOTO_URL,
+	USER_SIGNED_IN,
+	USER_DISPLAY_NAME,
+	USER_EMAIL_IS_VERIFIED,
 } from 'constantValues'
 
 const firebaseConfig = {
@@ -35,16 +41,25 @@ auth().useDeviceLanguage()
 auth().onAuthStateChanged(function(user) {
 	console.log(user, 'Signed In!')
 	if (user) {
-		// User is signed in.
-		// var displayName = user.displayName;
-		// var email = user.email;
-		// var emailVerified = user.emailVerified;
-		// var photoURL = user.photoURL;
-		// var isAnonymous = user.isAnonymous;
-		// var uid = user.uid;
-		// var providerData = user.providerData;
+		const { displayName, email, emailVerified, photoURL, uid } = user
+		userStore.setState({
+			[USER_UID]: uid,
+			[USER_DISPLAY_NAME]: displayName,
+			[USER_EMAIL]: email,
+			[USER_EMAIL_IS_VERIFIED]: emailVerified,
+			[USER_PHOTO_URL]: photoURL,
+			[USER_SIGNED_IN]: true,
+		})
 	} else {
 		// User is signed out.
+		userStore.setState({
+			[USER_UID]: '',
+			[USER_DISPLAY_NAME]: '',
+			[USER_EMAIL]: '',
+			[USER_EMAIL_IS_VERIFIED]: false,
+			[USER_PHOTO_URL]: '',
+			[USER_SIGNED_IN]: false,
+		})
 	}
 })
 
