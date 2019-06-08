@@ -47,11 +47,11 @@ const parse = tree => {
 		if (isObj(tree[prop])) {
 			const childrens = parse(tree[prop])
 			childrens.forEach(child => {
-				const value = prop + '.' + child
+				const value = `${prop}.${child}`
 				values.push(value)
 			})
 		} else {
-			const value = prop + '=' + '"' + tree[prop] + '"'
+			const value = `${prop} = "${tree[prop]}"`
 			values.push(value)
 		}
 	})
