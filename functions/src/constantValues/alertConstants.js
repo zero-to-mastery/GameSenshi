@@ -1,10 +1,8 @@
-import { OPEN, HREF, COLOR, TEXT } from 'constantValues/commonConstants'
+import { OPEN, COLOR, BODY } from 'constantValues/CommonConstants'
 
-const ALERT = 'Alert'
-const ALERT_HREF = ALERT + HREF
-const ALERT_TEXT = ALERT + TEXT
-const ALERT_COLOR = ALERT + COLOR
+const ALERT = 'alert'
+const ALERT_BODY = ALERT + BODY
 const ALERT_OPEN = ALERT + OPEN
-const ALERT_HREF_TEXT = ALERT_HREF + TEXT
+const ALERT_COLOR = ALERT + COLOR
 
-export { ALERT_HREF, ALERT_TEXT, ALERT_COLOR, ALERT_OPEN, ALERT_HREF_TEXT }
+export { ALERT_BODY, ALERT_COLOR, ALERT_OPEN }

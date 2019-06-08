@@ -15,7 +15,6 @@ import {
 	TERM_SUBMIT_ERRORS,
 	USERNAME,
 	USERNAME_IS_VALID,
-	USERNAME_VALIDATION,
 	USERNAME_EXTRA_HEIGHT,
 	USERNAME_SUBMIT_ERRORS,
 } from 'constantValues'
@@ -38,8 +37,8 @@ class AuthContainer extends Container {
 		[USERNAME]: '',
 		[USERNAME_IS_VALID]: false,
 		[USERNAME_EXTRA_HEIGHT]: 0,
-		[USERNAME_VALIDATION]: false,
 		[USERNAME_SUBMIT_ERRORS]: undefined,
+		test: '',
 	}
 }
 

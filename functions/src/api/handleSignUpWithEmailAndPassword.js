@@ -2,7 +2,12 @@ import * as functions from 'firebase-functions'
 import req from 'request-promise'
 
 import { firebase } from 'utils/firebase'
-import { authValidation } from 'utils/validation'
+import {
+	signUpEmailValidation,
+	signUpPasswordValidation,
+	signUpTermValidation,
+	signUpUsernameValidation,
+} from 'utils/validation'
 import { resObj } from 'utils/objects'
 import { handleIsEmailExist } from 'api'
 
@@ -11,14 +16,10 @@ import {
 	VERIFY_EMAIL_API_KEY,
 	STATUS,
 	EMAIL,
-	EMAIL_VALIDATION,
 	PASSWORD,
-	PASSWORD_VALIDATION,
 	TERM,
-	TERM_VALIDATION,
 	USERNAME,
-	USERNAME_VALIDATION,
-	FIREBASE_DISPLAYNAME,
+	FIREBASE_DISPLAY_NAME,
 } from 'constantValues'
 
 const {
@@ -27,29 +28,22 @@ const {
 
 const handleSignUpWithEmailAndPassword = async (data, context) => {
 	const {
-		[EMAIL_VALIDATION]: emailValidation,
-		[PASSWORD_VALIDATION]: passwordValidation,
-		[TERM_VALIDATION]: termValidation,
-		[USERNAME_VALIDATION]: usernameValidation,
-	} = authValidation
-
-	const {
 		[EMAIL]: email,
 		[PASSWORD]: password,
 		[TERM]: term,
 		[USERNAME]: username,
 	} = data
 	try {
-		const usernameInvalid = await usernameValidation(username)
+		const usernameInvalid = await signUpUsernameValidation(username)
 			.then(() => '')
 			.catch(result => result.errors)
-		const emailInvalid = await emailValidation(email)
+		const emailInvalid = await signUpEmailValidation(email)
 			.then(() => '')
 			.catch(result => result.errors)
-		const passwordInvalid = await passwordValidation(password)
+		const passwordInvalid = await signUpPasswordValidation(password)
 			.then(() => '')
 			.catch(result => result.errors)
-		const termInvalid = await termValidation(term)
+		const termInvalid = await signUpTermValidation(term)
 			.then(() => '')
 			.catch(result => result.errors)
 
@@ -96,7 +90,7 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 						console.log('email user failed', err)
 					})
 					credential.user
-						.updateProfile({ [FIREBASE_DISPLAYNAME]: username })
+						.updateProfile({ [FIREBASE_DISPLAY_NAME]: username })
 						.catch(err => {
 							console.log('update username failed', err)
 						})

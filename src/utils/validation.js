@@ -2,20 +2,36 @@
 
 import { string, boolean } from 'yup'
 
-import {
-	EMAIL_VALIDATION,
-	PASSWORD_VALIDATION,
-	TERM_VALIDATION,
-	USERNAME_VALIDATION,
-} from 'constantValues'
-
 // filter
 import badWords from './badWords'
 import reservedUsername from './reservedUsername'
 
 const forbiddenName = [...badWords, ...reservedUsername]
 
-const nameValidation = value =>
+const signUpEmailValidation = value =>
+	string()
+		.required('Email is required')
+		.email('Bad email format')
+		.validate(value)
+const signUpPasswordValidation = value =>
+	string()
+		.min(8, 'Password must be 8 characters or longer')
+		.matches(
+			/^((?=.*[a-z])|(?=.*[A-Z]))(?=.*[0-9]).*$/,
+			'must consist of number and alphabet'
+		)
+		.matches(
+			/^(?=.*\W)|(?=.*[A-Z]).*$/,
+			'must consist of one or more special character or uppercase'
+		)
+		.validate(value, {
+			abortEarly: false,
+		})
+const signUpTermValidation = value =>
+	boolean()
+		.oneOf([true], 'Must Accept Terms and Conditions')
+		.validate(value)
+const signUpUsernameValidation = value =>
 	string()
 		.lowercase()
 		.notOneOf(forbiddenName, 'This username is not available')
@@ -27,31 +43,9 @@ const nameValidation = value =>
 		)
 		.validate(value)
 
-const authValidation = {
-	[EMAIL_VALIDATION]: value =>
-		string()
-			.required('Email is required')
-			.email('Bad email format')
-			.validate(value),
-	[PASSWORD_VALIDATION]: value =>
-		string()
-			.min(8, 'Password must be 8 characters or longer')
-			.matches(
-				/^((?=.*[a-z])|(?=.*[A-Z]))(?=.*[0-9]).*$/,
-				'must consist of number and alphabet'
-			)
-			.matches(
-				/^(?=.*\W)|(?=.*[A-Z]).*$/,
-				'must consist of one or more special character or uppercase'
-			)
-			.validate(value, {
-				abortEarly: false,
-			}),
-	[TERM_VALIDATION]: value =>
-		boolean()
-			.oneOf([true], 'Must Accept Terms and Conditions')
-			.validate(value),
-	[USERNAME_VALIDATION]: nameValidation,
+export {
+	signUpEmailValidation,
+	signUpPasswordValidation,
+	signUpTermValidation,
+	signUpUsernameValidation,
 }
-
-export { authValidation }

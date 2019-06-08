@@ -15,30 +15,34 @@ import {
 	DATA,
 	STATUS,
 	EMAIL,
-	EMAIL_VALIDATION,
 	EMAIL_EXTRA_HEIGHT,
 	USERNAME,
 	USERNAME_EXTRA_HEIGHT,
-	USERNAME_VALIDATION,
 	PASSWORD,
-	PASSWORD_VALIDATION,
 	PASSWORD_EXTRA_HEIGHT,
 	TERM,
-	TERM_VALIDATION,
 	SUBMIT_ERRORS,
 	IS_VALID,
 	ALERT_BODY,
 	ALERT_OPEN,
 	ALERT_COLOR,
+	USER_EMAIL,
+	USER_SIGNED_IN,
+	USER_DISPLAY_NAME,
 } from 'constantValues'
 
 // form validation
 import { Form as FinalForm } from 'react-final-form'
-import { authValidation } from 'utils/validation'
+import {
+	signUpEmailValidation,
+	signUpPasswordValidation,
+	signUpTermValidation,
+	signUpUsernameValidation,
+} from 'utils/validation'
 import createDecorator from 'final-form-focus'
 
 // state management
-import { authStore, alertStore, Subscribe } from 'state'
+import { authStore, alertStore, userStore, Subscribe } from 'state'
 
 // react libraries components
 import {
@@ -65,13 +69,6 @@ import {
 	IndexNavbar,
 	SocialAuthButtonGroup,
 } from 'components'
-
-const {
-	[EMAIL_VALIDATION]: emailValidation,
-	[PASSWORD_VALIDATION]: passwordValidation,
-	[TERM_VALIDATION]: termValidation,
-	[USERNAME_VALIDATION]: usernameValidation,
-} = authValidation
 
 const focusOnError = createDecorator()
 
@@ -133,6 +130,11 @@ class RegisterPage extends React.Component {
 			} else {
 				history.push('/index')
 			}
+			userStore.setState({
+				[USER_DISPLAY_NAME]: authStore.state[USERNAME],
+				[USER_EMAIL]: authStore.state[EMAIL],
+				[USER_SIGNED_IN]: true,
+			})
 			alertStore.setState({
 				[ALERT_BODY]: (
 					<>
@@ -260,7 +262,7 @@ class RegisterPage extends React.Component {
 																				placeholder='Username'
 																				icon='tim-icons icon-single-02'
 																				validation={value =>
-																					usernameValidation(value)
+																					signUpUsernameValidation(value)
 																				}
 																			/>
 																			<InputField
@@ -270,7 +272,7 @@ class RegisterPage extends React.Component {
 																				placeholder='Email'
 																				icon='tim-icons icon-email-85'
 																				validation={value =>
-																					emailValidation(value)
+																					signUpEmailValidation(value)
 																				}
 																				serverValidation={handleIsEmailExist}
 																			/>
@@ -281,7 +283,7 @@ class RegisterPage extends React.Component {
 																				placeholder='Password'
 																				icon='tim-icons icon-lock-circle'
 																				validation={value =>
-																					passwordValidation(value)
+																					signUpPasswordValidation(value)
 																				}
 																			/>
 																			<InputField
@@ -289,7 +291,7 @@ class RegisterPage extends React.Component {
 																				name={TERM}
 																				container={authStore}
 																				validation={value =>
-																					termValidation(value)
+																					signUpTermValidation(value)
 																				}
 																			/>
 																		</Form>

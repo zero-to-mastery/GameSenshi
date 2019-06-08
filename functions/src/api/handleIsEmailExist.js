@@ -13,12 +13,10 @@ const handleIsEmailExist = data => {
 		})
 		.catch(err => {
 			console.log(err)
-			return (err.code === 'auth/user-not-found')
-				?
-				// User doesn't exist yet...
-				resObj(true, 'User does not exist')
-				:
-				resObj(false, 'Internal Error Code 1', 1);
+			return err.code === 'auth/user-not-found'
+				? // User doesn't exist yet...
+				  resObj(true, 'User does not exist')
+				: resObj(false, 'Internal Error Code 1', 1)
 		})
 }
 
