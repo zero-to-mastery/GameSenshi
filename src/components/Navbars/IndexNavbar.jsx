@@ -172,8 +172,9 @@ class ComponentsNavbar extends React.Component {
 												rel='noopener noreferrer'
 												tag={Link}>
 												<img src={logo} alt='Game Senshi' />
-												<span>&nbsp;&nbsp;&nbsp;</span>
-												GAME SENSHI
+												<div className='d-none d-sm-inline'>
+													&nbsp;&nbsp;&nbsp;GAME SENSHI
+												</div>
 											</NavbarBrand>
 											<div className='d-flex align-items-center'>
 												{!overWidthBreakPoint && (
