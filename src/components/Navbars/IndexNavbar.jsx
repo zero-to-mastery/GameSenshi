@@ -2,12 +2,17 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
 // state
-import { authStore, alertStore, Subscribe } from 'state'
+import { userStore, alertStore, Subscribe } from 'state'
 
 // reactstrap components
 import {
 	Button,
 	Collapse,
+	Media,
+	DropdownMenu,
+	UncontrolledDropdown,
+	DropdownItem,
+	DropdownToggle,
 	NavbarBrand,
 	Navbar,
 	NavItem,
@@ -23,8 +28,8 @@ import ReactResizeDetector from 'react-resize-detector'
 
 // constants
 import {
-	EMAIL,
-	USERNAME,
+	USER_SIGNED_IN,
+	USER_DISPLAY_NAME,
 	ALERT_BODY,
 	ALERT_OPEN,
 	ALERT_COLOR,
@@ -145,9 +150,12 @@ class ComponentsNavbar extends React.Component {
 			collapseExited,
 		} = this
 		return (
-			<Subscribe to={[authStore, alertStore]}>
-				{(authStore, alertStore) => {
-					const { [USERNAME]: username, [EMAIL]: email } = authStore.state
+			<Subscribe to={[userStore, alertStore]}>
+				{(userStore, alertStore) => {
+					const {
+						[USER_DISPLAY_NAME]: username,
+						[USER_SIGNED_IN]: signedIn,
+					} = userStore.state
 					const {
 						[ALERT_BODY]: alertBody,
 						[ALERT_OPEN]: alertOpen,
@@ -176,26 +184,56 @@ class ComponentsNavbar extends React.Component {
 													&nbsp;&nbsp;&nbsp;GAME SENSHI
 												</div>
 											</NavbarBrand>
-											<div className='d-flex align-items-center'>
-												{!overWidthBreakPoint && (
-													<Button
-														color='primary'
-														type='button'
-														onClick={() => {
-															history.push('signUp')
-														}}>
-														Sign up
-													</Button>
-												)}
-												<button
-													aria-expanded={collapseOpen}
-													className='navbar-toggler navbar-toggler'
-													onClick={toggleCollapse}>
-													<span className='navbar-toggler-bar bar1' />
-													<span className='navbar-toggler-bar bar2' />
-													<span className='navbar-toggler-bar bar3' />
-												</button>
-											</div>
+											<Nav className='ml-auto flex-row' navbar>
+												{//small screen size
+												!overWidthBreakPoint &&
+													(signedIn ? (
+														<>
+															<NavItem className='active'>
+																<NavLink
+																	href='notification'
+																	onClick={e => e.preventDefault()}>
+																	<i
+																		aria-hidden={true}
+																		className='tim-icons icon-bell-55'
+																	/>
+																</NavLink>
+															</NavItem>
+															{/* <NavItem className='active'>
+																<div className='avatar'>
+																	<Media
+																		alt='...'
+																		className='img-raised'
+																		src={require('assets/img/james.jpg')}
+																	/>
+																</div>
+															</NavItem> */}
+														</>
+													) : (
+														<>
+															<NavItem className='active'>
+																<Button
+																	color='primary'
+																	type='button'
+																	onClick={() => {
+																		history.push('signUp')
+																	}}>
+																	Sign up
+																</Button>
+															</NavItem>
+															<NavItem className='active'>
+																<button
+																	aria-expanded={collapseOpen}
+																	className='navbar-toggler navbar-toggler'
+																	onClick={toggleCollapse}>
+																	<span className='navbar-toggler-bar bar1 mt-1' />
+																	<span className='navbar-toggler-bar bar2' />
+																	<span className='navbar-toggler-bar bar3' />
+																</button>
+															</NavItem>
+														</>
+													))}
+											</Nav>
 										</div>
 										<Collapse
 											className={'justify-content-end ' + collapseOut}
@@ -223,31 +261,55 @@ class ComponentsNavbar extends React.Component {
 											</div>
 											<Nav navbar>
 												{(!collapseOpen && collapseExited) ||
-												overWidthBreakPoint ? (
-													<>
-														<NavItem className='p-0'>
-															<Button
-																className='btn-simple font-weight-bold'
-																color='primary'
-																type='button'
-																onClick={() => {
-																	history.push('signIn')
-																}}>
-																Sign in
-															</Button>
-														</NavItem>
-														<NavItem className='p-0'>
-															<Button
-																color='primary'
-																type='button'
-																onClick={() => {
-																	history.push('signUp')
-																}}>
-																Sign up
-															</Button>
-														</NavItem>
-													</>
-												) : (
+												overWidthBreakPoint ? ( // big screen size or not collapsed
+													signedIn ? (
+														<>
+															<NavItem className='active'>
+																<NavLink
+																	href='joinSenshi'
+																	onClick={e => e.preventDefault()}>
+																	Become A SenShi
+																</NavLink>
+															</NavItem>
+															<NavItem className='active'>
+																<NavLink
+																	href='notification'
+																	onClick={e => e.preventDefault()}>
+																	<i
+																		aria-hidden={true}
+																		className='tim-icons icon-bell-55'
+																	/>
+																</NavLink>
+															</NavItem>
+														</>
+													) : (
+														<>
+															<NavItem className='p-0'>
+																<Button
+																	className='btn-simple font-weight-bold'
+																	color='primary'
+																	type='button'
+																	onClick={() => {
+																		history.push('signIn')
+																	}}>
+																	Sign in
+																</Button>
+															</NavItem>
+															<NavItem className='p-0'>
+																<Button
+																	color='primary'
+																	type='button'
+																	onClick={() => {
+																		history.push('signUp')
+																	}}>
+																	Sign up
+																</Button>
+															</NavItem>
+														</>
+													)
+												) : // small screen size and collapsed
+
+												signedIn ? null : (
 													<>
 														<NavItem className='p-0'>
 															<NavLink
