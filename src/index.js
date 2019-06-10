@@ -8,7 +8,7 @@ import { LastLocationProvider } from 'react-router-last-location'
 
 // state management
 import { Provider } from 'unstated'
-import { authStore, socialAuthModalStore } from 'state'
+import { authStore, socialAuthModalStore, userStore } from 'state'
 
 // constants
 import {
@@ -16,6 +16,7 @@ import {
 	SOCIAL_AUTH_MODAL_OPEN,
 	SOCIAL_AUTH_MODAL_TITLE,
 	SOCIAL_AUTH_MODAL_LOADER,
+	USER_SIGNED_IN,
 } from 'constantValues'
 
 // styles
@@ -50,6 +51,12 @@ import ChatPage from 'views/examples/ChatPage.jsx'
 import SignInPage from 'views/SignInPage'
 import SignUpPage from 'views/SignUpPage'
 
+// check if user data in indexed db, pre-sign in user
+const user = JSON.parse(localStorage.getItem('user'))
+if (user) {
+	userStore.setState({ ...user, [USER_SIGNED_IN]: true })
+}
+
 // show social auth modal after redirect back
 const showSignInModal = sessionStorage.getItem('showSignInModal')
 sessionStorage.removeItem('showSignInModal')
@@ -66,6 +73,7 @@ showSignInModal &&
 		[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
 		[SOCIAL_AUTH_MODAL_LOADER]: true,
 	})
+
 // do same thing as showSignInModal but this is specifically for account linking
 const showAuthLinkingModal = sessionStorage.getItem('showAuthLinkingModal')
 sessionStorage.removeItem('showAuthLinkingModal')

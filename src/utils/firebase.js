@@ -50,6 +50,16 @@ auth().onAuthStateChanged(function(user) {
 			[USER_PHOTO_URL]: photoURL,
 			[USER_SIGNED_IN]: true,
 		})
+		localStorage.setItem(
+			'user',
+			JSON.stringify({
+				displayName,
+				email,
+				emailVerified,
+				photoURL,
+				uid,
+			})
+		)
 	} else {
 		// User is signed out.
 		userStore.setState({
