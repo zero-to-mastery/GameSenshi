@@ -184,55 +184,41 @@ class ComponentsNavbar extends React.Component {
 													&nbsp;&nbsp;&nbsp;GAME SENSHI
 												</div>
 											</NavbarBrand>
-											<Nav className='ml-auto flex-row' navbar>
+											<Nav className='flex-row' navbar>
 												{//small screen size
-												!overWidthBreakPoint &&
-													(signedIn ? (
-														<>
-															<NavItem className='active'>
-																<NavLink
-																	href='notification'
-																	onClick={e => e.preventDefault()}>
-																	<i
-																		aria-hidden={true}
-																		className='tim-icons icon-bell-55'
-																	/>
-																</NavLink>
-															</NavItem>
-															{/* <NavItem className='active'>
-																<div className='avatar'>
-																	<Media
-																		alt='...'
-																		className='img-raised'
-																		src={require('assets/img/james.jpg')}
-																	/>
-																</div>
-															</NavItem> */}
-														</>
-													) : (
-														<>
-															<NavItem className='active'>
-																<Button
-																	color='primary'
-																	type='button'
-																	onClick={() => {
-																		history.push('signUp')
-																	}}>
-																	Sign up
-																</Button>
-															</NavItem>
-															<NavItem className='active'>
-																<button
-																	aria-expanded={collapseOpen}
-																	className='navbar-toggler navbar-toggler'
-																	onClick={toggleCollapse}>
-																	<span className='navbar-toggler-bar bar1 mt-1' />
-																	<span className='navbar-toggler-bar bar2' />
-																	<span className='navbar-toggler-bar bar3' />
-																</button>
-															</NavItem>
-														</>
-													))}
+												signedIn ? (
+													<NavItem className='active navbar-toggler'>
+														<NavLink
+															href='notification'
+															onClick={e => e.preventDefault()}>
+															<i
+																aria-hidden={true}
+																className='tim-icons icon-bell-55'
+															/>
+														</NavLink>
+													</NavItem>
+												) : (
+													<NavItem className='active navbar-toggler'>
+														<Button
+															color='primary'
+															type='button'
+															onClick={() => {
+																history.push('signUp')
+															}}>
+															Sign up
+														</Button>
+													</NavItem>
+												)}
+												<NavItem className='active'>
+													<button // button to activate collapsed
+														aria-expanded={collapseOpen}
+														className='navbar-toggler'
+														onClick={toggleCollapse}>
+														<span className='navbar-toggler-bar bar1 mt-1' />
+														<span className='navbar-toggler-bar bar2' />
+														<span className='navbar-toggler-bar bar3' />
+													</button>
+												</NavItem>
 											</Nav>
 										</div>
 										<Collapse
@@ -264,14 +250,14 @@ class ComponentsNavbar extends React.Component {
 												overWidthBreakPoint ? ( // big screen size or not collapsed
 													signedIn ? (
 														<>
-															<NavItem className='active'>
+															<NavItem className='active d-none d-lg-inline-flex'>
 																<NavLink
 																	href='joinSenshi'
 																	onClick={e => e.preventDefault()}>
-																	Become A SenShi
+																	Senshi Centre
 																</NavLink>
 															</NavItem>
-															<NavItem className='active'>
+															<NavItem className='active d-none d-lg-inline-flex'>
 																<NavLink
 																	href='notification'
 																	onClick={e => e.preventDefault()}>
@@ -281,6 +267,64 @@ class ComponentsNavbar extends React.Component {
 																	/>
 																</NavLink>
 															</NavItem>
+															<UncontrolledDropdown // user menu bar
+																nav
+																className='d-none d-lg-inline-flex'>
+																<DropdownToggle
+																	caret
+																	color='default'
+																	data-toggle='dropdown'
+																	href='#pablo'
+																	id='navbarDropdownMenuLink'
+																	nav
+																	onClick={e => e.preventDefault()}
+																	className='d-flex align-items-center pt-0 pb-0'>
+																	<div
+																		className='avatar'
+																		style={{ height: 36, width: 36 }}>
+																		<Media
+																			alt='...'
+																			className='img-raised'
+																			style={{ height: 36, width: 36 }}
+																			src={require('assets/img/james.jpg')}
+																		/>
+																	</div>
+																</DropdownToggle>
+																<DropdownMenu
+																	aria-labelledby='navbarDropdownMenuLink'
+																	right>
+																	<DropdownItem>
+																		<strong>{username}</strong>
+																	</DropdownItem>
+																	<DropdownItem divider />
+																	<DropdownItem
+																		href='#pablo'
+																		onClick={e => e.preventDefault()}>
+																		My Senshi
+																	</DropdownItem>
+																	<DropdownItem
+																		href='#pablo'
+																		onClick={e => e.preventDefault()}>
+																		My Account
+																	</DropdownItem>
+																	<DropdownItem
+																		href='#pablo'
+																		onClick={e => e.preventDefault()}>
+																		My Billing
+																	</DropdownItem>
+																	<DropdownItem divider />
+																	<DropdownItem
+																		href='#pablo'
+																		onClick={e => e.preventDefault()}>
+																		Help
+																	</DropdownItem>
+																	<DropdownItem
+																		href='#pablo'
+																		onClick={e => e.preventDefault()}>
+																		Sign Out
+																	</DropdownItem>
+																</DropdownMenu>
+															</UncontrolledDropdown>
 														</>
 													) : (
 														<>
@@ -308,8 +352,7 @@ class ComponentsNavbar extends React.Component {
 														</>
 													)
 												) : // small screen size and collapsed
-
-												signedIn ? null : (
+												signedIn ? (
 													<>
 														<NavItem className='p-0'>
 															<NavLink
@@ -356,7 +399,7 @@ class ComponentsNavbar extends React.Component {
 															</NavLink>
 														</NavItem>
 													</>
-												)}
+												) : null}
 											</Nav>
 										</Collapse>
 									</Container>
