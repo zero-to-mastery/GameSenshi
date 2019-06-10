@@ -61,7 +61,7 @@ auth().onAuthStateChanged(function(user) {
 			})
 		)
 	} else {
-		// User is signed out.
+		// User signed out.
 		userStore.setState({
 			[USER_UID]: '',
 			[USER_DISPLAY_NAME]: '',
@@ -70,6 +70,7 @@ auth().onAuthStateChanged(function(user) {
 			[USER_PHOTO_URL]: '',
 			[USER_SIGNED_IN]: false,
 		})
+		localStorage.removeItem('user')
 	}
 })
 
