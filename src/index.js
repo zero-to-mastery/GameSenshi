@@ -130,14 +130,22 @@ ReactDOM.render(
 					/>
 					<Route path='/reset' render={props => <ResetPage {...props} />} />
 					<Route path='/invoice' render={props => <InvoicePage {...props} />} />
-					<Route path='/signUp' render={props => <SignUpPage {...props} />} />
-					<Route path='/signIn' render={props => <SignInPage {...props} />} />
+
 					<Route
 						path='/checkOut'
 						render={props => <CheckoutPage {...props} />}
 					/>
 					<Route path='/chat' render={props => <ChatPage {...props} />} />
 					<Redirect from='/' to='/index' />
+					{// if user already signed in, redirect them to index page
+					userStore.state[USER_SIGNED_IN] && (
+						<>
+							<Redirect from='/signUp' to='/index' />
+							<Redirect from='/signIn' to='/index' />
+						</>
+					)}
+					<Route path='/signUp' render={props => <SignUpPage {...props} />} />
+					<Route path='/signIn' render={props => <SignInPage {...props} />} />
 				</Switch>
 			</LastLocationProvider>
 		</BrowserRouter>
