@@ -142,7 +142,6 @@ class ComponentsNavbar extends React.Component {
 				overWidthBreakPoint,
 				navbarHeight,
 			},
-			setState,
 			onResize,
 			toggleCollapse,
 			onCollapseExiting,
