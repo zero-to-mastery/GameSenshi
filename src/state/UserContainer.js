@@ -9,7 +9,7 @@ import {
 	USER_EMAIL_IS_VERIFIED,
 } from 'constantValues'
 
-class AlertContainer extends Container {
+class UserContainer extends Container {
 	state = {
 		[USER_UID]: '',
 		[USER_EMAIL]: '',
@@ -20,4 +20,4 @@ class AlertContainer extends Container {
 	}
 }
 
-export default AlertContainer
+export default UserContainer
