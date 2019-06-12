@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-
+import { auth } from 'utils/firebase'
 // state
 import { userStore, alertStore, Subscribe } from 'state'
 
@@ -322,7 +322,9 @@ class ComponentsNavbar extends React.Component {
 																	</DropdownItem>
 																	<DropdownItem
 																		href='#pablo'
-																		onClick={e => e.preventDefault()}>
+																		onClick={() => {
+																			auth().signOut()
+																		}}>
 																		Sign Out
 																	</DropdownItem>
 																</DropdownMenu>
