@@ -17,10 +17,11 @@ import {
 	InputGroup,
 	Container,
 	Col,
+	Row,
 } from 'reactstrap'
 
 // core components
-import { Footer, IndexNavbar } from 'components'
+import { Footer, IndexNavbar, SocialAuthButtonGroup } from 'components'
 
 class LoginPage extends React.Component {
 	state = {}
@@ -33,6 +34,9 @@ class LoginPage extends React.Component {
 		document.body.classList.remove('login-page')
 	}
 	render() {
+		const {
+			props: { history },
+		} = this
 		return (
 			<>
 				<IndexNavbar />
@@ -56,6 +60,19 @@ class LoginPage extends React.Component {
 										<CardTitle tag='h4'>Login</CardTitle>
 									</CardHeader>
 									<CardBody>
+										<div className='text-muted text-center ml-auto mr-auto'>
+											<h3 className='mb-0'>Sign in with</h3>
+										</div>
+									</CardBody>
+									<CardBody>
+										<SocialAuthButtonGroup />
+										<Row>
+											<Col />
+											<Col className='text-center text-muted mb-4 mt-3 col-auto'>
+												<small>Or Classically</small>
+											</Col>
+											<Col />
+										</Row>
 										<InputGroup
 											className={classnames('input-lg', {
 												'input-group-focus': this.state.firstNameFocus,
@@ -105,7 +122,9 @@ class LoginPage extends React.Component {
 											<a
 												className='link footer-link'
 												href='#pablo'
-												onClick={e => e.preventDefault()}>
+												onClick={() => {
+													history.push('/signUp')
+												}}>
 												Create Account
 											</a>
 										</h6>
