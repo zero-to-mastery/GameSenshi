@@ -11,31 +11,22 @@ import {
 	REACT_APP_MESSAGING_SENDER_ID,
 	REACT_APP_APP_ID,
 	VERIFY_EMAIL_API_KEY,
+	DEFAULT_AVATAR_URL,
 } from './src/constantValues'
 
 const spawn = child_process.spawn
 
-const {
-	[REACT_APP_API_KEY]: react_app_api_key,
-	[REACT_APP_AUTH_DOMAIN]: react_app_auth_domain,
-	[REACT_APP_DATABASE_URL]: react_app_database_url,
-	[REACT_APP_PROJECT_ID]: react_app_project_id,
-	[REACT_APP_STORAGE_BUCKET]: react_app_storage_bucket,
-	[REACT_APP_MESSAGING_SENDER_ID]: react_app_messaging_sender_id,
-	[REACT_APP_APP_ID]: react_app_app_id,
-	[VERIFY_EMAIL_API_KEY]: verify_email_api_key,
-} = process.env
-
 const obj = {
 	[ENV]: {
-		[REACT_APP_API_KEY]: react_app_api_key,
-		[REACT_APP_AUTH_DOMAIN]: react_app_auth_domain,
-		[REACT_APP_DATABASE_URL]: react_app_database_url,
-		[REACT_APP_PROJECT_ID]: react_app_project_id,
-		[REACT_APP_STORAGE_BUCKET]: react_app_storage_bucket,
-		[REACT_APP_MESSAGING_SENDER_ID]: react_app_messaging_sender_id,
-		[REACT_APP_APP_ID]: react_app_app_id,
-		[VERIFY_EMAIL_API_KEY]: verify_email_api_key,
+		[REACT_APP_API_KEY]: process.env[REACT_APP_API_KEY],
+		[REACT_APP_AUTH_DOMAIN]: process.env[REACT_APP_AUTH_DOMAIN],
+		[REACT_APP_DATABASE_URL]: process.env[REACT_APP_DATABASE_URL],
+		[REACT_APP_PROJECT_ID]: process.env[REACT_APP_PROJECT_ID],
+		[REACT_APP_STORAGE_BUCKET]: process.env[REACT_APP_STORAGE_BUCKET],
+		[REACT_APP_MESSAGING_SENDER_ID]: process.env[REACT_APP_MESSAGING_SENDER_ID],
+		[REACT_APP_APP_ID]: process.env[REACT_APP_APP_ID],
+		[VERIFY_EMAIL_API_KEY]: process.env[VERIFY_EMAIL_API_KEY],
+		[DEFAULT_AVATAR_URL]: process.env[DEFAULT_AVATAR_URL],
 	},
 }
 const isObj = x => x !== null && typeof x === 'object'
@@ -51,7 +42,7 @@ const parse = tree => {
 				values.push(value)
 			})
 		} else {
-			const value = `${prop} = "${tree[prop]}"`
+			const value = `${prop}="${tree[prop]}"`
 			values.push(value)
 		}
 	})
