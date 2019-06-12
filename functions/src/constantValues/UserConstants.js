@@ -1,12 +1,11 @@
-import { IS, EMAIL } from 'constantValues/CommonConstants'
+// this follow firebase property name
 
-const USER = 'user'
-const USER_UID = USER + 'UID'
-const USER_EMAIL = USER + EMAIL
-const USER_PHOTO_URL = USER + 'PhotoURL'
-const USER_SIGNED_IN = USER + 'SignedIn'
-const USER_DISPLAY_NAME = USER + 'DisplayName'
-const USER_EMAIL_IS_VERIFIED = USER + IS + 'Verified'
+const USER_UID = 'uid'
+const USER_EMAIL = 'email'
+const USER_PHOTO_URL = 'photoURL'
+const USER_SIGNED_IN = 'SignedIn'
+const USER_DISPLAY_NAME = 'displayName'
+const USER_EMAIL_IS_VERIFIED = 'emailVerified'
 
 export {
 	USER_UID,
