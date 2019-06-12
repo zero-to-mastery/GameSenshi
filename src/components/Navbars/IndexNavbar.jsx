@@ -33,6 +33,7 @@ import {
 	ALERT_BODY,
 	ALERT_OPEN,
 	ALERT_COLOR,
+	USER_PHOTO_URL,
 } from 'constantValues'
 
 import { SocialAuthModal } from 'components'
@@ -155,6 +156,7 @@ class ComponentsNavbar extends React.Component {
 					const {
 						[USER_DISPLAY_NAME]: username,
 						[USER_SIGNED_IN]: signedIn,
+						[USER_PHOTO_URL]: avatarURL,
 					} = userStore.state
 					const {
 						[ALERT_BODY]: alertBody,
@@ -286,7 +288,7 @@ class ComponentsNavbar extends React.Component {
 																			alt='...'
 																			className='img-raised'
 																			style={{ height: 36, width: 36 }}
-																			src={require('assets/img/james.jpg')}
+																			src={avatarURL}
 																		/>
 																	</div>
 																</DropdownToggle>
