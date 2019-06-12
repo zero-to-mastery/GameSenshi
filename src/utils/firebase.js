@@ -2,6 +2,7 @@ import React from 'react'
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/functions'
+import 'firebase/storage'
 import { alertStore, socialAuthModalStore, userStore } from 'state'
 import {
 	SOCIAL_AUTH_MODAL_BODY,
@@ -18,6 +19,7 @@ import {
 	USER_SIGNED_IN,
 	USER_DISPLAY_NAME,
 	USER_EMAIL_IS_VERIFIED,
+	DEFAULT_AVATAR_URL,
 } from 'constantValues'
 
 const firebaseConfig = {
@@ -32,22 +34,31 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
+// load default storage bucket
+const storageRef = firebase.storage().ref()
+
 const auth = firebase.auth
 
 // use device default language
 auth().useDeviceLanguage()
 
 // user auth listener
-auth().onAuthStateChanged(function(user) {
+auth().onAuthStateChanged(user => {
 	console.log(user, 'Signed In!')
 	if (user) {
-		const { displayName, email, emailVerified, photoURL, uid } = user
-		userStore.setState({
+		const {
+			[USER_DISPLAY_NAME]: displayName,
+			[USER_DISPLAY_NAME]: email,
+			[USER_EMAIL]: emailVerified,
+			[USER_PHOTO_URL]: photoURL,
 			[USER_UID]: uid,
+		} = user
+		userStore.setState({
 			[USER_DISPLAY_NAME]: displayName,
 			[USER_EMAIL]: email,
 			[USER_EMAIL_IS_VERIFIED]: emailVerified,
-			[USER_PHOTO_URL]: photoURL,
+			[USER_PHOTO_URL]: photoURL || process.env[DEFAULT_AVATAR_URL], //fallback
+			[USER_UID]: uid,
 			[USER_SIGNED_IN]: true,
 		})
 		localStorage.setItem(
@@ -165,4 +176,4 @@ auth()
 
 const functions = firebase.functions()
 
-export { functions, firebase, auth }
+export { functions, firebase, auth, storageRef }
