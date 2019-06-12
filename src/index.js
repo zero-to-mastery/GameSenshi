@@ -7,8 +7,13 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { LastLocationProvider } from 'react-router-last-location'
 
 // state management
-import { Provider } from 'unstated'
-import { authStore, socialAuthModalStore, userStore } from 'state'
+import {
+	authStore,
+	socialAuthModalStore,
+	userStore,
+	alertStore,
+	Provider,
+} from 'state'
 
 // constants
 import {
@@ -53,9 +58,7 @@ import SignUpPage from 'views/SignUpPage'
 
 // check if user data in indexed db, pre-sign in user
 const user = JSON.parse(localStorage.getItem('user'))
-if (user) {
-	userStore.setState({ ...user, [USER_SIGNED_IN]: true })
-}
+user && (userStore.state = { ...user, [USER_SIGNED_IN]: true })
 
 // show social auth modal after redirect back
 const showSignInModal = sessionStorage.getItem('showSignInModal')
@@ -103,7 +106,7 @@ isLinked &&
 	})
 
 ReactDOM.render(
-	<Provider to={[authStore]}>
+	<Provider to={[authStore, socialAuthModalStore, userStore, alertStore]}>
 		<BrowserRouter>
 			<LastLocationProvider>
 				<Switch>
@@ -130,22 +133,32 @@ ReactDOM.render(
 					/>
 					<Route path='/reset' render={props => <ResetPage {...props} />} />
 					<Route path='/invoice' render={props => <InvoicePage {...props} />} />
-
 					<Route
 						path='/checkOut'
 						render={props => <CheckoutPage {...props} />}
 					/>
 					<Route path='/chat' render={props => <ChatPage {...props} />} />
+					<Route
+						path='/signUp'
+						render={props =>
+							userStore.state[USER_SIGNED_IN] ? (
+								<Redirect from='/signUp' to='/index' />
+							) : (
+								<SignUpPage {...props} />
+							)
+						}
+					/>
+					<Route
+						path='/signIn'
+						render={props =>
+							userStore.state[USER_SIGNED_IN] ? (
+								<Redirect from='/signUp' to='/index' />
+							) : (
+								<SignInPage {...props} />
+							)
+						}
+					/>
 					<Redirect from='/' to='/index' />
-					{// if user already signed in, redirect them to index page
-					userStore.state[USER_SIGNED_IN] && (
-						<>
-							<Redirect from='/signUp' to='/index' />
-							<Redirect from='/signIn' to='/index' />
-						</>
-					)}
-					<Route path='/signUp' render={props => <SignUpPage {...props} />} />
-					<Route path='/signIn' render={props => <SignInPage {...props} />} />
 				</Switch>
 			</LastLocationProvider>
 		</BrowserRouter>
