@@ -8,7 +8,7 @@ import {
 	handleSignInWithEmailAndPassword,
 } from 'api'
 import { withLastLocation } from 'react-router-last-location'
-
+import { onSignedInRouting } from 'routes'
 // constants
 import {
 	WILL_UNMOUNT,
@@ -125,11 +125,7 @@ class RegisterPage extends React.Component {
 			authStore.state[property + IS_VALID] = !data[property]
 		}
 		if (status) {
-			if (lastLocation) {
-				history.goBack()
-			} else {
-				history.push('/index')
-			}
+			onSignedInRouting(history, lastLocation)
 			userStore.setState({
 				[USER_DISPLAY_NAME]: authStore.state[USERNAME],
 				[USER_EMAIL]: authStore.state[EMAIL],
@@ -245,11 +241,11 @@ class RegisterPage extends React.Component {
 																		</Row>
 																		<Form className='form'>
 																			{/** 
-																		// ! bug
+																		// ! bug?
 																		// ! whenever any of these two field components is render
 																		// ! and whenever component going to unmount (route to other page)
 																		// ! the field components will run validation
-																		// ! these is not good as the validation process involving steState in a promise
+																		// ! these is not good as the validation process invoking steState in a promise
 																		// ! there will be memory leak warning if you try to setState on unmounted component
 																		// ! seem like problem of either react final form or react router
 																		// * implement life cycle method of parent component to solve these issue

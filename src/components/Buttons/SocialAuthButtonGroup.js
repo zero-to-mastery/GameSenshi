@@ -5,6 +5,7 @@ import { Button, UncontrolledTooltip } from 'reactstrap'
 import { handleSignInWithGoogle, handleSignInWithFacebook } from 'api'
 import { withLastLocation } from 'react-router-last-location'
 import { withRouter } from 'react-router'
+import { onSignedInRouting } from 'routes'
 
 // state
 import { socialAuthModalStore } from 'state'
@@ -32,11 +33,7 @@ const SocialAuthSignInButton = props => {
 			[SOCIAL_AUTH_MODAL_LOADER]: true,
 		})
 		sessionStorage.setItem('showSignInModal', provider)
-		if (lastLocation) {
-			history.goBack()
-		} else {
-			history.push('/index')
-		}
+		onSignedInRouting(history, lastLocation)
 		setTimeout(() => {
 			api()
 		}, 3000)
