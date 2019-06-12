@@ -1,7 +1,6 @@
-import * as functions from 'firebase-functions'
 import req from 'request-promise'
+import { firebase, functions } from 'utils/firebase'
 
-import { firebase } from 'utils/firebase'
 import {
 	signUpEmailValidation,
 	signUpPasswordValidation,
@@ -19,7 +18,9 @@ import {
 	PASSWORD,
 	TERM,
 	USERNAME,
-	FIREBASE_DISPLAY_NAME,
+	USER_DISPLAY_NAME,
+	USER_PHOTO_URL,
+	DEFAULT_AVATAR_URL,
 } from 'constantValues'
 
 const {
@@ -90,7 +91,10 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 						console.log('email user failed', err)
 					})
 					credential.user
-						.updateProfile({ [FIREBASE_DISPLAY_NAME]: username })
+						.updateProfile({
+							[USER_DISPLAY_NAME]: username,
+							[USER_PHOTO_URL]: functions.config()[ENV][DEFAULT_AVATAR_URL],
+						})
 						.catch(err => {
 							console.log('update username failed', err)
 						})
