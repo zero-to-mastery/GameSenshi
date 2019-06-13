@@ -31,6 +31,7 @@ const InputField = props => {
 		type,
 		serverValidation,
 		container,
+		hideSuccess,
 	} = props
 
 	const ref = useRef(null)
@@ -137,6 +138,7 @@ const InputField = props => {
 										!container.state[name + IS_VALID] &&
 										((touched && !active) || (active && modified)),
 									'has-success':
+										!hideSuccess &&
 										!spinner &&
 										!spinner2 &&
 										container.state[name + IS_VALID] &&
