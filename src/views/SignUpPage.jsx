@@ -1,14 +1,17 @@
 import React from 'react'
 
-// routing and api
-import { Link } from 'react-router-dom'
+// api
 import {
 	handleSignUpWithEmailAndPassword,
 	handleIsEmailExist,
 	handleSignInWithEmailAndPassword,
 } from 'api'
+
+// routing
+import { Link } from 'react-router-dom'
 import { withLastLocation } from 'react-router-last-location'
 import { onSignedInRouting } from 'routes'
+
 // constants
 import {
 	WILL_UNMOUNT,
@@ -33,13 +36,15 @@ import {
 
 // form validation
 import { Form as FinalForm } from 'react-final-form'
+import createDecorator from 'final-form-focus'
+
+// validation
 import {
 	signUpEmailValidation,
 	signUpPasswordValidation,
 	signUpTermValidation,
 	signUpUsernameValidation,
 } from 'utils/validation'
-import createDecorator from 'final-form-focus'
 
 // state management
 import { authStore, alertStore, userStore, Subscribe } from 'state'
@@ -310,10 +315,10 @@ class RegisterPage extends React.Component {
 																								height='19px'
 																								width='19px'
 																							/>
-																							&nbsp;&nbsp;Signing Up
+																							&nbsp;&nbsp;Creating Account
 																						</>
 																					) : (
-																						'Sign Up'
+																						'Creat Account'
 																					)}
 																				</Button>
 																			</Col>
