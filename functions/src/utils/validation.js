@@ -13,6 +13,7 @@ const signUpEmailValidation = value =>
 		.required('Email is required')
 		.email('Bad email format')
 		.validate(value)
+
 const signUpPasswordValidation = value =>
 	string()
 		.min(8, 'Password must be 8 characters or longer')
@@ -27,10 +28,12 @@ const signUpPasswordValidation = value =>
 		.validate(value, {
 			abortEarly: false,
 		})
+
 const signUpTermValidation = value =>
 	boolean()
 		.oneOf([true], 'Must Accept Terms and Conditions')
 		.validate(value)
+
 const signUpUsernameValidation = value =>
 	string()
 		.lowercase()
@@ -43,9 +46,22 @@ const signUpUsernameValidation = value =>
 		)
 		.validate(value)
 
+const signInEmailValidation = value =>
+	string()
+		.required('Email is required')
+		.email('Bad email format')
+		.validate(value)
+
+const signInPasswordValidation = value =>
+	string()
+		.required('Password is required')
+		.validate(value)
+
 export {
 	signUpEmailValidation,
 	signUpPasswordValidation,
 	signUpTermValidation,
 	signUpUsernameValidation,
+	signInEmailValidation,
+	signInPasswordValidation,
 }
