@@ -20,7 +20,7 @@ const handleSignInWithEmailAndPassword = async (email, password) => {
 			const userError = errArr.includes(errCode)
 
 			return userError
-				? 'Invalid Username or Email'
+				? 'Invalid Email or Password'
 				: errCode === 'auth/network-request-failed'
 				? 'Network Failure'
 				: 'Unknown Error 1'
