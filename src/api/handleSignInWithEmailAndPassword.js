@@ -9,7 +9,20 @@ const handleSignInWithEmailAndPassword = async (email, password) => {
 		.catch(err => {
 			// Handle Errors here.
 			console.log('sign in failed', err)
-			return false
+			const errArr = [
+				'auth/invalid-email',
+				'auth/user-disabled',
+				'auth/user-not-found',
+				'auth/wrong-password',
+			]
+			const errCode = err.code
+			const userError = errArr.includes(errCode)
+
+			return userError
+				? 'Invalid Username or Email'
+				: errCode === 'auth/network-request-failed'
+				? 'Network Failure'
+				: 'Unknown Error 1'
 			// ...
 		})
 }
