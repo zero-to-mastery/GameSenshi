@@ -6,6 +6,7 @@ const handleSignInWithEmailAndPassword = async (email, password) => {
 
 	return auth()
 		.signInWithEmailAndPassword(email, password)
+		.then(() => {}) // return undefined if login success
 		.catch(err => {
 			// Handle Errors here.
 			console.log('sign in failed', err)
