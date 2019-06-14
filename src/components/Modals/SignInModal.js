@@ -1,15 +1,24 @@
 import React from 'react'
 import { Modal } from 'reactstrap'
-import SingInForm from '../Forms/SingInForm'
+import SingInForm from 'components/Forms/SingInForm'
+import { signInModalStore, Subscribe } from 'state'
+
+import { SIGN_IN_MODAL_OPEN } from 'constantValues'
 
 const SignInModal = () => {
 	return (
-		<Modal
-			isOpen={this.state.modalLogin}
-			toggle={this.toggleModalLogin}
-			modalClassName='modal-login'>
-			<SingInForm />
-		</Modal>
+		<Subscribe to={[signInModalStore]}>
+			{signInModalStore => {
+				const {
+					state: { [SIGN_IN_MODAL_OPEN]: open, toggle },
+				} = signInModalStore
+				return (
+					<Modal isOpen={open} toggle={toggle} modalClassName='modal-login'>
+						<SingInForm passwordOnly />
+					</Modal>
+				)
+			}}
+		</Subscribe>
 	)
 }
 

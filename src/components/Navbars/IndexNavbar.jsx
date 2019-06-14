@@ -37,6 +37,7 @@ import {
 } from 'constantValues'
 
 import SocialAuthModal from 'components/Modals/SocialAuthModal'
+import SingInModal from 'components/Modals/SignInModal'
 
 import logo from 'assets/img/favicon-32x32.png'
 
@@ -164,6 +165,7 @@ class ComponentsNavbar extends React.Component {
 					} = alertStore.state
 					return (
 						<>
+							<SingInModal />
 							<SocialAuthModal />
 							<div className='fixed-top'>
 								<Navbar

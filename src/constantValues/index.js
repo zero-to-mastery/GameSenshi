@@ -84,6 +84,11 @@ import {
 	USER_EMAIL_IS_VERIFIED,
 } from 'constantValues/UserConstants'
 
+import {
+	SIGN_IN_MODAL_EMAIL,
+	SIGN_IN_MODAL_OPEN,
+} from 'constantValues/SignInModalConstants'
+
 export {
 	IS,
 	ON,
@@ -147,4 +152,6 @@ export {
 	USER_SIGNED_IN,
 	USER_DISPLAY_NAME,
 	USER_EMAIL_IS_VERIFIED,
+	SIGN_IN_MODAL_EMAIL,
+	SIGN_IN_MODAL_OPEN,
 }
