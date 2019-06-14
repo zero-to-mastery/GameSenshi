@@ -7,13 +7,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { LastLocationProvider } from 'react-router-last-location'
 
 // state management
-import {
-	authStore,
-	socialAuthModalStore,
-	userStore,
-	alertStore,
-	Provider,
-} from 'state'
+import { socialAuthModalStore, userStore, Provider } from 'state'
 
 // constants
 import {
