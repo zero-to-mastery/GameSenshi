@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import classnames from 'classnames'
 import { Field } from 'react-final-form'
 import Loader from 'react-loader-spinner'
@@ -32,15 +32,6 @@ const InputField = props => {
 
 	const [messageList, setMessageList] = useState([])
 
-	const [renderMessageList, setRenderMessageList] = useState(true)
-
-	useEffect(
-		() => () => {
-			setRenderMessageList(false) // stop rendering message list when component going to unmount
-		},
-		0
-	)
-
 	const [state] = useState({
 		delay: 0,
 		timeOutID: 0,
@@ -66,7 +57,7 @@ const InputField = props => {
 		const messageList = MessageList({ validationResult, type })
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, state.delay = 0 tell us that the component never been visited, this solve icon flickering
-		renderMessageList && setMessageList(messageList)
+		setMessageList(messageList)
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
 			container.setState({ [name + IS_VALID]: true })
