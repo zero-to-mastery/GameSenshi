@@ -17,12 +17,6 @@ import { socialAuthModalStore, Subscribe } from 'state'
 
 // toggle
 const SocialAuthModal = () => {
-	const toggle = () => {
-		socialAuthModalStore.setState(state => {
-			state[SOCIAL_AUTH_MODAL_OPEN] = !state[SOCIAL_AUTH_MODAL_OPEN]
-			return state
-		})
-	}
 	return (
 		<Subscribe to={[socialAuthModalStore]}>
 			{socialAuthModalStore => {
@@ -34,6 +28,7 @@ const SocialAuthModal = () => {
 						[SOCIAL_AUTH_MODAL_CALLBACK]: callback,
 						[SOCIAL_AUTH_MODAL_LOADER]: loader,
 					},
+					toggle,
 				} = socialAuthModalStore
 				return (
 					<Modal isOpen={open} toggle={toggle} backdrop='static'>

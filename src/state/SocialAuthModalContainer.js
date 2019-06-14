@@ -16,6 +16,16 @@ class SocialAuthModalContainer extends Container {
 		[SOCIAL_AUTH_MODAL_LOADER]: false,
 		[SOCIAL_AUTH_MODAL_CALLBACK]: () => {},
 	}
+
+	toggle = () => {
+		this.setState(
+			state => (
+				(state[SOCIAL_AUTH_MODAL_OPEN] = !state[SOCIAL_AUTH_MODAL_OPEN]), state
+			)
+		)
+
+		return this
+	}
 }
 
 export default SocialAuthModalContainer
