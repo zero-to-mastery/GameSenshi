@@ -13,7 +13,7 @@ import {
 } from 'reactstrap'
 
 import ReactResizeDetector from 'react-resize-detector'
-import MessageList from 'components/InputField/MessageList'
+import MessageList from 'components/Inputs/MessageList'
 import {
 	EXTRA_HEIGHT,
 	IS_VALID,
