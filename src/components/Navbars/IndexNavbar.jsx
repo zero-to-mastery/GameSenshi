@@ -255,7 +255,7 @@ class ComponentsNavbar extends React.Component {
 																<NavLink
 																	href='joinSenshi'
 																	onClick={e => e.preventDefault()}>
-																	Senshi Centre
+																	Senshi Portal
 																</NavLink>
 															</NavItem>
 															<NavItem className='active d-none d-lg-inline-flex'>
