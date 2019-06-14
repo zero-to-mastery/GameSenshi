@@ -8,9 +8,10 @@ class SignInModalContainer extends Container {
 		[SIGN_IN_MODAL_OPEN]: false,
 	}
 	toggle = () => {
-		this.setState(
-			state => ((state[SIGN_IN_MODAL_OPEN] = !state[SIGN_IN_MODAL_OPEN]), state)
-		)
+		this.setState(state => {
+			state[SIGN_IN_MODAL_OPEN] = !state[SIGN_IN_MODAL_OPEN]
+			return state
+		})
 		return this
 	}
 }

@@ -18,11 +18,10 @@ class SocialAuthModalContainer extends Container {
 	}
 
 	toggle = () => {
-		this.setState(
-			state => (
-				(state[SOCIAL_AUTH_MODAL_OPEN] = !state[SOCIAL_AUTH_MODAL_OPEN]), state
-			)
-		)
+		this.setState(state => {
+			state[SOCIAL_AUTH_MODAL_OPEN] = !state[SOCIAL_AUTH_MODAL_OPEN]
+			return state
+		})
 
 		return this
 	}
