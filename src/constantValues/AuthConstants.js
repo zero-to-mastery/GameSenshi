@@ -32,14 +32,6 @@ const ON_IS_EMAIL_EXIST = ON + IS_EMAIL_EXIST
 
 // TODO: gonna remove extra height feature someday
 
-// firebase property
-const FIREBASE_DISPLAY_NAME = 'displayName'
-const FIREBASE_EMAIL = 'email'
-const FIREBASE_EMAIL_VERIFIED = 'emailVerified'
-const FIREBASE_PHOTO_URL = 'photoURL'
-const FIREBASE_UID = 'uid'
-const FIREBASE_PROVIDER_DATA = 'providerData'
-
 export {
 	IS_VALID,
 	SUBMITTING,
@@ -62,10 +54,4 @@ export {
 	USERNAME_SUBMIT_ERRORS,
 	ON_SIGN_UP,
 	ON_IS_EMAIL_EXIST,
-	FIREBASE_DISPLAY_NAME,
-	FIREBASE_EMAIL,
-	FIREBASE_EMAIL_VERIFIED,
-	FIREBASE_PHOTO_URL,
-	FIREBASE_UID,
-	FIREBASE_PROVIDER_DATA,
 }
