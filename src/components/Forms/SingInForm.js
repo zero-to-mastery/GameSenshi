@@ -15,6 +15,10 @@ import {
 
 // reactstrap components
 import {
+	Input,
+	InputGroupText,
+	InputGroup,
+	InputGroupAddon,
 	Button,
 	Card,
 	CardHeader,
@@ -48,7 +52,7 @@ import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
 import InputField from 'components/Inputs/InputField'
 
 // state management
-import { authStore, userStore } from 'state'
+import { authStore, userStore, signInModalStore, Subscribe } from 'state'
 
 const focusOnError = createDecorator()
 
@@ -71,117 +75,163 @@ class SignInForm extends React.Component {
 		// but this not much point since it will redirect and unmount soon
 		return
 	}
+
 	render() {
 		const {
-			props: { history, lastLocation },
+			props: { history, lastLocation, passwordOnly },
 			onSubmit,
 		} = this
 		return (
-			<Card className='card-login'>
-				<Form action='' className='form' method=''>
-					<CardHeader>
-						<CardImg
-							alt='...'
-							src={require('assets/img/square-purple-1.png')}
-						/>
-						<CardTitle tag='h4'>Login</CardTitle>
-					</CardHeader>
-					<CardBody>
-						<div className='text-muted text-center ml-auto mr-auto'>
-							<h3 className='mb-0'>Sign in with</h3>
-						</div>
-					</CardBody>
-					<FinalForm
-						initialValues={{
-							[EMAIL]: '',
-							[PASSWORD]: '',
-						}}
-						decorators={[focusOnError]}
-						onSubmit={values => {
-							return onSubmit(values, history, lastLocation)
-						}}>
-						{({ submitError, handleSubmit, submitting }) => (
-							<>
+			<Subscribe to={[signInModalStore]}>
+				{signInModalStore => {
+					const { toggle } = signInModalStore
+					return (
+						<Card className='card-login'>
+							<Form action='' className='form' method=''>
+								<CardHeader>
+									<CardImg
+										alt='...'
+										src={require('assets/img/square-purple-1.png')}
+									/>
+									<CardTitle tag='h4'>Login</CardTitle>
+									{passwordOnly && (
+										<button
+											aria-label='Close'
+											className='close'
+											data-dismiss='modal'
+											type='button'
+											onClick={toggle}>
+											<i className='tim-icons icon-simple-remove' />
+										</button>
+									)}
+								</CardHeader>
 								<CardBody>
-									<SocialAuthButtonGroup />
-									<Row>
-										<Col />
-										<Col className='text-center text-muted mb-4 mt-3 col-auto'>
-											<small>Or Classically</small>
-										</Col>
-										<Col />
-									</Row>
-									<InputField
-										type={EMAIL}
-										name={EMAIL}
-										hideSuccess
-										container={authStore}
-										placeholder='Email'
-										icon='tim-icons icon-email-85'
-										validation={value => signInEmailValidation(value)}
-									/>
-									<InputField
-										type={PASSWORD}
-										name={PASSWORD}
-										hideSuccess
-										container={authStore}
-										placeholder='Password'
-										icon='tim-icons icon-lock-circle'
-										validation={value => signInPasswordValidation(value)}
-									/>
+									<div className='text-muted text-center ml-auto mr-auto'>
+										<h3 className='mb-0'>
+											{passwordOnly
+												? 'Sign In With Existing Account'
+												: 'Sign in with'}
+										</h3>
+									</div>
 								</CardBody>
-								<CardFooter className='text-center'>
-									{submitError && !submitting && `Error: ${submitError}`}
-									<Button
-										block
-										className='btn-round'
-										color='primary'
-										href='#pablo'
-										size='lg'
-										disabled={submitting}
-										onClick={handleSubmit}>
-										{submitting ? (
-											<>
-												<Loader
-													type='Watch'
-													color='#00BFFF'
-													height='19px'
-													width='19px'
+								<FinalForm
+									initialValues={{
+										[EMAIL]: '',
+										[PASSWORD]: '',
+									}}
+									decorators={[focusOnError]}
+									onSubmit={values => {
+										return onSubmit(values, history, lastLocation)
+									}}>
+									{({ submitError, handleSubmit, submitting }) => (
+										<>
+											<CardBody>
+												{passwordOnly ? (
+													<InputGroup>
+														<InputGroupAddon addonType='prepend'>
+															<InputGroupText
+																style={{
+																	backgroundColor: '#1d253b',
+																}}>
+																<i className='tim-icons icon-email-85 ' />
+															</InputGroupText>
+														</InputGroupAddon>
+														<Input
+															disabled
+															placeholder='Email'
+															type='text'
+															onFocus={e => this.setState({ emailFocus: true })}
+															onBlur={e => this.setState({ emailFocus: false })}
+														/>
+													</InputGroup>
+												) : (
+													<>
+														<SocialAuthButtonGroup />
+														<Row>
+															<Col />
+															<Col className='text-center text-muted mb-4 mt-3 col-auto'>
+																<small>Or Classically</small>
+															</Col>
+															<Col />
+														</Row>
+														<InputField
+															type={EMAIL}
+															name={EMAIL}
+															hideSuccess
+															container={authStore}
+															placeholder='Email'
+															icon='tim-icons icon-email-85'
+															validation={value => signInEmailValidation(value)}
+														/>
+													</>
+												)}
+												<InputField
+													type={PASSWORD}
+													name={PASSWORD}
+													hideSuccess
+													container={authStore}
+													placeholder='Password'
+													icon='tim-icons icon-lock-circle'
+													validation={value => signInPasswordValidation(value)}
 												/>
-												&nbsp;&nbsp;Signing In
-											</>
-										) : (
-											'Get Started'
-										)}
-									</Button>
-								</CardFooter>
-							</>
-						)}
-					</FinalForm>
-					<div className='pull-left ml-3 mb-3'>
-						<h6>
-							<a
-								className='link footer-link'
-								href='#pablo'
-								onClick={() => {
-									history.push('/signUp')
-								}}>
-								Create Account
-							</a>
-						</h6>
-					</div>
-					<div className='pull-right mr-3 mb-3'>
-						<h6>
-							<a
-								className='link footer-link'
-								href='#pablo'
-								onClick={e => e.preventDefault()}>
-								Forgot Password?
-							</a>
-						</h6>
-					</div>
-				</Form>
-			</Card>
+											</CardBody>
+											<CardFooter className='text-center'>
+												{submitError && !submitting && `Error: ${submitError}`}
+												<Button
+													block
+													className='btn-round'
+													color='primary'
+													href='#pablo'
+													size='lg'
+													disabled={submitting}
+													onClick={handleSubmit}>
+													{submitting ? (
+														<>
+															<Loader
+																type='Watch'
+																color='#00BFFF'
+																height='19px'
+																width='19px'
+															/>
+															&nbsp;&nbsp;Signing In
+														</>
+													) : (
+														'Get Started'
+													)}
+												</Button>
+											</CardFooter>
+										</>
+									)}
+								</FinalForm>
+								<div className='pull-left ml-3 mb-3'>
+									<h6>
+										<a
+											className='link footer-link'
+											style={{ color: '#ba54f5', fontSize: 12 }}
+											href='#pablo'
+											onClick={() => {
+												history.push('/signUp')
+											}}>
+											Create Account
+										</a>
+									</h6>
+								</div>
+								<div className='pull-right mr-3 mb-3'>
+									<h6>
+										<a
+											className='link footer-link'
+											style={{ color: '#ba54f5', fontSize: 12 }}
+											href='#pablo'
+											onClick={e => e.preventDefault()}>
+											Forgot Password?
+										</a>
+									</h6>
+								</div>
+							</Form>
+						</Card>
+					)
+				}}
+			</Subscribe>
 		)
 	}
 }
