@@ -106,7 +106,7 @@ isLinked &&
 	})
 
 ReactDOM.render(
-	<Provider to={[authStore, socialAuthModalStore, userStore, alertStore]}>
+	<Provider>
 		<BrowserRouter>
 			<LastLocationProvider>
 				<Switch>
