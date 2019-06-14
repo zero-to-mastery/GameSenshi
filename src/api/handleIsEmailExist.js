@@ -1,4 +1,4 @@
-import { functions } from 'utils/firebase'
+import { functions } from 'utils/firebaseFrontEnd'
 import { ON_IS_EMAIL_EXIST, STATUS, MESSAGE, DATA, EMAIL } from 'constantValues'
 
 const handleIsEmailExist = email => {

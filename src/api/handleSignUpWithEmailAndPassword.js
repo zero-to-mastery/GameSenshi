@@ -1,4 +1,4 @@
-import { functions } from 'utils/firebase'
+import { functions } from 'utils/firebaseFrontEnd'
 
 import {
 	USERNAME,
