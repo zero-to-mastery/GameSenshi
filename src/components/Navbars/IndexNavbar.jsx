@@ -36,7 +36,7 @@ import {
 	USER_PHOTO_URL,
 } from 'constantValues'
 
-import { SocialAuthModal } from 'components'
+import SocialAuthModal from 'components/Modals/SocialAuthModal'
 
 import logo from 'assets/img/favicon-32x32.png'
 
