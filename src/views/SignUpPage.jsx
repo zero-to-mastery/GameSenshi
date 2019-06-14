@@ -14,7 +14,6 @@ import { onSignedInRouting } from 'routes'
 
 // constants
 import {
-	WILL_UNMOUNT,
 	DATA,
 	STATUS,
 	EMAIL,
@@ -91,12 +90,10 @@ class RegisterPage extends React.Component {
 		// stop this listener in dev mode to ease development (it setState a LOT!)
 		process.env.REACT_APP_FOLLOW_CURSOR &&
 			document.documentElement.addEventListener('mousemove', this.followCursor)
-		authStore.state[WILL_UNMOUNT] = false
 	}
 	componentWillUnmount() {
 		document.body.classList.remove('register-page')
 		document.documentElement.removeEventListener('mousemove', this.followCursor)
-		authStore.state[WILL_UNMOUNT] = true
 	}
 	followCursor = event => {
 		let posX = event.clientX - window.innerWidth / 2
@@ -253,8 +250,7 @@ class RegisterPage extends React.Component {
 																		// ! these is not good as the validation process invoking steState in a promise
 																		// ! there will be memory leak warning if you try to setState on unmounted component
 																		// ! seem like problem of either react final form or react router
-																		// * implement life cycle method of parent component to solve these issue
-																		// * tested, above solution works, trace WILL_UNMOUNT in didComponentMount and willComponentUnmount method to get further insight
+																		// * implement useEffect component will unmount of Input Field component to solve these issue
 																		*/}
 																			<InputField
 																				type={USERNAME}

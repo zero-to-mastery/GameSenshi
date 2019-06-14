@@ -13,7 +13,6 @@ const TITLE = 'Title'
 const STATUS = 'status'
 const MESSAGE = 'message'
 const PROVIDER = 'Provider'
-const WILL_UNMOUNT = 'willUnmount'
 
 export {
 	IS,
@@ -31,5 +30,4 @@ export {
 	STATUS,
 	MESSAGE,
 	PROVIDER,
-	WILL_UNMOUNT,
 }

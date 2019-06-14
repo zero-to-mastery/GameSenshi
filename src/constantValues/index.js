@@ -15,7 +15,6 @@ import {
 	TITLE,
 	STATUS,
 	MESSAGE,
-	WILL_UNMOUNT,
 } from 'constantValues/CommonConstants'
 
 import {
@@ -99,7 +98,6 @@ export {
 	TITLE,
 	STATUS,
 	MESSAGE,
-	WILL_UNMOUNT,
 	ALERT_BODY,
 	ALERT_COLOR,
 	ALERT_OPEN,

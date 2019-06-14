@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import classnames from 'classnames'
 import { Field } from 'react-final-form'
 import Loader from 'react-loader-spinner'
@@ -14,13 +14,7 @@ import {
 
 import ReactResizeDetector from 'react-resize-detector'
 import MessageList from 'components/Inputs/MessageList'
-import {
-	EXTRA_HEIGHT,
-	IS_VALID,
-	SUBMIT_ERRORS,
-	WILL_UNMOUNT,
-	STATUS,
-} from 'constantValues'
+import { EXTRA_HEIGHT, IS_VALID, SUBMIT_ERRORS, STATUS } from 'constantValues'
 
 const InputField = props => {
 	const {
@@ -37,6 +31,15 @@ const InputField = props => {
 	const ref = useRef(null)
 
 	const [messageList, setMessageList] = useState([])
+
+	const [renderMessageList, setRenderMessageList] = useState(true)
+
+	useEffect(
+		() => () => {
+			setRenderMessageList(false) // stop rendering message list when component going to unmount
+		},
+		0
+	)
 
 	const [state] = useState({
 		delay: 0,
@@ -63,7 +66,7 @@ const InputField = props => {
 		const messageList = MessageList({ validationResult, type })
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, state.delay = 0 tell us that the component never been visited, this solve icon flickering
-		!container.state[WILL_UNMOUNT] && setMessageList(messageList) // do not run setState if parent component going to unmount to prevent memory leak issue
+		renderMessageList && setMessageList(messageList)
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
 			container.setState({ [name + IS_VALID]: true })

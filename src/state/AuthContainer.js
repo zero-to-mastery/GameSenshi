@@ -1,6 +1,5 @@
 import { Container } from 'unstated'
 import {
-	WILL_UNMOUNT,
 	SUBMITTING,
 	EMAIL,
 	EMAIL_IS_VALID,
@@ -22,7 +21,6 @@ import {
 class AuthContainer extends Container {
 	state = {
 		[SUBMITTING]: false,
-		[WILL_UNMOUNT]: false,
 		[EMAIL]: '',
 		[EMAIL_IS_VALID]: false,
 		[EMAIL_EXTRA_HEIGHT]: 0,
