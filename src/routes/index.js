@@ -1,8 +1,8 @@
 const onSignedInRouting = (history, lastLocation) => {
 	if (
 		lastLocation &&
-		lastLocation.pathname !== '/signIn' &&
-		lastLocation.pathname !== '/signUp'
+		lastLocation.pathname.toLowerCase() !== '/signin' &&
+		lastLocation.pathname.toLowerCase() !== '/signup'
 	) {
 		history.goBack()
 	} else {
