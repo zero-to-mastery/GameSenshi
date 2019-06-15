@@ -3,7 +3,12 @@ import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/functions'
 import 'firebase/storage'
-import { alertStore, socialAuthModalStore, userStore } from 'state'
+import {
+	alertStore,
+	socialAuthModalStore,
+	userStore,
+	signInModalStore,
+} from 'state'
 import {
 	SOCIAL_AUTH_MODAL_BODY,
 	SOCIAL_AUTH_MODAL_OPEN,
@@ -20,6 +25,9 @@ import {
 	USER_DISPLAY_NAME,
 	USER_EMAIL_IS_VERIFIED,
 	DEFAULT_AVATAR_URL,
+	SIGN_IN_MODAL_EMAIL,
+	SIGN_IN_MODAL_OPEN,
+	SIGN_IN_MODAL_CALLBACK,
 } from 'constantValues'
 
 const firebaseConfig = {
@@ -148,6 +156,11 @@ auth()
 					const name2 = getName(credential.signInMethod)
 					if (provider1 === 'password') {
 						//handle password case
+						signInModalStore.setState({
+							[SIGN_IN_MODAL_EMAIL]: email,
+							[SIGN_IN_MODAL_OPEN]: true,
+							[SIGN_IN_MODAL_CALLBACK]: () => {},
+						})
 					} else {
 						socialAuthModalStore.setState({
 							[SOCIAL_AUTH_MODAL_BODY]: (

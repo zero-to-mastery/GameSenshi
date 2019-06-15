@@ -31,7 +31,6 @@ import {
 	USER_EMAIL,
 	USER_SIGNED_IN,
 	USER_DISPLAY_NAME,
-	SIGN_IN_MODAL_EMAIL,
 } from 'constantValues'
 
 // form validation
@@ -47,13 +46,7 @@ import {
 } from 'utils/validation'
 
 // state management
-import {
-	authStore,
-	alertStore,
-	userStore,
-	Subscribe,
-	signInModalStore,
-} from 'state'
+import { authStore, alertStore, userStore, Subscribe } from 'state'
 
 // react libraries components
 import {
@@ -139,9 +132,6 @@ class RegisterPage extends React.Component {
 				[USER_DISPLAY_NAME]: authStore.state[USERNAME],
 				[USER_EMAIL]: authStore.state[EMAIL],
 				[USER_SIGNED_IN]: true,
-			})
-			signInModalStore.setState({
-				[SIGN_IN_MODAL_EMAIL]: authStore.state[USERNAME],
 			})
 			alertStore.setState({
 				[ALERT_BODY]: (
