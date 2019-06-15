@@ -12,6 +12,7 @@ const MODAL = 'Modal'
 const TITLE = 'Title'
 const STATUS = 'status'
 const MESSAGE = 'message'
+const CALLBACK = 'Callback'
 const PROVIDER = 'Provider'
 
 export {
@@ -29,5 +30,6 @@ export {
 	TITLE,
 	STATUS,
 	MESSAGE,
+	CALLBACK,
 	PROVIDER,
 }
