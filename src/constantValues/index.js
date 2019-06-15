@@ -87,6 +87,7 @@ import {
 import {
 	SIGN_IN_MODAL_EMAIL,
 	SIGN_IN_MODAL_OPEN,
+	SIGN_IN_MODAL_CALLBACK,
 } from 'constantValues/SignInModalConstants'
 
 export {
@@ -154,4 +155,5 @@ export {
 	USER_EMAIL_IS_VERIFIED,
 	SIGN_IN_MODAL_EMAIL,
 	SIGN_IN_MODAL_OPEN,
+	SIGN_IN_MODAL_CALLBACK,
 }
