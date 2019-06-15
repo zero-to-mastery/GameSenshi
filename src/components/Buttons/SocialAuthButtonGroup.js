@@ -48,9 +48,7 @@ const SocialAuthSignInButton = props => {
 			})
 		)
 		onSignedInRouting(history, lastLocation)
-		setTimeout(() => {
-			api()
-		}, 3000)
+		api()
 	}
 
 	return (
