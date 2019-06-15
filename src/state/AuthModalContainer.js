@@ -8,7 +8,7 @@ import {
 	SOCIAL_AUTH_MODAL_CALLBACK,
 } from 'constantValues'
 
-class SocialAuthModalContainer extends Container {
+class AuthModalContainer extends Container {
 	state = {
 		[SOCIAL_AUTH_MODAL_BODY]: '',
 		[SOCIAL_AUTH_MODAL_TITLE]: '',
@@ -27,4 +27,4 @@ class SocialAuthModalContainer extends Container {
 	}
 }
 
-export default SocialAuthModalContainer
+export default AuthModalContainer

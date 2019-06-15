@@ -3,15 +3,9 @@ import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/functions'
 import 'firebase/storage'
-import jsxToString from 'jsx-to-string'
 import reactElementToJSXString from 'react-element-to-jsx-string'
 
-import {
-	alertStore,
-	socialAuthModalStore,
-	userStore,
-	signInModalStore,
-} from 'state'
+import { alertStore, authModalStore, userStore, signInModalStore } from 'state'
 import {
 	SOCIAL_AUTH_MODAL_BODY,
 	SOCIAL_AUTH_MODAL_OPEN,
@@ -101,25 +95,23 @@ auth()
 	.getRedirectResult()
 	.then(result => {
 		// close modal if successful
-		socialAuthModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
-		const SocialAuthLinking = JSON.parse(
-			sessionStorage.getItem('SocialAuthLinking')
-		)
-		const { name1, name2, isLinked, provider2 } = SocialAuthLinking
+		authModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
+		const authModal = JSON.parse(sessionStorage.getItem('authModal'))
+		const { name1, name2, isLinked, provider2 } = authModal
 		if (isLinked) {
-			sessionStorage.removeItem('SocialAuthLinking')
+			sessionStorage.removeItem('authModal')
 			alertStore.setState({
 				[ALERT_BODY]: `Successfully linked your ${name2} account!`,
 				[ALERT_OPEN]: true,
 				[ALERT_COLOR]: 'success',
 			})
-		} else if (SocialAuthLinking) {
+		} else if (authModal) {
 			// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 			// show modal on link redirect
 			sessionStorage.setItem(
-				'SocialAuthLinking',
+				'authModal',
 				JSON.stringify({
-					...SocialAuthLinking,
+					...authModal,
 					[SOCIAL_AUTH_MODAL_BODY]: reactElementToJSXString(
 						<span>
 							Please wait while we linking your
@@ -136,7 +128,7 @@ auth()
 	})
 	.catch(err => {
 		// remove this item whether it is success or not
-		sessionStorage.removeItem('SocialAuthLinking')
+		sessionStorage.removeItem('authModal')
 		// An error happened.
 		// need to save this credential before hand in cache, remember delete it later.
 		const { code, credential, email } = err
@@ -165,11 +157,11 @@ auth()
 					const provider2 = getProvider(credential.signInMethod)
 					const name1 = provider1 === 'password' ? email : getName(methods[0])
 					const name2 = getName(credential.signInMethod)
-					await socialAuthModalStore.setState({
+					await authModalStore.setState({
 						[SOCIAL_AUTH_MODAL_OPEN]: false,
 					}) // close modal if error
 					setTimeout(() => {
-						socialAuthModalStore.setState({
+						authModalStore.setState({
 							[SOCIAL_AUTH_MODAL_OPEN]: true,
 							[SOCIAL_AUTH_MODAL_BODY]: (
 								<>
@@ -186,7 +178,7 @@ auth()
 							[SOCIAL_AUTH_MODAL_TITLE]: 'Linking Your Social Login',
 							[SOCIAL_AUTH_MODAL_LOADER]: false,
 							[SOCIAL_AUTH_MODAL_CALLBACK]: async () => {
-								await socialAuthModalStore.setState({
+								await authModalStore.setState({
 									[SOCIAL_AUTH_MODAL_OPEN]: false,
 								})
 								if (provider1 === 'password') {
@@ -194,20 +186,22 @@ auth()
 										[SIGN_IN_MODAL_EMAIL]: email,
 										[SIGN_IN_MODAL_OPEN]: true,
 										[SIGN_IN_MODAL_CALLBACK]: () => {
-											auth()
-												.currentUser.linkWithCredential(credential)
-												.then(() => {
-													alertStore.setState({
-														[ALERT_BODY]: 'Social login linked successful!',
-														[ALERT_OPEN]: true,
-														[ALERT_COLOR]: 'success',
+											if (signInModalStore.state[SIGN_IN_MODAL_OPEN]) {
+												auth()
+													.currentUser.linkWithCredential(credential)
+													.then(() => {
+														alertStore.setState({
+															[ALERT_BODY]: 'Social login linked successful!',
+															[ALERT_OPEN]: true,
+															[ALERT_COLOR]: 'success',
+														})
 													})
-												})
+											}
 										},
 									})
 								} else {
 									sessionStorage.setItem(
-										'SocialAuthLinking',
+										'authModal',
 										JSON.stringify({
 											provider2,
 											name1,

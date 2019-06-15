@@ -13,13 +13,13 @@ import {
 } from 'constantValues'
 
 // state
-import { socialAuthModalStore, Subscribe } from 'state'
+import { authModalStore, Subscribe } from 'state'
 
 // toggle
-const SocialAuthModal = () => {
+const AuthModal = () => {
 	return (
-		<Subscribe to={[socialAuthModalStore]}>
-			{socialAuthModalStore => {
+		<Subscribe to={[authModalStore]}>
+			{authModalStore => {
 				const {
 					state: {
 						[SOCIAL_AUTH_MODAL_BODY]: body,
@@ -29,7 +29,7 @@ const SocialAuthModal = () => {
 						[SOCIAL_AUTH_MODAL_LOADER]: loader,
 					},
 					toggle,
-				} = socialAuthModalStore
+				} = authModalStore
 				return (
 					<Modal isOpen={open} toggle={toggle} backdrop='static'>
 						<div className='modal-header'>
@@ -62,4 +62,4 @@ const SocialAuthModal = () => {
 	)
 }
 
-export default SocialAuthModal
+export default AuthModal

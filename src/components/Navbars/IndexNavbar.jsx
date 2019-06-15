@@ -36,7 +36,7 @@ import {
 	USER_PHOTO_URL,
 } from 'constantValues'
 
-import SocialAuthModal from 'components/Modals/SocialAuthModal'
+import AuthModal from 'components/Modals/AuthModal'
 import SingInModal from 'components/Modals/SignInModal'
 
 import logo from 'assets/img/favicon-32x32.png'
@@ -166,7 +166,7 @@ class ComponentsNavbar extends React.Component {
 					return (
 						<>
 							<SingInModal />
-							<SocialAuthModal />
+							<AuthModal />
 							<div className='fixed-top'>
 								<Navbar
 									style={{

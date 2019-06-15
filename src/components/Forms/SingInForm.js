@@ -45,6 +45,9 @@ import {
 	USER_EMAIL,
 	USER_SIGNED_IN,
 	USER_DISPLAY_NAME,
+	SIGN_IN_MODAL_OPEN,
+	SIGN_IN_MODAL_EMAIL,
+	SIGN_IN_MODAL_CALLBACK,
 } from 'constantValues'
 
 // core components
@@ -71,6 +74,7 @@ class SignInForm extends React.Component {
 			[USER_EMAIL]: authStore.state[EMAIL],
 			[USER_SIGNED_IN]: true,
 		})
+		signInModalStore.state[SIGN_IN_MODAL_CALLBACK]()
 		// if undefined mean no error
 		// but this not much point since it will redirect and unmount soon
 		return
@@ -84,7 +88,10 @@ class SignInForm extends React.Component {
 		return (
 			<Subscribe to={[signInModalStore]}>
 				{signInModalStore => {
-					const { toggle } = signInModalStore
+					const {
+						toggle,
+						state: { [SIGN_IN_MODAL_EMAIL]: email },
+					} = signInModalStore
 					return (
 						<Card className='card-login'>
 							<Form action='' className='form' method=''>
@@ -132,13 +139,14 @@ class SignInForm extends React.Component {
 															<InputGroupText
 																style={{
 																	backgroundColor: '#1d253b',
+																	cursor: 'not-allowed',
 																}}>
 																<i className='tim-icons icon-email-85 ' />
 															</InputGroupText>
 														</InputGroupAddon>
 														<Input
 															disabled
-															placeholder='Email'
+															placeholder={passwordOnly ? email : 'Email'}
 															type='text'
 															onFocus={e => this.setState({ emailFocus: true })}
 															onBlur={e => this.setState({ emailFocus: false })}

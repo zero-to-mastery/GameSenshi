@@ -66,7 +66,7 @@ import {
 	SOCIAL_AUTH_MODAL_TITLE,
 	SOCIAL_AUTH_MODAL_LOADER,
 	SOCIAL_AUTH_MODAL_CALLBACK,
-} from 'constantValues/SocialAuthModalConstants'
+} from 'constantValues/AuthModalConstants'
 
 import {
 	PASSWORD_INPUT_MODAL_OPEN,
