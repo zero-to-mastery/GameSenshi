@@ -5,7 +5,13 @@ import 'firebase/functions'
 import 'firebase/storage'
 import reactElementToJSXString from 'react-element-to-jsx-string'
 
-import { alertStore, authModalStore, userStore, signInModalStore } from 'state'
+import {
+	alertStore,
+	authModalStore,
+	userStore,
+	signInModalStore,
+	authStore,
+} from 'state'
 import {
 	SOCIAL_AUTH_MODAL_BODY,
 	SOCIAL_AUTH_MODAL_OPEN,
@@ -25,6 +31,7 @@ import {
 	SIGN_IN_MODAL_EMAIL,
 	SIGN_IN_MODAL_OPEN,
 	SIGN_IN_MODAL_CALLBACK,
+	EMAIL,
 } from 'constantValues'
 
 const firebaseConfig = {
@@ -182,19 +189,52 @@ auth()
 									[SOCIAL_AUTH_MODAL_OPEN]: false,
 								})
 								if (provider1 === 'password') {
+									authStore.setState({ [EMAIL]: email })
 									signInModalStore.setState({
 										[SIGN_IN_MODAL_EMAIL]: email,
 										[SIGN_IN_MODAL_OPEN]: true,
-										[SIGN_IN_MODAL_CALLBACK]: () => {
+										[SIGN_IN_MODAL_CALLBACK]: async () => {
 											if (signInModalStore.state[SIGN_IN_MODAL_OPEN]) {
+												await signInModalStore.setState({
+													[SIGN_IN_MODAL_OPEN]: false,
+												})
+												await authModalStore.setState({
+													[SOCIAL_AUTH_MODAL_OPEN]: true,
+													[SOCIAL_AUTH_MODAL_BODY]: (
+														<>
+															Linking<b> {name1} </b>to<b> {name2} </b>
+															<br />
+															<br />
+															Please Wait...
+														</>
+													),
+													[SOCIAL_AUTH_MODAL_TITLE]:
+														'Linking Your Social Login',
+													[SOCIAL_AUTH_MODAL_LOADER]: true,
+												})
 												auth()
 													.currentUser.linkWithCredential(credential)
-													.then(() => {
-														alertStore.setState({
-															[ALERT_BODY]: 'Social login linked successful!',
-															[ALERT_OPEN]: true,
-															[ALERT_COLOR]: 'success',
+													.then(async () => {
+														await authModalStore.setState({
+															[SOCIAL_AUTH_MODAL_OPEN]: false,
 														})
+														alertStore
+															.setState({
+																[ALERT_BODY]: 'Social login linked successful!',
+																[ALERT_OPEN]: true,
+																[ALERT_COLOR]: 'success',
+															})
+															.catch(async () => {
+																await authModalStore.setState({
+																	[SOCIAL_AUTH_MODAL_OPEN]: false,
+																})
+																alertStore.setState({
+																	[ALERT_BODY]:
+																		'Social login linked unsuccessful!',
+																	[ALERT_OPEN]: true,
+																	[ALERT_COLOR]: 'warning',
+																})
+															})
 													})
 											}
 										},
