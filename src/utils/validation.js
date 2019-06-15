@@ -16,15 +16,9 @@ const signUpEmailValidation = value =>
 
 const signUpPasswordValidation = value =>
 	string()
-		.min(8, 'Password must be 8 characters or longer')
-		.matches(
-			/^((?=.*[a-z])|(?=.*[A-Z]))(?=.*[0-9]).*$/,
-			'must consist of number and alphabet'
-		)
-		.matches(
-			/^(?=.*\W)|(?=.*[A-Z]).*$/,
-			'must consist of one or more special character or uppercase'
-		)
+		.min(8, 'minimum 8 characters')
+		.matches(/^(?=.*[a-z])(?=.*[0-9]).*$/, '1 number and 1 lowercase')
+		.matches(/^(?=.*\W)|(?=.*[A-Z]).*$/, '1 special character or 1 uppercase')
 		.validate(value, {
 			abortEarly: false,
 		})
