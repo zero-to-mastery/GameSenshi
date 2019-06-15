@@ -23,7 +23,7 @@ const handleSignInWithEmailAndPassword = async (email, password) => {
 				? 'Invalid Email or Password'
 				: errCode === 'auth/network-request-failed'
 				? 'Network Failure'
-				: 'Unknown Error 1'
+				: 'Unexpected Error Code 1'
 			// ...
 		})
 }
