@@ -412,10 +412,13 @@ class ComponentsNavbar extends React.Component {
 								<ReactResizeDetector handleHeight onResize={onResize} />
 							</div>
 							<Alert
-								style={{ zIndex: 2147483647, marginTop: navbarHeight }}
+								style={{ zIndex: 1000, marginTop: navbarHeight }}
 								isOpen={alertOpen}
 								toggle={() => {
-									alertStore.setState({ [ALERT_OPEN]: false })
+									alertStore.setState(state => {
+										state[ALERT_OPEN] = !state[ALERT_OPEN]
+										return state
+									})
 								}}
 								color={alertColor}
 								className='d-flex align-items-center fixed-top'>
