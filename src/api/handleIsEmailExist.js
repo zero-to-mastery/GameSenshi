@@ -1,20 +1,21 @@
-import { functions } from 'utils/firebaseFrontEnd'
-import { ON_IS_EMAIL_EXIST, STATUS, MESSAGE, DATA, EMAIL } from 'constantValues'
+// not in used anymore
+import { auth } from 'utils/firebaseFrontEnd'
+import { STATUS, MESSAGE } from 'constantValues'
 
 const handleIsEmailExist = email => {
-	const verifyEmail = functions.httpsCallable(ON_IS_EMAIL_EXIST)
-	return verifyEmail({ [EMAIL]: email })
-		.then(res => {
-			if (!res[DATA][STATUS]) {
-				return res[DATA][MESSAGE]
-			} else {
+	return auth()
+		.fetchSignInMethodsForEmail(email)
+		.then(methods => {
+			if (!methods.includes('password')) {
 				return {
 					[STATUS]: true,
 					[MESSAGE]: 'This email is available for registration!',
 				}
 			}
 		})
-		.catch(() => 'Unexpected Error Code 1')
+		.catch(err => {
+			return 'Unexpected Error Code 1'
+		})
 }
 
 export default handleIsEmailExist
