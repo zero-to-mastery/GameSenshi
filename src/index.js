@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { LastLocationProvider } from 'react-router-last-location'
 
 // state management
-import { socialAuthModalStore, userStore, Provider } from 'state'
+import { authModalStore, userStore, Provider } from 'state'
 
 // constants
 import {
@@ -55,36 +55,16 @@ import SignUpPage from 'views/SignUpPage'
 const user = JSON.parse(localStorage.getItem('user'))
 user && (userStore.state = { ...user, [USER_SIGNED_IN]: true })
 
-// show social auth modal after redirect back
-const showSignInModal = sessionStorage.getItem('showSignInModal')
-sessionStorage.removeItem('showSignInModal')
-showSignInModal &&
-	socialAuthModalStore.setState({
+// modal for auth
+const authModal = JSON.parse(sessionStorage.getItem('authModal'))
+authModal &&
+	authModalStore.setState({
 		[SOCIAL_AUTH_MODAL_BODY]: (
-			<>
-				Signing in with <b>{showSignInModal}</b>...
-				<br />
-				Almost there!
-			</>
-		),
-		[SOCIAL_AUTH_MODAL_OPEN]: true,
-		[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
-		[SOCIAL_AUTH_MODAL_LOADER]: true,
-	})
-
-// modal for social auth linking
-const SocialAuthLinking = JSON.parse(
-	sessionStorage.getItem('SocialAuthLinking')
-)
-console.log(SocialAuthLinking)
-SocialAuthLinking &&
-	socialAuthModalStore.setState({
-		[SOCIAL_AUTH_MODAL_BODY]: (
-			<Interweave content={SocialAuthLinking[SOCIAL_AUTH_MODAL_BODY]} />
+			<Interweave content={authModal[SOCIAL_AUTH_MODAL_BODY]} />
 		),
 		[SOCIAL_AUTH_MODAL_OPEN]: true,
 		[SOCIAL_AUTH_MODAL_TITLE]: (
-			<Interweave content={SocialAuthLinking[SOCIAL_AUTH_MODAL_TITLE]} />
+			<Interweave content={authModal[SOCIAL_AUTH_MODAL_TITLE]} />
 		),
 		[SOCIAL_AUTH_MODAL_LOADER]: true,
 	})

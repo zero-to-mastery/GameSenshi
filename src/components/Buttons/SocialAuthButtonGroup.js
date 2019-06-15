@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, UncontrolledTooltip } from 'reactstrap'
+import reactElementToJSXString from 'react-element-to-jsx-string'
 
 // routing and api
 import { handleSignInWithGoogle, handleSignInWithFacebook } from 'api'
@@ -8,7 +9,7 @@ import { withRouter } from 'react-router'
 import { onSignedInRouting } from 'routes'
 
 // state
-import { socialAuthModalStore } from 'state'
+import { authModalStore } from 'state'
 
 // constants
 import {
@@ -22,7 +23,7 @@ const SocialAuthSignInButton = props => {
 	const { lastLocation, history } = props
 
 	const showSignInModal = (provider, api) => {
-		socialAuthModalStore.setState({
+		authModalStore.setState({
 			[SOCIAL_AUTH_MODAL_BODY]: (
 				<>
 					Please wait while we signing you in with <b>{provider}</b>.
@@ -32,7 +33,20 @@ const SocialAuthSignInButton = props => {
 			[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
 			[SOCIAL_AUTH_MODAL_LOADER]: true,
 		})
-		sessionStorage.setItem('showSignInModal', provider)
+		sessionStorage.setItem(
+			'authModal',
+			JSON.stringify({
+				[SOCIAL_AUTH_MODAL_BODY]: reactElementToJSXString(
+					<span>
+						Signing in with <b>{provider}</b>...
+						<br />
+						<br />
+						Almost there!
+					</span>
+				),
+				[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
+			})
+		)
 		onSignedInRouting(history, lastLocation)
 		setTimeout(() => {
 			api()
