@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import * as serviceWorker from 'serviceWorker'
+import Interweave from 'interweave'
 
 // routing
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
@@ -71,31 +72,20 @@ showSignInModal &&
 		[SOCIAL_AUTH_MODAL_LOADER]: true,
 	})
 
-// do same thing as showSignInModal but this is specifically for account linking
-const showAuthLinkingModal = sessionStorage.getItem('showAuthLinkingModal')
-sessionStorage.removeItem('showAuthLinkingModal')
-showAuthLinkingModal &&
+// modal for social auth linking
+const SocialAuthLinking = JSON.parse(
+	sessionStorage.getItem('SocialAuthLinking')
+)
+console.log(SocialAuthLinking)
+SocialAuthLinking &&
 	socialAuthModalStore.setState({
 		[SOCIAL_AUTH_MODAL_BODY]: (
-			<>
-				Please wait while we signing you in with <b>{showAuthLinkingModal}</b>.
-			</>
+			<Interweave content={SocialAuthLinking[SOCIAL_AUTH_MODAL_BODY]} />
 		),
 		[SOCIAL_AUTH_MODAL_OPEN]: true,
-		[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
-		[SOCIAL_AUTH_MODAL_LOADER]: true,
-	})
-// show auth after link redirect
-const isLinked = sessionStorage.getItem('linking successful?')
-isLinked &&
-	socialAuthModalStore.setState({
-		[SOCIAL_AUTH_MODAL_BODY]: (
-			<>
-				Please wait while we linking your <b>{isLinked}</b> account.
-			</>
+		[SOCIAL_AUTH_MODAL_TITLE]: (
+			<Interweave content={SocialAuthLinking[SOCIAL_AUTH_MODAL_TITLE]} />
 		),
-		[SOCIAL_AUTH_MODAL_OPEN]: true,
-		[SOCIAL_AUTH_MODAL_TITLE]: 'Linking...',
 		[SOCIAL_AUTH_MODAL_LOADER]: true,
 	})
 
