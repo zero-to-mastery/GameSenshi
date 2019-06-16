@@ -6,7 +6,8 @@ const handleIsEmailExist = email => {
 	return auth()
 		.fetchSignInMethodsForEmail(email)
 		.then(methods => {
-			if (!methods.includes('password')) {
+			//if (!methods.includes('password')) {
+			if (methods.length === 0) {
 				return {
 					[STATUS]: true,
 					[MESSAGE]: 'This email is available for registration!',
