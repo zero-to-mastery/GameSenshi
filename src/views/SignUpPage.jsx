@@ -118,7 +118,9 @@ class RegisterPage extends React.Component {
 		const {
 			[STATUS]: status,
 			[DATA]: data,
-		} = await handleSignUpWithEmailAndPassword(values)
+		} = await handleSignUpWithEmailAndPassword(values, () => {
+			onSignedInRouting(history, lastLocation)
+		})
 		for (let property in data) {
 			authStore.state[property + SUBMIT_ERRORS] = MessageList({
 				validationResult: data[property],
