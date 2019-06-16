@@ -84,4 +84,6 @@ Please read [wiki](https://github.com/tylim88/GameSenshi/wiki) for details of ou
 
 ## Contributing
 
+Join our [Trello](https://trello.com/invite/b/tAyH3oig/a5374e9eaa1bbe644f3e7367d1e23300/game-senshi).
+
 Please read [CONTRIBUTING.md](https://github.com/tylim88/GameSenshi/blob/master/CONTRIBUTING.md) for details on how to contribute.
