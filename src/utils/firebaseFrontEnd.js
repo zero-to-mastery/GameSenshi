@@ -236,7 +236,13 @@ auth()
 	.then(result => {
 		// close modal if successful
 		const authModal = JSON.parse(sessionStorage.getItem('authModal'))
-		const { name1, name2, isLinked, provider2, credential } = authModal
+		const {
+			name1,
+			name2,
+			isLinked,
+			provider2,
+			//credential
+		} = authModal
 		if (isLinked) {
 			authModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
 			sessionStorage.removeItem('authModal')
