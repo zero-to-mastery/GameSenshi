@@ -4,7 +4,6 @@ import { firebase, functions } from 'utils/firebaseBackEnd'
 import {
 	signUpEmailValidation,
 	signUpPasswordValidation,
-	signUpTermValidation,
 	signUpUsernameValidation,
 } from 'utils/validation'
 import { resObj } from 'utils/objects'
@@ -16,7 +15,6 @@ import {
 	STATUS,
 	EMAIL,
 	PASSWORD,
-	TERM,
 	USERNAME,
 	USER_DISPLAY_NAME,
 	USER_PHOTO_URL,
@@ -27,13 +25,8 @@ const {
 	[ENV]: { [VERIFY_EMAIL_API_KEY]: verify_email_api_key },
 } = functions.config()
 
-const handleSignUpWithEmailAndPassword = async (data, context) => {
-	const {
-		[EMAIL]: email,
-		[PASSWORD]: password,
-		[TERM]: term,
-		[USERNAME]: username,
-	} = data
+const handleSignUpWithEmailAndPassword = async data => {
+	const { [EMAIL]: email, [PASSWORD]: password, [USERNAME]: username } = data
 	try {
 		const usernameInvalid = await signUpUsernameValidation(username)
 			.then(() => '')
@@ -44,16 +37,12 @@ const handleSignUpWithEmailAndPassword = async (data, context) => {
 		const passwordInvalid = await signUpPasswordValidation(password)
 			.then(() => '')
 			.catch(result => result.errors)
-		const termInvalid = await signUpTermValidation(term)
-			.then(() => '')
-			.catch(result => result.errors)
 
-		if (usernameInvalid || emailInvalid || passwordInvalid || termInvalid) {
+		if (usernameInvalid || emailInvalid || passwordInvalid) {
 			return resObj(false, 'Internal Error Code 2', 2, {
 				[USERNAME]: usernameInvalid,
 				[EMAIL]: emailInvalid,
 				[PASSWORD]: passwordInvalid,
-				[TERM]: termInvalid,
 			})
 		}
 		const isEmailNew = await handleIsEmailExist(data)

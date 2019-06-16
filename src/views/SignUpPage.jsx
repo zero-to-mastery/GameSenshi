@@ -22,7 +22,6 @@ import {
 	USERNAME_EXTRA_HEIGHT,
 	PASSWORD,
 	PASSWORD_EXTRA_HEIGHT,
-	TERM,
 	SUBMIT_ERRORS,
 	IS_VALID,
 	ALERT_BODY,
@@ -41,7 +40,6 @@ import createDecorator from 'final-form-focus'
 import {
 	signUpEmailValidation,
 	signUpPasswordValidation,
-	signUpTermValidation,
 	signUpUsernameValidation,
 } from 'utils/validation'
 
@@ -226,7 +224,6 @@ class RegisterPage extends React.Component {
 																[USERNAME]: '',
 																[EMAIL]: '',
 																[PASSWORD]: '',
-																[TERM]: false,
 															}}
 															decorators={[focusOnError]}
 															onSubmit={values => {
@@ -285,14 +282,6 @@ class RegisterPage extends React.Component {
 																					signUpPasswordValidation(value)
 																				}
 																			/>
-																			<InputField
-																				type='checkbox'
-																				name={TERM}
-																				container={authStore}
-																				validation={value =>
-																					signUpTermValidation(value)
-																				}
-																			/>
 																		</Form>
 																	</CardBody>
 																	<CardFooter>
@@ -313,10 +302,10 @@ class RegisterPage extends React.Component {
 																								height='19px'
 																								width='19px'
 																							/>
-																							&nbsp;&nbsp;Creating Account
+																							&nbsp;&nbsp;Signing Up
 																						</>
 																					) : (
-																						'Creat Account'
+																						'Sign Up'
 																					)}
 																				</Button>
 																			</Col>
@@ -341,6 +330,15 @@ class RegisterPage extends React.Component {
 																</>
 															)}
 														</FinalForm>
+														<Label check className='mb-3 text-center'>
+															By creating account, you agree to our
+															<Link
+																className='link footer-link'
+																style={{ color: '#ba54f5', fontSize: 12 }}
+																to='/term'>
+																&nbsp;Terms of Service.
+															</Link>
+														</Label>
 													</Card>
 												</Col>
 											</Row>

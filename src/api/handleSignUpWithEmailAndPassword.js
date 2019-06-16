@@ -8,7 +8,6 @@ import {
 	USERNAME,
 	EMAIL,
 	PASSWORD,
-	TERM,
 	ON_SIGN_UP,
 	DATA,
 	// STATUS,
@@ -19,7 +18,6 @@ const defaultValues = {
 	[USERNAME]: undefined,
 	[EMAIL]: undefined,
 	[PASSWORD]: undefined,
-	[TERM]: undefined,
 }
 
 const handleSignUpWithEmailAndPassword = (
