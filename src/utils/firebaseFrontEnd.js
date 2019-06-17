@@ -15,6 +15,7 @@ import {
 	signInModalStore,
 	authStore,
 } from 'state'
+import * as allStore from 'state'
 
 // constants
 import {
@@ -61,6 +62,7 @@ auth().useDeviceLanguage()
 
 // user auth listener
 auth().onAuthStateChanged(user => {
+	authModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
 	if (user) {
 		const {
 			[USER_DISPLAY_NAME]: displayName,
@@ -89,14 +91,9 @@ auth().onAuthStateChanged(user => {
 		)
 	} else {
 		// User signed out.
-		userStore.setState({
-			[USER_UID]: '',
-			[USER_DISPLAY_NAME]: '',
-			[USER_EMAIL]: '',
-			[USER_EMAIL_IS_VERIFIED]: false,
-			[USER_PHOTO_URL]: '',
-			[USER_SIGNED_IN]: false,
-		})
+		for (let store in allStore) {
+			allStore[store].resetState && allStore[store].resetState()
+		}
 		localStorage.removeItem('user')
 	}
 })
@@ -200,6 +197,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 								},
 							})
 						} else {
+							// need to save this credential before hand in cache, remember delete it later.
 							sessionStorage.setItem(
 								'authModal',
 								JSON.stringify({
@@ -244,7 +242,6 @@ auth()
 			//credential
 		} = authModal
 		if (isLinked) {
-			authModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
 			sessionStorage.removeItem('authModal')
 			alertStore.setState({
 				[ALERT_BODY]: `Successfully linked your ${name2} account!`,
@@ -254,7 +251,6 @@ auth()
 		} else if (authModal) {
 			// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 			// show modal on link redirect
-			authModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
 			sessionStorage.setItem(
 				'authModal',
 				JSON.stringify({
@@ -302,8 +298,6 @@ auth()
 	.catch(err => {
 		// remove this item whether it is success or not
 		sessionStorage.removeItem('authModal')
-		// An error happened.
-		// need to save this credential before hand in cache, remember delete it later.
 		const { code, credential, email } = err
 		if (code === 'auth/account-exists-with-different-credential') {
 			handleDifferentCredential(auth, email, credential)
