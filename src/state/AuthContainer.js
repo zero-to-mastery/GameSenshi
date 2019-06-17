@@ -18,25 +18,29 @@ import {
 	USERNAME_SUBMIT_ERRORS,
 } from 'constantValues'
 
+const defaultValues = {
+	[SUBMITTING]: false,
+	[EMAIL]: '',
+	[EMAIL_IS_VALID]: false,
+	[EMAIL_EXTRA_HEIGHT]: 0,
+	[EMAIL_SUBMIT_ERRORS]: undefined,
+	[PASSWORD]: '',
+	[PASSWORD_IS_VALID]: false,
+	[PASSWORD_EXTRA_HEIGHT]: '0',
+	[PASSWORD_SUBMIT_ERRORS]: undefined,
+	[TERM]: false,
+	[TERM_IS_VALID]: false,
+	[TERM_SUBMIT_ERRORS]: undefined,
+	[USERNAME]: '',
+	[USERNAME_IS_VALID]: false,
+	[USERNAME_EXTRA_HEIGHT]: 0,
+	[USERNAME_SUBMIT_ERRORS]: undefined,
+}
+
 class AuthContainer extends Container {
-	state = {
-		[SUBMITTING]: false,
-		[EMAIL]: '',
-		[EMAIL_IS_VALID]: false,
-		[EMAIL_EXTRA_HEIGHT]: 0,
-		[EMAIL_SUBMIT_ERRORS]: undefined,
-		[PASSWORD]: '',
-		[PASSWORD_IS_VALID]: false,
-		[PASSWORD_EXTRA_HEIGHT]: '0',
-		[PASSWORD_SUBMIT_ERRORS]: undefined,
-		[TERM]: false,
-		[TERM_IS_VALID]: false,
-		[TERM_SUBMIT_ERRORS]: undefined,
-		[USERNAME]: '',
-		[USERNAME_IS_VALID]: false,
-		[USERNAME_EXTRA_HEIGHT]: 0,
-		[USERNAME_SUBMIT_ERRORS]: undefined,
-		test: '',
+	state = defaultValues
+	resetState = () => {
+		return this.setState(defaultValues)
 	}
 }
 

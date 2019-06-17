@@ -9,14 +9,19 @@ import {
 	USER_EMAIL_IS_VERIFIED,
 } from 'constantValues'
 
+const defaultValues = {
+	[USER_UID]: '',
+	[USER_EMAIL]: '',
+	[USER_PHOTO_URL]: '',
+	[USER_SIGNED_IN]: false,
+	[USER_DISPLAY_NAME]: '',
+	[USER_EMAIL_IS_VERIFIED]: false,
+}
+
 class UserContainer extends Container {
-	state = {
-		[USER_UID]: '',
-		[USER_EMAIL]: '',
-		[USER_PHOTO_URL]: '',
-		[USER_SIGNED_IN]: false,
-		[USER_DISPLAY_NAME]: '',
-		[USER_EMAIL_IS_VERIFIED]: false,
+	state = defaultValues
+	resetState = () => {
+		return this.setState(defaultValues)
 	}
 }
 

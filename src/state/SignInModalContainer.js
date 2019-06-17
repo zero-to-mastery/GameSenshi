@@ -6,18 +6,22 @@ import {
 	SIGN_IN_MODAL_CALLBACK,
 } from 'constantValues'
 
+const defaultValues = {
+	[SIGN_IN_MODAL_EMAIL]: '',
+	[SIGN_IN_MODAL_OPEN]: false,
+	[SIGN_IN_MODAL_CALLBACK]: () => {},
+}
+
 class SignInModalContainer extends Container {
-	state = {
-		[SIGN_IN_MODAL_EMAIL]: '',
-		[SIGN_IN_MODAL_OPEN]: false,
-		[SIGN_IN_MODAL_CALLBACK]: () => {},
-	}
+	state = defaultValues
 	toggle = () => {
-		this.setState(state => {
+		return this.setState(state => {
 			state[SIGN_IN_MODAL_OPEN] = !state[SIGN_IN_MODAL_OPEN]
 			return state
 		})
-		return this
+	}
+	resetState = () => {
+		return this.setState(defaultValues)
 	}
 }
 
