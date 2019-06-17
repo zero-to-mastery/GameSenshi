@@ -296,32 +296,43 @@ class ComponentsNavbar extends React.Component {
 																<DropdownMenu
 																	aria-labelledby='navbarDropdownMenuLink'
 																	right>
-																	<DropdownItem>
+																	<DropdownItem
+																		href='#pablo'
+																		className='text-dark mt-0 py-1 px-4'
+																		style={{ fontSize: '1rem' }}
+																		onClick={e => e.preventDefault()}>
 																		<strong>{username}</strong>
 																	</DropdownItem>
 																	<DropdownItem divider />
 																	<DropdownItem
 																		href='#pablo'
+																		className='text-dark mt-0 py-1 px-4'
+																		style={{ fontSize: '1rem' }}
 																		onClick={e => e.preventDefault()}>
 																		My Senshi
 																	</DropdownItem>
 																	<DropdownItem
-																		href='#pablo'
+																		className='text-dark mt-0 py-1 px-4'
+																		style={{ fontSize: '1rem' }}
 																		onClick={e => e.preventDefault()}>
 																		My Account
 																	</DropdownItem>
 																	<DropdownItem
-																		href='#pablo'
+																		className='text-dark mt-0 py-1 px-4'
+																		style={{ fontSize: '1rem' }}
 																		onClick={e => e.preventDefault()}>
 																		My Billing
 																	</DropdownItem>
 																	<DropdownItem divider />
 																	<DropdownItem
-																		href='#pablo'
+																		className='text-dark mt-0 py-1 px-4'
+																		style={{ fontSize: '1rem' }}
 																		onClick={e => e.preventDefault()}>
 																		Help
 																	</DropdownItem>
 																	<DropdownItem
+																		className='text-dark mt-0 py-1 px-4'
+																		style={{ fontSize: '1rem' }}
 																		href='#pablo'
 																		onClick={() => {
 																			auth().signOut()
@@ -357,7 +368,7 @@ class ComponentsNavbar extends React.Component {
 														</>
 													)
 												) : // small screen size and collapsed
-												signedIn ? (
+												signedIn ? null : (
 													<>
 														<NavItem className='p-0'>
 															<NavLink
@@ -404,7 +415,7 @@ class ComponentsNavbar extends React.Component {
 															</NavLink>
 														</NavItem>
 													</>
-												) : null}
+												)}
 											</Nav>
 										</Collapse>
 									</Container>
