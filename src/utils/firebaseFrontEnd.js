@@ -62,7 +62,8 @@ auth().useDeviceLanguage()
 
 // user auth listener
 auth().onAuthStateChanged(user => {
-	authModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
+	const authModal = JSON.parse(sessionStorage.getItem('authModal'))
+	!authModal && authModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
 	if (user) {
 		const {
 			[USER_DISPLAY_NAME]: displayName,
@@ -189,7 +190,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 														alertStore.setState({
 															[ALERT_BODY]: 'Social login linked unsuccessful!',
 															[ALERT_OPEN]: true,
-															[ALERT_COLOR]: 'warning',
+															[ALERT_COLOR]: 'danger',
 														})
 													})
 											})
@@ -223,7 +224,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 						}
 					},
 				})
-			}, 150)
+			}, 750)
 			//continue on getRedirectResult event listener
 		})
 }
@@ -244,7 +245,11 @@ auth()
 		if (isLinked) {
 			sessionStorage.removeItem('authModal')
 			alertStore.setState({
-				[ALERT_BODY]: `Successfully linked your ${name2} account!`,
+				[ALERT_BODY]: (
+					<span>
+						Successfully linked your <strong>{name2}</strong> account!
+					</span>
+				),
 				[ALERT_OPEN]: true,
 				[ALERT_COLOR]: 'success',
 			})
