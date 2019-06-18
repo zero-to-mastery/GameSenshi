@@ -6,6 +6,8 @@ import IndexHeader from 'components/Headers/IndexHeader.jsx'
 import AuthModal from 'components/Modals/AuthModal'
 import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
 import SignInForm from 'components/Forms/SingInForm'
+import SignUpButton from 'components/Buttons/SignUpButton'
+import SignInButton from 'components/Buttons/SignInButton'
 
 export {
 	Footer,
@@ -16,4 +18,6 @@ export {
 	AuthModal,
 	SocialAuthButtonGroup,
 	SignInForm,
+	SignUpButton,
+	SignInButton,
 }
