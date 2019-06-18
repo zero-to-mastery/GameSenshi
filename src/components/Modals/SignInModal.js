@@ -2,7 +2,7 @@ import React from 'react'
 
 //components
 import { Modal } from 'reactstrap'
-import SingInForm from 'components/Forms/SingInForm'
+import SignInForm from 'components/Forms/SignInForm'
 
 //state
 import { signInModalStore, Subscribe } from 'state'
@@ -18,7 +18,7 @@ const SignInModal = () => {
 				} = signInModalStore
 				return (
 					<Modal isOpen={open} toggle={toggle} modalClassName='modal-login'>
-						<SingInForm passwordOnly />
+						<SignInForm passwordOnly />
 					</Modal>
 				)
 			}}
