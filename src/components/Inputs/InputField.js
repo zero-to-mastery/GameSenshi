@@ -10,6 +10,9 @@ import {
 	InputGroupAddon,
 	InputGroupText,
 	InputGroup,
+	Popover,
+	PopoverHeader,
+	PopoverBody,
 } from 'reactstrap'
 
 import ReactResizeDetector from 'react-resize-detector'
@@ -26,6 +29,7 @@ const InputField = props => {
 		serverValidation,
 		container,
 		hideSuccess,
+		errorMessages,
 	} = props
 
 	const ref = useRef(null)
@@ -113,6 +117,7 @@ const InputField = props => {
 			}}>
 			{({ input, meta }) => {
 				const {
+					error,
 					touched,
 					active,
 					modified,
@@ -125,6 +130,7 @@ const InputField = props => {
 					<>
 						{type !== 'checkbox' && (
 							<InputGroup
+								id={name}
 								className={classnames({
 									'has-danger':
 										!spinner &&
@@ -161,6 +167,7 @@ const InputField = props => {
 									</InputGroupText>
 								</InputGroupAddon>
 								<Input
+									id={name}
 									{...input} //name, type, onBlur, onChange, onFocus, value, overwrite it by creating prop after this prop
 									onChange={e => {
 										// why mutate state directly?
@@ -218,6 +225,25 @@ const InputField = props => {
 								</Label>
 							</FormGroup>
 						)}
+						{/* <Popover
+							placement='top-end'
+							isOpen={active || error}
+							target={name}
+							//className='popover-primary'
+						>
+							<PopoverHeader>Rules</PopoverHeader>
+							<PopoverBody className='pl-0 pb-0'>
+								<ul>
+									{errorMessages.map((errorMessage, i) => {
+										return (
+											<li className={classnames({ 'text-dark': true })} key={i}>
+												{errorMessage}
+											</li>
+										)
+									})}
+								</ul>
+							</PopoverBody>
+						</Popover> */}
 						<div
 							ref={ref} // function component cannot have ref, class and html element can
 						>
