@@ -226,6 +226,7 @@ class ComponentsNavbar extends React.Component {
 										</div>
 										<Collapse
 											className={'justify-content-end ' + collapseOut}
+											style={{ overflow: 'auto' }}
 											navbar
 											isOpen={collapseOpen}
 											onEntering={onCollapseEntering}
@@ -255,14 +256,14 @@ class ComponentsNavbar extends React.Component {
 														<>
 															<NavItem className='active d-none d-lg-inline-flex'>
 																<NavLink
-																	href='joinSenshi'
+																	href='/joinSenshi'
 																	onClick={e => e.preventDefault()}>
 																	Senshi Portal
 																</NavLink>
 															</NavItem>
 															<NavItem className='active d-none d-lg-inline-flex'>
 																<NavLink
-																	href='notification'
+																	href='/notification'
 																	onClick={e => e.preventDefault()}>
 																	<i
 																		aria-hidden={true}
@@ -317,12 +318,6 @@ class ComponentsNavbar extends React.Component {
 																		onClick={e => e.preventDefault()}>
 																		My Account
 																	</DropdownItem>
-																	<DropdownItem
-																		className='text-dark mt-0 py-1 px-4'
-																		style={{ fontSize: '1rem' }}
-																		onClick={e => e.preventDefault()}>
-																		My Billing
-																	</DropdownItem>
 																	<DropdownItem divider />
 																	<DropdownItem
 																		className='text-dark mt-0 py-1 px-4'
@@ -368,26 +363,54 @@ class ComponentsNavbar extends React.Component {
 														</>
 													)
 												) : // small screen size and collapsed
-												signedIn ? null : (
+												signedIn ? (
 													<>
 														<NavItem className='p-0'>
-															<NavLink
-																data-placement='bottom'
-																href='/signIn'
-																rel='noopener noreferrer'
-																target='_blank'
-																onClick={e => {
-																	e.preventDefault()
-																	history.push('signIn')
-																}}>
+															<NavLink data-placement='bottom' href='#pablo'>
 																<Row>
-																	<Col xs='2' sm='2' md='2'>
-																		<i className='fab fas fa-sign-in-alt' />
+																	<Col
+																		xs='2'
+																		style={{
+																			paddingLeft: 12,
+																			paddingRight: 18,
+																		}}>
+																		<div
+																			className='avatar'
+																			style={{ height: 24, width: 24 }}>
+																			<Media
+																				alt='...'
+																				className='img-raised'
+																				style={{ height: 24, width: 24 }}
+																				src={avatarURL}
+																			/>
+																		</div>
 																	</Col>
 																	<Col>
-																		<p className='d-lg-none d-xl-none'>
-																			Sign in
-																		</p>
+																		<p>{username}</p>
+																	</Col>
+																</Row>
+															</NavLink>
+														</NavItem>
+														<NavItem className='p-0'>
+															<NavLink data-placement='bottom' href='#pablo'>
+																<Row>
+																	<Col xs='2'>
+																		<i className='fab fas fa-user-plus' />
+																	</Col>
+																	<Col>
+																		<p>My Senshi</p>
+																	</Col>
+																</Row>
+															</NavLink>
+														</NavItem>
+														<NavItem className='p-0'>
+															<NavLink data-placement='bottom' href='#pablo'>
+																<Row>
+																	<Col xs='2'>
+																		<i className='fab fas fa-question' />
+																	</Col>
+																	<Col>
+																		<p>Help</p>
 																	</Col>
 																</Row>
 															</NavLink>
@@ -395,21 +418,55 @@ class ComponentsNavbar extends React.Component {
 														<NavItem className='p-0'>
 															<NavLink
 																data-placement='bottom'
-																href='/signUp'
-																rel='noopener noreferrer'
-																target='_blank'
-																onClick={e => {
-																	e.preventDefault()
-																	history.push('signUp')
+																href='#pablo'
+																onClick={() => {
+																	auth().signOut()
 																}}>
 																<Row>
-																	<Col xs='2' sm='2' md='2'>
+																	<Col xs='2'>
+																		<i className='fab fas fa-sign-out-alt' />
+																	</Col>
+																	<Col>
+																		<p>Sign out</p>
+																	</Col>
+																</Row>
+															</NavLink>
+														</NavItem>
+														<NavItem className='p-0'>
+															<NavLink data-placement='bottom' href='#pablo'>
+																<Row>
+																	<Col xs='2'>
+																		<i className='tim-icons icon-key-25' />
+																	</Col>
+																	<Col>
+																		<p>Senshi Portal</p>
+																	</Col>
+																</Row>
+															</NavLink>
+														</NavItem>
+													</>
+												) : (
+													<>
+														<NavItem className='p-0'>
+															<NavLink data-placement='bottom' href='/signIn'>
+																<Row>
+																	<Col xs='2'>
+																		<i className='fab fas fa-sign-in-alt' />
+																	</Col>
+																	<Col>
+																		<p>Sign in</p>
+																	</Col>
+																</Row>
+															</NavLink>
+														</NavItem>
+														<NavItem className='p-0'>
+															<NavLink data-placement='bottom' href='/signUp'>
+																<Row>
+																	<Col xs='2'>
 																		<i className='fab fas fa-user-plus' />
 																	</Col>
 																	<Col>
-																		<p className='d-lg-none d-xl-none'>
-																			Sign up
-																		</p>
+																		<p>Sign up</p>
 																	</Col>
 																</Row>
 															</NavLink>
