@@ -368,7 +368,13 @@ class ComponentsNavbar extends React.Component {
 												signedIn ? (
 													<>
 														<NavItem className='p-0'>
-															<NavLink data-placement='bottom' href='#pablo'>
+															<NavLink
+																data-placement='bottom'
+																href='#pablo'
+																style={{
+																	paddingTop: 6,
+																	paddingBottom: 6,
+																}}>
 																<Row>
 																	<Col
 																		xs='2'
