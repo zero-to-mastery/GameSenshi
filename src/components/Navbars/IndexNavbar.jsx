@@ -38,6 +38,8 @@ import {
 
 import AuthModal from 'components/Modals/AuthModal'
 import SingInModal from 'components/Modals/SignInModal'
+import SignUpButton from 'components/Buttons/SignUpButton'
+import SignInButton from 'components/Buttons/SignInButton'
 
 import logo from 'assets/img/favicon-32x32.png'
 
@@ -135,7 +137,10 @@ class ComponentsNavbar extends React.Component {
 	}
 	render() {
 		const {
-			props: { history },
+			props: {
+				history,
+				location: { pathname },
+			},
 			state: {
 				color,
 				collapseOpen,
@@ -150,6 +155,8 @@ class ComponentsNavbar extends React.Component {
 			onCollapseEntering,
 			collapseExited,
 		} = this
+
+		const currentPath = pathname.toLowerCase()
 		return (
 			<Subscribe to={[userStore, alertStore]}>
 				{(userStore, alertStore) => {
@@ -200,17 +207,10 @@ class ComponentsNavbar extends React.Component {
 															/>
 														</NavLink>
 													</NavItem>
+												) : currentPath === '/signup' ? (
+													<SignInButton className='navbar-toggler' />
 												) : (
-													<NavItem className='active navbar-toggler'>
-														<Button
-															color='primary'
-															type='button'
-															onClick={() => {
-																history.push('signUp')
-															}}>
-															Sign up
-														</Button>
-													</NavItem>
+													<SignUpButton className='navbar-toggler' />
 												)}
 												<NavItem className='active'>
 													<button // button to activate collapsed
@@ -341,27 +341,9 @@ class ComponentsNavbar extends React.Component {
 														</>
 													) : (
 														<>
-															<NavItem className='p-0'>
-																<Button
-																	className='btn-simple font-weight-bold'
-																	color='primary'
-																	type='button'
-																	onClick={() => {
-																		history.push('signIn')
-																	}}>
-																	Sign in
-																</Button>
-															</NavItem>
-															<NavItem className='p-0'>
-																<Button
-																	color='primary'
-																	type='button'
-																	onClick={() => {
-																		history.push('signUp')
-																	}}>
-																	Sign up
-																</Button>
-															</NavItem>
+															{console.log(currentPath)}
+															{currentPath !== '/signin' && <SignInButton />}
+															{currentPath !== '/signup' && <SignUpButton />}
 														</>
 													)
 												) : // small screen size and collapsed
@@ -426,8 +408,9 @@ class ComponentsNavbar extends React.Component {
 														<NavItem className='p-0'>
 															<NavLink
 																data-placement='bottom'
-																href='#pablo'
-																onClick={() => {
+																href='/signOut'
+																onClick={e => {
+																	e.preventDefault()
 																	auth().signOut()
 																	toggleCollapse()
 																}}>
@@ -456,30 +439,46 @@ class ComponentsNavbar extends React.Component {
 													</>
 												) : (
 													<>
-														<NavItem className='p-0'>
-															<NavLink data-placement='bottom' href='/signIn'>
-																<Row>
-																	<Col xs='2'>
-																		<i className='fab fas fa-sign-in-alt' />
-																	</Col>
-																	<Col>
-																		<p>Sign in</p>
-																	</Col>
-																</Row>
-															</NavLink>
-														</NavItem>
-														<NavItem className='p-0'>
-															<NavLink data-placement='bottom' href='/signUp'>
-																<Row>
-																	<Col xs='2'>
-																		<i className='fab fas fa-user-plus' />
-																	</Col>
-																	<Col>
-																		<p>Sign up</p>
-																	</Col>
-																</Row>
-															</NavLink>
-														</NavItem>
+														{currentPath !== '/signin' && (
+															<NavItem className='p-0'>
+																<NavLink
+																	data-placement='bottom'
+																	href='/signIn'
+																	onClick={e => {
+																		e.preventDefault()
+																		history.push('/signIn')
+																	}}>
+																	<Row>
+																		<Col xs='2'>
+																			<i className='fab fas fa-sign-in-alt' />
+																		</Col>
+																		<Col>
+																			<p>Sign in</p>
+																		</Col>
+																	</Row>
+																</NavLink>
+															</NavItem>
+														)}
+														{currentPath !== '/signup' && (
+															<NavItem className='p-0'>
+																<NavLink
+																	data-placement='bottom'
+																	href='/signUp'
+																	onClick={e => {
+																		e.preventDefault()
+																		history.push('/signUp')
+																	}}>
+																	<Row>
+																		<Col xs='2'>
+																			<i className='fab fas fa-user-plus' />
+																		</Col>
+																		<Col>
+																			<p>Sign up</p>
+																		</Col>
+																	</Row>
+																</NavLink>
+															</NavItem>
+														)}
 													</>
 												)}
 											</Nav>
@@ -498,8 +497,15 @@ class ComponentsNavbar extends React.Component {
 									})
 								}}
 								color={alertColor}
-								className='d-flex align-items-center fixed-top'>
-								<Container>{alertBody}</Container>
+								className='alert-with-icon d-flex align-items-center fixed-top'>
+								<Container>
+									<Row>
+										<Col xs='1' className='pl-auto pr-0'>
+											<i className='tim-icons icon-bell-55' />
+										</Col>
+										<Col className='pl-0 alert-with-icon'>{alertBody}</Col>
+									</Row>
+								</Container>
 							</Alert>
 						</>
 					)
