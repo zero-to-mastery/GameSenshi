@@ -226,7 +226,7 @@ class ComponentsNavbar extends React.Component {
 										</div>
 										<Collapse
 											className={'justify-content-end ' + collapseOut}
-											style={{ overflow: 'auto' }}
+											style={collapseOpen && { overflow: 'hidden' }}
 											navbar
 											isOpen={collapseOpen}
 											onEntering={onCollapseEntering}
