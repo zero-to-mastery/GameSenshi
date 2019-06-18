@@ -226,7 +226,11 @@ class ComponentsNavbar extends React.Component {
 										</div>
 										<Collapse
 											className={'justify-content-end ' + collapseOut}
-											style={collapseOpen && { overflow: 'hidden' }}
+											style={
+												(collapseOpen || onCollapseExiting) && {
+													overflow: 'hidden',
+												}
+											}
 											navbar
 											isOpen={collapseOpen}
 											onEntering={onCollapseEntering}
@@ -421,6 +425,7 @@ class ComponentsNavbar extends React.Component {
 																href='#pablo'
 																onClick={() => {
 																	auth().signOut()
+																	toggleCollapse()
 																}}>
 																<Row>
 																	<Col xs='2'>
