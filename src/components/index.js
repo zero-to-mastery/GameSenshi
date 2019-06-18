@@ -5,7 +5,7 @@ import Footer from 'components/Footers/Footer'
 import IndexHeader from 'components/Headers/IndexHeader.jsx'
 import AuthModal from 'components/Modals/AuthModal'
 import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
-import SignInForm from 'components/Forms/SingInForm'
+import SignInForm from 'components/Forms/SignInForm'
 
 export {
 	Footer,
