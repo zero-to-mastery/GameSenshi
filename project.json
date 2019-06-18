@@ -1,0 +1,29 @@
+{
+    "repoName": "GameSenshi",
+    "tagline": "A platform for gamers/streamers to provide their casual service.",
+    "color": "#613dc1",
+    "logo": "",
+    "channelName": "gamesenshi",
+    "desc": [
+        "This is project that temporary hire people to play game with you. You can imagine this as you hire someone to work for you for few hours, but unlike conventional task, this is about game companion.",
+        "__**From consumer perspective:**__ \n:small_orange_diamond: You are a big fans of a professional/famous gamer, you want to play a game with him, either as sparring partner(opponent) or team mate. \n:small_orange_diamond: You are a fans of good looking or fun streamer, you want to play with her/him. \n:small_orange_diamond: You are looking for game coach, gamer that systemized his knowledge and make you a better gamer. \n:small_orange_diamond: You are looking for booster, gamer that help you rank up by either playing your account or as your team mate.",
+        "__**From provider perspective:**__ \nWhile some gamers/streamers do make big buck, but large majority of gamers or streamers make little or to none money out of gaming, so this platform can play a part in gaming economy as it can turn gamers into new work force.
+       
+    ],
+    "team": [
+        ["tylim", "Project Lead"],
+        ["CodeMeKathy", "Project Manager"]
+    ],
+    "links": [
+        ["README.md", "https://github.com/zero-to-mastery/GameSenshi/blob/master/README.md"],
+        ["CONTRIBUTING.md", "https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md"]
+    ],
+    "poi": [
+        ["README.md", "https://github.com/zero-to-mastery/GameSenshi/blob/master/README.md"],
+        ["CONTRIBUTING.md", "https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md"]
+    ],
+    "tasks": {
+        "title": "Trello Tasks",
+        "desc": "We use Trello to manage the tasks within this project, [here](https://trello.com/invite/b/tAyH3oig/a5374e9eaa1bbe644f3e7367d1e23300/game-senshi) is your invitation. Further information on how to use Trello and claim a task can be found in the [CONTRIBUTING.md](https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md) file on Github."
+    }  
+}
