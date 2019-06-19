@@ -12,6 +12,8 @@ const handleIsEmailExist = email => {
 					[STATUS]: true,
 					[MESSAGE]: 'This email is available for registration!',
 				}
+			} else {
+				return 'this email already registered!'
 			}
 		})
 		.catch(err => {
