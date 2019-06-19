@@ -30,8 +30,9 @@ const InputField = props => {
 		type,
 		serverValidation,
 		hideSuccess,
-		popoverMessages,
 	} = props
+
+	const popoverMessages = props.popoverMessages || []
 
 	const ref = useRef(null)
 
