@@ -43,7 +43,7 @@ import ProductPage from 'views/examples/ProductPage.jsx'
 import ProfilePage from 'views/examples/ProfilePage.jsx'
 import Error404 from 'views/examples/Error404.jsx'
 import Error500 from 'views/examples/Error500.jsx'
-import AccountSettings from 'views/examples/AccountSettings.jsx'
+import Account from 'views/Account.jsx'
 import ResetPage from 'views/examples/ResetPage.jsx'
 import InvoicePage from 'views/examples/InvoicePage.jsx'
 import CheckoutPage from 'views/examples/CheckoutPage.jsx'
@@ -91,10 +91,7 @@ ReactDOM.render(
 					<Route path='/profile' render={props => <ProfilePage {...props} />} />
 					<Route path='/404' render={props => <Error404 {...props} />} />
 					<Route path='/500' render={props => <Error500 {...props} />} />
-					<Route
-						path='/settings'
-						render={props => <AccountSettings {...props} />}
-					/>
+					<Route path='/account' render={props => <Account {...props} />} />
 					<Route path='/reset' render={props => <ResetPage {...props} />} />
 					<Route path='/invoice' render={props => <InvoicePage {...props} />} />
 					<Route
