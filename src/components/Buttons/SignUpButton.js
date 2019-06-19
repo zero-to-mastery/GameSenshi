@@ -1,20 +1,27 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 // reactstrap components
-import { Button, NavItem } from 'reactstrap'
+import { Button, NavItem, NavLink } from 'reactstrap'
 
 const SignUpButton = props => {
-	const { className } = props
+	const { className, history } = props
 	return (
 		<NavItem className={`active ${className}`}>
-			<Button color='primary' type='button'>
-				<Link to={'/signUp'} style={{ fontWeight: 400 }}>
+			<NavLink
+				className='p-0'
+				data-placement='bottom'
+				href='/signUp'
+				onClick={e => {
+					e.preventDefault()
+					history.push('/signUp')
+				}}>
+				<Button color='primary' type='button'>
 					Sign up
-				</Link>
-			</Button>
+				</Button>
+			</NavLink>
 		</NavItem>
 	)
 }
 
-export default SignUpButton
+export default withRouter(SignUpButton)

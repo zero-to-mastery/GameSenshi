@@ -1,23 +1,30 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 // reactstrap components
-import { Button, NavItem } from 'reactstrap'
+import { Button, NavItem, NavLink } from 'reactstrap'
 
 const SignInButton = props => {
-	const { className } = props
+	const { className, history } = props
 	return (
 		<NavItem className={`p-0 ${className}`}>
-			<Button
-				className='btn-simple font-weight-bold'
-				color='primary'
-				type='button'>
-				<Link to='/signIn' style={{ color: '#e14eca', fontWeight: 600 }}>
+			<NavLink
+				className='p-0'
+				data-placement='bottom'
+				href='/signIn'
+				onClick={e => {
+					e.preventDefault()
+					history.push('/signIn')
+				}}>
+				<Button
+					className='btn-simple font-weight-bold'
+					color='primary'
+					type='button'>
 					Sign in
-				</Link>
-			</Button>
+				</Button>
+			</NavLink>
 		</NavItem>
 	)
 }
 
-export default SignInButton
+export default withRouter(SignInButton)
