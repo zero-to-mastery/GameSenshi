@@ -341,7 +341,6 @@ class ComponentsNavbar extends React.Component {
 														</>
 													) : (
 														<>
-															{console.log(currentPath)}
 															{currentPath !== '/signin' && <SignInButton />}
 															{currentPath !== '/signup' && <SignUpButton />}
 														</>
