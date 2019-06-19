@@ -3,9 +3,12 @@ import React from 'react'
 import { Row, Col, Alert } from 'reactstrap'
 import { STATUS, MESSAGE } from 'constantValues'
 
-const MessageList = props => {
+const MessageList = (
+	props,
+	duplicatedErrorMessages = [],
+	popoverItemFailed = { items: {} }
+) => {
 	const { validationResult, type } = props
-
 	// if validationResult is undefined, it passed validation
 	// if validationResult is {status:true/false, message:string/array of string} and if the status is true, it passed validation
 	// if validationResult is string or array of string, it failed validation
@@ -17,14 +20,22 @@ const MessageList = props => {
 		: Array.isArray(validationResult)
 		? validationResult
 		: [validationResult]
+
+	popoverItemFailed.items = {} // reset
+
+	const filteredMessages = messages.filter(message => {
+		popoverItemFailed.items[message] = true
+		return !duplicatedErrorMessages.includes(message)
+	})
+
 	return (
 		validationResult &&
-		messages.map(message => {
+		filteredMessages.map(filteredMessage => {
 			return (
 				<Alert
 					className={'mb-1 pb-0 pt-0'}
 					color='danger'
-					key={message}
+					key={filteredMessage}
 					style={{
 						backgroundColor: 'transparent',
 					}}
@@ -39,10 +50,16 @@ const MessageList = props => {
 							/>
 						)}
 						<Col className='col-1'>
-							<i className='tim-icons icon-alert-circle-exc text-success' />
+							<i
+								className={`text-success tim-icons ${
+									validationResult[STATUS]
+										? 'icon-check-2'
+										: 'icon-alert-circle-exc'
+								}`}
+							/>
 						</Col>
 						<Col className={type === 'checkbox' ? 'col-10' : 'col-11'}>
-							<small className='text-muted'>{message}</small>
+							<small className='text-muted'>{filteredMessage}</small>
 						</Col>
 					</Row>
 				</Alert>
