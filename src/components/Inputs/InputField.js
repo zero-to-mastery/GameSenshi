@@ -13,6 +13,8 @@ import {
 	Popover,
 	PopoverHeader,
 	PopoverBody,
+	Row,
+	Col,
 } from 'reactstrap'
 
 import ReactResizeDetector from 'react-resize-detector'
@@ -28,12 +30,13 @@ const InputField = props => {
 		type,
 		serverValidation,
 		hideSuccess,
-		errorMessages,
+		popoverMessages,
 	} = props
 
 	const ref = useRef(null)
 
 	const [messageList, setMessageList] = useState([])
+	const [popoverItemFailed] = useState({ items: {} })
 
 	const [state] = useState({
 		delay: 0,
@@ -66,7 +69,11 @@ const InputField = props => {
 	}
 
 	const generateMessageListWithState = (validationResult, resolve) => {
-		const messageList = MessageList({ validationResult, type })
+		const messageList = MessageList(
+			{ validationResult, type },
+			popoverMessages,
+			popoverItemFailed
+		)
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, state.delay = 0 tell us that the component never been visited, this solve icon flickering
 		setMessageList(messageList)
@@ -92,7 +99,7 @@ const InputField = props => {
 		<Field
 			type={type}
 			name={name}
-			validate={value => {
+			validate={(value = '') => {
 				if (state.focused) {
 					return (state.promise = new Promise(resolve => {
 						// cancel and invalidate previous validation (did not cancel server validation)
@@ -241,19 +248,45 @@ const InputField = props => {
 								</Label>
 							</FormGroup>
 						)}
-						{errorMessages && (
+						{popoverMessages.length > 0 && (
 							<Popover
 								placement='top-end'
 								isOpen={active}
 								target={name}
 								className='popover-primary'>
-								<PopoverHeader>Conventions</PopoverHeader>
+								<PopoverHeader>
+									<Row>
+										<Col xs='1'>
+											{(spinner || spinner2) && (
+												<Loader
+													type={
+														(spinner2 && 'Puff') || (spinner && 'ThreeDots')
+													}
+													color='#00BFFF'
+													height='15px'
+													width='15px'
+												/>
+											)}
+										</Col>
+										<Col className='pl-2'>Conventions </Col>
+									</Row>
+								</PopoverHeader>
 								<PopoverBody className='pl-0 pb-0'>
 									<ul>
-										{errorMessages.map((errorMessage, i) => {
+										{popoverMessages.map((errorMessage, i) => {
 											return (
-												<li className='text-dark' key={i}>
-													{errorMessage}
+												<li
+													className={
+														popoverItemFailed.items[errorMessage]
+															? 'text-dark'
+															: 'text-success'
+													}
+													key={i}>
+													{popoverItemFailed.items[errorMessage] ? (
+														errorMessage
+													) : (
+														<del>{errorMessage}</del>
+													)}
 												</li>
 											)
 										})}
