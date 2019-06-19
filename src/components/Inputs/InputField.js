@@ -27,7 +27,6 @@ const InputField = props => {
 		icon,
 		type,
 		serverValidation,
-		container,
 		hideSuccess,
 		errorMessages,
 	} = props
@@ -47,14 +46,23 @@ const InputField = props => {
 
 	const [spinner, showSpinner] = useState(false)
 	const [spinner2, showSpinner2] = useState(false)
+	const [tState, setTState] = useState({
+		[name]: undefined,
+		[name + IS_VALID]: false,
+		[name + EXTRA_HEIGHT]: 0,
+	})
+	const container = props.container || {
+		state: tState,
+		setState: setTState,
+	} // give state option to be global state or local state
 
 	const onResize = () => {
 		// change parent component height
-		// this code may be "extra" because some may not need it
-		container &&
-			container.setState({
-				[name + EXTRA_HEIGHT]: ref.current.clientHeight,
-			})
+		// this code is too case specific and only work for signUpPage, need to make it more generic, for example as callback instead
+		container.setState(state => {
+			state[name + EXTRA_HEIGHT] = ref.current.clientHeight
+			return state
+		})
 	}
 
 	const generateMessageListWithState = (validationResult, resolve) => {
@@ -64,11 +72,17 @@ const InputField = props => {
 		setMessageList(messageList)
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
-			container.setState({ [name + IS_VALID]: true })
+			container.setState(state => {
+				state[name + IS_VALID] = true
+				return state
+			})
 			resolve()
 		} else {
 			// if validation failed
-			container.setState({ [name + IS_VALID]: false })
+			container.setState(state => {
+				state[name + IS_VALID] = false
+				return state
+			})
 			resolve(validationResult)
 		}
 		return messageList
@@ -85,7 +99,10 @@ const InputField = props => {
 						// do not reject when doing server validation
 						!spinner2 && state.resolve(['validating'])
 						state.resolve = resolve
-						container.setState({ [name + IS_VALID]: false })
+						container.setState(state => {
+							state[name + IS_VALID] = false
+							return state
+						})
 						showSpinner(true)
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
