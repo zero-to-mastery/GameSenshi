@@ -81,7 +81,7 @@ class RegisterPage extends React.Component {
 	state = {
 		squares1to6: '',
 		squares7and8: '',
-		maxHeight: 1200,
+		maxHeight: 999,
 	}
 	componentDidMount() {
 		document.documentElement.scrollTop = 0
@@ -197,7 +197,7 @@ class RegisterPage extends React.Component {
 									<div className='content' style={{ marginTop: '5%' }}>
 										<Container className='container-fluid'>
 											<Row>
-												<Col className='offset-lg-0 offset-md-3' lg='5' md='6'>
+												<Col className='mx-auto' lg='5' md='8'>
 													<div
 														className='square square-7'
 														id='square7'
