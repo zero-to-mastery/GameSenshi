@@ -117,6 +117,11 @@ class RegisterPage extends React.Component {
 
 	onSubmit = async (values, history, lastLocation) => {
 		const {
+			[EMAIL]: email,
+			[PASSWORD]: password,
+			[USERNAME]: username,
+		} = values
+		const {
 			[STATUS]: status,
 			[DATA]: data,
 		} = await handleSignUpWithEmailAndPassword(values, () => {
@@ -132,8 +137,8 @@ class RegisterPage extends React.Component {
 		if (status) {
 			onSignedInRouting(history, lastLocation)
 			userStore.setState({
-				[USER_DISPLAY_NAME]: authStore.state[USERNAME],
-				[USER_EMAIL]: authStore.state[EMAIL],
+				[USER_DISPLAY_NAME]: username,
+				[USER_EMAIL]: email,
 				[USER_SIGNED_IN]: true,
 			})
 			alertStore.setState({
@@ -141,21 +146,18 @@ class RegisterPage extends React.Component {
 					<>
 						Registration successful, an verification email has been sent to{' '}
 						<a
-							href={'https://' + authStore.state[EMAIL]}
+							href={'https://' + email}
 							target='_blank'
 							rel='noopener noreferrer'
 							className='alert-link'>
-							{authStore.state[EMAIL]}
+							{email}
 						</a>
 					</>
 				),
 				[ALERT_COLOR]: 'success',
 				[ALERT_OPEN]: true,
 			})
-			handleSignInWithEmailAndPassword(
-				authStore.state[EMAIL],
-				authStore.state[PASSWORD]
-			)
+			handleSignInWithEmailAndPassword(email, password)
 			// if undefined mean no error
 			// but this not much point since it will redirect and unmount soon
 			return
