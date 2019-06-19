@@ -60,45 +60,6 @@ const auth = firebase.auth
 // use device default language
 auth().useDeviceLanguage()
 
-// user auth listener
-auth().onAuthStateChanged(user => {
-	const authModal = JSON.parse(sessionStorage.getItem('authModal'))
-	!authModal && authModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
-	if (user) {
-		const {
-			[USER_DISPLAY_NAME]: displayName,
-			[USER_DISPLAY_NAME]: email,
-			[USER_EMAIL]: emailVerified,
-			[USER_PHOTO_URL]: photoURL,
-			[USER_UID]: uid,
-		} = user
-		userStore.setState({
-			[USER_DISPLAY_NAME]: displayName,
-			[USER_EMAIL]: email,
-			[USER_EMAIL_IS_VERIFIED]: emailVerified,
-			[USER_PHOTO_URL]: photoURL || process.env[DEFAULT_AVATAR_URL], //fallback
-			[USER_UID]: uid,
-			[USER_SIGNED_IN]: true,
-		})
-		localStorage.setItem(
-			'user',
-			JSON.stringify({
-				displayName,
-				email,
-				emailVerified,
-				photoURL,
-				uid,
-			})
-		)
-	} else {
-		// User signed out.
-		for (let store in allStore) {
-			allStore[store].resetState && allStore[store].resetState()
-		}
-		localStorage.removeItem('user')
-	}
-})
-
 const handleDifferentCredential = (auth, email, credential) => {
 	auth()
 		.fetchSignInMethodsForEmail(email)
@@ -229,6 +190,45 @@ const handleDifferentCredential = (auth, email, credential) => {
 		})
 }
 
+// user auth listener
+auth().onAuthStateChanged(user => {
+	const authModal = JSON.parse(sessionStorage.getItem('authModal'))
+	!authModal && authModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
+	if (user) {
+		const {
+			[USER_DISPLAY_NAME]: displayName,
+			[USER_DISPLAY_NAME]: email,
+			[USER_EMAIL]: emailVerified,
+			[USER_PHOTO_URL]: photoURL,
+			[USER_UID]: uid,
+		} = user
+		userStore.setState({
+			[USER_DISPLAY_NAME]: displayName,
+			[USER_EMAIL]: email,
+			[USER_EMAIL_IS_VERIFIED]: emailVerified,
+			[USER_PHOTO_URL]: photoURL || process.env[DEFAULT_AVATAR_URL], //fallback
+			[USER_UID]: uid,
+			[USER_SIGNED_IN]: true,
+		})
+		localStorage.setItem(
+			'user',
+			JSON.stringify({
+				displayName,
+				email,
+				emailVerified,
+				photoURL,
+				uid,
+			})
+		)
+	} else {
+		// User signed out.
+		for (let store in allStore) {
+			allStore[store].resetState && allStore[store].resetState()
+		}
+		localStorage.removeItem('user')
+	}
+})
+
 // listener to get back sign in token from federated identity provider
 auth()
 	.getRedirectResult()
@@ -243,7 +243,6 @@ auth()
 			//credential
 		} = authModal
 		if (isLinked) {
-			sessionStorage.removeItem('authModal')
 			alertStore.setState({
 				[ALERT_BODY]: (
 					<span>
@@ -253,6 +252,7 @@ auth()
 				[ALERT_OPEN]: true,
 				[ALERT_COLOR]: 'success',
 			})
+			sessionStorage.removeItem('authModal')
 		} else if (authModal) {
 			// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 			// show modal on link redirect
