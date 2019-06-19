@@ -13,7 +13,7 @@ const handleIsEmailExist = email => {
 					[MESSAGE]: 'This email is available for registration!',
 				}
 			} else {
-				return 'this email already registered!'
+				return 'this email is already registered!'
 			}
 		})
 		.catch(err => {
