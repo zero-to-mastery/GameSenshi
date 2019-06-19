@@ -15,7 +15,7 @@ const signUpEmailValidation = value =>
 		.required('this field is required!')
 		.email('bad format')
 		.validate(value, {
-			abortEarly: false,
+			abortEarly: true,
 		})
 
 const passwordErrorMsgs = [
@@ -45,7 +45,7 @@ const signUpUsernameValidation = value =>
 		.max(15, 'maximum 15 characters')
 		.matches(/^[a-z0-9-_]+$/, 'no special characters (except underscore)')
 		.validate(value, {
-			abortEarly: false,
+			abortEarly: true,
 		})
 
 const signInEmailValidation = value =>
