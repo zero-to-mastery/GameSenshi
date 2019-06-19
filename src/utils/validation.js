@@ -8,7 +8,7 @@ import reservedUsername from './reservedUsername'
 
 const forbiddenName = [...badWords, ...reservedUsername]
 
-const emailErrorMsgs = null
+const emailPopoverMessages = []
 
 const signUpEmailValidation = value =>
 	string()
@@ -18,7 +18,7 @@ const signUpEmailValidation = value =>
 			abortEarly: true,
 		})
 
-const passwordErrorMsgs = [
+const passwordPopoverMessages = [
 	'minimum 8 characters',
 	'at least 1 number',
 	'at least 1 lowercase',
@@ -28,15 +28,15 @@ const passwordErrorMsgs = [
 const signUpPasswordValidation = value =>
 	string()
 		.required('this field is required!')
-		.min(8, passwordErrorMsgs[0])
-		.matches(/^(?=.*[0-9]).*$/, passwordErrorMsgs[1])
-		.matches(/^(?=.*[a-z]).*$/, passwordErrorMsgs[2])
-		.matches(/^(?=.*[A-Z]).*$/, passwordErrorMsgs[3])
+		.min(8, passwordPopoverMessages[0])
+		.matches(/^(?=.*[0-9]).*$/, passwordPopoverMessages[1])
+		.matches(/^(?=.*[a-z]).*$/, passwordPopoverMessages[2])
+		.matches(/^(?=.*[A-Z]).*$/, passwordPopoverMessages[3])
 		.validate(value, {
 			abortEarly: false,
 		})
 
-const usernameErrorMsgs = null
+const usernamePopoverMessages = []
 const signUpUsernameValidation = value =>
 	string()
 		.lowercase()
@@ -72,7 +72,7 @@ export {
 	signUpUsernameValidation,
 	signInEmailValidation,
 	signInPasswordValidation,
-	emailErrorMsgs,
-	usernameErrorMsgs,
-	passwordErrorMsgs,
+	emailPopoverMessages,
+	usernamePopoverMessages,
+	passwordPopoverMessages,
 }

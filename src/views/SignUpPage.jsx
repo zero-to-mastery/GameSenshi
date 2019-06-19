@@ -41,9 +41,9 @@ import {
 	signUpEmailValidation,
 	signUpPasswordValidation,
 	signUpUsernameValidation,
-	emailErrorMsgs,
-	usernameErrorMsgs,
-	passwordErrorMsgs,
+	emailPopoverMessages,
+	usernamePopoverMessages,
+	passwordPopoverMessages,
 } from 'utils/validation'
 
 // state management
@@ -265,7 +265,9 @@ class RegisterPage extends React.Component {
 																				validation={value =>
 																					signUpUsernameValidation(value)
 																				}
-																				errorMessages={usernameErrorMsgs}
+																				popoverMessages={
+																					usernamePopoverMessages
+																				}
 																			/>
 																			<InputField
 																				type={EMAIL}
@@ -277,7 +279,7 @@ class RegisterPage extends React.Component {
 																					signUpEmailValidation(value)
 																				}
 																				serverValidation={handleIsEmailExist}
-																				errorMessages={emailErrorMsgs}
+																				popoverMessages={emailPopoverMessages}
 																			/>
 																			<InputField
 																				type={PASSWORD}
@@ -288,7 +290,9 @@ class RegisterPage extends React.Component {
 																				validation={value =>
 																					signUpPasswordValidation(value)
 																				}
-																				errorMessages={passwordErrorMsgs}
+																				popoverMessages={
+																					passwordPopoverMessages
+																				}
 																			/>
 																		</Form>
 																	</CardBody>
