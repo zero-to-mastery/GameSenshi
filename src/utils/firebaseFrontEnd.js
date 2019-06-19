@@ -8,13 +8,7 @@ import 'firebase/functions'
 import 'firebase/storage'
 
 // states
-import {
-	alertStore,
-	authModalStore,
-	userStore,
-	signInModalStore,
-	authStore,
-} from 'state'
+import { alertStore, authModalStore, userStore, signInModalStore } from 'state'
 import * as allStore from 'state'
 
 // constants
@@ -37,7 +31,6 @@ import {
 	SIGN_IN_MODAL_EMAIL,
 	SIGN_IN_MODAL_OPEN,
 	SIGN_IN_MODAL_CALLBACK,
-	EMAIL,
 } from 'constantValues'
 
 const firebaseConfig = {
@@ -110,7 +103,6 @@ const handleDifferentCredential = (auth, email, credential) => {
 							[SOCIAL_AUTH_MODAL_OPEN]: false,
 						})
 						if (provider1 === 'password') {
-							authStore.setState({ [EMAIL]: email })
 							signInModalStore.setState({
 								[SIGN_IN_MODAL_EMAIL]: email,
 								[SIGN_IN_MODAL_OPEN]: true,
