@@ -6,7 +6,6 @@ import { userStore, alertStore, Subscribe } from 'state'
 
 // reactstrap components
 import {
-	Button,
 	Collapse,
 	Media,
 	DropdownMenu,
@@ -148,6 +147,7 @@ class ComponentsNavbar extends React.Component {
 				overWidthBreakPoint,
 				navbarHeight,
 			},
+			setState,
 			onResize,
 			toggleCollapse,
 			onCollapseExiting,
@@ -490,6 +490,7 @@ class ComponentsNavbar extends React.Component {
 								style={{ zIndex: 1000, marginTop: navbarHeight }}
 								isOpen={alertOpen}
 								toggle={() => {
+									setState({ color: 'navbar-transparent' })
 									alertStore.setState(state => {
 										state[ALERT_OPEN] = !state[ALERT_OPEN]
 										return state
@@ -498,12 +499,8 @@ class ComponentsNavbar extends React.Component {
 								color={alertColor}
 								className='alert-with-icon d-flex align-items-center fixed-top'>
 								<Container>
-									<Row>
-										<Col xs='1' className='pl-auto pr-0'>
-											<i className='tim-icons icon-bell-55' />
-										</Col>
-										<Col className='pl-0 alert-with-icon'>{alertBody}</Col>
-									</Row>
+									<i className='tim-icons icon-bell-55 mr-3' />
+									<span>{alertBody}</span>
 								</Container>
 							</Alert>
 						</>
