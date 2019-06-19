@@ -40,11 +40,7 @@ import createDecorator from 'final-form-focus'
 // constants
 import {
 	EMAIL,
-	USERNAME,
 	PASSWORD,
-	USER_EMAIL,
-	USER_SIGNED_IN,
-	USER_DISPLAY_NAME,
 	SIGN_IN_MODAL_EMAIL,
 	SIGN_IN_MODAL_CALLBACK,
 } from 'constantValues'
@@ -54,25 +50,19 @@ import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
 import InputField from 'components/Inputs/InputField'
 
 // state management
-import { authStore, userStore, signInModalStore, Subscribe } from 'state'
+import { signInModalStore, Subscribe } from 'state'
 
 const focusOnError = createDecorator()
 
 class SignInForm extends React.Component {
 	onSubmit = async (values, history, lastLocation) => {
-		const signInFailed = await handleSignInWithEmailAndPassword(
-			authStore.state[EMAIL],
-			authStore.state[PASSWORD]
-		)
+		const { [EMAIL]: email, [PASSWORD]: password } = values
+		const signInFailed = await handleSignInWithEmailAndPassword(email, password)
 		if (signInFailed) {
 			return { [FORM_ERROR]: signInFailed }
 		}
 		onSignedInRouting(history, lastLocation)
-		userStore.setState({
-			[USER_DISPLAY_NAME]: authStore.state[USERNAME],
-			[USER_EMAIL]: authStore.state[EMAIL],
-			[USER_SIGNED_IN]: true,
-		})
+
 		signInModalStore.state[SIGN_IN_MODAL_CALLBACK]()
 		// if undefined mean no error
 		// but this not much point since it will redirect and unmount soon
@@ -122,7 +112,7 @@ class SignInForm extends React.Component {
 								</CardBody>
 								<FinalForm
 									initialValues={{
-										[EMAIL]: '',
+										[EMAIL]: passwordOnly ? email : '',
 										[PASSWORD]: '',
 									}}
 									decorators={[focusOnError]}
@@ -165,7 +155,6 @@ class SignInForm extends React.Component {
 															type={EMAIL}
 															name={EMAIL}
 															hideSuccess
-															container={authStore}
 															placeholder='Email'
 															icon='tim-icons icon-email-85'
 															validation={value => signInEmailValidation(value)}
@@ -176,7 +165,6 @@ class SignInForm extends React.Component {
 													type={PASSWORD}
 													name={PASSWORD}
 													hideSuccess
-													container={authStore}
 													placeholder='Password'
 													icon='tim-icons icon-lock-circle'
 													validation={value => signInPasswordValidation(value)}
