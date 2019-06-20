@@ -42,7 +42,7 @@ const InputField = props => {
 	const [messageList, setMessageList] = useState([])
 	const [popoverItemFailed] = useState({ items: {} })
 	const [state] = useState({
-		delay: 0,
+		delay: 0, // initial delay is 0 for fast first time background validation
 		timeOutID: 0,
 		focused: true,
 		value: '',
@@ -77,7 +77,7 @@ const InputField = props => {
 			popoverItemFailed
 		)
 		showSpinner(false)
-		!state.delay && (state.focused = false) // one time only, state.delay = 0 tell us that the component never been visited, this solve icon flickering
+		!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
 		!willParentUnmount.value && setMessageList(messageList)
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
@@ -102,6 +102,8 @@ const InputField = props => {
 			type={type}
 			name={name}
 			validate={(value = '') => {
+				// run it in background for first time even if it is not focused (initial focus state is true)
+				// we need this because to prevent every field to run validation
 				if (state.focused) {
 					return (state.promise = new Promise(resolve => {
 						// cancel and invalidate previous validation (did not cancel server validation)
@@ -112,7 +114,7 @@ const InputField = props => {
 							state[name + IS_VALID] = false
 							return state
 						})
-						showSpinner(true)
+						state.delay && showSpinner(true)
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
 						const timeOutID = setTimeout(() => {
