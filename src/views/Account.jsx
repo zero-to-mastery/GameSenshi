@@ -29,9 +29,8 @@ import {
 } from 'reactstrap'
 
 // core components
-import ColorNavbar from 'components/Navbars/ColorNavbar.jsx'
-import DemoFooter from 'components/Footers/DemoFooter.jsx'
 import ImageUpload from 'components/CustomUpload/ImageUpload.jsx'
+import { Footer, IndexNavbar } from 'components'
 
 class AccountSettings extends React.Component {
 	state = {
@@ -59,7 +58,7 @@ class AccountSettings extends React.Component {
 	render() {
 		return (
 			<>
-				<ColorNavbar />
+				<IndexNavbar />
 				<div className='wrapper' ref='wrapper'>
 					<div className='section'>
 						<Container>
@@ -837,7 +836,7 @@ class AccountSettings extends React.Component {
 							</Row>
 						</Container>
 					</div>
-					<DemoFooter />
+					<Footer />
 				</div>
 			</>
 		)
