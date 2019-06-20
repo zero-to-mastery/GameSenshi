@@ -177,7 +177,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 						}
 					},
 				})
-			}, 750)
+			}, 150)
 			//continue on getRedirectResult event listener
 		})
 }
