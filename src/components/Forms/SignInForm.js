@@ -137,8 +137,6 @@ class SignInForm extends React.Component {
 															disabled
 															placeholder={passwordOnly ? email : 'Email'}
 															type='text'
-															onFocus={e => this.setState({ emailFocus: true })}
-															onBlur={e => this.setState({ emailFocus: false })}
 														/>
 													</InputGroup>
 												) : (
