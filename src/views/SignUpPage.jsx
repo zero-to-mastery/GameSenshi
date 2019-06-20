@@ -127,6 +127,7 @@ class RegisterPage extends React.Component {
 		} = await handleSignUpWithEmailAndPassword(values, () => {
 			onSignedInRouting(history, lastLocation)
 		})
+		// incase there is another error from server...
 		for (let property in data) {
 			authStore.state[property + SUBMIT_ERRORS] = MessageList({
 				validationResult: data[property],

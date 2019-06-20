@@ -91,7 +91,16 @@ ReactDOM.render(
 					<Route path='/profile' render={props => <ProfilePage {...props} />} />
 					<Route path='/404' render={props => <Error404 {...props} />} />
 					<Route path='/500' render={props => <Error500 {...props} />} />
-					<Route path='/account' render={props => <Account {...props} />} />
+					<Route
+						path='/account'
+						render={props =>
+							userStore.state[USER_SIGNED_IN] ? (
+								<Account {...props} />
+							) : (
+								<Redirect from='/account' to='/index' />
+							)
+						}
+					/>
 					<Route path='/reset' render={props => <ResetPage {...props} />} />
 					<Route path='/invoice' render={props => <InvoicePage {...props} />} />
 					<Route

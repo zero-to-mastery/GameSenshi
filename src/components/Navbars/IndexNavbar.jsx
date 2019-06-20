@@ -134,6 +134,14 @@ class ComponentsNavbar extends React.Component {
 			.getElementById('download-section')
 			.scrollIntoView({ behavior: 'smooth' })
 	}
+
+	onSignOut = (currentPath, history) => {
+		const userRoute = ['/account']
+		auth().signOut()
+		if (userRoute.includes(currentPath)) {
+			history.push('/index')
+		}
+	}
 	render() {
 		const {
 			props: {
@@ -148,6 +156,7 @@ class ComponentsNavbar extends React.Component {
 				navbarHeight,
 			},
 			setState,
+			onSignOut,
 			onResize,
 			toggleCollapse,
 			onCollapseExiting,
@@ -300,10 +309,14 @@ class ComponentsNavbar extends React.Component {
 																	aria-labelledby='navbarDropdownMenuLink'
 																	right>
 																	<DropdownItem
-																		href='#pablo'
+																		href='/account'
 																		className='text-dark mt-0 py-1 px-4'
 																		style={{ fontSize: '1rem' }}
-																		onClick={e => e.preventDefault()}>
+																		onClick={e => {
+																			e.preventDefault()
+																			setState({ collapseOpen: false })
+																			history.push('/account')
+																		}}>
 																		<strong>{username}</strong>
 																	</DropdownItem>
 																	<DropdownItem divider />
@@ -317,7 +330,10 @@ class ComponentsNavbar extends React.Component {
 																	<DropdownItem
 																		className='text-dark mt-0 py-1 px-4'
 																		style={{ fontSize: '1rem' }}
-																		onClick={e => e.preventDefault()}>
+																		onClick={e => {
+																			e.preventDefault()
+																			history.push('/account')
+																		}}>
 																		My Account
 																	</DropdownItem>
 																	<DropdownItem divider />
@@ -330,9 +346,8 @@ class ComponentsNavbar extends React.Component {
 																	<DropdownItem
 																		className='text-dark mt-0 py-1 px-4'
 																		style={{ fontSize: '1rem' }}
-																		href='#pablo'
 																		onClick={() => {
-																			auth().signOut()
+																			onSignOut(currentPath, history)
 																		}}>
 																		Sign Out
 																	</DropdownItem>
@@ -351,10 +366,14 @@ class ComponentsNavbar extends React.Component {
 														<NavItem className='p-0'>
 															<NavLink
 																data-placement='bottom'
-																href='#pablo'
+																href='/account'
 																style={{
 																	paddingTop: 6,
 																	paddingBottom: 6,
+																}}
+																onClick={e => {
+																	e.preventDefault()
+																	history.push('/account')
 																}}>
 																<Row>
 																	<Col
@@ -407,11 +426,10 @@ class ComponentsNavbar extends React.Component {
 														<NavItem className='p-0'>
 															<NavLink
 																data-placement='bottom'
-																href='/signOut'
 																onClick={e => {
 																	e.preventDefault()
-																	auth().signOut()
 																	toggleCollapse()
+																	onSignOut(currentPath, history)
 																}}>
 																<Row>
 																	<Col xs='2'>
