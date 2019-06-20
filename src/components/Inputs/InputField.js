@@ -280,7 +280,7 @@ const InputField = props => {
 													className={
 														popoverItemFailed.items[errorMessage]
 															? 'text-dark'
-															: 'text-success'
+															: 'text-info'
 													}
 													key={i}>
 													{popoverItemFailed.items[errorMessage] ? (
