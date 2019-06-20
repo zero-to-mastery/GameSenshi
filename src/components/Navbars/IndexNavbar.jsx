@@ -425,6 +425,7 @@ class ComponentsNavbar extends React.Component {
 														</NavItem>
 														<NavItem className='p-0'>
 															<NavLink
+																style={{ cursor: 'pointer' }}
 																data-placement='bottom'
 																onClick={e => {
 																	e.preventDefault()
