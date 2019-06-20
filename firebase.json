@@ -13,7 +13,7 @@
 		]
 	},
 	"hosting": {
-		"predeploy": ["npm run puild && npm run lint"],
+		"predeploy": ["npm run lint && npm run puild"],
 		"public": "build",
 		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
 		"rewrites": [
