@@ -24,21 +24,23 @@ import { EXTRA_HEIGHT, IS_VALID, SUBMIT_ERRORS, STATUS } from 'constantValues'
 const InputField = props => {
 	const {
 		name,
-		validation,
-		placeholder,
 		icon,
 		type,
+		validation,
 		serverValidation,
 		hideSuccess,
+		popoverMessages,
+		willUnmount,
+		...restProps
 	} = props
 
-	const popoverMessages = props.popoverMessages || []
+	const willParentUnmount = willUnmount || { value: false }
+	const popMessages = popoverMessages || []
 
 	const ref = useRef(null)
 
 	const [messageList, setMessageList] = useState([])
 	const [popoverItemFailed] = useState({ items: {} })
-
 	const [state] = useState({
 		delay: 0,
 		timeOutID: 0,
@@ -47,7 +49,6 @@ const InputField = props => {
 		promise: Promise.resolve(['Invalid']),
 		resolve: () => {},
 	})
-
 	const [spinner, showSpinner] = useState(false)
 	const [spinner2, showSpinner2] = useState(false)
 	const [tState, setTState] = useState({
@@ -72,12 +73,12 @@ const InputField = props => {
 	const generateMessageListWithState = (validationResult, resolve) => {
 		const messageList = MessageList(
 			{ validationResult, type },
-			popoverMessages,
+			popMessages,
 			popoverItemFailed
 		)
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, state.delay = 0 tell us that the component never been visited, this solve icon flickering
-		setMessageList(messageList)
+		!willParentUnmount.value && setMessageList(messageList)
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
 			container.setState(state => {
@@ -191,6 +192,7 @@ const InputField = props => {
 									</InputGroupText>
 								</InputGroupAddon>
 								<Input
+									{...restProps}
 									id={name}
 									{...input} //name, type, onBlur, onChange, onFocus, value, overwrite it by creating prop after this prop
 									onChange={e => {
@@ -213,7 +215,6 @@ const InputField = props => {
 										state.focused = false
 										input.onBlur(e)
 									}}
-									placeholder={placeholder}
 								/>
 							</InputGroup>
 						)}
@@ -221,6 +222,7 @@ const InputField = props => {
 							<FormGroup check className='text-left '>
 								<Label check>
 									<Input
+										{...restProps}
 										{...input}
 										onChange={e => {
 											container.state[name] = e.target.value
@@ -249,7 +251,7 @@ const InputField = props => {
 								</Label>
 							</FormGroup>
 						)}
-						{popoverMessages.length > 0 && (
+						{popMessages.length > 0 && (
 							<Popover
 								placement='top-end'
 								isOpen={active}
@@ -274,7 +276,7 @@ const InputField = props => {
 								</PopoverHeader>
 								<PopoverBody className='pl-0 pb-0'>
 									<ul>
-										{popoverMessages.map((errorMessage, i) => {
+										{popMessages.map((errorMessage, i) => {
 											return (
 												<li
 													className={
