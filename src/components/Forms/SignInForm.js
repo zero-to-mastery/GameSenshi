@@ -55,6 +55,10 @@ import { signInModalStore, Subscribe } from 'state'
 const focusOnError = createDecorator()
 
 class SignInForm extends React.Component {
+	state = { willUnmount: { value: false } }
+
+	submitButton //submit button reference
+
 	onSubmit = async (values, history, lastLocation) => {
 		const { [EMAIL]: email, [PASSWORD]: password } = values
 		const signInFailed = await handleSignInWithEmailAndPassword(email, password)
@@ -68,9 +72,14 @@ class SignInForm extends React.Component {
 		// but this not much point since it will redirect and unmount soon
 		return
 	}
+	componentWillUnmount() {
+		// eslint-disable-next-line react/no-direct-mutation-state
+		this.state.willUnmount.value = true // still not able to solve memory leak problem on submit, need more research
+	}
 
 	render() {
 		const {
+			state: { willUnmount },
 			props: { history, lastLocation, passwordOnly },
 			onSubmit,
 		} = this
@@ -156,6 +165,7 @@ class SignInForm extends React.Component {
 															placeholder='Email'
 															icon='tim-icons icon-email-85'
 															validation={value => signInEmailValidation(value)}
+															willUnmount={willUnmount}
 														/>
 													</>
 												)}
@@ -166,11 +176,18 @@ class SignInForm extends React.Component {
 													placeholder='Password'
 													icon='tim-icons icon-lock-circle'
 													validation={value => signInPasswordValidation(value)}
+													onKeyPress={e => {
+														e.key === 'Enter' && this.submitButton.onClick()
+													}}
+													willUnmount={willUnmount}
 												/>
 											</CardBody>
 											<CardFooter className='text-center'>
 												{submitError && !submitting && `Error: ${submitError}`}
 												<Button
+													ref={ref => {
+														this.submitButton = ref
+													}}
 													block
 													className='btn-round'
 													color='primary'

@@ -82,7 +82,11 @@ class RegisterPage extends React.Component {
 		squares1to6: '',
 		squares7and8: '',
 		maxHeight: 999,
+		willUnmount: { value: false },
 	}
+
+	submitButton //submit button reference
+
 	componentDidMount() {
 		document.documentElement.scrollTop = 0
 		document.scrollingElement.scrollTop = 0
@@ -95,6 +99,8 @@ class RegisterPage extends React.Component {
 	componentWillUnmount() {
 		document.body.classList.remove('register-page')
 		document.documentElement.removeEventListener('mousemove', this.followCursor)
+		// eslint-disable-next-line react/no-direct-mutation-state
+		this.state.willUnmount.value = true // still not able to solve memory leak problem on submit, need more research
 	}
 	followCursor = event => {
 		let posX = event.clientX - window.innerWidth / 2
@@ -167,7 +173,7 @@ class RegisterPage extends React.Component {
 	}
 	render() {
 		const {
-			state: { maxHeight, squares7and8, squares1to6 },
+			state: { maxHeight, squares7and8, squares1to6, willUnmount },
 			props: { history, lastLocation },
 			onSubmit,
 		} = this
@@ -269,6 +275,7 @@ class RegisterPage extends React.Component {
 																				popoverMessages={
 																					usernamePopoverMessages
 																				}
+																				willUnmount={willUnmount}
 																			/>
 																			<InputField
 																				type={EMAIL}
@@ -281,6 +288,7 @@ class RegisterPage extends React.Component {
 																				}
 																				serverValidation={handleIsEmailExist}
 																				popoverMessages={emailPopoverMessages}
+																				willUnmount={willUnmount}
 																			/>
 																			<InputField
 																				type={PASSWORD}
@@ -294,6 +302,11 @@ class RegisterPage extends React.Component {
 																				popoverMessages={
 																					passwordPopoverMessages
 																				}
+																				onKeyPress={e => {
+																					e.key === 'Enter' &&
+																						this.submitButton.onClick()
+																				}}
+																				willUnmount={willUnmount}
 																			/>
 																		</Form>
 																	</CardBody>
@@ -302,6 +315,9 @@ class RegisterPage extends React.Component {
 																			<Col className='col-2' />
 																			<Col className='pl-0 pr-0 d-flex justify-content-center'>
 																				<Button
+																					ref={ref => {
+																						this.submitButton = ref
+																					}}
 																					className='btn-round'
 																					color='primary'
 																					size='lg'
