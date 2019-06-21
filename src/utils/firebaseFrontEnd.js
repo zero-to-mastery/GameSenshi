@@ -26,6 +26,8 @@ import {
 	USER_PHOTO_URL,
 	USER_SIGNED_IN,
 	USER_DISPLAY_NAME,
+	USER_PHONE_NUMBER,
+	USER_PROVIDER_DATA,
 	USER_EMAIL_IS_VERIFIED,
 	DEFAULT_AVATAR_URL,
 	SIGN_IN_MODAL_EMAIL,
@@ -183,33 +185,29 @@ const handleDifferentCredential = (auth, email, credential) => {
 }
 
 // user auth listener
-auth().onAuthStateChanged(user => {
+auth().onAuthStateChanged(signInData => {
 	const authModal = JSON.parse(sessionStorage.getItem('authModal'))
 	!authModal && authModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
-	if (user) {
-		const {
-			[USER_DISPLAY_NAME]: displayName,
-			[USER_DISPLAY_NAME]: email,
-			[USER_EMAIL]: emailVerified,
-			[USER_PHOTO_URL]: photoURL,
-			[USER_UID]: uid,
-		} = user
+	if (signInData) {
+		const user = {
+			[USER_DISPLAY_NAME]: signInData[USER_DISPLAY_NAME],
+			[USER_EMAIL_IS_VERIFIED]: signInData[USER_EMAIL_IS_VERIFIED],
+			[USER_PHOTO_URL]:
+				signInData[USER_PHOTO_URL] || process.env[DEFAULT_AVATAR_URL], //fallback,
+			[USER_UID]: signInData[USER_UID],
+		}
 		userStore.setState({
-			[USER_DISPLAY_NAME]: displayName,
-			[USER_EMAIL]: email,
-			[USER_EMAIL_IS_VERIFIED]: emailVerified,
-			[USER_PHOTO_URL]: photoURL || process.env[DEFAULT_AVATAR_URL], //fallback
-			[USER_UID]: uid,
+			...user,
+			[USER_EMAIL]: signInData[USER_EMAIL],
+			[USER_PHONE_NUMBER]: signInData[USER_PHONE_NUMBER],
+			[USER_PROVIDER_DATA]: signInData[USER_PROVIDER_DATA],
 			[USER_SIGNED_IN]: true,
 		})
+		// do not store sensitive information in localStorage
 		localStorage.setItem(
 			'user',
 			JSON.stringify({
-				displayName,
-				email,
-				emailVerified,
-				photoURL,
-				uid,
+				...user,
 			})
 		)
 	} else {
