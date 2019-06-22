@@ -53,7 +53,8 @@ import SignUpPage from 'views/SignUpPage'
 
 // check if user data in indexed db, pre-sign in user
 const user = JSON.parse(localStorage.getItem('user'))
-user && (userStore.state = { ...user, [USER_SIGNED_IN]: true })
+user &&
+	(userStore.state = { ...userStore.state, ...user, [USER_SIGNED_IN]: true })
 
 // modal for auth
 const authModal = JSON.parse(sessionStorage.getItem('authModal'))

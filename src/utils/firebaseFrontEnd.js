@@ -196,12 +196,15 @@ auth().onAuthStateChanged(signInData => {
 				signInData[USER_PHOTO_URL] || process.env[DEFAULT_AVATAR_URL], //fallback,
 			[USER_UID]: signInData[USER_UID],
 		}
-		userStore.setState({
-			...user,
-			[USER_EMAIL]: signInData[USER_EMAIL],
-			[USER_PHONE_NUMBER]: signInData[USER_PHONE_NUMBER],
-			[USER_PROVIDER_DATA]: signInData[USER_PROVIDER_DATA],
-			[USER_SIGNED_IN]: true,
+		userStore.setState(state => {
+			return {
+				...state,
+				...user,
+				[USER_EMAIL]: signInData[USER_EMAIL],
+				[USER_PHONE_NUMBER]: signInData[USER_PHONE_NUMBER],
+				[USER_PROVIDER_DATA]: signInData[USER_PROVIDER_DATA],
+				[USER_SIGNED_IN]: true,
+			}
 		})
 		// do not store sensitive information in localStorage
 		localStorage.setItem(
