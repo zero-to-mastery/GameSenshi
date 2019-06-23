@@ -11,10 +11,11 @@ From consumer perspectives:
 1. You are a big fans of a professional/famous gamer, you want to play a game with him, either as sparring partner(opponent) or team mate.
 2. You are a fans of good looking or fun streamer, you want to play with her/him.
 3. You are looking for game coach, gamer that systemized his knowledge and make you a better gamer.
-4. You are looking for booster, gamer that help you rank up by either playing your account or as your team mate.
+4. You want to rank up, you need help, you need STRONK team mate!
+5. Hang out with your favorite gamer/streamer, socialize!
 
 From provider perspective:
-While some gamers/streamers do make big buck, but large majority of gamers or streamers make little or to none money out of gaming, so this platform can play a part in gaming economy as it can turn gamers into new work force.
+While some gamers/streamers do make big buck, but large majority of gamers or streamers still make little or to none money out of gaming, so this platform can play a part in gaming economy as it can turn gamers into new work force.
 
 ## Getting Started
 
