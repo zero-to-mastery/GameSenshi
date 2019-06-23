@@ -62,6 +62,18 @@ const BillingTabPane = () => {
 															id='Radios'
 															name='payment'
 															type='radio'
+															onClick={() => {
+																userStore.setState(state => {
+																	state[USER_CREDIT_CARDS].forEach(
+																		creditCard => {
+																			creditCard.isDefault = false
+																		}
+																	)
+
+																	state[USER_CREDIT_CARDS][i].isDefault = true
+																	return state
+																})
+															}}
 														/>
 														<span className='form-check-sign' />
 													</Label>
@@ -72,7 +84,13 @@ const BillingTabPane = () => {
 													className='btn-simple'
 													color='danger'
 													size='sm'
-													type='button'>
+													type='button'
+													onClick={() => {
+														userStore.setState(state => {
+															state[USER_CREDIT_CARDS].splice(i, 1)
+															return state
+														})
+													}}>
 													<i className='tim-icons icon-simple-remove' /> Remove
 													card
 												</Button>
