@@ -9,24 +9,54 @@ import {
 	Col,
 	FormGroup,
 	Input,
+	Label,
 } from 'reactstrap'
 import Cards from 'react-credit-cards'
 import 'react-credit-cards/lib/styles.scss'
 
 // constants
-import { USER_CREDIT_CARDS } from 'constantValues'
+import { USER_CARDS } from 'constantValues'
 
 // state
 import { userStore, Subscribe } from 'state'
+
+import valid from 'card-validator'
+
+const cardType = cardNumber => {
+	// this is for payment icon
+	switch (valid.number(cardNumber)) {
+		case 'Visa':
+			return 'visa'
+		case 'Mastercard':
+			return 'mastercard'
+		case 'Diners Club':
+			return 'diners'
+		case 'Discover':
+			return 'discover'
+		case 'JCB':
+			return 'jcb'
+		case 'UnionPay':
+			return 'unionpay'
+		case 'Maestro':
+			return 'maestro'
+		case 'Elo':
+			return 'elo'
+		case 'Hipercard':
+			return 'hipercard'
+		default:
+			return 'default'
+	}
+}
 
 // toggle
 const AuthModal = props => {
 	const [, forceUpdate] = useState()
 	const [cardNumber, setCardNumber] = useState('')
 	const [cardHolderName, setCardHolderName] = useState('')
-	const [exp, setExp] = useState('')
+	const [expiry, setExp] = useState('')
 	const [cvc, setCvc] = useState('')
 	const [focus, setFocus] = useState('number')
+	const [checked, setChecked] = useState(false)
 
 	const { open, toggle } = props
 
@@ -36,12 +66,11 @@ const AuthModal = props => {
 			window.removeEventListener('resize', forceUpdate)
 		}
 	}, [])
-
 	return (
 		<Subscribe to={[userStore]}>
 			{userStore => {
 				const {
-					state: { [USER_CREDIT_CARDS]: creditCards },
+					state: { [USER_CARDS]: creditCards },
 				} = userStore
 				return (
 					<Modal
@@ -59,7 +88,7 @@ const AuthModal = props => {
 								onClick={toggle}>
 								<i className='tim-icons icon-simple-remove' />
 							</button>
-							<h5 className='modal-title'>Credit Card</h5>
+							<h5 className='modal-title'>Card</h5>
 						</div>
 						<ModalBody>
 							<Container>
@@ -69,7 +98,7 @@ const AuthModal = props => {
 											<Cards
 												number={cardNumber}
 												name={cardHolderName}
-												expiry={exp}
+												expiry={expiry}
 												cvc={cvc}
 												focused={focus}
 											/>
@@ -120,7 +149,7 @@ const AuthModal = props => {
 															placeholder='Valid Thru'
 															name='Expiry Date'
 															type='tel'
-															value={exp}
+															value={expiry}
 															onFocus={() => {
 																setFocus('expiry')
 															}}
@@ -147,6 +176,23 @@ const AuthModal = props => {
 													</FormGroup>
 												</Col>
 											</Row>
+											<Row>
+												<Col>
+													<FormGroup check className='text-left'>
+														<Label check>
+															<Input
+																type='checkbox'
+																checked={checked}
+																onChange={value => {
+																	setChecked(value)
+																}}
+															/>
+															<span className='form-check-sign' />
+															set this card as default?
+														</Label>
+													</FormGroup>
+												</Col>
+											</Row>
 										</Container>
 									</Col>
 								</Row>
@@ -156,7 +202,27 @@ const AuthModal = props => {
 							<Button color='secondary' onClick={toggle}>
 								Close
 							</Button>
-							<Button color='primary'>Continue</Button>
+							<Button
+								color='primary'
+								onClick={() => {
+									userStore.setState(state => {
+										if (checked) {
+											state[USER_CARDS].forEach(creditCard => {
+												creditCard.isDefault = false
+											})
+										}
+										state[USER_CARDS].push({
+											last4Digits: cardNumber.slice(-4),
+											expiry,
+											cardType: cardType(cardNumber),
+											isDefault: checked,
+										})
+										toggle()
+										return state
+									})
+								}}>
+								Continue
+							</Button>
 						</ModalFooter>
 					</Modal>
 				)
