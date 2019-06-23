@@ -19,7 +19,6 @@ import {
 	NavItem,
 	NavLink,
 	Nav,
-	Table,
 	TabContent,
 	TabPane,
 	Container,
@@ -31,7 +30,7 @@ import { USER_DISPLAY_NAME } from 'constantValues'
 
 // core components
 import ImageUpload from 'components/CustomUpload/ImageUpload.jsx'
-import { Footer, IndexNavbar, GeneralTabPane } from 'components'
+import { Footer, IndexNavbar, GeneralTabPane, BillingTabPane } from 'components'
 
 class AccountSettings extends React.Component {
 	state = {
@@ -164,116 +163,7 @@ class AccountSettings extends React.Component {
 													<TabContent
 														activeTab={'profile' + this.state.profileTabs}>
 														<GeneralTabPane />
-														<TabPane tabId='profile2'>
-															<header>
-																<h2 className='text-uppercase'>
-																	Billing method
-																</h2>
-															</header>
-															<hr className='line-info' />
-															<br />
-															<Table className='align-items-center'>
-																<thead>
-																	<tr>
-																		<th scope='col'>Card Type</th>
-																		<th scope='col'>Card Number</th>
-																		<th scope='col'>Payment Method</th>
-																		<th scope='col'>Action</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<tr>
-																		<th scope='row'>
-																			<img
-																				alt='...'
-																				className='avatar'
-																				src={require('assets/img/visas.png')}
-																			/>
-																		</th>
-																		<td>
-																			<span className='d-block'>
-																				•••• •••• •••• 8372
-																			</span>
-																			<small className='text-muted'>
-																				Exp: 06/22
-																			</small>
-																		</td>
-																		<td className='text-center'>
-																			<FormGroup
-																				check
-																				className='form-check-radio'>
-																				<Label check>
-																					<Input
-																						defaultChecked
-																						defaultValue='option2'
-																						id='Radios'
-																						name='exampleRadios'
-																						type='radio'
-																					/>
-																					<span className='form-check-sign' />
-																				</Label>
-																			</FormGroup>
-																		</td>
-																		<td>
-																			<Button
-																				className='btn-simple'
-																				color='danger'
-																				size='sm'
-																				type='button'>
-																				<i className='tim-icons icon-simple-remove' />{' '}
-																				Remove card
-																			</Button>
-																		</td>
-																	</tr>
-																	<tr>
-																		<th scope='row'>
-																			<img
-																				alt='...'
-																				className='avatar'
-																				src={require('assets/img/mastercard.png')}
-																			/>
-																		</th>
-																		<td>
-																			<span className='d-block'>
-																				•••• •••• •••• 1225
-																			</span>
-																			<small className='text-muted'>
-																				Exp: 07/21
-																			</small>
-																		</td>
-																		<td className='text-center'>
-																			<FormGroup
-																				check
-																				className='form-check-radio'>
-																				<Label check>
-																					<Input
-																						defaultValue='option1'
-																						id='Radios'
-																						name='exampleRadios'
-																						type='radio'
-																					/>
-																					<span className='form-check-sign' />
-																				</Label>
-																			</FormGroup>
-																		</td>
-																		<td>
-																			<Button
-																				className='btn-simple'
-																				color='danger'
-																				size='sm'
-																				type='button'>
-																				<i className='tim-icons icon-simple-remove' />{' '}
-																				Remove card
-																			</Button>
-																		</td>
-																	</tr>
-																</tbody>
-															</Table>
-															<Button color='info' size='sm' type='button'>
-																<i className='tim-icons icon-simple-add' /> Add
-																card
-															</Button>
-														</TabPane>
+														<BillingTabPane />
 														<TabPane tabId='profile3'>
 															<div className='g-pos-rel h-100 g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-30--md'>
 																<header>

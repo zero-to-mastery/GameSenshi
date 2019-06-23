@@ -9,6 +9,7 @@ import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInForm from 'components/Forms/SignInForm'
 import GeneralTabPane from 'components/TabContent/GeneralTabPane'
+import BillingTabPane from 'components/TabContent/BillingTabPane'
 
 export {
 	Footer,
@@ -22,4 +23,5 @@ export {
 	SignUpButton,
 	SignInButton,
 	GeneralTabPane,
+	BillingTabPane,
 }
