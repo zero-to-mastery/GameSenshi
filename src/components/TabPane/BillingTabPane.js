@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 //state
 import { Subscribe, userStore } from 'state'
 // constants
-import { USER_CREDIT_CARDS } from 'constantValues'
+import { USER_CARDS } from 'constantValues'
 // reactstrap components
 import { Button, Label, FormGroup, Input, Table, TabPane } from 'reactstrap'
 
@@ -15,7 +15,7 @@ const BillingTabPane = () => {
 		<Subscribe to={[userStore]}>
 			{userStore => {
 				const {
-					state: { [USER_CREDIT_CARDS]: creditCards },
+					state: { [USER_CARDS]: creditCards },
 				} = userStore
 				return (
 					<TabPane tabId='profile2'>
@@ -57,7 +57,7 @@ const BillingTabPane = () => {
 													•••• •••• •••• {creditCard.last4Digits}
 												</span>
 												<small className='text-muted'>
-													Exp: {creditCard.exp}
+													Exp: {creditCard.expiry}
 												</small>
 											</td>
 											<td className='text-center'>
@@ -71,13 +71,11 @@ const BillingTabPane = () => {
 															type='radio'
 															onClick={() => {
 																userStore.setState(state => {
-																	state[USER_CREDIT_CARDS].forEach(
-																		creditCard => {
-																			creditCard.isDefault = false
-																		}
-																	)
+																	state[USER_CARDS].forEach(creditCard => {
+																		creditCard.isDefault = false
+																	})
 
-																	state[USER_CREDIT_CARDS][i].isDefault = true
+																	state[USER_CARDS][i].isDefault = true
 																	return state
 																})
 															}}
@@ -94,7 +92,7 @@ const BillingTabPane = () => {
 													type='button'
 													onClick={() => {
 														userStore.setState(state => {
-															state[USER_CREDIT_CARDS].splice(i, 1)
+															state[USER_CARDS].splice(i, 1)
 															return state
 														})
 													}}>
