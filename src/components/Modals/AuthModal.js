@@ -31,7 +31,11 @@ const AuthModal = () => {
 					toggle,
 				} = authModalStore
 				return (
-					<Modal isOpen={open} toggle={toggle} backdrop='static'>
+					<Modal
+						isOpen={open}
+						toggle={toggle}
+						backdrop='static'
+						modalClassName='modal-black'>
 						<div className='modal-header'>
 							<button
 								type='button'
