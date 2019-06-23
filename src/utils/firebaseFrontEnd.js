@@ -59,16 +59,20 @@ const handleDifferentCredential = (auth, email, credential) => {
 	auth()
 		.fetchSignInMethodsForEmail(email)
 		.then(async methods => {
-			const getProvider = method =>
-				method === 'google.com'
-					? 'GoogleAuthProvider'
-					: method === 'facebook.com'
-					? 'FacebookAuthProvider'
-					: method === 'twitter.com'
-					? 'TwitterAuthProvider'
-					: method === 'password'
-					? 'password'
-					: undefined
+			const getProvider = method => {
+				switch (method) {
+					case 'google.com':
+						return 'GoogleAuthProvider'
+					case 'facebook.com':
+						return 'FacebookAuthProvider'
+					case 'twitter.com':
+						return 'TwitterAuthProvider'
+					case 'password':
+						return 'password'
+					default:
+						return undefined
+				}
+			}
 
 			const getName = (
 				string // remove .com and capitalized 1st letter
