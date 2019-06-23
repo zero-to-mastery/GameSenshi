@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 //state
 import { Subscribe, userStore } from 'state'
 // constants
@@ -6,10 +6,11 @@ import { USER_CREDIT_CARDS } from 'constantValues'
 // reactstrap components
 import { Button, Label, FormGroup, Input, Table, TabPane } from 'reactstrap'
 
-import Cards from 'react-credit-cards'
-import 'react-credit-cards/lib/styles.scss'
+import CreditCardModel from 'components/Modals/CreditCardModel'
 
 const BillingTabPane = () => {
+	const [openCard, setOpenCard] = useState(false)
+
 	return (
 		<Subscribe to={[userStore]}>
 			{userStore => {
@@ -18,6 +19,12 @@ const BillingTabPane = () => {
 				} = userStore
 				return (
 					<TabPane tabId='profile2'>
+						<CreditCardModel
+							open={openCard}
+							toggle={() => {
+								setOpenCard(openCard => !openCard)
+							}}
+						/>
 						<header>
 							<h2 className='text-uppercase'>Billing method</h2>
 						</header>
@@ -100,7 +107,13 @@ const BillingTabPane = () => {
 								})}
 							</tbody>
 						</Table>
-						<Button color='info' size='sm' type='button'>
+						<Button
+							color='info'
+							size='sm'
+							type='button'
+							onClick={() => {
+								setOpenCard(true)
+							}}>
 							<i className='tim-icons icon-simple-add' /> Add card
 						</Button>
 					</TabPane>
