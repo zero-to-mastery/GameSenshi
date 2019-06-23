@@ -8,6 +8,7 @@ import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
 import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInForm from 'components/Forms/SignInForm'
+import GeneralTabPane from 'components/TabContent/GeneralTabPane'
 
 export {
 	Footer,
@@ -20,4 +21,5 @@ export {
 	SignInForm,
 	SignUpButton,
 	SignInButton,
+	GeneralTabPane,
 }
