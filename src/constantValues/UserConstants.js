@@ -12,7 +12,7 @@ const USER_DISPLAY_NAME = 'displayName'
 const USER_PHONE_NUMBER = 'phoneNumber'
 const USER_PROVIDER_DATA = 'providerData'
 const USER_EMAIL_IS_VERIFIED = 'emailVerified'
-const USER_CREDIT_CARDS = 'userCreditCard'
+const USER_CARDS = 'userCreditCard'
 
 export {
 	USER_UID,
@@ -23,7 +23,7 @@ export {
 	USER_PHOTO_URL,
 	USER_SIGNED_IN,
 	USER_BIRTH_DATE,
-	USER_CREDIT_CARDS,
+	USER_CARDS,
 	USER_DISPLAY_NAME,
 	USER_PHONE_NUMBER,
 	USER_PROVIDER_DATA,

@@ -9,7 +9,7 @@ import {
 	USER_PHOTO_URL,
 	USER_SIGNED_IN,
 	USER_BIRTH_DATE,
-	USER_CREDIT_CARDS,
+	USER_CARDS,
 	USER_DISPLAY_NAME,
 	USER_PHONE_NUMBER,
 	USER_PROVIDER_DATA,
@@ -25,8 +25,8 @@ const defaultValues = {
 	[USER_PHOTO_URL]: '',
 	[USER_SIGNED_IN]: false,
 	[USER_BIRTH_DATE]: new Date(2000, 0, 1),
-	[USER_CREDIT_CARDS]: [
-		{ last4Digits: 8372, exp: '06/22', cardType: 'visa', isDefault: true },
+	[USER_CARDS]: [
+		{ last4Digits: 8372, expiry: '06/22', cardType: 'visa', isDefault: true },
 		{
 			last4Digits: 1225,
 			exp: '07/21',
