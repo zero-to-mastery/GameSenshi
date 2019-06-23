@@ -40,10 +40,12 @@
 		"map-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.css --source-map true"
 	},
 	"dependencies": {
+		"card-validator": "^6.2.0",
 		"chart.js": "^2.7.3",
 		"chroma-js": "^2.0.4",
 		"classnames": "^2.2.6",
 		"country-list": "^2.1.1",
+		"credit-card-type": "^8.2.0",
 		"final-form": "^4.12.0",
 		"final-form-focus": "^1.1.2",
 		"firebase": "^6.0.2",
@@ -53,6 +55,7 @@
 		"moment": "^2.24.0",
 		"node-sass": "^4.11.0",
 		"nouislider": "^13.1.1",
+		"payment-icons": "^1.2.1",
 		"perfect-scrollbar": "^1.4.0",
 		"react": "^16.8.3",
 		"react-bootstrap-switch": "^15.5.3",
