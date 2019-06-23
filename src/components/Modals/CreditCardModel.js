@@ -26,6 +26,7 @@ const AuthModal = props => {
 	const [cardHolderName, setCardHolderName] = useState('')
 	const [exp, setExp] = useState('')
 	const [cvc, setCvc] = useState('')
+	const [focus, setFocus] = useState('number')
 
 	const { open, toggle } = props
 
@@ -66,11 +67,11 @@ const AuthModal = props => {
 									<Col xs='12' md='6'>
 										<FormGroup>
 											<Cards
-												number={123}
-												name={123}
-												expiry={123}
-												cvc={123}
-												focused={123}
+												number={cardNumber}
+												name={cardHolderName}
+												expiry={exp}
+												cvc={cvc}
+												focused={focus}
 											/>
 										</FormGroup>
 									</Col>
@@ -82,8 +83,11 @@ const AuthModal = props => {
 														<Input
 															placeholder='Card Number'
 															name='Card Number'
-															type='text'
+															type='tel'
 															value={cardNumber}
+															onFocus={() => {
+																setFocus('number')
+															}}
 															onChange={e => {
 																setCardNumber(e.target.value)
 															}}
@@ -99,6 +103,9 @@ const AuthModal = props => {
 															name='Card Holder Name'
 															type='text'
 															value={cardHolderName}
+															onFocus={() => {
+																setFocus('name')
+															}}
 															onChange={e => {
 																setCardHolderName(e.target.value)
 															}}
@@ -112,8 +119,11 @@ const AuthModal = props => {
 														<Input
 															placeholder='Valid Thru'
 															name='Expiry Date'
-															type='text'
+															type='tel'
 															value={exp}
+															onFocus={() => {
+																setFocus('expiry')
+															}}
 															onChange={e => {
 																setExp(e.target.value)
 															}}
@@ -125,8 +135,11 @@ const AuthModal = props => {
 														<Input
 															placeholder='CVC'
 															name='CVC'
-															type='text'
+															type='tel'
 															value={cvc}
+															onFocus={() => {
+																setFocus('cvc')
+															}}
 															onChange={e => {
 																setCvc(e.target.value)
 															}}
