@@ -201,7 +201,6 @@ const GeneralTabPane = props => {
 										<Input
 											id='birthDate'
 											name='birthDate'
-											required='required'
 											type='text'
 											value={`${birthDate.getDate()}-${
 												monthNames[birthDate.getMonth()]
