@@ -28,8 +28,7 @@ import {
 } from 'reactstrap'
 
 // core components
-import ColorNavbar from 'components/Navbars/ColorNavbar.jsx'
-import DemoFooter from 'components/Footers/DemoFooter.jsx'
+import { Footer, IndexNavbar } from 'components'
 
 const items = [
 	{
@@ -102,7 +101,7 @@ class ProfilePage extends React.Component {
 	render() {
 		return (
 			<>
-				<ColorNavbar />
+				<IndexNavbar />
 				<div className='wrapper' ref='wrapper'>
 					<div className='page-header'>
 						<img
@@ -474,7 +473,7 @@ class ProfilePage extends React.Component {
 							</Row>
 						</Container>
 					</section>
-					<DemoFooter />
+					<Footer />
 				</div>
 			</>
 		)
