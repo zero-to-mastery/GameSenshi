@@ -40,7 +40,7 @@ import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInModal from 'components/Modals/SignInModal'
 
-import logo from 'assets/img/favicon-32x32.png'
+import logo from 'assets/img/favicon.ico'
 
 const widthBreakPoint = 991
 
@@ -186,7 +186,7 @@ class ComponentsNavbar extends React.Component {
 							<div className='fixed-top'>
 								<Navbar
 									style={{
-										zIndex: 2147483647,
+										zIndex: 90000,
 									}}
 									className={(alertOpen && bgPurple) || color}
 									color-on-scroll='100'
@@ -197,8 +197,22 @@ class ComponentsNavbar extends React.Component {
 												data-placement='bottom'
 												to='/'
 												rel='noopener noreferrer'
-												tag={Link}>
-												<img src={logo} alt='Game Senshi' />
+												tag={Link}
+												className='d-flex align-items-center'>
+												<div
+													className='avatar'
+													style={{
+														height: 0,
+														width: 48,
+														backgroundColor: 'transparent',
+													}}>
+													<Media
+														src={logo}
+														alt='Game Senshi'
+														className='img-raised'
+														style={{ height: 48, width: 48 }}
+													/>
+												</div>
 												<div className='d-none d-sm-inline'>
 													&nbsp;&nbsp;&nbsp;GAME SENSHI
 												</div>
