@@ -189,7 +189,7 @@ const GeneralTabPane = props => {
 											name='birthDate'
 											type='text'
 											value={`${birthDate.getDate()}-${
-												MONTH_NAMES[birthDate.getMonth()]
+												MONTH_NAMES[birthDate.getMonth() + 1]
 											}-${birthDate.getFullYear()}`}
 											onFocus={() => {
 												setBirthDateOpen(true)
