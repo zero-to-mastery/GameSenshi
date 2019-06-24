@@ -12,9 +12,10 @@ import {
 	Label,
 } from 'reactstrap'
 import Cards from 'react-credit-cards'
+import Select from 'react-select'
 import 'react-credit-cards/lib/styles.scss'
 // constants
-import { USER_CARDS } from 'constantValues'
+import { USER_CARDS, MONTH_NAMES } from 'constantValues'
 
 // state
 import { userStore, Subscribe } from 'state'
@@ -48,18 +49,60 @@ const cardType = cardNumber => {
 	}
 }
 
+const monthNames = [...MONTH_NAMES].map((monthName, i) => ({
+	value: i.toString().length === 1 ? '0' + i : i.toString(),
+	label: monthName,
+}))
+monthNames[0] = { value: '', label: 'Month', isDisabled: true }
+
+const year = new Date().getFullYear()
+
+const years = Array.from(new Array(30), (e, i) => {
+	const yearString = (year + i).toString()
+	return { value: yearString, label: yearString }
+})
+
+years.unshift({ value: '', label: 'Year', isDisabled: true })
+
 // toggle
-const AuthModal = props => {
+const CardModal = props => {
 	const [, forceUpdate] = useState()
 	const [cardNumber, setCardNumber] = useState('')
 	const [cardHolderName, setCardHolderName] = useState('')
-	const [expiry, setExp] = useState('')
+	const [expiryMonth, setExpiryMonth] = useState('')
+	const [expiryYear, setExpiryYear] = useState('')
 	const [cvc, setCvc] = useState('')
 	const [focus, setFocus] = useState('number')
 	const [checked, setChecked] = useState(false)
 	const [isBackspace, setIsBackspace] = useState(false)
 
 	const { open, toggle } = props
+
+	const onChangeNumber = e => {
+		let {
+			target: {
+				value,
+				value: { length },
+			},
+		} = e
+
+		let validate = false
+
+		try {
+			validate = string()
+				.matches(/^(?:[0-9 ]*)$/, 'only number and space allowed')
+				.isValidSync(value)
+		} catch (e) {
+			//
+		}
+
+		if (validate && value.replace(/ /g, '').length < 17) {
+			if (!isBackspace && [4, 9, 14].includes(length)) {
+				value = value + ' '
+			}
+			setCardNumber(value)
+		}
+	}
 
 	useEffect(() => {
 		window.addEventListener('resize', forceUpdate)
@@ -96,7 +139,7 @@ const AuthModal = props => {
 											<Cards
 												number={cardNumber}
 												name={cardHolderName}
-												expiry={expiry}
+												expiry={`${expiryMonth}/${expiryYear}`}
 												cvc={cvc}
 												focused={focus}
 											/>
@@ -118,40 +161,7 @@ const AuthModal = props => {
 															onKeyDown={e => {
 																setIsBackspace(e.key === 'Backspace')
 															}}
-															onChange={e => {
-																let {
-																	target: {
-																		value,
-																		value: { length },
-																	},
-																} = e
-
-																let validate = false
-
-																try {
-																	validate = string()
-																		.matches(
-																			/^(?:[0-9 ]*)$/,
-																			'only number and space allowed'
-																		)
-																		.isValidSync(value)
-																} catch (e) {
-																	//
-																}
-
-																if (
-																	validate &&
-																	value.replace(/ /g, '').length < 17
-																) {
-																	if (
-																		!isBackspace &&
-																		[4, 9, 14].includes(length)
-																	) {
-																		value = value + ' '
-																	}
-																	setCardNumber(value)
-																}
-															}}
+															onChange={onChangeNumber}
 														/>
 													</FormGroup>
 												</Col>
@@ -180,22 +190,52 @@ const AuthModal = props => {
 												</Col>
 											</Row>
 											<Row>
-												<Col xs='7' className='pr-0'>
+												<Col xs='6' className='pr-0'>
 													<FormGroup>
-														<Input
-															placeholder='Valid Thru'
-															name='Expiry Date'
-															type='tel'
-															value={expiry}
+														<Select
+															className='react-select react-select-info'
+															classNamePrefix='react-select'
+															placeholder='Expiry Month'
 															onFocus={() => {
 																setFocus('expiry')
 															}}
-															onChange={e => {
-																setExp(e.target.value)
+															value={{
+																value: expiryMonth,
+																label: monthNames.find(
+																	monthName => monthName.value === expiryMonth
+																).label,
 															}}
+															onChange={expiryMonth =>
+																setExpiryMonth(expiryMonth.value)
+															}
+															options={monthNames}
 														/>
 													</FormGroup>
 												</Col>
+												<Col xs='6'>
+													<FormGroup>
+														<Select
+															className='react-select react-select-info'
+															classNamePrefix='react-select'
+															placeholder='Exp Year'
+															onFocus={() => {
+																setFocus('expiry')
+															}}
+															value={{
+																value: expiryYear,
+																label: years.find(
+																	year => year.value === expiryYear
+																).label,
+															}}
+															onChange={expiryYear =>
+																setExpiryYear(expiryYear.value)
+															}
+															options={years}
+														/>
+													</FormGroup>
+												</Col>
+											</Row>
+											<Row>
 												<Col xs='5'>
 													<FormGroup>
 														<Input
@@ -217,16 +257,14 @@ const AuthModal = props => {
 														/>
 													</FormGroup>
 												</Col>
-											</Row>
-											<Row>
-												<Col>
+												<Col xs='7'>
 													<FormGroup check className='text-left'>
 														<Label check>
 															<Input
 																type='checkbox'
 																checked={checked}
-																onChange={value => {
-																	setChecked(value)
+																onClick={() => {
+																	setChecked(checked => !checked)
 																}}
 															/>
 															<span className='form-check-sign' />
@@ -255,7 +293,8 @@ const AuthModal = props => {
 										}
 										state[USER_CARDS].push({
 											last4Digits: cardNumber.slice(-4),
-											expiry,
+											expiryYear,
+											expiryMonth,
 											cardType: cardType(cardNumber),
 											isDefault: checked,
 										})
@@ -273,4 +312,4 @@ const AuthModal = props => {
 	)
 }
 
-export default AuthModal
+export default CardModal
