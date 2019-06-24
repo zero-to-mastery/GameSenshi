@@ -58,9 +58,9 @@ const BillingTabPane = () => {
 												</span>
 												<small className='text-muted'>
 													Exp:
-													{` ${creditCard.expiryMonth}/${
-														creditCard.expiryYear
-													}`}
+													{` ${
+														creditCard.expiryMonth
+													}/${creditCard.expiryYear.slice(-2)}`}
 												</small>
 											</td>
 											<td className='text-center'>

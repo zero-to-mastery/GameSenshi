@@ -28,14 +28,14 @@ const defaultValues = {
 	[USER_CARDS]: [
 		{
 			last4Digits: '8372',
-			expiryYear: '22',
+			expiryYear: '2022',
 			expiryMonth: '06',
 			cardType: 'visa',
 			isDefault: true,
 		},
 		{
 			last4Digits: '1225',
-			expiryYear: '21',
+			expiryYear: '2021',
 			expiryMonth: '05',
 			cardType: 'mastercard',
 			isDefault: false,
