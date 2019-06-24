@@ -20,6 +20,7 @@ import {
 	USER_COUNTRY,
 	USER_LANGUAGES,
 	USER_BIRTH_DATE,
+	MONTH_NAMES,
 } from 'constantValues'
 
 // core components
@@ -35,21 +36,6 @@ const countriesAndCodes = countries.reduce((acc, country, i) => {
 	acc.push({ value: countryCodes[i], label: country })
 	return acc
 }, [])
-
-const monthNames = [
-	'January',
-	'February',
-	'March',
-	'April',
-	'May',
-	'June',
-	'July',
-	'August',
-	'September',
-	'October',
-	'November',
-	'December',
-]
 
 // this currently is not working, deal with this later
 const colourStyles = {
@@ -203,7 +189,7 @@ const GeneralTabPane = props => {
 											name='birthDate'
 											type='text'
 											value={`${birthDate.getDate()}-${
-												monthNames[birthDate.getMonth()]
+												MONTH_NAMES[birthDate.getMonth()]
 											}-${birthDate.getFullYear()}`}
 											onFocus={() => {
 												setBirthDateOpen(true)
