@@ -1,21 +1,14 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // reactstrap components
 import { Button, NavItem, NavLink } from 'reactstrap'
 
 const SignUpButton = props => {
-	const { className, history } = props
+	const { className } = props
 	return (
 		<NavItem className={`active ${className}`}>
-			<NavLink
-				className='p-0'
-				data-placement='bottom'
-				href='/signUp'
-				onClick={e => {
-					e.preventDefault()
-					history.push('/signUp')
-				}}>
+			<NavLink className='p-0' data-placement='bottom' to='/signUp' tag={Link}>
 				<Button color='primary' type='button'>
 					Sign up
 				</Button>
@@ -24,4 +17,4 @@ const SignUpButton = props => {
 	)
 }
 
-export default withRouter(SignUpButton)
+export default SignUpButton

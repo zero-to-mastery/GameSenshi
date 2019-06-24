@@ -309,14 +309,10 @@ class ComponentsNavbar extends React.Component {
 																	aria-labelledby='navbarDropdownMenuLink'
 																	right>
 																	<DropdownItem
-																		href='/account'
+																		to='/account'
+																		tag={Link}
 																		className='text-dark mt-0 py-1 px-4'
-																		style={{ fontSize: '1rem' }}
-																		onClick={e => {
-																			e.preventDefault()
-																			setState({ collapseOpen: false })
-																			history.push('/account')
-																		}}>
+																		style={{ fontSize: '1rem' }}>
 																		<strong>{username}</strong>
 																	</DropdownItem>
 																	<DropdownItem divider />
@@ -366,14 +362,11 @@ class ComponentsNavbar extends React.Component {
 														<NavItem className='p-0'>
 															<NavLink
 																data-placement='bottom'
-																href='/account'
+																to='/account'
+																tag={Link}
 																style={{
 																	paddingTop: 6,
 																	paddingBottom: 6,
-																}}
-																onClick={e => {
-																	e.preventDefault()
-																	history.push('/account')
 																}}>
 																<Row>
 																	<Col
@@ -461,11 +454,8 @@ class ComponentsNavbar extends React.Component {
 															<NavItem className='p-0'>
 																<NavLink
 																	data-placement='bottom'
-																	href='/signIn'
-																	onClick={e => {
-																		e.preventDefault()
-																		history.push('/signIn')
-																	}}>
+																	to='/signIn'
+																	tag={Link}>
 																	<Row>
 																		<Col xs='2'>
 																			<i className='fab fas fa-sign-in-alt' />
@@ -481,11 +471,8 @@ class ComponentsNavbar extends React.Component {
 															<NavItem className='p-0'>
 																<NavLink
 																	data-placement='bottom'
-																	href='/signUp'
-																	onClick={e => {
-																		e.preventDefault()
-																		history.push('/signUp')
-																	}}>
+																	to='/signUp'
+																	tag={Link}>
 																	<Row>
 																		<Col xs='2'>
 																			<i className='fab fas fa-user-plus' />
