@@ -16,7 +16,7 @@ const CALLBACK = 'Callback'
 const PROVIDER = 'Provider'
 
 const MONTH_NAMES = [
-	'Month start with 1',
+	'',
 	'January',
 	'February',
 	'March',
