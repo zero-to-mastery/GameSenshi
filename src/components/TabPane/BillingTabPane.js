@@ -57,7 +57,10 @@ const BillingTabPane = () => {
 													•••• •••• •••• {creditCard.last4Digits}
 												</span>
 												<small className='text-muted'>
-													Exp: {creditCard.expiry}
+													Exp:
+													{` ${creditCard.expiryMonth}/${
+														creditCard.expiryYear
+													}`}
 												</small>
 											</td>
 											<td className='text-center'>

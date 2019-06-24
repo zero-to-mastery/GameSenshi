@@ -26,10 +26,17 @@ const defaultValues = {
 	[USER_SIGNED_IN]: false,
 	[USER_BIRTH_DATE]: new Date(2000, 0, 1),
 	[USER_CARDS]: [
-		{ last4Digits: 8372, expiry: '06/22', cardType: 'visa', isDefault: true },
 		{
-			last4Digits: 1225,
-			exp: '07/21',
+			last4Digits: '8372',
+			expiryYear: '22',
+			expiryMonth: '06',
+			cardType: 'visa',
+			isDefault: true,
+		},
+		{
+			last4Digits: '1225',
+			expiryYear: '21',
+			expiryMonth: '05',
 			cardType: 'mastercard',
 			isDefault: false,
 		},
