@@ -43,7 +43,7 @@ const signUpUsernameValidation = value =>
 		.required('this field is required!')
 		.notOneOf(forbiddenName, `${value} is not allowed`)
 		.max(15, 'maximum 15 characters')
-		.matches(/^[a-z0-9-_]+$/, 'no special characters (except underscore)')
+		.matches(/^[a-z0-9]+$/, 'no special characters')
 		.validate(value, {
 			abortEarly: true,
 		})
