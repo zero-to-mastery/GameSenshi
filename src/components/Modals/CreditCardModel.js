@@ -13,7 +13,6 @@ import {
 } from 'reactstrap'
 import Cards from 'react-credit-cards'
 import 'react-credit-cards/lib/styles.scss'
-
 // constants
 import { USER_CARDS } from 'constantValues'
 
@@ -21,6 +20,7 @@ import { USER_CARDS } from 'constantValues'
 import { userStore, Subscribe } from 'state'
 
 import valid from 'card-validator'
+import { string } from 'yup'
 
 const cardType = cardNumber => {
 	// this is for payment icon
@@ -57,6 +57,7 @@ const AuthModal = props => {
 	const [cvc, setCvc] = useState('')
 	const [focus, setFocus] = useState('number')
 	const [checked, setChecked] = useState(false)
+	const [isBackspace, setIsBackspace] = useState(false)
 
 	const { open, toggle } = props
 
@@ -69,9 +70,6 @@ const AuthModal = props => {
 	return (
 		<Subscribe to={[userStore]}>
 			{userStore => {
-				const {
-					state: { [USER_CARDS]: creditCards },
-				} = userStore
 				return (
 					<Modal
 						style={window.innerWidth > 768 ? { maxWidth: 700 } : {}}
@@ -117,8 +115,42 @@ const AuthModal = props => {
 															onFocus={() => {
 																setFocus('number')
 															}}
+															onKeyDown={e => {
+																setIsBackspace(e.key === 'Backspace')
+															}}
 															onChange={e => {
-																setCardNumber(e.target.value)
+																let {
+																	target: {
+																		value,
+																		value: { length },
+																	},
+																} = e
+
+																let validate = false
+
+																try {
+																	validate = string()
+																		.matches(
+																			/^(?:[0-9 ]*)$/,
+																			'only number and space allowed'
+																		)
+																		.isValidSync(value)
+																} catch (e) {
+																	//
+																}
+
+																if (
+																	validate &&
+																	value.replace(/ /g, '').length < 17
+																) {
+																	if (
+																		!isBackspace &&
+																		[4, 9, 14].includes(length)
+																	) {
+																		value = value + ' '
+																	}
+																	setCardNumber(value)
+																}
 															}}
 														/>
 													</FormGroup>
@@ -136,7 +168,12 @@ const AuthModal = props => {
 																setFocus('name')
 															}}
 															onChange={e => {
-																setCardHolderName(e.target.value)
+																const {
+																	target: { value },
+																} = e
+																if (value.length < 100) {
+																	setCardHolderName(e.target.value)
+																}
 															}}
 														/>
 													</FormGroup>
@@ -170,7 +207,12 @@ const AuthModal = props => {
 																setFocus('cvc')
 															}}
 															onChange={e => {
-																setCvc(e.target.value)
+																const {
+																	target: { value },
+																} = e
+																if (!isNaN(value) && value.length < 5) {
+																	setCvc(value)
+																}
 															}}
 														/>
 													</FormGroup>
@@ -188,7 +230,7 @@ const AuthModal = props => {
 																}}
 															/>
 															<span className='form-check-sign' />
-															set this card as default?
+															set as default?
 														</Label>
 													</FormGroup>
 												</Col>
