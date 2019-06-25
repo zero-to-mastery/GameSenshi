@@ -24,7 +24,14 @@ import InputField from 'components/Inputs/InputField'
 import 'react-credit-cards/lib/styles.scss'
 
 // constants
-import { USER_CARDS, MONTH_ABVS } from 'constantValues'
+import {
+	CARD_CARDS,
+	MONTH_ABVS,
+	CARD_CVC,
+	CARD_NUMBER,
+	CARD_EXPIRY_MONTH,
+	CARD_EXPIRY_YEAR,
+} from 'constantValues'
 
 // state
 import { cardStore, Subscribe } from 'state'
@@ -33,6 +40,7 @@ import { cardStore, Subscribe } from 'state'
 import valid from 'card-validator'
 import { string } from 'yup'
 import createDecorator from 'final-form-focus'
+import { cardNumberValidation } from 'utils/validation'
 
 const focusOnError = createDecorator()
 
@@ -79,7 +87,7 @@ years.unshift({ value: '', label: 'Year', isDisabled: true })
 
 const CardModal = props => {
 	const [, forceUpdate] = useState()
-	const [cardNumber, setCardNumber] = useState('')
+	//const [cardNumber, setCardNumber] = useState('')
 	const [cardHolderName, setCardHolderName] = useState('')
 	const [expiryMonth, setExpiryMonth] = useState('')
 	const [expiryYear, setExpiryYear] = useState('')
@@ -114,7 +122,10 @@ const CardModal = props => {
 					value = value.substr(0, element) + ' ' + value.substr(element)
 				}
 			})
-			setCardNumber(value)
+			return value
+		} else {
+			// return false to stop changing it
+			return false
 		}
 	}
 
@@ -127,6 +138,9 @@ const CardModal = props => {
 	return (
 		<Subscribe to={[cardStore]}>
 			{cardStore => {
+				const {
+					state: { [CARD_NUMBER]: cardNumber },
+				} = cardStore
 				return (
 					<Modal
 						style={window.innerWidth > 768 ? { maxWidth: 700 } : {}}
@@ -147,7 +161,7 @@ const CardModal = props => {
 						</div>
 						<FinalForm
 							initialValues={{
-								cardNumber: '',
+								[CARD_NUMBER]: '',
 								cvc: '',
 								expiryMonth: '',
 								expiryYear: '',
@@ -181,30 +195,20 @@ const CardModal = props => {
 														<Row>
 															<Col>
 																<FormGroup>
-																	{/* <InputField
+																	<InputField
 																		placeholder='Card Number'
-																		name='Card Number'
-																		type='tel'
+																		name={CARD_NUMBER}
+																		type='text'
 																		hideSuccess
+																		container={cardStore}
 																		onChange={onChangeNumber}
 																		onFocus={() => {
 																			setFocus('number')
 																		}}
 																		icon='tim-icons icon-email-85'
 																		validation={value =>
-																			signInEmailValidation(value)
+																			cardNumberValidation(value)
 																		}
-																	/> */}
-
-																	<Input
-																		placeholder='Card Number'
-																		name='Card Number'
-																		type='tel'
-																		value={cardNumber}
-																		onFocus={() => {
-																			setFocus('number')
-																		}}
-																		onChange={onChangeNumber}
 																	/>
 																</FormGroup>
 															</Col>
@@ -332,11 +336,11 @@ const CardModal = props => {
 											onClick={() => {
 												cardStore.setState(state => {
 													if (checked) {
-														state[USER_CARDS].forEach(creditCard => {
+														state[CARD_CARDS].forEach(creditCard => {
 															creditCard.isDefault = false
 														})
 													}
-													state[USER_CARDS].push({
+													state[CARD_CARDS].push({
 														last4Digits: cardNumber.slice(-4),
 														expiryYear,
 														expiryMonth,
