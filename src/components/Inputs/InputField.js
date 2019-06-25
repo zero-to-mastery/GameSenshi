@@ -27,6 +27,8 @@ const InputField = props => {
 		icon,
 		type,
 		onChange,
+		onFocus,
+		onBlur,
 		component,
 		validation,
 		serverValidation,
@@ -36,9 +38,11 @@ const InputField = props => {
 		...restProps
 	} = props
 
-	const willParentUnmount = willUnmount || { value: false }
-	const popMessages = popoverMessages || []
-	const componentType = component || 'text'
+	const willUnmount2 = willUnmount || { value: false }
+	const popoverMessages2 = popoverMessages || []
+	const component2 = component || 'text'
+	const onFocus2 = onFocus || (() => {})
+	const onBlur2 = onBlur || (() => {})
 
 	const ref = useRef(null)
 
@@ -76,12 +80,12 @@ const InputField = props => {
 	const generateMessageListWithState = (validationResult, resolve) => {
 		const messageList = MessageList(
 			validationResult,
-			popMessages,
+			popoverMessages2,
 			popoverItemFailed
 		)
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
-		!willParentUnmount.value && setMessageList(messageList)
+		!willUnmount2.value && setMessageList(messageList)
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
 			container.setState(state => {
@@ -157,7 +161,7 @@ const InputField = props => {
 				} = meta
 				return (
 					<>
-						{componentType === 'text' && (
+						{component2 === 'text' && (
 							<InputGroup
 								id={name}
 								className={classnames({
@@ -215,7 +219,7 @@ const InputField = props => {
 											input.onChange(e)
 										} else {
 											const value = onChange(e)
-											if (value) {
+											if (value !== false) {
 												container.state[name] = value
 												input.onChange(e)
 											}
@@ -223,16 +227,18 @@ const InputField = props => {
 									}}
 									onFocus={e => {
 										state.focused = true
+										onFocus2(e)
 										input.onFocus(e)
 									}}
 									onBlur={e => {
 										state.focused = false
+										onBlur2(e)
 										input.onBlur(e)
 									}}
 								/>
 							</InputGroup>
 						)}
-						{componentType === 'checkbox' && (
+						{component2 === 'checkbox' && (
 							<FormGroup check className='text-left '>
 								<Label check>
 									<Input
@@ -268,8 +274,8 @@ const InputField = props => {
 								</Label>
 							</FormGroup>
 						)}
-						{componentType === 'select'}
-						{popMessages.length > 0 && (
+						{component2 === 'select'}
+						{popoverMessages2.length > 0 && (
 							<Popover
 								placement='top-end'
 								isOpen={active}
@@ -294,7 +300,7 @@ const InputField = props => {
 								</PopoverHeader>
 								<PopoverBody className='pl-0 pb-0'>
 									<ul>
-										{popMessages.map((errorMessage, i) => {
+										{popoverMessages2.map((errorMessage, i) => {
 											return (
 												<li
 													className={
