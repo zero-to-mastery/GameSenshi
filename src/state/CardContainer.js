@@ -1,8 +1,9 @@
 import { Container } from 'unstated'
 
 import {
-	CARD_CARDS,
+	CARD_CVC,
 	CARD_TYPE,
+	CARD_CARDS,
 	CARD_NUMBER,
 	CARD_IS_DEFAULT,
 	CARD_EXPIRY_MONTH,
@@ -30,6 +31,14 @@ const defaultValues = {
 			[CARD_IS_DEFAULT]: false,
 		},
 	],
+	// for card modal
+	[CARD_CVC]: '',
+	[CARD_NUMBER]: '',
+	[CARD_LAST_4_DIGITS]: '',
+	[CARD_EXPIRY_YEAR]: '',
+	[CARD_EXPIRY_MONTH]: '',
+	[CARD_TYPE]: '',
+	[CARD_IS_DEFAULT]: false,
 }
 
 class CardContainer extends Container {
