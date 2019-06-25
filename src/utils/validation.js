@@ -41,6 +41,7 @@ const signUpUsernameValidation = value =>
 	string()
 		.lowercase()
 		.required('this field is required!')
+		.matches(/^[a-z].*/, 'must start with alphabet')
 		.notOneOf(forbiddenName, `${value} is not allowed`)
 		.max(15, 'maximum 15 characters')
 		.matches(/^[a-z0-9]+$/, 'no special characters')
