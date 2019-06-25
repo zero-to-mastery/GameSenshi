@@ -15,7 +15,7 @@ import Cards from 'react-credit-cards'
 import Select from 'react-select'
 import 'react-credit-cards/lib/styles.scss'
 // constants
-import { USER_CARDS, MONTH_NAMES } from 'constantValues'
+import { USER_CARDS, MONTH_ABVS } from 'constantValues'
 
 // state
 import { userStore, Subscribe } from 'state'
@@ -49,11 +49,11 @@ const cardType = cardNumber => {
 	}
 }
 
-const monthNames = [...MONTH_NAMES].map((monthName, i) => ({
+const monthAbvs = [...MONTH_ABVS].map((monthName, i) => ({
 	value: i.toString().length === 1 ? '0' + i : i.toString(),
 	label: monthName,
 }))
-monthNames[0] = { value: '', label: 'Month', isDisabled: true }
+monthAbvs[0] = { value: '', label: 'Month', isDisabled: true }
 
 const year = new Date().getFullYear()
 
@@ -201,14 +201,14 @@ const CardModal = props => {
 															}}
 															value={{
 																value: expiryMonth,
-																label: monthNames.find(
+																label: monthAbvs.find(
 																	monthName => monthName.value === expiryMonth
 																).label,
 															}}
 															onChange={expiryMonth =>
 																setExpiryMonth(expiryMonth.value)
 															}
-															options={monthNames}
+															options={monthAbvs}
 														/>
 													</FormGroup>
 												</Col>

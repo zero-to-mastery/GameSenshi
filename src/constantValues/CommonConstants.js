@@ -30,7 +30,21 @@ const MONTH_NAMES = [
 	'November',
 	'December',
 ]
-
+const MONTH_ABVS = [
+	'',
+	'Jan',
+	'Feb',
+	'Mar',
+	'Apr',
+	'May',
+	'Jun',
+	'Jul',
+	'Aug',
+	'Sep',
+	'Oct',
+	'Nov',
+	'Dec',
+]
 export {
 	IS,
 	ON,
@@ -48,5 +62,6 @@ export {
 	MESSAGE,
 	CALLBACK,
 	PROVIDER,
+	MONTH_ABVS,
 	MONTH_NAMES,
 }
