@@ -13,7 +13,7 @@ import {
 // reactstrap components
 import { Button, Label, FormGroup, Input, Table, TabPane } from 'reactstrap'
 
-import CreditCardModel from 'components/Modals/CreditCardModel'
+import CardModal from 'components/Modals/CardModal'
 
 const BillingTabPane = () => {
 	const [openCard, setOpenCard] = useState(false)
@@ -26,7 +26,7 @@ const BillingTabPane = () => {
 				} = cardStore
 				return (
 					<TabPane tabId='profile2'>
-						<CreditCardModel
+						<CardModal
 							open={openCard}
 							toggle={() => {
 								setOpenCard(openCard => !openCard)
