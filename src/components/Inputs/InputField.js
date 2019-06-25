@@ -152,7 +152,7 @@ const InputField = props => {
 					submitting,
 					submitSucceeded,
 				} = meta
-
+				const { name, value, type, onFocus, onBlur, onChange } = input
 				return (
 					<>
 						{type !== 'checkbox' && (
@@ -196,7 +196,9 @@ const InputField = props => {
 								<Input
 									{...restProps}
 									id={name}
-									{...input} //name, type, onBlur, onChange, onFocus, value, overwrite it by creating prop after this prop
+									name={name}
+									value={value}
+									type={type}
 									onChange={e => {
 										// why mutate state directly?
 										// because we don't want to re-render it until it is validated
@@ -207,15 +209,15 @@ const InputField = props => {
 										// basically it is how you would use a plain variable
 										state.delay = 1000
 										container.state[name] = e.target.value
-										input.onChange(e)
+										onChange(e)
 									}}
 									onFocus={e => {
 										state.focused = true
-										input.onFocus(e)
+										onFocus(e)
 									}}
 									onBlur={e => {
 										state.focused = false
-										input.onBlur(e)
+										onBlur(e)
 									}}
 								/>
 							</InputGroup>
@@ -225,15 +227,18 @@ const InputField = props => {
 								<Label check>
 									<Input
 										{...restProps}
-										{...input}
+										id={name}
+										name={name}
+										value={value}
+										type={type}
 										onChange={e => {
 											container.state[name] = e.target.value
 											// ! bug, details https://github.com/final-form/react-final-form/issues/134
 											state.focused = true
-											input.onFocus(e)
-											input.onChange(e)
+											onFocus(e)
+											onChange(e)
 											state.focused = false
-											input.onBlur(e)
+											onBlur(e)
 										}}
 										// this event cannot be triggered
 										/*onFocus={e => {
