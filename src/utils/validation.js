@@ -66,6 +66,11 @@ const checkBoxValidation = value =>
 		.oneOf([true], 'please check this box!')
 		.validate(value)
 
+const cardNumberValidation = value =>
+	string()
+		.required('this field is required!')
+		.validate(value)
+
 export {
 	signUpEmailValidation,
 	signUpPasswordValidation,
@@ -76,4 +81,5 @@ export {
 	emailPopoverMessages,
 	usernamePopoverMessages,
 	passwordPopoverMessages,
+	cardNumberValidation,
 }
