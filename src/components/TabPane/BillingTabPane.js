@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
 //state
-import { Subscribe, userStore } from 'state'
+import { Subscribe, cardStore } from 'state'
 // constants
-import { USER_CARDS } from 'constantValues'
+import {
+	CARD_CARDS,
+	CARD_TYPE,
+	CARD_IS_DEFAULT,
+	CARD_EXPIRY_MONTH,
+	CARD_EXPIRY_YEAR,
+	CARD_LAST_4_DIGITS,
+} from 'constantValues'
 // reactstrap components
 import { Button, Label, FormGroup, Input, Table, TabPane } from 'reactstrap'
 
@@ -12,11 +19,11 @@ const BillingTabPane = () => {
 	const [openCard, setOpenCard] = useState(false)
 
 	return (
-		<Subscribe to={[userStore]}>
-			{userStore => {
+		<Subscribe to={[cardStore]}>
+			{cardStore => {
 				const {
-					state: { [USER_CARDS]: creditCards },
-				} = userStore
+					state: { [CARD_CARDS]: cards },
+				} = cardStore
 				return (
 					<TabPane tabId='profile2'>
 						<CreditCardModel
@@ -40,45 +47,45 @@ const BillingTabPane = () => {
 								</tr>
 							</thead>
 							<tbody>
-								{creditCards.map((creditCard, i) => {
+								{cards.map((card, i) => {
+									// TODO change this to cardIcon and create conversion method in cardStore
+									const cardType = card[CARD_TYPE] // webpack cant read property accessor
 									return (
 										<tr key={i}>
 											<th scope='row'>
 												<img
 													alt='...'
 													className='avatar'
-													src={require(`payment-icons/min/flat/${
-														creditCard.cardType
-													}.svg`)}
+													src={require(`payment-icons/min/flat/${cardType}.svg`)}
 												/>
 											</th>
 											<td>
 												<span className='d-block'>
-													•••• •••• •••• {creditCard.last4Digits}
+													•••• •••• •••• {card[CARD_LAST_4_DIGITS]}
 												</span>
 												<small className='text-muted'>
 													Exp:
-													{` ${
-														creditCard.expiryMonth
-													}/${creditCard.expiryYear.slice(-2)}`}
+													{` ${card[CARD_EXPIRY_MONTH]}/${card[
+														CARD_EXPIRY_YEAR
+													].slice(-2)}`}
 												</small>
 											</td>
 											<td className='text-center'>
 												<FormGroup check className='form-check-radio'>
 													<Label check>
 														<Input
-															defaultChecked={creditCard.isDefault}
+															defaultChecked={card[CARD_IS_DEFAULT]}
 															defaultValue={i}
 															id='Radios'
 															name='payment'
 															type='radio'
 															onClick={() => {
-																userStore.setState(state => {
-																	state[USER_CARDS].forEach(creditCard => {
-																		creditCard.isDefault = false
+																cardStore.setState(state => {
+																	state[CARD_CARDS].forEach(card => {
+																		card[CARD_IS_DEFAULT] = false
 																	})
 
-																	state[USER_CARDS][i].isDefault = true
+																	state[CARD_CARDS][i][CARD_IS_DEFAULT] = true
 																	return state
 																})
 															}}
@@ -94,8 +101,8 @@ const BillingTabPane = () => {
 													size='sm'
 													type='button'
 													onClick={() => {
-														userStore.setState(state => {
-															state[USER_CARDS].splice(i, 1)
+														cardStore.setState(state => {
+															state[CARD_CARDS].splice(i, 1)
 															return state
 														})
 													}}>

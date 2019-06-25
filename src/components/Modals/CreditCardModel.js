@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+
+// reactstrap
 import {
 	Button,
 	Modal,
@@ -11,18 +13,25 @@ import {
 	Input,
 	Label,
 } from 'reactstrap'
+
+// core components
+import { Form as FinalForm } from 'react-final-form'
 import Cards from 'react-credit-cards'
 import Select from 'react-select'
+import InputField from 'components/Inputs/InputField'
+
+// styles
 import 'react-credit-cards/lib/styles.scss'
+
 // constants
 import { USER_CARDS, MONTH_ABVS } from 'constantValues'
 
 // state
-import { userStore, Subscribe } from 'state'
+import { cardStore, Subscribe } from 'state'
 
+// utils
 import valid from 'card-validator'
 import { string } from 'yup'
-import { Form as FinalForm } from 'react-final-form'
 import createDecorator from 'final-form-focus'
 
 const focusOnError = createDecorator()
@@ -68,7 +77,6 @@ const years = Array.from(new Array(30), (e, i) => {
 
 years.unshift({ value: '', label: 'Year', isDisabled: true })
 
-// toggle
 const CardModal = props => {
 	const [, forceUpdate] = useState()
 	const [cardNumber, setCardNumber] = useState('')
@@ -79,9 +87,9 @@ const CardModal = props => {
 	const [focus, setFocus] = useState('number')
 	const [checked, setChecked] = useState(false)
 
-	const { open, toggle } = props
-
 	const onSubmit = () => {}
+
+	const { open, toggle } = props
 
 	const onChangeNumber = e => {
 		let {
@@ -117,8 +125,8 @@ const CardModal = props => {
 		}
 	}, [])
 	return (
-		<Subscribe to={[userStore]}>
-			{userStore => {
+		<Subscribe to={[cardStore]}>
+			{cardStore => {
 				return (
 					<Modal
 						style={window.innerWidth > 768 ? { maxWidth: 700 } : {}}
@@ -173,6 +181,21 @@ const CardModal = props => {
 														<Row>
 															<Col>
 																<FormGroup>
+																	{/* <InputField
+																		placeholder='Card Number'
+																		name='Card Number'
+																		type='tel'
+																		hideSuccess
+																		onChange={onChangeNumber}
+																		onFocus={() => {
+																			setFocus('number')
+																		}}
+																		icon='tim-icons icon-email-85'
+																		validation={value =>
+																			signInEmailValidation(value)
+																		}
+																	/> */}
+
 																	<Input
 																		placeholder='Card Number'
 																		name='Card Number'
@@ -307,7 +330,7 @@ const CardModal = props => {
 										<Button
 											color='primary'
 											onClick={() => {
-												userStore.setState(state => {
+												cardStore.setState(state => {
 													if (checked) {
 														state[USER_CARDS].forEach(creditCard => {
 															creditCard.isDefault = false

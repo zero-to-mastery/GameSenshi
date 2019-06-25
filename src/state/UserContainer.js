@@ -27,6 +27,7 @@ const defaultValues = {
 	[USER_BIRTH_DATE]: new Date(2000, 0, 1),
 	[USER_CARDS]: [
 		{
+			cardNumber: '',
 			last4Digits: '8372',
 			expiryYear: '2022',
 			expiryMonth: '06',
@@ -34,6 +35,7 @@ const defaultValues = {
 			isDefault: true,
 		},
 		{
+			cardNumber: '',
 			last4Digits: '1225',
 			expiryYear: '2021',
 			expiryMonth: '05',
