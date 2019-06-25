@@ -4,11 +4,10 @@ import { Row, Col, Alert } from 'reactstrap'
 import { STATUS, MESSAGE } from 'constantValues'
 
 const MessageList = (
-	props,
+	validationResult,
 	duplicatedErrorMessages = [],
 	popoverItemFailed = { items: {} }
 ) => {
-	const { validationResult, type } = props
 	// if validationResult is undefined, it passed validation
 	// if validationResult is {status:true/false, message:string/array of string} and if the status is true, it passed validation
 	// if validationResult is string or array of string, it failed validation
@@ -44,12 +43,7 @@ const MessageList = (
 					fade={false} //https://github.com/reactstrap/reactstrap/pull/1078
 				>
 					<Row>
-						{type === 'checkbox' && (
-							<Col
-								className={'col-1'} // indent for checkbox
-							/>
-						)}
-						<Col className='col-1'>
+						<Col xs='1'>
 							<i
 								className={`text-success tim-icons ${
 									validationResult[STATUS]
@@ -58,7 +52,7 @@ const MessageList = (
 								}`}
 							/>
 						</Col>
-						<Col className={type === 'checkbox' ? 'col-10' : 'col-11'}>
+						<Col xs='auto'>
 							<small className='text-muted'>{filteredMessage}</small>
 						</Col>
 					</Row>
