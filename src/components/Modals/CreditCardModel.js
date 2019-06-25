@@ -266,6 +266,7 @@ const CardModal = props => {
 																onClick={() => {
 																	setChecked(checked => !checked)
 																}}
+																onChange={() => {}}
 															/>
 															<span className='form-check-sign' />
 															set as default?
