@@ -72,7 +72,7 @@ const InputField = props => {
 
 	const generateMessageListWithState = (validationResult, resolve) => {
 		const messageList = MessageList(
-			{ validationResult, type },
+			validationResult,
 			popMessages,
 			popoverItemFailed
 		)
