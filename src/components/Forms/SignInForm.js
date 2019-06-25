@@ -169,6 +169,7 @@ class SignInForm extends React.Component {
 														/>
 													</>
 												)}
+												<div className='w-100 mb-3' />
 												<InputField
 													type={PASSWORD}
 													name={PASSWORD}

@@ -338,7 +338,6 @@ const InputField = props => {
 								onResize={onResize}
 							/>
 						</div>
-						<div className='w-100 mb-3' />
 					</>
 				)
 			}}

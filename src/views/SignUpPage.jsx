@@ -277,6 +277,7 @@ class RegisterPage extends React.Component {
 																				}
 																				willUnmount={willUnmount}
 																			/>
+																			<div className='w-100 mb-3' />
 																			<InputField
 																				type={EMAIL}
 																				name={EMAIL}
@@ -290,6 +291,7 @@ class RegisterPage extends React.Component {
 																				popoverMessages={emailPopoverMessages}
 																				willUnmount={willUnmount}
 																			/>
+																			<div className='w-100 mb-3' />
 																			<InputField
 																				type={PASSWORD}
 																				name={PASSWORD}
