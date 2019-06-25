@@ -26,6 +26,8 @@ const InputField = props => {
 		name,
 		icon,
 		type,
+		onChange,
+		component,
 		validation,
 		serverValidation,
 		hideSuccess,
@@ -36,6 +38,7 @@ const InputField = props => {
 
 	const willParentUnmount = willUnmount || { value: false }
 	const popMessages = popoverMessages || []
+	const componentType = component || 'text'
 
 	const ref = useRef(null)
 
@@ -118,7 +121,7 @@ const InputField = props => {
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
 						const timeOutID = setTimeout(() => {
-							validation(value)
+							validation(container.state[name] || '')
 								.then(() => {
 									if (serverValidation) {
 										showSpinner2(true)
@@ -152,10 +155,9 @@ const InputField = props => {
 					submitting,
 					submitSucceeded,
 				} = meta
-				const { name, value, type, onFocus, onBlur, onChange } = input
 				return (
 					<>
-						{type !== 'checkbox' && (
+						{componentType === 'text' && (
 							<InputGroup
 								id={name}
 								className={classnames({
@@ -195,10 +197,10 @@ const InputField = props => {
 								</InputGroupAddon>
 								<Input
 									{...restProps}
-									id={name}
-									name={name}
-									value={value}
-									type={type}
+									id={input.name}
+									name={input.name}
+									value={container.state[name] || input.value} // the input.value has no purpose other than suppress uncontrollable to controllable warning
+									type={input.type}
 									onChange={e => {
 										// why mutate state directly?
 										// because we don't want to re-render it until it is validated
@@ -208,37 +210,45 @@ const InputField = props => {
 										// so the role of state here is just to pass value to Field's validate prop
 										// basically it is how you would use a plain variable
 										state.delay = 1000
-										container.state[name] = e.target.value
-										onChange(e)
+										if (onChange === undefined) {
+											container.state[name] = e.target.value
+											input.onChange(e)
+										} else {
+											const value = onChange(e)
+											if (value) {
+												container.state[name] = value
+												input.onChange(e)
+											}
+										}
 									}}
 									onFocus={e => {
 										state.focused = true
-										onFocus(e)
+										input.onFocus(e)
 									}}
 									onBlur={e => {
 										state.focused = false
-										onBlur(e)
+										input.onBlur(e)
 									}}
 								/>
 							</InputGroup>
 						)}
-						{type === 'checkbox' && (
+						{componentType === 'checkbox' && (
 							<FormGroup check className='text-left '>
 								<Label check>
 									<Input
 										{...restProps}
-										id={name}
-										name={name}
-										value={value}
-										type={type}
+										id={input.name}
+										name={input.name}
+										value={input.value}
+										type={input.type}
 										onChange={e => {
 											container.state[name] = e.target.value
 											// ! bug, details https://github.com/final-form/react-final-form/issues/134
 											state.focused = true
-											onFocus(e)
-											onChange(e)
+											input.onFocus(e)
+											input.onChange(e)
 											state.focused = false
-											onBlur(e)
+											input.onBlur(e)
 										}}
 										// this event cannot be triggered
 										/*onFocus={e => {
@@ -258,6 +268,7 @@ const InputField = props => {
 								</Label>
 							</FormGroup>
 						)}
+						{componentType === 'select'}
 						{popMessages.length > 0 && (
 							<Popover
 								placement='top-end'
