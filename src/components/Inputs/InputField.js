@@ -17,6 +17,8 @@ import {
 	Col,
 } from 'reactstrap'
 
+import Select from 'react-select'
+
 import ReactResizeDetector from 'react-resize-detector'
 import MessageList from 'components/Inputs/MessageList'
 import { EXTRA_HEIGHT, IS_VALID, SUBMIT_ERRORS, STATUS } from 'constantValues'
@@ -284,7 +286,38 @@ const InputField = props => {
 								</Label>
 							</FormGroup>
 						)}
-						{component2 === 'select'}
+						{component2 === 'select' && (
+							<Select
+								{...restProps}
+								id={input.name}
+								name={input.name}
+								value={container.state[name] || input.value}
+								type={input.type}
+								onChange={e => {
+									state.delay = 1000
+									if (onChange === undefined || onChange(e) === undefined) {
+										container.state[name] = e
+										input.onChange(e)
+									} else {
+										const value = onChange(e)
+										if (value !== false) {
+											container.state[name] = value
+											input.onChange(e)
+										}
+									}
+								}}
+								onFocus={e => {
+									state.focused = true
+									onFocus2(e)
+									input.onFocus(e)
+								}}
+								onBlur={e => {
+									state.focused = false
+									onBlur2(e)
+									input.onBlur(e)
+								}}
+							/>
+						)}
 						{popoverMessages2.length > 0 && (
 							<Popover
 								placement='top-end'
