@@ -12,7 +12,7 @@ const emailPopoverMessages = []
 
 const signUpEmailValidation = value =>
 	string()
-		.required('this field is required!')
+		.required('required field!')
 		.email('bad format')
 		.validate(value, {
 			abortEarly: true,
@@ -27,7 +27,7 @@ const passwordPopoverMessages = [
 
 const signUpPasswordValidation = value =>
 	string()
-		.required('this field is required!')
+		.required('required field!')
 		.min(8, passwordPopoverMessages[0])
 		.matches(/^(?=.*[0-9]).*$/, passwordPopoverMessages[1])
 		.matches(/^(?=.*[a-z]).*$/, passwordPopoverMessages[2])
@@ -40,7 +40,7 @@ const usernamePopoverMessages = []
 const signUpUsernameValidation = value =>
 	string()
 		.lowercase()
-		.required('this field is required!')
+		.required('required field!')
 		.matches(/^[a-z].*/, 'must start with alphabet')
 		.notOneOf(forbiddenName, `${value} is not allowed`)
 		.max(15, 'maximum 15 characters')
@@ -51,19 +51,39 @@ const signUpUsernameValidation = value =>
 
 const signInEmailValidation = value =>
 	string()
-		.required('this field is required!')
+		.required('required field!')
 		.email('bad email format')
 		.validate(value)
 
 const signInPasswordValidation = value =>
 	string()
-		.required('this field is required!')
+		.required('required field!')
 		.validate(value)
 
 // currently not in used
 const checkBoxValidation = value =>
 	boolean()
 		.oneOf([true], 'please check this box!')
+		.validate(value)
+
+const cardNumberValidation = value =>
+	string()
+		.required('required field!')
+		.max(16, 'maximum 16 characters')
+		.matches(/^(?=.*[0-9]).*$/, 'only number is allowed')
+		.validate(value)
+
+const cardNameValidation = value =>
+	string()
+		.required('required field!')
+		.max(50, 'maximum 50 characters')
+		.validate(value)
+
+const cardCvcValidation = value =>
+	string()
+		.required('required field!')
+		.max(4, 'maximum 4 characters')
+		.matches(/^(?=.*[0-9]).*$/, 'only number is allowed')
 		.validate(value)
 
 export {
@@ -76,4 +96,7 @@ export {
 	emailPopoverMessages,
 	usernamePopoverMessages,
 	passwordPopoverMessages,
+	cardNumberValidation,
+	cardNameValidation,
+	cardCvcValidation,
 }
