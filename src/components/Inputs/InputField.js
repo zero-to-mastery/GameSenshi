@@ -177,7 +177,7 @@ const InputField = props => {
 										container.state[name + IS_VALID] &&
 										((touched && !active) || (active && modified)),
 									'input-group-focus': active,
-									'mb-1': true,
+									'mb-0': true,
 								})}>
 								<InputGroupAddon addonType='prepend'>
 									<InputGroupText>
@@ -214,7 +214,7 @@ const InputField = props => {
 										// so the role of state here is just to pass value to Field's validate prop
 										// basically it is how you would use a plain variable
 										state.delay = 1000
-										if (onChange === undefined) {
+										if (onChange === undefined || onChange(e) === undefined) {
 											container.state[name] = e.target.value
 											input.onChange(e)
 										} else {
@@ -248,11 +248,21 @@ const InputField = props => {
 										value={input.value}
 										type={input.type}
 										onChange={e => {
-											container.state[name] = e.target.value
+											if (onChange === undefined || onChange(e) === undefined) {
+												container.state[name] = e.target.value
+												input.onChange(e)
+											} else {
+												const value = onChange(e)
+												if (value !== false) {
+													container.state[name] = value
+													input.onChange(e)
+												}
+											}
 											// ! bug, details https://github.com/final-form/react-final-form/issues/134
 											state.focused = true
 											input.onFocus(e)
-											input.onChange(e)
+											onFocus2(e)
+											onBlur2(e)
 											state.focused = false
 											input.onBlur(e)
 										}}
