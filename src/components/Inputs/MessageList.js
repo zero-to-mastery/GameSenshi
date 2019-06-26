@@ -32,7 +32,7 @@ const MessageList = (
 		filteredMessages.map(filteredMessage => {
 			return (
 				<Alert
-					className={'mb-1 pb-0 pt-0'}
+					className={'mb-0 pb-0 pt-0'}
 					color='danger'
 					key={filteredMessage}
 					style={{
