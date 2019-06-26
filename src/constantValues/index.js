@@ -15,7 +15,7 @@ import {
 	TITLE,
 	STATUS,
 	MESSAGE,
-	MONTH_ABVS,
+	MONTH_ABVS_SELECT,
 	MONTH_NAMES,
 } from 'constantValues/CommonConstants'
 
@@ -124,7 +124,7 @@ export {
 	TITLE,
 	STATUS,
 	MESSAGE,
-	MONTH_ABVS,
+	MONTH_ABVS_SELECT,
 	MONTH_NAMES,
 	ALERT_BODY,
 	ALERT_COLOR,
