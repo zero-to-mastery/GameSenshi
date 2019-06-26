@@ -25,7 +25,7 @@ import 'react-credit-cards/lib/styles.scss'
 
 // constants
 import {
-	MONTH_ABVS,
+	MONTH_ABVS_SELECT,
 	CARD_CVC,
 	CARD_CARDS,
 	CARD_NUMBER,
@@ -41,7 +41,12 @@ import { cardStore, Subscribe } from 'state'
 import valid from 'card-validator'
 import { string } from 'yup'
 import createDecorator from 'final-form-focus'
-import { cardNumberValidation, cardCvcValidation } from 'utils/validation'
+import {
+	cardNumberValidation,
+	cardCvcValidation,
+	cardExpiryMonthValidation,
+	cardNameValidation,
+} from 'utils/validation'
 
 const focusOnError = createDecorator()
 
@@ -71,12 +76,6 @@ const cardType = cardNumber => {
 	}
 }
 
-const monthAbvs = [...MONTH_ABVS].map((monthName, i) => ({
-	value: i.toString().length === 1 ? '0' + i : i.toString(),
-	label: monthName,
-}))
-monthAbvs[0] = { value: '', label: 'Month', isDisabled: true }
-
 const year = new Date().getFullYear()
 
 const years = Array.from(new Array(30), (e, i) => {
@@ -88,7 +87,6 @@ years.unshift({ value: '', label: 'Year', isDisabled: true })
 
 const CardModal = props => {
 	const [, forceUpdate] = useState()
-	const [expiryMonth, setExpiryMonth] = useState('')
 	const [expiryYear, setExpiryYear] = useState('')
 	const [focus, setFocus] = useState('number')
 	const [checked, setChecked] = useState(false)
@@ -141,6 +139,10 @@ const CardModal = props => {
 						[CARD_NUMBER]: cardNumber,
 						[CARD_HOLDER_NAME]: cardHolderName,
 						[CARD_CVC]: cvc,
+						[CARD_EXPIRY_MONTH]: {
+							value: expiryMonth,
+							label: expiryMonthLabel,
+						},
 					},
 				} = cardStore
 				return (
@@ -164,8 +166,8 @@ const CardModal = props => {
 						<FinalForm
 							initialValues={{
 								[CARD_NUMBER]: '',
-								cvc: '',
-								expiryMonth: '',
+								[CARD_CVC]: '',
+								[CARD_EXPIRY_MONTH]: '',
 								expiryYear: '',
 								cardHolderName: '',
 							}}
@@ -211,9 +213,7 @@ const CardModal = props => {
 																			setFocus('number')
 																		}}
 																		icon='tim-icons icon-credit-card'
-																		validation={value =>
-																			cardNumberValidation(value)
-																		}
+																		validation={cardNumberValidation}
 																	/>
 																</FormGroup>
 															</Col>
@@ -240,9 +240,7 @@ const CardModal = props => {
 																			setFocus('name')
 																		}}
 																		icon='tim-icons icon-single-02'
-																		validation={value =>
-																			cardNumberValidation(value)
-																		}
+																		validation={cardNameValidation}
 																	/>
 																</FormGroup>
 															</Col>
@@ -250,24 +248,24 @@ const CardModal = props => {
 														<Row>
 															<Col xs='6' className='pr-0'>
 																<FormGroup>
-																	<Select
+																	<InputField
 																		className='react-select react-select-info'
 																		classNamePrefix='react-select'
 																		placeholder='Expiry Month'
+																		isSearchable={false}
+																		name={CARD_EXPIRY_MONTH}
+																		component='select'
+																		validation={value =>
+																			cardExpiryMonthValidation(
+																				value,
+																				MONTH_ABVS_SELECT[0]
+																			)
+																		}
 																		onFocus={() => {
 																			setFocus('expiry')
 																		}}
-																		value={{
-																			value: expiryMonth,
-																			label: monthAbvs.find(
-																				monthName =>
-																					monthName.value === expiryMonth
-																			).label,
-																		}}
-																		onChange={expiryMonth =>
-																			setExpiryMonth(expiryMonth.value)
-																		}
-																		options={monthAbvs}
+																		options={MONTH_ABVS_SELECT}
+																		container={cardStore}
 																	/>
 																</FormGroup>
 															</Col>
