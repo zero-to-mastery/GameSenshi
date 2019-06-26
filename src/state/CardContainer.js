@@ -6,8 +6,9 @@ import {
 	CARD_CARDS,
 	CARD_NUMBER,
 	CARD_IS_DEFAULT,
-	CARD_EXPIRY_MONTH,
 	CARD_EXPIRY_YEAR,
+	CARD_HOLDER_NAME,
+	CARD_EXPIRY_MONTH,
 	CARD_LAST_4_DIGITS,
 } from 'constantValues'
 
@@ -33,12 +34,13 @@ const defaultValues = {
 	],
 	// for card modal
 	[CARD_CVC]: '',
+	[CARD_TYPE]: '',
 	[CARD_NUMBER]: '',
-	[CARD_LAST_4_DIGITS]: '',
+	[CARD_IS_DEFAULT]: false,
+	[CARD_HOLDER_NAME]: '',
 	[CARD_EXPIRY_YEAR]: '',
 	[CARD_EXPIRY_MONTH]: '',
-	[CARD_TYPE]: '',
-	[CARD_IS_DEFAULT]: false,
+	[CARD_LAST_4_DIGITS]: '',
 }
 
 class CardContainer extends Container {
