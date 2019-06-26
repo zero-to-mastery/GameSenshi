@@ -1,23 +1,13 @@
 import React from 'react'
-// nodejs library that concatenates classes
-import classnames from 'classnames'
 // reactstrap components
 import {
 	Button,
 	Card,
 	CardHeader,
 	CardBody,
-	Label,
 	FormGroup,
 	Form,
 	Input,
-	FormText,
-	NavItem,
-	NavLink,
-	Nav,
-	Table,
-	TabContent,
-	TabPane,
 	Container,
 	Row,
 	Col,
@@ -116,51 +106,6 @@ class ProfilePage extends React.Component {
 						/>
 						<Container className='align-items-center'>
 							<Row>
-								<Col lg='6' md='6'>
-									<h1 className='profile-title text-left'>Mike Scheinder</h1>
-									<h5 className='text-on-back'>01</h5>
-									<p className='profile-description'>
-										Offices parties lasting outward nothing age few resolve.
-										Impression to discretion understood to we interested he
-										excellence. Him remarkably use projection collecting. Going
-										about eat forty world has round miles.
-									</p>
-									<div className='btn-wrapper profile pt-3'>
-										<Button
-											className='btn-icon btn-round'
-											color='twitter'
-											href='https://twitter.com/creativetim'
-											id='tooltip337991226'
-											target='_blank'>
-											<i className='fab fa-twitter' />
-										</Button>
-										<UncontrolledTooltip delay={0} target='tooltip337991226'>
-											Follow us
-										</UncontrolledTooltip>
-										<Button
-											className='btn-icon btn-round'
-											color='facebook'
-											href='https://www.facebook.com/creativetim'
-											id='tooltip304767046'
-											target='_blank'>
-											<i className='fab fa-facebook-square' />
-										</Button>
-										<UncontrolledTooltip delay={0} target='tooltip304767046'>
-											Like us
-										</UncontrolledTooltip>
-										<Button
-											className='btn-icon btn-round'
-											color='dribbble'
-											href='https://dribbble.com/creativetim'
-											id='tooltip615365713'
-											target='_blank'>
-											<i className='fab fa-dribbble' />
-										</Button>
-										<UncontrolledTooltip delay={0} target='tooltip615365713'>
-											Follow us
-										</UncontrolledTooltip>
-									</div>
-								</Col>
 								<Col className='ml-auto mr-auto' lg='4' md='6'>
 									<Card className='card-coin card-plain'>
 										<CardHeader>
@@ -169,126 +114,69 @@ class ProfilePage extends React.Component {
 												className='img-center img-fluid rounded-circle'
 												src={require('assets/img/mike.jpg')}
 											/>
-											<h4 className='title'>Transactions</h4>
+											<h3 className='title'>Mike Scheinder</h3>
+											<p className='text-muted text-center'>@mighty_mike</p>
+											{/* Social icons */}
+											<Row className='btn-wrapper profile justify-content-center pt-3'>
+												<Button
+													className='btn-icon btn-round'
+													color='twitch'
+													href='https://twitch.tv/#my_channel'
+													id='tooltip_twitch_icon'
+													target='_blank'>
+													<i className='fab fa-twitch' />
+												</Button>
+												<UncontrolledTooltip
+													delay={0}
+													target='tooltip_twitch_icon'>
+													Subscribe to us
+												</UncontrolledTooltip>
+												<Button
+													className='btn-icon btn-round'
+													color='youtube'
+													href='https://youtube.com/channel/#my_channel'
+													id='tooltip_youtube_icon'
+													target='_blank'>
+													<i className='fab fa-youtube' />
+												</Button>
+												<UncontrolledTooltip
+													delay={0}
+													target='tooltip_youtube_icon'>
+													Subscribe to us
+												</UncontrolledTooltip>
+											</Row>
 										</CardHeader>
 										<CardBody>
-											<Nav
-												className='nav-tabs-primary justify-content-center'
-												tabs>
-												<NavItem>
-													<NavLink
-														className={classnames({
-															active: this.state.tabs === 1,
-														})}
-														onClick={e => this.toggleTabs(e, 'tabs', 1)}
-														href='#pablo'>
-														Wallet
-													</NavLink>
-												</NavItem>
-												<NavItem>
-													<NavLink
-														className={classnames({
-															active: this.state.tabs === 2,
-														})}
-														onClick={e => this.toggleTabs(e, 'tabs', 2)}
-														href='#pablo'>
-														Send
-													</NavLink>
-												</NavItem>
-												<NavItem>
-													<NavLink
-														className={classnames({
-															active: this.state.tabs === 3,
-														})}
-														onClick={e => this.toggleTabs(e, 'tabs', 3)}
-														href='#pablo'>
-														News
-													</NavLink>
-												</NavItem>
-											</Nav>
-											<TabContent
-												className='tab-subcategories'
-												activeTab={'tab' + this.state.tabs}>
-												<TabPane tabId='tab1'>
-													<Table className='tablesorter' responsive>
-														<thead className='text-primary'>
-															<tr>
-																<th className='header'>COIN</th>
-																<th className='header'>AMOUNT</th>
-																<th className='header'>VALUE</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td>BTC</td>
-																<td>7.342</td>
-																<td>48,870.75 USD</td>
-															</tr>
-															<tr>
-																<td>ETH</td>
-																<td>30.737</td>
-																<td>64,53.30 USD</td>
-															</tr>
-															<tr>
-																<td>XRP</td>
-																<td>19.242</td>
-																<td>18,354.96 USD</td>
-															</tr>
-														</tbody>
-													</Table>
-												</TabPane>
-												<TabPane tabId='tab2'>
-													<Row>
-														<Label sm='3'>Pay to</Label>
-														<Col sm='9'>
-															<FormGroup>
-																<Input
-																	placeholder='e.g. 1Nasd92348hU984353hfid'
-																	type='text'
-																/>
-																<FormText color='default' tag='span'>
-																	Please enter a valid address.
-																</FormText>
-															</FormGroup>
-														</Col>
-													</Row>
-													<Row>
-														<Label sm='3'>Amount</Label>
-														<Col sm='9'>
-															<FormGroup>
-																<Input placeholder='1.587' type='text' />
-															</FormGroup>
-														</Col>
-													</Row>
-													<Button
-														className='btn-simple btn-icon btn-round float-right'
-														color='primary'>
-														<i className='tim-icons icon-send' />
-													</Button>
-												</TabPane>
-												<TabPane tabId='tab3'>
-													<Table className='tablesorter' responsive>
-														<thead className='text-primary'>
-															<tr>
-																<th className='header'>Latest Crypto News</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td>The Daily: Nexo to Pay on Stable...</td>
-															</tr>
-															<tr>
-																<td>Venezuela Begins Public of Nation...</td>
-															</tr>
-															<tr>
-																<td>PR: BitCanna – Dutch Blockchain...</td>
-															</tr>
-														</tbody>
-													</Table>
-												</TabPane>
-											</TabContent>
+											{/* Biography */}
+											<p className='profile-description'>
+												A veteran in MOBA and FPS games, I can give you a
+												significant boost in ranking mode.
+											</p>
 										</CardBody>
 									</Card>
+								</Col>
+								<Col lg='6' md='6'>
+									<h1 className='text-left'>Favorite Games</h1>
+									<Row className='btn-wrapper profile justify-content-center pt-3'>
+										<Button
+											className='btn-icon btn-round'
+											href='#games/chess'
+											target='_blank'>
+											<i className='fab fa-chess' />
+										</Button>
+										<Button
+											className='btn-icon btn-round'
+											href='#games/puzzle'
+											target='_blank'>
+											<i className='fab fa-puzzle-piece' />
+										</Button>
+										<Button
+											className='btn-icon btn-round'
+											href='#games/solitaire'
+											target='_blank'>
+											<i className='fab fa-heart' />
+										</Button>
+									</Row>
 								</Col>
 							</Row>
 						</Container>
