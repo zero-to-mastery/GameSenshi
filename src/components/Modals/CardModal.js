@@ -25,12 +25,13 @@ import 'react-credit-cards/lib/styles.scss'
 
 // constants
 import {
-	CARD_CARDS,
 	MONTH_ABVS,
 	CARD_CVC,
+	CARD_CARDS,
 	CARD_NUMBER,
-	CARD_EXPIRY_MONTH,
 	CARD_EXPIRY_YEAR,
+	CARD_HOLDER_NAME,
+	CARD_EXPIRY_MONTH,
 } from 'constantValues'
 
 // state
@@ -40,7 +41,7 @@ import { cardStore, Subscribe } from 'state'
 import valid from 'card-validator'
 import { string } from 'yup'
 import createDecorator from 'final-form-focus'
-import { cardNumberValidation } from 'utils/validation'
+import { cardNumberValidation, cardCvcValidation } from 'utils/validation'
 
 const focusOnError = createDecorator()
 
@@ -87,11 +88,8 @@ years.unshift({ value: '', label: 'Year', isDisabled: true })
 
 const CardModal = props => {
 	const [, forceUpdate] = useState()
-	//const [cardNumber, setCardNumber] = useState('')
-	const [cardHolderName, setCardHolderName] = useState('')
 	const [expiryMonth, setExpiryMonth] = useState('')
 	const [expiryYear, setExpiryYear] = useState('')
-	const [cvc, setCvc] = useState('')
 	const [focus, setFocus] = useState('number')
 	const [checked, setChecked] = useState(false)
 
@@ -139,11 +137,15 @@ const CardModal = props => {
 		<Subscribe to={[cardStore]}>
 			{cardStore => {
 				const {
-					state: { [CARD_NUMBER]: cardNumber },
+					state: {
+						[CARD_NUMBER]: cardNumber,
+						[CARD_HOLDER_NAME]: cardHolderName,
+						[CARD_CVC]: cvc,
+					},
 				} = cardStore
 				return (
 					<Modal
-						style={window.innerWidth > 768 ? { maxWidth: 700 } : {}}
+						style={window.innerWidth > 768 ? { maxWidth: 800 } : {}}
 						isOpen={open}
 						toggle={toggle}
 						backdrop='static'
@@ -176,7 +178,10 @@ const CardModal = props => {
 									<ModalBody>
 										<Container>
 											<Row>
-												<Col xs='12' md='6'>
+												<Col
+													xs='12'
+													md='5'
+													className='pr-0 d-flex align-items-center'>
 													<FormGroup>
 														<Cards
 															number={cardNumber}
@@ -189,7 +194,7 @@ const CardModal = props => {
 												</Col>
 												<Col
 													xs='12'
-													md='6'
+													md='7'
 													className='d-flex align-items-center'>
 													<Container>
 														<Row>
@@ -205,7 +210,7 @@ const CardModal = props => {
 																		onFocus={() => {
 																			setFocus('number')
 																		}}
-																		icon='tim-icons icon-email-85'
+																		icon='tim-icons icon-credit-card'
 																		validation={value =>
 																			cardNumberValidation(value)
 																		}
@@ -216,22 +221,28 @@ const CardModal = props => {
 														<Row>
 															<Col>
 																<FormGroup>
-																	<Input
+																	<InputField
 																		placeholder='Card Holder Name'
-																		name='Card Holder Name'
+																		name={CARD_HOLDER_NAME}
 																		type='text'
-																		value={cardHolderName}
-																		onFocus={() => {
-																			setFocus('name')
-																		}}
+																		hideSuccess
+																		container={cardStore}
 																		onChange={e => {
 																			const {
 																				target: { value },
 																			} = e
 																			if (value.length < 100) {
-																				setCardHolderName(e.target.value)
+																				return e.target.value
 																			}
+																			return false
 																		}}
+																		onFocus={() => {
+																			setFocus('name')
+																		}}
+																		icon='tim-icons icon-single-02'
+																		validation={value =>
+																			cardNumberValidation(value)
+																		}
 																	/>
 																</FormGroup>
 															</Col>
@@ -284,28 +295,34 @@ const CardModal = props => {
 															</Col>
 														</Row>
 														<Row>
-															<Col xs='5'>
+															<Col xs='6'>
 																<FormGroup>
-																	<Input
+																	<InputField
 																		placeholder='CVC'
-																		name='CVC'
-																		type='tel'
-																		value={cvc}
-																		onFocus={() => {
-																			setFocus('cvc')
-																		}}
+																		name={CARD_CVC}
+																		type='text'
+																		hideSuccess
+																		container={cardStore}
 																		onChange={e => {
 																			const {
 																				target: { value },
 																			} = e
 																			if (!isNaN(value) && value.length < 5) {
-																				setCvc(value)
+																				return e.target.value
 																			}
+																			return false
 																		}}
+																		onFocus={() => {
+																			setFocus('cvc')
+																		}}
+																		icon='tim-icons icon-lock-circle'
+																		validation={value =>
+																			cardCvcValidation(value)
+																		}
 																	/>
 																</FormGroup>
 															</Col>
-															<Col xs='7'>
+															<Col xs='6'>
 																<FormGroup check className='text-left'>
 																	<Label check>
 																		<Input
@@ -317,7 +334,7 @@ const CardModal = props => {
 																			onChange={() => {}}
 																		/>
 																		<span className='form-check-sign' />
-																		set as default?
+																		set as default card?
 																	</Label>
 																</FormGroup>
 															</Col>
