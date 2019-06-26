@@ -183,7 +183,7 @@ const CardModal = props => {
 												<Col
 													xs='12'
 													md='5'
-													className='pr-0 d-flex align-items-center'>
+													className='d-flex align-items-center justify-content-center'>
 													<FormGroup>
 														<Cards
 															number={cardNumber}
@@ -332,7 +332,7 @@ const CardModal = props => {
 																			onChange={() => {}}
 																		/>
 																		<span className='form-check-sign' />
-																		set as default card?
+																		set as default?
 																	</Label>
 																</FormGroup>
 															</Col>
