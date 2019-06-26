@@ -1,6 +1,6 @@
 // in future this should turn into npm library so that backend can use the same code
 
-import { string, boolean } from 'yup'
+import { string, boolean, object } from 'yup'
 
 // filter
 import badWords from './badWords'
@@ -86,6 +86,14 @@ const cardCvcValidation = value =>
 		.matches(/^(?=.*[0-9]).*$/, 'only number is allowed')
 		.validate(value)
 
+const cardExpiryMonthValidation = (value, monthObj) =>
+	object()
+		.shape({
+			value: string().notOneOf([monthObj.value], 'required field!'),
+			label: string().notOneOf([monthObj.label], 'required field!'),
+		})
+		.validate(value)
+
 export {
 	signUpEmailValidation,
 	signUpPasswordValidation,
@@ -99,4 +107,5 @@ export {
 	cardNumberValidation,
 	cardNameValidation,
 	cardCvcValidation,
+	cardExpiryMonthValidation,
 }
