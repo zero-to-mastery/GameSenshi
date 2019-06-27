@@ -81,16 +81,20 @@ const cardNameValidation = value =>
 
 const cardCvcValidation = value =>
 	string()
-		.required('required field!')
+		.required('required!')
 		.max(4, 'maximum 4 characters')
 		.matches(/^(?=.*[0-9]).*$/, 'only number is allowed')
 		.validate(value)
 
-const cardExpiryMonthValidation = (value, monthObj) =>
+const cardExpiryValidation = (value, selectObj) =>
 	object()
 		.shape({
-			value: string().notOneOf([monthObj.value], 'required field!'),
-			label: string().notOneOf([monthObj.label], 'required field!'),
+			value: string()
+				.required('required!')
+				.oneOf([selectObj.value], 'invalid value!'),
+			label: string()
+				.required('required!')
+				.oneOf([selectObj.label], 'invalid value!'),
 		})
 		.validate(value)
 
@@ -107,5 +111,5 @@ export {
 	cardNumberValidation,
 	cardNameValidation,
 	cardCvcValidation,
-	cardExpiryMonthValidation,
+	cardExpiryValidation,
 }
