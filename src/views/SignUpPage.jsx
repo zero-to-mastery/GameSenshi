@@ -258,6 +258,7 @@ class RegisterPage extends React.Component {
 																		// ! whenever any of these two field components is render
 																		// ! and whenever component going to unmount (route to other page) the field components will run validation
 																		// ! these is not good as the validation process invoking steState in a promise and cause memory leak issue
+																		// ! step to reproduce: go to any page that has InputField, then redirect to website other than gamesenshi
 																		// * implement useEffect component will unmount of Input Field component is not working
 																		// * set authStore willUnmount state directly when parent component going to unmount and use it to stop setState work
 																		// * set parent willUnmount state directly when parent component going to unmount and use it to stop setState does not work
