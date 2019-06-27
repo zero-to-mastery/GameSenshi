@@ -88,6 +88,7 @@ class RegisterPage extends React.Component {
 	submitButton //submit button reference
 
 	componentDidMount() {
+		authStore.resetState()
 		document.documentElement.scrollTop = 0
 		document.scrollingElement.scrollTop = 0
 		this.refs.wrapper.scrollTop = 0
@@ -187,9 +188,6 @@ class RegisterPage extends React.Component {
 								[EMAIL_EXTRA_HEIGHT]: emailExtraHeight,
 								[PASSWORD_EXTRA_HEIGHT]: passwordExtraHeight,
 								[USERNAME_EXTRA_HEIGHT]: usernameExtraHeight,
-								[USERNAME]: username,
-								[EMAIL]: email,
-								[PASSWORD]: password,
 							} = authStore.state
 							return (
 								<div
@@ -236,9 +234,9 @@ class RegisterPage extends React.Component {
 														</CardBody>
 														<FinalForm
 															initialValues={{
-																[USERNAME]: username,
-																[EMAIL]: email,
-																[PASSWORD]: password,
+																[USERNAME]: '',
+																[EMAIL]: '',
+																[PASSWORD]: '',
 															}}
 															decorators={[focusOnError]}
 															onSubmit={values => {
