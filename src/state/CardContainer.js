@@ -11,6 +11,7 @@ import {
 	CARD_EXPIRY_MONTH,
 	CARD_LAST_4_DIGITS,
 	MONTH_ABVS_SELECT,
+	YEARS,
 } from 'constantValues'
 
 const defaultValues = {
@@ -39,8 +40,8 @@ const defaultValues = {
 	[CARD_NUMBER]: '',
 	[CARD_IS_DEFAULT]: false,
 	[CARD_HOLDER_NAME]: '',
-	[CARD_EXPIRY_YEAR]: MONTH_ABVS_SELECT[0],
-	[CARD_EXPIRY_MONTH]: { value: '', label: 'Month' },
+	[CARD_EXPIRY_YEAR]: YEARS[0],
+	[CARD_EXPIRY_MONTH]: MONTH_ABVS_SELECT[0],
 	[CARD_LAST_4_DIGITS]: '',
 }
 
