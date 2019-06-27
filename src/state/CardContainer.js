@@ -42,7 +42,6 @@ const defaultValues = {
 	[CARD_HOLDER_NAME]: '',
 	[CARD_EXPIRY_YEAR]: YEARS[0],
 	[CARD_EXPIRY_MONTH]: MONTH_ABVS_SELECT[0],
-	[CARD_LAST_4_DIGITS]: '',
 }
 
 class CardContainer extends Container {
