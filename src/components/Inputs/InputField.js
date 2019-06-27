@@ -131,10 +131,12 @@ const InputField = props => {
 									if (serverValidation) {
 										showSpinner2(true)
 										// server side validation on typing
-										serverValidation(value).then(validationResult => {
-											generateMessageListWithState(validationResult, resolve)
-											showSpinner2(false)
-										})
+										serverValidation(container.state[name] || '').then(
+											validationResult => {
+												generateMessageListWithState(validationResult, resolve)
+												showSpinner2(false)
+											}
+										)
 									} else {
 										generateMessageListWithState(undefined, resolve)
 									}
