@@ -187,6 +187,9 @@ class RegisterPage extends React.Component {
 								[EMAIL_EXTRA_HEIGHT]: emailExtraHeight,
 								[PASSWORD_EXTRA_HEIGHT]: passwordExtraHeight,
 								[USERNAME_EXTRA_HEIGHT]: usernameExtraHeight,
+								[USERNAME]: username,
+								[EMAIL]: email,
+								[PASSWORD]: password,
 							} = authStore.state
 							return (
 								<div
@@ -233,9 +236,9 @@ class RegisterPage extends React.Component {
 														</CardBody>
 														<FinalForm
 															initialValues={{
-																[USERNAME]: '',
-																[EMAIL]: '',
-																[PASSWORD]: '',
+																[USERNAME]: username,
+																[EMAIL]: email,
+																[PASSWORD]: password,
 															}}
 															decorators={[focusOnError]}
 															onSubmit={values => {
