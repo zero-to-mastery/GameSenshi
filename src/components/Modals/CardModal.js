@@ -136,7 +136,7 @@ const CardModal = props => {
 				return (
 					<Modal
 						style={window.innerWidth > 768 ? { maxWidth: 800 } : {}}
-						isOpen={true}
+						isOpen={open}
 						toggle={toggle}
 						backdrop='static'
 						modalClassName='modal-black'>
