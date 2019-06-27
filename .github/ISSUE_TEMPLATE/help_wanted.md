@@ -1,6 +1,6 @@
 ---
 name: Help wanted
-about: Extra attention is needed
+about: Looking for help
 title: "[Help]"
 labels: help wanted
 assignees: ''
