@@ -88,7 +88,7 @@ class RegisterPage extends React.Component {
 	submitButton //submit button reference
 
 	componentDidMount() {
-		authStore.resetState()
+		authStore.resetState() // ! reset state to prevent nasty error, see messageList comment for details
 		document.documentElement.scrollTop = 0
 		document.scrollingElement.scrollTop = 0
 		this.refs.wrapper.scrollTop = 0
