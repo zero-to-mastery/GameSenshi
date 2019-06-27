@@ -18,6 +18,7 @@ import {
 import { Form as FinalForm } from 'react-final-form'
 import Cards from 'react-credit-cards'
 import InputField from 'components/Inputs/InputField'
+import Loader from 'react-loader-spinner'
 
 // styles
 import 'react-credit-cards/lib/styles.scss'
@@ -32,6 +33,9 @@ import {
 	CARD_EXPIRY_YEAR,
 	CARD_HOLDER_NAME,
 	CARD_EXPIRY_MONTH,
+	CARD_IS_DEFAULT,
+	CARD_LAST_4_DIGITS,
+	CARD_TYPE,
 } from 'constantValues'
 
 // state
@@ -79,9 +83,6 @@ const cardType = cardNumber => {
 const CardModal = props => {
 	const [, forceUpdate] = useState()
 	const [focus, setFocus] = useState('number')
-	const [checked, setChecked] = useState(false)
-
-	const onSubmit = () => {}
 
 	const { open, toggle } = props
 
@@ -131,6 +132,7 @@ const CardModal = props => {
 						[CARD_CVC]: cvc,
 						[CARD_EXPIRY_MONTH]: { value: expiryMonth },
 						[CARD_EXPIRY_YEAR]: { value: expiryYear },
+						[CARD_IS_DEFAULT]: isDefault,
 					},
 				} = cardStore
 				return (
@@ -156,12 +158,30 @@ const CardModal = props => {
 								[CARD_NUMBER]: '',
 								[CARD_CVC]: '',
 								[CARD_EXPIRY_MONTH]: '',
-								expiryYear: '',
-								cardHolderName: '',
+								[CARD_EXPIRY_YEAR]: '',
+								[CARD_HOLDER_NAME]: '',
 							}}
-							decorators={[focusOnError]}
-							onSubmit={values => {
-								return onSubmit(values)
+							decorators={[focusOnError]} // TODO fix why focus on Error is not working
+							onSubmit={async () => {
+								// TODO display submit error with in modal alert
+								// TODO create third party card processor api
+								// TODO more reasonable input width for all fields
+								cardStore.setState(state => {
+									if (isDefault) {
+										state[CARD_CARDS].forEach(creditCard => {
+											creditCard.isDefault = false
+										})
+									}
+									state[CARD_CARDS].push({
+										[CARD_LAST_4_DIGITS]: cardNumber.slice(-4),
+										[CARD_EXPIRY_YEAR]: expiryYear,
+										[CARD_EXPIRY_MONTH]: expiryMonth,
+										[CARD_TYPE]: cardType(cardNumber),
+										[CARD_IS_DEFAULT]: isDefault,
+									})
+									toggle()
+									return state
+								})
 							}}>
 							{({ handleSubmit, submitting }) => (
 								<>
@@ -313,9 +333,14 @@ const CardModal = props => {
 																	<Label check>
 																		<Input
 																			type='checkbox'
-																			checked={checked}
+																			checked={isDefault}
 																			onClick={() => {
-																				setChecked(checked => !checked)
+																				cardStore.setState(state => {
+																					state[CARD_IS_DEFAULT] = !state[
+																						CARD_IS_DEFAULT
+																					]
+																					return state
+																				})
 																			}}
 																			onChange={() => {}}
 																		/>
@@ -336,25 +361,21 @@ const CardModal = props => {
 										</Button>
 										<Button
 											color='primary'
-											onClick={() => {
-												cardStore.setState(state => {
-													if (checked) {
-														state[CARD_CARDS].forEach(creditCard => {
-															creditCard.isDefault = false
-														})
-													}
-													state[CARD_CARDS].push({
-														last4Digits: cardNumber.slice(-4),
-														expiryYear,
-														expiryMonth,
-														cardType: cardType(cardNumber),
-														isDefault: checked,
-													})
-													toggle()
-													return state
-												})
-											}}>
-											Continue
+											disabled={submitting}
+											onClick={handleSubmit}>
+											{submitting ? (
+												<>
+													<Loader
+														type='Watch'
+														color='#00BFFF'
+														height='19px'
+														width='19px'
+													/>
+													&nbsp;&nbsp;Add Card
+												</>
+											) : (
+												'Get Started'
+											)}
 										</Button>
 									</ModalFooter>
 								</>
