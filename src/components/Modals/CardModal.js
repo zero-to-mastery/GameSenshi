@@ -269,7 +269,7 @@ const CardModal = props => {
 																		validation={value =>
 																			cardExpiryValidation(
 																				value,
-																				MONTH_ABVS_SELECT.shift()
+																				MONTH_ABVS_SELECT.slice(1)
 																			)
 																		}
 																		onFocus={() => {
@@ -292,7 +292,10 @@ const CardModal = props => {
 																			setFocus('expiry')
 																		}}
 																		validation={value =>
-																			cardExpiryValidation(value, YEARS.shift())
+																			cardExpiryValidation(
+																				value,
+																				YEARS.slice(1)
+																			)
 																		}
 																		options={YEARS}
 																		container={cardStore}
