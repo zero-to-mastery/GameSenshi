@@ -10,6 +10,7 @@ import SignInButton from 'components/Buttons/SignInButton'
 import SignInForm from 'components/Forms/SignInForm'
 import GeneralTabPane from 'components/TabPane/GeneralTabPane'
 import BillingTabPane from 'components/TabPane/BillingTabPane'
+import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary'
 
 export {
 	Footer,
@@ -24,4 +25,5 @@ export {
 	SignInButton,
 	GeneralTabPane,
 	BillingTabPane,
+	ErrorBoundary,
 }
