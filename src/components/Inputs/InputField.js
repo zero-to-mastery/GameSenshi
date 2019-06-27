@@ -205,7 +205,7 @@ const InputField = props => {
 									id={input.name}
 									name={input.name}
 									value={container.state[name] || input.value} // the input.value has no purpose other than suppress uncontrollable to controllable warning
-									type={input.type}
+									type={type}
 									onChange={e => {
 										// why mutate state directly?
 										// because we don't want to re-render it until it is validated
@@ -247,7 +247,7 @@ const InputField = props => {
 										id={input.name}
 										name={input.name}
 										value={input.value}
-										type={input.type}
+										type={type}
 										onChange={e => {
 											if (onChange === undefined || onChange(e) === undefined) {
 												container.state[name] = e.target.value
@@ -292,7 +292,6 @@ const InputField = props => {
 								id={input.name}
 								name={input.name}
 								value={container.state[name] || input.value}
-								type={input.type}
 								onChange={e => {
 									state.delay = 1000
 									if (onChange === undefined || onChange(e) === undefined) {
