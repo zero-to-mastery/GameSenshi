@@ -288,7 +288,7 @@ const InputField = props => {
 						)}
 						{component2 === 'select' && (
 							<Select
-								// !TODO need custom styling, icon, has-danger, has-success
+								// TODO need custom styling, icon, has-danger, has-success
 								{...restProps}
 								id={input.name}
 								name={input.name}
