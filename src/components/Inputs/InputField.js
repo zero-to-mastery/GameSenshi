@@ -108,7 +108,6 @@ const InputField = props => {
 
 	return (
 		<Field
-			type={type}
 			name={name}
 			validate={(value = '') => {
 				// run it in background for first time even if it is not focused (initial focus state is true)
