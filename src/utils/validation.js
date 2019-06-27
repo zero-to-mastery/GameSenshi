@@ -86,17 +86,15 @@ const cardCvcValidation = value =>
 		.matches(/^(?=.*[0-9]).*$/, 'only number is allowed')
 		.validate(value)
 
-const cardExpiryValidation = (value, selectObj) =>
-	object()
+const cardExpiryValidation = (value, selectObjArray) => {
+	return object()
 		.shape({
 			value: string()
 				.required('required!')
-				.oneOf([selectObj.value], 'invalid value!'),
-			label: string()
-				.required('required!')
-				.oneOf([selectObj.label], 'invalid value!'),
+				.oneOf(selectObjArray.map(obj => obj.value), 'invalid value!'),
 		})
 		.validate(value)
+}
 
 export {
 	signUpEmailValidation,
