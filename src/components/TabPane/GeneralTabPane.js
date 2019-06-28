@@ -277,12 +277,6 @@ const GeneralTabPane = props => {
 									<Button color='info' type='button'>
 										Save Changes
 									</Button>
-									<Button
-										className='btn-simple ml-1'
-										color='info'
-										type='button'>
-										Cancel
-									</Button>
 								</Col>
 							</Row>
 						</div>
