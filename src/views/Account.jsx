@@ -1,10 +1,7 @@
 import React from 'react'
 // nodejs library that concatenates classes
 import classnames from 'classnames'
-// react plugin used to create DropdownMenu for selecting items
-import Select from 'react-select'
-// react plugin used to create switch buttons
-import Switch from 'react-bootstrap-switch'
+
 //state
 import { Subscribe, userStore } from 'state'
 
@@ -30,7 +27,13 @@ import { USER_DISPLAY_NAME } from 'constantValues'
 
 // core components
 import ImageUpload from 'components/CustomUpload/ImageUpload.jsx'
-import { Footer, IndexNavbar, GeneralTabPane, BillingTabPane } from 'components'
+import {
+	Footer,
+	IndexNavbar,
+	GeneralTabPane,
+	BillingTabPane,
+	SecurityTabPane,
+} from 'components'
 
 class AccountSettings extends React.Component {
 	state = {
@@ -164,146 +167,7 @@ class AccountSettings extends React.Component {
 														activeTab={'profile' + this.state.profileTabs}>
 														<GeneralTabPane />
 														<BillingTabPane />
-														<TabPane tabId='profile3'>
-															<div className='g-pos-rel h-100 g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-30--md'>
-																<header>
-																	<h2 className='text-uppercase g-font-size-12 g-font-size-default--md g-color-black mb-0'>
-																		Security Questions
-																	</h2>
-																</header>
-																<hr className='line-info' />
-																<Form>
-																	<Row>
-																		<Col md='6'>
-																			<label>Security Question</label>
-																			<FormGroup>
-																				<Select
-																					className='react-select react-select-info'
-																					classNamePrefix='react-select'
-																					placeholder='Question'
-																					value={this.state.question}
-																					onChange={value =>
-																						this.setState({ question: value })
-																					}
-																					options={[
-																						{
-																							value: '',
-																							label: 'Your Question',
-																							isDisabled: true,
-																						},
-																						{ value: '2', label: 'Question 1' },
-																						{ value: '3', label: 'Question 2' },
-																						{ value: '4', label: 'Question 3' },
-																					]}
-																				/>
-																			</FormGroup>
-																		</Col>
-																		<Col md='6'>
-																			<label>Your Answer</label>
-																			<FormGroup>
-																				<Input
-																					placeholder='Enter your answer'
-																					type='text'
-																				/>
-																			</FormGroup>
-																		</Col>
-																	</Row>
-																	<Row>
-																		<Col className='align-self-center' md='3'>
-																			<label
-																				className='labels'
-																				htmlFor='#email'>
-																				Email
-																			</label>
-																		</Col>
-																		<Col className='align-self-center' md='9'>
-																			<FormGroup>
-																				<Input
-																					defaultValue='charlie.bailey@example.com'
-																					id='email'
-																					name='email'
-																					required='required'
-																					type='email'
-																				/>
-																			</FormGroup>
-																		</Col>
-																	</Row>
-																	<br />
-																	<br />
-																	<header>
-																		<h2 className='text-uppercase'>
-																			Security Settings
-																		</h2>
-																	</header>
-																	<hr className='line-info' />
-																	<FormGroup className='d-flex align-items-center justify-content-between'>
-																		<span>
-																			Notify me via email when logging in
-																		</span>
-																		<Switch offColor='' onColor='' />
-																	</FormGroup>
-																	<FormGroup className='d-flex align-items-center justify-content-between'>
-																		<span>
-																			Send SMS confirmation for all online
-																			payments
-																		</span>
-																		<Switch offColor='' onColor='' />
-																	</FormGroup>
-																	<FormGroup className='d-flex align-items-center justify-content-between'>
-																		<span>
-																			Check which devices accessed your account
-																		</span>
-																		<Switch
-																			defaultValue={false}
-																			offColor=''
-																			onColor=''
-																		/>
-																	</FormGroup>
-																	<FormGroup className='d-flex align-items-center justify-content-between'>
-																		<span>
-																			Find My Device, make sure your device can
-																			be found if it gets lost
-																		</span>
-																		<Switch offColor='' onColor='' />
-																	</FormGroup>
-																	<FormGroup className='d-flex align-items-center justify-content-between'>
-																		<span>
-																			Lock your device with a PIN, pattern, or
-																			password
-																		</span>
-																		<Switch offColor='' onColor='' />
-																	</FormGroup>
-																	<FormGroup className='d-flex align-items-center justify-content-between'>
-																		<span>
-																			Manage what apps have access to app-usage
-																			data on your device
-																		</span>
-																		<Switch
-																			defaultValue={false}
-																			offColor=''
-																			onColor=''
-																		/>
-																	</FormGroup>
-																	<Row className='mt-5 justify-content-end'>
-																		<Col className='ml-auto' md='4'>
-																			<Button
-																				className='btn-simple mr-1'
-																				color='info'
-																				size='sm'
-																				type='button'>
-																				Cancel
-																			</Button>
-																			<Button
-																				color='info'
-																				size='sm'
-																				type='button'>
-																				Save Changes
-																			</Button>
-																		</Col>
-																	</Row>
-																</Form>
-															</div>
-														</TabPane>
+														<SecurityTabPane />
 														<TabPane tabId='profile4'>
 															<Container>
 																<Row>

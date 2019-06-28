@@ -10,6 +10,7 @@ import SignInButton from 'components/Buttons/SignInButton'
 import SignInForm from 'components/Forms/SignInForm'
 import GeneralTabPane from 'components/TabPane/GeneralTabPane'
 import BillingTabPane from 'components/TabPane/BillingTabPane'
+import SecurityTabPane from 'components/TabPane/SecurityTabPane'
 import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary'
 
 export {
@@ -25,5 +26,6 @@ export {
 	SignInButton,
 	GeneralTabPane,
 	BillingTabPane,
+	SecurityTabPane,
 	ErrorBoundary,
 }
