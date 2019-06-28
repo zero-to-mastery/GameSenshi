@@ -17,13 +17,13 @@ From consumer perspectives:
 From provider perspective:
 While some gamers/streamers do make big buck, but large majority of gamers or streamers still make little or to none money out of gaming, so this platform can play a part in gaming economy as it can turn gamers into new work force.
 
-## Getting Started
+## Application Features
 
-It is very easy to get started, this project is beginner friendly (everything is in ES6+ !) and a lot of process is highly automated (comprehensive scripts, you can trust someone who made [this](https://github.com/tylim88/Create-Prisma-App/blob/master/template/package.json)).
-
-Ease of developing is always our top priority, easier and better developing tool is always welcomed and adopted, but that doesn't mean we sacrifice quality, in fact it is the reverse, we make developing easier because we want more time spend on tinkering how to create better web app experience(such as [this](https://github.com/zero-to-mastery/GameSenshi/wiki/Form-State-Management)).
-
-In this project, you can expect to be able to write nicer code, apply better implementation, enhance workflow and being critical when picking libraries.
+1. Marketplace platform
+2. Process payment with third party api
+3. Real time chat
+4. Gaming content
+5. Event Organizer
 
 ## Installation
 
