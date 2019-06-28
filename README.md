@@ -4,7 +4,7 @@ A platform for gamers/streamers to provide their casual service.
 
 ## Introduction
 
-This is project that temporary hire people to play game with you. You can imagine this as you hire someone to work for you for few hours, but unlike conventional task, this is about game companion.
+This is a project that is designed to allow the user the ability to temporarily hire other gamers to play with them. Similar to hiring someone to work with you, this allows you the opportunity to hire another gamer to game with you. It is all about gaming companionship.
 
 From consumer perspectives:
 
