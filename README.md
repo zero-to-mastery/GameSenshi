@@ -9,7 +9,7 @@ This is a project that is designed to allow the user the ability to temporarily 
 From the consumer perspective:
 
 1. You are a big fan of a professional/famous gamer, and you want to play a game with him/her, either as a sparring partner(opponent), or teammate.
-2. You are a fan of a streamer, and you want to play with him/her.
+2. You are a fan of a streamer, and want to play with him/her.
 3. You are looking for someone to help you improve as a gamer, and want a gaming "coach" that can help you along in that process.
 4. You want to rank up in a specific game, but need help. You need a STRONG and capable teammate who has lots of experience with that game!
 5. You're merely looking to hang out and socialize with streamers and/or other gamers in a relaxed environment!
