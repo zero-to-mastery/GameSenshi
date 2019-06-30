@@ -278,6 +278,10 @@ class RegisterPage extends React.Component {
 																				popoverMessages={
 																					usernamePopoverMessages
 																				}
+																				onKeyPress={e => {
+																					e.key === 'Enter' &&
+																						this.submitButton.onClick()
+																				}}
 																				willUnmount={willUnmount}
 																			/>
 																			<div className='w-100 mb-3' />
@@ -292,6 +296,10 @@ class RegisterPage extends React.Component {
 																				}
 																				serverValidation={handleIsEmailExist}
 																				popoverMessages={emailPopoverMessages}
+																				onKeyPress={e => {
+																					e.key === 'Enter' &&
+																						this.submitButton.onClick()
+																				}}
 																				willUnmount={willUnmount}
 																			/>
 																			<div className='w-100 mb-3' />

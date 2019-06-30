@@ -165,6 +165,9 @@ class SignInForm extends React.Component {
 															placeholder='Email'
 															icon='tim-icons icon-email-85'
 															validation={value => signInEmailValidation(value)}
+															onKeyPress={e => {
+																e.key === 'Enter' && this.submitButton.onClick()
+															}}
 															willUnmount={willUnmount}
 														/>
 													</>
