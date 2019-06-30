@@ -269,6 +269,7 @@ auth()
 				})
 			)
 			// if (provider2 === 'password') {
+			// TODO allow user to create password account and link to existing social account
 			// 	console.log('i am here 5566')
 			// 	//	! something wrong with linkWithCredential
 			// 	console.log(auth().currentUser.linkWithCredential(credential))
