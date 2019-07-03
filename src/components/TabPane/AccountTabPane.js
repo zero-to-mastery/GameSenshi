@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 
 // reactstrap components
-import { Button, FormGroup, TabPane, Row, Col } from 'reactstrap'
+import { Button, FormGroup, TabPane, Row, Col, Form } from 'reactstrap'
 
 // loader
 import Loader from 'react-loader-spinner'
@@ -39,28 +39,30 @@ const AccountTabPane = props => {
 					}}>
 					{({ submitError, handleSubmit, submitting }) => (
 						<>
-							<Row>
-								<Col className='align-self-center' md='3'>
-									<label className='labels' htmlFor='#email'>
-										Email
-									</label>
-								</Col>
-								<Col className='align-self-center' md='9'>
-									<FormGroup>
-										<InputField
-											type='email'
-											name='email'
-											hideSuccess
-											placeholder='email'
-											icon='tim-icons icon-lock-circle'
-											validation={signInPasswordValidation}
-											onKeyPress={e => {
-												e.key === 'Enter' && submitButton.current.onClick()
-											}}
-										/>
-									</FormGroup>
-								</Col>
-							</Row>
+							<Form>
+								<Row>
+									<Col className='align-self-center' md='3'>
+										<label className='labels' htmlFor='#email'>
+											Email
+										</label>
+									</Col>
+									<Col className='align-self-center' md='9'>
+										<FormGroup>
+											<InputField
+												type='email'
+												name='email'
+												hideSuccess
+												placeholder='email'
+												icon='tim-icons icon-lock-circle'
+												validation={signInPasswordValidation}
+												onKeyPress={e => {
+													e.key === 'Enter' && submitButton.current.onClick()
+												}}
+											/>
+										</FormGroup>
+									</Col>
+								</Row>{' '}
+							</Form>
 							<Row className='mt-4'>
 								<Col className='d-flex justify-content-center'>
 									<Button

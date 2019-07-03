@@ -12,6 +12,7 @@ import {
 	FormGroup,
 	Input,
 	Label,
+	Form,
 } from 'reactstrap'
 
 // core components
@@ -161,7 +162,7 @@ const CardModal = props => {
 								[CARD_EXPIRY_YEAR]: '',
 								[CARD_HOLDER_NAME]: '',
 							}}
-							decorators={[focusOnError]} // TODO fix why focus on Error is not working
+							decorators={[focusOnError]}
 							onSubmit={async () => {
 								// TODO display submit error with in modal alert
 								// TODO create third party card processor api
@@ -207,152 +208,154 @@ const CardModal = props => {
 													md='7'
 													className='d-flex align-items-center'>
 													<Container>
-														<Row>
-															<Col>
-																<FormGroup>
-																	<InputField
-																		placeholder='Card Number'
-																		name={CARD_NUMBER}
-																		type='text'
-																		hideSuccess
-																		container={cardStore}
-																		onChange={onChangeNumber}
-																		onFocus={() => {
-																			setFocus('number')
-																		}}
-																		icon='tim-icons icon-credit-card'
-																		validation={value =>
-																			cardNumberValidation(
-																				value.replace(/ /g, '')
-																			)
-																		}
-																	/>
-																</FormGroup>
-															</Col>
-														</Row>
-														<Row>
-															<Col>
-																<FormGroup>
-																	<InputField
-																		placeholder='Card Holder Name'
-																		name={CARD_HOLDER_NAME}
-																		type='text'
-																		hideSuccess
-																		container={cardStore}
-																		onChange={e => {
-																			const {
-																				target: { value },
-																			} = e
-																			if (value.length < 100) {
-																				return e.target.value
-																			}
-																			return false
-																		}}
-																		onFocus={() => {
-																			setFocus('name')
-																		}}
-																		icon='tim-icons icon-single-02'
-																		validation={cardNameValidation}
-																	/>
-																</FormGroup>
-															</Col>
-														</Row>
-														<Row>
-															<Col xs='6' className='pr-0'>
-																<FormGroup>
-																	<InputField
-																		className='react-select react-select-info'
-																		classNamePrefix='react-select'
-																		isSearchable={false}
-																		name={CARD_EXPIRY_MONTH}
-																		component='select'
-																		validation={value =>
-																			cardExpiryValidation(
-																				value,
-																				MONTH_ABVS_SELECT.slice(1)
-																			)
-																		}
-																		onFocus={() => {
-																			setFocus('expiry')
-																		}}
-																		options={MONTH_ABVS_SELECT}
-																		container={cardStore}
-																	/>
-																</FormGroup>
-															</Col>
-															<Col xs='6'>
-																<FormGroup>
-																	<InputField
-																		className='react-select react-select-info'
-																		classNamePrefix='react-select'
-																		isSearchable={false}
-																		name={CARD_EXPIRY_YEAR}
-																		component='select'
-																		onFocus={() => {
-																			setFocus('expiry')
-																		}}
-																		validation={value =>
-																			cardExpiryValidation(
-																				value,
-																				YEARS.slice(1)
-																			)
-																		}
-																		options={YEARS}
-																		container={cardStore}
-																	/>
-																</FormGroup>
-															</Col>
-														</Row>
-														<Row>
-															<Col xs='6'>
-																<FormGroup>
-																	<InputField
-																		placeholder='CVC'
-																		name={CARD_CVC}
-																		type='text'
-																		hideSuccess
-																		container={cardStore}
-																		onChange={e => {
-																			const {
-																				target: { value },
-																			} = e
-																			if (!isNaN(value) && value.length < 5) {
-																				return e.target.value
-																			}
-																			return false
-																		}}
-																		onFocus={() => {
-																			setFocus('cvc')
-																		}}
-																		icon='tim-icons icon-lock-circle'
-																		validation={value =>
-																			cardCvcValidation(value)
-																		}
-																	/>
-																</FormGroup>
-															</Col>
-															<Col xs='6'>
-																<FormGroup check className='text-left'>
-																	<Label check>
-																		<Input
-																			type='checkbox'
-																			checked={isDefault}
-																			onClick={() => {
-																				cardStore.setState(state => {
-																					state[CARD_IS_DEFAULT] = !state[
-																						CARD_IS_DEFAULT
-																					]
-																					return state
-																				})
+														<Form>
+															<Row>
+																<Col>
+																	<FormGroup>
+																		<InputField
+																			placeholder='Card Number'
+																			name={CARD_NUMBER}
+																			type='text'
+																			hideSuccess
+																			container={cardStore}
+																			onChange={onChangeNumber}
+																			onFocus={() => {
+																				setFocus('number')
 																			}}
-																			onChange={() => {}}
+																			icon='tim-icons icon-credit-card'
+																			validation={value =>
+																				cardNumberValidation(
+																					value.replace(/ /g, '')
+																				)
+																			}
 																		/>
-																		<span className='form-check-sign' />
-																		set as default?
-																	</Label>
-																</FormGroup>
-															</Col>
-														</Row>
+																	</FormGroup>
+																</Col>
+															</Row>
+															<Row>
+																<Col>
+																	<FormGroup>
+																		<InputField
+																			placeholder='Card Holder Name'
+																			name={CARD_HOLDER_NAME}
+																			type='text'
+																			hideSuccess
+																			container={cardStore}
+																			onChange={e => {
+																				const {
+																					target: { value },
+																				} = e
+																				if (value.length < 100) {
+																					return e.target.value
+																				}
+																				return false
+																			}}
+																			onFocus={() => {
+																				setFocus('name')
+																			}}
+																			icon='tim-icons icon-single-02'
+																			validation={cardNameValidation}
+																		/>
+																	</FormGroup>
+																</Col>
+															</Row>
+															<Row>
+																<Col xs='6' className='pr-0'>
+																	<FormGroup>
+																		<InputField
+																			className='react-select react-select-info'
+																			classNamePrefix='react-select'
+																			isSearchable={false}
+																			name={CARD_EXPIRY_MONTH}
+																			component='select'
+																			validation={value =>
+																				cardExpiryValidation(
+																					value,
+																					MONTH_ABVS_SELECT.slice(1)
+																				)
+																			}
+																			onFocus={() => {
+																				setFocus('expiry')
+																			}}
+																			options={MONTH_ABVS_SELECT}
+																			container={cardStore}
+																		/>
+																	</FormGroup>
+																</Col>
+																<Col xs='6'>
+																	<FormGroup>
+																		<InputField
+																			className='react-select react-select-info'
+																			classNamePrefix='react-select'
+																			isSearchable={false}
+																			name={CARD_EXPIRY_YEAR}
+																			component='select'
+																			onFocus={() => {
+																				setFocus('expiry')
+																			}}
+																			validation={value =>
+																				cardExpiryValidation(
+																					value,
+																					YEARS.slice(1)
+																				)
+																			}
+																			options={YEARS}
+																			container={cardStore}
+																		/>
+																	</FormGroup>
+																</Col>
+															</Row>
+															<Row>
+																<Col xs='6'>
+																	<FormGroup>
+																		<InputField
+																			placeholder='CVC'
+																			name={CARD_CVC}
+																			type='text'
+																			hideSuccess
+																			container={cardStore}
+																			onChange={e => {
+																				const {
+																					target: { value },
+																				} = e
+																				if (!isNaN(value) && value.length < 5) {
+																					return e.target.value
+																				}
+																				return false
+																			}}
+																			onFocus={() => {
+																				setFocus('cvc')
+																			}}
+																			icon='tim-icons icon-lock-circle'
+																			validation={value =>
+																				cardCvcValidation(value)
+																			}
+																		/>
+																	</FormGroup>
+																</Col>
+																<Col xs='6'>
+																	<FormGroup check className='text-left'>
+																		<Label check>
+																			<Input
+																				type='checkbox'
+																				checked={isDefault}
+																				onClick={() => {
+																					cardStore.setState(state => {
+																						state[CARD_IS_DEFAULT] = !state[
+																							CARD_IS_DEFAULT
+																						]
+																						return state
+																					})
+																				}}
+																				onChange={() => {}}
+																			/>
+																			<span className='form-check-sign' />
+																			set as default?
+																		</Label>
+																	</FormGroup>
+																</Col>
+															</Row>
+														</Form>
 													</Container>
 												</Col>
 											</Row>
