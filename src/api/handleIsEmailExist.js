@@ -1,4 +1,3 @@
-// not in used anymore
 import { auth } from 'utils/firebaseFrontEnd'
 import { STATUS, MESSAGE } from 'constantValues'
 
