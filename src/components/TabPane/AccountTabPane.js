@@ -17,7 +17,7 @@ import { signInPasswordValidation } from 'utils/validation'
 
 const focusOnError = createDecorator()
 
-const SecurityTabPane = props => {
+const AccountTabPane = props => {
 	const submitButton = useRef(null)
 	return (
 		<TabPane tabId='profile3'>
@@ -80,7 +80,7 @@ const SecurityTabPane = props => {
 												&nbsp;&nbsp;Change Email
 											</>
 										) : (
-											'Get Started'
+											'Change Email'
 										)}
 									</Button>
 								</Col>
@@ -95,4 +95,4 @@ const SecurityTabPane = props => {
 	)
 }
 
-export default SecurityTabPane
+export default AccountTabPane

@@ -136,7 +136,7 @@ class ComponentsNavbar extends React.Component {
 	}
 
 	onSignOut = (currentPath, history) => {
-		const userRoute = ['/account']
+		const userRoute = ['/settings']
 		auth().signOut()
 		if (userRoute.includes(currentPath)) {
 			history.push('/index')
@@ -323,7 +323,7 @@ class ComponentsNavbar extends React.Component {
 																	aria-labelledby='navbarDropdownMenuLink'
 																	right>
 																	<DropdownItem
-																		to='/account'
+																		to='/settings'
 																		tag={Link}
 																		className='text-dark mt-0 py-1 px-4'
 																		style={{ fontSize: '1rem' }}>
@@ -337,16 +337,16 @@ class ComponentsNavbar extends React.Component {
 																		onClick={e => e.preventDefault()}>
 																		My Senshi
 																	</DropdownItem>
+																	<DropdownItem divider />
 																	<DropdownItem
 																		className='text-dark mt-0 py-1 px-4'
 																		style={{ fontSize: '1rem' }}
 																		onClick={e => {
 																			e.preventDefault()
-																			history.push('/account')
+																			history.push('/settings')
 																		}}>
-																		My Account
+																		Settings
 																	</DropdownItem>
-																	<DropdownItem divider />
 																	<DropdownItem
 																		className='text-dark mt-0 py-1 px-4'
 																		style={{ fontSize: '1rem' }}
@@ -376,7 +376,7 @@ class ComponentsNavbar extends React.Component {
 														<NavItem className='p-0'>
 															<NavLink
 																data-placement='bottom'
-																to='/account'
+																to='/settings'
 																tag={Link}
 																style={{
 																	paddingTop: 6,
@@ -422,6 +422,34 @@ class ComponentsNavbar extends React.Component {
 															<NavLink data-placement='bottom' href='#pablo'>
 																<Row>
 																	<Col xs='2'>
+																		<i className='tim-icons icon-key-25' />
+																	</Col>
+																	<Col>
+																		<p>Senshi Portal</p>
+																	</Col>
+																</Row>
+															</NavLink>
+														</NavItem>
+														<NavItem className='p-0'>
+															<NavLink
+																data-placement='bottom'
+																to='/settings'
+																tag={Link}
+																href='#pablo'>
+																<Row>
+																	<Col xs='2'>
+																		<i className='fab fas fa-user-plus' />
+																	</Col>
+																	<Col>
+																		<p>Settings</p>
+																	</Col>
+																</Row>
+															</NavLink>
+														</NavItem>
+														<NavItem className='p-0'>
+															<NavLink data-placement='bottom' href='#pablo'>
+																<Row>
+																	<Col xs='2'>
 																		<i className='fab fas fa-question' />
 																	</Col>
 																	<Col>
@@ -445,18 +473,6 @@ class ComponentsNavbar extends React.Component {
 																	</Col>
 																	<Col>
 																		<p>Sign out</p>
-																	</Col>
-																</Row>
-															</NavLink>
-														</NavItem>
-														<NavItem className='p-0'>
-															<NavLink data-placement='bottom' href='#pablo'>
-																<Row>
-																	<Col xs='2'>
-																		<i className='tim-icons icon-key-25' />
-																	</Col>
-																	<Col>
-																		<p>Senshi Portal</p>
 																	</Col>
 																</Row>
 															</NavLink>

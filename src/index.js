@@ -43,7 +43,7 @@ import ProductPage from 'views/examples/ProductPage.jsx'
 import ProfilePage from 'views/examples/ProfilePage.jsx'
 import Error404 from 'views/examples/Error404.jsx'
 import Error500 from 'views/examples/Error500.jsx'
-import Account from 'views/Account.jsx'
+import Settings from 'views/Settings.jsx'
 import ResetPage from 'views/examples/ResetPage.jsx'
 import InvoicePage from 'views/examples/InvoicePage.jsx'
 import CheckoutPage from 'views/examples/CheckoutPage.jsx'
@@ -93,12 +93,12 @@ ReactDOM.render(
 					<Route path='/404' render={props => <Error404 {...props} />} />
 					<Route path='/500' render={props => <Error500 {...props} />} />
 					<Route
-						path='/account'
+						path='/settings'
 						render={props =>
 							userStore.state[USER_SIGNED_IN] ? (
-								<Account {...props} />
+								<Settings {...props} />
 							) : (
-								<Redirect from='/account' to='/index' />
+								<Redirect from='/settings' to='/index' />
 							)
 						}
 					/>

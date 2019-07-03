@@ -32,10 +32,10 @@ import {
 	IndexNavbar,
 	GeneralTabPane,
 	BillingTabPane,
-	SecurityTabPane,
+	AccountTabPane,
 } from 'components'
 
-class AccountSettings extends React.Component {
+class Settings extends React.Component {
 	state = {
 		profileTabs: 1,
 		tags: ['HTML5', 'CSS3', 'JavaScript', 'React'],
@@ -134,7 +134,7 @@ class AccountSettings extends React.Component {
 																	}
 																	href='#pablo'>
 																	<i className='tim-icons icon-lock-circle' />{' '}
-																	Security
+																	Account
 																</NavLink>
 															</NavItem>
 															<hr className='line-info' />
@@ -167,7 +167,7 @@ class AccountSettings extends React.Component {
 														activeTab={'profile' + this.state.profileTabs}>
 														<GeneralTabPane />
 														<BillingTabPane />
-														<SecurityTabPane />
+														<AccountTabPane />
 														<TabPane tabId='profile4'>
 															<Container>
 																<Row>
@@ -343,4 +343,4 @@ class AccountSettings extends React.Component {
 	}
 }
 
-export default AccountSettings
+export default Settings
