@@ -1,21 +1,21 @@
 # GAME [SENSHI(戦士)](https://en.wikipedia.org/wiki/Senshi)
 
-A platform for gamers/streamers to provide their casual service.
+A platform for gamers/streamers to provide their casual service and link up with others in the community.
 
 ## Introduction
 
 This is a project that is designed to allow the user the ability to temporarily hire other gamers to play with them. Similar to hiring someone to work with you, this allows you the opportunity to hire another gamer to game with you. It is all about gaming companionship.
 
-From consumer perspectives:
+From the consumer perspective:
 
-1. You are a big fans of a professional/famous gamer, you want to play a game with him, either as sparring partner(opponent) or team mate.
-2. You are a fans of good looking or fun streamer, you want to play with her/him.
-3. You are looking for game coach, gamer that systemized his knowledge and make you a better gamer.
-4. You want to rank up, you need help, you need STRONK team mate!
-5. Hang out with your favorite gamer/streamer, socialize!
+1. You are a big fan of a professional/famous gamer, and you want to play a game with him/her, either as a sparring partner(opponent), or teammate.
+2. You are a fan of a streamer, and want to play with him/her.
+3. You are looking for someone to help you improve as a gamer, and want a gaming "coach" that can help you along in that process.
+4. You want to rank up in a specific game, but need help. You need a strong and capable teammate who has lots of experience with that game!
+5. You're merely looking to hang out and socialize with streamers and/or other gamers in a relaxed environment!
 
 From provider perspective:
-While some gamers/streamers do make big buck, but large majority of gamers or streamers still make little or to none money out of gaming, so this platform can play a part in gaming economy as it can turn gamers into new work force.
+While some gamers/streamers do make a lot of money, the large majority of gamers and/or streamers do not. This platform provides the opportunity for many gamers and streamers to expand their viewer base, reach new potential viewers and people to game with, and make new friends along the way! It also helps to link casual gamers up with more competitive and successful gamers/streamers, and in return helping everyone in the community grow. With this platform, we can create a new work force of gamers who are doing what they love, and making money along the way! 
 
 ## Application Features
 
@@ -65,9 +65,9 @@ above command is one time setup, anytime you want to run deploy, simply
 npm run deploy
 ```
 
-It will automatically inject production environment variable, build and deploy front end or back end (depend on which terminal you in)
+It will automatically inject production environment variable, build and deploy front end or back end (depending on which terminal you are in)
 
-There is also command to deploy both end:
+There is also a command to deploy on both ends:
 
 ```bash
 firebase deploy
