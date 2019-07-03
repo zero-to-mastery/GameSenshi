@@ -140,7 +140,7 @@ class SignInForm extends React.Component {
 																	backgroundColor: '#1d253b',
 																	cursor: 'not-allowed',
 																}}>
-																<i className='tim-icons icon-email-85 ' />
+																<i className='tim-icons icon-email-85' />
 															</InputGroupText>
 														</InputGroupAddon>
 														<Input
