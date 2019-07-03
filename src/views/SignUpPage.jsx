@@ -169,8 +169,9 @@ class RegisterPage extends React.Component {
 			// if undefined mean no error
 			// but this not much point since it will redirect and unmount soon
 			return
+		} else {
+			return data
 		}
-		return data
 	}
 	render() {
 		const {

@@ -64,13 +64,14 @@ class SignInForm extends React.Component {
 		const signInFailed = await handleSignInWithEmailAndPassword(email, password)
 		if (signInFailed) {
 			return { [FORM_ERROR]: signInFailed }
-		}
-		onSignedInRouting(history, lastLocation)
+		} else {
+			onSignedInRouting(history, lastLocation)
 
-		signInModalStore.state[SIGN_IN_MODAL_CALLBACK]()
-		// if undefined mean no error
-		// but this not much point since it will redirect and unmount soon
-		return
+			signInModalStore.state[SIGN_IN_MODAL_CALLBACK]()
+			// if undefined mean no error
+			// but this not much point since it will redirect and unmount soon
+			return
+		}
 	}
 	componentWillUnmount() {
 		// eslint-disable-next-line react/no-direct-mutation-state
