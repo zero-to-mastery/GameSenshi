@@ -40,7 +40,7 @@ const InputField = props => {
 		...restProps
 	} = props
 
-	const willUnmount2 = willUnmount || { value: false }
+	const willUnmount2 = willUnmount || { value: false } // TODO to solve memory leak issue, not yet success
 	const popoverMessages2 = popoverMessages || []
 	const component2 = component || 'text'
 	const onFocus2 = onFocus || (() => {})
