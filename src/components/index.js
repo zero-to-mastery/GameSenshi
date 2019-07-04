@@ -11,6 +11,7 @@ import SignInForm from 'components/Forms/SignInForm'
 import GeneralSettingsTabPane from 'components/TabPane/GeneralSettingsTabPane'
 import BillingSettingsTabPane from 'components/TabPane/BillingSettingsTabPane'
 import AccountSettingsTabPane from 'components/TabPane/AccountSettingsTabPane'
+import NotificationSettingTabPane from 'components/TabPane/NotificationSettingTabPane'
 import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary'
 
 export {
@@ -27,5 +28,6 @@ export {
 	GeneralSettingsTabPane,
 	BillingSettingsTabPane,
 	AccountSettingsTabPane,
+	NotificationSettingTabPane,
 	ErrorBoundary,
 }
