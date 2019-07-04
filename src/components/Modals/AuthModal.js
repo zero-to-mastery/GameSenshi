@@ -5,11 +5,11 @@ import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
 
 // constants
 import {
-	MODAL_BODY,
-	MODAL_OPEN,
-	MODAL_TITLE,
-	MODAL_LOADER,
-	MODAL_CALLBACK,
+	AUTH_MODAL_BODY,
+	AUTH_MODAL_OPEN,
+	AUTH_MODAL_TITLE,
+	AUTH_MODAL_LOADER,
+	AUTH_MODAL_CALLBACK,
 } from 'constantValues'
 
 // state
@@ -22,11 +22,11 @@ const AuthModal = () => {
 			{authModalStore => {
 				const {
 					state: {
-						[MODAL_BODY]: body,
-						[MODAL_OPEN]: open,
-						[MODAL_TITLE]: title,
-						[MODAL_CALLBACK]: callback,
-						[MODAL_LOADER]: loader,
+						[AUTH_MODAL_BODY]: body,
+						[AUTH_MODAL_OPEN]: open,
+						[AUTH_MODAL_TITLE]: title,
+						[AUTH_MODAL_CALLBACK]: callback,
+						[AUTH_MODAL_LOADER]: loader,
 					},
 					toggle,
 				} = authModalStore

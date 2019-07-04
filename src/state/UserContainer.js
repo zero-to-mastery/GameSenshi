@@ -1,6 +1,7 @@
 import { Container } from 'unstated'
 
 import {
+	USER,
 	USER_UID,
 	USER_EMAIL,
 	USER_GENDER,
@@ -38,7 +39,7 @@ class UserContainer extends Container {
 		return this
 	}
 	initialize = () => {
-		const user = JSON.parse(localStorage.getItem('user'))
+		const user = JSON.parse(localStorage.getItem(USER))
 		// purposely set state in sync so that it show correct navBar on first rendering
 		// firebase need like 2 seconds to finish sign in, too long
 		if (user) {
@@ -79,14 +80,14 @@ class UserContainer extends Container {
 			})
 			// do not store sensitive information in localStorage
 			localStorage.setItem(
-				'user',
+				USER,
 				JSON.stringify({
 					...user,
 				})
 			)
 		} else {
 			// User signed out.
-			localStorage.removeItem('user')
+			localStorage.removeItem(USER)
 		}
 		return this
 	}

@@ -4,19 +4,20 @@ import Interweave from 'interweave'
 import reactElementToJSXString from 'react-element-to-jsx-string'
 
 import {
-	MODAL_BODY,
-	MODAL_OPEN,
-	MODAL_TITLE,
-	MODAL_LOADER,
-	MODAL_CALLBACK,
+	AUTH_MODAL,
+	AUTH_MODAL_BODY,
+	AUTH_MODAL_OPEN,
+	AUTH_MODAL_TITLE,
+	AUTH_MODAL_LOADER,
+	AUTH_MODAL_CALLBACK,
 } from 'constantValues'
 
 const defaultValues = {
-	[MODAL_BODY]: '',
-	[MODAL_TITLE]: '',
-	[MODAL_OPEN]: false,
-	[MODAL_LOADER]: false,
-	[MODAL_CALLBACK]: () => {},
+	[AUTH_MODAL_BODY]: '',
+	[AUTH_MODAL_TITLE]: '',
+	[AUTH_MODAL_OPEN]: false,
+	[AUTH_MODAL_LOADER]: false,
+	[AUTH_MODAL_CALLBACK]: () => {},
 }
 
 class AuthModalContainer extends Container {
@@ -24,7 +25,7 @@ class AuthModalContainer extends Container {
 
 	toggle = () => {
 		this.setState(state => {
-			state[MODAL_OPEN] = !state[MODAL_OPEN]
+			state[AUTH_MODAL_OPEN] = !state[AUTH_MODAL_OPEN]
 			return state
 		})
 		return this
@@ -34,39 +35,39 @@ class AuthModalContainer extends Container {
 		return this
 	}
 	close = () => {
-		this.setState({ [MODAL_OPEN]: false })
+		this.setState({ [AUTH_MODAL_OPEN]: false })
 		return this
 	}
 	show = (
-		body = '',
 		title = '',
+		body = '',
 		loader = false,
 		afterContinueCallback = () => {}
 	) => {
 		this.setState({
-			[MODAL_OPEN]: true,
-			[MODAL_BODY]: body,
-			[MODAL_TITLE]: title,
-			[MODAL_LOADER]: loader,
-			[MODAL_CALLBACK]: afterContinueCallback,
+			[AUTH_MODAL_OPEN]: true,
+			[AUTH_MODAL_BODY]: body,
+			[AUTH_MODAL_TITLE]: title,
+			[AUTH_MODAL_LOADER]: loader,
+			[AUTH_MODAL_CALLBACK]: afterContinueCallback,
 		})
 	}
 
 	getItemFromSessionStorage = () =>
-		JSON.parse(sessionStorage.getItem('authModal'))
+		JSON.parse(sessionStorage.getItem(AUTH_MODAL))
 
 	removeItemFromSessionStorage = () => {
-		sessionStorage.removeItem('authModal')
+		sessionStorage.removeItem(AUTH_MODAL)
 		return this
 	}
 
-	setItemInSessionStorage = (restProps = {}, title = '', body = '') => {
+	setItemInSessionStorage = (title = '', body = '', restProps = {}) => {
 		sessionStorage.setItem(
-			'authModal',
+			AUTH_MODAL,
 			JSON.stringify({
 				...restProps,
-				[MODAL_BODY]: body,
-				[MODAL_TITLE]: title,
+				[AUTH_MODAL_BODY]: body,
+				[AUTH_MODAL_TITLE]: title,
 			})
 		)
 		return this
@@ -76,10 +77,10 @@ class AuthModalContainer extends Container {
 		const item = this.getItemFromSessionStorage()
 		if (item) {
 			this.setState({
-				[MODAL_BODY]: <Interweave content={item[MODAL_BODY]} />,
-				[MODAL_OPEN]: true,
-				[MODAL_TITLE]: <Interweave content={item[MODAL_TITLE]} />,
-				[MODAL_LOADER]: true,
+				[AUTH_MODAL_BODY]: <Interweave content={item[AUTH_MODAL_BODY]} />,
+				[AUTH_MODAL_OPEN]: true,
+				[AUTH_MODAL_TITLE]: <Interweave content={item[AUTH_MODAL_TITLE]} />,
+				[AUTH_MODAL_LOADER]: true,
 			})
 		}
 		return this
@@ -87,7 +88,7 @@ class AuthModalContainer extends Container {
 
 	onAuthStateChange = () => {
 		const item = this.getItemFromSessionStorage()
-		!item && this.setState({ [MODAL_OPEN]: false })
+		!item && this.setState({ [AUTH_MODAL_OPEN]: false })
 		return this
 	}
 
@@ -115,14 +116,11 @@ class AuthModalContainer extends Container {
 					account to your<b> {name1} </b>account.
 				</span>
 			)
-			this.setItemInSessionStorage(
-				{
-					...item,
-					isLinked: true,
-				},
-				'Linking...',
-				JSXString
-			)
+			const restProps = {
+				...item,
+				isLinked: true,
+			}
+			this.setItemInSessionStorage('Linking...', JSXString, restProps)
 			// if (provider2 === 'password') {
 			// TODO allow user to create password account and link to existing social account
 			// } else {

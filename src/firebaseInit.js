@@ -77,7 +77,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 				)
 
 				const title = 'Linking Your Social Login'
-				authModalStore.show(body, title, false, async () => {
+				authModalStore.show(title, body, false, async () => {
 					await authModalStore.close()
 					if (provider1 === 'password') {
 						signInStore.show(email, async () => {
@@ -91,7 +91,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 								</>
 							)
 							const title = 'Linking Your Social Login'
-							await authModalStore.show(body, title, true)
+							await authModalStore.show(title, body, true)
 							auth()
 								.currentUser.linkWithCredential(credential)
 								.then(async () => {
@@ -123,7 +123,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 							name2,
 							isLinked: false,
 						}
-						authModalStore.setItemInSessionStorage(restProps, body, title)
+						authModalStore.setItemInSessionStorage(body, title, restProps)
 						auth().signInWithRedirect(new auth[provider1]())
 					}
 				})

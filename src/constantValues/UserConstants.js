@@ -1,5 +1,5 @@
 // this property that doesn't start with 'user' follow firebase property name
-
+const USER = 'user'
 const USER_UID = 'uid'
 const USER_EMAIL = 'email'
 const USER_PHOTO_URL = 'photoURL'
@@ -14,6 +14,7 @@ const USER_PROVIDER_DATA = 'providerData'
 const USER_EMAIL_IS_VERIFIED = 'emailVerified'
 
 export {
+	USER,
 	USER_UID,
 	USER_EMAIL,
 	USER_GENDER,

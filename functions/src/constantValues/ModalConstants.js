@@ -1,8 +1,14 @@
 const MODAL = 'Modal'
-const MODAL_BODY = MODAL + 'Body'
-const MODAL_OPEN = MODAL + 'Open'
-const MODAL_TITLE = MODAL + 'Title'
-const MODAL_LOADER = MODAL + 'Loader'
-const MODAL_CALLBACK = MODAL + 'Callback'
+const AUTH_MODAL_BODY = MODAL + 'Body'
+const AUTH_MODAL_OPEN = MODAL + 'Open'
+const AUTH_MODAL_TITLE = MODAL + 'Title'
+const AUTH_MODAL_LOADER = MODAL + 'Loader'
+const AUTH_MODAL_CALLBACK = MODAL + 'Callback'
 
-export { MODAL_BODY, MODAL_OPEN, MODAL_TITLE, MODAL_LOADER, MODAL_CALLBACK }
+export {
+	AUTH_MODAL_BODY,
+	AUTH_MODAL_OPEN,
+	AUTH_MODAL_TITLE,
+	AUTH_MODAL_LOADER,
+	AUTH_MODAL_CALLBACK,
+}
