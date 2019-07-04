@@ -10,7 +10,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { LastLocationProvider } from 'react-router-last-location'
 
 // state management
-import { modalStore, userStore, Provider } from 'state'
+import { authModalStore, userStore, Provider } from 'state'
 
 // constants
 import { USER_SIGNED_IN } from 'constantValues'
@@ -51,7 +51,7 @@ import SignUpPage from 'views/SignUpPage'
 userStore.initialize()
 
 // modal for auth
-modalStore.initialize()
+authModalStore.initialize()
 
 ReactDOM.render(
 	<Provider>

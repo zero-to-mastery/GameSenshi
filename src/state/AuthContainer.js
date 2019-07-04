@@ -34,7 +34,8 @@ const defaultValues = {
 class AuthContainer extends Container {
 	state = defaultValues
 	resetState = () => {
-		return this.setState(defaultValues)
+		this.setState(defaultValues)
+		return this
 	}
 }
 

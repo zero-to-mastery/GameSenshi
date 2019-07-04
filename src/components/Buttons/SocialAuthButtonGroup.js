@@ -9,7 +9,7 @@ import { withRouter } from 'react-router'
 import { onSignedInRouting } from 'routes'
 
 // state
-import { modalStore } from 'state'
+import { authModalStore } from 'state'
 
 // constants
 import {
@@ -23,7 +23,7 @@ const SocialAuthSignInButton = props => {
 	const { lastLocation, history } = props
 
 	const showSignInModal = (provider, api) => {
-		modalStore.setState({
+		authModalStore.setState({
 			[MODAL_BODY]: (
 				<>
 					Please wait while we signing you in with <b>{provider}</b>.

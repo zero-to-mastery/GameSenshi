@@ -11,13 +11,27 @@ const defaultValues = {
 class SignInContainer extends Container {
 	state = defaultValues
 	toggle = () => {
-		return this.setState(state => {
+		this.setState(state => {
 			state[SIGN_IN_OPEN] = !state[SIGN_IN_OPEN]
 			return state
 		})
+		return this
 	}
 	resetState = () => {
-		return this.setState(defaultValues)
+		this.setState(defaultValues)
+		return this
+	}
+	close = () => {
+		this.setState({ [SIGN_IN_OPEN]: false })
+		return this
+	}
+	show = (email, afterSubmitCallback = () => {}) => {
+		this.setState({
+			[SIGN_IN_EMAIL]: email,
+			[SIGN_IN_OPEN]: true,
+			[SIGN_IN_CALLBACK]: afterSubmitCallback,
+		})
+		return this
 	}
 }
 

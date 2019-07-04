@@ -47,7 +47,8 @@ const defaultValues = {
 class CardContainer extends Container {
 	state = defaultValues
 	resetState = () => {
-		return this.setState(defaultValues)
+		this.setState(defaultValues)
+		return this
 	}
 }
 

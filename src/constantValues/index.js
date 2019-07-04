@@ -59,7 +59,7 @@ import {
 	MODAL_TITLE,
 	MODAL_LOADER,
 	MODAL_CALLBACK,
-} from 'constantValues/ModalConstants'
+} from 'constantValues/AuthModalConstants'
 
 import {
 	USER_UID,

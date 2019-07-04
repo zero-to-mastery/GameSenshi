@@ -8,29 +8,8 @@ import 'firebase/functions'
 import 'firebase/storage'
 
 // states
-import { alertStore, modalStore, userStore, signInStore } from 'state'
+import { alertStore, authModalStore, userStore, signInStore } from 'state'
 import * as allStore from 'state'
-
-// constants
-import {
-	MODAL_BODY,
-	MODAL_OPEN,
-	MODAL_TITLE,
-	MODAL_LOADER,
-	MODAL_CALLBACK,
-	USER_UID,
-	USER_EMAIL,
-	USER_PHOTO_URL,
-	USER_SIGNED_IN,
-	USER_DISPLAY_NAME,
-	USER_PHONE_NUMBER,
-	USER_PROVIDER_DATA,
-	USER_EMAIL_IS_VERIFIED,
-	DEFAULT_AVATAR_URL,
-	SIGN_IN_EMAIL,
-	SIGN_IN_OPEN,
-	SIGN_IN_CALLBACK,
-} from 'constantValues'
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_API_KEY,
@@ -81,101 +60,72 @@ const handleDifferentCredential = (auth, email, credential) => {
 			const name1 = provider1 === 'password' ? email : getName(methods[0])
 			const name2 =
 				provider2 === 'password' ? email : getName(credential.signInMethod)
-			await modalStore.setState({
-				[MODAL_OPEN]: false,
-			}) // close modal if error
+			// close modal if any
+			await authModalStore.close()
 			setTimeout(() => {
-				modalStore.setState({
-					[MODAL_OPEN]: true,
-					[MODAL_BODY]: (
-						<>
-							It seem like you already registered with <b>{name1}</b>, we will
-							try to link both of your <b>{name1}</b> and
-							<b> {name2}</b> social login by signing you in with
-							<b> {name1}</b> first then <b>{name2}. </b>
-							<br />
-							<br />
-							Please click
-							<b> Continue</b> to link your account.
-						</>
-					),
-					[MODAL_TITLE]: 'Linking Your Social Login',
-					[MODAL_LOADER]: false,
-					[MODAL_CALLBACK]: async () => {
-						await modalStore.setState({
-							[MODAL_OPEN]: false,
-						})
-						if (provider1 === 'password') {
-							signInStore.setState({
-								[SIGN_IN_EMAIL]: email,
-								[SIGN_IN_OPEN]: true,
-								[SIGN_IN_CALLBACK]: async () => {
-									if (signInStore.state[SIGN_IN_OPEN]) {
-										await signInStore.setState({
-											[SIGN_IN_OPEN]: false,
-										})
-										await modalStore.setState({
-											[MODAL_OPEN]: true,
-											[MODAL_BODY]: (
-												<>
-													Linking<b> {name1} </b>to<b> {name2} </b>
-													<br />
-													<br />
-													Please Wait...
-												</>
-											),
-											[MODAL_TITLE]: 'Linking Your Social Login',
-											[MODAL_LOADER]: true,
-										})
-										auth()
-											.currentUser.linkWithCredential(credential)
-											.then(async () => {
-												await modalStore.setState({
-													[MODAL_OPEN]: false,
-												})
-												alertStore.open(
-													'Social login linked successful!',
-													'success'
-												)
-											})
-											.catch(async () => {
-												await modalStore.setState({
-													[MODAL_OPEN]: false,
-												})
-												alertStore.open(
-													'Social login linked unsuccessful!',
-													'danger'
-												)
-											})
-									}
-								},
-							})
-						} else {
-							// need to save this credential before hand in cache, remember delete it later.
-							sessionStorage.setItem(
-								'authModal',
-								JSON.stringify({
-									credential,
-									provider2,
-									name1,
-									name2,
-									[MODAL_BODY]: reactElementToJSXString(
-										<span>
-											Please wait while we signing you in with
-											<b> {name1}. </b>
-											<br />
-											<br />
-											After that we will signing you in with
-											<b> {name2}. </b>
-										</span>
-									),
-									[MODAL_TITLE]: 'Signing You In...',
-									isLinked: false,
-								})
+				const body = (
+					<>
+						It seem like you already registered with <b>{name1}</b>, we will try
+						to link both of your <b>{name1}</b> and
+						<b> {name2}</b> social login by signing you in with
+						<b> {name1}</b> first then <b>{name2}. </b>
+						<br />
+						<br />
+						Please click
+						<b> Continue</b> to link your account.
+					</>
+				)
+
+				const title = 'Linking Your Social Login'
+				authModalStore.show(body, title, false, async () => {
+					await authModalStore.close()
+					if (provider1 === 'password') {
+						signInStore.show(email, async () => {
+							await signInStore.resetState()
+							const body = (
+								<>
+									Linking<b> {name1} </b>to<b> {name2} </b>
+									<br />
+									<br />
+									Please Wait...
+								</>
 							)
-							auth().signInWithRedirect(new auth[provider1]())
+							const title = 'Linking Your Social Login'
+							await authModalStore.show(body, title, true)
+							auth()
+								.currentUser.linkWithCredential(credential)
+								.then(async () => {
+									await authModalStore.close()
+									alertStore.show('Social login linked successful!', 'success')
+								})
+								.catch(async () => {
+									await authModalStore.close()
+									alertStore.show('Social login linked unsuccessful!', 'danger')
+								})
+						})
+					} else {
+						// need to save this credential before hand in cache, remember delete it later.
+						const body = reactElementToJSXString(
+							<span>
+								Please wait while we signing you in with
+								<b> {name1}. </b>
+								<br />
+								<br />
+								After that we will signing you in with
+								<b> {name2}. </b>
+							</span>
+						)
+						const title = 'Signing You In...'
+						const restProps = {
+							credential,
+							provider2,
+							name1,
+							name2,
+							isLinked: false,
 						}
-					},
+						authModalStore.setItemInSessionStorage(restProps, body, title)
+						auth().signInWithRedirect(new auth[provider1]())
+					}
 				})
 			}, 150)
 			//continue on getRedirectResult event listener
@@ -184,39 +134,13 @@ const handleDifferentCredential = (auth, email, credential) => {
 
 // user auth listener
 auth().onAuthStateChanged(signInData => {
-	const authModal = JSON.parse(sessionStorage.getItem('authModal'))
-	!authModal && modalStore.setState({ [MODAL_OPEN]: false })
-	if (signInData) {
-		const user = {
-			[USER_DISPLAY_NAME]: signInData[USER_DISPLAY_NAME],
-			[USER_EMAIL_IS_VERIFIED]: signInData[USER_EMAIL_IS_VERIFIED],
-			[USER_PHOTO_URL]:
-				signInData[USER_PHOTO_URL] || process.env[DEFAULT_AVATAR_URL], //fallback,
-			[USER_UID]: signInData[USER_UID],
-		}
-		userStore.setState(state => {
-			return {
-				...state,
-				...user,
-				[USER_EMAIL]: signInData[USER_EMAIL],
-				[USER_PHONE_NUMBER]: signInData[USER_PHONE_NUMBER],
-				[USER_PROVIDER_DATA]: signInData[USER_PROVIDER_DATA],
-				[USER_SIGNED_IN]: true,
-			}
-		})
-		// do not store sensitive information in localStorage
-		localStorage.setItem(
-			'user',
-			JSON.stringify({
-				...user,
-			})
-		)
-	} else {
-		// User signed out.
+	authModalStore.onAuthStateChange()
+	userStore.onAuthStateChanged(signInData)
+	// reset all store if user sign out
+	if (!signInData) {
 		for (let store in allStore) {
 			allStore[store].resetState && allStore[store].resetState()
 		}
-		localStorage.removeItem('user')
 	}
 })
 
@@ -224,74 +148,23 @@ auth().onAuthStateChanged(signInData => {
 auth()
 	.getRedirectResult()
 	.then(result => {
-		// close modal if successful
-		const authModal = JSON.parse(sessionStorage.getItem('authModal'))
-		const {
-			name1,
-			name2,
-			isLinked,
-			provider2,
-			//credential
-		} = authModal
-		if (isLinked) {
-			alertStore.open(
+		// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
+		const showAlert = name2 => {
+			alertStore.show(
 				<span>
 					Successfully linked your <strong>{name2}</strong> account!
 				</span>,
 				'success'
 			)
-			sessionStorage.removeItem('authModal')
-		} else if (authModal) {
-			// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
-			// show modal on link redirect
-			sessionStorage.setItem(
-				'authModal',
-				JSON.stringify({
-					...authModal,
-					[MODAL_BODY]: reactElementToJSXString(
-						<span>
-							Please wait while we linking your
-							<b> {name2} </b>
-							account to your<b> {name1} </b>account.
-						</span>
-					),
-					[MODAL_TITLE]: 'Linking...',
-					isLinked: true,
-				})
-			)
-			// if (provider2 === 'password') {
-			// TODO allow user to create password account and link to existing social account
-			// 	console.log('i am here 5566')
-			// 	//	! something wrong with linkWithCredential
-			// 	console.log(auth().currentUser.linkWithCredential(credential))
-			// 	console
-			// 		.log('i am done 5566')
-			// 		.then(() => {
-			// 			console.log('success')
-			// 			sessionStorage.removeItem('authModal')
-			// 			alertStore.setState({
-			// 				[ALERT_BODY]: `Successfully linked your ${name2} account!`,
-			// 				[ALERT_OPEN]: true,
-			// 				[ALERT_COLOR]: 'success',
-			// 			})
-			// 		})
-			// 		.catch(() => {
-			// 			console.log('failed')
-			// 			sessionStorage.removeItem('authModal')
-			// 			alertStore.setState({
-			// 				[ALERT_BODY]: `Failed to linked your ${name2} account!`,
-			// 				[ALERT_OPEN]: true,
-			// 				[ALERT_COLOR]: 'warning',
-			// 			})
-			// 		})
-			// } else {
-			result.user.linkWithRedirect(new auth[provider2]())
-			//}
 		}
+		const linkWithRedirect = provider2 => {
+			result.user.linkWithRedirect(new auth[provider2]())
+		}
+		authModalStore.processRedirectResult(showAlert, linkWithRedirect)
 	})
 	.catch(err => {
 		// remove this item whether it is success or not
-		sessionStorage.removeItem('authModal')
+		authModalStore.removeItemFromSessionStorage()
 		const { code, credential, email } = err
 		if (code === 'auth/account-exists-with-different-credential') {
 			handleDifferentCredential(auth, email, credential)

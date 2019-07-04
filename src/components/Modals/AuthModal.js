@@ -13,13 +13,13 @@ import {
 } from 'constantValues'
 
 // state
-import { modalStore, Subscribe } from 'state'
+import { authModalStore, Subscribe } from 'state'
 
 // toggle
 const AuthModal = () => {
 	return (
-		<Subscribe to={[modalStore]}>
-			{modalStore => {
+		<Subscribe to={[authModalStore]}>
+			{authModalStore => {
 				const {
 					state: {
 						[MODAL_BODY]: body,
@@ -29,7 +29,7 @@ const AuthModal = () => {
 						[MODAL_LOADER]: loader,
 					},
 					toggle,
-				} = modalStore
+				} = authModalStore
 				return (
 					<Modal
 						isOpen={open}

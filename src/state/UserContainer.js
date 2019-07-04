@@ -13,6 +13,7 @@ import {
 	USER_PHONE_NUMBER,
 	USER_PROVIDER_DATA,
 	USER_EMAIL_IS_VERIFIED,
+	DEFAULT_AVATAR_URL,
 } from 'constantValues'
 
 const defaultValues = {
@@ -33,7 +34,8 @@ const defaultValues = {
 class UserContainer extends Container {
 	state = defaultValues
 	resetState = () => {
-		return this.setState(defaultValues)
+		this.setState(defaultValues)
+		return this
 	}
 	initialize = () => {
 		const user = JSON.parse(localStorage.getItem('user'))
@@ -41,6 +43,50 @@ class UserContainer extends Container {
 		// firebase need like 2 seconds to finish sign in, too long
 		if (user) {
 			this.state = { ...this.state, ...user, [USER_SIGNED_IN]: true }
+		}
+		return this
+	}
+
+	onAuthStateChanged = (
+		signInData = {
+			[USER_DISPLAY_NAME]: '',
+			[USER_EMAIL_IS_VERIFIED]: '',
+			[USER_PHOTO_URL]: '',
+			[USER_UID]: '',
+			[USER_EMAIL]: '',
+			[USER_PHONE_NUMBER]: '',
+			[USER_PROVIDER_DATA]: '',
+			[USER_SIGNED_IN]: '',
+		}
+	) => {
+		if (signInData) {
+			const user = {
+				[USER_DISPLAY_NAME]: signInData[USER_DISPLAY_NAME],
+				[USER_EMAIL_IS_VERIFIED]: signInData[USER_EMAIL_IS_VERIFIED],
+				[USER_PHOTO_URL]:
+					signInData[USER_PHOTO_URL] || process.env[DEFAULT_AVATAR_URL], //fallback,
+				[USER_UID]: signInData[USER_UID],
+			}
+			this.setState(state => {
+				return {
+					...state,
+					...user,
+					[USER_EMAIL]: signInData[USER_EMAIL],
+					[USER_PHONE_NUMBER]: signInData[USER_PHONE_NUMBER],
+					[USER_PROVIDER_DATA]: signInData[USER_PROVIDER_DATA],
+					[USER_SIGNED_IN]: true,
+				}
+			})
+			// do not store sensitive information in localStorage
+			localStorage.setItem(
+				'user',
+				JSON.stringify({
+					...user,
+				})
+			)
+		} else {
+			// User signed out.
+			localStorage.removeItem('user')
 		}
 		return this
 	}
