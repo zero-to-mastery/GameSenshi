@@ -1,4 +1,4 @@
-import { auth } from 'firebase'
+import { auth } from 'firebaseInit'
 import { STATUS, MESSAGE } from 'constantValues'
 
 const handleIsEmailExist = email => {

@@ -2,7 +2,7 @@ import {
 	functions,
 	// auth,
 	// handleDifferentCredential,
-} from 'firebase'
+} from 'firebaseInit'
 
 import {
 	USERNAME,

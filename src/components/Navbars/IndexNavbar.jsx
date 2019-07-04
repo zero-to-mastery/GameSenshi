@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { auth } from 'firebase'
+import { auth } from 'firebaseInit'
 // state
 import { userStore, alertStore, Subscribe } from 'state'
 

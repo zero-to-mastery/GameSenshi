@@ -1,4 +1,4 @@
-import { auth } from 'firebase'
+import { auth } from 'firebaseInit'
 
 const provider = new auth.FacebookAuthProvider()
 

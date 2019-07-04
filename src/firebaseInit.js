@@ -18,9 +18,6 @@ import {
 	MODAL_TITLE,
 	MODAL_LOADER,
 	MODAL_CALLBACK,
-	ALERT_BODY,
-	ALERT_OPEN,
-	ALERT_COLOR,
 	USER_UID,
 	USER_EMAIL,
 	USER_PHOTO_URL,
@@ -136,22 +133,19 @@ const handleDifferentCredential = (auth, email, credential) => {
 												await modalStore.setState({
 													[MODAL_OPEN]: false,
 												})
-												alertStore
-													.setState({
-														[ALERT_BODY]: 'Social login linked successful!',
-														[ALERT_OPEN]: true,
-														[ALERT_COLOR]: 'success',
-													})
-													.catch(async () => {
-														await modalStore.setState({
-															[MODAL_OPEN]: false,
-														})
-														alertStore.setState({
-															[ALERT_BODY]: 'Social login linked unsuccessful!',
-															[ALERT_OPEN]: true,
-															[ALERT_COLOR]: 'danger',
-														})
-													})
+												alertStore.open(
+													'Social login linked successful!',
+													'success'
+												)
+											})
+											.catch(async () => {
+												await modalStore.setState({
+													[MODAL_OPEN]: false,
+												})
+												alertStore.open(
+													'Social login linked unsuccessful!',
+													'danger'
+												)
 											})
 									}
 								},
@@ -240,15 +234,12 @@ auth()
 			//credential
 		} = authModal
 		if (isLinked) {
-			alertStore.setState({
-				[ALERT_BODY]: (
-					<span>
-						Successfully linked your <strong>{name2}</strong> account!
-					</span>
-				),
-				[ALERT_OPEN]: true,
-				[ALERT_COLOR]: 'success',
-			})
+			alertStore.open(
+				<span>
+					Successfully linked your <strong>{name2}</strong> account!
+				</span>,
+				'success'
+			)
 			sessionStorage.removeItem('authModal')
 		} else if (authModal) {
 			// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569

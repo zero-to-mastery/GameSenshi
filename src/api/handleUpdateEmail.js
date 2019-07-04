@@ -1,4 +1,4 @@
-import { auth } from 'firebase'
+import { auth } from 'firebaseInit'
 
 const handleUpdateEmail = email => {
 	return auth()

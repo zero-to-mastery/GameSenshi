@@ -1,5 +1,5 @@
 import req from 'request-promise'
-import { firebase, functions } from 'firebase'
+import { firebase, functions } from 'firebaseInit'
 
 import {
 	signUpEmailValidation,

@@ -2,6 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import * as serviceWorker from 'serviceWorker'
 
+// Initialize firebase
+import 'firebaseInit'
+
 // routing
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { LastLocationProvider } from 'react-router-last-location'
