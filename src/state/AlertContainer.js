@@ -14,6 +14,14 @@ class AlertContainer extends Container {
 	resetState = () => {
 		return this.setState(defaultValues)
 	}
+
+	open = (body = '', color = 'danger') => {
+		return this.setState({
+			[ALERT_BODY]: body,
+			[ALERT_OPEN]: true,
+			[ALERT_COLOR]: color,
+		})
+	}
 }
 
 export default AlertContainer
