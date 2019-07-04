@@ -9,34 +9,34 @@ import { withRouter } from 'react-router'
 import { onSignedInRouting } from 'routes'
 
 // state
-import { authModalStore } from 'state'
+import { modalStore } from 'state'
 
 // constants
 import {
-	SOCIAL_AUTH_MODAL_BODY,
-	SOCIAL_AUTH_MODAL_OPEN,
-	SOCIAL_AUTH_MODAL_TITLE,
-	SOCIAL_AUTH_MODAL_LOADER,
+	MODAL_BODY,
+	MODAL_OPEN,
+	MODAL_TITLE,
+	MODAL_LOADER,
 } from 'constantValues'
 
 const SocialAuthSignInButton = props => {
 	const { lastLocation, history } = props
 
 	const showSignInModal = (provider, api) => {
-		authModalStore.setState({
-			[SOCIAL_AUTH_MODAL_BODY]: (
+		modalStore.setState({
+			[MODAL_BODY]: (
 				<>
 					Please wait while we signing you in with <b>{provider}</b>.
 				</>
 			),
-			[SOCIAL_AUTH_MODAL_OPEN]: true,
-			[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
-			[SOCIAL_AUTH_MODAL_LOADER]: true,
+			[MODAL_OPEN]: true,
+			[MODAL_TITLE]: 'Signing You In...',
+			[MODAL_LOADER]: true,
 		})
 		sessionStorage.setItem(
 			'authModal',
 			JSON.stringify({
-				[SOCIAL_AUTH_MODAL_BODY]: reactElementToJSXString(
+				[MODAL_BODY]: reactElementToJSXString(
 					<span>
 						Signing in with <b>{provider}</b>...
 						<br />
@@ -44,7 +44,7 @@ const SocialAuthSignInButton = props => {
 						Almost there!
 					</span>
 				),
-				[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
+				[MODAL_TITLE]: 'Signing You In...',
 			})
 		)
 		onSignedInRouting(history, lastLocation)

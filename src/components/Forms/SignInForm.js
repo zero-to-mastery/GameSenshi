@@ -41,8 +41,8 @@ import createDecorator from 'final-form-focus'
 import {
 	EMAIL,
 	PASSWORD,
-	SIGN_IN_MODAL_EMAIL,
-	SIGN_IN_MODAL_CALLBACK,
+	SIGN_IN_EMAIL,
+	SIGN_IN_CALLBACK,
 } from 'constantValues'
 
 // core components
@@ -50,7 +50,7 @@ import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
 import InputField from 'components/Inputs/InputField'
 
 // state management
-import { signInModalStore, Subscribe } from 'state'
+import { signInStore, Subscribe } from 'state'
 
 const focusOnError = createDecorator()
 
@@ -59,18 +59,18 @@ class SignInForm extends React.Component {
 
 	submitButton //submit button reference
 
-	onSubmit = async (values, history, lastLocation) => {
+	onSubmit = async (
+		values = { [EMAIL]: '', [PASSWORD]: '' },
+		callback = () => {}
+	) => {
 		const { [EMAIL]: email, [PASSWORD]: password } = values
 		const signInFailed = await handleSignInWithEmailAndPassword(email, password)
 		if (signInFailed) {
 			return { [FORM_ERROR]: signInFailed }
 		} else {
-			onSignedInRouting(history, lastLocation)
-
-			signInModalStore.state[SIGN_IN_MODAL_CALLBACK]()
-			// if undefined mean no error
-			// but this not much point since it will redirect and unmount soon
+			callback()
 			return
+			// if undefined mean no error
 		}
 	}
 	componentWillUnmount() {
@@ -85,12 +85,12 @@ class SignInForm extends React.Component {
 			onSubmit,
 		} = this
 		return (
-			<Subscribe to={[signInModalStore]}>
-				{signInModalStore => {
+			<Subscribe to={[signInStore]}>
+				{signInStore => {
 					const {
 						toggle,
-						state: { [SIGN_IN_MODAL_EMAIL]: email },
-					} = signInModalStore
+						state: { [SIGN_IN_EMAIL]: email },
+					} = signInStore
 					return (
 						<Card className='card-login'>
 							<Form action='' className='form' method=''>
@@ -127,7 +127,10 @@ class SignInForm extends React.Component {
 									}}
 									decorators={[focusOnError]}
 									onSubmit={values => {
-										return onSubmit(values, history, lastLocation)
+										return onSubmit(values, () => {
+											onSignedInRouting(history, lastLocation)
+											signInStore.state[SIGN_IN_CALLBACK]()
+										})
 									}}>
 									{({ submitError, handleSubmit, submitting }) => (
 										<>

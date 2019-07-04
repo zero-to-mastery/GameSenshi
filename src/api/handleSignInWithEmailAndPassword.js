@@ -1,4 +1,4 @@
-import { auth } from 'utils/firebaseFrontEnd'
+import { auth } from 'firebase'
 
 const handleSignInWithEmailAndPassword = async (email, password) => {
 	// sign in set local persistence by default, allowing user to auto sign in

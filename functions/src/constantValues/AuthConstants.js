@@ -1,5 +1,6 @@
-import { IS, ON, EMAIL } from 'constantValues/CommonConstants'
-
+const IS = 'Is'
+const ON = 'On'
+const EMAIL = 'Email'
 const VALID = 'Valid'
 const EXIST = 'Exist'
 const IS_VALID = IS + VALID

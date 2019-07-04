@@ -2,7 +2,7 @@ import {
 	functions,
 	// auth,
 	// handleDifferentCredential,
-} from 'utils/firebaseFrontEnd'
+} from 'firebase'
 
 import {
 	USERNAME,

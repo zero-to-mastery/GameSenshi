@@ -1,23 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import * as serviceWorker from 'serviceWorker'
-import Interweave from 'interweave'
 
 // routing
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { LastLocationProvider } from 'react-router-last-location'
 
 // state management
-import { authModalStore, userStore, Provider } from 'state'
+import { modalStore, userStore, Provider } from 'state'
 
 // constants
-import {
-	SOCIAL_AUTH_MODAL_BODY,
-	SOCIAL_AUTH_MODAL_OPEN,
-	SOCIAL_AUTH_MODAL_TITLE,
-	SOCIAL_AUTH_MODAL_LOADER,
-	USER_SIGNED_IN,
-} from 'constantValues'
+import { USER_SIGNED_IN } from 'constantValues'
 
 // styles
 import 'assets/css/nucleo-icons.css'
@@ -52,23 +45,10 @@ import SignInPage from 'views/SignInPage'
 import SignUpPage from 'views/SignUpPage'
 
 // check if user data in indexed db, pre-sign in user
-const user = JSON.parse(localStorage.getItem('user'))
-user &&
-	(userStore.state = { ...userStore.state, ...user, [USER_SIGNED_IN]: true })
+userStore.initialize()
 
 // modal for auth
-const authModal = JSON.parse(sessionStorage.getItem('authModal'))
-authModal &&
-	authModalStore.setState({
-		[SOCIAL_AUTH_MODAL_BODY]: (
-			<Interweave content={authModal[SOCIAL_AUTH_MODAL_BODY]} />
-		),
-		[SOCIAL_AUTH_MODAL_OPEN]: true,
-		[SOCIAL_AUTH_MODAL_TITLE]: (
-			<Interweave content={authModal[SOCIAL_AUTH_MODAL_TITLE]} />
-		),
-		[SOCIAL_AUTH_MODAL_LOADER]: true,
-	})
+modalStore.initialize()
 
 ReactDOM.render(
 	<Provider>

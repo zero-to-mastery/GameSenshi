@@ -35,6 +35,15 @@ class UserContainer extends Container {
 	resetState = () => {
 		return this.setState(defaultValues)
 	}
+	initialize = () => {
+		const user = JSON.parse(localStorage.getItem('user'))
+		// purposely set state in sync so that it show correct navBar on first rendering
+		// firebase need like 2 seconds to finish sign in, too long
+		if (user) {
+			this.state = { ...this.state, ...user, [USER_SIGNED_IN]: true }
+		}
+		return this
+	}
 }
 
 export default UserContainer

@@ -8,16 +8,16 @@ import 'firebase/functions'
 import 'firebase/storage'
 
 // states
-import { alertStore, authModalStore, userStore, signInModalStore } from 'state'
+import { alertStore, modalStore, userStore, signInStore } from 'state'
 import * as allStore from 'state'
 
 // constants
 import {
-	SOCIAL_AUTH_MODAL_BODY,
-	SOCIAL_AUTH_MODAL_OPEN,
-	SOCIAL_AUTH_MODAL_TITLE,
-	SOCIAL_AUTH_MODAL_LOADER,
-	SOCIAL_AUTH_MODAL_CALLBACK,
+	MODAL_BODY,
+	MODAL_OPEN,
+	MODAL_TITLE,
+	MODAL_LOADER,
+	MODAL_CALLBACK,
 	ALERT_BODY,
 	ALERT_OPEN,
 	ALERT_COLOR,
@@ -30,9 +30,9 @@ import {
 	USER_PROVIDER_DATA,
 	USER_EMAIL_IS_VERIFIED,
 	DEFAULT_AVATAR_URL,
-	SIGN_IN_MODAL_EMAIL,
-	SIGN_IN_MODAL_OPEN,
-	SIGN_IN_MODAL_CALLBACK,
+	SIGN_IN_EMAIL,
+	SIGN_IN_OPEN,
+	SIGN_IN_CALLBACK,
 } from 'constantValues'
 
 const firebaseConfig = {
@@ -84,13 +84,13 @@ const handleDifferentCredential = (auth, email, credential) => {
 			const name1 = provider1 === 'password' ? email : getName(methods[0])
 			const name2 =
 				provider2 === 'password' ? email : getName(credential.signInMethod)
-			await authModalStore.setState({
-				[SOCIAL_AUTH_MODAL_OPEN]: false,
+			await modalStore.setState({
+				[MODAL_OPEN]: false,
 			}) // close modal if error
 			setTimeout(() => {
-				authModalStore.setState({
-					[SOCIAL_AUTH_MODAL_OPEN]: true,
-					[SOCIAL_AUTH_MODAL_BODY]: (
+				modalStore.setState({
+					[MODAL_OPEN]: true,
+					[MODAL_BODY]: (
 						<>
 							It seem like you already registered with <b>{name1}</b>, we will
 							try to link both of your <b>{name1}</b> and
@@ -102,24 +102,24 @@ const handleDifferentCredential = (auth, email, credential) => {
 							<b> Continue</b> to link your account.
 						</>
 					),
-					[SOCIAL_AUTH_MODAL_TITLE]: 'Linking Your Social Login',
-					[SOCIAL_AUTH_MODAL_LOADER]: false,
-					[SOCIAL_AUTH_MODAL_CALLBACK]: async () => {
-						await authModalStore.setState({
-							[SOCIAL_AUTH_MODAL_OPEN]: false,
+					[MODAL_TITLE]: 'Linking Your Social Login',
+					[MODAL_LOADER]: false,
+					[MODAL_CALLBACK]: async () => {
+						await modalStore.setState({
+							[MODAL_OPEN]: false,
 						})
 						if (provider1 === 'password') {
-							signInModalStore.setState({
-								[SIGN_IN_MODAL_EMAIL]: email,
-								[SIGN_IN_MODAL_OPEN]: true,
-								[SIGN_IN_MODAL_CALLBACK]: async () => {
-									if (signInModalStore.state[SIGN_IN_MODAL_OPEN]) {
-										await signInModalStore.setState({
-											[SIGN_IN_MODAL_OPEN]: false,
+							signInStore.setState({
+								[SIGN_IN_EMAIL]: email,
+								[SIGN_IN_OPEN]: true,
+								[SIGN_IN_CALLBACK]: async () => {
+									if (signInStore.state[SIGN_IN_OPEN]) {
+										await signInStore.setState({
+											[SIGN_IN_OPEN]: false,
 										})
-										await authModalStore.setState({
-											[SOCIAL_AUTH_MODAL_OPEN]: true,
-											[SOCIAL_AUTH_MODAL_BODY]: (
+										await modalStore.setState({
+											[MODAL_OPEN]: true,
+											[MODAL_BODY]: (
 												<>
 													Linking<b> {name1} </b>to<b> {name2} </b>
 													<br />
@@ -127,14 +127,14 @@ const handleDifferentCredential = (auth, email, credential) => {
 													Please Wait...
 												</>
 											),
-											[SOCIAL_AUTH_MODAL_TITLE]: 'Linking Your Social Login',
-											[SOCIAL_AUTH_MODAL_LOADER]: true,
+											[MODAL_TITLE]: 'Linking Your Social Login',
+											[MODAL_LOADER]: true,
 										})
 										auth()
 											.currentUser.linkWithCredential(credential)
 											.then(async () => {
-												await authModalStore.setState({
-													[SOCIAL_AUTH_MODAL_OPEN]: false,
+												await modalStore.setState({
+													[MODAL_OPEN]: false,
 												})
 												alertStore
 													.setState({
@@ -143,8 +143,8 @@ const handleDifferentCredential = (auth, email, credential) => {
 														[ALERT_COLOR]: 'success',
 													})
 													.catch(async () => {
-														await authModalStore.setState({
-															[SOCIAL_AUTH_MODAL_OPEN]: false,
+														await modalStore.setState({
+															[MODAL_OPEN]: false,
 														})
 														alertStore.setState({
 															[ALERT_BODY]: 'Social login linked unsuccessful!',
@@ -165,7 +165,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 									provider2,
 									name1,
 									name2,
-									[SOCIAL_AUTH_MODAL_BODY]: reactElementToJSXString(
+									[MODAL_BODY]: reactElementToJSXString(
 										<span>
 											Please wait while we signing you in with
 											<b> {name1}. </b>
@@ -175,7 +175,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 											<b> {name2}. </b>
 										</span>
 									),
-									[SOCIAL_AUTH_MODAL_TITLE]: 'Signing You In...',
+									[MODAL_TITLE]: 'Signing You In...',
 									isLinked: false,
 								})
 							)
@@ -191,7 +191,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 // user auth listener
 auth().onAuthStateChanged(signInData => {
 	const authModal = JSON.parse(sessionStorage.getItem('authModal'))
-	!authModal && authModalStore.setState({ [SOCIAL_AUTH_MODAL_OPEN]: false })
+	!authModal && modalStore.setState({ [MODAL_OPEN]: false })
 	if (signInData) {
 		const user = {
 			[USER_DISPLAY_NAME]: signInData[USER_DISPLAY_NAME],
@@ -257,14 +257,14 @@ auth()
 				'authModal',
 				JSON.stringify({
 					...authModal,
-					[SOCIAL_AUTH_MODAL_BODY]: reactElementToJSXString(
+					[MODAL_BODY]: reactElementToJSXString(
 						<span>
 							Please wait while we linking your
 							<b> {name2} </b>
 							account to your<b> {name1} </b>account.
 						</span>
 					),
-					[SOCIAL_AUTH_MODAL_TITLE]: 'Linking...',
+					[MODAL_TITLE]: 'Linking...',
 					isLinked: true,
 				})
 			)

@@ -1,4 +1,4 @@
-import { auth } from 'utils/firebaseFrontEnd'
+import { auth } from 'firebase'
 import { STATUS, MESSAGE } from 'constantValues'
 
 const handleIsEmailExist = email => {

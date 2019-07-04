@@ -5,31 +5,31 @@ import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
 
 // constants
 import {
-	SOCIAL_AUTH_MODAL_BODY,
-	SOCIAL_AUTH_MODAL_OPEN,
-	SOCIAL_AUTH_MODAL_TITLE,
-	SOCIAL_AUTH_MODAL_LOADER,
-	SOCIAL_AUTH_MODAL_CALLBACK,
+	MODAL_BODY,
+	MODAL_OPEN,
+	MODAL_TITLE,
+	MODAL_LOADER,
+	MODAL_CALLBACK,
 } from 'constantValues'
 
 // state
-import { authModalStore, Subscribe } from 'state'
+import { modalStore, Subscribe } from 'state'
 
 // toggle
 const AuthModal = () => {
 	return (
-		<Subscribe to={[authModalStore]}>
-			{authModalStore => {
+		<Subscribe to={[modalStore]}>
+			{modalStore => {
 				const {
 					state: {
-						[SOCIAL_AUTH_MODAL_BODY]: body,
-						[SOCIAL_AUTH_MODAL_OPEN]: open,
-						[SOCIAL_AUTH_MODAL_TITLE]: title,
-						[SOCIAL_AUTH_MODAL_CALLBACK]: callback,
-						[SOCIAL_AUTH_MODAL_LOADER]: loader,
+						[MODAL_BODY]: body,
+						[MODAL_OPEN]: open,
+						[MODAL_TITLE]: title,
+						[MODAL_CALLBACK]: callback,
+						[MODAL_LOADER]: loader,
 					},
 					toggle,
-				} = authModalStore
+				} = modalStore
 				return (
 					<Modal
 						isOpen={open}
