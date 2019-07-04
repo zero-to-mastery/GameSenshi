@@ -20,7 +20,7 @@ import {
 
 const focusOnError = createDecorator()
 
-const AccountTabPane = props => {
+const AccountSettingsTabPane = props => {
 	const submitButton = useRef(null)
 	return (
 		<TabPane tabId='profile3'>
@@ -172,4 +172,4 @@ const AccountTabPane = props => {
 	)
 }
 
-export default AccountTabPane
+export default AccountSettingsTabPane

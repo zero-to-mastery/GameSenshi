@@ -30,9 +30,9 @@ import ImageUpload from 'components/CustomUpload/ImageUpload.jsx'
 import {
 	Footer,
 	IndexNavbar,
-	GeneralTabPane,
-	BillingTabPane,
-	AccountTabPane,
+	GeneralSettingsTabPane,
+	BillingSettingsTabPane,
+	AccountSettingsTabPane,
 } from 'components'
 
 class Settings extends React.Component {
@@ -165,9 +165,9 @@ class Settings extends React.Component {
 												<div className='section'>
 													<TabContent
 														activeTab={'profile' + this.state.profileTabs}>
-														<GeneralTabPane />
-														<BillingTabPane />
-														<AccountTabPane />
+														<GeneralSettingsTabPane />
+														<BillingSettingsTabPane />
+														<AccountSettingsTabPane />
 														<TabPane tabId='profile4'>
 															<Container>
 																<Row>

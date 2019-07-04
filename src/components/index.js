@@ -8,9 +8,9 @@ import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
 import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInForm from 'components/Forms/SignInForm'
-import GeneralTabPane from 'components/TabPane/GeneralTabPane'
-import BillingTabPane from 'components/TabPane/BillingTabPane'
-import AccountTabPane from 'components/TabPane/AccountTabPane'
+import GeneralSettingsTabPane from 'components/TabPane/GeneralSettingsTabPane'
+import BillingSettingsTabPane from 'components/TabPane/BillingSettingsTabPane'
+import AccountSettingsTabPane from 'components/TabPane/AccountSettingsTabPane'
 import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary'
 
 export {
@@ -24,8 +24,8 @@ export {
 	SignInForm,
 	SignUpButton,
 	SignInButton,
-	GeneralTabPane,
-	BillingTabPane,
-	AccountTabPane,
+	GeneralSettingsTabPane,
+	BillingSettingsTabPane,
+	AccountSettingsTabPane,
 	ErrorBoundary,
 }

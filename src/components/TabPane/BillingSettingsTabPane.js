@@ -15,7 +15,7 @@ import { Button, Label, FormGroup, Input, Table, TabPane } from 'reactstrap'
 
 import CardModal from 'components/Modals/CardModal'
 
-const BillingTabPane = () => {
+const BillingSettingsTabPane = () => {
 	const [openCard, setOpenCard] = useState(false)
 
 	return (
@@ -131,4 +131,4 @@ const BillingTabPane = () => {
 	)
 }
 
-export default BillingTabPane
+export default BillingSettingsTabPane

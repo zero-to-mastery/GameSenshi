@@ -121,7 +121,7 @@ const languageOptions = [
 	{ value: '5', label: 'Russian', color: '#FF8B00' },
 ]
 
-const GeneralTabPane = props => {
+const GeneralSettingsTabPane = props => {
 	const [birthDateOpen, setBirthDateOpen] = useState(false)
 	return (
 		<Subscribe to={[userStore]}>
@@ -287,4 +287,4 @@ const GeneralTabPane = props => {
 	)
 }
 
-export default GeneralTabPane
+export default GeneralSettingsTabPane
