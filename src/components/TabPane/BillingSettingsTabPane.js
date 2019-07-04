@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 //state
 import { Subscribe, cardStore } from 'state'
 // constants
@@ -16,8 +16,6 @@ import { Button, Label, FormGroup, Input, Table, TabPane } from 'reactstrap'
 import CardModal from 'components/Modals/CardModal'
 
 const BillingSettingsTabPane = () => {
-	const [openCard, setOpenCard] = useState(false)
-
 	return (
 		<Subscribe to={[cardStore]}>
 			{cardStore => {
@@ -26,12 +24,7 @@ const BillingSettingsTabPane = () => {
 				} = cardStore
 				return (
 					<TabPane tabId='profile2'>
-						<CardModal
-							open={openCard}
-							toggle={() => {
-								setOpenCard(openCard => !openCard)
-							}}
-						/>
+						<CardModal />
 						<header>
 							<h2 className='text-uppercase'>Billing method</h2>
 						</header>
@@ -120,7 +113,7 @@ const BillingSettingsTabPane = () => {
 							size='sm'
 							type='button'
 							onClick={() => {
-								setOpenCard(true)
+								cardStore.show()
 							}}>
 							<i className='tim-icons icon-simple-add' /> Add card
 						</Button>

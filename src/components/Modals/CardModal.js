@@ -29,21 +29,18 @@ import {
 	MONTH_ABVS_SELECT,
 	YEARS,
 	CARD_CVC,
-	CARD_CARDS,
 	CARD_NUMBER,
 	CARD_EXPIRY_YEAR,
 	CARD_HOLDER_NAME,
 	CARD_EXPIRY_MONTH,
 	CARD_IS_DEFAULT,
-	CARD_LAST_4_DIGITS,
-	CARD_TYPE,
+	CARD_IS_OPEN,
 } from 'constantValues'
 
 // state
 import { cardStore, Subscribe } from 'state'
 
 // utils
-import valid from 'card-validator'
 import { string } from 'yup'
 import createDecorator from 'final-form-focus'
 import {
@@ -55,37 +52,9 @@ import {
 
 const focusOnError = createDecorator()
 
-const cardType = cardNumber => {
-	// this is for payment icon
-	switch (valid.number(cardNumber)) {
-		case 'Visa':
-			return 'visa'
-		case 'Mastercard':
-			return 'mastercard'
-		case 'Diners Club':
-			return 'diners'
-		case 'Discover':
-			return 'discover'
-		case 'JCB':
-			return 'jcb'
-		case 'UnionPay':
-			return 'unionpay'
-		case 'Maestro':
-			return 'maestro'
-		case 'Elo':
-			return 'elo'
-		case 'Hipercard':
-			return 'hipercard'
-		default:
-			return 'default'
-	}
-}
-
 const CardModal = props => {
 	const [, forceUpdate] = useState()
 	const [focus, setFocus] = useState('number')
-
-	const { open, toggle } = props
 
 	const onChangeNumber = e => {
 		let {
@@ -134,7 +103,10 @@ const CardModal = props => {
 						[CARD_EXPIRY_MONTH]: { value: expiryMonth },
 						[CARD_EXPIRY_YEAR]: { value: expiryYear },
 						[CARD_IS_DEFAULT]: isDefault,
+						[CARD_IS_OPEN]: open,
 					},
+					toggle,
+					toggleIsDefault,
 				} = cardStore
 				return (
 					<Modal
@@ -168,20 +140,8 @@ const CardModal = props => {
 								// TODO create third party card processor api
 								// TODO more reasonable input width for all fields
 								cardStore.setState(state => {
-									if (isDefault) {
-										state[CARD_CARDS].forEach(creditCard => {
-											creditCard.isDefault = false
-										})
-									}
-									state[CARD_CARDS].push({
-										[CARD_LAST_4_DIGITS]: cardNumber.slice(-4),
-										[CARD_EXPIRY_YEAR]: expiryYear,
-										[CARD_EXPIRY_MONTH]: expiryMonth,
-										[CARD_TYPE]: cardType(cardNumber),
-										[CARD_IS_DEFAULT]: isDefault,
-									})
-									toggle()
-									return state
+									toggle() // TODO this should only run if submit success
+									cardStore.onSubmit()
 								})
 							}}>
 							{({ handleSubmit, submitting }) => (
@@ -340,12 +300,7 @@ const CardModal = props => {
 																				type='checkbox'
 																				checked={isDefault}
 																				onClick={() => {
-																					cardStore.setState(state => {
-																						state[CARD_IS_DEFAULT] = !state[
-																							CARD_IS_DEFAULT
-																						]
-																						return state
-																					})
+																					toggleIsDefault()
 																				}}
 																				onChange={() => {}}
 																			/>
