@@ -95,8 +95,8 @@ const AccountSettingsTabPane = props => {
 					)}
 				</FinalForm>
 			</div>
-			<br />
-			<br />
+			<hr />
+			<hr />
 			<div className='g-pos-rel h-100 g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-30--md'>
 				<header>
 					<h2 className='text-uppercase g-font-size-12 g-font-size-default--md g-color-black mb-0'>
