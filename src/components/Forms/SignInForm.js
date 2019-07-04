@@ -38,12 +38,7 @@ import { FORM_ERROR } from 'final-form'
 import createDecorator from 'final-form-focus'
 
 // constants
-import {
-	EMAIL,
-	PASSWORD,
-	SIGN_IN_EMAIL,
-	SIGN_IN_CALLBACK,
-} from 'constantValues'
+import { SIGN_IN_EMAIL, SIGN_IN_CALLBACK } from 'constantValues'
 
 // core components
 import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
@@ -54,16 +49,20 @@ import { signInStore, Subscribe } from 'state'
 
 const focusOnError = createDecorator()
 
+// local constant
+const LOCAL_EMAIL = 'email'
+const LOCAL_PASSWORD = 'password'
+
 class SignInForm extends React.Component {
 	state = { willUnmount: { value: false } }
 
 	submitButton //submit button reference
 
 	onSubmit = async (
-		values = { [EMAIL]: '', [PASSWORD]: '' },
+		values = { [LOCAL_EMAIL]: '', [LOCAL_PASSWORD]: '' },
 		callback = () => {}
 	) => {
-		const { [EMAIL]: email, [PASSWORD]: password } = values
+		const { [LOCAL_EMAIL]: email, [LOCAL_PASSWORD]: password } = values
 		const signInFailed = await handleSignInWithEmailAndPassword(email, password)
 		if (signInFailed) {
 			return { [FORM_ERROR]: signInFailed }
@@ -122,8 +121,8 @@ class SignInForm extends React.Component {
 								</CardBody>
 								<FinalForm
 									initialValues={{
-										[EMAIL]: passwordOnly ? email : '',
-										[PASSWORD]: '',
+										[LOCAL_EMAIL]: passwordOnly ? email : '',
+										[LOCAL_PASSWORD]: '',
 									}}
 									decorators={[focusOnError]}
 									onSubmit={values => {
@@ -163,8 +162,8 @@ class SignInForm extends React.Component {
 															<Col />
 														</Row>
 														<InputField
-															type={EMAIL}
-															name={EMAIL}
+															type={LOCAL_EMAIL}
+															name={LOCAL_EMAIL}
 															hideSuccess
 															placeholder='Email'
 															icon='tim-icons icon-email-85'
@@ -178,8 +177,8 @@ class SignInForm extends React.Component {
 												)}
 												<div className='w-100 mb-3' />
 												<InputField
-													type={PASSWORD}
-													name={PASSWORD}
+													type={LOCAL_PASSWORD}
+													name={LOCAL_PASSWORD}
 													hideSuccess
 													placeholder='Password'
 													icon='tim-icons icon-lock-circle'
