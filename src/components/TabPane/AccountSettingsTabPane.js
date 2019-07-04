@@ -137,7 +137,7 @@ const AccountSettingsTabPane = props => {
 											/>
 										</FormGroup>
 									</Col>
-								</Row>{' '}
+								</Row>
 							</Form>
 							<Row className='mt-4'>
 								<Col className='d-flex justify-content-center'>
