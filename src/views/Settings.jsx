@@ -26,7 +26,7 @@ import {
 	GeneralSettingsTabPane,
 	BillingSettingsTabPane,
 	AccountSettingsTabPane,
-	NotificationSettingTabPane,
+	NotificationSettingsTabPane,
 } from 'components'
 
 class Settings extends React.Component {
@@ -162,7 +162,7 @@ class Settings extends React.Component {
 														<GeneralSettingsTabPane />
 														<BillingSettingsTabPane />
 														<AccountSettingsTabPane />
-														<NotificationSettingTabPane />
+														<NotificationSettingsTabPane />
 													</TabContent>
 												</div>
 											</Col>

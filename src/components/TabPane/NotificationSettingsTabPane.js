@@ -12,7 +12,7 @@ import {
 	Col,
 } from 'reactstrap'
 
-const NotificationSettingTabPane = props => {
+const NotificationSettingsTabPane = props => {
 	return (
 		<TabPane tabId='profile4'>
 			<Container>
@@ -86,4 +86,4 @@ const NotificationSettingTabPane = props => {
 	)
 }
 
-export default NotificationSettingTabPane
+export default NotificationSettingsTabPane
