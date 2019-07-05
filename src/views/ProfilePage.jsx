@@ -1,13 +1,14 @@
 import React from 'react'
+// ReactJS plugin for a nice carousel
+import Slick from 'react-slick'
+import 'holderjs'
 // reactstrap components
 import {
 	Button,
 	Card,
 	CardHeader,
 	CardBody,
-	FormGroup,
-	Form,
-	Input,
+	Media,
 	Container,
 	Row,
 	Col,
@@ -19,6 +20,26 @@ import {
 
 // core components
 import { Footer, IndexNavbar } from 'components'
+
+let imageSlickSettings = {
+	dots: true,
+	infinite: true,
+	slidesToShow: 4,
+	slidesToScroll: 4,
+	responsive: [
+		{
+			breakpoint: 1024,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				infinite: true,
+			},
+		},
+		// You can unslick at a given breakpoint now by adding:
+		// settings: "unslick"
+		// instead of a settings object
+	],
+}
 
 const items = [
 	{
@@ -181,183 +202,126 @@ class ProfilePage extends React.Component {
 							</Row>
 						</Container>
 					</div>
-					<div className='section'>
-						<Container>
-							<Row className='justify-content-between'>
-								<Col md='6'>
-									<Row className='justify-content-between align-items-center'>
-										<Carousel
-											activeIndex={this.state.activeIndex}
-											next={this.next}
-											previous={this.previous}>
-											<CarouselIndicators
-												items={items}
-												activeIndex={this.state.activeIndex}
-												onClickHandler={this.goToIndex}
-											/>
-											{items.map((prop, key) => {
-												return (
-													<CarouselItem
-														onExiting={this.onExiting}
-														onExited={this.onExited}
-														key={prop.src}>
-														<img src={prop.src} alt='...' className='d-block' />
-														<div className='carousel-caption d-none d-md-block'>
-															<h5>{prop.caption}</h5>
-														</div>
-													</CarouselItem>
-												)
-											})}
-											<a
-												className='carousel-control-prev'
-												data-slide='prev'
-												href='#pablo'
-												onClick={e => {
-													e.preventDefault()
-													this.previous()
-												}}
-												role='button'>
-												<i className='tim-icons icon-minimal-left' />
-											</a>
-											<a
-												className='carousel-control-next'
-												data-slide='next'
-												href='#pablo'
-												onClick={e => {
-													e.preventDefault()
-													this.next()
-												}}
-												role='button'>
-												<i className='tim-icons icon-minimal-right' />
-											</a>
-										</Carousel>
-									</Row>
-								</Col>
-								<Col md='5'>
-									<h1 className='profile-title text-left'>Projects</h1>
-									<h5 className='text-on-back'>02</h5>
-									<p className='profile-description text-left'>
-										An artist of considerable range, Ryan — the name taken by
-										Melbourne-raised, Brooklyn-based Nick Murphy — writes,
-										performs and records all of his own music, giving it a warm,
-										intimate feel with a solid groove structure. An artist of
-										considerable range.
-									</p>
-									<div className='btn-wrapper pt-3'>
-										<Button
-											className='btn-simple'
-											color='primary'
-											href='#pablo'
-											onClick={e => e.preventDefault()}>
-											<i className='tim-icons icon-book-bookmark' /> Bookmark
-										</Button>
-										<Button
-											className='btn-simple ml-1'
-											color='info'
-											href='#pablo'
-											onClick={e => e.preventDefault()}>
-											<i className='tim-icons icon-bulb-63' /> Check it!
-										</Button>
-									</div>
-								</Col>
-							</Row>
-						</Container>
-					</div>
 					<section className='section'>
 						<Container>
 							<Row>
-								<Col md='6'>
-									<Card className='card-plain'>
-										<CardHeader>
-											<h1 className='profile-title text-left'>Contact</h1>
-											<h5 className='text-on-back'>03</h5>
-										</CardHeader>
-										<CardBody>
-											<Form>
-												<Row>
-													<Col md='6'>
-														<FormGroup>
-															<label>Your Name</label>
-															<Input defaultValue='Mike' type='text' />
-														</FormGroup>
-													</Col>
-													<Col md='6'>
-														<FormGroup>
-															<label>Email address</label>
-															<Input
-																placeholder='mike@email.com'
-																type='email'
-															/>
-														</FormGroup>
-													</Col>
-												</Row>
-												<Row>
-													<Col md='6'>
-														<FormGroup>
-															<label>Phone</label>
-															<Input defaultValue='001-12321345' type='text' />
-														</FormGroup>
-													</Col>
-													<Col md='6'>
-														<FormGroup>
-															<label>Company</label>
-															<Input defaultValue='CreativeTim' type='text' />
-														</FormGroup>
-													</Col>
-												</Row>
-												<Row>
-													<Col md='12'>
-														<FormGroup>
-															<label>Message</label>
-															<Input placeholder='Hello there!' type='text' />
-														</FormGroup>
-													</Col>
-												</Row>
-												<Button
-													className='btn-round float-right'
-													color='primary'
-													id='tooltip191750994'
-													type='button'>
-													Send text
-												</Button>
-												<UncontrolledTooltip
-													delay={0}
-													placement='right'
-													target='tooltip191750994'>
-													Can't wait for your message
-												</UncontrolledTooltip>
-											</Form>
-										</CardBody>
-									</Card>
+								<h1>Images</h1>
+							</Row>
+							<Row>
+								<Col md='12'>
+									<Slick {...imageSlickSettings}>
+										<div>
+											<Media
+												object
+												data-src='holder.js/150x150?text=1'
+												alt='...'
+											/>
+										</div>
+										<div>
+											<Media
+												object
+												data-src='holder.js/150x150?text=2'
+												alt='...'
+											/>
+										</div>
+										<div>
+											<Media
+												object
+												data-src='holder.js/150x150?text=3'
+												alt='...'
+											/>
+										</div>
+										<div>
+											<Media
+												object
+												data-src='holder.js/150x150?text=4'
+												alt='...'
+											/>
+										</div>
+										<div>
+											<Media
+												object
+												data-src='holder.js/150x150?text=5'
+												alt='...'
+											/>
+										</div>
+										<div>
+											<Media
+												object
+												data-src='holder.js/150x150?text=6'
+												alt='...'
+											/>
+										</div>
+										<div>
+											<Media
+												object
+												data-src='holder.js/150x150?text=7'
+												alt='...'
+											/>
+										</div>
+										<div>
+											<Media
+												object
+												data-src='holder.js/150x150?text=8'
+												alt='...'
+											/>
+										</div>
+									</Slick>
 								</Col>
-								<Col className='ml-auto' lg='4' md='6'>
-									<div className='info info-horizontal'>
-										<div className='icon icon-primary'>
-											<i className='tim-icons icon-square-pin' />
-										</div>
-										<div className='description'>
-											<h4 className='info-title'>Find us at the office</h4>
-											<p>
-												Bld Mihail Kogalniceanu, nr. 8, <br />
-												7652 Bucharest, <br />
-												Romania
-											</p>
-										</div>
-									</div>
-									<div className='info info-horizontal'>
-										<div className='icon icon-primary'>
-											<i className='tim-icons icon-mobile' />
-										</div>
-										<div className='description'>
-											<h4 className='info-title'>Give us a ring</h4>
-											<p>
-												Michael Jordan <br />
-												+40 762 321 762 <br />
-												Mon - Fri, 8:00-22:00
-											</p>
-										</div>
-									</div>
-								</Col>
+							</Row>
+						</Container>
+					</section>
+					<section className='section'>
+						<Container>
+							<Row>
+								<h1>Videos</h1>
+							</Row>
+							<Row className='justify-content-center'>
+								<Carousel
+									activeIndex={this.state.activeIndex}
+									next={this.next}
+									previous={this.previous}>
+									<CarouselIndicators
+										items={items}
+										activeIndex={this.state.activeIndex}
+										onClickHandler={this.goToIndex}
+									/>
+									{items.map((prop, key) => {
+										return (
+											<CarouselItem
+												onExiting={this.onExiting}
+												onExited={this.onExited}
+												key={prop.src}>
+												<img src={prop.src} alt='...' className='d-block' />
+												<div className='carousel-caption d-none d-md-block'>
+													<h5>{prop.caption}</h5>
+												</div>
+											</CarouselItem>
+										)
+									})}
+									<a
+										className='carousel-control-prev'
+										data-slide='prev'
+										href='#pablo'
+										onClick={e => {
+											e.preventDefault()
+											this.previous()
+										}}
+										role='button'>
+										<i className='tim-icons icon-minimal-left' />
+									</a>
+									<a
+										className='carousel-control-next'
+										data-slide='next'
+										href='#pablo'
+										onClick={e => {
+											e.preventDefault()
+											this.next()
+										}}
+										role='button'>
+										<i className='tim-icons icon-minimal-right' />
+									</a>
+								</Carousel>
 							</Row>
 						</Container>
 					</section>
