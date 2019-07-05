@@ -47,19 +47,17 @@ class UserContainer extends Container {
 		}
 		return this
 	}
+	onSignUpWithPassword = (username, email) => {
+		this.setState({
+			[USER_DISPLAY_NAME]: username,
+			[USER_EMAIL]: email,
+			[USER_SIGNED_IN]: true,
+		})
 
-	onAuthStateChanged = (
-		signInData = {
-			[USER_DISPLAY_NAME]: '',
-			[USER_EMAIL_IS_VERIFIED]: '',
-			[USER_PHOTO_URL]: '',
-			[USER_UID]: '',
-			[USER_EMAIL]: '',
-			[USER_PHONE_NUMBER]: '',
-			[USER_PROVIDER_DATA]: '',
-			[USER_SIGNED_IN]: '',
-		}
-	) => {
+		return this
+	}
+
+	onAuthStateChanged = (signInData = {}) => {
 		if (signInData) {
 			const user = {
 				[USER_DISPLAY_NAME]: signInData[USER_DISPLAY_NAME],
