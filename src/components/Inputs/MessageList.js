@@ -54,15 +54,6 @@ const MessageList = (
 						</Col>
 						<Col xs='auto'>
 							<small className='text-muted'>{filteredMessage}</small>
-
-							{
-								// ! for some reason, this 'small' component cause error, the same thing happen if you change to p tag or remove filteredMessage
-								// ! step to reproduce: fill the form (eg, signup) with valid info, dont submit and move to other page (eg.signin)
-								// ! then move back to (eg, signup) and submit
-								// * ok issue solve, this is because the initial value of final form reset and is different from what in the authStore value
-								// * solution would be initiate the value with authStore value
-								// TODO research this issue further, possibly open issue in react-final-form
-							}
 						</Col>
 					</Row>
 				</Alert>
