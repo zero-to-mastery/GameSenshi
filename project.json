@@ -1,29 +1,39 @@
 {
-    "repoName": "GameSenshi",
-    "tagline": "A platform for gamers/streamers to provide their casual service.",
-    "color": "#613dc1",
-    "logo": "",
-    "channelName": "gamesenshi",
-    "desc": [
-        "This is project that temporary hire people to play game with you. You can imagine this as you hire someone to work for you for few hours, but unlike conventional task, this is about game companion.",
-        "__**From consumer perspective:**__ \n:small_orange_diamond: You are a big fans of a professional/famous gamer, you want to play a game with him, either as sparring partner(opponent) or team mate. \n:small_orange_diamond: You are a fans of good looking or fun streamer, you want to play with her/him. \n:small_orange_diamond: You are looking for game coach, gamer that systemized his knowledge and make you a better gamer. \n:small_orange_diamond: You are looking for booster, gamer that help you rank up by either playing your account or as your team mate.",
-        "__**From provider perspective:**__ \nWhile some gamers/streamers do make big buck, but large majority of gamers or streamers make little or to none money out of gaming, so this platform can play a part in gaming economy as it can turn gamers into new work force."
-       
-    ],
-    "team": [
-        ["tylim", "Project Lead"],
-        ["CodeMeKathy", "Project Manager"]
-    ],
-    "links": [
-        ["README.md", "https://github.com/zero-to-mastery/GameSenshi/blob/master/README.md"],
-        ["CONTRIBUTING.md", "https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md"]
-    ],
-    "poi": [
-        ["README.md", "https://github.com/zero-to-mastery/GameSenshi/blob/master/README.md"],
-        ["CONTRIBUTING.md", "https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md"]
-    ],
-    "tasks": {
-        "title": "Trello Tasks",
-        "desc": "We use Trello to manage the tasks within this project, [here](https://trello.com/invite/b/tAyH3oig/a5374e9eaa1bbe644f3e7367d1e23300/game-senshi) is your invitation. Further information on how to use Trello and claim a task can be found in the [CONTRIBUTING.md](https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md) file on Github."
-    }  
+	"repoName": "GameSenshi",
+	"tagline": "A platform for gamers/streamers to provide their casual service.",
+	"color": "#613dc1",
+	"logo": "https://cdn.discordapp.com/attachments/585004003797237771/592386952511356950/GS1.png",
+	"channelName": "gamesenshi",
+	"desc": [
+		"This is a project that is designed to allow the user the ability to temporarily hire other gamers to play with them. Similar to hiring someone to work with you, this allows you the opportunity to hire another gamer to game with you. It is all about gaming companionship.",
+		"__**From consumer perspective:**__ \n:small_orange_diamond: You are a big fan of a professional/famous gamer, and you want to play a game with him/her, either as a sparring partner(opponent), or teammate. \n:small_orange_diamond: You are looking for someone to help you improve as a gamer, and want a gaming \"coach\" that can help you along in that process. \n:small_orange_diamond: You want to rank up in a specific game, but need help. You need a strong and capable teammate who has lots of experience with that game! \n:small_orange_diamond: You have a nice small less known multiplayer game, hire your fighter here! \n:small_orange_diamond: You're merely looking to hang out and socialize with streamers and/or other gamers in a relaxed environment!",
+		"__**From provider perspective:**__ \nWhile some gamers/streamers do make a lot of money, the large majority of gamers and/or streamers do not. This platform provides the opportunity for many gamers and streamers to expand their viewer base, reach new potential viewers and people to game with, and make new friends along the way! It also helps to link casual gamers up with more competitive and successful gamers/streamers, and in return helping everyone in the community grow. With this platform, we can create a new work force of gamers who are doing what they love, and making money along the way!",
+		"__**Application Features:**__ \n:diamonds: Marketplace \n:diamonds: Payment \n:diamonds: Chat \n:diamonds: Gaming Contents \n:diamonds: Event Organizer ",
+		"__**Tech Stack:**__ \n:small_blue_diamond: React \n: Progressive Web App \n:small_blue_diamond: CSS in JS \n:small_blue_diamond: Bootstrap \n:small_blue_diamond: Firebase \n:small_blue_diamond: GraphQL \n: SSR(future)"
+	],
+	"team": [["tylim", "Project Lead"], ["CodeMeKathy", "Project Manager"]],
+	"links": [
+		[
+			"README.md",
+			"https://github.com/zero-to-mastery/GameSenshi/blob/master/README.md"
+		],
+		[
+			"CONTRIBUTING.md",
+			"https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md"
+		]
+	],
+	"poi": [
+		[
+			"README.md",
+			"https://github.com/zero-to-mastery/GameSenshi/blob/master/README.md"
+		],
+		[
+			"CONTRIBUTING.md",
+			"https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md"
+		]
+	],
+	"tasks": {
+		"title": "Trello Tasks",
+		"desc": "We use Trello to manage the tasks within this project, [here](https://trello.com/invite/b/tAyH3oig/a5374e9eaa1bbe644f3e7367d1e23300/game-senshi) is your invitation. Further information on how to use Trello and claim a task can be found in the [CONTRIBUTING.md](https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md) file on Github."
+	}
 }

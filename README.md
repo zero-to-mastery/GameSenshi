@@ -8,21 +8,22 @@ This is a project that is designed to allow the user the ability to temporarily 
 
 From the consumer perspective:
 
-1. You are a big fan of a professional/famous gamer, and you want to play a game with him/her, either as a sparring partner(opponent), or teammate.
-2. You are a fan of a streamer, and want to play with him/her.
-3. You are looking for someone to help you improve as a gamer, and want a gaming "coach" that can help you along in that process.
-4. You want to rank up in a specific game, but need help. You need a strong and capable teammate who has lots of experience with that game!
+1. You are a big fan of a professional gamer/famous streamer, and you want to play a game with with your beloved star., either as a sparring partner(opponent), or teammate.
+2. You are looking for someone to help you improve as a gamer, and want a gaming "coach" that can help you along in that process.
+3. You want to rank up in a specific game, but need help. You need a strong and capable teammate who has lots of experience with that game!
+4. You have a nice small less known multiplayer game, hire your fighter here!
 5. You're merely looking to hang out and socialize with streamers and/or other gamers in a relaxed environment!
 
-From provider perspective:
-While some gamers/streamers do make a lot of money, the large majority of gamers and/or streamers do not. This platform provides the opportunity for many gamers and streamers to expand their viewer base, reach new potential viewers and people to game with, and make new friends along the way! It also helps to link casual gamers up with more competitive and successful gamers/streamers, and in return helping everyone in the community grow. With this platform, we can create a new work force of gamers who are doing what they love, and making money along the way! 
+From provider perspective:  
+
+While some gamers/streamers do make a lot of money, the large majority of gamers and/or streamers do not. This platform provides the opportunity for many gamers and streamers to expand their viewer base, reach new potential viewers and people to game with, and make new friends along the way! It also helps to link casual gamers up with more competitive and successful gamers/streamers, and in return helping everyone in the community grow. With this platform, we can create a new work force of gamers who are doing what they love, and making money along the way!
 
 ## Application Features
 
-1. Marketplace platform
-2. Process payment with third party api
-3. Real time chat
-4. Gaming content
+1. Marketplace
+2. Payment
+3. Chat
+4. Gaming Contents
 5. Event Organizer
 
 ## Installation
