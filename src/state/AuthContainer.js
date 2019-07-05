@@ -1,5 +1,7 @@
 import { Container } from 'unstated'
 import {
+	SUBMIT_ERRORS,
+	IS_VALID,
 	SUBMITTING,
 	EMAIL,
 	EMAIL_IS_VALID,
@@ -35,6 +37,16 @@ class AuthContainer extends Container {
 	state = defaultValues
 	resetState = () => {
 		this.setState(defaultValues)
+		return this
+	}
+
+	processSignUpErrors = data => {
+		for (let name in data) {
+			this.setState({
+				[name + SUBMIT_ERRORS]: data[name],
+				[name + IS_VALID]: !data[name],
+			})
+		}
 		return this
 	}
 }

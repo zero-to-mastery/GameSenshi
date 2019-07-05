@@ -22,14 +22,6 @@ import {
 	USERNAME_EXTRA_HEIGHT,
 	PASSWORD,
 	PASSWORD_EXTRA_HEIGHT,
-	SUBMIT_ERRORS,
-	IS_VALID,
-	ALERT_BODY,
-	ALERT_OPEN,
-	ALERT_COLOR,
-	USER_EMAIL,
-	USER_SIGNED_IN,
-	USER_DISPLAY_NAME,
 } from 'constantValues'
 
 // form validation
@@ -70,7 +62,6 @@ import Loader from 'react-loader-spinner'
 import {
 	Footer,
 	InputField,
-	MessageList,
 	IndexNavbar,
 	SocialAuthButtonGroup,
 } from 'components'
@@ -87,7 +78,7 @@ class RegisterPage extends React.Component {
 	submitButton = createRef()
 
 	componentDidMount() {
-		authStore.resetState() // ! reset state to prevent nasty error, see messageList comment for details
+		authStore.resetState()
 		document.documentElement.scrollTop = 0
 		document.scrollingElement.scrollTop = 0
 		this.refs.wrapper.scrollTop = 0
@@ -128,40 +119,27 @@ class RegisterPage extends React.Component {
 		const {
 			[STATUS]: status,
 			[DATA]: data,
-		} = await handleSignUpWithEmailAndPassword(values, () => {
-			onSignedInRouting(history, lastLocation)
-		})
-		// incase there is another error from server...
-		for (let property in data) {
-			authStore.state[property + SUBMIT_ERRORS] = MessageList({
-				validationResult: data[property],
-				type: undefined,
-			})
-			authStore.state[property + IS_VALID] = !data[property]
-		}
+		} = await handleSignUpWithEmailAndPassword(values)
+
+		authStore.processSignUpErrors(data)
+
 		if (status) {
+			const alertBody = (
+				<>
+					Registration successful, an verification email has been sent to{' '}
+					<a
+						href={'https://' + email}
+						target='_blank'
+						rel='noopener noreferrer'
+						className='alert-link'>
+						{email}
+					</a>
+				</>
+			)
+			alertStore.show(alertBody, 'success')
+			userStore.onSignUpWithPassword(username, email)
+
 			onSignedInRouting(history, lastLocation)
-			userStore.setState({
-				[USER_DISPLAY_NAME]: username,
-				[USER_EMAIL]: email,
-				[USER_SIGNED_IN]: true,
-			})
-			alertStore.setState({
-				[ALERT_BODY]: (
-					<>
-						Registration successful, an verification email has been sent to{' '}
-						<a
-							href={'https://' + email}
-							target='_blank'
-							rel='noopener noreferrer'
-							className='alert-link'>
-							{email}
-						</a>
-					</>
-				),
-				[ALERT_COLOR]: 'success',
-				[ALERT_OPEN]: true,
-			})
 			handleSignInWithEmailAndPassword(email, password)
 			// if undefined mean no error
 			// but this not much point since it will redirect and unmount soon
@@ -319,7 +297,9 @@ class RegisterPage extends React.Component {
 																					color='primary'
 																					size='lg'
 																					disabled={submitting}
-																					onClick={handleSubmit}>
+																					onClick={() => {
+																						handleSubmit()
+																					}}>
 																					{submitting ? (
 																						<>
 																							<Loader
