@@ -36,6 +36,7 @@ const InputField = props => {
 		serverValidation,
 		hideSuccess,
 		popoverMessages,
+		submitRef,
 		willUnmount,
 		...restProps
 	} = props
@@ -71,8 +72,7 @@ const InputField = props => {
 	} // give state option to be global state or local state
 
 	const onResize = () => {
-		// change parent component height
-		// this code is too case specific and only work for signUpPage, need to make it more generic, for example as callback instead
+		// change parent component height if needed
 		container.setState(state => {
 			state[name + EXTRA_HEIGHT] = ref.current.clientHeight
 			return state
@@ -209,13 +209,6 @@ const InputField = props => {
 									value={container.state[name] || input.value} // the input.value has no purpose other than suppress uncontrollable to controllable warning
 									type={type}
 									onChange={e => {
-										// why mutate state directly?
-										// because we don't want to re-render it until it is validated
-										// the state is not read in any component
-										// in react final form, re-render automatically happen after validation
-										// and validation automatically happen on every onChange event
-										// so the role of state here is just to pass value to Field's validate prop
-										// basically it is how you would use a plain variable
 										state.delay = 1000
 										if (onChange === undefined || onChange(e) === undefined) {
 											container.state[name] = e.target.value
@@ -237,6 +230,13 @@ const InputField = props => {
 										state.focused = false
 										onBlur2(e)
 										input.onBlur(e)
+									}}
+									onKeyPress={e => {
+										if (e.key === 'Enter' && submitRef) {
+											setTimeout(() => {
+												submitRef.current.onClick()
+											}, 1000)
+										}
 									}}
 								/>
 							</InputGroup>

@@ -157,10 +157,7 @@ const SignInForm = props => {
 														placeholder='Email'
 														icon='tim-icons icon-email-85'
 														validation={value => signInEmailValidation(value)}
-														onKeyPress={e => {
-															e.key === 'Enter' &&
-																submitButton.current.onClick()
-														}}
+														submitRef={submitButton}
 													/>
 												</>
 											)}
@@ -172,9 +169,7 @@ const SignInForm = props => {
 												placeholder='Password'
 												icon='tim-icons icon-lock-circle'
 												validation={value => signInPasswordValidation(value)}
-												onKeyPress={e => {
-													e.key === 'Enter' && submitButton.current.onClick()
-												}}
+												submitRef={submitButton}
 											/>
 										</CardBody>
 										<CardFooter className='text-center'>

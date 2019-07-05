@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createRef } from 'react'
 
 // api
 import {
@@ -82,10 +82,9 @@ class RegisterPage extends React.Component {
 		squares1to6: '',
 		squares7and8: '',
 		maxHeight: 999,
-		willUnmount: { value: false },
 	}
 
-	submitButton //submit button reference
+	submitButton = createRef()
 
 	componentDidMount() {
 		authStore.resetState() // ! reset state to prevent nasty error, see messageList comment for details
@@ -100,8 +99,6 @@ class RegisterPage extends React.Component {
 	componentWillUnmount() {
 		document.body.classList.remove('register-page')
 		document.documentElement.removeEventListener('mousemove', this.followCursor)
-		// eslint-disable-next-line react/no-direct-mutation-state
-		this.state.willUnmount.value = true // still not able to solve memory leak problem on submit, need more research
 	}
 	followCursor = event => {
 		let posX = event.clientX - window.innerWidth / 2
@@ -175,7 +172,7 @@ class RegisterPage extends React.Component {
 	}
 	render() {
 		const {
-			state: { maxHeight, squares7and8, squares1to6, willUnmount },
+			state: { maxHeight, squares7and8, squares1to6 },
 			props: { history, lastLocation },
 			onSubmit,
 		} = this
@@ -279,11 +276,7 @@ class RegisterPage extends React.Component {
 																				popoverMessages={
 																					usernamePopoverMessages
 																				}
-																				onKeyPress={e => {
-																					e.key === 'Enter' &&
-																						this.submitButton.onClick()
-																				}}
-																				willUnmount={willUnmount}
+																				submitRef={this.submitButton}
 																			/>
 																			<div className='w-100 mb-3' />
 																			<InputField
@@ -297,11 +290,7 @@ class RegisterPage extends React.Component {
 																				}
 																				serverValidation={handleIsEmailExist}
 																				popoverMessages={emailPopoverMessages}
-																				onKeyPress={e => {
-																					e.key === 'Enter' &&
-																						this.submitButton.onClick()
-																				}}
-																				willUnmount={willUnmount}
+																				submitRef={this.submitButton}
 																			/>
 																			<div className='w-100 mb-3' />
 																			<InputField
@@ -316,11 +305,7 @@ class RegisterPage extends React.Component {
 																				popoverMessages={
 																					passwordPopoverMessages
 																				}
-																				onKeyPress={e => {
-																					e.key === 'Enter' &&
-																						this.submitButton.onClick()
-																				}}
-																				willUnmount={willUnmount}
+																				submitRef={this.submitButton}
 																			/>
 																		</Form>
 																	</CardBody>
@@ -329,9 +314,7 @@ class RegisterPage extends React.Component {
 																			<Col className='col-2' />
 																			<Col className='pl-0 pr-0 d-flex justify-content-center'>
 																				<Button
-																					ref={ref => {
-																						this.submitButton = ref
-																					}}
+																					ref={this.submitButton}
 																					className='btn-round'
 																					color='primary'
 																					size='lg'

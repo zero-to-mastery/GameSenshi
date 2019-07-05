@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 // reactstrap
 import {
@@ -55,6 +55,8 @@ const focusOnError = createDecorator()
 const CardModal = props => {
 	const [, forceUpdate] = useState()
 	const [focus, setFocus] = useState('number')
+
+	const submitButton = useRef(null)
 
 	const onChangeNumber = e => {
 		let {
@@ -188,6 +190,7 @@ const CardModal = props => {
 																					value.replace(/ /g, '')
 																				)
 																			}
+																			submitRef={submitButton}
 																		/>
 																	</FormGroup>
 																</Col>
@@ -215,6 +218,7 @@ const CardModal = props => {
 																			}}
 																			icon='tim-icons icon-single-02'
 																			validation={cardNameValidation}
+																			submitRef={submitButton}
 																		/>
 																	</FormGroup>
 																</Col>
@@ -290,6 +294,7 @@ const CardModal = props => {
 																			validation={value =>
 																				cardCvcValidation(value)
 																			}
+																			submitRef={submitButton}
 																		/>
 																	</FormGroup>
 																</Col>
@@ -321,6 +326,7 @@ const CardModal = props => {
 											Close
 										</Button>
 										<Button
+											ref={submitButton}
 											color='primary'
 											disabled={submitting}
 											onClick={handleSubmit}>

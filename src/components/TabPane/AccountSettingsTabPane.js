@@ -22,6 +22,7 @@ const focusOnError = createDecorator()
 
 const AccountSettingsTabPane = props => {
 	const submitButton = useRef(null)
+	const submitButton2 = useRef(null)
 	return (
 		<TabPane tabId='profile3'>
 			<div className='g-pos-rel h-100 g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-30--md'>
@@ -58,9 +59,7 @@ const AccountSettingsTabPane = props => {
 												placeholder='email'
 												icon='tim-icons icon-email-85'
 												validation={signInEmailValidation}
-												onKeyPress={e => {
-													e.key === 'Enter' && submitButton.current.onClick()
-												}}
+												submitRef={submitButton}
 											/>
 										</FormGroup>
 									</Col>
@@ -131,9 +130,7 @@ const AccountSettingsTabPane = props => {
 												placeholder='password'
 												icon='tim-icons icon-lock-circle'
 												validation={signInPasswordValidation}
-												onKeyPress={e => {
-													e.key === 'Enter' && submitButton.current.onClick()
-												}}
+												submitRef={submitButton2}
 											/>
 										</FormGroup>
 									</Col>
@@ -145,7 +142,7 @@ const AccountSettingsTabPane = props => {
 									<Button
 										color='info'
 										type='button'
-										ref={submitButton}
+										ref={submitButton2}
 										disabled={submitting}
 										onClick={handleSubmit}>
 										{submitting ? (
