@@ -51,6 +51,7 @@ const InputField = props => {
 
 	const [messageList, setMessageList] = useState([])
 	const [popoverItemFailed] = useState({ items: {} })
+	const [onSubmitTimeOutID, setOnSubmitTimeOutId] = useState(0)
 	const [state] = useState({
 		delay: 0, // initial delay is 0 for fast first time background validation
 		timeOutID: 0,
@@ -233,9 +234,12 @@ const InputField = props => {
 									}}
 									onKeyPress={e => {
 										if (e.key === 'Enter' && submitRef) {
-											setTimeout(() => {
-												submitRef.current.onClick()
-											}, 1000)
+											clearInterval(onSubmitTimeOutID)
+											setOnSubmitTimeOutId(
+												setTimeout(() => {
+													submitRef.current.onClick()
+												}, 1000)
+											)
 										}
 									}}
 								/>
@@ -374,7 +378,7 @@ const InputField = props => {
 								!submitSucceeded &&
 								(touched || (active && modified)) &&
 								((!dirtySinceLastSubmit &&
-									container.state[name + SUBMIT_ERRORS]) ||
+									MessageList(container.state[name + SUBMIT_ERRORS])) ||
 									messageList)}
 							<ReactResizeDetector
 								handleWidth
