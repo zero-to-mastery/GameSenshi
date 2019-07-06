@@ -94,6 +94,7 @@ const CardModal = props => {
 			window.removeEventListener('resize', forceUpdate)
 		}
 	}, [])
+
 	return (
 		<Subscribe to={[cardStore]}>
 			{cardStore => {
