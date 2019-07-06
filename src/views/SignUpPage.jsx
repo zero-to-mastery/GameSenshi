@@ -1,4 +1,4 @@
-import React, { createRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 // api
 import {
@@ -68,49 +68,51 @@ import {
 
 const focusOnError = createDecorator()
 
-class RegisterPage extends React.Component {
-	state = {
-		squares1to6: '',
-		squares7and8: '',
-		maxHeight: 999,
-	}
+const SignUpPage = props => {
+	const [squares1to6, setSquares1to6] = useState('')
+	const [squares7and8, setSquares7and8] = useState('')
+	const [maxHeight] = useState(999)
 
-	submitButton = createRef()
+	const submitButton = useRef(null)
+	const wrapper = useRef(null)
 
-	componentDidMount() {
-		authStore.resetState()
-		document.documentElement.scrollTop = 0
-		document.scrollingElement.scrollTop = 0
-		this.refs.wrapper.scrollTop = 0
-		document.body.classList.add('register-page')
-		// stop this listener in dev mode to ease development (it setState a LOT!)
-		process.env.REACT_APP_FOLLOW_CURSOR &&
-			document.documentElement.addEventListener('mousemove', this.followCursor)
-	}
-	componentWillUnmount() {
-		document.body.classList.remove('register-page')
-		document.documentElement.removeEventListener('mousemove', this.followCursor)
-	}
-	followCursor = event => {
+	const followCursor = event => {
 		let posX = event.clientX - window.innerWidth / 2
 		let posY = event.clientY - window.innerWidth / 6
-		this.setState({
-			squares1to6:
-				'perspective(500px) rotateY(' +
+		setSquares1to6(
+			'perspective(500px) rotateY(' +
 				posX * 0.05 +
 				'deg) rotateX(' +
 				posY * -0.05 +
-				'deg)',
-			squares7and8:
-				'perspective(500px) rotateY(' +
+				'deg)'
+		)
+		setSquares7and8(
+			'perspective(500px) rotateY(' +
 				posX * 0.02 +
 				'deg) rotateX(' +
 				posY * -0.02 +
-				'deg)',
-		})
+				'deg)'
+		)
 	}
 
-	onSubmit = async (values, history, lastLocation) => {
+	useEffect(() => {
+		authStore.resetState()
+		document.documentElement.scrollTop = 0
+		document.scrollingElement.scrollTop = 0
+		wrapper.current.scrollTop = 0
+		document.body.classList.add('register-page')
+		// stop this listener in dev mode to ease development
+		// in dev mode, it setState a LOT! and causing lag (but not lag in class component
+		if (process.env.REACT_APP_FOLLOW_CURSOR) {
+			document.documentElement.addEventListener('mousemove', followCursor)
+		}
+		return () => {
+			document.body.classList.remove('register-page')
+			document.documentElement.removeEventListener('mousemove', followCursor)
+		}
+	}, [])
+
+	const onSubmit = async (values, history, lastLocation) => {
 		const {
 			[EMAIL]: email,
 			[PASSWORD]: password,
@@ -148,89 +150,84 @@ class RegisterPage extends React.Component {
 			return data
 		}
 	}
-	render() {
-		const {
-			state: { maxHeight, squares7and8, squares1to6 },
-			props: { history, lastLocation },
-			onSubmit,
-		} = this
-		return (
-			<>
-				<IndexNavbar />
-				<div className='wrapper' ref='wrapper'>
-					<Subscribe to={[authStore]}>
-						{authStore => {
-							const {
-								[EMAIL_EXTRA_HEIGHT]: emailExtraHeight,
-								[PASSWORD_EXTRA_HEIGHT]: passwordExtraHeight,
-								[USERNAME_EXTRA_HEIGHT]: usernameExtraHeight,
-							} = authStore.state
-							return (
-								<div
-									className='page-header'
-									style={{
-										display: 'block',
-										maxHeight:
-											maxHeight +
-											emailExtraHeight +
-											passwordExtraHeight +
-											usernameExtraHeight +
-											'px',
-									}}>
-									<div className='page-header-image' />
-									<div className='content' style={{ marginTop: '5%' }}>
-										<Container className='container-fluid'>
-											<Row>
-												<Col className='mx-auto' lg='5' md='8'>
-													<div
-														className='square square-7'
-														id='square7'
-														style={{ transform: squares7and8 }}
-													/>
-													<div
-														className='square square-8'
-														id='square8'
-														style={{ transform: squares7and8 }}
-													/>
-													<Card
-														className='card-register'
-														style={{ zIndex: 1000 }}>
-														<CardHeader>
-															<CardImg
-																alt='...'
-																src={require('assets/img/square1.png')}
-																style={{ top: '-8%' }}
-															/>
-															<CardTitle tag='h4'>Sign Up</CardTitle>
-														</CardHeader>
-														<CardBody>
-															<div className='text-muted text-center ml-auto mr-auto'>
-																<h3 className='mb-0'>Sign up with</h3>
-															</div>
-														</CardBody>
-														<FinalForm
-															initialValues={{
-																[USERNAME]: '',
-																[EMAIL]: '',
-																[PASSWORD]: '',
-															}}
-															decorators={[focusOnError]}
-															onSubmit={values => {
-																return onSubmit(values, history, lastLocation)
-															}}>
-															{({ handleSubmit, submitting }) => (
-																<>
-																	<CardBody>
-																		<SocialAuthButtonGroup />
-																		<Row>
-																			<Col />
-																			<Col className='text-center text-muted mb-4 mt-3 col-auto'>
-																				<small>Or Classically</small>
-																			</Col>
-																			<Col />
-																		</Row>
-																		<Form className='form'>
-																			{/** 
+	const { history, lastLocation } = props
+	return (
+		<>
+			<IndexNavbar />
+			<div className='wrapper' ref={wrapper}>
+				<Subscribe to={[authStore]}>
+					{authStore => {
+						const {
+							[EMAIL_EXTRA_HEIGHT]: emailExtraHeight,
+							[PASSWORD_EXTRA_HEIGHT]: passwordExtraHeight,
+							[USERNAME_EXTRA_HEIGHT]: usernameExtraHeight,
+						} = authStore.state
+						return (
+							<div
+								className='page-header'
+								style={{
+									display: 'block',
+									maxHeight:
+										maxHeight +
+										emailExtraHeight +
+										passwordExtraHeight +
+										usernameExtraHeight +
+										'px',
+								}}>
+								<div className='page-header-image' />
+								<div className='content' style={{ marginTop: '5%' }}>
+									<Container className='container-fluid'>
+										<Row>
+											<Col className='mx-auto' lg='5' md='8'>
+												<div
+													className='square square-7'
+													id='square7'
+													style={{ transform: squares7and8 }}
+												/>
+												<div
+													className='square square-8'
+													id='square8'
+													style={{ transform: squares7and8 }}
+												/>
+												<Card
+													className='card-register'
+													style={{ zIndex: 1000 }}>
+													<CardHeader>
+														<CardImg
+															alt='...'
+															src={require('assets/img/square1.png')}
+															style={{ top: '-8%' }}
+														/>
+														<CardTitle tag='h4'>Sign Up</CardTitle>
+													</CardHeader>
+													<CardBody>
+														<div className='text-muted text-center ml-auto mr-auto'>
+															<h3 className='mb-0'>Sign up with</h3>
+														</div>
+													</CardBody>
+													<FinalForm
+														initialValues={{
+															[USERNAME]: '',
+															[EMAIL]: '',
+															[PASSWORD]: '',
+														}}
+														decorators={[focusOnError]}
+														onSubmit={values => {
+															return onSubmit(values, history, lastLocation)
+														}}>
+														{({ handleSubmit, submitting }) => (
+															<>
+																<CardBody>
+																	<SocialAuthButtonGroup />
+																	<Row>
+																		<Col />
+																		<Col className='text-center text-muted mb-4 mt-3 col-auto'>
+																			<small>Or Classically</small>
+																		</Col>
+																		<Col />
+																	</Row>
+																	<Form className='form'>
+																		{/** 
 																		// ! bug?
 																		// ! whenever any of these two field components is render
 																		// ! and whenever component going to unmount (route to other page) the field components will run validation
@@ -242,154 +239,149 @@ class RegisterPage extends React.Component {
 																		// TODO research knowledge needed to deal with this issue
 																				
 																		*/}
-																			<InputField
-																				type={USERNAME}
-																				name={USERNAME}
-																				container={authStore}
-																				placeholder='Username'
-																				icon='tim-icons icon-single-02'
-																				validation={value =>
-																					signUpUsernameValidation(value)
-																				}
-																				popoverMessages={
-																					usernamePopoverMessages
-																				}
-																				submitRef={this.submitButton}
-																			/>
-																			<div className='w-100 mb-3' />
-																			<InputField
-																				type={EMAIL}
-																				name={EMAIL}
-																				container={authStore}
-																				placeholder='Email'
-																				icon='tim-icons icon-email-85'
-																				validation={value =>
-																					signUpEmailValidation(value)
-																				}
-																				serverValidation={handleIsEmailExist}
-																				popoverMessages={emailPopoverMessages}
-																				submitRef={this.submitButton}
-																			/>
-																			<div className='w-100 mb-3' />
-																			<InputField
-																				type={PASSWORD}
-																				name={PASSWORD}
-																				container={authStore}
-																				placeholder='Password'
-																				icon='tim-icons icon-lock-circle'
-																				validation={value =>
-																					signUpPasswordValidation(value)
-																				}
-																				popoverMessages={
-																					passwordPopoverMessages
-																				}
-																				submitRef={this.submitButton}
-																			/>
-																		</Form>
-																	</CardBody>
-																	<CardFooter>
-																		<Row className='d-flex'>
-																			<Col className='col-2' />
-																			<Col className='pl-0 pr-0 d-flex justify-content-center'>
-																				<Button
-																					ref={this.submitButton}
-																					className='btn-round'
-																					color='primary'
-																					size='lg'
-																					disabled={submitting}
-																					onClick={() => {
-																						handleSubmit()
-																					}}>
-																					{submitting ? (
-																						<>
-																							<Loader
-																								type='Watch'
-																								color='#00BFFF'
-																								height='19px'
-																								width='19px'
-																							/>
-																							&nbsp;&nbsp;Signing Up
-																						</>
-																					) : (
-																						'Sign Up'
-																					)}
-																				</Button>
-																			</Col>
-																			<Col className='col-2' />
-																		</Row>
-																		<Row className='d-flex'>
-																			<Col />
-																			<Col className='col-auto'>
-																				<Label check>
-																					<span className='form-check-sign' />
-																					{`Already a member? `}
-																					<Link
-																						to='/signIn'
-																						className='font-weight-bold'>
-																						Sign In
-																					</Link>
-																				</Label>
-																			</Col>
-																			<Col />
-																		</Row>
-																	</CardFooter>
-																</>
-															)}
-														</FinalForm>
-														<Label check className='mb-3 text-center'>
-															By creating account, you agree to our
-															<Link
-																className='link footer-link'
-																style={{ color: '#ba54f5', fontSize: 12 }}
-																to='/term'>
-																&nbsp;Terms of Service.
-															</Link>
-														</Label>
-													</Card>
-												</Col>
-											</Row>
-										</Container>
-										<div className='register-bg' />
-										<div
-											className='square square-1'
-											id='square1'
-											style={{ transform: squares1to6 }}
-										/>
-										<div
-											className='square square-2'
-											id='square2'
-											style={{ transform: squares1to6 }}
-										/>
-										<div
-											className='square square-3'
-											id='square3'
-											style={{ transform: squares1to6 }}
-										/>
-										<div
-											className='square square-4'
-											id='square4'
-											style={{ transform: squares1to6 }}
-										/>
-										<div
-											className='square square-5'
-											id='square5'
-											style={{ transform: squares1to6 }}
-										/>
-										<div
-											className='square square-6'
-											id='square6'
-											style={{ transform: squares1to6 }}
-										/>
-									</div>
+																		<InputField
+																			type={USERNAME}
+																			name={USERNAME}
+																			container={authStore}
+																			placeholder='Username'
+																			icon='tim-icons icon-single-02'
+																			validation={value =>
+																				signUpUsernameValidation(value)
+																			}
+																			popoverMessages={usernamePopoverMessages}
+																			submitRef={submitButton}
+																		/>
+																		<div className='w-100 mb-3' />
+																		<InputField
+																			type={EMAIL}
+																			name={EMAIL}
+																			container={authStore}
+																			placeholder='Email'
+																			icon='tim-icons icon-email-85'
+																			validation={value =>
+																				signUpEmailValidation(value)
+																			}
+																			serverValidation={handleIsEmailExist}
+																			popoverMessages={emailPopoverMessages}
+																			submitRef={submitButton}
+																		/>
+																		<div className='w-100 mb-3' />
+																		<InputField
+																			type={PASSWORD}
+																			name={PASSWORD}
+																			container={authStore}
+																			placeholder='Password'
+																			icon='tim-icons icon-lock-circle'
+																			validation={value =>
+																				signUpPasswordValidation(value)
+																			}
+																			popoverMessages={passwordPopoverMessages}
+																			submitRef={submitButton}
+																		/>
+																	</Form>
+																</CardBody>
+																<CardFooter>
+																	<Row className='d-flex'>
+																		<Col className='col-2' />
+																		<Col className='pl-0 pr-0 d-flex justify-content-center'>
+																			<Button
+																				ref={submitButton}
+																				className='btn-round'
+																				color='primary'
+																				size='lg'
+																				disabled={submitting}
+																				onClick={() => {
+																					handleSubmit()
+																				}}>
+																				{submitting ? (
+																					<>
+																						<Loader
+																							type='Watch'
+																							color='#00BFFF'
+																							height='19px'
+																							width='19px'
+																						/>
+																						&nbsp;&nbsp;Signing Up
+																					</>
+																				) : (
+																					'Sign Up'
+																				)}
+																			</Button>
+																		</Col>
+																		<Col className='col-2' />
+																	</Row>
+																	<Row className='d-flex'>
+																		<Col />
+																		<Col className='col-auto'>
+																			<Label check>
+																				<span className='form-check-sign' />
+																				{`Already a member? `}
+																				<Link
+																					to='/signIn'
+																					className='font-weight-bold'>
+																					Sign In
+																				</Link>
+																			</Label>
+																		</Col>
+																		<Col />
+																	</Row>
+																</CardFooter>
+															</>
+														)}
+													</FinalForm>
+													<Label check className='mb-3 text-center'>
+														By creating account, you agree to our
+														<Link
+															className='link footer-link'
+															style={{ color: '#ba54f5', fontSize: 12 }}
+															to='/term'>
+															&nbsp;Terms of Service.
+														</Link>
+													</Label>
+												</Card>
+											</Col>
+										</Row>
+									</Container>
+									<div className='register-bg' />
+									<div
+										className='square square-1'
+										id='square1'
+										style={{ transform: squares1to6 }}
+									/>
+									<div
+										className='square square-2'
+										id='square2'
+										style={{ transform: squares1to6 }}
+									/>
+									<div
+										className='square square-3'
+										id='square3'
+										style={{ transform: squares1to6 }}
+									/>
+									<div
+										className='square square-4'
+										id='square4'
+										style={{ transform: squares1to6 }}
+									/>
+									<div
+										className='square square-5'
+										id='square5'
+										style={{ transform: squares1to6 }}
+									/>
+									<div
+										className='square square-6'
+										id='square6'
+										style={{ transform: squares1to6 }}
+									/>
 								</div>
-							)
-						}}
-					</Subscribe>
-					<Footer />
-				</div>
-			</>
-		)
-	}
+							</div>
+						)
+					}}
+				</Subscribe>
+				<Footer />
+			</div>
+		</>
+	)
 }
 
-export default withLastLocation(RegisterPage)
+export default withLastLocation(SignUpPage)
