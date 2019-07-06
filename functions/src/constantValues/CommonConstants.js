@@ -1,6 +1,9 @@
 const DATA = 'data'
 const STATUS = 'status'
 const MESSAGE = 'message'
+const IS_VALID = 'IsValid'
+const EXTRA_HEIGHT = 'ExtraHeight'
+const SUBMIT_ERRORS = 'SubmitErrors'
 
 const MONTH_NAMES = [
 	'',
@@ -42,4 +45,14 @@ const YEARS = Array.from(new Array(30), (e, i) => {
 
 YEARS.unshift({ value: '', label: 'Year', isDisabled: true })
 
-export { DATA, MESSAGE, STATUS, YEARS, MONTH_NAMES, MONTH_ABVS_SELECT }
+export {
+	DATA,
+	MESSAGE,
+	STATUS,
+	YEARS,
+	MONTH_NAMES,
+	MONTH_ABVS_SELECT,
+	IS_VALID,
+	EXTRA_HEIGHT,
+	SUBMIT_ERRORS,
+}

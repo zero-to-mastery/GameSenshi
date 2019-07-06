@@ -5,28 +5,31 @@ import {
 } from 'firebaseInit'
 
 import {
-	USERNAME,
-	EMAIL,
-	PASSWORD,
-	ON_SIGN_UP,
+	SIGN_UP_USERNAME,
+	SIGN_UP_EMAIL,
+	SIGN_UP_PASSWORD,
+	SIGN_UP_ON_SUBMIT,
 	DATA,
 	// STATUS,
 } from 'constantValues'
 
 const defaultValues = {
 	// undefined = success
-	[USERNAME]: undefined,
-	[EMAIL]: undefined,
-	[PASSWORD]: undefined,
+	[SIGN_UP_USERNAME]: undefined,
+	[SIGN_UP_EMAIL]: undefined,
+	[SIGN_UP_PASSWORD]: undefined,
 }
 
 const handleSignUpWithEmailAndPassword = (values = defaultValues) => {
 	return functions
-		.httpsCallable(ON_SIGN_UP)(values)
+		.httpsCallable(SIGN_UP_ON_SUBMIT)(values)
 		.then(res => {
 			res[DATA][DATA] = { ...defaultValues, ...res[DATA][DATA] }
 			return res[DATA]
-		}) // TODO need FORM_ERROR here
+		})
+		.catch(err => {
+			return 'Unexpected Error Code 3'
+		})
 }
 
 export default handleSignUpWithEmailAndPassword

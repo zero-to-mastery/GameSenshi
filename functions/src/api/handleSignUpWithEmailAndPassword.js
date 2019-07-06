@@ -13,9 +13,9 @@ import {
 	ENV,
 	VERIFY_EMAIL_API_KEY,
 	STATUS,
-	EMAIL,
-	PASSWORD,
-	USERNAME,
+	SIGN_UP_EMAIL,
+	SIGN_UP_PASSWORD,
+	SIGN_UP_USERNAME,
 	USER_DISPLAY_NAME,
 	USER_PHOTO_URL,
 	DEFAULT_AVATAR_URL,
@@ -26,7 +26,11 @@ const {
 } = functions.config()
 
 const handleSignUpWithEmailAndPassword = async data => {
-	const { [EMAIL]: email, [PASSWORD]: password, [USERNAME]: username } = data
+	const {
+		[SIGN_UP_EMAIL]: email,
+		[SIGN_UP_PASSWORD]: password,
+		[SIGN_UP_USERNAME]: username,
+	} = data
 	try {
 		const usernameInvalid = await signUpUsernameValidation(username)
 			.then(() => '')
@@ -40,9 +44,9 @@ const handleSignUpWithEmailAndPassword = async data => {
 
 		if (usernameInvalid || emailInvalid || passwordInvalid) {
 			return resObj(false, 'Internal Error Code 2', 2, {
-				[USERNAME]: usernameInvalid,
-				[EMAIL]: emailInvalid,
-				[PASSWORD]: passwordInvalid,
+				[SIGN_UP_USERNAME]: usernameInvalid,
+				[SIGN_UP_EMAIL]: emailInvalid,
+				[SIGN_UP_PASSWORD]: passwordInvalid,
 			})
 		}
 		const isEmailNew = await handleIsEmailExist(data)
@@ -57,13 +61,15 @@ const handleSignUpWithEmailAndPassword = async data => {
 				if (data[STATUS] === 1) {
 					return resObj(true)
 				} else {
-					return resObj(false, 'Invalid Email', 3, { [EMAIL]: 'Invalid Email' })
+					return resObj(false, 'Invalid Email', 3, {
+						[SIGN_UP_EMAIL]: 'Invalid Email',
+					})
 				}
 			})
 			.catch(err => {
 				console.log('email verifying error', err)
 				return resObj(false, 'Internal Error Code 4', 4, {
-					[EMAIL]: 'Internal Error Code 4',
+					[SIGN_UP_EMAIL]: 'Internal Error Code 4',
 				})
 			})
 

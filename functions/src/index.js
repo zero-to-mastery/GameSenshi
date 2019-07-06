@@ -5,9 +5,11 @@ import * as functions from 'firebase-functions' // https://stackoverflow.com/que
 import * as admin from 'firebase-admin'
 import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
 import { handleSignUpWithEmailAndPassword } from 'api'
-import { ON_SIGN_UP } from 'constantValues'
+import { SIGN_UP_ON_SUBMIT } from 'constantValues'
 
 admin.initializeApp()
 
 // unable to use property accessor in es6 non default export, revert to es5 exports statement
-exports[ON_SIGN_UP] = functions.https.onCall(handleSignUpWithEmailAndPassword)
+exports[SIGN_UP_ON_SUBMIT] = functions.https.onCall(
+	handleSignUpWithEmailAndPassword
+)

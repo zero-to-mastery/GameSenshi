@@ -1,11 +1,11 @@
 import * as admin from 'firebase-admin'
 import { resObj } from 'utils/objects'
-import { EMAIL } from 'constantValues'
+import { SIGN_UP_EMAIL } from 'constantValues'
 
 const handleIsEmailExist = data => {
 	return admin
 		.auth()
-		.getUserByEmail(data[EMAIL])
+		.getUserByEmail(data[SIGN_UP_EMAIL])
 		.then(user => {
 			// User already exists
 			console.log(user)

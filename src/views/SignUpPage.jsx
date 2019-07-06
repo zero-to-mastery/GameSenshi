@@ -16,17 +16,18 @@ import { onSignedInRouting } from 'routes'
 import {
 	DATA,
 	STATUS,
-	EMAIL,
-	EMAIL_EXTRA_HEIGHT,
-	USERNAME,
-	USERNAME_EXTRA_HEIGHT,
-	PASSWORD,
-	PASSWORD_EXTRA_HEIGHT,
+	SIGN_UP_EMAIL,
+	SIGN_UP_EMAIL_EXTRA_HEIGHT,
+	SIGN_UP_USERNAME,
+	SIGN_UP_USERNAME_EXTRA_HEIGHT,
+	SIGN_UP_PASSWORD,
+	SIGN_UP_PASSWORD_EXTRA_HEIGHT,
 } from 'constantValues'
 
 // form validation
 import { Form as FinalForm } from 'react-final-form'
 import createDecorator from 'final-form-focus'
+import { FORM_ERROR } from 'final-form'
 
 // validation
 import {
@@ -39,7 +40,7 @@ import {
 } from 'utils/validation'
 
 // state management
-import { authStore, alertStore, userStore, Subscribe } from 'state'
+import { signUpStore, alertStore, userStore, Subscribe } from 'state'
 
 // react libraries components
 import {
@@ -96,7 +97,7 @@ const SignUpPage = props => {
 	}
 
 	useEffect(() => {
-		authStore.resetState()
+		signUpStore.resetState()
 		document.documentElement.scrollTop = 0
 		document.scrollingElement.scrollTop = 0
 		wrapper.current.scrollTop = 0
@@ -114,40 +115,43 @@ const SignUpPage = props => {
 
 	const onSubmit = async (values, history, lastLocation) => {
 		const {
-			[EMAIL]: email,
-			[PASSWORD]: password,
-			[USERNAME]: username,
+			[SIGN_UP_EMAIL]: email,
+			[SIGN_UP_PASSWORD]: password,
+			[SIGN_UP_USERNAME]: username,
 		} = values
-		const {
-			[STATUS]: status,
-			[DATA]: data,
-		} = await handleSignUpWithEmailAndPassword(values)
+		const result = await handleSignUpWithEmailAndPassword(values)
 
-		authStore.processSignUpErrors(data)
-
-		if (status) {
-			const alertBody = (
-				<>
-					Registration successful, an verification email has been sent to{' '}
-					<a
-						href={'https://' + email}
-						target='_blank'
-						rel='noopener noreferrer'
-						className='alert-link'>
-						{email}
-					</a>
-				</>
-			)
-			alertStore.show(alertBody, 'success')
-			userStore.onSignUpWithPassword(username, email)
-
-			onSignedInRouting(history, lastLocation)
-			handleSignInWithEmailAndPassword(email, password)
-			// if undefined mean no error
-			// but this not much point since it will redirect and unmount soon
-			return
+		if (typeof result === 'string') {
+			return { [FORM_ERROR]: result }
 		} else {
-			return data
+			const { [STATUS]: status, [DATA]: data } = result
+
+			signUpStore.processSignUpErrors(data)
+
+			if (status) {
+				const alertBody = (
+					<>
+						Registration successful, an verification email has been sent to{' '}
+						<a
+							href={'https://' + email}
+							target='_blank'
+							rel='noopener noreferrer'
+							className='alert-link'>
+							{email}
+						</a>
+					</>
+				)
+				alertStore.show(alertBody, 'success')
+				userStore.onSignUpWithPassword(username, email)
+
+				onSignedInRouting(history, lastLocation)
+				handleSignInWithEmailAndPassword(email, password)
+				// if undefined mean no error
+				// but this not much point since it will redirect and unmount soon
+				return
+			} else {
+				return data
+			}
 		}
 	}
 	const { history, lastLocation } = props
@@ -155,13 +159,13 @@ const SignUpPage = props => {
 		<>
 			<IndexNavbar />
 			<div className='wrapper' ref={wrapper}>
-				<Subscribe to={[authStore]}>
-					{authStore => {
+				<Subscribe to={[signUpStore]}>
+					{signUpStore => {
 						const {
-							[EMAIL_EXTRA_HEIGHT]: emailExtraHeight,
-							[PASSWORD_EXTRA_HEIGHT]: passwordExtraHeight,
-							[USERNAME_EXTRA_HEIGHT]: usernameExtraHeight,
-						} = authStore.state
+							[SIGN_UP_EMAIL_EXTRA_HEIGHT]: emailExtraHeight,
+							[SIGN_UP_PASSWORD_EXTRA_HEIGHT]: passwordExtraHeight,
+							[SIGN_UP_USERNAME_EXTRA_HEIGHT]: usernameExtraHeight,
+						} = signUpStore.state
 						return (
 							<div
 								className='page-header'
@@ -207,15 +211,15 @@ const SignUpPage = props => {
 													</CardBody>
 													<FinalForm
 														initialValues={{
-															[USERNAME]: '',
-															[EMAIL]: '',
-															[PASSWORD]: '',
+															[SIGN_UP_USERNAME]: '',
+															[SIGN_UP_EMAIL]: '',
+															[SIGN_UP_PASSWORD]: '',
 														}}
 														decorators={[focusOnError]}
 														onSubmit={values => {
 															return onSubmit(values, history, lastLocation)
 														}}>
-														{({ handleSubmit, submitting }) => (
+														{({ handleSubmit, submitting, submitError }) => (
 															<>
 																<CardBody>
 																	<SocialAuthButtonGroup />
@@ -234,15 +238,15 @@ const SignUpPage = props => {
 																		// ! these is not good as the validation process invoking steState in a promise and cause memory leak issue
 																		// ! step to reproduce: go to any page that has InputField, then redirect to website other than gamesenshi
 																		// * implement useEffect component will unmount of Input Field component is not working
-																		// * set authStore willUnmount state directly when parent component going to unmount and use it to stop setState work
+																		// * set signUpStore willUnmount state directly when parent component going to unmount and use it to stop setState work
 																		// * set parent willUnmount state directly when parent component going to unmount and use it to stop setState does not work
 																		// TODO research knowledge needed to deal with this issue
 																				
 																		*/}
 																		<InputField
-																			type={USERNAME}
-																			name={USERNAME}
-																			container={authStore}
+																			type={SIGN_UP_USERNAME}
+																			name={SIGN_UP_USERNAME}
+																			container={signUpStore}
 																			placeholder='Username'
 																			icon='tim-icons icon-single-02'
 																			validation={value =>
@@ -253,9 +257,9 @@ const SignUpPage = props => {
 																		/>
 																		<div className='w-100 mb-3' />
 																		<InputField
-																			type={EMAIL}
-																			name={EMAIL}
-																			container={authStore}
+																			type={SIGN_UP_EMAIL}
+																			name={SIGN_UP_EMAIL}
+																			container={signUpStore}
 																			placeholder='Email'
 																			icon='tim-icons icon-email-85'
 																			validation={value =>
@@ -267,9 +271,9 @@ const SignUpPage = props => {
 																		/>
 																		<div className='w-100 mb-3' />
 																		<InputField
-																			type={PASSWORD}
-																			name={PASSWORD}
-																			container={authStore}
+																			type={SIGN_UP_PASSWORD}
+																			name={SIGN_UP_PASSWORD}
+																			container={signUpStore}
 																			placeholder='Password'
 																			icon='tim-icons icon-lock-circle'
 																			validation={value =>
@@ -281,6 +285,13 @@ const SignUpPage = props => {
 																	</Form>
 																</CardBody>
 																<CardFooter>
+																	<Row className='d-flex text-center'>
+																		<Col>
+																			{submitError &&
+																				!submitting &&
+																				`Error: ${submitError}`}
+																		</Col>
+																	</Row>
 																	<Row className='d-flex'>
 																		<Col className='col-2' />
 																		<Col className='pl-0 pr-0 d-flex justify-content-center'>
