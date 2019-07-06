@@ -3,7 +3,7 @@ import React from 'react'
 // core components
 import { IndexHeader, Footer, IndexNavbar } from 'components'
 
-class Index extends React.Component {
+class IndexPage extends React.Component {
 	componentDidMount() {
 		document.body.classList.add('index-page')
 		document.documentElement.scrollTop = 0
@@ -27,4 +27,4 @@ class Index extends React.Component {
 	}
 }
 
-export default Index
+export default IndexPage

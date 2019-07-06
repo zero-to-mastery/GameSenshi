@@ -29,7 +29,7 @@ import {
 	NotificationSettingsTabPane,
 } from 'components'
 
-class Settings extends React.Component {
+class SettingsPage extends React.Component {
 	state = {
 		profileTabs: 1,
 		tags: ['HTML5', 'CSS3', 'JavaScript', 'React'],
@@ -179,4 +179,4 @@ class Settings extends React.Component {
 	}
 }
 
-export default Settings
+export default SettingsPage

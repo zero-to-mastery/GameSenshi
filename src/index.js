@@ -22,30 +22,14 @@ import 'assets/demo/demo.css'
 import 'assets/demo/react-demo.css'
 import 'assets/css/game-senshi.css'
 
-// presentation pages
-import Index from 'views/Index.jsx'
-import Presentation from 'views/Presentation.jsx'
-import Sections from 'views/Sections.jsx'
-import ProfilePage from 'views/ProfilePage.jsx'
-
-// example pages
-import AboutUs from 'views/examples/AboutUs.jsx'
-import BlogPost from 'views/examples/BlogPost.jsx'
-import BlogPosts from 'views/examples/BlogPosts.jsx'
-import ContactUs from 'views/examples/ContactUs.jsx'
-import LandingPage from 'views/examples/LandingPage.jsx'
-import Pricing from 'views/examples/Pricing.jsx'
-import Ecommerce from 'views/examples/Ecommerce.jsx'
-import ProductPage from 'views/examples/ProductPage.jsx'
-import Error404 from 'views/examples/Error404.jsx'
-import Error500 from 'views/examples/Error500.jsx'
-import Settings from 'views/Settings.jsx'
-import ResetPage from 'views/examples/ResetPage.jsx'
-import InvoicePage from 'views/examples/InvoicePage.jsx'
-import CheckoutPage from 'views/examples/CheckoutPage.jsx'
-import ChatPage from 'views/examples/ChatPage.jsx'
-import SignInPage from 'views/SignInPage'
-import SignUpPage from 'views/SignUpPage'
+// pages pages
+import {
+	IndexPage,
+	ProfilePage,
+	SettingsPage,
+	SignInPage,
+	SignUpPage,
+} from 'views'
 
 // check if user data in indexed db, pre-sign in user
 userStore.initialize()
@@ -58,40 +42,18 @@ ReactDOM.render(
 		<BrowserRouter>
 			<LastLocationProvider>
 				<Switch>
-					<Route path='/index' render={props => <Index {...props} />} />
-					<Route
-						path='/presentation'
-						render={props => <Presentation {...props} />}
-					/>
-					<Route path='/sections' render={props => <Sections {...props} />} />
-					<Route path='/about' render={props => <AboutUs {...props} />} />
-					<Route path='/blog' render={props => <BlogPost {...props} />} />
-					<Route path='/blogs' render={props => <BlogPosts {...props} />} />
-					<Route path='/contact' render={props => <ContactUs {...props} />} />
-					<Route path='/landing' render={props => <LandingPage {...props} />} />
-					<Route path='/pricing' render={props => <Pricing {...props} />} />
-					<Route path='/eCommerce' render={props => <Ecommerce {...props} />} />
-					<Route path='/product' render={props => <ProductPage {...props} />} />
+					<Route path='/index' render={props => <IndexPage {...props} />} />
 					<Route path='/profile' render={props => <ProfilePage {...props} />} />
-					<Route path='/404' render={props => <Error404 {...props} />} />
-					<Route path='/500' render={props => <Error500 {...props} />} />
 					<Route
 						path='/settings'
 						render={props =>
 							userStore.state[USER_SIGNED_IN] ? (
-								<Settings {...props} />
+								<SettingsPage {...props} />
 							) : (
 								<Redirect from='/settings' to='/index' />
 							)
 						}
 					/>
-					<Route path='/reset' render={props => <ResetPage {...props} />} />
-					<Route path='/invoice' render={props => <InvoicePage {...props} />} />
-					<Route
-						path='/checkOut'
-						render={props => <CheckoutPage {...props} />}
-					/>
-					<Route path='/chat' render={props => <ChatPage {...props} />} />
 					<Route
 						path='/signUp'
 						render={props =>
