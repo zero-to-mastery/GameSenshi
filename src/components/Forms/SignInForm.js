@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 
 // routing
+import { Link } from 'react-router-dom'
 import { withLastLocation } from 'react-router-last-location'
 import { onSignedInRouting } from 'routes'
 
@@ -216,13 +217,12 @@ const SignInForm = props => {
 							</div>
 							<div className='pull-right mr-3 mb-3'>
 								<h6>
-									<a
+									<Link
 										className='link footer-link'
 										style={{ color: '#ba54f5', fontSize: 12 }}
-										href='#pablo'
-										onClick={e => e.preventDefault()}>
+										to='/resetPassword'>
 										Forgot Password?
-									</a>
+									</Link>
 								</h6>
 							</div>
 						</Form>

@@ -29,6 +29,7 @@ import {
 	SettingsPage,
 	SignInPage,
 	SignUpPage,
+	ResetPasswordPage,
 } from 'views'
 
 // check if user data in indexed db, pre-sign in user
@@ -68,9 +69,19 @@ ReactDOM.render(
 						path='/signIn'
 						render={props =>
 							userStore.state[USER_SIGNED_IN] ? (
-								<Redirect from='/signUp' to='/index' />
+								<Redirect from='/signIn' to='/index' />
 							) : (
 								<SignInPage {...props} />
+							)
+						}
+					/>
+					<Route
+						path='/resetPassword'
+						render={props =>
+							userStore.state[USER_SIGNED_IN] ? (
+								<Redirect from='/resetPassword' to='/index' />
+							) : (
+								<ResetPasswordPage {...props} />
 							)
 						}
 					/>
