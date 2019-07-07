@@ -7,18 +7,18 @@ import { Button, FormGroup, TabPane, Row, Col, Form } from 'reactstrap'
 import Loader from 'react-loader-spinner'
 
 // form validation
-import { Form as FinalForm } from 'react-final-form'
-import createDecorator from 'final-form-focus'
-import InputField from 'components/Inputs/InputField'
-import { FORM_ERROR } from 'final-form'
+import {
+	InputField,
+	FinalForm,
+	FORM_ERROR,
+	focusOnError,
+} from 'components/FinalForm'
 
 // validation
 import {
 	signInEmailValidation,
 	signInPasswordValidation,
 } from 'utils/validation'
-
-const focusOnError = createDecorator()
 
 const AccountSettingsTabPane = props => {
 	const submitButton = useRef(null)

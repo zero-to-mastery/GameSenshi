@@ -1,6 +1,10 @@
 import IndexNavbar from 'components/Navbars/IndexNavbar'
-import InputField from 'components/Inputs/InputField'
-import MessageList from 'components/Inputs/MessageList'
+import {
+	InputField,
+	FinalForm,
+	FORM_ERROR,
+	focusOnError,
+} from 'components/FinalForm'
 import Footer from 'components/Footers/Footer'
 import IndexHeader from 'components/Headers/IndexHeader.jsx'
 import AuthModal from 'components/Modals/AuthModal'
@@ -16,8 +20,10 @@ import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary'
 
 export {
 	Footer,
-	MessageList,
 	InputField,
+	FinalForm,
+	FORM_ERROR,
+	focusOnError,
 	IndexNavbar,
 	IndexHeader,
 	AuthModal,

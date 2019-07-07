@@ -24,11 +24,6 @@ import {
 	SIGN_UP_PASSWORD_EXTRA_HEIGHT,
 } from 'constantValues'
 
-// form validation
-import { Form as FinalForm } from 'react-final-form'
-import createDecorator from 'final-form-focus'
-import { FORM_ERROR } from 'final-form'
-
 // validation
 import {
 	signUpEmailValidation,
@@ -63,11 +58,12 @@ import Loader from 'react-loader-spinner'
 import {
 	Footer,
 	InputField,
+	FinalForm,
+	FORM_ERROR,
+	focusOnError,
 	IndexNavbar,
 	SocialAuthButtonGroup,
 } from 'components'
-
-const focusOnError = createDecorator()
 
 const SignUpPage = props => {
 	const [squares1to6, setSquares1to6] = useState('')

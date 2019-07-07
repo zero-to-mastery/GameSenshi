@@ -20,7 +20,7 @@ import {
 import Select from 'react-select'
 
 import ReactResizeDetector from 'react-resize-detector'
-import MessageList from 'components/Inputs/MessageList'
+import MessageList from 'components/FinalForm/MessageList'
 import { EXTRA_HEIGHT, IS_VALID, SUBMIT_ERRORS, STATUS } from 'constantValues'
 
 const InputField = props => {

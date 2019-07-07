@@ -33,22 +33,20 @@ import {
 } from 'reactstrap'
 import Loader from 'react-loader-spinner'
 
-// form validation
-import { Form as FinalForm } from 'react-final-form'
-import { FORM_ERROR } from 'final-form'
-import createDecorator from 'final-form-focus'
-
 // constants
 import { SIGN_IN_EMAIL, SIGN_IN_CALLBACK } from 'constantValues'
 
 // core components
 import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
-import InputField from 'components/Inputs/InputField'
+import {
+	InputField,
+	FinalForm,
+	FORM_ERROR,
+	focusOnError,
+} from 'components/FinalForm'
 
 // state management
 import { signInStore, Subscribe } from 'state'
-
-const focusOnError = createDecorator()
 
 // local constant
 const LOCAL_EMAIL = 'email'

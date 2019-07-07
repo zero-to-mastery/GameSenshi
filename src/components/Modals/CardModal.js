@@ -18,7 +18,7 @@ import {
 // core components
 import { Form as FinalForm } from 'react-final-form'
 import Cards from 'react-credit-cards'
-import InputField from 'components/Inputs/InputField'
+import InputField from 'components/FinalForm/InputField'
 import Loader from 'react-loader-spinner'
 
 // styles
