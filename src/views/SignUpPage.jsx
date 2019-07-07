@@ -60,7 +60,6 @@ import {
 	InputField,
 	FinalForm,
 	FORM_ERROR,
-	focusOnError,
 	IndexNavbar,
 	SocialAuthButtonGroup,
 } from 'components'
@@ -211,7 +210,6 @@ const SignUpPage = props => {
 															[SIGN_UP_EMAIL]: '',
 															[SIGN_UP_PASSWORD]: '',
 														}}
-														decorators={[focusOnError]}
 														onSubmit={values => {
 															return onSubmit(values, history, lastLocation)
 														}}>

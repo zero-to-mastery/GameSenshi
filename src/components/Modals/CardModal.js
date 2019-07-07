@@ -16,10 +16,9 @@ import {
 } from 'reactstrap'
 
 // core components
-import { Form as FinalForm } from 'react-final-form'
 import Cards from 'react-credit-cards'
-import InputField from 'components/FinalForm/InputField'
 import Loader from 'react-loader-spinner'
+import { InputField, FinalForm } from 'components/FinalForm'
 
 // styles
 import 'react-credit-cards/lib/styles.scss'
@@ -42,15 +41,12 @@ import { cardStore, Subscribe } from 'state'
 
 // utils
 import { string } from 'yup'
-import createDecorator from 'final-form-focus'
 import {
 	cardNumberValidation,
 	cardCvcValidation,
 	cardExpiryValidation,
 	cardNameValidation,
 } from 'utils/validation'
-
-const focusOnError = createDecorator()
 
 const CardModal = props => {
 	const [, forceUpdate] = useState()
@@ -137,11 +133,11 @@ const CardModal = props => {
 								[CARD_EXPIRY_YEAR]: '',
 								[CARD_HOLDER_NAME]: '',
 							}}
-							decorators={[focusOnError]}
 							onSubmit={async () => {
 								// TODO display submit error with in modal alert
 								// TODO create third party card processor api
 								// TODO more reasonable input width for all fields
+								// TODO need FORM_ERROR
 								cardStore.setState(state => {
 									toggle() // TODO this should only run if submit success
 									cardStore.onSubmit()

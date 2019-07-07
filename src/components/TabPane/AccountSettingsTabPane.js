@@ -7,12 +7,7 @@ import { Button, FormGroup, TabPane, Row, Col, Form } from 'reactstrap'
 import Loader from 'react-loader-spinner'
 
 // form validation
-import {
-	InputField,
-	FinalForm,
-	FORM_ERROR,
-	focusOnError,
-} from 'components/FinalForm'
+import { InputField, FinalForm, FORM_ERROR } from 'components/FinalForm'
 
 // validation
 import {
@@ -37,7 +32,6 @@ const AccountSettingsTabPane = props => {
 						email: '',
 						password: '',
 					}}
-					decorators={[focusOnError]}
 					onSubmit={values => {
 						return { [FORM_ERROR]: 'updateFailed' }
 					}}>
@@ -108,7 +102,6 @@ const AccountSettingsTabPane = props => {
 						email: '',
 						password: '',
 					}}
-					decorators={[focusOnError]}
 					onSubmit={values => {
 						return { [FORM_ERROR]: 'updateFailed' }
 					}}>

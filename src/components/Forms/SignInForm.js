@@ -38,12 +38,7 @@ import { SIGN_IN_EMAIL, SIGN_IN_CALLBACK } from 'constantValues'
 
 // core components
 import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
-import {
-	InputField,
-	FinalForm,
-	FORM_ERROR,
-	focusOnError,
-} from 'components/FinalForm'
+import { InputField, FinalForm, FORM_ERROR } from 'components/FinalForm'
 
 // state management
 import { signInStore, Subscribe } from 'state'
@@ -112,7 +107,6 @@ const SignInForm = props => {
 									[LOCAL_EMAIL]: passwordOnly ? email : '',
 									[LOCAL_PASSWORD]: '',
 								}}
-								decorators={[focusOnError]}
 								onSubmit={values => {
 									return onSubmit(values, () => {
 										onSignedInRouting(history, lastLocation)
