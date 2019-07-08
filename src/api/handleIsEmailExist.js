@@ -5,7 +5,7 @@ const handleIsEmailExist = email => {
 		.fetchSignInMethodsForEmail(email)
 		.then(methods => {
 			if (!methods.includes('password')) {
-				return 'this email is not registered!'
+				return 'this email does not have password account.'
 			} else {
 				return
 			}

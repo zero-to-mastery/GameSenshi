@@ -55,9 +55,12 @@ const SignInForm = props => {
 		callback = () => {}
 	) => {
 		const { [EMAIL]: email, [PASSWORD]: password } = values
-		const signInFailed = await handleSignInWithEmailAndPassword(email, password)
-		if (signInFailed) {
-			return { [FORM_ERROR]: signInFailed }
+		const isSignInFailed = await handleSignInWithEmailAndPassword(
+			email,
+			password
+		)
+		if (isSignInFailed) {
+			return { [FORM_ERROR]: isSignInFailed }
 		} else {
 			callback()
 			return

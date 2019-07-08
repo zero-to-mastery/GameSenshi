@@ -114,12 +114,12 @@ const SignUpPage = props => {
 			[SIGN_UP_PASSWORD]: password,
 			[SIGN_UP_USERNAME]: username,
 		} = values
-		const result = await handleSignUpWithEmailAndPassword(values)
+		const isSignUpFailed = await handleSignUpWithEmailAndPassword(values)
 
-		if (typeof result === 'string') {
-			return { [FORM_ERROR]: result }
+		if (typeof isSignUpFailed === 'string') {
+			return { [FORM_ERROR]: isSignUpFailed }
 		} else {
-			const { [STATUS]: status, [DATA]: data } = result
+			const { [STATUS]: status, [DATA]: data } = isSignUpFailed
 
 			signUpStore.processSignUpErrors(data)
 
