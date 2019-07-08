@@ -4,6 +4,7 @@ import handleIsEmailExist from 'api/handleIsEmailExist'
 import handleSignInWithEmailAndPassword from 'api/handleSignInWithEmailAndPassword'
 import handleSignInWithGoogle from 'api/handleSignInWithGoogle'
 import handleSignInWithFacebook from 'api/handleSignInWithFacebook'
+import handleResetPassword from 'api/handleResetPassword'
 
 export {
 	handleSignUpWithEmailAndPassword,
@@ -12,4 +13,5 @@ export {
 	handleSignInWithGoogle,
 	handleSignInWithFacebook,
 	handleSignInWithEmailAndPassword,
+	handleResetPassword,
 }

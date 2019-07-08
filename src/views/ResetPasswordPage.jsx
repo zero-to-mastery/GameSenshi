@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
-// nodejs library that concatenates classes
-import classnames from 'classnames'
+import React, { useEffect, useRef } from 'react'
 
 // routing
 import { Link } from 'react-router-dom'
@@ -15,19 +13,32 @@ import {
 	CardImg,
 	CardTitle,
 	Form,
-	Input,
-	InputGroupAddon,
-	InputGroupText,
-	InputGroup,
 	Container,
 	Col,
 } from 'reactstrap'
 
 // core components
-import { Footer, IndexNavbar } from 'components'
+import {
+	Footer,
+	IndexNavbar,
+	FinalInput,
+	FinalForm,
+	FORM_ERROR,
+} from 'components'
+import Loader from 'react-loader-spinner'
+
+// validation
+import { signInEmailValidation } from 'utils/validation'
+
+// api
+import { handleIsEmailExist, handleResetPassword } from 'api'
+
+const EMAIL = 'email'
 
 const ResetPasswordPage = props => {
 	const wrapper = useRef(null)
+	const submitButton = useRef(null)
+
 	useEffect(() => {
 		document.documentElement.scrollTop = 0
 		document.scrollingElement.scrollTop = 0
@@ -53,62 +64,93 @@ const ResetPasswordPage = props => {
 					<Container>
 						<Col className='mx-auto' lg='5' md='8'>
 							<Card className='card-login'>
-								<Form action='' className='form' method=''>
-									<CardHeader>
-										<CardImg alt='...' src={require('assets/img/shape.png')} />
-										<CardTitle tag='h4'>Reset Password</CardTitle>
-									</CardHeader>
-									<CardBody>
-										<h4 className='description text-center'>
-											Enter email address to reset password
-										</h4>
-										{/* <InputGroup
-											className={classnames('input-lg', {
-												'input-group-focus': this.state.focus,
-											})}>
-											<InputGroupAddon addonType='prepend'>
-												<InputGroupText>
-													<i className='tim-icons icon-email-85' />
-												</InputGroupText>
-											</InputGroupAddon>
-											<Input
-												className='form-control-lg'
-												placeholder='Your email'
-												type='email'
-												onFocus={e => this.setState({ focus: true })}
-												onBlur={e => this.setState({ focus: false })}
-											/>
-										</InputGroup> */}
-										<Button
-											block
-											className='btn-round'
-											color='warning'
-											href='#pablo'
-											onClick={e => e.preventDefault()}
-											size='lg'>
-											Request Reset
-										</Button>
-									</CardBody>
-									<CardFooter>
-										<div className='pull-left ml-3 mb-3'>
-											<h6>
-												<Link className='link footer-link' to='/signIn'>
-													Back to Sign in
-												</Link>
-											</h6>
-										</div>
-										<div className='pull-right mr-3 mb-3'>
-											<h6>
-												<a
-													className='link footer-link'
-													href='#pablo'
-													onClick={e => e.preventDefault()}>
-													Need Help?
-												</a>
-											</h6>
-										</div>
-									</CardFooter>
-								</Form>
+								<FinalForm
+									initialValues={{
+										[EMAIL]: '',
+									}}
+									onSubmit={async values => {
+										const isResetPasswordFailed = await handleResetPassword(
+											values.email
+										)
+										if (isResetPasswordFailed) {
+											return { [FORM_ERROR]: isResetPasswordFailed }
+										} else {
+											return
+										}
+									}}>
+									{({ submitError, handleSubmit, submitting }) => {
+										return (
+											<Form action='' className='form' method=''>
+												<CardHeader>
+													<CardImg
+														alt='...'
+														src={require('assets/img/shape.png')}
+													/>
+													<CardTitle tag='h4'>Reset Password</CardTitle>
+												</CardHeader>
+												<CardBody>
+													<h4 className='description text-center'>
+														Enter email address to reset password
+													</h4>
+													<FinalInput
+														type={EMAIL}
+														name={EMAIL}
+														hideSuccess
+														placeholder='Email'
+														icon='tim-icons icon-email-85'
+														validation={signInEmailValidation}
+														serverValidation={handleIsEmailExist}
+														submitRef={submitButton}
+													/>
+												</CardBody>
+												<CardFooter className='text-center'>
+													{submitError &&
+														!submitting &&
+														`Error: ${submitError}`}
+													<Button
+														ref={submitButton}
+														block
+														className='btn-round'
+														color='warning'
+														disabled={submitting}
+														onClick={handleSubmit}
+														size='lg'>
+														{submitting ? (
+															<>
+																<Loader
+																	type='Watch'
+																	color='#00BFFF'
+																	height='19px'
+																	width='19px'
+																/>
+																&nbsp;&nbsp; Request Reset
+															</>
+														) : (
+															'	Request Reset'
+														)}
+													</Button>
+												</CardFooter>
+												<div className='pull-left ml-3 mb-3'>
+													<h6>
+														<Link className='link footer-link' to='/signIn'>
+															Back to Sign in
+														</Link>
+													</h6>
+												</div>
+												<div className='pull-right mr-3 mb-3'>
+													<h6>
+														<a
+															className='link footer-link'
+															href='#pablo'
+															onClick={e => e.preventDefault()}>
+															Need Help?
+														</a>
+													</h6>
+												</div>
+											</Form>
+										)
+									}}
+								</FinalForm>
 							</Card>
 						</Col>
 					</Container>
