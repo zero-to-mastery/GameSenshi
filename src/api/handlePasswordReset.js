@@ -1,6 +1,6 @@
 import { auth } from 'firebaseInit'
 
-const handleResetPassword = email => {
+const handlePasswordReset = email => {
 	return auth()
 		.sendPasswordResetEmail(email)
 		.then(() => {
@@ -16,4 +16,4 @@ const handleResetPassword = email => {
 		})
 }
 
-export default handleResetPassword
+export default handlePasswordReset

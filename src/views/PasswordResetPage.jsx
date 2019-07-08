@@ -31,11 +31,11 @@ import Loader from 'react-loader-spinner'
 import { signInEmailValidation } from 'utils/validation'
 
 // api
-import { handleIsEmailExist, handleResetPassword } from 'api'
+import { handleIsEmailExist, handlePasswordReset } from 'api'
 
 const EMAIL = 'email'
 
-const ResetPasswordPage = props => {
+const PasswordResetPage = props => {
 	const wrapper = useRef(null)
 	const submitButton = useRef(null)
 
@@ -69,11 +69,11 @@ const ResetPasswordPage = props => {
 										[EMAIL]: '',
 									}}
 									onSubmit={async values => {
-										const isResetPasswordFailed = await handleResetPassword(
+										const isPasswordResetFailed = await handlePasswordReset(
 											values.email
 										)
-										if (isResetPasswordFailed) {
-											return { [FORM_ERROR]: isResetPasswordFailed }
+										if (isPasswordResetFailed) {
+											return { [FORM_ERROR]: isPasswordResetFailed }
 										} else {
 											return
 										}
@@ -161,4 +161,4 @@ const ResetPasswordPage = props => {
 	)
 }
 
-export default ResetPasswordPage
+export default PasswordResetPage
