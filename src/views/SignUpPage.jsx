@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 // api
 import {
 	handleSignUpWithEmailAndPassword,
-	handleIsEmailExist,
+	handleIsEmailNotExist,
 	handleSignInWithEmailAndPassword,
 } from 'api'
 
@@ -259,7 +259,7 @@ const SignUpPage = props => {
 																			validation={value =>
 																				signUpEmailValidation(value)
 																			}
-																			serverValidation={handleIsEmailExist}
+																			serverValidation={handleIsEmailNotExist}
 																			popoverMessages={emailPopoverMessages}
 																			submitRef={submitButton}
 																		/>

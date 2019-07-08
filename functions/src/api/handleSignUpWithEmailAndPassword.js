@@ -7,7 +7,7 @@ import {
 	signUpUsernameValidation,
 } from 'utils/validation'
 import { resObj } from 'utils/objects'
-import { handleIsEmailExist } from 'api'
+import { handleIsEmailNotExist } from 'api'
 
 import {
 	ENV,
@@ -49,7 +49,7 @@ const handleSignUpWithEmailAndPassword = async data => {
 				[SIGN_UP_PASSWORD]: passwordInvalid,
 			})
 		}
-		const isEmailNew = await handleIsEmailExist(data)
+		const isEmailNew = await handleIsEmailNotExist(data)
 
 		if (!isEmailNew[STATUS]) {
 			return isEmailNew

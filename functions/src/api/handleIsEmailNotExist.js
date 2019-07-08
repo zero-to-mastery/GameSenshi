@@ -2,7 +2,7 @@ import * as admin from 'firebase-admin'
 import { resObj } from 'utils/objects'
 import { SIGN_UP_EMAIL } from 'constantValues'
 
-const handleIsEmailExist = data => {
+const handleIsEmailNotExist = data => {
 	return admin
 		.auth()
 		.getUserByEmail(data[SIGN_UP_EMAIL])
@@ -20,4 +20,4 @@ const handleIsEmailExist = data => {
 		})
 }
 
-export default handleIsEmailExist
+export default handleIsEmailNotExist
