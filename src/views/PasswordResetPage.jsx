@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 // routing
 import { Link } from 'react-router-dom'
@@ -36,6 +36,8 @@ import { handleIsEmailExist, handlePasswordReset } from 'api'
 const EMAIL = 'email'
 
 const PasswordResetPage = props => {
+	const [sent, setSent] = useState(false)
+	const [email, setEmail] = useState('')
 	const wrapper = useRef(null)
 	const submitButton = useRef(null)
 
@@ -75,6 +77,7 @@ const PasswordResetPage = props => {
 										if (isPasswordResetFailed) {
 											return { [FORM_ERROR]: isPasswordResetFailed }
 										} else {
+											setSent(true)
 											return
 										}
 									}}>
@@ -88,48 +91,73 @@ const PasswordResetPage = props => {
 													/>
 													<CardTitle tag='h4'>Reset Password</CardTitle>
 												</CardHeader>
-												<CardBody>
-													<h4 className='description text-center'>
-														Enter email address to reset password
-													</h4>
-													<FinalInput
-														type={EMAIL}
-														name={EMAIL}
-														hideSuccess
-														placeholder='Email'
-														icon='tim-icons icon-email-85'
-														validation={signInEmailValidation}
-														serverValidation={handleIsEmailExist}
-														submitRef={submitButton}
-													/>
-												</CardBody>
-												<CardFooter className='text-center'>
-													{submitError &&
-														!submitting &&
-														`Error: ${submitError}`}
-													<Button
-														ref={submitButton}
-														block
-														className='btn-round'
-														color='warning'
-														disabled={submitting}
-														onClick={handleSubmit}
-														size='lg'>
-														{submitting ? (
-															<>
-																<Loader
-																	type='Watch'
-																	color='#00BFFF'
-																	height='19px'
-																	width='19px'
-																/>
-																&nbsp;&nbsp; Request Reset
-															</>
-														) : (
-															'	Request Reset'
-														)}
-													</Button>
-												</CardFooter>
+												{sent ? (
+													<CardBody>
+														<h4 className='description text-center'>
+															Check your{' '}
+															<a
+																href={'https://' + email}
+																target='_blank'
+																rel='noopener noreferrer'
+																className='link footer-link text-warning font-weight-bold'>
+																<strong>email</strong>
+															</a>{' '}
+															for a link to reset your password. If it doesn’t
+															appear within a few minutes, check your spam
+															folder.
+														</h4>
+													</CardBody>
+												) : (
+													<>
+														<CardBody>
+															<h4 className='description text-center'>
+																Enter email address to reset password
+															</h4>
+															<FinalInput
+																valid={false}
+																invalid={false}
+																type={EMAIL}
+																name={EMAIL}
+																hideSuccess
+																placeholder='Email'
+																icon='tim-icons icon-email-85'
+																validation={signInEmailValidation}
+																serverValidation={handleIsEmailExist}
+																submitRef={submitButton}
+																onChange={e => {
+																	setEmail(e.target.value)
+																}}
+															/>
+														</CardBody>
+														<CardFooter className='text-center'>
+															{submitError &&
+																!submitting &&
+																`Error: ${submitError}`}
+															<Button
+																ref={submitButton}
+																block
+																className='btn-round'
+																color='warning'
+																disabled={submitting}
+																onClick={handleSubmit}
+																size='lg'>
+																{submitting ? (
+																	<>
+																		<Loader
+																			type='Watch'
+																			color='#00BFFF'
+																			height='19px'
+																			width='19px'
+																		/>
+																		&nbsp;&nbsp; Request Reset
+																	</>
+																) : (
+																	'	Request Reset'
+																)}
+															</Button>
+														</CardFooter>
+													</>
+												)}
 												<div className='pull-left ml-3 mb-3'>
 													<h6>
 														<Link className='link footer-link' to='/signIn'>

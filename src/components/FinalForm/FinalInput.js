@@ -234,6 +234,7 @@ const FinalInput = props => {
 									}}
 									onKeyPress={e => {
 										if (e.key === 'Enter' && submitRef) {
+											e.preventDefault()
 											clearInterval(onSubmitTimeOutID)
 											setOnSubmitTimeOutId(
 												setTimeout(() => {
