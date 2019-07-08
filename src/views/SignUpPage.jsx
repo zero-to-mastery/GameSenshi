@@ -57,7 +57,7 @@ import Loader from 'react-loader-spinner'
 // core components
 import {
 	Footer,
-	InputField,
+	FinalInput,
 	FinalForm,
 	FORM_ERROR,
 	IndexNavbar,
@@ -230,14 +230,14 @@ const SignUpPage = props => {
 																		// ! whenever any of these two field components is render
 																		// ! and whenever component going to unmount (route to other page) the field components will run validation
 																		// ! these is not good as the validation process invoking steState in a promise and cause memory leak issue
-																		// ! step to reproduce: go to any page that has InputField, then redirect to website other than gamesenshi
+																		// ! step to reproduce: go to any page that has FinalInput, then redirect to website other than gamesenshi
 																		// * implement useEffect component will unmount of Input Field component is not working
 																		// * set signUpStore willUnmount state directly when parent component going to unmount and use it to stop setState work
 																		// * set parent willUnmount state directly when parent component going to unmount and use it to stop setState does not work
 																		// TODO research knowledge needed to deal with this issue
 																				
 																		*/}
-																	<InputField
+																	<FinalInput
 																		type={SIGN_UP_USERNAME}
 																		name={SIGN_UP_USERNAME}
 																		container={signUpStore}
@@ -250,7 +250,7 @@ const SignUpPage = props => {
 																		submitRef={submitButton}
 																	/>
 																	<div className='w-100 mb-3' />
-																	<InputField
+																	<FinalInput
 																		type={SIGN_UP_EMAIL}
 																		name={SIGN_UP_EMAIL}
 																		container={signUpStore}
@@ -264,7 +264,7 @@ const SignUpPage = props => {
 																		submitRef={submitButton}
 																	/>
 																	<div className='w-100 mb-3' />
-																	<InputField
+																	<FinalInput
 																		type={SIGN_UP_PASSWORD}
 																		name={SIGN_UP_PASSWORD}
 																		container={signUpStore}

@@ -1,5 +1,5 @@
 import IndexNavbar from 'components/Navbars/IndexNavbar'
-import { InputField, FinalForm, FORM_ERROR } from 'components/FinalForm'
+import { FinalInput, FinalForm, FORM_ERROR } from 'components/FinalForm'
 import Footer from 'components/Footers/Footer'
 import IndexHeader from 'components/Headers/IndexHeader.jsx'
 import AuthModal from 'components/Modals/AuthModal'
@@ -15,7 +15,7 @@ import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary'
 
 export {
 	Footer,
-	InputField,
+	FinalInput,
 	FinalForm,
 	FORM_ERROR,
 	IndexNavbar,

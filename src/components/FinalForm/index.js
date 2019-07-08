@@ -1,5 +1,5 @@
-import InputField from 'components/FinalForm/InputField'
+import FinalInput from 'components/FinalForm/FinalInput'
 import FinalForm from 'components/FinalForm/FinalForm'
 import { FORM_ERROR } from 'final-form'
 
-export { InputField, FinalForm, FORM_ERROR }
+export { FinalInput, FinalForm, FORM_ERROR }

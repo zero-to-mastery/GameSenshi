@@ -7,7 +7,7 @@ import { Button, FormGroup, TabPane, Row, Col, Form } from 'reactstrap'
 import Loader from 'react-loader-spinner'
 
 // form validation
-import { InputField, FinalForm, FORM_ERROR } from 'components/FinalForm'
+import { FinalInput, FinalForm, FORM_ERROR } from 'components/FinalForm'
 
 // validation
 import {
@@ -46,7 +46,7 @@ const AccountSettingsTabPane = props => {
 									</Col>
 									<Col className='align-self-center' md='9'>
 										<FormGroup>
-											<InputField
+											<FinalInput
 												type='email'
 												name='email'
 												hideSuccess
@@ -116,7 +116,7 @@ const AccountSettingsTabPane = props => {
 									</Col>
 									<Col className='align-self-center' md='9'>
 										<FormGroup>
-											<InputField
+											<FinalInput
 												type='password'
 												name='password'
 												hideSuccess

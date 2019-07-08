@@ -18,7 +18,7 @@ import {
 // core components
 import Cards from 'react-credit-cards'
 import Loader from 'react-loader-spinner'
-import { InputField, FinalForm } from 'components/FinalForm'
+import { FinalInput, FinalForm } from 'components/FinalForm'
 
 // styles
 import 'react-credit-cards/lib/styles.scss'
@@ -171,7 +171,7 @@ const CardModal = props => {
 															<Row>
 																<Col>
 																	<FormGroup>
-																		<InputField
+																		<FinalInput
 																			placeholder='Card Number'
 																			name={CARD_NUMBER}
 																			type='text'
@@ -195,7 +195,7 @@ const CardModal = props => {
 															<Row>
 																<Col>
 																	<FormGroup>
-																		<InputField
+																		<FinalInput
 																			placeholder='Card Holder Name'
 																			name={CARD_HOLDER_NAME}
 																			type='text'
@@ -223,7 +223,7 @@ const CardModal = props => {
 															<Row>
 																<Col xs='6' className='pr-0'>
 																	<FormGroup>
-																		<InputField
+																		<FinalInput
 																			className='react-select react-select-info'
 																			classNamePrefix='react-select'
 																			isSearchable={false}
@@ -245,7 +245,7 @@ const CardModal = props => {
 																</Col>
 																<Col xs='6'>
 																	<FormGroup>
-																		<InputField
+																		<FinalInput
 																			className='react-select react-select-info'
 																			classNamePrefix='react-select'
 																			isSearchable={false}
@@ -269,7 +269,7 @@ const CardModal = props => {
 															<Row>
 																<Col xs='6'>
 																	<FormGroup>
-																		<InputField
+																		<FinalInput
 																			placeholder='CVC'
 																			name={CARD_CVC}
 																			type='text'

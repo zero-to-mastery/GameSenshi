@@ -3,7 +3,7 @@ import React from 'react'
 import { Row, Col, Alert } from 'reactstrap'
 import { STATUS, MESSAGE } from 'constantValues'
 
-const MessageList = (
+const FinalList = (
 	validationResult,
 	duplicatedErrorMessages = [],
 	popoverItemFailed = { items: {} }
@@ -62,4 +62,4 @@ const MessageList = (
 	)
 }
 
-export default MessageList
+export default FinalList

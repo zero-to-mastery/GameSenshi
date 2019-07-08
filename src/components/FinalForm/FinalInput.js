@@ -20,10 +20,10 @@ import {
 import Select from 'react-select'
 
 import ReactResizeDetector from 'react-resize-detector'
-import MessageList from 'components/FinalForm/MessageList'
+import FinalList from 'components/FinalForm/FinalList'
 import { EXTRA_HEIGHT, IS_VALID, SUBMIT_ERRORS, STATUS } from 'constantValues'
 
-const InputField = props => {
+const FinalInput = props => {
 	const {
 		name,
 		icon,
@@ -49,7 +49,7 @@ const InputField = props => {
 
 	const ref = useRef(null)
 
-	const [messageList, setMessageList] = useState([])
+	const [messageList, setFinalList] = useState([])
 	const [popoverItemFailed] = useState({ items: {} })
 	const [onSubmitTimeOutID, setOnSubmitTimeOutId] = useState(0)
 	const [state] = useState({
@@ -80,15 +80,15 @@ const InputField = props => {
 		})
 	}
 
-	const generateMessageListWithState = (validationResult, resolve) => {
-		const messageList = MessageList(
+	const generateFinalListWithState = (validationResult, resolve) => {
+		const messageList = FinalList(
 			validationResult,
 			popoverMessages2,
 			popoverItemFailed
 		)
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
-		!willUnmount2.value && setMessageList(messageList)
+		!willUnmount2.value && setFinalList(messageList)
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
 			container.setState(state => {
@@ -134,16 +134,16 @@ const InputField = props => {
 										// server side validation on typing
 										serverValidation(container.state[name] || '').then(
 											validationResult => {
-												generateMessageListWithState(validationResult, resolve)
+												generateFinalListWithState(validationResult, resolve)
 												showSpinner2(false)
 											}
 										)
 									} else {
-										generateMessageListWithState(undefined, resolve)
+										generateFinalListWithState(undefined, resolve)
 									}
 								})
 								.catch(result => {
-									generateMessageListWithState(result.errors, resolve)
+									generateFinalListWithState(result.errors, resolve)
 								})
 						}, state.delay)
 						state.timeOutID = timeOutID
@@ -378,7 +378,7 @@ const InputField = props => {
 								!submitSucceeded &&
 								(touched || (active && modified)) &&
 								((!dirtySinceLastSubmit &&
-									MessageList(container.state[name + SUBMIT_ERRORS])) ||
+									FinalList(container.state[name + SUBMIT_ERRORS])) ||
 									messageList)}
 							<ReactResizeDetector
 								handleWidth
@@ -393,4 +393,4 @@ const InputField = props => {
 	)
 }
 
-export default InputField
+export default FinalInput
