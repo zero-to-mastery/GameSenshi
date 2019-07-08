@@ -67,7 +67,7 @@ import {
 const SignUpPage = props => {
 	const [squares1to6, setSquares1to6] = useState('')
 	const [squares7and8, setSquares7and8] = useState('')
-	const [maxHeight] = useState(999)
+	const [maxHeight] = useState(1075)
 
 	const submitButton = useRef(null)
 	const wrapper = useRef(null)
@@ -165,6 +165,7 @@ const SignUpPage = props => {
 							<div
 								className='page-header'
 								style={{
+									marginBottom: 75,
 									display: 'block',
 									maxHeight:
 										maxHeight +
@@ -214,7 +215,7 @@ const SignUpPage = props => {
 															return onSubmit(values, history, lastLocation)
 														}}>
 														{({ handleSubmit, submitting, submitError }) => (
-															<>
+															<Form className='form'>
 																<CardBody>
 																	<SocialAuthButtonGroup />
 																	<Row>
@@ -224,8 +225,7 @@ const SignUpPage = props => {
 																		</Col>
 																		<Col />
 																	</Row>
-																	<Form className='form'>
-																		{/** 
+																	{/** 
 																		// ! bug?
 																		// ! whenever any of these two field components is render
 																		// ! and whenever component going to unmount (route to other page) the field components will run validation
@@ -237,46 +237,45 @@ const SignUpPage = props => {
 																		// TODO research knowledge needed to deal with this issue
 																				
 																		*/}
-																		<InputField
-																			type={SIGN_UP_USERNAME}
-																			name={SIGN_UP_USERNAME}
-																			container={signUpStore}
-																			placeholder='Username'
-																			icon='tim-icons icon-single-02'
-																			validation={value =>
-																				signUpUsernameValidation(value)
-																			}
-																			popoverMessages={usernamePopoverMessages}
-																			submitRef={submitButton}
-																		/>
-																		<div className='w-100 mb-3' />
-																		<InputField
-																			type={SIGN_UP_EMAIL}
-																			name={SIGN_UP_EMAIL}
-																			container={signUpStore}
-																			placeholder='Email'
-																			icon='tim-icons icon-email-85'
-																			validation={value =>
-																				signUpEmailValidation(value)
-																			}
-																			serverValidation={handleIsEmailNotExist}
-																			popoverMessages={emailPopoverMessages}
-																			submitRef={submitButton}
-																		/>
-																		<div className='w-100 mb-3' />
-																		<InputField
-																			type={SIGN_UP_PASSWORD}
-																			name={SIGN_UP_PASSWORD}
-																			container={signUpStore}
-																			placeholder='Password'
-																			icon='tim-icons icon-lock-circle'
-																			validation={value =>
-																				signUpPasswordValidation(value)
-																			}
-																			popoverMessages={passwordPopoverMessages}
-																			submitRef={submitButton}
-																		/>
-																	</Form>
+																	<InputField
+																		type={SIGN_UP_USERNAME}
+																		name={SIGN_UP_USERNAME}
+																		container={signUpStore}
+																		placeholder='Username'
+																		icon='tim-icons icon-single-02'
+																		validation={value =>
+																			signUpUsernameValidation(value)
+																		}
+																		popoverMessages={usernamePopoverMessages}
+																		submitRef={submitButton}
+																	/>
+																	<div className='w-100 mb-3' />
+																	<InputField
+																		type={SIGN_UP_EMAIL}
+																		name={SIGN_UP_EMAIL}
+																		container={signUpStore}
+																		placeholder='Email'
+																		icon='tim-icons icon-email-85'
+																		validation={value =>
+																			signUpEmailValidation(value)
+																		}
+																		serverValidation={handleIsEmailNotExist}
+																		popoverMessages={emailPopoverMessages}
+																		submitRef={submitButton}
+																	/>
+																	<div className='w-100 mb-3' />
+																	<InputField
+																		type={SIGN_UP_PASSWORD}
+																		name={SIGN_UP_PASSWORD}
+																		container={signUpStore}
+																		placeholder='Password'
+																		icon='tim-icons icon-lock-circle'
+																		validation={value =>
+																			signUpPasswordValidation(value)
+																		}
+																		popoverMessages={passwordPopoverMessages}
+																		submitRef={submitButton}
+																	/>
 																</CardBody>
 																<CardFooter>
 																	<Row className='d-flex text-center'>
@@ -331,7 +330,7 @@ const SignUpPage = props => {
 																		<Col />
 																	</Row>
 																</CardFooter>
-															</>
+															</Form>
 														)}
 													</FinalForm>
 													<Label check className='mb-3 text-center'>
