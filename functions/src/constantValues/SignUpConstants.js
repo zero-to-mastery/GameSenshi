@@ -2,11 +2,11 @@ import { EXTRA_HEIGHT } from 'constantValues/CommonConstants'
 
 const SIGN_UP = 'signUp'
 const SIGN_UP_ON_SUBMIT = SIGN_UP + 'OnSubmit'
-const SIGN_UP_EMAIL = 'Email'
+const SIGN_UP_EMAIL = 'email'
 const SIGN_UP_EMAIL_EXTRA_HEIGHT = SIGN_UP_EMAIL + EXTRA_HEIGHT
-const SIGN_UP_PASSWORD = 'Password'
+const SIGN_UP_PASSWORD = 'password'
 const SIGN_UP_PASSWORD_EXTRA_HEIGHT = SIGN_UP_PASSWORD + EXTRA_HEIGHT
-const SIGN_UP_USERNAME = 'Username'
+const SIGN_UP_USERNAME = 'username'
 const SIGN_UP_USERNAME_EXTRA_HEIGHT = SIGN_UP_USERNAME + EXTRA_HEIGHT
 
 // TODO: gonna remove extra height feature someday
