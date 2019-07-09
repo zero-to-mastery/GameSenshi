@@ -2,6 +2,8 @@
 
 A platform for gamers/streamers to provide their casual service and link up with others in the community.
 
+[Demo](https://www.gamesenshi.com/index)
+
 ![index.png](./src/assets/img/index.png)
 
 ## Introduction
@@ -28,6 +30,12 @@ While some gamers/streamers do make a lot of money, the large majority of gamers
 4. Gaming Contents
 5. Event Organizer
 
+## Getting Started  
+
+Andrei's [React Course](https://www.udemy.com/complete-react-developer-zero-to-mastery/?couponCode=ZTMREACTLAUNCH) has almost all knowledge you need to get started.  
+
+PS: this is not advertising, this is coincidence, this project already exist for 3 months before the course is released.
+
 ## Installation
 
 A step by step series of examples that tell you how to get the development env running.
@@ -42,6 +50,10 @@ request the `.config` folder(s) from `tylim#9831` in `Discord`
 
 ```bash
 npm run dev
+// run with dev env var, this may not work as dev is connect to dev server (experiment server)  
+
+npm run prod
+// run with prod env var, recommended since this will work as experted most of the time
 ```
 
 Now you can start hacking on front end!
@@ -65,16 +77,11 @@ firebase login
 above command is one time setup, anytime you want to run deploy, simply
 
 ```bash
-npm run deploy
+npm run d-deploy // deploy to dev server  
+npm run p-deploy // deploy to prod server
 ```
 
 It will automatically inject production environment variable, build and deploy front end or back end (depending on which terminal you are in)
-
-There is also a command to deploy on both ends:
-
-```bash
-firebase deploy
-```
 
 after deployment, you can view it [here](https://gamesenshi.com/).
 
