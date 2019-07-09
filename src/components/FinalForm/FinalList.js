@@ -3,9 +3,6 @@ import React from 'react'
 import { Row, Col, Alert } from 'reactstrap'
 import { STATUS, MESSAGE } from 'constantValues'
 
-// css patch to make validation sign vertically centered
-import './FinalList.css'
-
 const FinalList = (
 	validationResult,
 	duplicatedErrorMessages = [],

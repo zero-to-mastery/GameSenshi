@@ -1,4 +1,0 @@
-.has-success:after,
-.has-danger:after {
-	top: calc(50% - 7px);
-}
