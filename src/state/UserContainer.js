@@ -14,8 +14,9 @@ import {
 	USER_PHONE_NUMBER,
 	USER_PROVIDER_DATA,
 	USER_EMAIL_IS_VERIFIED,
-	USER_DEFAULT_AVATAR_URL,
 } from 'constantValues'
+
+import defaultAvatar from 'assets/img/placeholder.jpg'
 
 const defaultValues = {
 	[USER_UID]: '',
@@ -23,7 +24,7 @@ const defaultValues = {
 	[USER_GENDER]: '',
 	[USER_COUNTRY]: '',
 	[USER_LANGUAGES]: ['English', 'French'],
-	[USER_PHOTO_URL]: '',
+	[USER_PHOTO_URL]: defaultAvatar,
 	[USER_SIGNED_IN]: false,
 	[USER_BIRTH_DATE]: new Date(2000, 0, 1),
 	[USER_DISPLAY_NAME]: '',
@@ -62,8 +63,7 @@ class UserContainer extends Container {
 			const user = {
 				[USER_DISPLAY_NAME]: signInData[USER_DISPLAY_NAME],
 				[USER_EMAIL_IS_VERIFIED]: signInData[USER_EMAIL_IS_VERIFIED],
-				[USER_PHOTO_URL]:
-					signInData[USER_PHOTO_URL] || require(`${USER_DEFAULT_AVATAR_URL}`), //fallback,the variable in require must be covered in template string or else critical dependency warning by webpack
+				[USER_PHOTO_URL]: signInData[USER_PHOTO_URL] || defaultAvatar,
 				[USER_UID]: signInData[USER_UID],
 			}
 			this.setState(state => {
