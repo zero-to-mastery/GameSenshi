@@ -11,7 +11,6 @@ import {
 	REACT_APP_MESSAGING_SENDER_ID,
 	REACT_APP_APP_ID,
 	VERIFY_EMAIL_API_KEY,
-	DEFAULT_AVATAR_URL,
 } from './src/constantValues'
 
 const spawn = child_process.spawn
@@ -26,7 +25,6 @@ const obj = {
 		[REACT_APP_MESSAGING_SENDER_ID]: process.env[REACT_APP_MESSAGING_SENDER_ID],
 		[REACT_APP_APP_ID]: process.env[REACT_APP_APP_ID],
 		[VERIFY_EMAIL_API_KEY]: process.env[VERIFY_EMAIL_API_KEY],
-		[DEFAULT_AVATAR_URL]: process.env[DEFAULT_AVATAR_URL],
 	},
 }
 const isObj = x => x !== null && typeof x === 'object'
@@ -36,8 +34,8 @@ const parse = tree => {
 	const properties = Object.keys(tree)
 	properties.forEach(prop => {
 		if (isObj(tree[prop])) {
-			const childrens = parse(tree[prop])
-			childrens.forEach(child => {
+			const children = parse(tree[prop])
+			children.forEach(child => {
 				const value = `${prop}.${child}`
 				values.push(value)
 			})
