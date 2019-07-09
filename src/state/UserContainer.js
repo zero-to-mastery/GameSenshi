@@ -14,7 +14,7 @@ import {
 	USER_PHONE_NUMBER,
 	USER_PROVIDER_DATA,
 	USER_EMAIL_IS_VERIFIED,
-	DEFAULT_AVATAR_URL,
+	USER_DEFAULT_AVATAR_URL,
 } from 'constantValues'
 
 const defaultValues = {
@@ -63,7 +63,7 @@ class UserContainer extends Container {
 				[USER_DISPLAY_NAME]: signInData[USER_DISPLAY_NAME],
 				[USER_EMAIL_IS_VERIFIED]: signInData[USER_EMAIL_IS_VERIFIED],
 				[USER_PHOTO_URL]:
-					signInData[USER_PHOTO_URL] || process.env[DEFAULT_AVATAR_URL], //fallback,
+					signInData[USER_PHOTO_URL] || require(`${USER_DEFAULT_AVATAR_URL}`), //fallback,the variable in require must be covered in template string or else critical dependency warning by webpack
 				[USER_UID]: signInData[USER_UID],
 			}
 			this.setState(state => {
