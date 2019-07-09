@@ -18,7 +18,6 @@ import {
 	SIGN_UP_USERNAME,
 	USER_DISPLAY_NAME,
 	USER_PHOTO_URL,
-	USER_DEFAULT_AVATAR_URL,
 } from 'constantValues'
 
 const {
@@ -88,7 +87,7 @@ const handleSignUpWithEmailAndPassword = async data => {
 					credential.user
 						.updateProfile({
 							[USER_DISPLAY_NAME]: username,
-							[USER_PHOTO_URL]: USER_DEFAULT_AVATAR_URL,
+							[USER_PHOTO_URL]: '',
 						})
 						.catch(err => {
 							console.log('update username failed', err)
