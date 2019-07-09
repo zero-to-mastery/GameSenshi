@@ -23,20 +23,26 @@
 		"url": "https://github.com/tylim88/GameSenshi/issues"
 	},
 	"scripts": {
+		"separator0": "---------------------------------------------utilities------------------------------------------------------------",
 		"lint": "eslint src/ --fix",
-		"start": "react-scripts start",
-		"prod": "env-cmd .config/prod.env npm run start",
-		"dev": "env-cmd .config/dev.env npm run start",
-		"build": "react-scripts build && node src/sw-build.js",
-		"puild": "env-cmd .config/prod.env npm run build",
-		"duild": "env-cmd .config/dev.env npm run build",
-		"deploy": "npm run lint && npm run puild && firebase deploy --only hosting",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm i",
 		"compile-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.css",
 		"minify-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.min.css --output-style compressed",
-		"map-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.css --source-map true"
+		"map-sass": "node-sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.css --source-map true",
+		"separator1": "---------------------------------------------basic----------------------------------------------------------------",
+		"start": "react-scripts start",
+		"build": "react-scripts build && node src/sw-build.js",
+		"deploy": "npm run lint && npm run build && cross-env-shell \"firebase use $REACT_APP_PROJECT_ID\" && firebase deploy --only hosting",
+		"separator2": "-----------------------------------------------dev-----------------------------------------------------------------",
+		"dev": "env-cmd .config/dev.env npm run start",
+		"d-build": "env-cmd .config/dev.env npm run build",
+		"d-deploy": "env-cmd .config/dev.env npm run deploy",
+		"separator3": "-----------------------------------------------prod----------------------------------------------------------------",
+		"prod": "env-cmd .config/prod.env npm run start",
+		"p-build": "env-cmd .config/prod.env npm run build",
+		"p-deploy": "env-cmd .config/prod.env npm run deploy"
 	},
 	"dependencies": {
 		"card-validator": "^6.2.0",
@@ -78,6 +84,7 @@
 		"yup": "^0.27.0"
 	},
 	"devDependencies": {
+		"cross-env": "^5.2.0",
 		"env-cmd": "^8.0.2",
 		"eslint-config-prettier": "^4.1.0",
 		"eslint-plugin-prettier": "^3.0.1",
