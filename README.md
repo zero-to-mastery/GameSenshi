@@ -1,5 +1,9 @@
 # GAME [SENSHI(戦士)](https://en.wikipedia.org/wiki/Senshi)
 
+<p align="center">
+  <img src='./public/android-chrome-512x512.png'>
+</p>
+
 A platform for gamers/streamers to provide their casual service and link up with others in the community.
 
 [Demo](https://www.gamesenshi.com/index)
