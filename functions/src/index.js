@@ -1,8 +1,8 @@
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
-import { functions } from 'firebaseInit'
+import { functions, env } from 'firebaseInit'
 import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
-import { ENDPOINT } from 'constantValues'
+import { ENDPOINT, PLAYGROUND } from 'constantValues'
 import { ApolloServer, gql } from 'apollo-server-express'
 import express from 'express'
 
@@ -55,8 +55,8 @@ const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	//https://github.com/apollographql/apollo-server/issues/1112
-	introspection: true,
-	playground: true,
+	introspection: env[PLAYGROUND],
+	playground: env[PLAYGROUND],
 })
 
 // This `listen` method launches a web-server.  Existing apps

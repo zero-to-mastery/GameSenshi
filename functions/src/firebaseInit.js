@@ -32,4 +32,4 @@ admin.initializeApp()
 
 const auth = firebase.auth
 
-export { auth, functions }
+export { auth, functions, env }
