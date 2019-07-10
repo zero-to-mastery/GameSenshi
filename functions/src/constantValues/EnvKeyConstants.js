@@ -9,6 +9,7 @@ const REACT_APP_STORAGE_BUCKET = REACT_APP_ + 'storage_bucket'
 const REACT_APP_MESSAGING_SENDER_ID = REACT_APP_ + 'messaging_sender_id'
 const REACT_APP_APP_ID = REACT_APP_ + 'app_id'
 const VERIFY_EMAIL_API_KEY = 'verify_email_api_key'
+const PLAYGROUND = 'playground'
 
 export {
 	ENV,
@@ -20,4 +21,5 @@ export {
 	REACT_APP_MESSAGING_SENDER_ID,
 	REACT_APP_APP_ID,
 	VERIFY_EMAIL_API_KEY,
+	PLAYGROUND,
 }
