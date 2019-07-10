@@ -1,10 +1,11 @@
 // Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
-import { functions, env } from 'firebaseInit'
 import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
-import { ENDPOINT, PLAYGROUND } from 'constantValues'
+import { functions, env } from 'firebaseInit'
 import { ApolloServer, gql } from 'apollo-server-express'
+import { MemcachedCache } from 'apollo-server-cache-memcached'
 import express from 'express'
+import { ENDPOINT, ENABLE_PLAYGROUND } from 'constantValues'
 
 // This is a (sample) collection of books we'll be able to query
 // the GraphQL server for.  A more complete example might fetch
@@ -55,8 +56,14 @@ const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	//https://github.com/apollographql/apollo-server/issues/1112
-	introspection: env[PLAYGROUND],
-	playground: env[PLAYGROUND],
+	introspection: env[ENABLE_PLAYGROUND],
+	playground: env[ENABLE_PLAYGROUND],
+	persistedQueries: {
+		cache: new MemcachedCache(
+			['memcached-server-1', 'memcached-server-2', 'memcached-server-3'],
+			{ retries: 10, retry: 10000 } // Options
+		),
+	},
 })
 
 // This `listen` method launches a web-server.  Existing apps
