@@ -76,28 +76,33 @@ const handleSignUpWithEmailAndPassword = async data => {
 			return isEmailReal
 		}
 
-		return auth()
+		const isCreateSuccess = await auth()
 			.createUserWithEmailAndPassword(email, password)
-			.then(credential => {
-				if (credential.user && credential.user.emailVerified === false) {
-					credential.user.sendEmailVerification().catch(err => {
-						console.log('email user failed', err)
+			.then(credential => ({ status: true, credential }))
+			.catch(err => ({ status: false, err }))
+
+		if (isCreateSuccess.status) {
+			const {
+				credential: { user },
+			} = isCreateSuccess
+			if (user && user.emailVerified === false) {
+				user.sendEmailVerification().catch(err => {
+					console.log('email user failed', err)
+				})
+				user
+					.updateProfile({
+						[USER_DISPLAY_NAME]: username,
+						[USER_PHOTO_URL]: '',
 					})
-					credential.user
-						.updateProfile({
-							[USER_DISPLAY_NAME]: username,
-							[USER_PHOTO_URL]: '',
-						})
-						.catch(err => {
-							console.log('update username failed', err)
-						})
-				}
-				return resObj(true)
-			})
-			.catch(err => {
-				console.log('submit error', err)
-				return resObj(false, 'Internal Error Code 5', 5)
-			})
+					.catch(err => {
+						console.log('update username failed', err)
+					})
+			}
+			return resObj(true)
+		} else {
+			console.log('submit error', isCreateSuccess.err)
+			return resObj(false, 'Internal Error Code 5', 5)
+		}
 	} catch (err) {
 		console.log(err)
 		return resObj(false, 'Internal Error Code 6', 6)
