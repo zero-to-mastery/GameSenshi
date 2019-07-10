@@ -6,11 +6,11 @@ import { STATUS, MESSAGE } from 'constantValues'
 const FinalList = (
 	validationResult,
 	duplicatedErrorMessages = [],
-	popoverItemFailed = { items: {} }
+	popoverFailedItem = { items: {} }
 ) => {
-	// if validationResult is undefined, it passed validation
-	// if validationResult is {status:true/false, message:string/array of string} and if the status is true, it passed validation
-	// if validationResult is string or array of string, it failed validation
+	// if validationResult is undefined, it passed validation, do not show List
+	// if validationResult is {status:true/false, message:string/array of string} and if the status is true, it passed validation, show List
+	// if validationResult is string or array of string, it failed validation, show List
 	const isObj = validationResult && validationResult[STATUS]
 	const messages = isObj
 		? Array.isArray(validationResult[MESSAGE])
@@ -20,10 +20,10 @@ const FinalList = (
 		? validationResult
 		: [validationResult]
 
-	popoverItemFailed.items = {} // reset
+	popoverFailedItem.items = {} // reset
 
 	const filteredMessages = messages.filter(message => {
-		popoverItemFailed.items[message] = true
+		popoverFailedItem.items[message] = true
 		return !duplicatedErrorMessages.includes(message)
 	})
 
