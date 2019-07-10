@@ -1,5 +1,5 @@
 import req from 'request-promise'
-import { firebase, functions } from 'firebaseInit'
+import { auth, functions } from 'firebaseInit'
 
 import {
 	signUpEmailValidation,
@@ -76,8 +76,7 @@ const handleSignUpWithEmailAndPassword = async data => {
 			return isEmailReal
 		}
 
-		return firebase
-			.auth()
+		return auth()
 			.createUserWithEmailAndPassword(email, password)
 			.then(credential => {
 				if (credential.user && credential.user.emailVerified === false) {
