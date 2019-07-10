@@ -1,6 +1,7 @@
 const DATA = 'data'
 const STATUS = 'status'
 const MESSAGE = 'message'
+const ENDPOINT = 'endpoint'
 const IS_VALID = 'IsValid'
 const EXTRA_HEIGHT = 'ExtraHeight'
 const SUBMIT_ERRORS = 'SubmitErrors'
@@ -47,9 +48,10 @@ YEARS.unshift({ value: '', label: 'Year', isDisabled: true })
 
 export {
 	DATA,
-	MESSAGE,
-	STATUS,
 	YEARS,
+	STATUS,
+	MESSAGE,
+	ENDPOINT,
 	MONTH_NAMES,
 	MONTH_ABVS_SELECT,
 	IS_VALID,

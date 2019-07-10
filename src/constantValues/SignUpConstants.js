@@ -1,7 +1,5 @@
 import { EXTRA_HEIGHT } from 'constantValues/CommonConstants'
 
-const SIGN_UP = 'signUp'
-const SIGN_UP_ON_SUBMIT = SIGN_UP + 'OnSubmit'
 const SIGN_UP_EMAIL = 'email'
 const SIGN_UP_EMAIL_EXTRA_HEIGHT = SIGN_UP_EMAIL + EXTRA_HEIGHT
 const SIGN_UP_PASSWORD = 'password'
@@ -18,5 +16,4 @@ export {
 	SIGN_UP_PASSWORD_EXTRA_HEIGHT,
 	SIGN_UP_USERNAME,
 	SIGN_UP_USERNAME_EXTRA_HEIGHT,
-	SIGN_UP_ON_SUBMIT,
 }

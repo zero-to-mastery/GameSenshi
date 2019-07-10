@@ -8,7 +8,7 @@ import {
 	SIGN_UP_USERNAME,
 	SIGN_UP_EMAIL,
 	SIGN_UP_PASSWORD,
-	SIGN_UP_ON_SUBMIT,
+	ENDPOINT,
 	DATA,
 	// STATUS,
 } from 'constantValues'
@@ -22,7 +22,7 @@ const defaultValues = {
 
 const handleSignUpWithEmailAndPassword = (values = defaultValues) => {
 	return functions
-		.httpsCallable(SIGN_UP_ON_SUBMIT)(values)
+		.httpsCallable(ENDPOINT)(values)
 		.then(res => {
 			res[DATA][DATA] = { ...defaultValues, ...res[DATA][DATA] }
 			return res[DATA]
