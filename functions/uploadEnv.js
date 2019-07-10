@@ -11,7 +11,7 @@ import {
 	REACT_APP_MESSAGING_SENDER_ID,
 	REACT_APP_APP_ID,
 	VERIFY_EMAIL_API_KEY,
-	PLAYGROUND,
+	ENABLE_PLAYGROUND,
 } from './src/constantValues'
 
 const spawn = child_process.spawn
@@ -26,7 +26,7 @@ const obj = {
 		[REACT_APP_MESSAGING_SENDER_ID]: process.env[REACT_APP_MESSAGING_SENDER_ID],
 		[REACT_APP_APP_ID]: process.env[REACT_APP_APP_ID],
 		[VERIFY_EMAIL_API_KEY]: process.env[VERIFY_EMAIL_API_KEY],
-		[PLAYGROUND]: process.env[PLAYGROUND],
+		[ENABLE_PLAYGROUND]: process.env[ENABLE_PLAYGROUND],
 	},
 }
 const isObj = x => x !== null && typeof x === 'object'
