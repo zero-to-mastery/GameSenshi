@@ -5,7 +5,11 @@ import { functions, env } from 'firebaseInit'
 import { ApolloServer, gql } from 'apollo-server-express'
 import { MemcachedCache } from 'apollo-server-cache-memcached'
 import express from 'express'
-import { ENDPOINT, ENABLE_PLAYGROUND } from 'constantValues'
+import {
+	ENDPOINT,
+	ENABLE_PLAYGROUND,
+	APOLLO_ENGINE_API_KEY,
+} from 'constantValues'
 
 // This is a (sample) collection of books we'll be able to query
 // the GraphQL server for.  A more complete example might fetch
@@ -63,6 +67,9 @@ const server = new ApolloServer({
 			['memcached-server-1', 'memcached-server-2', 'memcached-server-3'],
 			{ retries: 10, retry: 10000 } // Options
 		),
+	},
+	engine: {
+		apiKey: env[APOLLO_ENGINE_API_KEY],
 	},
 })
 

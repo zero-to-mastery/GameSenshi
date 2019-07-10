@@ -8,8 +8,11 @@ const REACT_APP_PROJECT_ID = REACT_APP_ + 'ProjectId'
 const REACT_APP_STORAGE_BUCKET = REACT_APP_ + 'StorageBucket'
 const REACT_APP_MESSAGING_SENDER_ID = REACT_APP_ + 'MessagingSenderId'
 const REACT_APP_APP_ID = REACT_APP_ + 'AppId'
-const VERIFY_EMAIL_API_KEY = 'verifyEmailApiKey'
 const ENABLE_PLAYGROUND = 'playgroundEnabled'
+
+// third party service
+const VERIFY_EMAIL_API_KEY = 'verifyEmailApiKey'
+const APOLLO_ENGINE_API_KEY = 'apolloEngineApiKey'
 
 export {
 	ENV,
@@ -20,6 +23,7 @@ export {
 	REACT_APP_STORAGE_BUCKET,
 	REACT_APP_MESSAGING_SENDER_ID,
 	REACT_APP_APP_ID,
-	VERIFY_EMAIL_API_KEY,
 	ENABLE_PLAYGROUND,
+	VERIFY_EMAIL_API_KEY,
+	APOLLO_ENGINE_API_KEY,
 }

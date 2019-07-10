@@ -12,6 +12,7 @@ import {
 	REACT_APP_APP_ID,
 	VERIFY_EMAIL_API_KEY,
 	ENABLE_PLAYGROUND,
+	APOLLO_ENGINE_API_KEY,
 } from './src/constantValues'
 
 const spawn = child_process.spawn
@@ -27,6 +28,7 @@ const obj = {
 		[REACT_APP_APP_ID]: process.env[REACT_APP_APP_ID],
 		[VERIFY_EMAIL_API_KEY]: process.env[VERIFY_EMAIL_API_KEY],
 		[ENABLE_PLAYGROUND]: process.env[ENABLE_PLAYGROUND],
+		[APOLLO_ENGINE_API_KEY]: process.env[APOLLO_ENGINE_API_KEY],
 	},
 }
 const isObj = x => x !== null && typeof x === 'object'
