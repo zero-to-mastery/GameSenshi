@@ -63,14 +63,20 @@ const server = new ApolloServer({
 	introspection: env[ENABLE_PLAYGROUND],
 	playground: env[ENABLE_PLAYGROUND],
 	persistedQueries: {
+		//https://www.apollographql.com/docs/apollo-server/whats-new/#automatic-persisted-queries
 		cache: new MemcachedCache(
 			['memcached-server-1', 'memcached-server-2', 'memcached-server-3'],
 			{ retries: 10, retry: 10000 } // Options
 		),
 	},
 	engine: {
+		//https://www.apollographql.com/docs/apollo-server/whats-new/#performance-monitoring
 		apiKey: env[APOLLO_ENGINE_API_KEY],
 	},
+	onHealthCheck: () =>
+		new Promise((resolve, reject) => {
+			//https://www.apollographql.com/docs/apollo-server/whats-new/#health-checks
+		}),
 })
 
 // This `listen` method launches a web-server.  Existing apps
