@@ -45,6 +45,7 @@
 		"p-deploy": "env-cmd .config/prod.env npm run deploy"
 	},
 	"dependencies": {
+		"apollo-boost": "^0.4.3",
 		"apollo-cache-inmemory": "^1.6.2",
 		"apollo-cache-persist": "^0.1.1",
 		"apollo-client": "^2.6.3",
