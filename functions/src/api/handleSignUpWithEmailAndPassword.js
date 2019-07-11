@@ -18,27 +18,36 @@ import {
 	SIGN_UP_USERNAME,
 	USER_DISPLAY_NAME,
 	USER_PHOTO_URL,
+	DATA,
 } from 'constantValues'
 
 const {
 	[ENV]: { [VERIFY_EMAIL_API_KEY]: verify_email_api_key },
 } = functions.config()
 
-const handleSignUpWithEmailAndPassword = async data => {
+const handleSignUpWithEmailAndPassword = async (
+	parent,
+	args,
+	context,
+	info
+) => {
 	const {
-		[SIGN_UP_EMAIL]: email,
-		[SIGN_UP_PASSWORD]: password,
-		[SIGN_UP_USERNAME]: username,
-	} = data
+		[DATA]: {
+			[SIGN_UP_EMAIL]: email,
+			[SIGN_UP_PASSWORD]: password,
+			[SIGN_UP_USERNAME]: username,
+		},
+		[DATA]: data,
+	} = args
 	try {
 		const usernameInvalid = await signUpUsernameValidation(username)
-			.then(() => '')
+			.then(() => null)
 			.catch(result => result.errors)
 		const emailInvalid = await signUpEmailValidation(email)
-			.then(() => '')
+			.then(() => null)
 			.catch(result => result.errors)
 		const passwordInvalid = await signUpPasswordValidation(password)
-			.then(() => '')
+			.then(() => null)
 			.catch(result => result.errors)
 
 		if (usernameInvalid || emailInvalid || passwordInvalid) {

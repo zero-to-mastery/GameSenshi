@@ -7,11 +7,16 @@ import {
 	STATUS,
 	CODE,
 	MESSAGE,
+	DATA,
 } from 'constantValues'
 
 const typeDefs = gql`
+  type Query {
+    test: String
+  }
+
 	type Mutation {
-		${SIGN_UP}(data: signUpInput!): Respond!
+		${SIGN_UP}(${DATA}: signUpInput!): SignUpRespond!
   }
   
   input signUpInput{
@@ -20,10 +25,23 @@ const typeDefs = gql`
     ${SIGN_UP_PASSWORD}:String!
   }
 
-  type Respond{
+  interface Respond{
     ${STATUS}:Boolean!
     ${CODE}: String!
     ${MESSAGE}: String!
+  }
+
+  type SignUpData {
+    ${SIGN_UP_USERNAME}:[String]
+    ${SIGN_UP_EMAIL}:[String]
+    ${SIGN_UP_PASSWORD}:[String]
+  }
+
+  type SignUpRespond implements Respond{
+    ${STATUS}:Boolean!
+    ${CODE}: String!
+    ${MESSAGE}: String!
+    ${DATA}: SignUpData
   }
 `
 
