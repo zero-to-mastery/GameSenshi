@@ -7,6 +7,7 @@ import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
 import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInForm from 'components/Forms/SignInForm'
+import SignUpForm from 'components/Forms/SignUpForm'
 import GeneralSettingsTabPane from 'components/TabPane/GeneralSettingsTabPane'
 import BillingSettingsTabPane from 'components/TabPane/BillingSettingsTabPane'
 import AccountSettingsTabPane from 'components/TabPane/AccountSettingsTabPane'
@@ -21,10 +22,11 @@ export {
 	IndexNavbar,
 	IndexHeader,
 	AuthModal,
-	SocialAuthButtonGroup,
 	SignInForm,
+	SignUpForm,
 	SignUpButton,
 	SignInButton,
+	SocialAuthButtonGroup,
 	GeneralSettingsTabPane,
 	BillingSettingsTabPane,
 	AccountSettingsTabPane,
