@@ -20,6 +20,8 @@ import 'assets/demo/demo.css'
 import 'assets/demo/react-demo.css'
 import 'assets/css/game-senshi.css'
 
+import ApolloClient from 'apollo-boost'
+
 // pages pages
 import {
 	IndexPage,
@@ -29,6 +31,10 @@ import {
 	SignUpPage,
 	PasswordResetPage,
 } from 'views'
+
+const client = new ApolloClient({
+	uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
+})
 
 const App = props => {
 	const [apolloClient, setApolloClient] = useState(tempClient)
@@ -42,7 +48,7 @@ const App = props => {
 	}, [])
 
 	return (
-		<ApolloProvider client={apolloClient}>
+		<ApolloProvider client={client}>
 			<Provider>
 				<BrowserRouter>
 					<LastLocationProvider>
