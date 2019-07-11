@@ -41,7 +41,7 @@ const typeDefs = gql`
     ${STATUS}:Boolean!
     ${CODE}: String!
     ${MESSAGE}: String!
-    ${DATA}: SignUpData
+    ${DATA}: SignUpData!
   }
 `
 
