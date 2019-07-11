@@ -85,9 +85,12 @@ npm run d-deploy // deploy to dev server
 npm run p-deploy // deploy to prod server
 ```
 
-It will automatically inject production environment variable, build and deploy front end or back end (depending on which terminal you are in)
+It will automatically inject production environment variable, build and deploy front end or back end (if you run the command in functions folder).
 
-after deployment, you can view it [here](https://gamesenshi.com/).
+after deployment, you can view it at
+
+1. [prod](https://gamesenshi.com/)
+2. [dev](https://game-senshi.firebaseapp.com/index)
 
 ## Built With
 
