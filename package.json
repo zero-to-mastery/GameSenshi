@@ -59,6 +59,7 @@
 		"final-form-focus": "^1.1.2",
 		"firebase": "^6.0.2",
 		"graphql": "^14.4.2",
+		"graphql-tag": "^2.10.1",
 		"headroom.js": "0.9.4",
 		"interweave": "^11.1.0",
 		"localforage": "^1.7.3",
