@@ -2,6 +2,7 @@
 // constants is a nodejs module, so the folder is named constantValues instead
 
 import {
+	CODE,
 	DATA,
 	YEARS,
 	STATUS,
@@ -89,6 +90,7 @@ import {
 } from 'constantValues/CardConstants'
 
 export {
+	CODE,
 	DATA,
 	YEARS,
 	STATUS,

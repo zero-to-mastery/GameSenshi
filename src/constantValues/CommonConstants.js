@@ -1,3 +1,4 @@
+const CODE = 'code'
 const DATA = 'data'
 const STATUS = 'status'
 const MESSAGE = 'message'
@@ -47,6 +48,7 @@ const YEARS = Array.from(new Array(30), (e, i) => {
 YEARS.unshift({ value: '', label: 'Year', isDisabled: true })
 
 export {
+	CODE,
 	DATA,
 	YEARS,
 	STATUS,
