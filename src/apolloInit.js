@@ -6,7 +6,7 @@ import ApolloClient from 'apollo-client'
 import localForage from 'localforage'
 
 const link = createPersistedQueryLink().concat(
-	createHttpLink({ uri: process.env.REACT_GRAPHQL_ENDPOINT })
+	createHttpLink({ uri: process.env.REACT_APP_GRAPHQL_ENDPOINT })
 )
 
 const cache = new InMemoryCache()
