@@ -19,8 +19,8 @@ From the consumer perspective:
 1. You are a big fan of a professional gamer/famous streamer, and you want to play a game with with your beloved star., either as a sparring partner(opponent), or teammate.
 2. You are looking for someone to help you improve as a gamer, and want a gaming "coach" that can help you along in that process.
 3. You want to rank up in a specific game, but need help. You need a strong and capable teammate who has lots of experience with that game!
-4. You have a nice small less known multiplayer game, hire your fighter here!
-5. You're merely looking to hang out and socialize with streamers and/or other gamers in a relaxed environment!
+4. You have a nice but less known multiplayer game, hire your fighter here!
+5. You're merely looking to hang out and socialize with streamers/gamers in a relaxed environment!
 
 From provider perspective:  
 

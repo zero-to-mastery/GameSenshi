@@ -5,9 +5,10 @@
 	"logo": "https://cdn.discordapp.com/attachments/585004003797237771/592386952511356950/GS1.png",
 	"channelName": "gamesenshi",
 	"desc": [
-		"__**Use Cases:**__ \n:small_orange_diamond: You are a big fan of a professional/famous gamer, and you want to play a game with him/her, either as a sparring partner(opponent), or teammate. \n:small_orange_diamond: You are looking for someone to help you improve as a gamer, and want a gaming \"coach\" that can help you along in that process. \n:small_orange_diamond: You want to rank up in a specific game, but need help. You need a strong and capable teammate who has lots of experience with that game! \n:small_orange_diamond: You have a nice small less known multiplayer game, hire your fighter here! \n:small_orange_diamond: You're merely looking to hang out and socialize with streamers and/or other gamers in a relaxed environment!",
+		"\n",
+		"__**Use Cases:**__ \n:small_orange_diamond: Hire professional gamer or famous streamer! \n:small_orange_diamond: Hire game coach, level up your skill! \n:small_orange_diamond: Hire strong team mate, face challenge and rank up! \n:small_orange_diamond: Hire players to play your less known multiplayer game! \n:small_orange_diamond: Hang out and socialize with gamers/streamers in a relaxed environment!",
 		"__**Application Features:**__ \n:diamonds: Marketplace \n:diamonds: Payment \n:diamonds: Chat \n:diamonds: Gaming Contents \n:diamonds: Event Organizer ",
-		"__**Tech Stack:**__ \n:small_blue_diamond: React \n:small_blue_diamond: Progressive Web App \n:small_blue_diamond: CSS in JS \n:small_blue_diamond: Bootstrap \n:small_blue_diamond: Firebase \n:small_blue_diamond: GraphQL \n: SSR(future)"
+		"__**Tech Stack:**__ \n:small_blue_diamond: React \n:small_blue_diamond: Progressive Web App \n:small_blue_diamond: CSS in JS \n:small_blue_diamond: Bootstrap \n:small_blue_diamond: Firebase \n:small_blue_diamond: GraphQL \n:small_blue_diamond: SSR(future)"
 	],
 	"team": [["tylim", "Project Lead"], ["CodeMeKathy", "Project Manager"]],
 	"links": [
