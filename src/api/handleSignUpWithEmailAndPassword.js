@@ -5,6 +5,7 @@ import {
 	SIGN_UP_EMAIL,
 	SIGN_UP_PASSWORD,
 	SIGN_UP_USERNAME,
+	SIGN_UP_GQL_INPUT,
 	DATA,
 	STATUS,
 	CODE,
@@ -12,7 +13,7 @@ import {
 } from 'constantValues'
 
 const SIGNING_UP = gql`
-	mutation signUp($${DATA}:signUpInput!) {
+	mutation signUp($${DATA}:${SIGN_UP_GQL_INPUT}!) {
 		${SIGN_UP}(${DATA}: $${DATA}) {
 			${STATUS}
 			${CODE}

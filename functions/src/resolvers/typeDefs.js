@@ -4,10 +4,11 @@ import {
 	SIGN_UP_EMAIL,
 	SIGN_UP_PASSWORD,
 	SIGN_UP_USERNAME,
-	STATUS,
+	SIGN_UP_GQL_INPUT,
 	CODE,
-	MESSAGE,
 	DATA,
+	STATUS,
+	MESSAGE,
 } from 'constantValues'
 
 const typeDefs = gql`
@@ -16,10 +17,10 @@ const typeDefs = gql`
   }
 
 	type Mutation {
-		${SIGN_UP}(${DATA}: signUpInput!): SignUpRespond!
+		${SIGN_UP}(${DATA}: ${SIGN_UP_GQL_INPUT}!): SignUpRespond!
   }
   
-  input signUpInput{
+  input ${SIGN_UP_GQL_INPUT}{
     ${SIGN_UP_USERNAME}:String!
     ${SIGN_UP_EMAIL}:String!
     ${SIGN_UP_PASSWORD}:String!
