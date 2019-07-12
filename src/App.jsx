@@ -31,6 +31,14 @@ import {
 	PasswordResetPage,
 } from 'views'
 
+const routes = [
+	{ component: ProfilePage, route: '/profile', guarded: true },
+	{ component: SettingsPage, route: '/settings', guarded: true },
+	{ component: SignUpPage, route: '/signUp', guarded: false },
+	{ component: SignInPage, route: '/signIn', guarded: false },
+	{ component: PasswordResetPage, route: '/resetPassword', guarded: false },
+]
+
 const App = props => {
 	const [apolloClient, setApolloClient] = useState(tempClient)
 
@@ -49,50 +57,22 @@ const App = props => {
 					<LastLocationProvider>
 						<Switch>
 							<Route path='/index' render={props => <IndexPage {...props} />} />
-							<Route
-								path='/profile'
-								render={props => <ProfilePage {...props} />}
-							/>
-							<Route
-								path='/settings'
-								render={props =>
-									userStore.state[USER_SIGNED_IN] ? (
-										<SettingsPage {...props} />
-									) : (
-										<Redirect from='/settings' to='/index' />
-									)
-								}
-							/>
-							<Route
-								path='/signUp'
-								render={props =>
-									userStore.state[USER_SIGNED_IN] ? (
-										<Redirect from='/signUp' to='/index' />
-									) : (
-										<SignUpPage {...props} />
-									)
-								}
-							/>
-							<Route
-								path='/signIn'
-								render={props =>
-									userStore.state[USER_SIGNED_IN] ? (
-										<Redirect from='/signIn' to='/index' />
-									) : (
-										<SignInPage {...props} />
-									)
-								}
-							/>
-							<Route
-								path='/resetPassword'
-								render={props =>
-									userStore.state[USER_SIGNED_IN] ? (
-										<Redirect from='/resetPassword' to='/index' />
-									) : (
-										<PasswordResetPage {...props} />
-									)
-								}
-							/>
+							{routes.map(element => {
+								const { component: Comp, route, guarded } = element
+								return (
+									<Route
+										path={route}
+										render={props =>
+											(guarded && userStore.state[USER_SIGNED_IN]) ||
+											(!guarded && !userStore.state[USER_SIGNED_IN]) ? (
+												<Comp {...props} />
+											) : (
+												<Redirect from={route} to='/index' />
+											)
+										}
+									/>
+								)
+							})}
 							<Redirect from='/' to='/index' />
 						</Switch>
 					</LastLocationProvider>
