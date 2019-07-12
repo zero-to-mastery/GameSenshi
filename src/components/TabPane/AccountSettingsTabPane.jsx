@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 
 // reactstrap components
-import { Button, FormGroup, TabPane, Row, Col, Form } from 'reactstrap'
+import { Button, FormGroup, Row, Col, Form } from 'reactstrap'
 
 // loader
 import Loader from 'react-loader-spinner'
@@ -19,7 +19,7 @@ const AccountSettingsTabPane = props => {
 	const submitButton = useRef(null)
 	const submitButton2 = useRef(null)
 	return (
-		<TabPane tabId='profile3'>
+		<>
 			<div className='g-pos-rel h-100 g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-30--md'>
 				<header>
 					<h2 className='text-uppercase g-font-size-12 g-font-size-default--md g-color-black mb-0'>
@@ -158,7 +158,7 @@ const AccountSettingsTabPane = props => {
 					)}
 				</FinalForm>
 			</div>
-		</TabPane>
+		</>
 	)
 }
 

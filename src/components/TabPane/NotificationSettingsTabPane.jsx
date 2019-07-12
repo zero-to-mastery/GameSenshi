@@ -1,20 +1,11 @@
 import React from 'react'
 
 // reactstrap components
-import {
-	Label,
-	FormGroup,
-	Form,
-	Input,
-	TabPane,
-	Container,
-	Row,
-	Col,
-} from 'reactstrap'
+import { Label, FormGroup, Form, Input, Container, Row, Col } from 'reactstrap'
 
 const NotificationSettingsTabPane = props => {
 	return (
-		<TabPane tabId='profile4'>
+		<>
 			<Container>
 				<Row>
 					<Col xs='12'>
@@ -82,7 +73,7 @@ const NotificationSettingsTabPane = props => {
 					</Col>
 				</Row>
 			</Container>
-		</TabPane>
+		</>
 	)
 }
 

@@ -11,7 +11,7 @@ import {
 	CARD_LAST_4_DIGITS,
 } from 'constantValues'
 // reactstrap components
-import { Button, Label, FormGroup, Input, Table, TabPane } from 'reactstrap'
+import { Button, Label, FormGroup, Input, Table } from 'reactstrap'
 
 import CardModal from 'components/Modals/CardModal'
 
@@ -23,7 +23,7 @@ const BillingSettingsTabPane = () => {
 					state: { [CARD_CARDS]: cards },
 				} = cardStore
 				return (
-					<TabPane tabId='profile2'>
+					<>
 						<CardModal />
 						<header>
 							<h2 className='text-uppercase'>Billing method</h2>
@@ -117,7 +117,7 @@ const BillingSettingsTabPane = () => {
 							}}>
 							<i className='tim-icons icon-simple-add' /> Add card
 						</Button>
-					</TabPane>
+					</>
 				)
 			}}
 		</Subscribe>

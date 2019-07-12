@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, Fragment } from 'react'
+import { Route, Switch, Link } from 'react-router-dom'
 // nodejs library that concatenates classes
 import classnames from 'classnames'
 
@@ -6,15 +7,7 @@ import classnames from 'classnames'
 import { Subscribe, userStore } from 'state'
 
 // reactstrap components
-import {
-	NavItem,
-	NavLink,
-	Nav,
-	TabContent,
-	Container,
-	Row,
-	Col,
-} from 'reactstrap'
+import { NavItem, NavLink, Nav, Container, Row, Col } from 'reactstrap'
 
 import { USER_DISPLAY_NAME } from 'constantValues'
 
@@ -29,17 +22,38 @@ import {
 	NotificationSettingsTabPane,
 } from 'components'
 
-const SettingsPage = props => {
-	const [profileTabs, setProfileTab] = useState(1)
+const routes = [
+	{ tabPane: GeneralSettingsTabPane, path: '/settings/general' },
+	{ tabPane: BillingSettingsTabPane, path: '/settings/billing' },
+	{ tabPane: AccountSettingsTabPane, path: '/settings/account' },
+	{ tabPane: NotificationSettingsTabPane, path: '/settings/notification' },
+]
 
-	const toggleTabs = (e, index) => {
-		e.preventDefault()
-		setProfileTab(index)
-	}
+const navItems = [
+	{ navLink: 'General', icon: 'icon-single-02', to: '/settings/general' },
+	{ navLink: 'Billing', icon: 'icon-credit-card', to: '/settings/billing' },
+	{ navLink: 'Account', icon: 'icon-lock-circle', to: '/settings/account' },
+	{
+		navLink: 'Notification',
+		icon: 'icon-volume-98',
+		to: '/settings/notification',
+	},
+]
+
+const SettingsPage = props => {
+	const [profileTabs, setProfileTab] = useState(0)
 
 	const wrapper = useRef(null)
 
+	const {
+		history,
+		location: { pathname },
+	} = props
+
 	useEffect(() => {
+		if (pathname === '/settings') {
+			history.push('/settings/general')
+		}
 		document.documentElement.scrollTop = 0
 		document.scrollingElement.scrollTop = 0
 		wrapper.current.scrollTop = 0
@@ -77,53 +91,28 @@ const SettingsPage = props => {
 													<Nav
 														className='flex-column nav-tabs-info'
 														role='tablist'>
-														<NavItem>
-															<NavLink
-																className={classnames({
-																	active: profileTabs === 1,
-																})}
-																onClick={e => toggleTabs(e, 1)}
-																href='#pablo'>
-																<i className='tim-icons icon-single-02' />{' '}
-																General
-															</NavLink>
-														</NavItem>
-														<hr className='line-info' />
-														<NavItem>
-															<NavLink
-																className={classnames({
-																	active: profileTabs === 2,
-																})}
-																onClick={e => toggleTabs(e, 2)}
-																href='#pablo'>
-																<i className='tim-icons icon-credit-card' />{' '}
-																Billing
-															</NavLink>
-														</NavItem>
-														<hr className='line-info' />
-														<NavItem>
-															<NavLink
-																className={classnames({
-																	active: profileTabs === 3,
-																})}
-																onClick={e => toggleTabs(e, 3)}
-																href='#pablo'>
-																<i className='tim-icons icon-lock-circle' />{' '}
-																Account
-															</NavLink>
-														</NavItem>
-														<hr className='line-info' />
-														<NavItem>
-															<NavLink
-																className={classnames({
-																	active: profileTabs === 4,
-																})}
-																onClick={e => toggleTabs(e, 4)}
-																href='#pablo'>
-																<i className='tim-icons icon-volume-98' />{' '}
-																Notifications
-															</NavLink>
-														</NavItem>
+														{navItems.map((navItem, i) => {
+															const { navLink, icon, to } = navItem
+															return (
+																<Fragment key={i}>
+																	<NavItem>
+																		<NavLink
+																			className={classnames({
+																				active: profileTabs === i,
+																			})}
+																			onClick={e => setProfileTab(i)}
+																			to={to}
+																			tag={Link}>
+																			<i className={`tim-icons ${icon}`} />{' '}
+																			{navLink}
+																		</NavLink>
+																	</NavItem>
+																	{i + 1 !== navItems.length && (
+																		<hr className='line-info' />
+																	)}
+																</Fragment>
+															)
+														})}
 													</Nav>
 												</section>
 												{/* End Profile Sidebar */}
@@ -136,12 +125,20 @@ const SettingsPage = props => {
 										</Col>
 										<Col className='ml-auto' md='8'>
 											<div className='section'>
-												<TabContent activeTab={'profile' + profileTabs}>
-													<GeneralSettingsTabPane />
-													<BillingSettingsTabPane />
-													<AccountSettingsTabPane />
-													<NotificationSettingsTabPane />
-												</TabContent>
+												<Switch>
+													{routes.map((route, i) => {
+														const { tabPane: TabPane, path } = route
+														return (
+															<Route
+																key={i}
+																path={path}
+																render={props => {
+																	return <TabPane {...props} />
+																}}
+															/>
+														)
+													})}
+												</Switch>
 											</div>
 										</Col>
 									</Row>

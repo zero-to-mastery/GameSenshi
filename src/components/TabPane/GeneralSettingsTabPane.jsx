@@ -8,7 +8,6 @@ import {
 	Button,
 	FormGroup,
 	Input,
-	TabPane,
 	Row,
 	Col,
 	UncontrolledPopover,
@@ -136,7 +135,7 @@ const GeneralSettingsTabPane = props => {
 					},
 				} = userStore
 				return (
-					<TabPane tabId='profile1'>
+					<>
 						<div>
 							<header>
 								<h2 className='text-uppercase'>General information</h2>
@@ -280,7 +279,7 @@ const GeneralSettingsTabPane = props => {
 								</Col>
 							</Row>
 						</div>
-					</TabPane>
+					</>
 				)
 			}}
 		</Subscribe>
