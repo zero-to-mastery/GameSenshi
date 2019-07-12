@@ -6,7 +6,7 @@ import {
 	signUpPasswordValidation,
 	signUpUsernameValidation,
 } from 'utils/validation'
-import { resObj } from 'utils/objects'
+import { signUpResObj } from 'utils/objects'
 import { handleIsEmailNotExist } from 'api'
 
 import {
@@ -51,7 +51,7 @@ const handleSignUpWithEmailAndPassword = async (
 			.catch(result => result.errors)
 
 		if (usernameInvalid || emailInvalid || passwordInvalid) {
-			return resObj(false, 'Internal Error Code 2', 2, {
+			return signUpResObj(false, 'Internal Error Code 2', 2, {
 				[SIGN_UP_USERNAME]: usernameInvalid,
 				[SIGN_UP_EMAIL]: emailInvalid,
 				[SIGN_UP_PASSWORD]: passwordInvalid,
@@ -67,16 +67,16 @@ const handleSignUpWithEmailAndPassword = async (
 			.then(res => {
 				const data = JSON.parse(res)
 				if (data[STATUS] === 1) {
-					return resObj(true)
+					return signUpResObj(true)
 				} else {
-					return resObj(false, 'Invalid Email', 3, {
+					return signUpResObj(false, 'Invalid Email', 3, {
 						[SIGN_UP_EMAIL]: 'Invalid Email',
 					})
 				}
 			})
 			.catch(err => {
 				console.log('email verifying error', err)
-				return resObj(false, 'Internal Error Code 4', 4, {
+				return signUpResObj(false, 'Internal Error Code 4', 4, {
 					[SIGN_UP_EMAIL]: 'Internal Error Code 4',
 				})
 			})
@@ -107,14 +107,14 @@ const handleSignUpWithEmailAndPassword = async (
 						console.log('update username failed', err)
 					})
 			}
-			return resObj(true)
+			return signUpResObj(true)
 		} else {
 			console.log('submit error', isCreateSuccess.err)
-			return resObj(false, 'Internal Error Code 5', 5)
+			return signUpResObj(false, 'Internal Error Code 5', 5)
 		}
 	} catch (err) {
 		console.log(err)
-		return resObj(false, 'Internal Error Code 6', 6)
+		return signUpResObj(false, 'Internal Error Code 6', 6)
 	}
 }
 
