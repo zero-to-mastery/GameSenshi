@@ -32,11 +32,11 @@ import {
 } from 'views'
 
 const routes = [
-	{ component: ProfilePage, route: '/profile', guarded: true },
-	{ component: SettingsPage, route: '/settings', guarded: true },
-	{ component: SignUpPage, route: '/signUp', guarded: false },
-	{ component: SignInPage, route: '/signIn', guarded: false },
-	{ component: PasswordResetPage, route: '/resetPassword', guarded: false },
+	{ page: ProfilePage, route: '/profile', guarded: true },
+	{ page: SettingsPage, route: '/settings', guarded: true },
+	{ page: SignUpPage, route: '/signUp', guarded: false },
+	{ page: SignInPage, route: '/signIn', guarded: false },
+	{ page: PasswordResetPage, route: '/resetPassword', guarded: false },
 ]
 
 const App = props => {
@@ -58,7 +58,7 @@ const App = props => {
 						<Switch>
 							<Route path='/index' render={props => <IndexPage {...props} />} />
 							{routes.map((element, i) => {
-								const { component: Comp, route, guarded } = element
+								const { page: Page, route, guarded } = element
 								return (
 									<Route
 										key={i}
@@ -66,7 +66,7 @@ const App = props => {
 										render={props =>
 											(guarded && userStore.state[USER_SIGNED_IN]) ||
 											(!guarded && !userStore.state[USER_SIGNED_IN]) ? (
-												<Comp {...props} />
+												<Page {...props} />
 											) : (
 												<Redirect from={route} to='/index' />
 											)
