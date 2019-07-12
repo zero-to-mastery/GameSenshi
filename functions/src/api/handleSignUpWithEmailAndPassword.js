@@ -11,7 +11,7 @@ import { handleIsEmailNotExist } from 'api'
 
 import {
 	ENV,
-	VERIFY_EMAIL_API_KEY,
+	ENV_VERIFY_EMAIL_API_KEY,
 	STATUS,
 	SIGN_UP_EMAIL,
 	SIGN_UP_PASSWORD,
@@ -22,7 +22,7 @@ import {
 } from 'constantValues'
 
 const {
-	[ENV]: { [VERIFY_EMAIL_API_KEY]: verify_email_api_key },
+	[ENV]: { [ENV_VERIFY_EMAIL_API_KEY]: verify_email_api_key },
 } = functions.config()
 
 const handleSignUpWithEmailAndPassword = async (
