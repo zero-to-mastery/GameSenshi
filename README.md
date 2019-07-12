@@ -97,6 +97,7 @@ after deployment, you can view it at
 - [Create-React-App](http://www.dropwizard.io/1.0.2/docs/) - React Project Generator
 - [Blk• Design System React](https://github.com/creativetimofficial/blk-design-system-react/) - Bootstrap
 - [Firebase](https://firebase.google.com/) - Backend
+- [Apollo(client and server)](https://www.apollographql.com/) - Endpoint
 
 Please read [wiki](https://github.com/tylim88/GameSenshi/wiki) for details of our code, techs, guides and resources.
 
