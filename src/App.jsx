@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+
 // Apollo
 import { tempClient, initApollo } from 'apolloInit'
 import { ApolloProvider } from 'react-apollo'
@@ -20,9 +21,7 @@ import 'assets/demo/demo.css'
 import 'assets/demo/react-demo.css'
 import 'assets/css/game-senshi.css'
 
-import ApolloClient from 'apollo-boost'
-
-// pages pages
+// pages
 import {
 	IndexPage,
 	ProfilePage,
@@ -31,10 +30,6 @@ import {
 	SignUpPage,
 	PasswordResetPage,
 } from 'views'
-
-const client = new ApolloClient({
-	uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
-})
 
 const App = props => {
 	const [apolloClient, setApolloClient] = useState(tempClient)
@@ -48,7 +43,7 @@ const App = props => {
 	}, [])
 
 	return (
-		<ApolloProvider client={client}>
+		<ApolloProvider client={apolloClient}>
 			<Provider>
 				<BrowserRouter>
 					<LastLocationProvider>
