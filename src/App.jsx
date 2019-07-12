@@ -57,10 +57,11 @@ const App = props => {
 					<LastLocationProvider>
 						<Switch>
 							<Route path='/index' render={props => <IndexPage {...props} />} />
-							{routes.map(element => {
+							{routes.map((element, i) => {
 								const { component: Comp, route, guarded } = element
 								return (
 									<Route
+										key={i}
 										path={route}
 										render={props =>
 											(guarded && userStore.state[USER_SIGNED_IN]) ||
