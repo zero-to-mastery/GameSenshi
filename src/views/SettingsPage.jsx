@@ -54,6 +54,21 @@ const SettingsPage = props => {
 		if (pathname === '/settings') {
 			history.push('/settings/general')
 		}
+
+		switch (pathname) {
+			case '/settings/billing':
+				setProfileTab(1)
+				break
+			case '/settings/account':
+				setProfileTab(2)
+				break
+			case '/settings/notification':
+				setProfileTab(3)
+				break
+			default:
+				break
+		}
+
 		document.documentElement.scrollTop = 0
 		document.scrollingElement.scrollTop = 0
 		wrapper.current.scrollTop = 0
