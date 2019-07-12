@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom'
 import {
 	DATA,
 	STATUS,
+	MESSAGE,
 	SIGN_UP_EMAIL,
 	SIGN_UP_USERNAME,
 	SIGN_UP_PASSWORD,
@@ -69,9 +70,14 @@ const onSubmit = async (values, apolloClient, callback = () => {}) => {
 	)
 
 	if (typeof isSignUpFailed === 'string') {
+		// respond is not res obj mean the error is on client side
 		return { [FORM_ERROR]: isSignUpFailed }
 	} else {
-		const { [STATUS]: status, [DATA]: data } = isSignUpFailed
+		const {
+			[STATUS]: status,
+			[DATA]: data,
+			[MESSAGE]: message,
+		} = isSignUpFailed
 
 		signUpStore.processSignUpErrors(data)
 
@@ -96,7 +102,7 @@ const onSubmit = async (values, apolloClient, callback = () => {}) => {
 			// but this not much point since it will redirect and unmount soon
 			return
 		} else {
-			return data
+			return { ...data, [FORM_ERROR]: message }
 		}
 	}
 }
