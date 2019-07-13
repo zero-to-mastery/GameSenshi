@@ -9,7 +9,14 @@ import { Subscribe, userStore } from 'state'
 // reactstrap components
 import { NavItem, NavLink, Nav, Container, Row, Col } from 'reactstrap'
 
-import { USER_DISPLAY_NAME } from 'constantValues'
+import {
+	USER_DISPLAY_NAME,
+	ROUTE_SETTINGS,
+	ROUTE_SETTINGS_GENERAL,
+	ROUTE_SETTINGS_BILLING,
+	ROUTE_SETTINGS_ACCOUNT,
+	ROUTE_SETTINGS_NOTIFICATION,
+} from 'constantValues'
 
 // core components
 import ImageUpload from 'components/CustomUpload/ImageUpload.jsx'
@@ -23,20 +30,20 @@ import {
 } from 'components'
 
 const routes = [
-	{ tabPane: GeneralSettingsTabPane, path: '/settings/general' },
-	{ tabPane: BillingSettingsTabPane, path: '/settings/billing' },
-	{ tabPane: AccountSettingsTabPane, path: '/settings/account' },
-	{ tabPane: NotificationSettingsTabPane, path: '/settings/notification' },
+	{ tabPane: GeneralSettingsTabPane, path: ROUTE_SETTINGS_GENERAL },
+	{ tabPane: BillingSettingsTabPane, path: ROUTE_SETTINGS_BILLING },
+	{ tabPane: AccountSettingsTabPane, path: ROUTE_SETTINGS_ACCOUNT },
+	{ tabPane: NotificationSettingsTabPane, path: ROUTE_SETTINGS_NOTIFICATION },
 ]
 
 const navItems = [
-	{ navLink: 'General', icon: 'icon-single-02', to: '/settings/general' },
-	{ navLink: 'Billing', icon: 'icon-credit-card', to: '/settings/billing' },
-	{ navLink: 'Account', icon: 'icon-lock-circle', to: '/settings/account' },
+	{ navLink: 'General', icon: 'icon-single-02', to: ROUTE_SETTINGS_GENERAL },
+	{ navLink: 'Billing', icon: 'icon-credit-card', to: ROUTE_SETTINGS_BILLING },
+	{ navLink: 'Account', icon: 'icon-lock-circle', to: ROUTE_SETTINGS_ACCOUNT },
 	{
 		navLink: 'Notification',
 		icon: 'icon-volume-98',
-		to: '/settings/notification',
+		to: ROUTE_SETTINGS_NOTIFICATION,
 	},
 ]
 
@@ -51,18 +58,18 @@ const SettingsPage = props => {
 	} = props
 
 	useEffect(() => {
-		if (pathname === '/settings') {
-			history.push('/settings/general')
+		if (pathname === ROUTE_SETTINGS) {
+			history.push(ROUTE_SETTINGS_GENERAL)
 		}
 
 		switch (pathname) {
-			case '/settings/billing':
+			case ROUTE_SETTINGS_BILLING:
 				setProfileTab(1)
 				break
-			case '/settings/account':
+			case ROUTE_SETTINGS_ACCOUNT:
 				setProfileTab(2)
 				break
-			case '/settings/notification':
+			case ROUTE_SETTINGS_NOTIFICATION:
 				setProfileTab(3)
 				break
 			default:

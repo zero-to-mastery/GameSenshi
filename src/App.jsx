@@ -12,7 +12,15 @@ import { LastLocationProvider } from 'react-router-last-location'
 import { Provider, userStore } from 'state'
 
 // constants
-import { USER_SIGNED_IN } from 'constantValues'
+import {
+	USER_SIGNED_IN,
+	ROUTE_INDEX,
+	ROUTE_PROFILE,
+	ROUTE_SIGN_UP,
+	ROUTE_SIGN_IN,
+	ROUTE_SETTINGS,
+	ROUTE_PASSWORD_RESET,
+} from 'constantValues'
 
 // pages
 import {
@@ -25,11 +33,11 @@ import {
 } from 'views'
 
 const routes = [
-	{ page: ProfilePage, path: '/profile', guarded: true },
-	{ page: SettingsPage, path: '/settings', guarded: true },
-	{ page: SignUpPage, path: '/signUp', guarded: false },
-	{ page: SignInPage, path: '/signIn', guarded: false },
-	{ page: PasswordResetPage, path: '/resetPassword', guarded: false },
+	{ page: ProfilePage, path: ROUTE_PROFILE, guarded: true },
+	{ page: SettingsPage, path: ROUTE_SETTINGS, guarded: true },
+	{ page: SignUpPage, path: ROUTE_SIGN_UP, guarded: false },
+	{ page: SignInPage, path: ROUTE_SIGN_IN, guarded: false },
+	{ page: PasswordResetPage, path: ROUTE_PASSWORD_RESET, guarded: false },
 ]
 
 const App = props => {
@@ -49,7 +57,10 @@ const App = props => {
 				<BrowserRouter>
 					<LastLocationProvider>
 						<Switch>
-							<Route path='/index' render={props => <IndexPage {...props} />} />
+							<Route
+								path={ROUTE_INDEX}
+								render={props => <IndexPage {...props} />}
+							/>
 							{routes.map((route, i) => {
 								const { page: Page, path, guarded } = route
 								return (
@@ -61,13 +72,13 @@ const App = props => {
 											(!guarded && !userStore.state[USER_SIGNED_IN]) ? (
 												<Page {...props} />
 											) : (
-												<Redirect from={path} to='/index' />
+												<Redirect from={path} to={ROUTE_INDEX} />
 											)
 										}
 									/>
 								)
 							})}
-							<Redirect from='/' to='/index' />
+							<Redirect from='/' to={ROUTE_INDEX} />
 						</Switch>
 					</LastLocationProvider>
 				</BrowserRouter>

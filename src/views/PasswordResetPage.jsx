@@ -33,6 +33,9 @@ import { signInEmailValidation } from 'utils/validation'
 // api
 import { handleIsEmailExist, handlePasswordReset } from 'api'
 
+//constants
+import { ROUTE_SIGN_IN } from 'constantValues'
+
 const EMAIL = 'email'
 
 const PasswordResetPage = props => {
@@ -160,7 +163,9 @@ const PasswordResetPage = props => {
 												)}
 												<div className='pull-left ml-3 mb-3'>
 													<h6>
-														<Link className='link footer-link' to='/signIn'>
+														<Link
+															className='link footer-link'
+															to={ROUTE_SIGN_IN}>
 															Back to Sign in
 														</Link>
 													</h6>

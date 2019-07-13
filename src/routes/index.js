@@ -1,3 +1,6 @@
+// constants
+import { ROUTE_INDEX } from 'constantValues'
+
 const onSignedInRouting = (history, lastLocation) => {
 	if (
 		lastLocation &&
@@ -6,7 +9,7 @@ const onSignedInRouting = (history, lastLocation) => {
 	) {
 		history.goBack()
 	} else {
-		history.push('/index')
+		history.push(ROUTE_INDEX)
 	}
 }
 

@@ -33,6 +33,10 @@ import {
 	ALERT_OPEN,
 	ALERT_COLOR,
 	USER_PHOTO_URL,
+	ROUTE_INDEX,
+	ROUTE_SIGN_UP,
+	ROUTE_SIGN_IN,
+	ROUTE_SETTINGS,
 } from 'constantValues'
 
 import AuthModal from 'components/Modals/AuthModal'
@@ -136,10 +140,10 @@ class ComponentsNavbar extends React.Component {
 	}
 
 	onSignOut = (currentPath, history) => {
-		const userRoute = ['/settings']
+		const userRoute = [ROUTE_SETTINGS]
 		auth().signOut()
 		if (userRoute.includes(currentPath)) {
-			history.push('/index')
+			history.push(ROUTE_INDEX)
 		}
 	}
 	render() {
@@ -323,7 +327,7 @@ class ComponentsNavbar extends React.Component {
 																	aria-labelledby='navbarDropdownMenuLink'
 																	right>
 																	<DropdownItem
-																		to='/settings'
+																		to={ROUTE_SETTINGS}
 																		tag={Link}
 																		className='text-dark mt-0 py-1 px-4'
 																		style={{ fontSize: '1rem' }}>
@@ -343,7 +347,7 @@ class ComponentsNavbar extends React.Component {
 																		style={{ fontSize: '1rem' }}
 																		onClick={e => {
 																			e.preventDefault()
-																			history.push('/settings')
+																			history.push(ROUTE_SETTINGS)
 																		}}>
 																		Settings
 																	</DropdownItem>
@@ -376,7 +380,7 @@ class ComponentsNavbar extends React.Component {
 														<NavItem className='p-0'>
 															<NavLink
 																data-placement='bottom'
-																to='/settings'
+																to={ROUTE_SETTINGS}
 																tag={Link}
 																style={{
 																	paddingTop: 6,
@@ -433,7 +437,7 @@ class ComponentsNavbar extends React.Component {
 														<NavItem className='p-0'>
 															<NavLink
 																data-placement='bottom'
-																to='/settings'
+																to={ROUTE_SETTINGS}
 																tag={Link}
 																href='#pablo'>
 																<Row>
@@ -484,7 +488,7 @@ class ComponentsNavbar extends React.Component {
 															<NavItem className='p-0'>
 																<NavLink
 																	data-placement='bottom'
-																	to='/signIn'
+																	to={ROUTE_SIGN_IN}
 																	tag={Link}>
 																	<Row>
 																		<Col xs='2'>
@@ -501,7 +505,7 @@ class ComponentsNavbar extends React.Component {
 															<NavItem className='p-0'>
 																<NavLink
 																	data-placement='bottom'
-																	to='/signUp'
+																	to={ROUTE_SIGN_UP}
 																	tag={Link}>
 																	<Row>
 																		<Col xs='2'>

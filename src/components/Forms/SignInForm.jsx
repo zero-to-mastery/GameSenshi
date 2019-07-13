@@ -34,7 +34,11 @@ import {
 import Loader from 'react-loader-spinner'
 
 // constants
-import { SIGN_IN_EMAIL, SIGN_IN_CALLBACK } from 'constantValues'
+import {
+	SIGN_IN_EMAIL,
+	SIGN_IN_CALLBACK,
+	ROUTE_PASSWORD_RESET,
+} from 'constantValues'
 
 // core components
 import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
@@ -208,7 +212,7 @@ const SignInForm = props => {
 											<Link
 												className='link footer-link'
 												style={{ color: '#ba54f5', fontSize: 12 }}
-												to='/resetPassword'>
+												to={ROUTE_PASSWORD_RESET}>
 												Forgot Password?
 											</Link>
 										</h6>
