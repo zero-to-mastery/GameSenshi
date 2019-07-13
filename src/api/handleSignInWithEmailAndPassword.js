@@ -1,5 +1,5 @@
 import { auth } from 'firebaseInit'
-import { UNEXPECTED_ERROR_CODE_4 } from 'constantsValues'
+import { UNEXPECTED_ERROR_CODE_4 } from 'constantValues'
 
 const handleSignInWithEmailAndPassword = async (email, password) => {
 	// sign in set local persistence by default, allowing user to auto sign in

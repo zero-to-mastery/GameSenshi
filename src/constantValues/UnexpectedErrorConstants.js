@@ -3,7 +3,6 @@ const UNEXPECTED_ERROR_CODE_2 = 'Internal Error Code 2'
 const UNEXPECTED_ERROR_CODE_3 = 'Internal Error Code 3'
 const UNEXPECTED_ERROR_CODE_4 = 'Internal Error Code 4'
 const UNEXPECTED_ERROR_CODE_5 = 'Internal Error Code 5'
-const UNEXPECTED_ERROR_CODE_6 = 'Internal Error Code 6'
 
 export {
 	UNEXPECTED_ERROR_CODE_1,
@@ -11,5 +10,4 @@ export {
 	UNEXPECTED_ERROR_CODE_3,
 	UNEXPECTED_ERROR_CODE_4,
 	UNEXPECTED_ERROR_CODE_5,
-	UNEXPECTED_ERROR_CODE_6,
 }

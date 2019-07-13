@@ -1,6 +1,6 @@
 import { auth } from 'firebaseInit'
 
-import { UNEXPECTED_ERROR_CODE_1 } from 'constantsValues'
+import { UNEXPECTED_ERROR_CODE_1 } from 'constantValues'
 
 const handleIsEmailExist = email => {
 	return auth()
