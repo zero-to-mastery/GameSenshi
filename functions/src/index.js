@@ -1,16 +1,19 @@
 // https://firebase.google.com/docs/functions/write-firebase-functions
 import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
-import { functions, env } from 'firebaseInit'
+
+import {
+	functions,
+	corsWhitelist,
+	playgroundEnabled,
+	apolloEngineApiKey,
+} from 'firebaseInit'
+
 import cors from 'cors'
 import { ApolloServer } from 'apollo-server-express'
 import { MemcachedCache } from 'apollo-server-cache-memcached'
 import express from 'express'
-import {
-	ENDPOINT,
-	ENV_CORS_WHITELIST,
-	ENV_ENABLE_PLAYGROUND,
-	ENV_APOLLO_ENGINE_API_KEY,
-} from 'constantValues'
+
+import { ENDPOINT } from 'constantValues'
 
 import { typeDefs, resolvers } from 'resolvers'
 
@@ -18,7 +21,7 @@ const app = express()
 
 app.use(
 	cors({
-		origin: env[ENV_CORS_WHITELIST].split(','),
+		origin: corsWhitelist.split(','),
 		credentials: true,
 	})
 )
@@ -26,8 +29,8 @@ app.use(
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	introspection: env[ENV_ENABLE_PLAYGROUND], //https://github.com/apollographql/apollo-server/issues/1112
-	playground: env[ENV_ENABLE_PLAYGROUND],
+	introspection: playgroundEnabled, //https://github.com/apollographql/apollo-server/issues/1112
+	playground: playgroundEnabled,
 	persistedQueries: {
 		//https://www.apollographql.com/docs/apollo-server/whats-new/#automatic-persisted-queries
 		cache: new MemcachedCache(
@@ -37,7 +40,7 @@ const server = new ApolloServer({
 	},
 	engine: {
 		//https://www.apollographql.com/docs/apollo-server/whats-new/#performance-monitoring
-		apiKey: env[ENV_APOLLO_ENGINE_API_KEY],
+		apiKey: apolloEngineApiKey,
 	},
 	onHealthCheck: () =>
 		//https://www.apollographql.com/docs/apollo-server/whats-new/#health-checks
