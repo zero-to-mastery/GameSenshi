@@ -2,7 +2,13 @@ import req from 'request-promise'
 import { verifyEmailURL } from 'firebaseInit'
 import { signUpResObj } from 'utils/objects'
 
-import { STATUS, SIGN_UP_EMAIL, DATA } from 'constantValues'
+import {
+	DATA,
+	STATUS,
+	SIGN_UP_EMAIL,
+	INTERNAL_ERROR_CODE_1,
+	INTERNAL_ERROR_CODE_2,
+} from 'constantValues'
 
 const handleSignUpWithEmailAndPassword = async (_, args) => {
 	const {
@@ -22,13 +28,13 @@ const handleSignUpWithEmailAndPassword = async (_, args) => {
 			})
 			.catch(err => {
 				console.log('email verifying error', err)
-				return signUpResObj(false, 'Internal Error Code 4', 4, {
+				return signUpResObj(false, INTERNAL_ERROR_CODE_2, 2, {
 					[SIGN_UP_EMAIL]: 'Internal Error Code 4',
 				})
 			})
 	} catch (err) {
 		console.log(err)
-		return signUpResObj(false, 'Internal Error Code 6', 6)
+		return signUpResObj(false, INTERNAL_ERROR_CODE_1, 1)
 	}
 }
 

@@ -85,6 +85,11 @@ import {
 	CARD_LAST_4_DIGITS,
 } from 'constantValues/CardConstants'
 
+import {
+	INTERNAL_ERROR_CODE_1,
+	INTERNAL_ERROR_CODE_2,
+} from 'constantValues/InternalErrorConstants'
+
 export {
 	CODE,
 	DATA,
@@ -146,4 +151,6 @@ export {
 	CARD_HOLDER_NAME,
 	CARD_EXPIRY_MONTH,
 	CARD_LAST_4_DIGITS,
+	INTERNAL_ERROR_CODE_1,
+	INTERNAL_ERROR_CODE_2,
 }
