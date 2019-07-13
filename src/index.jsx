@@ -4,9 +4,14 @@ import App from 'App'
 import * as serviceWorker from 'serviceWorker'
 // state management
 import { authModalStore, userStore } from 'state'
-
 // Initialize firebase
 import 'firebaseInit'
+// styles
+import 'assets/css/nucleo-icons.css'
+import 'assets/scss/blk-design-system-pro-react.scss?v1.0.0'
+import 'assets/demo/demo.css'
+import 'assets/demo/react-demo.css'
+import 'assets/css/game-senshi.css'
 
 // check if user data in indexed db, pre-sign in user
 userStore.initialize()

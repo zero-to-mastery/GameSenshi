@@ -14,13 +14,6 @@ import { Provider, userStore } from 'state'
 // constants
 import { USER_SIGNED_IN } from 'constantValues'
 
-// styles
-import 'assets/css/nucleo-icons.css'
-import 'assets/scss/blk-design-system-pro-react.scss?v1.0.0'
-import 'assets/demo/demo.css'
-import 'assets/demo/react-demo.css'
-import 'assets/css/game-senshi.css'
-
 // pages
 import {
 	IndexPage,
