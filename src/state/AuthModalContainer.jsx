@@ -51,6 +51,7 @@ class AuthModalContainer extends Container {
 			[AUTH_MODAL_LOADER]: loader,
 			[AUTH_MODAL_CALLBACK]: afterContinueCallback,
 		})
+		return this
 	}
 
 	getItemFromSessionStorage = () =>
