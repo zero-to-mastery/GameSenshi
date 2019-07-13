@@ -90,7 +90,7 @@ It will automatically inject production environment variable, build and deploy f
 after deployment, you can view it at
 
 1. [prod](https://gamesenshi.com/)
-2. [dev](https://game-senshi.firebaseapp.com/index)
+2. [dev](https://game-senshi.firebaseapp.com/)
 
 ## Built With
 
