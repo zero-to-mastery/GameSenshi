@@ -3,8 +3,8 @@ import React from 'react'
 import { Subscribe, cardStore } from 'state'
 // constants
 import {
-	CARD_CARDS,
 	CARD_TYPE,
+	CARD_CARDS,
 	CARD_IS_DEFAULT,
 	CARD_EXPIRY_MONTH,
 	CARD_EXPIRY_YEAR,
@@ -77,7 +77,6 @@ const BillingSettingsTabPane = () => {
 																	state[CARD_CARDS].forEach(card => {
 																		card[CARD_IS_DEFAULT] = false
 																	})
-
 																	state[CARD_CARDS][i][CARD_IS_DEFAULT] = true
 																	return state
 																})
