@@ -14,6 +14,8 @@ import {
 	STATUS,
 	CODE,
 	MESSAGE,
+	UNEXPECTED_ERROR_CODE_5,
+	UNEXPECTED_ERROR_CODE_6,
 } from 'constantValues'
 
 const SIGNING_UP = gql`
@@ -91,14 +93,14 @@ const handleSignUpWithEmailAndPassword = (
 					return signUpResObj(true)
 				} else {
 					console.log('submit error', isUserCreated.err)
-					return signUpResObj(false, 'Internal Error Code 5', 5)
+					return signUpResObj(false, UNEXPECTED_ERROR_CODE_6, 6)
 				}
 			} else {
 				return signUpRes
 			}
 		})
 		.catch(err => {
-			return 'Unexpected Error Code 3'
+			return UNEXPECTED_ERROR_CODE_5
 		})
 }
 

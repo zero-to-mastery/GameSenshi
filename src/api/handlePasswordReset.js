@@ -1,4 +1,5 @@
 import { auth } from 'firebaseInit'
+import { UNEXPECTED_ERROR_CODE_3 } from 'constantsValues'
 
 const handlePasswordReset = email => {
 	return auth()
@@ -11,7 +12,7 @@ const handlePasswordReset = email => {
 				case 'auth/network-request-failed':
 					return 'Network Failed'
 				default:
-					return 'Unexpected Error Code 5'
+					return UNEXPECTED_ERROR_CODE_3
 			}
 		})
 }

@@ -1,5 +1,7 @@
 import { auth } from 'firebaseInit'
 
+import { UNEXPECTED_ERROR_CODE_1 } from 'constantsValues'
+
 const handleIsEmailExist = email => {
 	return auth()
 		.fetchSignInMethodsForEmail(email)
@@ -11,7 +13,7 @@ const handleIsEmailExist = email => {
 			}
 		})
 		.catch(err => {
-			return 'Unexpected Error Code 4'
+			return UNEXPECTED_ERROR_CODE_1
 		})
 }
 

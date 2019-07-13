@@ -1,4 +1,5 @@
 import { auth } from 'firebaseInit'
+import { UNEXPECTED_ERROR_CODE_4 } from 'constantsValues'
 
 const handleSignInWithEmailAndPassword = async (email, password) => {
 	// sign in set local persistence by default, allowing user to auto sign in
@@ -18,7 +19,7 @@ const handleSignInWithEmailAndPassword = async (email, password) => {
 				case 'auth/network-request-failed':
 					return 'Network Failure'
 				default:
-					return 'Unexpected Error Code 2'
+					return UNEXPECTED_ERROR_CODE_4
 			}
 		})
 }
