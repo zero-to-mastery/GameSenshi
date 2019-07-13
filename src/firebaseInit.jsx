@@ -1,15 +1,15 @@
 import React from 'react'
 import reactElementToJSXString from 'react-element-to-jsx-string'
-
-//firebase
+// firebase
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/functions'
 import 'firebase/storage'
-
 // states
 import { alertStore, authModalStore, userStore, signInStore } from 'state'
 import * as allStore from 'state'
+// routing
+import { onSignedOutRouting } from 'routes'
 
 const env = process.env
 
@@ -143,6 +143,7 @@ auth().onAuthStateChanged(signInData => {
 		for (let store in allStore) {
 			allStore[store].resetState && allStore[store].resetState()
 		}
+		onSignedOutRouting()
 	}
 })
 
