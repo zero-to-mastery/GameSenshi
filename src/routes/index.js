@@ -1,16 +1,5 @@
-// constants
-import { ROUTE_INDEX } from 'constantValues'
+import onSignedInRouting from 'routes/onSignedInRouting'
+import onSignedOutRouting from 'routes/onSignedOutRouting'
+import Router from 'routes/Router'
 
-const onSignedInRouting = (history, lastLocation) => {
-	if (
-		lastLocation &&
-		lastLocation.pathname.toLowerCase() !== '/signin' &&
-		lastLocation.pathname.toLowerCase() !== '/signup'
-	) {
-		history.goBack()
-	} else {
-		history.push(ROUTE_INDEX)
-	}
-}
-
-export { onSignedInRouting }
+export { onSignedInRouting, onSignedOutRouting, Router }
