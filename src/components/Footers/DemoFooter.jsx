@@ -26,7 +26,7 @@ class DemoFooter extends React.Component {
 							<Col md='3' xs='6'>
 								<Nav>
 									<NavItem>
-										<NavLink to={ROUTE_INDEX} tag={Link}>
+										<NavLink to='/index' tag={Link}>
 											Home
 										</NavLink>
 									</NavItem>

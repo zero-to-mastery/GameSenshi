@@ -11,11 +11,11 @@ import { NavItem, NavLink, Nav, Container, Row, Col } from 'reactstrap'
 
 import {
 	USER_DISPLAY_NAME,
-	ROUTE_SETTINGS,
-	ROUTE_SETTINGS_GENERAL,
-	ROUTE_SETTINGS_BILLING,
-	ROUTE_SETTINGS_ACCOUNT,
-	ROUTE_SETTINGS_NOTIFICATION,
+	ROUTE_PAGE_SETTINGS,
+	ROUTE_PAGE_SETTINGS_GENERAL,
+	ROUTE_PAGE_SETTINGS_BILLING,
+	ROUTE_PAGE_SETTINGS_ACCOUNT,
+	ROUTE_PAGE_SETTINGS_NOTIFICATION,
 } from 'constantValues'
 
 // core components
@@ -30,20 +30,35 @@ import {
 } from 'components'
 
 const routes = [
-	{ tabPane: GeneralSettingsTabPane, path: ROUTE_SETTINGS_GENERAL },
-	{ tabPane: BillingSettingsTabPane, path: ROUTE_SETTINGS_BILLING },
-	{ tabPane: AccountSettingsTabPane, path: ROUTE_SETTINGS_ACCOUNT },
-	{ tabPane: NotificationSettingsTabPane, path: ROUTE_SETTINGS_NOTIFICATION },
+	{ tabPane: GeneralSettingsTabPane, path: ROUTE_PAGE_SETTINGS_GENERAL },
+	{ tabPane: BillingSettingsTabPane, path: ROUTE_PAGE_SETTINGS_BILLING },
+	{ tabPane: AccountSettingsTabPane, path: ROUTE_PAGE_SETTINGS_ACCOUNT },
+	{
+		tabPane: NotificationSettingsTabPane,
+		path: ROUTE_PAGE_SETTINGS_NOTIFICATION,
+	},
 ]
 
 const navItems = [
-	{ navLink: 'General', icon: 'icon-single-02', to: ROUTE_SETTINGS_GENERAL },
-	{ navLink: 'Billing', icon: 'icon-credit-card', to: ROUTE_SETTINGS_BILLING },
-	{ navLink: 'Account', icon: 'icon-lock-circle', to: ROUTE_SETTINGS_ACCOUNT },
+	{
+		navLink: 'General',
+		icon: 'icon-single-02',
+		to: ROUTE_PAGE_SETTINGS_GENERAL,
+	},
+	{
+		navLink: 'Billing',
+		icon: 'icon-credit-card',
+		to: ROUTE_PAGE_SETTINGS_BILLING,
+	},
+	{
+		navLink: 'Account',
+		icon: 'icon-lock-circle',
+		to: ROUTE_PAGE_SETTINGS_ACCOUNT,
+	},
 	{
 		navLink: 'Notification',
 		icon: 'icon-volume-98',
-		to: ROUTE_SETTINGS_NOTIFICATION,
+		to: ROUTE_PAGE_SETTINGS_NOTIFICATION,
 	},
 ]
 
@@ -58,18 +73,18 @@ const SettingsPage = props => {
 	} = props
 
 	useEffect(() => {
-		if (pathname === ROUTE_SETTINGS) {
-			history.push(ROUTE_SETTINGS_GENERAL)
+		if (pathname === ROUTE_PAGE_SETTINGS) {
+			history.push(ROUTE_PAGE_SETTINGS_GENERAL)
 		}
 
 		switch (pathname) {
-			case ROUTE_SETTINGS_BILLING:
+			case ROUTE_PAGE_SETTINGS_BILLING:
 				setProfileTab(1)
 				break
-			case ROUTE_SETTINGS_ACCOUNT:
+			case ROUTE_PAGE_SETTINGS_ACCOUNT:
 				setProfileTab(2)
 				break
-			case ROUTE_SETTINGS_NOTIFICATION:
+			case ROUTE_PAGE_SETTINGS_NOTIFICATION:
 				setProfileTab(3)
 				break
 			default:

@@ -19,7 +19,7 @@ import {
 	SIGN_UP_EMAIL,
 	SIGN_UP_USERNAME,
 	SIGN_UP_PASSWORD,
-	ROUTE_SIGN_IN,
+	ROUTE_PAGE_SIGN_IN,
 } from 'constantValues'
 
 // validation
@@ -249,7 +249,7 @@ const SignUpForm = props => {
 																<span className='form-check-sign' />
 																{`Already a member? `}
 																<Link
-																	to={ROUTE_SIGN_IN}
+																	to={ROUTE_PAGE_SIGN_IN}
 																	className='font-weight-bold'>
 																	Sign In
 																</Link>

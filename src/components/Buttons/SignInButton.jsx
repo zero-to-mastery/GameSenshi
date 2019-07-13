@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { Button, NavItem, NavLink } from 'reactstrap'
 
 //constants
-import { ROUTE_SIGN_IN } from 'constantValues'
+import { ROUTE_PAGE_SIGN_IN } from 'constantValues'
 
 const SignInButton = props => {
 	const { className } = props
@@ -14,7 +14,7 @@ const SignInButton = props => {
 			<NavLink
 				className='p-0'
 				data-placement='bottom'
-				to={ROUTE_SIGN_IN}
+				to={ROUTE_PAGE_SIGN_IN}
 				tag={Link}>
 				<Button
 					className='btn-simple font-weight-bold'

@@ -12,7 +12,7 @@ import {
 	UncontrolledTooltip,
 } from 'reactstrap'
 // constants
-import { ROUTE_PROFILE } from 'constantValues'
+import { ROUTE_PAGE_PROFILE } from 'constantValues'
 
 class Footer extends React.Component {
 	render() {
@@ -41,7 +41,7 @@ class Footer extends React.Component {
 									</NavLink>
 								</NavItem>
 								<NavItem>
-									<NavLink to={ROUTE_PROFILE} tag={Link}>
+									<NavLink to={ROUTE_PAGE_PROFILE} tag={Link}>
 										Profile
 									</NavLink>
 								</NavItem>

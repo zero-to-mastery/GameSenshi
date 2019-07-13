@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { Button, NavItem, NavLink } from 'reactstrap'
 
 //constants
-import { ROUTE_SIGN_UP } from 'constantValues'
+import { ROUTE_PAGE_SIGN_UP } from 'constantValues'
 
 const SignUpButton = props => {
 	const { className } = props
@@ -14,7 +14,7 @@ const SignUpButton = props => {
 			<NavLink
 				className='p-0'
 				data-placement='bottom'
-				to={ROUTE_SIGN_UP}
+				to={ROUTE_PAGE_SIGN_UP}
 				tag={Link}>
 				<Button color='primary' type='button'>
 					Sign up

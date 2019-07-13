@@ -37,7 +37,7 @@ import Loader from 'react-loader-spinner'
 import {
 	SIGN_IN_EMAIL,
 	SIGN_IN_CALLBACK,
-	ROUTE_PASSWORD_RESET,
+	ROUTE_PAGE_PASSWORD_RESET,
 } from 'constantValues'
 
 // core components
@@ -212,7 +212,7 @@ const SignInForm = props => {
 											<Link
 												className='link footer-link'
 												style={{ color: '#ba54f5', fontSize: 12 }}
-												to={ROUTE_PASSWORD_RESET}>
+												to={ROUTE_PAGE_PASSWORD_RESET}>
 												Forgot Password?
 											</Link>
 										</h6>
