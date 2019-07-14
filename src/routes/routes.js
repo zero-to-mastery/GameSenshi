@@ -10,6 +10,8 @@ import {
 
 // constants
 import {
+	ROUTE_TO,
+	ROUTE_FROM,
 	ROUTE_PAGE,
 	ROUTE_PATH,
 	ROUTE_ACCESSIBILITY,
@@ -21,6 +23,7 @@ import {
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
 	ROUTE_PAGE_SETTINGS,
+	ROUTE_PAGE_SETTINGS_GENERAL,
 	ROUTE_PAGE_PASSWORD_RESET,
 } from 'constantValues'
 
@@ -37,7 +40,7 @@ const routes = [
 	},
 	{
 		[ROUTE_PAGE]: SettingsPage,
-		[ROUTE_PATH]: ROUTE_PAGE_SETTINGS,
+		[ROUTE_PATH]: ROUTE_PAGE_SETTINGS_GENERAL,
 		[ROUTE_ACCESSIBILITY]: ROUTE_ACCESSIBILITY_PRIVATE,
 	},
 	{
@@ -57,4 +60,16 @@ const routes = [
 	},
 ]
 
-export default routes
+// the order of array is very important, the lowest is the root path
+const redirects = [
+	{
+		[ROUTE_FROM]: ROUTE_PAGE_SETTINGS,
+		[ROUTE_TO]: ROUTE_PAGE_SETTINGS_GENERAL,
+	},
+	{
+		[ROUTE_FROM]: '/',
+		[ROUTE_TO]: ROUTE_PAGE_INDEX,
+	},
+]
+
+export { routes, redirects }

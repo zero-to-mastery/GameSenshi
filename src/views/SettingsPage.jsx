@@ -11,7 +11,6 @@ import { NavItem, NavLink, Nav, Container, Row, Col } from 'reactstrap'
 
 import {
 	USER_DISPLAY_NAME,
-	ROUTE_PAGE_SETTINGS,
 	ROUTE_PAGE_SETTINGS_GENERAL,
 	ROUTE_PAGE_SETTINGS_BILLING,
 	ROUTE_PAGE_SETTINGS_ACCOUNT,
@@ -68,15 +67,10 @@ const SettingsPage = props => {
 	const wrapper = useRef(null)
 
 	const {
-		history,
 		location: { pathname },
 	} = props
 
 	useEffect(() => {
-		if (pathname === ROUTE_PAGE_SETTINGS) {
-			history.push(ROUTE_PAGE_SETTINGS_GENERAL)
-		}
-
 		switch (pathname) {
 			case ROUTE_PAGE_SETTINGS_BILLING:
 				setProfileTab(1)
