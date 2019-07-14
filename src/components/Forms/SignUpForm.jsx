@@ -1,16 +1,13 @@
 import React, { useRef } from 'react'
 import { ApolloConsumer } from 'react-apollo'
-
 // api
 import {
 	handleSignUpWithEmailAndPassword,
 	handleIsEmailNotExist,
 	handleSignInWithEmailAndPassword,
 } from 'api'
-
 // routing
 import { Link } from 'react-router-dom'
-
 // constants
 import {
 	DATA,
@@ -21,7 +18,6 @@ import {
 	SIGN_UP_PASSWORD,
 	ROUTE_PAGE_SIGN_IN,
 } from 'constantValues'
-
 // validation
 import {
 	signUpEmailValidation,
@@ -31,10 +27,8 @@ import {
 	usernamePopoverMessages,
 	passwordPopoverMessages,
 } from 'utils/validation'
-
 // state management
 import { signUpStore, alertStore, userStore, Subscribe } from 'state'
-
 // react libraries components
 import {
 	Button,
@@ -49,9 +43,8 @@ import {
 	Row,
 	Col,
 } from 'reactstrap'
-import Loader from 'react-loader-spinner'
-
 // core components
+import Loader from 'react-loader-spinner'
 import {
 	FinalInput,
 	FinalForm,
