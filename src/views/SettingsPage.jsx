@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef, Fragment } from 'react'
 //routing
-import { Route, Switch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // nodejs library that concatenates classes
 import classnames from 'classnames'
 // reactstrap components
 import { NavItem, NavLink, Nav, Container, Row, Col } from 'reactstrap'
 // constants
 import {
-	ROUTE_PAGE_SETTINGS,
+	ROUTE_PAGE_SETTINGS_GENERAL,
 	ROUTE_PAGE_SETTINGS_BILLING,
 	ROUTE_PAGE_SETTINGS_ACCOUNT,
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
@@ -24,21 +24,11 @@ import {
 	ImageUpload,
 } from 'components'
 
-const routes = [
-	{ tabPane: GeneralSettingsTabPane, path: ROUTE_PAGE_SETTINGS },
-	{ tabPane: BillingSettingsTabPane, path: ROUTE_PAGE_SETTINGS_BILLING },
-	{ tabPane: AccountSettingsTabPane, path: ROUTE_PAGE_SETTINGS_ACCOUNT },
-	{
-		tabPane: NotificationSettingsTabPane,
-		path: ROUTE_PAGE_SETTINGS_NOTIFICATION,
-	},
-]
-
 const navItems = [
 	{
 		navLink: 'General',
 		icon: 'icon-single-02',
-		to: ROUTE_PAGE_SETTINGS,
+		to: ROUTE_PAGE_SETTINGS_GENERAL,
 	},
 	{
 		navLink: 'Billing',
@@ -68,7 +58,7 @@ const SettingsPage = props => {
 
 	const setTabWithPath = () => {
 		switch (pathname) {
-			case ROUTE_PAGE_SETTINGS:
+			case ROUTE_PAGE_SETTINGS_GENERAL:
 				setProfileTab(0)
 				break
 			case ROUTE_PAGE_SETTINGS_BILLING:
