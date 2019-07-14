@@ -11,7 +11,7 @@ import { NavItem, NavLink, Nav, Container, Row, Col } from 'reactstrap'
 
 import {
 	USER_DISPLAY_NAME,
-	ROUTE_PAGE_SETTINGS_GENERAL,
+	ROUTE_PAGE_SETTINGS,
 	ROUTE_PAGE_SETTINGS_BILLING,
 	ROUTE_PAGE_SETTINGS_ACCOUNT,
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
@@ -29,7 +29,7 @@ import {
 } from 'components'
 
 const routes = [
-	{ tabPane: GeneralSettingsTabPane, path: ROUTE_PAGE_SETTINGS_GENERAL },
+	{ tabPane: GeneralSettingsTabPane, path: ROUTE_PAGE_SETTINGS },
 	{ tabPane: BillingSettingsTabPane, path: ROUTE_PAGE_SETTINGS_BILLING },
 	{ tabPane: AccountSettingsTabPane, path: ROUTE_PAGE_SETTINGS_ACCOUNT },
 	{
@@ -42,7 +42,7 @@ const navItems = [
 	{
 		navLink: 'General',
 		icon: 'icon-single-02',
-		to: ROUTE_PAGE_SETTINGS_GENERAL,
+		to: ROUTE_PAGE_SETTINGS,
 	},
 	{
 		navLink: 'Billing',
@@ -63,6 +63,7 @@ const navItems = [
 
 const SettingsPage = props => {
 	const [profileTabs, setProfileTab] = useState(0)
+	const [editMode, setEditMode] = useState(false)
 
 	const wrapper = useRef(null)
 
@@ -102,7 +103,6 @@ const SettingsPage = props => {
 					const {
 						state: { [USER_DISPLAY_NAME]: name },
 					} = userStore
-
 					return (
 						<div className='wrapper' ref={wrapper}>
 							<div className='section'>
@@ -113,7 +113,23 @@ const SettingsPage = props => {
 												{/* User Information */}
 												<section className='text-center'>
 													<ImageUpload avatar addBtnColor='default' />
-													<h3 className='title'>{name}</h3>
+													{editMode ? (
+														<p />
+													) : (
+														<h3
+															className='title'
+															onDoubleClick={() => {
+																setEditMode(prev => !prev)
+															}}>
+															{name}{' '}
+															<i
+																className='tim-icons icon-pencil editable'
+																onClick={() => {
+																	setEditMode(prev => !prev)
+																}}
+															/>
+														</h3>
+													)}
 												</section>
 												{/* User Information */}
 												{/* Profile Sidebar */}
