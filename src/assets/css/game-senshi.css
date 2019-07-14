@@ -6,3 +6,7 @@
 .has-danger:after {
 	top: calc(50% - 7px);
 }
+
+.editable:hover {
+	cursor: pointer;
+}
