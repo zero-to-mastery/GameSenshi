@@ -66,8 +66,11 @@ const SettingsPage = props => {
 		location: { pathname },
 	} = props
 
-	useEffect(() => {
+	const setTabWithPath = () => {
 		switch (pathname) {
+			case ROUTE_PAGE_SETTINGS:
+				setProfileTab(0)
+				break
 			case ROUTE_PAGE_SETTINGS_BILLING:
 				setProfileTab(1)
 				break
@@ -80,7 +83,14 @@ const SettingsPage = props => {
 			default:
 				break
 		}
+	}
 
+	useEffect(() => {
+		setTabWithPath()
+	}, [pathname])
+
+	useEffect(() => {
+		setTabWithPath()
 		document.documentElement.scrollTop = 0
 		document.scrollingElement.scrollTop = 0
 		wrapper.current.scrollTop = 0
