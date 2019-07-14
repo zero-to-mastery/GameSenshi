@@ -5,7 +5,6 @@
 	"logo": "https://cdn.discordapp.com/attachments/585004003797237771/592386952511356950/GS1.png",
 	"channelName": "gamesenshi",
 	"desc": [
-		"\n",
 		"__**Use Cases:**__ \n:small_orange_diamond: Hire professional gamer or famous streamer! \n:small_orange_diamond: Hire game coach, level up your skill! \n:small_orange_diamond: Hire strong team mate, face challenge and rank up! \n:small_orange_diamond: Hire players to play your less known multiplayer game! \n:small_orange_diamond: Hang out and socialize with gamers/streamers in a relaxed environment!",
 		"__**Application Features:**__ \n:diamonds: Marketplace \n:diamonds: Payment \n:diamonds: Chat \n:diamonds: Gaming Contents \n:diamonds: Event Organizer ",
 		"__**Tech Stack:**__ \n:small_blue_diamond: React \n:small_blue_diamond: Progressive Web App \n:small_blue_diamond: CSS in JS \n:small_blue_diamond: Bootstrap \n:small_blue_diamond: Firebase \n:small_blue_diamond: GraphQL \n:small_blue_diamond: SSR(future)"
