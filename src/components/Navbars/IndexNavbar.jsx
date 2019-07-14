@@ -343,6 +343,8 @@ class ComponentsNavbar extends React.Component {
 																	</DropdownItem>
 																	<DropdownItem divider />
 																	<DropdownItem
+																		to={ROUTE_PAGE_SETTINGS}
+																		tag={Link}
 																		className='text-dark mt-0 py-1 px-4'
 																		style={{ fontSize: '1rem' }}
 																		onClick={e => {
