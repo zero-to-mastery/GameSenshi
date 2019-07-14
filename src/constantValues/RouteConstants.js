@@ -1,4 +1,6 @@
 const ROUTE = 'route'
+const ROUTE_TO = ROUTE + 'To'
+const ROUTE_FROM = ROUTE + 'From'
 const ROUTE_PAGE = ROUTE + 'Page'
 const ROUTE_PATH = ROUTE + 'Path'
 const ROUTE_ACCESSIBILITY = ROUTE + 'Guarded'
@@ -17,6 +19,8 @@ const ROUTE_PAGE_SETTINGS_NOTIFICATION = ROUTE_PAGE_SETTINGS + '/notification'
 const ROUTE_PAGE_PASSWORD_RESET = '/passwordReset'
 
 export {
+	ROUTE_TO,
+	ROUTE_FROM,
 	ROUTE_PAGE,
 	ROUTE_PATH,
 	ROUTE_ACCESSIBILITY,
