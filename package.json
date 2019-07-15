@@ -61,6 +61,7 @@
 		"graphql": "^14.4.2",
 		"graphql-tag": "^2.10.1",
 		"headroom.js": "0.9.4",
+		"history": "^4.9.0",
 		"interweave": "^11.1.0",
 		"localforage": "^1.7.3",
 		"moment": "^2.24.0",

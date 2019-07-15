@@ -5,7 +5,7 @@ import {
 	ROUTE_ACCESSIBILITY_PRIVATE,
 } from 'constantValues'
 
-import { routes } from 'routes/routes'
+import { routes, history } from 'routes/routes'
 
 // if user log out of protected page, redirect them to index page
 const onSignedOutRouting = props => {
@@ -18,7 +18,7 @@ const onSignedOutRouting = props => {
 			firstSubPath === winFirstSubPaths &&
 			accessibility === ROUTE_ACCESSIBILITY_PRIVATE
 		) {
-			window.location = ROUTE_PAGE_INDEX
+			history.push(ROUTE_PAGE_INDEX)
 			return true
 		} else {
 			return false

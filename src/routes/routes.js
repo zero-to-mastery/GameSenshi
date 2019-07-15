@@ -1,3 +1,4 @@
+import { createBrowserHistory } from 'history'
 // pages
 import {
 	IndexPage,
@@ -26,6 +27,8 @@ import {
 	ROUTE_PAGE_SETTINGS_GENERAL,
 	ROUTE_PAGE_PASSWORD_RESET,
 } from 'constantValues'
+
+const history = createBrowserHistory()
 
 const routes = [
 	{
@@ -72,4 +75,4 @@ const redirects = [
 	},
 ]
 
-export { routes, redirects }
+export { routes, redirects, history }

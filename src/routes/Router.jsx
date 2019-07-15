@@ -1,7 +1,12 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import {
+	Router as ReactRouter,
+	Route,
+	Switch,
+	Redirect,
+} from 'react-router-dom'
 import { LastLocationProvider } from 'react-router-last-location'
-import { routes, redirects } from 'routes/routes'
+import { routes, redirects, history } from 'routes/routes'
 // state management
 import { userStore } from 'state'
 // constants
@@ -20,7 +25,7 @@ import {
 
 const Router = props => {
 	return (
-		<BrowserRouter>
+		<ReactRouter history={history}>
 			<LastLocationProvider>
 				<Switch>
 					{routes.map((route, i) => {
@@ -57,7 +62,7 @@ const Router = props => {
 					})}
 				</Switch>
 			</LastLocationProvider>
-		</BrowserRouter>
+		</ReactRouter>
 	)
 }
 
