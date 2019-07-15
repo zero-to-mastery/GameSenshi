@@ -33,10 +33,9 @@ import {
 	ALERT_OPEN,
 	ALERT_COLOR,
 	USER_PHOTO_URL,
-	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
-	ROUTE_PAGE_SETTINGS,
+	ROUTE_PAGE_SETTINGS_GENERAL,
 } from 'constantValues'
 
 import AuthModal from 'components/Modals/AuthModal'
@@ -139,13 +138,6 @@ class ComponentsNavbar extends React.Component {
 			.scrollIntoView({ behavior: 'smooth' })
 	}
 
-	onSignOut = (currentPath, history) => {
-		const userRoute = [ROUTE_PAGE_SETTINGS]
-		auth().signOut()
-		if (userRoute.includes(currentPath)) {
-			history.push(ROUTE_PAGE_INDEX)
-		}
-	}
 	render() {
 		const {
 			props: {
@@ -160,7 +152,6 @@ class ComponentsNavbar extends React.Component {
 				navbarHeight,
 			},
 			setState,
-			onSignOut,
 			onResize,
 			toggleCollapse,
 			onCollapseExiting,
@@ -327,7 +318,7 @@ class ComponentsNavbar extends React.Component {
 																	aria-labelledby='navbarDropdownMenuLink'
 																	right>
 																	<DropdownItem
-																		to={ROUTE_PAGE_SETTINGS}
+																		to={ROUTE_PAGE_SETTINGS_GENERAL}
 																		tag={Link}
 																		className='text-dark mt-0 py-1 px-4'
 																		style={{ fontSize: '1rem' }}>
@@ -343,13 +334,13 @@ class ComponentsNavbar extends React.Component {
 																	</DropdownItem>
 																	<DropdownItem divider />
 																	<DropdownItem
-																		to={ROUTE_PAGE_SETTINGS}
+																		to={ROUTE_PAGE_SETTINGS_GENERAL}
 																		tag={Link}
 																		className='text-dark mt-0 py-1 px-4'
 																		style={{ fontSize: '1rem' }}
 																		onClick={e => {
 																			e.preventDefault()
-																			history.push(ROUTE_PAGE_SETTINGS)
+																			history.push(ROUTE_PAGE_SETTINGS_GENERAL)
 																		}}>
 																		Settings
 																	</DropdownItem>
@@ -363,7 +354,7 @@ class ComponentsNavbar extends React.Component {
 																		className='text-dark mt-0 py-1 px-4'
 																		style={{ fontSize: '1rem' }}
 																		onClick={() => {
-																			onSignOut(currentPath, history)
+																			auth().signOut()
 																		}}>
 																		Sign Out
 																	</DropdownItem>
@@ -382,7 +373,7 @@ class ComponentsNavbar extends React.Component {
 														<NavItem className='p-0'>
 															<NavLink
 																data-placement='bottom'
-																to={ROUTE_PAGE_SETTINGS}
+																to={ROUTE_PAGE_SETTINGS_GENERAL}
 																tag={Link}
 																style={{
 																	paddingTop: 6,
@@ -439,7 +430,7 @@ class ComponentsNavbar extends React.Component {
 														<NavItem className='p-0'>
 															<NavLink
 																data-placement='bottom'
-																to={ROUTE_PAGE_SETTINGS}
+																to={ROUTE_PAGE_SETTINGS_GENERAL}
 																tag={Link}
 																href='#pablo'>
 																<Row>
@@ -471,7 +462,7 @@ class ComponentsNavbar extends React.Component {
 																onClick={e => {
 																	e.preventDefault()
 																	toggleCollapse()
-																	onSignOut(currentPath, history)
+																	auth().signOut()
 																}}>
 																<Row>
 																	<Col xs='2'>
