@@ -63,10 +63,6 @@ const routes = [
 // the order of array is very important, the lowest is the root path
 const redirects = [
 	{
-		[ROUTE_FROM]: ROUTE_PAGE_SETTINGS_COMMON,
-		[ROUTE_TO]: ROUTE_PAGE_SETTINGS_GENERAL,
-	},
-	{
 		[ROUTE_FROM]: ROUTE_PAGE_SETTINGS,
 		[ROUTE_TO]: ROUTE_PAGE_SETTINGS_GENERAL,
 	},
