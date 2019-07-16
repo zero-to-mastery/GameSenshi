@@ -1,14 +1,10 @@
 import React, { useRef } from 'react'
-
 // reactstrap components
 import { Button, FormGroup, Row, Col, Form } from 'reactstrap'
-
 // loader
 import Loader from 'react-loader-spinner'
-
 // form validation
 import { FinalInput, FinalForm, FORM_ERROR } from 'components/FinalForm'
-
 // validation
 import {
 	signInEmailValidation,
@@ -33,7 +29,6 @@ const AccountSettingsTabPane = props => {
 				<FinalForm
 					initialValues={{
 						email: '',
-						password: '',
 					}}
 					onSubmit={values => {
 						return { [FORM_ERROR]: 'updateFailed' }
@@ -106,11 +101,9 @@ const AccountSettingsTabPane = props => {
 				<hr className='line-info' />
 				<FinalForm
 					initialValues={{
-						email: '',
 						password: '',
 					}}
 					onSubmit={values => {
-						console.log(values)
 						return { [FORM_ERROR]: 'updateFailed' }
 					}}>
 					{({ submitError, handleSubmit, submitting, form }) => (
