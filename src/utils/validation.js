@@ -37,13 +37,14 @@ const signUpPasswordValidation = value =>
 		})
 
 const usernamePopoverMessages = []
+const usernameLength = 25
 const signUpUsernameValidation = value =>
 	string()
 		.lowercase()
 		.required('required field!')
 		.matches(/^[a-z].*/, 'must start with alphabet')
 		.notOneOf(forbiddenName, `${value} is not allowed`)
-		.max(15, 'maximum 15 characters')
+		.max(usernameLength, `maximum ${usernameLength} characters`)
 		.matches(/^[a-z0-9]+$/, 'no special characters')
 		.validate(value, {
 			abortEarly: true,
@@ -110,4 +111,5 @@ export {
 	cardNameValidation,
 	cardCvcValidation,
 	cardExpiryValidation,
+	usernameLength,
 }
