@@ -16,7 +16,6 @@ import {
 import {
 	Footer,
 	IndexNavbar,
-	UsernameForm,
 	GeneralSettingsTabPane,
 	BillingSettingsTabPane,
 	AccountSettingsTabPane,
@@ -97,7 +96,6 @@ const SettingsPage = props => {
 									{/* User Information */}
 									<section className='text-center'>
 										<ImageUpload avatar addBtnColor='default' />
-										<UsernameForm />
 									</section>
 									{/* User Information */}
 									{/* Profile Sidebar */}
