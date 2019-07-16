@@ -38,6 +38,7 @@ const FinalInput = props => {
 		popoverMessages,
 		submitRef,
 		willUnmount,
+		onlyShowErrorOnSubmit,
 		...restProps
 	} = props
 
@@ -49,7 +50,7 @@ const FinalInput = props => {
 
 	const ref = useRef(null)
 
-	const [messageList, setFinalList] = useState([])
+	const [finalList, setFinalList] = useState([])
 	const [popoverItemFailed] = useState({ items: {} })
 	const [onSubmitTimeOutID, setOnSubmitTimeOutId] = useState(0)
 	const [state] = useState({
@@ -81,14 +82,14 @@ const FinalInput = props => {
 	}
 
 	const generateFinalListWithState = (validationResult, resolve) => {
-		const messageList = FinalList(
+		const finalList = FinalList(
 			validationResult,
 			popoverMessages2,
 			popoverItemFailed
 		)
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
-		!willUnmount2.value && setFinalList(messageList)
+		!willUnmount2.value && setFinalList(finalList)
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
 			container.setState(state => {
@@ -104,7 +105,7 @@ const FinalInput = props => {
 			})
 			resolve(validationResult)
 		}
-		return messageList
+		return finalList
 	}
 
 	return (
@@ -162,7 +163,9 @@ const FinalInput = props => {
 					dirtySinceLastSubmit,
 					submitting,
 					submitSucceeded,
+					submitFailed,
 				} = meta
+
 				return (
 					<>
 						{component2 === 'text' && (
@@ -170,6 +173,7 @@ const FinalInput = props => {
 								id={name}
 								className={classnames({
 									'has-danger':
+										(!onlyShowErrorOnSubmit || submitFailed) &&
 										!spinner &&
 										!spinner2 &&
 										!container.state[name + IS_VALID] &&
@@ -373,14 +377,17 @@ const FinalInput = props => {
 						<div
 							ref={ref} // function component cannot have ref, class and html element can
 						>
-							{!spinner &&
+							{(!onlyShowErrorOnSubmit ||
+								submitFailed ||
+								container.state[name + IS_VALID]) &&
+								!spinner &&
 								!spinner2 &&
 								!submitting &&
 								!submitSucceeded &&
 								(touched || (active && modified)) &&
 								((!dirtySinceLastSubmit &&
 									FinalList(container.state[name + SUBMIT_ERRORS])) ||
-									messageList)}
+									finalList)}
 							<ReactResizeDetector
 								handleWidth
 								handleHeight
