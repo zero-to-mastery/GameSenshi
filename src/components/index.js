@@ -8,7 +8,7 @@ import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInForm from 'components/Forms/SignInForm'
 import SignUpForm from 'components/Forms/SignUpForm'
-import UsernameForm from 'components/Forms/UsernameForm'
+//import UsernameForm from 'components/Forms/UsernameForm'
 import GeneralSettingsTabPane from 'components/TabPane/GeneralSettingsTabPane'
 import BillingSettingsTabPane from 'components/TabPane/BillingSettingsTabPane'
 import AccountSettingsTabPane from 'components/TabPane/AccountSettingsTabPane'
@@ -26,7 +26,7 @@ export {
 	AuthModal,
 	SignInForm,
 	SignUpForm,
-	UsernameForm,
+	//UsernameForm,
 	SignUpButton,
 	SignInButton,
 	SocialAuthButtonGroup,

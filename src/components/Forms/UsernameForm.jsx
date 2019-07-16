@@ -5,18 +5,19 @@ import { Subscribe, userStore } from 'state'
 import { USER_DISPLAY_NAME } from 'constantValues'
 // core components
 import { FinalInput, FinalForm, FORM_ERROR } from 'components'
-import { Form } from 'reactstrap'
+import { Form, Col, Row, Container } from 'reactstrap'
 // validation
-import { signUpUsernameValidation } from 'utils/validation'
+import { signUpUsernameValidation, usernameLength } from 'utils/validation'
+
+//this comp is not in use
 const UsernameForm = props => {
-	const [editMode, setEditMode] = useState(false)
 	return (
 		<Subscribe to={[userStore]}>
 			{userStore => {
 				const {
 					state: { [USER_DISPLAY_NAME]: name },
 				} = userStore
-				return editMode ? (
+				return (
 					<FinalForm
 						initialValues={{
 							[USER_DISPLAY_NAME]: '',
@@ -24,33 +25,24 @@ const UsernameForm = props => {
 						onSubmit={values => {
 							//
 						}}>
-						{({ handleSubmit, submitting, submitError }) => (
+						{({ handleSubmit, submitting, submitError, form }) => (
 							<Form className='form'>
 								<FinalInput
-									type='text'
+									type='username'
 									name={USER_DISPLAY_NAME}
 									hideSuccess
-									placeholder='Email'
-									icon='tim-icons icon-email-85'
+									onlyShowErrorOnSubmit
+									placeholder={name}
+									maxLength={usernameLength}
+									icon='tim-icons tim-icons icon-single-02'
 									validation={value => signUpUsernameValidation(value)}
+									onBlur={() => {
+										form.reset()
+									}}
 								/>
 							</Form>
 						)}
 					</FinalForm>
-				) : (
-					<h3
-						className='title'
-						onDoubleClick={() => {
-							setEditMode(prev => !prev)
-						}}>
-						{name}{' '}
-						<i
-							className='tim-icons icon-pencil editable'
-							onClick={() => {
-								setEditMode(prev => !prev)
-							}}
-						/>
-					</h3>
 				)
 			}}
 		</Subscribe>
