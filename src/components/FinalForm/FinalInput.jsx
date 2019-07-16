@@ -39,6 +39,7 @@ const FinalInput = props => {
 		submitRef,
 		willUnmount,
 		onlyShowErrorOnSubmit,
+		className,
 		...restProps
 	} = props
 
@@ -47,6 +48,7 @@ const FinalInput = props => {
 	const component2 = component || 'text'
 	const onFocus2 = onFocus || (() => {})
 	const onBlur2 = onBlur || (() => {})
+	const Group = icon ? InputGroup : FormGroup
 
 	const ref = useRef(null)
 
@@ -169,9 +171,9 @@ const FinalInput = props => {
 				return (
 					<>
 						{component2 === 'text' && (
-							<InputGroup
+							<Group
 								id={name}
-								className={classnames({
+								className={classnames(className, {
 									'has-danger':
 										(!onlyShowErrorOnSubmit || submitFailed) &&
 										!spinner &&
@@ -187,26 +189,28 @@ const FinalInput = props => {
 									'input-group-focus': active,
 									'mb-0': true,
 								})}>
-								<InputGroupAddon addonType='prepend'>
-									<InputGroupText>
-										{spinner || spinner2 ? (
-											<div
-												style={{ height: 16 }}
-												className='d-flex align-items-center'>
-												<Loader
-													type={
-														(spinner2 && 'Puff') || (spinner && 'ThreeDots')
-													}
-													color='#00BFFF'
-													height='15px'
-													width='15px'
-												/>
-											</div>
-										) : (
-											<i className={icon} />
-										)}
-									</InputGroupText>
-								</InputGroupAddon>
+								{icon && (
+									<InputGroupAddon addonType='prepend'>
+										<InputGroupText>
+											{spinner || spinner2 ? (
+												<div
+													style={{ height: 16 }}
+													className='d-flex align-items-center'>
+													<Loader
+														type={
+															(spinner2 && 'Puff') || (spinner && 'ThreeDots')
+														}
+														color='#00BFFF'
+														height='15px'
+														width='15px'
+													/>
+												</div>
+											) : (
+												<i className={icon} />
+											)}
+										</InputGroupText>
+									</InputGroupAddon>
+								)}
 								<Input
 									{...restProps}
 									id={input.name}
@@ -248,7 +252,7 @@ const FinalInput = props => {
 										}
 									}}
 								/>
-							</InputGroup>
+							</Group>
 						)}
 						{component2 === 'checkbox' && (
 							<FormGroup check className='text-left '>
