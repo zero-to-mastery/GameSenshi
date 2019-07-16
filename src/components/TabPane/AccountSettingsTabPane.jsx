@@ -15,6 +15,9 @@ import {
 	signInPasswordValidation,
 } from 'utils/validation'
 
+const EMAIL = 'email'
+const PASSWORD = 'password'
+
 const AccountSettingsTabPane = props => {
 	const submitButton = useRef(null)
 	const submitButton2 = useRef(null)
@@ -35,7 +38,7 @@ const AccountSettingsTabPane = props => {
 					onSubmit={values => {
 						return { [FORM_ERROR]: 'updateFailed' }
 					}}>
-					{({ submitError, handleSubmit, submitting }) => (
+					{({ submitError, handleSubmit, submitting, form }) => (
 						<>
 							<Form>
 								<Row>
@@ -47,13 +50,17 @@ const AccountSettingsTabPane = props => {
 									<Col className='align-self-center' md='9'>
 										<FormGroup>
 											<FinalInput
-												type='email'
-												name='email'
+												type={EMAIL}
+												name={EMAIL}
 												hideSuccess
+												onlyShowErrorOnSubmit
 												placeholder='email'
 												icon='tim-icons icon-email-85'
 												validation={signInEmailValidation}
 												submitRef={submitButton}
+												onBlur={() => {
+													form.reset()
+												}}
 											/>
 										</FormGroup>
 									</Col>
@@ -103,9 +110,10 @@ const AccountSettingsTabPane = props => {
 						password: '',
 					}}
 					onSubmit={values => {
+						console.log(values)
 						return { [FORM_ERROR]: 'updateFailed' }
 					}}>
-					{({ submitError, handleSubmit, submitting }) => (
+					{({ submitError, handleSubmit, submitting, form }) => (
 						<>
 							<Form>
 								<Row>
@@ -117,13 +125,17 @@ const AccountSettingsTabPane = props => {
 									<Col className='align-self-center' md='9'>
 										<FormGroup>
 											<FinalInput
-												type='password'
-												name='password'
+												type={PASSWORD}
+												name={PASSWORD}
+												onlyShowErrorOnSubmit
 												hideSuccess
 												placeholder='password'
 												icon='tim-icons icon-lock-circle'
 												validation={signInPasswordValidation}
 												submitRef={submitButton2}
+												onBlur={() => {
+													form.reset()
+												}}
 											/>
 										</FormGroup>
 									</Col>
