@@ -143,11 +143,11 @@ const SignInForm = props => {
 											<>
 												<SocialAuthButtonGroup />
 												<Row>
-													<Col />
-													<Col className='text-center text-muted mb-4 mt-3 col-auto'>
+													<Col
+														className='text-center text-muted mb-4 mt-3'
+														xs='12'>
 														<small>Or Classically</small>
 													</Col>
-													<Col />
 												</Row>
 												<FinalInput
 													type={EMAIL}
@@ -196,7 +196,6 @@ const SignInForm = props => {
 											)}
 										</Button>
 									</CardFooter>
-
 									<div className='pull-left ml-3 mb-3'>
 										<h6>
 											<Link
