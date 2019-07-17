@@ -1,10 +1,15 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
+import { firebaseDefaultStorage, auth } from 'firebaseInit'
 // state management
-import { userStore, Subscribe } from 'state'
+import { userStore, alertStore, Subscribe } from 'state'
 //component
 import { Button } from 'reactstrap'
 //constant
-import { USER_PHOTO_URL } from 'constantValues'
+import {
+	USER_PHOTO_URL,
+	USER_UID,
+	FIREBASE_STORAGE_USER_AVATAR,
+} from 'constantValues'
 import defaultAvatar from 'assets/img/placeholder.jpg'
 
 const ImageUpload = props => {
@@ -14,10 +19,52 @@ const ImageUpload = props => {
 		e.preventDefault()
 		let reader = new FileReader()
 		let file = e.target.files[0]
-		reader.onloadend = () => {
-			userStore.setState({ [USER_PHOTO_URL]: reader.result })
-		}
 		if (file) {
+			try {
+				// use try catch because this can fail silently
+				const avatarRef = firebaseDefaultStorage.ref(
+					`${FIREBASE_STORAGE_USER_AVATAR}/${userStore.state[USER_UID]}.jpg`
+				)
+				const task = avatarRef.put(file)
+				task.on(
+					'state_changed',
+					snapshot => {
+						const { bytesTransferred, totalBytes } = snapshot
+						const percentage = (bytesTransferred / totalBytes) * 100
+					},
+					err => {
+						alertStore.show(
+							'Something went wrong, upload profile image failed',
+							'danger',
+							'tim-icons icon-alert-circle-exc'
+						)
+					},
+					async () => {
+						const url = await avatarRef.getDownloadURL().catch(() => {
+							alertStore.show(
+								'Something went wrong, unable to display image',
+								'danger',
+								'tim-icons icon-alert-circle-exc'
+							)
+						})
+						if (url) {
+							auth()
+								.currentUser.updateProfile({
+									[USER_PHOTO_URL]: url,
+								})
+								.then(() => {
+									userStore.setState({ [USER_PHOTO_URL]: url })
+								})
+						}
+					}
+				)
+			} catch (e) {
+				alertStore.show(
+					'Something went wrong, upload image failed',
+					'danger',
+					'tim-icons icon-alert-circle-exc'
+				)
+			}
 			reader.readAsDataURL(file)
 		}
 	}
@@ -37,9 +84,7 @@ const ImageUpload = props => {
 	return (
 		<Subscribe to={[userStore]}>
 			{userStore => {
-				const {
-					state: { [USER_PHOTO_URL]: imagePreviewUrl },
-				} = userStore
+				const { [USER_PHOTO_URL]: imagePreviewUrl } = userStore.state
 				return (
 					<div className='fileinput text-center'>
 						<input type='file' onChange={handleImageChange} ref={fileInput} />
