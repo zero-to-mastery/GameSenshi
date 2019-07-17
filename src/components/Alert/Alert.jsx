@@ -4,7 +4,7 @@ import { alertStore, Subscribe } from 'state'
 // reactstrap components
 import { Container, Alert as Alert1 } from 'reactstrap'
 // constants
-import { ALERT_OPEN, ALERT_BODY, ALERT_COLOR } from 'constantValues'
+import { ALERT_OPEN, ALERT_BODY, ALERT_COLOR, ALERT_ICON } from 'constantValues'
 
 const Alert = props => {
 	const { navbarHeight } = props
@@ -15,14 +15,15 @@ const Alert = props => {
 		<Subscribe to={[alertStore]}>
 			{alertStore => {
 				const {
-					[ALERT_BODY]: alertBody,
-					[ALERT_OPEN]: alertOpen,
-					[ALERT_COLOR]: alertColor,
+					[ALERT_BODY]: body,
+					[ALERT_OPEN]: open,
+					[ALERT_COLOR]: color,
+					[ALERT_ICON]: icon,
 				} = alertStore.state
 				return (
 					<Alert1
 						style={{ zIndex: 1000, marginTop: navbarHeight }}
-						isOpen={alertOpen}
+						isOpen={open}
 						toggle={() => {
 							setNavbarState({ color: 'navbar-transparent' })
 							alertStore.setState(state => {
@@ -30,11 +31,11 @@ const Alert = props => {
 								return state
 							})
 						}}
-						color={alertColor}
+						color={color}
 						className='alert-with-icon d-flex align-items-center fixed-top'>
 						<Container>
-							<i className='tim-icons icon-bell-55 mr-3' />
-							<span>{alertBody}</span>
+							<i className={`${icon} mr-3`} />
+							<span>{body}</span>
 						</Container>
 					</Alert1>
 				)

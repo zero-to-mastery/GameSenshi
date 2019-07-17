@@ -89,7 +89,7 @@ const onSubmit = async (values, apolloClient, callback = () => {}) => {
 					</a>
 				</>
 			)
-			alertStore.show(alertBody, 'success')
+			alertStore.show(alertBody, 'success', 'tim-icons icon-bell-55')
 			handleSignInWithEmailAndPassword(email, password)
 			callback()
 			// if undefined mean no error

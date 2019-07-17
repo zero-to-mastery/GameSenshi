@@ -19,6 +19,7 @@ import {
 	ALERT_BODY,
 	ALERT_COLOR,
 	ALERT_OPEN,
+	ALERT_ICON,
 } from 'constantValues/AlertConstants'
 
 import {
@@ -148,6 +149,7 @@ export {
 	ALERT_BODY,
 	ALERT_COLOR,
 	ALERT_OPEN,
+	ALERT_ICON,
 	SIGN_UP,
 	SIGN_UP_GQL_INPUT,
 	SIGN_UP_EMAIL,

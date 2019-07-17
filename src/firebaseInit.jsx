@@ -98,11 +98,19 @@ const handleDifferentCredential = (auth, email, credential) => {
 								.currentUser.linkWithCredential(credential)
 								.then(async () => {
 									await authModalStore.close()
-									alertStore.show('Social login linked successful!', 'success')
+									alertStore.show(
+										'Social login linked successful!',
+										'success',
+										'tim-icons icon-bell-55'
+									)
 								})
 								.catch(async () => {
 									await authModalStore.close()
-									alertStore.show('Social login linked unsuccessful!', 'danger')
+									alertStore.show(
+										'Social login linked unsuccessful!',
+										'danger',
+										'tim-icons icon-alert-circle-exc'
+									)
 								})
 						})
 					} else {
@@ -157,7 +165,8 @@ auth()
 				<span>
 					Successfully linked your <strong>{name2}</strong> account!
 				</span>,
-				'success'
+				'success',
+				'tim-icons icon-bell-55'
 			)
 		}
 		const linkWithRedirect = provider2 => {
