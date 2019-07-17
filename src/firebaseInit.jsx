@@ -26,7 +26,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 // load default storage bucket
-const storageRef = firebase.storage().ref()
+const firebaseDefaultStorage = firebase.storage()
 
 const auth = firebase.auth
 
@@ -176,4 +176,10 @@ auth()
 
 const functions = firebase.functions()
 
-export { functions, firebase, auth, storageRef, handleDifferentCredential }
+export {
+	functions,
+	firebase,
+	auth,
+	firebaseDefaultStorage,
+	handleDifferentCredential,
+}
