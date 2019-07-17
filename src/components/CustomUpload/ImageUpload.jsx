@@ -42,7 +42,7 @@ const ImageUpload = props => {
 					async () => {
 						const url = await avatarRef.getDownloadURL().catch(() => {
 							alertStore.show(
-								'Something went wrong, unable to display image',
+								'Something went wrong, unable to update image',
 								'danger',
 								'tim-icons icon-alert-circle-exc'
 							)
@@ -53,7 +53,19 @@ const ImageUpload = props => {
 									[USER_PHOTO_URL]: url,
 								})
 								.then(() => {
+									alertStore.show(
+										'Imaged updated, It may take a few moments to update across the site.',
+										'success',
+										'tim-icons icon-bell-55'
+									)
 									userStore.setState({ [USER_PHOTO_URL]: url })
+								})
+								.catch(err => {
+									alertStore.show(
+										'Something went wrong, unable to update profile',
+										'danger',
+										'tim-icons icon-alert-circle-exc'
+									)
 								})
 						}
 					}
