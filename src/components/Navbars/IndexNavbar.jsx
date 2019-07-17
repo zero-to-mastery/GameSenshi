@@ -307,7 +307,7 @@ class ComponentsNavbar extends React.Component {
 																		className='avatar'
 																		style={{ height: 36, width: 36 }}>
 																		<Media
-																			alt='...'
+																			alt='user avatar'
 																			className='img-raised'
 																			style={{ height: 36, width: 36 }}
 																			src={avatarURL}
@@ -390,7 +390,7 @@ class ComponentsNavbar extends React.Component {
 																			className='avatar'
 																			style={{ height: 24, width: 24 }}>
 																			<Media
-																				alt='...'
+																				alt='user avatar'
 																				className='img-raised'
 																				style={{ height: 24, width: 24 }}
 																				src={avatarURL}
