@@ -1,135 +1,86 @@
-import React from 'react'
-// used for making the prop types of this component
-import PropTypes from 'prop-types'
-
+import React, { useState, useRef } from 'react'
+// state management
+import { userStore, Subscribe } from 'state'
+//component
 import { Button } from 'reactstrap'
-
-import defaultImage from 'assets/img/image_placeholder.jpg'
+//constant
+import { USER_PHOTO_URL } from 'constantValues'
 import defaultAvatar from 'assets/img/placeholder.jpg'
 
-class ImageUpload extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			file: null,
-			imagePreviewUrl: this.props.avatar ? defaultAvatar : defaultImage,
-		}
-		this.handleImageChange = this.handleImageChange.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.handleClick = this.handleClick.bind(this)
-		this.handleRemove = this.handleRemove.bind(this)
-	}
-	handleImageChange(e) {
+const ImageUpload = props => {
+	const { avatar } = props
+
+	const [file, setFile] = useState(null)
+
+	const fileInput = useRef(null)
+
+	const handleImageChange = e => {
 		e.preventDefault()
 		let reader = new FileReader()
 		let file = e.target.files[0]
 		reader.onloadend = () => {
-			this.setState({
-				file: file,
-				imagePreviewUrl: reader.result,
-			})
+			setFile(file)
+			userStore.setState({ [USER_PHOTO_URL]: reader.result })
 		}
 		reader.readAsDataURL(file)
 	}
-	handleSubmit(e) {
+	const handleSubmit = e => {
 		e.preventDefault()
 		// this.state.file is the file/image uploaded
 		// in this function you can save the image (this.state.file) on form submit
 		// you have to call it yourself
 	}
-	handleClick() {
-		this.refs.fileInput.click()
+	const handleClick = () => {
+		fileInput.current.click()
 	}
-	handleRemove() {
-		this.setState({
-			file: null,
-			imagePreviewUrl: this.props.avatar ? defaultAvatar : defaultImage,
-		})
-		this.refs.fileInput.value = null
+	const handleRemove = () => {
+		setFile(null)
+		userStore.setState({ [USER_PHOTO_URL]: defaultAvatar })
+		fileInput.current.value = null
 	}
-	render() {
-		return (
-			<div className='fileinput text-center'>
-				<input type='file' onChange={this.handleImageChange} ref='fileInput' />
-				<div className={'thumbnail' + (this.props.avatar ? ' img-circle' : '')}>
-					<img src={this.state.imagePreviewUrl} alt='...' />
-				</div>
-				<div>
-					{this.state.file === null ? (
-						<Button
-							color={this.props.addBtnColor}
-							className={this.props.addBtnClasses}
-							onClick={() => this.handleClick()}>
-							{this.props.avatar ? 'Add Photo' : 'Select image'}
-						</Button>
-					) : (
-						<span>
-							<Button
-								color={this.props.changeBtnColor}
-								className={this.props.changeBtnClasses}
-								onClick={() => this.handleClick()}>
-								Change
-							</Button>
-							{this.props.avatar ? <br /> : null}
-							<Button
-								color={this.props.removeBtnColor}
-								className={this.props.removeBtnClasses}
-								onClick={() => this.handleRemove()}>
-								<i className='fa fa-times' /> Remove
-							</Button>
-						</span>
-					)}
-				</div>
-			</div>
-		)
-	}
-}
-
-ImageUpload.defaultProps = {
-	avatar: false,
-	removeBtnClasses: 'btn-round',
-	removeBtnColor: 'danger',
-	addBtnClasses: 'btn-round',
-	addBtnColor: 'primary',
-	changeBtnClasses: 'btn-round',
-	changeBtnColor: 'primary',
-}
-
-ImageUpload.propTypes = {
-	avatar: PropTypes.bool,
-	removeBtnClasses: PropTypes.string,
-	removeBtnColor: PropTypes.oneOf([
-		'default',
-		'primary',
-		'secondary',
-		'success',
-		'info',
-		'warning',
-		'danger',
-		'link',
-	]),
-	addBtnClasses: PropTypes.string,
-	addBtnColor: PropTypes.oneOf([
-		'default',
-		'primary',
-		'secondary',
-		'success',
-		'info',
-		'warning',
-		'danger',
-		'link',
-	]),
-	changeBtnClasses: PropTypes.string,
-	changeBtnColor: PropTypes.oneOf([
-		'default',
-		'primary',
-		'secondary',
-		'success',
-		'info',
-		'warning',
-		'danger',
-		'link',
-	]),
+	return (
+		<Subscribe to={[userStore]}>
+			{userStore => {
+				const {
+					state: { [USER_PHOTO_URL]: imagePreviewUrl },
+				} = userStore
+				return (
+					<div className='fileinput text-center'>
+						<input type='file' onChange={handleImageChange} ref={fileInput} />
+						<div className={'thumbnail' + (avatar ? ' img-circle' : '')}>
+							<img src={imagePreviewUrl} alt='...' />
+						</div>
+						<div>
+							{file === null ? (
+								<Button
+									color='primary'
+									className='btn-round'
+									onClick={() => handleClick()}>
+									{avatar ? 'Add Photo' : 'Select image'}
+								</Button>
+							) : (
+								<span>
+									<Button
+										color='primary'
+										className='btn-round'
+										onClick={() => handleClick()}>
+										Change
+									</Button>
+									{avatar ? <br /> : null}
+									<Button
+										color='danger'
+										className='btn-round'
+										onClick={() => handleRemove()}>
+										<i className='fa fa-times' /> Remove
+									</Button>
+								</span>
+							)}
+						</div>
+					</div>
+				)
+			}}
+		</Subscribe>
+	)
 }
 
 export default ImageUpload
