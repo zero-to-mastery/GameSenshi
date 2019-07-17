@@ -3,7 +3,6 @@ import { Link, withRouter } from 'react-router-dom'
 import { auth } from 'firebaseInit'
 // state
 import { userStore, alertStore, Subscribe } from 'state'
-
 // reactstrap components
 import {
 	Collapse,
@@ -20,33 +19,28 @@ import {
 	Container,
 	Row,
 	Col,
-	Alert,
 } from 'reactstrap'
-
-import ReactResizeDetector from 'react-resize-detector'
-
 // constants
 import {
 	USER_SIGNED_IN,
 	USER_DISPLAY_NAME,
-	ALERT_BODY,
 	ALERT_OPEN,
-	ALERT_COLOR,
 	USER_PHOTO_URL,
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
 	ROUTE_PAGE_SETTINGS_GENERAL,
 } from 'constantValues'
-
+//core component
 import AuthModal from 'components/Modals/AuthModal'
 import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInModal from 'components/Modals/SignInModal'
-
+import Alert from 'components/Alert/Alert'
+import ReactResizeDetector from 'react-resize-detector'
+// logo
 import logo from 'assets/img/favicon.ico'
 
 const widthBreakPoint = 991
-
 const bgPurple = 'bg-purple'
 
 class ComponentsNavbar extends React.Component {
@@ -169,11 +163,7 @@ class ComponentsNavbar extends React.Component {
 						[USER_SIGNED_IN]: signedIn,
 						[USER_PHOTO_URL]: avatarURL,
 					} = userStore.state
-					const {
-						[ALERT_BODY]: alertBody,
-						[ALERT_OPEN]: alertOpen,
-						[ALERT_COLOR]: alertColor,
-					} = alertStore.state
+					const { [ALERT_OPEN]: alertOpen } = alertStore.state
 					return (
 						<>
 							<SignInModal />
@@ -519,23 +509,7 @@ class ComponentsNavbar extends React.Component {
 								</Navbar>
 								<ReactResizeDetector handleHeight onResize={onResize} />
 							</div>
-							<Alert
-								style={{ zIndex: 1000, marginTop: navbarHeight }}
-								isOpen={alertOpen}
-								toggle={() => {
-									setState({ color: 'navbar-transparent' })
-									alertStore.setState(state => {
-										state[ALERT_OPEN] = !state[ALERT_OPEN]
-										return state
-									})
-								}}
-								color={alertColor}
-								className='alert-with-icon d-flex align-items-center fixed-top'>
-								<Container>
-									<i className='tim-icons icon-bell-55 mr-3' />
-									<span>{alertBody}</span>
-								</Container>
-							</Alert>
+							<Alert navbarHeight={navbarHeight} setNavbarState={setState} />
 						</>
 					)
 				}}
