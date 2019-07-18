@@ -23,6 +23,8 @@ import ReactResizeDetector from 'react-resize-detector'
 import FinalList from 'components/FinalForm/FinalList'
 import { EXTRA_HEIGHT, IS_VALID, SUBMIT_ERRORS, STATUS } from 'constantValues'
 
+const DELAY = 1000
+
 const FinalInput = props => {
 	const {
 		name,
@@ -43,11 +45,12 @@ const FinalInput = props => {
 		...restProps
 	} = props
 
-	const willUnmount2 = willUnmount || { value: false } // TODO to solve memory leak issue, not yet success
-	const popoverMessages2 = popoverMessages || []
-	const component2 = component || 'text'
-	const onFocus2 = onFocus || (() => {})
-	const onBlur2 = onBlur || (() => {})
+	// set default value
+	const willUnmount_ = willUnmount || { value: false } // TODO to solve memory leak issue, not yet success
+	const popoverMessages_ = popoverMessages || []
+	const component_ = component || 'text'
+	const onFocus_ = onFocus || (() => {})
+	const onBlur_ = onBlur || (() => {})
 	const Group = icon ? InputGroup : FormGroup
 
 	const ref = useRef(null)
@@ -62,6 +65,7 @@ const FinalInput = props => {
 		value: '',
 		promise: Promise.resolve(['Invalid']),
 		resolve: () => {},
+		fulfilled: true,
 	})
 	const [spinner, showSpinner] = useState(false)
 	const [spinner2, showSpinner2] = useState(false)
@@ -86,12 +90,12 @@ const FinalInput = props => {
 	const generateFinalListWithState = (validationResult, resolve) => {
 		const finalList = FinalList(
 			validationResult,
-			popoverMessages2,
+			popoverMessages_,
 			popoverItemFailed
 		)
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
-		!willUnmount2.value && setFinalList(finalList)
+		!willUnmount_.value && setFinalList(finalList)
 		if (validationResult === undefined || validationResult[STATUS]) {
 			// if validation passed
 			container.setState(state => {
@@ -107,6 +111,7 @@ const FinalInput = props => {
 			})
 			resolve(validationResult)
 		}
+		state.fulfilled = true
 		return finalList
 	}
 
@@ -122,6 +127,7 @@ const FinalInput = props => {
 						// do not reject when doing server validation
 						!spinner2 && state.resolve(['validating'])
 						state.resolve = resolve
+						state.fulfilled = false
 						container.setState(state => {
 							state[name + IS_VALID] = false
 							return state
@@ -170,7 +176,7 @@ const FinalInput = props => {
 
 				return (
 					<>
-						{component2 === 'text' && (
+						{component_ === 'text' && (
 							<Group
 								id={name}
 								className={classnames(className, {
@@ -218,7 +224,7 @@ const FinalInput = props => {
 									value={container.state[name] || input.value} // the input.value has no purpose other than suppress uncontrollable to controllable warning
 									type={type}
 									onChange={e => {
-										state.delay = 1000
+										state.delay = DELAY
 										if (onChange === undefined || onChange(e) === undefined) {
 											container.state[name] = e.target.value
 											input.onChange(e)
@@ -232,12 +238,12 @@ const FinalInput = props => {
 									}}
 									onFocus={e => {
 										state.focused = true
-										onFocus2(e)
+										onFocus_(e)
 										input.onFocus(e)
 									}}
 									onBlur={e => {
 										state.focused = false
-										onBlur2(e)
+										onBlur_(e)
 										input.onBlur(e)
 									}}
 									onKeyPress={e => {
@@ -245,16 +251,19 @@ const FinalInput = props => {
 											e.preventDefault()
 											clearInterval(onSubmitTimeOutID)
 											setOnSubmitTimeOutId(
-												setTimeout(() => {
-													submitRef.current.onClick()
-												}, 1000)
+												setTimeout(
+													() => {
+														submitRef.current.onClick()
+													},
+													state.fulfilled ? 0 : DELAY
+												)
 											)
 										}
 									}}
 								/>
 							</Group>
 						)}
-						{component2 === 'checkbox' && (
+						{component_ === 'checkbox' && (
 							<FormGroup check className='text-left '>
 								<Label check>
 									<Input
@@ -277,8 +286,8 @@ const FinalInput = props => {
 											// ! bug, details https://github.com/final-form/react-final-form/issues/134
 											state.focused = true
 											input.onFocus(e)
-											onFocus2(e)
-											onBlur2(e)
+											onFocus_(e)
+											onBlur_(e)
 											state.focused = false
 											input.onBlur(e)
 										}}
@@ -300,7 +309,7 @@ const FinalInput = props => {
 								</Label>
 							</FormGroup>
 						)}
-						{component2 === 'select' && (
+						{component_ === 'select' && (
 							<Select
 								// TODO need custom styling, icon, has-danger, has-success
 								{...restProps}
@@ -308,7 +317,7 @@ const FinalInput = props => {
 								name={input.name}
 								value={container.state[name] || input.value}
 								onChange={e => {
-									state.delay = 1000
+									state.delay = DELAY
 									if (onChange === undefined || onChange(e) === undefined) {
 										container.state[name] = e
 										input.onChange(e)
@@ -322,17 +331,17 @@ const FinalInput = props => {
 								}}
 								onFocus={e => {
 									state.focused = true
-									onFocus2(e)
+									onFocus_(e)
 									input.onFocus(e)
 								}}
 								onBlur={e => {
 									state.focused = false
-									onBlur2(e)
+									onBlur_(e)
 									input.onBlur(e)
 								}}
 							/>
 						)}
-						{popoverMessages2.length > 0 && (
+						{popoverMessages_.length > 0 && (
 							<Popover
 								placement='top-end'
 								isOpen={active}
@@ -357,7 +366,7 @@ const FinalInput = props => {
 								</PopoverHeader>
 								<PopoverBody className='pl-0 pb-0'>
 									<ul>
-										{popoverMessages2.map((errorMessage, i) => {
+										{popoverMessages_.map((errorMessage, i) => {
 											return (
 												<li
 													className={
