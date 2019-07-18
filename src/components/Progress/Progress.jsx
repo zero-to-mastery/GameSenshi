@@ -14,13 +14,19 @@ const Progress = props => {
 					[PROGRESS_VALUE]: value,
 					[PROGRESS_COLOR]: color,
 				} = progressStore.state
-				return (
-					open && (
+				return open ? (
+					<>
 						<div className={`progress-container progress-${color}`}>
-							<ProgressStrap max='100' value={value} />
+							<ProgressStrap
+								className='mt-0 mb-0'
+								max='100'
+								value={value}
+								animated>
+								{value}%
+							</ProgressStrap>
 						</div>
-					)
-				)
+					</>
+				) : null
 			}}
 		</Subscribe>
 	)
