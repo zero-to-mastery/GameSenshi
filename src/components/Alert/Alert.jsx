@@ -2,7 +2,7 @@ import React from 'react'
 // state
 import { alertStore, Subscribe } from 'state'
 // reactstrap components
-import { Container, Alert as Alert1 } from 'reactstrap'
+import { Container, Alert as AlertStrap } from 'reactstrap'
 // constants
 import { ALERT_OPEN, ALERT_BODY, ALERT_COLOR, ALERT_ICON } from 'constantValues'
 
@@ -21,7 +21,7 @@ const Alert = props => {
 					[ALERT_ICON]: icon,
 				} = alertStore.state
 				return (
-					<Alert1
+					<AlertStrap
 						style={{ zIndex: 1000, marginTop: navbarHeight }}
 						isOpen={open}
 						toggle={() => {
@@ -37,7 +37,7 @@ const Alert = props => {
 							<i className={`${icon} mr-3`} />
 							<span>{body}</span>
 						</Container>
-					</Alert1>
+					</AlertStrap>
 				)
 			}}
 		</Subscribe>
