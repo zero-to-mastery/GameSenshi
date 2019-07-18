@@ -6,7 +6,7 @@ import UserContainer from 'state/UserContainer'
 import AlertContainer from 'state/AlertContainer'
 import AuthModalContainer from 'state/AuthModalContainer'
 import SignInContainer from 'state/SignInContainer'
-import ProgressContainer from 'state/AlertContainer'
+import ProgressContainer from 'state/ProgressContainer'
 
 const signUpStore = new SignUpContainer()
 const cardStore = new CardContainer()
