@@ -84,15 +84,15 @@ const handleSignUpWithEmailAndPassword = async (_, args) => {
 			return isEmailReal
 		}
 
-		const isCreateSuccess = await auth()
+		const isUerCreated = await auth()
 			.createUserWithEmailAndPassword(email, password)
 			.then(credential => ({ status: true, credential }))
 			.catch(err => ({ status: false, err }))
 
-		if (isCreateSuccess.status) {
+		if (isUerCreated.status) {
 			const {
 				credential: { user },
-			} = isCreateSuccess
+			} = isUerCreated
 			if (user && user.emailVerified === false) {
 				user.sendEmailVerification().catch(err => {
 					console.log('email user failed', err)
@@ -108,7 +108,7 @@ const handleSignUpWithEmailAndPassword = async (_, args) => {
 			}
 			return signUpResObj(true)
 		} else {
-			console.log('submit error', isCreateSuccess.err)
+			console.log('submit error', isUerCreated.err)
 			return signUpResObj(false, INTERNAL_ERROR_CODE_5, 5)
 		}
 	} catch (err) {
