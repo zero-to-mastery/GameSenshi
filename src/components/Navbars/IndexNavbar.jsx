@@ -194,6 +194,9 @@ class ComponentsNavbar extends React.Component {
 														backgroundColor: 'transparent',
 													}}>
 													<Media
+														onError={() => {
+															userStore.resetProfileImage()
+														}}
 														src={logo}
 														alt='Game Senshi'
 														className='img-raised'
@@ -299,6 +302,9 @@ class ComponentsNavbar extends React.Component {
 																		className='avatar'
 																		style={{ height: 36, width: 36 }}>
 																		<Media
+																			onError={() => {
+																				userStore.resetProfileImage()
+																			}}
 																			alt='user avatar'
 																			className='img-raised'
 																			style={{ height: 36, width: 36 }}

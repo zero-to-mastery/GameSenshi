@@ -19,11 +19,12 @@ import {
 import defaultAvatar from 'assets/img/placeholder.jpg'
 
 const defaultValues = {
+	[USER]: '',
 	[USER_UID]: '',
 	[USER_EMAIL]: '',
 	[USER_GENDER]: '',
 	[USER_COUNTRY]: '',
-	[USER_LANGUAGES]: ['English', 'French'],
+	[USER_LANGUAGES]: ['English'],
 	[USER_PHOTO_URL]: defaultAvatar,
 	[USER_SIGNED_IN]: false,
 	[USER_BIRTH_DATE]: new Date(2000, 0, 1),
@@ -35,10 +36,12 @@ const defaultValues = {
 
 class UserContainer extends Container {
 	state = defaultValues
+
 	resetState = () => {
 		this.setState(defaultValues)
 		return this
 	}
+
 	initialize = () => {
 		const user = JSON.parse(localStorage.getItem(USER))
 		// purposely set state in sync so that it show correct navBar on first rendering
@@ -48,6 +51,7 @@ class UserContainer extends Container {
 		}
 		return this
 	}
+
 	onSignUpWithPassword = (username, email) => {
 		this.setState({
 			[USER_DISPLAY_NAME]: username,
@@ -58,21 +62,27 @@ class UserContainer extends Container {
 		return this
 	}
 
-	onAuthStateChanged = (signInData = {}) => {
-		if (signInData) {
+	resetProfileImage = () => {
+		this.setState({ [USER_PHOTO_URL]: defaultAvatar })
+		return this
+	}
+
+	onAuthStateChanged = (signedInUser = {}) => {
+		if (signedInUser) {
 			const user = {
-				[USER_DISPLAY_NAME]: signInData[USER_DISPLAY_NAME],
-				[USER_EMAIL_IS_VERIFIED]: signInData[USER_EMAIL_IS_VERIFIED],
-				[USER_PHOTO_URL]: signInData[USER_PHOTO_URL] || defaultAvatar,
-				[USER_UID]: signInData[USER_UID],
+				[USER_DISPLAY_NAME]: signedInUser[USER_DISPLAY_NAME],
+				[USER_EMAIL_IS_VERIFIED]: signedInUser[USER_EMAIL_IS_VERIFIED],
+				[USER_PHOTO_URL]: signedInUser[USER_PHOTO_URL] || defaultAvatar,
+				[USER_UID]: signedInUser[USER_UID],
 			}
 			this.setState(state => {
 				return {
 					...state,
 					...user,
-					[USER_EMAIL]: signInData[USER_EMAIL],
-					[USER_PHONE_NUMBER]: signInData[USER_PHONE_NUMBER],
-					[USER_PROVIDER_DATA]: signInData[USER_PROVIDER_DATA],
+					[USER]: signedInUser,
+					[USER_EMAIL]: signedInUser[USER_EMAIL],
+					[USER_PHONE_NUMBER]: signedInUser[USER_PHONE_NUMBER],
+					[USER_PROVIDER_DATA]: signedInUser[USER_PROVIDER_DATA],
 					[USER_SIGNED_IN]: true,
 				}
 			})
