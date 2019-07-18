@@ -7,7 +7,7 @@ const resObj = (status = false, message = '', code = 9999, data = {}) => {
 const signUpResObj = (status = false, message = '', code = 9999, data = {}) => {
 	for (const key in data) {
 		if (!Array.isArray(data[key])) {
-			data[key] = [data[key]]
+			data[key] && (data[key] = [data[key]])
 		}
 	}
 	return resObj(status, message, code, data)
