@@ -143,11 +143,11 @@ const handleDifferentCredential = (auth, email, credential) => {
 }
 
 // user auth listener
-auth().onAuthStateChanged(signInData => {
+auth().onAuthStateChanged(signedInUser => {
 	authModalStore.onAuthStateChange()
-	userStore.onAuthStateChanged(signInData)
+	userStore.onAuthStateChanged(signedInUser)
 	// reset all store if user sign out
-	if (!signInData) {
+	if (!signedInUser) {
 		for (let store in allStore) {
 			allStore[store].resetState && allStore[store].resetState()
 		}
