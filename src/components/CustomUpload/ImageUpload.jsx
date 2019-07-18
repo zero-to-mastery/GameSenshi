@@ -1,15 +1,16 @@
 import React, { useRef } from 'react'
 import { firebaseDefaultStorage, auth } from 'firebaseInit'
 // state management
-import { userStore, alertStore, Subscribe } from 'state'
-//component
+import { userStore, alertStore, progressStore, Subscribe } from 'state'
+// component
 import { Button } from 'reactstrap'
-//constant
+// constants
 import {
 	USER_PHOTO_URL,
 	USER_UID,
 	FIREBASE_STORAGE_USER_AVATAR,
 } from 'constantValues'
+// image
 import defaultAvatar from 'assets/img/placeholder.jpg'
 
 const ImageUpload = props => {
@@ -31,6 +32,7 @@ const ImageUpload = props => {
 					snapshot => {
 						const { bytesTransferred, totalBytes } = snapshot
 						const percentage = (bytesTransferred / totalBytes) * 100
+						progressStore.show(Math.max(percentage, 10), 'primary')
 					},
 					err => {
 						alertStore.show(
@@ -48,19 +50,21 @@ const ImageUpload = props => {
 							)
 						})
 						if (url) {
+							userStore.setState({ [USER_PHOTO_URL]: url })
 							auth()
 								.currentUser.updateProfile({
 									[USER_PHOTO_URL]: url,
 								})
 								.then(() => {
+									progressStore.close()
 									alertStore.show(
 										'Imaged updated, It may take a few moments to update across the site.',
 										'success',
 										'tim-icons icon-bell-55'
 									)
-									userStore.setState({ [USER_PHOTO_URL]: url })
 								})
 								.catch(err => {
+									progressStore.close()
 									alertStore.show(
 										'Something went wrong, unable to update profile',
 										'danger',
