@@ -36,6 +36,7 @@ import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInModal from 'components/Modals/SignInModal'
 import Alert from 'components/Alert/Alert'
+import Progress from 'components/Progress/Progress'
 import ReactResizeDetector from 'react-resize-detector'
 // logo
 import logo from 'assets/img/favicon.ico'
@@ -169,6 +170,7 @@ class ComponentsNavbar extends React.Component {
 							<SignInModal />
 							<AuthModal />
 							<div className='fixed-top'>
+								<Progress />
 								<Navbar
 									style={{
 										zIndex: 90000,
