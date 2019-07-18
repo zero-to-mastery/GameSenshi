@@ -1,0 +1,6 @@
+const PROGRESS = 'progress'
+const PROGRESS_VALUE = PROGRESS + 'Value'
+const PROGRESS_COLOR = PROGRESS + 'Color'
+const PROGRESS_OPEN = PROGRESS + 'Open'
+
+export { PROGRESS_OPEN, PROGRESS_VALUE, PROGRESS_COLOR }

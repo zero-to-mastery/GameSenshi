@@ -16,6 +16,7 @@ import NotificationSettingsTabPane from 'components/TabPane/NotificationSettings
 import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary'
 import ImageUpload from 'components/CustomUpload/ImageUpload'
 import Alert from 'components/Alert/Alert'
+import Progress from 'components/Progress/Progress'
 
 export {
 	Footer,
@@ -38,4 +39,5 @@ export {
 	ErrorBoundary,
 	ImageUpload,
 	Alert,
+	Progress,
 }

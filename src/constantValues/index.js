@@ -132,6 +132,12 @@ import {
 	ROUTE_PAGE_PASSWORD_RESET,
 } from 'constantValues/RouteConstants'
 
+import {
+	PROGRESS_OPEN,
+	PROGRESS_VALUE,
+	PROGRESS_COLOR,
+} from 'constantValues/ProgressConstant'
+
 import { FIREBASE_STORAGE_USER_AVATAR } from 'constantValues/FirebaseConstants'
 
 export {
@@ -233,5 +239,8 @@ export {
 	ROUTE_PAGE_SETTINGS_ACCOUNT,
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
 	ROUTE_PAGE_PASSWORD_RESET,
+	PROGRESS_OPEN,
+	PROGRESS_VALUE,
+	PROGRESS_COLOR,
 	FIREBASE_STORAGE_USER_AVATAR,
 }
