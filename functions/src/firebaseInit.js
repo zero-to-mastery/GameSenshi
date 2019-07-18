@@ -44,8 +44,9 @@ admin.initializeApp()
 const auth = firebase.auth
 
 export {
-	functions,
 	auth,
+	admin,
+	functions,
 	corsWhitelist,
 	playgroundEnabled,
 	verifyEmailURL,
