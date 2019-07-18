@@ -2,10 +2,11 @@ import { Container } from 'unstated'
 
 import { PROGRESS_OPEN, PROGRESS_VALUE, PROGRESS_COLOR } from 'constantValues'
 
-const DEFAULT_COLOR = 'success'
+const DEFAULT_COLOR = 'primary'
+const DEFAULT_VALUE = '0'
 
 const defaultValues = {
-	[PROGRESS_VALUE]: '0',
+	[PROGRESS_VALUE]: DEFAULT_VALUE,
 	[PROGRESS_OPEN]: false,
 	[PROGRESS_COLOR]: DEFAULT_COLOR,
 }
@@ -18,7 +19,7 @@ class ProgressContainer extends Container {
 		return this
 	}
 
-	show = (value = '0', color = DEFAULT_COLOR) => {
+	show = (value = DEFAULT_VALUE, color = DEFAULT_COLOR) => {
 		this.setState({
 			[PROGRESS_OPEN]: true,
 			[PROGRESS_COLOR]: color,
