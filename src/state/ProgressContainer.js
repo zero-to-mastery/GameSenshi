@@ -27,6 +27,9 @@ class ProgressContainer extends Container {
 		})
 		return this
 	}
+	close = () => {
+		this.setState({ [PROGRESS_OPEN]: false })
+	}
 }
 
 export default ProgressContainer
