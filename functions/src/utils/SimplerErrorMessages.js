@@ -1,4 +1,4 @@
-const SimplerFirebaseErrorMessage = (error = '', defaultErrorMessage = '') => {
+const simplerFirebaseErrorMessage = (error = '', defaultErrorMessage = '') => {
 	const { code } = error
 	if (code.includes('network-request-failed')) {
 		return 'network failure'
@@ -6,4 +6,4 @@ const SimplerFirebaseErrorMessage = (error = '', defaultErrorMessage = '') => {
 	return defaultErrorMessage
 }
 
-export { SimplerFirebaseErrorMessage }
+export { simplerFirebaseErrorMessage }

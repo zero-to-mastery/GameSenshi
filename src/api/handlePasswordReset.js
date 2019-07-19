@@ -1,6 +1,6 @@
 import { auth } from 'firebaseInit'
 import { UNEXPECTED_ERROR_CODE_3 } from 'constantValues'
-import { SimplerFirebaseErrorMessage } from 'utils/SimplerErrorMessages'
+import { simplerFirebaseErrorMessage } from 'utils/SimplerErrorMessages'
 
 const handlePasswordReset = email => {
 	return auth()
@@ -9,7 +9,7 @@ const handlePasswordReset = email => {
 			// Email sent success, return undefined
 		})
 		.catch(err => {
-			return SimplerFirebaseErrorMessage(err, UNEXPECTED_ERROR_CODE_3)
+			return simplerFirebaseErrorMessage(err, UNEXPECTED_ERROR_CODE_3)
 		})
 }
 

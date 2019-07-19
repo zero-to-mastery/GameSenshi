@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import { simplerFirebaseErrorMessage } from 'utils/SimplerErrorMessages'
 
 import {
 	SIGN_UP,
@@ -54,7 +55,7 @@ const handleSignUpWithEmailAndPassword = (
 			return res[DATA][SIGN_UP]
 		})
 		.catch(err => {
-			return UNEXPECTED_ERROR_CODE_5
+			return simplerFirebaseErrorMessage(err, UNEXPECTED_ERROR_CODE_5)
 		})
 }
 
