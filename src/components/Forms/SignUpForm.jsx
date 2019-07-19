@@ -215,9 +215,7 @@ const SignUpForm = props => {
 																color='primary'
 																size='lg'
 																disabled={submitting}
-																onClick={() => {
-																	handleSubmit()
-																}}>
+																onClick={handleSubmit}>
 																{submitting ? (
 																	<>
 																		<Loader
