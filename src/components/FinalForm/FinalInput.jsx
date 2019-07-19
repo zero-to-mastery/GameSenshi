@@ -44,7 +44,6 @@ const FinalInput = props => {
 		className,
 		...restProps
 	} = props
-
 	// set default value
 	const willUnmount_ = willUnmount || { value: false } // TODO to solve memory leak issue, not yet success
 	const popoverMessages_ = popoverMessages || []
@@ -277,6 +276,7 @@ const FinalInput = props => {
 								<Label check>
 									<Input
 										{...restProps}
+										className={className}
 										id={input.name}
 										name={input.name}
 										value={input.value}
@@ -322,6 +322,7 @@ const FinalInput = props => {
 							<Select
 								// TODO need custom styling, icon, has-danger, has-success
 								{...restProps}
+								className={className}
 								id={input.name}
 								name={input.name}
 								value={container.state[name] || input.value}
