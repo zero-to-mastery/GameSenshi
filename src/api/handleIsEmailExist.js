@@ -1,6 +1,6 @@
 import { auth } from 'firebaseInit'
-
 import { UNEXPECTED_ERROR_CODE_1 } from 'constantValues'
+import { SimplerFirebaseErrorMessage } from 'utils/SimplerErrorMessages'
 
 const handleIsEmailExist = email => {
 	return auth()
@@ -13,7 +13,7 @@ const handleIsEmailExist = email => {
 			}
 		})
 		.catch(err => {
-			return UNEXPECTED_ERROR_CODE_1
+			return SimplerFirebaseErrorMessage(err, UNEXPECTED_ERROR_CODE_1)
 		})
 }
 

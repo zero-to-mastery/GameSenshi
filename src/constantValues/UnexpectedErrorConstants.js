@@ -1,9 +1,9 @@
-const UNEXPECTED_ERROR_CODE_1 = 'Internal Error Code 1'
-const UNEXPECTED_ERROR_CODE_2 = 'Internal Error Code 2'
-const UNEXPECTED_ERROR_CODE_3 = 'Internal Error Code 3'
-const UNEXPECTED_ERROR_CODE_4 = 'Internal Error Code 4'
-const UNEXPECTED_ERROR_CODE_5 = 'Internal Error Code 5'
-const UNEXPECTED_ERROR_CODE_6 = 'Internal Error Code 6'
+const UNEXPECTED_ERROR_CODE_1 = 'Unexpected Error Code 1'
+const UNEXPECTED_ERROR_CODE_2 = 'Unexpected Error Code 2'
+const UNEXPECTED_ERROR_CODE_3 = 'Unexpected Error Code 3'
+const UNEXPECTED_ERROR_CODE_4 = 'Unexpected Error Code 4'
+const UNEXPECTED_ERROR_CODE_5 = 'Unexpected Error Code 5'
+const UNEXPECTED_ERROR_CODE_6 = 'Unexpected Error Code 6'
 
 export {
 	UNEXPECTED_ERROR_CODE_1,

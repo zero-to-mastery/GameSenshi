@@ -1,5 +1,6 @@
 import { auth } from 'firebaseInit'
 import { UNEXPECTED_ERROR_CODE_3 } from 'constantValues'
+import { SimplerFirebaseErrorMessage } from 'utils/SimplerErrorMessages'
 
 const handlePasswordReset = email => {
 	return auth()
@@ -8,12 +9,7 @@ const handlePasswordReset = email => {
 			// Email sent success, return undefined
 		})
 		.catch(err => {
-			switch (err.code) {
-				case 'auth/network-request-failed':
-					return 'Network Failed'
-				default:
-					return UNEXPECTED_ERROR_CODE_3
-			}
+			return SimplerFirebaseErrorMessage(err, UNEXPECTED_ERROR_CODE_3)
 		})
 }
 

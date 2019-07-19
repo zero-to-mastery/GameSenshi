@@ -1,5 +1,6 @@
 import { auth } from 'firebaseInit'
 import { UNEXPECTED_ERROR_CODE_4 } from 'constantValues'
+import { SimplerFirebaseErrorMessage } from 'utils/SimplerErrorMessages'
 
 const handleSignInWithEmailAndPassword = async (email, password) => {
 	// sign in set local persistence by default, allowing user to auto sign in
@@ -16,10 +17,8 @@ const handleSignInWithEmailAndPassword = async (email, password) => {
 				case 'auth/user-not-found':
 				case 'auth/wrong-password':
 					return 'Invalid Email or Password'
-				case 'auth/network-request-failed':
-					return 'Network Failure'
 				default:
-					return UNEXPECTED_ERROR_CODE_4
+					return SimplerFirebaseErrorMessage(err, UNEXPECTED_ERROR_CODE_4)
 			}
 		})
 }
