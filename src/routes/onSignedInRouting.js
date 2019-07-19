@@ -6,13 +6,16 @@ import {
 } from 'constantValues'
 
 const onSignedInRouting = (history, lastLocation) => {
-	const { pathname } = lastLocation
-	if (
-		lastLocation &&
-		pathname.toLowerCase() !== ROUTE_PAGE_SIGN_IN.toLowerCase() &&
-		pathname.toLowerCase() !== ROUTE_PAGE_SIGN_UP.toLowerCase()
-	) {
-		history.goBack()
+	if (lastLocation) {
+		const { pathname } = lastLocation
+		if (
+			pathname.toLowerCase() !== ROUTE_PAGE_SIGN_IN.toLowerCase() &&
+			pathname.toLowerCase() !== ROUTE_PAGE_SIGN_UP.toLowerCase()
+		) {
+			history.goBack()
+		} else {
+			history.push(ROUTE_PAGE_INDEX)
+		}
 	} else {
 		history.push(ROUTE_PAGE_INDEX)
 	}
