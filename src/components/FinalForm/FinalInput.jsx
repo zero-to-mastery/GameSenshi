@@ -65,6 +65,7 @@ const FinalInput = props => {
 		promise: Promise.resolve(['Invalid']),
 		resolve: () => {},
 		fulfilled: true,
+		fulfilledServer: true,
 	})
 	const [spinner, showSpinner] = useState(false)
 	const [spinner2, showSpinner2] = useState(false)
@@ -113,7 +114,6 @@ const FinalInput = props => {
 		state.fulfilled = true
 		return finalList
 	}
-
 	return (
 		<Field
 			name={name}
@@ -124,13 +124,18 @@ const FinalInput = props => {
 					return (state.promise = new Promise(resolve => {
 						// cancel and invalidate previous validation (did not cancel server validation)
 						// do not reject when doing server validation
-						!spinner2 && state.resolve(['validating'])
+						state.resolve(['validating'])
+						if (serverValidation) {
+							showSpinner2(false)
+							state.fulfilledServer = false
+						}
 						state.resolve = resolve
 						state.fulfilled = false
 						container.setState(state => {
 							state[name + IS_VALID] = false
 							return state
 						})
+						// don't show spinner on first time(when delay=0)
 						state.delay && showSpinner(true)
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
@@ -139,11 +144,16 @@ const FinalInput = props => {
 								.then(() => {
 									if (serverValidation) {
 										showSpinner2(true)
+										state.fulfilled = true
 										// server side validation on typing
 										serverValidation(container.state[name] || '').then(
 											validationResult => {
-												generateFinalListWithState(validationResult, resolve)
-												showSpinner2(false)
+												// do not close run this if user resume typing before server validation end
+												if (state.fulfilled) {
+													showSpinner2(false)
+													generateFinalListWithState(validationResult, resolve)
+													state.fulfilledServer = true
+												}
 											}
 										)
 									} else {
@@ -155,6 +165,8 @@ const FinalInput = props => {
 								})
 						}, state.delay)
 						state.timeOutID = timeOutID
+					}).catch(e => {
+						console.log('123', e)
 					}))
 				}
 				return state.promise
@@ -163,6 +175,10 @@ const FinalInput = props => {
 				// so always return your own promise that has been made
 			}}>
 			{({ input, meta }) => {
+				if (name === 'email') {
+					console.log(input.value)
+				}
+
 				const {
 					touched,
 					active,
@@ -263,7 +279,10 @@ const FinalInput = props => {
 															//console.log(e)
 														}
 													},
-													state.fulfilled ? 0 : DELAY
+													state.fulfilled &&
+														(!serverValidation || state.fulfilledServer)
+														? 0
+														: DELAY
 												)
 											)
 										}
