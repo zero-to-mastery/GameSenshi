@@ -53,7 +53,7 @@ const FinalInput = props => {
 	const onBlur_ = onBlur || (() => {})
 	const Group = icon ? InputGroup : FormGroup
 
-	const ref = useRef(null)
+	const onHeightChangeRef = useRef(null)
 
 	const [finalList, setFinalList] = useState([])
 	const [popoverItemFailed] = useState({ items: {} })
@@ -82,7 +82,7 @@ const FinalInput = props => {
 	const onResize = () => {
 		// change parent component height if needed
 		container.setState(state => {
-			state[name + EXTRA_HEIGHT] = ref.current.clientHeight
+			state[name + EXTRA_HEIGHT] = onHeightChangeRef.current.clientHeight
 			return state
 		})
 	}
@@ -253,7 +253,16 @@ const FinalInput = props => {
 											setOnSubmitTimeOutId(
 												setTimeout(
 													() => {
-														submitRef.current.onClick()
+														try {
+															// ! the ref is real dom node, it doesn't trigger react synthetic event
+															// ! thus no event handler is available to onClick
+															// ! final form handleSubmit need event handler occasionally (need more research)
+															// ! if we catch the error when handleSubmit need the event handler (which is undefined)
+															// ! the program can continue to work normally (need more research)
+															submitRef.current.onClick()
+														} catch (e) {
+															//console.log(e)
+														}
 													},
 													state.fulfilled ? 0 : DELAY
 												)
@@ -388,7 +397,7 @@ const FinalInput = props => {
 							</Popover>
 						)}
 						<div
-							ref={ref} // function component cannot have ref, class and html element can
+							ref={onHeightChangeRef} // function component cannot have ref, class and html element can
 						>
 							{(!onlyShowErrorOnSubmit ||
 								submitFailed ||
