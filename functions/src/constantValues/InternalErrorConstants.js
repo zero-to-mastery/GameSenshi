@@ -1,5 +1,5 @@
 const INTERNAL_ERROR_CODE_1 = 'Internal Error Code 1'
-const INTERNAL_ERROR_CODE_2 = 'Internal Error Code 2'
+const INTERNAL_ERROR_CODE_2 = 'Invalid Form Field'
 const INTERNAL_ERROR_CODE_3 = 'Invalid Email'
 const INTERNAL_ERROR_CODE_4 = 'Internal Error Code 4'
 const INTERNAL_ERROR_CODE_5 = 'Internal Error Code 4'
