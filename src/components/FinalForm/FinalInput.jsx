@@ -175,10 +175,6 @@ const FinalInput = props => {
 				// so always return your own promise that has been made
 			}}>
 			{({ input, meta }) => {
-				if (name === 'email') {
-					console.log(input.value)
-				}
-
 				const {
 					touched,
 					active,
