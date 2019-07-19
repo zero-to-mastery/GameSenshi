@@ -52,11 +52,9 @@ const handleSignUpWithEmailAndPassword = (
 			},
 		})
 		.then(res => {
-			console.log(res)
 			return res[DATA][SIGN_UP]
 		})
 		.catch(err => {
-			console.log(err)
 			return simplerFirebaseErrorMessage(err, UNEXPECTED_ERROR_CODE_5)
 		})
 }
