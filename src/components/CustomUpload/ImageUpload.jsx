@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { firebaseDefaultStorage, auth } from 'firebaseInit'
 // state management
-import { userStore, alertStore, progressStore, Subscribe } from 'state'
+import { userStore, alertStoreShow, progressStore, Subscribe } from 'state'
 // component
 import { Button } from 'reactstrap'
 // constants
@@ -20,6 +20,7 @@ const ImageUpload = props => {
 		e.preventDefault()
 		const reader = new FileReader()
 		const file = e.target.files[0]
+
 		if (file) {
 			const avatarRef = firebaseDefaultStorage.ref(
 				`${FIREBASE_STORAGE_USER_AVATAR}/${userStore.state[USER_UID]}.jpg`
@@ -33,7 +34,7 @@ const ImageUpload = props => {
 					progressStore.show(Math.max(percentage, 10), 'primary')
 				},
 				err => {
-					alertStore.show(
+					alertStoreShow(
 						'Something went wrong, upload profile image failed',
 						'danger',
 						'tim-icons icon-alert-circle-exc'
@@ -41,7 +42,7 @@ const ImageUpload = props => {
 				},
 				async () => {
 					const url = await avatarRef.getDownloadURL().catch(() => {
-						alertStore.show(
+						alertStoreShow(
 							'Something went wrong, unable to update image',
 							'danger',
 							'tim-icons icon-alert-circle-exc'
@@ -55,7 +56,7 @@ const ImageUpload = props => {
 							})
 							.then(() => {
 								progressStore.close()
-								alertStore.show(
+								alertStoreShow(
 									'Imaged updated, It may take a few moments to update across the site.',
 									'success',
 									'tim-icons icon-bell-55'
@@ -63,7 +64,7 @@ const ImageUpload = props => {
 							})
 							.catch(err => {
 								progressStore.close()
-								alertStore.show(
+								alertStoreShow(
 									'Something went wrong, unable to update profile',
 									'danger',
 									'tim-icons icon-alert-circle-exc'

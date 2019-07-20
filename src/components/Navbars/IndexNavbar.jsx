@@ -2,7 +2,13 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { auth } from 'firebaseInit'
 // state
-import { userStore, alertStore, Subscribe } from 'state'
+import {
+	userStore,
+	alertStore,
+	alertStateToggle,
+	Subscribe,
+	ALERT_STATE_OPEN,
+} from 'state'
 // reactstrap components
 import {
 	Collapse,
@@ -24,7 +30,6 @@ import {
 import {
 	USER_SIGNED_IN,
 	USER_DISPLAY_NAME,
-	ALERT_OPEN,
 	USER_PHOTO_URL,
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
@@ -35,9 +40,8 @@ import AuthModal from 'components/Modals/AuthModal'
 import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInModal from 'components/Modals/SignInModal'
-import CommonAlert from 'components/Alert/CommonAlert'
+import { CommonAlertContainerAlert } from 'components/CommonAlert'
 import Progress from 'components/Progress/Progress'
-import ReactResizeDetector from 'react-resize-detector'
 // logo
 import logo from 'assets/img/favicon.ico'
 
@@ -93,7 +97,8 @@ class ComponentsNavbar extends React.Component {
 		) {
 			this.setState({
 				color:
-					(alertStore.state[ALERT_OPEN] && bgPurple) || 'navbar-transparent',
+					(alertStore.state[ALERT_STATE_OPEN] && bgPurple) ||
+					'navbar-transparent',
 			})
 		}
 	}
@@ -151,7 +156,7 @@ class ComponentsNavbar extends React.Component {
 						[USER_SIGNED_IN]: signedIn,
 						[USER_PHOTO_URL]: avatarURL,
 					} = userStore.state
-					const { [ALERT_OPEN]: alertOpen } = alertStore.state
+					const { [ALERT_STATE_OPEN]: alertOpen } = alertStore.state
 					return (
 						<>
 							<SignInModal />
@@ -502,7 +507,12 @@ class ComponentsNavbar extends React.Component {
 										</Collapse>
 									</Container>
 								</Navbar>
-								<CommonAlert setNavbarState={setState} />
+								<CommonAlertContainerAlert
+									toggle={() => {
+										setState({ color: 'navbar-transparent' })
+										alertStateToggle()
+									}}
+								/>
 							</div>
 						</>
 					)

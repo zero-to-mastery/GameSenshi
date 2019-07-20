@@ -28,7 +28,7 @@ import {
 	passwordPopoverMessages,
 } from 'utils/validation'
 // state management
-import { signUpStore, alertStore, userStore, Subscribe } from 'state'
+import { signUpStore, alertStoreShow, userStore, Subscribe } from 'state'
 // react libraries components
 import {
 	Button,
@@ -89,9 +89,13 @@ const onSubmit = async (values, apolloClient, callback = () => {}) => {
 					</a>
 				</>
 			)
-			alertStore.show(alertBody, 'success', 'tim-icons icon-bell-55')
-			handleSignInWithEmailAndPassword(email, password)
-			callback()
+			try {
+				alertStoreShow(alertBody, 'success', 'tim-icons icon-bell-55')
+				handleSignInWithEmailAndPassword(email, password)
+				callback()
+			} catch (e) {
+				console.log(e)
+			}
 			// if undefined mean no error
 			// but this not much point since it will redirect and unmount soon
 			return

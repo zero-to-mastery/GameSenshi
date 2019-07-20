@@ -6,7 +6,7 @@ import 'firebase/auth'
 import 'firebase/functions'
 import 'firebase/storage'
 // states
-import { alertStore, authModalStore, userStore, signInStore } from 'state'
+import { alertStoreShow, authModalStore, userStore, signInStore } from 'state'
 import * as allStore from 'state'
 // routing
 import { onSignedOutRouting } from 'routes'
@@ -98,7 +98,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 								.currentUser.linkWithCredential(credential)
 								.then(async () => {
 									await authModalStore.close()
-									alertStore.show(
+									alertStoreShow(
 										'Social login linked successful!',
 										'success',
 										'tim-icons icon-bell-55'
@@ -106,7 +106,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 								})
 								.catch(async () => {
 									await authModalStore.close()
-									alertStore.show(
+									alertStoreShow(
 										'Social login linked unsuccessful!',
 										'danger',
 										'tim-icons icon-alert-circle-exc'
@@ -149,7 +149,11 @@ auth().onAuthStateChanged(signedInUser => {
 	// reset all store if user sign out
 	if (!signedInUser) {
 		for (let store in allStore) {
-			allStore[store].resetState && allStore[store].resetState()
+			try {
+				allStore[store].resetState()
+			} catch (e) {
+				//
+			}
 		}
 		onSignedOutRouting()
 	}
@@ -161,7 +165,7 @@ auth()
 	.then(result => {
 		// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 		const showAlert = name2 => {
-			alertStore.show(
+			alertStoreShow(
 				<span>
 					Successfully linked your <strong>{name2}</strong> account!
 				</span>,

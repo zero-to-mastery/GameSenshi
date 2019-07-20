@@ -13,14 +13,8 @@ import {
 	IS_VALID,
 	EXTRA_HEIGHT,
 	SUBMIT_ERRORS,
+	RESET_STATE,
 } from 'constantValues/CommonConstants'
-
-import {
-	ALERT_BODY,
-	ALERT_COLOR,
-	ALERT_OPEN,
-	ALERT_ICON,
-} from 'constantValues/AlertConstants'
 
 import {
 	SIGN_UP,
@@ -152,10 +146,7 @@ export {
 	IS_VALID,
 	EXTRA_HEIGHT,
 	SUBMIT_ERRORS,
-	ALERT_BODY,
-	ALERT_COLOR,
-	ALERT_OPEN,
-	ALERT_ICON,
+	RESET_STATE,
 	SIGN_UP,
 	SIGN_UP_GQL_INPUT,
 	SIGN_UP_EMAIL,

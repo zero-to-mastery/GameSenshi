@@ -8,14 +8,13 @@ import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInForm from 'components/Forms/SignInForm'
 import SignUpForm from 'components/Forms/SignUpForm'
-//import UsernameForm from 'components/Forms/UsernameForm'
 import GeneralSettingsTabPane from 'components/TabPane/GeneralSettingsTabPane'
 import BillingSettingsTabPane from 'components/TabPane/BillingSettingsTabPane'
 import AccountSettingsTabPane from 'components/TabPane/AccountSettingsTabPane'
 import NotificationSettingsTabPane from 'components/TabPane/NotificationSettingsTabPane'
 import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary'
 import ImageUpload from 'components/CustomUpload/ImageUpload'
-import CommonAlert from 'components/Alert/CommonAlert'
+import { CommonAlertContainerAlert } from 'components/CommonAlert'
 import Progress from 'components/Progress/Progress'
 
 export {
@@ -28,7 +27,6 @@ export {
 	AuthModal,
 	SignInForm,
 	SignUpForm,
-	//UsernameForm,
 	SignUpButton,
 	SignInButton,
 	SocialAuthButtonGroup,
@@ -38,6 +36,6 @@ export {
 	NotificationSettingsTabPane,
 	ErrorBoundary,
 	ImageUpload,
-	CommonAlert,
+	CommonAlertContainerAlert,
 	Progress,
 }
