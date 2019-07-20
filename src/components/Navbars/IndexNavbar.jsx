@@ -35,7 +35,7 @@ import AuthModal from 'components/Modals/AuthModal'
 import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInModal from 'components/Modals/SignInModal'
-import Alert from 'components/Alert/Alert'
+import CommonAlert from 'components/Alert/CommonAlert'
 import Progress from 'components/Progress/Progress'
 import ReactResizeDetector from 'react-resize-detector'
 // logo
@@ -98,12 +98,6 @@ class ComponentsNavbar extends React.Component {
 		}
 	}
 
-	onResize = (width, height) => {
-		this.setState({
-			navbarHeight: height,
-		})
-	}
-
 	toggleCollapse = () => {
 		document.documentElement.classList.toggle('nav-open')
 		this.setState(state => {
@@ -139,15 +133,8 @@ class ComponentsNavbar extends React.Component {
 				history,
 				location: { pathname },
 			},
-			state: {
-				color,
-				collapseOpen,
-				collapseOut,
-				overWidthBreakPoint,
-				navbarHeight,
-			},
+			state: { color, collapseOpen, collapseOut, overWidthBreakPoint },
 			setState,
-			onResize,
 			toggleCollapse,
 			onCollapseExiting,
 			onCollapseExited,
@@ -515,9 +502,8 @@ class ComponentsNavbar extends React.Component {
 										</Collapse>
 									</Container>
 								</Navbar>
-								<ReactResizeDetector handleHeight onResize={onResize} />
+								<CommonAlert setNavbarState={setState} />
 							</div>
-							<Alert navbarHeight={navbarHeight} setNavbarState={setState} />
 						</>
 					)
 				}}

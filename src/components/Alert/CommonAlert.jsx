@@ -2,13 +2,11 @@ import React from 'react'
 // state
 import { alertStore, Subscribe } from 'state'
 // reactstrap components
-import { Container, Alert as AlertStrap } from 'reactstrap'
+import { Container, Alert } from 'reactstrap'
 // constants
 import { ALERT_OPEN, ALERT_BODY, ALERT_COLOR, ALERT_ICON } from 'constantValues'
 
-const Alert = props => {
-	const { navbarHeight } = props
-
+const CommonAlert = props => {
 	const setNavbarState = props.setNavbarState || (() => {})
 
 	return (
@@ -21,8 +19,7 @@ const Alert = props => {
 					[ALERT_ICON]: icon,
 				} = alertStore.state
 				return (
-					<AlertStrap
-						style={{ zIndex: 1000, marginTop: navbarHeight }}
+					<Alert
 						isOpen={open}
 						toggle={() => {
 							setNavbarState({ color: 'navbar-transparent' })
@@ -32,16 +29,16 @@ const Alert = props => {
 							})
 						}}
 						color={color}
-						className='alert-with-icon d-flex align-items-center fixed-top'>
+						className='alert-with-icon d-flex align-items-center '>
 						<Container>
 							<i className={`${icon} mr-3`} />
 							<span>{body}</span>
 						</Container>
-					</AlertStrap>
+					</Alert>
 				)
 			}}
 		</Subscribe>
 	)
 }
 
-export default Alert
+export default CommonAlert

@@ -15,7 +15,7 @@ import AccountSettingsTabPane from 'components/TabPane/AccountSettingsTabPane'
 import NotificationSettingsTabPane from 'components/TabPane/NotificationSettingsTabPane'
 import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary'
 import ImageUpload from 'components/CustomUpload/ImageUpload'
-import Alert from 'components/Alert/Alert'
+import CommonAlert from 'components/Alert/CommonAlert'
 import Progress from 'components/Progress/Progress'
 
 export {
@@ -38,6 +38,6 @@ export {
 	NotificationSettingsTabPane,
 	ErrorBoundary,
 	ImageUpload,
-	Alert,
+	CommonAlert,
 	Progress,
 }
