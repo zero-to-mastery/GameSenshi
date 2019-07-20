@@ -133,7 +133,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 							name2,
 							isLinked: false,
 						}
-						authModalStore.setItemInSessionStorage(body, title, restProps)
+						authModalStore.setItemInSessionStorage(title, body, restProps)
 						auth().signInWithRedirect(new auth[provider1]())
 					}
 				})
