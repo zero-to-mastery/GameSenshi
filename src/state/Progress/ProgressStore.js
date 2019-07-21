@@ -1,5 +1,5 @@
 import { Container } from 'unstated'
-import { RESET_STATE } from 'constantValues'
+import { STATE, SET_STATE, RESET_STATE } from 'constantValues'
 
 const PROGRESS_STATE_VALUE = 'value'
 const PROGRESS_STATE_COLOR = 'color'
@@ -18,29 +18,30 @@ const defaultValues = {
 }
 
 class ProgressStore extends Container {
-	state = defaultValues
-}
+	constructor() {
+		super()
+		this[STATE] = defaultValues
+		this[SET_STATE] = this[SET_STATE].bind(this)
+	}
 
-ProgressStore.prototype[RESET_STATE] = function() {
-	this.setState(defaultValues)
-	return this
-}
+	[RESET_STATE] = () => {
+		this.setState(defaultValues)
+		return this
+	};
 
-ProgressStore.prototype[PROGRESS_SHOW] = function(
-	value = DEFAULT_VALUE,
-	color = DEFAULT_COLOR
-) {
-	this.setState({
-		[PROGRESS_STATE_OPEN]: true,
-		[PROGRESS_STATE_COLOR]: color,
-		[PROGRESS_STATE_VALUE]: value,
-	})
-	return this
-}
+	[PROGRESS_SHOW] = (value = DEFAULT_VALUE, color = DEFAULT_COLOR) => {
+		this.setState({
+			[PROGRESS_STATE_OPEN]: true,
+			[PROGRESS_STATE_COLOR]: color,
+			[PROGRESS_STATE_VALUE]: value,
+		})
+		return this
+	};
 
-ProgressStore.prototype[PROGRESS_CLOSE] = function() {
-	this.setState(defaultValues)
-	return this
+	[PROGRESS_CLOSE] = () => {
+		this.setState(defaultValues)
+		return this
+	}
 }
 
 export {
@@ -50,4 +51,7 @@ export {
 	PROGRESS_STATE_OPEN,
 	PROGRESS_SHOW,
 	PROGRESS_CLOSE,
+	STATE,
+	SET_STATE,
+	RESET_STATE,
 }
