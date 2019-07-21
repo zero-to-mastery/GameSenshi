@@ -31,7 +31,10 @@ const ImageUpload = props => {
 				snapshot => {
 					const { bytesTransferred, totalBytes } = snapshot
 					const percentage = (bytesTransferred / totalBytes) * 100
-					progressStore.show(Math.max(percentage, 10), 'primary')
+					progressStore.show(
+						Math.max(percentage, Math.floor(10 + Math.random() * 10)),
+						'primary'
+					)
 				},
 				err => {
 					alertStoreShow(

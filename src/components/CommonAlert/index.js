@@ -35,4 +35,4 @@ const CommonAlertStoreAlert = StateContainer(
 	alertStoreMethodToPropsMap
 )
 
-export { CommonAlertStoreAlert }
+export { CommonAlert, CommonAlertStoreAlert }

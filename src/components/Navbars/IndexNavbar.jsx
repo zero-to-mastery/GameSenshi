@@ -35,7 +35,7 @@ import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInModal from 'components/Modals/SignInModal'
 import { CommonAlertStoreAlert } from 'components/CommonAlert'
-import Progress from 'components/Progress/Progress'
+import { CommonProgressStoreProgress } from 'components/CommonProgress'
 // logo
 import logo from 'assets/img/favicon.ico'
 
@@ -156,7 +156,7 @@ class ComponentsNavbar extends React.Component {
 							<SignInModal />
 							<AuthModal />
 							<div className='fixed-top'>
-								<Progress />
+								<CommonProgressStoreProgress />
 								<Navbar
 									style={{
 										zIndex: 90000,

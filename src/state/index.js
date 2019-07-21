@@ -17,14 +17,23 @@ import {
 } from 'state/Alert'
 import AuthModalContainer from 'state/AuthModalContainer'
 import SignInContainer from 'state/SignInContainer'
-import ProgressContainer from 'state/ProgressContainer'
+import {
+	progressStore,
+	progressStoreShow,
+	progressStoreClose,
+	progressStoreSetState,
+	PROGRESS_VALUE,
+	PROGRESS_COLOR,
+	PROGRESS_OPEN,
+	PROGRESS_SHOW,
+	PROGRESS_CLOSE,
+} from 'state/Progress'
 
 const signUpStore = new SignUpContainer()
 const cardStore = new CardContainer()
 const userStore = new UserContainer()
 const authModalStore = new AuthModalContainer()
 const signInStore = new SignInContainer()
-const progressStore = new ProgressContainer()
 
 export {
 	Provider,
@@ -35,7 +44,6 @@ export {
 	userStore,
 	authModalStore,
 	signInStore,
-	progressStore,
 	alertStore,
 	alertStoreShow,
 	alertStoreToggle,
@@ -46,4 +54,13 @@ export {
 	ALERT_STATE_COLOR,
 	ALERT_SHOW,
 	ALERT_TOGGLE,
+	progressStore,
+	progressStoreShow,
+	progressStoreClose,
+	progressStoreSetState,
+	PROGRESS_VALUE,
+	PROGRESS_COLOR,
+	PROGRESS_OPEN,
+	PROGRESS_SHOW,
+	PROGRESS_CLOSE,
 }

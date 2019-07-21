@@ -14,8 +14,11 @@ import AccountSettingsTabPane from 'components/TabPane/AccountSettingsTabPane'
 import NotificationSettingsTabPane from 'components/TabPane/NotificationSettingsTabPane'
 import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary'
 import ImageUpload from 'components/CustomUpload/ImageUpload'
-import { CommonAlertStoreAlert } from 'components/CommonAlert'
-import Progress from 'components/Progress/Progress'
+import { CommonAlert, CommonAlertStoreAlert } from 'components/CommonAlert'
+import {
+	CommonProgress,
+	CommonProgressStoreProgress,
+} from 'components/CommonProgress'
 
 export {
 	Footer,
@@ -36,6 +39,8 @@ export {
 	NotificationSettingsTabPane,
 	ErrorBoundary,
 	ImageUpload,
+	CommonAlert,
 	CommonAlertStoreAlert,
-	Progress,
+	CommonProgress,
+	CommonProgressStoreProgress,
 }
