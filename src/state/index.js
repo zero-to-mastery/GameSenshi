@@ -1,4 +1,5 @@
 import { Subscribe, Provider } from 'unstated'
+import { STATE } from 'constantValues'
 import { StateContainer } from 'state/StateContainer'
 import SignUpContainer from 'state/SignUpContainer'
 import CardContainer from 'state/CardContainer'
@@ -8,10 +9,11 @@ import {
 	alertStoreShow,
 	alertStoreToggle,
 	alertStoreSetState,
+	alertStoreResetState,
 	ALERT_STATE_BODY,
-	ALERT_STATE_ICON,
 	ALERT_STATE_OPEN,
 	ALERT_STATE_COLOR,
+	ALERT_STATE_ICON,
 	ALERT_SHOW,
 	ALERT_TOGGLE,
 } from 'state/Alert'
@@ -22,6 +24,7 @@ import {
 	progressStoreShow,
 	progressStoreClose,
 	progressStoreSetState,
+	progressStoreResetState,
 	PROGRESS_STATE_VALUE,
 	PROGRESS_STATE_COLOR,
 	PROGRESS_STATE_OPEN,
@@ -36,6 +39,7 @@ const authModalStore = new AuthModalContainer()
 const signInStore = new SignInContainer()
 
 export {
+	STATE,
 	Provider,
 	Subscribe,
 	StateContainer,
@@ -48,16 +52,18 @@ export {
 	alertStoreShow,
 	alertStoreToggle,
 	alertStoreSetState,
+	alertStoreResetState,
 	ALERT_STATE_BODY,
-	ALERT_STATE_ICON,
 	ALERT_STATE_OPEN,
 	ALERT_STATE_COLOR,
+	ALERT_STATE_ICON,
 	ALERT_SHOW,
 	ALERT_TOGGLE,
 	progressStore,
 	progressStoreShow,
 	progressStoreClose,
 	progressStoreSetState,
+	progressStoreResetState,
 	PROGRESS_STATE_VALUE,
 	PROGRESS_STATE_COLOR,
 	PROGRESS_STATE_OPEN,
