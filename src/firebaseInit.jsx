@@ -10,6 +10,8 @@ import { alertStoreShow, authModalStore, userStore, signInStore } from 'state'
 import * as allStore from 'state'
 // routing
 import { onSignedOutRouting } from 'routes'
+//constants
+import { RESET_STATE } from 'constantValues'
 
 const env = process.env
 
@@ -150,7 +152,7 @@ auth().onAuthStateChanged(signedInUser => {
 	if (!signedInUser) {
 		for (let store in allStore) {
 			try {
-				allStore[store].resetState()
+				allStore[store][RESET_STATE]()
 			} catch (e) {
 				//
 			}
