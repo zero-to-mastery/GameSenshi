@@ -2,7 +2,13 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { auth } from 'firebaseInit'
 // state
-import { userStore, alertStore, Subscribe, ALERT_STATE_OPEN } from 'state'
+import {
+	userStore,
+	alertStore,
+	Subscribe,
+	ALERT_STATE_OPEN,
+	STATE,
+} from 'state'
 // reactstrap components
 import {
 	Collapse,
@@ -91,7 +97,7 @@ class ComponentsNavbar extends React.Component {
 		) {
 			this.setState({
 				color:
-					(alertStore.state[ALERT_STATE_OPEN] && bgPurple) ||
+					(alertStore[STATE][ALERT_STATE_OPEN] && bgPurple) ||
 					'navbar-transparent',
 			})
 		}
