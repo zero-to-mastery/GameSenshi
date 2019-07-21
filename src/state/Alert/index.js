@@ -1,4 +1,3 @@
-import { AlertContainer } from 'state/Alert/AlertContainer'
 import {
 	AlertStore,
 	ALERT_STATE_BODY,
@@ -18,7 +17,6 @@ const alertStoreSetState = alertStore.setState.bind(alertStore)
 
 export {
 	alertStore,
-	AlertContainer,
 	alertStoreShow,
 	alertStateToggle,
 	alertStoreSetState,
