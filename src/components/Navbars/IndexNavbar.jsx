@@ -40,7 +40,7 @@ import AuthModal from 'components/Modals/AuthModal'
 import SignUpButton from 'components/Buttons/SignUpButton'
 import SignInButton from 'components/Buttons/SignInButton'
 import SignInModal from 'components/Modals/SignInModal'
-import { CommonAlertContainerAlert } from 'components/CommonAlert'
+import { CommonAlertStoreAlert } from 'components/CommonAlert'
 import Progress from 'components/Progress/Progress'
 // logo
 import logo from 'assets/img/favicon.ico'
@@ -507,7 +507,7 @@ class ComponentsNavbar extends React.Component {
 										</Collapse>
 									</Container>
 								</Navbar>
-								<CommonAlertContainerAlert
+								<CommonAlertStoreAlert
 									toggle={() => {
 										setState({ color: 'navbar-transparent' })
 										alertStateToggle()
