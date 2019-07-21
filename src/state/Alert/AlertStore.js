@@ -5,8 +5,10 @@ const ALERT_STATE_BODY = 'body'
 const ALERT_STATE_OPEN = 'open'
 const ALERT_STATE_COLOR = 'color'
 const ALERT_STATE_ICON = 'icon'
+
 const ALERT_TOGGLE = 'toggle'
 const ALERT_SHOW = 'show'
+
 const DEFAULT_ICON = 'tim-icons icon-bell-55'
 const DEFAULT_COLOR = 'success'
 
