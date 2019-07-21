@@ -13,6 +13,8 @@ import {
 	IS_VALID,
 	EXTRA_HEIGHT,
 	SUBMIT_ERRORS,
+	STATE,
+	SET_STATE,
 	RESET_STATE,
 } from 'constantValues/CommonConstants'
 
@@ -140,6 +142,8 @@ export {
 	IS_VALID,
 	EXTRA_HEIGHT,
 	SUBMIT_ERRORS,
+	STATE,
+	SET_STATE,
 	RESET_STATE,
 	SIGN_UP,
 	SIGN_UP_GQL_INPUT,

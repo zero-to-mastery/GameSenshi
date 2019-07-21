@@ -7,6 +7,8 @@ const IS_VALID = 'IsValid'
 const EXTRA_HEIGHT = 'ExtraHeight'
 const SUBMIT_ERRORS = 'SubmitErrors'
 const RESET_STATE = 'resetState'
+const STATE = 'state'
+const SET_STATE = 'setState'
 
 const MONTH_NAMES = [
 	'',
@@ -60,5 +62,7 @@ export {
 	IS_VALID,
 	EXTRA_HEIGHT,
 	SUBMIT_ERRORS,
+	STATE,
+	SET_STATE,
 	RESET_STATE,
 }
