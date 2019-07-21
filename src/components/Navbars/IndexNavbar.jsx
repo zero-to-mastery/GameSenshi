@@ -2,13 +2,7 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { auth } from 'firebaseInit'
 // state
-import {
-	userStore,
-	alertStore,
-	alertStateToggle,
-	Subscribe,
-	ALERT_STATE_OPEN,
-} from 'state'
+import { userStore, alertStore, Subscribe, ALERT_STATE_OPEN } from 'state'
 // reactstrap components
 import {
 	Collapse,
@@ -510,7 +504,6 @@ class ComponentsNavbar extends React.Component {
 								<CommonAlertStoreAlert
 									toggle={() => {
 										setState({ color: 'navbar-transparent' })
-										alertStateToggle()
 									}}
 								/>
 							</div>

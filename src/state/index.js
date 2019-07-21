@@ -6,12 +6,14 @@ import UserContainer from 'state/UserContainer'
 import {
 	alertStore,
 	alertStoreShow,
-	alertStateToggle,
+	alertStoreToggle,
 	alertStoreSetState,
 	ALERT_STATE_BODY,
 	ALERT_STATE_ICON,
 	ALERT_STATE_OPEN,
 	ALERT_STATE_COLOR,
+	ALERT_SHOW,
+	ALERT_TOGGLE,
 } from 'state/Alert'
 import AuthModalContainer from 'state/AuthModalContainer'
 import SignInContainer from 'state/SignInContainer'
@@ -36,10 +38,12 @@ export {
 	progressStore,
 	alertStore,
 	alertStoreShow,
-	alertStateToggle,
+	alertStoreToggle,
 	alertStoreSetState,
 	ALERT_STATE_BODY,
 	ALERT_STATE_ICON,
 	ALERT_STATE_OPEN,
 	ALERT_STATE_COLOR,
+	ALERT_SHOW,
+	ALERT_TOGGLE,
 }
