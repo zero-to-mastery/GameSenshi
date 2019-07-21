@@ -17,11 +17,11 @@ const propNames = [
 	ALERT_STATE_COLOR,
 ]
 
-const AlertContainer = (Comp, alertStore, componentPropsName) => {
+const AlertContainer = (Comp, alertStore, componentPropNames) => {
 	return props => (
 		<Subscribe to={[alertStore]}>
 			{alertStore => {
-				const customProps = componentPropsName.reduce((acc, name, i) => {
+				const customProps = componentPropNames.reduce((acc, name, i) => {
 					acc[name] = alertStore.state[propNames[i]]
 					return acc
 				}, {})
