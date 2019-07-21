@@ -28,7 +28,7 @@ class AlertStore extends Container {
 	}
 }
 
-//cannot use arrow function here
+//cannot use arrow function here because it cant be rebind with "new"
 AlertStore.prototype[RESET_STATE] = function() {
 	this.setState(defaultValues)
 	return this
