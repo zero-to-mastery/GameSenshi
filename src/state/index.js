@@ -26,7 +26,7 @@ import {
 	signInStoreOnSuccessfulSubmission,
 	SIGN_IN_STORE_STATE_EMAIL,
 	SIGN_IN_STORE_STATE_IS_OPEN,
-	SIGN_IN_STORE_STATE_CALLBACK,
+	SIGN_IN_STORE_STATE_SIGNED_IN_CALLBACK,
 } from 'state/SignIn'
 import {
 	progressStore,
@@ -79,5 +79,5 @@ export {
 	signInStoreOnSuccessfulSubmission,
 	SIGN_IN_STORE_STATE_EMAIL,
 	SIGN_IN_STORE_STATE_IS_OPEN,
-	SIGN_IN_STORE_STATE_CALLBACK,
+	SIGN_IN_STORE_STATE_SIGNED_IN_CALLBACK,
 }
