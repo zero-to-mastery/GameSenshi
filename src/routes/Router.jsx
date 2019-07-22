@@ -11,7 +11,6 @@ import { routes, redirects, history } from 'routes/routes'
 import { userStore } from 'state'
 // constants
 import {
-	USER_SIGNED_IN,
 	ROUTE_PAGE_INDEX,
 	ROUTE_TO,
 	ROUTE_FROM,
@@ -21,12 +20,15 @@ import {
 	ROUTE_ACCESSIBILITY_PRIVATE,
 	ROUTE_ACCESSIBILITY_PUBLIC,
 	ROUTE_ACCESSIBILITY_FREE,
-} from 'constantValues'
+} from 'routes/RouteConstants'
+import { USER_SIGNED_IN } from 'constantValues'
 
 const Router = props => {
+	const { children } = props
 	return (
 		<ReactRouter history={history}>
 			<LastLocationProvider>
+				{children}
 				<Switch>
 					{routes.map((route, i) => {
 						const {
