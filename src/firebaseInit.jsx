@@ -6,7 +6,13 @@ import 'firebase/auth'
 import 'firebase/functions'
 import 'firebase/storage'
 // states
-import { alertStoreShow, authModalStore, userStore, signInStore } from 'state'
+import {
+	alertStoreShow,
+	authModalStore,
+	userStore,
+	signInStoreShow,
+	signInStoreResetState,
+} from 'state'
 import * as allStore from 'state'
 // routing
 import { onSignedOutRouting } from 'routes'
@@ -84,8 +90,8 @@ const handleDifferentCredential = (auth, email, credential) => {
 				authModalStore.show(title, body, false, async () => {
 					await authModalStore.close()
 					if (provider1 === 'password') {
-						signInStore.show(email, async () => {
-							await signInStore.resetState()
+						signInStoreShow(email, async () => {
+							await signInStoreResetState()
 							const body = (
 								<>
 									Linking<b> {name1} </b>to<b> {name2} </b>
