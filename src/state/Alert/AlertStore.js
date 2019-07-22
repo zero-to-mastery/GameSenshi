@@ -1,22 +1,22 @@
 import { Container } from 'unstated'
 import { STATE, SET_STATE, RESET_STATE } from 'constantValues'
 
-const ALERT_STATE_BODY = 'body'
-const ALERT_STATE_OPEN = 'open'
-const ALERT_STATE_COLOR = 'color'
-const ALERT_STATE_ICON = 'icon'
+const ALERT_STORE_STATE_BODY = 'body'
+const ALERT_STORE_STATE_OPEN = 'open'
+const ALERT_STORE_STATE_COLOR = 'color'
+const ALERT_STORE_STATE_ICON = 'icon'
 
-const ALERT_TOGGLE = 'toggle'
-const ALERT_SHOW = 'show'
+const ALERT_STORE_TOGGLE = 'toggle'
+const ALERT_STORE_SHOW = 'show'
 
 const DEFAULT_ICON = 'tim-icons icon-bell-55'
 const DEFAULT_COLOR = 'success'
 
 const defaultValues = {
-	[ALERT_STATE_BODY]: '',
-	[ALERT_STATE_OPEN]: false,
-	[ALERT_STATE_COLOR]: DEFAULT_COLOR,
-	[ALERT_STATE_ICON]: DEFAULT_ICON,
+	[ALERT_STORE_STATE_BODY]: '',
+	[ALERT_STORE_STATE_OPEN]: false,
+	[ALERT_STORE_STATE_COLOR]: DEFAULT_COLOR,
+	[ALERT_STORE_STATE_ICON]: DEFAULT_ICON,
 }
 
 class AlertStore extends Container {
@@ -31,19 +31,23 @@ class AlertStore extends Container {
 		return this
 	};
 
-	[ALERT_SHOW] = (body = '', color = DEFAULT_COLOR, icon = DEFAULT_ICON) => {
+	[ALERT_STORE_SHOW] = (
+		body = '',
+		color = DEFAULT_COLOR,
+		icon = DEFAULT_ICON
+	) => {
 		this.setState({
-			[ALERT_STATE_BODY]: body,
-			[ALERT_STATE_OPEN]: true,
-			[ALERT_STATE_COLOR]: color,
-			[ALERT_STATE_ICON]: icon,
+			[ALERT_STORE_STATE_BODY]: body,
+			[ALERT_STORE_STATE_OPEN]: true,
+			[ALERT_STORE_STATE_COLOR]: color,
+			[ALERT_STORE_STATE_ICON]: icon,
 		})
 		return this
 	};
 
-	[ALERT_TOGGLE] = () => {
+	[ALERT_STORE_TOGGLE] = () => {
 		this.setState(state => {
-			state[ALERT_STATE_OPEN] = !state[ALERT_STATE_OPEN]
+			state[ALERT_STORE_STATE_OPEN] = !state[ALERT_STORE_STATE_OPEN]
 			return this
 		})
 	}
@@ -51,12 +55,12 @@ class AlertStore extends Container {
 
 export {
 	AlertStore,
-	ALERT_STATE_BODY,
-	ALERT_STATE_OPEN,
-	ALERT_STATE_COLOR,
-	ALERT_STATE_ICON,
-	ALERT_SHOW,
-	ALERT_TOGGLE,
+	ALERT_STORE_STATE_BODY,
+	ALERT_STORE_STATE_OPEN,
+	ALERT_STORE_STATE_COLOR,
+	ALERT_STORE_STATE_ICON,
+	ALERT_STORE_SHOW,
+	ALERT_STORE_TOGGLE,
 	SET_STATE,
 	RESET_STATE,
 }
