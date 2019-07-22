@@ -20,7 +20,7 @@ import {
 import Select from 'react-select'
 
 import ReactResizeDetector from 'react-resize-detector'
-import FinalList from 'componentsAtom/FinalForm/FinalList'
+import FinalList from 'componentAtoms/FinalForm/FinalList'
 import { EXTRA_HEIGHT, IS_VALID, SUBMIT_ERRORS, STATUS } from 'constantValues'
 
 const DELAY = 1000

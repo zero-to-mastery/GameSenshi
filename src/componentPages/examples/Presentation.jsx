@@ -6,9 +6,9 @@ import React from 'react'
 // } from "reactstrap";
 
 // core components
-import ColorNavbar from 'componentsAtom/Navbars/ColorNavbar.jsx'
-import PresentationHeader from 'componentsAtom/Headers/PresentationHeader.jsx'
-import DemoFooter from 'componentsAtom/Footers/DemoFooter.jsx'
+import ColorNavbar from 'componentAtoms/Navbars/ColorNavbar.jsx'
+import PresentationHeader from 'componentAtoms/Headers/PresentationHeader.jsx'
+import DemoFooter from 'componentAtoms/Footers/DemoFooter.jsx'
 
 // Sections for this page
 // (we've divided this page into multiple react components to make it a bit more readable)

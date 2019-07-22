@@ -36,12 +36,12 @@ import {
 	ROUTE_PAGE_SETTINGS_GENERAL,
 } from 'constantValues'
 //core component
-import AuthModal from 'componentsAtom/Modals/AuthModal'
-import SignUpButton from 'componentsAtom/Buttons/SignUpButton'
-import SignInButton from 'componentsAtom/Buttons/SignInButton'
-import SignInModal from 'componentsAtom/Modals/SignInModal'
-import { AlertCommonStoreAlert } from 'componentsAtom/AlertCommon'
-import { ProgressCommonStoreProgress } from 'componentsAtom/ProgressCommon'
+import AuthModal from 'componentAtoms/Modals/AuthModal'
+import SignUpButton from 'componentAtoms/Buttons/SignUpButton'
+import SignInButton from 'componentAtoms/Buttons/SignInButton'
+import SignInModal from 'componentAtoms/Modals/SignInModal'
+import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
+import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
 // logo
 import logo from 'assets/img/favicon.ico'
 

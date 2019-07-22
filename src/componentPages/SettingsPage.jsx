@@ -21,7 +21,7 @@ import {
 	AccountSettingsTabPane,
 	NotificationSettingsTabPane,
 	ImageUpload,
-} from 'componentsAtom'
+} from 'componentAtoms'
 
 const navItems = [
 	{

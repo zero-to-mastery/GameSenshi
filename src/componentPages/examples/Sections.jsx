@@ -6,8 +6,8 @@ import React from 'react'
 // } from "reactstrap";
 
 // core components
-import ScrollNavbar from 'componentsAtom/Navbars/ScrollNavbar.jsx'
-import DemoFooter from 'componentsAtom/Footers/DemoFooter.jsx'
+import ScrollNavbar from 'componentAtoms/Navbars/ScrollNavbar.jsx'
+import DemoFooter from 'componentAtoms/Footers/DemoFooter.jsx'
 
 // Sections for this page
 // (we've divided this page into multiple react components to make it a bit more readable)

@@ -18,7 +18,7 @@ import { signUpStore, Subscribe } from 'state'
 import { Container, Row, Col } from 'reactstrap'
 
 // core components
-import { Footer, IndexNavbar, SignUpForm } from 'componentsAtom'
+import { Footer, IndexNavbar, SignUpForm } from 'componentAtoms'
 
 const SignUpPage = props => {
 	const [squares1to6, setSquares1to6] = useState('')

@@ -20,8 +20,8 @@ import {
 } from 'reactstrap'
 
 // core components
-import ColorNavbar from 'componentsAtom/Navbars/ColorNavbar.jsx'
-import DemoFooter from 'componentsAtom/Footers/DemoFooter.jsx'
+import ColorNavbar from 'componentAtoms/Navbars/ColorNavbar.jsx'
+import DemoFooter from 'componentAtoms/Footers/DemoFooter.jsx'
 
 class ResetPage extends React.Component {
 	state = {}

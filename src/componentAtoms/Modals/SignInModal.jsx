@@ -2,7 +2,7 @@ import React from 'react'
 
 //components
 import { Modal } from 'reactstrap'
-import SignInForm from 'componentsAtom/Forms/SignInForm'
+import SignInForm from 'componentAtoms/Forms/SignInForm'
 
 //state
 import { signInStore, Subscribe } from 'state'

@@ -24,7 +24,7 @@ import {
 } from 'constantValues'
 // core components
 import Calendar from 'react-calendar'
-import { FinalInput, FinalForm } from 'componentsAtom'
+import { FinalInput, FinalForm } from 'componentAtoms'
 // validation
 import { signUpUsernameValidation } from 'utils/validation'
 

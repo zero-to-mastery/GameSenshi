@@ -19,7 +19,7 @@ import {
 } from 'reactstrap'
 
 // core components
-import { Footer, IndexNavbar } from 'componentsAtom'
+import { Footer, IndexNavbar } from 'componentAtoms'
 
 let imageSlickSettings = {
 	dots: true,

@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import { Container, Col } from 'reactstrap'
 
 // core components
-import { Footer, IndexNavbar, SignInForm } from 'componentsAtom'
+import { Footer, IndexNavbar, SignInForm } from 'componentAtoms'
 
 const SignInPage = props => {
 	useEffect(() => {

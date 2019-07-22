@@ -4,7 +4,7 @@ import { Button, FormGroup, Row, Col, Form } from 'reactstrap'
 // loader
 import Loader from 'react-loader-spinner'
 // form validation
-import { FinalInput, FinalForm, FORM_ERROR } from 'componentsAtom/FinalForm'
+import { FinalInput, FinalForm, FORM_ERROR } from 'componentAtoms/FinalForm'
 // validation
 import {
 	signInEmailValidation,
