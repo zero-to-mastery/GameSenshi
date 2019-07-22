@@ -70,12 +70,6 @@ import {
 } from 'constantValues/UserConstants'
 
 import {
-	SIGN_IN_EMAIL,
-	SIGN_IN_OPEN,
-	SIGN_IN_CALLBACK,
-} from 'constantValues/SignInConstants'
-
-import {
 	CARD_CVC,
 	CARD_TYPE,
 	CARD_CARDS,
@@ -184,9 +178,6 @@ export {
 	USER_PHONE_NUMBER,
 	USER_PROVIDER_DATA,
 	USER_EMAIL_IS_VERIFIED,
-	SIGN_IN_EMAIL,
-	SIGN_IN_OPEN,
-	SIGN_IN_CALLBACK,
 	CARD_CVC,
 	CARD_TYPE,
 	CARD_CARDS,
