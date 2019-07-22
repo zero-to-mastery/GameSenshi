@@ -1,9 +1,10 @@
 import { Container } from 'unstated'
 import { STATE, SET_STATE, RESET_STATE } from 'constantValues'
 
-const SIGN_IN_STORE_STATE_IS_OPEN = 'isOpen'
 const SIGN_IN_STORE_STATE_EMAIL = 'email'
+const SIGN_IN_STORE_STATE_IS_OPEN = 'isOpen'
 const SIGN_IN_STORE_STATE_CALLBACK = 'callback'
+const SIGN_IN_STORE_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
 const SIGN_IN_STORE_SHOW = 'show'
 const SIGN_IN_STORE_CLOSE = 'close'
@@ -47,17 +48,24 @@ class SignInStore extends Container {
 			return state
 		})
 		return this
+	};
+
+	[SIGN_IN_STORE_ON_SUCCESSFUL_SUBMISSION] = () => {
+		this[STATE][SIGN_IN_STORE_STATE_CALLBACK]()
+		this[SET_STATE]({ SIGN_IN_STORE_STATE_CALLBACK: () => {} })
+		return this
 	}
 }
 
 export {
 	SignInStore,
-	SIGN_IN_STORE_STATE_IS_OPEN,
 	SIGN_IN_STORE_STATE_EMAIL,
+	SIGN_IN_STORE_STATE_IS_OPEN,
 	SIGN_IN_STORE_STATE_CALLBACK,
 	SIGN_IN_STORE_SHOW,
 	SIGN_IN_STORE_CLOSE,
 	SIGN_IN_STORE_TOGGLE,
+	SIGN_IN_STORE_ON_SUCCESSFUL_SUBMISSION,
 	SET_STATE,
 	RESET_STATE,
 }
