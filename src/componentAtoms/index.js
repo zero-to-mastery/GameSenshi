@@ -6,7 +6,6 @@ import AuthModal from 'componentAtoms/Modals/AuthModal'
 import SocialAuthButtonGroup from 'componentAtoms/Buttons/SocialAuthButtonGroup'
 import SignUpButton from 'componentAtoms/Buttons/SignUpButton'
 import SignInButton from 'componentAtoms/Buttons/SignInButton'
-import SignInForm from 'componentAtoms/Forms/SignInForm'
 import SignUpForm from 'componentAtoms/Forms/SignUpForm'
 import GeneralSettingsTabPane from 'componentAtoms/TabPane/GeneralSettingsTabPane'
 import BillingSettingsTabPane from 'componentAtoms/TabPane/BillingSettingsTabPane'
@@ -28,7 +27,6 @@ export {
 	IndexNavbar,
 	IndexHeader,
 	AuthModal,
-	SignInForm,
 	SignUpForm,
 	SignUpButton,
 	SignInButton,
