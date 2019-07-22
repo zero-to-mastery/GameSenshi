@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
-
 // reactstrap components
 import { Container, Col } from 'reactstrap'
-
 // core components
-import { Footer, IndexNavbar, SignInForm } from 'componentAtoms'
+import { Footer, IndexNavbar } from 'componentAtoms'
+import { FormSignIn } from 'componentOrganisms'
 
 const SignInPage = props => {
 	useEffect(() => {
@@ -29,7 +28,7 @@ const SignInPage = props => {
 				<div className='page-header-image' />
 				<Container>
 					<Col className='mx-auto' lg='5' md='8'>
-						<SignInForm />
+						<FormSignIn />
 					</Col>
 				</Container>
 			</div>

@@ -26,7 +26,7 @@ import {
 	FinalInput,
 	FinalForm,
 	FORM_ERROR,
-} from 'componentAtoms/SocialAuthButtonGroup'
+} from 'componentAtoms'
 
 const EMAIL = 'email'
 const PASSWORD = 'password'
@@ -42,24 +42,24 @@ const SIGN_IN_FROM_TOGGLE = 'toggle'
 const SIGN_IN_FORM_ON_SUBMIT = 'onSubmit'
 const SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
+const onSubmission = async (
+	values = { [EMAIL]: '', [PASSWORD]: '' },
+	onSubmit = () => {},
+	onSuccessfulSubmission = () => {}
+) => {
+	const { [EMAIL]: email, [PASSWORD]: password } = values
+	const isSignInFailed = await onSubmit(email, password)
+	if (isSignInFailed) {
+		return { [FORM_ERROR]: isSignInFailed }
+	} else {
+		onSuccessfulSubmission()
+		return
+		// if undefined mean no error
+	}
+}
+
 const FormSignIn = props => {
 	const submitButton = useRef(null) //submit button reference
-
-	const onSubmission = async (
-		values = { [EMAIL]: '', [PASSWORD]: '' },
-		onSubmit = () => {},
-		onSuccessfulSubmission = () => {}
-	) => {
-		const { [EMAIL]: email, [PASSWORD]: password } = values
-		const isSignInFailed = await onSubmit(email, password)
-		if (isSignInFailed) {
-			return { [FORM_ERROR]: isSignInFailed }
-		} else {
-			onSuccessfulSubmission()
-			return
-			// if undefined mean no error
-		}
-	}
 
 	const {
 		[SIGN_IN_FROM_STATE_EMAIL]: email,
@@ -74,10 +74,20 @@ const FormSignIn = props => {
 		[SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
 	} = props
 
-	const TopElement = modal ? Modal : Fragment
+	const onEmailValidation = emailValidation || (() => {})
+
+	const onPasswordValidation = passwordValidation || (() => {})
+
+	const TopElement = modal
+		? props => (
+				<Modal isOpen={isOpen} toggle={toggle} modalClassName='modal-login'>
+					{props.children}
+				</Modal>
+		  )
+		: props => <Fragment>{props.children}</Fragment>
 
 	return (
-		<TopElement isOpen={isOpen} toggle={toggle} modalClassName='modal-login'>
+		<TopElement>
 			<Card className='card-login'>
 				<CardHeader>
 					<CardImg alt='...' src={require('assets/img/square-purple-1.png')} />
@@ -142,7 +152,7 @@ const FormSignIn = props => {
 											hideSuccess
 											placeholder='Email'
 											icon='tim-icons icon-email-85'
-											validation={emailValidation}
+											validation={onEmailValidation}
 											submitRef={submitButton}
 										/>
 									</>
@@ -154,7 +164,7 @@ const FormSignIn = props => {
 									hideSuccess
 									placeholder='Password'
 									icon='tim-icons icon-lock-circle'
-									validation={passwordValidation}
+									validation={onPasswordValidation}
 									submitRef={submitButton}
 								/>
 							</CardBody>
