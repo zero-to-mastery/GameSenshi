@@ -2,7 +2,7 @@ import { Container } from 'unstated'
 import { STATE, SET_STATE, RESET_STATE } from 'constantValues'
 
 const ALERT_STORE_STATE_BODY = 'body'
-const ALERT_STORE_STATE_OPEN = 'open'
+const ALERT_STORE_STATE_IS_OPEN = 'isOpen'
 const ALERT_STORE_STATE_COLOR = 'color'
 const ALERT_STORE_STATE_ICON = 'icon'
 
@@ -14,7 +14,7 @@ const DEFAULT_COLOR = 'success'
 
 const defaultValues = {
 	[ALERT_STORE_STATE_BODY]: '',
-	[ALERT_STORE_STATE_OPEN]: false,
+	[ALERT_STORE_STATE_IS_OPEN]: false,
 	[ALERT_STORE_STATE_COLOR]: DEFAULT_COLOR,
 	[ALERT_STORE_STATE_ICON]: DEFAULT_ICON,
 }
@@ -38,7 +38,7 @@ class AlertStore extends Container {
 	) => {
 		this.setState({
 			[ALERT_STORE_STATE_BODY]: body,
-			[ALERT_STORE_STATE_OPEN]: true,
+			[ALERT_STORE_STATE_IS_OPEN]: true,
 			[ALERT_STORE_STATE_COLOR]: color,
 			[ALERT_STORE_STATE_ICON]: icon,
 		})
@@ -47,7 +47,7 @@ class AlertStore extends Container {
 
 	[ALERT_STORE_TOGGLE] = () => {
 		this.setState(state => {
-			state[ALERT_STORE_STATE_OPEN] = !state[ALERT_STORE_STATE_OPEN]
+			state[ALERT_STORE_STATE_IS_OPEN] = !state[ALERT_STORE_STATE_IS_OPEN]
 			return this
 		})
 	}
@@ -56,7 +56,7 @@ class AlertStore extends Container {
 export {
 	AlertStore,
 	ALERT_STORE_STATE_BODY,
-	ALERT_STORE_STATE_OPEN,
+	ALERT_STORE_STATE_IS_OPEN,
 	ALERT_STORE_STATE_COLOR,
 	ALERT_STORE_STATE_ICON,
 	ALERT_STORE_SHOW,
