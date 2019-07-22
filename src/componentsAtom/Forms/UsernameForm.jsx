@@ -4,7 +4,7 @@ import { Subscribe, userStore } from 'state'
 // constants
 import { USER_DISPLAY_NAME } from 'constantValues'
 // core components
-import { FinalInput, FinalForm, FORM_ERROR } from 'components'
+import { FinalInput, FinalForm, FORM_ERROR } from 'componentsAtom'
 import { Form, Col, Row, Container } from 'reactstrap'
 // validation
 import { signUpUsernameValidation, usernameLength } from 'utils/validation'

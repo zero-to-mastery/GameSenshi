@@ -7,7 +7,7 @@ class BasicComponents extends React.Component {
 	render() {
 		return (
 			<>
-				<div className='section section-basic-components'>
+				<div className='section section-basic-componentsAtom'>
 					<Container>
 						<Row>
 							<Col className='ml-auto mr-auto' lg='5' md='7'>

@@ -29,9 +29,9 @@ import {
 } from 'reactstrap'
 
 // core components
-import ColorNavbar from 'components/Navbars/ColorNavbar.jsx'
-import DemoFooter from 'components/Footers/DemoFooter.jsx'
-import ImageUpload from 'components/CustomUpload/ImageUpload.jsx'
+import ColorNavbar from 'componentsAtom/Navbars/ColorNavbar.jsx'
+import DemoFooter from 'componentsAtom/Footers/DemoFooter.jsx'
+import ImageUpload from 'componentsAtom/CustomUpload/ImageUpload.jsx'
 
 class AccountSettings extends React.Component {
 	state = {

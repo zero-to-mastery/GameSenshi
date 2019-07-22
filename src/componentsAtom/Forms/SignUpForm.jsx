@@ -50,7 +50,7 @@ import {
 	FinalForm,
 	FORM_ERROR,
 	SocialAuthButtonGroup,
-} from 'components'
+} from 'componentsAtom'
 
 const onSubmit = async (values, apolloClient, callback = () => {}) => {
 	const {

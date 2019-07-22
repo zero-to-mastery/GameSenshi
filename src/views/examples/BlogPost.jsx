@@ -20,8 +20,8 @@ import {
 } from 'reactstrap'
 
 // core components
-import ColorNavbar from 'components/Navbars/ColorNavbar.jsx'
-import DemoFooter from 'components/Footers/DemoFooter.jsx'
+import ColorNavbar from 'componentsAtom/Navbars/ColorNavbar.jsx'
+import DemoFooter from 'componentsAtom/Footers/DemoFooter.jsx'
 
 // custom previous button for the slick component
 const PrevButton = props => {

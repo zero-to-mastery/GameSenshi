@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 
 // core components
-import { IndexHeader, Footer, IndexNavbar } from 'components'
+import { IndexHeader, Footer, IndexNavbar } from 'componentsAtom'
 
 const IndexPage = props => {
 	const wrapper = useRef(null)

@@ -13,7 +13,7 @@ import {
 // reactstrap components
 import { Button, Label, FormGroup, Input, Table } from 'reactstrap'
 
-import CardModal from 'components/Modals/CardModal'
+import CardModal from 'componentsAtom/Modals/CardModal'
 
 const BillingSettingsTabPane = () => {
 	return (

@@ -4,8 +4,8 @@ import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 
 // core components
-import ColorNavbar from 'components/Navbars/ColorNavbar.jsx'
-import DemoFooter from 'components/Footers/DemoFooter.jsx'
+import ColorNavbar from 'componentsAtom/Navbars/ColorNavbar.jsx'
+import DemoFooter from 'componentsAtom/Footers/DemoFooter.jsx'
 
 class Error500 extends React.Component {
 	componentDidMount() {

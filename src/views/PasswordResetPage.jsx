@@ -24,7 +24,7 @@ import {
 	FinalInput,
 	FinalForm,
 	FORM_ERROR,
-} from 'components'
+} from 'componentsAtom'
 import Loader from 'react-loader-spinner'
 
 // validation

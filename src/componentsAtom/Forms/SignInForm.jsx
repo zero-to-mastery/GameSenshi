@@ -41,8 +41,8 @@ import {
 } from 'constantValues'
 
 // core components
-import SocialAuthButtonGroup from 'components/Buttons/SocialAuthButtonGroup'
-import { FinalInput, FinalForm, FORM_ERROR } from 'components/FinalForm'
+import SocialAuthButtonGroup from 'componentsAtom/Buttons/SocialAuthButtonGroup'
+import { FinalInput, FinalForm, FORM_ERROR } from 'componentsAtom/FinalForm'
 
 // state management
 import { signInStore, Subscribe } from 'state'

@@ -18,7 +18,7 @@ import {
 // core components
 import Cards from 'react-credit-cards'
 import Loader from 'react-loader-spinner'
-import { FinalInput, FinalForm } from 'components/FinalForm'
+import { FinalInput, FinalForm } from 'componentsAtom/FinalForm'
 
 // styles
 import 'react-credit-cards/lib/styles.scss'
