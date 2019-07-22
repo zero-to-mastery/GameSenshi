@@ -39,7 +39,6 @@ import {
 import AuthModal from 'componentAtoms/Modals/AuthModal'
 import SignUpButton from 'componentAtoms/Buttons/SignUpButton'
 import SignInButton from 'componentAtoms/Buttons/SignInButton'
-import SignInModal from 'componentAtoms/Modals/SignInModal'
 import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
 import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
 // logo
@@ -159,7 +158,6 @@ class ComponentsNavbar extends React.Component {
 					const { [ALERT_STORE_STATE_IS_OPEN]: alertOpen } = alertStore.state
 					return (
 						<>
-							<SignInModal />
 							<AuthModal />
 							<div className='fixed-top'>
 								<ProgressCommonStoreProgress />
