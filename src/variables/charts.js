@@ -3,7 +3,7 @@
 // #############################
 
 // #########################################
-// // // used in src/views/examples/LandingPage.jsx
+// // // used in src/componentPages/examples/LandingPage.jsx
 // #########################################
 let chartExample1 = {
 	type: 'line',
@@ -108,5 +108,5 @@ let chartExample1 = {
 }
 
 module.exports = {
-	chartExample1, // used in src/views/examples/LandingPage.jsx
+	chartExample1, // used in src/componentPages/examples/LandingPage.jsx
 }

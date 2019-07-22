@@ -7,7 +7,7 @@ import {
 	SignInPage,
 	SignUpPage,
 	PasswordResetPage,
-} from 'views'
+} from 'componentPages'
 // constants
 import {
 	ROUTE_TO,
