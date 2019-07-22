@@ -258,7 +258,7 @@ const FinalInput = props => {
 										input.onBlur(e)
 									}}
 									onKeyPress={e => {
-										if (e.key === 'Enter' && submitRef) {
+										if ((e.key === 'Enter' || e.keyCode === 13) && submitRef) {
 											e.preventDefault()
 											clearInterval(onSubmitTimeOutID)
 											setOnSubmitTimeOutId(
