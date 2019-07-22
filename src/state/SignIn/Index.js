@@ -1,19 +1,19 @@
 import {
 	SignInStore,
-	SIGN_IN_STATE_OPEN,
-	SIGN_IN_STATE_EMAIL,
-	SIGN_IN_STATE_CALLBACK,
-	SIGN_IN_SHOW,
-	SIGN_IN_CLOSE,
-	SIGN_IN_TOGGLE,
+	SIGN_IN_STORE_STATE_OPEN,
+	SIGN_IN_STORE_STATE_EMAIL,
+	SIGN_IN_STORE_STATE_CALLBACK,
+	SIGN_IN_STORE_SHOW,
+	SIGN_IN_STORE_CLOSE,
+	SIGN_IN_STORE_TOGGLE,
 	SET_STATE,
 	RESET_STATE,
 } from 'state/SignIn/SignInStore'
 
 const signInStore = new SignInStore()
-const signInStoreShow = signInStore[SIGN_IN_SHOW]
-const signInStoreClose = signInStore[SIGN_IN_CLOSE]
-const signInStoreToggle = signInStore[SIGN_IN_TOGGLE]
+const signInStoreShow = signInStore[SIGN_IN_STORE_SHOW]
+const signInStoreClose = signInStore[SIGN_IN_STORE_CLOSE]
+const signInStoreToggle = signInStore[SIGN_IN_STORE_TOGGLE]
 const signInStoreSetState = signInStore[SET_STATE]
 const signInStoreResetState = signInStore[RESET_STATE]
 
@@ -24,7 +24,7 @@ export {
 	signInStoreToggle,
 	signInStoreSetState,
 	signInStoreResetState,
-	SIGN_IN_STATE_OPEN,
-	SIGN_IN_STATE_EMAIL,
-	SIGN_IN_STATE_CALLBACK,
+	SIGN_IN_STORE_STATE_OPEN,
+	SIGN_IN_STORE_STATE_EMAIL,
+	SIGN_IN_STORE_STATE_CALLBACK,
 }
