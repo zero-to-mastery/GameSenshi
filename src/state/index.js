@@ -14,11 +14,20 @@ import {
 	ALERT_STORE_STATE_IS_OPEN,
 	ALERT_STORE_STATE_COLOR,
 	ALERT_STORE_STATE_ICON,
-	ALERT_STORE_SHOW,
-	ALERT_STORE_TOGGLE,
 } from 'state/Alert'
 import AuthModalContainer from 'state/AuthModalContainer'
-import SignInContainer from 'state/SignInContainer'
+import {
+	signInStore,
+	signInStoreShow,
+	signInStoreClose,
+	signInStoreToggle,
+	signInStoreSetState,
+	signInStoreResetState,
+	signInStoreOnSuccessfulSubmission,
+	SIGN_IN_STORE_STATE_EMAIL,
+	SIGN_IN_STORE_STATE_IS_OPEN,
+	SIGN_IN_STORE_STATE_CALLBACK,
+} from 'state/SignIn'
 import {
 	progressStore,
 	progressStoreShow,
@@ -28,15 +37,12 @@ import {
 	PROGRESS_STORE_STATE_VALUE,
 	PROGRESS_STORE_STATE_COLOR,
 	PROGRESS_STORE_STATE_IS_OPEN,
-	PROGRESS_STORE_SHOW,
-	PROGRESS_STORE_CLOSE,
 } from 'state/Progress'
 
 const signUpStore = new SignUpContainer()
 const cardStore = new CardContainer()
 const userStore = new UserContainer()
 const authModalStore = new AuthModalContainer()
-const signInStore = new SignInContainer()
 
 export {
 	STATE,
@@ -47,7 +53,6 @@ export {
 	cardStore,
 	userStore,
 	authModalStore,
-	signInStore,
 	alertStore,
 	alertStoreShow,
 	alertStoreToggle,
@@ -57,8 +62,6 @@ export {
 	ALERT_STORE_STATE_IS_OPEN,
 	ALERT_STORE_STATE_COLOR,
 	ALERT_STORE_STATE_ICON,
-	ALERT_STORE_SHOW,
-	ALERT_STORE_TOGGLE,
 	progressStore,
 	progressStoreShow,
 	progressStoreClose,
@@ -67,6 +70,14 @@ export {
 	PROGRESS_STORE_STATE_VALUE,
 	PROGRESS_STORE_STATE_COLOR,
 	PROGRESS_STORE_STATE_IS_OPEN,
-	PROGRESS_STORE_SHOW,
-	PROGRESS_STORE_CLOSE,
+	signInStore,
+	signInStoreShow,
+	signInStoreClose,
+	signInStoreToggle,
+	signInStoreSetState,
+	signInStoreResetState,
+	signInStoreOnSuccessfulSubmission,
+	SIGN_IN_STORE_STATE_EMAIL,
+	SIGN_IN_STORE_STATE_IS_OPEN,
+	SIGN_IN_STORE_STATE_CALLBACK,
 }

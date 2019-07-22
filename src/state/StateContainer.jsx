@@ -12,7 +12,7 @@ const StateContainer = (Comp, store, stateToPropsMap, methodToPropsMap) => {
 				for (const prop in methodToPropsMap) {
 					customProps[prop] = () => {
 						props[prop] && props[prop]()
-						store[methodToPropsMap[prop]]()
+						methodToPropsMap[prop]()
 					}
 				}
 				return <Comp {...props} {...customProps} />

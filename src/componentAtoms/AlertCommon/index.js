@@ -14,7 +14,7 @@ import {
 	ALERT_STORE_STATE_ICON,
 	ALERT_STORE_STATE_IS_OPEN,
 	ALERT_STORE_STATE_COLOR,
-	ALERT_STORE_TOGGLE,
+	alertStoreToggle,
 } from 'state'
 
 const alertStoreStateToPropsMap = {
@@ -25,7 +25,7 @@ const alertStoreStateToPropsMap = {
 }
 
 const alertStoreMethodToPropsMap = {
-	[ALERT_COMMON_TOGGLE]: ALERT_STORE_TOGGLE,
+	[ALERT_COMMON_TOGGLE]: alertStoreToggle,
 }
 
 const AlertCommonStoreAlert = StateContainer(

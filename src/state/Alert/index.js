@@ -17,7 +17,7 @@ const alertStoreSetState = alertStore[SET_STATE]
 const alertStoreResetState = alertStore[RESET_STATE]
 
 // why no export state? Because it lose reference easily
-
+// no need to output method constant as they are now variable name
 export {
 	alertStore,
 	alertStoreShow,
@@ -28,6 +28,4 @@ export {
 	ALERT_STORE_STATE_IS_OPEN,
 	ALERT_STORE_STATE_COLOR,
 	ALERT_STORE_STATE_ICON,
-	ALERT_STORE_SHOW,
-	ALERT_STORE_TOGGLE,
 }
