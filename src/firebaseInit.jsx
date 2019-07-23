@@ -11,7 +11,6 @@ import {
 	authModalStore,
 	userStore,
 	signInStoreShow,
-	signInStoreResetState,
 } from 'state'
 import * as allStore from 'state'
 // routing
@@ -91,7 +90,6 @@ const handleDifferentCredential = (auth, email, credential) => {
 					await authModalStore.close()
 					if (provider1 === 'password') {
 						signInStoreShow(email, async () => {
-							await signInStoreResetState()
 							const body = (
 								<>
 									Linking<b> {name1} </b>to<b> {name2} </b>

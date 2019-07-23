@@ -52,7 +52,7 @@ class SignInStore extends Container {
 
 	[SIGN_IN_STORE_ON_SUCCESSFUL_SUBMISSION] = () => {
 		this[STATE][SIGN_IN_STORE_STATE_SIGNED_IN_CALLBACK]()
-		this[SET_STATE]({ SIGN_IN_STORE_STATE_SIGNED_IN_CALLBACK: () => {} })
+		this[RESET_STATE]()
 		return this
 	}
 }
