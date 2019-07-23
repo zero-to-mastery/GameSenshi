@@ -74,9 +74,9 @@ const FormSignIn = props => {
 		[SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
 	} = props
 
-	const onEmailValidation = emailValidation || (() => {})
+	const emailValidation_ = emailValidation || (() => {})
 
-	const onPasswordValidation = passwordValidation || (() => {})
+	const passwordValidation_ = passwordValidation || (() => {})
 
 	const TopElement = modal
 		? props => (
@@ -152,7 +152,7 @@ const FormSignIn = props => {
 											hideSuccess
 											placeholder='Email'
 											icon='tim-icons icon-email-85'
-											validation={onEmailValidation}
+											validation={emailValidation_}
 											submitRef={submitButton}
 										/>
 									</>
@@ -164,7 +164,7 @@ const FormSignIn = props => {
 									hideSuccess
 									placeholder='Password'
 									icon='tim-icons icon-lock-circle'
-									validation={onPasswordValidation}
+									validation={passwordValidation_}
 									submitRef={submitButton}
 								/>
 							</CardBody>
