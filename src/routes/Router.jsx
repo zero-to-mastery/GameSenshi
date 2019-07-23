@@ -20,7 +20,7 @@ import {
 	ROUTE_ACCESSIBILITY_PRIVATE,
 	ROUTE_ACCESSIBILITY_PUBLIC,
 	ROUTE_ACCESSIBILITY_FREE,
-} from 'routes/RouteConstants'
+} from 'routes/constants'
 import { USER_SIGNED_IN } from 'constantValues'
 
 const Router = props => {

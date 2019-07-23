@@ -15,7 +15,7 @@ import {
 	ROUTE_PAGE_SETTINGS_ACCOUNT,
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
 	ROUTE_PAGE_PASSWORD_RESET,
-} from 'routes/RouteConstants'
+} from 'routes/constants'
 
 export {
 	Router,

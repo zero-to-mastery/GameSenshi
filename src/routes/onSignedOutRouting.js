@@ -3,7 +3,7 @@ import {
 	ROUTE_PAGE_INDEX,
 	ROUTE_ACCESSIBILITY,
 	ROUTE_ACCESSIBILITY_PRIVATE,
-} from 'constantValues'
+} from 'routes/constants'
 
 import { routes, history } from 'routes/routes'
 

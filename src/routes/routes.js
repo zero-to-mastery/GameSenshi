@@ -26,7 +26,7 @@ import {
 	ROUTE_PAGE_SETTINGS_COMMON,
 	ROUTE_PAGE_SETTINGS_GENERAL,
 	ROUTE_PAGE_PASSWORD_RESET,
-} from 'routes/RouteConstants'
+} from 'routes/constants'
 
 const history = createBrowserHistory()
 

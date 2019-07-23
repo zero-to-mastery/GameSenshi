@@ -3,7 +3,7 @@ import {
 	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
-} from 'constantValues'
+} from 'routes/constants'
 
 const onSignedInRouting = (history, lastLocation) => {
 	if (lastLocation) {
