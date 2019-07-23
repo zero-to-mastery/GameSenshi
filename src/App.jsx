@@ -7,7 +7,7 @@ import { Router } from 'routes'
 // state management
 import { Provider } from 'state'
 //modal
-import { FormSignInStoreSignIn } from 'componentOrganisms'
+import { FormSignInPropedStoreSignIn } from 'componentOrganisms'
 
 const App = props => {
 	const [apolloClient, setApolloClient] = useState(tempClient)
@@ -24,7 +24,7 @@ const App = props => {
 		<ApolloProvider client={apolloClient}>
 			<Provider>
 				<Router>
-					<FormSignInStoreSignIn modal passwordOnly />
+					<FormSignInPropedStoreSignIn modal passwordOnly />
 				</Router>
 			</Provider>
 		</ApolloProvider>

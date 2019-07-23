@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { Container, Col } from 'reactstrap'
 // core components
 import { Footer, IndexNavbar } from 'componentAtoms'
-import { FormSignIn } from 'componentOrganisms'
+import { FormSignInProped } from 'componentOrganisms'
 
 const SignInPage = props => {
 	useEffect(() => {
@@ -28,7 +28,7 @@ const SignInPage = props => {
 				<div className='page-header-image' />
 				<Container>
 					<Col className='mx-auto' lg='5' md='8'>
-						<FormSignIn />
+						<FormSignInProped />
 					</Col>
 				</Container>
 			</div>

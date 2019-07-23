@@ -1,6 +1,7 @@
 import {
 	FormSignIn,
-	FormSignInStoreSignIn,
+	FormSignInProped,
+	FormSignInPropedStoreSignIn,
 } from 'componentOrganisms/FormSignIn'
 
-export { FormSignIn, FormSignInStoreSignIn }
+export { FormSignIn, FormSignInProped, FormSignInPropedStoreSignIn }

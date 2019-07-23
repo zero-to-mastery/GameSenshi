@@ -11,7 +11,7 @@ import { ROUTE_PAGE_PASSWORD_RESET, onSignedInRouting } from 'routes'
 import { handleSignInWithEmailAndPassword } from 'api'
 // component
 import {
-	FormSignIn as FormSignInPure,
+	FormSignIn,
 	SIGN_IN_FROM_STATE_EMAIL,
 	SIGN_IN_FROM_STATE_IS_OPEN,
 	SIGN_IN_FROM_TOGGLE,
@@ -28,10 +28,10 @@ import {
 } from 'state'
 
 // inject staple props that suitable for this app
-const FormSignIn = withLastLocation(props => {
+const FormSignInProped = withLastLocation(props => {
 	const { history, lastLocation } = props
 	return (
-		<FormSignInPure
+		<FormSignIn
 			emailValidation={signInEmailValidation}
 			passwordValidation={signInPasswordValidation}
 			forgotPasswordLink={ROUTE_PAGE_PASSWORD_RESET}
@@ -54,11 +54,11 @@ const signInStoreMethodToPropsMap = {
 	[SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION]: signInStoreOnSuccessfulSubmission,
 }
 
-const FormSignInStoreSignIn = StateContainer(
-	FormSignIn,
+const FormSignInPropedStoreSignIn = StateContainer(
+	FormSignInProped,
 	signInStore,
 	signInStoreStateToPropsMap,
 	signInStoreMethodToPropsMap
 )
 
-export { FormSignIn, FormSignInStoreSignIn }
+export { FormSignIn, FormSignInProped, FormSignInPropedStoreSignIn }
