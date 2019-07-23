@@ -2,7 +2,7 @@ import React from 'react'
 import { Subscribe } from 'unstated'
 
 const StateContainer = (
-	Comp,
+	Component,
 	stores = [],
 	stateToPropsMaps = [],
 	methodToPropsMaps = []
@@ -22,7 +22,7 @@ const StateContainer = (
 					}
 					return accProps
 				}, {})
-				return <Comp {...props} {...accProps} />
+				return <Component {...props} {...accProps} />
 			}}
 		</Subscribe>
 	)
