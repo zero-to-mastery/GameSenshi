@@ -1,5 +1,5 @@
 import { Container } from 'unstated'
-import { STATE, SET_STATE, RESET_STATE } from 'constantValues'
+import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
 const ALERT_STORE_STATE_BODY = 'body'
 const ALERT_STORE_STATE_IS_OPEN = 'isOpen'

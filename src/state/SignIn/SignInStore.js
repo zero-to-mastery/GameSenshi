@@ -1,5 +1,5 @@
 import { Container } from 'unstated'
-import { STATE, SET_STATE, RESET_STATE } from 'constantValues'
+import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
 const SIGN_IN_STORE_STATE_EMAIL = 'email'
 const SIGN_IN_STORE_STATE_IS_OPEN = 'isOpen'

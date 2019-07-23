@@ -1,5 +1,5 @@
 import { Subscribe, Provider } from 'unstated'
-import { STATE } from 'constantValues'
+import { STATE } from 'state/constants'
 import { StateContainer } from 'state/StateContainer'
 import SignUpContainer from 'state/SignUpContainer'
 import CardContainer from 'state/CardContainer'

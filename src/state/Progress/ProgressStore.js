@@ -1,5 +1,5 @@
 import { Container } from 'unstated'
-import { STATE, SET_STATE, RESET_STATE } from 'constantValues'
+import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
 const PROGRESS_STORE_STATE_VALUE = 'value'
 const PROGRESS_STORE_STATE_COLOR = 'color'
