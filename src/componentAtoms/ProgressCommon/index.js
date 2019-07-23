@@ -21,8 +21,8 @@ const progressStoreStateToPropsMap = {
 
 const ProgressCommonStoreProgress = StateContainer(
 	ProgressCommon,
-	progressStore,
-	progressStoreStateToPropsMap
+	[progressStore],
+	[progressStoreStateToPropsMap]
 )
 
 export { ProgressCommon, ProgressCommonStoreProgress }

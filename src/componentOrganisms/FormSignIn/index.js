@@ -56,9 +56,9 @@ const signInStoreMethodToPropsMap = {
 
 const FormSignInPropedStoreSignIn = StateContainer(
 	FormSignInProped,
-	signInStore,
-	signInStoreStateToPropsMap,
-	signInStoreMethodToPropsMap
+	[signInStore],
+	[signInStoreStateToPropsMap],
+	[signInStoreMethodToPropsMap]
 )
 
 export { FormSignIn, FormSignInProped, FormSignInPropedStoreSignIn }

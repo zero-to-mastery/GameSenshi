@@ -1,21 +1,28 @@
 import React from 'react'
 import { Subscribe } from 'unstated'
 
-const StateContainer = (Comp, store, stateToPropsMap, methodToPropsMap) => {
+const StateContainer = (
+	Comp,
+	stores = [],
+	stateToPropsMaps = [],
+	methodToPropsMaps = []
+) => {
 	return props => (
-		<Subscribe to={[store]}>
-			{store => {
-				const customProps = {}
-				for (const prop in stateToPropsMap) {
-					customProps[prop] = store.state[stateToPropsMap[prop]]
-				}
-				for (const prop in methodToPropsMap) {
-					customProps[prop] = () => {
-						props[prop] && props[prop]()
-						methodToPropsMap[prop]()
+		<Subscribe to={stores}>
+			{() => {
+				const accProps = stores.reduce((accProps, store, i) => {
+					for (const prop in stateToPropsMaps[i]) {
+						accProps[prop] = store.state[stateToPropsMaps[i][prop]]
 					}
-				}
-				return <Comp {...props} {...customProps} />
+					for (const prop in methodToPropsMaps[i]) {
+						accProps[prop] = () => {
+							props[prop] && props[prop]()
+							methodToPropsMaps[i][prop]()
+						}
+					}
+					return accProps
+				}, {})
+				return <Comp {...props} {...accProps} />
 			}}
 		</Subscribe>
 	)

@@ -30,9 +30,9 @@ const alertStoreMethodToPropsMap = {
 
 const AlertCommonStoreAlert = StateContainer(
 	AlertCommon,
-	alertStore,
-	alertStoreStateToPropsMap,
-	alertStoreMethodToPropsMap
+	[alertStore],
+	[alertStoreStateToPropsMap],
+	[alertStoreMethodToPropsMap]
 )
 
 export { AlertCommon, AlertCommonStoreAlert }
