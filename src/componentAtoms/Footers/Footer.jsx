@@ -12,7 +12,7 @@ import {
 	UncontrolledTooltip,
 } from 'reactstrap'
 // constants
-import { ROUTE_PAGE_PROFILE } from 'constantValues'
+import { ROUTE_PAGE_PROFILE } from 'routes'
 
 class Footer extends React.Component {
 	render() {

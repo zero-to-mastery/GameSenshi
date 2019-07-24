@@ -34,7 +34,7 @@ import { signInEmailValidation } from 'utils/validation'
 import { handleIsEmailExist, handlePasswordReset } from 'api'
 
 //constants
-import { ROUTE_PAGE_SIGN_IN } from 'constantValues'
+import { ROUTE_PAGE_SIGN_IN } from 'routes'
 
 const EMAIL = 'email'
 

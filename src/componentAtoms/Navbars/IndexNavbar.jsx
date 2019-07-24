@@ -31,10 +31,12 @@ import {
 	USER_SIGNED_IN,
 	USER_DISPLAY_NAME,
 	USER_PHOTO_URL,
+} from 'constantValues'
+import {
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
 	ROUTE_PAGE_SETTINGS_GENERAL,
-} from 'constantValues'
+} from 'routes'
 //core component
 import { ButtonSignUpProped } from 'componentAtoms/ButtonSignUp'
 import { ButtonSignInProped } from 'componentAtoms/ButtonSignIn'

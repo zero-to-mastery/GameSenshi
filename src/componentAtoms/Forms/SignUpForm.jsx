@@ -17,8 +17,9 @@ import {
 	SIGN_UP_EMAIL,
 	SIGN_UP_USERNAME,
 	SIGN_UP_PASSWORD,
-	ROUTE_PAGE_SIGN_IN,
 } from 'constantValues'
+
+import { ROUTE_PAGE_SIGN_IN } from 'routes'
 // validation
 import {
 	signUpEmailValidation,
