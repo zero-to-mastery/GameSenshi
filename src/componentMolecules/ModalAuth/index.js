@@ -6,7 +6,7 @@ import {
 	MODAL_AUTH_STATE_IS_OPEN,
 	MODAL_AUTH_TOGGLE,
 	MODAL_AUTH_ON_CONTINUE,
-} from 'componentMolecules/ModalAuth'
+} from 'componentMolecules/ModalAuth/ModalAuth'
 
 import {
 	StateContainer,
