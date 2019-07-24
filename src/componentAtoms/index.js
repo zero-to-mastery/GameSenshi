@@ -3,7 +3,10 @@ import { FinalInput, FinalForm, FORM_ERROR } from 'componentAtoms/FinalForm'
 import Footer from 'componentAtoms/Footers/Footer'
 import IndexHeader from 'componentAtoms/Headers/IndexHeader.jsx'
 import AuthModal from 'componentAtoms/Modals/AuthModal'
-import SocialAuthButtonGroup from 'componentAtoms/Buttons/SocialAuthButtonGroup'
+import {
+	ButtonsSocialAuth,
+	buttonSocialAuthOnClicks,
+} from 'componentAtoms/ButtonsSocialAuth'
 import SignUpButton from 'componentAtoms/Buttons/SignUpButton'
 import SignInButton from 'componentAtoms/Buttons/SignInButton'
 import SignUpForm from 'componentAtoms/Forms/SignUpForm'
@@ -30,7 +33,6 @@ export {
 	SignUpForm,
 	SignUpButton,
 	SignInButton,
-	SocialAuthButtonGroup,
 	GeneralSettingsTabPane,
 	BillingSettingsTabPane,
 	AccountSettingsTabPane,
@@ -41,4 +43,6 @@ export {
 	AlertCommonStoreAlert,
 	ProgressCommon,
 	ProgressCommonStoreProgress,
+	ButtonsSocialAuth,
+	buttonSocialAuthOnClicks,
 }

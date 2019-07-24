@@ -1,5 +1,7 @@
 import React from 'react'
+// routing
 import { withLastLocation } from 'react-router-last-location'
+import { withRouter } from 'react-router'
 // validation
 import {
 	signInEmailValidation,
@@ -9,6 +11,8 @@ import {
 import { ROUTE_PAGE_PASSWORD_RESET, onSignedInRouting } from 'routes'
 // api
 import { handleSignInWithEmailAndPassword } from 'api'
+// utils
+import { buttonSocialAuthOnClicks } from 'componentAtoms'
 // component
 import {
 	FormSignIn,
@@ -28,21 +32,24 @@ import {
 } from 'state'
 
 // inject staple props that suitable for this app
-const FormSignInProped = withLastLocation(props => {
-	const { history, lastLocation } = props
-	return (
-		<FormSignIn
-			emailValidation={signInEmailValidation}
-			passwordValidation={signInPasswordValidation}
-			forgotPasswordLink={ROUTE_PAGE_PASSWORD_RESET}
-			onSubmit={handleSignInWithEmailAndPassword}
-			onSuccessfulSubmission={() => {
-				onSignedInRouting(history, lastLocation)
-			}}
-			{...props}
-		/>
-	)
-})
+const FormSignInProped = withRouter(
+	withLastLocation(props => {
+		const { history, lastLocation } = props
+		return (
+			<FormSignIn
+				emailValidation={signInEmailValidation}
+				passwordValidation={signInPasswordValidation}
+				forgotPasswordLink={ROUTE_PAGE_PASSWORD_RESET}
+				onSubmit={handleSignInWithEmailAndPassword}
+				onSuccessfulSubmission={() => {
+					onSignedInRouting(history, lastLocation)
+				}}
+				socialAuthOnClicks={buttonSocialAuthOnClicks(lastLocation, history)}
+				{...props}
+			/>
+		)
+	})
+)
 
 const signInStoreStateToPropsMap = {
 	[SIGN_IN_FROM_STATE_EMAIL]: SIGN_IN_STORE_STATE_EMAIL,

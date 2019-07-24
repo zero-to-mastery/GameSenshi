@@ -22,7 +22,7 @@ import {
 import Loader from 'react-loader-spinner'
 // core components
 import {
-	SocialAuthButtonGroup,
+	ButtonsSocialAuth,
 	FinalInput,
 	FinalForm,
 	FORM_ERROR,
@@ -40,6 +40,7 @@ const SIGN_IN_FROM_PROP_PASSWORD_VALIDATION = 'passwordValidation'
 const SIGN_IN_FROM_PROP_FORGOT_PASSWORD_LINK = 'forgotPasswordLink'
 const SIGN_IN_FROM_TOGGLE = 'toggle'
 const SIGN_IN_FORM_ON_SUBMIT = 'onSubmit'
+const SIGN_IN_FORM_SOCIAL_AUTH_ON_CLICKS = 'socialAuthOnClicks'
 const SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
 const onSubmission = async (
@@ -71,6 +72,7 @@ const FormSignIn = props => {
 		[SIGN_IN_FROM_PROP_FORGOT_PASSWORD_LINK]: forgotPasswordLink,
 		[SIGN_IN_FROM_TOGGLE]: toggle,
 		[SIGN_IN_FORM_ON_SUBMIT]: onSubmit,
+		[SIGN_IN_FORM_SOCIAL_AUTH_ON_CLICKS]: socialAuthOnClicks,
 		[SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
 	} = props
 
@@ -140,7 +142,7 @@ const FormSignIn = props => {
 									</InputGroup>
 								) : (
 									<>
-										<SocialAuthButtonGroup />
+										<ButtonsSocialAuth onClicks={socialAuthOnClicks} />
 										<Row>
 											<Col className='text-center text-muted mb-4 mt-3' xs='12'>
 												<small>Or Classically</small>
@@ -228,4 +230,5 @@ export {
 	SIGN_IN_FROM_TOGGLE,
 	SIGN_IN_FORM_ON_SUBMIT,
 	SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION,
+	SIGN_IN_FORM_SOCIAL_AUTH_ON_CLICKS,
 }

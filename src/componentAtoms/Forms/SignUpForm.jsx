@@ -8,6 +8,7 @@ import {
 } from 'api'
 // routing
 import { Link } from 'react-router-dom'
+import { withLastLocation } from 'react-router-last-location'
 // constants
 import {
 	DATA,
@@ -45,13 +46,11 @@ import {
 } from 'reactstrap'
 // core components
 import Loader from 'react-loader-spinner'
+import { FinalInput, FinalForm, FORM_ERROR } from 'componentAtoms/FinalForm'
 import {
-	FinalInput,
-	FinalForm,
-	FORM_ERROR,
-	SocialAuthButtonGroup,
-} from 'componentAtoms'
-
+	ButtonsSocialAuth,
+	buttonSocialAuthOnClicks,
+} from 'componentAtoms/ButtonsSocialAuth'
 const onSubmit = async (values, apolloClient, callback = () => {}) => {
 	const {
 		[SIGN_UP_EMAIL]: email,
@@ -107,7 +106,7 @@ const onSubmit = async (values, apolloClient, callback = () => {}) => {
 
 const SignUpForm = props => {
 	const submitButton = useRef(null)
-	const { onSignUpSuccessCallback } = props
+	const { onSignUpSuccessCallback, history, lastLocation } = props
 	return (
 		<ApolloConsumer>
 			{apolloClient => {
@@ -145,7 +144,12 @@ const SignUpForm = props => {
 										{({ handleSubmit, submitting, submitError }) => (
 											<Form className='form'>
 												<CardBody>
-													<SocialAuthButtonGroup />
+													<ButtonsSocialAuth
+														onClicks={buttonSocialAuthOnClicks(
+															lastLocation,
+															history
+														)}
+													/>
 													<Row>
 														<Col />
 														<Col className='text-center text-muted mb-4 mt-3 col-auto'>
@@ -275,4 +279,4 @@ const SignUpForm = props => {
 	)
 }
 
-export default SignUpForm
+export default withLastLocation(SignUpForm)
