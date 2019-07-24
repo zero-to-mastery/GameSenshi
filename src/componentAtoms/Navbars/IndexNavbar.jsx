@@ -36,7 +36,6 @@ import {
 	ROUTE_PAGE_SETTINGS_GENERAL,
 } from 'constantValues'
 //core component
-import AuthModal from 'componentAtoms/Modals/AuthModal'
 import SignUpButton from 'componentAtoms/Buttons/SignUpButton'
 import SignInButton from 'componentAtoms/Buttons/SignInButton'
 import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
@@ -158,7 +157,6 @@ class ComponentsNavbar extends React.Component {
 					const { [ALERT_STORE_STATE_IS_OPEN]: alertOpen } = alertStore.state
 					return (
 						<>
-							<AuthModal />
 							<div className='fixed-top'>
 								<ProgressCommonStoreProgress />
 								<Navbar

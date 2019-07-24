@@ -48,17 +48,16 @@ const AuthModal = () => {
 							<h5 className='modal-title'>{title}</h5>
 						</div>
 						<ModalBody>{body}</ModalBody>
-						{loader ? (
-							<ModalFooter className='d-flex justify-content-center'>
+						<ModalFooter
+							className={`d-flex justify-content-${loader ? 'center' : 'end'}`}>
+							{loader ? (
 								<Loader type='Plane' color='#FFD700' height={80} width={80} />
-							</ModalFooter>
-						) : (
-							<ModalFooter className='d-flex justify-content-end'>
+							) : (
 								<Button color='primary' onClick={callback}>
 									Continue
 								</Button>
-							</ModalFooter>
-						)}
+							)}
+						</ModalFooter>
 					</Modal>
 				)
 			}}
