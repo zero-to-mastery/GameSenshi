@@ -63,13 +63,14 @@ class AuthModalStore extends Container {
 		return
 	};
 
-	[AUTH_MODAL_STORE_GET_ITEM] = () =>
-		(JSON.parse(sessionStorage.getItem(AUTH_MODAL_STORE))[
-			AUTH_MODAL_STORE_REMOVE_ITEM
-		] = () => {
-			sessionStorage.removeItem(AUTH_MODAL_STORE)
-			return this
-		});
+	[AUTH_MODAL_STORE_GET_ITEM] = () => {
+		return JSON.parse(sessionStorage.getItem(AUTH_MODAL_STORE))
+	};
+
+	[AUTH_MODAL_STORE_REMOVE_ITEM] = () => {
+		sessionStorage.removeItem(AUTH_MODAL_STORE)
+		return this
+	};
 
 	[AUTH_MODAL_STORE_SET_ITEM] = (title = '', body = '', restProps = {}) => {
 		sessionStorage.setItem(
