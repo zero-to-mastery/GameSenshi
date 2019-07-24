@@ -7,8 +7,8 @@ import {
 	ButtonsSocialAuth,
 	buttonSocialAuthOnClicks,
 } from 'componentAtoms/ButtonsSocialAuth'
-import SignUpButton from 'componentAtoms/Buttons/SignUpButton'
-import SignInButton from 'componentAtoms/Buttons/SignInButton'
+import { ButtonSignUpProped } from 'componentAtoms/ButtonSignUp'
+import { ButtonSignInProped } from 'componentAtoms/ButtonSignIn'
 import SignUpForm from 'componentAtoms/Forms/SignUpForm'
 import GeneralSettingsTabPane from 'componentAtoms/TabPane/GeneralSettingsTabPane'
 import BillingSettingsTabPane from 'componentAtoms/TabPane/BillingSettingsTabPane'
@@ -31,8 +31,6 @@ export {
 	IndexHeader,
 	AuthModal,
 	SignUpForm,
-	SignUpButton,
-	SignInButton,
 	GeneralSettingsTabPane,
 	BillingSettingsTabPane,
 	AccountSettingsTabPane,
@@ -45,4 +43,6 @@ export {
 	ProgressCommonStoreProgress,
 	ButtonsSocialAuth,
 	buttonSocialAuthOnClicks,
+	ButtonSignInProped,
+	ButtonSignUpProped,
 }

@@ -36,8 +36,8 @@ import {
 	ROUTE_PAGE_SETTINGS_GENERAL,
 } from 'constantValues'
 //core component
-import SignUpButton from 'componentAtoms/Buttons/SignUpButton'
-import SignInButton from 'componentAtoms/Buttons/SignInButton'
+import { ButtonSignUpProped } from 'componentAtoms/ButtonSignUp'
+import { ButtonSignInProped } from 'componentAtoms/ButtonSignIn'
 import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
 import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
 // logo
@@ -209,9 +209,9 @@ class ComponentsNavbar extends React.Component {
 														</NavLink>
 													</NavItem>
 												) : currentPath === '/signup' ? (
-													<SignInButton className='navbar-toggler' />
+													<ButtonSignInProped className='navbar-toggler' />
 												) : (
-													<SignUpButton className='navbar-toggler' />
+													<ButtonSignUpProped className='navbar-toggler' />
 												)}
 												<NavItem className='active'>
 													<button // button to activate collapsed
@@ -349,8 +349,12 @@ class ComponentsNavbar extends React.Component {
 														</>
 													) : (
 														<>
-															{currentPath !== '/signin' && <SignInButton />}
-															{currentPath !== '/signup' && <SignUpButton />}
+															{currentPath !== '/signin' && (
+																<ButtonSignInProped />
+															)}
+															{currentPath !== '/signup' && (
+																<ButtonSignUpProped />
+															)}
 														</>
 													)
 												) : // small screen size and collapsed
