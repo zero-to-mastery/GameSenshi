@@ -4,6 +4,7 @@ import { StateContainer } from 'state/StateContainer'
 import SignUpContainer from 'state/SignUpContainer'
 import CardContainer from 'state/CardContainer'
 import UserContainer from 'state/UserContainer'
+
 import {
 	alertStore,
 	alertStoreShow,
@@ -15,7 +16,28 @@ import {
 	ALERT_STORE_STATE_COLOR,
 	ALERT_STORE_STATE_ICON,
 } from 'state/Alert'
-import AuthModalContainer from 'state/AuthModalContainer'
+
+import {
+	authModalStore,
+	authModalStoreShow,
+	authModalStoreClose,
+	authModalStoreToggle,
+	authModalStoreGetItem,
+	authModalStoreSetItem,
+	authModalStoreInitialize,
+	authModalStoreRemoveItem,
+	authModalStoreOnAuthStateChange,
+	authModalStoreProcessRedirectResult,
+	authModalStoreOnContinue,
+	authModalStoreSetState,
+	authModalStoreResetState,
+	AUTH_MODAL_STORE_STATE_BODY,
+	AUTH_MODAL_STORE_STATE_TITLE,
+	AUTH_MODAL_STORE_STATE_LOADER,
+	AUTH_MODAL_STORE_STATE_IS_OPEN,
+	AUTH_MODAL_STORE_STATE_CONTINUED_CALLBACK,
+} from 'state/AuthModal'
+
 import {
 	signInStore,
 	signInStoreShow,
@@ -26,8 +48,9 @@ import {
 	signInStoreOnSuccessfulSubmission,
 	SIGN_IN_STORE_STATE_EMAIL,
 	SIGN_IN_STORE_STATE_IS_OPEN,
-	SIGN_IN_STORE_STATE_SIGNED_IN_CALLBACK,
+	SIGN_IN_STORE_STATE_SUBMITTED_CALLBACK,
 } from 'state/SignIn'
+
 import {
 	progressStore,
 	progressStoreShow,
@@ -42,7 +65,6 @@ import {
 const signUpStore = new SignUpContainer()
 const cardStore = new CardContainer()
 const userStore = new UserContainer()
-const authModalStore = new AuthModalContainer()
 
 export {
 	STATE,
@@ -52,7 +74,6 @@ export {
 	signUpStore,
 	cardStore,
 	userStore,
-	authModalStore,
 	alertStore,
 	alertStoreShow,
 	alertStoreToggle,
@@ -79,5 +100,23 @@ export {
 	signInStoreOnSuccessfulSubmission,
 	SIGN_IN_STORE_STATE_EMAIL,
 	SIGN_IN_STORE_STATE_IS_OPEN,
-	SIGN_IN_STORE_STATE_SIGNED_IN_CALLBACK,
+	SIGN_IN_STORE_STATE_SUBMITTED_CALLBACK,
+	authModalStore,
+	authModalStoreShow,
+	authModalStoreClose,
+	authModalStoreToggle,
+	authModalStoreGetItem,
+	authModalStoreSetItem,
+	authModalStoreInitialize,
+	authModalStoreRemoveItem,
+	authModalStoreOnAuthStateChange,
+	authModalStoreProcessRedirectResult,
+	authModalStoreOnContinue,
+	authModalStoreSetState,
+	authModalStoreResetState,
+	AUTH_MODAL_STORE_STATE_BODY,
+	AUTH_MODAL_STORE_STATE_TITLE,
+	AUTH_MODAL_STORE_STATE_LOADER,
+	AUTH_MODAL_STORE_STATE_IS_OPEN,
+	AUTH_MODAL_STORE_STATE_CONTINUED_CALLBACK,
 }
