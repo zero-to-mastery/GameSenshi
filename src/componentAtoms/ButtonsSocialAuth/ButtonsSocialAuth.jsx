@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Button, UncontrolledTooltip } from 'reactstrap'
 
 const BUTTONS_SOCIAL_AUTH_ON_CLICKS = 'onClicks'
@@ -35,7 +35,7 @@ const ButtonsSocialAuth = props => {
 					[TOOLTIP]: tooltip,
 				} = button
 				return (
-					<>
+					<Fragment key={id}>
 						<Button
 							size='lg'
 							className='btn-icon btn-round'
@@ -49,7 +49,7 @@ const ButtonsSocialAuth = props => {
 						<UncontrolledTooltip delay={0} target='google'>
 							{tooltip}
 						</UncontrolledTooltip>
-					</>
+					</Fragment>
 				)
 			})}
 		</div>
