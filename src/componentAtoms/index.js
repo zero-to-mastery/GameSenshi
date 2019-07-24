@@ -2,7 +2,6 @@ import IndexNavbar from 'componentAtoms/Navbars/IndexNavbar'
 import { FinalInput, FinalForm, FORM_ERROR } from 'componentAtoms/FinalForm'
 import Footer from 'componentAtoms/Footers/Footer'
 import IndexHeader from 'componentAtoms/Headers/IndexHeader.jsx'
-import AuthModal from 'componentAtoms/Modals/AuthModal'
 import {
 	ButtonsSocialAuth,
 	buttonSocialAuthOnClicks,
@@ -29,7 +28,6 @@ export {
 	FORM_ERROR,
 	IndexNavbar,
 	IndexHeader,
-	AuthModal,
 	SignUpForm,
 	GeneralSettingsTabPane,
 	BillingSettingsTabPane,
