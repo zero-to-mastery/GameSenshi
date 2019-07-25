@@ -29,15 +29,10 @@ const SIGNING_UP = gql`
 	}
 `
 
-const defaultValues = {
-	// undefined = success
-	[SIGN_UP_USERNAME]: undefined,
-	[SIGN_UP_EMAIL]: undefined,
-	[SIGN_UP_PASSWORD]: undefined,
-}
-
 const handleSignUpWithEmailAndPassword = (
-	values = defaultValues,
+	email = '',
+	password = '',
+	username = '',
 	apolloClient
 ) => {
 	return apolloClient
@@ -45,9 +40,9 @@ const handleSignUpWithEmailAndPassword = (
 			mutation: SIGNING_UP,
 			variables: {
 				[DATA]: {
-					[SIGN_UP_EMAIL]: values[SIGN_UP_EMAIL],
-					[SIGN_UP_PASSWORD]: values[SIGN_UP_PASSWORD],
-					[SIGN_UP_USERNAME]: values[SIGN_UP_USERNAME],
+					[SIGN_UP_EMAIL]: email,
+					[SIGN_UP_PASSWORD]: password,
+					[SIGN_UP_USERNAME]: username,
 				},
 			},
 		})
