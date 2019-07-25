@@ -4,4 +4,12 @@ import {
 	FormSignInPropedStoreSignIn,
 } from 'componentOrganisms/FormSignIn'
 
-export { FormSignIn, FormSignInProped, FormSignInPropedStoreSignIn }
+import { FormSignUp, FormSignUpProped } from 'componentOrganisms/FormSignUp'
+
+export {
+	FormSignIn,
+	FormSignInProped,
+	FormSignInPropedStoreSignIn,
+	FormSignUp,
+	FormSignUpProped,
+}
