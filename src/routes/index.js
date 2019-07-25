@@ -1,7 +1,7 @@
+import { withLastLocation } from 'react-router-last-location'
 import onSignedInRouting from 'routes/onSignedInRouting'
 import onSignedOutRouting from 'routes/onSignedOutRouting'
 import Router from 'routes/Router'
-
 import {
 	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_PROFILE,
@@ -19,6 +19,7 @@ import {
 
 export {
 	Router,
+	withLastLocation,
 	onSignedInRouting,
 	onSignedOutRouting,
 	ROUTE_PAGE_INDEX,
