@@ -16,10 +16,11 @@ import {
 	Col,
 } from 'reactstrap'
 import Select from 'react-select'
-import FinalList from 'componentAtoms/FinalForm/FinalList'
+import { TextList } from 'componentAtoms/TextList'
 
 const DELAY = 1000
 
+// TODO to solve memory leak issue, not yet success
 const FinalInput = props => {
 	const {
 		name,
@@ -34,31 +35,29 @@ const FinalInput = props => {
 		hideSuccess,
 		popoverMessages,
 		submitRef,
-		willUnmount,
 		onlyShowErrorOnSubmit,
 		className,
-		valid,
-		setValid,
+		isValid,
+		setIsValid,
 		submitErrors,
 		...restProps
 	} = props
 
-	const [localValid, setLocalValid] = useState(false)
 	// set default value
-	const willUnmount_ = willUnmount || { value: false } // TODO to solve memory leak issue, not yet success
 	const popoverMessages_ = popoverMessages || []
 	const component_ = component || 'text'
 	const onFocus_ = onFocus || (() => {})
 	const onBlur_ = onBlur || (() => {})
-	const valid_ = valid || localValid
-	const setValid_ = setValid || setLocalValid
+	const [localIsValid, setLocalIsValid] = useState(false)
+	const isValid_ = isValid || localIsValid
+	const setIsValid_ = setIsValid || setLocalIsValid
 	const validation_ = validation || (async () => {})
 	const serverValidation_ = serverValidation || (async () => {})
 	const Group = icon ? InputGroup : FormGroup
 
-	const [finalList, setFinalList] = useState([])
-	const [popoverItemFailed] = useState({ items: {} })
+	const [popoverFailedItems, setPopoverFailedItems] = useState({})
 	const [onSubmitTimeOutID, setOnSubmitTimeOutId] = useState(0)
+	const [filteredMessages, setFilteredMessages] = useState([])
 	const [state] = useState({
 		value: '',
 		delay: 0, // initial delay is 0 for fast first time background validation
@@ -72,27 +71,50 @@ const FinalInput = props => {
 	const [spinner, showSpinner] = useState(false)
 	const [spinner2, showSpinner2] = useState(false)
 
-	const generateFinalListWithState = (validationResult, resolve) => {
-		const finalList = FinalList(
-			validationResult,
-			popoverMessages_,
-			popoverItemFailed
-		)
+	const generateTextListWithState = (validationResult, resolve) => {
+		const validationResult_ = validationResult || {}
+		const { status, message } = validationResult_
+		// if validationResult is undefined, it passed validation, do not show List
+		// if validationResult is {status:true/false, message:string/array of string} and if the status is true, it passed validation, show List
+		// if validationResult is string or array of string, it failed validation, show List
+
+		const isObj = validationResult && status
+		const messages = isObj
+			? Array.isArray(message)
+				? message
+				: [message]
+			: Array.isArray(validationResult)
+			? validationResult
+			: validationResult
+			? [validationResult]
+			: []
+
+		setPopoverFailedItems({})
+
+		const filtered = messages.filter(message => {
+			setPopoverFailedItems(state => {
+				state[message] = true
+				return state
+			})
+			return !popoverMessages_.includes(message)
+		})
+
+		setFilteredMessages(filtered)
+
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
-		!willUnmount_.value && setFinalList(finalList)
 		// ! validationResult.status, what could be wrong?
-		if (validationResult === undefined || validationResult.status) {
+		if (validationResult === undefined || status) {
 			// if validation passed
-			setValid_(true)
+			setIsValid_(true)
 			resolve()
 		} else {
 			// if validation failed
-			setValid_(false)
+			setIsValid_(false)
 			resolve(validationResult)
 		}
 		state.fulfilled = true
-		return finalList
+		return filtered
 	}
 	return (
 		<Field
@@ -111,7 +133,7 @@ const FinalInput = props => {
 						}
 						state.resolve = resolve
 						state.fulfilled = false
-						setValid_(false)
+						setIsValid_(false)
 						// don't show spinner on first time(when delay=0)
 						state.delay && showSpinner(true)
 						// validate after user stop typing for certain miliseconds
@@ -128,17 +150,17 @@ const FinalInput = props => {
 												// do not close run this if user resume typing before server validation end
 												if (state.fulfilled) {
 													showSpinner2(false)
-													generateFinalListWithState(validationResult, resolve)
+													generateTextListWithState(validationResult, resolve)
 													state.fulfilledServer = true
 												}
 											}
 										)
 									} else {
-										generateFinalListWithState(undefined, resolve)
+										generateTextListWithState(undefined, resolve)
 									}
 								})
 								.catch(result => {
-									generateFinalListWithState(result.errors, resolve)
+									generateTextListWithState(result.errors, resolve)
 								})
 						}, state.delay)
 						state.timeOutID = timeOutID
@@ -147,7 +169,7 @@ const FinalInput = props => {
 					}))
 				}
 				return state.promise
-				// this prevent from returning undefined which is valid_ when component is not focused
+				// this prevent from returning undefined which is valid when component is not focused
 				// this happen because final form run validation on all form even there is only one field is onChange
 				// so always return your own promise that has been made
 			}}>
@@ -172,13 +194,13 @@ const FinalInput = props => {
 										(!onlyShowErrorOnSubmit || submitFailed) &&
 										!spinner &&
 										!spinner2 &&
-										!valid_ &&
+										!isValid_ &&
 										((touched && !active) || (active && modified)),
 									'has-success':
 										!hideSuccess &&
 										!spinner &&
 										!spinner2 &&
-										valid_ &&
+										isValid_ &&
 										((touched && !active) || (active && modified)),
 									'input-group-focus': active,
 									'mb-0': true,
@@ -372,12 +394,12 @@ const FinalInput = props => {
 											return (
 												<li
 													className={
-														popoverItemFailed.items[errorMessage]
+														popoverFailedItems[errorMessage]
 															? 'text-dark'
 															: 'text-info'
 													}
 													key={i}>
-													{popoverItemFailed.items[errorMessage] ? (
+													{popoverFailedItems[errorMessage] ? (
 														errorMessage
 													) : (
 														<del>{errorMessage}</del>
@@ -389,13 +411,21 @@ const FinalInput = props => {
 								</PopoverBody>
 							</Popover>
 						)}
-						{(!onlyShowErrorOnSubmit || submitFailed || valid_) &&
+						{(!onlyShowErrorOnSubmit || submitFailed || isValid_) &&
 							!spinner &&
 							!spinner2 &&
 							!submitting &&
 							!submitSucceeded &&
-							(touched || (active && modified)) &&
-							((!dirtySinceLastSubmit && FinalList(submitErrors)) || finalList)}
+							(touched || (active && modified)) && (
+								<TextList
+									isValid={isValid_}
+									messages={
+										!dirtySinceLastSubmit && submitErrors
+											? submitErrors
+											: filteredMessages
+									}
+								/>
+							)}
 					</>
 				)
 			}}
