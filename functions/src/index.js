@@ -13,8 +13,6 @@ import { ApolloServer } from 'apollo-server-express'
 import { MemcachedCache } from 'apollo-server-cache-memcached'
 import express from 'express'
 
-import { ENDPOINT } from 'constantValues'
-
 import { typeDefs, resolvers } from 'resolvers'
 
 const app = express()
@@ -53,4 +51,4 @@ server.applyMiddleware({
 })
 
 // unable to use property accessor in es6 non default export, revert to es5 exports statement
-exports[ENDPOINT] = functions.https.onRequest(app)
+exports['endpoint'] = functions.https.onRequest(app)
