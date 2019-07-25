@@ -420,9 +420,7 @@ const FinalInput = props => {
 								<TextList
 									isValid={isValid_}
 									messages={
-										!dirtySinceLastSubmit && submitErrors
-											? submitErrors
-											: filteredMessages
+										(!dirtySinceLastSubmit && submitErrors) || filteredMessages
 									}
 								/>
 							)}
