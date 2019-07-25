@@ -45,7 +45,7 @@ const SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
 const onSubmission = async (
 	values = { [EMAIL]: '', [PASSWORD]: '' },
-	onSubmit = () => {},
+	onSubmit = (email, password) => {},
 	onSuccessfulSubmission = () => {}
 ) => {
 	const { [EMAIL]: email, [PASSWORD]: password } = values
@@ -75,10 +75,6 @@ const FormSignIn = props => {
 		[SIGN_IN_FORM_SOCIAL_AUTH_ON_CLICKS]: socialAuthOnClicks,
 		[SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
 	} = props
-
-	const emailValidation_ = emailValidation || (() => {})
-
-	const passwordValidation_ = passwordValidation || (() => {})
 
 	const TopElement = modal
 		? props => (
@@ -154,7 +150,7 @@ const FormSignIn = props => {
 											hideSuccess
 											placeholder='Email'
 											icon='tim-icons icon-email-85'
-											validation={emailValidation_}
+											validation={emailValidation}
 											submitRef={submitButton}
 										/>
 									</>
@@ -166,7 +162,7 @@ const FormSignIn = props => {
 									hideSuccess
 									placeholder='Password'
 									icon='tim-icons icon-lock-circle'
-									validation={passwordValidation_}
+									validation={passwordValidation}
 									submitRef={submitButton}
 								/>
 							</CardBody>
