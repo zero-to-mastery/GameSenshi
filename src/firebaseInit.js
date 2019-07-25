@@ -21,7 +21,7 @@ import * as allStore from 'state'
 // routing
 import { onSignedOutRouting } from 'routes'
 //constants
-import { RESET_STATE } from 'constantValues'
+import { RESET_STATE } from 'state'
 
 const env = process.env
 

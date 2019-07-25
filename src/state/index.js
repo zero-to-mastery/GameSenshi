@@ -1,5 +1,5 @@
 import { Subscribe, Provider } from 'unstated'
-import { STATE } from 'state/constants'
+import { STATE, RESET_STATE } from 'state/constants'
 import { StateContainer } from 'state/StateContainer'
 import CardContainer from 'state/CardContainer'
 import UserContainer from 'state/UserContainer'
@@ -66,6 +66,7 @@ const userStore = new UserContainer()
 
 export {
 	STATE,
+	RESET_STATE,
 	Provider,
 	Subscribe,
 	StateContainer,
