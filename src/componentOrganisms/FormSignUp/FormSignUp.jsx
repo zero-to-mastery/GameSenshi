@@ -65,9 +65,9 @@ const onSubmmission = async (
 
 const FormSignUp = props => {
 	const submitButton = useRef(null)
-	const [emailValid, setEmailValid] = useState(undefined)
-	const [passwordValid, setPasswordValid] = useState(undefined)
-	const [usernameValid, setUsernameValid] = useState(undefined)
+	const [emailIsValid, setEmailIsValid] = useState(undefined)
+	const [passwordIsValid, setPasswordIsValid] = useState(undefined)
+	const [usernameIsValid, setUsernameIsValid] = useState(undefined)
 	const [emailSubmitErrors, setEmailSubmitErrors] = useState(undefined)
 	const [passwordSubmitErrors, setPasswordSubmitErrors] = useState(undefined)
 	const [usernameSubmitErrors, setUsernameSubmitErrors] = useState(undefined)
@@ -116,11 +116,11 @@ const FormSignUp = props => {
 								[PASSWORD]: password,
 								[USERNAME]: username,
 							} = data
-							setEmailValid(!email)
+							setEmailIsValid(!email)
 							setEmailSubmitErrors(email)
-							setPasswordValid(!password)
+							setPasswordIsValid(!password)
 							setPasswordSubmitErrors(password)
-							setUsernameValid(!username)
+							setUsernameIsValid(!username)
 							setUsernameSubmitErrors(username)
 						}
 					)
@@ -153,8 +153,8 @@ const FormSignUp = props => {
 								placeholder='Username'
 								icon='tim-icons icon-single-02'
 								validation={onUsernameValidation}
-								valid={usernameValid}
-								setValid={setUsernameValid}
+								isValid={usernameIsValid}
+								setIsValid={setUsernameIsValid}
 								submitErrors={usernameSubmitErrors}
 								popoverMessages={usernamePopoverMessages}
 								submitRef={submitButton}
@@ -166,8 +166,8 @@ const FormSignUp = props => {
 								placeholder='Email'
 								icon='tim-icons icon-email-85'
 								validation={onEmailValidation}
-								valid={emailValid}
-								setValid={setEmailValid}
+								isValid={emailIsValid}
+								setIsValid={setEmailIsValid}
 								submitErrors={emailSubmitErrors}
 								serverValidation={onEmailServerValidation}
 								popoverMessages={emailPopoverMessages}
@@ -180,8 +180,8 @@ const FormSignUp = props => {
 								placeholder='Password'
 								icon='tim-icons icon-lock-circle'
 								validation={onPasswordValidation}
-								valid={passwordValid}
-								setValid={setPasswordValid}
+								isValid={passwordIsValid}
+								setIsValid={setPasswordIsValid}
 								submitErrors={passwordSubmitErrors}
 								popoverMessages={passwordPopoverMessages}
 								submitRef={submitButton}
