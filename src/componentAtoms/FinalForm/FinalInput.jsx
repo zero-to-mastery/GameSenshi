@@ -1,8 +1,7 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import classnames from 'classnames'
 import { Field } from 'react-final-form'
 import Loader from 'react-loader-spinner'
-
 import {
 	Input,
 	FormGroup,
@@ -16,12 +15,8 @@ import {
 	Row,
 	Col,
 } from 'reactstrap'
-
 import Select from 'react-select'
-
-import ReactResizeDetector from 'react-resize-detector'
 import FinalList from 'componentAtoms/FinalForm/FinalList'
-import { EXTRA_HEIGHT, IS_VALID, SUBMIT_ERRORS, STATUS } from 'constantValues'
 
 const DELAY = 1000
 
@@ -42,26 +37,33 @@ const FinalInput = props => {
 		willUnmount,
 		onlyShowErrorOnSubmit,
 		className,
+		valid,
+		setValid,
+		submitErrors,
 		...restProps
 	} = props
+
+	const [localValid, setLocalValid] = useState(false)
 	// set default value
 	const willUnmount_ = willUnmount || { value: false } // TODO to solve memory leak issue, not yet success
 	const popoverMessages_ = popoverMessages || []
 	const component_ = component || 'text'
 	const onFocus_ = onFocus || (() => {})
 	const onBlur_ = onBlur || (() => {})
+	const valid_ = valid || localValid
+	const setValid_ = setValid || setLocalValid
+	const validation_ = validation || (async () => {})
+	const serverValidation_ = serverValidation || (async () => {})
 	const Group = icon ? InputGroup : FormGroup
-
-	const onHeightChangeRef = useRef(null)
 
 	const [finalList, setFinalList] = useState([])
 	const [popoverItemFailed] = useState({ items: {} })
 	const [onSubmitTimeOutID, setOnSubmitTimeOutId] = useState(0)
 	const [state] = useState({
+		value: '',
 		delay: 0, // initial delay is 0 for fast first time background validation
 		timeOutID: 0,
 		focused: true,
-		value: '',
 		promise: Promise.resolve(['Invalid']),
 		resolve: () => {},
 		fulfilled: true,
@@ -69,23 +71,6 @@ const FinalInput = props => {
 	})
 	const [spinner, showSpinner] = useState(false)
 	const [spinner2, showSpinner2] = useState(false)
-	const [tState, setTState] = useState({
-		[name]: undefined,
-		[name + IS_VALID]: false,
-		[name + EXTRA_HEIGHT]: 0,
-	})
-	const container = props.container || {
-		state: tState,
-		setState: setTState,
-	} // give state option to be global state or local state
-
-	const onResize = () => {
-		// change parent component height if needed
-		container.setState(state => {
-			state[name + EXTRA_HEIGHT] = onHeightChangeRef.current.clientHeight
-			return state
-		})
-	}
 
 	const generateFinalListWithState = (validationResult, resolve) => {
 		const finalList = FinalList(
@@ -96,19 +81,14 @@ const FinalInput = props => {
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
 		!willUnmount_.value && setFinalList(finalList)
-		if (validationResult === undefined || validationResult[STATUS]) {
+		// ! validationResult.status, what could be wrong?
+		if (validationResult === undefined || validationResult.status) {
 			// if validation passed
-			container.setState(state => {
-				state[name + IS_VALID] = true
-				return state
-			})
+			setValid_(true)
 			resolve()
 		} else {
 			// if validation failed
-			container.setState(state => {
-				state[name + IS_VALID] = false
-				return state
-			})
+			setValid_(false)
 			resolve(validationResult)
 		}
 		state.fulfilled = true
@@ -131,22 +111,19 @@ const FinalInput = props => {
 						}
 						state.resolve = resolve
 						state.fulfilled = false
-						container.setState(state => {
-							state[name + IS_VALID] = false
-							return state
-						})
+						setValid_(false)
 						// don't show spinner on first time(when delay=0)
 						state.delay && showSpinner(true)
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
 						const timeOutID = setTimeout(() => {
-							validation(container.state[name] || '')
+							validation_(state.value || '')
 								.then(() => {
 									if (serverValidation) {
 										showSpinner2(true)
 										state.fulfilled = true
 										// server side validation on typing
-										serverValidation(container.state[name] || '').then(
+										serverValidation_(state.value || '').then(
 											validationResult => {
 												// do not close run this if user resume typing before server validation end
 												if (state.fulfilled) {
@@ -170,7 +147,7 @@ const FinalInput = props => {
 					}))
 				}
 				return state.promise
-				// this prevent from returning undefined which is valid when component is not focused
+				// this prevent from returning undefined which is valid_ when component is not focused
 				// this happen because final form run validation on all form even there is only one field is onChange
 				// so always return your own promise that has been made
 			}}>
@@ -195,13 +172,13 @@ const FinalInput = props => {
 										(!onlyShowErrorOnSubmit || submitFailed) &&
 										!spinner &&
 										!spinner2 &&
-										!container.state[name + IS_VALID] &&
+										!valid_ &&
 										((touched && !active) || (active && modified)),
 									'has-success':
 										!hideSuccess &&
 										!spinner &&
 										!spinner2 &&
-										container.state[name + IS_VALID] &&
+										valid_ &&
 										((touched && !active) || (active && modified)),
 									'input-group-focus': active,
 									'mb-0': true,
@@ -232,17 +209,17 @@ const FinalInput = props => {
 									{...restProps}
 									id={input.name}
 									name={input.name}
-									value={container.state[name] || input.value} // the input.value has no purpose other than suppress uncontrollable to controllable warning
+									value={state.value || input.value} // the input.value has no purpose other than suppress uncontrollable to controllable warning
 									type={type}
 									onChange={e => {
 										state.delay = DELAY
 										if (onChange === undefined || onChange(e) === undefined) {
-											container.state[name] = e.target.value
+											state.value = e.target.value
 											input.onChange(e)
 										} else {
 											const value = onChange(e)
 											if (value !== false) {
-												container.state[name] = value
+												state.value = value
 												input.onChange(e)
 											}
 										}
@@ -298,12 +275,12 @@ const FinalInput = props => {
 										type={type}
 										onChange={e => {
 											if (onChange === undefined || onChange(e) === undefined) {
-												container.state[name] = e.target.value
+												state.value = e.target.value
 												input.onChange(e)
 											} else {
 												const value = onChange(e)
 												if (value !== false) {
-													container.state[name] = value
+													state.value = value
 													input.onChange(e)
 												}
 											}
@@ -340,16 +317,16 @@ const FinalInput = props => {
 								className={className}
 								id={input.name}
 								name={input.name}
-								value={container.state[name] || input.value}
+								value={state.value || input.value}
 								onChange={e => {
 									state.delay = DELAY
 									if (onChange === undefined || onChange(e) === undefined) {
-										container.state[name] = e
+										state.value = e.target.value
 										input.onChange(e)
 									} else {
 										const value = onChange(e)
 										if (value !== false) {
-											container.state[name] = value
+											state.value = value
 											input.onChange(e)
 										}
 									}
@@ -412,26 +389,13 @@ const FinalInput = props => {
 								</PopoverBody>
 							</Popover>
 						)}
-						<div
-							ref={onHeightChangeRef} // function component cannot have ref, class and html element can
-						>
-							{(!onlyShowErrorOnSubmit ||
-								submitFailed ||
-								container.state[name + IS_VALID]) &&
-								!spinner &&
-								!spinner2 &&
-								!submitting &&
-								!submitSucceeded &&
-								(touched || (active && modified)) &&
-								((!dirtySinceLastSubmit &&
-									FinalList(container.state[name + SUBMIT_ERRORS])) ||
-									finalList)}
-							<ReactResizeDetector
-								handleWidth
-								handleHeight
-								onResize={onResize}
-							/>
-						</div>
+						{(!onlyShowErrorOnSubmit || submitFailed || valid_) &&
+							!spinner &&
+							!spinner2 &&
+							!submitting &&
+							!submitSucceeded &&
+							(touched || (active && modified)) &&
+							((!dirtySinceLastSubmit && FinalList(submitErrors)) || finalList)}
 					</>
 				)
 			}}
