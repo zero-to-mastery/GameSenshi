@@ -13,7 +13,7 @@ const apis = [
 	{ [PROVIDER]: 'Facebook', [ON_SIGN_IN]: handleSignInWithFacebook },
 ]
 
-const buttonSocialAuthOnClicks = (lastLocation, history) => {
+const buttonSocialAuthOnClicks = lastLocation => {
 	return apis.map(api => {
 		const { [PROVIDER]: provider, [ON_SIGN_IN]: onSignIn } = api
 		return () => {
@@ -34,7 +34,7 @@ const buttonSocialAuthOnClicks = (lastLocation, history) => {
 			)
 			const title2 = 'Signing You In...'
 			authModalStoreSetItem(title2, body2)
-			onSignedInRouting(history, lastLocation)
+			onSignedInRouting(lastLocation)
 			onSignIn()
 		}
 	})

@@ -5,7 +5,9 @@ import {
 	ROUTE_PAGE_SIGN_IN,
 } from 'routes/constants'
 
-const onSignedInRouting = (history, lastLocation) => {
+import { history } from 'routes/routes'
+
+const onSignedInRouting = lastLocation => {
 	if (lastLocation) {
 		const { pathname } = lastLocation
 		if (
