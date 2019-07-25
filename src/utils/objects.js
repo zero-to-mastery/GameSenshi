@@ -1,7 +1,12 @@
-import { STATUS, CODE, MESSAGE, DATA } from 'constantValues'
+import { API_STATUS, API_CODE, API_MESSAGE, API_DATA } from 'constantValues'
 
 const resObj = (status = false, message = '', code = 9999, data = {}) => {
-	return { [STATUS]: status, [CODE]: code, [MESSAGE]: message, [DATA]: data }
+	return {
+		[API_STATUS]: status,
+		[API_CODE]: code,
+		[API_MESSAGE]: message,
+		[API_DATA]: data,
+	}
 }
 
 const signUpResObj = (status = false, message = '', code = 9999, data = {}) => {

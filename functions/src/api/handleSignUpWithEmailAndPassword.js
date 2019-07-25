@@ -11,11 +11,11 @@ import {
 import { handleIsEmailNotExist } from 'api'
 
 import {
-	DATA,
-	STATUS,
-	SIGN_UP_EMAIL,
-	SIGN_UP_PASSWORD,
-	SIGN_UP_USERNAME,
+	API_DATA,
+	API_STATUS,
+	API_SIGN_UP_EMAIL,
+	API_SIGN_UP_PASSWORD,
+	API_SIGN_UP_USERNAME,
 	USER_DISPLAY_NAME,
 	USER_PHOTO_URL,
 	INTERNAL_ERROR_CODE_2,
@@ -31,12 +31,12 @@ import {
 
 const handleSignUpWithEmailAndPassword = async (_, args) => {
 	const {
-		[DATA]: {
-			[SIGN_UP_EMAIL]: email,
-			[SIGN_UP_PASSWORD]: password,
-			[SIGN_UP_USERNAME]: username,
+		[API_DATA]: {
+			[API_SIGN_UP_EMAIL]: email,
+			[API_SIGN_UP_PASSWORD]: password,
+			[API_SIGN_UP_USERNAME]: username,
 		},
-		[DATA]: data,
+		[API_DATA]: data,
 	} = args
 	try {
 		const usernameInvalid = await signUpUsernameValidation(username)
@@ -51,36 +51,36 @@ const handleSignUpWithEmailAndPassword = async (_, args) => {
 
 		if (usernameInvalid || emailInvalid || passwordInvalid) {
 			return signUpResObj(false, INTERNAL_ERROR_CODE_2, 2, {
-				[SIGN_UP_USERNAME]: usernameInvalid,
-				[SIGN_UP_EMAIL]: emailInvalid,
-				[SIGN_UP_PASSWORD]: passwordInvalid,
+				[API_SIGN_UP_USERNAME]: usernameInvalid,
+				[API_SIGN_UP_EMAIL]: emailInvalid,
+				[API_SIGN_UP_PASSWORD]: passwordInvalid,
 			})
 		}
 		const isEmailNew = await handleIsEmailNotExist(data)
 
-		if (!isEmailNew[STATUS]) {
+		if (!isEmailNew[API_STATUS]) {
 			return isEmailNew
 		}
 
 		const isEmailReal = await req(`${verifyEmailURL}${email}`)
 			.then(res => {
 				const data = JSON.parse(res)
-				if (data[STATUS] === 1) {
+				if (data[API_STATUS] === 1) {
 					return signUpResObj(true)
 				} else {
 					return signUpResObj(false, INTERNAL_ERROR_CODE_3, 3, {
-						[SIGN_UP_EMAIL]: 'Invalid Email',
+						[API_SIGN_UP_EMAIL]: 'Invalid Email',
 					})
 				}
 			})
 			.catch(err => {
 				console.log('email verifying error', err)
 				return signUpResObj(false, INTERNAL_ERROR_CODE_4, 4, {
-					[SIGN_UP_EMAIL]: 'Internal Error Code 4',
+					[API_SIGN_UP_EMAIL]: 'Internal Error Code 4',
 				})
 			})
 
-		if (!isEmailReal[STATUS]) {
+		if (!isEmailReal[API_STATUS]) {
 			return isEmailReal
 		}
 

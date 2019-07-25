@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Row, Col, Alert } from 'reactstrap'
-import { STATUS, MESSAGE } from 'constantValues'
+import { API_STATUS, API_MESSAGE } from 'constantValues'
 
 const FinalList = (
 	validationResult,
@@ -11,11 +11,11 @@ const FinalList = (
 	// if validationResult is undefined, it passed validation, do not show List
 	// if validationResult is {status:true/false, message:string/array of string} and if the status is true, it passed validation, show List
 	// if validationResult is string or array of string, it failed validation, show List
-	const isObj = validationResult && validationResult[STATUS]
+	const isObj = validationResult && validationResult[API_STATUS]
 	const messages = isObj
-		? Array.isArray(validationResult[MESSAGE])
-			? validationResult[MESSAGE]
-			: [validationResult[MESSAGE]]
+		? Array.isArray(validationResult[API_MESSAGE])
+			? validationResult[API_MESSAGE]
+			: [validationResult[API_MESSAGE]]
 		: Array.isArray(validationResult)
 		? validationResult
 		: [validationResult]
@@ -46,7 +46,7 @@ const FinalList = (
 						<Col xs='1'>
 							<i
 								className={`text-success tim-icons ${
-									validationResult[STATUS]
+									validationResult[API_STATUS]
 										? 'icon-check-2'
 										: 'icon-alert-circle-exc'
 								}`}
