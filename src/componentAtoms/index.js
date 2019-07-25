@@ -8,7 +8,6 @@ import {
 } from 'componentAtoms/ButtonsSocialAuth'
 import { ButtonSignUpProped } from 'componentAtoms/ButtonSignUp'
 import { ButtonSignInProped } from 'componentAtoms/ButtonSignIn'
-import SignUpForm from 'componentAtoms/Forms/SignUpForm'
 import GeneralSettingsTabPane from 'componentAtoms/TabPane/GeneralSettingsTabPane'
 import BillingSettingsTabPane from 'componentAtoms/TabPane/BillingSettingsTabPane'
 import AccountSettingsTabPane from 'componentAtoms/TabPane/AccountSettingsTabPane'
@@ -28,7 +27,6 @@ export {
 	FORM_ERROR,
 	IndexNavbar,
 	IndexHeader,
-	SignUpForm,
 	GeneralSettingsTabPane,
 	BillingSettingsTabPane,
 	AccountSettingsTabPane,
