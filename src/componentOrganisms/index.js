@@ -1,15 +1,18 @@
 import {
 	FormSignIn,
-	FormSignInProped,
-	FormSignInPropedStoreSignIn,
+	FormSignInPropedDefault,
+	FormSignInPropedDefaultStoreSignIn,
 } from 'componentOrganisms/FormSignIn'
 
-import { FormSignUp, FormSignUpProped } from 'componentOrganisms/FormSignUp'
+import {
+	FormSignUp,
+	FormSignUpPropedDefault,
+} from 'componentOrganisms/FormSignUp'
 
 export {
 	FormSignIn,
-	FormSignInProped,
-	FormSignInPropedStoreSignIn,
+	FormSignInPropedDefault,
+	FormSignInPropedDefaultStoreSignIn,
 	FormSignUp,
-	FormSignUpProped,
+	FormSignUpPropedDefault,
 }

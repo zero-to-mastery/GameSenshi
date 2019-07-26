@@ -10,8 +10,8 @@ import {
 	ButtonsSocialAuth,
 	buttonSocialAuthOnClicks,
 } from 'componentAtoms/ButtonsSocialAuth'
-import { ButtonSignUpProped } from 'componentAtoms/ButtonSignUp'
-import { ButtonSignInProped } from 'componentAtoms/ButtonSignIn'
+import { ButtonSignUpPropedDefault } from 'componentAtoms/ButtonSignUp'
+import { ButtonSignInPropedDefault } from 'componentAtoms/ButtonSignIn'
 import GeneralSettingsTabPane from 'componentAtoms/TabPane/GeneralSettingsTabPane'
 import BillingSettingsTabPane from 'componentAtoms/TabPane/BillingSettingsTabPane'
 import AccountSettingsTabPane from 'componentAtoms/TabPane/AccountSettingsTabPane'
@@ -42,8 +42,8 @@ export {
 	ProgressCommonStoreProgress,
 	ButtonsSocialAuth,
 	buttonSocialAuthOnClicks,
-	ButtonSignInProped,
-	ButtonSignUpProped,
+	ButtonSignInPropedDefault,
+	ButtonSignUpPropedDefault,
 	ListText,
 	InputSelect,
 	InputText,

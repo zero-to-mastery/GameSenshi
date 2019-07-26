@@ -31,7 +31,7 @@ import {
 } from 'state'
 
 // inject staple props that suitable for this app
-const FormSignInProped = withLastLocation(props => {
+const FormSignInPropedDefault = withLastLocation(props => {
 	const { history, lastLocation, ...restProps } = props
 	return (
 		<FormSignIn
@@ -58,11 +58,15 @@ const signInStoreMethodToPropsMap = {
 	[SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION]: signInStoreOnSuccessfulSubmission,
 }
 
-const FormSignInPropedStoreSignIn = StateContainer(
-	FormSignInProped,
+const FormSignInPropedDefaultStoreSignIn = StateContainer(
+	FormSignInPropedDefault,
 	[signInStore],
 	[signInStoreStateToPropsMap],
 	[signInStoreMethodToPropsMap]
 )
 
-export { FormSignIn, FormSignInProped, FormSignInPropedStoreSignIn }
+export {
+	FormSignIn,
+	FormSignInPropedDefault,
+	FormSignInPropedDefaultStoreSignIn,
+}

@@ -38,8 +38,8 @@ import {
 	ROUTE_PAGE_SETTINGS_GENERAL,
 } from 'routes'
 //core component
-import { ButtonSignUpProped } from 'componentAtoms/ButtonSignUp'
-import { ButtonSignInProped } from 'componentAtoms/ButtonSignIn'
+import { ButtonSignUpPropedDefault } from 'componentAtoms/ButtonSignUp'
+import { ButtonSignInPropedDefault } from 'componentAtoms/ButtonSignIn'
 import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
 import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
 // logo
@@ -211,9 +211,9 @@ class ComponentsNavbar extends React.Component {
 														</NavLink>
 													</NavItem>
 												) : currentPath === '/signup' ? (
-													<ButtonSignInProped className='navbar-toggler' />
+													<ButtonSignInPropedDefault className='navbar-toggler' />
 												) : (
-													<ButtonSignUpProped className='navbar-toggler' />
+													<ButtonSignUpPropedDefault className='navbar-toggler' />
 												)}
 												<NavItem className='active'>
 													<button // button to activate collapsed
@@ -352,10 +352,10 @@ class ComponentsNavbar extends React.Component {
 													) : (
 														<>
 															{currentPath !== '/signin' && (
-																<ButtonSignInProped />
+																<ButtonSignInPropedDefault />
 															)}
 															{currentPath !== '/signup' && (
-																<ButtonSignUpProped />
+																<ButtonSignUpPropedDefault />
 															)}
 														</>
 													)

@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'reactstrap'
 
 // core components
 import { Footer, IndexNavbar } from 'componentAtoms'
-import { FormSignUpProped } from 'componentOrganisms'
+import { FormSignUpPropedDefault } from 'componentOrganisms'
 
 const SignUpPage = props => {
 	const [squares1to6, setSquares1to6] = useState('')
@@ -75,7 +75,7 @@ const SignUpPage = props => {
 										id='square8'
 										style={{ transform: squares7and8 }}
 									/>
-									<FormSignUpProped />
+									<FormSignUpPropedDefault />
 								</Col>
 							</Row>
 						</Container>

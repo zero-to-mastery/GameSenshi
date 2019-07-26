@@ -19,7 +19,7 @@ import {
 import { buttonSocialAuthOnClicks } from 'componentAtoms'
 import { onSuccessfulSubmission } from 'componentOrganisms/FormSignUp/utils'
 
-const FormSignUpProped = withLastLocation(props => {
+const FormSignUpPropedDefault = withLastLocation(props => {
 	const { lastLocation, ...restProps } = props
 	return (
 		<ApolloConsumer>
@@ -56,4 +56,4 @@ const FormSignUpProped = withLastLocation(props => {
 	)
 })
 
-export { FormSignUp, FormSignUpProped }
+export { FormSignUp, FormSignUpPropedDefault }
