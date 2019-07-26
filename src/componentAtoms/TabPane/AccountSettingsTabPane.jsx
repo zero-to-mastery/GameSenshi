@@ -4,8 +4,8 @@ import { Button, FormGroup, Row, Col, Form } from 'reactstrap'
 // loader
 import Loader from 'react-loader-spinner'
 // form validation
-import { FinalForm, FORM_ERROR } from 'componentAtoms/FinalForm'
-import { InputTextFinal } from 'componentAtoms/InputText'
+import { FinalForm, FORM_ERROR } from 'componentAtoms'
+import { FinalInputText } from 'componentMolecules'
 // validation
 import {
 	signInEmailValidation,
@@ -45,7 +45,7 @@ const AccountSettingsTabPane = props => {
 									</Col>
 									<Col className='align-self-center' md='9'>
 										<FormGroup>
-											<InputTextFinal
+											<FinalInputText
 												type={EMAIL}
 												name={EMAIL}
 												hideSuccess
@@ -118,7 +118,7 @@ const AccountSettingsTabPane = props => {
 									</Col>
 									<Col className='align-self-center' md='9'>
 										<FormGroup>
-											<InputTextFinal
+											<FinalInputText
 												type={PASSWORD}
 												name={PASSWORD}
 												onlyShowErrorOnSubmit

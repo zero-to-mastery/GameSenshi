@@ -18,9 +18,8 @@ import {
 // core components
 import Cards from 'react-credit-cards'
 import Loader from 'react-loader-spinner'
-import { FinalForm } from 'componentAtoms/FinalForm'
-import { InputTextFinal } from 'componentAtoms/InputText'
-import { InputSelectFinal } from 'componentAtoms/InputSelect'
+import { FinalForm } from 'componentAtoms'
+import { FinalInputText, FinalInputSelect } from 'componentMolecules'
 // styles
 import 'react-credit-cards/lib/styles.scss'
 
@@ -172,7 +171,7 @@ const CardModal = props => {
 															<Row>
 																<Col>
 																	<FormGroup>
-																		<InputTextFinal
+																		<FinalInputText
 																			placeholder='Card Number'
 																			name={CARD_NUMBER}
 																			type='text'
@@ -196,7 +195,7 @@ const CardModal = props => {
 															<Row>
 																<Col>
 																	<FormGroup>
-																		<InputTextFinal
+																		<FinalInputText
 																			placeholder='Card Holder Name'
 																			name={CARD_HOLDER_NAME}
 																			type='text'
@@ -224,7 +223,7 @@ const CardModal = props => {
 															<Row>
 																<Col xs='6' className='pr-0'>
 																	<FormGroup>
-																		<InputSelectFinal
+																		<FinalInputSelect
 																			className='react-select react-select-info'
 																			classNamePrefix='react-select'
 																			isSearchable={false}
@@ -245,7 +244,7 @@ const CardModal = props => {
 																</Col>
 																<Col xs='6'>
 																	<FormGroup>
-																		<InputSelectFinal
+																		<FinalInputSelect
 																			className='react-select react-select-info'
 																			classNamePrefix='react-select'
 																			isSearchable={false}
@@ -268,7 +267,7 @@ const CardModal = props => {
 															<Row>
 																<Col xs='6'>
 																	<FormGroup>
-																		<InputTextFinal
+																		<FinalInputText
 																			placeholder='CVC'
 																			name={CARD_CVC}
 																			type='text'

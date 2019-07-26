@@ -3,4 +3,16 @@ import {
 	ModalAuthStoreAuthModal,
 } from 'componentMolecules/ModalAuth'
 
-export { ModalAuth, ModalAuthStoreAuthModal }
+import {
+	FinalInput,
+	FinalInputText,
+	FinalInputSelect,
+} from 'componentMolecules/FinalInput'
+
+export {
+	ModalAuth,
+	ModalAuthStoreAuthModal,
+	FinalInput,
+	FinalInputText,
+	FinalInputSelect,
+}

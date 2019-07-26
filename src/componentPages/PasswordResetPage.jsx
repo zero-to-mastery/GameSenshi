@@ -18,13 +18,10 @@ import {
 } from 'reactstrap'
 
 // core components
-import {
-	Footer,
-	IndexNavbar,
-	FinalInput,
-	FinalForm,
-	FORM_ERROR,
-} from 'componentAtoms'
+import { Footer, IndexNavbar, FinalForm, FORM_ERROR } from 'componentAtoms'
+
+import { FinalInputText } from 'componentMolecules'
+
 import Loader from 'react-loader-spinner'
 
 // validation
@@ -116,7 +113,7 @@ const PasswordResetPage = props => {
 															<h4 className='description text-center'>
 																Enter email address to reset password
 															</h4>
-															<FinalInput
+															<FinalInputText
 																valid={false}
 																invalid={false}
 																type={EMAIL}

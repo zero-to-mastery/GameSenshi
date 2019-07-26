@@ -17,12 +17,8 @@ import {
 } from 'reactstrap'
 // core components
 import Loader from 'react-loader-spinner'
-import {
-	ButtonsSocialAuth,
-	InputTextFinal,
-	FinalForm,
-	FORM_ERROR,
-} from 'componentAtoms'
+import { ButtonsSocialAuth, FinalForm, FORM_ERROR } from 'componentAtoms'
+import { FinalInputText } from 'componentMolecules'
 
 const EMAIL = 'email'
 const PASSWORD = 'password'
@@ -136,13 +132,13 @@ const FormSignUp = props => {
 											// ! whenever any of these two field components is render
 											// ! and whenever component going to unmount (route to other page) the field components will run validation
 											// ! these is not good as the validation process invoking steState in a promise and cause memory leak issue
-											// ! step to reproduce: go to any page that has InputTextFinal, then redirect to website other than gamesenshi
+											// ! step to reproduce: go to any page that has FinalInputText, then redirect to website other than gamesenshi
 											// * implement useEffect component will unmount of Input Field component is not working
 											// * set signUpStore willUnmount state directly when parent component going to unmount and use it to stop setState work
 											// * set parent willUnmount state directly when parent component going to unmount and use it to stop setState does not work
 											// TODO research knowledge needed to deal with this issue
 										*/}
-							<InputTextFinal
+							<FinalInputText
 								type={USERNAME}
 								name={USERNAME}
 								placeholder='Username'
@@ -155,7 +151,7 @@ const FormSignUp = props => {
 								submitRef={submitButton}
 							/>
 							<div className='w-100 mb-3' />
-							<InputTextFinal
+							<FinalInputText
 								type={EMAIL}
 								name={EMAIL}
 								placeholder='Email'
@@ -169,7 +165,7 @@ const FormSignUp = props => {
 								submitRef={submitButton}
 							/>
 							<div className='w-100 mb-3' />
-							<InputTextFinal
+							<FinalInputText
 								type={PASSWORD}
 								name={PASSWORD}
 								placeholder='Password'

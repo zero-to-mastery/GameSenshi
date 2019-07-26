@@ -21,12 +21,8 @@ import {
 } from 'reactstrap'
 import Loader from 'react-loader-spinner'
 // core components
-import {
-	ButtonsSocialAuth,
-	InputTextFinal,
-	FinalForm,
-	FORM_ERROR,
-} from 'componentAtoms'
+import { ButtonsSocialAuth, FinalForm, FORM_ERROR } from 'componentAtoms'
+import { FinalInputText } from 'componentMolecules'
 
 const EMAIL = 'email'
 const PASSWORD = 'password'
@@ -144,7 +140,7 @@ const FormSignIn = props => {
 												<small>Or Classically</small>
 											</Col>
 										</Row>
-										<InputTextFinal
+										<FinalInputText
 											type={EMAIL}
 											name={EMAIL}
 											hideSuccess
@@ -156,7 +152,7 @@ const FormSignIn = props => {
 									</>
 								)}
 								<div className='w-100 mb-3' />
-								<InputTextFinal
+								<FinalInputText
 									type={PASSWORD}
 									name={PASSWORD}
 									hideSuccess
