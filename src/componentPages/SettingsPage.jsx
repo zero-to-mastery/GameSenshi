@@ -11,7 +11,7 @@ import {
 	ROUTE_PAGE_SETTINGS_BILLING,
 	ROUTE_PAGE_SETTINGS_ACCOUNT,
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
-} from 'routes'
+} from 'routes/constants'
 // core components
 import {
 	Footer,
