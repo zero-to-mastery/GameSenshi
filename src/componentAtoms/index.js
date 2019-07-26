@@ -1,6 +1,6 @@
 import IndexNavbar from 'componentAtoms/Navbars/IndexNavbar'
 import { FinalInput, FinalForm, FORM_ERROR } from 'componentAtoms/FinalForm'
-import { TextList } from 'componentAtoms/TextList'
+import { ListText } from 'componentAtoms/ListText'
 import Footer from 'componentAtoms/Footers/Footer'
 import IndexHeader from 'componentAtoms/Headers/IndexHeader.jsx'
 import {
@@ -42,5 +42,5 @@ export {
 	buttonSocialAuthOnClicks,
 	ButtonSignInProped,
 	ButtonSignUpProped,
-	TextList,
+	ListText,
 }

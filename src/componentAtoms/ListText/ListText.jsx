@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Row, Col, Alert } from 'reactstrap'
 
-const TextList = props => {
+const ListText = props => {
 	const { messages, isValid } = props
 	let messages_ = messages
 		? Array.isArray(messages)
@@ -40,4 +40,4 @@ const TextList = props => {
 	})
 }
 
-export { TextList }
+export { ListText }

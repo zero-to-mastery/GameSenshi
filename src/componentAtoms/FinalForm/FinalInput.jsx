@@ -16,7 +16,7 @@ import {
 	Col,
 } from 'reactstrap'
 import Select from 'react-select'
-import { TextList } from 'componentAtoms/TextList'
+import { ListText } from 'componentAtoms/ListText'
 
 const DELAY = 1000
 
@@ -411,7 +411,7 @@ const FinalInput = props => {
 							!submitting &&
 							!submitSucceeded &&
 							(touched || (active && modified)) && (
-								<TextList
+								<ListText
 									isValid={isValid_}
 									messages={
 										(!dirtySinceLastSubmit && submitErrors) || filteredMessages
