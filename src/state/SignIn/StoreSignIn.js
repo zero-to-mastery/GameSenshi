@@ -16,7 +16,7 @@ const defaultValues = {
 	[SIGN_IN_STORE_STATE_SUBMITTED_CALLBACK]: () => {},
 }
 
-class SignInStore extends Container {
+class StoreSignIn extends Container {
 	constructor() {
 		super()
 		this[STATE] = defaultValues
@@ -58,7 +58,7 @@ class SignInStore extends Container {
 }
 
 export {
-	SignInStore,
+	StoreSignIn,
 	SIGN_IN_STORE_STATE_EMAIL,
 	SIGN_IN_STORE_STATE_IS_OPEN,
 	SIGN_IN_STORE_STATE_SUBMITTED_CALLBACK,

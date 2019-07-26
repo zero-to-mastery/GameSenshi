@@ -9,7 +9,7 @@ import 'firebase/storage'
 import {
 	storeAlertShow,
 	userStore,
-	signInStoreShow,
+	storeSignInShow,
 	storeAuthModalShow,
 	storeAuthModalClose,
 	storeAuthModalSetItem,
@@ -94,7 +94,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 				storeAuthModalShow(title, body, false, async () => {
 					await storeAuthModalClose()
 					if (provider1 === 'password') {
-						signInStoreShow(email, async () => {
+						storeSignInShow(email, async () => {
 							const body = (
 								<>
 									Linking<b> {name1} </b>to<b> {name2} </b>
