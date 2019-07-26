@@ -10,12 +10,12 @@ import {
 	storeAlertShow,
 	userStore,
 	signInStoreShow,
-	authModalStoreShow,
-	authModalStoreClose,
-	authModalStoreSetItem,
-	authModalStoreRemoveItem,
-	authModalStoreOnAuthStateChange,
-	authModalStoreProcessRedirectResult,
+	storeAuthModalShow,
+	storeAuthModalClose,
+	storeAuthModalSetItem,
+	storeAuthModalRemoveItem,
+	storeAuthModalOnAuthStateChange,
+	storeAuthModalProcessRedirectResult,
 } from 'state'
 import * as allStore from 'state'
 // routing
@@ -75,7 +75,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 			const name2 =
 				provider2 === 'password' ? email : getName(credential.signInMethod)
 			// close modal if any
-			await authModalStoreClose()
+			await storeAuthModalClose()
 			setTimeout(() => {
 				const body = (
 					<>
@@ -91,8 +91,8 @@ const handleDifferentCredential = (auth, email, credential) => {
 				)
 
 				const title = 'Linking Your Social Login'
-				authModalStoreShow(title, body, false, async () => {
-					await authModalStoreClose()
+				storeAuthModalShow(title, body, false, async () => {
+					await storeAuthModalClose()
 					if (provider1 === 'password') {
 						signInStoreShow(email, async () => {
 							const body = (
@@ -104,11 +104,11 @@ const handleDifferentCredential = (auth, email, credential) => {
 								</>
 							)
 							const title = 'Linking Your Social Login'
-							await authModalStoreShow(title, body, true)
+							await storeAuthModalShow(title, body, true)
 							auth()
 								.currentUser.linkWithCredential(credential)
 								.then(async () => {
-									await authModalStoreClose()
+									await storeAuthModalClose()
 									storeAlertShow(
 										'Social login linked successful!',
 										'success',
@@ -116,7 +116,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 									)
 								})
 								.catch(async () => {
-									await authModalStoreClose()
+									await storeAuthModalClose()
 									storeAlertShow(
 										'Social login linked unsuccessful!',
 										'danger',
@@ -144,7 +144,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 							name2,
 							isLinked: false,
 						}
-						authModalStoreSetItem(title, body, restProps)
+						storeAuthModalSetItem(title, body, restProps)
 						auth().signInWithRedirect(new auth[provider1]())
 					}
 				})
@@ -155,7 +155,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 
 // user auth listener
 auth().onAuthStateChanged(signedInUser => {
-	authModalStoreOnAuthStateChange()
+	storeAuthModalOnAuthStateChange()
 	userStore.onAuthStateChanged(signedInUser)
 	// reset all store if user sign out
 	if (!signedInUser) {
@@ -187,11 +187,11 @@ auth()
 		const linkWithRedirect = provider2 => {
 			result.user.linkWithRedirect(new auth[provider2]())
 		}
-		authModalStoreProcessRedirectResult(showAlert, linkWithRedirect)
+		storeAuthModalProcessRedirectResult(showAlert, linkWithRedirect)
 	})
 	.catch(err => {
 		// remove this item whether it is success or not
-		authModalStoreRemoveItem()
+		storeAuthModalRemoveItem()
 		const { code, credential, email } = err
 		if (code === 'auth/account-exists-with-different-credential') {
 			handleDifferentCredential(auth, email, credential)

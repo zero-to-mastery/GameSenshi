@@ -4,7 +4,7 @@ import reactElementToJSXString from 'react-element-to-jsx-string'
 import { onSignedInRouting } from 'routes'
 import { handleSignInWithGoogle, handleSignInWithFacebook } from 'api'
 // state
-import { authModalStoreShow, authModalStoreSetItem } from 'state'
+import { storeAuthModalShow, storeAuthModalSetItem } from 'state'
 
 const PROVIDER = 'provider'
 const ON_SIGN_IN = 'onSignIn'
@@ -23,7 +23,7 @@ const buttonSocialAuthOnClicks = lastLocation => {
 				</>
 			)
 			const title = 'Signing You In...'
-			authModalStoreShow(title, body, true)
+			storeAuthModalShow(title, body, true)
 			const body2 = reactElementToJSXString(
 				<span>
 					Signing in with <b>{provider}</b>...
@@ -33,7 +33,7 @@ const buttonSocialAuthOnClicks = lastLocation => {
 				</span>
 			)
 			const title2 = 'Signing You In...'
-			authModalStoreSetItem(title2, body2)
+			storeAuthModalSetItem(title2, body2)
 			onSignedInRouting(lastLocation)
 			onSignIn()
 		}

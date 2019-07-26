@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import App from 'App'
 import * as serviceWorker from 'serviceWorker'
 // state management
-import { authModalStoreInitialize, userStore } from 'state'
+import { storeAuthModalInitialize, userStore } from 'state'
 // Initialize firebase
 import 'firebaseInit'
 // styles
@@ -17,7 +17,7 @@ import 'assets/css/game-senshi.css'
 userStore.initialize()
 
 // modal for auth
-authModalStoreInitialize()
+storeAuthModalInitialize()
 
 ReactDOM.render(<App />, document.getElementById('root'))
 

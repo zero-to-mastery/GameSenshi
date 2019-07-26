@@ -30,7 +30,7 @@ const defaultValues = {
 	[AUTH_MODAL_STORE_STATE_CONTINUED_CALLBACK]: () => {},
 }
 
-class AuthModalStore extends Container {
+class StoreAuthModal extends Container {
 	constructor() {
 		super()
 		this[STATE] = defaultValues
@@ -163,7 +163,7 @@ class AuthModalStore extends Container {
 }
 
 export {
-	AuthModalStore,
+	StoreAuthModal,
 	AUTH_MODAL_STORE_STATE_BODY,
 	AUTH_MODAL_STORE_STATE_IS_OPEN,
 	AUTH_MODAL_STORE_STATE_TITLE,
