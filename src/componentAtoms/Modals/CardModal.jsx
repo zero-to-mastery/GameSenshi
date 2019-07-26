@@ -18,8 +18,9 @@ import {
 // core components
 import Cards from 'react-credit-cards'
 import Loader from 'react-loader-spinner'
-import { FinalInput, FinalForm } from 'componentAtoms/FinalForm'
-
+import { FinalForm } from 'componentAtoms/FinalForm'
+import { InputTextFinal } from 'componentAtoms/InputText'
+import { InputSelectFinal } from 'componentAtoms/InputSelect'
 // styles
 import 'react-credit-cards/lib/styles.scss'
 
@@ -171,7 +172,7 @@ const CardModal = props => {
 															<Row>
 																<Col>
 																	<FormGroup>
-																		<FinalInput
+																		<InputTextFinal
 																			placeholder='Card Number'
 																			name={CARD_NUMBER}
 																			type='text'
@@ -195,7 +196,7 @@ const CardModal = props => {
 															<Row>
 																<Col>
 																	<FormGroup>
-																		<FinalInput
+																		<InputTextFinal
 																			placeholder='Card Holder Name'
 																			name={CARD_HOLDER_NAME}
 																			type='text'
@@ -223,12 +224,11 @@ const CardModal = props => {
 															<Row>
 																<Col xs='6' className='pr-0'>
 																	<FormGroup>
-																		<FinalInput
+																		<InputSelectFinal
 																			className='react-select react-select-info'
 																			classNamePrefix='react-select'
 																			isSearchable={false}
 																			name={CARD_EXPIRY_MONTH}
-																			component='select'
 																			validation={value =>
 																				cardExpiryValidation(
 																					value,
@@ -245,12 +245,11 @@ const CardModal = props => {
 																</Col>
 																<Col xs='6'>
 																	<FormGroup>
-																		<FinalInput
+																		<InputSelectFinal
 																			className='react-select react-select-info'
 																			classNamePrefix='react-select'
 																			isSearchable={false}
 																			name={CARD_EXPIRY_YEAR}
-																			component='select'
 																			onFocus={() => {
 																				setFocus('expiry')
 																			}}
@@ -269,7 +268,7 @@ const CardModal = props => {
 															<Row>
 																<Col xs='6'>
 																	<FormGroup>
-																		<FinalInput
+																		<InputTextFinal
 																			placeholder='CVC'
 																			name={CARD_CVC}
 																			type='text'

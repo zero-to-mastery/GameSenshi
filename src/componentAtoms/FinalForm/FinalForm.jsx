@@ -8,4 +8,4 @@ const FinalForm = props => {
 	return <Form {...props} decorators={[focusOnError]} />
 }
 
-export default FinalForm
+export { FinalForm }

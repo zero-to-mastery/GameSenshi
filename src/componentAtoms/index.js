@@ -1,6 +1,9 @@
 import IndexNavbar from 'componentAtoms/Navbars/IndexNavbar'
-import { FinalInput, FinalForm, FORM_ERROR } from 'componentAtoms/FinalForm'
+import { FinalForm, FORM_ERROR } from 'componentAtoms/FinalForm'
+import { FinalInput } from 'componentAtoms/FinalInput'
 import { ListText } from 'componentAtoms/ListText'
+import { InputSelect, InputSelectFinal } from 'componentAtoms/InputSelect'
+import { InputText, InputTextFinal } from 'componentAtoms/InputText'
 import Footer from 'componentAtoms/Footers/Footer'
 import IndexHeader from 'componentAtoms/Headers/IndexHeader.jsx'
 import {
@@ -23,7 +26,6 @@ import {
 
 export {
 	Footer,
-	FinalInput,
 	FinalForm,
 	FORM_ERROR,
 	IndexNavbar,
@@ -43,4 +45,9 @@ export {
 	ButtonSignInProped,
 	ButtonSignUpProped,
 	ListText,
+	InputSelect,
+	InputText,
+	InputTextFinal,
+	FinalInput,
+	InputSelectFinal,
 }

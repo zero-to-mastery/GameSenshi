@@ -24,7 +24,7 @@ const BillingSettingsTabPane = () => {
 				} = cardStore
 				return (
 					<>
-						<CardModal />
+						{/* <CardModal /> */}
 						<header>
 							<h2 className='text-uppercase'>Billing method</h2>
 						</header>

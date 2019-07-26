@@ -17,8 +17,12 @@ import {
 } from 'reactstrap'
 // core components
 import Loader from 'react-loader-spinner'
-import { FinalInput, FinalForm, FORM_ERROR } from 'componentAtoms/FinalForm'
-import { ButtonsSocialAuth } from 'componentAtoms'
+import {
+	ButtonsSocialAuth,
+	InputTextFinal,
+	FinalForm,
+	FORM_ERROR,
+} from 'componentAtoms'
 
 const EMAIL = 'email'
 const PASSWORD = 'password'
@@ -34,34 +38,6 @@ const FORM_SIGN_UP_ON_USERNAME_VALIDATION = 'onUsernameValidation'
 const FORM_SIGN_IP_OM_SUBMIT = 'onSubmit'
 const FORM_SIGN_UP_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 const FORM_SIGN_UP_SOCIAL_AUTH_ON_CLICKS = 'socialAuthOnClicks'
-
-const onSubmmission = async (
-	values,
-	onSubmit = (email = '', password = '', username = '') => {},
-	onSuccessfulSubmission = (email = '', password = '', username = '') => {},
-	onFailedSubmission = (email = '', password = '', username = '') => {}
-	// onFailedSubmission is private method, it is an parameter so that onSubmmission don't need to be defined in component function
-) => {
-	const { [EMAIL]: email, [PASSWORD]: password, [USERNAME]: username } = values
-	const isSignUpFailed = await onSubmit(email, password, username)
-
-	if (typeof isSignUpFailed === 'string') {
-		// respond is not res obj mean the error is on client side
-		return { [FORM_ERROR]: isSignUpFailed }
-	} else {
-		const { status, data, message } = isSignUpFailed
-
-		if (status) {
-			onSuccessfulSubmission(email, password, username)
-			// if undefined mean no error
-			// but this not much point since it will redirect and unmount soon
-			return
-		} else {
-			onFailedSubmission(data)
-			return { ...data, [FORM_ERROR]: message }
-		}
-	}
-}
 
 const FormSignUp = props => {
 	const submitButton = useRef(null)
@@ -84,6 +60,42 @@ const FormSignUp = props => {
 		[FORM_SIGN_UP_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
 		[FORM_SIGN_IP_OM_SUBMIT]: onSubmit,
 	} = props
+
+	const onSubmmission = async (
+		values,
+		onSubmit = (email = '', password = '', username = '') => {},
+		onSuccessfulSubmission = (email = '', password = '', username = '') => {},
+		onFailedSubmission = (email = '', password = '', username = '') => {}
+		// onFailedSubmission is private method, it is an parameter so that onSubmmission don't need to be defined in component function
+	) => {
+		const {
+			[EMAIL]: email,
+			[PASSWORD]: password,
+			[USERNAME]: username,
+		} = values
+		const isSignUpFailed = await onSubmit(email, password, username)
+
+		if (typeof isSignUpFailed === 'string') {
+			// respond is not res obj mean the error is on client side
+			return { [FORM_ERROR]: isSignUpFailed }
+		} else {
+			const { status, data, message } = isSignUpFailed
+
+			if (status) {
+				onSuccessfulSubmission(email, password, username)
+				return // if return undefined mean no error
+			} else {
+				setEmailIsValid(!data.email)
+				setEmailSubmitErrors(data.email)
+				setPasswordIsValid(!data.password)
+				setPasswordSubmitErrors(data.password)
+				setUsernameIsValid(!data.username)
+				setUsernameSubmitErrors(data.username)
+				return { ...data, [FORM_ERROR]: message }
+			}
+		}
+	}
+
 	return (
 		<Card className='card-register' style={{ zIndex: 1000 }}>
 			<CardHeader>
@@ -106,24 +118,7 @@ const FormSignUp = props => {
 					[USERNAME]: '',
 				}}
 				onSubmit={values => {
-					return onSubmmission(
-						values,
-						onSubmit,
-						onSuccessfulSubmission,
-						data => {
-							const {
-								[EMAIL]: email,
-								[PASSWORD]: password,
-								[USERNAME]: username,
-							} = data
-							setEmailIsValid(!email)
-							setEmailSubmitErrors(email)
-							setPasswordIsValid(!password)
-							setPasswordSubmitErrors(password)
-							setUsernameIsValid(!username)
-							setUsernameSubmitErrors(username)
-						}
-					)
+					return onSubmmission(values, onSubmit, onSuccessfulSubmission)
 				}}>
 				{({ handleSubmit, submitting, submitError }) => (
 					<Form className='form'>
@@ -141,13 +136,13 @@ const FormSignUp = props => {
 											// ! whenever any of these two field components is render
 											// ! and whenever component going to unmount (route to other page) the field components will run validation
 											// ! these is not good as the validation process invoking steState in a promise and cause memory leak issue
-											// ! step to reproduce: go to any page that has FinalInput, then redirect to website other than gamesenshi
+											// ! step to reproduce: go to any page that has InputTextFinal, then redirect to website other than gamesenshi
 											// * implement useEffect component will unmount of Input Field component is not working
 											// * set signUpStore willUnmount state directly when parent component going to unmount and use it to stop setState work
 											// * set parent willUnmount state directly when parent component going to unmount and use it to stop setState does not work
 											// TODO research knowledge needed to deal with this issue
 										*/}
-							<FinalInput
+							<InputTextFinal
 								type={USERNAME}
 								name={USERNAME}
 								placeholder='Username'
@@ -160,7 +155,7 @@ const FormSignUp = props => {
 								submitRef={submitButton}
 							/>
 							<div className='w-100 mb-3' />
-							<FinalInput
+							<InputTextFinal
 								type={EMAIL}
 								name={EMAIL}
 								placeholder='Email'
@@ -174,7 +169,7 @@ const FormSignUp = props => {
 								submitRef={submitButton}
 							/>
 							<div className='w-100 mb-3' />
-							<FinalInput
+							<InputTextFinal
 								type={PASSWORD}
 								name={PASSWORD}
 								placeholder='Password'

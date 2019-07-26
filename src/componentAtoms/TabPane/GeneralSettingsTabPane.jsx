@@ -24,7 +24,8 @@ import {
 } from 'constantValues'
 // core components
 import Calendar from 'react-calendar'
-import { FinalInput, FinalForm } from 'componentAtoms'
+import { FinalForm } from 'componentAtoms/FinalForm'
+import { InputTextFinal } from 'componentAtoms/InputText'
 // validation
 import { signUpUsernameValidation } from 'utils/validation'
 
@@ -172,7 +173,7 @@ const GeneralSettingsTabPane = props => {
 											className='align-self-center'
 											md='9'
 											style={{ marginBottom: 10 }}>
-											<FinalInput
+											<InputTextFinal
 												type='username'
 												name={USER_DISPLAY_NAME}
 												hideSuccess

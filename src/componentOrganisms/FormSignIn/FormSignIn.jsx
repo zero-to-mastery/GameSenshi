@@ -23,7 +23,7 @@ import Loader from 'react-loader-spinner'
 // core components
 import {
 	ButtonsSocialAuth,
-	FinalInput,
+	InputTextFinal,
 	FinalForm,
 	FORM_ERROR,
 } from 'componentAtoms'
@@ -144,7 +144,7 @@ const FormSignIn = props => {
 												<small>Or Classically</small>
 											</Col>
 										</Row>
-										<FinalInput
+										<InputTextFinal
 											type={EMAIL}
 											name={EMAIL}
 											hideSuccess
@@ -156,7 +156,7 @@ const FormSignIn = props => {
 									</>
 								)}
 								<div className='w-100 mb-3' />
-								<FinalInput
+								<InputTextFinal
 									type={PASSWORD}
 									name={PASSWORD}
 									hideSuccess
