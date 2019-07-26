@@ -1,18 +1,18 @@
 import {
 	StoreAlert,
-	ALERT_STORE_STATE_BODY,
-	ALERT_STORE_STATE_IS_OPEN,
-	ALERT_STORE_STATE_COLOR,
-	ALERT_STORE_STATE_ICON,
-	ALERT_STORE_SHOW,
-	ALERT_STORE_TOGGLE,
+	STORE_ALERT_STATE_BODY,
+	STORE_ALERT_STATE_IS_OPEN,
+	STORE_ALERT_STATE_COLOR,
+	STORE_ALERT_STATE_ICON,
+	STORE_ALERT_SHOW,
+	STORE_ALERT_TOGGLE,
 	SET_STATE,
 	RESET_STATE,
 } from 'state/Alert/StoreAlert'
 
 const storeAlert = new StoreAlert()
-const storeAlertShow = storeAlert[ALERT_STORE_SHOW]
-const storeAlertToggle = storeAlert[ALERT_STORE_TOGGLE]
+const storeAlertShow = storeAlert[STORE_ALERT_SHOW]
+const storeAlertToggle = storeAlert[STORE_ALERT_TOGGLE]
 const storeAlertSetState = storeAlert[SET_STATE]
 const storeAlertResetState = storeAlert[RESET_STATE]
 
@@ -24,8 +24,8 @@ export {
 	storeAlertToggle,
 	storeAlertSetState,
 	storeAlertResetState,
-	ALERT_STORE_STATE_BODY,
-	ALERT_STORE_STATE_IS_OPEN,
-	ALERT_STORE_STATE_COLOR,
-	ALERT_STORE_STATE_ICON,
+	STORE_ALERT_STATE_BODY,
+	STORE_ALERT_STATE_IS_OPEN,
+	STORE_ALERT_STATE_COLOR,
+	STORE_ALERT_STATE_ICON,
 }

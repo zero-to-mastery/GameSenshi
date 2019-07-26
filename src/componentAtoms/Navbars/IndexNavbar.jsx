@@ -6,7 +6,7 @@ import {
 	userStore,
 	storeAlert,
 	Subscribe,
-	ALERT_STORE_STATE_IS_OPEN,
+	STORE_ALERT_STATE_IS_OPEN,
 	STATE,
 } from 'state'
 // reactstrap components
@@ -97,7 +97,7 @@ class ComponentsNavbar extends React.Component {
 		) {
 			this.setState({
 				color:
-					(storeAlert[STATE][ALERT_STORE_STATE_IS_OPEN] && bgPurple) ||
+					(storeAlert[STATE][STORE_ALERT_STATE_IS_OPEN] && bgPurple) ||
 					'navbar-transparent',
 			})
 		}
@@ -156,7 +156,7 @@ class ComponentsNavbar extends React.Component {
 						[USER_SIGNED_IN]: signedIn,
 						[USER_PHOTO_URL]: avatarURL,
 					} = userStore.state
-					const { [ALERT_STORE_STATE_IS_OPEN]: alertOpen } = storeAlert.state
+					const { [STORE_ALERT_STATE_IS_OPEN]: alertOpen } = storeAlert.state
 					return (
 						<>
 							<div className='fixed-top'>

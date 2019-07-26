@@ -1,22 +1,22 @@
 import { Container } from 'unstated'
 import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
-const ALERT_STORE_STATE_BODY = 'body'
-const ALERT_STORE_STATE_IS_OPEN = 'isOpen'
-const ALERT_STORE_STATE_COLOR = 'color'
-const ALERT_STORE_STATE_ICON = 'icon'
+const STORE_ALERT_STATE_BODY = 'body'
+const STORE_ALERT_STATE_IS_OPEN = 'isOpen'
+const STORE_ALERT_STATE_COLOR = 'color'
+const STORE_ALERT_STATE_ICON = 'icon'
 
-const ALERT_STORE_TOGGLE = 'toggle'
-const ALERT_STORE_SHOW = 'show'
+const STORE_ALERT_TOGGLE = 'toggle'
+const STORE_ALERT_SHOW = 'show'
 
 const DEFAULT_ICON = 'tim-icons icon-bell-55'
 const DEFAULT_COLOR = 'success'
 
 const defaultValues = {
-	[ALERT_STORE_STATE_BODY]: '',
-	[ALERT_STORE_STATE_IS_OPEN]: false,
-	[ALERT_STORE_STATE_COLOR]: DEFAULT_COLOR,
-	[ALERT_STORE_STATE_ICON]: DEFAULT_ICON,
+	[STORE_ALERT_STATE_BODY]: '',
+	[STORE_ALERT_STATE_IS_OPEN]: false,
+	[STORE_ALERT_STATE_COLOR]: DEFAULT_COLOR,
+	[STORE_ALERT_STATE_ICON]: DEFAULT_ICON,
 }
 
 class StoreAlert extends Container {
@@ -31,23 +31,23 @@ class StoreAlert extends Container {
 		return this
 	};
 
-	[ALERT_STORE_SHOW] = (
+	[STORE_ALERT_SHOW] = (
 		body = '',
 		color = DEFAULT_COLOR,
 		icon = DEFAULT_ICON
 	) => {
 		this.setState({
-			[ALERT_STORE_STATE_BODY]: body,
-			[ALERT_STORE_STATE_IS_OPEN]: true,
-			[ALERT_STORE_STATE_COLOR]: color,
-			[ALERT_STORE_STATE_ICON]: icon,
+			[STORE_ALERT_STATE_BODY]: body,
+			[STORE_ALERT_STATE_IS_OPEN]: true,
+			[STORE_ALERT_STATE_COLOR]: color,
+			[STORE_ALERT_STATE_ICON]: icon,
 		})
 		return this
 	};
 
-	[ALERT_STORE_TOGGLE] = () => {
+	[STORE_ALERT_TOGGLE] = () => {
 		this.setState(state => {
-			state[ALERT_STORE_STATE_IS_OPEN] = !state[ALERT_STORE_STATE_IS_OPEN]
+			state[STORE_ALERT_STATE_IS_OPEN] = !state[STORE_ALERT_STATE_IS_OPEN]
 			return this
 		})
 	}
@@ -55,12 +55,12 @@ class StoreAlert extends Container {
 
 export {
 	StoreAlert,
-	ALERT_STORE_STATE_BODY,
-	ALERT_STORE_STATE_IS_OPEN,
-	ALERT_STORE_STATE_COLOR,
-	ALERT_STORE_STATE_ICON,
-	ALERT_STORE_SHOW,
-	ALERT_STORE_TOGGLE,
+	STORE_ALERT_STATE_BODY,
+	STORE_ALERT_STATE_IS_OPEN,
+	STORE_ALERT_STATE_COLOR,
+	STORE_ALERT_STATE_ICON,
+	STORE_ALERT_SHOW,
+	STORE_ALERT_TOGGLE,
 	SET_STATE,
 	RESET_STATE,
 }
