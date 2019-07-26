@@ -45,9 +45,9 @@ import {
 	storeSignInSetState,
 	storeSignInResetState,
 	storeSignInOnSuccessfulSubmission,
-	SIGN_IN_STORE_STATE_EMAIL,
-	SIGN_IN_STORE_STATE_IS_OPEN,
-	SIGN_IN_STORE_STATE_SUBMITTED_CALLBACK,
+	STORE_SIGN_IN_STATE_EMAIL,
+	STORE_SIGN_IN_STATE_IS_OPEN,
+	STORE_SIGN_IN_STATE_SUBMITTED_CALLBACK,
 } from 'state/SignIn'
 
 import {
@@ -96,9 +96,9 @@ export {
 	storeSignInSetState,
 	storeSignInResetState,
 	storeSignInOnSuccessfulSubmission,
-	SIGN_IN_STORE_STATE_EMAIL,
-	SIGN_IN_STORE_STATE_IS_OPEN,
-	SIGN_IN_STORE_STATE_SUBMITTED_CALLBACK,
+	STORE_SIGN_IN_STATE_EMAIL,
+	STORE_SIGN_IN_STATE_IS_OPEN,
+	STORE_SIGN_IN_STATE_SUBMITTED_CALLBACK,
 	storeAuthModal,
 	storeAuthModalShow,
 	storeAuthModalClose,

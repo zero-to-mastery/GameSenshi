@@ -26,8 +26,8 @@ import {
 	StateContainer,
 	storeSignInToggle,
 	storeSignInOnSuccessfulSubmission,
-	SIGN_IN_STORE_STATE_EMAIL,
-	SIGN_IN_STORE_STATE_IS_OPEN,
+	STORE_SIGN_IN_STATE_EMAIL,
+	STORE_SIGN_IN_STATE_IS_OPEN,
 } from 'state'
 
 // inject staple props that suitable for this app
@@ -49,8 +49,8 @@ const FormSignInPropedDefault = withLastLocation(props => {
 })
 
 const storeSignInStateToPropsMap = {
-	[SIGN_IN_FROM_STATE_EMAIL]: SIGN_IN_STORE_STATE_EMAIL,
-	[SIGN_IN_FROM_STATE_IS_OPEN]: SIGN_IN_STORE_STATE_IS_OPEN,
+	[SIGN_IN_FROM_STATE_EMAIL]: STORE_SIGN_IN_STATE_EMAIL,
+	[SIGN_IN_FROM_STATE_IS_OPEN]: STORE_SIGN_IN_STATE_IS_OPEN,
 }
 
 const storeSignInMethodToPropsMap = {
