@@ -46,13 +46,9 @@ const FinalInput = props => {
 	// set default value
 	const popoverMessages_ = popoverMessages || []
 	const component_ = component || 'text'
-	const onFocus_ = onFocus || (() => {})
-	const onBlur_ = onBlur || (() => {})
 	const [localIsValid, setLocalIsValid] = useState(false)
 	const isValid_ = isValid || localIsValid
 	const setIsValid_ = setIsValid || setLocalIsValid
-	const validation_ = validation || (async () => {})
-	const serverValidation_ = serverValidation || (async () => {})
 	const Group = icon ? InputGroup : FormGroup
 
 	const [popoverFailedItems, setPopoverFailedItems] = useState({})
@@ -139,13 +135,13 @@ const FinalInput = props => {
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
 						const timeOutID = setTimeout(() => {
-							validation_(state.value || '')
+							validation(state.value || '')
 								.then(() => {
 									if (serverValidation) {
 										showSpinner2(true)
 										state.fulfilled = true
 										// server side validation on typing
-										serverValidation_(state.value || '').then(
+										serverValidation(state.value || '').then(
 											validationResult => {
 												// do not close run this if user resume typing before server validation end
 												if (state.fulfilled) {
@@ -164,8 +160,6 @@ const FinalInput = props => {
 								})
 						}, state.delay)
 						state.timeOutID = timeOutID
-					}).catch(e => {
-						console.log('123', e)
 					}))
 				}
 				return state.promise
@@ -248,12 +242,12 @@ const FinalInput = props => {
 									}}
 									onFocus={e => {
 										state.focused = true
-										onFocus_(e)
+										onFocus(e)
 										input.onFocus(e)
 									}}
 									onBlur={e => {
 										state.focused = false
-										onBlur_(e)
+										onBlur(e)
 										input.onBlur(e)
 									}}
 									onKeyPress={e => {
@@ -309,8 +303,8 @@ const FinalInput = props => {
 											// ! bug, details https://github.com/final-form/react-final-form/issues/134
 											state.focused = true
 											input.onFocus(e)
-											onFocus_(e)
-											onBlur_(e)
+											onFocus(e)
+											onBlur(e)
 											state.focused = false
 											input.onBlur(e)
 										}}
@@ -355,12 +349,12 @@ const FinalInput = props => {
 								}}
 								onFocus={e => {
 									state.focused = true
-									onFocus_(e)
+									onFocus(e)
 									input.onFocus(e)
 								}}
 								onBlur={e => {
 									state.focused = false
-									onBlur_(e)
+									onBlur(e)
 									input.onBlur(e)
 								}}
 							/>
