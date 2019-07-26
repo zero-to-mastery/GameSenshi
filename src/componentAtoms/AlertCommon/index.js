@@ -9,30 +9,30 @@ import {
 
 import {
 	StateContainer,
-	alertStore,
+	storeAlert,
 	ALERT_STORE_STATE_BODY,
 	ALERT_STORE_STATE_ICON,
 	ALERT_STORE_STATE_IS_OPEN,
 	ALERT_STORE_STATE_COLOR,
-	alertStoreToggle,
+	storeAlertToggle,
 } from 'state'
 
-const alertStoreStateToPropsMap = {
+const storeAlertStateToPropsMap = {
 	[ALERT_COMMON_STATE_BODY]: ALERT_STORE_STATE_BODY,
 	[ALERT_COMMON_STATE_ICON]: ALERT_STORE_STATE_ICON,
 	[ALERT_COMMON_STATE_IS_OPEN]: ALERT_STORE_STATE_IS_OPEN,
 	[ALERT_COMMON_STATE_COLOR]: ALERT_STORE_STATE_COLOR,
 }
 
-const alertStoreMethodToPropsMap = {
-	[ALERT_COMMON_TOGGLE]: alertStoreToggle,
+const storeAlertMethodToPropsMap = {
+	[ALERT_COMMON_TOGGLE]: storeAlertToggle,
 }
 
 const AlertCommonStoreAlert = StateContainer(
 	AlertCommon,
-	[alertStore],
-	[alertStoreStateToPropsMap],
-	[alertStoreMethodToPropsMap]
+	[storeAlert],
+	[storeAlertStateToPropsMap],
+	[storeAlertMethodToPropsMap]
 )
 
 export { AlertCommon, AlertCommonStoreAlert }

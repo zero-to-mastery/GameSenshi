@@ -19,7 +19,7 @@ const defaultValues = {
 	[ALERT_STORE_STATE_ICON]: DEFAULT_ICON,
 }
 
-class AlertStore extends Container {
+class StoreAlert extends Container {
 	constructor() {
 		super()
 		this[STATE] = defaultValues
@@ -54,7 +54,7 @@ class AlertStore extends Container {
 }
 
 export {
-	AlertStore,
+	StoreAlert,
 	ALERT_STORE_STATE_BODY,
 	ALERT_STORE_STATE_IS_OPEN,
 	ALERT_STORE_STATE_COLOR,

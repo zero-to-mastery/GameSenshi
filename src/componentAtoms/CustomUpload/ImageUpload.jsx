@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { firebaseDefaultStorage, auth } from 'firebaseInit'
 // state management
-import { userStore, alertStoreShow, progressStore, Subscribe } from 'state'
+import { userStore, storeAlertShow, progressStore, Subscribe } from 'state'
 // component
 import { Button } from 'reactstrap'
 // constants
@@ -37,7 +37,7 @@ const ImageUpload = props => {
 					)
 				},
 				err => {
-					alertStoreShow(
+					storeAlertShow(
 						'Something went wrong, upload profile image failed',
 						'danger',
 						'tim-icons icon-alert-circle-exc'
@@ -45,7 +45,7 @@ const ImageUpload = props => {
 				},
 				async () => {
 					const url = await avatarRef.getDownloadURL().catch(() => {
-						alertStoreShow(
+						storeAlertShow(
 							'Something went wrong, unable to update image',
 							'danger',
 							'tim-icons icon-alert-circle-exc'
@@ -59,7 +59,7 @@ const ImageUpload = props => {
 							})
 							.then(() => {
 								progressStore.close()
-								alertStoreShow(
+								storeAlertShow(
 									'Imaged updated, It may take a few moments to update across the site.',
 									'success',
 									'tim-icons icon-bell-55'
@@ -67,7 +67,7 @@ const ImageUpload = props => {
 							})
 							.catch(err => {
 								progressStore.close()
-								alertStoreShow(
+								storeAlertShow(
 									'Something went wrong, unable to update profile',
 									'danger',
 									'tim-icons icon-alert-circle-exc'

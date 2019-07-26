@@ -4,7 +4,7 @@ import { auth } from 'firebaseInit'
 // state
 import {
 	userStore,
-	alertStore,
+	storeAlert,
 	Subscribe,
 	ALERT_STORE_STATE_IS_OPEN,
 	STATE,
@@ -97,7 +97,7 @@ class ComponentsNavbar extends React.Component {
 		) {
 			this.setState({
 				color:
-					(alertStore[STATE][ALERT_STORE_STATE_IS_OPEN] && bgPurple) ||
+					(storeAlert[STATE][ALERT_STORE_STATE_IS_OPEN] && bgPurple) ||
 					'navbar-transparent',
 			})
 		}
@@ -149,14 +149,14 @@ class ComponentsNavbar extends React.Component {
 
 		const currentPath = pathname.toLowerCase()
 		return (
-			<Subscribe to={[userStore, alertStore]}>
-				{(userStore, alertStore) => {
+			<Subscribe to={[userStore, storeAlert]}>
+				{(userStore, storeAlert) => {
 					const {
 						[USER_DISPLAY_NAME]: username,
 						[USER_SIGNED_IN]: signedIn,
 						[USER_PHOTO_URL]: avatarURL,
 					} = userStore.state
-					const { [ALERT_STORE_STATE_IS_OPEN]: alertOpen } = alertStore.state
+					const { [ALERT_STORE_STATE_IS_OPEN]: alertOpen } = storeAlert.state
 					return (
 						<>
 							<div className='fixed-top'>

@@ -7,7 +7,7 @@ import 'firebase/functions'
 import 'firebase/storage'
 // states
 import {
-	alertStoreShow,
+	storeAlertShow,
 	userStore,
 	signInStoreShow,
 	authModalStoreShow,
@@ -109,7 +109,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 								.currentUser.linkWithCredential(credential)
 								.then(async () => {
 									await authModalStoreClose()
-									alertStoreShow(
+									storeAlertShow(
 										'Social login linked successful!',
 										'success',
 										'tim-icons icon-bell-55'
@@ -117,7 +117,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 								})
 								.catch(async () => {
 									await authModalStoreClose()
-									alertStoreShow(
+									storeAlertShow(
 										'Social login linked unsuccessful!',
 										'danger',
 										'tim-icons icon-alert-circle-exc'
@@ -176,7 +176,7 @@ auth()
 	.then(result => {
 		// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 		const showAlert = name2 => {
-			alertStoreShow(
+			storeAlertShow(
 				<span>
 					Successfully linked your <strong>{name2}</strong> account!
 				</span>,

@@ -1,6 +1,6 @@
 import React from 'react'
 // state management
-import { alertStoreShow } from 'state'
+import { storeAlertShow } from 'state'
 // api
 import { handleSignInWithEmailAndPassword } from 'api'
 // routes
@@ -24,7 +24,7 @@ const onSuccessfulSubmission = (
 			</a>
 		</>
 	)
-	alertStoreShow(alertBody, 'success', 'tim-icons icon-bell-55')
+	storeAlertShow(alertBody, 'success', 'tim-icons icon-bell-55')
 	handleSignInWithEmailAndPassword(email, password)
 	onSignedInRouting(lastLocation)
 }
