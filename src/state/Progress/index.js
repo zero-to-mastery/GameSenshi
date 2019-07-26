@@ -1,17 +1,17 @@
 import {
 	StoreProgress,
-	PROGRESS_STORE_STATE_VALUE,
-	PROGRESS_STORE_STATE_COLOR,
-	PROGRESS_STORE_STATE_IS_OPEN,
-	PROGRESS_STORE_SHOW,
-	PROGRESS_STORE_CLOSE,
+	STORE_PROGRESS_STATE_VALUE,
+	STORE_PROGRESS_STATE_COLOR,
+	STORE_PROGRESS_STATE_IS_OPEN,
+	STORE_PROGRESS_SHOW,
+	STORE_PROGRESS_CLOSE,
 	SET_STATE,
 	RESET_STATE,
 } from 'state/Progress/StoreProgress'
 
 const storeProgress = new StoreProgress()
-const storeProgressShow = storeProgress[PROGRESS_STORE_SHOW]
-const storeProgressClose = storeProgress[PROGRESS_STORE_CLOSE]
+const storeProgressShow = storeProgress[STORE_PROGRESS_SHOW]
+const storeProgressClose = storeProgress[STORE_PROGRESS_CLOSE]
 const storeProgressSetState = storeProgress[SET_STATE]
 const storeProgressResetState = storeProgress[RESET_STATE]
 
@@ -21,7 +21,7 @@ export {
 	storeProgressClose,
 	storeProgressSetState,
 	storeProgressResetState,
-	PROGRESS_STORE_STATE_VALUE,
-	PROGRESS_STORE_STATE_COLOR,
-	PROGRESS_STORE_STATE_IS_OPEN,
+	STORE_PROGRESS_STATE_VALUE,
+	STORE_PROGRESS_STATE_COLOR,
+	STORE_PROGRESS_STATE_IS_OPEN,
 }

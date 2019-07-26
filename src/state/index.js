@@ -56,9 +56,9 @@ import {
 	storeProgressClose,
 	storeProgressSetState,
 	storeProgressResetState,
-	PROGRESS_STORE_STATE_VALUE,
-	PROGRESS_STORE_STATE_COLOR,
-	PROGRESS_STORE_STATE_IS_OPEN,
+	STORE_PROGRESS_STATE_VALUE,
+	STORE_PROGRESS_STATE_COLOR,
+	STORE_PROGRESS_STATE_IS_OPEN,
 } from 'state/Progress'
 
 const cardStore = new CardContainer()
@@ -86,9 +86,9 @@ export {
 	storeProgressClose,
 	storeProgressSetState,
 	storeProgressResetState,
-	PROGRESS_STORE_STATE_VALUE,
-	PROGRESS_STORE_STATE_COLOR,
-	PROGRESS_STORE_STATE_IS_OPEN,
+	STORE_PROGRESS_STATE_VALUE,
+	STORE_PROGRESS_STATE_COLOR,
+	STORE_PROGRESS_STATE_IS_OPEN,
 	storeSignIn,
 	storeSignInShow,
 	storeSignInClose,
