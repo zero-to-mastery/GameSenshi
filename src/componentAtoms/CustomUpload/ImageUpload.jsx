@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { firebaseDefaultStorage, auth } from 'firebaseInit'
 // state management
-import { userStore, storeAlertShow, progressStore, Subscribe } from 'state'
+import { userStore, storeAlertShow, storeProgress, Subscribe } from 'state'
 // component
 import { Button } from 'reactstrap'
 // constants
@@ -31,7 +31,7 @@ const ImageUpload = props => {
 				snapshot => {
 					const { bytesTransferred, totalBytes } = snapshot
 					const percentage = (bytesTransferred / totalBytes) * 100
-					progressStore.show(
+					storeProgress.show(
 						Math.max(percentage, Math.floor(10 + Math.random() * 10)),
 						'primary'
 					)
@@ -58,7 +58,7 @@ const ImageUpload = props => {
 								[USER_PHOTO_URL]: url,
 							})
 							.then(() => {
-								progressStore.close()
+								storeProgress.close()
 								storeAlertShow(
 									'Imaged updated, It may take a few moments to update across the site.',
 									'success',
@@ -66,7 +66,7 @@ const ImageUpload = props => {
 								)
 							})
 							.catch(err => {
-								progressStore.close()
+								storeProgress.close()
 								storeAlertShow(
 									'Something went wrong, unable to update profile',
 									'danger',

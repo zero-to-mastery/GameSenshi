@@ -17,7 +17,7 @@ const defaultValues = {
 	[PROGRESS_STORE_STATE_COLOR]: DEFAULT_COLOR,
 }
 
-class ProgressStore extends Container {
+class StoreProgress extends Container {
 	constructor() {
 		super()
 		this[STATE] = defaultValues
@@ -45,7 +45,7 @@ class ProgressStore extends Container {
 }
 
 export {
-	ProgressStore,
+	StoreProgress,
 	PROGRESS_STORE_STATE_VALUE,
 	PROGRESS_STORE_STATE_COLOR,
 	PROGRESS_STORE_STATE_IS_OPEN,
