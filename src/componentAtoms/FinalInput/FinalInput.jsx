@@ -228,14 +228,16 @@ const FinalInput = Component => {
 						isValid_ &&
 						((touched && !active) || (active && modified))
 
-					const value = state.value || input.value // the input.value has no purpose other than suppress uncontrollable to controllable warning
+					const spinner_ = (spinner2 && 'Puff') || (spinner && 'ThreeDots')
 
+					const value = state.value || input.value // the input.value has no purpose other than suppress uncontrollable to controllable warning
 					return (
 						<>
 							<Component
 								id={name}
 								name={name}
 								value={value}
+								spinner={spinner_}
 								hasDanger={hasDanger}
 								hasSuccess={hasSuccess}
 								hasFocus={active}
