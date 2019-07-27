@@ -1,4 +1,5 @@
 import { Container } from 'unstated'
+import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
 import {
 	USER,
@@ -18,8 +19,12 @@ import {
 
 import defaultAvatar from 'assets/img/placeholder.jpg'
 
+const STORE_USER_STATE_IS_SIGNING_IN = 'isSigningIn'
+const STORE_USER_SET_IS_SIGNING_IN = 'isSigningIn'
+
 const defaultValues = {
 	[USER]: '',
+	[STORE_USER_STATE_IS_SIGNING_IN]: false,
 	[USER_UID]: '',
 	[USER_EMAIL]: '',
 	[USER_GENDER]: '',
@@ -42,12 +47,32 @@ class UserContainer extends Container {
 		return this
 	}
 
-	initialize = () => {
+	initialize = (onAutoSignedInFailed = () => {}) => {
 		const user = JSON.parse(localStorage.getItem(USER))
 		// purposely set state in sync so that it show correct navBar on first rendering
 		// firebase need like 2 seconds to finish sign in, too long
 		if (user) {
-			this.state = { ...this.state, ...user, [USER_SIGNED_IN]: true }
+			this.state = {
+				...this.state,
+				...user,
+			}
+		}
+		this[STORE_USER_SET_IS_SIGNING_IN](true, onAutoSignedInFailed)
+		return this
+	};
+
+	[STORE_USER_SET_IS_SIGNING_IN] = (
+		value = false,
+		onAutoSignedInFailed = () => {}
+	) => {
+		this[SET_STATE]({ [STORE_USER_STATE_IS_SIGNING_IN]: value })
+		if (value) {
+			setTimeout(() => {
+				if (this[STATE][STORE_USER_STATE_IS_SIGNING_IN]) {
+					onAutoSignedInFailed()
+				}
+				this[STORE_USER_SET_IS_SIGNING_IN](false)
+			}, 10000)
 		}
 		return this
 	}
@@ -86,6 +111,7 @@ class UserContainer extends Container {
 					[USER_SIGNED_IN]: true,
 				}
 			})
+			this[STORE_USER_SET_IS_SIGNING_IN](false)
 			// do not store sensitive information in localStorage
 			localStorage.setItem(
 				USER,
@@ -95,10 +121,16 @@ class UserContainer extends Container {
 			)
 		} else {
 			// User signed out.
+			this[RESET_STATE]()
+			this[STORE_USER_SET_IS_SIGNING_IN](false)
 			localStorage.removeItem(USER)
 		}
 		return this
 	}
 }
 
-export default UserContainer
+export {
+	UserContainer,
+	STORE_USER_STATE_IS_SIGNING_IN,
+	STORE_USER_SET_IS_SIGNING_IN,
+}

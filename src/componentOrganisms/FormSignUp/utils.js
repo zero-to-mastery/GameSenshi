@@ -1,6 +1,6 @@
 import React from 'react'
 // state management
-import { storeAlertShow } from 'state'
+import { storeAlertShow, userStore, STORE_USER_SET_IS_SIGNING_IN } from 'state'
 // api
 import { handleSignInWithEmailAndPassword } from 'api'
 // routes
@@ -24,6 +24,13 @@ const onSuccessfulSubmission = (
 			</a>
 		</>
 	)
+	userStore[STORE_USER_SET_IS_SIGNING_IN](true, () => {
+		storeAlertShow(
+			'Connection timeout, please sign in manually',
+			'danger',
+			'tim-icons icon-alert-circle-exc'
+		)
+	})
 	storeAlertShow(alertBody, 'success', 'tim-icons icon-bell-55')
 	handleSignInWithEmailAndPassword(email, password)
 	onSignedInRouting(lastLocation)

@@ -5,6 +5,7 @@ import CardContainer from 'state/CardContainer'
 import {
 	UserContainer,
 	STORE_USER_STATE_IS_SIGNING_IN,
+	STORE_USER_SET_IS_SIGNING_IN,
 } from 'state/UserContainer'
 
 import {
@@ -66,7 +67,7 @@ import {
 
 import {
 	storeRoute,
-	storeRouteSetIsSignedIn,
+	storeRouteOnAuthStateChanged,
 	storeRouteSetState,
 	storeRouteResetState,
 	STORE_ROUTE_STATE_IS_SIGNED_IN,
@@ -84,6 +85,7 @@ export {
 	cardStore,
 	userStore,
 	STORE_USER_STATE_IS_SIGNING_IN,
+	STORE_USER_SET_IS_SIGNING_IN,
 	storeAlert,
 	storeAlertShow,
 	storeAlertToggle,
@@ -130,7 +132,7 @@ export {
 	STORE_AUTH_MODAL_STATE_IS_OPEN,
 	STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK,
 	storeRoute,
-	storeRouteSetIsSignedIn,
+	storeRouteOnAuthStateChanged,
 	storeRouteSetState,
 	storeRouteResetState,
 	STORE_ROUTE_STATE_IS_SIGNED_IN,
