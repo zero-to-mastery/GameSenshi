@@ -2,7 +2,10 @@ import { Subscribe, Provider } from 'unstated'
 import { STATE, RESET_STATE } from 'state/constants'
 import { StateContainer } from 'state/StateContainer'
 import CardContainer from 'state/CardContainer'
-import UserContainer from 'state/UserContainer'
+import {
+	UserContainer,
+	STORE_USER_STATE_IS_SIGNING_IN,
+} from 'state/UserContainer'
 
 import {
 	storeAlert,
@@ -63,7 +66,7 @@ import {
 
 import {
 	storeRoute,
-	storeRouteSetSignIn,
+	storeRouteSetIsSignedIn,
 	storeRouteSetState,
 	storeRouteResetState,
 	STORE_ROUTE_STATE_IS_SIGNED_IN,
@@ -80,6 +83,7 @@ export {
 	StateContainer,
 	cardStore,
 	userStore,
+	STORE_USER_STATE_IS_SIGNING_IN,
 	storeAlert,
 	storeAlertShow,
 	storeAlertToggle,
@@ -126,7 +130,7 @@ export {
 	STORE_AUTH_MODAL_STATE_IS_OPEN,
 	STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK,
 	storeRoute,
-	storeRouteSetSignIn,
+	storeRouteSetIsSignedIn,
 	storeRouteSetState,
 	storeRouteResetState,
 	STORE_ROUTE_STATE_IS_SIGNED_IN,

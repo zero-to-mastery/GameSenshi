@@ -10,7 +10,7 @@ import {
 	RESET_STATE,
 	storeAlertShow,
 	userStore,
-	storeRouteSetSignIn,
+	storeRouteSetIsSignedIn,
 	storeSignInShow,
 	storeAuthModalShow,
 	storeAuthModalClose,
@@ -157,8 +157,9 @@ auth().onAuthStateChanged(signedInUser => {
 	userStore.onAuthStateChanged(signedInUser)
 	// reset all store if user sign out
 	if (signedInUser) {
-		storeRouteSetSignIn(true)
+		storeRouteSetIsSignedIn(true)
 	} else {
+		console.log(1)
 		for (let store in allStore) {
 			try {
 				allStore[store][RESET_STATE]()
@@ -166,7 +167,7 @@ auth().onAuthStateChanged(signedInUser => {
 				//
 			}
 		}
-		storeRouteSetSignIn(false)
+		storeRouteSetIsSignedIn(false)
 	}
 })
 
