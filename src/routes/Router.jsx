@@ -5,49 +5,47 @@ import {
 	Switch,
 	Redirect,
 } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
 import { LastLocationProvider } from 'react-router-last-location'
-import { routes, redirects, history } from 'routes/routes'
-// state management
-import { userStore } from 'state'
+import { routes, redirects } from 'routes/routes'
 // constants
 import {
 	ROUTE_PAGE_INDEX,
 	ROUTE_TO,
 	ROUTE_FROM,
-	ROUTE_PAGE,
 	ROUTE_PATH,
 	ROUTE_ACCESSIBILITY,
 	ROUTE_ACCESSIBILITY_PRIVATE,
 	ROUTE_ACCESSIBILITY_PUBLIC,
 	ROUTE_ACCESSIBILITY_FREE,
 } from 'routes/constants'
-import { USER_SIGNED_IN } from 'constantValues'
+
+const history = createBrowserHistory()
 
 const Router = props => {
-	const { children } = props
+	const { children, pages, isUserSignedIn } = props
 	return (
 		<ReactRouter history={history}>
 			<LastLocationProvider>
 				{children}
 				<Switch>
-					{routes.map((route, i) => {
+					{routes.map(route => {
 						const {
-							[ROUTE_PAGE]: Page,
 							[ROUTE_PATH]: path,
 							[ROUTE_ACCESSIBILITY]: accessibility,
 						} = route
+						const Page = pages[path]
 						return (
 							<Route
-								key={i}
+								key={path}
 								path={path}
 								render={props => {
 									const isAccessible =
 										accessibility === ROUTE_ACCESSIBILITY_FREE ||
 										(accessibility === ROUTE_ACCESSIBILITY_PRIVATE &&
-											userStore.state[USER_SIGNED_IN]) ||
+											isUserSignedIn) ||
 										(accessibility === ROUTE_ACCESSIBILITY_PUBLIC &&
-											!userStore.state[USER_SIGNED_IN])
-
+											!isUserSignedIn)
 									return isAccessible ? (
 										<Page {...props} />
 									) : (
@@ -68,4 +66,4 @@ const Router = props => {
 	)
 }
 
-export default Router
+export { Router, history }

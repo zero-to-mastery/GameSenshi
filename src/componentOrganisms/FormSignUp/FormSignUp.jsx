@@ -60,9 +60,7 @@ const FormSignUp = props => {
 	const onSubmmission = async (
 		values,
 		onSubmit = (email = '', password = '', username = '') => {},
-		onSuccessfulSubmission = (email = '', password = '', username = '') => {},
-		onFailedSubmission = (email = '', password = '', username = '') => {}
-		// onFailedSubmission is private method, it is an parameter so that onSubmmission don't need to be defined in component function
+		onSuccessfulSubmission = (email = '', password = '', username = '') => {}
 	) => {
 		const {
 			[EMAIL]: email,

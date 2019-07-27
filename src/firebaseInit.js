@@ -7,8 +7,10 @@ import 'firebase/functions'
 import 'firebase/storage'
 // states
 import {
+	RESET_STATE,
 	storeAlertShow,
 	userStore,
+	storeRouteSetSignIn,
 	storeSignInShow,
 	storeAuthModalShow,
 	storeAuthModalClose,
@@ -18,10 +20,6 @@ import {
 	storeAuthModalProcessRedirectResult,
 } from 'state'
 import * as allStore from 'state'
-// routing
-import { onSignedOutRouting } from 'routes'
-//constants
-import { RESET_STATE } from 'state'
 
 const env = process.env
 
@@ -158,7 +156,9 @@ auth().onAuthStateChanged(signedInUser => {
 	storeAuthModalOnAuthStateChange()
 	userStore.onAuthStateChanged(signedInUser)
 	// reset all store if user sign out
-	if (!signedInUser) {
+	if (signedInUser) {
+		storeRouteSetSignIn(true)
+	} else {
 		for (let store in allStore) {
 			try {
 				allStore[store][RESET_STATE]()
@@ -166,7 +166,7 @@ auth().onAuthStateChanged(signedInUser => {
 				//
 			}
 		}
-		onSignedOutRouting()
+		storeRouteSetSignIn(false)
 	}
 })
 

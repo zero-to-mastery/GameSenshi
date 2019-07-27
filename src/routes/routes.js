@@ -1,18 +1,7 @@
-import { createBrowserHistory } from 'history'
-// pages
-import {
-	IndexPage,
-	ProfilePage,
-	SettingsPage,
-	SignInPage,
-	SignUpPage,
-	PasswordResetPage,
-} from 'componentPages'
 // constants
 import {
 	ROUTE_TO,
 	ROUTE_FROM,
-	ROUTE_PAGE,
 	ROUTE_PATH,
 	ROUTE_ACCESSIBILITY,
 	ROUTE_ACCESSIBILITY_PRIVATE,
@@ -28,36 +17,28 @@ import {
 	ROUTE_PAGE_PASSWORD_RESET,
 } from 'routes/constants'
 
-const history = createBrowserHistory()
-
 const routes = [
 	{
-		[ROUTE_PAGE]: IndexPage,
 		[ROUTE_PATH]: ROUTE_PAGE_INDEX,
 		[ROUTE_ACCESSIBILITY]: ROUTE_ACCESSIBILITY_FREE,
 	},
 	{
-		[ROUTE_PAGE]: ProfilePage,
 		[ROUTE_PATH]: ROUTE_PAGE_PROFILE,
 		[ROUTE_ACCESSIBILITY]: ROUTE_ACCESSIBILITY_PRIVATE,
 	},
 	{
-		[ROUTE_PAGE]: SettingsPage,
 		[ROUTE_PATH]: ROUTE_PAGE_SETTINGS_COMMON,
 		[ROUTE_ACCESSIBILITY]: ROUTE_ACCESSIBILITY_PRIVATE,
 	},
 	{
-		[ROUTE_PAGE]: SignUpPage,
 		[ROUTE_PATH]: ROUTE_PAGE_SIGN_UP,
 		[ROUTE_ACCESSIBILITY]: ROUTE_ACCESSIBILITY_PUBLIC,
 	},
 	{
-		[ROUTE_PAGE]: SignInPage,
 		[ROUTE_PATH]: ROUTE_PAGE_SIGN_IN,
 		[ROUTE_ACCESSIBILITY]: ROUTE_ACCESSIBILITY_PUBLIC,
 	},
 	{
-		[ROUTE_PAGE]: PasswordResetPage,
 		[ROUTE_PATH]: ROUTE_PAGE_PASSWORD_RESET,
 		[ROUTE_ACCESSIBILITY]: ROUTE_ACCESSIBILITY_PUBLIC,
 	},
@@ -75,4 +56,4 @@ const redirects = [
 	},
 ]
 
-export { routes, redirects, history }
+export { routes, redirects }

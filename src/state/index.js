@@ -61,6 +61,14 @@ import {
 	STORE_PROGRESS_STATE_IS_OPEN,
 } from 'state/Progress'
 
+import {
+	storeRoute,
+	storeRouteSetSignIn,
+	storeRouteSetState,
+	storeRouteResetState,
+	STORE_ROUTE_STATE_SIGNED_IN,
+} from 'state/Route'
+
 const cardStore = new CardContainer()
 const userStore = new UserContainer()
 
@@ -117,4 +125,9 @@ export {
 	STORE_AUTH_MODAL_STATE_LOADER,
 	STORE_AUTH_MODAL_STATE_IS_OPEN,
 	STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK,
+	storeRoute,
+	storeRouteSetSignIn,
+	storeRouteSetState,
+	storeRouteResetState,
+	STORE_ROUTE_STATE_SIGNED_IN,
 }
