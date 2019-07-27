@@ -1,6 +1,6 @@
 import {
 	StoreRoute,
-	STORE_ROUTE_STATE_SIGNED_IN,
+	STORE_ROUTE_STATE_IS_SIGNED_IN,
 	STORE_ROUTE_SET_SIGN_IN,
 	SET_STATE,
 	RESET_STATE,
@@ -16,5 +16,5 @@ export {
 	storeRouteSetSignIn,
 	storeRouteSetState,
 	storeRouteResetState,
-	STORE_ROUTE_STATE_SIGNED_IN,
+	STORE_ROUTE_STATE_IS_SIGNED_IN,
 }

@@ -66,7 +66,7 @@ import {
 	storeRouteSetSignIn,
 	storeRouteSetState,
 	storeRouteResetState,
-	STORE_ROUTE_STATE_SIGNED_IN,
+	STORE_ROUTE_STATE_IS_SIGNED_IN,
 } from 'state/Route'
 
 const cardStore = new CardContainer()
@@ -129,5 +129,5 @@ export {
 	storeRouteSetSignIn,
 	storeRouteSetState,
 	storeRouteResetState,
-	STORE_ROUTE_STATE_SIGNED_IN,
+	STORE_ROUTE_STATE_IS_SIGNED_IN,
 }

@@ -18,7 +18,7 @@ import {
 	Subscribe,
 	storeRoute,
 	STATE,
-	STORE_ROUTE_STATE_SIGNED_IN,
+	STORE_ROUTE_STATE_IS_SIGNED_IN,
 } from 'state'
 //modal
 import { FormSignInPropedDefaultStoreSignIn } from 'componentOrganisms'
@@ -59,7 +59,7 @@ const App = props => {
 				<Subscribe to={[storeRoute]}>
 					{storeRoute => {
 						const {
-							[STATE]: { [STORE_ROUTE_STATE_SIGNED_IN]: isUserSignedIn },
+							[STATE]: { [STORE_ROUTE_STATE_IS_SIGNED_IN]: isUserSignedIn },
 						} = storeRoute
 						return (
 							<Router isUserSignedIn={isUserSignedIn} pages={MapRoutesToPages}>
