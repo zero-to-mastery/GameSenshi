@@ -13,7 +13,7 @@ import {
 	STORE_PROGRESS_STATE_VALUE,
 } from 'state'
 
-const storeProgressStateToPropsMap = {
+const MapStoreProgressStateToProp = {
 	[PROGRESS_COMMON_STATE_IS_OPEN]: STORE_PROGRESS_STATE_IS_OPEN,
 	[PROGRESS_COMMON_STATE_COLOR]: STORE_PROGRESS_STATE_COLOR,
 	[PROGRESS_COMMON_STATE_VALUE]: STORE_PROGRESS_STATE_VALUE,
@@ -22,7 +22,7 @@ const storeProgressStateToPropsMap = {
 const ProgressCommonStoreProgress = StateContainer(
 	ProgressCommon,
 	[storeProgress],
-	[storeProgressStateToPropsMap]
+	[MapStoreProgressStateToProp]
 )
 
 export { ProgressCommon, ProgressCommonStoreProgress }
