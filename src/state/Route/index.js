@@ -1,19 +1,20 @@
 import {
 	StoreRoute,
 	STORE_ROUTE_STATE_IS_SIGNED_IN,
-	STORE_ROUTE_SET_IS_SIGNED_IN,
+	STORE_ROUTE_ON_AUTH_STATE_CHANGED,
 	SET_STATE,
 	RESET_STATE,
 } from 'state/Route/StoreRoute'
 
 const storeRoute = new StoreRoute()
-const storeRouteSetIsSignedIn = storeRoute[STORE_ROUTE_SET_IS_SIGNED_IN]
+const storeRouteOnAuthStateChanged =
+	storeRoute[STORE_ROUTE_ON_AUTH_STATE_CHANGED]
 const storeRouteSetState = storeRoute[SET_STATE]
 const storeRouteResetState = storeRoute[RESET_STATE]
 
 export {
 	storeRoute,
-	storeRouteSetIsSignedIn,
+	storeRouteOnAuthStateChanged,
 	storeRouteSetState,
 	storeRouteResetState,
 	STORE_ROUTE_STATE_IS_SIGNED_IN,
