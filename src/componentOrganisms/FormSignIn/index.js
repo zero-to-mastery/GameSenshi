@@ -10,8 +10,6 @@ import {
 import { ROUTE_PAGE_PASSWORD_RESET, onSignedInRouting } from 'routes'
 // api
 import { handleSignInWithEmailAndPassword } from 'api'
-// utils
-import { buttonSocialAuthOnClicks } from 'componentAtoms'
 // component
 import {
 	FormSignIn,
@@ -42,7 +40,6 @@ const FormSignInPropedDefault = withLastLocation(props => {
 			onSuccessfulSubmission={() => {
 				onSignedInRouting(lastLocation)
 			}}
-			socialAuthOnClicks={buttonSocialAuthOnClicks(lastLocation)}
 			{...restProps}
 		/>
 	)

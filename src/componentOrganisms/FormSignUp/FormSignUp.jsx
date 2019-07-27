@@ -17,7 +17,11 @@ import {
 } from 'reactstrap'
 // core components
 import Loader from 'react-loader-spinner'
-import { ButtonsSocialAuth, FinalForm, FORM_ERROR } from 'componentAtoms'
+import {
+	ButtonsSocialAuthPropedDefault,
+	FinalForm,
+	FORM_ERROR,
+} from 'componentAtoms'
 import { FinalInputText } from 'componentMolecules'
 
 const EMAIL = 'email'
@@ -33,7 +37,6 @@ const FORM_SIGN_UP_ON_PASSWORD_VALIDATION = 'onPasswordValidation'
 const FORM_SIGN_UP_ON_USERNAME_VALIDATION = 'onUsernameValidation'
 const FORM_SIGN_IP_OM_SUBMIT = 'onSubmit'
 const FORM_SIGN_UP_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
-const FORM_SIGN_UP_SOCIAL_AUTH_ON_CLICKS = 'socialAuthOnClicks'
 
 const FormSignUp = props => {
 	const submitButton = useRef(null)
@@ -52,7 +55,6 @@ const FormSignUp = props => {
 		[FORM_SIGN_UP_ON_EMAIL_SERVER_VALIDATION]: onEmailServerValidation,
 		[FORM_SIGN_UP_ON_PASSWORD_VALIDATION]: onPasswordValidation,
 		[FORM_SIGN_UP_ON_USERNAME_VALIDATION]: onUsernameValidation,
-		[FORM_SIGN_UP_SOCIAL_AUTH_ON_CLICKS]: socialAuthOnClicks,
 		[FORM_SIGN_UP_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
 		[FORM_SIGN_IP_OM_SUBMIT]: onSubmit,
 	} = props
@@ -117,7 +119,7 @@ const FormSignUp = props => {
 				{({ handleSubmit, submitting, submitError }) => (
 					<Form className='form'>
 						<CardBody>
-							<ButtonsSocialAuth onClicks={socialAuthOnClicks} />
+							<ButtonsSocialAuthPropedDefault />
 							<Row>
 								<Col />
 								<Col className='text-center text-muted mb-4 mt-3 col-auto'>

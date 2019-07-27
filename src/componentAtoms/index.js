@@ -7,7 +7,7 @@ import Footer from 'componentAtoms/Footers/Footer'
 import IndexHeader from 'componentAtoms/Headers/IndexHeader.jsx'
 import {
 	ButtonsSocialAuth,
-	buttonSocialAuthOnClicks,
+	ButtonsSocialAuthPropedDefault,
 } from 'componentAtoms/ButtonsSocialAuth'
 import { ButtonSignUpPropedDefault } from 'componentAtoms/ButtonSignUp'
 import { ButtonSignInPropedDefault } from 'componentAtoms/ButtonSignIn'
@@ -40,7 +40,7 @@ export {
 	ProgressCommon,
 	ProgressCommonStoreProgress,
 	ButtonsSocialAuth,
-	buttonSocialAuthOnClicks,
+	ButtonsSocialAuthPropedDefault,
 	ButtonSignInPropedDefault,
 	ButtonSignUpPropedDefault,
 	ListText,

@@ -16,7 +16,6 @@ import {
 	passwordPopoverMessages,
 } from 'utils/validation'
 // utils
-import { buttonSocialAuthOnClicks } from 'componentAtoms'
 import { onSuccessfulSubmission } from 'componentOrganisms/FormSignUp/utils'
 
 const FormSignUpPropedDefault = withLastLocation(props => {
@@ -33,7 +32,6 @@ const FormSignUpPropedDefault = withLastLocation(props => {
 					onEmailServerValidation={handleIsEmailNotExist}
 					onPasswordValidation={signUpPasswordValidation}
 					onUsernameValidation={signUpUsernameValidation}
-					socialAuthOnClicks={buttonSocialAuthOnClicks(lastLocation)}
 					onSubmit={(email = '', password = '', username = '') => {
 						return handleSignUpWithEmailAndPassword(
 							email,

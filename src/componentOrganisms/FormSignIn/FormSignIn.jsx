@@ -21,7 +21,11 @@ import {
 } from 'reactstrap'
 import Loader from 'react-loader-spinner'
 // core components
-import { ButtonsSocialAuth, FinalForm, FORM_ERROR } from 'componentAtoms'
+import {
+	ButtonsSocialAuthPropedDefault,
+	FinalForm,
+	FORM_ERROR,
+} from 'componentAtoms'
 import { FinalInputText } from 'componentMolecules'
 
 const EMAIL = 'email'
@@ -68,7 +72,6 @@ const FormSignIn = props => {
 		[SIGN_IN_FROM_PROP_FORGOT_PASSWORD_LINK]: forgotPasswordLink,
 		[SIGN_IN_FROM_TOGGLE]: toggle,
 		[SIGN_IN_FORM_ON_SUBMIT]: onSubmit,
-		[SIGN_IN_FORM_SOCIAL_AUTH_ON_CLICKS]: socialAuthOnClicks,
 		[SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
 	} = props
 
@@ -134,7 +137,7 @@ const FormSignIn = props => {
 									</InputGroup>
 								) : (
 									<>
-										<ButtonsSocialAuth onClicks={socialAuthOnClicks} />
+										<ButtonsSocialAuthPropedDefault />
 										<Row>
 											<Col className='text-center text-muted mb-4 mt-3' xs='12'>
 												<small>Or Classically</small>
