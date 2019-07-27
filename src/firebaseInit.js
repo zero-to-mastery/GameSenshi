@@ -10,7 +10,7 @@ import {
 	RESET_STATE,
 	storeAlertShow,
 	userStore,
-	storeRouteSetIsSignedIn,
+	storeRouteOnAuthStateChanged,
 	storeSignInShow,
 	storeAuthModalShow,
 	storeAuthModalClose,
@@ -155,11 +155,9 @@ const handleDifferentCredential = (auth, email, credential) => {
 auth().onAuthStateChanged(signedInUser => {
 	storeAuthModalOnAuthStateChange()
 	userStore.onAuthStateChanged(signedInUser)
+	storeRouteOnAuthStateChanged(signedInUser)
 	// reset all store if user sign out
-	if (signedInUser) {
-		storeRouteSetIsSignedIn(true)
-	} else {
-		console.log(1)
+	if (!signedInUser) {
 		for (let store in allStore) {
 			try {
 				allStore[store][RESET_STATE]()
@@ -167,7 +165,6 @@ auth().onAuthStateChanged(signedInUser => {
 				//
 			}
 		}
-		storeRouteSetIsSignedIn(false)
 	}
 })
 
