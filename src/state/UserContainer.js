@@ -56,8 +56,8 @@ class UserContainer extends Container {
 				...this.state,
 				...user,
 			}
+			this[STORE_USER_SET_IS_SIGNING_IN](true, onAutoSignedInFailed)
 		}
-		this[STORE_USER_SET_IS_SIGNING_IN](true, onAutoSignedInFailed)
 		return this
 	};
 
@@ -123,7 +123,11 @@ class UserContainer extends Container {
 			// User signed out.
 			this[RESET_STATE]()
 			this[STORE_USER_SET_IS_SIGNING_IN](false)
-			localStorage.removeItem(USER)
+			try {
+				localStorage.removeItem(USER)
+			} catch (e) {
+				console.log(e)
+			}
 		}
 		return this
 	}
