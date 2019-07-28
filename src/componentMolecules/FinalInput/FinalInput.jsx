@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { Field } from 'react-final-form'
-import Loader from 'react-loader-spinner'
-import { Popover, PopoverHeader, PopoverBody, Row, Col } from 'reactstrap'
-import { ListText } from 'componentAtoms'
+import { ListText, PopoverCommon } from 'componentAtoms'
 
 const DELAY = 1000
 // TODO to solve memory leak issue, not yet success
@@ -247,50 +245,31 @@ const FinalInput = Component => {
 								{...restProps}
 							/>
 							{popoverMessages_.length > 0 && (
-								<Popover
-									placement='top-end'
+								<PopoverCommon
 									isOpen={active}
 									target={name}
-									className='popover-primary'>
-									<PopoverHeader>
-										<Row>
-											<Col xs='1'>
-												{(spinner || spinner2) && (
-													<Loader
-														type={
-															(spinner2 && 'Puff') || (spinner && 'ThreeDots')
-														}
-														color='#00BFFF'
-														height='15px'
-														width='15px'
-													/>
-												)}
-											</Col>
-											<Col className='pl-2'>Conventions </Col>
-										</Row>
-									</PopoverHeader>
-									<PopoverBody className='pl-0 pb-0'>
-										<ul>
-											{popoverMessages_.map((errorMessage, i) => {
-												return (
-													<li
-														className={
-															popoverFailedItems[errorMessage]
-																? 'text-dark'
-																: 'text-info'
-														}
-														key={i}>
-														{popoverFailedItems[errorMessage] ? (
-															errorMessage
-														) : (
-															<del>{errorMessage}</del>
-														)}
-													</li>
-												)
-											})}
-										</ul>
-									</PopoverBody>
-								</Popover>
+									spinner={spinner_}
+									header={`${name} rules`}>
+									<ul>
+										{popoverMessages_.map((errorMessage, i) => {
+											return (
+												<li
+													className={
+														popoverFailedItems[errorMessage]
+															? 'text-dark'
+															: 'text-info'
+													}
+													key={i}>
+													{popoverFailedItems[errorMessage] ? (
+														errorMessage
+													) : (
+														<del>{errorMessage}</del>
+													)}
+												</li>
+											)
+										})}
+									</ul>
+								</PopoverCommon>
 							)}
 							{(!onlyShowErrorOnSubmit || submitFailed || isValid_) &&
 								!spinner &&

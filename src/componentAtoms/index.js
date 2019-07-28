@@ -3,6 +3,7 @@ import { FinalForm, FORM_ERROR } from 'componentAtoms/FinalForm'
 import { ListText } from 'componentAtoms/ListText'
 import { InputSelect } from 'componentAtoms/InputSelect'
 import { InputText } from 'componentAtoms/InputText'
+import { PopoverCommon } from 'componentAtoms/PopoverCommon'
 import Footer from 'componentAtoms/Footers/Footer'
 import IndexHeader from 'componentAtoms/Headers/IndexHeader.jsx'
 import {
@@ -46,4 +47,5 @@ export {
 	ListText,
 	InputSelect,
 	InputText,
+	PopoverCommon,
 }
