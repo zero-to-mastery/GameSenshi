@@ -1,6 +1,6 @@
 import React from 'react'
 // reactstrap components
-import { Progress as ProgressStrap } from 'reactstrap'
+import { Progress } from 'reactstrap'
 
 const PROGRESS_COMMON_STATE_IS_OPEN = 'isOpen'
 const PROGRESS_COMMON_STATE_COLOR = 'color'
@@ -14,9 +14,9 @@ const ProgressCommon = props => {
 	} = props
 	return isOpen ? (
 		<div className={`progress-container progress-${color}`}>
-			<ProgressStrap className='mt-0 mb-0' max='100' value={value} animated>
+			<Progress className='mt-0 mb-0' max='100' value={value} animated>
 				{value}%
-			</ProgressStrap>
+			</Progress>
 		</div>
 	) : null
 }
