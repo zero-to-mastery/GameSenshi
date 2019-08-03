@@ -6,10 +6,7 @@ import { InputText } from 'componentAtoms/InputText'
 import { PopoverCommon } from 'componentAtoms/PopoverCommon'
 import Footer from 'componentAtoms/Footers/Footer'
 import IndexHeader from 'componentAtoms/Headers/IndexHeader.jsx'
-import {
-	ButtonsSocialAuth,
-	ButtonsSocialAuthPropedDefault,
-} from 'componentAtoms/ButtonsSocialAuth'
+import { ButtonsSocialAuthPropedDefault } from 'componentAtoms/ButtonsSocialAuth'
 import { ButtonSignUpPropedDefault } from 'componentAtoms/ButtonSignUp'
 import { ButtonSignInPropedDefault } from 'componentAtoms/ButtonSignIn'
 import GeneralSettingsTabPane from 'componentAtoms/TabPane/GeneralSettingsTabPane'
@@ -18,11 +15,8 @@ import AccountSettingsTabPane from 'componentAtoms/TabPane/AccountSettingsTabPan
 import NotificationSettingsTabPane from 'componentAtoms/TabPane/NotificationSettingsTabPane'
 import ErrorBoundary from 'componentAtoms/ErrorBoundary/ErrorBoundary'
 import ImageUpload from 'componentAtoms/CustomUpload/ImageUpload'
-import { AlertCommon, AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
-import {
-	ProgressCommon,
-	ProgressCommonStoreProgress,
-} from 'componentAtoms/ProgressCommon'
+import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
+import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
 
 export {
 	Footer,
@@ -36,11 +30,8 @@ export {
 	NotificationSettingsTabPane,
 	ErrorBoundary,
 	ImageUpload,
-	AlertCommon,
 	AlertCommonStoreAlert,
-	ProgressCommon,
 	ProgressCommonStoreProgress,
-	ButtonsSocialAuth,
 	ButtonsSocialAuthPropedDefault,
 	ButtonSignInPropedDefault,
 	ButtonSignUpPropedDefault,
