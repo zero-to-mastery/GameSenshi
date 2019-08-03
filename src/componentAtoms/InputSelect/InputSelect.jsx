@@ -9,6 +9,7 @@ const InputSelect = props => {
 		name,
 		value,
 		options,
+		FormGroup,
 		isSearchable,
 		onBlur,
 		onFocus,
@@ -16,19 +17,21 @@ const InputSelect = props => {
 		onKeypress,
 	} = props
 	return (
-		<Select
-			id={id}
-			name={name}
-			value={value}
-			options={options}
-			className={className || 'react-select react-select-info'}
-			classNamePrefix={classNamePrefix || 'react-select'}
-			isSearchable={isSearchable}
-			onChange={onChange}
-			onFocus={onFocus}
-			onBlur={onBlur}
-			onKeypress={onKeypress}
-		/>
+		<FormGroup>
+			<Select
+				id={id}
+				name={name}
+				value={value}
+				options={options}
+				className={className || 'react-select react-select-info'}
+				classNamePrefix={classNamePrefix || 'react-select'}
+				isSearchable={isSearchable}
+				onChange={onChange}
+				onFocus={onFocus}
+				onBlur={onBlur}
+				onKeypress={onKeypress}
+			/>
+		</FormGroup>
 	)
 }
 
