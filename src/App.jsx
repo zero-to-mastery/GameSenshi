@@ -31,7 +31,7 @@ import {
 	SignInPage,
 	SignUpPage,
 	PasswordResetPage,
-} from 'componentPages'
+} from 'componentViews'
 
 const MapRoutesToPages = {
 	[ROUTE_PAGE_INDEX]: IndexPage,
