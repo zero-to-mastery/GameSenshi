@@ -17,6 +17,8 @@ import ErrorBoundary from 'componentAtoms/ErrorBoundary/ErrorBoundary'
 import ImageUpload from 'componentAtoms/CustomUpload/ImageUpload'
 import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
 import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
+import { CheckBox } from 'componentAtoms/CheckBox'
+import { Header } from 'componentAtoms/Header'
 
 export {
 	Footer,
@@ -39,4 +41,6 @@ export {
 	InputSelect,
 	InputText,
 	PopoverCommon,
+	CheckBox,
+	Header,
 }
