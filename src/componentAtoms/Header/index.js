@@ -1,3 +1,3 @@
-import { Header } from ' componentAtoms/Header'
+import { Header } from 'componentAtoms/Header/Header'
 
 export { Header }

@@ -1,5 +1,6 @@
 import React from 'react'
-const Headers = props => {
+
+const Header = props => {
 	const { children } = props
 	return (
 		<>
@@ -13,4 +14,4 @@ const Headers = props => {
 	)
 }
 
-export { Headers }
+export { Header }

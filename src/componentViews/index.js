@@ -1,9 +1,9 @@
-import IndexPage from 'componentPages/IndexPage.jsx'
-import ProfilePage from 'componentPages/ProfilePage.jsx'
-import SettingsPage from 'componentPages/SettingsPage'
-import SignInPage from 'componentPages/SignInPage'
-import SignUpPage from 'componentPages/SignUpPage'
-import PasswordResetPage from 'componentPages/PasswordResetPage'
+import IndexPage from 'componentViews/IndexPage.jsx'
+import ProfilePage from 'componentViews/ProfilePage.jsx'
+import SettingsPage from 'componentViews/SettingsPage'
+import SignInPage from 'componentViews/SignInPage'
+import SignUpPage from 'componentViews/SignUpPage'
+import PasswordResetPage from 'componentViews/PasswordResetPage'
 
 export {
 	IndexPage,
