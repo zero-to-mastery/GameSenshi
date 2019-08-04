@@ -24,13 +24,7 @@ import {
 import Loader from 'react-loader-spinner'
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const {
-	Footer,
-	IndexNavbar,
-	FinalForm,
-	FinalInputText,
-	FORM_ERROR,
-} = ExportMultiOrganisms
+const { Footer, IndexNavbar, FinalForm, FinalInputText } = ExportMultiOrganisms
 
 const EMAIL = 'email'
 
@@ -69,12 +63,12 @@ const PasswordResetPage = props => {
 									initialValues={{
 										[EMAIL]: '',
 									}}
-									onSubmit={async values => {
+									onSubmit={async (formError, values) => {
 										const isPasswordResetFailed = await handlePasswordReset(
 											values.email
 										)
 										if (isPasswordResetFailed) {
-											return { [FORM_ERROR]: isPasswordResetFailed }
+											return { [formError]: isPasswordResetFailed }
 										} else {
 											setSent(true)
 											return
@@ -113,8 +107,6 @@ const PasswordResetPage = props => {
 																Enter email address to reset password
 															</h4>
 															<FinalInputText
-																valid={false}
-																invalid={false}
 																type={EMAIL}
 																name={EMAIL}
 																hideSuccess

@@ -1,3 +1,3 @@
-import { CheckBox } from 'componentAtoms/CheckBox'
+import { CheckBox } from 'componentAtoms/CheckBox/CheckBox'
 
 export { CheckBox }

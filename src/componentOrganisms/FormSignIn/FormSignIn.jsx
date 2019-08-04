@@ -26,7 +26,6 @@ const {
 	ButtonsSocialAuthPropedDefault,
 	FinalForm,
 	FinalInputText,
-	FORM_ERROR,
 } = ExportCompounds
 
 const EMAIL = 'email'
@@ -45,6 +44,7 @@ const SIGN_IN_FORM_SOCIAL_AUTH_ON_CLICKS = 'socialAuthOnClicks'
 const SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
 const onSubmission = async (
+	formError,
 	values = { [EMAIL]: '', [PASSWORD]: '' },
 	onSubmit = (email, password) => {},
 	onSuccessfulSubmission = () => {}
@@ -52,7 +52,7 @@ const onSubmission = async (
 	const { [EMAIL]: email, [PASSWORD]: password } = values
 	const isSignInFailed = await onSubmit(email, password)
 	if (isSignInFailed) {
-		return { [FORM_ERROR]: isSignInFailed }
+		return { [formError]: isSignInFailed }
 	} else {
 		onSuccessfulSubmission()
 		return
@@ -113,8 +113,13 @@ const FormSignIn = props => {
 						[EMAIL]: passwordOnly ? email : '',
 						[PASSWORD]: '',
 					}}
-					onSubmit={values => {
-						return onSubmission(values, onSubmit, onSuccessfulSubmission)
+					onSubmit={(formError, values) => {
+						return onSubmission(
+							formError,
+							values,
+							onSubmit,
+							onSuccessfulSubmission
+						)
 					}}>
 					{({ submitError, handleSubmit, submitting }) => (
 						<Form action='' className='form' method=''>

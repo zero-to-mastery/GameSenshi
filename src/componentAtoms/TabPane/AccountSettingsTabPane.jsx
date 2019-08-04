@@ -12,7 +12,7 @@ import {
 	signInPasswordValidation,
 } from 'utils/validation'
 
-const { FinalForm, FORM_ERROR } = Export
+const { FinalForm } = Export
 
 const EMAIL = 'email'
 const PASSWORD = 'password'
@@ -32,8 +32,8 @@ const AccountSettingsTabPane = props => {
 					initialValues={{
 						email: '',
 					}}
-					onSubmit={values => {
-						return { [FORM_ERROR]: 'updateFailed' }
+					onSubmit={(formError, values) => {
+						return { [formError]: 'updateFailed' }
 					}}>
 					{({ submitError, handleSubmit, submitting, form }) => (
 						<>
@@ -105,8 +105,8 @@ const AccountSettingsTabPane = props => {
 					initialValues={{
 						password: '',
 					}}
-					onSubmit={values => {
-						return { [FORM_ERROR]: 'updateFailed' }
+					onSubmit={(formError, values) => {
+						return { [formError]: 'updateFailed' }
 					}}>
 					{({ submitError, handleSubmit, submitting, form }) => (
 						<>

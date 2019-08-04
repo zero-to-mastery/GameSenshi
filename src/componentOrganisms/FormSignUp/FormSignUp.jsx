@@ -18,10 +18,10 @@ import {
 import Loader from 'react-loader-spinner'
 // core components
 import { ExportCompounds } from 'componentnCompounds'
+
 const {
 	ButtonsSocialAuthPropedDefault,
 	FinalForm,
-	FORM_ERROR,
 	FinalInputText,
 } = ExportCompounds
 
@@ -32,12 +32,6 @@ const FORM_SIGN_UP_PROP_SIGN_IN_LINK = 'signInLink'
 const FORM_SIGN_UP_PROP_EMAIL_POPOVER_MESSAGES = 'emailPopoverMessages'
 const FORM_SIGN_UP_PROP_PASSWORD_POPOVER_MESSAGES = 'passwordPopoverMessages'
 const FORM_SIGN_UP_PROP_USERNAME_POPOVER_MESSAGES = 'usernamePopoverMessages'
-const FORM_SIGN_UP_ON_EMAIL_VALIDATION = 'onEmailValidation'
-const FORM_SIGN_UP_ON_EMAIL_SERVER_VALIDATION = 'onEmailServerValidation'
-const FORM_SIGN_UP_ON_PASSWORD_VALIDATION = 'onPasswordValidation'
-const FORM_SIGN_UP_ON_USERNAME_VALIDATION = 'onUsernameValidation'
-const FORM_SIGN_IP_OM_SUBMIT = 'onSubmit'
-const FORM_SIGN_UP_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
 const FormSignUp = props => {
 	const submitButton = useRef(null)
@@ -48,19 +42,20 @@ const FormSignUp = props => {
 	const [passwordSubmitErrors, setPasswordSubmitErrors] = useState(undefined)
 	const [usernameSubmitErrors, setUsernameSubmitErrors] = useState(undefined)
 	const {
-		[FORM_SIGN_UP_PROP_SIGN_IN_LINK]: signInLink,
-		[FORM_SIGN_UP_PROP_EMAIL_POPOVER_MESSAGES]: emailPopoverMessages,
-		[FORM_SIGN_UP_PROP_PASSWORD_POPOVER_MESSAGES]: passwordPopoverMessages,
-		[FORM_SIGN_UP_PROP_USERNAME_POPOVER_MESSAGES]: usernamePopoverMessages,
-		[FORM_SIGN_UP_ON_EMAIL_VALIDATION]: onEmailValidation,
-		[FORM_SIGN_UP_ON_EMAIL_SERVER_VALIDATION]: onEmailServerValidation,
-		[FORM_SIGN_UP_ON_PASSWORD_VALIDATION]: onPasswordValidation,
-		[FORM_SIGN_UP_ON_USERNAME_VALIDATION]: onUsernameValidation,
-		[FORM_SIGN_UP_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
-		[FORM_SIGN_IP_OM_SUBMIT]: onSubmit,
+		signInLink,
+		emailPopoverMessages,
+		passwordPopoverMessages,
+		usernamePopoverMessages,
+		onEmailValidation,
+		onEmailServerValidation,
+		onPasswordValidation,
+		onUsernameValidation,
+		onSuccessfulSubmission,
+		onSubmit,
 	} = props
 
 	const onSubmmission = async (
+		formErrors,
 		values,
 		onSubmit = (email = '', password = '', username = '') => {},
 		onSuccessfulSubmission = (email = '', password = '', username = '') => {}
@@ -74,7 +69,7 @@ const FormSignUp = props => {
 
 		if (typeof isSignUpFailed === 'string') {
 			// respond is not res obj mean the error is on client side
-			return { [FORM_ERROR]: isSignUpFailed }
+			return { [formErrors]: isSignUpFailed }
 		} else {
 			const { status, data, message } = isSignUpFailed
 
@@ -88,7 +83,7 @@ const FormSignUp = props => {
 				setPasswordSubmitErrors(data.password)
 				setUsernameIsValid(!data.username)
 				setUsernameSubmitErrors(data.username)
-				return { ...data, [FORM_ERROR]: message }
+				return { ...data, [formErrors]: message }
 			}
 		}
 	}
@@ -114,8 +109,13 @@ const FormSignUp = props => {
 					[PASSWORD]: '',
 					[USERNAME]: '',
 				}}
-				onSubmit={values => {
-					return onSubmmission(values, onSubmit, onSuccessfulSubmission)
+				onSubmit={(formErrors, values) => {
+					return onSubmmission(
+						formErrors,
+						values,
+						onSubmit,
+						onSuccessfulSubmission
+					)
 				}}>
 				{({ handleSubmit, submitting, submitError }) => (
 					<Form className='form'>

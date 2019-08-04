@@ -1,5 +1,5 @@
 import IndexNavbar from 'componentAtoms/Navbars/IndexNavbar'
-import { FinalForm, FORM_ERROR } from 'componentAtoms/FinalForm'
+import { FinalForm } from 'componentAtoms/FinalForm'
 import { ListText } from 'componentAtoms/ListText'
 import { InputSelect } from 'componentAtoms/InputSelect'
 import { InputText } from 'componentAtoms/InputText'
@@ -19,7 +19,6 @@ import { Header } from 'componentAtoms/Header'
 export const ExportAtoms = {
 	Footer,
 	FinalForm,
-	FORM_ERROR,
 	IndexNavbar,
 	IndexHeader,
 	ErrorBoundary,
