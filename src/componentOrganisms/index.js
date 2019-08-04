@@ -5,6 +5,8 @@ import {
 } from 'componentOrganisms/FormSignIn'
 import { FormSignUpPropedDefault } from 'componentOrganisms/FormSignUp'
 import { FormCard } from 'componentOrganisms/FormCard'
+import { TabPaneAccountSettings } from 'componentOrganisms/TabPaneAccountSettings'
+import { TabPaneGeneralSettings } from 'componentOrganisms/TabPaneGeneralSettings'
 
 export const ExportOrganisms = {
 	...ExportCompounds,
@@ -12,4 +14,6 @@ export const ExportOrganisms = {
 	FormSignInPropedDefaultStoreSignIn,
 	FormSignUpPropedDefault,
 	FormCard,
+	TabPaneAccountSettings,
+	TabPaneGeneralSettings,
 }

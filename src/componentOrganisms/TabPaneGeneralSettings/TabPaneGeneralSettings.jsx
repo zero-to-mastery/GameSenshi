@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
+import { stopUndefined } from 'utils'
 // react plugin used to create DropdownMenu for selecting items
 import Select from 'react-select'
 import { Subscribe, userStore } from 'state'
 // reactstrap components
 import {
-	Button,
 	FormGroup,
 	Input,
 	Row,
@@ -24,13 +24,15 @@ import {
 } from 'constantValues'
 // core components
 import Calendar from 'react-calendar'
-import { FinalForm } from 'componentAtoms'
-import { FinalInputText } from 'componentMolecules'
 // validation
 import { signUpUsernameValidation } from 'utils'
 
 import { getCodes, getNames } from 'country-list'
 import chroma from 'chroma-js'
+import { ExportCompounds } from 'componentnCompounds'
+const { FinalInputText, FinalForm, ButtonSubmit } = stopUndefined(
+	ExportCompounds
+)
 
 const countries = getNames()
 const countryCodes = getCodes()
@@ -124,7 +126,7 @@ const languageOptions = [
 	{ value: '5', label: 'Russian', color: '#FF8B00' },
 ]
 
-const GeneralSettingsTabPane = props => {
+const TabPaneGeneralSettings = props => {
 	const [birthDateOpen, setBirthDateOpen] = useState(false)
 	return (
 		<Subscribe to={[userStore]}>
@@ -309,9 +311,9 @@ const GeneralSettingsTabPane = props => {
 									</Row>
 									<Row className='mt-4'>
 										<Col md='6'>
-											<Button color='info' type='button'>
+											<ButtonSubmit color='info' type='button'>
 												Save Changes
-											</Button>
+											</ButtonSubmit>
 										</Col>
 									</Row>
 								</div>
@@ -324,4 +326,4 @@ const GeneralSettingsTabPane = props => {
 	)
 }
 
-export default GeneralSettingsTabPane
+export { TabPaneGeneralSettings }

@@ -21,8 +21,9 @@ const {
 	IndexNavbar,
 	GeneralSettingsTabPane,
 	BillingSettingsTabPane,
-	AccountSettingsTabPane,
-	NotificationSettingsTabPane,
+	TabPaneAccountSettings,
+	TabPaneNotificationSettings,
+	TabPaneGeneralSettings,
 	ImageUpload,
 } = stopUndefined(ExportMultiOrganisms)
 
@@ -139,9 +140,9 @@ const SettingsPage = props => {
 							<Col className='ml-auto' md='8'>
 								<div className='section'>
 									{profileTabs === 0 && <GeneralSettingsTabPane />}
-									{profileTabs === 1 && <BillingSettingsTabPane />}
-									{profileTabs === 2 && <AccountSettingsTabPane />}
-									{profileTabs === 3 && <NotificationSettingsTabPane />}
+									{profileTabs === 1 && <TabPaneGeneralSettings />}
+									{profileTabs === 2 && <TabPaneAccountSettings />}
+									{profileTabs === 3 && <TabPaneNotificationSettings />}
 								</div>
 							</Col>
 						</Row>
