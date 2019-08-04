@@ -1,7 +1,7 @@
 ---
 name: Help wanted
-about: Extra attention is needed
-title: "[Help]"
+about: Looking for help
+title: "[Help Wanted]"
 labels: help wanted
 assignees: ''
 

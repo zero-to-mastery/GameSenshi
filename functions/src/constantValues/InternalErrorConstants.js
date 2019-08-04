@@ -1,0 +1,15 @@
+const INTERNAL_ERROR_CODE_1 = 'Internal Error Code 1'
+const INTERNAL_ERROR_CODE_2 = 'Invalid Form Field'
+const INTERNAL_ERROR_CODE_3 = 'Invalid Email'
+const INTERNAL_ERROR_CODE_4 = 'Internal Error Code 4'
+const INTERNAL_ERROR_CODE_5 = 'Internal Error Code 4'
+const INTERNAL_ERROR_CODE_6 = 'Internal Error Code 4'
+
+export {
+	INTERNAL_ERROR_CODE_1,
+	INTERNAL_ERROR_CODE_2,
+	INTERNAL_ERROR_CODE_3,
+	INTERNAL_ERROR_CODE_4,
+	INTERNAL_ERROR_CODE_5,
+	INTERNAL_ERROR_CODE_6,
+}

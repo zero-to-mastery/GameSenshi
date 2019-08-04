@@ -1,13 +1,54 @@
-// Create and Deploy Your First Cloud Functions
 // https://firebase.google.com/docs/functions/write-firebase-functions
-import * as functions from 'firebase-functions' // https://stackoverflow.com/questions/51118943/cannot-read-property-https-of-undefined-error-in-firebase-functions
-import admin from 'firebase-admin'
 import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
-import { handleSignUp, handleVerifyEmail } from 'api'
-import { ON_SIGN_UP, ON_VERIFY_EMAIL } from './utils/signUpConstants'
 
-admin.initializeApp()
+import {
+	functions,
+	corsWhitelist,
+	playgroundEnabled,
+	apolloEngineApiKey,
+} from 'firebaseInit'
+
+import cors from 'cors'
+import { ApolloServer } from 'apollo-server-express'
+import { MemcachedCache } from 'apollo-server-cache-memcached'
+import express from 'express'
+
+import { typeDefs, resolvers } from 'resolvers'
+
+const app = express()
+
+app.use(
+	cors({
+		origin: corsWhitelist.split(','),
+		credentials: true,
+	})
+)
+
+const server = new ApolloServer({
+	typeDefs,
+	resolvers,
+	introspection: playgroundEnabled, //https://github.com/apollographql/apollo-server/issues/1112
+	playground: playgroundEnabled,
+	persistedQueries: {
+		//https://www.apollographql.com/docs/apollo-server/whats-new/#automatic-persisted-queries
+		cache: new MemcachedCache(
+			['memcached-server-1', 'memcached-server-2', 'memcached-server-3'],
+			{ retries: 10, retry: 10000 } // Options
+		),
+	},
+	engine: {
+		//https://www.apollographql.com/docs/apollo-server/whats-new/#performance-monitoring
+		apiKey: apolloEngineApiKey,
+	},
+	onHealthCheck: () =>
+		//https://www.apollographql.com/docs/apollo-server/whats-new/#health-checks
+		new Promise((resolve, reject) => {}),
+})
+
+server.applyMiddleware({
+	app,
+	path: '/',
+})
 
 // unable to use property accessor in es6 non default export, revert to es5 exports statement
-exports[ON_SIGN_UP] = functions.https.onCall(handleSignUp)
-exports[ON_VERIFY_EMAIL] = functions.https.onCall(handleVerifyEmail)
+exports['endpoint'] = functions.https.onRequest(app)

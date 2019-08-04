@@ -3,38 +3,41 @@ import child_process from 'child_process'
 
 import {
 	ENV,
-	REACT_APP_API_KEY,
-	REACT_APP_AUTH_DOMAIN,
-	REACT_APP_DATABASE_URL,
-	REACT_APP_PROJECT_ID,
-	REACT_APP_STORAGE_BUCKET,
-	REACT_APP_MESSAGING_SENDER_ID,
-	REACT_APP_APP_ID,
-} from './src/utils/envKeyConstants'
+	ENV_REACT_APP_API_KEY,
+	ENV_REACT_APP_AUTH_DOMAIN,
+	ENV_REACT_APP_DATABASE_URL,
+	ENV_REACT_APP_PROJECT_ID,
+	ENV_REACT_APP_STORAGE_BUCKET,
+	ENV_REACT_APP_MESSAGING_SENDER_ID,
+	ENV_REACT_APP_APP_ID,
+	ENV_PROJECT_ID,
+	ENV_CORS_WHITELIST,
+	ENV_ENABLE_PLAYGROUND,
+	ENV_VERIFY_EMAIL_API_URL,
+	ENV_APOLLO_ENGINE_API_KEY,
+} from './src/constantValues'
 
 const spawn = child_process.spawn
 
-const {
-	[REACT_APP_API_KEY]: react_app_api_key,
-	[REACT_APP_AUTH_DOMAIN]: react_app_auth_domain,
-	[REACT_APP_DATABASE_URL]: react_app_database_url,
-	[REACT_APP_PROJECT_ID]: react_app_project_id,
-	[REACT_APP_STORAGE_BUCKET]: react_app_storage_bucket,
-	[REACT_APP_MESSAGING_SENDER_ID]: react_app_messaging_sender_id,
-	[REACT_APP_APP_ID]: react_app_app_id,
-} = process.env
+const env = process.env
 
 const obj = {
 	[ENV]: {
-		[REACT_APP_API_KEY]: react_app_api_key,
-		[REACT_APP_AUTH_DOMAIN]: react_app_auth_domain,
-		[REACT_APP_DATABASE_URL]: react_app_database_url,
-		[REACT_APP_PROJECT_ID]: react_app_project_id,
-		[REACT_APP_STORAGE_BUCKET]: react_app_storage_bucket,
-		[REACT_APP_MESSAGING_SENDER_ID]: react_app_messaging_sender_id,
-		[REACT_APP_APP_ID]: react_app_app_id,
+		[ENV_REACT_APP_API_KEY]: env[ENV_REACT_APP_API_KEY],
+		[ENV_REACT_APP_AUTH_DOMAIN]: env[ENV_REACT_APP_AUTH_DOMAIN],
+		[ENV_REACT_APP_DATABASE_URL]: env[ENV_REACT_APP_DATABASE_URL],
+		[ENV_REACT_APP_PROJECT_ID]: env[ENV_REACT_APP_PROJECT_ID],
+		[ENV_REACT_APP_STORAGE_BUCKET]: env[ENV_REACT_APP_STORAGE_BUCKET],
+		[ENV_REACT_APP_MESSAGING_SENDER_ID]: env[ENV_REACT_APP_MESSAGING_SENDER_ID],
+		[ENV_REACT_APP_APP_ID]: env[ENV_REACT_APP_APP_ID],
+		[ENV_PROJECT_ID]: env[ENV_PROJECT_ID],
+		[ENV_VERIFY_EMAIL_API_URL]: env[ENV_VERIFY_EMAIL_API_URL],
+		[ENV_ENABLE_PLAYGROUND]: env[ENV_ENABLE_PLAYGROUND],
+		[ENV_APOLLO_ENGINE_API_KEY]: env[ENV_APOLLO_ENGINE_API_KEY],
+		[ENV_CORS_WHITELIST]: env[ENV_CORS_WHITELIST],
 	},
 }
+
 const isObj = x => x !== null && typeof x === 'object'
 
 const parse = tree => {
@@ -42,13 +45,13 @@ const parse = tree => {
 	const properties = Object.keys(tree)
 	properties.forEach(prop => {
 		if (isObj(tree[prop])) {
-			const childrens = parse(tree[prop])
-			childrens.forEach(child => {
-				const value = prop + '.' + child
+			const children = parse(tree[prop])
+			children.forEach(child => {
+				const value = `${prop}.${child}`
 				values.push(value)
 			})
 		} else {
-			const value = prop + '=' + '"' + tree[prop] + '"'
+			const value = `${prop}="${tree[prop]}"`
 			values.push(value)
 		}
 	})

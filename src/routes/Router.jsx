@@ -1,0 +1,69 @@
+import React from 'react'
+import {
+	Router as ReactRouter,
+	Route,
+	Switch,
+	Redirect,
+} from 'react-router-dom'
+import { createBrowserHistory } from 'history'
+import { LastLocationProvider } from 'react-router-last-location'
+import { routes, redirects } from 'routes/routes'
+// constants
+import {
+	ROUTE_PAGE_INDEX,
+	ROUTE_TO,
+	ROUTE_FROM,
+	ROUTE_PATH,
+	ROUTE_ACCESSIBILITY,
+	ROUTE_ACCESSIBILITY_PRIVATE,
+	ROUTE_ACCESSIBILITY_PUBLIC,
+	ROUTE_ACCESSIBILITY_FREE,
+} from 'routes/constants'
+
+const history = createBrowserHistory()
+
+const Router = props => {
+	const { children, pages, isUserSignedIn } = props
+	return (
+		<ReactRouter history={history}>
+			<LastLocationProvider>
+				{children}
+				<Switch>
+					{routes.map(route => {
+						const {
+							[ROUTE_PATH]: path,
+							[ROUTE_ACCESSIBILITY]: accessibility,
+						} = route
+						const Page = pages[path]
+						return (
+							<Route
+								key={path}
+								path={path}
+								render={props => {
+									const isAccessible =
+										accessibility === ROUTE_ACCESSIBILITY_FREE ||
+										(accessibility === ROUTE_ACCESSIBILITY_PRIVATE &&
+											isUserSignedIn) ||
+										(accessibility === ROUTE_ACCESSIBILITY_PUBLIC &&
+											!isUserSignedIn)
+									return isAccessible ? (
+										<Page {...props} />
+									) : (
+										<Redirect from={path} to={ROUTE_PAGE_INDEX} />
+									)
+								}}
+							/>
+						)
+					})}
+					{// Redirect must be under Route to serve as "default" case
+					redirects.map((redirect, i) => {
+						const { [ROUTE_FROM]: from, [ROUTE_TO]: to } = redirect
+						return <Redirect key={i} from={from} to={to} />
+					})}
+				</Switch>
+			</LastLocationProvider>
+		</ReactRouter>
+	)
+}
+
+export { Router, history }

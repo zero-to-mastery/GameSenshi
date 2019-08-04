@@ -1,0 +1,37 @@
+{
+	"repoName": "GameSenshi",
+	"tagline": "A platform for gamers/streamers to provide their casual service.",
+	"color": "#613dc1",
+	"logo": "https://cdn.discordapp.com/attachments/585004003797237771/592386952511356950/GS1.png",
+	"channelName": "gamesenshi",
+	"desc": [
+		"__**Use Cases:**__ \n:small_orange_diamond: Hire professional gamer or famous streamer! \n:small_orange_diamond: Hire game coach, level up your skill! \n:small_orange_diamond: Hire strong team mate, face challenge and rank up! \n:small_orange_diamond: Hire players to play your less known multiplayer game! \n:small_orange_diamond: Hang out and socialize with gamers/streamers in a relaxed environment!",
+		"__**Application Features:**__ \n:diamonds: Marketplace \n:diamonds: Payment \n:diamonds: Chat \n:diamonds: Gaming Contents \n:diamonds: Event Organizer ",
+		"__**Tech Stack:**__ \n:small_blue_diamond: React \n:small_blue_diamond: Progressive Web App \n:small_blue_diamond: CSS in JS \n:small_blue_diamond: Bootstrap \n:small_blue_diamond: Firebase \n:small_blue_diamond: GraphQL \n:small_blue_diamond: SSR(future)"
+	],
+	"team": [["tylim", "Project Lead"], ["CodeMeKathy", "Project Manager"]],
+	"links": [
+		[
+			"README.md",
+			"https://github.com/zero-to-mastery/GameSenshi/blob/master/README.md"
+		],
+		[
+			"CONTRIBUTING.md",
+			"https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md"
+		]
+	],
+	"poi": [
+		[
+			"README.md",
+			"https://github.com/zero-to-mastery/GameSenshi/blob/master/README.md"
+		],
+		[
+			"CONTRIBUTING.md",
+			"https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md"
+		]
+	],
+	"tasks": {
+		"title": "Trello Tasks",
+		"desc": "We use Trello to manage the tasks within this project, [here](https://trello.com/invite/b/tAyH3oig/a5374e9eaa1bbe644f3e7367d1e23300/game-senshi) is your invitation. Further information on how to use Trello and claim a task can be found in the [CONTRIBUTING.md](https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md) file on Github."
+	}
+}

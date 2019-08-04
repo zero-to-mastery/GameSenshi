@@ -12,6 +12,7 @@ if ('function' === typeof importScripts) {
 
 		/* custom cache rules*/
 		workbox.routing.registerNavigationRoute('/index.html', {
+			// eslint-disable-next-line no-useless-escape
 			blacklist: [/^\/_/, /\/[^\/]+\.[^\/]+$/],
 		})
 

@@ -1,37 +1,30 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import App from 'App'
 import * as serviceWorker from 'serviceWorker'
-
 // state management
-import { Provider } from 'unstated'
-import { signUp } from 'state'
-
-// css
+import { storeAuthModalInitialize, userStore, storeAlertShow } from 'state'
+// Initialize firebase
+import 'firebaseInit'
+// styles
 import 'assets/css/nucleo-icons.css'
-import 'assets/scss/blk-design-system-react.scss?v=1.0.0'
+import 'assets/scss/blk-design-system-pro-react.scss?v1.0.0'
 import 'assets/demo/demo.css'
+import 'assets/demo/react-demo.css'
+import 'assets/css/game-senshi.css'
 
-// vies
-import Index from 'views/Index'
-import LandingPage from 'views/LandingPage'
-import SignUpPage from 'views/SignUpPage'
-import ProfilePage from 'views/ProfilePage'
-import SignInPage from 'views/SignInPage'
+// check if user data in indexed db, pre-sign in user
+userStore.initialize()
 
-ReactDOM.render(
-	<Provider to={[signUp]}>
-		<BrowserRouter>
-			<Switch>
-				<Route exact path='/' render={props => <Index {...props} />} />
-				<Route path='/landing' render={props => <LandingPage {...props} />} />
-				<Route path='/signUp' render={props => <SignUpPage {...props} />} />
-				<Route path='/profile' render={props => <ProfilePage {...props} />} />
-				<Route path='/signIn' render={props => <SignInPage {...props} />} />
-			</Switch>
-		</BrowserRouter>
-	</Provider>,
-	document.getElementById('root')
-)
+// modal for auth
+storeAuthModalInitialize(() => {
+	storeAlertShow(
+		'Connection timeout, please sign in manually',
+		'danger',
+		'tim-icons icon-alert-circle-exc'
+	)
+})
+
+ReactDOM.render(<App />, document.getElementById('root'))
 
 serviceWorker.register()

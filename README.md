@@ -1,28 +1,44 @@
 # GAME [SENSHI(戦士)](https://en.wikipedia.org/wiki/Senshi)
 
-A platform for gamers/streamers to provide their casual service.
+<p align="center">
+  <img src='./public/android-chrome-512x512.png'>
+</p>
+
+A platform for gamers/streamers to provide their casual service and link up with others in the community.
+
+[**Demo Page**](https://www.gamesenshi.com/index)
+
+![index.png](./src/assets/img/index.png)
 
 ## Introduction
 
-This is project that temporary hire people to play game with you. You can imagine this as you hire someone to work for you for few hours, but unlike conventional task, this is about game companion.
+This is a project that is designed to allow the user the ability to temporarily hire other gamers to play with them. Similar to hiring someone to work with you, this allows you the opportunity to hire another gamer to game with you. It is all about gaming companionship.
 
-From consumer perspectives:
+From the consumer perspective:
 
-1. You are a big fans of a professional/famous gamer, you want to play a game with him, either as sparring partner(opponent) or team mate.
-2. You are a fans of good looking or fun streamer, you want to play with her/him.
-3. You are looking for game coach, gamer that systemized his knowledge and make you a better gamer.
-4. You are looking for booster, gamer that help you rank up by either playing your account or as your team mate.
+1. You are a big fan of a professional gamer/famous streamer, and you want to play a game with with your beloved star., either as a sparring partner(opponent), or teammate.
+2. You are looking for someone to help you improve as a gamer, and want a gaming "coach" that can help you along in that process.
+3. You want to rank up in a specific game, but need help. You need a strong and capable teammate who has lots of experience with that game!
+4. You have a nice but less known multiplayer game, hire your fighter here!
+5. You're merely looking to hang out and socialize with streamers/gamers in a relaxed environment!
 
-From provider perspective:
-While some gamers/streamers do make big buck, but large majority of gamers or streamers make little or to none money out of gaming, so this platform can play a part in gaming economy as it can turn gamers into new work force.
+From provider perspective:  
 
-## Getting Started
+While some gamers/streamers do make a lot of money, the large majority of gamers and/or streamers do not. This platform provides the opportunity for many gamers and streamers to expand their viewer base, reach new potential viewers and people to game with, and make new friends along the way! It also helps to link casual gamers up with more competitive and successful gamers/streamers, and in return helping everyone in the community grow. With this platform, we can create a new work force of gamers who are doing what they love, and making money along the way!
 
-It is very easy to get started, this project is beginner friendly (everything is in ES6+ !) and a lot of process is highly automated (comprehensive scripts, you can trust someone who made [this](https://github.com/tylim88/Create-Prisma-App/blob/master/template/package.json)).
+## Application Features
 
-Ease of developing is always our top priority, easier and better developing tool is always welcomed and adopted, but that doesn't mean we sacrifice quality, in fact it is the reverse, we make developing easier because we want more time spend on tinkering how to create better website experience(such as [this](https://github.com/zero-to-mastery/GameSenshi/wiki/Form-State-Management)).
+1. Marketplace
+2. Payment
+3. Chat
+4. Gaming Contents
+5. Event Organizer
 
-In this project, you can expect to be able to write nicer code, apply better implementation, enhance workflow and being critical when picking libraries.
+## Getting Started  
+
+Andrei's [React Course](https://www.udemy.com/complete-react-developer-zero-to-mastery/?couponCode=ZTMREACTLAUNCH) has almost all knowledge you need to get started.  
+
+PS: this is not advertising, this is coincidence, this project already exist for 3 months before the course is released.
 
 ## Installation
 
@@ -38,9 +54,17 @@ request the `.config` folder(s) from `tylim#9831` in `Discord`
 
 ```bash
 npm run dev
+// run with dev env var, this may not work as dev is connect to dev server (experiment server)  
+
+npm run prod
+// run with prod env var, recommended since this will work as experted most of the time
 ```
 
+Now you can start hacking on front end!
+
 ## Deployment
+
+🛑 Ignore this deployment section if you don't want to work with back end (firebase).
 
 Direct message `tylim#9831` in `Discord` your email to become user of this firebase project.
 
@@ -57,27 +81,28 @@ firebase login
 above command is one time setup, anytime you want to run deploy, simply
 
 ```bash
-npm run deploy
+npm run d-deploy // deploy to dev server  
+npm run p-deploy // deploy to prod server
 ```
 
-It will automatically inject production environment variable, build and deploy front end or back end (depend on which terminal you in)
+It will automatically inject production environment variable, build and deploy front end or back end (if you run the command in functions folder).
 
-There is also command to deploy both end:
+after deployment, you can view it at
 
-```bash
-firebase deploy
-```
-
-after deployment, you can view it [here](https://gamesenshi.com/).
+1. [prod](https://gamesenshi.com/)
+2. [dev](https://game-senshi.firebaseapp.com/)
 
 ## Built With
 
 - [Create-React-App](http://www.dropwizard.io/1.0.2/docs/) - React Project Generator
 - [Blk• Design System React](https://github.com/creativetimofficial/blk-design-system-react/) - Bootstrap
 - [Firebase](https://firebase.google.com/) - Backend
+- [Apollo(client and server)](https://www.apollographql.com/) - Endpoint
 
 Please read [wiki](https://github.com/tylim88/GameSenshi/wiki) for details of our code, techs, guides and resources.
 
 ## Contributing
+
+Join our [Trello](https://trello.com/invite/b/tAyH3oig/a5374e9eaa1bbe644f3e7367d1e23300/game-senshi).
 
 Please read [CONTRIBUTING.md](https://github.com/tylim88/GameSenshi/blob/master/CONTRIBUTING.md) for details on how to contribute.

@@ -1,0 +1,12 @@
+.bg-purple {
+	background-color: #613dc1;
+}
+
+.has-success:after,
+.has-danger:after {
+	top: calc(50% - 7px);
+}
+
+.editable:hover {
+	cursor: pointer;
+}
