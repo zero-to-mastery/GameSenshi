@@ -42,12 +42,12 @@ const FormSignInPropedDefault = withLastLocation(props => {
 	)
 })
 
-const MapStoreSignInStateToProp = {
+const mapStoreSignInStateToProp = {
 	[SIGN_IN_FROM_STATE_EMAIL]: STORE_SIGN_IN_STATE_EMAIL,
 	[SIGN_IN_FROM_STATE_IS_OPEN]: STORE_SIGN_IN_STATE_IS_OPEN,
 }
 
-const MapStoreSignInMethodToProp = {
+const mapStoreSignInMethodToProp = {
 	[SIGN_IN_FROM_TOGGLE]: storeSignInToggle,
 	[SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION]: storeSignInOnSuccessfulSubmission,
 }
@@ -55,8 +55,8 @@ const MapStoreSignInMethodToProp = {
 const FormSignInPropedDefaultStoreSignIn = StateContainer(
 	FormSignInPropedDefault,
 	[storeSignIn],
-	[MapStoreSignInStateToProp],
-	[MapStoreSignInMethodToProp]
+	[mapStoreSignInStateToProp],
+	[mapStoreSignInMethodToProp]
 )
 
 export {

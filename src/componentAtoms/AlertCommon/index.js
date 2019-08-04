@@ -17,22 +17,22 @@ import {
 	storeAlertToggle,
 } from 'state'
 
-const MapStoreAlertStateToProp = {
+const mapStoreAlertStateToProp = {
 	[ALERT_COMMON_STATE_BODY]: STORE_ALERT_STATE_BODY,
 	[ALERT_COMMON_STATE_ICON]: STORE_ALERT_STATE_ICON,
 	[ALERT_COMMON_STATE_IS_OPEN]: STORE_ALERT_STATE_IS_OPEN,
 	[ALERT_COMMON_STATE_COLOR]: STORE_ALERT_STATE_COLOR,
 }
 
-const MapStoreAlertMethodToProp = {
+const mapStoreAlertMethodToProp = {
 	[ALERT_COMMON_TOGGLE]: storeAlertToggle,
 }
 
 const AlertCommonStoreAlert = StateContainer(
 	AlertCommon,
 	[storeAlert],
-	[MapStoreAlertStateToProp],
-	[MapStoreAlertMethodToProp]
+	[mapStoreAlertStateToProp],
+	[mapStoreAlertMethodToProp]
 )
 
 export { AlertCommon, AlertCommonStoreAlert }
