@@ -13,7 +13,7 @@ import {
 // reactstrap components
 import { Button, Label, FormGroup, Input, Table } from 'reactstrap'
 
-import CardModal from 'componentAtoms/Modals/CardModal'
+import { FormCard } from 'componentOrganisms/FormCard'
 
 const BillingSettingsTabPane = () => {
 	return (
@@ -24,7 +24,7 @@ const BillingSettingsTabPane = () => {
 				} = cardStore
 				return (
 					<>
-						{/* <CardModal /> */}
+						<FormCard />
 						<header>
 							<h2 className='text-uppercase'>Billing method</h2>
 						</header>
