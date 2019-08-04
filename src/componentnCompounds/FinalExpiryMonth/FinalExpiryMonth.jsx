@@ -1,6 +1,8 @@
 import React from 'react'
 //components
-import { FinalInputSelect } from 'componentMolecules'
+import { ExportMolecules } from 'componentMolecules'
+
+const { FinalInputSelect } = ExportMolecules
 
 const VALUE = 'value'
 const LABEL = 'label'

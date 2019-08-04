@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
-
 // routing
 import { Link } from 'react-router-dom'
-
+// validation
+import { signInEmailValidation } from 'utils/validation'
+// api
+import { handleIsEmailExist, handlePasswordReset } from 'api'
+//constants
+import { ROUTE_PAGE_SIGN_IN } from 'routes'
 // reactstrap components
 import {
 	Button,
@@ -16,22 +20,17 @@ import {
 	Container,
 	Col,
 } from 'reactstrap'
-
 // core components
-import { Footer, IndexNavbar, FinalForm, FORM_ERROR } from 'componentAtoms'
-
-import { FinalInputText } from 'componentMolecules'
-
 import Loader from 'react-loader-spinner'
+import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-// validation
-import { signInEmailValidation } from 'utils/validation'
-
-// api
-import { handleIsEmailExist, handlePasswordReset } from 'api'
-
-//constants
-import { ROUTE_PAGE_SIGN_IN } from 'routes'
+const {
+	Footer,
+	IndexNavbar,
+	FinalForm,
+	FinalInputText,
+	FORM_ERROR,
+} = ExportMultiOrganisms
 
 const EMAIL = 'email'
 

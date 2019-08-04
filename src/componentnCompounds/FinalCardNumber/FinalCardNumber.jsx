@@ -1,8 +1,10 @@
 import React from 'react'
-//components
-import { FinalInputText } from 'componentMolecules'
 // utils
 import { string } from 'yup'
+//components
+import { ExportMolecules } from 'componentMolecules'
+
+const { FinalInputText } = ExportMolecules
 
 const onChangeNumber = (e, onValueChange = () => {}) => {
 	let {

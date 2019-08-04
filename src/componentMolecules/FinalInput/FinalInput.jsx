@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Field } from 'react-final-form'
-import { ListText, PopoverCommon } from 'componentAtoms'
+// core components
+import { ExportAtoms } from 'componentAtoms'
+
+const { ListText, PopoverCommon } = ExportAtoms
 
 const DELAY = 1000
 // TODO to solve memory leak issue, not yet success

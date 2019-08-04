@@ -4,7 +4,7 @@ import { Button, FormGroup, Row, Col, Form } from 'reactstrap'
 // loader
 import Loader from 'react-loader-spinner'
 // form validation
-import { FinalForm, FORM_ERROR } from 'componentAtoms'
+import { Export } from 'componentAtoms'
 import { FinalInputText } from 'componentMolecules'
 // validation
 import {
@@ -12,9 +12,10 @@ import {
 	signInPasswordValidation,
 } from 'utils/validation'
 
+const { FinalForm, FORM_ERROR } = Export
+
 const EMAIL = 'email'
 const PASSWORD = 'password'
-
 const AccountSettingsTabPane = props => {
 	const submitButton = useRef(null)
 	const submitButton2 = useRef(null)

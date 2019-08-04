@@ -1,3 +1,4 @@
+import { ExportCompounds } from 'componentnCompounds'
 import {
 	FormSignInPropedDefault,
 	FormSignInPropedDefaultStoreSignIn,
@@ -5,7 +6,8 @@ import {
 import { FormSignUpPropedDefault } from 'componentOrganisms/FormSignUp'
 import { FormCard } from 'componentOrganisms/FormCard'
 
-export {
+export const ExportOrganisms = {
+	...ExportCompounds,
 	FormSignInPropedDefault,
 	FormSignInPropedDefaultStoreSignIn,
 	FormSignUpPropedDefault,

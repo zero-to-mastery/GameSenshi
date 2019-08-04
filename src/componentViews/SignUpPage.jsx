@@ -4,8 +4,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 
 // core components
-import { Footer, IndexNavbar } from 'componentAtoms'
-import { FormSignUpPropedDefault } from 'componentOrganisms'
+import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
+
+const { Footer, IndexNavbar, FormSignUpPropedDefault } = ExportMultiOrganisms
 
 const SignUpPage = props => {
 	const [squares1to6, setSquares1to6] = useState('')

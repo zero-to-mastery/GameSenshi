@@ -17,9 +17,10 @@ import {
 	CarouselItem,
 	CarouselIndicators,
 } from 'reactstrap'
-
 // core components
-import { Footer, IndexNavbar } from 'componentAtoms'
+import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
+
+const { Footer, IndexNavbar } = ExportMultiOrganisms
 
 let imageSlickSettings = {
 	dots: true,

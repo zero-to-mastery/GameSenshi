@@ -15,14 +15,15 @@ import {
 	Row,
 	Col,
 } from 'reactstrap'
-// core components
 import Loader from 'react-loader-spinner'
-import {
+// core components
+import { ExportCompounds } from 'componentnCompounds'
+const {
 	ButtonsSocialAuthPropedDefault,
 	FinalForm,
 	FORM_ERROR,
-} from 'componentAtoms'
-import { FinalInputText } from 'componentMolecules'
+	FinalInputText,
+} = ExportCompounds
 
 const EMAIL = 'email'
 const PASSWORD = 'password'

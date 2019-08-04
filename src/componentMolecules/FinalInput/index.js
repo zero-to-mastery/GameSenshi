@@ -1,5 +1,7 @@
 import { FinalInput } from 'componentAtoms/FinalInput/FinalInput'
-import { InputText, InputSelect } from 'componentAtoms'
+import { ExportAtoms } from 'componentAtoms'
+
+const { InputText, InputSelect } = ExportAtoms
 
 const FinalInputText = FinalInput(InputText)
 const FinalInputSelect = FinalInput(InputSelect)

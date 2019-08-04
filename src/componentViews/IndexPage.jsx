@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react'
 
 // core components
-import { IndexHeader, Footer, IndexNavbar } from 'componentAtoms'
+import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
+
+const { Footer, IndexNavbar, IndexHeader } = ExportMultiOrganisms
 
 const IndexPage = props => {
 	const wrapper = useRef(null)

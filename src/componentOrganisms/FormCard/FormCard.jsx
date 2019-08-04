@@ -14,16 +14,19 @@ import {
 // core components
 import Cards from 'react-credit-cards'
 import Loader from 'react-loader-spinner'
-import { FinalForm, CheckBox } from 'componentAtoms'
-import {
+import { ExportCompounds } from 'componentnCompounds'
+// styles
+import 'react-credit-cards/lib/styles.scss'
+
+const {
+	FinalForm,
+	CheckBox,
 	FinalCardNumberPropedDefault,
 	FinalCardHolderNamePropedDefault,
 	FinalExpiryMonthPropedDefault,
 	FinalExpiryYearPropedDefault,
 	FinalCardCVCPropedDefault,
-} from 'componentnCompounds'
-// styles
-import 'react-credit-cards/lib/styles.scss'
+} = ExportCompounds
 
 const CARD_NUMBER = 'cardNumber'
 const CVC = 'cvc'

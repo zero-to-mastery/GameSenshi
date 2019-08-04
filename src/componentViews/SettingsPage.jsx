@@ -13,7 +13,9 @@ import {
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
 } from 'routes'
 // core components
-import {
+import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
+
+const {
 	Footer,
 	IndexNavbar,
 	GeneralSettingsTabPane,
@@ -21,7 +23,7 @@ import {
 	AccountSettingsTabPane,
 	NotificationSettingsTabPane,
 	ImageUpload,
-} from 'componentAtoms'
+} = ExportMultiOrganisms
 
 const navItems = [
 	{

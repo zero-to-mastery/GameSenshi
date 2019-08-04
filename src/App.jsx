@@ -20,25 +20,26 @@ import {
 	STATE,
 	STORE_ROUTE_STATE_IS_SIGNED_IN,
 } from 'state'
-//modal
-import { FormSignInPropedDefaultStoreSignIn } from 'componentOrganisms'
-import { ModalAuthStoreAuthModal } from 'componentMolecules'
-// pages
-import {
+//core components
+import { ExportViews } from 'componentViews'
+
+const {
 	IndexPage,
 	ProfilePage,
-	SettingsPage,
+	//	SettingsPage,
 	SignInPage,
 	SignUpPage,
 	PasswordResetPage,
-} from 'componentViews'
+	FormSignInPropedDefaultStoreSignIn,
+	ModalAuthStoreAuthModal,
+} = ExportViews
 
 const MapRoutesToPages = {
 	[ROUTE_PAGE_INDEX]: IndexPage,
 	[ROUTE_PAGE_PROFILE]: ProfilePage,
 	[ROUTE_PAGE_SIGN_UP]: SignUpPage,
 	[ROUTE_PAGE_SIGN_IN]: SignInPage,
-	[ROUTE_PAGE_SETTINGS_COMMON]: SettingsPage,
+	//[ROUTE_PAGE_SETTINGS_COMMON]: SettingsPage,
 	[ROUTE_PAGE_PASSWORD_RESET]: PasswordResetPage,
 }
 

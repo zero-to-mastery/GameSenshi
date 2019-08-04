@@ -9,10 +9,6 @@ import IndexHeader from 'componentAtoms/Headers/IndexHeader.jsx'
 import { ButtonsSocialAuthPropedDefault } from 'componentAtoms/ButtonsSocialAuth'
 import { ButtonSignUpPropedDefault } from 'componentAtoms/ButtonSignUp'
 import { ButtonSignInPropedDefault } from 'componentAtoms/ButtonSignIn'
-import GeneralSettingsTabPane from 'componentAtoms/TabPane/GeneralSettingsTabPane'
-import BillingSettingsTabPane from 'componentAtoms/TabPane/BillingSettingsTabPane'
-import AccountSettingsTabPane from 'componentAtoms/TabPane/AccountSettingsTabPane'
-import NotificationSettingsTabPane from 'componentAtoms/TabPane/NotificationSettingsTabPane'
 import ErrorBoundary from 'componentAtoms/ErrorBoundary/ErrorBoundary'
 import ImageUpload from 'componentAtoms/CustomUpload/ImageUpload'
 import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
@@ -20,16 +16,12 @@ import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
 import { CheckBox } from 'componentAtoms/CheckBox'
 import { Header } from 'componentAtoms/Header'
 
-export {
+export const ExportAtoms = {
 	Footer,
 	FinalForm,
 	FORM_ERROR,
 	IndexNavbar,
 	IndexHeader,
-	GeneralSettingsTabPane,
-	BillingSettingsTabPane,
-	AccountSettingsTabPane,
-	NotificationSettingsTabPane,
 	ErrorBoundary,
 	ImageUpload,
 	AlertCommonStoreAlert,

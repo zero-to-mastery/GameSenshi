@@ -21,12 +21,13 @@ import {
 } from 'reactstrap'
 import Loader from 'react-loader-spinner'
 // core components
-import {
+import { ExportCompounds } from 'componentnCompounds'
+const {
 	ButtonsSocialAuthPropedDefault,
 	FinalForm,
+	FinalInputText,
 	FORM_ERROR,
-} from 'componentAtoms'
-import { FinalInputText } from 'componentMolecules'
+} = ExportCompounds
 
 const EMAIL = 'email'
 const PASSWORD = 'password'

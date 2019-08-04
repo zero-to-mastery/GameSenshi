@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 // reactstrap components
 import { Form, Container, Row, Col } from 'reactstrap'
-// core component
-import { CheckBox, Header } from 'componentAtoms'
+// core components
+import { ExportAtoms } from 'componentAtoms'
+
+const { CheckBox, Header } = ExportAtoms
 
 const toggleCheckBox = setState => {
 	setState(state => !state)

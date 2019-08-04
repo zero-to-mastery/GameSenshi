@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 // reactstrap components
 import { Container, Col } from 'reactstrap'
 // core components
-import { Footer, IndexNavbar } from 'componentAtoms'
-import { FormSignInPropedDefault } from 'componentOrganisms'
+import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
+
+const { Footer, IndexNavbar, FormSignInPropedDefault } = ExportMultiOrganisms
 
 const SignInPage = props => {
 	useEffect(() => {

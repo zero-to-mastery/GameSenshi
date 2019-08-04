@@ -1,6 +1,8 @@
 import React from 'react'
 //components
-import { FinalInputText } from 'componentMolecules'
+import { ExportMolecules } from 'componentMolecules'
+
+const { FinalInputText } = ExportMolecules
 
 const onChange = (e, onValueChange = () => {}) => {
 	const {
