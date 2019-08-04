@@ -9,14 +9,12 @@ import {
 	Row,
 	Col,
 	FormGroup,
-	Input,
-	Label,
 	Form,
 } from 'reactstrap'
 // core components
 import Cards from 'react-credit-cards'
 import Loader from 'react-loader-spinner'
-import { FinalForm } from 'componentAtoms'
+import { FinalForm, CheckBox } from 'componentAtoms'
 import {
 	FinalCardNumberPropedDefault,
 	FinalCardHolderNamePropedDefault,
@@ -170,20 +168,13 @@ const FormCard = props => {
 														submitRef={submitButton}
 													/>
 													<Col xs='6'>
-														<FormGroup check className='text-left'>
-															<Label check>
-																<Input
-																	type='checkbox'
-																	checked={isDefault}
-																	onClick={() => {
-																		setIsDefault(state => !state)
-																	}}
-																	onChange={() => {}}
-																/>
-																<span className='form-check-sign' />
-																set as default?
-															</Label>
-														</FormGroup>
+														<CheckBox
+															checked={isDefault}
+															onClick={() => {
+																setIsDefault(state => !state)
+															}}>
+															set as default?
+														</CheckBox>
 													</Col>
 												</Row>
 											</Form>
