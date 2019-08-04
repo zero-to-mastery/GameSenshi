@@ -5,7 +5,7 @@ import { Form, Container, Row, Col } from 'reactstrap'
 // core components
 import { ExportAtoms } from 'componentAtoms'
 
-const { CheckBox, HeaderLined } = stopUndefined(ExportAtoms)
+const { CheckBox, HeaderLined, TabPaneContainer } = stopUndefined(ExportAtoms)
 
 const toggleCheckBox = setState => {
 	setState(state => !state)
@@ -23,7 +23,7 @@ const TabPaneNotificationSettings = props => {
 			<Container>
 				<Row>
 					<Col xs='12'>
-						<div className='g-pos-rel h-100 g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-30--md'>
+						<TabPaneContainer>
 							<HeaderLined>Push Notification</HeaderLined>
 							<Form>
 								<CheckBox
@@ -42,14 +42,14 @@ const TabPaneNotificationSettings = props => {
 									Comments
 								</CheckBox>
 							</Form>
-						</div>
+						</TabPaneContainer>
 					</Col>
 				</Row>
 				<hr />
 				<hr />
 				<Row>
 					<Col xs='12'>
-						<div className='g-pos-rel h-100 g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-30--md'>
+						<TabPaneContainer>
 							<HeaderLined>Email Notification</HeaderLined>
 							<Form>
 								<CheckBox
@@ -63,7 +63,7 @@ const TabPaneNotificationSettings = props => {
 									Newsletter
 								</CheckBox>
 							</Form>
-						</div>
+						</TabPaneContainer>
 					</Col>
 				</Row>
 			</Container>

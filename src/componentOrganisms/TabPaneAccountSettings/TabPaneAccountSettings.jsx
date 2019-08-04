@@ -7,9 +7,13 @@ import { signInEmailValidation, signInPasswordValidation } from 'utils'
 
 import { ExportCompounds } from 'componentnCompounds'
 
-const { FinalInputText, FinalForm, ButtonSubmit, HeaderLined } = stopUndefined(
-	ExportCompounds
-)
+const {
+	FinalInputText,
+	FinalForm,
+	ButtonSubmit,
+	HeaderLined,
+	TabPaneContainer,
+} = stopUndefined(ExportCompounds)
 
 const EMAIL = 'email'
 const PASSWORD = 'password'
@@ -19,7 +23,7 @@ const TabPaneAccountSettings = props => {
 	const submitButton2 = useRef(null)
 	return (
 		<>
-			<div className='g-pos-rel h-100 g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-30--md'>
+			<TabPaneContainer>
 				<HeaderLined>Change Email</HeaderLined>
 				<hr className='line-info' />
 				<FinalForm
@@ -73,10 +77,10 @@ const TabPaneAccountSettings = props => {
 						</>
 					)}
 				</FinalForm>
-			</div>
+			</TabPaneContainer>
 			<hr />
 			<hr />
-			<div className='g-pos-rel h-100 g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-30--md'>
+			<TabPaneContainer>
 				<HeaderLined>Change Password</HeaderLined>
 				<hr className='line-info' />
 				<FinalForm
@@ -130,9 +134,9 @@ const TabPaneAccountSettings = props => {
 						</>
 					)}
 				</FinalForm>
-			</div>
+			</TabPaneContainer>
 		</>
 	)
 }
 
-export default TabPaneAccountSettings
+export { TabPaneAccountSettings }
