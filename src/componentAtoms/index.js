@@ -16,6 +16,7 @@ import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
 import { CheckBox } from 'componentAtoms/CheckBox'
 import { Header } from 'componentAtoms/Header'
 import { ModalAuthStoreAuthModal } from 'componentAtoms/ModalAuth'
+import { ButtonSubmit } from 'componentAtoms/ButtonSubmit/ButtonSubmit'
 
 export const ExportAtoms = {
 	Footer,
@@ -36,4 +37,5 @@ export const ExportAtoms = {
 	CheckBox,
 	Header,
 	ModalAuthStoreAuthModal,
+	ButtonSubmit,
 }
