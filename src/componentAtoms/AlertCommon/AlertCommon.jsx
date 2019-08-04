@@ -21,10 +21,10 @@ const AlertCommon = props => {
 			isOpen={isOpen}
 			toggle={toggle}
 			color={color}
-			className='alert-with-icon d-flex align-items-center '>
-			<Container>
+			className='alert-with-icon'>
+			<Container className='d-flex align-items-center'>
 				<i className={`${icon} mr-3`} />
-				<span>{body}</span>
+				{body}
 			</Container>
 		</Alert>
 	)
