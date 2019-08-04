@@ -19,8 +19,8 @@ const EMAIL = 'email'
 const PASSWORD = 'password'
 
 const TabPaneAccountSettings = props => {
-	const submitButton = useRef(null)
-	const submitButton2 = useRef(null)
+	const submitButtonEmail = useRef(null)
+	const submitButtonPassWord = useRef(null)
 	return (
 		<>
 			<TabPaneContainer>
@@ -52,7 +52,7 @@ const TabPaneAccountSettings = props => {
 												placeholder='email'
 												icon='tim-icons icon-email-85'
 												validation={signInEmailValidation}
-												submitRef={submitButton}
+												submitRef={submitButtonEmail}
 												onBlur={() => {
 													form.reset()
 												}}
@@ -67,7 +67,7 @@ const TabPaneAccountSettings = props => {
 									<ButtonSubmit
 										color='info'
 										type='button'
-										submitRef={submitButton}
+										submitRef={submitButtonEmail}
 										disabled={submitting}
 										onClick={handleSubmit}>
 										{submitting ? 'Changing Email' : 'Change Email'}
@@ -109,7 +109,7 @@ const TabPaneAccountSettings = props => {
 												placeholder='password'
 												icon='tim-icons icon-lock-circle'
 												validation={signInPasswordValidation}
-												submitRef={submitButton2}
+												submitRef={submitButtonPassWord}
 												onBlur={() => {
 													form.reset()
 												}}
@@ -124,7 +124,7 @@ const TabPaneAccountSettings = props => {
 									<ButtonSubmit
 										color='info'
 										type='button'
-										submitRef={submitButton2}
+										submitRef={submitButtonPassWord}
 										disabled={submitting}
 										onClick={handleSubmit}>
 										{submitting ? 'Changing Password' : 'Change Password'}
