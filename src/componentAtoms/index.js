@@ -17,6 +17,7 @@ import { CheckBox } from 'componentAtoms/CheckBox'
 import { HeaderLined } from 'componentAtoms/HeaderLined'
 import { ModalAuthStoreAuthModal } from 'componentAtoms/ModalAuth'
 import { ButtonSubmit } from 'componentAtoms/ButtonSubmit/ButtonSubmit'
+import { TabPaneContainer } from 'componentAtoms/TabPaneContainer/TabPaneContainer'
 
 export const ExportAtoms = {
 	Footer,
@@ -38,4 +39,5 @@ export const ExportAtoms = {
 	HeaderLined,
 	ModalAuthStoreAuthModal,
 	ButtonSubmit,
+	TabPaneContainer,
 }
