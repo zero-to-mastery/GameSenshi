@@ -1,4 +1,5 @@
 import React, { useRef, Fragment } from 'react'
+import { stopUndefined } from 'utils'
 // routing
 import { Link } from 'react-router-dom'
 // reactstrap components
@@ -26,7 +27,7 @@ const {
 	ButtonsSocialAuthPropedDefault,
 	FinalForm,
 	FinalInputText,
-} = ExportCompounds
+} = stopUndefined(ExportCompounds)
 
 const EMAIL = 'email'
 const PASSWORD = 'password'

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { stopUndefined } from 'utils'
 // Apollo
 import { tempClient, initApollo } from 'apolloInit'
 import { ApolloProvider } from 'react-apollo'
@@ -32,7 +33,7 @@ const {
 	PasswordResetPage,
 	FormSignInPropedDefaultStoreSignIn,
 	ModalAuthStoreAuthModal,
-} = ExportViews
+} = stopUndefined(ExportViews)
 
 const MapRoutesToPages = {
 	[ROUTE_PAGE_INDEX]: IndexPage,

@@ -1,8 +1,9 @@
 import React from 'react'
+import { stopUndefined } from 'utils'
 //components
 import { ExportMolecules } from 'componentMolecules'
 
-const { FinalInputSelect } = ExportMolecules
+const { FinalInputSelect } = stopUndefined(ExportMolecules)
 
 const VALUE = 'value'
 const LABEL = 'label'

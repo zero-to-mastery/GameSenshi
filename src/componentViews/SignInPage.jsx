@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
+import { stopUndefined } from 'utils'
 // reactstrap components
 import { Container, Col } from 'reactstrap'
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, IndexNavbar, FormSignInPropedDefault } = ExportMultiOrganisms
+const { Footer, IndexNavbar, FormSignInPropedDefault } = stopUndefined(
+	ExportMultiOrganisms
+)
 
 const SignInPage = props => {
 	useEffect(() => {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { stopUndefined } from 'utils'
 // routing
 import { Link } from 'react-router-dom'
 // validation
@@ -24,7 +25,9 @@ import {
 import Loader from 'react-loader-spinner'
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, IndexNavbar, FinalForm, FinalInputText } = ExportMultiOrganisms
+const { Footer, IndexNavbar, FinalForm, FinalInputText } = stopUndefined(
+	ExportMultiOrganisms
+)
 
 const EMAIL = 'email'
 

@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
+import { stopUndefined } from 'utils'
 // reactstrap components
 import { Form, Container, Row, Col } from 'reactstrap'
 // core components
 import { ExportAtoms } from 'componentAtoms'
 
-const { CheckBox, Header } = ExportAtoms
+const { CheckBox, Header } = stopUndefined(ExportAtoms)
 
 const toggleCheckBox = setState => {
 	setState(state => !state)

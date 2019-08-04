@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, Fragment } from 'react'
+import { stopUndefined } from 'utils'
 //routing
 import { Link } from 'react-router-dom'
 // nodejs library that concatenates classes
@@ -23,7 +24,7 @@ const {
 	AccountSettingsTabPane,
 	NotificationSettingsTabPane,
 	ImageUpload,
-} = ExportMultiOrganisms
+} = stopUndefined(ExportMultiOrganisms)
 
 const navItems = [
 	{

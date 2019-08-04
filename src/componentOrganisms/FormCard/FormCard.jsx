@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { stopUndefined } from 'utils'
 // reactstrap
 import {
 	Button,
@@ -26,7 +27,7 @@ const {
 	FinalExpiryMonthPropedDefault,
 	FinalExpiryYearPropedDefault,
 	FinalCardCVCPropedDefault,
-} = ExportCompounds
+} = stopUndefined(ExportCompounds)
 
 const CARD_NUMBER = 'cardNumber'
 const CVC = 'cvc'

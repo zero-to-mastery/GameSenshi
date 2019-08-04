@@ -15,6 +15,7 @@ import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
 import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
 import { CheckBox } from 'componentAtoms/CheckBox'
 import { Header } from 'componentAtoms/Header'
+import { ModalAuthStoreAuthModal } from 'componentAtoms/ModalAuth'
 
 export const ExportAtoms = {
 	Footer,
@@ -34,4 +35,5 @@ export const ExportAtoms = {
 	PopoverCommon,
 	CheckBox,
 	Header,
+	ModalAuthStoreAuthModal,
 }

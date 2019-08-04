@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
-
+import { stopUndefined } from 'utils'
 // react libraries components
 import { Container, Row, Col } from 'reactstrap'
 
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, IndexNavbar, FormSignUpPropedDefault } = ExportMultiOrganisms
+const { Footer, IndexNavbar, FormSignUpPropedDefault } = stopUndefined(
+	ExportMultiOrganisms
+)
 
 const SignUpPage = props => {
 	const [squares1to6, setSquares1to6] = useState('')

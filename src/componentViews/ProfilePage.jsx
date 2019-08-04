@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { stopUndefined } from 'utils'
 // ReactJS plugin for a nice carousel
 import Slick from 'react-slick'
 import 'holderjs'
@@ -20,7 +21,7 @@ import {
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, IndexNavbar } = ExportMultiOrganisms
+const { Footer, IndexNavbar } = stopUndefined(ExportMultiOrganisms)
 
 let imageSlickSettings = {
 	dots: true,

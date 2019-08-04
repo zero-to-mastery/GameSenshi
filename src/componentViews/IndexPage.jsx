@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react'
-
+import { stopUndefined } from 'utils'
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, IndexNavbar, IndexHeader } = ExportMultiOrganisms
+const { Footer, IndexNavbar, IndexHeader } = stopUndefined(ExportMultiOrganisms)
 
 const IndexPage = props => {
 	const wrapper = useRef(null)
