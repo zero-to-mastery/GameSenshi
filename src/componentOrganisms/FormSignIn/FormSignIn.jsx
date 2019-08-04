@@ -9,7 +9,6 @@ import {
 	InputGroupText,
 	InputGroup,
 	InputGroupAddon,
-	Button,
 	Card,
 	CardHeader,
 	CardBody,
@@ -20,13 +19,13 @@ import {
 	Col,
 	Row,
 } from 'reactstrap'
-import Loader from 'react-loader-spinner'
 // core components
 import { ExportCompounds } from 'componentnCompounds'
 const {
 	ButtonsSocialAuthPropedDefault,
 	FinalForm,
 	FinalInputText,
+	ButtonSubmit,
 } = stopUndefined(ExportCompounds)
 
 const EMAIL = 'email'
@@ -174,28 +173,16 @@ const FormSignIn = props => {
 							</CardBody>
 							<CardFooter className='text-center'>
 								{submitError && !submitting && `Error: ${submitError}`}
-								<Button
-									ref={submitButton}
+								<ButtonSubmit
+									submitRef={submitButton}
 									block
-									className='btn-round'
-									color='primary'
-									size='lg'
 									disabled={submitting}
-									onClick={handleSubmit}>
-									{submitting ? (
-										<>
-											<Loader
-												type='Watch'
-												color='#00BFFF'
-												height='19px'
-												width='19px'
-											/>
-											&nbsp;&nbsp;Signing In
-										</>
-									) : (
-										'Get Started'
-									)}
-								</Button>
+									onClick={handleSubmit}
+									className='btn-round'
+									size='lg'
+									color='primary'>
+									{submitting ? 'Signing In' : 'Sign In'}
+								</ButtonSubmit>
 							</CardFooter>
 							<div className='pull-left ml-3 mb-3'>
 								<h6>

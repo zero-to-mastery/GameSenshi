@@ -1,29 +1,26 @@
 import React, { useRef } from 'react'
+import { stopUndefined } from 'utils'
 // reactstrap components
-import { Button, FormGroup, Row, Col, Form } from 'reactstrap'
-// loader
-import Loader from 'react-loader-spinner'
-// form validation
-import { Export } from 'componentAtoms'
-import { FinalInputText } from 'componentMolecules'
+import { FormGroup, Row, Col, Form } from 'reactstrap'
 // validation
 import { signInEmailValidation, signInPasswordValidation } from 'utils'
 
-const { FinalForm } = Export
+import { ExportCompounds } from 'componentnCompounds'
+
+const { FinalInputText, FinalForm, ButtonSubmit, HeaderLined } = stopUndefined(
+	ExportCompounds
+)
 
 const EMAIL = 'email'
 const PASSWORD = 'password'
-const AccountSettingsTabPane = props => {
+
+const TabPaneAccountSettings = props => {
 	const submitButton = useRef(null)
 	const submitButton2 = useRef(null)
 	return (
 		<>
 			<div className='g-pos-rel h-100 g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-30--md'>
-				<header>
-					<h2 className='text-uppercase g-font-size-12 g-font-size-default--md g-color-black mb-0'>
-						Change Email
-					</h2>
-				</header>
+				<HeaderLined>Change Email</HeaderLined>
 				<hr className='line-info' />
 				<FinalForm
 					initialValues={{
@@ -63,26 +60,14 @@ const AccountSettingsTabPane = props => {
 							<Row className='mt-4'>
 								<Col className='d-flex justify-content-center'>
 									{submitError && !submitting && `Error: ${submitError}`}
-									<Button
+									<ButtonSubmit
 										color='info'
 										type='button'
-										ref={submitButton}
+										submitRef={submitButton}
 										disabled={submitting}
 										onClick={handleSubmit}>
-										{submitting ? (
-											<>
-												<Loader
-													type='Watch'
-													color='#00BFFF'
-													height='19px'
-													width='19px'
-												/>
-												&nbsp;&nbsp;Change Email
-											</>
-										) : (
-											'Change Email'
-										)}
-									</Button>
+										{submitting ? 'Changing Email' : 'Change Email'}
+									</ButtonSubmit>
 								</Col>
 							</Row>
 						</>
@@ -92,11 +77,7 @@ const AccountSettingsTabPane = props => {
 			<hr />
 			<hr />
 			<div className='g-pos-rel h-100 g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-30--md'>
-				<header>
-					<h2 className='text-uppercase g-font-size-12 g-font-size-default--md g-color-black mb-0'>
-						Change Password
-					</h2>
-				</header>
+				<HeaderLined>Change Password</HeaderLined>
 				<hr className='line-info' />
 				<FinalForm
 					initialValues={{
@@ -110,7 +91,7 @@ const AccountSettingsTabPane = props => {
 							<Form>
 								<Row>
 									<Col className='align-self-center' md='3'>
-										<label className='labels' htmlFor='#email'>
+										<label className='labels' htmlFor='#password'>
 											Password
 										</label>
 									</Col>
@@ -136,26 +117,14 @@ const AccountSettingsTabPane = props => {
 							<Row className='mt-4'>
 								<Col className='d-flex justify-content-center'>
 									{submitError && !submitting && `Error: ${submitError}`}
-									<Button
+									<ButtonSubmit
 										color='info'
 										type='button'
-										ref={submitButton2}
+										submitRef={submitButton2}
 										disabled={submitting}
 										onClick={handleSubmit}>
-										{submitting ? (
-											<>
-												<Loader
-													type='Watch'
-													color='#00BFFF'
-													height='19px'
-													width='19px'
-												/>
-												&nbsp;&nbsp;Change Password
-											</>
-										) : (
-											'Change Password'
-										)}
-									</Button>
+										{submitting ? 'Changing Password' : 'Change Password'}
+									</ButtonSubmit>
 								</Col>
 							</Row>
 						</>
@@ -166,4 +135,4 @@ const AccountSettingsTabPane = props => {
 	)
 }
 
-export default AccountSettingsTabPane
+export default TabPaneAccountSettings

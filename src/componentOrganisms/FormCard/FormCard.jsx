@@ -14,7 +14,6 @@ import {
 } from 'reactstrap'
 // core components
 import Cards from 'react-credit-cards'
-import Loader from 'react-loader-spinner'
 import { ExportCompounds } from 'componentnCompounds'
 // styles
 import 'react-credit-cards/lib/styles.scss'
@@ -27,6 +26,7 @@ const {
 	FinalExpiryMonthPropedDefault,
 	FinalExpiryYearPropedDefault,
 	FinalCardCVCPropedDefault,
+	ButtonSubmit,
 } = stopUndefined(ExportCompounds)
 
 const CARD_NUMBER = 'cardNumber'
@@ -191,25 +191,19 @@ const FormCard = props => {
 							<Button color='secondary' onClick={toggle}>
 								Close
 							</Button>
-							<Button
-								ref={submitButton}
-								color='primary'
+							<ButtonSubmit
+								submitRef={submitButton}
 								disabled={submitting}
 								onClick={handleSubmit}>
 								{submitting ? (
-									<>
-										<Loader
-											type='Watch'
-											color='#00BFFF'
-											height='19px'
-											width='19px'
-										/>
-										&nbsp;&nbsp;Add Card
-									</>
+									'Adding Card'
 								) : (
-									'Get Started'
+									<>
+										<i className={`fas fa-lock mr-3`} />
+										Add Card
+									</>
 								)}
-							</Button>
+							</ButtonSubmit>
 						</ModalFooter>
 					</>
 				)}

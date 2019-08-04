@@ -10,7 +10,6 @@ import { handleIsEmailExist, handlePasswordReset } from 'api'
 import { ROUTE_PAGE_SIGN_IN } from 'routes'
 // reactstrap components
 import {
-	Button,
 	Card,
 	CardHeader,
 	CardBody,
@@ -22,12 +21,15 @@ import {
 	Col,
 } from 'reactstrap'
 // core components
-import Loader from 'react-loader-spinner'
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, IndexNavbar, FinalForm, FinalInputText } = stopUndefined(
-	ExportMultiOrganisms
-)
+const {
+	Footer,
+	IndexNavbar,
+	FinalForm,
+	FinalInputText,
+	ButtonSubmit,
+} = stopUndefined(ExportMultiOrganisms)
 
 const EMAIL = 'email'
 
@@ -127,28 +129,18 @@ const PasswordResetPage = props => {
 															{submitError &&
 																!submitting &&
 																`Error: ${submitError}`}
-															<Button
-																ref={submitButton}
+															<ButtonSubmit
+																submitRef={submitButton}
 																block
 																className='btn-round'
 																color='warning'
 																disabled={submitting}
 																onClick={handleSubmit}
 																size='lg'>
-																{submitting ? (
-																	<>
-																		<Loader
-																			type='Watch'
-																			color='#00BFFF'
-																			height='19px'
-																			width='19px'
-																		/>
-																		&nbsp;&nbsp; Request Reset
-																	</>
-																) : (
-																	'	Request Reset'
-																)}
-															</Button>
+																{submitting
+																	? 'Requesting reset'
+																	: '	Request Reset'}
+															</ButtonSubmit>
 														</CardFooter>
 													</>
 												)}

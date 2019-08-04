@@ -4,7 +4,6 @@ import { stopUndefined } from 'utils'
 import { Link } from 'react-router-dom'
 // react libraries components
 import {
-	Button,
 	Card,
 	CardHeader,
 	CardBody,
@@ -16,7 +15,6 @@ import {
 	Row,
 	Col,
 } from 'reactstrap'
-import Loader from 'react-loader-spinner'
 // core components
 import { ExportCompounds } from 'componentnCompounds'
 
@@ -24,6 +22,7 @@ const {
 	ButtonsSocialAuthPropedDefault,
 	FinalForm,
 	FinalInputText,
+	ButtonSubmit,
 } = stopUndefined(ExportCompounds)
 
 const EMAIL = 'email'
@@ -187,38 +186,25 @@ const FormSignUp = props => {
 								</Col>
 							</Row>
 							<Row className='d-flex'>
-								<Col className='col-2' />
+								<Col xs='2' />
 								<Col className='pl-0 pr-0 d-flex justify-content-center'>
-									<Button
-										ref={submitButton}
-										className='btn-round'
-										color='primary'
-										size='lg'
+									<ButtonSubmit
+										submitRef={submitButton}
 										disabled={submitting}
-										onClick={handleSubmit}>
-										{submitting ? (
-											<>
-												<Loader
-													type='Watch'
-													color='#00BFFF'
-													height='19px'
-													width='19px'
-												/>
-												&nbsp;&nbsp;Signing Up
-											</>
-										) : (
-											'Sign Up'
-										)}
-									</Button>
+										onClick={handleSubmit}
+										className='btn-round'
+										size='lg'
+										color='primary'>
+										{submitting ? 'Signing Up' : 'Sign Up'}
+									</ButtonSubmit>
 								</Col>
-								<Col className='col-2' />
+								<Col xs='2' />
 							</Row>
 							<Row className='d-flex'>
 								<Col />
-								<Col className='col-auto'>
-									<Label check>
-										<span className='form-check-sign' />
-										{`Already a member? `}
+								<Col xs='auto'>
+									<Label>
+										Already a member?{' '}
 										<Link to={signInLink} className='font-weight-bold'>
 											Sign In
 										</Link>
@@ -230,7 +216,7 @@ const FormSignUp = props => {
 					</Form>
 				)}
 			</FinalForm>
-			<Label check className='mb-3 text-center'>
+			<Label className='mb-3 text-center'>
 				By creating account, you agree to our
 				<Link
 					className='link footer-link'
