@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 // routing
 import { Link } from 'react-router-dom'
 // validation
-import { signInEmailValidation } from 'utils/validation'
+import { signInEmailValidation } from 'utils'
 // api
 import { handleIsEmailExist, handlePasswordReset } from 'api'
 //constants

@@ -526,4 +526,6 @@ const reservedUsername = [
 	'zlib',
 ]
 
-export default ['gamesenshi', 'senshi', 'game', ...reservedUsername]
+const reservedUsernames = ['gamesenshi', 'senshi', 'game', ...reservedUsername]
+
+export { reservedUsernames }

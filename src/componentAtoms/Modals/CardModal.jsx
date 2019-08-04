@@ -46,7 +46,7 @@ import {
 	cardCvcValidation,
 	cardExpiryValidation,
 	cardNameValidation,
-} from 'utils/validation'
+} from 'utils'
 
 const CardModal = props => {
 	const [, forceUpdate] = useState()

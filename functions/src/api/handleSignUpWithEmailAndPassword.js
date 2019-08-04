@@ -1,12 +1,11 @@
 import req from 'request-promise'
 import { auth, verifyEmailURL } from 'firebaseInit'
-import { signUpResObj } from 'utils/objects'
-
 import {
+	signUpResObj,
 	signUpEmailValidation,
 	signUpPasswordValidation,
 	signUpUsernameValidation,
-} from 'utils/validation'
+} from 'utils'
 
 import { handleIsEmailNotExist } from 'api'
 

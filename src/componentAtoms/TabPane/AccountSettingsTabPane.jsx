@@ -7,10 +7,7 @@ import Loader from 'react-loader-spinner'
 import { Export } from 'componentAtoms'
 import { FinalInputText } from 'componentMolecules'
 // validation
-import {
-	signInEmailValidation,
-	signInPasswordValidation,
-} from 'utils/validation'
+import { signInEmailValidation, signInPasswordValidation } from 'utils'
 
 const { FinalForm } = Export
 

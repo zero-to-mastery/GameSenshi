@@ -1,6 +1,6 @@
 import React from 'react'
-import { FinalCardNumber } from 'componentnCompounds/FinalCardNumber'
-import { cardNumberValidation } from 'utils/validation'
+import { FinalCardNumber } from 'componentnCompounds/FinalCardNumber/FinalCardNumber'
+import { cardNumberValidation } from 'utils'
 import { Col } from 'reactstrap'
 
 const FinalCardNumberPropedDefault = props => {

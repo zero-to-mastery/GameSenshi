@@ -27,7 +27,7 @@ import Calendar from 'react-calendar'
 import { FinalForm } from 'componentAtoms'
 import { FinalInputText } from 'componentMolecules'
 // validation
-import { signUpUsernameValidation } from 'utils/validation'
+import { signUpUsernameValidation } from 'utils'
 
 import { getCodes, getNames } from 'country-list'
 import chroma from 'chroma-js'

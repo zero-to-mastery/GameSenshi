@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin'
-import { signUpResObj } from 'utils/objects'
+import { signUpResObj } from 'utils'
 import { API_SIGN_UP_EMAIL, INTERNAL_ERROR_CODE_1 } from 'constantValues'
 
 const handleIsEmailNotExist = data => {

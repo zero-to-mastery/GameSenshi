@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { simplerFirebaseErrorMessage } from 'utils/simplerErrorMessages'
+import { simplerFirebaseErrorMessage } from 'utils'
 
 import {
 	API_SIGN_UP,

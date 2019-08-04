@@ -3,10 +3,10 @@
 import { string, boolean, object } from 'yup'
 
 // filter
-import badWords from './badWords'
-import reservedUsername from './reservedUsername'
+import { badWords } from 'utils/badWords'
+import { reservedUsernames } from 'utils/reservedUsername'
 
-const forbiddenName = [...badWords, ...reservedUsername]
+const forbiddenName = [...badWords, ...reservedUsernames]
 
 const emailPopoverMessages = []
 

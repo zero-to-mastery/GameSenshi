@@ -15,7 +15,7 @@ const onChange = (e, onValueChange = () => {}) => {
 	return false
 }
 
-const FinalCardNumber = props => {
+const FinalCardHolderName = props => {
 	const { name, onFocus, submitRef, onValueChange, validation } = props
 	return (
 		<FinalInputText
@@ -33,4 +33,4 @@ const FinalCardNumber = props => {
 	)
 }
 
-export { FinalCardNumber }
+export { FinalCardHolderName }

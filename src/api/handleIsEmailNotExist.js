@@ -4,7 +4,7 @@ import {
 	API_MESSAGE,
 	UNEXPECTED_ERROR_CODE_2,
 } from 'constantValues'
-import { simplerFirebaseErrorMessage } from 'utils/simplerErrorMessages'
+import { simplerFirebaseErrorMessage } from 'utils'
 
 const handleIsEmailNotExist = email => {
 	return auth()

@@ -1,6 +1,6 @@
 import { auth } from 'firebaseInit'
 import { UNEXPECTED_ERROR_CODE_4 } from 'constantValues'
-import { simplerFirebaseErrorMessage } from 'utils/simplerErrorMessages'
+import { simplerFirebaseErrorMessage } from 'utils'
 
 const handleSignInWithEmailAndPassword = async (email, password) => {
 	// sign in set local persistence by default, allowing user to auto sign in

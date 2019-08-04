@@ -1,6 +1,6 @@
 import React from 'react'
-import { FinalCardCVC } from 'componentnCompounds/FinalCardCVC'
-import { cardCvcValidation } from 'utils/validation'
+import { FinalCardCVC } from 'componentnCompounds/FinalCardCVC/FinalCardCVC'
+import { cardCvcValidation } from 'utils'
 import { Col } from 'reactstrap'
 
 const FinalCardCVCPropedDefault = props => {

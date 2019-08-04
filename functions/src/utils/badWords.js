@@ -454,4 +454,4 @@ const badWords = [
 	'zabourah',
 ]
 
-export default badWords
+export { badWords }

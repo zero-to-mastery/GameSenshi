@@ -2,10 +2,7 @@ import React from 'react'
 // routing
 import { withLastLocation } from 'routes'
 // validation
-import {
-	signInEmailValidation,
-	signInPasswordValidation,
-} from 'utils/validation'
+import { signInEmailValidation, signInPasswordValidation } from 'utils'
 // constants
 import { ROUTE_PAGE_PASSWORD_RESET, onSignedInRouting } from 'routes'
 // api

@@ -14,7 +14,7 @@ import {
 	emailPopoverMessages,
 	usernamePopoverMessages,
 	passwordPopoverMessages,
-} from 'utils/validation'
+} from 'utils'
 // utils
 import { onSuccessfulSubmission } from 'componentOrganisms/FormSignUp/utils'
 
