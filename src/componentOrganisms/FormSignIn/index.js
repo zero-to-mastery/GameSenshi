@@ -1,8 +1,6 @@
 import React from 'react'
 // routing
 import { withLastLocation } from 'routes'
-// validation
-import { signInEmailValidation, signInPasswordValidation } from 'utils'
 // constants
 import { ROUTE_PAGE_PASSWORD_RESET, onSignedInRouting } from 'routes'
 // api
@@ -30,8 +28,6 @@ const FormSignInPropedDefault = withLastLocation(props => {
 	const { history, lastLocation, ...restProps } = props
 	return (
 		<FormSignIn
-			emailValidation={signInEmailValidation}
-			passwordValidation={signInPasswordValidation}
 			forgotPasswordLink={ROUTE_PAGE_PASSWORD_RESET}
 			onSubmit={handleSignInWithEmailAndPassword}
 			onSuccessfulSubmission={() => {

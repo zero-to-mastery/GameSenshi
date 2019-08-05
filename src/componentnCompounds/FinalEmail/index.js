@@ -1,9 +1,9 @@
 import React from 'react'
 import { FinalEmail } from 'componentnCompounds/FinalEmail/FinalEmail'
 // api
-import { handleIsEmailNotExist } from 'api'
+import { handleIsEmailNotExist, handleIsEmailExist } from 'api'
 // validation
-import { signUpEmailValidation } from 'utils'
+import { signUpEmailValidation, signInEmailValidation } from 'utils'
 
 const FinalEmailPropedSignUp = props => {
 	return (
@@ -15,4 +15,25 @@ const FinalEmailPropedSignUp = props => {
 	)
 }
 
-export { FinalEmailPropedSignUp }
+const FinalEmailPropedSignIn = props => {
+	return (
+		<FinalEmail validation={signInEmailValidation} hideSuccess {...props} />
+	)
+}
+
+const FinalEmailPropedForgotPassword = props => {
+	return (
+		<FinalEmail
+			validation={signInEmailValidation}
+			serverValidation={handleIsEmailExist}
+			hideSuccess
+			{...props}
+		/>
+	)
+}
+
+export {
+	FinalEmailPropedSignUp,
+	FinalEmailPropedSignIn,
+	FinalEmailPropedForgotPassword,
+}

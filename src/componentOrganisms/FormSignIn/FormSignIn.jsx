@@ -24,8 +24,9 @@ import { ExportCompounds } from 'componentnCompounds'
 const {
 	ButtonsSocialAuthPropedDefault,
 	FinalForm,
-	FinalInputText,
 	ButtonSubmit,
+	FinalEmailPropedSignIn,
+	FinalPasswordPropedSignIn,
 } = stopUndefined(ExportCompounds)
 
 const EMAIL = 'email'
@@ -33,14 +34,7 @@ const PASSWORD = 'password'
 
 const SIGN_IN_FROM_STATE_EMAIL = 'email'
 const SIGN_IN_FROM_STATE_IS_OPEN = 'isOPne'
-const SIGN_IN_FROM_PROP_MODAL = 'modal'
-const SIGN_IN_FROM_PROP_PASSWORD_ONLY = 'passwordOnly'
-const SIGN_IN_FROM_PROP_EMAIL_VALIDATION = 'emailValidation'
-const SIGN_IN_FROM_PROP_PASSWORD_VALIDATION = 'passwordValidation'
-const SIGN_IN_FROM_PROP_FORGOT_PASSWORD_LINK = 'forgotPasswordLink'
 const SIGN_IN_FROM_TOGGLE = 'toggle'
-const SIGN_IN_FORM_ON_SUBMIT = 'onSubmit'
-const SIGN_IN_FORM_SOCIAL_AUTH_ON_CLICKS = 'socialAuthOnClicks'
 const SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
 const onSubmission = async (
@@ -66,13 +60,11 @@ const FormSignIn = props => {
 	const {
 		[SIGN_IN_FROM_STATE_EMAIL]: email,
 		[SIGN_IN_FROM_STATE_IS_OPEN]: isOpen,
-		[SIGN_IN_FROM_PROP_MODAL]: modal,
-		[SIGN_IN_FROM_PROP_PASSWORD_ONLY]: passwordOnly,
-		[SIGN_IN_FROM_PROP_EMAIL_VALIDATION]: emailValidation,
-		[SIGN_IN_FROM_PROP_PASSWORD_VALIDATION]: passwordValidation,
-		[SIGN_IN_FROM_PROP_FORGOT_PASSWORD_LINK]: forgotPasswordLink,
+		modal,
+		passwordOnly,
+		forgotPasswordLink,
 		[SIGN_IN_FROM_TOGGLE]: toggle,
-		[SIGN_IN_FORM_ON_SUBMIT]: onSubmit,
+		onSubmit,
 		[SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
 	} = props
 
@@ -149,25 +141,15 @@ const FormSignIn = props => {
 												<small>Or Classically</small>
 											</Col>
 										</Row>
-										<FinalInputText
-											type={EMAIL}
+										<FinalEmailPropedSignIn
 											name={EMAIL}
-											hideSuccess
-											placeholder='Email'
-											icon='tim-icons icon-email-85'
-											validation={emailValidation}
 											submitRef={submitButton}
 										/>
 									</>
 								)}
 								<div className='w-100 mb-3' />
-								<FinalInputText
-									type={PASSWORD}
+								<FinalPasswordPropedSignIn
 									name={PASSWORD}
-									hideSuccess
-									placeholder='Password'
-									icon='tim-icons icon-lock-circle'
-									validation={passwordValidation}
 									submitRef={submitButton}
 								/>
 							</CardBody>
@@ -217,7 +199,5 @@ export {
 	SIGN_IN_FROM_STATE_EMAIL,
 	SIGN_IN_FROM_STATE_IS_OPEN,
 	SIGN_IN_FROM_TOGGLE,
-	SIGN_IN_FORM_ON_SUBMIT,
 	SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION,
-	SIGN_IN_FORM_SOCIAL_AUTH_ON_CLICKS,
 }

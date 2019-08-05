@@ -2,10 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
 // routing
 import { Link } from 'react-router-dom'
-// validation
-import { signInEmailValidation } from 'utils'
 // api
-import { handleIsEmailExist, handlePasswordReset } from 'api'
+import { handlePasswordReset } from 'api'
 //constants
 import { ROUTE_PAGE_SIGN_IN } from 'routes'
 // reactstrap components
@@ -27,8 +25,8 @@ const {
 	Footer,
 	IndexNavbar,
 	FinalForm,
-	FinalInputText,
 	ButtonSubmit,
+	FinalEmailPropedForgotPassword,
 } = stopUndefined(ExportMultiOrganisms)
 
 const EMAIL = 'email'
@@ -111,14 +109,8 @@ const PasswordResetPage = props => {
 															<h4 className='description text-center'>
 																Enter email address to reset password
 															</h4>
-															<FinalInputText
-																type={EMAIL}
+															<FinalEmailPropedForgotPassword
 																name={EMAIL}
-																hideSuccess
-																placeholder='Email'
-																icon='tim-icons icon-email-85'
-																validation={signInEmailValidation}
-																serverValidation={handleIsEmailExist}
 																submitRef={submitButton}
 																onChange={e => {
 																	setEmail(e.target.value)
