@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Field } from 'react-final-form'
 import { stopUndefined } from 'utils'
 // core components
@@ -7,7 +7,6 @@ import { ExportAtoms } from 'componentAtoms'
 const { ListText, PopoverCommon } = stopUndefined(ExportAtoms)
 
 const DELAY = 1000
-// TODO to solve memory leak issue, not yet success
 const FinalInput = Component => {
 	return props => {
 		const {
@@ -94,6 +93,14 @@ const FinalInput = Component => {
 			state.fulfilled = true
 			return filtered
 		}
+
+		useEffect(() => {
+			return () => {
+				// * clean up that solve memory leak issue
+				state.resolve()
+				clearTimeout(state.timeOutID)
+			}
+		})
 
 		return (
 			<Field
