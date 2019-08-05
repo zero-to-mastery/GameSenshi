@@ -9,7 +9,10 @@ const handleIsEmailExist = email => {
 			if (!methods.includes('password')) {
 				return 'this email does not have password account.'
 			} else {
-				return
+				return {
+					status: 'true',
+					message: 'this account password is reset-able',
+				}
 			}
 		})
 		.catch(err => {
