@@ -18,6 +18,7 @@ import { HeaderLined } from 'componentAtoms/HeaderLined'
 import { ModalAuthStoreAuthModal } from 'componentAtoms/ModalAuth'
 import { ButtonSubmit } from 'componentAtoms/ButtonSubmit/ButtonSubmit'
 import { TabPaneContainer } from 'componentAtoms/TabPaneContainer/TabPaneContainer'
+import { TabListVerticalPropedSettingPage } from 'componentAtoms/TabListVertical'
 
 export const ExportAtoms = {
 	Footer,
@@ -40,4 +41,5 @@ export const ExportAtoms = {
 	ModalAuthStoreAuthModal,
 	ButtonSubmit,
 	TabPaneContainer,
+	TabListVerticalPropedSettingPage,
 }

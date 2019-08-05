@@ -10,7 +10,7 @@ import {
 	ROUTE_PAGE_PROFILE,
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
-	//	ROUTE_PAGE_SETTINGS_COMMON,
+	ROUTE_PAGE_SETTINGS_COMMON,
 	ROUTE_PAGE_PASSWORD_RESET,
 } from 'routes'
 // state management
@@ -25,7 +25,7 @@ import {
 import { ExportViews } from 'componentViews'
 
 const {
-	//	SettingsPage,
+	SettingsPage,
 	IndexPage,
 	ProfilePage,
 	SignInPage,
@@ -40,7 +40,7 @@ const MapRoutesToPages = {
 	[ROUTE_PAGE_PROFILE]: ProfilePage,
 	[ROUTE_PAGE_SIGN_UP]: SignUpPage,
 	[ROUTE_PAGE_SIGN_IN]: SignInPage,
-	//[ROUTE_PAGE_SETTINGS_COMMON]: SettingsPage,
+	[ROUTE_PAGE_SETTINGS_COMMON]: SettingsPage,
 	[ROUTE_PAGE_PASSWORD_RESET]: PasswordResetPage,
 }
 
