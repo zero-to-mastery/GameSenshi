@@ -101,7 +101,7 @@ const FinalInput = props => {
 			state.resolve()
 			clearTimeout(state.timeOutID)
 		}
-	})
+	}, [])
 
 	return (
 		<Field
