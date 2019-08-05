@@ -2,7 +2,7 @@ import { auth } from 'firebaseInit'
 import { UNEXPECTED_ERROR_CODE_1 } from 'constantValues'
 import { simplerFirebaseErrorMessage } from 'utils'
 
-const handleIsEmailExist = email => {
+const handleIsPasswordResetAble = email => {
 	return auth()
 		.fetchSignInMethodsForEmail(email)
 		.then(methods => {
@@ -20,4 +20,4 @@ const handleIsEmailExist = email => {
 		})
 }
 
-export default handleIsEmailExist
+export default handleIsPasswordResetAble

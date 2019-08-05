@@ -1,7 +1,7 @@
 import React from 'react'
 import { FinalEmail } from 'componentnCompounds/FinalEmail/FinalEmail'
 // api
-import { handleIsEmailNotExist, handleIsEmailExist } from 'api'
+import { handleIsEmailNotExist, handleIsPasswordResetAble } from 'api'
 // validation
 import { signUpEmailValidation, signInEmailValidation } from 'utils'
 
@@ -25,7 +25,7 @@ const FinalEmailPropedForgotPassword = props => {
 	return (
 		<FinalEmail
 			validation={signInEmailValidation}
-			serverValidation={handleIsEmailExist}
+			serverValidation={handleIsPasswordResetAble}
 			hideSuccess
 			{...props}
 		/>
