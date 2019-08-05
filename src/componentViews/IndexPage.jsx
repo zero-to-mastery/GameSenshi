@@ -30,4 +30,4 @@ const IndexPage = props => {
 	)
 }
 
-export default IndexPage
+export { IndexPage }

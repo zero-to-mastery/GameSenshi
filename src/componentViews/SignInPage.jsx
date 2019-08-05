@@ -41,4 +41,4 @@ const SignInPage = props => {
 	)
 }
 
-export default SignInPage
+export { SignInPage }

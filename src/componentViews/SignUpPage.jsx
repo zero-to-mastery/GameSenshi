@@ -121,4 +121,4 @@ const SignUpPage = props => {
 	)
 }
 
-export default SignUpPage
+export { SignUpPage }

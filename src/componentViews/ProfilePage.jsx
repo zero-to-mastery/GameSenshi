@@ -322,4 +322,4 @@ const ProfilePage = props => {
 	)
 }
 
-export default ProfilePage
+export { ProfilePage }

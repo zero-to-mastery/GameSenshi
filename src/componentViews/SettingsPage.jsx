@@ -154,4 +154,4 @@ const SettingsPage = props => {
 	)
 }
 
-export default SettingsPage
+export { SettingsPage }
