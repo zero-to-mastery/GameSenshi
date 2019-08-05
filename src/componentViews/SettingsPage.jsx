@@ -22,7 +22,7 @@ const {
 } = stopUndefined(ExportMultiOrganisms)
 
 const SettingsPage = props => {
-	const [tabPane, setTabPane] = useState(0) // ? unable to set state as component
+	const [tabPane, setTabPane] = useState(0) // ? unable to set component as state
 	const [, forceUpdate] = useState('')
 
 	const wrapper = useRef(null)
