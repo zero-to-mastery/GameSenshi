@@ -7,6 +7,7 @@ import { FormSignUpPropedDefault } from 'componentOrganisms/FormSignUp'
 import { FormCard } from 'componentOrganisms/FormCard'
 import { TabPaneAccountSettings } from 'componentOrganisms/TabPaneAccountSettings'
 import { TabPaneGeneralSettings } from 'componentOrganisms/TabPaneGeneralSettings'
+import { FormResetPasswordPropedDefault } from 'componentOrganisms/FormResetPassword'
 
 export const ExportOrganisms = {
 	...ExportCompounds,
@@ -16,4 +17,5 @@ export const ExportOrganisms = {
 	FormCard,
 	TabPaneAccountSettings,
 	TabPaneGeneralSettings,
+	FormResetPasswordPropedDefault,
 }
