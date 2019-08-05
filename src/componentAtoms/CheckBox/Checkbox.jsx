@@ -12,7 +12,7 @@ const CheckBox = props => {
 					type='checkbox'
 					checked={checked}
 					onClick={onClick}
-					onChange={onChange}
+					onChange={onChange || (e => {})}
 				/>
 				<span className='form-check-sign' />
 				{children}
