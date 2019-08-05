@@ -11,4 +11,4 @@ const FinalCardCVCPropedDefault = props => {
 	)
 }
 
-export { FinalCardCVC, FinalCardCVCPropedDefault }
+export { FinalCardCVCPropedDefault }

@@ -17,19 +17,16 @@ const onChange = (e, onValueChange = () => {}) => {
 }
 
 const FinalCardCVC = props => {
-	const { name, onFocus, submitRef, onValueChange, validation } = props
+	const { onValueChange, ...restProps } = props
 	return (
 		<FinalInputText
 			placeholder='CVC'
-			name={name}
 			hideSuccess
 			onChange={e => {
 				onChange(e, onValueChange)
 			}}
-			onFocus={onFocus}
 			icon='tim-icons icon-lock-circle'
-			validation={value => validation(value)}
-			submitRef={submitRef}
+			{...restProps}
 		/>
 	)
 }

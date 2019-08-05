@@ -35,19 +35,17 @@ const onChangeNumber = (e, onValueChange = () => {}) => {
 }
 
 const FinalCardNumber = props => {
-	const { name, onFocus, submitRef, onValueChange, validation } = props
+	const { onValueChange, validation, ...restProps } = props
 	return (
 		<FinalInputText
 			placeholder='Card Number'
-			name={name}
 			hideSuccess
 			onChange={e => {
 				onChangeNumber(e, onValueChange)
 			}}
-			onFocus={onFocus}
 			icon='tim-icons icon-credit-card'
 			validation={value => validation(value.replace(/ /g, ''))}
-			submitRef={submitRef}
+			{...restProps}
 		/>
 	)
 }

@@ -26,16 +26,15 @@ const monthOptions = [
 ]
 
 const FinalExpiryMonth = props => {
-	const { name, onFocus, onValueChange, validation } = props
+	const { onValueChange, validation, ...restProps } = props
 	return (
 		<FinalInputSelect
-			name={name}
 			validation={value => validation(value, monthOptions.slice(1))}
-			onFocus={onFocus}
 			onChange={e => {
 				onValueChange(e.target.value[VALUE])
 			}}
 			options={monthOptions}
+			{...restProps}
 		/>
 	)
 }

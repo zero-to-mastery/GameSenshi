@@ -11,4 +11,4 @@ const FinalCardNumberPropedDefault = props => {
 	)
 }
 
-export { FinalCardNumber, FinalCardNumberPropedDefault }
+export { FinalCardNumberPropedDefault }

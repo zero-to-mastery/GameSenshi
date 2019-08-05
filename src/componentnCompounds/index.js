@@ -4,6 +4,9 @@ import { FinalCardHolderNamePropedDefault } from 'componentnCompounds/FinalCardH
 import { FinalExpiryMonthPropedDefault } from 'componentnCompounds/FinalExpiryMonth'
 import { FinalExpiryYearPropedDefault } from 'componentnCompounds/FinalExpiryYear'
 import { FinalCardCVCPropedDefault } from 'componentnCompounds/FinalCardCVC'
+import { FinalEmailPropedSignUp } from 'componentnCompounds/FinalEmail'
+import { FinalPasswordPropedSignUp } from 'componentnCompounds/FinalPassword'
+import { FinalUsernamePropedSignUp } from 'componentnCompounds/FinalUsername'
 
 export const ExportCompounds = {
 	...ExportMolecules,
@@ -12,4 +15,7 @@ export const ExportCompounds = {
 	FinalExpiryMonthPropedDefault,
 	FinalExpiryYearPropedDefault,
 	FinalCardCVCPropedDefault,
+	FinalEmailPropedSignUp,
+	FinalPasswordPropedSignUp,
+	FinalUsernamePropedSignUp,
 }

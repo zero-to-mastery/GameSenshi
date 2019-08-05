@@ -21,17 +21,15 @@ import { ExportCompounds } from 'componentnCompounds'
 const {
 	ButtonsSocialAuthPropedDefault,
 	FinalForm,
-	FinalInputText,
 	ButtonSubmit,
+	FinalEmailPropedSignUp,
+	FinalPasswordPropedSignUp,
+	FinalUsernamePropedSignUp,
 } = stopUndefined(ExportCompounds)
 
 const EMAIL = 'email'
 const PASSWORD = 'password'
 const USERNAME = 'username'
-const FORM_SIGN_UP_PROP_SIGN_IN_LINK = 'signInLink'
-const FORM_SIGN_UP_PROP_EMAIL_POPOVER_MESSAGES = 'emailPopoverMessages'
-const FORM_SIGN_UP_PROP_PASSWORD_POPOVER_MESSAGES = 'passwordPopoverMessages'
-const FORM_SIGN_UP_PROP_USERNAME_POPOVER_MESSAGES = 'usernamePopoverMessages'
 
 const FormSignUp = props => {
 	const submitButton = useRef(null)
@@ -41,18 +39,7 @@ const FormSignUp = props => {
 	const [emailSubmitErrors, setEmailSubmitErrors] = useState(undefined)
 	const [passwordSubmitErrors, setPasswordSubmitErrors] = useState(undefined)
 	const [usernameSubmitErrors, setUsernameSubmitErrors] = useState(undefined)
-	const {
-		signInLink,
-		emailPopoverMessages,
-		passwordPopoverMessages,
-		usernamePopoverMessages,
-		onEmailValidation,
-		onEmailServerValidation,
-		onPasswordValidation,
-		onUsernameValidation,
-		onSuccessfulSubmission,
-		onSubmit,
-	} = props
+	const { signInLink, onSuccessfulSubmission, onSubmit } = props
 
 	const onSubmmission = async (
 		formErrors,
@@ -128,54 +115,27 @@ const FormSignUp = props => {
 								</Col>
 								<Col />
 							</Row>
-							{/*
-											// ! bug?
-											// ! whenever any of these two field components is render
-											// ! and whenever component going to unmount (route to other page) the field components will run validation
-											// ! these is not good as the validation process invoking steState in a promise and cause memory leak issue
-											// ! step to reproduce: go to any page that has FinalInputText, then redirect to website other than gamesenshi
-											// * implement useEffect component will unmount of Input Field component is not working
-											// * set signUpStore willUnmount state directly when parent component going to unmount and use it to stop setState work
-											// * set parent willUnmount state directly when parent component going to unmount and use it to stop setState does not work
-											// TODO research knowledge needed to deal with this issue
-										*/}
-							<FinalInputText
-								type={USERNAME}
+							<FinalUsernamePropedSignUp
 								name={USERNAME}
-								placeholder='Username'
-								icon='tim-icons icon-single-02'
-								validation={onUsernameValidation}
 								isValid={usernameIsValid}
 								setIsValid={setUsernameIsValid}
 								submitErrors={usernameSubmitErrors}
-								popoverMessages={usernamePopoverMessages}
 								submitRef={submitButton}
 							/>
 							<div className='w-100 mb-3' />
-							<FinalInputText
-								type={EMAIL}
+							<FinalEmailPropedSignUp
 								name={EMAIL}
-								placeholder='Email'
-								icon='tim-icons icon-email-85'
-								validation={onEmailValidation}
 								isValid={emailIsValid}
 								setIsValid={setEmailIsValid}
 								submitErrors={emailSubmitErrors}
-								serverValidation={onEmailServerValidation}
-								popoverMessages={emailPopoverMessages}
 								submitRef={submitButton}
 							/>
 							<div className='w-100 mb-3' />
-							<FinalInputText
-								type={PASSWORD}
+							<FinalPasswordPropedSignUp
 								name={PASSWORD}
-								placeholder='Password'
-								icon='tim-icons icon-lock-circle'
-								validation={onPasswordValidation}
 								isValid={passwordIsValid}
 								setIsValid={setPasswordIsValid}
 								submitErrors={passwordSubmitErrors}
-								popoverMessages={passwordPopoverMessages}
 								submitRef={submitButton}
 							/>
 						</CardBody>
@@ -229,10 +189,4 @@ const FormSignUp = props => {
 	)
 }
 
-export {
-	FormSignUp,
-	FORM_SIGN_UP_PROP_SIGN_IN_LINK,
-	FORM_SIGN_UP_PROP_EMAIL_POPOVER_MESSAGES,
-	FORM_SIGN_UP_PROP_PASSWORD_POPOVER_MESSAGES,
-	FORM_SIGN_UP_PROP_USERNAME_POPOVER_MESSAGES,
-}
+export { FormSignUp }

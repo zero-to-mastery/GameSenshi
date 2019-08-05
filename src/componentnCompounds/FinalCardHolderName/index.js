@@ -13,4 +13,4 @@ const FinalCardHolderNamePropedDefault = props => {
 	)
 }
 
-export { FinalCardHolderName, FinalCardHolderNamePropedDefault }
+export { FinalCardHolderNamePropedDefault }

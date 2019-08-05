@@ -11,4 +11,4 @@ const FinalExpiryMonthPropedDefault = props => {
 	)
 }
 
-export { FinalExpiryMonth, FinalExpiryMonthPropedDefault }
+export { FinalExpiryMonthPropedDefault }

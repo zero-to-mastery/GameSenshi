@@ -13,4 +13,4 @@ const FinalExpiryYearPropedDefault = props => {
 	)
 }
 
-export { FinalExpiryYear, FinalExpiryYearPropedDefault }
+export { FinalExpiryYearPropedDefault }
