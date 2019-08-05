@@ -8,10 +8,10 @@ import { handleSignInWithEmailAndPassword } from 'api'
 // component
 import {
 	FormSignIn,
-	SIGN_IN_FROM_STATE_EMAIL,
-	SIGN_IN_FROM_STATE_IS_OPEN,
-	SIGN_IN_FROM_TOGGLE,
-	SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION,
+	SIGN_IN_FORM_STATE_EMAIL,
+	SIGN_IN_FORM_STATE_IS_OPEN,
+	SIGN_IN_FORM_TOGGLE,
+	SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION,
 } from 'componentOrganisms/FormSignIn/FormSignIn'
 // store
 import {
@@ -39,13 +39,13 @@ const FormSignInPropedDefault = withLastLocation(props => {
 })
 
 const mapStoreSignInStateToProp = {
-	[SIGN_IN_FROM_STATE_EMAIL]: STORE_SIGN_IN_STATE_EMAIL,
-	[SIGN_IN_FROM_STATE_IS_OPEN]: STORE_SIGN_IN_STATE_IS_OPEN,
+	[SIGN_IN_FORM_STATE_EMAIL]: STORE_SIGN_IN_STATE_EMAIL,
+	[SIGN_IN_FORM_STATE_IS_OPEN]: STORE_SIGN_IN_STATE_IS_OPEN,
 }
 
 const mapStoreSignInMethodToProp = {
-	[SIGN_IN_FROM_TOGGLE]: storeSignInToggle,
-	[SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION]: storeSignInOnSuccessfulSubmission,
+	[SIGN_IN_FORM_TOGGLE]: storeSignInToggle,
+	[SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION]: storeSignInOnSuccessfulSubmission,
 }
 
 const FormSignInPropedDefaultStoreSignIn = StateContainer(

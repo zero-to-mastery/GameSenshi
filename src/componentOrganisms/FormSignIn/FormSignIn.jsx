@@ -32,10 +32,10 @@ const {
 const EMAIL = 'email'
 const PASSWORD = 'password'
 
-const SIGN_IN_FROM_STATE_EMAIL = 'email'
-const SIGN_IN_FROM_STATE_IS_OPEN = 'isOPne'
-const SIGN_IN_FROM_TOGGLE = 'toggle'
-const SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
+const SIGN_IN_FORM_STATE_EMAIL = 'email'
+const SIGN_IN_FORM_STATE_IS_OPEN = 'isOPne'
+const SIGN_IN_FORM_TOGGLE = 'toggle'
+const SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
 const onSubmission = async (
 	formError,
@@ -58,14 +58,14 @@ const FormSignIn = props => {
 	const submitButton = useRef(null) //submit button reference
 
 	const {
-		[SIGN_IN_FROM_STATE_EMAIL]: email,
-		[SIGN_IN_FROM_STATE_IS_OPEN]: isOpen,
+		[SIGN_IN_FORM_STATE_EMAIL]: email,
+		[SIGN_IN_FORM_STATE_IS_OPEN]: isOpen,
 		modal,
 		passwordOnly,
 		forgotPasswordLink,
-		[SIGN_IN_FROM_TOGGLE]: toggle,
+		[SIGN_IN_FORM_TOGGLE]: toggle,
 		onSubmit,
-		[SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
+		[SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
 	} = props
 
 	const TopElement = modal
@@ -196,8 +196,8 @@ const FormSignIn = props => {
 
 export {
 	FormSignIn,
-	SIGN_IN_FROM_STATE_EMAIL,
-	SIGN_IN_FROM_STATE_IS_OPEN,
-	SIGN_IN_FROM_TOGGLE,
-	SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION,
+	SIGN_IN_FORM_STATE_EMAIL,
+	SIGN_IN_FORM_STATE_IS_OPEN,
+	SIGN_IN_FORM_TOGGLE,
+	SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION,
 }
