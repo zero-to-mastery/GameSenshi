@@ -9,11 +9,11 @@ const FinalForm = props => {
 	const { onSubmit, ...otherProps } = props
 	return (
 		<Form
-			{...otherProps}
 			onSubmit={(...args) => {
 				return onSubmit(FORM_ERROR, ...args)
 			}}
 			decorators={[focusOnError]}
+			{...otherProps}
 		/>
 	)
 }
