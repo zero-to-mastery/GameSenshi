@@ -1,4 +1,4 @@
-import { FinalInput } from 'componentAtoms/FinalInput/FinalInput'
+import { FinalInput } from 'componentMolecules/FinalInput/FinalInput'
 import { ExportAtoms } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
