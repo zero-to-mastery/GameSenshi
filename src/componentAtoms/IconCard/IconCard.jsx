@@ -3,11 +3,13 @@ import valid from 'card-validator'
 
 const cardType = cardNumber => {
 	// this is for payment icon
-	switch (valid.number(cardNumber)) {
+	switch (valid.number(cardNumber).card.niceType) {
 		case 'Visa':
 			return 'visa'
 		case 'Mastercard':
 			return 'mastercard'
+		case 'American Express':
+			return 'amex'
 		case 'Diners Club':
 			return 'diners'
 		case 'Discover':
