@@ -19,6 +19,7 @@ const {
 	TabPaneGeneralSettings,
 	ImageUpload,
 	TabListVerticalPropedSettingPage,
+	TabPaneBillingSetting,
 } = stopUndefined(ExportMultiOrganisms)
 
 const SettingsPage = props => {
@@ -75,6 +76,7 @@ const SettingsPage = props => {
 									<section>
 										<br />
 										<TabListVerticalPropedSettingPage
+											activeTab={tabPane}
 											onClick={() => {
 												forceUpdate('')
 											}}
@@ -91,7 +93,7 @@ const SettingsPage = props => {
 							<Col className='ml-auto' md='8'>
 								<div className='section'>
 									{tabPane === 0 && <TabPaneGeneralSettings />}
-									{tabPane === 1 && <TabPaneGeneralSettings />}
+									{tabPane === 1 && <TabPaneBillingSetting />}
 									{tabPane === 2 && <TabPaneAccountSettings />}
 									{tabPane === 3 && <TabPaneNotificationSettings />}
 								</div>

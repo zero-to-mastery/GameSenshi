@@ -7,10 +7,13 @@ import classnames from 'classnames'
 import { NavItem, NavLink, Nav } from 'reactstrap'
 
 const TabListVertical = props => {
-	const [activeTab, setActiveTab] = useState(0)
+	const defaultProps = { onClick: () => {}, activeTab: 0, navItems: [] }
 
-	const { onClick, navItems } = props
-	const onClick_ = onClick || (() => {})
+	const { onClick, activeTab, navItems } = {
+		...defaultProps,
+		...props,
+	}
+
 	return (
 		<Nav className='flex-column nav-tabs-info' role='tablist'>
 			{navItems.map((navItem, i) => {
@@ -22,10 +25,7 @@ const TabListVertical = props => {
 								className={classnames({
 									active: activeTab === i,
 								})}
-								onClick={e => {
-									onClick_(e)
-									setActiveTab(i)
-								}}
+								onClick={onClick}
 								to={to}
 								tag={Link}>
 								<i className={`tim-icons ${icon}`} /> {navLink}
