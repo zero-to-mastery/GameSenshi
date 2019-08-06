@@ -19,6 +19,7 @@ import { ModalAuthStoreAuthModal } from 'componentAtoms/ModalAuth'
 import { ButtonSubmit } from 'componentAtoms/ButtonSubmit/ButtonSubmit'
 import { TabPaneContainer } from 'componentAtoms/TabPaneContainer/TabPaneContainer'
 import { TabListVerticalPropedSettingPage } from 'componentAtoms/TabListVertical'
+import { IconCard } from 'componentAtoms/IconCard'
 
 export const ExportAtoms = {
 	Footer,
@@ -42,4 +43,5 @@ export const ExportAtoms = {
 	ButtonSubmit,
 	TabPaneContainer,
 	TabListVerticalPropedSettingPage,
+	IconCard,
 }
