@@ -68,6 +68,7 @@ import {
 import {
 	storeRoute,
 	storeRouteOnAuthStateChanged,
+	storeRouteInitialize,
 	storeRouteSetState,
 	storeRouteResetState,
 	STORE_ROUTE_STATE_IS_SIGNED_IN,
@@ -133,6 +134,7 @@ export {
 	STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK,
 	storeRoute,
 	storeRouteOnAuthStateChanged,
+	storeRouteInitialize,
 	storeRouteSetState,
 	storeRouteResetState,
 	STORE_ROUTE_STATE_IS_SIGNED_IN,
