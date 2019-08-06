@@ -25,6 +25,7 @@ const FinalInput = props => {
 		isValid,
 		setIsValid,
 		submitErrors,
+		defaultValue,
 		...restProps
 	} = props
 
@@ -38,7 +39,7 @@ const FinalInput = props => {
 	const [onSubmitTimeOutID, setOnSubmitTimeOutId] = useState(0)
 	const [filteredMessages, setFilteredMessages] = useState([])
 	const [state] = useState({
-		value: '',
+		value: defaultValue || '',
 		delay: 0, // initial delay is 0 for fast first time background validation
 		timeOutID: 0,
 		focused: true,

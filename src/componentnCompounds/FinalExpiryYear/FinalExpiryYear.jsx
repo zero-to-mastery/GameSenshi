@@ -24,6 +24,7 @@ const FinalExpiryYear = props => {
 		<FinalInputSelect
 			validation={value => validation(value, yearOptions)}
 			options={yearOptions}
+			defaultValue={yearOptions[0]}
 			{...restProps}
 		/>
 	)
