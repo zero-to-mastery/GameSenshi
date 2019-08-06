@@ -44,8 +44,8 @@ const FormSignUp = props => {
 	const onSubmmission = async (
 		formErrors,
 		values,
-		onSubmit = (email = '', password = '', username = '') => {},
-		onSuccessfulSubmission = (email = '', password = '', username = '') => {}
+		onSubmit = () => {},
+		onSuccessfulSubmission = () => {}
 	) => {
 		const {
 			[EMAIL]: email,
