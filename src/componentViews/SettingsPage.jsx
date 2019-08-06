@@ -4,7 +4,7 @@ import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
 // route
 import {
-	ROUTE_PAGE_SETTINGS_BILLING,
+	ROUTE_PAGE_SETTINGS_PAYMENT,
 	ROUTE_PAGE_SETTINGS_ACCOUNT,
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
 } from 'routes'
@@ -33,7 +33,7 @@ const SettingsPage = props => {
 	} = props
 	useEffect(() => {
 		switch (pathname) {
-			case ROUTE_PAGE_SETTINGS_BILLING:
+			case ROUTE_PAGE_SETTINGS_PAYMENT:
 				setTabPane(1)
 				break
 			case ROUTE_PAGE_SETTINGS_ACCOUNT:
