@@ -25,7 +25,6 @@ const TabPaneAccountSettings = props => {
 		<>
 			<TabPaneContainer>
 				<HeaderLined>Change Email</HeaderLined>
-				<hr className='line-info' />
 				<FinalForm
 					initialValues={{
 						email: '',
@@ -82,7 +81,6 @@ const TabPaneAccountSettings = props => {
 			<hr />
 			<TabPaneContainer>
 				<HeaderLined>Change Password</HeaderLined>
-				<hr className='line-info' />
 				<FinalForm
 					initialValues={{
 						password: '',
