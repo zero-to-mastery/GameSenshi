@@ -16,6 +16,7 @@ class StoreRoute extends Container {
 		this[SET_STATE] = this[SET_STATE].bind(this)
 	}
 	[STORE_ROUTE_INITIALIZE] = (onAutoSignedInFailed = () => {}) => {
+		//TODO 'user' is not constant
 		const user = JSON.parse(localStorage.getItem('user'))
 		// purposely set state in sync so that it show correct navBar on first rendering
 		// firebase need like 2 seconds to finish sign in, too long
