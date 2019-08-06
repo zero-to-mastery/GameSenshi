@@ -16,7 +16,7 @@ const TabListVertical = props => {
 			{navItems.map((navItem, i) => {
 				const { navLink, icon, to } = navItem
 				return (
-					<Fragment key={i}>
+					<Fragment key={to}>
 						<NavItem>
 							<NavLink
 								className={classnames({

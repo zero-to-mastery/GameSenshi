@@ -270,7 +270,7 @@ const FinalInput = props => {
 														? 'text-dark'
 														: 'text-info'
 												}
-												key={i}>
+												key={errorMessage}>
 												{popoverFailedItems[errorMessage] ? (
 													errorMessage
 												) : (

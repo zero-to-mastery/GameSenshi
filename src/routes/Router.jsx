@@ -56,9 +56,9 @@ const Router = props => {
 						)
 					})}
 					{// Redirect must be under Route to serve as "default" case
-					redirects.map((redirect, i) => {
+					redirects.map(redirect => {
 						const { [ROUTE_FROM]: from, [ROUTE_TO]: to } = redirect
-						return <Redirect key={i} from={from} to={to} />
+						return <Redirect key={to} from={from} to={to} />
 					})}
 				</Switch>
 			</LastLocationProvider>
