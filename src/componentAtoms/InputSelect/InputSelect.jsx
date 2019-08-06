@@ -1,5 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
+import { FormGroup } from 'reactstrap'
 
 const InputSelect = props => {
 	const {
@@ -9,7 +10,6 @@ const InputSelect = props => {
 		name,
 		value,
 		options,
-		FormGroup,
 		isSearchable,
 		onBlur,
 		onFocus,
