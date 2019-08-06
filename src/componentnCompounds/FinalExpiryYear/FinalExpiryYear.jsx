@@ -19,13 +19,10 @@ const yearOptions = Array.from(new Array(30), (e, i) => {
 yearOptions.unshift({ [VALUE]: '', [LABEL]: 'Year', [IS_DISABLED]: true })
 
 const FinalExpiryYear = props => {
-	const { onValueChange, validation, ...restProps } = props
+	const { validation, ...restProps } = props
 	return (
 		<FinalInputSelect
 			validation={value => validation(value, yearOptions)}
-			onChange={e => {
-				onValueChange(e.target.value[VALUE])
-			}}
 			options={yearOptions}
 			{...restProps}
 		/>

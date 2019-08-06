@@ -1,13 +1,17 @@
 import React from 'react'
 import { FinalCardNumber } from 'componentnCompounds/FinalCardNumber/FinalCardNumber'
 import { cardNumberValidation } from 'utils'
-import { Col } from 'reactstrap'
+import { Col, Row, FormGroup } from 'reactstrap'
 
 const FinalCardNumberPropedDefault = props => {
 	return (
-		<Col>
-			<FinalCardNumber validation={cardNumberValidation} {...props} />
-		</Col>
+		<Row>
+			<Col>
+				<FormGroup>
+					<FinalCardNumber validation={cardNumberValidation} {...props} />
+				</FormGroup>
+			</Col>
+		</Row>
 	)
 }
 

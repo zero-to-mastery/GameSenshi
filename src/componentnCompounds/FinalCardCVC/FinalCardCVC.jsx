@@ -23,7 +23,7 @@ const FinalCardCVC = props => {
 			placeholder='CVC'
 			hideSuccess
 			onChange={e => {
-				onChange(e, onValueChange)
+				return onChange(e, onValueChange)
 			}}
 			icon='tim-icons icon-lock-circle'
 			{...restProps}

@@ -1,13 +1,15 @@
 import React from 'react'
 import { FinalCardHolderName } from 'componentnCompounds/FinalCardHolderName/FinalCardHolderName'
 import { cardNameValidation } from 'utils'
-import { Row, Col } from 'reactstrap'
+import { Row, Col, FormGroup } from 'reactstrap'
 
 const FinalCardHolderNamePropedDefault = props => {
 	return (
 		<Row>
 			<Col>
-				<FinalCardHolderName validation={cardNameValidation} {...props} />
+				<FormGroup>
+					<FinalCardHolderName validation={cardNameValidation} {...props} />
+				</FormGroup>
 			</Col>
 		</Row>
 	)

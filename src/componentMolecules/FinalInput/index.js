@@ -6,11 +6,21 @@ import { stopUndefined } from 'utils'
 const { InputText, InputSelect } = stopUndefined(ExportAtoms)
 
 const FinalInputText = props => {
-	return <FinalInput {...props} Component={InputText} />
+	return <FinalInput Component={InputText} {...props} />
 }
 
 const FinalInputSelect = props => {
-	return <FinalInput {...props} Component={InputSelect} />
+	const { onValueChange } = props
+	return (
+		<FinalInput
+			Component={InputSelect}
+			onChange={e => {
+				onValueChange(e.value)
+				return e
+			}}
+			{...props}
+		/>
+	)
 }
 
 export { FinalInputText, FinalInputSelect }

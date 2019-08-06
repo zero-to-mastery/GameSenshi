@@ -7,7 +7,7 @@ import { ExportMolecules } from 'componentMolecules'
 
 const { FinalInputText } = stopUndefined(ExportMolecules)
 
-const onChangeNumber = (e, onValueChange = () => {}) => {
+const onChange = (e, onValueChange = () => {}) => {
 	let {
 		target: { value },
 	} = e
@@ -41,7 +41,7 @@ const FinalCardNumber = props => {
 			placeholder='Card Number'
 			hideSuccess
 			onChange={e => {
-				onChangeNumber(e, onValueChange)
+				return onChange(e, onValueChange)
 			}}
 			icon='tim-icons icon-credit-card'
 			validation={value => validation(value.replace(/ /g, ''))}

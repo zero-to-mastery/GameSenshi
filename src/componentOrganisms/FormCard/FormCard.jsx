@@ -35,21 +35,22 @@ const EXPIRY_MONTH = 'expiryMonth'
 const EXPIRY_YEAR = 'expiryYear'
 const HOLDER_NAME = 'holderName'
 
-const onSubmission = (
-	values = {
-		[CARD_NUMBER]: '',
-		[CVC]: '',
-		[EXPIRY_MONTH]: '',
-		[EXPIRY_YEAR]: '',
-		[HOLDER_NAME]: '',
-	},
+const onSubmission = async (
+	formError,
+	values,
 	onSubmit = () => {},
-	onSuccessfulSubmission = () => {}
+	onSuccessfulSubmissionHigher = () => {}
 ) => {
-	onSubmit(values)
-	onSuccessfulSubmission()
+	const isSuccess = await onSubmit(values)
+	if (isSuccess) {
+		onSuccessfulSubmissionHigher()
+		return
+	} else {
+		return { [formError]: 'card is rejected, please try again later' }
+	}
 }
 
+// TODO more reasonable input width for all fields
 const FormCard = props => {
 	const [cardNumber, setCardNumber] = useState('')
 	const [holderName, setHolderName] = useState('')
@@ -74,7 +75,7 @@ const FormCard = props => {
 	return (
 		<Modal
 			style={window.innerWidth > 768 ? { maxWidth: 800 } : {}}
-			isOpen={isOpen || true}
+			isOpen={isOpen}
 			toggle={toggle}
 			backdrop='static'
 			modalClassName='modal-black'>
@@ -97,18 +98,19 @@ const FormCard = props => {
 					[EXPIRY_YEAR]: '',
 					[HOLDER_NAME]: '',
 				}}
-				// TODO display submit error with in modal alert
-				// TODO create third party card processor api
-				// TODO more reasonable input width for all fields
-				// TODO need FORM_ERROR
-
 				onSubmit={values => {
 					onSubmission(values, onSubmit, () => {
-						onSuccessfulSubmission()
-						toggle() // TODO toggle only run if submit success
+						onSuccessfulSubmission({
+							isDefault,
+							cardNumber,
+							expiryMonth,
+							expiryYear,
+							holderName,
+						})
+						toggle()
 					})
 				}}>
-				{({ handleSubmit, submitting }) => (
+				{({ handleSubmit, submitting, submitError }) => (
 					<>
 						<ModalBody>
 							<Container>
@@ -177,7 +179,9 @@ const FormCard = props => {
 															onClick={() => {
 																setIsDefault(state => !state)
 															}}>
-															set as default?
+															<span className='text-success'>
+																set as default?
+															</span>
 														</CheckBox>
 													</Col>
 												</Row>
@@ -191,10 +195,12 @@ const FormCard = props => {
 							<Button color='secondary' onClick={toggle}>
 								Close
 							</Button>
+							{submitError && !submitting && `Error: ${submitError}`}
 							<ButtonSubmit
 								submitRef={submitButton}
 								disabled={submitting}
-								onClick={handleSubmit}>
+								onClick={handleSubmit}
+								color='primary'>
 								{submitting ? (
 									'Adding Card'
 								) : (

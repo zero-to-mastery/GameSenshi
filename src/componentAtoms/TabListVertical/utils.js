@@ -13,7 +13,7 @@ const settingPageTabList = [
 		to: ROUTE_PAGE_SETTINGS_GENERAL,
 	},
 	{
-		navLink: 'Billing',
+		navLink: 'Payment',
 		icon: 'icon-credit-card',
 		to: ROUTE_PAGE_SETTINGS_BILLING,
 	},

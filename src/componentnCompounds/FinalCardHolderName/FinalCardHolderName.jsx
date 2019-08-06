@@ -23,7 +23,7 @@ const FinalCardHolderName = props => {
 			placeholder='Card Holder Name'
 			hideSuccess
 			onChange={e => {
-				onChange(e, onValueChange)
+				return onChange(e, onValueChange)
 			}}
 			icon='tim-icons icon-single-02'
 			{...restProps}
