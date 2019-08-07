@@ -15,6 +15,7 @@ const InputSelect = props => {
 		onFocus,
 		onChange,
 		onKeypress,
+		children,
 	} = props
 	return (
 		<FormGroup>
@@ -31,6 +32,7 @@ const InputSelect = props => {
 				onBlur={onBlur}
 				onKeypress={onKeypress}
 			/>
+			{children}
 		</FormGroup>
 	)
 }
