@@ -1,6 +1,7 @@
 import { Container } from 'unstated'
 import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
+const ROUTE = 'route'
 const STORE_ROUTE_STATE_IS_SIGNED_IN = 'isSignedIn'
 const STORE_ROUTE_ON_AUTH_STATE_CHANGED = 'onAuthStateChanged'
 const STORE_ROUTE_INITIALIZE = 'initialize'
@@ -16,22 +17,26 @@ class StoreRoute extends Container {
 		this[SET_STATE] = this[SET_STATE].bind(this)
 	}
 	[STORE_ROUTE_INITIALIZE] = (onAutoSignedInFailed = () => {}) => {
-		//TODO 'user' is not constant
-		const user = JSON.parse(localStorage.getItem('user'))
+		const route = JSON.parse(localStorage.getItem(ROUTE))
 		// purposely set state in sync so that it show correct navBar on first rendering
 		// firebase need like 2 seconds to finish sign in, too long
-		this[STATE][STORE_ROUTE_STATE_IS_SIGNED_IN] = !!user
+		this[STATE][STORE_ROUTE_STATE_IS_SIGNED_IN] = !!route
 
 		return this
 	};
 
 	[RESET_STATE] = () => {
-		this.setState(defaultValues)
+		this[SET_STATE](defaultValues)
 		return this
 	};
 
 	[STORE_ROUTE_ON_AUTH_STATE_CHANGED] = (value = false) => {
-		this.setState({ [STORE_ROUTE_STATE_IS_SIGNED_IN]: value })
+		this[SET_STATE]({ [STORE_ROUTE_STATE_IS_SIGNED_IN]: value })
+		if (value) {
+			localStorage.setItem(ROUTE, 'true')
+		} else {
+			localStorage.removeItem(ROUTE)
+		}
 		return this
 	}
 }
