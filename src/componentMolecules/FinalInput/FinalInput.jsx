@@ -25,6 +25,8 @@ const FinalInput = props => {
 		isValid,
 		setIsValid,
 		submitErrors,
+		value,
+		setValue,
 		defaultValue,
 		...restProps
 	} = props
@@ -34,12 +36,14 @@ const FinalInput = props => {
 	const [localIsValid, setLocalIsValid] = useState(false)
 	const isValid_ = isValid || localIsValid
 	const setIsValid_ = setIsValid || setLocalIsValid
+	const [localValue, seLocalValue] = useState('')
+	const value_ = value || localValue
+	const setValue_ = setValue || seLocalValue
 
 	const [popoverFailedItems, setPopoverFailedItems] = useState({})
 	const [onSubmitTimeOutID, setOnSubmitTimeOutId] = useState(0)
 	const [filteredMessages, setFilteredMessages] = useState([])
 	const [state] = useState({
-		value: defaultValue || '',
 		delay: 0, // initial delay is 0 for fast first time background validation
 		timeOutID: 0,
 		focused: true,
@@ -107,7 +111,8 @@ const FinalInput = props => {
 	return (
 		<Field
 			name={name}
-			validate={(value = '') => {
+			defaultValue={defaultValue}
+			validate={value => {
 				// run it in background for first time even if it is not focused (initial focus state is true)
 				// we need this because to prevent every field to run validation
 				if (state.focused) {
@@ -127,22 +132,20 @@ const FinalInput = props => {
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
 						const timeOutID = setTimeout(() => {
-							validation(state.value || '')
+							validation(value || '')
 								.then(() => {
 									if (serverValidation) {
 										showSpinner2(true)
 										state.fulfilled = true
 										// server side validation on typing
-										serverValidation(state.value || '').then(
-											validationResult => {
-												// do not close run this if user resume typing before server validation end
-												if (state.fulfilled) {
-													showSpinner2(false)
-													generateTextListWithState(validationResult, resolve)
-													state.fulfilledServer = true
-												}
+										serverValidation(value || '').then(validationResult => {
+											// do not close run this if user resume typing before server validation end
+											if (state.fulfilled) {
+												showSpinner2(false)
+												generateTextListWithState(validationResult, resolve)
+												state.fulfilledServer = true
 											}
-										)
+										})
 									} else {
 										generateTextListWithState(undefined, resolve)
 									}
@@ -173,12 +176,12 @@ const FinalInput = props => {
 				const onChange_ = e => {
 					state.delay = DELAY
 					if (onChange === undefined || onChange(e) === undefined) {
-						state.value = e.target.value
+						setValue_(e.target.value)
 						input.onChange(e)
 					} else {
-						const value = onChange(e)
-						if (value !== false) {
-							state.value = value
+						const result = onChange(e)
+						if (result !== false) {
+							setValue_(result)
 							input.onChange(e)
 						}
 					}
@@ -239,13 +242,13 @@ const FinalInput = props => {
 
 				const spinner_ = (spinner2 && 'Puff') || (spinner && 'ThreeDots')
 
-				const value = state.value || input.value // the input.value has no purpose other than suppress uncontrollable to controllable warning
+				const result = value_ || input.value // the input.value has no purpose other than suppress uncontrollable to controllable warning
 				return (
 					<>
 						<Component
 							id={name}
 							name={name}
-							value={value}
+							value={result}
 							spinner={spinner_}
 							hasDanger={hasDanger}
 							hasSuccess={hasSuccess}
@@ -254,8 +257,22 @@ const FinalInput = props => {
 							onFocus={onFocus_}
 							onChange={onChange_}
 							onKeyPress={onKeyPress_}
-							{...restProps}
-						/>
+							{...restProps}>
+							{(!onlyShowErrorOnSubmit || submitFailed || isValid_) &&
+								!spinner &&
+								!spinner2 &&
+								!submitting &&
+								!submitSucceeded &&
+								(touched || (active && modified)) && (
+									<ListText
+										isValid={isValid_}
+										messages={
+											(!dirtySinceLastSubmit && submitErrors) ||
+											filteredMessages
+										}
+									/>
+								)}
+						</Component>
 						{popoverMessages_.length > 0 && (
 							<PopoverCommon
 								isOpen={active}
@@ -283,19 +300,6 @@ const FinalInput = props => {
 								</ul>
 							</PopoverCommon>
 						)}
-						{(!onlyShowErrorOnSubmit || submitFailed || isValid_) &&
-							!spinner &&
-							!spinner2 &&
-							!submitting &&
-							!submitSucceeded &&
-							(touched || (active && modified)) && (
-								<ListText
-									isValid={isValid_}
-									messages={
-										(!dirtySinceLastSubmit && submitErrors) || filteredMessages
-									}
-								/>
-							)}
 					</>
 				)
 			}}
