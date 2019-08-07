@@ -18,7 +18,7 @@ const yearOptions = Array.from(new Array(30), (e, i) => {
 
 yearOptions.unshift({ [VALUE]: '', [LABEL]: 'Year', [IS_DISABLED]: true })
 
-const FinalExpiryYear = props => {
+const FinalSelectExpiryYear = props => {
 	const { validation, ...restProps } = props
 	return (
 		<FinalInputSelect
@@ -30,4 +30,4 @@ const FinalExpiryYear = props => {
 	)
 }
 
-export { FinalExpiryYear }
+export { FinalSelectExpiryYear }

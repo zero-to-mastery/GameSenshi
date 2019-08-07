@@ -26,7 +26,7 @@ const {
 	FinalTextCardHolderNamePropedDefault,
 	FINAL_TEXT_CARD_HOLDER_NAME,
 	FinalSelectExpiryMonthPropedDefault,
-	FinalExpiryYearPropedDefault,
+	FinalSelectExpiryYearPropedDefault,
 	FinalTextCardCVCPropedDefault,
 	FINAL_TEXT_CARD_CVC,
 	ButtonSubmit,
@@ -166,7 +166,7 @@ const FormCard = props => {
 														}}
 														onValueChange={setExpiryMonth}
 													/>
-													<FinalExpiryYearPropedDefault
+													<FinalSelectExpiryYearPropedDefault
 														name={EXPIRY_YEAR}
 														onFocus={() => {
 															setFocus('expiry')
