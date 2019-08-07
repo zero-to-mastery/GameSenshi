@@ -25,7 +25,7 @@ const {
 	FINAL_TEXT_CARD_NUMBER,
 	FinalTextCardHolderNamePropedDefault,
 	FINAL_TEXT_CARD_HOLDER_NAME,
-	FinalExpiryMonthPropedDefault,
+	FinalSelectExpiryMonthPropedDefault,
 	FinalExpiryYearPropedDefault,
 	FinalTextCardCVCPropedDefault,
 	FINAL_TEXT_CARD_CVC,
@@ -159,7 +159,7 @@ const FormCard = props => {
 													submitRef={submitButton}
 												/>
 												<Row>
-													<FinalExpiryMonthPropedDefault
+													<FinalSelectExpiryMonthPropedDefault
 														name={EXPIRY_MONTH}
 														onFocus={() => {
 															setFocus('expiry')

@@ -1,7 +1,7 @@
 import React from 'react'
-import { stopUndefined } from './node_modules/utils'
+import { stopUndefined } from 'utils'
 //components
-import { ExportMolecules } from './node_modules/componentMolecules'
+import { ExportMolecules } from 'componentMolecules'
 
 const { FinalInputSelect } = stopUndefined(ExportMolecules)
 
