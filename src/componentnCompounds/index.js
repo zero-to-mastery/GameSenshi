@@ -22,7 +22,7 @@ import {
 	FinalPasswordPropedSignUp,
 	FinalPasswordPropedSignIn,
 } from 'componentnCompounds/FinalPassword'
-import { FinalUsernamePropedSignUp } from 'componentnCompounds/FinalUsername'
+import { FinalTextUsernamePropedSignUp } from 'componentnCompounds/FinalTextUsername'
 
 export const ExportCompounds = {
 	...ExportMolecules,
@@ -39,5 +39,5 @@ export const ExportCompounds = {
 	FinalTextEmailPropedForgotPassword,
 	FinalPasswordPropedSignUp,
 	FinalPasswordPropedSignIn,
-	FinalUsernamePropedSignUp,
+	FinalTextUsernamePropedSignUp,
 }
