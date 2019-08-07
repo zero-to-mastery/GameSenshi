@@ -39,8 +39,8 @@ const SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
 const onSubmission = async (
 	formError,
-	values = { [EMAIL]: '', [PASSWORD]: '' },
-	onSubmit = (email, password) => {},
+	values,
+	onSubmit = () => {},
 	onSuccessfulSubmission = () => {}
 ) => {
 	const { [EMAIL]: email, [PASSWORD]: password } = values
