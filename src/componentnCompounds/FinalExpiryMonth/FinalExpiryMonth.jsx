@@ -29,7 +29,7 @@ const FinalExpiryMonth = props => {
 	const { validation, ...restProps } = props
 	return (
 		<FinalInputSelect
-			validation={value => validation(value, monthOptions.slice(1))}
+			validation={value => validation(value, monthOptions)}
 			options={monthOptions}
 			defaultValue={monthOptions[0]}
 			{...restProps}
