@@ -15,7 +15,7 @@ const FinalInputSelect = props => {
 		<FinalInput
 			Component={InputSelect}
 			onChange={e => {
-				onValueChange(e.value)
+				onValueChange(e)
 				return e
 			}}
 			{...props}
