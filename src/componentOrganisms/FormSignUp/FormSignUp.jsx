@@ -23,13 +23,12 @@ const {
 	FinalForm,
 	ButtonSubmit,
 	FinalTextEmailPropedSignUp,
+	FINAL_TEXT_EMAIL,
 	FinalTextPasswordPropedSignUp,
+	FINAL_TEXT_PASSWORD,
 	FinalTextUsernamePropedSignUp,
+	FINAL_TEXT_USERNAME,
 } = stopUndefined(ExportCompounds)
-
-const EMAIL = 'email'
-const PASSWORD = 'password'
-const USERNAME = 'username'
 
 const FormSignUp = props => {
 	const submitButton = useRef(null)
@@ -48,9 +47,9 @@ const FormSignUp = props => {
 		onSuccessfulSubmission = () => {}
 	) => {
 		const {
-			[EMAIL]: email,
-			[PASSWORD]: password,
-			[USERNAME]: username,
+			[FINAL_TEXT_EMAIL]: email,
+			[FINAL_TEXT_PASSWORD]: password,
+			[FINAL_TEXT_USERNAME]: username,
 		} = values
 		const isSignUpFailed = await onSubmit(email, password, username)
 
@@ -92,9 +91,9 @@ const FormSignUp = props => {
 			</CardBody>
 			<FinalForm
 				initialValues={{
-					[EMAIL]: '',
-					[PASSWORD]: '',
-					[USERNAME]: '',
+					[FINAL_TEXT_EMAIL]: '',
+					[FINAL_TEXT_PASSWORD]: '',
+					[FINAL_TEXT_USERNAME]: '',
 				}}
 				onSubmit={(formErrors, values) => {
 					return onSubmmission(
@@ -116,7 +115,7 @@ const FormSignUp = props => {
 								<Col />
 							</Row>
 							<FinalTextUsernamePropedSignUp
-								name={USERNAME}
+								name={FINAL_TEXT_USERNAME}
 								isValid={usernameIsValid}
 								setIsValid={setUsernameIsValid}
 								submitErrors={usernameSubmitErrors}
@@ -124,7 +123,7 @@ const FormSignUp = props => {
 							/>
 							<div className='w-100 mb-3' />
 							<FinalTextEmailPropedSignUp
-								name={EMAIL}
+								name={FINAL_TEXT_EMAIL}
 								isValid={emailIsValid}
 								setIsValid={setEmailIsValid}
 								submitErrors={emailSubmitErrors}
@@ -132,7 +131,7 @@ const FormSignUp = props => {
 							/>
 							<div className='w-100 mb-3' />
 							<FinalTextPasswordPropedSignUp
-								name={PASSWORD}
+								name={FINAL_TEXT_PASSWORD}
 								isValid={passwordIsValid}
 								setIsValid={setPasswordIsValid}
 								submitErrors={passwordSubmitErrors}

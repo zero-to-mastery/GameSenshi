@@ -5,11 +5,14 @@ import { ExportMolecules } from 'componentMolecules'
 
 const { FinalInputText } = stopUndefined(ExportMolecules)
 
+const FINAL_TEXT_PASSWORD = 'password'
+
 const FinalTextPassword = props => {
 	const { ...restProps } = props
 	return (
 		<FinalInputText
-			type='password'
+			type={FINAL_TEXT_PASSWORD}
+			name={FINAL_TEXT_PASSWORD}
 			placeholder='Password'
 			icon='tim-icons icon-single-02'
 			{...restProps}
@@ -17,4 +20,4 @@ const FinalTextPassword = props => {
 	)
 }
 
-export { FinalTextPassword }
+export { FinalTextPassword, FINAL_TEXT_PASSWORD }

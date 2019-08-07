@@ -1,5 +1,8 @@
 import React from 'react'
-import { FinalSelectExpiryYear } from 'componentnCompounds/FinalSelectExpiryYear/FinalSelectExpiryYear'
+import {
+	FinalSelectExpiryYear,
+	FINAL_SELECT_EXPIRY_YEAR,
+} from 'componentnCompounds/FinalSelectExpiryYear/FinalSelectExpiryYear'
 import { cardExpiryValidation } from 'utils'
 import { Col } from 'reactstrap'
 
@@ -11,4 +14,4 @@ const FinalSelectExpiryYearPropedDefault = props => {
 	)
 }
 
-export { FinalSelectExpiryYearPropedDefault }
+export { FinalSelectExpiryYearPropedDefault, FINAL_SELECT_EXPIRY_YEAR }

@@ -26,11 +26,10 @@ const {
 	FinalForm,
 	ButtonSubmit,
 	FinalTextEmailPropedSignIn,
+	FINAL_TEXT_EMAIL,
 	FinalTextPasswordPropedSignIn,
+	FINAL_TEXT_PASSWORD,
 } = stopUndefined(ExportCompounds)
-
-const EMAIL = 'email'
-const PASSWORD = 'password'
 
 const SIGN_IN_FORM_STATE_EMAIL = 'email'
 const SIGN_IN_FORM_STATE_IS_OPEN = 'isOPne'
@@ -43,7 +42,7 @@ const onSubmission = async (
 	onSubmit = () => {},
 	onSuccessfulSubmission = () => {}
 ) => {
-	const { [EMAIL]: email, [PASSWORD]: password } = values
+	const { [FINAL_TEXT_EMAIL]: email, [FINAL_TEXT_PASSWORD]: password } = values
 	const isSignInFailed = await onSubmit(email, password)
 	if (isSignInFailed) {
 		return { [formError]: isSignInFailed }
@@ -102,8 +101,8 @@ const FormSignIn = props => {
 				</CardBody>
 				<FinalForm
 					initialValues={{
-						[EMAIL]: passwordOnly ? email : '',
-						[PASSWORD]: '',
+						[FINAL_TEXT_EMAIL]: passwordOnly ? email : '',
+						[FINAL_TEXT_PASSWORD]: '',
 					}}
 					onSubmit={(formError, values) => {
 						return onSubmission(
@@ -142,14 +141,14 @@ const FormSignIn = props => {
 											</Col>
 										</Row>
 										<FinalTextEmailPropedSignIn
-											name={EMAIL}
+											name={FINAL_TEXT_EMAIL}
 											submitRef={submitButton}
 										/>
 									</>
 								)}
 								<div className='w-100 mb-3' />
 								<FinalTextPasswordPropedSignIn
-									name={PASSWORD}
+									name={FINAL_TEXT_PASSWORD}
 									submitRef={submitButton}
 								/>
 							</CardBody>

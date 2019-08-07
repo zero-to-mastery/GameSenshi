@@ -9,6 +9,8 @@ const VALUE = 'value'
 const LABEL = 'label'
 const IS_DISABLED = 'isDisabled'
 
+const FINAL_SELECT_EXPIRY_MONTH = 'expiryMonth'
+
 const monthOptions = [
 	{ [VALUE]: '', [LABEL]: 'Month', [IS_DISABLED]: true },
 	{ [VALUE]: '01', [LABEL]: 'Jan 01' },
@@ -37,4 +39,4 @@ const FinalSelectExpiryMonth = props => {
 	)
 }
 
-export { FinalSelectExpiryMonth }
+export { FinalSelectExpiryMonth, FINAL_SELECT_EXPIRY_MONTH }

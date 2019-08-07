@@ -7,8 +7,14 @@ import {
 	FinalTextCardHolderNamePropedDefault,
 	FINAL_TEXT_CARD_HOLDER_NAME,
 } from 'componentnCompounds/FinalTextCardHolderName'
-import { FinalSelectExpiryMonthPropedDefault } from 'componentnCompounds/FinalSelectExpiryMonth'
-import { FinalSelectExpiryYearPropedDefault } from 'componentnCompounds/FinalSelectExpiryYear'
+import {
+	FinalSelectExpiryMonthPropedDefault,
+	FINAL_SELECT_EXPIRY_MONTH,
+} from 'componentnCompounds/FinalSelectExpiryMonth'
+import {
+	FinalSelectExpiryYearPropedDefault,
+	FINAL_SELECT_EXPIRY_YEAR,
+} from 'componentnCompounds/FinalSelectExpiryYear'
 import {
 	FinalTextCardCVCPropedDefault,
 	FINAL_TEXT_CARD_CVC,
@@ -17,12 +23,17 @@ import {
 	FinalTextEmailPropedSignUp,
 	FinalTextEmailPropedSignIn,
 	FinalTextEmailPropedForgotPassword,
+	FINAL_TEXT_EMAIL,
 } from 'componentnCompounds/FinalTextEmail'
 import {
 	FinalTextPasswordPropedSignUp,
 	FinalTextPasswordPropedSignIn,
+	FINAL_TEXT_PASSWORD,
 } from 'componentnCompounds/FinalTextPassword'
-import { FinalTextUsernamePropedSignUp } from 'componentnCompounds/FinalTextUsername'
+import {
+	FinalTextUsernamePropedSignUp,
+	FINAL_TEXT_USERNAME,
+} from 'componentnCompounds/FinalTextUsername'
 
 export const ExportCompounds = {
 	...ExportMolecules,
@@ -31,13 +42,18 @@ export const ExportCompounds = {
 	FinalTextCardHolderNamePropedDefault,
 	FINAL_TEXT_CARD_HOLDER_NAME,
 	FinalSelectExpiryMonthPropedDefault,
+	FINAL_SELECT_EXPIRY_MONTH,
 	FinalSelectExpiryYearPropedDefault,
+	FINAL_SELECT_EXPIRY_YEAR,
 	FinalTextCardCVCPropedDefault,
 	FINAL_TEXT_CARD_CVC,
 	FinalTextEmailPropedSignUp,
 	FinalTextEmailPropedSignIn,
 	FinalTextEmailPropedForgotPassword,
+	FINAL_TEXT_EMAIL,
 	FinalTextPasswordPropedSignUp,
 	FinalTextPasswordPropedSignIn,
+	FINAL_TEXT_PASSWORD,
 	FinalTextUsernamePropedSignUp,
+	FINAL_TEXT_USERNAME,
 }

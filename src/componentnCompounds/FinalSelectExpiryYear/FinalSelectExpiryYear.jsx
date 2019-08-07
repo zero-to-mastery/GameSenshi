@@ -9,6 +9,8 @@ const VALUE = 'value'
 const LABEL = 'label'
 const IS_DISABLED = 'isDisabled'
 
+const FINAL_SELECT_EXPIRY_YEAR = 'expiryYear'
+
 const year = new Date().getFullYear()
 
 const yearOptions = Array.from(new Array(30), (e, i) => {
@@ -30,4 +32,4 @@ const FinalSelectExpiryYear = props => {
 	)
 }
 
-export { FinalSelectExpiryYear }
+export { FinalSelectExpiryYear, FINAL_SELECT_EXPIRY_YEAR }

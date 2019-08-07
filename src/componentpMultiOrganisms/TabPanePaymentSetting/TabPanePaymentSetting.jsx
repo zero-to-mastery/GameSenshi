@@ -10,25 +10,25 @@ const {
 	IconCard,
 	FINAL_TEXT_CARD_HOLDER_NAME,
 	FINAL_TEXT_CARD_NUMBER,
+	FINAL_SELECT_EXPIRY_MONTH,
+	FINAL_SELECT_EXPIRY_YEAR,
 } = stopUndefined(ExportOrganisms)
 
 const IS_DEFAULT = 'isDefault'
-const EXPIRY_MONTH = 'expiryMonth'
-const EXPIRY_YEAR = 'expiryYear'
 
 // * currently this is for demo, normally should fetch the card from api
 const defaultCards = [
 	{
 		[FINAL_TEXT_CARD_NUMBER]: '4556949236166375',
-		[EXPIRY_YEAR]: '2022',
-		[EXPIRY_MONTH]: '06',
+		[FINAL_SELECT_EXPIRY_YEAR]: '2022',
+		[FINAL_SELECT_EXPIRY_MONTH]: '06',
 		[IS_DEFAULT]: true,
 		[FINAL_TEXT_CARD_HOLDER_NAME]: 'tester1',
 	},
 	{
 		[FINAL_TEXT_CARD_NUMBER]: '5598618172773380',
-		[EXPIRY_YEAR]: '2021',
-		[EXPIRY_MONTH]: '05',
+		[FINAL_SELECT_EXPIRY_YEAR]: '2021',
+		[FINAL_SELECT_EXPIRY_MONTH]: '05',
 		[IS_DEFAULT]: false,
 		[FINAL_TEXT_CARD_HOLDER_NAME]: 'tester2',
 	},
@@ -60,8 +60,8 @@ const listNewCard = (cardValues, cards = [], setCards = () => {}) => {
 
 	if (existingCard) {
 		//overwrite existing card
-		existingCard[EXPIRY_YEAR] = expiryYear
-		existingCard[EXPIRY_MONTH] = expiryMonth
+		existingCard[FINAL_SELECT_EXPIRY_YEAR] = expiryYear
+		existingCard[FINAL_SELECT_EXPIRY_MONTH] = expiryMonth
 		existingCard[FINAL_TEXT_CARD_HOLDER_NAME] = holderName
 		if (isDefault) {
 			//setting condition is to prevent there is no default card
@@ -72,8 +72,8 @@ const listNewCard = (cardValues, cards = [], setCards = () => {}) => {
 		setCards(cards => {
 			cards.push({
 				[FINAL_TEXT_CARD_NUMBER]: cardNumber,
-				[EXPIRY_YEAR]: expiryYear,
-				[EXPIRY_MONTH]: expiryMonth,
+				[FINAL_SELECT_EXPIRY_YEAR]: expiryYear,
+				[FINAL_SELECT_EXPIRY_MONTH]: expiryMonth,
 				[FINAL_TEXT_CARD_HOLDER_NAME]: holderName,
 				[IS_DEFAULT]: isDefault || cards.length === 0,
 			})
@@ -116,8 +116,8 @@ const TabPanePaymentSetting = () => {
 					{cards.map((card, i) => {
 						const {
 							[FINAL_TEXT_CARD_NUMBER]: cardNumber,
-							[EXPIRY_MONTH]: expiryMonth,
-							[EXPIRY_YEAR]: expiryYear,
+							[FINAL_SELECT_EXPIRY_MONTH]: expiryMonth,
+							[FINAL_SELECT_EXPIRY_YEAR]: expiryYear,
 							[IS_DEFAULT]: isDefaultCard,
 						} = card
 						return (

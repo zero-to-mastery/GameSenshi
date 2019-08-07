@@ -15,8 +15,8 @@ const {
 	TabPaneContainer,
 } = stopUndefined(ExportCompounds)
 
-const EMAIL = 'email'
-const PASSWORD = 'password'
+const FINAL_TEXT_EMAIL = 'email'
+const FINAL_TEXT_PASSWORD = 'password'
 
 const TabPaneAccountSettings = props => {
 	const submitButtonEmail = useRef(null)
@@ -44,8 +44,8 @@ const TabPaneAccountSettings = props => {
 									<Col className='align-self-center' md='9'>
 										<FormGroup>
 											<FinalInputText
-												type={EMAIL}
-												name={EMAIL}
+												type={FINAL_TEXT_EMAIL}
+												name={FINAL_TEXT_EMAIL}
 												hideSuccess
 												onlyShowErrorOnSubmit
 												placeholder='email'
@@ -100,8 +100,8 @@ const TabPaneAccountSettings = props => {
 									<Col className='align-self-center' md='9'>
 										<FormGroup>
 											<FinalInputText
-												type={PASSWORD}
-												name={PASSWORD}
+												type={FINAL_TEXT_PASSWORD}
+												name={FINAL_TEXT_PASSWORD}
 												onlyShowErrorOnSubmit
 												hideSuccess
 												placeholder='password'

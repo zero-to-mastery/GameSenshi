@@ -1,5 +1,8 @@
 import React from 'react'
-import { FinalTextPassword } from 'componentnCompounds/FinalTextPassword/FinalTextPassword'
+import {
+	FinalTextPassword,
+	FINAL_TEXT_PASSWORD,
+} from 'componentnCompounds/FinalTextPassword/FinalTextPassword'
 
 import {
 	signUpPasswordValidation,
@@ -27,4 +30,8 @@ const FinalTextPasswordPropedSignIn = props => {
 	)
 }
 
-export { FinalTextPasswordPropedSignUp, FinalTextPasswordPropedSignIn }
+export {
+	FinalTextPasswordPropedSignUp,
+	FinalTextPasswordPropedSignIn,
+	FINAL_TEXT_PASSWORD,
+}

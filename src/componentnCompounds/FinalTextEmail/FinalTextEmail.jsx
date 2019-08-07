@@ -4,12 +4,15 @@ import { stopUndefined } from 'utils'
 import { ExportMolecules } from 'componentMolecules'
 
 const { FinalInputText } = stopUndefined(ExportMolecules)
+const FINAL_TEXT_EMAIL = 'email'
 
 const FinalTextEmail = props => {
 	const { ...restProps } = props
 	return (
 		<FinalInputText
-			type='email'
+			type={FINAL_TEXT_EMAIL}
+			name={FINAL_TEXT_EMAIL}
+			autoComplete={FINAL_TEXT_EMAIL}
 			placeholder='Email'
 			icon='tim-icons icon-email-85'
 			{...restProps}
@@ -17,4 +20,4 @@ const FinalTextEmail = props => {
 	)
 }
 
-export { FinalTextEmail }
+export { FinalTextEmail, FINAL_TEXT_EMAIL }

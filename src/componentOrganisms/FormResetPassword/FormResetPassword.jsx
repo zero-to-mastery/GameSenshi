@@ -22,9 +22,8 @@ const {
 	FinalForm,
 	ButtonSubmit,
 	FinalTextEmailPropedForgotPassword,
+	FINAL_TEXT_EMAIL,
 } = stopUndefined(ExportCompounds)
-
-const EMAIL = 'email'
 
 const FormResetPassword = props => {
 	const [sent, setSent] = useState(false)
@@ -39,10 +38,12 @@ const FormResetPassword = props => {
 				<Card className='card-login'>
 					<FinalForm
 						initialValues={{
-							[EMAIL]: '',
+							[FINAL_TEXT_EMAIL]: '',
 						}}
 						onSubmit={async (formError, values) => {
-							const isPasswordResetFailed = await onSubmit(values[EMAIL])
+							const isPasswordResetFailed = await onSubmit(
+								values[FINAL_TEXT_EMAIL]
+							)
 							if (isPasswordResetFailed) {
 								return { [formError]: isPasswordResetFailed }
 							} else {
@@ -79,7 +80,7 @@ const FormResetPassword = props => {
 													Enter email address to reset password
 												</h4>
 												<FinalTextEmailPropedForgotPassword
-													name={EMAIL}
+													name={FINAL_TEXT_EMAIL}
 													submitRef={submitButton}
 													onChange={e => {
 														setEmail(e.target.value)

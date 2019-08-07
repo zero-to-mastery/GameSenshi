@@ -26,14 +26,13 @@ const {
 	FinalTextCardHolderNamePropedDefault,
 	FINAL_TEXT_CARD_HOLDER_NAME,
 	FinalSelectExpiryMonthPropedDefault,
+	FINAL_SELECT_EXPIRY_MONTH,
 	FinalSelectExpiryYearPropedDefault,
+	FINAL_SELECT_EXPIRY_YEAR,
 	FinalTextCardCVCPropedDefault,
 	FINAL_TEXT_CARD_CVC,
 	ButtonSubmit,
 } = stopUndefined(ExportCompounds)
-
-const EXPIRY_MONTH = 'expiryMonth'
-const EXPIRY_YEAR = 'expiryYear'
 
 const onSubmission = async (
 	formError,
@@ -103,8 +102,8 @@ const FormCard = props => {
 				initialValues={{
 					[FINAL_TEXT_CARD_NUMBER]: '',
 					[FINAL_TEXT_CARD_CVC]: '',
-					[EXPIRY_MONTH]: '',
-					[EXPIRY_YEAR]: '',
+					[FINAL_SELECT_EXPIRY_MONTH]: '',
+					[FINAL_SELECT_EXPIRY_YEAR]: '',
 					[FINAL_TEXT_CARD_HOLDER_NAME]: '',
 				}}
 				onSubmit={values => {
@@ -160,14 +159,14 @@ const FormCard = props => {
 												/>
 												<Row>
 													<FinalSelectExpiryMonthPropedDefault
-														name={EXPIRY_MONTH}
+														name={FINAL_SELECT_EXPIRY_MONTH}
 														onFocus={() => {
 															setFocus('expiry')
 														}}
 														onValueChange={setExpiryMonth}
 													/>
 													<FinalSelectExpiryYearPropedDefault
-														name={EXPIRY_YEAR}
+														name={FINAL_SELECT_EXPIRY_YEAR}
 														onFocus={() => {
 															setFocus('expiry')
 														}}
