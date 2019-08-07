@@ -54,9 +54,7 @@ const InputText = props => {
 				)}
 				<Input {...restProps} />
 			</Group>
-			{
-				children //? why this children is automatically included in the FomGroup, i think it has something to with FormGroup class
-			}
+			{children}
 		</>
 	)
 }
