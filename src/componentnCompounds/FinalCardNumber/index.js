@@ -1,5 +1,8 @@
 import React from 'react'
-import { FinalCardNumber } from 'componentnCompounds/FinalCardNumber/FinalCardNumber'
+import {
+	FinalCardNumber,
+	FINAL_TEXT_CARD_NUMBER,
+} from 'componentnCompounds/FinalCardNumber/FinalCardNumber'
 import { cardNumberValidation } from 'utils'
 import { Col, Row, FormGroup } from 'reactstrap'
 
@@ -15,4 +18,4 @@ const FinalCardNumberPropedDefault = props => {
 	)
 }
 
-export { FinalCardNumberPropedDefault }
+export { FinalCardNumberPropedDefault, FINAL_TEXT_CARD_NUMBER }

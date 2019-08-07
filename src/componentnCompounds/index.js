@@ -1,9 +1,18 @@
 import { ExportMolecules } from 'componentMolecules'
-import { FinalCardNumberPropedDefault } from 'componentnCompounds/FinalCardNumber'
-import { FinalCardHolderNamePropedDefault } from 'componentnCompounds/FinalCardHolderName'
+import {
+	FinalCardNumberPropedDefault,
+	FINAL_TEXT_CARD_NUMBER,
+} from 'componentnCompounds/FinalCardNumber'
+import {
+	FinalCardHolderNamePropedDefault,
+	FINAL_TEXT_CARD_HOLDER_NAME,
+} from 'componentnCompounds/FinalCardHolderName'
 import { FinalExpiryMonthPropedDefault } from 'componentnCompounds/FinalExpiryMonth'
 import { FinalExpiryYearPropedDefault } from 'componentnCompounds/FinalExpiryYear'
-import { FinalCardCVCPropedDefault } from 'componentnCompounds/FinalCardCVC'
+import {
+	FinalCardCVCPropedDefault,
+	FINAL_TEXT_CARD_CVC,
+} from 'componentnCompounds/FinalCardCVC'
 import {
 	FinalEmailPropedSignUp,
 	FinalEmailPropedSignIn,
@@ -18,10 +27,13 @@ import { FinalUsernamePropedSignUp } from 'componentnCompounds/FinalUsername'
 export const ExportCompounds = {
 	...ExportMolecules,
 	FinalCardNumberPropedDefault,
+	FINAL_TEXT_CARD_NUMBER,
 	FinalCardHolderNamePropedDefault,
+	FINAL_TEXT_CARD_HOLDER_NAME,
 	FinalExpiryMonthPropedDefault,
 	FinalExpiryYearPropedDefault,
 	FinalCardCVCPropedDefault,
+	FINAL_TEXT_CARD_CVC,
 	FinalEmailPropedSignUp,
 	FinalEmailPropedSignIn,
 	FinalEmailPropedForgotPassword,
