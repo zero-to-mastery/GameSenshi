@@ -22,28 +22,28 @@ const {
 	FinalForm,
 	CheckBox,
 	FinalCardNumberPropedDefault,
+	FINAL_TEXT_CARD_NUMBER,
 	FinalCardHolderNamePropedDefault,
+	FINAL_TEXT_CARD_HOLDER_NAME,
 	FinalExpiryMonthPropedDefault,
 	FinalExpiryYearPropedDefault,
 	FinalCardCVCPropedDefault,
+	FINAL_TEXT_CARD_CVC,
 	ButtonSubmit,
 } = stopUndefined(ExportCompounds)
 
-const CARD_NUMBER = 'cardNumber'
-const CVC = 'cvc'
 const EXPIRY_MONTH = 'expiryMonth'
 const EXPIRY_YEAR = 'expiryYear'
-const HOLDER_NAME = 'holderName'
 
 const onSubmission = async (
 	formError,
 	values,
 	onSubmit = () => {},
-	onSuccessfulSubmissionHigher = () => {}
+	onSuccessfulSubmission = () => {}
 ) => {
 	const isSuccess = await onSubmit(values)
 	if (isSuccess) {
-		onSuccessfulSubmissionHigher()
+		onSuccessfulSubmission()
 		return
 	} else {
 		return { [formError]: 'card is rejected, please try again later' }
@@ -54,12 +54,12 @@ const onSubmission = async (
 const FormCard = props => {
 	const [cardNumber, setCardNumber] = useState('')
 	const [holderName, setHolderName] = useState('')
-	const [expiryMonth, setExpiryMonth] = useState('00')
-	const [expiryYear, setExpiryYear] = useState('00')
-	const [cvc, setCvc] = useState('')
+	const [expiryMonth, setExpiryMonth] = useState({ value: '' })
+	const [expiryYear, setExpiryYear] = useState({ value: '' })
 	const [isDefault, setIsDefault] = useState(false)
-	const [, forceUpdate] = useState()
 	const [focus, setFocus] = useState('number')
+	const [cvc, setCvc] = useState('')
+	const [, forceUpdate] = useState()
 
 	const submitButton = useRef(null)
 
@@ -77,6 +77,15 @@ const FormCard = props => {
 			style={window.innerWidth > 768 ? { maxWidth: 800 } : {}}
 			isOpen={isOpen}
 			toggle={toggle}
+			onExit={() => {
+				setCardNumber('')
+				setHolderName('')
+				setExpiryMonth({ value: '' })
+				setExpiryYear({ value: '' })
+				setCvc('')
+				setIsDefault(false)
+				setFocus('number')
+			}}
 			backdrop='static'
 			modalClassName='modal-black'>
 			<div className='modal-header'>
@@ -92,11 +101,11 @@ const FormCard = props => {
 			</div>
 			<FinalForm
 				initialValues={{
-					[CARD_NUMBER]: '',
-					[CVC]: '',
+					[FINAL_TEXT_CARD_NUMBER]: '',
+					[FINAL_TEXT_CARD_CVC]: '',
 					[EXPIRY_MONTH]: '',
 					[EXPIRY_YEAR]: '',
-					[HOLDER_NAME]: '',
+					[FINAL_TEXT_CARD_HOLDER_NAME]: '',
 				}}
 				onSubmit={values => {
 					onSubmission(values, onSubmit, () => {
@@ -123,7 +132,7 @@ const FormCard = props => {
 											<Cards
 												number={cardNumber}
 												name={holderName}
-												expiry={`${expiryMonth}/${expiryYear}`}
+												expiry={`${expiryMonth.value}/${expiryYear.value}`}
 												cvc={cvc}
 												focused={focus}
 											/>
@@ -133,15 +142,16 @@ const FormCard = props => {
 										<Container>
 											<Form>
 												<FinalCardNumberPropedDefault
-													name={CARD_NUMBER}
-													onValueChange={setCardNumber}
+													onValueChange={values => {
+														setCardNumber(values)
+													}}
 													onFocus={() => {
 														setFocus('number')
 													}}
 													submitRef={submitButton}
 												/>
 												<FinalCardHolderNamePropedDefault
-													name={HOLDER_NAME}
+													name={FINAL_TEXT_CARD_HOLDER_NAME}
 													onValueChange={setHolderName}
 													onFocus={() => {
 														setFocus('name')
@@ -166,7 +176,7 @@ const FormCard = props => {
 												</Row>
 												<Row>
 													<FinalCardCVCPropedDefault
-														name={CVC}
+														name={FINAL_TEXT_CARD_CVC}
 														onFocus={() => {
 															setFocus('cvc')
 														}}
@@ -201,14 +211,7 @@ const FormCard = props => {
 								disabled={submitting}
 								onClick={handleSubmit}
 								color='primary'>
-								{submitting ? (
-									'Adding Card'
-								) : (
-									<>
-										<i className={`fas fa-lock mr-3`} />
-										Add Card
-									</>
-								)}
+								{submitting ? 'Saving' : 'Save'}
 							</ButtonSubmit>
 						</ModalFooter>
 					</>
