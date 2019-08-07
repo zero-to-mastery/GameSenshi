@@ -11,22 +11,14 @@ import {
 
 const InputText = props => {
 	const {
-		id,
 		icon,
-		name,
-		type,
-		value,
 		spinner,
 		className,
-		placeholder,
 		hasFocus,
 		hasDanger,
 		hasSuccess,
-		onBlur,
-		onFocus,
-		onChange,
-		onKeyPress,
 		children,
+		...restProps
 	} = props
 
 	const Group = icon ? InputGroup : FormGroup
@@ -60,17 +52,7 @@ const InputText = props => {
 						</InputGroupText>
 					</InputGroupAddon>
 				)}
-				<Input
-					placeholder={placeholder}
-					id={id}
-					name={name}
-					value={value}
-					type={type}
-					onFocus={onFocus}
-					onBlur={onBlur}
-					onChange={onChange}
-					onKeyPress={onKeyPress}
-				/>
+				<Input {...restProps} />
 			</Group>
 			{
 				children //? why this children is automatically included in the FomGroup, i think it has something to with FormGroup class
