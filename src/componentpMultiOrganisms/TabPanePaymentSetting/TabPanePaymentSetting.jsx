@@ -82,7 +82,7 @@ const listNewCard = (cardValues, cards = [], setCards = () => {}) => {
 	}
 }
 // TODO create third party card processor api
-const TabPaneBillingSetting = () => {
+const TabPanePaymentSetting = () => {
 	const [isOpenCardModal, setIsOpenCardModal] = useState(false)
 	const [cards, setCards] = useState([...defaultCards])
 
@@ -188,4 +188,4 @@ const TabPaneBillingSetting = () => {
 	)
 }
 
-export { TabPaneBillingSetting }
+export { TabPanePaymentSetting }

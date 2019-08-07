@@ -19,7 +19,7 @@ const {
 	TabPaneGeneralSettings,
 	ImageUpload,
 	TabListVerticalPropedSettingPage,
-	TabPaneBillingSetting,
+	TabPanePaymentSetting,
 } = stopUndefined(ExportMultiOrganisms)
 
 const SettingsPage = props => {
@@ -93,7 +93,7 @@ const SettingsPage = props => {
 							<Col className='ml-auto' md='8'>
 								<div className='section'>
 									{tabPane === 0 && <TabPaneGeneralSettings />}
-									{tabPane === 1 && <TabPaneBillingSetting />}
+									{tabPane === 1 && <TabPanePaymentSetting />}
 									{tabPane === 2 && <TabPaneAccountSettings />}
 									{tabPane === 3 && <TabPaneNotificationSettings />}
 								</div>

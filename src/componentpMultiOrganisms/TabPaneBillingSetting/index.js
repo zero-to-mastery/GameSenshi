@@ -1,3 +1,3 @@
-import { TabPaneBillingSetting } from 'componentpMultiOrganisms/TabPaneBillingSetting/TabPaneBillingSetting'
+import { TabPanePaymentSetting } from './node_modules/componentpMultiOrganisms/TabPanePaymentSetting/TabPanePaymentSetting'
 
-export { TabPaneBillingSetting }
+export { TabPanePaymentSetting }
