@@ -25,7 +25,7 @@ const {
 	ButtonsSocialAuthPropedDefault,
 	FinalForm,
 	ButtonSubmit,
-	FinalEmailPropedSignIn,
+	FinalTextEmailPropedSignIn,
 	FinalPasswordPropedSignIn,
 } = stopUndefined(ExportCompounds)
 
@@ -141,7 +141,7 @@ const FormSignIn = props => {
 												<small>Or Classically</small>
 											</Col>
 										</Row>
-										<FinalEmailPropedSignIn
+										<FinalTextEmailPropedSignIn
 											name={EMAIL}
 											submitRef={submitButton}
 										/>

@@ -21,7 +21,7 @@ import { ExportCompounds } from 'componentnCompounds'
 const {
 	FinalForm,
 	ButtonSubmit,
-	FinalEmailPropedForgotPassword,
+	FinalTextEmailPropedForgotPassword,
 } = stopUndefined(ExportCompounds)
 
 const EMAIL = 'email'
@@ -78,7 +78,7 @@ const FormResetPassword = props => {
 												<h4 className='description text-center'>
 													Enter email address to reset password
 												</h4>
-												<FinalEmailPropedForgotPassword
+												<FinalTextEmailPropedForgotPassword
 													name={EMAIL}
 													submitRef={submitButton}
 													onChange={e => {

@@ -5,7 +5,7 @@ import { ExportMolecules } from 'componentMolecules'
 
 const { FinalInputText } = stopUndefined(ExportMolecules)
 
-const FinalEmail = props => {
+const FinalTextEmail = props => {
 	const { ...restProps } = props
 	return (
 		<FinalInputText
@@ -17,4 +17,4 @@ const FinalEmail = props => {
 	)
 }
 
-export { FinalEmail }
+export { FinalTextEmail }

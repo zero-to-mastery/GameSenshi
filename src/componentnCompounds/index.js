@@ -14,10 +14,10 @@ import {
 	FINAL_TEXT_CARD_CVC,
 } from 'componentnCompounds/FinalTextCardCVC'
 import {
-	FinalEmailPropedSignUp,
-	FinalEmailPropedSignIn,
-	FinalEmailPropedForgotPassword,
-} from 'componentnCompounds/FinalEmail'
+	FinalTextEmailPropedSignUp,
+	FinalTextEmailPropedSignIn,
+	FinalTextEmailPropedForgotPassword,
+} from 'componentnCompounds/FinalTextEmail'
 import {
 	FinalPasswordPropedSignUp,
 	FinalPasswordPropedSignIn,
@@ -34,9 +34,9 @@ export const ExportCompounds = {
 	FinalExpiryYearPropedDefault,
 	FinalTextCardCVCPropedDefault,
 	FINAL_TEXT_CARD_CVC,
-	FinalEmailPropedSignUp,
-	FinalEmailPropedSignIn,
-	FinalEmailPropedForgotPassword,
+	FinalTextEmailPropedSignUp,
+	FinalTextEmailPropedSignIn,
+	FinalTextEmailPropedForgotPassword,
 	FinalPasswordPropedSignUp,
 	FinalPasswordPropedSignIn,
 	FinalUsernamePropedSignUp,
