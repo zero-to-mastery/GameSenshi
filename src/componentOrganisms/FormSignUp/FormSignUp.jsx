@@ -23,7 +23,7 @@ const {
 	FinalForm,
 	ButtonSubmit,
 	FinalTextEmailPropedSignUp,
-	FinalPasswordPropedSignUp,
+	FinalTextPasswordPropedSignUp,
 	FinalTextUsernamePropedSignUp,
 } = stopUndefined(ExportCompounds)
 
@@ -131,7 +131,7 @@ const FormSignUp = props => {
 								submitRef={submitButton}
 							/>
 							<div className='w-100 mb-3' />
-							<FinalPasswordPropedSignUp
+							<FinalTextPasswordPropedSignUp
 								name={PASSWORD}
 								isValid={passwordIsValid}
 								setIsValid={setPasswordIsValid}

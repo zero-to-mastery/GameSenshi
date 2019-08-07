@@ -19,9 +19,9 @@ import {
 	FinalTextEmailPropedForgotPassword,
 } from 'componentnCompounds/FinalTextEmail'
 import {
-	FinalPasswordPropedSignUp,
-	FinalPasswordPropedSignIn,
-} from 'componentnCompounds/FinalPassword'
+	FinalTextPasswordPropedSignUp,
+	FinalTextPasswordPropedSignIn,
+} from 'componentnCompounds/FinalTextPassword'
 import { FinalTextUsernamePropedSignUp } from 'componentnCompounds/FinalTextUsername'
 
 export const ExportCompounds = {
@@ -37,7 +37,7 @@ export const ExportCompounds = {
 	FinalTextEmailPropedSignUp,
 	FinalTextEmailPropedSignIn,
 	FinalTextEmailPropedForgotPassword,
-	FinalPasswordPropedSignUp,
-	FinalPasswordPropedSignIn,
+	FinalTextPasswordPropedSignUp,
+	FinalTextPasswordPropedSignIn,
 	FinalTextUsernamePropedSignUp,
 }

@@ -26,7 +26,7 @@ const {
 	FinalForm,
 	ButtonSubmit,
 	FinalTextEmailPropedSignIn,
-	FinalPasswordPropedSignIn,
+	FinalTextPasswordPropedSignIn,
 } = stopUndefined(ExportCompounds)
 
 const EMAIL = 'email'
@@ -148,7 +148,7 @@ const FormSignIn = props => {
 									</>
 								)}
 								<div className='w-100 mb-3' />
-								<FinalPasswordPropedSignIn
+								<FinalTextPasswordPropedSignIn
 									name={PASSWORD}
 									submitRef={submitButton}
 								/>

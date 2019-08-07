@@ -1,5 +1,5 @@
 import React from 'react'
-import { FinalPassword } from 'componentnCompounds/FinalPassword/FinalPassword'
+import { FinalTextPassword } from 'componentnCompounds/FinalTextPassword/FinalTextPassword'
 
 import {
 	signUpPasswordValidation,
@@ -7,9 +7,9 @@ import {
 	signInPasswordValidation,
 } from 'utils'
 
-const FinalPasswordPropedSignUp = props => {
+const FinalTextPasswordPropedSignUp = props => {
 	return (
-		<FinalPassword
+		<FinalTextPassword
 			validation={signUpPasswordValidation}
 			popoverMessages={passwordPopoverMessages}
 			{...props}
@@ -17,9 +17,9 @@ const FinalPasswordPropedSignUp = props => {
 	)
 }
 
-const FinalPasswordPropedSignIn = props => {
+const FinalTextPasswordPropedSignIn = props => {
 	return (
-		<FinalPassword
+		<FinalTextPassword
 			validation={signInPasswordValidation}
 			hideSuccess
 			{...props}
@@ -27,4 +27,4 @@ const FinalPasswordPropedSignIn = props => {
 	)
 }
 
-export { FinalPasswordPropedSignUp, FinalPasswordPropedSignIn }
+export { FinalTextPasswordPropedSignUp, FinalTextPasswordPropedSignIn }
