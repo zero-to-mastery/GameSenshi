@@ -31,6 +31,8 @@ const FinalSelectExpiryMonth = props => {
 	const { validation, ...restProps } = props
 	return (
 		<FinalInputSelect
+			placeholder='Month'
+			hideSuccess
 			validation={value => validation(value, monthOptions)}
 			options={monthOptions}
 			defaultValue={monthOptions[0]}

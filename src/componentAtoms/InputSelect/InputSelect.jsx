@@ -1,15 +1,29 @@
 import React from 'react'
 import Select from 'react-select'
 import { FormGroup } from 'reactstrap'
+import classnames from 'classnames'
 
 const InputSelect = props => {
-	const { className, classNamePrefix, value, children, ...restProps } = props
+	const {
+		hasDanger,
+		hasSuccess,
+		hasFocus,
+		className,
+		classNamePrefix,
+		value,
+		children,
+		...restProps
+	} = props
 	return (
 		<FormGroup>
 			<Select
-				className={className || 'react-select react-select-info'}
+				className={classnames(className, {
+					'react-select-danger': hasDanger,
+					'react-select-success': hasSuccess,
+					'react-select-info': hasFocus,
+					'react-select mb-0': true,
+				})}
 				classNamePrefix={classNamePrefix || 'react-select'}
-				value={value.value || props.options[0]}
 				{...restProps}
 			/>
 			{children}
