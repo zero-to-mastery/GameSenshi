@@ -1,8 +1,8 @@
 import { ExportMolecules } from 'componentMolecules'
 import {
-	FinalCardNumberPropedDefault,
+	FinalTextCardNumberPropedDefault,
 	FINAL_TEXT_CARD_NUMBER,
-} from 'componentnCompounds/FinalCardNumber'
+} from 'componentnCompounds/FinalTextCardNumber'
 import {
 	FinalTextCardHolderNamePropedDefault,
 	FINAL_TEXT_CARD_HOLDER_NAME,
@@ -26,7 +26,7 @@ import { FinalUsernamePropedSignUp } from 'componentnCompounds/FinalUsername'
 
 export const ExportCompounds = {
 	...ExportMolecules,
-	FinalCardNumberPropedDefault,
+	FinalTextCardNumberPropedDefault,
 	FINAL_TEXT_CARD_NUMBER,
 	FinalTextCardHolderNamePropedDefault,
 	FINAL_TEXT_CARD_HOLDER_NAME,

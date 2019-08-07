@@ -21,7 +21,7 @@ import 'react-credit-cards/lib/styles.scss'
 const {
 	FinalForm,
 	CheckBox,
-	FinalCardNumberPropedDefault,
+	FinalTextCardNumberPropedDefault,
 	FINAL_TEXT_CARD_NUMBER,
 	FinalTextCardHolderNamePropedDefault,
 	FINAL_TEXT_CARD_HOLDER_NAME,
@@ -141,7 +141,7 @@ const FormCard = props => {
 									<Col xs='12' md='7' className='d-flex align-items-center'>
 										<Container>
 											<Form>
-												<FinalCardNumberPropedDefault
+												<FinalTextCardNumberPropedDefault
 													onValueChange={values => {
 														setCardNumber(values)
 													}}

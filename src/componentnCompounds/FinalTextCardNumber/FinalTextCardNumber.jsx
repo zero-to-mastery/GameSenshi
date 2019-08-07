@@ -37,7 +37,7 @@ const onChange = (e, onValueChange = () => {}) => {
 	}
 }
 
-const FinalCardNumber = props => {
+const FinalTextCardNumber = props => {
 	const {
 		onValueChange,
 		validation,
@@ -61,7 +61,7 @@ const FinalCardNumber = props => {
 	)
 }
 
-export { FinalCardNumber, FINAL_TEXT_CARD_NUMBER }
+export { FinalTextCardNumber, FINAL_TEXT_CARD_NUMBER }
 
 // const findExistingCard = (
 // 	cardNumber,
