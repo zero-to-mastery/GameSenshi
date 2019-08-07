@@ -121,7 +121,6 @@ const FormSignUp = props => {
 								submitErrors={usernameSubmitErrors}
 								submitRef={submitButton}
 							/>
-							<div className='w-100 mb-3' />
 							<FinalTextEmailPropedSignUp
 								name={FINAL_TEXT_EMAIL}
 								isValid={emailIsValid}
@@ -129,7 +128,6 @@ const FormSignUp = props => {
 								submitErrors={emailSubmitErrors}
 								submitRef={submitButton}
 							/>
-							<div className='w-100 mb-3' />
 							<FinalTextPasswordPropedSignUp
 								name={FINAL_TEXT_PASSWORD}
 								isValid={passwordIsValid}

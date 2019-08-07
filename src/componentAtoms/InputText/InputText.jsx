@@ -24,7 +24,7 @@ const InputText = props => {
 	const Group = icon ? InputGroup : FormGroup
 
 	return (
-		<>
+		<FormGroup>
 			<Group
 				className={classnames(className, {
 					'has-danger': hasDanger,
@@ -55,7 +55,7 @@ const InputText = props => {
 				<Input {...restProps} />
 			</Group>
 			{children}
-		</>
+		</FormGroup>
 	)
 }
 

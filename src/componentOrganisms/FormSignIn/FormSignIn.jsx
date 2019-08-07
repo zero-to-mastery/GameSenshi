@@ -146,7 +146,6 @@ const FormSignIn = props => {
 										/>
 									</>
 								)}
-								<div className='w-100 mb-3' />
 								<FinalTextPasswordPropedSignIn
 									name={FINAL_TEXT_PASSWORD}
 									submitRef={submitButton}
