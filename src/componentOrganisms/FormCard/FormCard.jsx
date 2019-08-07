@@ -23,7 +23,7 @@ const {
 	CheckBox,
 	FinalCardNumberPropedDefault,
 	FINAL_TEXT_CARD_NUMBER,
-	FinalCardHolderNamePropedDefault,
+	FinalTextCardHolderNamePropedDefault,
 	FINAL_TEXT_CARD_HOLDER_NAME,
 	FinalExpiryMonthPropedDefault,
 	FinalExpiryYearPropedDefault,
@@ -150,7 +150,7 @@ const FormCard = props => {
 													}}
 													submitRef={submitButton}
 												/>
-												<FinalCardHolderNamePropedDefault
+												<FinalTextCardHolderNamePropedDefault
 													name={FINAL_TEXT_CARD_HOLDER_NAME}
 													onValueChange={setHolderName}
 													onFocus={() => {

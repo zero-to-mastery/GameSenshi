@@ -18,7 +18,7 @@ const onChange = (e, onValueChange = () => {}) => {
 
 const FINAL_TEXT_CARD_HOLDER_NAME = 'ccname'
 
-const FinalCardHolderName = props => {
+const FinalTextCardHolderName = props => {
 	const { onValueChange, ...restProps } = props
 	return (
 		<FinalInputText
@@ -35,4 +35,4 @@ const FinalCardHolderName = props => {
 	)
 }
 
-export { FinalCardHolderName, FINAL_TEXT_CARD_HOLDER_NAME }
+export { FinalTextCardHolderName, FINAL_TEXT_CARD_HOLDER_NAME }

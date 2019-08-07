@@ -4,9 +4,9 @@ import {
 	FINAL_TEXT_CARD_NUMBER,
 } from 'componentnCompounds/FinalCardNumber'
 import {
-	FinalCardHolderNamePropedDefault,
+	FinalTextCardHolderNamePropedDefault,
 	FINAL_TEXT_CARD_HOLDER_NAME,
-} from 'componentnCompounds/FinalCardHolderName'
+} from 'componentnCompounds/FinalTextCardHolderName'
 import { FinalExpiryMonthPropedDefault } from 'componentnCompounds/FinalExpiryMonth'
 import { FinalExpiryYearPropedDefault } from 'componentnCompounds/FinalExpiryYear'
 import {
@@ -28,7 +28,7 @@ export const ExportCompounds = {
 	...ExportMolecules,
 	FinalCardNumberPropedDefault,
 	FINAL_TEXT_CARD_NUMBER,
-	FinalCardHolderNamePropedDefault,
+	FinalTextCardHolderNamePropedDefault,
 	FINAL_TEXT_CARD_HOLDER_NAME,
 	FinalExpiryMonthPropedDefault,
 	FinalExpiryYearPropedDefault,
