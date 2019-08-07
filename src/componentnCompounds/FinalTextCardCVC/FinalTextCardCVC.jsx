@@ -18,7 +18,7 @@ const onChange = (e, onValueChange = () => {}) => {
 	return false
 }
 
-const FinalCardCVC = props => {
+const FinalTextCardCVC = props => {
 	const { onValueChange, ...restProps } = props
 	return (
 		<FinalInputText
@@ -35,4 +35,4 @@ const FinalCardCVC = props => {
 	)
 }
 
-export { FinalCardCVC, FINAL_TEXT_CARD_CVC }
+export { FinalTextCardCVC, FINAL_TEXT_CARD_CVC }

@@ -10,9 +10,9 @@ import {
 import { FinalExpiryMonthPropedDefault } from 'componentnCompounds/FinalExpiryMonth'
 import { FinalExpiryYearPropedDefault } from 'componentnCompounds/FinalExpiryYear'
 import {
-	FinalCardCVCPropedDefault,
+	FinalTextCardCVCPropedDefault,
 	FINAL_TEXT_CARD_CVC,
-} from 'componentnCompounds/FinalCardCVC'
+} from 'componentnCompounds/FinalTextCardCVC'
 import {
 	FinalEmailPropedSignUp,
 	FinalEmailPropedSignIn,
@@ -32,7 +32,7 @@ export const ExportCompounds = {
 	FINAL_TEXT_CARD_HOLDER_NAME,
 	FinalExpiryMonthPropedDefault,
 	FinalExpiryYearPropedDefault,
-	FinalCardCVCPropedDefault,
+	FinalTextCardCVCPropedDefault,
 	FINAL_TEXT_CARD_CVC,
 	FinalEmailPropedSignUp,
 	FinalEmailPropedSignIn,

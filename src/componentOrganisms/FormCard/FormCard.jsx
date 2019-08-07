@@ -27,7 +27,7 @@ const {
 	FINAL_TEXT_CARD_HOLDER_NAME,
 	FinalExpiryMonthPropedDefault,
 	FinalExpiryYearPropedDefault,
-	FinalCardCVCPropedDefault,
+	FinalTextCardCVCPropedDefault,
 	FINAL_TEXT_CARD_CVC,
 	ButtonSubmit,
 } = stopUndefined(ExportCompounds)
@@ -175,7 +175,7 @@ const FormCard = props => {
 													/>
 												</Row>
 												<Row>
-													<FinalCardCVCPropedDefault
+													<FinalTextCardCVCPropedDefault
 														name={FINAL_TEXT_CARD_CVC}
 														onFocus={() => {
 															setFocus('cvc')

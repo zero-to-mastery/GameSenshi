@@ -2,8 +2,8 @@ import React from 'react'
 import {
 	FinalTextCardCVC,
 	FINAL_TEXT_CARD_CVC,
-} from './node_modules/componentnCompounds/FinalTextCardCVC/FinalTextCardCVC'
-import { cardCvcValidation } from './node_modules/utils'
+} from 'componentnCompounds/FinalTextCardCVC/FinalTextCardCVC'
+import { cardCvcValidation } from 'utils'
 import { Col } from 'reactstrap'
 
 const FinalTextCardCVCPropedDefault = props => {
