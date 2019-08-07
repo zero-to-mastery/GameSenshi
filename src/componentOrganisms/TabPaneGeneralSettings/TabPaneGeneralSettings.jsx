@@ -1,17 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { stopUndefined } from 'utils'
-// react plugin used to create DropdownMenu for selecting items
 import Select from 'react-select'
+import ReactDatetime from 'react-datetime'
 import { Subscribe, userStore } from 'state'
 // reactstrap components
-import {
-	FormGroup,
-	Input,
-	Row,
-	Col,
-	Form,
-	UncontrolledPopover,
-} from 'reactstrap'
+import { FormGroup, Row, Col, Form } from 'reactstrap'
 //constants
 import {
 	USER_UID,
@@ -20,10 +13,7 @@ import {
 	USER_LANGUAGES,
 	USER_BIRTH_DATE,
 	USER_DISPLAY_NAME,
-	MONTH_NAMES,
 } from 'constantValues'
-// core components
-import Calendar from 'react-calendar'
 // validation
 import { signUpUsernameValidation } from 'utils'
 
@@ -127,7 +117,6 @@ const languageOptions = [
 ]
 
 const TabPaneGeneralSettings = props => {
-	const [birthDateOpen, setBirthDateOpen] = useState(false)
 	return (
 		<Subscribe to={[userStore]}>
 			{userStore => {
@@ -159,11 +148,15 @@ const TabPaneGeneralSettings = props => {
 									<br />
 									<Row>
 										<Col className='align-self-center' md='3'>
-											<label className='labels'>UID</label>
+											<label className='labels' for='uid'>
+												UID
+											</label>
 										</Col>
 										<Col className='align-self-center' md='9'>
 											<FormGroup>
-												<label className='labels'>{uid}</label>
+												<label className='labels' id='uid' name='uid'>
+													{uid}
+												</label>
 											</FormGroup>
 										</Col>
 									</Row>
@@ -219,35 +212,15 @@ const TabPaneGeneralSettings = props => {
 										</Col>
 										<Col className='align-self-center' md='4'>
 											<FormGroup>
-												<Input
+												<ReactDatetime
 													id='birthDate'
 													name='birthDate'
-													type='text'
-													value={`${birthDate.getDate()}-${
-														MONTH_NAMES[birthDate.getMonth() + 1]
-													}-${birthDate.getFullYear()}`}
-													onFocus={() => {
-														setBirthDateOpen(true)
+													inputProps={{
+														className: 'form-control',
+														placeholder: 'BirthDate',
 													}}
-													onChange={() => {}}
+													timeFormat={false}
 												/>
-												{birthDateOpen && (
-													<UncontrolledPopover
-														trigger='legacy'
-														placement='auto'
-														target='birthDate'>
-														<Calendar
-															activeStartDate={birthDate}
-															value={birthDate}
-															onClickDay={birthDate => {
-																userStore.setState({
-																	[USER_BIRTH_DATE]: birthDate,
-																})
-																setBirthDateOpen(false)
-															}}
-														/>
-													</UncontrolledPopover>
-												)}
 											</FormGroup>
 										</Col>
 									</Row>
