@@ -16,10 +16,14 @@ const onChange = (e, onValueChange = () => {}) => {
 	return false
 }
 
+const FINAL_TEXT_CARD_HOLDER_NAME = 'ccname'
+
 const FinalCardHolderName = props => {
 	const { onValueChange, ...restProps } = props
 	return (
 		<FinalInputText
+			name={FINAL_TEXT_CARD_HOLDER_NAME}
+			autoComplete='cc-name'
 			placeholder='Card Holder Name'
 			hideSuccess
 			onChange={e => {
@@ -31,4 +35,4 @@ const FinalCardHolderName = props => {
 	)
 }
 
-export { FinalCardHolderName }
+export { FinalCardHolderName, FINAL_TEXT_CARD_HOLDER_NAME }

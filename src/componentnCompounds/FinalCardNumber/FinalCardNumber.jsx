@@ -7,15 +7,18 @@ import { ExportMolecules } from 'componentMolecules'
 
 const { FinalInputText } = stopUndefined(ExportMolecules)
 
+const FINAL_TEXT_CARD_NUMBER = 'cardnumber'
+
 const onChange = (e, onValueChange = () => {}) => {
 	let {
 		target: { value },
 	} = e
 
-	try {
+	if (
 		string()
 			.matches(/^(?:[0-9 ]*)$/, 'only number and space allowed')
 			.isValidSync(value)
+	) {
 		value = value.replace(/ /g, '')
 		if (value.length < 17) {
 			onValueChange(value)
@@ -29,15 +32,23 @@ const onChange = (e, onValueChange = () => {}) => {
 		} else {
 			return false
 		}
-	} catch (e) {
+	} else {
 		return false
 	}
 }
 
 const FinalCardNumber = props => {
-	const { onValueChange, validation, ...restProps } = props
+	const {
+		onValueChange,
+		validation,
+		existingCards,
+		onCardFound,
+		...restProps
+	} = props
 	return (
 		<FinalInputText
+			name={FINAL_TEXT_CARD_NUMBER}
+			autoComplete='cc-number'
 			placeholder='Card Number'
 			hideSuccess
 			onChange={e => {
@@ -50,4 +61,20 @@ const FinalCardNumber = props => {
 	)
 }
 
-export { FinalCardNumber }
+export { FinalCardNumber, FINAL_TEXT_CARD_NUMBER }
+
+// const findExistingCard = (
+// 	cardNumber,
+// 	existingCards,
+// 	onCardFound = () => {}
+// ) => {
+// 	// TODO there is a non constant here
+// 	if (cardNumber.length >= 4 && existingCards.length > 0) {
+// 		const card = existingCards.find(card => {
+// 						return card.cardNumber.substring(0, cardNumber.length) === cardNumber
+// 		})
+// 		if (card) {
+// 			onCardFound(card)
+// 		}
+// 	}
+// }

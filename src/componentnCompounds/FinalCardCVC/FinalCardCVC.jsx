@@ -5,6 +5,8 @@ import { ExportMolecules } from 'componentMolecules'
 
 const { FinalInputText } = stopUndefined(ExportMolecules)
 
+const FINAL_TEXT_CARD_CVC = 'cvc'
+
 const onChange = (e, onValueChange = () => {}) => {
 	const {
 		target: { value },
@@ -20,6 +22,8 @@ const FinalCardCVC = props => {
 	const { onValueChange, ...restProps } = props
 	return (
 		<FinalInputText
+			name={FINAL_TEXT_CARD_CVC}
+			autoComplete='cc-csc'
 			placeholder='CVC'
 			hideSuccess
 			onChange={e => {
@@ -31,4 +35,4 @@ const FinalCardCVC = props => {
 	)
 }
 
-export { FinalCardCVC }
+export { FinalCardCVC, FINAL_TEXT_CARD_CVC }

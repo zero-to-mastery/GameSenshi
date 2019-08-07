@@ -5,42 +5,54 @@ import { Button, Label, FormGroup, Input, Table } from 'reactstrap'
 
 import { ExportOrganisms } from 'componentOrganisms'
 
-const { FormCard, IconCard } = stopUndefined(ExportOrganisms)
+const {
+	FormCard,
+	IconCard,
+	FINAL_TEXT_CARD_HOLDER_NAME,
+	FINAL_TEXT_CARD_NUMBER,
+} = stopUndefined(ExportOrganisms)
 
-const CARD_NUMBER = 'cardNumber'
-const CARD_IS_DEFAULT = 'isDefault'
-const CARD_EXPIRY_YEAR = 'expiryYear'
-const CARD_EXPIRY_MONTH = 'expiryMonth'
+const IS_DEFAULT = 'isDefault'
+const EXPIRY_MONTH = 'expiryMonth'
+const EXPIRY_YEAR = 'expiryYear'
 
 // * currently this is for demo, normally should fetch the card from api
 const defaultCards = [
 	{
-		[CARD_NUMBER]: '4556949236166375',
-		[CARD_EXPIRY_YEAR]: '2022',
-		[CARD_EXPIRY_MONTH]: '06',
-		[CARD_IS_DEFAULT]: true,
+		[FINAL_TEXT_CARD_NUMBER]: '4556949236166375',
+		[EXPIRY_YEAR]: '2022',
+		[EXPIRY_MONTH]: '06',
+		[IS_DEFAULT]: true,
+		[FINAL_TEXT_CARD_HOLDER_NAME]: 'tester1',
 	},
 	{
-		[CARD_NUMBER]: '5598618172773380',
-		[CARD_EXPIRY_YEAR]: '2021',
-		[CARD_EXPIRY_MONTH]: '05',
-		[CARD_IS_DEFAULT]: false,
+		[FINAL_TEXT_CARD_NUMBER]: '5598618172773380',
+		[EXPIRY_YEAR]: '2021',
+		[EXPIRY_MONTH]: '05',
+		[IS_DEFAULT]: false,
+		[FINAL_TEXT_CARD_HOLDER_NAME]: 'tester2',
 	},
 ]
 
 const resetAllCardDefault = (cards = [], setCards = () => {}) => {
 	cards.forEach(card => {
-		card[CARD_IS_DEFAULT] = false
+		card[IS_DEFAULT] = false
 	})
 	setCards([...cards])
 }
 
 const listNewCard = (cardValues, cards = [], setCards = () => {}) => {
 	//TODO property is not constant
-	const { isDefault, cardNumber, expiryMonth, expiryYear } = cardValues
+	const {
+		isDefault,
+		cardNumber,
+		expiryMonth,
+		expiryYear,
+		holderName,
+	} = cardValues
 
 	const existingCard = cards.find(card => {
-		return card[CARD_NUMBER] === cardNumber
+		return card[FINAL_TEXT_CARD_NUMBER] === cardNumber
 	})
 	if (isDefault) {
 		resetAllCardDefault(cards, setCards)
@@ -48,20 +60,22 @@ const listNewCard = (cardValues, cards = [], setCards = () => {}) => {
 
 	if (existingCard) {
 		//overwrite existing card
-		existingCard[CARD_EXPIRY_YEAR] = expiryYear
-		existingCard[CARD_EXPIRY_MONTH] = expiryMonth
+		existingCard[EXPIRY_YEAR] = expiryYear
+		existingCard[EXPIRY_MONTH] = expiryMonth
+		existingCard[FINAL_TEXT_CARD_HOLDER_NAME] = holderName
 		if (isDefault) {
 			//setting condition is to prevent there is no default card
-			existingCard[CARD_IS_DEFAULT] = isDefault
+			existingCard[IS_DEFAULT] = isDefault
 		}
 		setCards(cards => [...cards])
 	} else {
 		setCards(cards => {
 			cards.push({
-				[CARD_NUMBER]: cardNumber,
-				[CARD_EXPIRY_YEAR]: expiryYear,
-				[CARD_EXPIRY_MONTH]: expiryMonth,
-				[CARD_IS_DEFAULT]: isDefault || cards.length === 0,
+				[FINAL_TEXT_CARD_NUMBER]: cardNumber,
+				[EXPIRY_YEAR]: expiryYear,
+				[EXPIRY_MONTH]: expiryMonth,
+				[FINAL_TEXT_CARD_HOLDER_NAME]: holderName,
+				[IS_DEFAULT]: isDefault || cards.length === 0,
 			})
 			return cards
 		})
@@ -74,19 +88,18 @@ const TabPaneBillingSetting = () => {
 
 	return (
 		<>
-			{isOpenCardModal && (
-				<FormCard
-					isOpen={isOpenCardModal}
-					toggle={() => {
-						setIsOpenCardModal(isOpenCardModal => !isOpenCardModal)
-					}}
-					onSuccessfulSubmission={values => {
-						listNewCard(values, cards, setCards)
-					}}
-				/>
-			)}
+			<FormCard
+				isOpen={isOpenCardModal}
+				toggle={() => {
+					setIsOpenCardModal(isOpenCardModal => !isOpenCardModal)
+				}}
+				onSuccessfulSubmission={values => {
+					listNewCard(values, cards, setCards)
+				}}
+			/>
+
 			<header>
-				<h2 className='text-uppercase'>Payment method</h2>
+				<h2 className='text-uppercase'>Payment methods</h2>
 			</header>
 			<hr className='line-info' />
 			<br />
@@ -102,10 +115,10 @@ const TabPaneBillingSetting = () => {
 				<tbody>
 					{cards.map((card, i) => {
 						const {
-							[CARD_NUMBER]: cardNumber,
-							[CARD_EXPIRY_MONTH]: expiryMonth,
-							[CARD_EXPIRY_YEAR]: expiryYear,
-							[CARD_IS_DEFAULT]: isDefaultCard,
+							[FINAL_TEXT_CARD_NUMBER]: cardNumber,
+							[EXPIRY_MONTH]: expiryMonth,
+							[EXPIRY_YEAR]: expiryYear,
+							[IS_DEFAULT]: isDefaultCard,
 						} = card
 						return (
 							<tr key={cardNumber.slice(-4)}>
@@ -133,7 +146,7 @@ const TabPaneBillingSetting = () => {
 												onClick={() => {
 													setCards(cards => {
 														resetAllCardDefault(cards, setCards)
-														cards[i][CARD_IS_DEFAULT] = true
+														cards[i][IS_DEFAULT] = true
 														return [...cards]
 													})
 												}}
