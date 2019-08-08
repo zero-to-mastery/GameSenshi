@@ -39,6 +39,7 @@ const Router = props => {
 							<Route
 								key={path}
 								path={path}
+								exact={true}
 								render={props => {
 									const isAccessible =
 										accessibility === ROUTE_ACCESSIBILITY_FREE ||
