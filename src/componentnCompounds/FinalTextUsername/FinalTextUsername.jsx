@@ -11,6 +11,7 @@ const FinalTextUsername = props => {
 	const { ...restProps } = props
 	return (
 		<FinalInputText
+			name={FINAL_TEXT_USERNAME}
 			autoComplete={FINAL_TEXT_USERNAME}
 			placeholder='Username'
 			icon='tim-icons icon-single-02'
