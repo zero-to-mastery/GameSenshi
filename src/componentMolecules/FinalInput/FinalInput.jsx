@@ -9,6 +9,17 @@ const { ListText, PopoverCommon } = stopUndefined(ExportAtoms)
 const DELAY = 1000
 
 const FinalInput = props => {
+	const [localIsValid, setLocalIsValid] = useState(false)
+	const [localValue, seLocalValue] = useState('')
+
+	const defaultProps = {
+		popoverMessages: [],
+		isValid: localIsValid,
+		setIsValid: setLocalIsValid,
+		value: localValue,
+		setValue: seLocalValue,
+	}
+
 	const {
 		Component,
 		name,
@@ -29,16 +40,9 @@ const FinalInput = props => {
 		setValue,
 		defaultValue,
 		...restProps
-	} = props
+	} = { ...defaultProps, ...props }
 
 	// set default value
-	const popoverMessages_ = popoverMessages || []
-	const [localIsValid, setLocalIsValid] = useState(false)
-	const isValid_ = isValid || localIsValid
-	const setIsValid_ = setIsValid || setLocalIsValid
-	const [localValue, seLocalValue] = useState('')
-	const value_ = value || localValue
-	const setValue_ = setValue || seLocalValue
 
 	const [popoverFailedItems, setPopoverFailedItems] = useState({})
 	const [onSubmitTimeOutID, setOnSubmitTimeOutId] = useState(0)
@@ -55,9 +59,8 @@ const FinalInput = props => {
 	const [spinner, showSpinner] = useState(false)
 	const [spinner2, showSpinner2] = useState(false)
 
-	const generateTextListWithState = (validationResult, resolve) => {
-		const validationResult_ = validationResult || {}
-		const { status, message } = validationResult_
+	const generateTextListWithState = (validationResult = {}, resolve) => {
+		const { status, message } = validationResult
 		// if validationResult is undefined, it passed validation, do not show List
 		// if validationResult is {status:true/false, message:string/array of string} and if the status is true, it passed validation, show List
 		// if validationResult is string or array of string, it failed validation, show List
@@ -80,7 +83,7 @@ const FinalInput = props => {
 				state[message] = true
 				return state
 			})
-			return !popoverMessages_.includes(message)
+			return !popoverMessages.includes(message)
 		})
 
 		setFilteredMessages(filtered)
@@ -89,11 +92,11 @@ const FinalInput = props => {
 		!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
 		if (validationResult === undefined || status) {
 			// if validation passed
-			setIsValid_(true)
+			setIsValid(true)
 			resolve()
 		} else {
 			// if validation failed
-			setIsValid_(false)
+			setIsValid(false)
 			resolve(validationResult)
 		}
 		state.fulfilled = true
@@ -126,7 +129,7 @@ const FinalInput = props => {
 						}
 						state.resolve = resolve
 						state.fulfilled = false
-						setIsValid_(false)
+						setIsValid(false)
 						// don't show spinner on first time(when delay=0)
 						state.delay && showSpinner(true)
 						// validate after user stop typing for certain miliseconds
@@ -176,12 +179,12 @@ const FinalInput = props => {
 				const onChange_ = e => {
 					state.delay = DELAY
 					if (onChange === undefined || onChange(e) === undefined) {
-						setValue_(e.target.value)
+						setValue(e.target.value)
 						input.onChange(e)
 					} else {
 						const result = onChange(e)
 						if (result !== false) {
-							setValue_(result)
+							setValue(result)
 							input.onChange(e)
 						}
 					}
@@ -230,19 +233,19 @@ const FinalInput = props => {
 					(!onlyShowErrorOnSubmit || submitFailed) &&
 					!spinner &&
 					!spinner2 &&
-					!isValid_ &&
+					!isValid &&
 					((touched && !active) || (active && modified))
 
 				const hasSuccess =
 					!hideSuccess &&
 					!spinner &&
 					!spinner2 &&
-					isValid_ &&
+					isValid &&
 					((touched && !active) || (active && modified))
 
 				const spinner_ = (spinner2 && 'Puff') || (spinner && 'ThreeDots')
 
-				const result = value_ || input.value // the input.value has no purpose other than suppress uncontrollable to controllable warning
+				const result = value || input.value // the input.value has no purpose other than suppress uncontrollable to controllable warning
 				return (
 					<>
 						<Component
@@ -258,14 +261,14 @@ const FinalInput = props => {
 							onChange={onChange_}
 							onKeyPress={onKeyPress_}
 							{...restProps}>
-							{(!onlyShowErrorOnSubmit || submitFailed || isValid_) &&
+							{(!onlyShowErrorOnSubmit || submitFailed || isValid) &&
 								!spinner &&
 								!spinner2 &&
 								!submitting &&
 								!submitSucceeded &&
 								(touched || (active && modified)) && (
 									<ListText
-										isValid={isValid_}
+										isValid={isValid}
 										messages={
 											(!dirtySinceLastSubmit && submitErrors) ||
 											filteredMessages
@@ -273,14 +276,14 @@ const FinalInput = props => {
 									/>
 								)}
 						</Component>
-						{popoverMessages_.length > 0 && (
+						{popoverMessages.length > 0 && (
 							<PopoverCommon
 								isOpen={active}
 								target={name}
 								spinner={spinner_}
 								header={`${name} rules`}>
 								<ul>
-									{popoverMessages_.map((errorMessage, i) => {
+									{popoverMessages.map((errorMessage, i) => {
 										return (
 											<li
 												className={
