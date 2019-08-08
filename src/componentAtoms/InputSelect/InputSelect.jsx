@@ -3,6 +3,10 @@ import Select from 'react-select'
 import { FormGroup } from 'reactstrap'
 import classnames from 'classnames'
 
+const VALUE = 'value'
+const LABEL = 'label'
+const IS_DISABLED = 'isDisabled'
+
 const InputSelect = props => {
 	const {
 		hasDanger,
@@ -31,4 +35,4 @@ const InputSelect = props => {
 	)
 }
 
-export { InputSelect }
+export { InputSelect, VALUE, LABEL, IS_DISABLED }

@@ -3,11 +3,9 @@ import { stopUndefined } from 'utils'
 //components
 import { ExportMolecules } from 'componentMolecules'
 
-const { FinalInputSelect } = stopUndefined(ExportMolecules)
-
-const VALUE = 'value'
-const LABEL = 'label'
-const IS_DISABLED = 'isDisabled'
+const { FinalInputSelect, VALUE, LABEL, IS_DISABLED } = stopUndefined(
+	ExportMolecules
+)
 
 const FINAL_SELECT_EXPIRY_YEAR = 'expiryYear'
 
