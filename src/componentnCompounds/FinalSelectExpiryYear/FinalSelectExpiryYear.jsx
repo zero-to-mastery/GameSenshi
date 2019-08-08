@@ -24,6 +24,7 @@ const FinalSelectExpiryYear = props => {
 	const { validation, ...restProps } = props
 	return (
 		<FinalInputSelect
+			name={FINAL_SELECT_EXPIRY_YEAR}
 			placeholder='Year'
 			hideSuccess
 			validation={value => validation(value, yearOptions)}
