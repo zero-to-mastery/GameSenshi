@@ -49,6 +49,8 @@ const onSubmission = async (
 	}
 }
 
+const FORM_CARD_IS_DEFAULT = 'isDefault'
+
 // TODO more reasonable input width for all fields
 const FormCard = props => {
 	const [cardNumber, setCardNumber] = useState('')
@@ -76,7 +78,7 @@ const FormCard = props => {
 			style={window.innerWidth > 768 ? { maxWidth: 800 } : {}}
 			isOpen={isOpen}
 			toggle={toggle}
-			onExit={() => {
+			onClosed={() => {
 				setCardNumber('')
 				setHolderName('')
 				setExpiryMonth({ value: '' })
@@ -109,11 +111,11 @@ const FormCard = props => {
 				onSubmit={values => {
 					onSubmission(values, onSubmit, () => {
 						onSuccessfulSubmission({
-							isDefault,
-							cardNumber,
-							expiryMonth,
-							expiryYear,
-							holderName,
+							[FORM_CARD_IS_DEFAULT]: isDefault,
+							[FINAL_TEXT_CARD_NUMBER]: cardNumber,
+							[FINAL_SELECT_EXPIRY_MONTH]: expiryMonth,
+							[FINAL_SELECT_EXPIRY_YEAR]: expiryYear,
+							[FINAL_TEXT_CARD_HOLDER_NAME]: holderName,
 						})
 						toggle()
 					})
@@ -216,4 +218,4 @@ const FormCard = props => {
 	)
 }
 
-export { FormCard }
+export { FormCard, FORM_CARD_IS_DEFAULT }
