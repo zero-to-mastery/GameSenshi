@@ -150,7 +150,6 @@ const FormCard = props => {
 													submitRef={submitButton}
 												/>
 												<FinalTextCardHolderNamePropedDefault
-													name={FINAL_TEXT_CARD_HOLDER_NAME}
 													onValueChange={setHolderName}
 													onFocus={() => {
 														setFocus('name')
@@ -159,14 +158,12 @@ const FormCard = props => {
 												/>
 												<Row>
 													<FinalSelectExpiryMonthPropedDefault
-														name={FINAL_SELECT_EXPIRY_MONTH}
 														onFocus={() => {
 															setFocus('expiry')
 														}}
 														onValueChange={setExpiryMonth}
 													/>
 													<FinalSelectExpiryYearPropedDefault
-														name={FINAL_SELECT_EXPIRY_YEAR}
 														onFocus={() => {
 															setFocus('expiry')
 														}}
@@ -175,7 +172,6 @@ const FormCard = props => {
 												</Row>
 												<Row>
 													<FinalTextCardCVCPropedDefault
-														name={FINAL_TEXT_CARD_CVC}
 														onFocus={() => {
 															setFocus('cvc')
 														}}

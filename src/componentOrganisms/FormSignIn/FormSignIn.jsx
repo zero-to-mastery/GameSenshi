@@ -140,16 +140,10 @@ const FormSignIn = props => {
 												<small>Or Classically</small>
 											</Col>
 										</Row>
-										<FinalTextEmailPropedSignIn
-											name={FINAL_TEXT_EMAIL}
-											submitRef={submitButton}
-										/>
+										<FinalTextEmailPropedSignIn submitRef={submitButton} />
 									</>
 								)}
-								<FinalTextPasswordPropedSignIn
-									name={FINAL_TEXT_PASSWORD}
-									submitRef={submitButton}
-								/>
+								<FinalTextPasswordPropedSignIn submitRef={submitButton} />
 							</CardBody>
 							<CardFooter className='text-center'>
 								{submitError && !submitting && `Error: ${submitError}`}

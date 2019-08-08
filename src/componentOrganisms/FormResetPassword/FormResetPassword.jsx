@@ -80,7 +80,6 @@ const FormResetPassword = props => {
 													Enter email address to reset password
 												</h4>
 												<FinalTextEmailPropedForgotPassword
-													name={FINAL_TEXT_EMAIL}
 													submitRef={submitButton}
 													onChange={e => {
 														setEmail(e.target.value)

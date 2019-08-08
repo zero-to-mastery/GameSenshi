@@ -115,21 +115,18 @@ const FormSignUp = props => {
 								<Col />
 							</Row>
 							<FinalTextUsernamePropedSignUp
-								name={FINAL_TEXT_USERNAME}
 								isValid={usernameIsValid}
 								setIsValid={setUsernameIsValid}
 								submitErrors={usernameSubmitErrors}
 								submitRef={submitButton}
 							/>
 							<FinalTextEmailPropedSignUp
-								name={FINAL_TEXT_EMAIL}
 								isValid={emailIsValid}
 								setIsValid={setEmailIsValid}
 								submitErrors={emailSubmitErrors}
 								submitRef={submitButton}
 							/>
 							<FinalTextPasswordPropedSignUp
-								name={FINAL_TEXT_PASSWORD}
 								isValid={passwordIsValid}
 								setIsValid={setPasswordIsValid}
 								submitErrors={passwordSubmitErrors}

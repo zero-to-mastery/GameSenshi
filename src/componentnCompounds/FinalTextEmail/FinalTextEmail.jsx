@@ -4,6 +4,7 @@ import { stopUndefined } from 'utils'
 import { ExportMolecules } from 'componentMolecules'
 
 const { FinalInputText } = stopUndefined(ExportMolecules)
+
 const FINAL_TEXT_EMAIL = 'email'
 
 const FinalTextEmail = props => {
