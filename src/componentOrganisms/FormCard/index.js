@@ -1,3 +1,6 @@
-import { FormCard } from 'componentOrganisms/FormCard/FormCard'
+import {
+	FormCard,
+	FORM_CARD_IS_DEFAULT,
+} from 'componentOrganisms/FormCard/FormCard'
 
-export { FormCard }
+export { FormCard, FORM_CARD_IS_DEFAULT }

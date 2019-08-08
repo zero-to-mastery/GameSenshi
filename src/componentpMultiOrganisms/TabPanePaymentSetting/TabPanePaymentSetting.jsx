@@ -12,9 +12,8 @@ const {
 	FINAL_TEXT_CARD_NUMBER,
 	FINAL_SELECT_EXPIRY_MONTH,
 	FINAL_SELECT_EXPIRY_YEAR,
+	FORM_CARD_IS_DEFAULT,
 } = stopUndefined(ExportOrganisms)
-
-const IS_DEFAULT = 'isDefault'
 
 // * currently this is for demo, normally should fetch the card from api
 const defaultCards = [
@@ -22,21 +21,21 @@ const defaultCards = [
 		[FINAL_TEXT_CARD_NUMBER]: '4556949236166375',
 		[FINAL_SELECT_EXPIRY_YEAR]: '2022',
 		[FINAL_SELECT_EXPIRY_MONTH]: '06',
-		[IS_DEFAULT]: true,
+		[FORM_CARD_IS_DEFAULT]: true,
 		[FINAL_TEXT_CARD_HOLDER_NAME]: 'tester1',
 	},
 	{
 		[FINAL_TEXT_CARD_NUMBER]: '5598618172773380',
 		[FINAL_SELECT_EXPIRY_YEAR]: '2021',
 		[FINAL_SELECT_EXPIRY_MONTH]: '05',
-		[IS_DEFAULT]: false,
+		[FORM_CARD_IS_DEFAULT]: false,
 		[FINAL_TEXT_CARD_HOLDER_NAME]: 'tester2',
 	},
 ]
 
 const resetAllCardDefault = (cards = [], setCards = () => {}) => {
 	cards.forEach(card => {
-		card[IS_DEFAULT] = false
+		card[FORM_CARD_IS_DEFAULT] = false
 	})
 	setCards([...cards])
 }
@@ -45,10 +44,10 @@ const listNewCard = (cardValues, cards = [], setCards = () => {}) => {
 	//TODO property is not constant
 	const {
 		isDefault,
-		cardNumber,
-		expiryMonth,
-		expiryYear,
-		holderName,
+		[FINAL_TEXT_CARD_NUMBER]: cardNumber,
+		[FINAL_SELECT_EXPIRY_MONTH]: expiryMonth,
+		[FINAL_SELECT_EXPIRY_YEAR]: expiryYear,
+		[FINAL_TEXT_CARD_HOLDER_NAME]: holderName,
 	} = cardValues
 
 	const existingCard = cards.find(card => {
@@ -60,22 +59,22 @@ const listNewCard = (cardValues, cards = [], setCards = () => {}) => {
 
 	if (existingCard) {
 		//overwrite existing card
-		existingCard[FINAL_SELECT_EXPIRY_YEAR] = expiryYear
-		existingCard[FINAL_SELECT_EXPIRY_MONTH] = expiryMonth
+		existingCard[FINAL_SELECT_EXPIRY_YEAR] = expiryYear.value
+		existingCard[FINAL_SELECT_EXPIRY_MONTH] = expiryMonth.value
 		existingCard[FINAL_TEXT_CARD_HOLDER_NAME] = holderName
 		if (isDefault) {
 			//setting condition is to prevent there is no default card
-			existingCard[IS_DEFAULT] = isDefault
+			existingCard[FORM_CARD_IS_DEFAULT] = isDefault
 		}
 		setCards(cards => [...cards])
 	} else {
 		setCards(cards => {
 			cards.push({
 				[FINAL_TEXT_CARD_NUMBER]: cardNumber,
-				[FINAL_SELECT_EXPIRY_YEAR]: expiryYear,
-				[FINAL_SELECT_EXPIRY_MONTH]: expiryMonth,
+				[FINAL_SELECT_EXPIRY_YEAR]: expiryYear.value,
+				[FINAL_SELECT_EXPIRY_MONTH]: expiryMonth.value,
 				[FINAL_TEXT_CARD_HOLDER_NAME]: holderName,
-				[IS_DEFAULT]: isDefault || cards.length === 0,
+				[FORM_CARD_IS_DEFAULT]: isDefault || cards.length === 0,
 			})
 			return cards
 		})
@@ -118,7 +117,7 @@ const TabPanePaymentSetting = () => {
 							[FINAL_TEXT_CARD_NUMBER]: cardNumber,
 							[FINAL_SELECT_EXPIRY_MONTH]: expiryMonth,
 							[FINAL_SELECT_EXPIRY_YEAR]: expiryYear,
-							[IS_DEFAULT]: isDefaultCard,
+							[FORM_CARD_IS_DEFAULT]: isDefaultCard,
 						} = card
 						return (
 							<tr key={cardNumber.slice(-4)}>
@@ -146,7 +145,7 @@ const TabPanePaymentSetting = () => {
 												onClick={() => {
 													setCards(cards => {
 														resetAllCardDefault(cards, setCards)
-														cards[i][IS_DEFAULT] = true
+														cards[i][FORM_CARD_IS_DEFAULT] = true
 														return [...cards]
 													})
 												}}
