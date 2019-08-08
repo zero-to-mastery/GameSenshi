@@ -19,16 +19,14 @@ const onChange = (e, onValueChange = () => {}) => {
 }
 
 const FinalTextCardCVC = props => {
-	const { onValueChange, ...restProps } = props
+	const { ...restProps } = props
 	return (
 		<FinalInputText
 			name={FINAL_TEXT_CARD_CVC}
 			autoComplete='cc-csc'
 			placeholder='CVC'
 			hideSuccess
-			onChange={e => {
-				return onChange(e, onValueChange)
-			}}
+			onChange={onChange}
 			icon='tim-icons icon-lock-circle'
 			{...restProps}
 		/>
