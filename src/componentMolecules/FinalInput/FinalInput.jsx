@@ -59,8 +59,9 @@ const FinalInput = props => {
 	const [spinner, showSpinner] = useState(false)
 	const [spinner2, showSpinner2] = useState(false)
 
-	const generateTextListWithState = (validationResult = {}, resolve) => {
-		const { status, message } = validationResult
+	const generateTextListWithState = (validationResult, resolve) => {
+		const validationResult_ = validationResult || {}
+		const { status, message } = validationResult_
 		// if validationResult is undefined, it passed validation, do not show List
 		// if validationResult is {status:true/false, message:string/array of string} and if the status is true, it passed validation, show List
 		// if validationResult is string or array of string, it failed validation, show List
