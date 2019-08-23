@@ -32,8 +32,17 @@ import {
 } from 'componentnCompounds/FinalTextPassword'
 import {
 	FinalTextUsernamePropedSignUp,
+	FinalTextUsernamePropedSetting,
 	FINAL_TEXT_USERNAME,
 } from 'componentnCompounds/FinalTextUsername'
+import {
+	FinalSelectCountry,
+	FINAL_SELECT_COUNTRY,
+} from 'componentnCompounds/FinalSelectCountry'
+import {
+	FinalSelectGender,
+	FINAL_SELECT_GENDER,
+} from 'componentnCompounds/FinalSelectGender'
 
 export const ExportCompounds = {
 	...ExportMolecules,
@@ -55,5 +64,10 @@ export const ExportCompounds = {
 	FinalTextPasswordPropedSignIn,
 	FINAL_TEXT_PASSWORD,
 	FinalTextUsernamePropedSignUp,
+	FinalTextUsernamePropedSetting,
 	FINAL_TEXT_USERNAME,
+	FinalSelectCountry,
+	FINAL_SELECT_COUNTRY,
+	FinalSelectGender,
+	FINAL_SELECT_GENDER,
 }
