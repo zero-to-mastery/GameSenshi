@@ -10,4 +10,20 @@ const FinalTextUsernamePropedSignUp = props => {
 	return <FinalTextUsername validation={signUpUsernameValidation} {...props} />
 }
 
-export { FinalTextUsernamePropedSignUp, FINAL_TEXT_USERNAME }
+const FinalTextUsernamePropedSetting = props => {
+	return (
+		<FinalTextUsername
+			icon=''
+			validation={signUpUsernameValidation}
+			onlyShowErrorOnSubmit
+			placeHolder='Name'
+			{...props}
+		/>
+	)
+}
+
+export {
+	FinalTextUsernamePropedSignUp,
+	FinalTextUsernamePropedSetting,
+	FINAL_TEXT_USERNAME,
+}
