@@ -33,7 +33,7 @@ const defaultValues = {
 class StoreAuthModal extends Container {
 	constructor() {
 		super()
-		this[STATE] = defaultValues
+		this[STATE] = { ...defaultValues }
 		this[SET_STATE] = this[SET_STATE].bind(this)
 	}
 
@@ -48,7 +48,7 @@ class StoreAuthModal extends Container {
 	};
 
 	[RESET_STATE] = () => {
-		this.setState(defaultValues)
+		this.setState({ ...defaultValues })
 		return this
 	};
 

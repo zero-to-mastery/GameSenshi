@@ -19,12 +19,12 @@ const defaultValues = {
 class StoreSignIn extends Container {
 	constructor() {
 		super()
-		this[STATE] = defaultValues
+		this[STATE] = { ...defaultValues }
 		this[SET_STATE] = this[SET_STATE].bind(this)
 	}
 
 	[RESET_STATE] = () => {
-		this.setState(defaultValues)
+		this.setState({ ...defaultValues })
 		return this
 	};
 

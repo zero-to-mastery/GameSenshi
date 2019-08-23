@@ -13,7 +13,7 @@ const defaultValues = {
 class StoreRoute extends Container {
 	constructor() {
 		super()
-		this[STATE] = defaultValues
+		this[STATE] = { ...defaultValues }
 		this[SET_STATE] = this[SET_STATE].bind(this)
 	}
 	[STORE_ROUTE_INITIALIZE] = (onAutoSignedInFailed = () => {}) => {
@@ -26,7 +26,8 @@ class StoreRoute extends Container {
 	};
 
 	[RESET_STATE] = () => {
-		this[SET_STATE](defaultValues)
+		this[SET_STATE]({ ...defaultValues })
+
 		return this
 	};
 
