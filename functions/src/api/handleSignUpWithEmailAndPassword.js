@@ -75,7 +75,7 @@ const handleSignUpWithEmailAndPassword = async (_, args) => {
 			.catch(err => {
 				console.log('email verifying error', err)
 				return signUpResObj(false, INTERNAL_ERROR_CODE_4, 4, {
-					[API_SIGN_UP_EMAIL]: 'Internal Error Code 4',
+					[API_SIGN_UP_EMAIL]: INTERNAL_ERROR_CODE_4,
 				})
 			})
 
