@@ -47,7 +47,7 @@ const TabPaneAccountSettings = props => {
 												type={FINAL_TEXT_EMAIL}
 												name={FINAL_TEXT_EMAIL}
 												hideSuccess
-												onlyShowErrorOnSubmit
+												onlyShowErrorAfterSubmit
 												placeholder='email'
 												icon='tim-icons icon-email-85'
 												validation={signInEmailValidation}
@@ -102,7 +102,7 @@ const TabPaneAccountSettings = props => {
 											<FinalInputText
 												type={FINAL_TEXT_PASSWORD}
 												name={FINAL_TEXT_PASSWORD}
-												onlyShowErrorOnSubmit
+												onlyShowErrorAfterSubmit
 												hideSuccess
 												placeholder='password'
 												icon='tim-icons icon-lock-circle'

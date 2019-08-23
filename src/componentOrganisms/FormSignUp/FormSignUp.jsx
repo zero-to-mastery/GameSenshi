@@ -32,12 +32,6 @@ const {
 
 const FormSignUp = props => {
 	const submitButton = useRef(null)
-	const [emailIsValid, setEmailIsValid] = useState(undefined)
-	const [passwordIsValid, setPasswordIsValid] = useState(undefined)
-	const [usernameIsValid, setUsernameIsValid] = useState(undefined)
-	const [emailSubmitErrors, setEmailSubmitErrors] = useState(undefined)
-	const [passwordSubmitErrors, setPasswordSubmitErrors] = useState(undefined)
-	const [usernameSubmitErrors, setUsernameSubmitErrors] = useState(undefined)
 	const { signInLink, onSuccessfulSubmission, onSubmit } = props
 
 	const onSubmmission = async (
@@ -63,12 +57,6 @@ const FormSignUp = props => {
 				onSuccessfulSubmission(email, password, username)
 				return // if return undefined mean no error
 			} else {
-				setEmailIsValid(!data.email)
-				setEmailSubmitErrors(data.email)
-				setPasswordIsValid(!data.password)
-				setPasswordSubmitErrors(data.password)
-				setUsernameIsValid(!data.username)
-				setUsernameSubmitErrors(data.username)
 				return { ...data, [formErrors]: message }
 			}
 		}
@@ -114,24 +102,9 @@ const FormSignUp = props => {
 								</Col>
 								<Col />
 							</Row>
-							<FinalTextUsernamePropedSignUp
-								isValid={usernameIsValid}
-								setIsValid={setUsernameIsValid}
-								submitErrors={usernameSubmitErrors}
-								submitRef={submitButton}
-							/>
-							<FinalTextEmailPropedSignUp
-								isValid={emailIsValid}
-								setIsValid={setEmailIsValid}
-								submitErrors={emailSubmitErrors}
-								submitRef={submitButton}
-							/>
-							<FinalTextPasswordPropedSignUp
-								isValid={passwordIsValid}
-								setIsValid={setPasswordIsValid}
-								submitErrors={passwordSubmitErrors}
-								submitRef={submitButton}
-							/>
+							<FinalTextUsernamePropedSignUp submitRef={submitButton} />
+							<FinalTextEmailPropedSignUp submitRef={submitButton} />
+							<FinalTextPasswordPropedSignUp submitRef={submitButton} />
 						</CardBody>
 						<CardFooter>
 							<Row className='d-flex text-center'>

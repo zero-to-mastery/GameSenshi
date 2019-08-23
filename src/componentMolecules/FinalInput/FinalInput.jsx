@@ -9,13 +9,10 @@ const { ListText, PopoverCommon } = stopUndefined(ExportAtoms)
 const DELAY = 1000
 
 const FinalInput = props => {
-	const [localIsValid, setLocalIsValid] = useState(false)
 	const [localValue, seLocalValue] = useState('')
 
 	const defaultProps = {
 		popoverMessages: [],
-		isValid: localIsValid,
-		setIsValid: setLocalIsValid,
 		value: localValue,
 		setValue: seLocalValue,
 	}
@@ -32,10 +29,7 @@ const FinalInput = props => {
 		hideSuccess,
 		popoverMessages,
 		submitRef,
-		onlyShowErrorOnSubmit,
-		isValid,
-		setIsValid,
-		submitErrors,
+		onlyShowErrorAfterSubmit,
 		value,
 		setValue,
 		defaultValue,
@@ -93,12 +87,10 @@ const FinalInput = props => {
 		!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
 		if (validationResult === undefined || status) {
 			// if validation passed
-			setIsValid(true)
 			resolve()
 		} else {
 			// if validation failed
-			setIsValid(false)
-			resolve(validationResult)
+			resolve(filtered)
 		}
 		state.fulfilled = true
 		return filtered
@@ -130,7 +122,6 @@ const FinalInput = props => {
 						}
 						state.resolve = resolve
 						state.fulfilled = false
-						setIsValid(false)
 						// don't show spinner on first time(when delay=0)
 						state.delay && showSpinner(true)
 						// validate after user stop typing for certain miliseconds
@@ -168,6 +159,8 @@ const FinalInput = props => {
 			}}>
 			{({ input, meta }) => {
 				const {
+					error,
+					submitError,
 					touched,
 					active,
 					modified,
@@ -176,6 +169,8 @@ const FinalInput = props => {
 					submitSucceeded,
 					submitFailed,
 				} = meta
+
+				const errorMessages = error || (!dirtySinceLastSubmit && submitError)
 
 				const onChange_ = e => {
 					state.delay = DELAY
@@ -231,17 +226,19 @@ const FinalInput = props => {
 				}
 
 				const hasDanger =
-					(!onlyShowErrorOnSubmit || submitFailed) &&
+					!submitting &&
+					(!onlyShowErrorAfterSubmit || submitFailed) &&
 					!spinner &&
 					!spinner2 &&
-					!isValid &&
+					errorMessages &&
 					((touched && !active) || (active && modified))
 
 				const hasSuccess =
+					!submitting &&
 					!hideSuccess &&
 					!spinner &&
 					!spinner2 &&
-					isValid &&
+					!errorMessages &&
 					((touched && !active) || (active && modified))
 
 				const spinner_ = (spinner2 && 'Puff') || (spinner && 'ThreeDots')
@@ -262,17 +259,16 @@ const FinalInput = props => {
 							onChange={onChange_}
 							onKeyPress={onKeyPress_}
 							{...restProps}>
-							{(!onlyShowErrorOnSubmit || submitFailed || isValid) &&
+							{(!onlyShowErrorAfterSubmit || submitFailed || !errorMessages) &&
 								!spinner &&
 								!spinner2 &&
 								!submitting &&
 								!submitSucceeded &&
 								(touched || (active && modified)) && (
 									<ListText
-										isValid={isValid}
+										isValid={!errorMessages}
 										messages={
-											(!dirtySinceLastSubmit && submitErrors) ||
-											filteredMessages
+											(!dirtySinceLastSubmit && submitError) || filteredMessages
 										}
 									/>
 								)}

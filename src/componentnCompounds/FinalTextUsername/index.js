@@ -15,7 +15,7 @@ const FinalTextUsernamePropedSetting = props => {
 		<FinalTextUsername
 			icon=''
 			validation={signUpUsernameValidation}
-			onlyShowErrorOnSubmit
+			onlyShowErrorAfterSubmit
 			placeHolder='Name'
 			{...props}
 		/>
