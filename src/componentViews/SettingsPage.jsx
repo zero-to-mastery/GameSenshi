@@ -92,7 +92,7 @@ const SettingsPage = props => {
 							</Col>
 							<Col className='ml-auto' md='8'>
 								<div className='section'>
-									{tabPane === 0 && <TabPaneGeneralSettings />}
+									{tabPane === 0 && <TabPanePaymentSetting />}
 									{tabPane === 1 && <TabPanePaymentSetting />}
 									{tabPane === 2 && <TabPaneAccountSettings />}
 									{tabPane === 3 && <TabPaneNotificationSettings />}
