@@ -10,7 +10,8 @@ import { LastLocationProvider } from 'react-router-last-location'
 import { routes, redirects } from 'routes/routes'
 // constants
 import {
-	ROUTE_PAGE_INDEX,
+	ROUTE_PAGE_SIGN_IN,
+	ROUTE_PAGE_404,
 	ROUTE_TO,
 	ROUTE_FROM,
 	ROUTE_PATH,
@@ -39,7 +40,7 @@ const Router = props => {
 							<Route
 								key={path}
 								path={path}
-								exact={true}
+								exact
 								render={props => {
 									const isAccessible =
 										accessibility === ROUTE_ACCESSIBILITY_FREE ||
@@ -50,7 +51,7 @@ const Router = props => {
 									return isAccessible ? (
 										<Page {...props} />
 									) : (
-										<Redirect from={path} to={ROUTE_PAGE_INDEX} />
+										<Redirect from={path} to={ROUTE_PAGE_SIGN_IN} />
 									)
 								}}
 							/>
@@ -59,8 +60,15 @@ const Router = props => {
 					{// Redirect must be under Route to serve as "default" case
 					redirects.map(redirect => {
 						const { [ROUTE_FROM]: from, [ROUTE_TO]: to } = redirect
-						return <Redirect key={to} from={from} to={to} />
+						return <Redirect key={to} from={from} to={to} exact />
 					})}
+					<Route
+						path='/'
+						render={props => {
+							const Page404 = pages[ROUTE_PAGE_404]
+							return <Page404 {...props} />
+						}}
+					/>
 				</Switch>
 			</LastLocationProvider>
 		</ReactRouter>

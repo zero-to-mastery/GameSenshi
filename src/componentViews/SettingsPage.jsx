@@ -16,7 +16,7 @@ const {
 	IndexNavbar,
 	TabPaneAccountSettings,
 	TabPaneNotificationSettings,
-	TabPaneGeneralSettings,
+	//TabPaneGeneralSettings,
 	ImageUpload,
 	TabListVerticalPropedSettingPage,
 	TabPanePaymentSetting,

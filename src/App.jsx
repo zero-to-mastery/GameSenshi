@@ -12,6 +12,7 @@ import {
 	ROUTE_PAGE_SIGN_IN,
 	ROUTE_PAGE_SETTINGS_COMMON,
 	ROUTE_PAGE_PASSWORD_RESET,
+	ROUTE_PAGE_404,
 } from 'routes'
 // state management
 import {
@@ -31,6 +32,7 @@ const {
 	SignInPage,
 	SignUpPage,
 	PasswordResetPage,
+	Error404Page,
 	FormSignInPropedDefaultStoreSignIn,
 	ModalAuthStoreAuthModal,
 } = stopUndefined(ExportViews)
@@ -42,6 +44,7 @@ const MapRoutesToPages = {
 	[ROUTE_PAGE_SIGN_IN]: SignInPage,
 	[ROUTE_PAGE_SETTINGS_COMMON]: SettingsPage,
 	[ROUTE_PAGE_PASSWORD_RESET]: PasswordResetPage,
+	[ROUTE_PAGE_404]: Error404Page,
 }
 
 const App = props => {

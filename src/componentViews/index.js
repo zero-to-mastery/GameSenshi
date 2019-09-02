@@ -6,6 +6,7 @@ import { SettingsPage } from 'componentViews/SettingsPage'
 import { SignInPage } from 'componentViews/SignInPage'
 import { SignUpPage } from 'componentViews/SignUpPage'
 import { PasswordResetPage } from 'componentViews/PasswordResetPage'
+import { Error404Page } from 'componentViews/Error404Page'
 
 export const ExportViews = {
 	...ExportMultiOrganisms,
@@ -15,4 +16,5 @@ export const ExportViews = {
 	SignInPage,
 	SignUpPage,
 	PasswordResetPage,
+	Error404Page,
 }
