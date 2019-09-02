@@ -23,7 +23,7 @@ const STORE_USER_STATE_IS_SIGNING_IN = 'isSigningIn'
 const STORE_USER_SET_IS_SIGNING_IN = 'setIsSigningIn'
 const STORE_USER_STATE_IS_SOFT_SIGNED_IN = 'isSoftSignedIn'
 
-const defaultValues = {
+const defaultValues = () => ({
 	[USER]: '',
 	[STORE_USER_STATE_IS_SIGNING_IN]: false,
 	[USER_UID]: '',
@@ -33,19 +33,19 @@ const defaultValues = {
 	[USER_LANGUAGES]: ['English'],
 	[USER_PHOTO_URL]: defaultAvatar,
 	[USER_SIGNED_IN]: false,
-	[STORE_USER_STATE_IS_SOFT_SIGNED_IN]: true,
+	[STORE_USER_STATE_IS_SOFT_SIGNED_IN]: false,
 	[USER_BIRTH_DATE]: new Date(2000, 0, 1),
 	[USER_DISPLAY_NAME]: '',
 	[USER_PHONE_NUMBER]: '',
 	[USER_PROVIDER_DATA]: [],
 	[USER_EMAIL_IS_VERIFIED]: false,
-}
+})
 
 class UserContainer extends Container {
-	state = defaultValues
+	state = defaultValues()
 
 	resetState = () => {
-		this.setState(defaultValues)
+		this.setState(defaultValues())
 		return this
 	}
 
