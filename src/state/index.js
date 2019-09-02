@@ -1,7 +1,7 @@
 import { Subscribe, Provider } from 'unstated'
 import { STATE, RESET_STATE } from 'state/constants'
 import { StateContainer } from 'state/StateContainer'
-import CardContainer from 'state/CardContainer'
+
 import {
 	UserContainer,
 	USER_SIGNED_IN,
@@ -67,7 +67,6 @@ import {
 	STORE_PROGRESS_STATE_IS_OPEN,
 } from 'state/Progress'
 
-const cardStore = new CardContainer()
 const userStore = new UserContainer()
 
 export {
@@ -76,7 +75,6 @@ export {
 	Provider,
 	Subscribe,
 	StateContainer,
-	cardStore,
 	userStore,
 	USER_SIGNED_IN,
 	STORE_USER_STATE_IS_SIGNING_IN,
