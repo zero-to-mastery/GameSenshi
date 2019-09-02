@@ -117,28 +117,6 @@
 			"pre-commit": "pretty-quick --staged"
 		}
 	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"prettier/react",
-			"eslint:recommended",
-			"plugin:prettier/recommended"
-		],
-		"rules": {
-			"no-console": "off",
-			"no-unused-vars": 1
-		},
-		"settings": {
-			"import/resolver": {
-				"node": {
-					"moduleDirectory": [
-						"node_modules",
-						"src/"
-					]
-				}
-			}
-		}
-	},
 	"browserslist": [
 		">0.2%",
 		"not dead",
