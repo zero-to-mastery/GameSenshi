@@ -26,7 +26,6 @@ const history = createBrowserHistory()
 
 const Router = memo(props => {
 	const { children, pages, isUserSignedIn } = props
-	console.log(isUserSignedIn)
 	return (
 		<ReactRouter history={history}>
 			<LastLocationProvider>
