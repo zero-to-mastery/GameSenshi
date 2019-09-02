@@ -22,18 +22,18 @@ const STORE_AUTH_MODAL_ON_AUTH_STATE_CHANGE = 'onAuthStateChange'
 const STORE_AUTH_MODAL_PROCESS_REDIRECT_RESULT = 'processRedirectResult'
 const STORE_AUTH_MODAL_ON_CONTINUE = 'onSuccessfulSubmission'
 
-const defaultValues = {
+const defaultValues = () => ({
 	[STORE_AUTH_MODAL_STATE_BODY]: '',
 	[STORE_AUTH_MODAL_STATE_TITLE]: '',
 	[STORE_AUTH_MODAL_STATE_IS_OPEN]: false,
 	[STORE_AUTH_MODAL_STATE_LOADER]: false,
 	[STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK]: () => {},
-}
+})
 
 class StoreAuthModal extends Container {
 	constructor() {
 		super()
-		this[STATE] = { ...defaultValues }
+		this[STATE] = defaultValues()
 		this[SET_STATE] = this[SET_STATE].bind(this)
 	}
 
@@ -48,7 +48,7 @@ class StoreAuthModal extends Container {
 	};
 
 	[RESET_STATE] = () => {
-		this.setState({ ...defaultValues })
+		this.setState(defaultValues())
 		return this
 	};
 

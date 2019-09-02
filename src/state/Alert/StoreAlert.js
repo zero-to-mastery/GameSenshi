@@ -12,22 +12,22 @@ const STORE_ALERT_SHOW = 'show'
 const DEFAULT_ICON = 'tim-icons icon-bell-55'
 const DEFAULT_COLOR = 'success'
 
-const defaultValues = {
+const defaultValues = () => ({
 	[STORE_ALERT_STATE_BODY]: '',
 	[STORE_ALERT_STATE_IS_OPEN]: false,
 	[STORE_ALERT_STATE_COLOR]: DEFAULT_COLOR,
 	[STORE_ALERT_STATE_ICON]: DEFAULT_ICON,
-}
+})
 
 class StoreAlert extends Container {
 	constructor() {
 		super()
-		this[STATE] = { ...defaultValues }
+		this[STATE] = defaultValues()
 		this[SET_STATE] = this[SET_STATE].bind(this)
 	}
 
 	[RESET_STATE] = () => {
-		this.setState({ ...defaultValues })
+		this.setState(defaultValues())
 		return this
 	};
 

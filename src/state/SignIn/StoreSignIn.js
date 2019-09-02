@@ -10,21 +10,21 @@ const STORE_SIGN_IN_SHOW = 'show'
 const STORE_SIGN_IN_CLOSE = 'close'
 const STORE_SIGN_IN_TOGGLE = 'toggle'
 
-const defaultValues = {
+const defaultValues = () => ({
 	[STORE_SIGN_IN_STATE_EMAIL]: '',
 	[STORE_SIGN_IN_STATE_IS_OPEN]: false,
 	[STORE_SIGN_IN_STATE_SUBMITTED_CALLBACK]: () => {},
-}
+})
 
 class StoreSignIn extends Container {
 	constructor() {
 		super()
-		this[STATE] = { ...defaultValues }
+		this[STATE] = defaultValues()
 		this[SET_STATE] = this[SET_STATE].bind(this)
 	}
 
 	[RESET_STATE] = () => {
-		this.setState({ ...defaultValues })
+		this.setState(defaultValues())
 		return this
 	};
 
