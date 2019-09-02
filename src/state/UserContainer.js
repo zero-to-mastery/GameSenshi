@@ -20,7 +20,8 @@ import {
 import defaultAvatar from 'assets/img/placeholder.jpg'
 
 const STORE_USER_STATE_IS_SIGNING_IN = 'isSigningIn'
-const STORE_USER_SET_IS_SIGNING_IN = 'isSigningIn'
+const STORE_USER_SET_IS_SIGNING_IN = 'setIsSigningIn'
+const STORE_USER_STATE_IS_SOFT_SIGNED_IN = 'isSoftSignedIn'
 
 const defaultValues = {
 	[USER]: '',
@@ -32,6 +33,7 @@ const defaultValues = {
 	[USER_LANGUAGES]: ['English'],
 	[USER_PHOTO_URL]: defaultAvatar,
 	[USER_SIGNED_IN]: false,
+	[STORE_USER_STATE_IS_SOFT_SIGNED_IN]: true,
 	[USER_BIRTH_DATE]: new Date(2000, 0, 1),
 	[USER_DISPLAY_NAME]: '',
 	[USER_PHONE_NUMBER]: '',
@@ -55,6 +57,7 @@ class UserContainer extends Container {
 			this.state = {
 				...this.state,
 				...user,
+				[STORE_USER_STATE_IS_SOFT_SIGNED_IN]: true,
 			}
 			this[STORE_USER_SET_IS_SIGNING_IN](true, onAutoSignedInFailed)
 		}
@@ -135,6 +138,8 @@ class UserContainer extends Container {
 
 export {
 	UserContainer,
+	USER_SIGNED_IN,
 	STORE_USER_STATE_IS_SIGNING_IN,
 	STORE_USER_SET_IS_SIGNING_IN,
+	STORE_USER_STATE_IS_SOFT_SIGNED_IN,
 }

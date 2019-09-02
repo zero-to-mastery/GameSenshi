@@ -4,8 +4,10 @@ import { StateContainer } from 'state/StateContainer'
 import CardContainer from 'state/CardContainer'
 import {
 	UserContainer,
+	USER_SIGNED_IN,
 	STORE_USER_STATE_IS_SIGNING_IN,
 	STORE_USER_SET_IS_SIGNING_IN,
+	STORE_USER_STATE_IS_SOFT_SIGNED_IN,
 } from 'state/UserContainer'
 
 import {
@@ -65,15 +67,6 @@ import {
 	STORE_PROGRESS_STATE_IS_OPEN,
 } from 'state/Progress'
 
-import {
-	storeRoute,
-	storeRouteOnAuthStateChanged,
-	storeRouteInitialize,
-	storeRouteSetState,
-	storeRouteResetState,
-	STORE_ROUTE_STATE_IS_SIGNED_IN,
-} from 'state/Route'
-
 const cardStore = new CardContainer()
 const userStore = new UserContainer()
 
@@ -85,8 +78,10 @@ export {
 	StateContainer,
 	cardStore,
 	userStore,
+	USER_SIGNED_IN,
 	STORE_USER_STATE_IS_SIGNING_IN,
 	STORE_USER_SET_IS_SIGNING_IN,
+	STORE_USER_STATE_IS_SOFT_SIGNED_IN,
 	storeAlert,
 	storeAlertShow,
 	storeAlertToggle,
@@ -132,10 +127,4 @@ export {
 	STORE_AUTH_MODAL_STATE_LOADER,
 	STORE_AUTH_MODAL_STATE_IS_OPEN,
 	STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK,
-	storeRoute,
-	storeRouteOnAuthStateChanged,
-	storeRouteInitialize,
-	storeRouteSetState,
-	storeRouteResetState,
-	STORE_ROUTE_STATE_IS_SIGNED_IN,
 }

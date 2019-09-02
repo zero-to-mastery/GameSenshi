@@ -18,9 +18,10 @@ import {
 import {
 	Provider,
 	Subscribe,
-	storeRoute,
+	userStore,
+	USER_SIGNED_IN,
 	STATE,
-	STORE_ROUTE_STATE_IS_SIGNED_IN,
+	STORE_USER_STATE_IS_SOFT_SIGNED_IN,
 } from 'state'
 //core components
 import { ExportViews } from 'componentViews'
@@ -61,13 +62,18 @@ const App = props => {
 	return (
 		<ApolloProvider client={apolloClient}>
 			<Provider>
-				<Subscribe to={[storeRoute]}>
+				<Subscribe to={[userStore]}>
 					{storeRoute => {
 						const {
-							[STATE]: { [STORE_ROUTE_STATE_IS_SIGNED_IN]: isUserSignedIn },
+							[STATE]: {
+								[USER_SIGNED_IN]: isUserSignedIn,
+								[STORE_USER_STATE_IS_SOFT_SIGNED_IN]: isUserSoftSignedIn,
+							},
 						} = storeRoute
 						return (
-							<Router isUserSignedIn={isUserSignedIn} pages={MapRoutesToPages}>
+							<Router
+								isUserSignedIn={isUserSignedIn || isUserSoftSignedIn}
+								pages={MapRoutesToPages}>
 								<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
 								<ModalAuthStoreAuthModal />
 							</Router>

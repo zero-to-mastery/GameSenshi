@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import {
 	Router as ReactRouter,
 	Route,
@@ -10,6 +10,7 @@ import { LastLocationProvider } from 'react-router-last-location'
 import { routes, redirects } from 'routes/routes'
 // constants
 import {
+	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_SIGN_IN,
 	ROUTE_PAGE_404,
 	ROUTE_TO,
@@ -23,8 +24,9 @@ import {
 
 const history = createBrowserHistory()
 
-const Router = props => {
+const Router = memo(props => {
 	const { children, pages, isUserSignedIn } = props
+	console.log(isUserSignedIn)
 	return (
 		<ReactRouter history={history}>
 			<LastLocationProvider>
@@ -42,17 +44,21 @@ const Router = props => {
 								path={path}
 								exact
 								render={props => {
-									const isAccessible =
-										accessibility === ROUTE_ACCESSIBILITY_FREE ||
-										(accessibility === ROUTE_ACCESSIBILITY_PRIVATE &&
-											isUserSignedIn) ||
-										(accessibility === ROUTE_ACCESSIBILITY_PUBLIC &&
-											!isUserSignedIn)
-									return isAccessible ? (
-										<Page {...props} />
-									) : (
-										<Redirect from={path} to={ROUTE_PAGE_SIGN_IN} />
-									)
+									if (accessibility === ROUTE_ACCESSIBILITY_FREE) {
+										return <Page {...props} />
+									} else if (isUserSignedIn) {
+										if (accessibility === ROUTE_ACCESSIBILITY_PRIVATE) {
+											return <Page {...props} />
+										} else {
+											return <Redirect from={path} to={ROUTE_PAGE_INDEX} />
+										}
+									} else {
+										if (accessibility === ROUTE_ACCESSIBILITY_PUBLIC) {
+											return <Page {...props} />
+										} else {
+											return <Redirect from={path} to={ROUTE_PAGE_SIGN_IN} />
+										}
+									}
 								}}
 							/>
 						)
@@ -73,6 +79,6 @@ const Router = props => {
 			</LastLocationProvider>
 		</ReactRouter>
 	)
-}
+})
 
 export { Router, history }

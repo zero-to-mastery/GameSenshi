@@ -3,12 +3,7 @@ import ReactDOM from 'react-dom'
 import App from 'App'
 import * as serviceWorker from 'serviceWorker'
 // state management
-import {
-	storeAuthModalInitialize,
-	userStore,
-	storeAlertShow,
-	storeRouteInitialize,
-} from 'state'
+import { storeAuthModalInitialize, userStore, storeAlertShow } from 'state'
 // Initialize firebase
 import 'firebaseInit'
 // styles
@@ -20,7 +15,6 @@ import 'assets/css/game-senshi.css'
 
 // check if user data in indexed db, pre-sign in user
 userStore.initialize()
-storeRouteInitialize()
 
 // modal for auth
 storeAuthModalInitialize(() => {
