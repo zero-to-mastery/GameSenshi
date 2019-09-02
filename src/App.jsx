@@ -63,13 +63,13 @@ const App = props => {
 		<ApolloProvider client={apolloClient}>
 			<Provider>
 				<Subscribe to={[userStore]}>
-					{storeRoute => {
+					{userStore => {
 						const {
 							[STATE]: {
 								[USER_SIGNED_IN]: isUserSignedIn,
 								[STORE_USER_STATE_IS_SOFT_SIGNED_IN]: isUserSoftSignedIn,
 							},
-						} = storeRoute
+						} = userStore
 						return (
 							<Router
 								isUserSignedIn={isUserSignedIn || isUserSoftSignedIn}
