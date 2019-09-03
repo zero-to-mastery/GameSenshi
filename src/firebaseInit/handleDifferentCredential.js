@@ -1,46 +1,13 @@
 import React from 'react'
 import reactElementToJSXString from 'react-element-to-jsx-string'
-// firebase
-import * as firebase from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/functions'
-import 'firebase/storage'
 // states
 import {
-	RESET_STATE,
 	storeAlertShow,
-	userStore,
 	storeSignInShow,
 	storeAuthModalShow,
 	storeAuthModalClose,
 	storeAuthModalSetItem,
-	storeAuthModalRemoveItem,
-	storeAuthModalOnAuthStateChange,
-	storeAuthModalProcessRedirectResult,
 } from 'state'
-import * as allStore from 'state'
-
-const env = process.env
-
-const firebaseConfig = {
-	apiKey: env.REACT_APP_API_KEY,
-	authDomain: env.REACT_APP_AUTH_DOMAIN,
-	databaseURL: env.REACT_APP_DATABASE_URL,
-	projectId: env.REACT_APP_PROJECT_ID,
-	storageBucket: env.REACT_APP_STORAGE_BUCKET,
-	messagingSenderId: env.REACT_APP_MESSAGING_SENDER_ID,
-	appId: env.REACT_APP_APP_ID,
-}
-
-firebase.initializeApp(firebaseConfig)
-
-// load default storage bucket
-const firebaseDefaultStorage = firebase.storage()
-
-const auth = firebase.auth
-
-// use device default language
-auth().useDeviceLanguage()
 
 const handleDifferentCredential = (auth, email, credential) => {
 	auth()
@@ -150,56 +117,4 @@ const handleDifferentCredential = (auth, email, credential) => {
 		})
 }
 
-// user auth listener
-auth().onAuthStateChanged(signedInUser => {
-	storeAuthModalOnAuthStateChange()
-	userStore.onAuthStateChanged(signedInUser)
-	// reset all store if user sign out
-	if (!signedInUser) {
-		for (let store in allStore) {
-			try {
-				allStore[store][RESET_STATE]()
-			} catch (e) {
-				//
-			}
-		}
-	}
-})
-
-// listener to get back sign in token from federated identity provider
-auth()
-	.getRedirectResult()
-	.then(result => {
-		// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
-		const showAlert = name2 => {
-			storeAlertShow(
-				<span>
-					Successfully linked your <strong>{name2}</strong> account!
-				</span>,
-				'success',
-				'tim-icons icon-bell-55'
-			)
-		}
-		const linkWithRedirect = provider2 => {
-			result.user.linkWithRedirect(new auth[provider2]())
-		}
-		storeAuthModalProcessRedirectResult(showAlert, linkWithRedirect)
-	})
-	.catch(err => {
-		// remove this item whether it is success or not
-		storeAuthModalRemoveItem()
-		const { code, credential, email } = err
-		if (code === 'auth/account-exists-with-different-credential') {
-			handleDifferentCredential(auth, email, credential)
-		}
-	})
-
-const functions = firebase.functions()
-
-export {
-	functions,
-	firebase,
-	auth,
-	firebaseDefaultStorage,
-	handleDifferentCredential,
-}
+export { handleDifferentCredential }
