@@ -39,4 +39,12 @@ const simplerResponseHandling = (
 	return resObj(status, simplerErrorMessage(err, defaultErrorMessage))
 }
 
-export { resObj, signUpResObj, simplerResponseHandling }
+export {
+	resObj,
+	signUpResObj,
+	simplerResponseHandling,
+	API_STATUS,
+	API_CODE,
+	API_MESSAGE,
+	API_DATA,
+}
