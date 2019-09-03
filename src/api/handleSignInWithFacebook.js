@@ -5,7 +5,7 @@ const provider = new auth.FacebookAuthProvider()
 const handleSignInWithFacebook = onFailure => {
 	auth()
 		.signInWithRedirect(provider)
-		.catch(onFailure.log)
+		.catch(onFailure)
 }
 
 export default handleSignInWithFacebook
