@@ -6,7 +6,7 @@ const handlePasswordReset = email => {
 	return auth()
 		.sendPasswordResetEmail(email)
 		.then(() => {
-			// Email sent success, return undefined
+			return simplerResponseHandling(true)
 		})
 		.catch(err => {
 			return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_3, err)

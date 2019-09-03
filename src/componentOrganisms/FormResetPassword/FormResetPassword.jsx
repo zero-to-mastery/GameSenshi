@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 import { stopUndefined } from 'utils'
 // routing
 import { Link } from 'react-router-dom'
@@ -30,6 +30,14 @@ const FormResetPassword = props => {
 	const [email, setEmail] = useState('')
 	const submitButton = useRef(null)
 
+	const onSuccessfulSubmission = useCallback(() => {
+		setSent(true)
+	}, [])
+
+	const onEmailChange = useCallback(e => {
+		setEmail(e.target.value)
+	}, [])
+
 	const { linkSignIn, onSubmit } = props
 
 	return (
@@ -40,17 +48,8 @@ const FormResetPassword = props => {
 						initialValues={{
 							[FINAL_TEXT_EMAIL]: '',
 						}}
-						onSubmit={async (formError, values) => {
-							const isPasswordResetFailed = await onSubmit(
-								values[FINAL_TEXT_EMAIL]
-							)
-							if (isPasswordResetFailed) {
-								return { [formError]: isPasswordResetFailed }
-							} else {
-								setSent(true)
-								return
-							}
-						}}>
+						onSubmit={onSubmit}
+						onSuccessfulSubmission={onSuccessfulSubmission}>
 						{({ submitError, handleSubmit, submitting }) => {
 							return (
 								<Form action='' className='form' method=''>
@@ -81,9 +80,7 @@ const FormResetPassword = props => {
 												</h4>
 												<FinalTextEmailPropedForgotPassword
 													submitRef={submitButton}
-													onChange={e => {
-														setEmail(e.target.value)
-													}}
+													onChange={onEmailChange}
 												/>
 											</CardBody>
 											<CardFooter className='text-center'>
@@ -128,4 +125,4 @@ const FormResetPassword = props => {
 	)
 }
 
-export { FormResetPassword }
+export { FormResetPassword, FINAL_TEXT_EMAIL }
