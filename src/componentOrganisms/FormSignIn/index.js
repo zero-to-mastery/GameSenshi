@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 // routing
 import { withLastLocation } from 'routes'
 // constants
@@ -12,6 +12,8 @@ import {
 	SIGN_IN_FORM_STATE_IS_OPEN,
 	SIGN_IN_FORM_TOGGLE,
 	SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION,
+	FINAL_TEXT_EMAIL,
+	FINAL_TEXT_PASSWORD,
 } from 'componentOrganisms/FormSignIn/FormSignIn'
 // store
 import {
@@ -26,13 +28,22 @@ import {
 // inject staple props that suitable for this app
 const FormSignInPropedDefault = withLastLocation(props => {
 	const { history, lastLocation, ...restProps } = props
+
+	const onSubmit = useCallback(values => {
+		return handleSignInWithEmailAndPassword(
+			values[FINAL_TEXT_EMAIL],
+			values[FINAL_TEXT_PASSWORD]
+		)
+	}, [])
+
+	const onSuccessfulSubmission = useCallback(() => {
+		onSignedInRouting(lastLocation)
+	}, [])
 	return (
 		<FormSignIn
 			forgotPasswordLink={ROUTE_PAGE_PASSWORD_RESET}
-			onSubmit={handleSignInWithEmailAndPassword}
-			onSuccessfulSubmission={() => {
-				onSignedInRouting(lastLocation)
-			}}
+			onSubmit={onSubmit}
+			onSuccessfulSubmission={onSuccessfulSubmission}
 			{...restProps}
 		/>
 	)

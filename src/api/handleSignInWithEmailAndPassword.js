@@ -8,7 +8,7 @@ const handleSignInWithEmailAndPassword = async (email, password) => {
 
 	return auth()
 		.signInWithEmailAndPassword(email, password)
-		.then(() => {}) // return undefined if login success
+		.then(() => simplerResponseHandling(true))
 		.catch(err => {
 			// Handle Errors here.
 			switch (err.code) {
@@ -16,7 +16,7 @@ const handleSignInWithEmailAndPassword = async (email, password) => {
 				case 'auth/user-disabled':
 				case 'auth/user-not-found':
 				case 'auth/wrong-password':
-					return 'Invalid Email or Password'
+					return simplerResponseHandling(false, 'Invalid Email or Password')
 				default:
 					return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_4, err)
 			}

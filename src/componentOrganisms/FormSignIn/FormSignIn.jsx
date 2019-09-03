@@ -36,23 +36,6 @@ const SIGN_IN_FORM_STATE_IS_OPEN = 'isOPne'
 const SIGN_IN_FORM_TOGGLE = 'toggle'
 const SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
-const onSubmission = async (
-	formError,
-	values,
-	onSubmit = () => {},
-	onSuccessfulSubmission = () => {}
-) => {
-	const { [FINAL_TEXT_EMAIL]: email, [FINAL_TEXT_PASSWORD]: password } = values
-	const isSignInFailed = await onSubmit(email, password)
-	if (isSignInFailed) {
-		return { [formError]: isSignInFailed }
-	} else {
-		onSuccessfulSubmission()
-		return
-		// if undefined mean no error
-	}
-}
-
 const FormSignIn = props => {
 	const submitButton = useRef(null) //submit button reference
 
@@ -104,14 +87,8 @@ const FormSignIn = props => {
 						[FINAL_TEXT_EMAIL]: passwordOnly ? email : '',
 						[FINAL_TEXT_PASSWORD]: '',
 					}}
-					onSubmit={(formError, values) => {
-						return onSubmission(
-							formError,
-							values,
-							onSubmit,
-							onSuccessfulSubmission
-						)
-					}}>
+					onSubmit={onSubmit}
+					onSuccessfulSubmission={onSuccessfulSubmission}>
 					{({ submitError, handleSubmit, submitting }) => (
 						<Form action='' className='form' method=''>
 							<CardBody>
@@ -192,4 +169,6 @@ export {
 	SIGN_IN_FORM_STATE_IS_OPEN,
 	SIGN_IN_FORM_TOGGLE,
 	SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION,
+	FINAL_TEXT_EMAIL,
+	FINAL_TEXT_PASSWORD,
 }
