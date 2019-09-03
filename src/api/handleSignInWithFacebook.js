@@ -2,8 +2,10 @@ import { auth } from 'firebaseInit'
 
 const provider = new auth.FacebookAuthProvider()
 
-const handleSignInWithFacebook = () => {
-	auth().signInWithRedirect(provider)
+const handleSignInWithFacebook = onFailure => {
+	auth()
+		.signInWithRedirect(provider)
+		.catch(onFailure.log)
 }
 
 export default handleSignInWithFacebook

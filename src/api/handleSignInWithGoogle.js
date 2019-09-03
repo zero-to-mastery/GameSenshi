@@ -2,8 +2,10 @@ import { auth } from 'firebaseInit'
 
 const provider = new auth.GoogleAuthProvider()
 
-const handleSignInWithGoogle = () => {
-	auth().signInWithRedirect(provider)
+const handleSignInWithGoogle = onFailure => {
+	auth()
+		.signInWithRedirect(provider)
+		.catch(onFailure)
 }
 
 export default handleSignInWithGoogle
