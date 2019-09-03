@@ -2,20 +2,16 @@ import React from 'react'
 import reactElementToJSXString from 'react-element-to-jsx-string'
 // routing and api
 import { setLastRoute } from 'routes'
-import { handleSignInWithGoogle, handleSignInWithFacebook } from 'api'
+import { handleSignInWithSocials } from 'api'
 // state
 import { storeAuthModalShow, storeAuthModalSetItem } from 'state'
 
-const PROVIDER = 'provider'
-const ON_SIGN_IN = 'onSignIn'
-const apis = [
-	{ [PROVIDER]: 'Google', [ON_SIGN_IN]: handleSignInWithGoogle },
-	{ [PROVIDER]: 'Facebook', [ON_SIGN_IN]: handleSignInWithFacebook },
-]
+const providers = ['Google', 'Facebook']
 
 const buttonSocialAuthOnClicks = lastLocation => {
-	return apis.map(api => {
-		const { [PROVIDER]: provider, [ON_SIGN_IN]: onSignIn } = api
+	return providers.map((provider, i) => {
+		const onSignIn = handleSignInWithSocials[i]
+
 		return () => {
 			const body = (
 				<>

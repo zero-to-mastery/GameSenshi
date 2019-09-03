@@ -7,8 +7,7 @@ import {
 import handleIsEmailNotExist from 'api/handleIsEmailNotExist'
 import handleIsPasswordResetAble from 'api/handleIsPasswordResetAble'
 import handleSignInWithEmailAndPassword from 'api/handleSignInWithEmailAndPassword'
-import handleSignInWithGoogle from 'api/handleSignInWithGoogle'
-import handleSignInWithFacebook from 'api/handleSignInWithFacebook'
+import { handleSignInWithSocials } from 'api/handleSignInWithSocials'
 import handlePasswordReset from 'api/handlePasswordReset'
 
 export {
@@ -18,8 +17,7 @@ export {
 	API_SIGN_UP_USERNAME,
 	handleIsEmailNotExist,
 	handleIsPasswordResetAble,
-	handleSignInWithGoogle,
-	handleSignInWithFacebook,
+	handleSignInWithSocials,
 	handleSignInWithEmailAndPassword,
 	handlePasswordReset,
 }
