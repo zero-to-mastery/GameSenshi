@@ -122,4 +122,9 @@ const FormSignUp = props => {
 	)
 }
 
-export { FormSignUp }
+export {
+	FormSignUp,
+	FINAL_TEXT_EMAIL,
+	FINAL_TEXT_PASSWORD,
+	FINAL_TEXT_USERNAME,
+}

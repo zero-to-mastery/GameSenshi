@@ -5,9 +5,18 @@ import { storeAlertShow, userStore, STORE_USER_SET_IS_SIGNING_IN } from 'state'
 import { handleSignInWithEmailAndPassword } from 'api'
 // routes
 import { onSignedInRouting } from 'routes'
+import {
+	FINAL_TEXT_EMAIL,
+	FINAL_TEXT_PASSWORD,
+	FINAL_TEXT_USERNAME,
+} from 'componentOrganisms/FormSignUp/FormSignUp'
 
 const onSuccessfulSubmission = (values, lastLocation) => {
-	const { email, password, username } = values
+	const {
+		[FINAL_TEXT_EMAIL]: email,
+		[FINAL_TEXT_PASSWORD]: password,
+		[FINAL_TEXT_USERNAME]: username,
+	} = values
 	const alertBody = (
 		<>
 			Welcome {username}! An verification email has been sent to&nbsp;

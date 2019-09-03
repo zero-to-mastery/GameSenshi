@@ -30,7 +30,11 @@ const SIGNING_UP = gql`
 `
 
 const handleSignUpWithEmailAndPassword = (values, apolloClient) => {
-	const { email, password, name } = values
+	const {
+		[API_SIGN_UP_EMAIL]: email,
+		[API_SIGN_UP_PASSWORD]: password,
+		[API_SIGN_UP_USERNAME]: username,
+	} = values
 	return apolloClient
 		.mutate({
 			mutation: SIGNING_UP,
@@ -38,7 +42,7 @@ const handleSignUpWithEmailAndPassword = (values, apolloClient) => {
 				[API_DATA]: {
 					[API_SIGN_UP_EMAIL]: email,
 					[API_SIGN_UP_PASSWORD]: password,
-					[API_SIGN_UP_USERNAME]: name,
+					[API_SIGN_UP_USERNAME]: username,
 				},
 			},
 		})
@@ -50,4 +54,9 @@ const handleSignUpWithEmailAndPassword = (values, apolloClient) => {
 		})
 }
 
-export default handleSignUpWithEmailAndPassword
+export {
+	handleSignUpWithEmailAndPassword,
+	API_SIGN_UP_EMAIL,
+	API_SIGN_UP_PASSWORD,
+	API_SIGN_UP_USERNAME,
+}
