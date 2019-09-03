@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { simplerFirebaseErrorMessage } from 'utils'
+import { simplerResponseHandling } from 'utils'
 
 import {
 	API_SIGN_UP,
@@ -29,12 +29,8 @@ const SIGNING_UP = gql`
 	}
 `
 
-const handleSignUpWithEmailAndPassword = (
-	email = '',
-	password = '',
-	username = '',
-	apolloClient
-) => {
+const handleSignUpWithEmailAndPassword = (values, apolloClient) => {
+	const { email, password, name } = values
 	return apolloClient
 		.mutate({
 			mutation: SIGNING_UP,
@@ -42,7 +38,7 @@ const handleSignUpWithEmailAndPassword = (
 				[API_DATA]: {
 					[API_SIGN_UP_EMAIL]: email,
 					[API_SIGN_UP_PASSWORD]: password,
-					[API_SIGN_UP_USERNAME]: username,
+					[API_SIGN_UP_USERNAME]: name,
 				},
 			},
 		})
@@ -50,7 +46,7 @@ const handleSignUpWithEmailAndPassword = (
 			return res[API_DATA][API_SIGN_UP]
 		})
 		.catch(err => {
-			return simplerFirebaseErrorMessage(err, UNEXPECTED_ERROR_CODE_5)
+			return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err)
 		})
 }
 

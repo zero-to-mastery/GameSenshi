@@ -1,5 +1,4 @@
-import { resObj, signUpResObj } from 'utils/objects'
-import { simplerFirebaseErrorMessage } from 'utils/simplerErrorMessages'
+import { resObj, signUpResObj, simplerResponseHandling } from 'utils/objects'
 import { stopUndefined } from 'utils/codeToolings'
 
 import {
@@ -21,9 +20,9 @@ import {
 
 export {
 	resObj,
+	simplerResponseHandling,
 	signUpResObj,
 	stopUndefined,
-	simplerFirebaseErrorMessage,
 	signUpEmailValidation,
 	signUpPasswordValidation,
 	checkBoxValidation,

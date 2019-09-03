@@ -4,6 +4,7 @@ const UNEXPECTED_ERROR_CODE_3 = 'Unexpected Error Code 3'
 const UNEXPECTED_ERROR_CODE_4 = 'Unexpected Error Code 4'
 const UNEXPECTED_ERROR_CODE_5 = 'Unexpected Error Code 5'
 const UNEXPECTED_ERROR_CODE_6 = 'Unexpected Error Code 6'
+const UNEXPECTED_ERROR_CODE_7 = 'Unexpected Error Code 7'
 
 export {
 	UNEXPECTED_ERROR_CODE_1,
@@ -12,4 +13,5 @@ export {
 	UNEXPECTED_ERROR_CODE_4,
 	UNEXPECTED_ERROR_CODE_5,
 	UNEXPECTED_ERROR_CODE_6,
+	UNEXPECTED_ERROR_CODE_7,
 }
