@@ -60,15 +60,12 @@ const FinalInput = props => {
 		// if validationResult is {status:true/false, message:string/array of string} and if the status is true, it passed validation, show List
 		// if validationResult is string or array of string, it failed validation, show List
 
-		const isObj = validationResult && status
-		const messages = isObj
-			? Array.isArray(message)
-				? message
-				: [message]
+		const messages = message
+			? [message]
 			: Array.isArray(validationResult)
 			? validationResult
 			: validationResult
-			? [validationResult]
+			? validationResult
 			: []
 
 		setPopoverFailedItems({})
