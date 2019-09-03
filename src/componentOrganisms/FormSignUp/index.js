@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { FormSignUp } from 'componentOrganisms/FormSignUp/FormSignUp'
 // routing
 import { withLastLocation, ROUTE_PAGE_SIGN_IN } from 'routes'
@@ -11,26 +11,24 @@ import { onSuccessfulSubmission } from 'componentOrganisms/FormSignUp/utils'
 
 const FormSignUpPropedDefault = withLastLocation(props => {
 	const { lastLocation, ...restProps } = props
+	// const onSubmit = useCallback(
+	// 	(values = { email: '', password: '', username: '' }) => {
+	// 		return handleSignUpWithEmailAndPassword(values, apolloClient)
+	// 	},
+	// 	[]
+	// )
+	const onSuccessfulSubmission_ = useCallback(values => {
+		onSuccessfulSubmission(values, lastLocation)
+	})
 	return (
 		<ApolloConsumer>
 			{apolloClient => (
 				<FormSignUp
 					signInLink={ROUTE_PAGE_SIGN_IN}
-					onSubmit={(email = '', password = '', username = '') => {
-						return handleSignUpWithEmailAndPassword(
-							email,
-							password,
-							username,
-							apolloClient
-						)
+					onSubmit={values => {
+						return handleSignUpWithEmailAndPassword(values, apolloClient)
 					}}
-					onSuccessfulSubmission={(
-						email = '',
-						password = '',
-						username = ''
-					) => {
-						onSuccessfulSubmission(email, password, username, lastLocation)
-					}}
+					onSuccessfulSubmission={onSuccessfulSubmission_}
 					{...restProps}
 				/>
 			)}

@@ -6,12 +6,8 @@ import { handleSignInWithEmailAndPassword } from 'api'
 // routes
 import { onSignedInRouting } from 'routes'
 
-const onSuccessfulSubmission = (
-	email = '',
-	password = '',
-	username = '',
-	lastLocation
-) => {
+const onSuccessfulSubmission = (values, lastLocation) => {
+	const { email, password, username } = values
 	const alertBody = (
 		<>
 			Welcome {username}! An verification email has been sent to{' '}

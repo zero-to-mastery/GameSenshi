@@ -34,34 +34,6 @@ const FormSignUp = props => {
 	const submitButton = useRef(null)
 	const { signInLink, onSuccessfulSubmission, onSubmit } = props
 
-	const onSubmmission = async (
-		formErrors,
-		values,
-		onSubmit = () => {},
-		onSuccessfulSubmission = () => {}
-	) => {
-		const {
-			[FINAL_TEXT_EMAIL]: email,
-			[FINAL_TEXT_PASSWORD]: password,
-			[FINAL_TEXT_USERNAME]: username,
-		} = values
-		const isSignUpFailed = await onSubmit(email, password, username)
-
-		if (typeof isSignUpFailed === 'string') {
-			// respond is not res obj mean the error is on client side
-			return { [formErrors]: isSignUpFailed }
-		} else {
-			const { status, data, message } = isSignUpFailed
-
-			if (status) {
-				onSuccessfulSubmission(email, password, username)
-				return // if return undefined mean no error
-			} else {
-				return { ...data, [formErrors]: message }
-			}
-		}
-	}
-
 	return (
 		<Card className='card-register' style={{ zIndex: 1000 }}>
 			<CardHeader>
@@ -83,14 +55,8 @@ const FormSignUp = props => {
 					[FINAL_TEXT_PASSWORD]: '',
 					[FINAL_TEXT_USERNAME]: '',
 				}}
-				onSubmit={(formErrors, values) => {
-					return onSubmmission(
-						formErrors,
-						values,
-						onSubmit,
-						onSuccessfulSubmission
-					)
-				}}>
+				onSubmit={onSubmit}
+				onSuccessfulSubmission={onSuccessfulSubmission}>
 				{({ handleSubmit, submitting, submitError }) => (
 					<Form className='form'>
 						<CardBody>
