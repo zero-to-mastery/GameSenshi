@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { stopUndefined } from 'utils'
 // Apollo
-import { tempClient, initApollo } from 'apolloInit'
+import { tempClient, initApollo, setClient } from 'apolloInit'
 import { ApolloProvider } from 'react-apollo'
 // routing
 import { Router } from 'routes'
@@ -55,6 +55,7 @@ const App = props => {
 		const initApolloClient = async () => {
 			const apolloClient = await initApollo()
 			setApolloClient(apolloClient)
+			setClient(apolloClient)
 		}
 		initApolloClient()
 	}, [])
