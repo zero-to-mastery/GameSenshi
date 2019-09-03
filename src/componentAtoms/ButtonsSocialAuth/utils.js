@@ -1,7 +1,7 @@
 import React from 'react'
 import reactElementToJSXString from 'react-element-to-jsx-string'
 // routing and api
-import { onSignedInRouting } from 'routes'
+import { setLastRoute } from 'routes'
 import { handleSignInWithGoogle, handleSignInWithFacebook } from 'api'
 // state
 import { storeAuthModalShow, storeAuthModalSetItem } from 'state'
@@ -34,7 +34,7 @@ const buttonSocialAuthOnClicks = lastLocation => {
 			)
 			const title2 = 'Signing You In...'
 			storeAuthModalSetItem(title2, body2)
-			onSignedInRouting(lastLocation)
+			setLastRoute(lastLocation)
 			onSignIn()
 		}
 	})

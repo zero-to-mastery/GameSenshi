@@ -1,3 +1,6 @@
+import { createBrowserHistory } from 'history'
+const history = createBrowserHistory()
+
 const ROUTE = 'route'
 const ROUTE_TO = ROUTE + 'To'
 const ROUTE_FROM = ROUTE + 'From'
@@ -45,4 +48,5 @@ export {
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
 	ROUTE_PAGE_PASSWORD_RESET,
 	ROUTE_PAGE_404,
+	history,
 }

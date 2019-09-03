@@ -4,29 +4,34 @@ import {
 	storeAlertShow,
 	storeAuthModalRemoveItem,
 	storeAuthModalProcessRedirectResult,
+	storeAuthModalShow,
 } from 'state'
 
 import { handleDifferentCredential } from 'firebaseInit/handleDifferentCredential'
-import { simplerResponseHandling, API_MESSAGE } from 'utils'
+import { simplerErrorMessage } from 'utils'
 import { UNEXPECTED_ERROR_CODE_6 } from 'constantValues'
 
 const getRedirectResult = (promise, auth) =>
 	promise
 		.then(result => {
-			// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
-			const showAlert = name2 => {
-				storeAlertShow(
-					<span>
-						Successfully linked your <strong>{name2}</strong> account!
-					</span>,
-					'success',
-					'tim-icons icon-bell-55'
-				)
+			const { user } = result
+			if (user) {
+				// need this condition because this part run when webpage start
+				// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
+				const showAlert = name2 => {
+					storeAlertShow(
+						<span>
+							Successfully linked your <strong>{name2}</strong> account!
+						</span>,
+						'success',
+						'tim-icons icon-bell-55'
+					)
+				}
+				const linkWithRedirect = provider2 => {
+					user.linkWithRedirect(new auth[provider2]())
+				}
+				storeAuthModalProcessRedirectResult(showAlert, linkWithRedirect)
 			}
-			const linkWithRedirect = provider2 => {
-				result.user.linkWithRedirect(new auth[provider2]())
-			}
-			storeAuthModalProcessRedirectResult(showAlert, linkWithRedirect)
 		})
 		.catch(err => {
 			// remove this item whether it is success or not
@@ -35,12 +40,8 @@ const getRedirectResult = (promise, auth) =>
 			if (code === 'auth/account-exists-with-different-credential') {
 				handleDifferentCredential(auth, email, credential)
 			} else {
-				const body = simplerResponseHandling(
-					false,
-					UNEXPECTED_ERROR_CODE_6,
-					err
-				)[API_MESSAGE]
-				storeAlertShow('Error', body, false)
+				const body = simplerErrorMessage(false, UNEXPECTED_ERROR_CODE_6, err)
+				storeAuthModalShow('Error', body, false)
 			}
 		})
 

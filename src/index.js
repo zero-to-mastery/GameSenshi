@@ -4,6 +4,7 @@ import App from 'App'
 import * as serviceWorker from 'serviceWorker'
 // state management
 import { storeAuthModalInitialize, userStore, storeAlertShow } from 'state'
+import { goLastRoute } from 'routes'
 // Initialize firebase
 import 'firebaseInit'
 // styles
@@ -15,6 +16,7 @@ import 'assets/css/game-senshi.css'
 
 // check if user data in indexed db, pre-sign in user
 userStore.initialize()
+goLastRoute()
 
 // modal for auth
 storeAuthModalInitialize(() => {

@@ -43,6 +43,7 @@ export {
 	resObj,
 	signUpResObj,
 	simplerResponseHandling,
+	simplerErrorMessage,
 	API_STATUS,
 	API_CODE,
 	API_MESSAGE,

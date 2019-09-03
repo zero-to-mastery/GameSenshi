@@ -2,6 +2,7 @@ import {
 	resObj,
 	signUpResObj,
 	simplerResponseHandling,
+	simplerErrorMessage,
 	API_STATUS,
 	API_CODE,
 	API_MESSAGE,
@@ -29,6 +30,7 @@ import {
 export {
 	resObj,
 	simplerResponseHandling,
+	simplerErrorMessage,
 	API_STATUS,
 	API_CODE,
 	API_MESSAGE,

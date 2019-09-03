@@ -5,7 +5,6 @@ import {
 	Switch,
 	Redirect,
 } from 'react-router-dom'
-import { createBrowserHistory } from 'history'
 import { LastLocationProvider } from 'react-router-last-location'
 import { routes, redirects } from 'routes/routes'
 // constants
@@ -20,9 +19,8 @@ import {
 	ROUTE_ACCESSIBILITY_PRIVATE,
 	ROUTE_ACCESSIBILITY_PUBLIC,
 	ROUTE_ACCESSIBILITY_FREE,
+	history,
 } from 'routes/constants'
-
-const history = createBrowserHistory()
 
 const Router = memo(props => {
 	const { children, pages, isUserSignedIn } = props
@@ -80,4 +78,4 @@ const Router = memo(props => {
 	)
 })
 
-export { Router, history }
+export { Router }

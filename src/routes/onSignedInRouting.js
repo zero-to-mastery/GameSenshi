@@ -6,7 +6,7 @@
 
 import { ROUTE_PAGE_SIGN_UP, ROUTE_PAGE_SIGN_IN } from 'routes/constants'
 
-import { history } from 'routes/Router'
+import { history } from 'routes/constants'
 
 const onSignedInRouting = lastLocation => {
 	if (lastLocation) {
