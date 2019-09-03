@@ -141,7 +141,6 @@ class ComponentsNavbar extends React.Component {
 				location: { pathname },
 			},
 			state: { color, collapseOpen, collapseOut, overWidthBreakPoint },
-			setState,
 			toggleCollapse,
 			onCollapseExiting,
 			onCollapseExited,
@@ -544,11 +543,7 @@ class ComponentsNavbar extends React.Component {
 									</Collapse>
 								</Container>
 							</Navbar>
-							<AlertCommonStoreAlert
-								toggle={() => {
-									setState({ color: 'navbar-transparent' })
-								}}
-							/>
+							<AlertCommonStoreAlert />
 						</div>
 					)
 				}}
