@@ -3,6 +3,7 @@ import child_process from 'child_process'
 
 import {
 	ENV,
+	ENV_PROJECT_ID,
 	ENV_CORS_WHITELIST,
 	ENV_ENABLE_PLAYGROUND,
 	ENV_VERIFY_EMAIL_API_URL,
@@ -15,6 +16,7 @@ const env = process.env
 
 const obj = {
 	[ENV]: {
+		[ENV_PROJECT_ID]: env[ENV_PROJECT_ID],
 		[ENV_VERIFY_EMAIL_API_URL]: env[ENV_VERIFY_EMAIL_API_URL],
 		[ENV_ENABLE_PLAYGROUND]: env[ENV_ENABLE_PLAYGROUND],
 		[ENV_APOLLO_ENGINE_API_KEY]: env[ENV_APOLLO_ENGINE_API_KEY],
