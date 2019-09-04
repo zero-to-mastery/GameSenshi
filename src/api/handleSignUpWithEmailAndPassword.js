@@ -1,57 +1,48 @@
-import gql from 'graphql-tag'
 import { simplerResponseHandling } from 'utils'
+import { auth, userCollectionRef } from 'firebaseInit'
 
 import {
-	API_SIGN_UP,
 	API_SIGN_UP_EMAIL,
 	API_SIGN_UP_PASSWORD,
 	API_SIGN_UP_USERNAME,
-	API_SIGN_UP_INPUT,
-	API_DATA,
-	API_STATUS,
-	API_CODE,
-	API_MESSAGE,
 	UNEXPECTED_ERROR_CODE_5,
+	UNEXPECTED_ERROR_CODE_7,
 } from 'constantValues'
 
-const SIGNING_UP = gql`
-	mutation signUp($${API_DATA}:${API_SIGN_UP_INPUT}!) {
-		${API_SIGN_UP}(${API_DATA}: $${API_DATA}) {
-			${API_STATUS}
-			${API_CODE}
-			${API_MESSAGE}
-			${API_DATA}{
-				${API_SIGN_UP_EMAIL}
-				${API_SIGN_UP_PASSWORD}
-				${API_SIGN_UP_USERNAME}
-			}
-		}
-	}
-`
-
-const handleSignUpWithEmailAndPassword = (values, apolloClient) => {
+const handleSignUpWithEmailAndPassword = async (
+	values,
+	onSuccessfulSignUp = () => {}
+) => {
 	const {
 		[API_SIGN_UP_EMAIL]: email,
 		[API_SIGN_UP_PASSWORD]: password,
 		[API_SIGN_UP_USERNAME]: username,
 	} = values
-	return apolloClient
-		.mutate({
-			mutation: SIGNING_UP,
-			variables: {
-				[API_DATA]: {
-					[API_SIGN_UP_EMAIL]: email,
-					[API_SIGN_UP_PASSWORD]: password,
-					[API_SIGN_UP_USERNAME]: username,
-				},
-			},
+
+	return auth()
+		.createUserWithEmailAndPassword(email, password)
+		.then(async credential => {
+			const { user } = credential
+			onSuccessfulSignUp()
+			const userRef = userCollectionRef.doc(user.uid)
+			try {
+				await userRef.set({
+					email,
+					username,
+					createdAt: user.metadata.creationTime,
+				})
+			} catch (err) {
+				// * delete user if cannot create user data in database
+				// ! this can be point of failure as user delete can also failed
+				// TODO need extra handling in future, but not urgent since it is edge cases
+				await user.delete().catch()
+				return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_7, err)
+			}
+
+			await user.sendEmailVerification().catch()
+			return simplerResponseHandling(true)
 		})
-		.then(res => {
-			return res[API_DATA][API_SIGN_UP]
-		})
-		.catch(err => {
-			return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err)
-		})
+		.catch(err => simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err))
 }
 
 export {

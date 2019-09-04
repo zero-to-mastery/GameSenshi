@@ -1,8 +1,9 @@
 // firebase
-import * as firebase from 'firebase/app'
+import firebase from 'firebase/app'
 import 'firebase/auth' // https://stackoverflow.com/questions/48592656/firebase-auth-is-not-a-function/56280110#56280110
 import 'firebase/functions'
 import 'firebase/storage'
+import 'firebase/firestore'
 
 import { onAuthChanged } from 'firebaseInit/onAuthChanged'
 import { getRedirectResult } from 'firebaseInit/getRedirectResult'
@@ -37,4 +38,8 @@ getRedirectResult(auth().getRedirectResult(), auth)
 
 const functions = firebase.functions()
 
-export { functions, firebase, auth, firebaseDefaultStorage }
+const firestore = firebase.firestore()
+
+const userCollectionRef = firestore.collection('users')
+
+export { functions, firebase, auth, firebaseDefaultStorage, userCollectionRef }

@@ -7,12 +7,13 @@ const focusOnError = createDecorator()
 
 const FinalForm = props => {
 	const { onSubmit, onSuccessfulSubmission, ...otherProps } = props
+	const onSuccessfulSubmission_ = onSuccessfulSubmission || (() => {})
 	const onSubmit_ = useCallback(async values => {
 		const response = await onSubmit(values)
 		const { status, data, message } = response
 
 		if (status) {
-			onSuccessfulSubmission(values)
+			onSuccessfulSubmission_(values)
 			return undefined
 		} else if (status === false) {
 			const formError = { [FORM_ERROR]: message }

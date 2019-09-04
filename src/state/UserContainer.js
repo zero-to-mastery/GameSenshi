@@ -103,7 +103,7 @@ class UserContainer extends Container {
 				[USER_PHOTO_URL]: signedInUser[USER_PHOTO_URL] || defaultAvatar,
 				[USER_UID]: signedInUser[USER_UID],
 			}
-			this.setState(state => {
+			this[SET_STATE](state => {
 				return {
 					...state,
 					...user,

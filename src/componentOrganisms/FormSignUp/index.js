@@ -14,10 +14,8 @@ import {
 	API_SIGN_UP_PASSWORD,
 	API_SIGN_UP_USERNAME,
 } from 'api'
-// apollo
-import { getClient } from 'apolloInit'
 // utils
-import { onSuccessfulSubmission } from 'componentOrganisms/FormSignUp/utils'
+import { onSuccessfulSignUp } from 'componentOrganisms/FormSignUp/utils'
 
 const FormSignUpPropedDefault = withLastLocation(props => {
 	const { lastLocation, ...restProps } = props
@@ -27,16 +25,14 @@ const FormSignUpPropedDefault = withLastLocation(props => {
 			[API_SIGN_UP_PASSWORD]: values[FINAL_TEXT_PASSWORD],
 			[API_SIGN_UP_USERNAME]: values[FINAL_TEXT_USERNAME],
 		}
-		return handleSignUpWithEmailAndPassword(values_, getClient())
+		return handleSignUpWithEmailAndPassword(values_, () => {
+			onSuccessfulSignUp(values)
+		})
 	}, [])
-	const onSuccessfulSubmission_ = useCallback(values => {
-		onSuccessfulSubmission(values, lastLocation)
-	})
 	return (
 		<FormSignUp
 			signInLink={ROUTE_PAGE_SIGN_IN}
 			onSubmit={onSubmit}
-			onSuccessfulSubmission={onSuccessfulSubmission_}
 			{...restProps}
 		/>
 	)
