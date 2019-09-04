@@ -1,6 +1,6 @@
 // firebase
 import * as firebase from 'firebase/app'
-import 'firebase/auth'
+import 'firebase/auth' // https://stackoverflow.com/questions/48592656/firebase-auth-is-not-a-function/56280110#56280110
 import 'firebase/functions'
 import 'firebase/storage'
 
