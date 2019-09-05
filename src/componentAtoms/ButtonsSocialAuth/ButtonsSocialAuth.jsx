@@ -6,24 +6,13 @@ const ID = 'id'
 const ICON = 'icon'
 const COLOR = 'color'
 const TOOLTIP = 'tooltip'
-
-const buttons = [
-	{
-		[ID]: 'google',
-		[ICON]: 'fab fa-google',
-		[COLOR]: 'warning',
-		[TOOLTIP]: 'Sign in with Google!',
-	},
-	{
-		[ID]: 'facebook',
-		[ICON]: 'fab fa-facebook-square',
-		[COLOR]: 'facebook',
-		[TOOLTIP]: 'Sign in with Facebook!',
-	},
-]
+const BUTTONS = 'buttons'
 
 const ButtonsSocialAuth = props => {
-	const { [BUTTONS_SOCIAL_AUTH_ON_CLICKS]: onClicks } = props
+	const {
+		[BUTTONS_SOCIAL_AUTH_ON_CLICKS]: onClicks,
+		[BUTTONS]: buttons,
+	} = props
 
 	return (
 		<div className='btn-wrapper text-center'>
@@ -46,7 +35,7 @@ const ButtonsSocialAuth = props => {
 							onClick={onClicks[i]}>
 							<i className={icon} />
 						</Button>
-						<UncontrolledTooltip delay={0} target='google'>
+						<UncontrolledTooltip delay={0} target={id}>
 							{tooltip}
 						</UncontrolledTooltip>
 					</Fragment>
@@ -56,4 +45,11 @@ const ButtonsSocialAuth = props => {
 	)
 }
 
-export { ButtonsSocialAuth, BUTTONS_SOCIAL_AUTH_ON_CLICKS }
+export {
+	ButtonsSocialAuth,
+	BUTTONS_SOCIAL_AUTH_ON_CLICKS,
+	ID,
+	ICON,
+	COLOR,
+	TOOLTIP,
+}
