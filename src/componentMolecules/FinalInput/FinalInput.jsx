@@ -41,6 +41,7 @@ const FinalInput = props => {
 	const [popoverFailedItems, setPopoverFailedItems] = useState({})
 	const [onSubmitTimeOutID, setOnSubmitTimeOutId] = useState(0)
 	const [filteredMessages, setFilteredMessages] = useState([])
+	const [valid, setValid] = useState(false)
 	const [state] = useState({
 		delay: 0, // initial delay is 0 for fast first time background validation
 		timeOutID: 0,
@@ -84,9 +85,11 @@ const FinalInput = props => {
 		!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
 		if (validationResult === undefined || status) {
 			// if validation passed
+			setValid(true)
 			resolve()
 		} else {
 			// if validation failed
+			setValid(false)
 			resolve(filtered)
 		}
 		state.fulfilled = true
@@ -168,7 +171,6 @@ const FinalInput = props => {
 				} = meta
 
 				const errorMessages = error || (!dirtySinceLastSubmit && submitError)
-
 				const onChange_ = e => {
 					state.delay = DELAY
 					if (onChange === undefined || onChange(e) === undefined) {
@@ -263,7 +265,7 @@ const FinalInput = props => {
 								!submitSucceeded &&
 								(touched || (active && modified)) && (
 									<ListText
-										isValid={!errorMessages}
+										isValid={valid}
 										messages={
 											(!dirtySinceLastSubmit && submitError) || filteredMessages
 										}
