@@ -1,15 +1,18 @@
 import React, { useRef } from 'react'
 import { firebaseDefaultStorage, auth } from 'firebaseInit'
 // state management
-import { userStore, storeAlertShow, storeProgress, Subscribe } from 'state'
+import {
+	storeUser,
+	storeAlertShow,
+	storeProgress,
+	Subscribe,
+	STORE_USER_STATE_UID,
+	STORE_USER_STATE_AVATAR_URL,
+} from 'state'
 // component
 import { Button } from 'reactstrap'
 // constants
-import {
-	USER_UID,
-	USER_PHOTO_URL,
-	FIREBASE_STORAGE_USER_AVATAR,
-} from 'constantValues'
+import { FIREBASE_STORAGE_USER_AVATAR } from 'constantValues'
 // image
 import defaultAvatar from 'assets/img/placeholder.jpg'
 
@@ -23,7 +26,7 @@ const ImageUpload = props => {
 
 		if (file) {
 			const avatarRef = firebaseDefaultStorage.ref(
-				`${FIREBASE_STORAGE_USER_AVATAR}/${userStore.state[USER_UID]}.jpg`
+				`${FIREBASE_STORAGE_USER_AVATAR}/${storeUser.state[STORE_USER_STATE_UID]}.jpg`
 			)
 			const task = avatarRef.put(file)
 			task.on(
@@ -52,10 +55,10 @@ const ImageUpload = props => {
 						)
 					})
 					if (url) {
-						userStore.setState({ [USER_PHOTO_URL]: url })
+						storeUser.setState({ [STORE_USER_STATE_AVATAR_URL]: url })
 						auth()
 							.currentUser.updateProfile({
-								[USER_PHOTO_URL]: url,
+								[STORE_USER_STATE_AVATAR_URL]: url,
 							})
 							.then(() => {
 								storeProgress.close()
@@ -83,16 +86,16 @@ const ImageUpload = props => {
 		fileInput.current.click()
 	}
 	const handleRemove = () => {
-		userStore.setState({ [USER_PHOTO_URL]: defaultAvatar })
+		storeUser.setState({ [STORE_USER_STATE_AVATAR_URL]: defaultAvatar })
 		fileInput.current.value = null
 	}
 	return (
-		<Subscribe to={[userStore]}>
-			{userStore => {
+		<Subscribe to={[storeUser]}>
+			{storeUser => {
 				const {
-					state: { [USER_PHOTO_URL]: imagePreviewUrl },
+					state: { [STORE_USER_STATE_AVATAR_URL]: imagePreviewUrl },
 					resetProfileImage,
-				} = userStore
+				} = storeUser
 				return (
 					<div className='fileinput text-center'>
 						<input type='file' onChange={handleImageChange} ref={fileInput} />

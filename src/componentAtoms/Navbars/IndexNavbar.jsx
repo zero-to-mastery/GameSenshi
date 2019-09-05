@@ -3,12 +3,15 @@ import { Link, withRouter } from 'react-router-dom'
 import { auth } from 'firebaseInit'
 // state
 import {
-	userStore,
+	storeUser,
 	storeAlert,
 	Subscribe,
 	STORE_ALERT_STATE_OPEN,
 	STATE,
 	STORE_USER_STATE_SIGNING_IN,
+	STORE_USER_STATE_SIGNED_IN,
+	STORE_USER_STATE_USERNAME,
+	STORE_USER_STATE_AVATAR_URL,
 } from 'state'
 // reactstrap components
 import {
@@ -29,11 +32,6 @@ import {
 } from 'reactstrap'
 import Loader from 'react-loader-spinner'
 // constants
-import {
-	USER_SIGNED_IN,
-	USER_DISPLAY_NAME,
-	USER_PHOTO_URL,
-} from 'constantValues'
 import {
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
@@ -150,14 +148,14 @@ class ComponentsNavbar extends React.Component {
 
 		const currentPath = pathname.toLowerCase()
 		return (
-			<Subscribe to={[userStore, storeAlert]}>
-				{(userStore, storeAlert) => {
+			<Subscribe to={[storeUser, storeAlert]}>
+				{(storeUser, storeAlert) => {
 					const {
-						[USER_DISPLAY_NAME]: username,
-						[USER_SIGNED_IN]: isSignedIn,
-						[USER_PHOTO_URL]: avatarURL,
+						[STORE_USER_STATE_USERNAME]: username,
+						[STORE_USER_STATE_SIGNED_IN]: isSignedIn,
+						[STORE_USER_STATE_AVATAR_URL]: avatarURL,
 						[STORE_USER_STATE_SIGNING_IN]: isSigningIn,
-					} = userStore.state
+					} = storeUser.state
 					const { [STORE_ALERT_STATE_OPEN]: alertOpen } = storeAlert.state
 					return (
 						<div className='fixed-top'>
@@ -186,7 +184,7 @@ class ComponentsNavbar extends React.Component {
 												}}>
 												<Media
 													onError={() => {
-														userStore.resetProfileImage()
+														storeUser.resetProfileImage()
 													}}
 													src={logo}
 													alt='Game Senshi'
@@ -324,7 +322,7 @@ class ComponentsNavbar extends React.Component {
 																	style={{ height: 36, width: 36 }}>
 																	<Media
 																		onError={() => {
-																			userStore.resetProfileImage()
+																			storeUser.resetProfileImage()
 																		}}
 																		alt='user avatar'
 																		className='img-raised'
@@ -414,7 +412,7 @@ class ComponentsNavbar extends React.Component {
 																		style={{ height: 24, width: 24 }}>
 																		<Media
 																			onError={() => {
-																				userStore.resetProfileImage()
+																				storeUser.resetProfileImage()
 																			}}
 																			alt='user avatar'
 																			className='img-raised'

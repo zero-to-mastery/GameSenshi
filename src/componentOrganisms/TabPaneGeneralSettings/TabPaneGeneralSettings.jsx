@@ -5,8 +5,6 @@ import ReactDatetime from 'react-datetime'
 import { userStore } from 'state'
 // reactstrap components
 import { FormGroup, Row, Col, Form } from 'reactstrap'
-//constants
-import { USER_LANGUAGES, USER_DISPLAY_NAME } from 'constantValues'
 
 import { ExportCompounds } from 'componentnCompounds'
 const {
@@ -28,13 +26,16 @@ const languageOptions = [
 	{ value: '5', label: 'Russian', color: '#FF8B00' },
 ]
 
+const USERNAME = 'username'
+const LANGUAGES = 'languages'
+
 const TabPaneGeneralSettings = props => {
 	const { uid, gender, country, languages } = props
 
 	return (
 		<FinalForm
 			initialValues={{
-				[USER_DISPLAY_NAME]: '',
+				[USERNAME]: '',
 			}}
 			onSubmit={values => {
 				//
@@ -136,7 +137,7 @@ const TabPaneGeneralSettings = props => {
 										}, [])}
 										onChange={languages =>
 											userStore.setState(state => {
-												state[USER_LANGUAGES] = languages.map(
+												state[LANGUAGES] = languages.map(
 													language => language.label
 												)
 												return state

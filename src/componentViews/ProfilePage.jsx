@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
 // ReactJS plugin for a nice carousel
 import Slick from 'react-slick'
-import 'holderjs'
 // reactstrap components
 import {
 	Button,

@@ -18,8 +18,8 @@ import {
 import {
 	Provider,
 	Subscribe,
-	userStore,
-	USER_SIGNED_IN,
+	storeUser,
+	STORE_USER_STATE_SIGNED_IN,
 	STATE,
 	STORE_USER_STATE_SOFT_SIGNED_IN,
 } from 'state'
@@ -63,14 +63,14 @@ const App = props => {
 	return (
 		<ApolloProvider client={apolloClient}>
 			<Provider>
-				<Subscribe to={[userStore]}>
-					{userStore => {
+				<Subscribe to={[storeUser]}>
+					{storeUser => {
 						const {
 							[STATE]: {
-								[USER_SIGNED_IN]: isUserSignedIn,
+								[STORE_USER_STATE_SIGNED_IN]: isUserSignedIn,
 								[STORE_USER_STATE_SOFT_SIGNED_IN]: isUserSoftSignedIn,
 							},
-						} = userStore
+						} = storeUser
 						return (
 							<Router
 								isUserSignedIn={isUserSignedIn || isUserSoftSignedIn}
