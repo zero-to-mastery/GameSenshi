@@ -8,7 +8,7 @@ import {
 	Subscribe,
 	STORE_ALERT_STATE_IS_OPEN,
 	STATE,
-	STORE_USER_STATE_IS_SIGNING_IN,
+	STORE_USER_STATE_SIGNING_IN,
 } from 'state'
 // reactstrap components
 import {
@@ -156,7 +156,7 @@ class ComponentsNavbar extends React.Component {
 						[USER_DISPLAY_NAME]: username,
 						[USER_SIGNED_IN]: isSignedIn,
 						[USER_PHOTO_URL]: avatarURL,
-						[STORE_USER_STATE_IS_SIGNING_IN]: isSigningIn,
+						[STORE_USER_STATE_SIGNING_IN]: isSigningIn,
 					} = userStore.state
 					const { [STORE_ALERT_STATE_IS_OPEN]: alertOpen } = storeAlert.state
 					return (

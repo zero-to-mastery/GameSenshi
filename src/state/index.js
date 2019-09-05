@@ -3,14 +3,6 @@ import { STATE, RESET_STATE } from 'state/constants'
 import { StateContainer } from 'state/StateContainer'
 
 import {
-	UserContainer,
-	USER_SIGNED_IN,
-	STORE_USER_STATE_IS_SIGNING_IN,
-	STORE_USER_SET_IS_SIGNING_IN,
-	STORE_USER_STATE_IS_SOFT_SIGNED_IN,
-} from 'state/UserContainer'
-
-import {
 	storeAlert,
 	storeAlertShow,
 	storeAlertToggle,
@@ -67,7 +59,29 @@ import {
 	STORE_PROGRESS_STATE_IS_OPEN,
 } from 'state/Progress'
 
-const userStore = new UserContainer()
+import {
+	storeUser,
+	storeUserSetState,
+	storeUserResetState,
+	storeUserSetSigningIn,
+	storeUserInitialize,
+	storeUserResetAvatar,
+	storeUserOnAuthChanged,
+	STORE_USER_STATE_BIRTH_DATE,
+	STORE_USER_STATE_LANGUAGES,
+	STORE_USER_STATE_SIGNED_IN,
+	STORE_USER_STATE_GENDER,
+	STORE_USER_STATE_AVATAR_URL,
+	STORE_USER_STATE_USERNAME,
+	STORE_USER_STATE_UID,
+	STORE_USER_STATE_EMAIL,
+	STORE_USER_STATE_COUNTRY,
+	STORE_USER_STATE_PHONE_NUMBER,
+	STORE_USER_STATE_PROVIDER_DATA,
+	STORE_USER_STATE_EMAIL_VERIFIED,
+	STORE_USER_STATE_SIGNING_IN,
+	STORE_USER_STATE_SOFT_SIGNED_IN,
+} from 'state/User'
 
 export {
 	STATE,
@@ -75,11 +89,27 @@ export {
 	Provider,
 	Subscribe,
 	StateContainer,
-	userStore,
-	USER_SIGNED_IN,
-	STORE_USER_STATE_IS_SIGNING_IN,
-	STORE_USER_SET_IS_SIGNING_IN,
-	STORE_USER_STATE_IS_SOFT_SIGNED_IN,
+	storeUser,
+	storeUserSetState,
+	storeUserResetState,
+	storeUserSetSigningIn,
+	storeUserInitialize,
+	storeUserResetAvatar,
+	storeUserOnAuthChanged,
+	STORE_USER_STATE_BIRTH_DATE,
+	STORE_USER_STATE_LANGUAGES,
+	STORE_USER_STATE_SIGNED_IN,
+	STORE_USER_STATE_GENDER,
+	STORE_USER_STATE_AVATAR_URL,
+	STORE_USER_STATE_USERNAME,
+	STORE_USER_STATE_UID,
+	STORE_USER_STATE_EMAIL,
+	STORE_USER_STATE_COUNTRY,
+	STORE_USER_STATE_PHONE_NUMBER,
+	STORE_USER_STATE_PROVIDER_DATA,
+	STORE_USER_STATE_EMAIL_VERIFIED,
+	STORE_USER_STATE_SIGNING_IN,
+	STORE_USER_STATE_SOFT_SIGNED_IN,
 	storeAlert,
 	storeAlertShow,
 	storeAlertToggle,

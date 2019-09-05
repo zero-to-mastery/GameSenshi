@@ -21,7 +21,7 @@ import {
 	userStore,
 	USER_SIGNED_IN,
 	STATE,
-	STORE_USER_STATE_IS_SOFT_SIGNED_IN,
+	STORE_USER_STATE_SOFT_SIGNED_IN,
 } from 'state'
 //core components
 import { ExportViews } from 'componentViews'
@@ -68,7 +68,7 @@ const App = props => {
 						const {
 							[STATE]: {
 								[USER_SIGNED_IN]: isUserSignedIn,
-								[STORE_USER_STATE_IS_SOFT_SIGNED_IN]: isUserSoftSignedIn,
+								[STORE_USER_STATE_SOFT_SIGNED_IN]: isUserSoftSignedIn,
 							},
 						} = userStore
 						return (
