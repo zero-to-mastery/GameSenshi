@@ -3,7 +3,7 @@ import { stopUndefined } from 'utils'
 //components
 import { ExportMolecules } from 'componentMolecules'
 
-const { FinalInputSelect, VALUE, LABEL, IS_DISABLED } = stopUndefined(
+const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(
 	ExportMolecules
 )
 
@@ -11,7 +11,7 @@ const genderOptions = [
 	{
 		[VALUE]: '',
 		[LABEL]: 'Gender',
-		[IS_DISABLED]: true,
+		[DISABLE]: true,
 	},
 	{ [VALUE]: '0', [LABEL]: 'Male' },
 	{ [VALUE]: '1', [LABEL]: 'Female' },

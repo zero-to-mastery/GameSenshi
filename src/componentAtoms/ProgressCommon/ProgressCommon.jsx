@@ -2,13 +2,13 @@ import React from 'react'
 // reactstrap components
 import { Progress } from 'reactstrap'
 
-const PROGRESS_COMMON_STATE_IS_OPEN = 'isOpen'
+const PROGRESS_COMMON_STATE_OPEN = 'isOpen'
 const PROGRESS_COMMON_STATE_COLOR = 'color'
 const PROGRESS_COMMON_STATE_VALUE = 'value'
 
 const ProgressCommon = props => {
 	const {
-		[PROGRESS_COMMON_STATE_IS_OPEN]: isOpen,
+		[PROGRESS_COMMON_STATE_OPEN]: isOpen,
 		[PROGRESS_COMMON_STATE_COLOR]: color,
 		[PROGRESS_COMMON_STATE_VALUE]: value,
 	} = props
@@ -23,7 +23,7 @@ const ProgressCommon = props => {
 
 export {
 	ProgressCommon,
-	PROGRESS_COMMON_STATE_IS_OPEN,
+	PROGRESS_COMMON_STATE_OPEN,
 	PROGRESS_COMMON_STATE_COLOR,
 	PROGRESS_COMMON_STATE_VALUE,
 }

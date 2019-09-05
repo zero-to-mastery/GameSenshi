@@ -12,7 +12,7 @@ const {
 	FINAL_TEXT_CARD_NUMBER,
 	FINAL_SELECT_EXPIRY_MONTH,
 	FINAL_SELECT_EXPIRY_YEAR,
-	FORM_CARD_IS_DEFAULT,
+	FORM_CARD_DEFAULT,
 } = stopUndefined(ExportOrganisms)
 
 // * currently this is for demo, normally should fetch the card from api
@@ -21,21 +21,21 @@ const defaultCards = [
 		[FINAL_TEXT_CARD_NUMBER]: '4556949236166375',
 		[FINAL_SELECT_EXPIRY_YEAR]: '2022',
 		[FINAL_SELECT_EXPIRY_MONTH]: '06',
-		[FORM_CARD_IS_DEFAULT]: true,
+		[FORM_CARD_DEFAULT]: true,
 		[FINAL_TEXT_CARD_HOLDER_NAME]: 'tester1',
 	},
 	{
 		[FINAL_TEXT_CARD_NUMBER]: '5598618172773380',
 		[FINAL_SELECT_EXPIRY_YEAR]: '2021',
 		[FINAL_SELECT_EXPIRY_MONTH]: '05',
-		[FORM_CARD_IS_DEFAULT]: false,
+		[FORM_CARD_DEFAULT]: false,
 		[FINAL_TEXT_CARD_HOLDER_NAME]: 'tester2',
 	},
 ]
 
 const resetAllCardDefault = (cards = [], setCards = () => {}) => {
 	cards.forEach(card => {
-		card[FORM_CARD_IS_DEFAULT] = false
+		card[FORM_CARD_DEFAULT] = false
 	})
 	setCards([...cards])
 }
@@ -64,7 +64,7 @@ const listNewCard = (cardValues, cards = [], setCards = () => {}) => {
 		existingCard[FINAL_TEXT_CARD_HOLDER_NAME] = holderName
 		if (isDefault) {
 			//setting condition is to prevent there is no default card
-			existingCard[FORM_CARD_IS_DEFAULT] = isDefault
+			existingCard[FORM_CARD_DEFAULT] = isDefault
 		}
 		setCards(cards => [...cards])
 	} else {
@@ -74,7 +74,7 @@ const listNewCard = (cardValues, cards = [], setCards = () => {}) => {
 				[FINAL_SELECT_EXPIRY_YEAR]: expiryYear.value,
 				[FINAL_SELECT_EXPIRY_MONTH]: expiryMonth.value,
 				[FINAL_TEXT_CARD_HOLDER_NAME]: holderName,
-				[FORM_CARD_IS_DEFAULT]: isDefault || cards.length === 0,
+				[FORM_CARD_DEFAULT]: isDefault || cards.length === 0,
 			})
 			return cards
 		})
@@ -117,7 +117,7 @@ const TabPanePaymentSetting = () => {
 							[FINAL_TEXT_CARD_NUMBER]: cardNumber,
 							[FINAL_SELECT_EXPIRY_MONTH]: expiryMonth,
 							[FINAL_SELECT_EXPIRY_YEAR]: expiryYear,
-							[FORM_CARD_IS_DEFAULT]: isDefaultCard,
+							[FORM_CARD_DEFAULT]: isDefaultCard,
 						} = card
 						return (
 							<tr key={cardNumber.slice(-4)}>
@@ -145,7 +145,7 @@ const TabPanePaymentSetting = () => {
 												onClick={() => {
 													setCards(cards => {
 														resetAllCardDefault(cards, setCards)
-														cards[i][FORM_CARD_IS_DEFAULT] = true
+														cards[i][FORM_CARD_DEFAULT] = true
 														return [...cards]
 													})
 												}}

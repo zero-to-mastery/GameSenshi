@@ -3,14 +3,14 @@ import { stopUndefined } from 'utils'
 //components
 import { ExportMolecules } from 'componentMolecules'
 
-const { FinalInputSelect, VALUE, LABEL, IS_DISABLED } = stopUndefined(
+const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(
 	ExportMolecules
 )
 
 const FINAL_SELECT_EXPIRY_MONTH = 'expiryMonth'
 
 const monthOptions = [
-	{ [VALUE]: '', [LABEL]: 'Month', [IS_DISABLED]: true },
+	{ [VALUE]: '', [LABEL]: 'Month', [DISABLE]: true },
 	{ [VALUE]: '01', [LABEL]: 'Jan 01' },
 	{ [VALUE]: '02', [LABEL]: 'Feb 02' },
 	{ [VALUE]: '03', [LABEL]: 'Mar 03' },

@@ -49,7 +49,7 @@ const onSubmission = async (
 	}
 }
 
-const FORM_CARD_IS_DEFAULT = 'isDefault'
+const FORM_CARD_DEFAULT = 'isDefault'
 
 // TODO more reasonable input width for all fields
 const FormCard = props => {
@@ -111,7 +111,7 @@ const FormCard = props => {
 				onSubmit={values => {
 					onSubmission(values, onSubmit, () => {
 						onSuccessfulSubmission({
-							[FORM_CARD_IS_DEFAULT]: isDefault,
+							[FORM_CARD_DEFAULT]: isDefault,
 							[FINAL_TEXT_CARD_NUMBER]: cardNumber,
 							[FINAL_SELECT_EXPIRY_MONTH]: expiryMonth,
 							[FINAL_SELECT_EXPIRY_YEAR]: expiryYear,
@@ -218,4 +218,4 @@ const FormCard = props => {
 	)
 }
 
-export { FormCard, FORM_CARD_IS_DEFAULT }
+export { FormCard, FORM_CARD_DEFAULT }

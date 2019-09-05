@@ -4,7 +4,7 @@ import { getCodes, getNames } from 'country-list'
 //components
 import { ExportMolecules } from 'componentMolecules'
 
-const { FinalInputSelect, VALUE, LABEL, IS_DISABLED } = stopUndefined(
+const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(
 	ExportMolecules
 )
 const FINAL_SELECT_COUNTRY = 'expiryMonth'
@@ -21,7 +21,7 @@ const countryOptions = [
 	{
 		[VALUE]: '',
 		[LABEL]: 'Country',
-		[IS_DISABLED]: true,
+		[DISABLE]: true,
 	},
 	...countriesAndCodes,
 ]

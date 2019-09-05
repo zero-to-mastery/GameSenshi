@@ -6,7 +6,7 @@ import {
 	userStore,
 	storeAlert,
 	Subscribe,
-	STORE_ALERT_STATE_IS_OPEN,
+	STORE_ALERT_STATE_OPEN,
 	STATE,
 	STORE_USER_STATE_SIGNING_IN,
 } from 'state'
@@ -99,7 +99,7 @@ class ComponentsNavbar extends React.Component {
 		) {
 			this.setState({
 				color:
-					(storeAlert[STATE][STORE_ALERT_STATE_IS_OPEN] && bgPurple) ||
+					(storeAlert[STATE][STORE_ALERT_STATE_OPEN] && bgPurple) ||
 					'navbar-transparent',
 			})
 		}
@@ -158,7 +158,7 @@ class ComponentsNavbar extends React.Component {
 						[USER_PHOTO_URL]: avatarURL,
 						[STORE_USER_STATE_SIGNING_IN]: isSigningIn,
 					} = userStore.state
-					const { [STORE_ALERT_STATE_IS_OPEN]: alertOpen } = storeAlert.state
+					const { [STORE_ALERT_STATE_OPEN]: alertOpen } = storeAlert.state
 					return (
 						<div className='fixed-top'>
 							<ProgressCommonStoreProgress />

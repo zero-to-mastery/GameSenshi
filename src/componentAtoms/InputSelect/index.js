@@ -2,7 +2,7 @@ import {
 	InputSelect,
 	VALUE,
 	LABEL,
-	IS_DISABLED,
+	DISABLE,
 } from 'componentAtoms/InputSelect/InputSelect'
 
-export { InputSelect, VALUE, LABEL, IS_DISABLED }
+export { InputSelect, VALUE, LABEL, DISABLE }

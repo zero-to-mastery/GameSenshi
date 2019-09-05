@@ -3,7 +3,7 @@ import { stopUndefined } from 'utils'
 //components
 import { ExportMolecules } from 'componentMolecules'
 
-const { FinalInputSelect, VALUE, LABEL, IS_DISABLED } = stopUndefined(
+const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(
 	ExportMolecules
 )
 
@@ -16,7 +16,7 @@ const yearOptions = Array.from(new Array(30), (e, i) => {
 	return { [VALUE]: yearString, [LABEL]: yearString }
 })
 
-yearOptions.unshift({ [VALUE]: '', [LABEL]: 'Year', [IS_DISABLED]: true })
+yearOptions.unshift({ [VALUE]: '', [LABEL]: 'Year', [DISABLE]: true })
 
 const FinalSelectExpiryYear = props => {
 	const { validation, ...restProps } = props

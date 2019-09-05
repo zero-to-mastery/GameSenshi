@@ -1,12 +1,7 @@
 import IndexNavbar from 'componentAtoms/Navbars/IndexNavbar'
 import { FinalForm } from 'componentAtoms/FinalForm'
 import { ListText } from 'componentAtoms/ListText'
-import {
-	InputSelect,
-	VALUE,
-	LABEL,
-	IS_DISABLED,
-} from 'componentAtoms/InputSelect'
+import { InputSelect, VALUE, LABEL, DISABLE } from 'componentAtoms/InputSelect'
 import { InputText } from 'componentAtoms/InputText'
 import { PopoverCommon } from 'componentAtoms/PopoverCommon'
 import Footer from 'componentAtoms/Footers/Footer'
@@ -42,7 +37,7 @@ export const ExportAtoms = {
 	InputSelect,
 	VALUE,
 	LABEL,
-	IS_DISABLED,
+	DISABLE,
 	InputText,
 	PopoverCommon,
 	CheckBox,
