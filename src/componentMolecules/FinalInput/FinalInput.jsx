@@ -41,7 +41,7 @@ const FinalInput = props => {
 	const [popoverFailedItems, setPopoverFailedItems] = useState({})
 	const [onSubmitTimeOutID, setOnSubmitTimeOutId] = useState(0)
 	const [filteredMessages, setFilteredMessages] = useState([])
-	const [valid, setValid] = useState(false)
+	const [valid, setValid] = useState(false) // * this is needed as when typing, error from meta become undefined
 	const [state] = useState({
 		delay: 0, // initial delay is 0 for fast first time background validation
 		timeOutID: 0,
