@@ -23,11 +23,13 @@ import {
 	FinalTextEmailPropedSignUp,
 	FinalTextEmailPropedSignIn,
 	FinalTextEmailPropedForgotPassword,
+	FinalTextEmailPropedAccount,
 	FINAL_TEXT_EMAIL,
 } from 'componentnCompounds/FinalTextEmail'
 import {
 	FinalTextPasswordPropedSignUp,
 	FinalTextPasswordPropedSignIn,
+	FinalTextPasswordPropedAccount,
 	FINAL_TEXT_PASSWORD,
 } from 'componentnCompounds/FinalTextPassword'
 import {
@@ -59,9 +61,11 @@ export const ExportCompounds = {
 	FinalTextEmailPropedSignUp,
 	FinalTextEmailPropedSignIn,
 	FinalTextEmailPropedForgotPassword,
+	FinalTextEmailPropedAccount,
 	FINAL_TEXT_EMAIL,
 	FinalTextPasswordPropedSignUp,
 	FinalTextPasswordPropedSignIn,
+	FinalTextPasswordPropedAccount,
 	FINAL_TEXT_PASSWORD,
 	FinalTextUsernamePropedSignUp,
 	FinalTextUsernamePropedSetting,

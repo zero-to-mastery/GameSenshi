@@ -121,7 +121,7 @@ const FormCard = props => {
 					})
 				}}>
 				{({ handleSubmit, submitting, submitError }) => (
-					<>
+					<Form className='form'>
 						<ModalBody>
 							<Container>
 								<Row>
@@ -141,58 +141,56 @@ const FormCard = props => {
 									</Col>
 									<Col xs='12' md='7' className='d-flex align-items-center'>
 										<Container>
-											<Form>
-												<FinalTextCardNumberPropedDefault
-													onValueChange={values => {
-														setCardNumber(values)
-													}}
+											<FinalTextCardNumberPropedDefault
+												onValueChange={values => {
+													setCardNumber(values)
+												}}
+												onFocus={() => {
+													setFocus('number')
+												}}
+												submitRef={submitButton}
+											/>
+											<FinalTextCardHolderNamePropedDefault
+												onValueChange={setHolderName}
+												onFocus={() => {
+													setFocus('name')
+												}}
+												submitRef={submitButton}
+											/>
+											<Row>
+												<FinalSelectExpiryMonthPropedDefault
 													onFocus={() => {
-														setFocus('number')
+														setFocus('expiry')
 													}}
+													onValueChange={setExpiryMonth}
+												/>
+												<FinalSelectExpiryYearPropedDefault
+													onFocus={() => {
+														setFocus('expiry')
+													}}
+													onValueChange={setExpiryYear}
+												/>
+											</Row>
+											<Row>
+												<FinalTextCardCVCPropedDefault
+													onFocus={() => {
+														setFocus('cvc')
+													}}
+													onValueChange={setCvc}
 													submitRef={submitButton}
 												/>
-												<FinalTextCardHolderNamePropedDefault
-													onValueChange={setHolderName}
-													onFocus={() => {
-														setFocus('name')
-													}}
-													submitRef={submitButton}
-												/>
-												<Row>
-													<FinalSelectExpiryMonthPropedDefault
-														onFocus={() => {
-															setFocus('expiry')
-														}}
-														onValueChange={setExpiryMonth}
-													/>
-													<FinalSelectExpiryYearPropedDefault
-														onFocus={() => {
-															setFocus('expiry')
-														}}
-														onValueChange={setExpiryYear}
-													/>
-												</Row>
-												<Row>
-													<FinalTextCardCVCPropedDefault
-														onFocus={() => {
-															setFocus('cvc')
-														}}
-														onValueChange={setCvc}
-														submitRef={submitButton}
-													/>
-													<Col xs='6'>
-														<CheckBox
-															checked={isDefault}
-															onClick={() => {
-																setIsDefault(state => !state)
-															}}>
-															<span className='text-success'>
-																set as default?
-															</span>
-														</CheckBox>
-													</Col>
-												</Row>
-											</Form>
+												<Col xs='6'>
+													<CheckBox
+														checked={isDefault}
+														onClick={() => {
+															setIsDefault(state => !state)
+														}}>
+														<span className='text-success'>
+															set as default?
+														</span>
+													</CheckBox>
+												</Col>
+											</Row>
 										</Container>
 									</Col>
 								</Row>
@@ -211,7 +209,7 @@ const FormCard = props => {
 								{submitting ? 'Saving' : 'Save'}
 							</ButtonSubmit>
 						</ModalFooter>
-					</>
+					</Form>
 				)}
 			</FinalForm>
 		</Modal>

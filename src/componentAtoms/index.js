@@ -20,6 +20,7 @@ import { ButtonSubmit } from 'componentAtoms/ButtonSubmit/ButtonSubmit'
 import { TabPaneContainer } from 'componentAtoms/TabPaneContainer/TabPaneContainer'
 import { TabListVerticalPropedSettingPage } from 'componentAtoms/TabListVertical'
 import { IconCard } from 'componentAtoms/IconCard'
+import { LabelFormPropedInput } from 'componentAtoms/LabelForm'
 
 export const ExportAtoms = {
 	Footer,
@@ -47,4 +48,5 @@ export const ExportAtoms = {
 	TabPaneContainer,
 	TabListVerticalPropedSettingPage,
 	IconCard,
+	LabelFormPropedInput,
 }

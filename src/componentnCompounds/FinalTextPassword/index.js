@@ -10,6 +10,12 @@ import {
 	signInPasswordValidation,
 } from 'utils'
 
+// components
+import { stopUndefined } from 'utils'
+import { ExportMolecules } from 'componentMolecules'
+
+const { LabelFormPropedInput } = stopUndefined(ExportMolecules)
+
 const FinalTextPasswordPropedSignUp = props => {
 	return (
 		<FinalTextPassword
@@ -30,8 +36,22 @@ const FinalTextPasswordPropedSignIn = props => {
 	)
 }
 
+const FinalTextPasswordPropedAccount = props => {
+	return (
+		<LabelFormPropedInput label='Email' htmlFor={FINAL_TEXT_PASSWORD}>
+			<FinalTextPassword
+				validation={signUpPasswordValidation}
+				hideSuccess
+				onlyShowErrorAfterSubmit
+				{...props}
+			/>
+		</LabelFormPropedInput>
+	)
+}
+
 export {
 	FinalTextPasswordPropedSignUp,
 	FinalTextPasswordPropedSignIn,
+	FinalTextPasswordPropedAccount,
 	FINAL_TEXT_PASSWORD,
 }

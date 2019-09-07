@@ -2,7 +2,7 @@ import React from 'react'
 import { stopUndefined } from 'utils'
 import Select from 'react-select'
 import ReactDatetime from 'react-datetime'
-import { userStore } from 'state'
+import { storeUser } from 'state'
 // reactstrap components
 import { FormGroup, Row, Col, Form } from 'reactstrap'
 
@@ -27,19 +27,27 @@ const languageOptions = [
 ]
 
 const USERNAME = 'username'
-const LANGUAGES = 'languages'
+const LANGUAGES = 'languages_'
 
 const TabPaneGeneralSettings = props => {
-	const { uid, gender, country, languages } = props
+	const {
+		uid,
+		gender,
+		country,
+		languages,
+		onSubmit,
+		onSuccessfulSubmission,
+	} = props
+
+	const languages_ = languages || []
 
 	return (
 		<FinalForm
 			initialValues={{
 				[USERNAME]: '',
 			}}
-			onSubmit={values => {
-				//
-			}}>
+			onSubmit={onSubmit}
+			onSuccessfulSubmission={onSuccessfulSubmission}>
 			{({ handleSubmit, submitting, submitError, form }) => (
 				<Form className='form'>
 					<div>
@@ -68,10 +76,7 @@ const TabPaneGeneralSettings = props => {
 									Name
 								</label>
 							</Col>
-							<Col
-								className='align-self-center'
-								md='9'
-								style={{ marginBottom: 10 }}>
+							<Col className='align-self-center' md='9'>
 								<FinalTextUsernamePropedSetting />
 							</Col>
 						</Row>
@@ -83,7 +88,10 @@ const TabPaneGeneralSettings = props => {
 							</Col>
 							<Col className='align-self-center' md='4'>
 								<FormGroup>
-									<FinalSelectGender value={gender} />
+									<FinalSelectGender
+										value={gender}
+										validation={() => Promise.resolve(undefined)}
+									/>
 								</FormGroup>
 							</Col>
 						</Row>
@@ -114,7 +122,10 @@ const TabPaneGeneralSettings = props => {
 								</label>
 							</Col>
 							<Col className='align-self-center' md='4'>
-								<FinalSelectCountry value={country} />
+								<FinalSelectCountry
+									value={country}
+									validation={() => Promise.resolve(undefined)}
+								/>
 							</Col>
 						</Row>
 						<Row>
@@ -128,16 +139,16 @@ const TabPaneGeneralSettings = props => {
 										className='react-select react-select-info'
 										classNamePrefix='react-select'
 										placeholder='Languages'
-										value={languages.reduce((acc, language) => {
+										value={languages_.reduce((acc, language) => {
 											const found = languageOptions.find(
 												languageObj => languageObj.label === language
 											)
 											acc.push(found)
 											return acc
 										}, [])}
-										onChange={languages =>
-											userStore.setState(state => {
-												state[LANGUAGES] = languages.map(
+										onChange={languages_ =>
+											storeUser.setState(state => {
+												state[LANGUAGES] = languages_.map(
 													language => language.label
 												)
 												return state

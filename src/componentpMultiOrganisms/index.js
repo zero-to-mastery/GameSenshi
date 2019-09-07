@@ -1,7 +1,7 @@
 import { ExportOrganisms } from 'componentOrganisms'
-import { TabPanePaymentSetting } from 'componentpMultiOrganisms/TabPanePaymentSetting'
+import { TabPanePaymentSettings } from 'componentpMultiOrganisms/TabPanePaymentSettings'
 
 export const ExportMultiOrganisms = {
 	...ExportOrganisms,
-	TabPanePaymentSetting,
+	TabPanePaymentSettings,
 }
