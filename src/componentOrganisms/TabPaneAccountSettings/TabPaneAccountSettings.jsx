@@ -74,7 +74,6 @@ const TabPaneAccountSettings = props => {
 					}}
 					onSubmit={onSubmitPassword}
 					onSuccessfulSubmission={onSuccessfulSubmissionPassword}>
-					>
 					{({ submitError, handleSubmit, submitting, form }) => {
 						const formReset = useCallback(() => {
 							form.reset()
