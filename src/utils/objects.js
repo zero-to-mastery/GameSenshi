@@ -1,5 +1,7 @@
 import { API_STATUS, API_CODE, API_MESSAGE, API_DATA } from 'constantValues'
 
+const emptyPromise = () => Promise.resolve(undefined)
+
 const simplerErrorMessage = (error = {}, defaultErrorMessage = '') => {
 	const { code, message } = error
 	// code is error from firebase, message is error from graphql
@@ -40,6 +42,7 @@ const simplerResponseHandling = (
 }
 
 export {
+	emptyPromise,
 	resObj,
 	signUpResObj,
 	simplerResponseHandling,

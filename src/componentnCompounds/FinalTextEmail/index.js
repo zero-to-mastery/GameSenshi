@@ -6,12 +6,15 @@ import {
 // api
 import { handleIsEmailNotExist, handleIsPasswordResetAble } from 'api'
 // validation
-import { signUpEmailValidation, signInEmailValidation } from 'utils'
+import {
+	signUpEmailValidation,
+	signInEmailValidation,
+	stopUndefined,
+} from 'utils'
 // components
-import { stopUndefined } from 'utils'
 import { ExportMolecules } from 'componentMolecules'
 
-const { LabelFormPropedInput } = stopUndefined(ExportMolecules)
+const { LabelForm } = stopUndefined(ExportMolecules)
 
 const FinalTextEmailPropedSignUp = props => {
 	return (
@@ -42,14 +45,14 @@ const FinalTextEmailPropedForgotPassword = props => {
 
 const FinalTextEmailPropedAccount = props => {
 	return (
-		<LabelFormPropedInput label='Email' htmlFor={FINAL_TEXT_EMAIL}>
+		<LabelForm label='Email' htmlFor={FINAL_TEXT_EMAIL}>
 			<FinalTextEmail
 				validation={signInEmailValidation}
 				hideSuccess
 				onlyShowErrorAfterSubmit
 				{...props}
 			/>
-		</LabelFormPropedInput>
+		</LabelForm>
 	)
 }
 

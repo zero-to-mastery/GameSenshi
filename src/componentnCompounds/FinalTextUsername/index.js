@@ -4,26 +4,32 @@ import {
 	FINAL_TEXT_USERNAME,
 } from 'componentnCompounds/FinalTextUsername/FinalTextUsername'
 
-import { signUpUsernameValidation } from 'utils'
+import { signUpUsernameValidation, stopUndefined } from 'utils'
+
+// components
+import { ExportMolecules } from 'componentMolecules'
+
+const { LabelForm } = stopUndefined(ExportMolecules)
 
 const FinalTextUsernamePropedSignUp = props => {
 	return <FinalTextUsername validation={signUpUsernameValidation} {...props} />
 }
 
-const FinalTextUsernamePropedSetting = props => {
+const FinalTextUsernamePropedGeneraL = props => {
 	return (
-		<FinalTextUsername
-			icon=''
-			validation={signUpUsernameValidation}
-			onlyShowErrorAfterSubmit
-			placeHolder='Name'
-			{...props}
-		/>
+		<LabelForm label='Username' htmlFor={FINAL_TEXT_USERNAME}>
+			<FinalTextUsername
+				icon=''
+				validation={signUpUsernameValidation}
+				onlyShowErrorAfterSubmit
+				{...props}
+			/>
+		</LabelForm>
 	)
 }
 
 export {
 	FinalTextUsernamePropedSignUp,
-	FinalTextUsernamePropedSetting,
+	FinalTextUsernamePropedGeneraL,
 	FINAL_TEXT_USERNAME,
 }

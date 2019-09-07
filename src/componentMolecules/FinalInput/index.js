@@ -5,8 +5,8 @@ import { stopUndefined } from 'utils'
 
 const { InputText, InputSelect } = stopUndefined(ExportAtoms)
 
+const defaultProps = { onChange: () => {}, onValueChange: () => {} }
 const FinalInputText = props => {
-	const defaultProps = { onChange: () => {}, onValueChange: () => {} }
 	const { onChange, onValueChange, ...restProps } = {
 		...defaultProps,
 		...props,
@@ -23,7 +23,6 @@ const FinalInputText = props => {
 }
 
 const FinalInputSelect = props => {
-	const defaultProps = { onValueChange: () => {} }
 	const { onValueChange, ...restProps } = { ...defaultProps, ...props }
 	return (
 		<FinalInput

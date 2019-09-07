@@ -14,7 +14,7 @@ const FinalTextPassword = props => {
 			type={FINAL_TEXT_PASSWORD}
 			name={FINAL_TEXT_PASSWORD}
 			placeholder='Password'
-			icon='tim-icons icon-single-02'
+			icon='tim-icons icon-lock-circle'
 			{...restProps}
 		/>
 	)

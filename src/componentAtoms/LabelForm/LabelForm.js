@@ -2,7 +2,7 @@ import React from 'react'
 import { Col, Row } from 'reactstrap'
 
 const LabelForm = props => {
-	const { htmlFor, label, children, childrenMD } = props
+	const { htmlFor, label, children, md } = props
 	return (
 		<Row>
 			<Col className='align-self-center' md='3'>
@@ -10,7 +10,7 @@ const LabelForm = props => {
 					{label}
 				</label>
 			</Col>
-			<Col className='align-self-center' md={childrenMD}>
+			<Col className='align-self-center' md={md}>
 				{children}
 			</Col>
 		</Row>

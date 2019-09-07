@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useRef } from 'react'
 import { stopUndefined } from 'utils'
 import Select from 'react-select'
 import ReactDatetime from 'react-datetime'
@@ -10,12 +10,13 @@ import { ExportCompounds } from 'componentnCompounds'
 const {
 	FinalForm,
 	ButtonSubmit,
-	FinalTextUsernamePropedSetting,
+	FinalTextUsernamePropedGeneraL,
 	FINAL_TEXT_USERNAME,
-	FinalSelectCountry,
+	FinalSelectCountryPropedGeneraL,
 	FINAL_SELECT_COUNTRY,
-	FinalSelectGender,
+	FinalSelectGenderPropedGeneraL,
 	FINAL_SELECT_GENDER,
+	LabelFormSimple,
 } = stopUndefined(ExportCompounds)
 
 const languageOptions = [
@@ -26,12 +27,14 @@ const languageOptions = [
 	{ value: '5', label: 'Russian', color: '#FF8B00' },
 ]
 
-const USERNAME = 'username'
 const LANGUAGES = 'languages_'
 
 const TabPaneGeneralSettings = props => {
+	const submitButton = useRef(null)
+
 	const {
 		uid,
+		username,
 		gender,
 		country,
 		languages,
@@ -44,131 +47,110 @@ const TabPaneGeneralSettings = props => {
 	return (
 		<FinalForm
 			initialValues={{
-				[USERNAME]: '',
+				[FINAL_TEXT_USERNAME]: '',
+				[FINAL_SELECT_GENDER]: '',
+				[FINAL_SELECT_COUNTRY]: '',
 			}}
 			onSubmit={onSubmit}
 			onSuccessfulSubmission={onSuccessfulSubmission}>
-			{({ handleSubmit, submitting, submitError, form }) => (
-				<Form className='form'>
-					<div>
-						<header>
-							<h2 className='text-uppercase'>General information</h2>
-						</header>
-						<hr className='line-info' />
-						<br />
-						<Row>
-							<Col className='align-self-center' md='3'>
-								<label className='labels' htmlFor='uid'>
-									UID
-								</label>
-							</Col>
-							<Col className='align-self-center' md='9'>
-								<FormGroup>
-									<label className='labels' id='uid' name='uid'>
-										{uid}
+			{({ handleSubmit, submitting, submitError, form }) => {
+				const formReset = useCallback(() => {
+					form.reset()
+				}, [])
+				return (
+					<Form className='form'>
+						<div>
+							<header>
+								<h2 className='text-uppercase'>General information</h2>
+							</header>
+							<hr className='line-info' />
+							<br />
+							<LabelFormSimple htmlFor='uid' label='UID'>
+								{uid}
+							</LabelFormSimple>
+							<FinalTextUsernamePropedGeneraL
+								value={username}
+								submitRef={submitButton}
+								onBlur={formReset}
+							/>
+							<Row>
+								<Col className='align-self-center' md='3'>
+									<label className='labels' htmlFor='birthDate'>
+										Birth Date
 									</label>
-								</FormGroup>
-							</Col>
-						</Row>
-						<Row>
-							<Col className='align-self-center' md='3'>
-								<label className='labels' htmlFor={FINAL_TEXT_USERNAME}>
-									Name
-								</label>
-							</Col>
-							<Col className='align-self-center' md='9'>
-								<FinalTextUsernamePropedSetting />
-							</Col>
-						</Row>
-						<Row>
-							<Col className='align-self-center' md='3'>
-								<label className='labels' htmlFor={FINAL_SELECT_GENDER}>
-									I’m
-								</label>
-							</Col>
-							<Col className='align-self-center' md='4'>
-								<FormGroup>
-									<FinalSelectGender
-										value={gender}
-										validation={() => Promise.resolve(undefined)}
-									/>
-								</FormGroup>
-							</Col>
-						</Row>
-						<Row>
-							<Col className='align-self-center' md='3'>
-								<label className='labels' htmlFor='birthDate'>
-									Birth Date
-								</label>
-							</Col>
-							<Col className='align-self-center' md='4'>
-								<FormGroup>
-									<ReactDatetime
-										id='birthDate'
-										name='birthDate'
-										inputProps={{
-											className: 'form-control',
-											placeholder: 'BirthDate',
-										}}
-										timeFormat={false}
-									/>
-								</FormGroup>
-							</Col>
-						</Row>
-						<Row>
-							<Col className='align-self-center' md='3'>
-								<label className='labels' htmlFor={FINAL_SELECT_COUNTRY}>
-									Country
-								</label>
-							</Col>
-							<Col className='align-self-center' md='4'>
-								<FinalSelectCountry
-									value={country}
-									validation={() => Promise.resolve(undefined)}
-								/>
-							</Col>
-						</Row>
-						<Row>
-							<Col className='align-self-center' md='3'>
-								<label className='labels'>Language</label>
-							</Col>
-							<Col className='align-self-center' md='9'>
-								<FormGroup>
-									<Select
-										isMulti
-										className='react-select react-select-info'
-										classNamePrefix='react-select'
-										placeholder='Languages'
-										value={languages_.reduce((acc, language) => {
-											const found = languageOptions.find(
-												languageObj => languageObj.label === language
-											)
-											acc.push(found)
-											return acc
-										}, [])}
-										onChange={languages_ =>
-											storeUser.setState(state => {
-												state[LANGUAGES] = languages_.map(
-													language => language.label
+								</Col>
+								<Col className='align-self-center' md='4'>
+									<FormGroup>
+										<ReactDatetime
+											id='birthDate'
+											name='birthDate'
+											inputProps={{
+												className: 'form-control',
+												placeholder: 'BirthDate',
+											}}
+											timeFormat={false}
+										/>
+									</FormGroup>
+								</Col>
+							</Row>
+							<FinalSelectGenderPropedGeneraL
+								value={gender}
+								submitRef={submitButton}
+								onBlur={formReset}
+							/>
+							<FinalSelectCountryPropedGeneraL
+								value={country}
+								submitRef={submitButton}
+								onBlur={formReset}
+							/>
+							<Row>
+								<Col className='align-self-center' md='3'>
+									<label className='labels'>Language</label>
+								</Col>
+								<Col className='align-self-center' md='9'>
+									<FormGroup>
+										<Select
+											isMulti
+											className='react-select react-select-info'
+											classNamePrefix='react-select'
+											placeholder='Languages'
+											value={languages_.reduce((acc, language) => {
+												const found = languageOptions.find(
+													languageObj => languageObj.label === language
 												)
-												return state
-											})
-										}
-										options={languageOptions}
-									/>
-								</FormGroup>
-							</Col>
-						</Row>
-						<Row className='mt-4'>
-							<Col md='6'>
-								<ButtonSubmit color='info' type='button'>
-									Save Changes
-								</ButtonSubmit>
-							</Col>
-						</Row>
-					</div>
-				</Form>
-			)}
+												acc.push(found)
+												return acc
+											}, [])}
+											onChange={languages_ =>
+												storeUser.setState(state => {
+													state[LANGUAGES] = languages_.map(
+														language => language.label
+													)
+													return state
+												})
+											}
+											options={languageOptions}
+										/>
+									</FormGroup>
+								</Col>
+							</Row>
+							<Row className='mt-4'>
+								<Col md='6'>
+									{submitError && !submitting && `Error: ${submitError}`}
+									<ButtonSubmit
+										color='info'
+										type='button'
+										submitRef={submitButton}
+										disabled={submitting}
+										onClick={handleSubmit}>
+										{submitting ? 'Saving Changes' : 'Save Changes'}
+									</ButtonSubmit>
+								</Col>
+							</Row>
+						</div>
+					</Form>
+				)
+			}}
 		</FinalForm>
 	)
 }

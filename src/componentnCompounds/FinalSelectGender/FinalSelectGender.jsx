@@ -28,7 +28,7 @@ const FinalSelectGender = props => {
 	return (
 		<FinalInputSelect
 			name={FINAL_SELECT_GENDER}
-			placeholder='Year'
+			placeholder='Gender'
 			hideSuccess
 			validation={value => validation(value, genderOptions)}
 			options={genderOptions}
