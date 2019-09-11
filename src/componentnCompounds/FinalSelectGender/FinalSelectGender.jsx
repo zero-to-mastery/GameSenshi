@@ -24,16 +24,12 @@ const genderOptions = [
 const FINAL_SELECT_GENDER = 'Gender'
 
 const FinalSelectGender = props => {
-	const { validation, ...restProps } = props
 	return (
 		<FinalInputSelect
 			name={FINAL_SELECT_GENDER}
 			placeholder='Gender'
-			hideSuccess
-			validation={value => validation(value, genderOptions)}
 			options={genderOptions}
-			defaultValue={genderOptions[0]}
-			{...restProps}
+			{...props}
 		/>
 	)
 }

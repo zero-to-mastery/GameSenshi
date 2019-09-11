@@ -13,7 +13,7 @@ const { LabelForm } = stopUndefined(ExportMolecules)
 
 const FinalSelectCountryPropedGeneraL = props => {
 	return (
-		<LabelForm label='Country' htmlFor={FINAL_SELECT_COUNTRY} md='4'>
+		<LabelForm label='Country' htmlFor={FINAL_SELECT_COUNTRY} Inputmd='4'>
 			<FinalSelectCountry
 				validation={emptyPromise}
 				hideSuccess

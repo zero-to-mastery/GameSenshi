@@ -12,7 +12,7 @@ const { LabelForm } = stopUndefined(ExportMolecules)
 
 const FinalSelectGenderPropedGeneraL = props => {
 	return (
-		<LabelForm label='I am...' htmlFor={FINAL_SELECT_GENDER} md='4'>
+		<LabelForm label='I am...' htmlFor={FINAL_SELECT_GENDER} Inputmd='4'>
 			<FinalSelectGender
 				validation={emptyPromise}
 				hideSuccess

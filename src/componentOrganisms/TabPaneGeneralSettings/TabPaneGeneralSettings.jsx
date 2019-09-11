@@ -1,8 +1,6 @@
 import React, { useCallback, useRef } from 'react'
 import { stopUndefined } from 'utils'
-import Select from 'react-select'
 import ReactDatetime from 'react-datetime'
-import { storeUser } from 'state'
 // reactstrap components
 import { FormGroup, Row, Col, Form } from 'reactstrap'
 
@@ -17,17 +15,9 @@ const {
 	FinalSelectGenderPropedGeneraL,
 	FINAL_SELECT_GENDER,
 	LabelFormSimple,
+	FinalSelectLanguagesPropedGeneraL,
+	FINAL_SELECT_LANGUAGES,
 } = stopUndefined(ExportCompounds)
-
-const languageOptions = [
-	{ value: '1', label: 'English', color: '#00B8D9' },
-	{ value: '2', label: 'French', color: '#0052CC' },
-	{ value: '3', label: 'Spanish', color: '#5243AA' },
-	{ value: '4', label: 'Deutsche', color: '#FF5630' },
-	{ value: '5', label: 'Russian', color: '#FF8B00' },
-]
-
-const LANGUAGES = 'languages_'
 
 const TabPaneGeneralSettings = props => {
 	const submitButton = useRef(null)
@@ -42,14 +32,13 @@ const TabPaneGeneralSettings = props => {
 		onSuccessfulSubmission,
 	} = props
 
-	const languages_ = languages || []
-
 	return (
 		<FinalForm
 			initialValues={{
 				[FINAL_TEXT_USERNAME]: '',
 				[FINAL_SELECT_GENDER]: '',
 				[FINAL_SELECT_COUNTRY]: '',
+				[FINAL_SELECT_LANGUAGES]: '',
 			}}
 			onSubmit={onSubmit}
 			onSuccessfulSubmission={onSuccessfulSubmission}>
@@ -103,37 +92,11 @@ const TabPaneGeneralSettings = props => {
 								submitRef={submitButton}
 								onBlur={formReset}
 							/>
-							<Row>
-								<Col className='align-self-center' md='3'>
-									<label className='labels'>Language</label>
-								</Col>
-								<Col className='align-self-center' md='9'>
-									<FormGroup>
-										<Select
-											isMulti
-											className='react-select react-select-info'
-											classNamePrefix='react-select'
-											placeholder='Languages'
-											value={languages_.reduce((acc, language) => {
-												const found = languageOptions.find(
-													languageObj => languageObj.label === language
-												)
-												acc.push(found)
-												return acc
-											}, [])}
-											onChange={languages_ =>
-												storeUser.setState(state => {
-													state[LANGUAGES] = languages_.map(
-														language => language.label
-													)
-													return state
-												})
-											}
-											options={languageOptions}
-										/>
-									</FormGroup>
-								</Col>
-							</Row>
+							<FinalSelectLanguagesPropedGeneraL
+								value={languages}
+								submitRef={submitButton}
+								onBlur={formReset}
+							/>
 							<Row className='mt-4'>
 								<Col md='6'>
 									{submitError && !submitting && `Error: ${submitError}`}

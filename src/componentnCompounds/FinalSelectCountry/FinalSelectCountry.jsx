@@ -27,16 +27,12 @@ const countryOptions = [
 ]
 
 const FinalSelectCountry = props => {
-	const { validation, ...restProps } = props
 	return (
 		<FinalInputSelect
 			name={FINAL_SELECT_COUNTRY}
 			placeholder='Country'
-			hideSuccess
-			validation={value => validation(value, countryOptions)}
 			options={countryOptions}
-			defaultValue={countryOptions[0]}
-			{...restProps}
+			{...props}
 		/>
 	)
 }

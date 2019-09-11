@@ -19,16 +19,12 @@ const yearOptions = Array.from(new Array(30), (e, i) => {
 yearOptions.unshift({ [VALUE]: '', [LABEL]: 'Year', [DISABLE]: true })
 
 const FinalSelectExpiryYear = props => {
-	const { validation, ...restProps } = props
 	return (
 		<FinalInputSelect
 			name={FINAL_SELECT_EXPIRY_YEAR}
 			placeholder='Year'
-			hideSuccess
-			validation={value => validation(value, yearOptions)}
 			options={yearOptions}
-			defaultValue={yearOptions[0]}
-			{...restProps}
+			{...props}
 		/>
 	)
 }

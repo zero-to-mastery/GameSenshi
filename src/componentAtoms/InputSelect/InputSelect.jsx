@@ -6,6 +6,7 @@ import classnames from 'classnames'
 const VALUE = 'value'
 const LABEL = 'label'
 const DISABLE = 'isDisabled'
+const COLOR = 'color'
 
 const InputSelect = props => {
 	const {
@@ -35,4 +36,4 @@ const InputSelect = props => {
 	)
 }
 
-export { InputSelect, VALUE, LABEL, DISABLE }
+export { InputSelect, VALUE, LABEL, DISABLE, COLOR }
