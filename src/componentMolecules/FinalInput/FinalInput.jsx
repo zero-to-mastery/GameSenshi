@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, memo } from 'react'
 import { Field } from 'react-final-form'
 import { stopUndefined } from 'utils'
 // core components
@@ -8,7 +8,7 @@ const { ListText, PopoverCommon } = stopUndefined(ExportAtoms)
 
 const DELAY = 1000
 
-const FinalInput = props => {
+const FinalInput = memo(props => {
 	const [localValue, seLocalValue] = useState('')
 
 	const defaultProps = {
@@ -83,6 +83,7 @@ const FinalInput = props => {
 
 		showSpinner(false)
 		!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
+
 		if (validationResult === undefined || status) {
 			// if validation passed
 			setValid(true)
@@ -90,7 +91,7 @@ const FinalInput = props => {
 		} else {
 			// if validation failed
 			setValid(false)
-			resolve(filtered)
+			resolve(filtered.length === 0 ? ['error'] : filtered)
 		}
 		state.fulfilled = true
 		return filtered
@@ -185,44 +186,54 @@ const FinalInput = props => {
 					}
 				}
 
-				const onBlur_ = e => {
-					state.focused = false
-					onBlur && onBlur(e)
-					input.onBlur(e)
-				}
+				const onBlur_ = useCallback(
+					e => {
+						state.focused = false
+						onBlur && onBlur(e)
+						input.onBlur(e)
+					},
+					[onBlur]
+				)
 
-				const onFocus_ = e => {
-					state.focused = true
-					onFocus && onFocus(e)
-					input.onFocus(e)
-				}
+				const onFocus_ = useCallback(
+					e => {
+						state.focused = true
+						onFocus && onFocus(e)
+						input.onFocus(e)
+					},
+					[onFocus]
+				)
 
-				const onKeyPress_ = e => {
-					onKeyPress && onKeyPress(e)
-					if ((e.key === 'Enter' || e.keyCode === 13) && submitRef) {
-						e.preventDefault()
-						clearInterval(onSubmitTimeOutID)
-						setOnSubmitTimeOutId(
-							setTimeout(
-								() => {
-									try {
-										// * the ref is real dom node, it doesn't trigger react synthetic event
-										// * thus no event handler is available to onClick
-										// * final form handleSubmit need event handler occasionally (need more research)
-										// * if we catch the error when handleSubmit need the event handler (which is undefined)
-										// * the program can continue to work normally (need more research)
-										submitRef.current.onClick()
-									} catch (e) {
-										//console.log(e)
-									}
-								},
-								state.fulfilled && (!serverValidation || state.fulfilledServer)
-									? 0
-									: DELAY
+				const onKeyPress_ = useCallback(
+					e => {
+						onKeyPress && onKeyPress(e)
+						if ((e.key === 'Enter' || e.keyCode === 13) && submitRef) {
+							e.preventDefault()
+							clearInterval(onSubmitTimeOutID)
+							setOnSubmitTimeOutId(
+								setTimeout(
+									() => {
+										try {
+											// * the ref is real dom node, it doesn't trigger react synthetic event
+											// * thus no event handler is available to onClick
+											// * final form handleSubmit need event handler occasionally (need more research)
+											// * if we catch the error when handleSubmit need the event handler (which is undefined)
+											// * the program can continue to work normally (need more research)
+											submitRef.current.onClick()
+										} catch (e) {
+											//console.log(e)
+										}
+									},
+									state.fulfilled &&
+										(!serverValidation || state.fulfilledServer)
+										? 0
+										: DELAY
+								)
 							)
-						)
-					}
-				}
+						}
+					},
+					[onKeyPress, submitRef, serverValidation]
+				)
 
 				const hasDanger =
 					!submitting &&
@@ -304,6 +315,6 @@ const FinalInput = props => {
 			}}
 		</Field>
 	)
-}
+})
 
 export { FinalInput }
