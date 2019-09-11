@@ -12,7 +12,7 @@ const { LabelForm } = stopUndefined(ExportMolecules)
 
 const FinalSelectLanguagesPropedGeneraL = props => {
 	return (
-		<LabelForm label='I am...' htmlFor={FINAL_SELECT_LANGUAGES} Inputmd='4'>
+		<LabelForm label='Languages' htmlFor={FINAL_SELECT_LANGUAGES} Inputmd='4'>
 			<FinalSelectLanguages
 				validation={emptyPromise}
 				hideSuccess

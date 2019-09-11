@@ -20,7 +20,7 @@ const FinalSelectLanguages = props => {
 	return (
 		<FinalInputSelect
 			name={FINAL_SELECT_LANGUAGES}
-			placeholder='Gender'
+			placeholder='Languages'
 			options={languageOptions}
 			{...props}
 		/>
