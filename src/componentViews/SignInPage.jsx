@@ -5,9 +5,7 @@ import { Container, Col } from 'reactstrap'
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, IndexNavbar, FormSignInPropedDefault } = stopUndefined(
-	ExportMultiOrganisms
-)
+const { Footer, FormSignInPropedDefault } = stopUndefined(ExportMultiOrganisms)
 
 const SignInPage = props => {
 	useEffect(() => {
@@ -21,7 +19,6 @@ const SignInPage = props => {
 
 	return (
 		<>
-			<IndexNavbar />
 			<div className='page-header'>
 				<div className='squares square1' />
 				<div className='squares square2' />

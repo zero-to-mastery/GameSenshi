@@ -20,7 +20,7 @@ import {
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, IndexNavbar } = stopUndefined(ExportMultiOrganisms)
+const { Footer } = stopUndefined(ExportMultiOrganisms)
 
 let imageSlickSettings = {
 	dots: true,
@@ -102,7 +102,6 @@ const ProfilePage = props => {
 	}
 	return (
 		<>
-			<IndexNavbar />
 			<div className='wrapper' ref={wrapper}>
 				<div className='page-header'>
 					<img

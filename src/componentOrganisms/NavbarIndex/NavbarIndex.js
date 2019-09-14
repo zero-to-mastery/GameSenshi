@@ -1,5 +1,7 @@
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { stopUndefined } from 'utils'
+import { ExportCompounds } from 'componentnCompounds'
+import { Link } from 'react-router-dom'
 import { auth } from 'firebaseInit'
 // state
 import {
@@ -21,7 +23,6 @@ import {
 	UncontrolledDropdown,
 	DropdownItem,
 	DropdownToggle,
-	NavbarBrand,
 	Navbar,
 	NavItem,
 	NavLink,
@@ -37,18 +38,19 @@ import {
 	ROUTE_PAGE_SIGN_IN,
 	ROUTE_PAGE_SETTINGS_GENERAL,
 } from 'routes'
-//core component
-import { ButtonSignUpPropedDefault } from 'componentAtoms/ButtonSignUp'
-import { ButtonSignInPropedDefault } from 'componentAtoms/ButtonSignIn'
-import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
-import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
-// logo
-import logo from 'assets/img/favicon.ico'
 
 const widthBreakPoint = 991
 const bgPurple = 'bg-purple'
 
-class ComponentsNavbar extends React.Component {
+const {
+	NavbarBravndPropedIndexStoreUser,
+	ProgressCommonStoreProgress,
+	AlertCommonStoreAlert,
+	ButtonSignInPropedDefault,
+	ButtonSignUpPropedDefault,
+} = stopUndefined(ExportCompounds)
+
+class NavbarIndex extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -169,33 +171,7 @@ class ComponentsNavbar extends React.Component {
 								expand='lg'>
 								<Container>
 									<div className='navbar-translate'>
-										<NavbarBrand
-											data-placement='bottom'
-											to='/'
-											rel='noopener noreferrer'
-											tag={Link}
-											className='d-flex align-items-center'>
-											<div
-												className='avatar'
-												style={{
-													height: 0,
-													width: 48,
-													backgroundColor: 'transparent',
-												}}>
-												<Media
-													onError={() => {
-														storeUser.resetProfileImage()
-													}}
-													src={logo}
-													alt='Game Senshi'
-													className='img-raised'
-													style={{ height: 48, width: 48 }}
-												/>
-											</div>
-											<div className='d-none d-sm-inline'>
-												&nbsp;&nbsp;&nbsp;GAME SENSHI
-											</div>
-										</NavbarBrand>
+										<NavbarBravndPropedIndexStoreUser />
 										<Nav className='flex-row' navbar>
 											{isSigningIn ? (
 												<NavItem className='active navbar-toggler'>
@@ -550,4 +526,4 @@ class ComponentsNavbar extends React.Component {
 	}
 }
 
-export default withRouter(ComponentsNavbar)
+export { NavbarIndex }

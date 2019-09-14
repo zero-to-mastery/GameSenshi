@@ -8,6 +8,7 @@ import { FormCard, FORM_CARD_DEFAULT } from 'componentOrganisms/FormCard'
 import { TabPaneAccountSettings } from 'componentOrganisms/TabPaneAccountSettings'
 import { TabPaneGeneralSettings } from 'componentOrganisms/TabPaneGeneralSettings'
 import { FormResetPasswordPropedDefault } from 'componentOrganisms/FormResetPassword'
+import { NavbarIndexPropedDefault } from 'componentOrganisms/NavbarIndex'
 
 export const ExportOrganisms = {
 	...ExportCompounds,
@@ -19,4 +20,5 @@ export const ExportOrganisms = {
 	TabPaneAccountSettings,
 	TabPaneGeneralSettings,
 	FormResetPasswordPropedDefault,
+	NavbarIndexPropedDefault,
 }

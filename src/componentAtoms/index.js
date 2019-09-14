@@ -1,4 +1,3 @@
-import IndexNavbar from 'componentAtoms/Navbars/IndexNavbar'
 import { FinalForm } from 'componentAtoms/FinalForm'
 import { ListText } from 'componentAtoms/ListText'
 import {
@@ -28,11 +27,11 @@ import { TabListVerticalPropedSettingPage } from 'componentAtoms/TabListVertical
 import { IconCard } from 'componentAtoms/IconCard'
 import { LabelForm, LabelFormSimple } from 'componentAtoms/LabelForm'
 import { InputDate } from 'componentAtoms/InputDate'
+import { NavbarBravndPropedIndexStoreUser } from 'componentAtoms/NavbarBrand'
 
 export const ExportAtoms = {
 	Footer,
 	FinalForm,
-	IndexNavbar,
 	IndexHeader,
 	ErrorBoundary,
 	ImageUpload,
@@ -59,4 +58,5 @@ export const ExportAtoms = {
 	LabelForm,
 	LabelFormSimple,
 	InputDate,
+	NavbarBravndPropedIndexStoreUser,
 }

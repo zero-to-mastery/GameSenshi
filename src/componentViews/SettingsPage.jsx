@@ -13,7 +13,6 @@ import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
 const {
 	Footer,
-	IndexNavbar,
 	TabPaneAccountSettings,
 	TabPaneNotificationSettings,
 	TabPaneGeneralSettings,
@@ -60,7 +59,6 @@ const SettingsPage = props => {
 
 	return (
 		<>
-			<IndexNavbar />
 			<div className='wrapper' ref={wrapper}>
 				<div className='section'>
 					<Container>

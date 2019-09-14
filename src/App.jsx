@@ -36,6 +36,7 @@ const {
 	Error404Page,
 	FormSignInPropedDefaultStoreSignIn,
 	ModalAuthStoreAuthModal,
+	NavbarIndexPropedDefault,
 } = stopUndefined(ExportViews)
 
 const MapRoutesToPages = {
@@ -75,6 +76,7 @@ const App = props => {
 							<Router
 								isUserSignedIn={isUserSignedIn || isUserSoftSignedIn}
 								pages={MapRoutesToPages}>
+								<NavbarIndexPropedDefault />
 								<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
 								<ModalAuthStoreAuthModal />
 							</Router>

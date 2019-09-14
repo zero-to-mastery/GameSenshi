@@ -4,7 +4,7 @@ import { stopUndefined } from 'utils'
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, IndexNavbar, FormResetPasswordPropedDefault } = stopUndefined(
+const { Footer, FormResetPasswordPropedDefault } = stopUndefined(
 	ExportMultiOrganisms
 )
 
@@ -23,7 +23,6 @@ const PasswordResetPage = props => {
 
 	return (
 		<>
-			<IndexNavbar />
 			<div className='wrapper' ref={wrapper}>
 				<div className='page-header'>
 					<div className='squares square1' />

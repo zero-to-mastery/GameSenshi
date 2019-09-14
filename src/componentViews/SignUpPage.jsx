@@ -6,9 +6,7 @@ import { Container, Row, Col } from 'reactstrap'
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, IndexNavbar, FormSignUpPropedDefault } = stopUndefined(
-	ExportMultiOrganisms
-)
+const { Footer, FormSignUpPropedDefault } = stopUndefined(ExportMultiOrganisms)
 
 const SignUpPage = props => {
 	const [squares1to6, setSquares1to6] = useState('')
@@ -54,7 +52,6 @@ const SignUpPage = props => {
 
 	return (
 		<>
-			<IndexNavbar />
 			<div className='wrapper' ref={wrapper}>
 				<div
 					className='page-header'
