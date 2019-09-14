@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react'
 import { FinalInput } from 'componentMolecules/FinalInput/FinalInput'
 import { ExportAtoms } from 'componentAtoms'
-import { stopUndefined } from 'utils'
+import { stopUndefined, emptyPromise } from 'utils'
 
-const { InputText, InputSelect } = stopUndefined(ExportAtoms)
+const { InputText, InputSelect, InputDate } = stopUndefined(ExportAtoms)
 
 const defaultProps = { onChange: () => {}, onValueChange: () => {} }
 
@@ -17,6 +17,18 @@ const FinalInputText = props => {
 	}, [])
 	return (
 		<FinalInput Component={InputText} onChange={onChange_} {...restProps} />
+	)
+}
+
+const FinalInputDate = props => {
+	const onChange = useCallback(e => e, [])
+	return (
+		<FinalInput
+			Component={InputDate}
+			onChange={onChange}
+			validation={emptyPromise}
+			{...props}
+		/>
 	)
 }
 
@@ -40,4 +52,4 @@ const FinalInputSelect = props => {
 	)
 }
 
-export { FinalInputText, FinalInputSelect }
+export { FinalInputText, FinalInputSelect, FinalInputDate }

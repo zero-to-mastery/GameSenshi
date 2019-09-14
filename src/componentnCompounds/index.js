@@ -48,7 +48,11 @@ import {
 import {
 	FinalSelectLanguagesPropedGeneraL,
 	FINAL_SELECT_LANGUAGES,
-} from 'componentnCompounds/FinalSelectLanguages/'
+} from 'componentnCompounds/FinalSelectLanguages'
+import {
+	FinalDateBirthDatePropedGeneraL,
+	FINAL_DATE_BIRTH_DATE,
+} from 'componentnCompounds/FinalDateBirthDate'
 
 export const ExportCompounds = {
 	...ExportMolecules,
@@ -80,4 +84,6 @@ export const ExportCompounds = {
 	FINAL_SELECT_GENDER,
 	FinalSelectLanguagesPropedGeneraL,
 	FINAL_SELECT_LANGUAGES,
+	FinalDateBirthDatePropedGeneraL,
+	FINAL_DATE_BIRTH_DATE,
 }

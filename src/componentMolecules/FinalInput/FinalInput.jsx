@@ -269,7 +269,8 @@ const FinalInput = memo(props => {
 							onChange={onChange_}
 							onKeyPress={onKeyPress_}
 							{...restProps}>
-							{(!onlyShowErrorAfterSubmit || submitFailed || !errorMessages) &&
+							{(!onlyShowErrorAfterSubmit || submitFailed) &&
+								!errorMessages &&
 								!spinner &&
 								!spinner2 &&
 								!submitting &&

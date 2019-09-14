@@ -1,8 +1,7 @@
 import React, { useCallback, useRef } from 'react'
 import { stopUndefined } from 'utils'
-import ReactDatetime from 'react-datetime'
 // reactstrap components
-import { FormGroup, Row, Col, Form } from 'reactstrap'
+import { Row, Col, Form } from 'reactstrap'
 
 import { ExportCompounds } from 'componentnCompounds'
 const {
@@ -17,6 +16,8 @@ const {
 	LabelFormSimple,
 	FinalSelectLanguagesPropedGeneraL,
 	FINAL_SELECT_LANGUAGES,
+	FinalDateBirthDatePropedGeneraL,
+	FINAL_DATE_BIRTH_DATE,
 } = stopUndefined(ExportCompounds)
 
 const TabPaneGeneralSettings = props => {
@@ -29,6 +30,7 @@ const TabPaneGeneralSettings = props => {
 		country,
 		languages,
 		onSubmit,
+		BirthDate,
 		onSuccessfulSubmission,
 	} = props
 
@@ -39,6 +41,7 @@ const TabPaneGeneralSettings = props => {
 				[FINAL_SELECT_GENDER]: '',
 				[FINAL_SELECT_COUNTRY]: '',
 				[FINAL_SELECT_LANGUAGES]: '',
+				[FINAL_DATE_BIRTH_DATE]: '',
 			}}
 			onSubmit={onSubmit}
 			onSuccessfulSubmission={onSuccessfulSubmission}>
@@ -62,26 +65,11 @@ const TabPaneGeneralSettings = props => {
 								submitRef={submitButton}
 								onBlur={formReset}
 							/>
-							<Row>
-								<Col className='align-self-center' md='3'>
-									<label className='labels' htmlFor='birthDate'>
-										Birth Date
-									</label>
-								</Col>
-								<Col className='align-self-center' md='4'>
-									<FormGroup>
-										<ReactDatetime
-											id='birthDate'
-											name='birthDate'
-											inputProps={{
-												className: 'form-control',
-												placeholder: 'BirthDate',
-											}}
-											timeFormat={false}
-										/>
-									</FormGroup>
-								</Col>
-							</Row>
+							<FinalDateBirthDatePropedGeneraL
+								value={BirthDate}
+								submitRef={submitButton}
+								onBlur={formReset}
+							/>
 							<FinalSelectGenderPropedGeneraL
 								value={gender}
 								submitRef={submitButton}

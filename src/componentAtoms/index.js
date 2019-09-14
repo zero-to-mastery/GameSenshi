@@ -27,6 +27,7 @@ import { TabPaneContainer } from 'componentAtoms/TabPaneContainer/TabPaneContain
 import { TabListVerticalPropedSettingPage } from 'componentAtoms/TabListVertical'
 import { IconCard } from 'componentAtoms/IconCard'
 import { LabelForm, LabelFormSimple } from 'componentAtoms/LabelForm'
+import { InputDate } from 'componentAtoms/InputDate'
 
 export const ExportAtoms = {
 	Footer,
@@ -57,4 +58,5 @@ export const ExportAtoms = {
 	IconCard,
 	LabelForm,
 	LabelFormSimple,
+	InputDate,
 }
