@@ -51,70 +51,68 @@ const SignUpPage = props => {
 	}, [])
 
 	return (
-		<>
-			<div className='wrapper' ref={wrapper}>
-				<div
-					className='page-header'
-					style={{
-						marginBottom: 75,
-						display: 'block',
-						maxHeight: maxHeight + 'px',
-					}}>
-					<div className='page-header-image' />
-					<div className='content' style={{ marginTop: '5%' }}>
-						<Container className='container-fluid'>
-							<Row>
-								<Col className='mx-auto' lg='5' md='8'>
-									<div
-										className='square square-7'
-										id='square7'
-										style={{ transform: squares7and8 }}
-									/>
-									<div
-										className='square square-8'
-										id='square8'
-										style={{ transform: squares7and8 }}
-									/>
-									<FormSignUpPropedDefault />
-								</Col>
-							</Row>
-						</Container>
-						<div className='register-bg' />
-						<div
-							className='square square-1'
-							id='square1'
-							style={{ transform: squares1to6 }}
-						/>
-						<div
-							className='square square-2'
-							id='square2'
-							style={{ transform: squares1to6 }}
-						/>
-						<div
-							className='square square-3'
-							id='square3'
-							style={{ transform: squares1to6 }}
-						/>
-						<div
-							className='square square-4'
-							id='square4'
-							style={{ transform: squares1to6 }}
-						/>
-						<div
-							className='square square-5'
-							id='square5'
-							style={{ transform: squares1to6 }}
-						/>
-						<div
-							className='square square-6'
-							id='square6'
-							style={{ transform: squares1to6 }}
-						/>
-					</div>
+		<div className='wrapper' ref={wrapper}>
+			<div
+				className='page-header'
+				style={{
+					marginBottom: 75,
+					display: 'block',
+					maxHeight: maxHeight + 'px',
+				}}>
+				<div className='page-header-image' />
+				<div className='content' style={{ marginTop: '5%' }}>
+					<Container className='container-fluid'>
+						<Row>
+							<Col className='mx-auto' lg='5' md='8'>
+								<div
+									className='square square-7'
+									id='square7'
+									style={{ transform: squares7and8 }}
+								/>
+								<div
+									className='square square-8'
+									id='square8'
+									style={{ transform: squares7and8 }}
+								/>
+								<FormSignUpPropedDefault />
+							</Col>
+						</Row>
+					</Container>
+					<div className='register-bg' />
+					<div
+						className='square square-1'
+						id='square1'
+						style={{ transform: squares1to6 }}
+					/>
+					<div
+						className='square square-2'
+						id='square2'
+						style={{ transform: squares1to6 }}
+					/>
+					<div
+						className='square square-3'
+						id='square3'
+						style={{ transform: squares1to6 }}
+					/>
+					<div
+						className='square square-4'
+						id='square4'
+						style={{ transform: squares1to6 }}
+					/>
+					<div
+						className='square square-5'
+						id='square5'
+						style={{ transform: squares1to6 }}
+					/>
+					<div
+						className='square square-6'
+						id='square6'
+						style={{ transform: squares1to6 }}
+					/>
 				</div>
-				<Footer />
 			</div>
-		</>
+			<Footer />
+		</div>
 	)
 }
 

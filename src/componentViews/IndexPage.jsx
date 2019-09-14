@@ -19,13 +19,11 @@ const IndexPage = props => {
 	}, [])
 
 	return (
-		<>
-			<div className='wrapper' ref={wrapper}>
-				<IndexHeader />
-				<div className='main'>{/* include stuff here in future */}</div>
-				<Footer />
-			</div>
-		</>
+		<div className='wrapper' ref={wrapper}>
+			<IndexHeader />
+			<div className='main'>{/* include stuff here in future */}</div>
+			<Footer />
+		</div>
 	)
 }
 

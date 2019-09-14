@@ -58,50 +58,48 @@ const SettingsPage = props => {
 	}, [])
 
 	return (
-		<>
-			<div className='wrapper' ref={wrapper}>
-				<div className='section'>
-					<Container>
-						<Row>
-							<Col md='3'>
-								<div className='section'>
-									{/* User Information */}
-									<section className='text-center'>
-										<ImageUpload avatar addBtnColor='default' />
-									</section>
-									{/* User Information */}
-									{/* Profile Sidebar */}
-									<section>
-										<br />
-										<TabListVerticalPropedSettingPage
-											activeTab={tabPane}
-											onClick={() => {
-												forceUpdate('')
-											}}
-										/>
-									</section>
-									{/* End Profile Sidebar */}
-									{/* Profile Completion */}
+		<div className='wrapper' ref={wrapper}>
+			<div className='section'>
+				<Container>
+					<Row>
+						<Col md='3'>
+							<div className='section'>
+								{/* User Information */}
+								<section className='text-center'>
+									<ImageUpload avatar addBtnColor='default' />
+								</section>
+								{/* User Information */}
+								{/* Profile Sidebar */}
+								<section>
 									<br />
-									<br />
-									<br />
-									{/* End Profile Completion */}
-								</div>
-							</Col>
-							<Col className='ml-auto' md='8'>
-								<div className='section'>
-									{tabPane === 0 && <TabPaneGeneralSettings />}
-									{tabPane === 1 && <TabPanePaymentSettings />}
-									{tabPane === 2 && <TabPaneAccountSettings />}
-									{tabPane === 3 && <TabPaneNotificationSettings />}
-								</div>
-							</Col>
-						</Row>
-					</Container>
-				</div>
-				<Footer />
+									<TabListVerticalPropedSettingPage
+										activeTab={tabPane}
+										onClick={() => {
+											forceUpdate('')
+										}}
+									/>
+								</section>
+								{/* End Profile Sidebar */}
+								{/* Profile Completion */}
+								<br />
+								<br />
+								<br />
+								{/* End Profile Completion */}
+							</div>
+						</Col>
+						<Col className='ml-auto' md='8'>
+							<div className='section'>
+								{tabPane === 0 && <TabPaneGeneralSettings />}
+								{tabPane === 1 && <TabPanePaymentSettings />}
+								{tabPane === 2 && <TabPaneAccountSettings />}
+								{tabPane === 3 && <TabPaneNotificationSettings />}
+							</div>
+						</Col>
+					</Row>
+				</Container>
 			</div>
-		</>
+			<Footer />
+		</div>
 	)
 }
 

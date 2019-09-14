@@ -22,21 +22,19 @@ const PasswordResetPage = props => {
 	}, [])
 
 	return (
-		<>
-			<div className='wrapper' ref={wrapper}>
-				<div className='page-header'>
-					<div className='squares square1' />
-					<div className='squares square2' />
-					<div className='squares square3' />
-					<div className='squares square4' />
-					<div className='squares square5' />
-					<div className='squares square6' />
-					<div className='page-header-image' />
-					<FormResetPasswordPropedDefault />
-				</div>
-				<Footer />
+		<div className='wrapper' ref={wrapper}>
+			<div className='page-header'>
+				<div className='squares square1' />
+				<div className='squares square2' />
+				<div className='squares square3' />
+				<div className='squares square4' />
+				<div className='squares square5' />
+				<div className='squares square6' />
+				<div className='page-header-image' />
+				<FormResetPasswordPropedDefault />
 			</div>
-		</>
+			<Footer />
+		</div>
 	)
 }
 
