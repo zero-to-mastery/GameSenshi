@@ -231,16 +231,7 @@ class NavbarIndex extends React.Component {
 																	Senshi Portal
 																</NavLink>
 															</NavItem>
-															<NavItem className='active d-none d-lg-inline-flex'>
-																<NavLink
-																	href='/notification'
-																	onClick={e => e.preventDefault()}>
-																	<i
-																		aria-hidden={true}
-																		className='tim-icons icon-bell-55'
-																	/>
-																</NavLink>
-															</NavItem>
+															<IconNotificationStoreUserPropedNavbar className='d-none d-lg-inline-flex' />
 															<UncontrolledDropdown // user menu bar
 																nav
 																className='d-none d-lg-inline-flex'>
@@ -316,7 +307,7 @@ class NavbarIndex extends React.Component {
 														</>
 													)}
 													<ButtonSignInStoreUserPropedNavbar />
-													<ButtonSignUpStoreUserPropedNavbar />}
+													<ButtonSignUpStoreUserPropedNavbar />
 												</LoaderSmallPropedNavbarStoreUser>
 											) : // small screen size and collapsed
 											isSignedIn ? (
