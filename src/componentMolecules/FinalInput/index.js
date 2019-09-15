@@ -5,11 +5,11 @@ import { stopUndefined, emptyPromise } from 'utils'
 
 const { InputText, InputSelect, InputDate } = stopUndefined(ExportAtoms)
 
-const defaultProps = { onChange: () => {}, onValueChange: () => {} }
+const defaultProps = () => ({ onChange: () => {}, onValueChange: () => {} })
 
 const FinalInputText = props => {
 	const { onChange, onValueChange, ...restProps } = {
-		...defaultProps,
+		...defaultProps(),
 		...props,
 	}
 	const onChange_ = useCallback(e => {
@@ -33,7 +33,7 @@ const FinalInputDate = props => {
 }
 
 const FinalInputSelect = props => {
-	const { onValueChange, ...restProps } = { ...defaultProps, ...props }
+	const { onValueChange, ...restProps } = { ...defaultProps(), ...props }
 	const { validation, options } = props
 	const onChange = useCallback(e => {
 		onValueChange(e)

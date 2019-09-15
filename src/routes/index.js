@@ -9,6 +9,7 @@ import {
 } from 'routes/getSetLastRoute'
 
 import {
+	history,
 	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_PROFILE,
 	ROUTE_PAGE_SIGN_UP,
@@ -22,7 +23,7 @@ import {
 	ROUTE_PAGE_PASSWORD_RESET,
 	ROUTE_PAGE_404,
 	ROUTE_PAGE_NOTIFICATIONS,
-	history,
+	ROUTE_PAGE_JOIN,
 } from 'routes/constants'
 
 export {
@@ -46,4 +47,5 @@ export {
 	ROUTE_PAGE_PASSWORD_RESET,
 	ROUTE_PAGE_404,
 	ROUTE_PAGE_NOTIFICATIONS,
+	ROUTE_PAGE_JOIN,
 }

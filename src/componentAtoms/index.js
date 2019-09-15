@@ -32,6 +32,8 @@ import { InputDate } from 'componentAtoms/InputDate'
 import { BrandNavbarPropedIndexNavbarStoreUser } from 'componentAtoms/BrandNavbar'
 import { LoaderSmallPropedIndexNavbarStoreUser } from 'componentAtoms/LoaderSmall'
 import { IconNotificationStoreUserPropedIndexNavbar } from 'componentAtoms/IconNotification'
+import { ListNavItemStoreUserPropedNavbarIndex } from 'componentAtoms/ListNavItem'
+
 export const ExportAtoms = {
 	Footer,
 	FinalForm,
@@ -64,4 +66,5 @@ export const ExportAtoms = {
 	BrandNavbarPropedIndexNavbarStoreUser,
 	LoaderSmallPropedIndexNavbarStoreUser,
 	IconNotificationStoreUserPropedIndexNavbar,
+	ListNavItemStoreUserPropedNavbarIndex,
 }

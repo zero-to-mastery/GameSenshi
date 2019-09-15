@@ -11,11 +11,11 @@ const DELAY = 1000
 const FinalInput = memo(props => {
 	const [localValue, seLocalValue] = useState('')
 
-	const defaultProps = {
+	const defaultProps = () => ({
 		popoverMessages: [],
 		value: localValue,
 		setValue: seLocalValue,
-	}
+	})
 
 	const {
 		Component,
@@ -34,7 +34,7 @@ const FinalInput = memo(props => {
 		setValue,
 		defaultValue,
 		...restProps
-	} = { ...defaultProps, ...props }
+	} = { ...defaultProps(), ...props }
 
 	// set default value
 

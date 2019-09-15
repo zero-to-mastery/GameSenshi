@@ -7,7 +7,6 @@ const ICON_NOTIFICATION_STATE_SIGNED_IN = 'signedIn'
 const IconNotification = memo(props => {
 	const {
 		[ICON_NOTIFICATION_STATE_SIGNED_IN]: signedIn,
-		onClick,
 		small,
 		to,
 		className,
@@ -15,7 +14,7 @@ const IconNotification = memo(props => {
 	return (
 		signedIn && (
 			<NavItem className={`active ${small && 'navbar-toggler'} ${className}`}>
-				<NavLink tag={Link} to={to} onClick={onClick} rel='noopener noreferrer'>
+				<NavLink tag={Link} to={to} rel='noopener noreferrer'>
 					<i aria-hidden={true} className='tim-icons icon-bell-55' />
 				</NavLink>
 			</NavItem>

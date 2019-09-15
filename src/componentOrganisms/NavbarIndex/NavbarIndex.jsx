@@ -48,6 +48,7 @@ const {
 	ButtonSignUpStoreUserPropedIndexNavbar,
 	LoaderSmallPropedIndexNavbarStoreUser,
 	IconNotificationStoreUserPropedIndexNavbar,
+	ListNavItemStoreUserPropedNavbarIndex,
 } = stopUndefined(ExportCompounds)
 
 class NavbarIndex extends React.Component {
@@ -221,17 +222,11 @@ class NavbarIndex extends React.Component {
 											{(!collapseOpen && collapseExited) ||
 											overWidthBreakPoint ? (
 												<LoaderSmallPropedIndexNavbarStoreUser>
+													<ListNavItemStoreUserPropedNavbarIndex />
+													<IconNotificationStoreUserPropedIndexNavbar className='d-none d-lg-inline-flex' />
 													{// big screen size or not collapsed
 													isSignedIn && (
 														<>
-															<NavItem className='active d-none d-lg-inline-flex'>
-																<NavLink
-																	href='/joinSenshi'
-																	onClick={e => e.preventDefault()}>
-																	Senshi Portal
-																</NavLink>
-															</NavItem>
-															<IconNotificationStoreUserPropedIndexNavbar className='d-none d-lg-inline-flex' />
 															<UncontrolledDropdown // user menu bar
 																nav
 																className='d-none d-lg-inline-flex'>
