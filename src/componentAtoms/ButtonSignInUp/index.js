@@ -6,10 +6,10 @@ import {
 import { withRouter } from 'react-router-dom'
 //constants
 import { ROUTE_PAGE_SIGN_IN, ROUTE_PAGE_SIGN_UP } from 'routes'
-import { StateContainer, storeUser, STORE_USER_STATE_SIGNING_IN } from 'state'
+import { StateContainer, storeUser, STORE_USER_STATE_SIGNED_IN } from 'state'
 
 const mapStoreUserStateToProp = {
-	[BUTTON_SIGN_IN_STATE_SIGNED_IN]: STORE_USER_STATE_SIGNING_IN,
+	[BUTTON_SIGN_IN_STATE_SIGNED_IN]: STORE_USER_STATE_SIGNED_IN,
 }
 
 const ButtonSignInUpStoreUser = StateContainer(

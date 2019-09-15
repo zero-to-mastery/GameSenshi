@@ -31,7 +31,7 @@ import { LabelForm, LabelFormSimple } from 'componentAtoms/LabelForm'
 import { InputDate } from 'componentAtoms/InputDate'
 import { NavbarBrandPropedNavbarStoreUser } from 'componentAtoms/NavbarBrand'
 import { LoaderSmallPropedNavbarStoreUser } from 'componentAtoms/LoaderSmall'
-
+import { IconNotificationStoreUserPropedNavbar } from 'componentAtoms/IconNotification'
 export const ExportAtoms = {
 	Footer,
 	FinalForm,
@@ -63,4 +63,5 @@ export const ExportAtoms = {
 	InputDate,
 	NavbarBrandPropedNavbarStoreUser,
 	LoaderSmallPropedNavbarStoreUser,
+	IconNotificationStoreUserPropedNavbar,
 }

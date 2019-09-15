@@ -14,6 +14,7 @@ const ROUTE_PAGE_PROFILE = '/profile'
 const ROUTE_PAGE_SIGN_UP = '/signUp'
 const ROUTE_PAGE_SIGN_IN = '/signIn'
 const ROUTE_PAGE_SETTINGS = '/settings'
+const ROUTE_PAGE_NOTIFICATIONS = '/notifications'
 const ROUTE_PAGE_404 = '/404'
 const ROUTE_PARAM_SETTINGS = 'tabPane'
 const ROUTE_SETTINGS_PARAM_GENERAL = 'general'
@@ -48,5 +49,6 @@ export {
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
 	ROUTE_PAGE_PASSWORD_RESET,
 	ROUTE_PAGE_404,
+	ROUTE_PAGE_NOTIFICATIONS,
 	history,
 }

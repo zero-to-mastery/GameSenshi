@@ -47,6 +47,7 @@ const {
 	ButtonSignInStoreUserPropedNavbar,
 	ButtonSignUpStoreUserPropedNavbar,
 	LoaderSmallPropedNavbarStoreUser,
+	IconNotificationStoreUserPropedNavbar,
 } = stopUndefined(ExportCompounds)
 
 class NavbarIndex extends React.Component {
@@ -172,19 +173,8 @@ class NavbarIndex extends React.Component {
 										<NavbarBrandPropedNavbarStoreUser />
 										<Nav className='flex-row' navbar>
 											<LoaderSmallPropedNavbarStoreUser small>
-												{//small screen size
-												isSignedIn && (
-													<NavItem className='active navbar-toggler'>
-														<NavLink
-															href='notification'
-															onClick={e => e.preventDefault()}>
-															<i
-																aria-hidden={true}
-																className='tim-icons icon-bell-55'
-															/>
-														</NavLink>
-													</NavItem>
-												)}
+												{/*small screen size*/}
+												<IconNotificationStoreUserPropedNavbar small />
 												<ButtonSignUpStoreUserPropedNavbar small />
 												<ButtonSignInStoreUserPropedNavbar small />
 											</LoaderSmallPropedNavbarStoreUser>
