@@ -5,7 +5,7 @@ import {
 } from 'componentAtoms/LoaderSmall/LoaderSmall'
 import { StateContainer, storeUser, STORE_USER_STATE_SIGNING_IN } from 'state'
 
-const LoaderSmallPropedNavbar = props => {
+const LoaderSmallPropedIndexNavbar = props => {
 	return <LoaderSmall body='...Signing In' {...props} />
 }
 
@@ -13,11 +13,11 @@ const mapStoreUserStateToProp = {
 	[LABEL_SMALL_STATE_IS_LOADING]: STORE_USER_STATE_SIGNING_IN,
 }
 
-const LoaderSmallPropedNavbarStoreUser = StateContainer(
-	LoaderSmallPropedNavbar,
+const LoaderSmallPropedIndexNavbarStoreUser = StateContainer(
+	LoaderSmallPropedIndexNavbar,
 	[storeUser],
 	[mapStoreUserStateToProp],
 	[]
 )
 
-export { LoaderSmallPropedNavbarStoreUser }
+export { LoaderSmallPropedIndexNavbarStoreUser }

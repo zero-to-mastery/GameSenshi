@@ -17,8 +17,8 @@ const IconNotificationStoreUser = StateContainer(
 	[]
 )
 
-const IconNotificationStoreUserPropedNavbar = props => {
+const IconNotificationStoreUserPropedIndexNavbar = props => {
 	return <IconNotificationStoreUser to={ROUTE_PAGE_NOTIFICATIONS} {...props} />
 }
 
-export { IconNotificationStoreUserPropedNavbar }
+export { IconNotificationStoreUserPropedIndexNavbar }

@@ -1,14 +1,14 @@
 import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
 // reactstrap
-import { Media, NavbarBrand as Brand } from 'reactstrap'
+import { Media, NavbarBrand } from 'reactstrap'
 
 const NAVBAR_BRAND_ON_ERROR = 'onError'
 
-const NavbarBrand = memo(props => {
+const BrandNavbar = memo(props => {
 	const { [NAVBAR_BRAND_ON_ERROR]: onError, to, logo } = props
 	return (
-		<Brand
+		<NavbarBrand
 			data-placement='bottom'
 			to={to}
 			rel='noopener noreferrer'
@@ -30,8 +30,8 @@ const NavbarBrand = memo(props => {
 				/>
 			</div>
 			<div className='d-none d-sm-inline'>&nbsp;&nbsp;&nbsp;GAME SENSHI</div>
-		</Brand>
+		</NavbarBrand>
 	)
 })
 
-export { NavbarBrand, NAVBAR_BRAND_ON_ERROR }
+export { BrandNavbar, NAVBAR_BRAND_ON_ERROR }

@@ -13,8 +13,8 @@ import Footer from 'componentAtoms/Footers/Footer'
 import IndexHeader from 'componentAtoms/Headers/IndexHeader.jsx'
 import { ButtonsSocialAuthPropedDefault } from 'componentAtoms/ButtonsSocialAuth'
 import {
-	ButtonSignInStoreUserPropedNavbar,
-	ButtonSignUpStoreUserPropedNavbar,
+	ButtonSignInStoreUserPropedIndexNavbar,
+	ButtonSignUpStoreUserPropedIndexNavbar,
 } from 'componentAtoms/ButtonSignInUp'
 import ErrorBoundary from 'componentAtoms/ErrorBoundary/ErrorBoundary'
 import ImageUpload from 'componentAtoms/CustomUpload/ImageUpload'
@@ -29,9 +29,9 @@ import { TabListVerticalPropedSettingPage } from 'componentAtoms/TabListVertical
 import { IconCard } from 'componentAtoms/IconCard'
 import { LabelForm, LabelFormSimple } from 'componentAtoms/LabelForm'
 import { InputDate } from 'componentAtoms/InputDate'
-import { NavbarBrandPropedNavbarStoreUser } from 'componentAtoms/NavbarBrand'
-import { LoaderSmallPropedNavbarStoreUser } from 'componentAtoms/LoaderSmall'
-import { IconNotificationStoreUserPropedNavbar } from 'componentAtoms/IconNotification'
+import { BrandNavbarPropedIndexNavbarStoreUser } from 'componentAtoms/BrandNavbar'
+import { LoaderSmallPropedIndexNavbarStoreUser } from 'componentAtoms/LoaderSmall'
+import { IconNotificationStoreUserPropedIndexNavbar } from 'componentAtoms/IconNotification'
 export const ExportAtoms = {
 	Footer,
 	FinalForm,
@@ -41,8 +41,8 @@ export const ExportAtoms = {
 	AlertCommonStoreAlert,
 	ProgressCommonStoreProgress,
 	ButtonsSocialAuthPropedDefault,
-	ButtonSignInStoreUserPropedNavbar,
-	ButtonSignUpStoreUserPropedNavbar,
+	ButtonSignInStoreUserPropedIndexNavbar,
+	ButtonSignUpStoreUserPropedIndexNavbar,
 	ListText,
 	InputSelect,
 	VALUE,
@@ -61,7 +61,7 @@ export const ExportAtoms = {
 	LabelForm,
 	LabelFormSimple,
 	InputDate,
-	NavbarBrandPropedNavbarStoreUser,
-	LoaderSmallPropedNavbarStoreUser,
-	IconNotificationStoreUserPropedNavbar,
+	BrandNavbarPropedIndexNavbarStoreUser,
+	LoaderSmallPropedIndexNavbarStoreUser,
+	IconNotificationStoreUserPropedIndexNavbar,
 }

@@ -19,7 +19,7 @@ const ButtonSignInUpStoreUser = StateContainer(
 	[]
 )
 
-const ButtonSignInStoreUserPropedNavbar = withRouter(props => {
+const ButtonSignInStoreUserPropedIndexNavbar = withRouter(props => {
 	const {
 		small,
 		location: { pathname },
@@ -38,7 +38,7 @@ const ButtonSignInStoreUserPropedNavbar = withRouter(props => {
 	)
 })
 
-const ButtonSignUpStoreUserPropedNavbar = props => {
+const ButtonSignUpStoreUserPropedIndexNavbar = props => {
 	return (
 		<ButtonSignInUpStoreUser
 			navItemClass='active'
@@ -49,4 +49,7 @@ const ButtonSignUpStoreUserPropedNavbar = props => {
 	)
 }
 
-export { ButtonSignInStoreUserPropedNavbar, ButtonSignUpStoreUserPropedNavbar }
+export {
+	ButtonSignInStoreUserPropedIndexNavbar,
+	ButtonSignUpStoreUserPropedIndexNavbar,
+}

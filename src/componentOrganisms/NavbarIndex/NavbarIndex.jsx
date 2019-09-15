@@ -41,13 +41,13 @@ const widthBreakPoint = 991
 const bgPurple = 'bg-purple'
 
 const {
-	NavbarBrandPropedNavbarStoreUser,
+	BrandNavbarPropedIndexNavbarStoreUser,
 	ProgressCommonStoreProgress,
 	AlertCommonStoreAlert,
-	ButtonSignInStoreUserPropedNavbar,
-	ButtonSignUpStoreUserPropedNavbar,
-	LoaderSmallPropedNavbarStoreUser,
-	IconNotificationStoreUserPropedNavbar,
+	ButtonSignInStoreUserPropedIndexNavbar,
+	ButtonSignUpStoreUserPropedIndexNavbar,
+	LoaderSmallPropedIndexNavbarStoreUser,
+	IconNotificationStoreUserPropedIndexNavbar,
 } = stopUndefined(ExportCompounds)
 
 class NavbarIndex extends React.Component {
@@ -170,14 +170,14 @@ class NavbarIndex extends React.Component {
 								expand='lg'>
 								<Container>
 									<div className='navbar-translate'>
-										<NavbarBrandPropedNavbarStoreUser />
+										<BrandNavbarPropedIndexNavbarStoreUser />
 										<Nav className='flex-row' navbar>
-											<LoaderSmallPropedNavbarStoreUser small>
+											<LoaderSmallPropedIndexNavbarStoreUser small>
 												{/*small screen size*/}
-												<IconNotificationStoreUserPropedNavbar small />
-												<ButtonSignUpStoreUserPropedNavbar small />
-												<ButtonSignInStoreUserPropedNavbar small />
-											</LoaderSmallPropedNavbarStoreUser>
+												<IconNotificationStoreUserPropedIndexNavbar small />
+												<ButtonSignUpStoreUserPropedIndexNavbar small />
+												<ButtonSignInStoreUserPropedIndexNavbar small />
+											</LoaderSmallPropedIndexNavbarStoreUser>
 											<NavItem className='active'>
 												<button // button to activate collapsed
 													aria-expanded={collapseOpen}
@@ -220,7 +220,7 @@ class NavbarIndex extends React.Component {
 										<Nav navbar>
 											{(!collapseOpen && collapseExited) ||
 											overWidthBreakPoint ? (
-												<LoaderSmallPropedNavbarStoreUser>
+												<LoaderSmallPropedIndexNavbarStoreUser>
 													{// big screen size or not collapsed
 													isSignedIn && (
 														<>
@@ -231,7 +231,7 @@ class NavbarIndex extends React.Component {
 																	Senshi Portal
 																</NavLink>
 															</NavItem>
-															<IconNotificationStoreUserPropedNavbar className='d-none d-lg-inline-flex' />
+															<IconNotificationStoreUserPropedIndexNavbar className='d-none d-lg-inline-flex' />
 															<UncontrolledDropdown // user menu bar
 																nav
 																className='d-none d-lg-inline-flex'>
@@ -306,9 +306,9 @@ class NavbarIndex extends React.Component {
 															</UncontrolledDropdown>
 														</>
 													)}
-													<ButtonSignInStoreUserPropedNavbar />
-													<ButtonSignUpStoreUserPropedNavbar />
-												</LoaderSmallPropedNavbarStoreUser>
+													<ButtonSignInStoreUserPropedIndexNavbar />
+													<ButtonSignUpStoreUserPropedIndexNavbar />
+												</LoaderSmallPropedIndexNavbarStoreUser>
 											) : // small screen size and collapsed
 											isSignedIn ? (
 												<>
