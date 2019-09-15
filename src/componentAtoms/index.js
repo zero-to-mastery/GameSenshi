@@ -1,19 +1,13 @@
 import { FinalForm } from 'componentAtoms/FinalForm'
 import { ListText } from 'componentAtoms/ListText'
-import {
-	InputSelect,
-	VALUE,
-	LABEL,
-	DISABLE,
-	COLOR,
-} from 'componentAtoms/InputSelect'
+import { InputSelect, VALUE, LABEL, DISABLE, COLOR } from 'componentAtoms/InputSelect'
 import { InputText } from 'componentAtoms/InputText'
 import { PopoverCommon } from 'componentAtoms/PopoverCommon'
 import Footer from 'componentAtoms/Footers/Footer'
 import IndexHeader from 'componentAtoms/Headers/IndexHeader.jsx'
 import { ButtonsSocialAuthPropedDefault } from 'componentAtoms/ButtonsSocialAuth'
 import { ButtonSignUpPropedDefault } from 'componentAtoms/ButtonSignUp'
-import { ButtonSignInPropedDefault } from 'componentAtoms/ButtonSignIn'
+import { ButtonSignInPropedNavbar } from 'componentAtoms/ButtonSignIn'
 import ErrorBoundary from 'componentAtoms/ErrorBoundary/ErrorBoundary'
 import ImageUpload from 'componentAtoms/CustomUpload/ImageUpload'
 import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
@@ -27,7 +21,8 @@ import { TabListVerticalPropedSettingPage } from 'componentAtoms/TabListVertical
 import { IconCard } from 'componentAtoms/IconCard'
 import { LabelForm, LabelFormSimple } from 'componentAtoms/LabelForm'
 import { InputDate } from 'componentAtoms/InputDate'
-import { NavbarBravndPropedIndexStoreUser } from 'componentAtoms/NavbarBrand'
+import { NavbarBrandPropedNavbarStoreUser } from 'componentAtoms/NavbarBrand'
+import { LoaderSmallPropedNavbarStoreUser } from 'componentAtoms/LoaderSmall'
 
 export const ExportAtoms = {
 	Footer,
@@ -38,7 +33,7 @@ export const ExportAtoms = {
 	AlertCommonStoreAlert,
 	ProgressCommonStoreProgress,
 	ButtonsSocialAuthPropedDefault,
-	ButtonSignInPropedDefault,
+	ButtonSignInPropedNavbar,
 	ButtonSignUpPropedDefault,
 	ListText,
 	InputSelect,
@@ -58,5 +53,6 @@ export const ExportAtoms = {
 	LabelForm,
 	LabelFormSimple,
 	InputDate,
-	NavbarBravndPropedIndexStoreUser,
+	NavbarBrandPropedNavbarStoreUser,
+	LoaderSmallPropedNavbarStoreUser,
 }

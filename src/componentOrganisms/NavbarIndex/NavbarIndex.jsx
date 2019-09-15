@@ -10,7 +10,6 @@ import {
 	Subscribe,
 	STORE_ALERT_STATE_OPEN,
 	STATE,
-	STORE_USER_STATE_SIGNING_IN,
 	STORE_USER_STATE_SIGNED_IN,
 	STORE_USER_STATE_USERNAME,
 	STORE_USER_STATE_AVATAR_URL,
@@ -31,23 +30,19 @@ import {
 	Row,
 	Col,
 } from 'reactstrap'
-import Loader from 'react-loader-spinner'
 // constants
-import {
-	ROUTE_PAGE_SIGN_UP,
-	ROUTE_PAGE_SIGN_IN,
-	ROUTE_PAGE_SETTINGS_GENERAL,
-} from 'routes'
+import { ROUTE_PAGE_SIGN_UP, ROUTE_PAGE_SIGN_IN, ROUTE_PAGE_SETTINGS_GENERAL } from 'routes'
 
 const widthBreakPoint = 991
 const bgPurple = 'bg-purple'
 
 const {
-	NavbarBravndPropedIndexStoreUser,
+	NavbarBrandPropedNavbarStoreUser,
 	ProgressCommonStoreProgress,
 	AlertCommonStoreAlert,
-	ButtonSignInPropedDefault,
+	ButtonSignInPropedNavbar,
 	ButtonSignUpPropedDefault,
+	LoaderSmallPropedNavbarStoreUser,
 } = stopUndefined(ExportCompounds)
 
 class NavbarIndex extends React.Component {
@@ -72,35 +67,21 @@ class NavbarIndex extends React.Component {
 	}
 
 	onDimensionChange = () => {
-		if (
-			window.innerWidth > widthBreakPoint &&
-			!this.state.overWidthBreakPoint
-		) {
+		if (window.innerWidth > widthBreakPoint && !this.state.overWidthBreakPoint) {
 			this.setState({ overWidthBreakPoint: true })
-		} else if (
-			window.innerWidth <= widthBreakPoint &&
-			this.state.overWidthBreakPoint
-		) {
+		} else if (window.innerWidth <= widthBreakPoint && this.state.overWidthBreakPoint) {
 			this.setState({ overWidthBreakPoint: false })
 		}
 	}
 
 	changeColor = () => {
-		if (
-			document.documentElement.scrollTop > 299 ||
-			document.body.scrollTop > 299
-		) {
+		if (document.documentElement.scrollTop > 299 || document.body.scrollTop > 299) {
 			this.setState({
 				color: bgPurple,
 			})
-		} else if (
-			document.documentElement.scrollTop < 300 ||
-			document.body.scrollTop < 300
-		) {
+		} else if (document.documentElement.scrollTop < 300 || document.body.scrollTop < 300) {
 			this.setState({
-				color:
-					(storeAlert[STATE][STORE_ALERT_STATE_OPEN] && bgPurple) ||
-					'navbar-transparent',
+				color: (storeAlert[STATE][STORE_ALERT_STATE_OPEN] && bgPurple) || 'navbar-transparent',
 			})
 		}
 	}
@@ -129,9 +110,7 @@ class NavbarIndex extends React.Component {
 		})
 	}
 	scrollToDownload = () => {
-		document
-			.getElementById('download-section')
-			.scrollIntoView({ behavior: 'smooth' })
+		document.getElementById('download-section').scrollIntoView({ behavior: 'smooth' })
 	}
 
 	render() {
@@ -156,7 +135,6 @@ class NavbarIndex extends React.Component {
 						[STORE_USER_STATE_USERNAME]: username,
 						[STORE_USER_STATE_SIGNED_IN]: isSignedIn,
 						[STORE_USER_STATE_AVATAR_URL]: avatarURL,
-						[STORE_USER_STATE_SIGNING_IN]: isSigningIn,
 					} = storeUser.state
 					const { [STORE_ALERT_STATE_OPEN]: alertOpen } = storeAlert.state
 					return (
@@ -171,40 +149,22 @@ class NavbarIndex extends React.Component {
 								expand='lg'>
 								<Container>
 									<div className='navbar-translate'>
-										<NavbarBravndPropedIndexStoreUser />
+										<NavbarBrandPropedNavbarStoreUser />
 										<Nav className='flex-row' navbar>
-											{isSigningIn ? (
-												<NavItem className='active navbar-toggler'>
-													<NavLink
-														disabled
-														href='#pablo'
-														className='p-0 d-flex align-items-center'>
-														<Loader
-															type='Hearts'
-															color='#00BFFF'
-															height='36'
-															width='36'
-														/>
-														&nbsp;&nbsp;...Signing In
-													</NavLink>
-												</NavItem>
-											) : //small screen size
-											isSignedIn ? (
-												<NavItem className='active navbar-toggler'>
-													<NavLink
-														href='notification'
-														onClick={e => e.preventDefault()}>
-														<i
-															aria-hidden={true}
-															className='tim-icons icon-bell-55'
-														/>
-													</NavLink>
-												</NavItem>
-											) : currentPath === '/signup' ? (
-												<ButtonSignInPropedDefault className='navbar-toggler' />
-											) : (
-												<ButtonSignUpPropedDefault className='navbar-toggler' />
-											)}
+											<LoaderSmallPropedNavbarStoreUser small>
+												{//small screen size
+												isSignedIn ? (
+													<NavItem className='active navbar-toggler'>
+														<NavLink href='notification' onClick={e => e.preventDefault()}>
+															<i aria-hidden={true} className='tim-icons icon-bell-55' />
+														</NavLink>
+													</NavItem>
+												) : currentPath === '/signup' ? (
+													<ButtonSignInPropedNavbar className='navbar-toggler' />
+												) : (
+													<ButtonSignUpPropedDefault className='navbar-toggler' />
+												)}
+											</LoaderSmallPropedNavbarStoreUser>
 											<NavItem className='active'>
 												<button // button to activate collapsed
 													aria-expanded={collapseOpen}
@@ -235,135 +195,104 @@ class NavbarIndex extends React.Component {
 													</a>
 												</Col>
 												<Col className='collapse-close text-right' xs='6'>
-													<button
-														aria-expanded={collapseOpen}
-														className='navbar-toggler'
-														onClick={toggleCollapse}>
+													<button aria-expanded={collapseOpen} className='navbar-toggler' onClick={toggleCollapse}>
 														<i className='tim-icons icon-simple-remove' />
 													</button>
 												</Col>
 											</Row>
 										</div>
 										<Nav navbar>
-											{(!collapseOpen && collapseExited) ||
-											overWidthBreakPoint ? ( // big screen size or not collapsed
-												isSigningIn ? (
-													<NavItem className='active d-none d-lg-inline-flex'>
-														<NavLink
-															disabled
-															href='#pablo'
-															className='p-0 d-flex align-items-center'>
-															<Loader
-																type='Hearts'
-																color='#00BFFF'
-																height='36'
-																width='36'
-															/>
-															&nbsp;&nbsp;...Signing In
-														</NavLink>
-													</NavItem>
-												) : isSignedIn ? (
-													<>
-														<NavItem className='active d-none d-lg-inline-flex'>
-															<NavLink
-																href='/joinSenshi'
-																onClick={e => e.preventDefault()}>
-																Senshi Portal
-															</NavLink>
-														</NavItem>
-														<NavItem className='active d-none d-lg-inline-flex'>
-															<NavLink
-																href='/notification'
-																onClick={e => e.preventDefault()}>
-																<i
-																	aria-hidden={true}
-																	className='tim-icons icon-bell-55'
-																/>
-															</NavLink>
-														</NavItem>
-														<UncontrolledDropdown // user menu bar
-															nav
-															className='d-none d-lg-inline-flex'>
-															<DropdownToggle
-																caret
-																color='default'
-																data-toggle='dropdown'
-																href='#pablo'
-																id='navbarDropdownMenuLink'
+											{(!collapseOpen && collapseExited) || overWidthBreakPoint ? (
+												<LoaderSmallPropedNavbarStoreUser>
+													{// big screen size or not collapsed
+													isSignedIn ? (
+														<>
+															<NavItem className='active d-none d-lg-inline-flex'>
+																<NavLink href='/joinSenshi' onClick={e => e.preventDefault()}>
+																	Senshi Portal
+																</NavLink>
+															</NavItem>
+															<NavItem className='active d-none d-lg-inline-flex'>
+																<NavLink href='/notification' onClick={e => e.preventDefault()}>
+																	<i aria-hidden={true} className='tim-icons icon-bell-55' />
+																</NavLink>
+															</NavItem>
+															<UncontrolledDropdown // user menu bar
 																nav
-																onClick={e => e.preventDefault()}
-																className='d-flex align-items-center pt-0 pb-0'>
-																<div
-																	className='avatar'
-																	style={{ height: 36, width: 36 }}>
-																	<Media
-																		onError={() => {
-																			storeUser.resetProfileImage()
-																		}}
-																		alt='user avatar'
-																		className='img-raised'
-																		style={{ height: 36, width: 36 }}
-																		src={avatarURL}
-																	/>
-																</div>
-															</DropdownToggle>
-															<DropdownMenu
-																aria-labelledby='navbarDropdownMenuLink'
-																right>
-																<DropdownItem
-																	to={ROUTE_PAGE_SETTINGS_GENERAL}
-																	tag={Link}
-																	className='text-dark mt-0 py-1 px-4'
-																	style={{ fontSize: '1rem' }}>
-																	<strong>{username}</strong>
-																</DropdownItem>
-																<DropdownItem divider />
-																<DropdownItem
+																className='d-none d-lg-inline-flex'>
+																<DropdownToggle
+																	caret
+																	color='default'
+																	data-toggle='dropdown'
 																	href='#pablo'
-																	className='text-dark mt-0 py-1 px-4'
-																	style={{ fontSize: '1rem' }}
-																	onClick={e => e.preventDefault()}>
-																	My Senshi
-																</DropdownItem>
-																<DropdownItem divider />
-																<DropdownItem
-																	to={ROUTE_PAGE_SETTINGS_GENERAL}
-																	tag={Link}
-																	className='text-dark mt-0 py-1 px-4'
-																	style={{ fontSize: '1rem' }}
-																	onClick={e => {
-																		e.preventDefault()
-																		history.push(ROUTE_PAGE_SETTINGS_GENERAL)
-																	}}>
-																	Settings
-																</DropdownItem>
-																<DropdownItem
-																	className='text-dark mt-0 py-1 px-4'
-																	style={{ fontSize: '1rem' }}
-																	onClick={e => e.preventDefault()}>
-																	Help
-																</DropdownItem>
-																<DropdownItem
-																	className='text-dark mt-0 py-1 px-4'
-																	style={{ fontSize: '1rem' }}
-																	onClick={() => {
-																		auth().signOut()
-																	}}>
-																	Sign Out
-																</DropdownItem>
-															</DropdownMenu>
-														</UncontrolledDropdown>
-													</>
-												) : (
-													<>
-														{currentPath !== '/signin' && (
-															<ButtonSignInPropedDefault />
-														)}
-														{currentPath !== '/signup' && (
-															<ButtonSignUpPropedDefault />
-														)}
-													</>
-												)
+																	id='navbarDropdownMenuLink'
+																	nav
+																	onClick={e => e.preventDefault()}
+																	className='d-flex align-items-center pt-0 pb-0'>
+																	<div className='avatar' style={{ height: 36, width: 36 }}>
+																		<Media
+																			onError={() => {
+																				storeUser.resetProfileImage()
+																			}}
+																			alt='user avatar'
+																			className='img-raised'
+																			style={{ height: 36, width: 36 }}
+																			src={avatarURL}
+																		/>
+																	</div>
+																</DropdownToggle>
+																<DropdownMenu aria-labelledby='navbarDropdownMenuLink' right>
+																	<DropdownItem
+																		to={ROUTE_PAGE_SETTINGS_GENERAL}
+																		tag={Link}
+																		className='text-dark mt-0 py-1 px-4'
+																		style={{ fontSize: '1rem' }}>
+																		<strong>{username}</strong>
+																	</DropdownItem>
+																	<DropdownItem divider />
+																	<DropdownItem
+																		href='#pablo'
+																		className='text-dark mt-0 py-1 px-4'
+																		style={{ fontSize: '1rem' }}
+																		onClick={e => e.preventDefault()}>
+																		My Senshi
+																	</DropdownItem>
+																	<DropdownItem divider />
+																	<DropdownItem
+																		to={ROUTE_PAGE_SETTINGS_GENERAL}
+																		tag={Link}
+																		className='text-dark mt-0 py-1 px-4'
+																		style={{ fontSize: '1rem' }}
+																		onClick={e => {
+																			e.preventDefault()
+																			history.push(ROUTE_PAGE_SETTINGS_GENERAL)
+																		}}>
+																		Settings
+																	</DropdownItem>
+																	<DropdownItem
+																		className='text-dark mt-0 py-1 px-4'
+																		style={{ fontSize: '1rem' }}
+																		onClick={e => e.preventDefault()}>
+																		Help
+																	</DropdownItem>
+																	<DropdownItem
+																		className='text-dark mt-0 py-1 px-4'
+																		style={{ fontSize: '1rem' }}
+																		onClick={() => {
+																			auth().signOut()
+																		}}>
+																		Sign Out
+																	</DropdownItem>
+																</DropdownMenu>
+															</UncontrolledDropdown>
+														</>
+													) : (
+														<>
+															{currentPath !== '/signin' && <ButtonSignInPropedNavbar />}
+															{currentPath !== '/signup' && <ButtonSignUpPropedDefault />}
+														</>
+													)}
+												</LoaderSmallPropedNavbarStoreUser>
 											) : // small screen size and collapsed
 											isSignedIn ? (
 												<>
@@ -383,9 +312,7 @@ class NavbarIndex extends React.Component {
 																		paddingLeft: 12,
 																		paddingRight: 18,
 																	}}>
-																	<div
-																		className='avatar'
-																		style={{ height: 24, width: 24 }}>
+																	<div className='avatar' style={{ height: 24, width: 24 }}>
 																		<Media
 																			onError={() => {
 																				storeUser.resetProfileImage()
@@ -428,11 +355,7 @@ class NavbarIndex extends React.Component {
 														</NavLink>
 													</NavItem>
 													<NavItem className='p-0'>
-														<NavLink
-															data-placement='bottom'
-															to={ROUTE_PAGE_SETTINGS_GENERAL}
-															tag={Link}
-															href='#pablo'>
+														<NavLink data-placement='bottom' to={ROUTE_PAGE_SETTINGS_GENERAL} tag={Link} href='#pablo'>
 															<Row>
 																<Col xs='2'>
 																	<i className='fab fas fa-user-plus' />
@@ -479,10 +402,7 @@ class NavbarIndex extends React.Component {
 												<>
 													{currentPath !== '/signin' && (
 														<NavItem className='p-0'>
-															<NavLink
-																data-placement='bottom'
-																to={ROUTE_PAGE_SIGN_IN}
-																tag={Link}>
+															<NavLink data-placement='bottom' to={ROUTE_PAGE_SIGN_IN} tag={Link}>
 																<Row>
 																	<Col xs='2'>
 																		<i className='fab fas fa-sign-in-alt' />
@@ -496,10 +416,7 @@ class NavbarIndex extends React.Component {
 													)}
 													{currentPath !== '/signup' && (
 														<NavItem className='p-0'>
-															<NavLink
-																data-placement='bottom'
-																to={ROUTE_PAGE_SIGN_UP}
-																tag={Link}>
+															<NavLink data-placement='bottom' to={ROUTE_PAGE_SIGN_UP} tag={Link}>
 																<Row>
 																	<Col xs='2'>
 																		<i className='fab fas fa-user-plus' />

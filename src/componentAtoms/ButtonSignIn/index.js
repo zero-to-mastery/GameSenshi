@@ -1,10 +1,15 @@
 import React from 'react'
 import { ButtonSignIn } from 'componentAtoms/ButtonSignIn/ButtonSignIn'
+import { withRouter } from 'react-router-dom'
 //constants
 import { ROUTE_PAGE_SIGN_IN } from 'routes'
 
-const ButtonSignInPropedDefault = props => {
-	return <ButtonSignIn to={ROUTE_PAGE_SIGN_IN} {...props} />
-}
+const ButtonSignInPropedNavbar = withRouter(props => {
+	const {
+		location: { pathname },
+	} = props
 
-export { ButtonSignInPropedDefault }
+	return pathname.toLowerCase() !== ROUTE_PAGE_SIGN_IN && <ButtonSignIn to={ROUTE_PAGE_SIGN_IN} {...props} />
+})
+
+export { ButtonSignInPropedNavbar }

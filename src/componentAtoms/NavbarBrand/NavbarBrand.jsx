@@ -1,19 +1,14 @@
 import React, { memo } from 'react'
 import { Link } from 'react-router-dom'
 // reactstrap
-import { Media, NavbarBrand } from 'reactstrap'
+import { Media, NavbarBrand as Brand } from 'reactstrap'
 
 const NAVBAR_BRAND_ON_ERROR = 'onError'
 
-const NavbarBravnd = memo(props => {
+const NavbarBrand = memo(props => {
 	const { [NAVBAR_BRAND_ON_ERROR]: onError, to, logo } = props
 	return (
-		<NavbarBrand
-			data-placement='bottom'
-			to={to}
-			rel='noopener noreferrer'
-			tag={Link}
-			className='d-flex align-items-center'>
+		<Brand data-placement='bottom' to={to} rel='noopener noreferrer' tag={Link} className='d-flex align-items-center'>
 			<div
 				className='avatar'
 				style={{
@@ -30,8 +25,8 @@ const NavbarBravnd = memo(props => {
 				/>
 			</div>
 			<div className='d-none d-sm-inline'>&nbsp;&nbsp;&nbsp;GAME SENSHI</div>
-		</NavbarBrand>
+		</Brand>
 	)
 })
 
-export { NavbarBravnd, NAVBAR_BRAND_ON_ERROR }
+export { NavbarBrand, NAVBAR_BRAND_ON_ERROR }
