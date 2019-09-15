@@ -1,6 +1,9 @@
 import React, { memo } from 'react'
 import { ROUTE_PAGE_INDEX } from 'routes'
-import { NavbarBrand, NAVBAR_BRAND_ON_ERROR } from 'componentAtoms/NavbarBrand/NavbarBrand'
+import {
+	NavbarBrand,
+	NAVBAR_BRAND_ON_ERROR,
+} from 'componentAtoms/NavbarBrand/NavbarBrand'
 import logo from 'assets/img/favicon.ico'
 import { StateContainer, storeUser, storeUserResetAvatar } from 'state'
 

@@ -109,8 +109,7 @@
 		"trailingComma": "es5",
 		"semi": false,
 		"jsxBracketSameLine": true,
-		"useTabs": true,
-		"printWidth": 120
+		"useTabs": true
 	},
 	"husky": {
 		"hooks": {

@@ -31,7 +31,11 @@ import {
 	Col,
 } from 'reactstrap'
 // constants
-import { ROUTE_PAGE_SIGN_UP, ROUTE_PAGE_SIGN_IN, ROUTE_PAGE_SETTINGS_GENERAL } from 'routes'
+import {
+	ROUTE_PAGE_SIGN_UP,
+	ROUTE_PAGE_SIGN_IN,
+	ROUTE_PAGE_SETTINGS_GENERAL,
+} from 'routes'
 
 const widthBreakPoint = 991
 const bgPurple = 'bg-purple'
@@ -40,8 +44,8 @@ const {
 	NavbarBrandPropedNavbarStoreUser,
 	ProgressCommonStoreProgress,
 	AlertCommonStoreAlert,
-	ButtonSignInPropedNavbar,
-	ButtonSignUpPropedDefault,
+	ButtonSignInStoreUserPropedNavbar,
+	ButtonSignUpStoreUserPropedNavbar,
 	LoaderSmallPropedNavbarStoreUser,
 } = stopUndefined(ExportCompounds)
 
@@ -67,21 +71,35 @@ class NavbarIndex extends React.Component {
 	}
 
 	onDimensionChange = () => {
-		if (window.innerWidth > widthBreakPoint && !this.state.overWidthBreakPoint) {
+		if (
+			window.innerWidth > widthBreakPoint &&
+			!this.state.overWidthBreakPoint
+		) {
 			this.setState({ overWidthBreakPoint: true })
-		} else if (window.innerWidth <= widthBreakPoint && this.state.overWidthBreakPoint) {
+		} else if (
+			window.innerWidth <= widthBreakPoint &&
+			this.state.overWidthBreakPoint
+		) {
 			this.setState({ overWidthBreakPoint: false })
 		}
 	}
 
 	changeColor = () => {
-		if (document.documentElement.scrollTop > 299 || document.body.scrollTop > 299) {
+		if (
+			document.documentElement.scrollTop > 299 ||
+			document.body.scrollTop > 299
+		) {
 			this.setState({
 				color: bgPurple,
 			})
-		} else if (document.documentElement.scrollTop < 300 || document.body.scrollTop < 300) {
+		} else if (
+			document.documentElement.scrollTop < 300 ||
+			document.body.scrollTop < 300
+		) {
 			this.setState({
-				color: (storeAlert[STATE][STORE_ALERT_STATE_OPEN] && bgPurple) || 'navbar-transparent',
+				color:
+					(storeAlert[STATE][STORE_ALERT_STATE_OPEN] && bgPurple) ||
+					'navbar-transparent',
 			})
 		}
 	}
@@ -110,7 +128,9 @@ class NavbarIndex extends React.Component {
 		})
 	}
 	scrollToDownload = () => {
-		document.getElementById('download-section').scrollIntoView({ behavior: 'smooth' })
+		document
+			.getElementById('download-section')
+			.scrollIntoView({ behavior: 'smooth' })
 	}
 
 	render() {
@@ -153,17 +173,20 @@ class NavbarIndex extends React.Component {
 										<Nav className='flex-row' navbar>
 											<LoaderSmallPropedNavbarStoreUser small>
 												{//small screen size
-												isSignedIn ? (
+												isSignedIn && (
 													<NavItem className='active navbar-toggler'>
-														<NavLink href='notification' onClick={e => e.preventDefault()}>
-															<i aria-hidden={true} className='tim-icons icon-bell-55' />
+														<NavLink
+															href='notification'
+															onClick={e => e.preventDefault()}>
+															<i
+																aria-hidden={true}
+																className='tim-icons icon-bell-55'
+															/>
 														</NavLink>
 													</NavItem>
-												) : currentPath === '/signup' ? (
-													<ButtonSignInPropedNavbar className='navbar-toggler' />
-												) : (
-													<ButtonSignUpPropedDefault className='navbar-toggler' />
 												)}
+												<ButtonSignUpStoreUserPropedNavbar small />
+												<ButtonSignInStoreUserPropedNavbar small />
 											</LoaderSmallPropedNavbarStoreUser>
 											<NavItem className='active'>
 												<button // button to activate collapsed
@@ -195,26 +218,37 @@ class NavbarIndex extends React.Component {
 													</a>
 												</Col>
 												<Col className='collapse-close text-right' xs='6'>
-													<button aria-expanded={collapseOpen} className='navbar-toggler' onClick={toggleCollapse}>
+													<button
+														aria-expanded={collapseOpen}
+														className='navbar-toggler'
+														onClick={toggleCollapse}>
 														<i className='tim-icons icon-simple-remove' />
 													</button>
 												</Col>
 											</Row>
 										</div>
 										<Nav navbar>
-											{(!collapseOpen && collapseExited) || overWidthBreakPoint ? (
+											{(!collapseOpen && collapseExited) ||
+											overWidthBreakPoint ? (
 												<LoaderSmallPropedNavbarStoreUser>
 													{// big screen size or not collapsed
-													isSignedIn ? (
+													isSignedIn && (
 														<>
 															<NavItem className='active d-none d-lg-inline-flex'>
-																<NavLink href='/joinSenshi' onClick={e => e.preventDefault()}>
+																<NavLink
+																	href='/joinSenshi'
+																	onClick={e => e.preventDefault()}>
 																	Senshi Portal
 																</NavLink>
 															</NavItem>
 															<NavItem className='active d-none d-lg-inline-flex'>
-																<NavLink href='/notification' onClick={e => e.preventDefault()}>
-																	<i aria-hidden={true} className='tim-icons icon-bell-55' />
+																<NavLink
+																	href='/notification'
+																	onClick={e => e.preventDefault()}>
+																	<i
+																		aria-hidden={true}
+																		className='tim-icons icon-bell-55'
+																	/>
 																</NavLink>
 															</NavItem>
 															<UncontrolledDropdown // user menu bar
@@ -229,7 +263,9 @@ class NavbarIndex extends React.Component {
 																	nav
 																	onClick={e => e.preventDefault()}
 																	className='d-flex align-items-center pt-0 pb-0'>
-																	<div className='avatar' style={{ height: 36, width: 36 }}>
+																	<div
+																		className='avatar'
+																		style={{ height: 36, width: 36 }}>
 																		<Media
 																			onError={() => {
 																				storeUser.resetProfileImage()
@@ -241,7 +277,9 @@ class NavbarIndex extends React.Component {
 																		/>
 																	</div>
 																</DropdownToggle>
-																<DropdownMenu aria-labelledby='navbarDropdownMenuLink' right>
+																<DropdownMenu
+																	aria-labelledby='navbarDropdownMenuLink'
+																	right>
 																	<DropdownItem
 																		to={ROUTE_PAGE_SETTINGS_GENERAL}
 																		tag={Link}
@@ -286,12 +324,9 @@ class NavbarIndex extends React.Component {
 																</DropdownMenu>
 															</UncontrolledDropdown>
 														</>
-													) : (
-														<>
-															{currentPath !== '/signin' && <ButtonSignInPropedNavbar />}
-															{currentPath !== '/signup' && <ButtonSignUpPropedDefault />}
-														</>
 													)}
+													<ButtonSignInStoreUserPropedNavbar />
+													<ButtonSignUpStoreUserPropedNavbar />}
 												</LoaderSmallPropedNavbarStoreUser>
 											) : // small screen size and collapsed
 											isSignedIn ? (
@@ -312,7 +347,9 @@ class NavbarIndex extends React.Component {
 																		paddingLeft: 12,
 																		paddingRight: 18,
 																	}}>
-																	<div className='avatar' style={{ height: 24, width: 24 }}>
+																	<div
+																		className='avatar'
+																		style={{ height: 24, width: 24 }}>
 																		<Media
 																			onError={() => {
 																				storeUser.resetProfileImage()
@@ -355,7 +392,11 @@ class NavbarIndex extends React.Component {
 														</NavLink>
 													</NavItem>
 													<NavItem className='p-0'>
-														<NavLink data-placement='bottom' to={ROUTE_PAGE_SETTINGS_GENERAL} tag={Link} href='#pablo'>
+														<NavLink
+															data-placement='bottom'
+															to={ROUTE_PAGE_SETTINGS_GENERAL}
+															tag={Link}
+															href='#pablo'>
 															<Row>
 																<Col xs='2'>
 																	<i className='fab fas fa-user-plus' />
@@ -402,7 +443,10 @@ class NavbarIndex extends React.Component {
 												<>
 													{currentPath !== '/signin' && (
 														<NavItem className='p-0'>
-															<NavLink data-placement='bottom' to={ROUTE_PAGE_SIGN_IN} tag={Link}>
+															<NavLink
+																data-placement='bottom'
+																to={ROUTE_PAGE_SIGN_IN}
+																tag={Link}>
 																<Row>
 																	<Col xs='2'>
 																		<i className='fab fas fa-sign-in-alt' />
@@ -416,7 +460,10 @@ class NavbarIndex extends React.Component {
 													)}
 													{currentPath !== '/signup' && (
 														<NavItem className='p-0'>
-															<NavLink data-placement='bottom' to={ROUTE_PAGE_SIGN_UP} tag={Link}>
+															<NavLink
+																data-placement='bottom'
+																to={ROUTE_PAGE_SIGN_UP}
+																tag={Link}>
 																<Row>
 																	<Col xs='2'>
 																		<i className='fab fas fa-user-plus' />

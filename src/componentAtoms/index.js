@@ -1,13 +1,21 @@
 import { FinalForm } from 'componentAtoms/FinalForm'
 import { ListText } from 'componentAtoms/ListText'
-import { InputSelect, VALUE, LABEL, DISABLE, COLOR } from 'componentAtoms/InputSelect'
+import {
+	InputSelect,
+	VALUE,
+	LABEL,
+	DISABLE,
+	COLOR,
+} from 'componentAtoms/InputSelect'
 import { InputText } from 'componentAtoms/InputText'
 import { PopoverCommon } from 'componentAtoms/PopoverCommon'
 import Footer from 'componentAtoms/Footers/Footer'
 import IndexHeader from 'componentAtoms/Headers/IndexHeader.jsx'
 import { ButtonsSocialAuthPropedDefault } from 'componentAtoms/ButtonsSocialAuth'
-import { ButtonSignUpPropedDefault } from 'componentAtoms/ButtonSignUp'
-import { ButtonSignInPropedNavbar } from 'componentAtoms/ButtonSignIn'
+import {
+	ButtonSignInStoreUserPropedNavbar,
+	ButtonSignUpStoreUserPropedNavbar,
+} from 'componentAtoms/ButtonSignInUp'
 import ErrorBoundary from 'componentAtoms/ErrorBoundary/ErrorBoundary'
 import ImageUpload from 'componentAtoms/CustomUpload/ImageUpload'
 import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
@@ -33,8 +41,8 @@ export const ExportAtoms = {
 	AlertCommonStoreAlert,
 	ProgressCommonStoreProgress,
 	ButtonsSocialAuthPropedDefault,
-	ButtonSignInPropedNavbar,
-	ButtonSignUpPropedDefault,
+	ButtonSignInStoreUserPropedNavbar,
+	ButtonSignUpStoreUserPropedNavbar,
 	ListText,
 	InputSelect,
 	VALUE,

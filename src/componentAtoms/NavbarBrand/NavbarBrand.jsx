@@ -8,7 +8,12 @@ const NAVBAR_BRAND_ON_ERROR = 'onError'
 const NavbarBrand = memo(props => {
 	const { [NAVBAR_BRAND_ON_ERROR]: onError, to, logo } = props
 	return (
-		<Brand data-placement='bottom' to={to} rel='noopener noreferrer' tag={Link} className='d-flex align-items-center'>
+		<Brand
+			data-placement='bottom'
+			to={to}
+			rel='noopener noreferrer'
+			tag={Link}
+			className='d-flex align-items-center'>
 			<div
 				className='avatar'
 				style={{

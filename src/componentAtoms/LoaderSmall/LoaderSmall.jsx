@@ -5,7 +5,12 @@ import Loader from 'react-loader-spinner'
 const LABEL_SMALL_STATE_IS_LOADING = 'loading'
 
 const LoaderSmall = memo(props => {
-	const { [LABEL_SMALL_STATE_IS_LOADING]: isLoading, body, children, small } = props
+	const {
+		[LABEL_SMALL_STATE_IS_LOADING]: isLoading,
+		body,
+		children,
+		small,
+	} = props
 	return isLoading ? (
 		<NavItem className={`active ${small && 'navbar-toggler'}`}>
 			<NavLink disabled href='#pablo' className='p-0 d-flex align-items-center'>
