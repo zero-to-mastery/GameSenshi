@@ -17,6 +17,8 @@ const ROUTE_PAGE_SETTINGS = '/settings'
 const ROUTE_PAGE_NOTIFICATIONS = '/notifications'
 const ROUTE_PAGE_404 = '/404'
 const ROUTE_PAGE_JOIN = '/join'
+const ROUTE_PAGE_HELP = '/help'
+const ROUTE_PAGE_APPOINTMENTS = '/appointments'
 const ROUTE_PARAM_SETTINGS = 'tabPane'
 const ROUTE_SETTINGS_PARAM_GENERAL = 'general'
 const ROUTE_SETTINGS_PARAM_PAYMENT = 'payment'
@@ -53,4 +55,6 @@ export {
 	ROUTE_PAGE_404,
 	ROUTE_PAGE_NOTIFICATIONS,
 	ROUTE_PAGE_JOIN,
+	ROUTE_PAGE_HELP,
+	ROUTE_PAGE_APPOINTMENTS,
 }

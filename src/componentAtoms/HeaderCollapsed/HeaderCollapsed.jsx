@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
-const HeaderNavbarCollapsed = props => {
+const HeaderCollapsed = props => {
 	const { isOpen, toggle, children, to } = props
 	return (
 		<div className='navbar-collapse-header'>
@@ -23,4 +23,4 @@ const HeaderNavbarCollapsed = props => {
 	)
 }
 
-export { HeaderNavbarCollapsed }
+export { HeaderCollapsed }

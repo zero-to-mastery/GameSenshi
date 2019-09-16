@@ -34,7 +34,9 @@ import { LoaderSmallPropedIndexNavbarStoreUser } from 'componentAtoms/LoaderSmal
 import { IconNotificationStoreUserPropedIndexNavbar } from 'componentAtoms/IconNotification'
 import { ListNavItemStoreUserPropedNavbarIndex } from 'componentAtoms/ListNavItem'
 import { MenuHamburger } from 'componentAtoms/MenuHamburger'
-import { HeaderNavbarCollapsedPropedNavbarIndex } from 'componentAtoms/HeaderNavbarCollapsed'
+import { HeaderCollapsedPropedNavbarIndex } from 'componentAtoms/HeaderCollapsed'
+import { DropdownMenuStoreUserPropedNavbarIndex } from 'componentAtoms/DropdownMenu'
+import { AvatarUserStoreUser } from 'componentAtoms/AvatarUser'
 
 export const ExportAtoms = {
 	Footer,
@@ -70,5 +72,7 @@ export const ExportAtoms = {
 	IconNotificationStoreUserPropedIndexNavbar,
 	ListNavItemStoreUserPropedNavbarIndex,
 	MenuHamburger,
-	HeaderNavbarCollapsedPropedNavbarIndex,
+	HeaderCollapsedPropedNavbarIndex,
+	DropdownMenuStoreUserPropedNavbarIndex,
+	AvatarUserStoreUser,
 }

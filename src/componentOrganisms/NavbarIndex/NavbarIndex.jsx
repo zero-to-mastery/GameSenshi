@@ -12,15 +12,11 @@ import {
 	STATE,
 	STORE_USER_STATE_SIGNED_IN,
 	STORE_USER_STATE_USERNAME,
-	STORE_USER_STATE_AVATAR_URL,
 } from 'state'
 // reactstrap components
 import {
 	Collapse,
-	Media,
-	DropdownMenu,
 	UncontrolledDropdown,
-	DropdownItem,
 	DropdownToggle,
 	Navbar,
 	NavItem,
@@ -50,7 +46,9 @@ const {
 	IconNotificationStoreUserPropedIndexNavbar,
 	ListNavItemStoreUserPropedNavbarIndex,
 	MenuHamburger,
-	HeaderNavbarCollapsedPropedNavbarIndex,
+	HeaderCollapsedPropedNavbarIndex,
+	DropdownMenuStoreUserPropedNavbarIndex,
+	AvatarUserStoreUser,
 } = stopUndefined(ExportCompounds)
 
 class NavbarIndex extends React.Component {
@@ -140,7 +138,6 @@ class NavbarIndex extends React.Component {
 	render() {
 		const {
 			props: {
-				history,
 				location: { pathname },
 			},
 			state: { color, collapseOpen, collapseOut, overWidthBreakPoint },
@@ -158,7 +155,6 @@ class NavbarIndex extends React.Component {
 					const {
 						[STORE_USER_STATE_USERNAME]: username,
 						[STORE_USER_STATE_SIGNED_IN]: isSignedIn,
-						[STORE_USER_STATE_AVATAR_URL]: avatarURL,
 					} = storeUser.state
 					const { [STORE_ALERT_STATE_OPEN]: alertOpen } = storeAlert.state
 					return (
@@ -197,7 +193,7 @@ class NavbarIndex extends React.Component {
 										onEntering={onCollapseEntering}
 										onExiting={onCollapseExiting}
 										onExited={onCollapseExited}>
-										<HeaderNavbarCollapsedPropedNavbarIndex
+										<HeaderCollapsedPropedNavbarIndex
 											isOpen={collapseOpen}
 											toggle={toggleCollapse}
 										/>
@@ -222,65 +218,9 @@ class NavbarIndex extends React.Component {
 																	nav
 																	onClick={e => e.preventDefault()}
 																	className='d-flex align-items-center pt-0 pb-0'>
-																	<div
-																		className='avatar'
-																		style={{ height: 36, width: 36 }}>
-																		<Media
-																			onError={() => {
-																				storeUser.resetProfileImage()
-																			}}
-																			alt='user avatar'
-																			className='img-raised'
-																			style={{ height: 36, width: 36 }}
-																			src={avatarURL}
-																		/>
-																	</div>
+																	<AvatarUserStoreUser height={36} width={36} />
 																</DropdownToggle>
-																<DropdownMenu
-																	aria-labelledby='navbarDropdownMenuLink'
-																	right>
-																	<DropdownItem
-																		to={ROUTE_PAGE_SETTINGS_GENERAL}
-																		tag={Link}
-																		className='text-dark mt-0 py-1 px-4'
-																		style={{ fontSize: '1rem' }}>
-																		<strong>{username}</strong>
-																	</DropdownItem>
-																	<DropdownItem divider />
-																	<DropdownItem
-																		href='#pablo'
-																		className='text-dark mt-0 py-1 px-4'
-																		style={{ fontSize: '1rem' }}
-																		onClick={e => e.preventDefault()}>
-																		My Senshi
-																	</DropdownItem>
-																	<DropdownItem divider />
-																	<DropdownItem
-																		to={ROUTE_PAGE_SETTINGS_GENERAL}
-																		tag={Link}
-																		className='text-dark mt-0 py-1 px-4'
-																		style={{ fontSize: '1rem' }}
-																		onClick={e => {
-																			e.preventDefault()
-																			history.push(ROUTE_PAGE_SETTINGS_GENERAL)
-																		}}>
-																		Settings
-																	</DropdownItem>
-																	<DropdownItem
-																		className='text-dark mt-0 py-1 px-4'
-																		style={{ fontSize: '1rem' }}
-																		onClick={e => e.preventDefault()}>
-																		Help
-																	</DropdownItem>
-																	<DropdownItem
-																		className='text-dark mt-0 py-1 px-4'
-																		style={{ fontSize: '1rem' }}
-																		onClick={() => {
-																			auth().signOut()
-																		}}>
-																		Sign Out
-																	</DropdownItem>
-																</DropdownMenu>
+																<DropdownMenuStoreUserPropedNavbarIndex />
 															</UncontrolledDropdown>
 														</>
 													)}
@@ -306,19 +246,7 @@ class NavbarIndex extends React.Component {
 																		paddingLeft: 12,
 																		paddingRight: 18,
 																	}}>
-																	<div
-																		className='avatar'
-																		style={{ height: 24, width: 24 }}>
-																		<Media
-																			onError={() => {
-																				storeUser.resetProfileImage()
-																			}}
-																			alt='user avatar'
-																			className='img-raised'
-																			style={{ height: 24, width: 24 }}
-																			src={avatarURL}
-																		/>
-																	</div>
+																	<AvatarUserStoreUser height={24} width={24} />
 																</Col>
 																<Col>
 																	<p>{username}</p>
