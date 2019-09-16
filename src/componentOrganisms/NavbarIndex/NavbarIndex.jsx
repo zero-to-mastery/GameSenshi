@@ -49,6 +49,7 @@ const {
 	LoaderSmallPropedIndexNavbarStoreUser,
 	IconNotificationStoreUserPropedIndexNavbar,
 	ListNavItemStoreUserPropedNavbarIndex,
+	MenuHamburger,
 } = stopUndefined(ExportCompounds)
 
 class NavbarIndex extends React.Component {
@@ -179,16 +180,10 @@ class NavbarIndex extends React.Component {
 												<ButtonSignUpStoreUserPropedIndexNavbar small />
 												<ButtonSignInStoreUserPropedIndexNavbar small />
 											</LoaderSmallPropedIndexNavbarStoreUser>
-											<NavItem className='active'>
-												<button // button to activate collapsed
-													aria-expanded={collapseOpen}
-													className='navbar-toggler'
-													onClick={toggleCollapse}>
-													<span className='navbar-toggler-bar bar1 mt-1' />
-													<span className='navbar-toggler-bar bar2' />
-													<span className='navbar-toggler-bar bar3' />
-												</button>
-											</NavItem>
+											<MenuHamburger
+												isOpen={collapseOpen}
+												toggle={toggleCollapse}
+											/>
 										</Nav>
 									</div>
 									<Collapse

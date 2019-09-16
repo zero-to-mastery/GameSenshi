@@ -33,6 +33,7 @@ import { BrandNavbarPropedIndexNavbarStoreUser } from 'componentAtoms/BrandNavba
 import { LoaderSmallPropedIndexNavbarStoreUser } from 'componentAtoms/LoaderSmall'
 import { IconNotificationStoreUserPropedIndexNavbar } from 'componentAtoms/IconNotification'
 import { ListNavItemStoreUserPropedNavbarIndex } from 'componentAtoms/ListNavItem'
+import { MenuHamburger } from 'componentAtoms/MenuHamburger'
 
 export const ExportAtoms = {
 	Footer,
@@ -67,4 +68,5 @@ export const ExportAtoms = {
 	LoaderSmallPropedIndexNavbarStoreUser,
 	IconNotificationStoreUserPropedIndexNavbar,
 	ListNavItemStoreUserPropedNavbarIndex,
+	MenuHamburger,
 }
