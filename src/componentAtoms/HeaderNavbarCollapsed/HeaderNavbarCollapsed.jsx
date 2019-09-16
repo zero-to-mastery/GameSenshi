@@ -1,6 +1,6 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap'
-import { Link } from ''
+import { Link } from 'react-router-dom'
 
 const HeaderNavbarCollapsed = props => {
 	const { isOpen, toggle, children, to } = props
