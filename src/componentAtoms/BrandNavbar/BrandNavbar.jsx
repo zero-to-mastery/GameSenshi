@@ -11,7 +11,6 @@ const BrandNavbar = memo(props => {
 		<NavbarBrand
 			data-placement='bottom'
 			to={to}
-			rel='noopener noreferrer'
 			tag={Link}
 			className='d-flex align-items-center'>
 			<div

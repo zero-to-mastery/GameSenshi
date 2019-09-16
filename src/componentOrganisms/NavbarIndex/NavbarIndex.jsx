@@ -50,6 +50,7 @@ const {
 	IconNotificationStoreUserPropedIndexNavbar,
 	ListNavItemStoreUserPropedNavbarIndex,
 	MenuHamburger,
+	HeaderNavbarCollapsedPropedNavbarIndex,
 } = stopUndefined(ExportCompounds)
 
 class NavbarIndex extends React.Component {
@@ -172,10 +173,10 @@ class NavbarIndex extends React.Component {
 								expand='lg'>
 								<Container>
 									<div className='navbar-translate'>
+										{/*small screen size*/}
 										<BrandNavbarPropedIndexNavbarStoreUser />
 										<Nav className='flex-row' navbar>
 											<LoaderSmallPropedIndexNavbarStoreUser small>
-												{/*small screen size*/}
 												<IconNotificationStoreUserPropedIndexNavbar small />
 												<ButtonSignUpStoreUserPropedIndexNavbar small />
 												<ButtonSignInStoreUserPropedIndexNavbar small />
@@ -196,23 +197,10 @@ class NavbarIndex extends React.Component {
 										onEntering={onCollapseEntering}
 										onExiting={onCollapseExiting}
 										onExited={onCollapseExited}>
-										<div className='navbar-collapse-header'>
-											<Row>
-												<Col className='collapse-brand' xs='6'>
-													<a href='#pablo' onClick={e => e.preventDefault()}>
-														GAME SENSHI
-													</a>
-												</Col>
-												<Col className='collapse-close text-right' xs='6'>
-													<button
-														aria-expanded={collapseOpen}
-														className='navbar-toggler'
-														onClick={toggleCollapse}>
-														<i className='tim-icons icon-simple-remove' />
-													</button>
-												</Col>
-											</Row>
-										</div>
+										<HeaderNavbarCollapsedPropedNavbarIndex
+											isOpen={collapseOpen}
+											toggle={toggleCollapse}
+										/>
 										<Nav navbar>
 											{(!collapseOpen && collapseExited) ||
 											overWidthBreakPoint ? (

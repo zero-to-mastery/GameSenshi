@@ -20,12 +20,7 @@ const ButtonSignInUp = withRouter(
 			!signedIn &&
 			pathname.toLowerCase() !== to.toLowerCase() && (
 				<NavItem className={`${navItemClass} ${small && 'navbar-toggler'}`}>
-					<NavLink
-						className='p-0'
-						data-placement='bottom'
-						to={to}
-						tag={Link}
-						rel='noopener noreferrer'>
+					<NavLink className='p-0' data-placement='bottom' to={to} tag={Link}>
 						<Button className={buttonClass} color='primary' type='button'>
 							{children}
 						</Button>
