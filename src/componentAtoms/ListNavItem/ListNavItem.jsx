@@ -18,8 +18,8 @@ const ListNavItem = memo(props => {
 				[LIST_NAV_ITEM_PROPS_CHILDREN]: children,
 			} = item
 			return (
-				<NavItem className='active d-none d-lg-inline-flex'>
-					<NavLink tag={Link} to={to} rel='noopener noreferrer'>
+				<NavItem className='active d-none d-lg-inline-flex' key={children}>
+					<NavLink tag={Link} to={to}>
 						{children}
 					</NavLink>
 				</NavItem>

@@ -35,7 +35,7 @@ const NavbarIndexItems = [
 		[DROP_DOWN_MENU_NAVBAR_PROPS_DIVIDER]: false,
 	},
 	{
-		[DROP_DOWN_MENU_NAVBAR_PROPS_TO]: location => location,
+		[DROP_DOWN_MENU_NAVBAR_PROPS_TO]: '#',
 		[DROP_DOWN_MENU_NAVBAR_PROPS_BODY]: 'Sign Out',
 		[DROP_DOWN_MENU_NAVBAR_PROPS_DIVIDER]: false,
 	},

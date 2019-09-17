@@ -14,7 +14,7 @@ const IconNotification = memo(props => {
 	return (
 		signedIn && (
 			<NavItem className={`active ${small && 'navbar-toggler'} ${className}`}>
-				<NavLink tag={Link} to={to} rel='noopener noreferrer'>
+				<NavLink tag={Link} to={to}>
 					<i aria-hidden={true} className='tim-icons icon-bell-55' />
 				</NavLink>
 			</NavItem>

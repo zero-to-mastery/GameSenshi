@@ -48,7 +48,7 @@
 		"apollo-cache-inmemory": "^1.6.2",
 		"apollo-cache-persist": "^0.1.1",
 		"apollo-client": "^2.6.3",
-		"apollo-link-http": "^1.5.15",
+		"apollo-link-http": "^1.5.16",
 		"apollo-link-persisted-queries": "^0.2.2",
 		"card-validator": "^6.2.0",
 		"chart.js": "^2.7.3",
@@ -57,11 +57,11 @@
 		"country-list": "^2.1.1",
 		"final-form": "^4.12.0",
 		"final-form-focus": "^1.1.2",
-		"firebase": "^6.0.2",
-		"graphql": "^14.4.2",
+		"firebase": "^6.6.1",
+		"graphql": "^14.5.6",
 		"graphql-tag": "^2.10.1",
 		"headroom.js": "0.9.4",
-		"history": "^4.9.0",
+		"history": "^4.10.1",
 		"interweave": "^11.1.0",
 		"localforage": "^1.7.3",
 		"moment": "^2.24.0",
@@ -74,10 +74,10 @@
 		"react-bootstrap-switch": "^15.5.3",
 		"react-chartjs-2": "^2.7.4",
 		"react-credit-cards": "^0.7.0",
-		"react-cropper": "^1.2.0",
+		"react-cropper": "^1.3.0",
 		"react-datetime": "^2.16.3",
 		"react-dom": "^16.8.3",
-		"react-element-to-jsx-string": "^14.0.2",
+		"react-element-to-jsx-string": "^14.1.0",
 		"react-final-form": "^5.0.2",
 		"react-google-maps": "9.4.5",
 		"react-loader-spinner": "^2.3.0",
@@ -110,11 +110,6 @@
 		"semi": false,
 		"jsxBracketSameLine": true,
 		"useTabs": true
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "pretty-quick --staged"
-		}
 	},
 	"eslintConfig": {
 		"extends": [

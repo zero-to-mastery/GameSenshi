@@ -205,24 +205,22 @@ class NavbarIndex extends React.Component {
 													<IconNotificationStoreUserPropedIndexNavbar className='d-none d-lg-inline-flex' />
 													{// big screen size or not collapsed
 													isSignedIn && (
-														<>
-															<UncontrolledDropdown // user menu bar
+														<UncontrolledDropdown // user menu bar
+															nav
+															className='d-none d-lg-inline-flex'>
+															<AvatarUserStoreUser height={36} width={36} />
+															<DropdownToggle
+																caret
+																color='default'
+																data-toggle='dropdown'
+																href='#pablo'
+																id='navbarDropdownMenuLink'
 																nav
-																className='d-none d-lg-inline-flex'>
-																<DropdownToggle
-																	caret
-																	color='default'
-																	data-toggle='dropdown'
-																	href='#pablo'
-																	id='navbarDropdownMenuNavbarLink'
-																	nav
-																	onClick={e => e.preventDefault()}
-																	className='d-flex align-items-center pt-0 pb-0'>
-																	<AvatarUserStoreUser height={36} width={36} />
-																</DropdownToggle>
-																<DropdownMenuNavbarStoreUserPropedNavbarIndex />
-															</UncontrolledDropdown>
-														</>
+																onClick={e => e.preventDefault()}
+																className='d-flex align-items-center pt-0 pb-0'
+															/>
+															<DropdownMenuNavbarStoreUserPropedNavbarIndex />
+														</UncontrolledDropdown>
 													)}
 													<ButtonSignInStoreUserPropedIndexNavbar />
 													<ButtonSignUpStoreUserPropedIndexNavbar />

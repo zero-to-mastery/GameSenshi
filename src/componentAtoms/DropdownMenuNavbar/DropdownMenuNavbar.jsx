@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { DropdownMenu, DropdownItem } from 'reactstrap'
 
@@ -12,8 +12,9 @@ const DropdownMenuNavbar = props => {
 		<DropdownMenu aria-labelledby='navbarDropdownMenuLink' right>
 			{items.map(item => {
 				const { to, body, divider } = item
+
 				return (
-					<>
+					<Fragment key={body}>
 						<DropdownItem
 							to={to}
 							tag={Link}
@@ -22,7 +23,7 @@ const DropdownMenuNavbar = props => {
 							{body}
 						</DropdownItem>
 						{divider && <DropdownItem divider />}
-					</>
+					</Fragment>
 				)
 			})}
 		</DropdownMenu>
