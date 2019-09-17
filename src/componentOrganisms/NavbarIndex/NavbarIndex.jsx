@@ -47,7 +47,7 @@ const {
 	ListNavItemStoreUserPropedNavbarIndex,
 	MenuHamburger,
 	HeaderCollapsedPropedNavbarIndex,
-	DropdownMenuStoreUserPropedNavbarIndex,
+	DropdownMenuNavbarStoreUserPropedNavbarIndex,
 	AvatarUserStoreUser,
 } = stopUndefined(ExportCompounds)
 
@@ -214,13 +214,13 @@ class NavbarIndex extends React.Component {
 																	color='default'
 																	data-toggle='dropdown'
 																	href='#pablo'
-																	id='navbarDropdownMenuLink'
+																	id='navbarDropdownMenuNavbarLink'
 																	nav
 																	onClick={e => e.preventDefault()}
 																	className='d-flex align-items-center pt-0 pb-0'>
 																	<AvatarUserStoreUser height={36} width={36} />
 																</DropdownToggle>
-																<DropdownMenuStoreUserPropedNavbarIndex />
+																<DropdownMenuNavbarStoreUserPropedNavbarIndex />
 															</UncontrolledDropdown>
 														</>
 													)}
