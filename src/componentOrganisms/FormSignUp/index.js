@@ -18,7 +18,6 @@ import {
 import { onSuccessfulSignUp } from 'componentOrganisms/FormSignUp/utils'
 
 const FormSignUpPropedDefault = withLastLocation(props => {
-	const { lastLocation, ...restProps } = props
 	const onSubmit = useCallback(values => {
 		const values_ = {
 			[API_SIGN_UP_EMAIL]: values[FINAL_TEXT_EMAIL],
@@ -33,7 +32,7 @@ const FormSignUpPropedDefault = withLastLocation(props => {
 		<FormSignUp
 			signInLink={ROUTE_PAGE_SIGN_IN}
 			onSubmit={onSubmit}
-			{...restProps}
+			{...props}
 		/>
 	)
 })

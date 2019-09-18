@@ -33,7 +33,10 @@ import { InputDate } from 'componentAtoms/InputDate'
 import { BrandNavbarPropedIndexNavbarStoreUser } from 'componentAtoms/BrandNavbar'
 import { LoaderSmallPropedIndexNavbarStoreUser } from 'componentAtoms/LoaderSmall'
 import { IconNotificationStoreUserPropedIndexNavbar } from 'componentAtoms/IconNotification'
-import { ListNavItemStoreUserPropedNavbarIndex } from 'componentAtoms/ListNavItem'
+import {
+	ListNavItemStoreUserPropedNavbarIndex,
+	ListNavItemStoreUserPropedCollpased,
+} from 'componentAtoms/ListNavItem'
 import { MenuHamburger } from 'componentAtoms/MenuHamburger'
 import { HeaderCollapsedPropedNavbarIndex } from 'componentAtoms/HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from 'componentAtoms/DropdownMenuNavbar'
@@ -79,4 +82,5 @@ export const ExportAtoms = {
 	DropdownMenuNavbarStoreUserPropedNavbarIndex,
 	AvatarUserStoreUser,
 	DropdownNavbarStoreUser,
+	ListNavItemStoreUserPropedCollpased,
 }

@@ -5,7 +5,7 @@ import {
 } from 'componentnCompounds/FinalSelectLanguages/FinalSelectLanguages'
 
 // components
-import { stopUndefined, emptyPromise } from 'utils'
+import { stopUndefined } from 'utils'
 import { ExportMolecules } from 'componentMolecules'
 
 const { LabelForm } = stopUndefined(ExportMolecules)
@@ -13,12 +13,7 @@ const { LabelForm } = stopUndefined(ExportMolecules)
 const FinalSelectLanguagesPropedGeneraL = props => {
 	return (
 		<LabelForm label='Languages' htmlFor={FINAL_SELECT_LANGUAGES}>
-			<FinalSelectLanguages
-				validation={emptyPromise}
-				hideSuccess
-				onlyShowErrorAfterSubmit
-				{...props}
-			/>
+			<FinalSelectLanguages hideSuccess onlyShowErrorAfterSubmit {...props} />
 		</LabelForm>
 	)
 }

@@ -1,11 +1,18 @@
 import React, { useCallback } from 'react'
 import { FinalInput } from 'componentMolecules/FinalInput/FinalInput'
 import { ExportAtoms } from 'componentAtoms'
-import { stopUndefined, emptyPromise } from 'utils'
+import { stopUndefined } from 'utils'
 
 const { InputText, InputSelect, InputDate } = stopUndefined(ExportAtoms)
 
-const defaultProps = () => ({ onChange: () => {}, onValueChange: () => {} })
+const emptyFunction = () => {}
+const emptyPromise = () => Promise.resolve()
+
+const defaultProps = () => ({
+	onChange: emptyFunction,
+	onValueChange: emptyFunction,
+	validation: emptyPromise,
+})
 
 const FinalInputText = props => {
 	const { onChange, onValueChange, ...restProps } = {

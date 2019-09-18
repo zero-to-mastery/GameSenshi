@@ -8,11 +8,13 @@ const { ListText, PopoverCommon } = stopUndefined(ExportAtoms)
 
 const DELAY = 1000
 
+const emptyArray = []
+
 const FinalInput = memo(props => {
 	const [localValue, seLocalValue] = useState('')
 
 	const defaultProps = () => ({
-		popoverMessages: [],
+		popoverMessages: emptyArray,
 		value: localValue,
 		setValue: seLocalValue,
 	})

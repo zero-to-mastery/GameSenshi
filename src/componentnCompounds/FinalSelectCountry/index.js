@@ -6,7 +6,7 @@ import {
 } from 'componentnCompounds/FinalSelectCountry/FinalSelectCountry'
 
 // components
-import { stopUndefined, emptyPromise } from 'utils'
+import { stopUndefined } from 'utils'
 import { ExportMolecules } from 'componentMolecules'
 
 const { LabelForm } = stopUndefined(ExportMolecules)
@@ -14,12 +14,7 @@ const { LabelForm } = stopUndefined(ExportMolecules)
 const FinalSelectCountryPropedGeneraL = props => {
 	return (
 		<LabelForm label='Country' htmlFor={FINAL_SELECT_COUNTRY} Inputmd='4'>
-			<FinalSelectCountry
-				validation={emptyPromise}
-				hideSuccess
-				onlyShowErrorAfterSubmit
-				{...props}
-			/>
+			<FinalSelectCountry hideSuccess onlyShowErrorAfterSubmit {...props} />
 		</LabelForm>
 	)
 }

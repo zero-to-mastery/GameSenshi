@@ -120,7 +120,13 @@
 			"plugin:prettier/recommended"
 		],
 		"rules": {
-			"no-console": 1
+			"no-console": "warn",
+			"no-unused-vars": [
+				"error",
+				{
+					"args": "after-used"
+				}
+			]
 		},
 		"settings": {
 			"import/resolver": {
@@ -133,6 +139,16 @@
 			}
 		}
 	},
+	"eslintIgnore": [
+		"build/*",
+		".config/*",
+		"functions/*",
+		".github/*",
+		".firebase/*",
+		"src/serviceWorker.js",
+		"src/sw-build.js",
+		"src/sw-template.js"
+	],
 	"browserslist": [
 		">0.2%",
 		"not dead",

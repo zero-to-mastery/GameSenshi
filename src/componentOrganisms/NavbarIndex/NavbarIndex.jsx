@@ -1,7 +1,6 @@
 import React from 'react'
 import { stopUndefined } from 'utils'
 import { ExportCompounds } from 'componentnCompounds'
-import { auth } from 'firebaseInit'
 // state
 import {
 	storeUser,
@@ -10,7 +9,6 @@ import {
 	STORE_ALERT_STATE_OPEN,
 	STATE,
 	STORE_USER_STATE_SIGNED_IN,
-	STORE_USER_STATE_USERNAME,
 } from 'state'
 // reactstrap components
 import {
@@ -24,11 +22,7 @@ import {
 	Col,
 } from 'reactstrap'
 // constants
-import {
-	ROUTE_PAGE_SIGN_UP,
-	ROUTE_PAGE_SIGN_IN,
-	ROUTE_PAGE_SETTINGS_GENERAL,
-} from 'routes'
+import { ROUTE_PAGE_SIGN_UP, ROUTE_PAGE_SIGN_IN } from 'routes'
 
 const widthBreakPoint = 991
 const bgPurple = 'bg-purple'
@@ -48,6 +42,7 @@ const {
 	AvatarUserStoreUser,
 	Link,
 	DropdownNavbarStoreUser,
+	ListNavItemStoreUserPropedCollpased,
 } = stopUndefined(ExportCompounds)
 
 class NavbarIndex extends React.Component {
@@ -151,10 +146,7 @@ class NavbarIndex extends React.Component {
 		return (
 			<Subscribe to={[storeUser, storeAlert]}>
 				{(storeUser, storeAlert) => {
-					const {
-						[STORE_USER_STATE_USERNAME]: username,
-						[STORE_USER_STATE_SIGNED_IN]: isSignedIn,
-					} = storeUser.state
+					const { [STORE_USER_STATE_SIGNED_IN]: isSignedIn } = storeUser.state
 					const { [STORE_ALERT_STATE_OPEN]: alertOpen } = storeAlert.state
 					return (
 						<div className='fixed-top'>
@@ -216,103 +208,7 @@ class NavbarIndex extends React.Component {
 												</LoaderSmallPropedIndexNavbarStoreUser>
 											) : // small screen size and collapsed
 											isSignedIn ? (
-												<>
-													<NavItem className='p-0'>
-														<NavLink
-															data-placement='bottom'
-															to={ROUTE_PAGE_SETTINGS_GENERAL}
-															tag={Link}
-															style={{
-																paddingTop: 6,
-																paddingBottom: 6,
-															}}>
-															<Row>
-																<Col
-																	xs='2'
-																	style={{
-																		paddingLeft: 12,
-																		paddingRight: 18,
-																	}}>
-																	<AvatarUserStoreUser height={24} width={24} />
-																</Col>
-																<Col>
-																	<p>{username}</p>
-																</Col>
-															</Row>
-														</NavLink>
-													</NavItem>
-													<NavItem className='p-0'>
-														<NavLink data-placement='bottom' href='#pablo'>
-															<Row>
-																<Col xs='2'>
-																	<i className='fab fas fa-user-plus' />
-																</Col>
-																<Col>
-																	<p>My Senshi</p>
-																</Col>
-															</Row>
-														</NavLink>
-													</NavItem>
-													<NavItem className='p-0'>
-														<NavLink data-placement='bottom' href='#pablo'>
-															<Row>
-																<Col xs='2'>
-																	<i className='tim-icons icon-key-25' />
-																</Col>
-																<Col>
-																	<p>Senshi Portal</p>
-																</Col>
-															</Row>
-														</NavLink>
-													</NavItem>
-													<NavItem className='p-0'>
-														<NavLink
-															data-placement='bottom'
-															to={ROUTE_PAGE_SETTINGS_GENERAL}
-															tag={Link}
-															href='#pablo'>
-															<Row>
-																<Col xs='2'>
-																	<i className='fab fas fa-user-plus' />
-																</Col>
-																<Col>
-																	<p>Settings</p>
-																</Col>
-															</Row>
-														</NavLink>
-													</NavItem>
-													<NavItem className='p-0'>
-														<NavLink data-placement='bottom' href='#pablo'>
-															<Row>
-																<Col xs='2'>
-																	<i className='fab fas fa-question' />
-																</Col>
-																<Col>
-																	<p>Help</p>
-																</Col>
-															</Row>
-														</NavLink>
-													</NavItem>
-													<NavItem className='p-0'>
-														<NavLink
-															style={{ cursor: 'pointer' }}
-															data-placement='bottom'
-															onClick={e => {
-																e.preventDefault()
-																toggleCollapse()
-																auth().signOut()
-															}}>
-															<Row>
-																<Col xs='2'>
-																	<i className='fab fas fa-sign-out-alt' />
-																</Col>
-																<Col>
-																	<p>Sign out</p>
-																</Col>
-															</Row>
-														</NavLink>
-													</NavItem>
-												</>
+												<ListNavItemStoreUserPropedCollpased />
 											) : (
 												<>
 													{currentPath !== '/signin' && (

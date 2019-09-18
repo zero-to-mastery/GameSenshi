@@ -1,5 +1,4 @@
 import {
-	emptyPromise,
 	resObj,
 	signUpResObj,
 	simplerResponseHandling,
@@ -29,7 +28,6 @@ import {
 } from 'utils/validation'
 
 export {
-	emptyPromise,
 	resObj,
 	simplerResponseHandling,
 	simplerErrorMessage,

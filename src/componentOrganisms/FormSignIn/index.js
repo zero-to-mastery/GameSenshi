@@ -27,7 +27,7 @@ import {
 
 // inject staple props that suitable for this app
 const FormSignInPropedDefault = withLastLocation(props => {
-	const { history, lastLocation, ...restProps } = props
+	const { lastLocation, ...restProps } = props
 
 	const onSubmit = useCallback(values => {
 		return handleSignInWithEmailAndPassword(

@@ -9,11 +9,18 @@ import { stopUndefined } from 'utils'
 
 const { Link } = stopUndefined(ExportProton)
 
-const TabListVertical = props => {
-	const defaultProps = { onClick: () => {}, activeTab: 0, navItems: [] }
+const emptyFunction = () => {}
+const emptyArray = []
 
+const defaultProps = () => ({
+	onClick: emptyFunction,
+	activeTab: 0,
+	navItems: emptyArray,
+})
+
+const TabListVertical = props => {
 	const { onClick, activeTab, navItems } = {
-		...defaultProps,
+		...defaultProps(),
 		...props,
 	}
 

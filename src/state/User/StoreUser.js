@@ -119,7 +119,7 @@ class StoreUser extends Container {
 			try {
 				localStorage.removeItem(STORE_USER)
 			} catch (e) {
-				console.log(e)
+				//console.log(e)
 			}
 		}
 		return this

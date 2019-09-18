@@ -5,7 +5,7 @@ import {
 } from 'componentnCompounds/FinalSelectGender/FinalSelectGender'
 
 // components
-import { stopUndefined, emptyPromise } from 'utils'
+import { stopUndefined } from 'utils'
 import { ExportMolecules } from 'componentMolecules'
 
 const { LabelForm } = stopUndefined(ExportMolecules)
@@ -13,12 +13,7 @@ const { LabelForm } = stopUndefined(ExportMolecules)
 const FinalSelectGenderPropedGeneraL = props => {
 	return (
 		<LabelForm label='I am...' htmlFor={FINAL_SELECT_GENDER} Inputmd='4'>
-			<FinalSelectGender
-				validation={emptyPromise}
-				hideSuccess
-				onlyShowErrorAfterSubmit
-				{...props}
-			/>
+			<FinalSelectGender hideSuccess onlyShowErrorAfterSubmit {...props} />
 		</LabelForm>
 	)
 }
