@@ -15,8 +15,6 @@ import {
 // reactstrap components
 import {
 	Collapse,
-	UncontrolledDropdown,
-	DropdownToggle,
 	Navbar,
 	NavItem,
 	NavLink,
@@ -213,7 +211,6 @@ class NavbarIndex extends React.Component {
 															<DropdownMenuNavbarStoreUserPropedNavbarIndex />
 														}
 													/>
-
 													<ButtonSignInStoreUserPropedIndexNavbar />
 													<ButtonSignUpStoreUserPropedIndexNavbar />
 												</LoaderSmallPropedIndexNavbarStoreUser>
