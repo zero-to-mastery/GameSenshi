@@ -1,6 +1,10 @@
 import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom'
 import { DropdownMenu, DropdownItem } from 'reactstrap'
+
+import { ExportProton } from 'componentaProton'
+import { stopUndefined } from 'utils'
+
+const { Link } = stopUndefined(ExportProton)
 
 const DROP_DOWN_MENU_NAVBAR_PROPS_TO = 'to'
 const DROP_DOWN_MENU_NAVBAR_PROPS_BODY = 'body'

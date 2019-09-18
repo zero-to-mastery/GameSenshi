@@ -1,6 +1,10 @@
 import React, { memo } from 'react'
 import { NavItem, NavLink } from 'reactstrap'
-import { Link } from 'react-router-dom'
+
+import { ExportProton } from 'componentaProton'
+import { stopUndefined } from 'utils'
+
+const { Link } = stopUndefined(ExportProton)
 
 const LIST_NAV_ITEM_PROPS_TO = 'to'
 const LIST_NAV_ITEM_PROPS_CHILDREN = 'children'

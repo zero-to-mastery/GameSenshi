@@ -1,7 +1,5 @@
 import React, { useRef, Fragment } from 'react'
 import { stopUndefined } from 'utils'
-// routing
-import { Link } from 'react-router-dom'
 // reactstrap components
 import {
 	Modal,
@@ -29,6 +27,7 @@ const {
 	FINAL_TEXT_EMAIL,
 	FinalTextPasswordPropedSignIn,
 	FINAL_TEXT_PASSWORD,
+	Link,
 } = stopUndefined(ExportCompounds)
 
 const SIGN_IN_FORM_STATE_EMAIL = 'email'

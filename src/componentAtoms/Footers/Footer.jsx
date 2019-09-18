@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 // reactstrap components
 import {
 	Button,
@@ -13,6 +12,10 @@ import {
 } from 'reactstrap'
 // constants
 import { ROUTE_PAGE_PROFILE } from 'routes'
+import { ExportProton } from 'componentaProton'
+import { stopUndefined } from 'utils'
+
+const { Link } = stopUndefined(ExportProton)
 
 class Footer extends React.Component {
 	render() {

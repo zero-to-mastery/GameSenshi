@@ -8,7 +8,11 @@ import logo from 'assets/img/favicon.ico'
 import { StateContainer, storeUser, storeUserResetAvatar } from 'state'
 
 const BrandNavbarPropedIndexNavbar = memo(props => {
-	return <BrandNavbar logo={logo} to={ROUTE_PAGE_INDEX} {...props} />
+	return (
+		<BrandNavbar logo={logo} to={ROUTE_PAGE_INDEX} {...props}>
+			GAME SENSHI
+		</BrandNavbar>
+	)
 })
 
 const mapStoreUserMethodToProp = {

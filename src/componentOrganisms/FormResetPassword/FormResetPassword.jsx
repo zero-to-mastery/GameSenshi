@@ -1,7 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react'
 import { stopUndefined } from 'utils'
-// routing
-import { Link } from 'react-router-dom'
 
 // reactstrap components
 import {
@@ -23,6 +21,7 @@ const {
 	ButtonSubmit,
 	FinalTextEmailPropedForgotPassword,
 	FINAL_TEXT_EMAIL,
+	Link,
 } = stopUndefined(ExportCompounds)
 
 const FormResetPassword = props => {

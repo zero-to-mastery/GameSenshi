@@ -1,7 +1,5 @@
 import React, { useRef } from 'react'
 import { stopUndefined } from 'utils'
-// routing
-import { Link } from 'react-router-dom'
 // react libraries components
 import {
 	Card,
@@ -28,6 +26,7 @@ const {
 	FINAL_TEXT_PASSWORD,
 	FinalTextUsernamePropedSignUp,
 	FINAL_TEXT_USERNAME,
+	Link,
 } = stopUndefined(ExportCompounds)
 
 const FormSignUp = props => {

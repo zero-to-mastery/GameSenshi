@@ -1,7 +1,6 @@
 import React from 'react'
 import { stopUndefined } from 'utils'
 import { ExportCompounds } from 'componentnCompounds'
-import { Link } from 'react-router-dom'
 import { auth } from 'firebaseInit'
 // state
 import {
@@ -49,6 +48,7 @@ const {
 	HeaderCollapsedPropedNavbarIndex,
 	DropdownMenuNavbarStoreUserPropedNavbarIndex,
 	AvatarUserStoreUser,
+	Link,
 } = stopUndefined(ExportCompounds)
 
 class NavbarIndex extends React.Component {

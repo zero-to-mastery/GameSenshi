@@ -1,3 +1,4 @@
+import { ExportProton } from 'componentaProton'
 import { FinalForm } from 'componentAtoms/FinalForm'
 import { ListText } from 'componentAtoms/ListText'
 import {
@@ -39,6 +40,7 @@ import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from 'componentAtoms/Dro
 import { AvatarUserStoreUser } from 'componentAtoms/AvatarUser'
 
 export const ExportAtoms = {
+	...ExportProton,
 	Footer,
 	FinalForm,
 	IndexHeader,

@@ -1,12 +1,16 @@
 import React, { memo } from 'react'
-import { Link } from 'react-router-dom'
 // reactstrap
 import { Media, NavbarBrand } from 'reactstrap'
+// components
+import { ExportProton } from 'componentaProton'
+import { stopUndefined } from 'utils'
+
+const { Link } = stopUndefined(ExportProton)
 
 const NAVBAR_BRAND_ON_ERROR = 'onError'
 
 const BrandNavbar = memo(props => {
-	const { [NAVBAR_BRAND_ON_ERROR]: onError, to, logo } = props
+	const { [NAVBAR_BRAND_ON_ERROR]: onError, to, logo, children } = props
 	return (
 		<NavbarBrand
 			data-placement='bottom'
@@ -28,7 +32,7 @@ const BrandNavbar = memo(props => {
 					style={{ height: 48, width: 48 }}
 				/>
 			</div>
-			<div className='d-none d-sm-inline'>&nbsp;&nbsp;&nbsp;GAME SENSHI</div>
+			<div className='d-none d-sm-inline'>&nbsp;&nbsp;&nbsp;{children}</div>
 		</NavbarBrand>
 	)
 })

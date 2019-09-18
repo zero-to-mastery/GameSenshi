@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react'
-//routing
-import { Link } from 'react-router-dom'
 // nodejs library that concatenates classes
 import classnames from 'classnames'
 // reactstrap components
 import { NavItem, NavLink, Nav } from 'reactstrap'
+
+import { ExportProton } from 'componentaProton'
+import { stopUndefined } from 'utils'
+
+const { Link } = stopUndefined(ExportProton)
 
 const TabListVertical = props => {
 	const defaultProps = { onClick: () => {}, activeTab: 0, navItems: [] }

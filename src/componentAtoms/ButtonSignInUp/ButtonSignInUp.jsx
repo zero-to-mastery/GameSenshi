@@ -1,7 +1,12 @@
 import React, { memo } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 // reactstrap components
 import { Button, NavItem, NavLink } from 'reactstrap'
+
+import { ExportProton } from 'componentaProton'
+import { stopUndefined } from 'utils'
+
+const { Link } = stopUndefined(ExportProton)
 
 const BUTTON_SIGN_IN_STATE_SIGNED_IN = 'signedIn'
 
