@@ -38,6 +38,7 @@ import { MenuHamburger } from 'componentAtoms/MenuHamburger'
 import { HeaderCollapsedPropedNavbarIndex } from 'componentAtoms/HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from 'componentAtoms/DropdownMenuNavbar'
 import { AvatarUserStoreUser } from 'componentAtoms/AvatarUser'
+import { DropdownNavbarStoreUser } from 'componentAtoms/DropdownNavbar'
 
 export const ExportAtoms = {
 	...ExportProton,
@@ -77,4 +78,5 @@ export const ExportAtoms = {
 	HeaderCollapsedPropedNavbarIndex,
 	DropdownMenuNavbarStoreUserPropedNavbarIndex,
 	AvatarUserStoreUser,
+	DropdownNavbarStoreUser,
 }

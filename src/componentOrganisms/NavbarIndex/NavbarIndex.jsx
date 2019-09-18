@@ -49,6 +49,7 @@ const {
 	DropdownMenuNavbarStoreUserPropedNavbarIndex,
 	AvatarUserStoreUser,
 	Link,
+	DropdownNavbarStoreUser,
 } = stopUndefined(ExportCompounds)
 
 class NavbarIndex extends React.Component {
@@ -201,27 +202,18 @@ class NavbarIndex extends React.Component {
 											{(!collapseOpen && collapseExited) ||
 											overWidthBreakPoint ? (
 												<LoaderSmallPropedIndexNavbarStoreUser>
+													{/* big screen size or not collapsed*/}
 													<ListNavItemStoreUserPropedNavbarIndex />
 													<IconNotificationStoreUserPropedIndexNavbar className='d-none d-lg-inline-flex' />
-													{// big screen size or not collapsed
-													isSignedIn && (
-														<UncontrolledDropdown // user menu bar
-															nav
-															className='d-none d-lg-inline-flex'>
+													<DropdownNavbarStoreUser
+														avatar={
 															<AvatarUserStoreUser height={36} width={36} />
-															<DropdownToggle
-																caret
-																color='default'
-																data-toggle='dropdown'
-																href='#pablo'
-																id='navbarDropdownMenuLink'
-																nav
-																onClick={e => e.preventDefault()}
-																className='d-flex align-items-center pt-0 pb-0'
-															/>
+														}
+														menu={
 															<DropdownMenuNavbarStoreUserPropedNavbarIndex />
-														</UncontrolledDropdown>
-													)}
+														}
+													/>
+
 													<ButtonSignInStoreUserPropedIndexNavbar />
 													<ButtonSignUpStoreUserPropedIndexNavbar />
 												</LoaderSmallPropedIndexNavbarStoreUser>
