@@ -43,6 +43,7 @@ const {
 	Link,
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollpased,
+	ListNavItemStoreUserPropedCollpasedUnsigned,
 } = stopUndefined(ExportCompounds)
 
 class NavbarIndex extends React.Component {
@@ -206,45 +207,11 @@ class NavbarIndex extends React.Component {
 													<ButtonSignInStoreUserPropedIndexNavbar />
 													<ButtonSignUpStoreUserPropedIndexNavbar />
 												</LoaderSmallPropedIndexNavbarStoreUser>
-											) : // small screen size and collapsed
-											isSignedIn ? (
-												<ListNavItemStoreUserPropedCollpased />
 											) : (
 												<>
-													{currentPath !== '/signin' && (
-														<NavItem className='p-0'>
-															<NavLink
-																data-placement='bottom'
-																to={ROUTE_PAGE_SIGN_IN}
-																tag={Link}>
-																<Row>
-																	<Col xs='2'>
-																		<i className='fab fas fa-sign-in-alt' />
-																	</Col>
-																	<Col>
-																		<p>Sign in</p>
-																	</Col>
-																</Row>
-															</NavLink>
-														</NavItem>
-													)}
-													{currentPath !== '/signup' && (
-														<NavItem className='p-0'>
-															<NavLink
-																data-placement='bottom'
-																to={ROUTE_PAGE_SIGN_UP}
-																tag={Link}>
-																<Row>
-																	<Col xs='2'>
-																		<i className='fab fas fa-user-plus' />
-																	</Col>
-																	<Col>
-																		<p>Sign up</p>
-																	</Col>
-																</Row>
-															</NavLink>
-														</NavItem>
-													)}
+													{/* small screen size and collapsed*/}
+													<ListNavItemStoreUserPropedCollpased />
+													<ListNavItemStoreUserPropedCollpasedUnsigned />
 												</>
 											)}
 										</Nav>

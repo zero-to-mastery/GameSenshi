@@ -36,6 +36,7 @@ import { IconNotificationStoreUserPropedIndexNavbar } from 'componentAtoms/IconN
 import {
 	ListNavItemStoreUserPropedNavbarIndex,
 	ListNavItemStoreUserPropedCollpased,
+	ListNavItemStoreUserPropedCollpasedUnsigned,
 } from 'componentAtoms/ListNavItem'
 import { MenuHamburger } from 'componentAtoms/MenuHamburger'
 import { HeaderCollapsedPropedNavbarIndex } from 'componentAtoms/HeaderCollapsed'
@@ -83,4 +84,5 @@ export const ExportAtoms = {
 	AvatarUserStoreUser,
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollpased,
+	ListNavItemStoreUserPropedCollpasedUnsigned,
 }
