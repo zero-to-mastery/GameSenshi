@@ -13,7 +13,12 @@ const StateContainer = (
 			{() => {
 				const accProps = stores.reduce((accProps, store, i) => {
 					for (const prop in stateToPropsMaps[i]) {
-						accProps[prop] = store[STATE][stateToPropsMaps[i][prop]]
+						const value = stateToPropsMaps[i][prop]
+						if (value instanceof Function) {
+							accProps[prop] = value(store[STATE])
+						} else {
+							accProps[prop] = store[STATE][value]
+						}
 					}
 					for (const prop in methodToPropsMaps[i]) {
 						accProps[prop] = methodToPropsMaps[i][prop]
