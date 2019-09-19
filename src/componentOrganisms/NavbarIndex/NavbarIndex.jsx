@@ -8,21 +8,9 @@ import {
 	Subscribe,
 	STORE_ALERT_STATE_OPEN,
 	STATE,
-	STORE_USER_STATE_SIGNED_IN,
 } from 'state'
 // reactstrap components
-import {
-	Collapse,
-	Navbar,
-	NavItem,
-	NavLink,
-	Nav,
-	Container,
-	Row,
-	Col,
-} from 'reactstrap'
-// constants
-import { ROUTE_PAGE_SIGN_UP, ROUTE_PAGE_SIGN_IN } from 'routes'
+import { Collapse, Navbar, Nav, Container } from 'reactstrap'
 
 const widthBreakPoint = 991
 const bgPurple = 'bg-purple'
@@ -40,7 +28,6 @@ const {
 	HeaderCollapsedPropedNavbarIndex,
 	DropdownMenuNavbarStoreUserPropedNavbarIndex,
 	AvatarUserStoreUser,
-	Link,
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollpased,
 	ListNavItemStoreUserPropedCollpasedUnsigned,
@@ -132,9 +119,6 @@ class NavbarIndex extends React.Component {
 
 	render() {
 		const {
-			props: {
-				location: { pathname },
-			},
 			state: { color, collapseOpen, collapseOut, overWidthBreakPoint },
 			toggleCollapse,
 			onCollapseExiting,
@@ -143,11 +127,9 @@ class NavbarIndex extends React.Component {
 			collapseExited,
 		} = this
 
-		const currentPath = pathname.toLowerCase()
 		return (
 			<Subscribe to={[storeUser, storeAlert]}>
 				{(storeUser, storeAlert) => {
-					const { [STORE_USER_STATE_SIGNED_IN]: isSignedIn } = storeUser.state
 					const { [STORE_ALERT_STATE_OPEN]: alertOpen } = storeAlert.state
 					return (
 						<div className='fixed-top'>

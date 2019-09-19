@@ -8,7 +8,7 @@ import { stopUndefined } from 'utils'
 
 const { Link } = stopUndefined(ExportProton)
 
-const BUTTON_SIGN_IN_STATE_SIGNED_IN = 'signedIn'
+const BUTTON_SIGN_IN_STATE_SHOW = 'show'
 
 const ButtonSignInUp = withRouter(
 	memo(props => {
@@ -18,11 +18,11 @@ const ButtonSignInUp = withRouter(
 			navItemClass,
 			to,
 			children,
-			[BUTTON_SIGN_IN_STATE_SIGNED_IN]: signedIn,
+			[BUTTON_SIGN_IN_STATE_SHOW]: show,
 			location: { pathname },
 		} = props
 		return (
-			!signedIn &&
+			show &&
 			pathname.toLowerCase() !== to.toLowerCase() && (
 				<NavItem className={`${navItemClass} ${small && 'navbar-toggler'}`}>
 					<NavLink className='p-0' data-placement='bottom' to={to} tag={Link}>
@@ -36,4 +36,4 @@ const ButtonSignInUp = withRouter(
 	})
 )
 
-export { ButtonSignInUp, BUTTON_SIGN_IN_STATE_SIGNED_IN }
+export { ButtonSignInUp, BUTTON_SIGN_IN_STATE_SHOW }
