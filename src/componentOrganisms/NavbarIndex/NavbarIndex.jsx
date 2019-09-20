@@ -1,14 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { stopUndefined } from 'utils'
 import { ExportCompounds } from 'componentnCompounds'
-// state
-import {
-	storeUser,
-	storeAlert,
-	Subscribe,
-	STORE_ALERT_STATE_OPEN,
-	STATE,
-} from 'state'
 // reactstrap components
 import { Collapse, Navbar, Nav, Container } from 'reactstrap'
 
@@ -18,7 +10,6 @@ const bgPurple = 'bg-purple'
 const {
 	BrandNavbarPropedIndexNavbarStoreUser,
 	ProgressCommonStoreProgress,
-	AlertCommonStoreAlert,
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
 	LoaderSmallPropedIndexNavbarStoreUser,
@@ -29,184 +20,133 @@ const {
 	DropdownMenuNavbarStoreUserPropedNavbarIndex,
 	AvatarUserStoreUser,
 	DropdownNavbarStoreUser,
-	ListNavItemStoreUserPropedCollpased,
-	ListNavItemStoreUserPropedCollpasedUnsigned,
+	ListNavItemStoreUserPropedCollapsed,
+	ListNavItemStoreUserPropedCollapsedUnsigned,
 } = stopUndefined(ExportCompounds)
 
-class NavbarIndex extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			collapseOpen: false,
-			color: 'navbar-transparent',
-			overWidthBreakPoint: window.innerWidth > widthBreakPoint,
-			collapseExited: true,
-			navbarHeight: 0,
-		}
-		this.setState = this.setState.bind(this)
-	}
-	componentDidMount() {
-		window.addEventListener('scroll', this.changeColor)
-		window.addEventListener('resize', this.onDimensionChange)
-	}
-	componentWillUnmount() {
-		window.removeEventListener('scroll', this.changeColor)
-		window.removeEventListener('resize', this.onDimensionChange)
-	}
+const NAVBAR_INDEX_HEIGHT_CHANGED = 'heightChanged'
 
-	onDimensionChange = () => {
-		if (
-			window.innerWidth > widthBreakPoint &&
-			!this.state.overWidthBreakPoint
-		) {
-			this.setState({ overWidthBreakPoint: true })
-		} else if (
-			window.innerWidth <= widthBreakPoint &&
-			this.state.overWidthBreakPoint
-		) {
-			this.setState({ overWidthBreakPoint: false })
+const NavbarIndex = props => {
+	const { children, [NAVBAR_INDEX_HEIGHT_CHANGED]: heightChanged } = props
+
+	const [color, setColor] = useState('navbar-transparent')
+	const [collapseOpen, setCollapseOpen] = useState(false)
+	const [overWidthBreakPoint, setOverWidthBreakPoint] = useState(
+		window.innerWidth > widthBreakPoint
+	)
+	const [collapseExited, setCollapseExited] = useState(true)
+	const [collapseOut, setCollapseOut] = useState('')
+
+	const onDimensionChange = () => {
+		if (window.innerWidth > widthBreakPoint && !overWidthBreakPoint) {
+			setOverWidthBreakPoint(true)
+		} else if (window.innerWidth <= widthBreakPoint && overWidthBreakPoint) {
+			setOverWidthBreakPoint(false)
 		}
 	}
 
-	changeColor = () => {
+	const changeColor = () => {
 		if (
 			document.documentElement.scrollTop > 299 ||
 			document.body.scrollTop > 299
 		) {
-			this.setState({
-				color: bgPurple,
-			})
+			setColor(bgPurple)
 		} else if (
 			document.documentElement.scrollTop < 300 ||
 			document.body.scrollTop < 300
 		) {
-			this.setState({
-				color:
-					(storeAlert[STATE][STORE_ALERT_STATE_OPEN] && bgPurple) ||
-					'navbar-transparent',
-			})
+			setColor((heightChanged && bgPurple) || 'navbar-transparent')
 		}
 	}
 
-	toggleCollapse = () => {
+	useEffect(() => {
+		window.addEventListener('scroll', changeColor)
+		window.addEventListener('resize', onDimensionChange)
+		return () => {
+			window.removeEventListener('scroll', changeColor)
+			window.removeEventListener('resize', onDimensionChange)
+		}
+	})
+
+	const toggleCollapse = () => {
 		document.documentElement.classList.toggle('nav-open')
-		this.setState(state => {
-			state.collapseOpen = !state.collapseOpen
-			return state
-		})
+		setCollapseOpen(collapseOpen => !collapseOpen)
 	}
-	onCollapseEntering = () => {
-		this.setState({
-			collapseExited: false,
-		})
+	const onCollapseEntering = () => {
+		setCollapseExited(false)
 	}
-	onCollapseExiting = () => {
-		this.setState({
-			collapseOut: 'collapsing-out',
-		})
+	const onCollapseExiting = () => {
+		setCollapseOut('collapsing-out')
 	}
-	onCollapseExited = () => {
-		this.setState({
-			collapseOut: '',
-			collapseExited: true,
-		})
-	}
-	scrollToDownload = () => {
-		document
-			.getElementById('download-section')
-			.scrollIntoView({ behavior: 'smooth' })
+	const onCollapseExited = () => {
+		setCollapseExited(true)
+		setCollapseOut('')
 	}
 
-	render() {
-		const {
-			state: { color, collapseOpen, collapseOut, overWidthBreakPoint },
-			toggleCollapse,
-			onCollapseExiting,
-			onCollapseExited,
-			onCollapseEntering,
-			collapseExited,
-		} = this
-
-		return (
-			<Subscribe to={[storeUser, storeAlert]}>
-				{(storeUser, storeAlert) => {
-					const { [STORE_ALERT_STATE_OPEN]: alertOpen } = storeAlert.state
-					return (
-						<div className='fixed-top'>
-							<ProgressCommonStoreProgress />
-							<Navbar
-								style={{
-									zIndex: 90000,
-								}}
-								className={(alertOpen && bgPurple) || color}
-								color-on-scroll='100'
-								expand='lg'>
-								<Container>
-									<div className='navbar-translate'>
-										{/*small screen size*/}
-										<BrandNavbarPropedIndexNavbarStoreUser />
-										<Nav className='flex-row' navbar>
-											<LoaderSmallPropedIndexNavbarStoreUser small>
-												<IconNotificationStoreUserPropedIndexNavbar small />
-												<ButtonSignUpStoreUserPropedIndexNavbar small />
-												<ButtonSignInStoreUserPropedIndexNavbar small />
-											</LoaderSmallPropedIndexNavbarStoreUser>
-											<MenuHamburger
-												isOpen={collapseOpen}
-												toggle={toggleCollapse}
-											/>
-										</Nav>
-									</div>
-									<Collapse
-										className={'justify-content-end ' + collapseOut}
-										style={{
-											overflow: collapseOpen ? 'hidden' : 'visible',
-										}}
-										navbar
-										isOpen={collapseOpen}
-										onEntering={onCollapseEntering}
-										onExiting={onCollapseExiting}
-										onExited={onCollapseExited}>
-										<HeaderCollapsedPropedNavbarIndex
-											isOpen={collapseOpen}
-											toggle={toggleCollapse}
-										/>
-										<Nav navbar>
-											{(!collapseOpen && collapseExited) ||
-											overWidthBreakPoint ? (
-												<LoaderSmallPropedIndexNavbarStoreUser>
-													{/* big screen size or not collapsed*/}
-													<ListNavItemStoreUserPropedNavbarIndex />
-													<IconNotificationStoreUserPropedIndexNavbar className='d-none d-lg-inline-flex' />
-													<DropdownNavbarStoreUser
-														avatar={
-															<AvatarUserStoreUser height={36} width={36} />
-														}
-														menu={
-															<DropdownMenuNavbarStoreUserPropedNavbarIndex />
-														}
-													/>
-													<ButtonSignInStoreUserPropedIndexNavbar />
-													<ButtonSignUpStoreUserPropedIndexNavbar />
-												</LoaderSmallPropedIndexNavbarStoreUser>
-											) : (
-												<>
-													{/* small screen size and collapsed*/}
-													<ListNavItemStoreUserPropedCollpased />
-													<ListNavItemStoreUserPropedCollpasedUnsigned />
-												</>
-											)}
-										</Nav>
-									</Collapse>
-								</Container>
-							</Navbar>
-							<AlertCommonStoreAlert />
-						</div>
-					)
+	return (
+		<div className='fixed-top'>
+			<ProgressCommonStoreProgress />
+			<Navbar
+				style={{
+					zIndex: 90000,
 				}}
-			</Subscribe>
-		)
-	}
+				className={(heightChanged && bgPurple) || color}
+				color-on-scroll='100'
+				expand='lg'>
+				<Container>
+					<div className='navbar-translate'>
+						{/*small screen size*/}
+						<BrandNavbarPropedIndexNavbarStoreUser />
+						<Nav className='flex-row' navbar>
+							<LoaderSmallPropedIndexNavbarStoreUser small>
+								<IconNotificationStoreUserPropedIndexNavbar small />
+								<ButtonSignUpStoreUserPropedIndexNavbar small />
+								<ButtonSignInStoreUserPropedIndexNavbar small />
+							</LoaderSmallPropedIndexNavbarStoreUser>
+							<MenuHamburger isOpen={collapseOpen} toggle={toggleCollapse} />
+						</Nav>
+					</div>
+					<Collapse
+						className={'justify-content-end ' + collapseOut}
+						style={{
+							overflow: collapseOpen ? 'hidden' : 'visible',
+						}}
+						navbar
+						isOpen={collapseOpen}
+						onEntering={onCollapseEntering}
+						onExiting={onCollapseExiting}
+						onExited={onCollapseExited}>
+						<HeaderCollapsedPropedNavbarIndex
+							isOpen={collapseOpen}
+							toggle={toggleCollapse}
+						/>
+						<Nav navbar>
+							{(!collapseOpen && collapseExited) || overWidthBreakPoint ? (
+								<LoaderSmallPropedIndexNavbarStoreUser>
+									{/* big screen size or not collapsed*/}
+									<ListNavItemStoreUserPropedNavbarIndex />
+									<IconNotificationStoreUserPropedIndexNavbar className='d-none d-lg-inline-flex' />
+									<DropdownNavbarStoreUser
+										avatar={<AvatarUserStoreUser height={36} width={36} />}
+										menu={<DropdownMenuNavbarStoreUserPropedNavbarIndex />}
+									/>
+									<ButtonSignInStoreUserPropedIndexNavbar />
+									<ButtonSignUpStoreUserPropedIndexNavbar />
+								</LoaderSmallPropedIndexNavbarStoreUser>
+							) : (
+								<>
+									{/* small screen size and collapsed*/}
+									<ListNavItemStoreUserPropedCollapsed />
+									<ListNavItemStoreUserPropedCollapsedUnsigned />
+								</>
+							)}
+						</Nav>
+					</Collapse>
+				</Container>
+			</Navbar>
+			{children}
+		</div>
+	)
 }
 
-export { NavbarIndex }
+export { NavbarIndex, NAVBAR_INDEX_HEIGHT_CHANGED }

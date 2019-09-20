@@ -36,7 +36,8 @@ const {
 	Error404Page,
 	FormSignInPropedDefaultStoreSignIn,
 	ModalAuthStoreAuthModal,
-	NavbarIndexPropedDefault,
+	NavbarIndexStoreAlert,
+	AlertCommonStoreAlert,
 } = stopUndefined(ExportViews)
 
 const MapRoutesToPages = {
@@ -49,7 +50,7 @@ const MapRoutesToPages = {
 	[ROUTE_PAGE_404]: Error404Page,
 }
 
-const App = props => {
+const App = () => {
 	const [apolloClient, setApolloClient] = useState(tempClient)
 
 	useEffect(() => {
@@ -76,7 +77,9 @@ const App = props => {
 							<Router
 								isUserSignedIn={isUserSignedIn || isUserSoftSignedIn}
 								pages={MapRoutesToPages}>
-								<NavbarIndexPropedDefault />
+								<NavbarIndexStoreAlert>
+									<AlertCommonStoreAlert />
+								</NavbarIndexStoreAlert>
 								<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
 								<ModalAuthStoreAuthModal />
 							</Router>

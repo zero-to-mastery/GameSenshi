@@ -1,6 +1,18 @@
-import { NavbarIndex } from 'componentOrganisms/NavbarIndex/NavbarIndex'
-import { withRouter } from 'react-router-dom'
+import {
+	NavbarIndex,
+	NAVBAR_INDEX_HEIGHT_CHANGED,
+} from 'componentOrganisms/NavbarIndex/NavbarIndex'
+import { StateContainer, storeAlert, STORE_ALERT_STATE_OPEN } from 'state'
 
-const NavbarIndexPropedDefault = withRouter(NavbarIndex)
+const mapStoreAlertStateToProp = {
+	[NAVBAR_INDEX_HEIGHT_CHANGED]: STORE_ALERT_STATE_OPEN,
+}
 
-export { NavbarIndexPropedDefault }
+const NavbarIndexStoreAlert = StateContainer(
+	NavbarIndex,
+	[storeAlert],
+	[mapStoreAlertStateToProp],
+	[]
+)
+
+export { NavbarIndexStoreAlert }

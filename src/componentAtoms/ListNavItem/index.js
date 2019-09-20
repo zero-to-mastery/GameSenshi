@@ -31,7 +31,7 @@ const ListNavItemStoreUserPropedNavbarIndex = memo(props => {
 	)
 })
 
-const ListNavItemStoreUserPropedCollpased = memo(props => {
+const ListNavItemStoreUserPropedCollapsed = memo(props => {
 	return (
 		<ListNavItemStoreUser
 			items={signedInNavItemsCollapsed}
@@ -52,7 +52,7 @@ const ListNavItemStoreUserUnsigned = StateContainer(
 	[]
 )
 
-const ListNavItemStoreUserPropedCollpasedUnsigned = memo(props => {
+const ListNavItemStoreUserPropedCollapsedUnsigned = memo(props => {
 	return (
 		<ListNavItemStoreUserUnsigned
 			items={unsignedInNavItemsCollapsed}
@@ -64,6 +64,6 @@ const ListNavItemStoreUserPropedCollpasedUnsigned = memo(props => {
 
 export {
 	ListNavItemStoreUserPropedNavbarIndex,
-	ListNavItemStoreUserPropedCollpased,
-	ListNavItemStoreUserPropedCollpasedUnsigned,
+	ListNavItemStoreUserPropedCollapsed,
+	ListNavItemStoreUserPropedCollapsedUnsigned,
 }
