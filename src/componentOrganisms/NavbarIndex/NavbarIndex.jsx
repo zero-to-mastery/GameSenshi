@@ -136,8 +136,12 @@ const NavbarIndex = props => {
 							) : (
 								<>
 									{/* small screen size and collapsed*/}
-									<ListNavItemStoreUserPropedCollapsed />
-									<ListNavItemStoreUserPropedCollapsedUnsigned />
+									<ListNavItemStoreUserPropedCollapsed
+										onItemClick={toggleCollapse}
+									/>
+									<ListNavItemStoreUserPropedCollapsedUnsigned
+										onItemClick={toggleCollapse}
+									/>
 								</>
 							)}
 						</Nav>

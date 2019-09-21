@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
 import { NavItem, NavLink } from 'reactstrap'
 
 import { ExportProton } from 'componentaProton'
@@ -12,10 +12,21 @@ const LIST_NAV_ITEM_STATE_SHOW = 'show'
 const LIST_NAV_ITEM_PROPS_LINK_CLASS_NAME = 'linkClassName'
 const LIST_NAV_ITEM_ON_CLICK = 'onClick'
 
-const defaultProps = () => ({ [LIST_NAV_ITEM_STATE_SHOW]: true })
+const emptyFunction = () => {}
+const defaultProps = () => ({
+	[LIST_NAV_ITEM_STATE_SHOW]: true,
+	onItemClick: emptyFunction,
+})
+
+const defaultPropsItem = () => ({
+	onClick: emptyFunction,
+})
 
 const ListNavItem = memo(props => {
-	const { items, show, className } = { ...defaultProps(), ...props }
+	const { items, show, className, onItemClick } = {
+		...defaultProps(),
+		...props,
+	}
 	return (
 		show &&
 		items.map(item => {
@@ -24,14 +35,21 @@ const ListNavItem = memo(props => {
 				[LIST_NAV_ITEM_PROPS_BODY]: body,
 				[LIST_NAV_ITEM_PROPS_LINK_CLASS_NAME]: linkClassName,
 				[LIST_NAV_ITEM_ON_CLICK]: onClick,
-			} = item
+			} = { ...defaultPropsItem(), ...item }
+			const onClick_ = useCallback(
+				e => {
+					onItemClick(e)
+					onClick(e)
+				},
+				[onItemClick, onClick]
+			)
 			return (
 				<NavItem className={className} key={to}>
 					<NavLink
 						tag={Link}
 						to={to}
 						className={linkClassName}
-						onClick={onClick}>
+						onClick={onClick_}>
 						{body}
 					</NavLink>
 				</NavItem>
