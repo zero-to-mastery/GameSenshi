@@ -19,8 +19,10 @@ const FinalForm = props => {
 			const response = await onSubmit(values)
 			const { status, data, message } = response
 
+			const onSuccessfulSubmission_ = onSuccessfulSubmission || (() => {})
+
 			if (status) {
-				onSuccessfulSubmission(values)
+				onSuccessfulSubmission_(values)
 				return undefined
 			} else if (status === false) {
 				const formError = { [FORM_ERROR]: message }
@@ -29,7 +31,7 @@ const FinalForm = props => {
 				return 'Unknown Unhandled Exception'
 			}
 		},
-		[onSubmit]
+		[onSubmit, onSuccessfulSubmission]
 	)
 	return (
 		<Form onSubmit={onSubmit_} decorators={[focusOnError]} {...otherProps} />
