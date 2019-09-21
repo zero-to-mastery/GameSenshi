@@ -174,19 +174,22 @@ const FinalInput = memo(props => {
 				} = meta
 
 				const errorMessages = error || (!dirtySinceLastSubmit && submitError)
-				const onChange_ = e => {
-					state.delay = DELAY
-					if (onChange === undefined || onChange(e) === undefined) {
-						setValue(e.target.value)
-						input.onChange(e)
-					} else {
-						const result = onChange(e)
-						if (result !== false) {
-							setValue(result)
+				const onChange_ = useCallback(
+					e => {
+						state.delay = DELAY
+						if (onChange === undefined || onChange(e) === undefined) {
+							setValue(e.target.value)
 							input.onChange(e)
+						} else {
+							const result = onChange(e)
+							if (result !== false) {
+								setValue(result)
+								input.onChange(e)
+							}
 						}
-					}
-				}
+					},
+					[onChange]
+				)
 
 				const onBlur_ = useCallback(
 					e => {

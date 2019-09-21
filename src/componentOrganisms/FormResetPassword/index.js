@@ -9,8 +9,9 @@ import { handlePasswordReset } from 'api'
 import { ROUTE_PAGE_SIGN_IN } from 'routes'
 
 const FormResetPasswordPropedDefault = props => {
-	const onSubmit = useCallback(values =>
-		handlePasswordReset(values[FINAL_TEXT_EMAIL])
+	const onSubmit = useCallback(
+		values => handlePasswordReset(values[FINAL_TEXT_EMAIL]),
+		[]
 	)
 	return (
 		<FormResetPassword

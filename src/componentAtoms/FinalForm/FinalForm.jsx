@@ -4,24 +4,33 @@ import { FORM_ERROR } from 'final-form'
 import createDecorator from 'final-form-focus'
 
 const focusOnError = createDecorator()
-
+const emptyFunction = () => {}
+const defaultProps = () => ({
+	onSuccessfulSubmission: emptyFunction,
+})
 const FinalForm = props => {
-	const { onSubmit, onSuccessfulSubmission, ...otherProps } = props
-	const onSuccessfulSubmission_ = onSuccessfulSubmission || (() => {})
-	const onSubmit_ = useCallback(async values => {
-		const response = await onSubmit(values)
-		const { status, data, message } = response
+	const { onSubmit, onSuccessfulSubmission, ...otherProps } = {
+		...defaultProps(),
+		...props,
+	}
 
-		if (status) {
-			onSuccessfulSubmission_(values)
-			return undefined
-		} else if (status === false) {
-			const formError = { [FORM_ERROR]: message }
-			return data ? { ...data, ...formError } : formError
-		} else {
-			return 'Unknown Unhandled Exception'
-		}
-	})
+	const onSubmit_ = useCallback(
+		async values => {
+			const response = await onSubmit(values)
+			const { status, data, message } = response
+
+			if (status) {
+				onSuccessfulSubmission(values)
+				return undefined
+			} else if (status === false) {
+				const formError = { [FORM_ERROR]: message }
+				return data ? { ...data, ...formError } : formError
+			} else {
+				return 'Unknown Unhandled Exception'
+			}
+		},
+		[onSubmit]
+	)
 	return (
 		<Form onSubmit={onSubmit_} decorators={[focusOnError]} {...otherProps} />
 	)

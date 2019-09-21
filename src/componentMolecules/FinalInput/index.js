@@ -19,9 +19,12 @@ const FinalInputText = props => {
 		...defaultProps(),
 		...props,
 	}
-	const onChange_ = useCallback(e => {
-		return onChange(e, onValueChange)
-	}, [])
+	const onChange_ = useCallback(
+		e => {
+			return onChange(e, onValueChange)
+		},
+		[onChange, onValueChange]
+	)
 	return (
 		<FinalInput Component={InputText} onChange={onChange_} {...restProps} />
 	)
@@ -42,11 +45,16 @@ const FinalInputDate = props => {
 const FinalInputSelect = props => {
 	const { onValueChange, ...restProps } = { ...defaultProps(), ...props }
 	const { validation, options } = props
-	const onChange = useCallback(e => {
-		onValueChange(e)
-		return e
-	}, [])
-	const validation_ = useCallback(value => validation(value, options), [])
+	const onChange = useCallback(
+		e => {
+			onValueChange(e)
+			return e
+		},
+		[onValueChange]
+	)
+	const validation_ = useCallback(value => validation(value, options), [
+		validation,
+	])
 	return (
 		<FinalInput
 			Component={InputSelect}
