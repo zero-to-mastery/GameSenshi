@@ -18,11 +18,11 @@ const signOut = () => {
 	auth().signOut()
 }
 
-const NavbarIndexItems = [
+const NavbarIndexItems = () => [
 	{
 		[DROP_DOWN_MENU_NAVBAR_PROPS_TO]: ROUTE_PAGE_PROFILE,
 		[DROP_DOWN_MENU_NAVBAR_PROPS_BODY]: (
-			<strong>{storeUser[STATE][STORE_USER_STATE_USERNAME]}</strong>
+			<strong>{storeUser[STATE][STORE_USER_STATE_USERNAME]} Welcome!</strong>
 		),
 		[DROP_DOWN_MENU_NAVBAR_PROPS_DIVIDER]: true,
 	},

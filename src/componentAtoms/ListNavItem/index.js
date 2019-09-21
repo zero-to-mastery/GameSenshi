@@ -24,7 +24,7 @@ const ListNavItemStoreUser = StateContainer(
 const ListNavItemStoreUserPropedNavbarIndex = memo(props => {
 	return (
 		<ListNavItemStoreUser
-			items={signedInNavItems}
+			items={signedInNavItems()}
 			className='active d-none d-lg-inline-flex'
 			{...props}
 		/>
@@ -34,7 +34,7 @@ const ListNavItemStoreUserPropedNavbarIndex = memo(props => {
 const ListNavItemStoreUserPropedCollapsed = memo(props => {
 	return (
 		<ListNavItemStoreUser
-			items={signedInNavItemsCollapsed}
+			items={signedInNavItemsCollapsed()}
 			className='p-0'
 			{...props}
 		/>
@@ -55,7 +55,7 @@ const ListNavItemStoreUserUnsigned = StateContainer(
 const ListNavItemStoreUserPropedCollapsedUnsigned = memo(props => {
 	return (
 		<ListNavItemStoreUserUnsigned
-			items={unsignedInNavItemsCollapsed}
+			items={unsignedInNavItemsCollapsed()}
 			className='p-0'
 			{...props}
 		/>

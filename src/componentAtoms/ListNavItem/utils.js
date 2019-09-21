@@ -41,14 +41,14 @@ const simpleIconLabel = (icon, children) => {
 	)
 }
 
-const signedInNavItems = [
+const signedInNavItems = () => [
 	{
 		[LIST_NAV_ITEM_PROPS_TO]: ROUTE_PAGE_JOIN,
 		[LIST_NAV_ITEM_PROPS_BODY]: 'Senshi Portal',
 	},
 ]
 
-const signedInNavItemsCollapsed = [
+const signedInNavItemsCollapsed = () => [
 	{
 		[LIST_NAV_ITEM_PROPS_TO]: ROUTE_PAGE_PROFILE,
 		[LIST_NAV_ITEM_PROPS_LINK_CLASS_NAME]: 'avatarLink',
@@ -102,7 +102,7 @@ const signedInNavItemsCollapsed = [
 		[LIST_NAV_ITEM_ON_CLICK]: signOut,
 	},
 ]
-const unsignedInNavItemsCollapsed = [
+const unsignedInNavItemsCollapsed = () => [
 	{
 		[LIST_NAV_ITEM_PROPS_TO]: ROUTE_PAGE_SIGN_IN,
 		[LIST_NAV_ITEM_PROPS_BODY]: simpleIconLabel(
