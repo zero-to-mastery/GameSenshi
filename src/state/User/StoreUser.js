@@ -4,6 +4,7 @@ import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 import defaultAvatar from 'assets/img/placeholder.jpg'
 
 const STORE_USER = 'User'
+const STORE_USER_STATE_AUTH = 'auth'
 const STORE_USER_STATE_BIRTH_DATE = 'birthDate'
 const STORE_USER_STATE_LANGUAGES = 'languages'
 const STORE_USER_STATE_SIGNED_IN = 'signedIn'
@@ -87,33 +88,42 @@ class StoreUser extends Container {
 		return this
 	};
 
-	[ON_AUTH_STATE_CHANGED] = user => {
-		if (user) {
-			const publicInfo = {
-				[STORE_USER_STATE_USERNAME]: user[STORE_USER_STATE_USERNAME],
-				[STORE_USER_STATE_EMAIL_VERIFIED]:
-					user[STORE_USER_STATE_EMAIL_VERIFIED],
-				[STORE_USER_STATE_AVATAR_URL]:
-					user[STORE_USER_STATE_AVATAR_URL] || defaultAvatar,
-				[STORE_USER_STATE_UID]: user[STORE_USER_STATE_UID],
-			}
-			this[SET_STATE](state => {
-				return {
-					...state,
-					...user,
-					[STORE_USER_STATE_SIGNED_IN]: true,
+	[ON_AUTH_STATE_CHANGED] = (userAuth, onSnapshot) => {
+		let unsubscribe = () => {}
+		if (userAuth) {
+			unsubscribe = onSnapshot(doc => {
+				const userData = doc.data()
+				const publicInfo = {
+					[STORE_USER_STATE_USERNAME]: userData[STORE_USER_STATE_USERNAME],
+					[STORE_USER_STATE_EMAIL_VERIFIED]:
+						userAuth[STORE_USER_STATE_EMAIL_VERIFIED],
+					[STORE_USER_STATE_AVATAR_URL]:
+						userData[STORE_USER_STATE_AVATAR_URL] || defaultAvatar,
+					[STORE_USER_STATE_UID]: userAuth[STORE_USER_STATE_UID],
 				}
+				this[SET_STATE](
+					state => {
+						return {
+							...state,
+							[STORE_USER_STATE_AUTH]: userAuth,
+							[STORE_USER_STATE_SIGNED_IN]: true,
+						}
+					},
+					() => {
+						this[SET_SIGNING_IN](false)
+					}
+				)
+				// do not store sensitive information in localStorage
+				localStorage.setItem(
+					STORE_USER,
+					JSON.stringify({
+						...publicInfo,
+					})
+				)
 			})
-			this[SET_SIGNING_IN](false)
-			// do not store sensitive information in localStorage
-			localStorage.setItem(
-				STORE_USER,
-				JSON.stringify({
-					...publicInfo,
-				})
-			)
 		} else {
 			// user signed out.
+			unsubscribe()
 			this[RESET_STATE]()
 			this[SET_SIGNING_IN](false)
 			try {

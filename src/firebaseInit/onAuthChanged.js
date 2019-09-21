@@ -6,11 +6,11 @@ import {
 } from 'state'
 import * as allStore from 'state'
 
-const onAuthChanged = signedInUser => {
+const onAuthChanged = (userAuth, onSnapshot) => {
 	storeAuthModalOnAuthStateChange()
-	storeUserOnAuthChanged(signedInUser)
+	storeUserOnAuthChanged(userAuth, onSnapshot)
 	// reset all store if user sign out
-	if (!signedInUser) {
+	if (!userAuth) {
 		for (let store in allStore) {
 			try {
 				allStore[store][RESET_STATE]()

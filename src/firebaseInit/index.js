@@ -22,6 +22,12 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
+const functions = firebase.functions()
+
+const firestore = firebase.firestore()
+
+const userCollectionRef = firestore.collection('users')
+
 // load default storage bucket
 const firebaseDefaultStorage = firebase.storage()
 
@@ -31,15 +37,15 @@ const auth = firebase.auth
 auth().useDeviceLanguage()
 
 // user auth listener
-auth().onAuthStateChanged(onAuthChanged)
+auth().onAuthStateChanged(userAuth => {
+	onAuthChanged(userAuth, callback =>
+		userCollectionRef
+			.doc(userAuth.uid)
+			.onSnapshot({ includeMetadataChanges: true }, callback)
+	)
+})
 
 // listener to get back sign in token from federated identity provider
 getRedirectResult(auth().getRedirectResult(), auth)
-
-const functions = firebase.functions()
-
-const firestore = firebase.firestore()
-
-const userCollectionRef = firestore.collection('users')
 
 export { functions, firebase, auth, firebaseDefaultStorage, userCollectionRef }
