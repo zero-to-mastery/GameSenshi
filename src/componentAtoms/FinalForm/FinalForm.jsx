@@ -4,15 +4,9 @@ import { FORM_ERROR } from 'final-form'
 import createDecorator from 'final-form-focus'
 
 const focusOnError = createDecorator()
-const emptyFunction = () => {}
-const defaultProps = () => ({
-	onSuccessfulSubmission: emptyFunction,
-})
+
 const FinalForm = props => {
-	const { onSubmit, onSuccessfulSubmission, ...otherProps } = {
-		...defaultProps(),
-		...props,
-	}
+	const { onSubmit, onSuccessfulSubmission, ...otherProps } = props
 
 	const onSubmit_ = useCallback(
 		async values => {
