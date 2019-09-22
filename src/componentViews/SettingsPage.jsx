@@ -13,17 +13,16 @@ import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
 const {
 	Footer,
+	TabPaneGeneralSettings,
+	TabPanePaymentSettings,
 	TabPaneAccountSettings,
 	TabPaneNotificationSettings,
-	TabPaneGeneralSettings,
 	ImageUpload,
 	TabListVerticalPropedSettingPage,
-	TabPanePaymentSettings,
 } = stopUndefined(ExportMultiOrganisms)
 
 const SettingsPage = props => {
-	const [tabPane, setTabPane] = useState(0) // ? unable to set component as state
-	const [, forceUpdate] = useState('')
+	const [TabPane, setTabPane] = useState(() => TabPaneGeneralSettings)
 
 	const wrapper = useRef(null)
 
@@ -33,16 +32,16 @@ const SettingsPage = props => {
 	useEffect(() => {
 		switch (pathname) {
 			case ROUTE_PAGE_SETTINGS_PAYMENT:
-				setTabPane(1)
+				setTabPane(() => TabPanePaymentSettings)
 				break
 			case ROUTE_PAGE_SETTINGS_ACCOUNT:
-				setTabPane(2)
+				setTabPane(() => TabPaneAccountSettings)
 				break
 			case ROUTE_PAGE_SETTINGS_NOTIFICATION:
-				setTabPane(3)
+				setTabPane(() => TabPaneNotificationSettings)
 				break
 			default:
-				setTabPane(0)
+				setTabPane(() => TabPaneGeneralSettings)
 				break
 		}
 	}, [pathname])
@@ -72,12 +71,7 @@ const SettingsPage = props => {
 								{/* Profile Sidebar */}
 								<section>
 									<br />
-									<TabListVerticalPropedSettingPage
-										activeTab={tabPane}
-										onClick={() => {
-											forceUpdate('')
-										}}
-									/>
+									<TabListVerticalPropedSettingPage />
 								</section>
 								{/* End Profile Sidebar */}
 								{/* Profile Completion */}
@@ -89,10 +83,7 @@ const SettingsPage = props => {
 						</Col>
 						<Col className='ml-auto' md='8'>
 							<div className='section'>
-								{tabPane === 0 && <TabPaneGeneralSettings />}
-								{tabPane === 1 && <TabPanePaymentSettings />}
-								{tabPane === 2 && <TabPaneAccountSettings />}
-								{tabPane === 3 && <TabPaneNotificationSettings />}
+								<TabPane />
 							</div>
 						</Col>
 					</Row>

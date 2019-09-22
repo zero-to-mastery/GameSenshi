@@ -14,12 +14,12 @@ const emptyArray = []
 
 const defaultProps = () => ({
 	onClick: emptyFunction,
-	activeTab: 0,
+	pathname: '',
 	navItems: emptyArray,
 })
 
 const TabListVertical = props => {
-	const { onClick, activeTab, navItems } = {
+	const { onClick, pathname, navItems } = {
 		...defaultProps(),
 		...props,
 	}
@@ -33,7 +33,7 @@ const TabListVertical = props => {
 						<NavItem>
 							<NavLink
 								className={classnames({
-									active: activeTab === i,
+									active: pathname.toLowerCase() === to.toLowerCase(),
 								})}
 								onClick={onClick}
 								to={to}
