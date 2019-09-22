@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { stopUndefined } from 'utils'
 // reactstrap components
 import { Form, Container, Row, Col } from 'reactstrap'
@@ -7,16 +7,45 @@ import { ExportAtoms } from 'componentAtoms'
 
 const { CheckBox, HeaderLined, TabPaneContainer } = stopUndefined(ExportAtoms)
 
-const toggleCheckBox = setState => {
-	setState(state => !state)
-}
+const BODY = 'body'
+const ON_CHANGE = 'onChange'
+
+const mapCheckBox = checkBoxes =>
+	checkBoxes.map(checkBox => {
+		const { [BODY]: body, [ON_CHANGE]: onChange } = checkBox
+		return (
+			<CheckBox key={body} name={body.replace(/ /g, '')} onChange={onChange}>
+				{body}
+			</CheckBox>
+		)
+	})
 
 const TabPaneNotificationSettings = props => {
-	const [orderUpdatesPush, setOrderUpdatesPush] = useState(true)
-	const [chatsPush, setChatsPush] = useState(true)
-	const [commentsPush, setCommentsPush] = useState(true)
-	const [orderUpdatesEmail, setOrderUpdatesEmail] = useState(true)
-	const [newsletterEmail, setNewsletterEmail] = useState(true)
+	const { isDataLoaded } = props
+
+	const checkBoxPush = () => [
+		{
+			[BODY]: 'Order Updates',
+		},
+		{
+			[BODY]: 'Chats',
+		},
+		{
+			[BODY]: 'Comments',
+		},
+	]
+
+	const checkBoxEmail = () => [
+		{
+			[BODY]: 'Newsletter',
+		},
+		{
+			[BODY]: 'Chats',
+		},
+		{
+			[BODY]: 'Comments',
+		},
+	]
 
 	return (
 		<Container>
@@ -24,23 +53,7 @@ const TabPaneNotificationSettings = props => {
 				<Col xs='12'>
 					<TabPaneContainer>
 						<HeaderLined>Push Notification</HeaderLined>
-						<Form>
-							<CheckBox
-								checked={orderUpdatesPush}
-								onClick={() => toggleCheckBox(setOrderUpdatesPush)}>
-								Order Updates
-							</CheckBox>
-							<CheckBox
-								checked={chatsPush}
-								onClick={() => toggleCheckBox(setChatsPush)}>
-								Chats
-							</CheckBox>
-							<CheckBox
-								checked={commentsPush}
-								onClick={() => toggleCheckBox(setCommentsPush)}>
-								Comments
-							</CheckBox>
-						</Form>
+						<Form>{mapCheckBox(checkBoxPush())}</Form>
 					</TabPaneContainer>
 				</Col>
 			</Row>
@@ -50,18 +63,7 @@ const TabPaneNotificationSettings = props => {
 				<Col xs='12'>
 					<TabPaneContainer>
 						<HeaderLined>Email Notification</HeaderLined>
-						<Form>
-							<CheckBox
-								checked={orderUpdatesEmail}
-								onClick={() => toggleCheckBox(setOrderUpdatesEmail)}>
-								Order Updates
-							</CheckBox>
-							<CheckBox
-								checked={newsletterEmail}
-								onClick={() => toggleCheckBox(setNewsletterEmail)}>
-								Newsletter
-							</CheckBox>
-						</Form>
+						<Form>{mapCheckBox(checkBoxEmail())}</Form>
 					</TabPaneContainer>
 				</Col>
 			</Row>

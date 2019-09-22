@@ -1,18 +1,27 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 
 // reactstrap components
 import { Label, FormGroup, Input } from 'reactstrap'
 
 const CheckBox = props => {
-	const { checked, onClick, onChange, className, children } = props
+	const { initialValue, onChange, className, children, ...otherProps } = props
+
+	const [value, setValue] = useState(initialValue)
+	const onChange_ = useCallback(
+		e => {
+			setValue(value => !value)
+			onChange && onChange(e)
+		},
+		[onChange]
+	)
 	return (
 		<FormGroup check className={className}>
 			<Label check>
 				<Input
 					type='checkbox'
-					checked={checked}
-					onClick={onClick}
-					onChange={onChange || (() => {})}
+					value={value}
+					onChange={onChange_}
+					{...otherProps}
 				/>
 				<span className='form-check-sign' />
 				{children}
