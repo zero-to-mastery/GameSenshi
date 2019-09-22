@@ -12,34 +12,24 @@ const LIST_NAV_ITEM_STATE_SHOW = 'show'
 const LIST_NAV_ITEM_PROPS_LINK_CLASS_NAME = 'linkClassName'
 const LIST_NAV_ITEM_ON_CLICK = 'onClick'
 
-const emptyFunction = () => {}
-const defaultProps = () => ({
-	[LIST_NAV_ITEM_STATE_SHOW]: true,
-	onItemClick: emptyFunction,
-})
-
-const defaultPropsItem = () => ({
-	onClick: emptyFunction,
-})
-
 const ListNavItem = memo(props => {
-	const { items, show, className, onItemClick } = {
-		...defaultProps(),
-		...props,
-	}
+	const { items, show, className, onItemClick } = props
+
+	const show_ = show !== undefined ? show : true
+
 	return (
-		show &&
+		show_ &&
 		items.map(item => {
 			const {
 				[LIST_NAV_ITEM_PROPS_TO]: to,
 				[LIST_NAV_ITEM_PROPS_BODY]: body,
 				[LIST_NAV_ITEM_PROPS_LINK_CLASS_NAME]: linkClassName,
 				[LIST_NAV_ITEM_ON_CLICK]: onClick,
-			} = { ...defaultPropsItem(), ...item }
+			} = item
 			const onClick_ = useCallback(
 				e => {
-					onItemClick(e)
-					onClick(e)
+					onItemClick && onItemClick(e)
+					onClick && onClick(e)
 				},
 				[onItemClick, onClick]
 			)

@@ -13,12 +13,6 @@ const emptyArray = []
 const FinalInput = memo(props => {
 	const [localValue, seLocalValue] = useState('')
 
-	const defaultProps = () => ({
-		popoverMessages: emptyArray,
-		value: localValue,
-		setValue: seLocalValue,
-	})
-
 	const {
 		Component,
 		name,
@@ -36,7 +30,11 @@ const FinalInput = memo(props => {
 		setValue,
 		defaultValue,
 		...restProps
-	} = { ...defaultProps(), ...props }
+	} = props
+
+	const setValue_ = setValue || seLocalValue
+	const value_ = setValue || value ? value : localValue
+	const popoverMessages_ = popoverMessages || emptyArray
 
 	// set default value
 
@@ -78,7 +76,7 @@ const FinalInput = memo(props => {
 				state[message] = true
 				return state
 			})
-			return !popoverMessages.includes(message)
+			return !popoverMessages_.includes(message)
 		})
 
 		setFilteredMessages(filtered)
@@ -178,12 +176,12 @@ const FinalInput = memo(props => {
 					e => {
 						state.delay = DELAY
 						if (onChange === undefined || onChange(e) === undefined) {
-							setValue(e.target.value)
+							setValue_(e.target.value)
 							input.onChange(e)
 						} else {
 							const result = onChange(e)
 							if (result !== false) {
-								setValue(result)
+								setValue_(result)
 								input.onChange(e)
 							}
 						}
@@ -258,7 +256,7 @@ const FinalInput = memo(props => {
 
 				const spinner_ = (spinner2 && 'Puff') || (spinner && 'ThreeDots')
 
-				const result = value || input.value // the input.value has no purpose other than suppress uncontrollable to controllable warning
+				const result = value_ || input.value // the input.value has no purpose other than suppress uncontrollable to controllable warning
 				return (
 					<>
 						<Component
@@ -289,14 +287,14 @@ const FinalInput = memo(props => {
 									/>
 								)}
 						</Component>
-						{popoverMessages.length > 0 && (
+						{popoverMessages_.length > 0 && (
 							<PopoverCommon
 								isOpen={active}
 								target={name}
 								spinner={spinner_}
 								header={`${name} rules`}>
 								<ul>
-									{popoverMessages.map((errorMessage, i) => {
+									{popoverMessages_.map((errorMessage, i) => {
 										return (
 											<li
 												className={

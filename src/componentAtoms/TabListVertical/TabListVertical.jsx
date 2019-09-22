@@ -9,20 +9,8 @@ import { stopUndefined } from 'utils'
 
 const { Link } = stopUndefined(ExportProton)
 
-const emptyFunction = () => {}
-const emptyArray = []
-
-const defaultProps = () => ({
-	onClick: emptyFunction,
-	pathname: '',
-	navItems: emptyArray,
-})
-
 const TabListVertical = props => {
-	const { onClick, pathname, navItems } = {
-		...defaultProps(),
-		...props,
-	}
+	const { onClick, pathname, navItems } = props
 
 	return (
 		<Nav className='flex-column nav-tabs-info' role='tablist'>

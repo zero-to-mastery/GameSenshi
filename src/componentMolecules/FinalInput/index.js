@@ -5,23 +5,14 @@ import { stopUndefined } from 'utils'
 
 const { InputText, InputSelect, InputDate } = stopUndefined(ExportAtoms)
 
-const emptyFunction = () => {}
 const emptyPromise = () => Promise.resolve()
 
-const defaultProps = () => ({
-	onChange: emptyFunction,
-	onValueChange: emptyFunction,
-	validation: emptyPromise,
-})
-
 const FinalInputText = props => {
-	const { onChange, onValueChange, ...restProps } = {
-		...defaultProps(),
-		...props,
-	}
+	const { onChange, onValueChange, ...restProps } = props
+
 	const onChange_ = useCallback(
 		e => {
-			return onChange(e, onValueChange)
+			return onChange ? onChange(e, onValueChange || (() => {})) : undefined
 		},
 		[onChange, onValueChange]
 	)
@@ -43,18 +34,18 @@ const FinalInputDate = props => {
 }
 
 const FinalInputSelect = props => {
-	const { onValueChange, ...restProps } = { ...defaultProps(), ...props }
-	const { validation, options } = props
+	const { onValueChange, validation, options, ...restProps } = props
 	const onChange = useCallback(
 		e => {
-			onValueChange(e)
+			onValueChange && onValueChange(e)
 			return e
 		},
 		[onValueChange]
 	)
-	const validation_ = useCallback(value => validation(value, options), [
-		validation,
-	])
+	const validation_ = useCallback(
+		value => (validation ? validation(value, options) : emptyPromise()),
+		[validation]
+	)
 	return (
 		<FinalInput
 			Component={InputSelect}
@@ -62,6 +53,7 @@ const FinalInputSelect = props => {
 			validation={validation_}
 			hideSuccess
 			onChange={onChange}
+			options={options}
 			{...restProps}
 		/>
 	)

@@ -5,8 +5,6 @@ import ReactDatetime from 'react-datetime'
 
 const InputDate = props => {
 	const {
-		icon,
-		spinner,
 		className,
 		hasFocus,
 		hasDanger,
@@ -15,6 +13,7 @@ const InputDate = props => {
 		placeholder,
 		...restProps
 	} = props
+
 	return (
 		<FormGroup>
 			<ReactDatetime
