@@ -25,6 +25,7 @@ const SET_SIGNING_IN = 'setIsSigningIn'
 const INITIALIZE = 'initialize'
 const RESET_AVATAR = 'resetAvatar'
 const ON_AUTH_STATE_CHANGED = 'onAuthStateChanged'
+const UNSUBSCRIBED = 'unsubscribe'
 
 const defaultValues = () => ({
 	[STORE_USER_STATE_SIGNING_IN]: false,
@@ -46,12 +47,13 @@ const defaultValues = () => ({
 class StoreUser extends Container {
 	constructor() {
 		super()
+		this[UNSUBSCRIBED] = () => {}
 		this[STATE] = defaultValues()
 		this[SET_STATE] = this[SET_STATE].bind(this)
 	}
 
 	[RESET_STATE] = () => {
-		this.setState(defaultValues())
+		this[SET_STATE](defaultValues())
 		return this
 	};
 
@@ -65,13 +67,17 @@ class StoreUser extends Container {
 				...user,
 				[STORE_USER_STATE_SOFT_SIGNED_IN]: true,
 			}
-			this[SET_SIGNING_IN](true, onAutoSignedInFailed)
+			this[SET_SIGNING_IN](true, () => {}, onAutoSignedInFailed)
 		}
 		return this
 	};
 
-	[SET_SIGNING_IN] = (value = false, onAutoSignedInFailed = () => {}) => {
-		this[SET_STATE]({ [STORE_USER_STATE_SIGNING_IN]: value })
+	[SET_SIGNING_IN] = (
+		value = false,
+		callback = () => {},
+		onAutoSignedInFailed = () => {}
+	) => {
+		this[SET_STATE]({ [STORE_USER_STATE_SIGNING_IN]: value }, callback)
 		if (value) {
 			setTimeout(() => {
 				if (this[STATE][STORE_USER_STATE_SIGNING_IN]) {
@@ -89,47 +95,59 @@ class StoreUser extends Container {
 	};
 
 	[ON_AUTH_STATE_CHANGED] = (userAuth, onSnapshot) => {
-		let unsubscribe = () => {}
 		if (userAuth) {
-			unsubscribe = onSnapshot(doc => {
-				const userData = doc.data()
-				const publicInfo = {
-					[STORE_USER_STATE_USERNAME]: userData[STORE_USER_STATE_USERNAME],
-					[STORE_USER_STATE_EMAIL_VERIFIED]:
-						userAuth[STORE_USER_STATE_EMAIL_VERIFIED],
-					[STORE_USER_STATE_AVATAR_URL]:
-						userData[STORE_USER_STATE_AVATAR_URL] || defaultAvatar,
-					[STORE_USER_STATE_UID]: userAuth[STORE_USER_STATE_UID],
-				}
-				this[SET_STATE](
-					state => {
-						return {
-							...state,
-							[STORE_USER_STATE_AUTH]: userAuth,
-							[STORE_USER_STATE_SIGNED_IN]: true,
+			//console.log(userAuth)
+			// * need this because subscribe cause a little lag
+			this[SET_SIGNING_IN](true, () => {
+				this[UNSUBSCRIBED] = onSnapshot(
+					doc => {
+						if (doc.exists) {
+							const userData = doc.data()
+							const publicInfo = {
+								[STORE_USER_STATE_USERNAME]:
+									userData[STORE_USER_STATE_USERNAME],
+								[STORE_USER_STATE_EMAIL_VERIFIED]:
+									userAuth[STORE_USER_STATE_EMAIL_VERIFIED],
+								[STORE_USER_STATE_AVATAR_URL]:
+									userData[STORE_USER_STATE_AVATAR_URL] || defaultAvatar,
+								[STORE_USER_STATE_UID]: userAuth[STORE_USER_STATE_UID],
+							}
+							this[SET_STATE](state => {
+								return {
+									...state,
+									...userData,
+									[STORE_USER_STATE_AUTH]: userAuth,
+									[STORE_USER_STATE_SIGNED_IN]: true,
+								}
+							})
+							this[SET_SIGNING_IN](false)
+							// do not store sensitive information in localStorage
+							localStorage.setItem(
+								STORE_USER,
+								JSON.stringify({
+									...publicInfo,
+								})
+							)
 						}
 					},
-					() => {
-						this[SET_SIGNING_IN](false)
+					e => {
+						console.log(e)
 					}
-				)
-				// do not store sensitive information in localStorage
-				localStorage.setItem(
-					STORE_USER,
-					JSON.stringify({
-						...publicInfo,
-					})
 				)
 			})
 		} else {
 			// user signed out.
-			unsubscribe()
-			this[RESET_STATE]()
-			this[SET_SIGNING_IN](false)
 			try {
-				localStorage.removeItem(STORE_USER)
+				this[UNSUBSCRIBED]() // * need this because unsubscribe cause a little lag
+				this[UNSUBSCRIBED] = () => {}
+				this[RESET_STATE]()
+				try {
+					localStorage.removeItem(STORE_USER)
+				} catch (e) {
+					//console.log(e)
+				}
 			} catch (e) {
-				//console.log(e)
+				console.log(e)
 			}
 		}
 		return this
@@ -158,4 +176,5 @@ export {
 	INITIALIZE,
 	RESET_AVATAR,
 	ON_AUTH_STATE_CHANGED,
+	UNSUBSCRIBED,
 }

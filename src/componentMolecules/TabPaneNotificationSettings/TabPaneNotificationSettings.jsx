@@ -21,7 +21,7 @@ const mapCheckBox = checkBoxes =>
 	})
 
 const TabPaneNotificationSettings = props => {
-	const { isDataLoaded } = props
+	//const { isDataLoaded } = props
 
 	const checkBoxPush = () => [
 		{
