@@ -19,55 +19,53 @@ const TabPaneNotificationSettings = props => {
 	const [newsletterEmail, setNewsletterEmail] = useState(true)
 
 	return (
-		<>
-			<Container>
-				<Row>
-					<Col xs='12'>
-						<TabPaneContainer>
-							<HeaderLined>Push Notification</HeaderLined>
-							<Form>
-								<CheckBox
-									checked={orderUpdatesPush}
-									onClick={() => toggleCheckBox(setOrderUpdatesPush)}>
-									Order Updates
-								</CheckBox>
-								<CheckBox
-									checked={chatsPush}
-									onClick={() => toggleCheckBox(setChatsPush)}>
-									Chats
-								</CheckBox>
-								<CheckBox
-									checked={commentsPush}
-									onClick={() => toggleCheckBox(setCommentsPush)}>
-									Comments
-								</CheckBox>
-							</Form>
-						</TabPaneContainer>
-					</Col>
-				</Row>
-				<hr />
-				<hr />
-				<Row>
-					<Col xs='12'>
-						<TabPaneContainer>
-							<HeaderLined>Email Notification</HeaderLined>
-							<Form>
-								<CheckBox
-									checked={orderUpdatesEmail}
-									onClick={() => toggleCheckBox(setOrderUpdatesEmail)}>
-									Order Updates
-								</CheckBox>
-								<CheckBox
-									checked={newsletterEmail}
-									onClick={() => toggleCheckBox(setNewsletterEmail)}>
-									Newsletter
-								</CheckBox>
-							</Form>
-						</TabPaneContainer>
-					</Col>
-				</Row>
-			</Container>
-		</>
+		<Container>
+			<Row>
+				<Col xs='12'>
+					<TabPaneContainer>
+						<HeaderLined>Push Notification</HeaderLined>
+						<Form>
+							<CheckBox
+								checked={orderUpdatesPush}
+								onClick={() => toggleCheckBox(setOrderUpdatesPush)}>
+								Order Updates
+							</CheckBox>
+							<CheckBox
+								checked={chatsPush}
+								onClick={() => toggleCheckBox(setChatsPush)}>
+								Chats
+							</CheckBox>
+							<CheckBox
+								checked={commentsPush}
+								onClick={() => toggleCheckBox(setCommentsPush)}>
+								Comments
+							</CheckBox>
+						</Form>
+					</TabPaneContainer>
+				</Col>
+			</Row>
+			<hr />
+			<hr />
+			<Row>
+				<Col xs='12'>
+					<TabPaneContainer>
+						<HeaderLined>Email Notification</HeaderLined>
+						<Form>
+							<CheckBox
+								checked={orderUpdatesEmail}
+								onClick={() => toggleCheckBox(setOrderUpdatesEmail)}>
+								Order Updates
+							</CheckBox>
+							<CheckBox
+								checked={newsletterEmail}
+								onClick={() => toggleCheckBox(setNewsletterEmail)}>
+								Newsletter
+							</CheckBox>
+						</Form>
+					</TabPaneContainer>
+				</Col>
+			</Row>
+		</Container>
 	)
 }
 
