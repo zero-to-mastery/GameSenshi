@@ -39,7 +39,9 @@ auth().useDeviceLanguage()
 // user auth listener
 auth().onAuthStateChanged(userAuth => {
 	onAuthChanged(userAuth, (callback, onError) =>
-		userCollectionRef.doc(userAuth.uid).onSnapshot(callback, onError)
+		userCollectionRef
+			.doc(userAuth.uid)
+			.onSnapshot({ includeMetadataChanges: true }, callback, onError)
 	)
 })
 
