@@ -1,16 +1,30 @@
 // states
 import {
 	RESET_STATE,
-	storeUserOnAuthChanged,
+	storeUserOnSignIn,
 	storeAuthModalOnAuthStateChange,
+	storeUserOnSignOut,
 } from 'state'
 import * as allStore from 'state'
 
+let unsubscribe = () => {}
+
 const onAuthChanged = (userAuth, onSnapshot) => {
 	storeAuthModalOnAuthStateChange()
-	storeUserOnAuthChanged(userAuth, onSnapshot)
+	if (userAuth) {
+		unsubscribe = onSnapshot(
+			doc => {
+				const userData = doc.data()
+				storeUserOnSignIn(userAuth, userData)
+			},
+			e => console.log
+		)
+	}
 	// reset all store if user sign out
-	if (!userAuth) {
+	else {
+		storeUserOnSignOut()
+		unsubscribe()
+		unsubscribe = () => {}
 		for (let store in allStore) {
 			try {
 				allStore[store][RESET_STATE]()

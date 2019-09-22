@@ -19,7 +19,8 @@ import {
 	SET_SIGNING_IN,
 	INITIALIZE,
 	RESET_AVATAR,
-	ON_AUTH_STATE_CHANGED,
+	ON_SIGN_IN,
+	ON_SIGN_OUT,
 } from 'state/User/StoreUser'
 
 const storeUser = new StoreUser()
@@ -28,7 +29,8 @@ const storeUserResetState = storeUser[RESET_STATE]
 const storeUserSetSigningIn = storeUser[SET_SIGNING_IN]
 const storeUserInitialize = storeUser[INITIALIZE]
 const storeUserResetAvatar = storeUser[RESET_AVATAR]
-const storeUserOnAuthChanged = storeUser[ON_AUTH_STATE_CHANGED]
+const storeUserOnSignIn = storeUser[ON_SIGN_IN]
+const storeUserOnSignOut = storeUser[ON_SIGN_OUT]
 
 export {
 	storeUser,
@@ -37,7 +39,8 @@ export {
 	storeUserSetSigningIn,
 	storeUserInitialize,
 	storeUserResetAvatar,
-	storeUserOnAuthChanged,
+	storeUserOnSignIn,
+	storeUserOnSignOut,
 	STORE_USER_STATE_BIRTH_DATE,
 	STORE_USER_STATE_LANGUAGES,
 	STORE_USER_STATE_SIGNED_IN,

@@ -24,8 +24,8 @@ const STORE_USER_STATE_SOFT_SIGNED_IN = 'isSoftSignedIn'
 const SET_SIGNING_IN = 'setIsSigningIn'
 const INITIALIZE = 'initialize'
 const RESET_AVATAR = 'resetAvatar'
-const ON_AUTH_STATE_CHANGED = 'onAuthStateChanged'
-const UNSUBSCRIBED = 'unsubscribe'
+const ON_SIGN_IN = 'onSignIn'
+const ON_SIGN_OUT = 'onSignOut'
 
 const defaultValues = () => ({
 	[STORE_USER_STATE_SIGNING_IN]: false,
@@ -47,7 +47,6 @@ const defaultValues = () => ({
 class StoreUser extends Container {
 	constructor() {
 		super()
-		this[UNSUBSCRIBED] = () => {}
 		this[STATE] = defaultValues()
 		this[SET_STATE] = this[SET_STATE].bind(this)
 	}
@@ -94,62 +93,54 @@ class StoreUser extends Container {
 		return this
 	};
 
-	[ON_AUTH_STATE_CHANGED] = (userAuth, onSnapshot) => {
-		if (userAuth) {
-			//console.log(userAuth)
-			// * need this because subscribe cause a little lag
-			this[SET_SIGNING_IN](true, () => {
-				this[UNSUBSCRIBED] = onSnapshot(
-					doc => {
-						if (doc.exists) {
-							const userData = doc.data()
-							const publicInfo = {
-								[STORE_USER_STATE_USERNAME]:
-									userData[STORE_USER_STATE_USERNAME],
-								[STORE_USER_STATE_EMAIL_VERIFIED]:
-									userAuth[STORE_USER_STATE_EMAIL_VERIFIED],
-								[STORE_USER_STATE_AVATAR_URL]:
-									userData[STORE_USER_STATE_AVATAR_URL] || defaultAvatar,
-								[STORE_USER_STATE_UID]: userAuth[STORE_USER_STATE_UID],
-							}
-							this[SET_STATE](state => {
-								return {
-									...state,
-									...userData,
-									[STORE_USER_STATE_AUTH]: userAuth,
-									[STORE_USER_STATE_SIGNED_IN]: true,
-								}
-							})
-							this[SET_SIGNING_IN](false)
-							// do not store sensitive information in localStorage
-							localStorage.setItem(
-								STORE_USER,
-								JSON.stringify({
-									...publicInfo,
-								})
-							)
-						}
-					},
-					e => {
-						console.log(e)
-					}
-				)
-			})
-		} else {
-			// user signed out.
-			try {
-				this[UNSUBSCRIBED]() // * need this because unsubscribe cause a little lag
-				this[UNSUBSCRIBED] = () => {}
-				this[RESET_STATE]()
-				try {
-					localStorage.removeItem(STORE_USER)
-				} catch (e) {
-					//console.log(e)
-				}
-			} catch (e) {
-				console.log(e)
+	[ON_SIGN_IN] = (userAuth, userData) => {
+		// * need set signing in because subscribe cause a little lag
+		this[SET_SIGNING_IN](true, () => {
+			const userData_ = userData || {
+				[STORE_USER_STATE_USERNAME]: '',
+				[STORE_USER_STATE_AVATAR_URL]: '',
 			}
+			const publicInfo = {
+				[STORE_USER_STATE_USERNAME]: userData_[STORE_USER_STATE_USERNAME],
+				[STORE_USER_STATE_EMAIL_VERIFIED]:
+					userAuth[STORE_USER_STATE_EMAIL_VERIFIED],
+				[STORE_USER_STATE_AVATAR_URL]:
+					userData_[STORE_USER_STATE_AVATAR_URL] || defaultAvatar,
+				[STORE_USER_STATE_UID]: userAuth[STORE_USER_STATE_UID],
+			}
+			this[SET_STATE](state => {
+				return {
+					...state,
+					...userData_,
+					[STORE_USER_STATE_AUTH]: userAuth,
+					[STORE_USER_STATE_SIGNED_IN]: true,
+				}
+			})
+			this[SET_SIGNING_IN](false)
+			// do not store sensitive information in localStorage
+			localStorage.setItem(
+				STORE_USER,
+				JSON.stringify({
+					...publicInfo,
+				})
+			)
+		})
+
+		return this
+	};
+
+	[ON_SIGN_OUT] = () => {
+		try {
+			this[RESET_STATE]()
+			try {
+				localStorage.removeItem(STORE_USER)
+			} catch (e) {
+				//console.log(e)
+			}
+		} catch (e) {
+			console.log(e)
 		}
+
 		return this
 	}
 }
@@ -175,6 +166,6 @@ export {
 	SET_SIGNING_IN,
 	INITIALIZE,
 	RESET_AVATAR,
-	ON_AUTH_STATE_CHANGED,
-	UNSUBSCRIBED,
+	ON_SIGN_IN,
+	ON_SIGN_OUT,
 }
