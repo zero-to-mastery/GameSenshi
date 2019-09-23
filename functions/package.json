@@ -14,7 +14,7 @@
 		"serve": "cross-env-shell \"firebase use $ENV_PROJECT_ID\" && firebase serve --only functions",
 		"env": "cross-env-shell \"firebase use $ENV_PROJECT_ID && firebase functions:config:unset env\" && babel-node uploadEnv.js",
 		"logs": "cross-env-shell \"firebase use $ENV_PROJECT_ID\" && firebase functions:log",
-		"deploy": "npm run lint && npm run build && cross-env-shell \"firebase use $ENV_PROJECT_ID\" && cross-env-shell \"firebase deploy --only functions\"",
+		"deploy": "npm run lint && npm run build && cross-env-shell \"firebase use $ENV_PROJECT_ID\" && firebase deploy --only functions",
 		"separator2": "-----------------------------------------------dev-----------------------------------------------------------------",
 		"d-env": "env-cmd .config/dev.env npm run env",
 		"d-logs": "env-cmd .config/dev.env npm run logs",
@@ -42,8 +42,6 @@
 		"firebase-admin": "^7.4.0",
 		"firebase-functions": "^3.1.0",
 		"graphql": "^14.4.2",
-		"install": "^0.13.0",
-		"npm": "^6.11.3",
 		"request": "^2.88.0",
 		"request-promise": "^4.2.4",
 		"uuid-v4": "^0.1.0",
@@ -91,11 +89,6 @@
 		"semi": false,
 		"jsxBracketSameLine": true,
 		"useTabs": true
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "pretty-quick --staged"
-		}
 	},
 	"eslintConfig": {
 		"parserOptions": {
