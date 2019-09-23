@@ -1,5 +1,4 @@
 const onUserCreate = (user, firestore) => {
-	console.log(user)
 	const batch = firestore.batch()
 	const docRef = firestore.doc(`users/${user.uid}/settings/notifications`)
 	batch.set(docRef, {
@@ -8,9 +7,7 @@ const onUserCreate = (user, firestore) => {
 	})
 	batch
 		.commit()
-		.then(() => {
-			console.log('added document')
-		})
+		.then(console.log)
 		.catch(console.log)
 }
 

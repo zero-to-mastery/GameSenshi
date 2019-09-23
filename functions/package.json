@@ -33,7 +33,6 @@
 	},
 	"dependencies": {
 		"@babel/polyfill": "^7.4.4",
-		"@google-cloud/firestore": "^2.3.0",
 		"@google-cloud/storage": "^2.5.0",
 		"apollo-server-cache-memcached": "^0.5.0",
 		"apollo-server-express": "^2.6.9",
