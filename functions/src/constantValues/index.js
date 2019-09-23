@@ -43,9 +43,6 @@ import {
 import { FIREBASE_STORAGE_USER_AVATAR } from 'constantValues/FirebaseConstants'
 
 export {
-	YEARS,
-	MONTH_NAMES,
-	MONTH_ABVS_SELECT,
 	API_DATA,
 	API_STATUS,
 	API_CODE,
