@@ -24,8 +24,8 @@ admin.initializeApp()
 
 const firestore = new Firestore()
 
-functions.auth.user().onCreate(() => {
-	onUserCreate(firestore)
+functions.auth.user().onCreate(user => {
+	onUserCreate(user, firestore)
 })
 
 export {
