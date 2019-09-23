@@ -31,6 +31,5 @@ export {
 	functions,
 	corsWhitelist,
 	playgroundEnabled,
-	verifyEmailURL,
 	apolloEngineApiKey,
 }
