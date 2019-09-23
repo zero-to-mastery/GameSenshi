@@ -3,7 +3,7 @@ import {
 	API_SIGN_UP,
 	API_SIGN_UP_EMAIL,
 	API_SIGN_UP_PASSWORD,
-	API_SIGN_UP_USERNAME,
+	API_SIGN_UP_DISPLAY_NAME,
 	API_SIGN_UP_INPUT,
 	API_CODE,
 	API_DATA,
@@ -21,7 +21,7 @@ const typeDefs = gql`
   }
   
   input ${API_SIGN_UP_INPUT}{
-    ${API_SIGN_UP_USERNAME}:String!
+    ${API_SIGN_UP_DISPLAY_NAME}:String!
     ${API_SIGN_UP_EMAIL}:String!
     ${API_SIGN_UP_PASSWORD}:String!
   }
@@ -33,7 +33,7 @@ const typeDefs = gql`
   }
 
   type SignUpData {
-    ${API_SIGN_UP_USERNAME}:[String]
+    ${API_SIGN_UP_DISPLAY_NAME}:[String]
     ${API_SIGN_UP_EMAIL}:[String]
     ${API_SIGN_UP_PASSWORD}:[String]
   }

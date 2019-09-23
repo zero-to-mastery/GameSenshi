@@ -5,19 +5,19 @@ import { ExportMolecules } from 'componentMolecules'
 
 const { FinalInputText } = stopUndefined(ExportMolecules)
 
-const FINAL_TEXT_USERNAME = 'name'
+const FINAL_TEXT_NAME = 'name'
 
-const FinalTextUsername = props => {
+const FinalTextName = props => {
 	const { ...restProps } = props
 	return (
 		<FinalInputText
-			name={FINAL_TEXT_USERNAME}
-			autoComplete={FINAL_TEXT_USERNAME}
-			placeholder='Username'
+			name={FINAL_TEXT_NAME}
+			autoComplete={FINAL_TEXT_NAME}
+			placeholder='Display Name'
 			icon='tim-icons icon-single-02'
 			{...restProps}
 		/>
 	)
 }
 
-export { FinalTextUsername, FINAL_TEXT_USERNAME }
+export { FinalTextName, FINAL_TEXT_NAME }

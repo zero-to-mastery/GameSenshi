@@ -9,7 +9,7 @@ import {
 } from 'componentAtoms/ListNavItem/ListNavItem'
 
 import { AvatarUserStoreUser } from 'componentAtoms/AvatarUser'
-import { storeUser, STATE, STORE_USER_STATE_USERNAME } from 'state'
+import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from 'state'
 
 import { auth } from 'firebaseInit'
 
@@ -63,7 +63,7 @@ const signedInNavItemsCollapsed = () => [
 					<AvatarUserStoreUser height={24} width={24} />
 				</Col>
 				<Col>
-					<p>{storeUser[STATE][STORE_USER_STATE_USERNAME]}</p>
+					<p>{storeUser[STATE][STORE_USER_STATE_DISPLAY_NAME]}</p>
 				</Col>
 			</Row>
 		),

@@ -33,10 +33,10 @@ import {
 	FINAL_TEXT_PASSWORD,
 } from 'componentnCompounds/FinalTextPassword'
 import {
-	FinalTextUsernamePropedSignUp,
-	FinalTextUsernamePropedGeneraL,
-	FINAL_TEXT_USERNAME,
-} from 'componentnCompounds/FinalTextUsername'
+	FinalTextNamePropedSignUp,
+	FinalTextNamePropedGeneraL,
+	FINAL_TEXT_NAME,
+} from 'componentnCompounds/FinalTextName'
 import {
 	FinalSelectCountryPropedGeneraL,
 	FINAL_SELECT_COUNTRY,
@@ -75,9 +75,9 @@ export const ExportCompounds = {
 	FinalTextPasswordPropedSignIn,
 	FinalTextPasswordPropedAccount,
 	FINAL_TEXT_PASSWORD,
-	FinalTextUsernamePropedSignUp,
-	FinalTextUsernamePropedGeneraL,
-	FINAL_TEXT_USERNAME,
+	FinalTextNamePropedSignUp,
+	FinalTextNamePropedGeneraL,
+	FINAL_TEXT_NAME,
 	FinalSelectCountryPropedGeneraL,
 	FINAL_SELECT_COUNTRY,
 	FinalSelectGenderPropedGeneraL,

@@ -4,7 +4,7 @@ import { auth, userCollectionRef } from 'firebaseInit'
 import {
 	API_SIGN_UP_EMAIL,
 	API_SIGN_UP_PASSWORD,
-	API_SIGN_UP_USERNAME,
+	API_SIGN_UP_DISPLAY_NAME,
 	UNEXPECTED_ERROR_CODE_5,
 	UNEXPECTED_ERROR_CODE_7,
 } from 'constantValues'
@@ -16,7 +16,7 @@ const handleSignUpWithEmailAndPassword = async (
 	const {
 		[API_SIGN_UP_EMAIL]: email,
 		[API_SIGN_UP_PASSWORD]: password,
-		[API_SIGN_UP_USERNAME]: username,
+		[API_SIGN_UP_DISPLAY_NAME]: displayName,
 	} = values
 
 	return auth()
@@ -27,8 +27,8 @@ const handleSignUpWithEmailAndPassword = async (
 			const userRef = userCollectionRef.doc(user.uid)
 			try {
 				await userRef.set({
-					email,
-					username,
+					[API_SIGN_UP_EMAIL]: email,
+					[API_SIGN_UP_DISPLAY_NAME]: displayName,
 					createdAt: user.metadata.creationTime,
 				})
 			} catch (err) {
@@ -49,5 +49,5 @@ export {
 	handleSignUpWithEmailAndPassword,
 	API_SIGN_UP_EMAIL,
 	API_SIGN_UP_PASSWORD,
-	API_SIGN_UP_USERNAME,
+	API_SIGN_UP_DISPLAY_NAME,
 }

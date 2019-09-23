@@ -14,7 +14,7 @@
 // 	API_STATUS,
 // 	API_SIGN_UP_EMAIL,
 // 	API_SIGN_UP_PASSWORD,
-// 	API_SIGN_UP_USERNAME,
+// 	API_SIGN_UP_DISPLAY_NAME,
 // 	USER_DISPLAY_NAME,
 // 	STORE_USER_STATE_AVATAR_URL,
 // 	INTERNAL_ERROR_CODE_2,
@@ -33,7 +33,7 @@
 // 		[API_DATA]: {
 // 			[API_SIGN_UP_EMAIL]: email,
 // 			[API_SIGN_UP_PASSWORD]: password,
-// 			[API_SIGN_UP_USERNAME]: username,
+// 			[API_SIGN_UP_DISPLAY_NAME]: username,
 // 		},
 // 		[API_DATA]: data,
 // 	} = args
@@ -50,7 +50,7 @@
 
 // 		if (usernameInvalid || emailInvalid || passwordInvalid) {
 // 			return signUpResObj(false, INTERNAL_ERROR_CODE_2, 2, {
-// 				[API_SIGN_UP_USERNAME]: usernameInvalid,
+// 				[API_SIGN_UP_DISPLAY_NAME]: usernameInvalid,
 // 				[API_SIGN_UP_EMAIL]: emailInvalid,
 // 				[API_SIGN_UP_PASSWORD]: passwordInvalid,
 // 			})

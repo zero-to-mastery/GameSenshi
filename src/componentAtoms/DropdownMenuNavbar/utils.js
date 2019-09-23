@@ -11,7 +11,7 @@ import {
 	ROUTE_PAGE_APPOINTMENTS,
 	ROUTE_PAGE_PROFILE,
 } from 'routes'
-import { storeUser, STATE, STORE_USER_STATE_USERNAME } from 'state'
+import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from 'state'
 import { auth } from 'firebaseInit'
 
 const signOut = () => {
@@ -22,7 +22,9 @@ const NavbarIndexItems = () => [
 	{
 		[DROP_DOWN_MENU_NAVBAR_PROPS_TO]: ROUTE_PAGE_PROFILE,
 		[DROP_DOWN_MENU_NAVBAR_PROPS_BODY]: (
-			<strong>{storeUser[STATE][STORE_USER_STATE_USERNAME]} Welcome!</strong>
+			<strong>
+				{storeUser[STATE][STORE_USER_STATE_DISPLAY_NAME]} Welcome!
+			</strong>
 		),
 		[DROP_DOWN_MENU_NAVBAR_PROPS_DIVIDER]: true,
 	},

@@ -24,8 +24,8 @@ const {
 	FINAL_TEXT_EMAIL,
 	FinalTextPasswordPropedSignUp,
 	FINAL_TEXT_PASSWORD,
-	FinalTextUsernamePropedSignUp,
-	FINAL_TEXT_USERNAME,
+	FinalTextNamePropedSignUp,
+	FINAL_TEXT_NAME,
 	Link,
 } = stopUndefined(ExportCompounds)
 
@@ -52,7 +52,7 @@ const FormSignUp = props => {
 				initialValues={{
 					[FINAL_TEXT_EMAIL]: '',
 					[FINAL_TEXT_PASSWORD]: '',
-					[FINAL_TEXT_USERNAME]: '',
+					[FINAL_TEXT_NAME]: '',
 				}}
 				onSubmit={onSubmit}
 				onSuccessfulSubmission={onSuccessfulSubmission}>
@@ -67,7 +67,7 @@ const FormSignUp = props => {
 								</Col>
 								<Col />
 							</Row>
-							<FinalTextUsernamePropedSignUp submitRef={submitButton} />
+							<FinalTextNamePropedSignUp submitRef={submitButton} />
 							<FinalTextEmailPropedSignUp submitRef={submitButton} />
 							<FinalTextPasswordPropedSignUp submitRef={submitButton} />
 						</CardBody>
@@ -121,9 +121,4 @@ const FormSignUp = props => {
 	)
 }
 
-export {
-	FormSignUp,
-	FINAL_TEXT_EMAIL,
-	FINAL_TEXT_PASSWORD,
-	FINAL_TEXT_USERNAME,
-}
+export { FormSignUp, FINAL_TEXT_EMAIL, FINAL_TEXT_PASSWORD, FINAL_TEXT_NAME }

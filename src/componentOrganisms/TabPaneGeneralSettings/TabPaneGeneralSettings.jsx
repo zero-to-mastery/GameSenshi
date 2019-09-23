@@ -7,8 +7,8 @@ import { ExportCompounds } from 'componentnCompounds'
 const {
 	FinalForm,
 	ButtonSubmit,
-	FinalTextUsernamePropedGeneraL,
-	FINAL_TEXT_USERNAME,
+	FinalTextNamePropedGeneraL,
+	FINAL_TEXT_NAME,
 	FinalSelectCountryPropedGeneraL,
 	FINAL_SELECT_COUNTRY,
 	FinalSelectGenderPropedGeneraL,
@@ -37,7 +37,7 @@ const TabPaneGeneralSettings = props => {
 	return (
 		<FinalForm
 			initialValues={{
-				[FINAL_TEXT_USERNAME]: '',
+				[FINAL_TEXT_NAME]: '',
 				[FINAL_SELECT_GENDER]: '',
 				[FINAL_SELECT_COUNTRY]: '',
 				[FINAL_SELECT_LANGUAGES]: '',
@@ -60,7 +60,7 @@ const TabPaneGeneralSettings = props => {
 							<LabelFormSimple htmlFor='uid' label='UID'>
 								{uid}
 							</LabelFormSimple>
-							<FinalTextUsernamePropedGeneraL
+							<FinalTextNamePropedGeneraL
 								value={username}
 								submitRef={submitButton}
 								onBlur={formReset}
