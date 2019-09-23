@@ -95,7 +95,6 @@
 	"devDependencies": {
 		"cross-env": "^5.2.0",
 		"env-cmd": "^8.0.2",
-		"eslint": "^6.4.0",
 		"eslint-config-prettier": "^4.1.0",
 		"eslint-plugin-prettier": "^3.1.1",
 		"husky": "^4.0.0-beta.1",
