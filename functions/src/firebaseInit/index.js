@@ -9,7 +9,7 @@ import {
 	ENV_APOLLO_ENGINE_API_KEY,
 } from 'constantValues'
 
-admin.initializeApp(functions.config().firebase)
+admin.initializeApp(functions.config().firebase, 'one')
 
 const env = functions.config()[ENV]
 
