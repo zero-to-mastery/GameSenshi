@@ -1,5 +1,7 @@
-import * as functions from 'firebase-functions' // https://stackoverflow.com/questions/51118943/cannot-read-property-https-of-undefined-error-in-firebase-functions
-import * as admin from 'firebase-admin'
+import functions from 'firebase-functions' // https://stackoverflow.com/questions/51118943/cannot-read-property-https-of-undefined-error-in-firebase-functions
+import admin from 'firebase-admin'
+import { Firestore } from '@google-cloud/firestore'
+import { onUserCreate } from 'firebaseInit/onUserCreate'
 
 import {
 	ENV,
@@ -19,6 +21,12 @@ const {
 } = env
 
 admin.initializeApp()
+
+const firestore = new Firestore()
+
+functions.auth.user().onCreate(() => {
+	onUserCreate(firestore)
+})
 
 export {
 	admin,

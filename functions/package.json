@@ -33,6 +33,7 @@
 	},
 	"dependencies": {
 		"@babel/polyfill": "^7.4.4",
+		"@google-cloud/firestore": "^2.3.0",
 		"@google-cloud/storage": "^2.5.0",
 		"apollo-server-cache-memcached": "^0.5.0",
 		"apollo-server-express": "^2.6.9",
@@ -42,6 +43,8 @@
 		"firebase-admin": "^7.4.0",
 		"firebase-functions": "^3.1.0",
 		"graphql": "^14.4.2",
+		"install": "^0.13.0",
+		"npm": "^6.11.3",
 		"request": "^2.88.0",
 		"request-promise": "^4.2.4",
 		"uuid-v4": "^0.1.0",
