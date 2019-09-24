@@ -2,12 +2,6 @@
 // constants is a nodejs module, so the folder is named constantValues instead
 
 import {
-	YEARS,
-	MONTH_NAMES,
-	MONTH_ABVS_SELECT,
-} from 'constantValues/CommonConstants'
-
-import {
 	API_DATA,
 	API_STATUS,
 	API_CODE,
@@ -23,7 +17,6 @@ import {
 	ENV,
 	ENV_PROJECT_ID,
 	ENV_ENABLE_PLAYGROUND,
-	ENV_VERIFY_EMAIL_API_URL,
 	ENV_APOLLO_ENGINE_API_KEY,
 	ENV_CORS_WHITELIST,
 } from 'constantValues/EnvKeyConstants'
@@ -50,9 +43,6 @@ import {
 import { FIREBASE_STORAGE_USER_AVATAR } from 'constantValues/FirebaseConstants'
 
 export {
-	YEARS,
-	MONTH_NAMES,
-	MONTH_ABVS_SELECT,
 	API_DATA,
 	API_STATUS,
 	API_CODE,
@@ -65,7 +55,6 @@ export {
 	ENV,
 	ENV_PROJECT_ID,
 	ENV_ENABLE_PLAYGROUND,
-	ENV_VERIFY_EMAIL_API_URL,
 	ENV_APOLLO_ENGINE_API_KEY,
 	ENV_CORS_WHITELIST,
 	INTERNAL_ERROR_CODE_1,

@@ -45,7 +45,7 @@ const signUpUsernameValidation = value =>
 		.matches(/^[a-z].*/, 'must start with alphabet')
 		.notOneOf(forbiddenName, `${value} is not allowed`)
 		.max(usernameLength, `maximum ${usernameLength} characters`)
-		.matches(/^[a-z0-9]+$/, 'no special characters')
+		.matches(/^[a-z0-9\s]+$/, 'no special characters')
 		.validate(value, {
 			abortEarly: true,
 		})
