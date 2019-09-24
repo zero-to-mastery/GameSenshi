@@ -21,7 +21,7 @@ const {
 } = env
 
 const onUserCreation = functions.auth.user().onCreate(user => {
-	onUserCreate(user, firestore)
+	return onUserCreate(user, firestore)
 })
 
 export {

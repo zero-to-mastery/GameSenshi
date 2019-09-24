@@ -24,6 +24,7 @@ const handleSignUpWithEmailAndPassword = async (
 		.then(async credential => {
 			const { user } = credential
 			onSuccessfulSignUp()
+			user.sendEmailVerification().catch()
 			const userRef = userCollectionRef.doc(user.uid)
 			try {
 				await userRef.set({
@@ -32,14 +33,9 @@ const handleSignUpWithEmailAndPassword = async (
 					createdAt: user.metadata.creationTime,
 				})
 			} catch (err) {
-				// * delete user if cannot create user data in database
-				// ! this can be point of failure as user delete can also failed
-				// TODO need extra handling in future, but not urgent since it is edge cases
-				await user.delete().catch()
 				return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_7, err)
 			}
 
-			await user.sendEmailVerification().catch()
 			return simplerResponseHandling(true)
 		})
 		.catch(err => simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err))

@@ -5,7 +5,7 @@ const onUserCreate = (user, firestore) => {
 		email: { orderUpdates: true, chats: true, comments: true },
 		push: { newsletter: true, chats: true, comments: true },
 	})
-	batch
+	return batch
 		.commit()
 		.then(console.log)
 		.catch(console.log)

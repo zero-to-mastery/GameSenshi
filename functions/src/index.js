@@ -52,6 +52,7 @@ server.applyMiddleware({
 })
 
 // unable to use property accessor in es6 non export, revert to es5 exports statement
+// es5 export also have clearner name
 module.exports = {
 	endpoint: functions.https.onRequest(app),
 	onUserCreation,
