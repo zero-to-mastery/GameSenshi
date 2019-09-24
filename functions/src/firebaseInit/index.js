@@ -8,15 +8,21 @@ import {
 	ENV_APOLLO_ENGINE_API_KEY,
 } from 'constantValues'
 
+import { onUserCreate } from 'firebaseInit/onUserCreate'
+
 admin.initializeApp(functions.config().firebase)
 
 const env = functions.config()[ENV]
-
+const firestore = new admin.firestore.Firestore()
 const {
 	[ENV_CORS_WHITELIST]: corsWhitelist,
 	[ENV_ENABLE_PLAYGROUND]: playgroundEnabled,
 	[ENV_APOLLO_ENGINE_API_KEY]: apolloEngineApiKey,
 } = env
+
+const onUserCreation = functions.auth.user().onCreate(user => {
+	onUserCreate(user, firestore)
+})
 
 export {
 	admin,
@@ -24,4 +30,5 @@ export {
 	corsWhitelist,
 	playgroundEnabled,
 	apolloEngineApiKey,
+	onUserCreation,
 }

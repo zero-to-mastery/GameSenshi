@@ -2,6 +2,7 @@
 import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
 
 import {
+	onUserCreation,
 	functions,
 	corsWhitelist,
 	playgroundEnabled,
@@ -50,6 +51,8 @@ server.applyMiddleware({
 	path: '/',
 })
 
-// unable to use property accessor in es6 non default export, revert to es5 exports statement
-// ! for some weird reason modularizing this part is not possible, need research
-module.exports = { endpoint: functions.https.onRequest(app) }
+// unable to use property accessor in es6 non export, revert to es5 exports statement
+module.exports = {
+	endpoint: functions.https.onRequest(app),
+	onUserCreation,
+}
