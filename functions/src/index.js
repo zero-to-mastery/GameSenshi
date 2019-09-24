@@ -2,14 +2,11 @@
 import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
 
 import {
+	functions,
 	corsWhitelist,
 	playgroundEnabled,
 	apolloEngineApiKey,
-	onUserCreation,
 } from 'firebaseInit'
-
-import * as functions from 'firebase-functions'
-import * as admin from 'firebase-admin'
 
 import cors from 'cors'
 import { ApolloServer } from 'apollo-server-express'
@@ -17,8 +14,6 @@ import { MemcachedCache } from 'apollo-server-cache-memcached'
 import express from 'express'
 
 import { typeDefs, resolvers } from 'resolvers'
-
-admin.initializeApp(functions.config().firebase, 'two')
 
 const app = express()
 
@@ -56,4 +51,5 @@ server.applyMiddleware({
 })
 
 // unable to use property accessor in es6 non default export, revert to es5 exports statement
-module.exports = { endpoint: functions.https.onRequest(app), onUserCreation }
+// ! for some weird reason modularizing this part is not possible, need research
+module.exports = { endpoint: functions.https.onRequest(app) }

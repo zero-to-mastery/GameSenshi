@@ -1,3 +1,4 @@
+// not in use
 const onUserCreate = (user, firestore) => {
 	const batch = firestore.batch()
 	const docRef = firestore.doc(`users/${user.uid}/settings/notifications`)
