@@ -43,7 +43,9 @@ const server = new ApolloServer({
 	},
 	onHealthCheck: () =>
 		//https://www.apollographql.com/docs/apollo-server/whats-new/#health-checks
-		new Promise((resolve, reject) => {}),
+		new Promise(resolve => {
+			resolve()
+		}),
 })
 
 server.applyMiddleware({
