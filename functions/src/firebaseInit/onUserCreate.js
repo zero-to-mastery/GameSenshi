@@ -14,15 +14,14 @@ const onUserCreate = (user, firestore) => {
 	const isPasswordExist = user.providerData.some(
 		data => data.providerId === 'password'
 	)
-	const batch = firestore.batch()
 
 	if (!isPasswordExist) {
-		batch.set(firestore.doc(fbfsSettingsGeneral(user)), {
+		firestore.doc(fbfsSettingsGeneral(user)).set({
 			[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: user.displayName || user.uid,
 		})
 	}
 
-	batch.set(firestore.doc(fbfsSettingsNotification(user)), {
+	return firestore.doc(fbfsSettingsNotification(user)).set({
 		[FB_FS_SETTINGS_NOTIFICATION_EMAIL]: {
 			[FB_FS_SETTINGS_NOTIFICATION_ORDER_UPDATES]: true,
 			[FB_FS_SETTINGS_NOTIFICATION_CHATS]: true,
@@ -34,10 +33,6 @@ const onUserCreate = (user, firestore) => {
 			[FB_FS_SETTINGS_NOTIFICATION_COMMENTS]: true,
 		},
 	})
-	return batch
-		.commit()
-		.then(console.log)
-		.catch(console.log)
 }
 
 export { onUserCreate }
