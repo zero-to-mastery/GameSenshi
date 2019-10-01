@@ -31,7 +31,7 @@ import { IconCard } from 'componentAtoms/IconCard'
 import { LabelForm, LabelFormSimple } from 'componentAtoms/LabelForm'
 import { InputDate } from 'componentAtoms/InputDate'
 import { BrandNavbarPropedIndexNavbarStoreUser } from 'componentAtoms/BrandNavbar'
-import { LoaderTextPropedIndexNavbarStoreUser } from 'componentAtoms/LoaderText'
+import { LoaderNavLinkPropedIndexNavbarStoreUser } from 'componentAtoms/LoaderNavLink'
 import { IconNotificationStoreUserPropedIndexNavbar } from 'componentAtoms/IconNotification'
 import {
 	ListNavItemStoreUserPropedNavbarIndex,
@@ -75,7 +75,7 @@ export const ExportAtoms = {
 	LabelFormSimple,
 	InputDate,
 	BrandNavbarPropedIndexNavbarStoreUser,
-	LoaderTextPropedIndexNavbarStoreUser,
+	LoaderNavLinkPropedIndexNavbarStoreUser,
 	IconNotificationStoreUserPropedIndexNavbar,
 	ListNavItemStoreUserPropedNavbarIndex,
 	MenuHamburger,

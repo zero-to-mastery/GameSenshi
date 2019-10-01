@@ -4,7 +4,7 @@ import Loader from 'react-loader-spinner'
 
 const LABEL_SMALL_STATE_IS_LOADING = 'loading'
 
-const LoaderText = memo(props => {
+const LoaderNavLink = memo(props => {
 	const {
 		[LABEL_SMALL_STATE_IS_LOADING]: isLoading,
 		body,
@@ -23,4 +23,4 @@ const LoaderText = memo(props => {
 	)
 })
 
-export { LoaderText, LABEL_SMALL_STATE_IS_LOADING }
+export { LoaderNavLink, LABEL_SMALL_STATE_IS_LOADING }

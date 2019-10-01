@@ -12,7 +12,7 @@ const {
 	ProgressCommonStoreProgress,
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
-	LoaderTextPropedIndexNavbarStoreUser,
+	LoaderNavLinkPropedIndexNavbarStoreUser,
 	IconNotificationStoreUserPropedIndexNavbar,
 	ListNavItemStoreUserPropedNavbarIndex,
 	MenuHamburger,
@@ -98,11 +98,11 @@ const NavbarIndex = props => {
 						{/*small screen size*/}
 						<BrandNavbarPropedIndexNavbarStoreUser />
 						<Nav className='flex-row' navbar>
-							<LoaderTextPropedIndexNavbarStoreUser small>
+							<LoaderNavLinkPropedIndexNavbarStoreUser small>
 								<IconNotificationStoreUserPropedIndexNavbar small />
 								<ButtonSignUpStoreUserPropedIndexNavbar small />
 								<ButtonSignInStoreUserPropedIndexNavbar small />
-							</LoaderTextPropedIndexNavbarStoreUser>
+							</LoaderNavLinkPropedIndexNavbarStoreUser>
 							<MenuHamburger isOpen={collapseOpen} toggle={toggleCollapse} />
 						</Nav>
 					</div>
@@ -122,7 +122,7 @@ const NavbarIndex = props => {
 						/>
 						<Nav navbar>
 							{(!collapseOpen && collapseExited) || overWidthBreakPoint ? (
-								<LoaderTextPropedIndexNavbarStoreUser>
+								<LoaderNavLinkPropedIndexNavbarStoreUser>
 									{/* big screen size or not collapsed*/}
 									<ListNavItemStoreUserPropedNavbarIndex />
 									<IconNotificationStoreUserPropedIndexNavbar className='d-none d-lg-inline-flex' />
@@ -132,7 +132,7 @@ const NavbarIndex = props => {
 									/>
 									<ButtonSignInStoreUserPropedIndexNavbar />
 									<ButtonSignUpStoreUserPropedIndexNavbar />
-								</LoaderTextPropedIndexNavbarStoreUser>
+								</LoaderNavLinkPropedIndexNavbarStoreUser>
 							) : (
 								<>
 									{/* small screen size and collapsed*/}
