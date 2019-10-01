@@ -13,7 +13,10 @@ const LoaderNavLink = memo(props => {
 	} = props
 	return isLoading ? (
 		<NavItem className={`active ${small && 'navbar-toggler'}`}>
-			<NavLink disabled href='#pablo' className='p-0 d-flex align-items-center'>
+			<NavLink
+				disabled
+				href='#pablo'
+				className='p-0 d-flex align-items-center font-weight-bold'>
 				<Loader type='Hearts' color='#00BFFF' height='36' width='36' />
 				&nbsp;&nbsp;{body}
 			</NavLink>
