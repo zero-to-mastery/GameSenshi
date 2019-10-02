@@ -5,6 +5,10 @@ import {
 	FinalInputDate,
 } from 'componentMolecules/FinalInput'
 import { TabPaneNotificationSettings } from 'componentMolecules/TabPaneNotificationSettings'
+import {
+	CheckBoxListInstantFeedbackPropedSettingNotificationsPush,
+	CheckBoxListInstantFeedbackPropedSettingNotificationsEmail,
+} from 'componentMolecules/CheckBoxListInstantFeedback'
 
 export const ExportMolecules = {
 	...ExportAtoms,
@@ -12,4 +16,6 @@ export const ExportMolecules = {
 	FinalInputText,
 	FinalInputSelect,
 	FinalInputDate,
+	CheckBoxListInstantFeedbackPropedSettingNotificationsPush,
+	CheckBoxListInstantFeedbackPropedSettingNotificationsEmail,
 }
