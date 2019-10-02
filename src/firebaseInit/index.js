@@ -8,6 +8,8 @@ import 'firebase/firestore'
 import { onAuthChanged } from 'firebaseInit/onAuthChanged'
 import { getRedirectResult } from 'firebaseInit/getRedirectResult'
 
+import { fbfsSettingsGeneral } from 'constantValues'
+
 const env = process.env
 
 const firebaseConfig = {
@@ -26,8 +28,6 @@ const functions = firebase.functions()
 
 const firestore = firebase.firestore()
 
-const userCollectionRef = firestore.collection('users')
-
 // load default storage bucket
 const firebaseDefaultStorage = firebase.storage()
 
@@ -39,8 +39,8 @@ auth().useDeviceLanguage()
 // user auth listener
 auth().onAuthStateChanged(userAuth => {
 	onAuthChanged(userAuth, (next, error) =>
-		userCollectionRef
-			.doc(userAuth.uid)
+		firestore
+			.doc(fbfsSettingsGeneral(userAuth))
 			.onSnapshot({ includeMetadataChanges: true }, { next, error }, error)
 	)
 })
@@ -48,4 +48,4 @@ auth().onAuthStateChanged(userAuth => {
 // listener to get back sign in token from federated identity provider
 getRedirectResult(auth().getRedirectResult(), auth)
 
-export { functions, firebase, auth, firebaseDefaultStorage, userCollectionRef }
+export { functions, firebase, auth, firebaseDefaultStorage, firestore }

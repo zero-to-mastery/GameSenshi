@@ -2,7 +2,6 @@ import {
 	handleSignUpWithEmailAndPassword,
 	API_SIGN_UP_EMAIL,
 	API_SIGN_UP_PASSWORD,
-	API_SIGN_UP_DISPLAY_NAME,
 } from 'api/handleSignUpWithEmailAndPassword'
 import handleIsEmailNotExist from 'api/handleIsEmailNotExist'
 import handleIsPasswordResetAble from 'api/handleIsPasswordResetAble'
@@ -14,7 +13,6 @@ export {
 	handleSignUpWithEmailAndPassword,
 	API_SIGN_UP_EMAIL,
 	API_SIGN_UP_PASSWORD,
-	API_SIGN_UP_DISPLAY_NAME,
 	handleIsEmailNotExist,
 	handleIsPasswordResetAble,
 	handleSignInWithSocials,

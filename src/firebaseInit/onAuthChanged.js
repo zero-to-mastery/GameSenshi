@@ -15,7 +15,6 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 		unsubscribe = onSnapshot(
 			doc => {
 				const userData = doc.data()
-				console.log('data changed!', userData)
 				storeUserOnSignIn(userAuth, userData)
 			},
 			err => console.log(err)

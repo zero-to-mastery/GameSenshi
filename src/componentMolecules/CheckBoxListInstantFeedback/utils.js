@@ -8,7 +8,7 @@ import {
 	FB_FS_SETTINGS_NOTIFICATION_NEWS_LETTER,
 	FB_FS_SETTINGS_NOTIFICATION_CHATS,
 	FB_FS_SETTINGS_NOTIFICATION_COMMENTS,
-} from 'constants'
+} from 'constantValues'
 
 const checkBoxesPush = () => [
 	{

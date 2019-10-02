@@ -7,7 +7,7 @@ const { CheckBox } = stopUndefined(ExportAtoms)
 const BODY = 'body'
 const NAME = 'name'
 
-const CheckBoxList = props => {
+const CheckBoxListInstantFeedback = props => {
 	const { list, loading, value, onChange } = props
 	return list.map(checkBox => {
 		const { [BODY]: body, [NAME]: name } = checkBox
@@ -24,4 +24,4 @@ const CheckBoxList = props => {
 	})
 }
 
-export { CheckBoxList, BODY, NAME }
+export { CheckBoxListInstantFeedback, BODY, NAME }

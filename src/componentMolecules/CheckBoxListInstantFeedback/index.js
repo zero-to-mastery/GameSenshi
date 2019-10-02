@@ -6,15 +6,15 @@ import {
 	checkBoxesEmail,
 } from 'componentMolecules/CheckBoxListInstantFeedback/utils'
 
-const CheckBoxListInstantFeedbackPropedSettingNotificationsPush = props => {
+const CheckBoxListInstantFeedbackPropedPush = props => {
 	return <CheckBoxListInstantFeedback list={checkBoxesPush} {...props} />
 }
 
-const CheckBoxListInstantFeedbackPropedSettingNotificationsEmail = props => {
+const CheckBoxListInstantFeedbackPropedEmail = props => {
 	return <CheckBoxListInstantFeedback list={checkBoxesEmail} {...props} />
 }
 
 export {
-	CheckBoxListInstantFeedbackPropedSettingNotificationsPush,
-	CheckBoxListInstantFeedbackPropedSettingNotificationsEmail,
+	CheckBoxListInstantFeedbackPropedPush,
+	CheckBoxListInstantFeedbackPropedEmail,
 }
