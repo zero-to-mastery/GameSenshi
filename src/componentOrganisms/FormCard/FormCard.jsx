@@ -21,44 +21,46 @@ import 'react-credit-cards/lib/styles.scss'
 const {
 	FinalForm,
 	CheckBox,
-	FinalCardNumberPropedDefault,
-	FinalCardHolderNamePropedDefault,
-	FinalExpiryMonthPropedDefault,
-	FinalExpiryYearPropedDefault,
-	FinalCardCVCPropedDefault,
+	FinalTextCardNumberPropedDefault,
+	FINAL_TEXT_CARD_NUMBER,
+	FinalTextCardHolderNamePropedDefault,
+	FINAL_TEXT_CARD_HOLDER_NAME,
+	FinalSelectExpiryMonthPropedDefault,
+	FINAL_SELECT_EXPIRY_MONTH,
+	FinalSelectExpiryYearPropedDefault,
+	FINAL_SELECT_EXPIRY_YEAR,
+	FinalTextCardCVCPropedDefault,
+	FINAL_TEXT_CARD_CVC,
 	ButtonSubmit,
 } = stopUndefined(ExportCompounds)
 
-const CARD_NUMBER = 'cardNumber'
-const CVC = 'cvc'
-const EXPIRY_MONTH = 'expiryMonth'
-const EXPIRY_YEAR = 'expiryYear'
-const HOLDER_NAME = 'holderName'
-
-const onSubmission = (
-	values = {
-		[CARD_NUMBER]: '',
-		[CVC]: '',
-		[EXPIRY_MONTH]: '',
-		[EXPIRY_YEAR]: '',
-		[HOLDER_NAME]: '',
-	},
+const onSubmission = async (
+	formError,
+	values,
 	onSubmit = () => {},
 	onSuccessfulSubmission = () => {}
 ) => {
-	onSubmit(values)
-	onSuccessfulSubmission()
+	const isSuccess = await onSubmit(values)
+	if (isSuccess) {
+		onSuccessfulSubmission()
+		return
+	} else {
+		return { [formError]: 'card is rejected, please try again later' }
+	}
 }
 
+const FORM_CARD_DEFAULT = 'isDefault'
+
+// TODO more reasonable input width for all fields
 const FormCard = props => {
 	const [cardNumber, setCardNumber] = useState('')
 	const [holderName, setHolderName] = useState('')
-	const [expiryMonth, setExpiryMonth] = useState('00')
-	const [expiryYear, setExpiryYear] = useState('00')
-	const [cvc, setCvc] = useState('')
+	const [expiryMonth, setExpiryMonth] = useState({ value: '' })
+	const [expiryYear, setExpiryYear] = useState({ value: '' })
 	const [isDefault, setIsDefault] = useState(false)
-	const [, forceUpdate] = useState()
 	const [focus, setFocus] = useState('number')
+	const [cvc, setCvc] = useState('')
+	const [, forceUpdate] = useState()
 
 	const submitButton = useRef(null)
 
@@ -74,8 +76,17 @@ const FormCard = props => {
 	return (
 		<Modal
 			style={window.innerWidth > 768 ? { maxWidth: 800 } : {}}
-			isOpen={isOpen || true}
+			isOpen={isOpen}
 			toggle={toggle}
+			onClosed={() => {
+				setCardNumber('')
+				setHolderName('')
+				setExpiryMonth({ value: '' })
+				setExpiryYear({ value: '' })
+				setCvc('')
+				setIsDefault(false)
+				setFocus('number')
+			}}
 			backdrop='static'
 			modalClassName='modal-black'>
 			<div className='modal-header'>
@@ -91,25 +102,26 @@ const FormCard = props => {
 			</div>
 			<FinalForm
 				initialValues={{
-					[CARD_NUMBER]: '',
-					[CVC]: '',
-					[EXPIRY_MONTH]: '',
-					[EXPIRY_YEAR]: '',
-					[HOLDER_NAME]: '',
+					[FINAL_TEXT_CARD_NUMBER]: '',
+					[FINAL_TEXT_CARD_CVC]: '',
+					[FINAL_SELECT_EXPIRY_MONTH]: '',
+					[FINAL_SELECT_EXPIRY_YEAR]: '',
+					[FINAL_TEXT_CARD_HOLDER_NAME]: '',
 				}}
-				// TODO display submit error with in modal alert
-				// TODO create third party card processor api
-				// TODO more reasonable input width for all fields
-				// TODO need FORM_ERROR
-
 				onSubmit={values => {
 					onSubmission(values, onSubmit, () => {
-						onSuccessfulSubmission()
-						toggle() // TODO toggle only run if submit success
+						onSuccessfulSubmission({
+							[FORM_CARD_DEFAULT]: isDefault,
+							[FINAL_TEXT_CARD_NUMBER]: cardNumber,
+							[FINAL_SELECT_EXPIRY_MONTH]: expiryMonth,
+							[FINAL_SELECT_EXPIRY_YEAR]: expiryYear,
+							[FINAL_TEXT_CARD_HOLDER_NAME]: holderName,
+						})
+						toggle()
 					})
 				}}>
-				{({ handleSubmit, submitting }) => (
-					<>
+				{({ handleSubmit, submitting, submitError }) => (
+					<Form className='form'>
 						<ModalBody>
 							<Container>
 								<Row>
@@ -121,7 +133,7 @@ const FormCard = props => {
 											<Cards
 												number={cardNumber}
 												name={holderName}
-												expiry={`${expiryMonth}/${expiryYear}`}
+												expiry={`${expiryMonth.value}/${expiryYear.value}`}
 												cvc={cvc}
 												focused={focus}
 											/>
@@ -129,59 +141,56 @@ const FormCard = props => {
 									</Col>
 									<Col xs='12' md='7' className='d-flex align-items-center'>
 										<Container>
-											<Form>
-												<FinalCardNumberPropedDefault
-													name={CARD_NUMBER}
-													onValueChange={setCardNumber}
+											<FinalTextCardNumberPropedDefault
+												onValueChange={values => {
+													setCardNumber(values)
+												}}
+												onFocus={() => {
+													setFocus('number')
+												}}
+												submitRef={submitButton}
+											/>
+											<FinalTextCardHolderNamePropedDefault
+												onValueChange={setHolderName}
+												onFocus={() => {
+													setFocus('name')
+												}}
+												submitRef={submitButton}
+											/>
+											<Row>
+												<FinalSelectExpiryMonthPropedDefault
 													onFocus={() => {
-														setFocus('number')
+														setFocus('expiry')
 													}}
+													onValueChange={setExpiryMonth}
+												/>
+												<FinalSelectExpiryYearPropedDefault
+													onFocus={() => {
+														setFocus('expiry')
+													}}
+													onValueChange={setExpiryYear}
+												/>
+											</Row>
+											<Row>
+												<FinalTextCardCVCPropedDefault
+													onFocus={() => {
+														setFocus('cvc')
+													}}
+													onValueChange={setCvc}
 													submitRef={submitButton}
 												/>
-												<FinalCardHolderNamePropedDefault
-													name={HOLDER_NAME}
-													onValueChange={setHolderName}
-													onFocus={() => {
-														setFocus('name')
-													}}
-													submitRef={submitButton}
-												/>
-												<Row>
-													<FinalExpiryMonthPropedDefault
-														name={EXPIRY_MONTH}
-														onFocus={() => {
-															setFocus('expiry')
-														}}
-														onValueChange={setExpiryMonth}
-													/>
-													<FinalExpiryYearPropedDefault
-														name={EXPIRY_YEAR}
-														onFocus={() => {
-															setFocus('expiry')
-														}}
-														onValueChange={setExpiryYear}
-													/>
-												</Row>
-												<Row>
-													<FinalCardCVCPropedDefault
-														name={CVC}
-														onFocus={() => {
-															setFocus('cvc')
-														}}
-														onValueChange={setCvc}
-														submitRef={submitButton}
-													/>
-													<Col xs='6'>
-														<CheckBox
-															checked={isDefault}
-															onClick={() => {
-																setIsDefault(state => !state)
-															}}>
+												<Col xs='6'>
+													<CheckBox
+														checked={isDefault}
+														onClick={() => {
+															setIsDefault(state => !state)
+														}}>
+														<span className='text-success'>
 															set as default?
-														</CheckBox>
-													</Col>
-												</Row>
-											</Form>
+														</span>
+													</CheckBox>
+												</Col>
+											</Row>
 										</Container>
 									</Col>
 								</Row>
@@ -191,25 +200,20 @@ const FormCard = props => {
 							<Button color='secondary' onClick={toggle}>
 								Close
 							</Button>
+							{submitError && !submitting && `Error: ${submitError}`}
 							<ButtonSubmit
 								submitRef={submitButton}
 								disabled={submitting}
-								onClick={handleSubmit}>
-								{submitting ? (
-									'Adding Card'
-								) : (
-									<>
-										<i className={`fas fa-lock mr-3`} />
-										Add Card
-									</>
-								)}
+								onClick={handleSubmit}
+								color='primary'>
+								{submitting ? 'Saving' : 'Save'}
 							</ButtonSubmit>
 						</ModalFooter>
-					</>
+					</Form>
 				)}
 			</FinalForm>
 		</Modal>
 	)
 }
 
-export { FormCard }
+export { FormCard, FORM_CARD_DEFAULT }

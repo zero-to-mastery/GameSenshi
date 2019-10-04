@@ -1,5 +1,6 @@
 import React from 'react'
 import { Subscribe } from 'unstated'
+import { STATE } from 'state/constants'
 
 const StateContainer = (
 	Component,
@@ -12,17 +13,19 @@ const StateContainer = (
 			{() => {
 				const accProps = stores.reduce((accProps, store, i) => {
 					for (const prop in stateToPropsMaps[i]) {
-						accProps[prop] = store.state[stateToPropsMaps[i][prop]]
+						const value = stateToPropsMaps[i][prop]
+						if (value instanceof Function) {
+							accProps[prop] = value(store[STATE])
+						} else {
+							accProps[prop] = store[STATE][value]
+						}
 					}
 					for (const prop in methodToPropsMaps[i]) {
-						accProps[prop] = () => {
-							props[prop] && props[prop]()
-							methodToPropsMaps[i][prop]()
-						}
+						accProps[prop] = methodToPropsMaps[i][prop]
 					}
 					return accProps
 				}, {})
-				return <Component {...props} {...accProps} />
+				return <Component {...accProps} {...props} />
 			}}
 		</Subscribe>
 	)

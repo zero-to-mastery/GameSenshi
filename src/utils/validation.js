@@ -12,7 +12,7 @@ const emailPopoverMessages = []
 
 const signUpEmailValidation = value =>
 	string()
-		.required('required field!')
+		.required('required!')
 		.email('bad format')
 		.validate(value, {
 			abortEarly: true,
@@ -27,7 +27,7 @@ const passwordPopoverMessages = [
 
 const signUpPasswordValidation = value =>
 	string()
-		.required('required field!')
+		.required('required!')
 		.min(8, passwordPopoverMessages[0])
 		.matches(/^(?=.*[0-9]).*$/, passwordPopoverMessages[1])
 		.matches(/^(?=.*[a-z]).*$/, passwordPopoverMessages[2])
@@ -41,24 +41,24 @@ const usernameLength = 25
 const signUpUsernameValidation = value =>
 	string()
 		.lowercase()
-		.required('required field!')
+		.required('required!')
 		.matches(/^[a-z].*/, 'must start with alphabet')
 		.notOneOf(forbiddenName, `${value} is not allowed`)
 		.max(usernameLength, `maximum ${usernameLength} characters`)
-		.matches(/^[a-z0-9]+$/, 'no special characters')
+		.matches(/^[a-z0-9\s]+$/, 'no special characters')
 		.validate(value, {
 			abortEarly: true,
 		})
 
 const signInEmailValidation = value =>
 	string()
-		.required('required field!')
+		.required('required!')
 		.email('bad email format')
 		.validate(value)
 
 const signInPasswordValidation = value =>
 	string()
-		.required('required field!')
+		.required('required!')
 		.validate(value)
 
 // currently not in used
@@ -69,14 +69,14 @@ const checkBoxValidation = value =>
 
 const cardNumberValidation = value =>
 	string()
-		.required('required field!')
+		.required('required!')
 		.max(16, 'maximum 16 characters')
 		.matches(/^(?=.*[0-9]).*$/, 'only number is allowed')
 		.validate(value)
 
 const cardNameValidation = value =>
 	string()
-		.required('required field!')
+		.required('required!')
 		.max(50, 'maximum 50 characters')
 		.validate(value)
 

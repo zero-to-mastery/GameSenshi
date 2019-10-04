@@ -7,72 +7,70 @@ import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
 const STORE_AUTH_MODAL = 'authModal'
 const STORE_AUTH_MODAL_STATE_BODY = 'body'
-const STORE_AUTH_MODAL_STATE_IS_OPEN = 'open'
+const STORE_AUTH_MODAL_STATE_OPEN = 'isOpen'
 const STORE_AUTH_MODAL_STATE_TITLE = 'title'
 const STORE_AUTH_MODAL_STATE_LOADER = 'loader'
 const STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK = 'callback'
-const STORE_AUTH_MODAL_SHOW = 'show'
-const STORE_AUTH_MODAL_CLOSE = 'close'
-const STORE_AUTH_MODAL_TOGGLE = 'toggle'
-const STORE_AUTH_MODAL_SET_ITEM = 'setItem'
-const STORE_AUTH_MODAL_GET_ITEM = 'getItem'
-const STORE_AUTH_MODAL_INITIALIZE = 'initialize'
-const STORE_AUTH_MODAL_REMOVE_ITEM = 'removeItem'
-const STORE_AUTH_MODAL_ON_AUTH_STATE_CHANGE = 'onAuthStateChange'
-const STORE_AUTH_MODAL_PROCESS_REDIRECT_RESULT = 'processRedirectResult'
-const STORE_AUTH_MODAL_ON_CONTINUE = 'onSuccessfulSubmission'
+const SHOW = 'show'
+const CLOSE = 'close'
+const TOGGLE = 'toggle'
+const SET_ITEM = 'setItem'
+const GET_ITEM = 'getItem'
+const INITIALIZE = 'initialize'
+const REMOVE_ITEM = 'removeItem'
+const ON_AUTH_STATE_CHANGE = 'onAuthStateChange'
+const PROCESS_REDIRECT_RESULT = 'processRedirectResult'
+const ON_CONTINUE = 'onSuccessfulSubmission'
 
-const defaultValues = {
+const defaultValues = () => ({
 	[STORE_AUTH_MODAL_STATE_BODY]: '',
 	[STORE_AUTH_MODAL_STATE_TITLE]: '',
-	[STORE_AUTH_MODAL_STATE_IS_OPEN]: false,
+	[STORE_AUTH_MODAL_STATE_OPEN]: false,
 	[STORE_AUTH_MODAL_STATE_LOADER]: false,
 	[STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK]: () => {},
-}
+})
 
 class StoreAuthModal extends Container {
 	constructor() {
 		super()
-		this[STATE] = defaultValues
+		this[STATE] = defaultValues()
 		this[SET_STATE] = this[SET_STATE].bind(this)
 	}
 
-	[STORE_AUTH_MODAL_TOGGLE] = () => {
+	[TOGGLE] = () => {
 		this.setState(state => {
-			state[STORE_AUTH_MODAL_STATE_IS_OPEN] = !state[
-				STORE_AUTH_MODAL_STATE_IS_OPEN
-			]
+			state[STORE_AUTH_MODAL_STATE_OPEN] = !state[STORE_AUTH_MODAL_STATE_OPEN]
 			return state
 		})
 		return this
 	};
 
 	[RESET_STATE] = () => {
-		this.setState(defaultValues)
+		this.setState(defaultValues())
 		return this
 	};
 
-	[STORE_AUTH_MODAL_CLOSE] = () => {
-		this.setState({ [STORE_AUTH_MODAL_STATE_IS_OPEN]: false })
+	[CLOSE] = () => {
+		this.setState({ [STORE_AUTH_MODAL_STATE_OPEN]: false })
 		return this
 	};
 
-	[STORE_AUTH_MODAL_ON_CONTINUE] = () => {
+	[ON_CONTINUE] = () => {
 		this[STATE][STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK]()
 		this[RESET_STATE]()
 		return
 	};
 
-	[STORE_AUTH_MODAL_GET_ITEM] = () => {
+	[GET_ITEM] = () => {
 		return JSON.parse(sessionStorage.getItem(STORE_AUTH_MODAL))
 	};
 
-	[STORE_AUTH_MODAL_REMOVE_ITEM] = () => {
+	[REMOVE_ITEM] = () => {
 		sessionStorage.removeItem(STORE_AUTH_MODAL)
 		return this
 	};
 
-	[STORE_AUTH_MODAL_SET_ITEM] = (title = '', body = '', restProps = {}) => {
+	[SET_ITEM] = (title = '', body = '', restProps = {}) => {
 		sessionStorage.setItem(
 			STORE_AUTH_MODAL,
 			JSON.stringify({
@@ -84,14 +82,14 @@ class StoreAuthModal extends Container {
 		return this
 	};
 
-	[STORE_AUTH_MODAL_SHOW] = (
+	[SHOW] = (
 		title = '',
 		body = '',
 		loader = false,
 		afterContinueCallback = () => {}
 	) => {
 		this.setState({
-			[STORE_AUTH_MODAL_STATE_IS_OPEN]: true,
+			[STORE_AUTH_MODAL_STATE_OPEN]: true,
 			[STORE_AUTH_MODAL_STATE_BODY]: body,
 			[STORE_AUTH_MODAL_STATE_TITLE]: title,
 			[STORE_AUTH_MODAL_STATE_LOADER]: loader,
@@ -100,14 +98,14 @@ class StoreAuthModal extends Container {
 		return this
 	};
 
-	[STORE_AUTH_MODAL_INITIALIZE] = () => {
-		const item = this[STORE_AUTH_MODAL_GET_ITEM]()
+	[INITIALIZE] = () => {
+		const item = this[GET_ITEM]()
 		if (item) {
 			this.setState({
 				[STORE_AUTH_MODAL_STATE_BODY]: (
 					<Interweave content={item[STORE_AUTH_MODAL_STATE_BODY]} />
 				),
-				[STORE_AUTH_MODAL_STATE_IS_OPEN]: true,
+				[STORE_AUTH_MODAL_STATE_OPEN]: true,
 				[STORE_AUTH_MODAL_STATE_TITLE]: (
 					<Interweave content={item[STORE_AUTH_MODAL_STATE_TITLE]} />
 				),
@@ -117,17 +115,17 @@ class StoreAuthModal extends Container {
 		return this
 	};
 
-	[STORE_AUTH_MODAL_ON_AUTH_STATE_CHANGE] = () => {
-		const item = this[STORE_AUTH_MODAL_GET_ITEM]()
-		!item && this.setState({ [STORE_AUTH_MODAL_STATE_IS_OPEN]: false })
+	[ON_AUTH_STATE_CHANGE] = () => {
+		const item = this[GET_ITEM]()
+		!item && this.setState({ [STORE_AUTH_MODAL_STATE_OPEN]: false })
 		return this
 	};
 
-	[STORE_AUTH_MODAL_PROCESS_REDIRECT_RESULT] = (
+	[PROCESS_REDIRECT_RESULT] = (
 		LinkedCallBack = () => {},
 		linkingCallBack = () => {}
 	) => {
-		const item = this[STORE_AUTH_MODAL_GET_ITEM]()
+		const item = this[GET_ITEM]()
 		const {
 			name1,
 			name2,
@@ -137,7 +135,7 @@ class StoreAuthModal extends Container {
 		} = item
 		if (isLinked) {
 			LinkedCallBack(name2)
-			this[STORE_AUTH_MODAL_REMOVE_ITEM]()
+			this[REMOVE_ITEM]()
 		} else if (item) {
 			// show modal on link redirect
 			const JSXString = reactElementToJSXString(
@@ -151,7 +149,7 @@ class StoreAuthModal extends Container {
 				...item,
 				isLinked: true,
 			}
-			this[STORE_AUTH_MODAL_SET_ITEM]('Linking...', JSXString, restProps)
+			this[SET_ITEM]('Linking...', JSXString, restProps)
 			// if (provider2 === 'password') {
 			// TODO allow user to create password account and link to existing social account
 			// } else {
@@ -165,20 +163,20 @@ class StoreAuthModal extends Container {
 export {
 	StoreAuthModal,
 	STORE_AUTH_MODAL_STATE_BODY,
-	STORE_AUTH_MODAL_STATE_IS_OPEN,
+	STORE_AUTH_MODAL_STATE_OPEN,
 	STORE_AUTH_MODAL_STATE_TITLE,
 	STORE_AUTH_MODAL_STATE_LOADER,
 	STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK,
-	STORE_AUTH_MODAL_SHOW,
-	STORE_AUTH_MODAL_CLOSE,
-	STORE_AUTH_MODAL_TOGGLE,
-	STORE_AUTH_MODAL_GET_ITEM,
-	STORE_AUTH_MODAL_SET_ITEM,
-	STORE_AUTH_MODAL_INITIALIZE,
-	STORE_AUTH_MODAL_REMOVE_ITEM,
-	STORE_AUTH_MODAL_ON_AUTH_STATE_CHANGE,
-	STORE_AUTH_MODAL_PROCESS_REDIRECT_RESULT,
-	STORE_AUTH_MODAL_ON_CONTINUE,
+	SHOW,
+	CLOSE,
+	TOGGLE,
+	GET_ITEM,
+	SET_ITEM,
+	INITIALIZE,
+	REMOVE_ITEM,
+	ON_AUTH_STATE_CHANGE,
+	PROCESS_REDIRECT_RESULT,
+	ON_CONTINUE,
 	SET_STATE,
 	RESET_STATE,
 }

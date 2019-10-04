@@ -1,56 +1,39 @@
-import React from 'react'
-import { FormSignUp } from 'componentOrganisms/FormSignUp/FormSignUp'
+import React, { useCallback } from 'react'
+import {
+	FormSignUp,
+	FINAL_TEXT_EMAIL,
+	FINAL_TEXT_PASSWORD,
+	FINAL_TEXT_NAME,
+} from 'componentOrganisms/FormSignUp/FormSignUp'
 // routing
 import { withLastLocation, ROUTE_PAGE_SIGN_IN } from 'routes'
 // api
-import { handleIsEmailNotExist, handleSignUpWithEmailAndPassword } from 'api'
-// apollo
-import { ApolloConsumer } from 'react-apollo'
-// validation
 import {
-	signUpEmailValidation,
-	signUpPasswordValidation,
-	signUpUsernameValidation,
-	emailPopoverMessages,
-	usernamePopoverMessages,
-	passwordPopoverMessages,
-} from 'utils'
+	handleSignUpWithEmailAndPassword,
+	API_SIGN_UP_EMAIL,
+	API_SIGN_UP_PASSWORD,
+} from 'api'
 // utils
-import { onSuccessfulSubmission } from 'componentOrganisms/FormSignUp/utils'
+import { onSuccessfulSignUp } from 'componentOrganisms/FormSignUp/utils'
+import { FB_FS_SETTINGS_GENERAL_DISPLAY_NAME } from 'constantValues'
 
 const FormSignUpPropedDefault = withLastLocation(props => {
-	const { lastLocation, ...restProps } = props
+	const onSubmit = useCallback(values => {
+		const values_ = {
+			[API_SIGN_UP_EMAIL]: values[FINAL_TEXT_EMAIL],
+			[API_SIGN_UP_PASSWORD]: values[FINAL_TEXT_PASSWORD],
+			[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: values[FINAL_TEXT_NAME],
+		}
+		return handleSignUpWithEmailAndPassword(values_, () => {
+			onSuccessfulSignUp(values)
+		})
+	}, [])
 	return (
-		<ApolloConsumer>
-			{apolloClient => (
-				<FormSignUp
-					signInLink={ROUTE_PAGE_SIGN_IN}
-					emailPopoverMessages={emailPopoverMessages}
-					passwordPopoverMessages={passwordPopoverMessages}
-					usernamePopoverMessages={usernamePopoverMessages}
-					onEmailValidation={signUpEmailValidation}
-					onEmailServerValidation={handleIsEmailNotExist}
-					onPasswordValidation={signUpPasswordValidation}
-					onUsernameValidation={signUpUsernameValidation}
-					onSubmit={(email = '', password = '', username = '') => {
-						return handleSignUpWithEmailAndPassword(
-							email,
-							password,
-							username,
-							apolloClient
-						)
-					}}
-					onSuccessfulSubmission={(
-						email = '',
-						password = '',
-						username = ''
-					) => {
-						onSuccessfulSubmission(email, password, username, lastLocation)
-					}}
-					{...restProps}
-				/>
-			)}
-		</ApolloConsumer>
+		<FormSignUp
+			signInLink={ROUTE_PAGE_SIGN_IN}
+			onSubmit={onSubmit}
+			{...props}
+		/>
 	)
 })
 

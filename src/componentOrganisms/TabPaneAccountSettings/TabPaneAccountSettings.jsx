@@ -1,138 +1,105 @@
-import React, { useRef } from 'react'
+import React, { useRef, useCallback } from 'react'
 import { stopUndefined } from 'utils'
 // reactstrap components
-import { FormGroup, Row, Col, Form } from 'reactstrap'
-// validation
-import { signInEmailValidation, signInPasswordValidation } from 'utils'
+import { Row, Col, Form } from 'reactstrap'
 
 import { ExportCompounds } from 'componentnCompounds'
 
 const {
-	FinalInputText,
 	FinalForm,
 	ButtonSubmit,
 	HeaderLined,
 	TabPaneContainer,
+	FinalTextEmailPropedAccount,
+	FINAL_TEXT_EMAIL,
+	FinalTextPasswordPropedAccount,
+	FINAL_TEXT_PASSWORD,
 } = stopUndefined(ExportCompounds)
 
-const EMAIL = 'email'
-const PASSWORD = 'password'
-
 const TabPaneAccountSettings = props => {
+	const {
+		onSubmitEmail,
+		onSuccessfulSubmissionEmail,
+		onSubmitPassword,
+		onSuccessfulSubmissionPassword,
+	} = props
+
 	const submitButtonEmail = useRef(null)
 	const submitButtonPassWord = useRef(null)
 	return (
 		<>
 			<TabPaneContainer>
 				<HeaderLined>Change Email</HeaderLined>
-				<hr className='line-info' />
 				<FinalForm
 					initialValues={{
-						email: '',
+						[FINAL_TEXT_EMAIL]: '',
 					}}
-					onSubmit={(formError, values) => {
-						return { [formError]: 'updateFailed' }
-					}}>
-					{({ submitError, handleSubmit, submitting, form }) => (
-						<>
+					onSubmit={onSubmitEmail}
+					onSuccessfulSubmission={onSuccessfulSubmissionEmail}>
+					{({ submitError, handleSubmit, submitting, form }) => {
+						const formReset = useCallback(() => {
+							form.reset()
+						}, [])
+						return (
 							<Form>
-								<Row>
-									<Col className='align-self-center' md='3'>
-										<label className='labels' htmlFor='#email'>
-											Email
-										</label>
-									</Col>
-									<Col className='align-self-center' md='9'>
-										<FormGroup>
-											<FinalInputText
-												type={EMAIL}
-												name={EMAIL}
-												hideSuccess
-												onlyShowErrorOnSubmit
-												placeholder='email'
-												icon='tim-icons icon-email-85'
-												validation={signInEmailValidation}
-												submitRef={submitButtonEmail}
-												onBlur={() => {
-													form.reset()
-												}}
-											/>
-										</FormGroup>
+								<FinalTextEmailPropedAccount
+									submitRef={submitButtonEmail}
+									onBlur={formReset}
+								/>
+								<Row className='mt-4'>
+									<Col className='d-flex justify-content-center'>
+										{submitError && !submitting && `Error: ${submitError}`}
+										<ButtonSubmit
+											color='info'
+											type='button'
+											submitRef={submitButtonEmail}
+											disabled={submitting}
+											onClick={handleSubmit}>
+											{submitting ? 'Changing Email' : 'Change Email'}
+										</ButtonSubmit>
 									</Col>
 								</Row>
 							</Form>
-							<Row className='mt-4'>
-								<Col className='d-flex justify-content-center'>
-									{submitError && !submitting && `Error: ${submitError}`}
-									<ButtonSubmit
-										color='info'
-										type='button'
-										submitRef={submitButtonEmail}
-										disabled={submitting}
-										onClick={handleSubmit}>
-										{submitting ? 'Changing Email' : 'Change Email'}
-									</ButtonSubmit>
-								</Col>
-							</Row>
-						</>
-					)}
+						)
+					}}
 				</FinalForm>
 			</TabPaneContainer>
 			<hr />
 			<hr />
 			<TabPaneContainer>
 				<HeaderLined>Change Password</HeaderLined>
-				<hr className='line-info' />
 				<FinalForm
 					initialValues={{
-						password: '',
+						[FINAL_TEXT_PASSWORD]: '',
 					}}
-					onSubmit={(formError, values) => {
-						return { [formError]: 'updateFailed' }
-					}}>
-					{({ submitError, handleSubmit, submitting, form }) => (
-						<>
+					onSubmit={onSubmitPassword}
+					onSuccessfulSubmission={onSuccessfulSubmissionPassword}>
+					{({ submitError, handleSubmit, submitting, form }) => {
+						const formReset = useCallback(() => {
+							form.reset()
+						}, [])
+						return (
 							<Form>
-								<Row>
-									<Col className='align-self-center' md='3'>
-										<label className='labels' htmlFor='#password'>
-											Password
-										</label>
-									</Col>
-									<Col className='align-self-center' md='9'>
-										<FormGroup>
-											<FinalInputText
-												type={PASSWORD}
-												name={PASSWORD}
-												onlyShowErrorOnSubmit
-												hideSuccess
-												placeholder='password'
-												icon='tim-icons icon-lock-circle'
-												validation={signInPasswordValidation}
-												submitRef={submitButtonPassWord}
-												onBlur={() => {
-													form.reset()
-												}}
-											/>
-										</FormGroup>
+								<FinalTextPasswordPropedAccount
+									submitRef={submitButtonPassWord}
+									onBlur={formReset}
+								/>
+								<Row className='mt-4'>
+									<Col className='d-flex justify-content-center'>
+										{submitError && !submitting && `Error: ${submitError}`}
+										<ButtonSubmit
+											color='info'
+											type='button'
+											submitRef={submitButtonPassWord}
+											disabled={submitting}
+											onClick={handleSubmit}>
+											{submitting ? 'Changing Password' : 'Change Password'}
+										</ButtonSubmit>
 									</Col>
 								</Row>
 							</Form>
-							<Row className='mt-4'>
-								<Col className='d-flex justify-content-center'>
-									{submitError && !submitting && `Error: ${submitError}`}
-									<ButtonSubmit
-										color='info'
-										type='button'
-										submitRef={submitButtonPassWord}
-										disabled={submitting}
-										onClick={handleSubmit}>
-										{submitting ? 'Changing Password' : 'Change Password'}
-									</ButtonSubmit>
-								</Col>
-							</Row>
-						</>
-					)}
+						)
+					}}
 				</FinalForm>
 			</TabPaneContainer>
 		</>

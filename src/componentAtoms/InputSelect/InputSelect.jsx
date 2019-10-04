@@ -1,38 +1,39 @@
 import React from 'react'
 import Select from 'react-select'
+import { FormGroup } from 'reactstrap'
+import classnames from 'classnames'
+
+const VALUE = 'value'
+const LABEL = 'label'
+const DISABLE = 'isDisabled'
+const COLOR = 'color'
 
 const InputSelect = props => {
 	const {
+		hasDanger,
+		hasSuccess,
+		hasFocus,
 		className,
 		classNamePrefix,
-		id,
-		name,
 		value,
-		options,
-		FormGroup,
-		isSearchable,
-		onBlur,
-		onFocus,
-		onChange,
-		onKeypress,
+		children,
+		...restProps
 	} = props
 	return (
 		<FormGroup>
 			<Select
-				id={id}
-				name={name}
-				value={value}
-				options={options}
-				className={className || 'react-select react-select-info'}
+				className={classnames(className, {
+					'react-select-danger': hasDanger,
+					'react-select-success': hasSuccess,
+					'react-select-info': hasFocus,
+					'react-select mb-0': true,
+				})}
 				classNamePrefix={classNamePrefix || 'react-select'}
-				isSearchable={isSearchable}
-				onChange={onChange}
-				onFocus={onFocus}
-				onBlur={onBlur}
-				onKeypress={onKeypress}
+				{...restProps}
 			/>
+			{children}
 		</FormGroup>
 	)
 }
 
-export { InputSelect }
+export { InputSelect, VALUE, LABEL, DISABLE, COLOR }

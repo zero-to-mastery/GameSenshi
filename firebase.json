@@ -1,10 +1,10 @@
 {
 	"database": {
-		"rules": "/functions/database.rules.json"
+		"rules": "/database.rules.json"
 	},
 	"firestore": {
-		"rules": "/functions/firestore.rules",
-		"indexes": "/functions/firestore.indexes.json"
+		"rules": "/firestore.rules",
+		"indexes": "/firestore.indexes.json"
 	},
 	"functions": {
 		"source": "./functions"
@@ -20,6 +20,6 @@
 		]
 	},
 	"storage": {
-		"rules": "/functions/storage.rules"
+		"rules": "/storage.rules"
 	}
 }

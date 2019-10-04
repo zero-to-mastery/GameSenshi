@@ -6,7 +6,7 @@ import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
 const MODAL_AUTH_STATE_BODY = 'body'
 const MODAL_AUTH_STATE_TITLE = 'title'
 const MODAL_AUTH_STATE_LOADER = 'loader'
-const MODAL_AUTH_STATE_IS_OPEN = 'isOpen'
+const MODAL_AUTH_STATE_OPEN = 'isOpen'
 const MODAL_AUTH_TOGGLE = 'toggle'
 const MODAL_AUTH_ON_CONTINUE = 'onContinue'
 
@@ -15,7 +15,7 @@ const ModalAuth = props => {
 		[MODAL_AUTH_STATE_BODY]: body,
 		[MODAL_AUTH_STATE_TITLE]: title,
 		[MODAL_AUTH_STATE_LOADER]: loader,
-		[MODAL_AUTH_STATE_IS_OPEN]: isOpen,
+		[MODAL_AUTH_STATE_OPEN]: isOpen,
 		[MODAL_AUTH_TOGGLE]: toggle,
 		[MODAL_AUTH_ON_CONTINUE]: onContinue,
 	} = props
@@ -56,7 +56,7 @@ export {
 	MODAL_AUTH_STATE_BODY,
 	MODAL_AUTH_STATE_TITLE,
 	MODAL_AUTH_STATE_LOADER,
-	MODAL_AUTH_STATE_IS_OPEN,
+	MODAL_AUTH_STATE_OPEN,
 	MODAL_AUTH_TOGGLE,
 	MODAL_AUTH_ON_CONTINUE,
 }

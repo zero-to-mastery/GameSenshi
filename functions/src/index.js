@@ -2,6 +2,7 @@
 import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
 
 import {
+	onUserCreation,
 	functions,
 	corsWhitelist,
 	playgroundEnabled,
@@ -42,7 +43,9 @@ const server = new ApolloServer({
 	},
 	onHealthCheck: () =>
 		//https://www.apollographql.com/docs/apollo-server/whats-new/#health-checks
-		new Promise((resolve, reject) => {}),
+		new Promise(resolve => {
+			resolve()
+		}),
 })
 
 server.applyMiddleware({
@@ -50,5 +53,9 @@ server.applyMiddleware({
 	path: '/',
 })
 
-// unable to use property accessor in es6 non default export, revert to es5 exports statement
-exports['endpoint'] = functions.https.onRequest(app)
+// unable to use property accessor in es6 non export, revert to es5 exports statement
+// es5 export also have clearner name
+module.exports = {
+	endpoint: functions.https.onRequest(app),
+	onUserCreation,
+}

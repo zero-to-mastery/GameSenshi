@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { stopUndefined } from 'utils'
 // Apollo
-import { tempClient, initApollo } from 'apolloInit'
+import { tempClient, initApollo, setClient } from 'apolloInit'
 import { ApolloProvider } from 'react-apollo'
 // routing
 import { Router } from 'routes'
@@ -10,29 +10,34 @@ import {
 	ROUTE_PAGE_PROFILE,
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
-	//	ROUTE_PAGE_SETTINGS_COMMON,
+	ROUTE_PAGE_SETTINGS_COMMON,
 	ROUTE_PAGE_PASSWORD_RESET,
+	ROUTE_PAGE_404,
 } from 'routes'
 // state management
 import {
 	Provider,
 	Subscribe,
-	storeRoute,
+	storeUser,
+	STORE_USER_STATE_SIGNED_IN,
 	STATE,
-	STORE_ROUTE_STATE_IS_SIGNED_IN,
+	STORE_USER_STATE_SOFT_SIGNED_IN,
 } from 'state'
 //core components
 import { ExportViews } from 'componentViews'
 
 const {
-	//	SettingsPage,
+	SettingsPage,
 	IndexPage,
 	ProfilePage,
 	SignInPage,
 	SignUpPage,
 	PasswordResetPage,
+	Error404Page,
 	FormSignInPropedDefaultStoreSignIn,
 	ModalAuthStoreAuthModal,
+	NavbarIndexStoreAlert,
+	AlertCommonStoreAlert,
 } = stopUndefined(ExportViews)
 
 const MapRoutesToPages = {
@@ -40,17 +45,19 @@ const MapRoutesToPages = {
 	[ROUTE_PAGE_PROFILE]: ProfilePage,
 	[ROUTE_PAGE_SIGN_UP]: SignUpPage,
 	[ROUTE_PAGE_SIGN_IN]: SignInPage,
-	//[ROUTE_PAGE_SETTINGS_COMMON]: SettingsPage,
+	[ROUTE_PAGE_SETTINGS_COMMON]: SettingsPage,
 	[ROUTE_PAGE_PASSWORD_RESET]: PasswordResetPage,
+	[ROUTE_PAGE_404]: Error404Page,
 }
 
-const App = props => {
+const App = () => {
 	const [apolloClient, setApolloClient] = useState(tempClient)
 
 	useEffect(() => {
 		const initApolloClient = async () => {
 			const apolloClient = await initApollo()
 			setApolloClient(apolloClient)
+			setClient(apolloClient)
 		}
 		initApolloClient()
 	}, [])
@@ -58,13 +65,21 @@ const App = props => {
 	return (
 		<ApolloProvider client={apolloClient}>
 			<Provider>
-				<Subscribe to={[storeRoute]}>
-					{storeRoute => {
+				<Subscribe to={[storeUser]}>
+					{storeUser => {
 						const {
-							[STATE]: { [STORE_ROUTE_STATE_IS_SIGNED_IN]: isUserSignedIn },
-						} = storeRoute
+							[STATE]: {
+								[STORE_USER_STATE_SIGNED_IN]: isUserSignedIn,
+								[STORE_USER_STATE_SOFT_SIGNED_IN]: isUserSoftSignedIn,
+							},
+						} = storeUser
 						return (
-							<Router isUserSignedIn={isUserSignedIn} pages={MapRoutesToPages}>
+							<Router
+								isUserSignedIn={isUserSignedIn || isUserSoftSignedIn}
+								pages={MapRoutesToPages}>
+								<NavbarIndexStoreAlert>
+									<AlertCommonStoreAlert />
+								</NavbarIndexStoreAlert>
 								<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
 								<ModalAuthStoreAuthModal />
 							</Router>

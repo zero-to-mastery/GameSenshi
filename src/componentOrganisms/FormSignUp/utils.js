@@ -1,39 +1,26 @@
 import React from 'react'
 // state management
-import { storeAlertShow, userStore, STORE_USER_SET_IS_SIGNING_IN } from 'state'
-// api
-import { handleSignInWithEmailAndPassword } from 'api'
-// routes
-import { onSignedInRouting } from 'routes'
+import { storeAlertShow } from 'state'
+import {
+	FINAL_TEXT_EMAIL,
+	FINAL_TEXT_NAME,
+} from 'componentOrganisms/FormSignUp/FormSignUp'
 
-const onSuccessfulSubmission = (
-	email = '',
-	password = '',
-	username = '',
-	lastLocation
-) => {
+const onSuccessfulSignUp = values => {
+	const { [FINAL_TEXT_EMAIL]: email, [FINAL_TEXT_NAME]: username } = values
 	const alertBody = (
-		<>
-			Welcome {username}! An verification email has been sent to{' '}
+		<span>
+			Welcome {username}! An verification email has been sent to&nbsp;
 			<a
 				href={'https://' + email}
 				target='_blank'
 				rel='noopener noreferrer'
 				className='alert-link'>
-				{email}
+				{` ${email}`}
 			</a>
-		</>
+		</span>
 	)
-	userStore[STORE_USER_SET_IS_SIGNING_IN](true, () => {
-		storeAlertShow(
-			'Connection timeout, please sign in manually',
-			'danger',
-			'tim-icons icon-alert-circle-exc'
-		)
-	})
 	storeAlertShow(alertBody, 'success', 'tim-icons icon-bell-55')
-	handleSignInWithEmailAndPassword(email, password)
-	onSignedInRouting(lastLocation)
 }
 
-export { onSuccessfulSubmission }
+export { onSuccessfulSignUp }

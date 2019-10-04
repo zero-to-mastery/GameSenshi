@@ -1,4 +1,4 @@
-import handleSignUpWithEmailAndPassword from 'api/handleSignUpWithEmailAndPassword'
-import handleIsEmailNotExist from 'api/handleIsEmailNotExist'
+// import handleSignUpWithEmailAndPassword from 'api/handleSignUpWithEmailAndPassword'
+// import handleIsEmailNotExist from 'api/handleIsEmailNotExist'
 
-export { handleSignUpWithEmailAndPassword, handleIsEmailNotExist }
+// export { handleSignUpWithEmailAndPassword, handleIsEmailNotExist }

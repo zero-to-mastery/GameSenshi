@@ -1,26 +1,25 @@
 import { auth } from 'firebaseInit'
-import {
-	API_STATUS,
-	API_MESSAGE,
-	UNEXPECTED_ERROR_CODE_2,
-} from 'constantValues'
-import { simplerFirebaseErrorMessage } from 'utils'
+import { simplerResponseHandling } from 'utils'
+import { UNEXPECTED_ERROR_CODE_2 } from 'constantValues'
 
 const handleIsEmailNotExist = email => {
 	return auth()
 		.fetchSignInMethodsForEmail(email)
 		.then(methods => {
 			if (methods.length === 0) {
-				return {
-					[API_STATUS]: true,
-					[API_MESSAGE]: 'This email is available for registration!',
-				}
+				return simplerResponseHandling(
+					true,
+					'This email is available for registration!'
+				)
 			} else {
-				return 'this email is already registered!'
+				return simplerResponseHandling(
+					false,
+					'this email is already registered!'
+				)
 			}
 		})
 		.catch(err => {
-			return simplerFirebaseErrorMessage(err, UNEXPECTED_ERROR_CODE_2)
+			return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_2, err)
 		})
 }
 

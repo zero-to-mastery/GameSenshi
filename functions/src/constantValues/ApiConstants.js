@@ -6,7 +6,7 @@ const API_SIGN_UP = 'signUp'
 const API_SIGN_UP_INPUT = API_SIGN_UP + 'Input'
 const API_SIGN_UP_EMAIL = 'email'
 const API_SIGN_UP_PASSWORD = 'password'
-const API_SIGN_UP_USERNAME = 'username'
+const API_SIGN_UP_DISPLAY_NAME = 'displayName'
 
 // TODO: gonna remove extra height feature someday
 
@@ -19,5 +19,5 @@ export {
 	API_SIGN_UP_INPUT,
 	API_SIGN_UP_EMAIL,
 	API_SIGN_UP_PASSWORD,
-	API_SIGN_UP_USERNAME,
+	API_SIGN_UP_DISPLAY_NAME,
 }

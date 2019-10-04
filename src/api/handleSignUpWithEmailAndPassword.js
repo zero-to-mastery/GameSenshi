@@ -1,57 +1,49 @@
-import gql from 'graphql-tag'
-import { simplerFirebaseErrorMessage } from 'utils'
+import { simplerResponseHandling } from 'utils'
+import { auth, firestore } from 'firebaseInit'
+import { fbfsSettingsGeneral } from 'constantValues'
 
 import {
-	API_SIGN_UP,
 	API_SIGN_UP_EMAIL,
 	API_SIGN_UP_PASSWORD,
-	API_SIGN_UP_USERNAME,
-	API_SIGN_UP_INPUT,
-	API_DATA,
-	API_STATUS,
-	API_CODE,
-	API_MESSAGE,
+	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
 	UNEXPECTED_ERROR_CODE_5,
+	UNEXPECTED_ERROR_CODE_7,
 } from 'constantValues'
 
-const SIGNING_UP = gql`
-	mutation signUp($${API_DATA}:${API_SIGN_UP_INPUT}!) {
-		${API_SIGN_UP}(${API_DATA}: $${API_DATA}) {
-			${API_STATUS}
-			${API_CODE}
-			${API_MESSAGE}
-			${API_DATA}{
-				${API_SIGN_UP_EMAIL}
-				${API_SIGN_UP_PASSWORD}
-				${API_SIGN_UP_USERNAME}
-			}
-		}
-	}
-`
-
-const handleSignUpWithEmailAndPassword = (
-	email = '',
-	password = '',
-	username = '',
-	apolloClient
+const handleSignUpWithEmailAndPassword = async (
+	values,
+	onSuccessfulSignUp = () => {}
 ) => {
-	return apolloClient
-		.mutate({
-			mutation: SIGNING_UP,
-			variables: {
-				[API_DATA]: {
-					[API_SIGN_UP_EMAIL]: email,
-					[API_SIGN_UP_PASSWORD]: password,
-					[API_SIGN_UP_USERNAME]: username,
-				},
-			},
+	const {
+		[API_SIGN_UP_EMAIL]: email,
+		[API_SIGN_UP_PASSWORD]: password,
+		[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
+	} = values
+
+	return auth()
+		.createUserWithEmailAndPassword(email, password)
+		.then(async credential => {
+			const { user } = credential
+			onSuccessfulSignUp()
+			user.sendEmailVerification().catch()
+			const userRef = firestore.doc(fbfsSettingsGeneral(user))
+
+			try {
+				await userRef.set({
+					[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
+				})
+			} catch (err) {
+				return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_7, err)
+			}
+
+			return simplerResponseHandling(true)
 		})
-		.then(res => {
-			return res[API_DATA][API_SIGN_UP]
-		})
-		.catch(err => {
-			return simplerFirebaseErrorMessage(err, UNEXPECTED_ERROR_CODE_5)
-		})
+		.catch(err => simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err))
 }
 
-export default handleSignUpWithEmailAndPassword
+export {
+	handleSignUpWithEmailAndPassword,
+	API_SIGN_UP_EMAIL,
+	API_SIGN_UP_PASSWORD,
+	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
+}

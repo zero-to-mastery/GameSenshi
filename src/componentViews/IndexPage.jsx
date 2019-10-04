@@ -3,7 +3,7 @@ import { stopUndefined } from 'utils'
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, IndexNavbar, IndexHeader } = stopUndefined(ExportMultiOrganisms)
+const { Footer, IndexHeader } = stopUndefined(ExportMultiOrganisms)
 
 const IndexPage = props => {
 	const wrapper = useRef(null)
@@ -19,15 +19,12 @@ const IndexPage = props => {
 	}, [])
 
 	return (
-		<>
-			<IndexNavbar />
-			<div className='wrapper' ref={wrapper}>
-				<IndexHeader />
-				<div className='main'>{/* include stuff here in future */}</div>
-				<Footer />
-			</div>
-		</>
+		<div className='wrapper' ref={wrapper}>
+			<IndexHeader />
+			<div className='main'>{/* include stuff here in future */}</div>
+			<Footer />
+		</div>
 	)
 }
 
-export default IndexPage
+export { IndexPage }

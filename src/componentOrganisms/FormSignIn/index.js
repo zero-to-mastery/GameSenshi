@@ -1,8 +1,6 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 // routing
 import { withLastLocation } from 'routes'
-// validation
-import { signInEmailValidation, signInPasswordValidation } from 'utils'
 // constants
 import { ROUTE_PAGE_PASSWORD_RESET, onSignedInRouting } from 'routes'
 // api
@@ -10,10 +8,12 @@ import { handleSignInWithEmailAndPassword } from 'api'
 // component
 import {
 	FormSignIn,
-	SIGN_IN_FROM_STATE_EMAIL,
-	SIGN_IN_FROM_STATE_IS_OPEN,
-	SIGN_IN_FROM_TOGGLE,
-	SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION,
+	SIGN_IN_FORM_STATE_EMAIL,
+	SIGN_IN_FORM_STATE_OPEN,
+	SIGN_IN_FORM_TOGGLE,
+	SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION,
+	FINAL_TEXT_EMAIL,
+	FINAL_TEXT_PASSWORD,
 } from 'componentOrganisms/FormSignIn/FormSignIn'
 // store
 import {
@@ -22,34 +22,41 @@ import {
 	storeSignInToggle,
 	storeSignInOnSuccessfulSubmission,
 	STORE_SIGN_IN_STATE_EMAIL,
-	STORE_SIGN_IN_STATE_IS_OPEN,
+	STORE_SIGN_IN_STATE_OPEN,
 } from 'state'
 
 // inject staple props that suitable for this app
 const FormSignInPropedDefault = withLastLocation(props => {
-	const { history, lastLocation, ...restProps } = props
+	const { lastLocation, ...restProps } = props
+
+	const onSubmit = useCallback(values => {
+		return handleSignInWithEmailAndPassword(
+			values[FINAL_TEXT_EMAIL],
+			values[FINAL_TEXT_PASSWORD]
+		)
+	}, [])
+
+	const onSuccessfulSubmission = useCallback(() => {
+		onSignedInRouting(lastLocation)
+	}, [])
 	return (
 		<FormSignIn
-			emailValidation={signInEmailValidation}
-			passwordValidation={signInPasswordValidation}
 			forgotPasswordLink={ROUTE_PAGE_PASSWORD_RESET}
-			onSubmit={handleSignInWithEmailAndPassword}
-			onSuccessfulSubmission={() => {
-				onSignedInRouting(lastLocation)
-			}}
+			onSubmit={onSubmit}
+			onSuccessfulSubmission={onSuccessfulSubmission}
 			{...restProps}
 		/>
 	)
 })
 
 const mapStoreSignInStateToProp = {
-	[SIGN_IN_FROM_STATE_EMAIL]: STORE_SIGN_IN_STATE_EMAIL,
-	[SIGN_IN_FROM_STATE_IS_OPEN]: STORE_SIGN_IN_STATE_IS_OPEN,
+	[SIGN_IN_FORM_STATE_EMAIL]: STORE_SIGN_IN_STATE_EMAIL,
+	[SIGN_IN_FORM_STATE_OPEN]: STORE_SIGN_IN_STATE_OPEN,
 }
 
 const mapStoreSignInMethodToProp = {
-	[SIGN_IN_FROM_TOGGLE]: storeSignInToggle,
-	[SIGN_IN_FROM_ON_SUCCESSFUL_SUBMISSION]: storeSignInOnSuccessfulSubmission,
+	[SIGN_IN_FORM_TOGGLE]: storeSignInToggle,
+	[SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION]: storeSignInOnSuccessfulSubmission,
 }
 
 const FormSignInPropedDefaultStoreSignIn = StateContainer(

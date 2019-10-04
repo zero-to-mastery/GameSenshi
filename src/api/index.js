@@ -1,17 +1,21 @@
-import handleSignUpWithEmailAndPassword from 'api/handleSignUpWithEmailAndPassword'
+import {
+	handleSignUpWithEmailAndPassword,
+	API_SIGN_UP_EMAIL,
+	API_SIGN_UP_PASSWORD,
+} from 'api/handleSignUpWithEmailAndPassword'
 import handleIsEmailNotExist from 'api/handleIsEmailNotExist'
-import handleIsEmailExist from 'api/handleIsEmailExist'
+import handleIsPasswordResetAble from 'api/handleIsPasswordResetAble'
 import handleSignInWithEmailAndPassword from 'api/handleSignInWithEmailAndPassword'
-import handleSignInWithGoogle from 'api/handleSignInWithGoogle'
-import handleSignInWithFacebook from 'api/handleSignInWithFacebook'
+import { handleSignInWithSocials } from 'api/handleSignInWithSocials'
 import handlePasswordReset from 'api/handlePasswordReset'
 
 export {
 	handleSignUpWithEmailAndPassword,
+	API_SIGN_UP_EMAIL,
+	API_SIGN_UP_PASSWORD,
 	handleIsEmailNotExist,
-	handleIsEmailExist,
-	handleSignInWithGoogle,
-	handleSignInWithFacebook,
+	handleIsPasswordResetAble,
+	handleSignInWithSocials,
 	handleSignInWithEmailAndPassword,
 	handlePasswordReset,
 }
