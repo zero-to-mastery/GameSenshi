@@ -13,4 +13,4 @@ const handlePasswordReset = email => {
 		})
 }
 
-export default handlePasswordReset
+export { handlePasswordReset }

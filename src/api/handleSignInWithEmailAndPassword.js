@@ -23,4 +23,4 @@ const handleSignInWithEmailAndPassword = async (email, password) => {
 		})
 }
 
-export default handleSignInWithEmailAndPassword
+export { handleSignInWithEmailAndPassword }

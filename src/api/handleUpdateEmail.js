@@ -7,4 +7,4 @@ const handleUpdateEmail = email => {
 		.catch(() => {})
 }
 
-export default handleUpdateEmail
+export { handleUpdateEmail }

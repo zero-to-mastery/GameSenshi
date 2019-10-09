@@ -23,4 +23,4 @@ const handleIsEmailNotExist = email => {
 		})
 }
 
-export default handleIsEmailNotExist
+export { handleIsEmailNotExist }
