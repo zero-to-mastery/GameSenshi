@@ -18,7 +18,7 @@ import {
 
 const mapStoreUserStateToProps = {
 	[TAB_PANE_SETTING_LIST_STATE_NAME]: state =>
-		'NotificationSetting_' + state[STORE_USER_STATE_UID],
+		state[STORE_USER_STATE_UID] + 'NotificationSetting_',
 	[TAB_PANE_SETTING_LIST_LOADING2]: STORE_USER_STATE_SIGNING_IN,
 }
 
