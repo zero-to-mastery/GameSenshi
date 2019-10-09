@@ -35,14 +35,17 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build && node src/sw-build.js",
 		"deploy": "npm run lint && npm run build && cross-env-shell \"firebase use $REACT_APP_PROJECT_ID\" && firebase deploy --only hosting",
+		"fs-rule": "cross-env-shell \"firebase use $REACT_APP_PROJECT_ID\" && firebase deploy --only firestore:rules",
 		"separator2": "-----------------------------------------------dev-----------------------------------------------------------------",
 		"dev": "env-cmd .config/dev.env npm run start",
 		"d-build": "env-cmd .config/dev.env npm run build",
 		"d-deploy": "env-cmd .config/dev.env npm run deploy",
+		"d-fs-rule": "env-cmd .config/dev.env npm run fs-rule",
 		"separator3": "-----------------------------------------------prod----------------------------------------------------------------",
 		"prod": "env-cmd .config/prod.env npm run start",
 		"p-build": "env-cmd .config/prod.env npm run build",
-		"p-deploy": "env-cmd .config/prod.env npm run deploy"
+		"p-deploy": "env-cmd .config/prod.env npm run deploy",
+		"p-fs-rule": "env-cmd .config/prod.env npm run fs-rule"
 	},
 	"dependencies": {
 		"apollo-cache-inmemory": "^1.6.2",
