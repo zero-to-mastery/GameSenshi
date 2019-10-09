@@ -16,7 +16,7 @@ const {
 	TabPaneGeneralSettings,
 	TabPanePaymentSettings,
 	TabPaneAccountSettings,
-	TabPaneNotificationSettings,
+	TabPaneSettingListStoreUserPropedNotification,
 	ImageUpload,
 	TabListVerticalPropedSettingPage,
 } = stopUndefined(ExportMultiOrganisms)
@@ -38,7 +38,7 @@ const SettingsPage = props => {
 				setTabPane(() => TabPaneAccountSettings)
 				break
 			case ROUTE_PAGE_SETTINGS_NOTIFICATION:
-				setTabPane(() => TabPaneNotificationSettings)
+				setTabPane(() => TabPaneSettingListStoreUserPropedNotification)
 				break
 			default:
 				setTabPane(() => TabPaneGeneralSettings)

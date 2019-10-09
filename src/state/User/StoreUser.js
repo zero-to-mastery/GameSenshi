@@ -62,13 +62,14 @@ class StoreUser extends Container {
 
 	[INITIALIZE] = (onAutoSignedInFailed = () => {}) => {
 		const user = JSON.parse(localStorage.getItem(STORE_USER))
-		// purposely set state in sync so that it show correct navBar on first rendering
+		// purposely set state syncly so that it show correct navBar on first rendering
 		// firebase need like 2 seconds to finish sign in, too long
 		if (user) {
 			this.state = {
 				...this.state,
 				...user,
 				[STORE_USER_STATE_SOFT_SIGNED_IN]: true,
+				[STORE_USER_STATE_SIGNING_IN]: true,
 			}
 			this[SET_SIGNING_IN](true, () => {}, onAutoSignedInFailed)
 		}

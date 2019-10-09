@@ -9,7 +9,6 @@ import { TabPaneAccountSettings } from 'componentOrganisms/TabPaneAccountSetting
 import { TabPaneGeneralSettings } from 'componentOrganisms/TabPaneGeneralSettings'
 import { FormResetPasswordPropedDefault } from 'componentOrganisms/FormResetPassword'
 import { NavbarIndexStoreAlert } from 'componentOrganisms/NavbarIndex'
-import { TabPaneNotificationSettings } from 'componentOrganisms/TabPaneNotificationSettings'
 
 export const ExportOrganisms = {
 	...ExportCompounds,
@@ -22,5 +21,4 @@ export const ExportOrganisms = {
 	TabPaneGeneralSettings,
 	FormResetPasswordPropedDefault,
 	NavbarIndexStoreAlert,
-	TabPaneNotificationSettings,
 }

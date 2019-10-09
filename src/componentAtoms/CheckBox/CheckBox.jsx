@@ -1,10 +1,10 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import Loader from 'react-loader-spinner'
 import { Label, FormGroup, Input } from 'reactstrap'
 
 const CheckBox = props => {
 	const {
-		initialValue,
+		checked,
 		onChange,
 		className,
 		children,
@@ -12,23 +12,28 @@ const CheckBox = props => {
 		...otherProps
 	} = props
 
-	const [value, setValue] = useState(initialValue)
+	const [checked_, setChecked_] = useState(checked)
 	//const [loading, setLoading] = useState(false)
 	const onChange_ = useCallback(
 		e => {
-			setValue(value => !value)
+			setChecked_(value => !value)
 			onChange && onChange(e)
 		},
 		[onChange]
 	)
-
+	useEffect(() => {
+		setChecked_(checked)
+	}, [checked])
 	return (
-		<FormGroup check={!loading} className={`mb-0 ${className}`}>
+		<FormGroup
+			check={!loading}
+			className={`mb-0 ${className}`}
+			style={{ marginTop: '8px' }}>
 			<Label check>
 				{!loading && (
 					<Input
 						type='checkbox'
-						value={value}
+						checked={checked_}
 						onChange={onChange_}
 						{...otherProps}
 					/>
@@ -45,13 +50,7 @@ const CheckBox = props => {
 							<span style={{ marginRight: '7px' }} />
 						</>
 					)}
-					<span
-						/* onClick={() => {
-							setLoading(state => !state)
-						}} */
-						style={{ color: 'rgb(255,255,255,0.6' }}>
-						{children}
-					</span>
+					<span style={{ color: 'rgb(255,255,255,0.6' }}>{children}</span>
 				</div>
 			</Label>
 		</FormGroup>
