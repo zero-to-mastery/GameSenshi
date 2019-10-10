@@ -83,7 +83,7 @@ const TabPaneSettingList = props => {
 												try {
 													return value[section][name]
 												} catch (e) {
-													console.log(e)
+													// * first render result in undefined error, it is expected
 													// TODO need better error handling
 													return false
 												}
