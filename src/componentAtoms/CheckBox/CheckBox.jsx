@@ -13,7 +13,7 @@ const CheckBox = props => {
 	} = props
 
 	const [checked_, setChecked_] = useState(checked)
-	//const [loading, setLoading] = useState(false)
+
 	const onChange_ = useCallback(
 		e => {
 			setChecked_(value => !value)
@@ -21,9 +21,11 @@ const CheckBox = props => {
 		},
 		[onChange]
 	)
+
 	useEffect(() => {
 		setChecked_(checked)
 	}, [checked])
+
 	return (
 		<FormGroup
 			check={!loading}
