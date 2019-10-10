@@ -1,15 +1,16 @@
 import { history } from 'routes/constants'
 
 const LAST_ROUTE = 'lastRoute'
+const LAST_ROUTE_REAL = 'lastRouteReal'
 
 const setLastRoute = pathname => {
-	if (pathname) {
-		localStorage.setItem(LAST_ROUTE, pathname)
-	}
+	localStorage.setItem(LAST_ROUTE, pathname)
+	localStorage.setItem(LAST_ROUTE_REAL, history.location.pathname)
 }
 
 const removeLastRoute = () => {
 	localStorage.removeItem(LAST_ROUTE)
+	localStorage.removeItem(LAST_ROUTE_REAL)
 }
 
 const goLastRoute = () => {

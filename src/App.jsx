@@ -21,7 +21,7 @@ import {
 	storeUser,
 	STORE_USER_STATE_SIGNED_IN,
 	STATE,
-	STORE_USER_STATE_SOFT_SIGNED_IN,
+	STORE_USER_STATE_SIGNING_IN,
 } from 'state'
 //core components
 import { ExportViews } from 'componentViews'
@@ -70,12 +70,12 @@ const App = () => {
 						const {
 							[STATE]: {
 								[STORE_USER_STATE_SIGNED_IN]: isUserSignedIn,
-								[STORE_USER_STATE_SOFT_SIGNED_IN]: isUserSoftSignedIn,
+								[STORE_USER_STATE_SIGNING_IN]: isUserSigningIn,
 							},
 						} = storeUser
 						return (
 							<Router
-								isUserSignedIn={isUserSignedIn || isUserSoftSignedIn}
+								isUserSignedIn={isUserSignedIn || isUserSigningIn}
 								pages={MapRoutesToPages}>
 								<NavbarIndexStoreAlert>
 									<AlertCommonStoreAlert />

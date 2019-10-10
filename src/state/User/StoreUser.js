@@ -24,7 +24,6 @@ const STORE_USER_STATE_PHONE_NUMBER = 'phoneNumber'
 const STORE_USER_STATE_PROVIDER_DATA = 'providerData'
 const STORE_USER_STATE_EMAIL_VERIFIED = 'emailVerified'
 const STORE_USER_STATE_SIGNING_IN = 'isSigningIn'
-const STORE_USER_STATE_SOFT_SIGNED_IN = 'isSoftSignedIn'
 const SET_SIGNING_IN = 'setIsSigningIn'
 const INITIALIZE = 'initialize'
 const RESET_AVATAR = 'resetAvatar'
@@ -40,7 +39,6 @@ const defaultValues = () => ({
 	[STORE_USER_STATE_LANGUAGES]: ['English'],
 	[STORE_USER_STATE_AVATAR_URL]: defaultAvatar,
 	[STORE_USER_STATE_SIGNED_IN]: false,
-	[STORE_USER_STATE_SOFT_SIGNED_IN]: false,
 	[STORE_USER_STATE_BIRTH_DATE]: new Date(2000, 0, 1),
 	[STORE_USER_STATE_DISPLAY_NAME]: '',
 	[STORE_USER_STATE_PHONE_NUMBER]: '',
@@ -68,7 +66,6 @@ class StoreUser extends Container {
 			this.state = {
 				...this.state,
 				...user,
-				[STORE_USER_STATE_SOFT_SIGNED_IN]: true,
 				[STORE_USER_STATE_SIGNING_IN]: true,
 			}
 			this[SET_SIGNING_IN](true, () => {}, onAutoSignedInFailed)
@@ -165,7 +162,6 @@ export {
 	STORE_USER_STATE_PROVIDER_DATA,
 	STORE_USER_STATE_EMAIL_VERIFIED,
 	STORE_USER_STATE_SIGNING_IN,
-	STORE_USER_STATE_SOFT_SIGNED_IN,
 	SET_STATE,
 	RESET_STATE,
 	SET_SIGNING_IN,
