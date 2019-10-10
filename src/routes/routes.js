@@ -15,6 +15,7 @@ import {
 	ROUTE_PAGE_SETTINGS_COMMON,
 	ROUTE_PAGE_SETTINGS_GENERAL,
 	ROUTE_PAGE_PASSWORD_RESET,
+	history,
 } from 'routes/constants'
 
 const routes = [
@@ -56,4 +57,15 @@ const redirects = [
 	},
 ]
 
-export { routes, redirects }
+const toIndexIfPublic = location => {
+	const pathname = location ? location.pathname : history.location.pathname
+	const isPublic = routes.some(route => {
+		return (
+			route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PUBLIC &&
+			route[ROUTE_PATH].toLowerCase() === pathname.toLowerCase()
+		)
+	})
+	return isPublic ? ROUTE_PAGE_INDEX : pathname
+}
+
+export { routes, redirects, toIndexIfPublic }

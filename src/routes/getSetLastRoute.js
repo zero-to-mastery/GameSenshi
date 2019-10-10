@@ -2,9 +2,9 @@ import { history } from 'routes/constants'
 
 const LAST_ROUTE = 'lastRoute'
 
-const setLastRoute = location => {
-	if (location) {
-		localStorage.setItem(LAST_ROUTE, location.pathname)
+const setLastRoute = pathname => {
+	if (pathname) {
+		localStorage.setItem(LAST_ROUTE, pathname)
 	}
 }
 

@@ -2,11 +2,14 @@ import { withLastLocation } from 'react-router-last-location'
 import { onSignedInRouting } from 'routes/onSignedInRouting'
 
 import { Router } from 'routes/Router'
+
 import {
 	setLastRoute,
 	removeLastRoute,
 	goLastRoute,
 } from 'routes/getSetLastRoute'
+
+import { toIndexIfPublic } from 'routes/routes'
 
 import {
 	history,
@@ -37,6 +40,7 @@ export {
 	setLastRoute,
 	removeLastRoute,
 	goLastRoute,
+	toIndexIfPublic,
 	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_PROFILE,
 	ROUTE_PAGE_SIGN_UP,
