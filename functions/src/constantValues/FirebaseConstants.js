@@ -24,6 +24,7 @@ const fbfsSettingsGeneral = user => {
 }
 
 const FB_FS_SETTINGS_GENERAL_DISPLAY_NAME = 'displayName'
+const FB_FS_SETTINGS_GENERAL_LANGUAGES = 'languages'
 
 export {
 	FIREBASE_STORAGE_USER_AVATAR,
@@ -42,4 +43,5 @@ export {
 	FB_FS_SETTINGS_NOTIFICATION_PUSH_COMMENTS,
 	fbfsSettingsGeneral,
 	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
+	FB_FS_SETTINGS_GENERAL_LANGUAGES,
 }

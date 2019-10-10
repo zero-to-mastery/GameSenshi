@@ -20,9 +20,11 @@ const {
 	[ENV_APOLLO_ENGINE_API_KEY]: apolloEngineApiKey,
 } = env
 
-const onUserCreation = functions.auth.user().onCreate(user => {
-	return onUserCreate(user, firestore)
-})
+const onUserCreation = functions.auth
+	.user()
+	.onCreate((userRecord, eventContext) => {
+		return onUserCreate(userRecord, eventContext, firestore)
+	})
 
 export {
 	admin,
