@@ -6,6 +6,7 @@ import {
 	API_SIGN_UP_EMAIL,
 	API_SIGN_UP_PASSWORD,
 	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
+	FB_FS_SETTINGS_GENERAL_LANGUAGES,
 	UNEXPECTED_ERROR_CODE_5,
 	UNEXPECTED_ERROR_CODE_7,
 } from 'constantValues'
@@ -27,10 +28,10 @@ const handleSignUpWithEmailAndPassword = async (
 			onSuccessfulSignUp()
 			user.sendEmailVerification().catch()
 			const userRef = firestore.doc(fbfsSettingsGeneral(user))
-
 			try {
 				await userRef.set({
 					[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
+					[FB_FS_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
 				})
 			} catch (err) {
 				return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_7, err)
