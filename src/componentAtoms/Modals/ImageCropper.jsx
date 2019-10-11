@@ -5,18 +5,18 @@ import 'cropperjs/dist/cropper.css'
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
 
 const ImageCropper = props => {
-	const cropperRef = useRef(null)
+	const { isOpen, src, forwardedRef, setIsOpen } = props
 
 	const onCropping = () => {
-		console.log(cropperRef.current.getCroppedCanvas().toDataURL())
+		// setIsOpen(false)
 	}
 	return (
-		<Modal>
+		<Modal isOpen={isOpen}>
 			<ModalBody>
 				<Cropper
-					ref={cropperRef}
-					src='http://fengyuanchen.github.io/cropper/img/picture.jpg'
-					style={{ height: 400, width: '100%' }}
+					ref={forwardedRef}
+					src={src}
+					style={{ height: 300, width: 400 }}
 					// Cropper.js options
 					aspectRatio={16 / 9}
 					guides={false}
@@ -24,10 +24,12 @@ const ImageCropper = props => {
 				/>
 			</ModalBody>
 			<ModalFooter>
-				<Button color='primary'>Set new profile picture</Button>{' '}
+				<Button color='success' onClick={() => onCropping()}>
+					Set new profile picture
+				</Button>{' '}
 			</ModalFooter>
 		</Modal>
 	)
 }
 
-export default ImageCropper
+export { ImageCropper }
