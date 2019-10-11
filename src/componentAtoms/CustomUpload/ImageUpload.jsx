@@ -20,11 +20,16 @@ import defaultAvatar from 'assets/img/placeholder.jpg'
 const ImageUpload = props => {
 	const fileInput = useRef(null)
 	const [isOpen, setIsOpen] = useState(false)
+	const [readerResult, setReaderResult] = useState('')
 
 	const handleImageChange = e => {
 		e.preventDefault()
 		const reader = new FileReader()
 		const file = e.target.files[0]
+		reader.onloadend = () => {
+			const result = reader.result
+			setReaderResult(result)
+		}
 		if (file) {
 			setIsOpen(true)
 			const avatarRef = firebaseDefaultStorage.ref(
@@ -58,7 +63,6 @@ const ImageUpload = props => {
 						)
 					})
 					if (url) {
-						storeUser.setState({ [STORE_USER_STATE_AVATAR_URL]: url })
 						auth()
 							.currentUser.updateProfile({
 								[STORE_USER_STATE_AVATAR_URL]: url,
@@ -103,7 +107,7 @@ const ImageUpload = props => {
 					<div className='fileinput text-center'>
 						<input type='file' onChange={handleImageChange} ref={fileInput} />
 						<ImageCropper
-							src={imagePreviewUrl}
+							src={readerResult}
 							isOpen={isOpen}
 							setIsOpen={setIsOpen}
 						/>
