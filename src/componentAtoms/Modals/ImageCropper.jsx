@@ -8,12 +8,13 @@ import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
 import { storeUser, STORE_USER_STATE_AVATAR_URL } from 'state'
 
 const ImageCropper = props => {
-	const { isOpen, src } = props
+	const { isOpen, src, setIsOpen } = props
 	const cropperRef = useRef(null)
 
 	const onCropping = () => {
 		const dataUrl = cropperRef.current.cropper.getCroppedCanvas().toDataURL()
 		storeUser.setState({ [STORE_USER_STATE_AVATAR_URL]: dataUrl })
+		setIsOpen(false)
 	}
 	return (
 		<Modal isOpen={isOpen}>
