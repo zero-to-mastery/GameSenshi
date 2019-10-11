@@ -1,2 +1,2 @@
-import { ImaggeCropper } from 'componentAtoms/Modals'
-export { ImaggeCropper }
+import { ImageCropper } from 'componentAtoms/Modals/ImageCropper'
+export { ImageCropper }

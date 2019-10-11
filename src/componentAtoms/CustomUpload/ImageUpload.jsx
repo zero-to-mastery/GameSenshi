@@ -113,7 +113,7 @@ const ImageUpload = props => {
 						{/* Our cropper component */}
 						<div className='thumbnail '>
 							<img
-								src={defaultAvatar}
+								src={imagePreviewUrl}
 								alt='user avatar'
 								onError={() => {
 									resetProfileImage()
