@@ -19,8 +19,6 @@ import defaultAvatar from 'assets/img/placeholder.jpg'
 
 const ImageUpload = props => {
 	const fileInput = useRef(null)
-	const cropperRef = useRef(null)
-	const [src, setSrc] = useState('')
 	const [isOpen, setIsOpen] = useState(false)
 
 	const handleImageChange = e => {
@@ -39,10 +37,10 @@ const ImageUpload = props => {
 				snapshot => {
 					const { bytesTransferred, totalBytes } = snapshot
 					const percentage = (bytesTransferred / totalBytes) * 100
-					// storeProgress.show(
-					// 	Math.max(percentage, Math.floor(10 + Math.random() * 10)),
-					// 	'primary'
-					// )
+					storeProgress.show(
+						Math.max(percentage, Math.floor(10 + Math.random() * 10)),
+						'primary'
+					)
 				},
 				err => {
 					storeAlertShow(
@@ -61,26 +59,26 @@ const ImageUpload = props => {
 					})
 					if (url) {
 						storeUser.setState({ [STORE_USER_STATE_AVATAR_URL]: url })
-						// auth()
-						// 	.currentUser.updateProfile({
-						// 		[STORE_USER_STATE_AVATAR_URL]: url,
-						// 	})
-						// 	.then(() => {
-						// 		storeProgress.close()
-						// 		storeAlertShow(
-						// 			'Imaged updated, It may take a few moments to update across the site.',
-						// 			'success',
-						// 			'tim-icons icon-bell-55'
-						// 		)
-						// 	})
-						// 	.catch(err => {
-						// 		storeProgress.close()
-						// 		storeAlertShow(
-						// 			'Something went wrong, unable to update profile',
-						// 			'danger',
-						// 			'tim-icons icon-alert-circle-exc'
-						// 		)
-						// 	})
+						auth()
+							.currentUser.updateProfile({
+								[STORE_USER_STATE_AVATAR_URL]: url,
+							})
+							.then(() => {
+								storeProgress.close()
+								storeAlertShow(
+									'Imaged updated, It may take a few moments to update across the site.',
+									'success',
+									'tim-icons icon-bell-55'
+								)
+							})
+							.catch(err => {
+								storeProgress.close()
+								storeAlertShow(
+									'Something went wrong, unable to update profile',
+									'danger',
+									'tim-icons icon-alert-circle-exc'
+								)
+							})
 					}
 				}
 			)
@@ -108,7 +106,6 @@ const ImageUpload = props => {
 							src={imagePreviewUrl}
 							isOpen={isOpen}
 							setIsOpen={setIsOpen}
-							forwardedRef={cropperRef}
 						/>
 						{/* Our cropper component */}
 						<div className='thumbnail '>
