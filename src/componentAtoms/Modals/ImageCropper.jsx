@@ -5,7 +5,7 @@ import 'cropperjs/dist/cropper.css'
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
 
 const ImageCropper = props => {
-	const { isOpen, src, forwardedRef, setIsOpen } = props
+	const { isOpen, src, forwardedRef } = props
 
 	const onCropping = () => {
 		// setIsOpen(false)
