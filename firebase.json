@@ -17,6 +17,6 @@
 		]
 	},
 	"storage": {
-		"rules": "/storage.rules"
+		"rules": "/firestorage.rules"
 	}
 }
