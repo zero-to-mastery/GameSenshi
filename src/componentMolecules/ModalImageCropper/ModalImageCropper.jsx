@@ -15,13 +15,14 @@ const ModalImageCropper = props => {
 	const timeoutId = useRef(-1)
 
 	const crop = useCallback(() => {
-		// if setState here cause lagness, too much setState with each movement
+		// setState here cause lagness due too much setState with each movement
 		// setTimeout is added, the more timeout, the smoother
+		// the lag is more unnoticeable after build
 		// TODO need a better solution
-		clearTimeout(timeoutId)
+		clearTimeout(timeoutId.current)
 		timeoutId.current = setTimeout(() => {
 			setDataUrl(cropperRef.current.cropper.getCroppedCanvas().toDataURL())
-		}, 100)
+		}, 500)
 	}, [])
 
 	const onContinue = useCallback(
