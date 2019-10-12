@@ -7,7 +7,7 @@ const {
 	ModalImageCropperPropedSettings,
 } = stopUndefined(ExportMolecules)
 
-const UploaderUserAvatar = props => {
+const UploaderUserAvatar = () => {
 	const [imageDataUrl, setImageDataUrl] = useState('')
 	const [openCropper, setOpenCropper] = useState(false)
 
