@@ -7,13 +7,13 @@ import {
 	storeProgress,
 	Subscribe,
 	STORE_USER_STATE_UID,
-	STORE_USER_STATE_AVATAR_URL,
+	STORE_USER_STATE_AVATAR,
 } from 'state'
 // component
 import { Button } from 'reactstrap'
 import { ModalImageCropper } from 'componentAtoms/ModalImageCropper'
 // constants
-import { FIREBASE_STORAGE_USER_AVATAR } from 'constantValues'
+import { FB_STORAGE_USER_AVATAR } from 'constantValues'
 // image
 import defaultAvatar from 'assets/img/placeholder.jpg'
 
@@ -33,7 +33,7 @@ const ImageUpload = props => {
 		if (file) {
 			setIsOpen(true)
 			const avatarRef = firebaseDefaultStorage.ref(
-				`${FIREBASE_STORAGE_USER_AVATAR}/${storeUser.state[STORE_USER_STATE_UID]}.jpg`
+				`${FB_STORAGE_USER_AVATAR}/${storeUser.state[STORE_USER_STATE_UID]}.jpg`
 			)
 			const task = avatarRef.put(file)
 
@@ -65,7 +65,7 @@ const ImageUpload = props => {
 					if (url) {
 						auth()
 							.currentUser.updateProfile({
-								[STORE_USER_STATE_AVATAR_URL]: url,
+								[STORE_USER_STATE_AVATAR]: url,
 							})
 							.then(() => {
 								storeProgress.close()
@@ -93,14 +93,14 @@ const ImageUpload = props => {
 		fileInput.current.click()
 	}
 	const handleRemove = () => {
-		storeUser.setState({ [STORE_USER_STATE_AVATAR_URL]: defaultAvatar })
+		storeUser.setState({ [STORE_USER_STATE_AVATAR]: defaultAvatar })
 		fileInput.current.value = null
 	}
 	return (
 		<Subscribe to={[storeUser]}>
 			{storeUser => {
 				const {
-					state: { [STORE_USER_STATE_AVATAR_URL]: imagePreviewUrl },
+					state: { [STORE_USER_STATE_AVATAR]: imagePreviewUrl },
 					resetProfileImage,
 				} = storeUser
 				return (

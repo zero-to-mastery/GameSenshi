@@ -6,7 +6,7 @@ import {
 	storeProgress,
 	STATE,
 	STORE_USER_STATE_UID,
-	STORE_USER_STATE_AVATAR_URL,
+	STORE_USER_STATE_AVATAR,
 } from 'state'
 
 // constants
@@ -37,7 +37,7 @@ const onCrop = dataUrl => {
 			)
 		},
 		async () => {
-			storeUserSetState({ [STORE_USER_STATE_AVATAR_URL]: dataUrl })
+			storeUserSetState({ [STORE_USER_STATE_AVATAR]: dataUrl })
 			const url = await avatarRef.getDownloadURL().catch(() => {
 				storeAlertShow(
 					'Something went wrong, unable to update image',
@@ -48,7 +48,7 @@ const onCrop = dataUrl => {
 			if (url) {
 				auth()
 					.currentUser.updateProfile({
-						[STORE_USER_STATE_AVATAR_URL]: url,
+						[STORE_USER_STATE_AVATAR]: url,
 					})
 					.then(() => {
 						storeProgress.close()

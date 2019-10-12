@@ -16,7 +16,7 @@
 // 	API_SIGN_UP_PASSWORD,
 // 	API_SIGN_UP_DISPLAY_NAME,
 // 	USER_DISPLAY_NAME,
-// 	STORE_USER_STATE_AVATAR_URL,
+// 	STORE_USER_STATE_AVATAR,
 // 	INTERNAL_ERROR_CODE_2,
 // 	INTERNAL_ERROR_CODE_3,
 // 	INTERNAL_ERROR_CODE_4,
@@ -99,7 +99,7 @@
 // 				user
 // 					.updateProfile({
 // 						[USER_DISPLAY_NAME]: username,
-// 						[STORE_USER_STATE_AVATAR_URL]: '',
+// 						[STORE_USER_STATE_AVATAR]: '',
 // 					})
 // 					.catch(err => {
 // 						console.log('update username failed', err)
