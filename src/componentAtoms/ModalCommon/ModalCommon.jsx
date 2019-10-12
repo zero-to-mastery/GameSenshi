@@ -3,21 +3,23 @@ import React from 'react'
 import Loader from 'react-loader-spinner'
 import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
 
-const MODAL_AUTH_STATE_BODY = 'body'
-const MODAL_AUTH_STATE_TITLE = 'title'
-const MODAL_AUTH_STATE_LOADER = 'loader'
-const MODAL_AUTH_STATE_OPEN = 'isOpen'
-const MODAL_AUTH_TOGGLE = 'toggle'
-const MODAL_AUTH_ON_CONTINUE = 'onContinue'
+const MODAL_COMMON_STATE_BODY = 'body'
+const MODAL_COMMON_STATE_TITLE = 'title'
+const MODAL_COMMON_STATE_LOADER = 'loader'
+const MODAL_COMMON_STATE_OPEN = 'isOpen'
+const MODAL_COMMON_STATE_FOOTER = 'footer'
+const MODAL_COMMON_TOGGLE = 'toggle'
+const MODAL_COMMON_ON_CONTINUE = 'onContinue'
 
-const ModalAuth = props => {
+const ModalCommon = props => {
 	const {
-		[MODAL_AUTH_STATE_BODY]: body,
-		[MODAL_AUTH_STATE_TITLE]: title,
-		[MODAL_AUTH_STATE_LOADER]: loader,
-		[MODAL_AUTH_STATE_OPEN]: isOpen,
-		[MODAL_AUTH_TOGGLE]: toggle,
-		[MODAL_AUTH_ON_CONTINUE]: onContinue,
+		[MODAL_COMMON_STATE_BODY]: body,
+		[MODAL_COMMON_STATE_TITLE]: title,
+		[MODAL_COMMON_STATE_LOADER]: loader,
+		[MODAL_COMMON_STATE_OPEN]: isOpen,
+		[MODAL_COMMON_TOGGLE]: toggle,
+		[MODAL_COMMON_ON_CONTINUE]: onContinue,
+		[MODAL_COMMON_STATE_FOOTER]: footer,
 	} = props
 	return (
 		<Modal
@@ -43,7 +45,7 @@ const ModalAuth = props => {
 					<Loader type='Plane' color='#FFD700' height={80} width={80} />
 				) : (
 					<Button color='primary' onClick={onContinue}>
-						Continue
+						{footer}
 					</Button>
 				)}
 			</ModalFooter>
@@ -52,11 +54,12 @@ const ModalAuth = props => {
 }
 
 export {
-	ModalAuth,
-	MODAL_AUTH_STATE_BODY,
-	MODAL_AUTH_STATE_TITLE,
-	MODAL_AUTH_STATE_LOADER,
-	MODAL_AUTH_STATE_OPEN,
-	MODAL_AUTH_TOGGLE,
-	MODAL_AUTH_ON_CONTINUE,
+	ModalCommon,
+	MODAL_COMMON_STATE_BODY,
+	MODAL_COMMON_STATE_TITLE,
+	MODAL_COMMON_STATE_LOADER,
+	MODAL_COMMON_STATE_OPEN,
+	MODAL_COMMON_TOGGLE,
+	MODAL_COMMON_ON_CONTINUE,
+	MODAL_COMMON_STATE_FOOTER,
 }

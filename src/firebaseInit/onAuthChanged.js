@@ -2,7 +2,7 @@
 import {
 	RESET_STATE,
 	storeUserOnSignIn,
-	storeAuthModalOnAuthStateChange,
+	storeModalOnAuthStateChange,
 	storeUserOnSignOut,
 } from 'state'
 import * as allStore from 'state'
@@ -10,7 +10,7 @@ import * as allStore from 'state'
 let unsubscribe = () => {}
 
 const onAuthChanged = (userAuth, onSnapshot) => {
-	storeAuthModalOnAuthStateChange()
+	storeModalOnAuthStateChange()
 	if (userAuth) {
 		unsubscribe = onSnapshot(
 			doc => {

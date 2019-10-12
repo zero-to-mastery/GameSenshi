@@ -4,7 +4,7 @@ import App from 'App'
 import * as serviceWorker from 'serviceWorker'
 // state management
 import {
-	storeAuthModalInitialize,
+	storeModalInitialize,
 	storeUserInitialize,
 	storeAlertShow,
 } from 'state'
@@ -23,7 +23,7 @@ storeUserInitialize()
 goLastRoute()
 
 // modal for auth
-storeAuthModalInitialize(() => {
+storeModalInitialize(() => {
 	storeAlertShow(
 		'Connection timeout, please sign in manually',
 		'danger',
