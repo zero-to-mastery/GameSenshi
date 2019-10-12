@@ -3,6 +3,7 @@ import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 import {
 	API_SIGN_UP_EMAIL,
 	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
+	FB_FS_SETTINGS_GENERAL_USER_AVATAR,
 } from 'constantValues'
 
 import defaultAvatar from 'assets/img/placeholder.jpg'
@@ -14,7 +15,7 @@ const STORE_USER_STATE_LANGUAGES = 'languages'
 const STORE_USER_STATE_SIGNED_IN = 'signedIn'
 const STORE_USER_STATE_GENDER = 'gender'
 // * we don't use displayName and photoUrl from firebase user object because this get overwrite when user sign in with social auth
-const STORE_USER_STATE_AVATAR_URL = 'avatarURL'
+const STORE_USER_STATE_AVATAR = FB_FS_SETTINGS_GENERAL_USER_AVATAR
 const STORE_USER_STATE_DISPLAY_NAME = FB_FS_SETTINGS_GENERAL_DISPLAY_NAME
 // * below constant name follow firebase user object properties name for consistency https://firebase.google.com/docs/reference/js/firebase.User
 const STORE_USER_STATE_UID = 'uid'
@@ -37,7 +38,7 @@ const defaultValues = () => ({
 	[STORE_USER_STATE_GENDER]: '',
 	[STORE_USER_STATE_COUNTRY]: '',
 	[STORE_USER_STATE_LANGUAGES]: ['English'],
-	[STORE_USER_STATE_AVATAR_URL]: defaultAvatar,
+	[STORE_USER_STATE_AVATAR]: defaultAvatar,
 	[STORE_USER_STATE_SIGNED_IN]: false,
 	[STORE_USER_STATE_BIRTH_DATE]: new Date(2000, 0, 1),
 	[STORE_USER_STATE_DISPLAY_NAME]: '',
@@ -91,7 +92,7 @@ class StoreUser extends Container {
 	};
 
 	[RESET_AVATAR] = () => {
-		this[SET_STATE]({ [STORE_USER_STATE_AVATAR_URL]: defaultAvatar })
+		this[SET_STATE]({ [STORE_USER_STATE_AVATAR]: defaultAvatar })
 		return this
 	};
 
@@ -100,14 +101,16 @@ class StoreUser extends Container {
 		this[SET_SIGNING_IN](true, () => {
 			const userData_ = userData || {
 				[STORE_USER_STATE_DISPLAY_NAME]: '',
-				[STORE_USER_STATE_AVATAR_URL]: defaultAvatar,
+				[STORE_USER_STATE_AVATAR]: defaultAvatar,
 			}
+			userData_[STORE_USER_STATE_AVATAR] =
+				userData_[STORE_USER_STATE_AVATAR] || defaultAvatar
 			const publicInfo = {
 				[STORE_USER_STATE_DISPLAY_NAME]:
 					userData_[STORE_USER_STATE_DISPLAY_NAME],
 				[STORE_USER_STATE_EMAIL_VERIFIED]:
 					userAuth[STORE_USER_STATE_EMAIL_VERIFIED],
-				[STORE_USER_STATE_AVATAR_URL]: userData_[STORE_USER_STATE_AVATAR_URL],
+				[STORE_USER_STATE_AVATAR]: userData_[STORE_USER_STATE_AVATAR],
 				[STORE_USER_STATE_UID]: userAuth[STORE_USER_STATE_UID],
 			}
 			this[SET_STATE](state => {
@@ -153,7 +156,7 @@ export {
 	STORE_USER_STATE_LANGUAGES,
 	STORE_USER_STATE_SIGNED_IN,
 	STORE_USER_STATE_GENDER,
-	STORE_USER_STATE_AVATAR_URL,
+	STORE_USER_STATE_AVATAR,
 	STORE_USER_STATE_DISPLAY_NAME,
 	STORE_USER_STATE_UID,
 	STORE_USER_STATE_EMAIL,

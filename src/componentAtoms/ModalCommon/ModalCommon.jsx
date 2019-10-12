@@ -20,6 +20,7 @@ const ModalCommon = props => {
 		[MODAL_COMMON_TOGGLE]: toggle,
 		[MODAL_COMMON_ON_CONTINUE]: onContinue,
 		[MODAL_COMMON_STATE_FOOTER]: footer,
+		children,
 	} = props
 	return (
 		<Modal
@@ -38,7 +39,10 @@ const ModalCommon = props => {
 				</button>
 				<h5 className='modal-title'>{title}</h5>
 			</div>
-			<ModalBody>{body}</ModalBody>
+			<ModalBody>
+				{body}
+				{children}
+			</ModalBody>
 			<ModalFooter
 				className={`d-flex justify-content-${loader ? 'center' : 'end'}`}>
 				{loader ? (

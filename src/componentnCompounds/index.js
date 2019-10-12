@@ -53,6 +53,7 @@ import {
 	FinalDateBirthDatePropedGeneraL,
 	FINAL_DATE_BIRTH_DATE,
 } from 'componentnCompounds/FinalDateBirthDate'
+import { UploaderUserAvatar } from 'componentnCompounds/UploaderUserAvatar'
 
 export const ExportCompounds = {
 	...ExportMolecules,
@@ -86,4 +87,5 @@ export const ExportCompounds = {
 	FINAL_SELECT_LANGUAGES,
 	FinalDateBirthDatePropedGeneraL,
 	FINAL_DATE_BIRTH_DATE,
+	UploaderUserAvatar,
 }

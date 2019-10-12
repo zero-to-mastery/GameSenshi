@@ -5,6 +5,7 @@ import {
 	FinalInputDate,
 } from 'componentMolecules/FinalInput'
 import { TabPaneSettingListStoreUserPropedNotification } from 'componentMolecules/TabPaneSettingList'
+import { ModalImageCropperPropedSettings } from 'componentMolecules/ModalImageCropper'
 
 export const ExportMolecules = {
 	...ExportAtoms,
@@ -12,4 +13,5 @@ export const ExportMolecules = {
 	FinalInputText,
 	FinalInputSelect,
 	FinalInputDate,
+	ModalImageCropperPropedSettings,
 }
