@@ -1,4 +1,4 @@
-import { firebaseDefaultStorage, auth } from 'firebaseInit'
+import { firebaseDefaultStorage, auth, firestore } from 'firebaseInit'
 import {
 	storeUser,
 	storeUserSetState,
@@ -10,7 +10,11 @@ import {
 } from 'state'
 
 // constants
-import { FB_STORAGE_USER_AVATAR } from 'constantValues'
+import {
+	FB_STORAGE_USER_AVATAR,
+	fbfsSettingsGeneral,
+	FB_FS_SETTINGS_GENERAL_USER_AVATAR,
+} from 'constantValues'
 
 const onCrop = dataUrl => {
 	const avatarRef = firebaseDefaultStorage.ref(
@@ -46,9 +50,10 @@ const onCrop = dataUrl => {
 				)
 			})
 			if (url) {
-				auth()
-					.currentUser.updateProfile({
-						[STORE_USER_STATE_AVATAR]: url,
+				firestore
+					.doc(fbfsSettingsGeneral(auth().currentUser))
+					.set({
+						[FB_FS_SETTINGS_GENERAL_USER_AVATAR]: url,
 					})
 					.then(() => {
 						storeProgress.close()

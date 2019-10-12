@@ -5,9 +5,10 @@ import { ExportAtoms } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
 const { ModalCommon } = stopUndefined(ExportAtoms)
-
+const emptyFunction = () => {}
 const ModalImageCropper = props => {
 	const { isOpen, src, toggle, onCrop, title, footer } = props
+	const onCrop_ = onCrop || emptyFunction
 	const cropperRef = useRef(null)
 	const { dataUrl, setDataUrl } = useState('')
 
@@ -15,12 +16,12 @@ const ModalImageCropper = props => {
 		setDataUrl(cropperRef.current.cropper.getCroppedCanvas().toDataURL())
 	}, [])
 
-	const onCrop_ = useCallback(
+	const onContinue = useCallback(
 		e => {
 			// e is normally not needed but incase some need it
-			onCrop(dataUrl, e)
+			onCrop_(dataUrl, e)
 		},
-		[onCrop, dataUrl]
+		[onCrop_, dataUrl]
 	)
 
 	return (
@@ -29,9 +30,8 @@ const ModalImageCropper = props => {
 			isOpen={isOpen}
 			toggle={toggle}
 			footer={footer}
-			onContinue={onCrop_}>
+			onContinue={onContinue}>
 			<Cropper
-				className='justify-content-center'
 				ref={cropperRef}
 				src={src}
 				style={{ height: '100%', width: '100%' }}
