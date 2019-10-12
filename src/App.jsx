@@ -25,6 +25,7 @@ import {
 } from 'state'
 //core components
 import { ExportViews } from 'componentViews'
+// import { Shader } from 'componentAtoms/Shader'
 
 const {
 	SettingsPage,
