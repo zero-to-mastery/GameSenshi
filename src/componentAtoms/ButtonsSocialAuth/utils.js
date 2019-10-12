@@ -4,7 +4,7 @@ import reactElementToJSXString from 'react-element-to-jsx-string'
 import { setLastRoute, toIndexIfPublic } from 'routes'
 import { handleSignInWithSocials } from 'api'
 // state
-import { storeAuthModalShow, storeAuthModalSetItem } from 'state'
+import { storeModalShow, storeModalSetItem } from 'state'
 
 const providers = ['Google', 'Facebook']
 
@@ -19,7 +19,7 @@ const buttonSocialAuthOnClicks = lastLocation => {
 				</>
 			)
 			const title = 'Signing You In...'
-			storeAuthModalShow(title, body, true)
+			storeModalShow(title, body, true)
 			const body2 = reactElementToJSXString(
 				<span>
 					Signing in with <b>{provider}</b>...
@@ -29,7 +29,7 @@ const buttonSocialAuthOnClicks = lastLocation => {
 				</span>
 			)
 			const title2 = 'Signing You In...'
-			storeAuthModalSetItem(title2, body2)
+			storeModalSetItem(title2, body2)
 			setLastRoute(toIndexIfPublic(lastLocation))
 			onSignIn()
 		}

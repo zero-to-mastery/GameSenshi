@@ -23,7 +23,7 @@ import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
 import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
 import { CheckBox } from 'componentAtoms/CheckBox'
 import { HeaderLined } from 'componentAtoms/HeaderLined'
-import { ModalAuthStoreAuthModal } from 'componentAtoms/ModalAuth'
+import { ModalStoreModalPropedAuth } from 'componentAtoms/ModalCommon'
 import { ButtonSubmit } from 'componentAtoms/ButtonSubmit/ButtonSubmit'
 import { TabPaneContainer } from 'componentAtoms/TabPaneContainer/TabPaneContainer'
 import { TabListVerticalPropedSettingPage } from 'componentAtoms/TabListVertical'
@@ -66,7 +66,7 @@ export const ExportAtoms = {
 	PopoverCommon,
 	CheckBox,
 	HeaderLined,
-	ModalAuthStoreAuthModal,
+	ModalStoreModalPropedAuth,
 	ButtonSubmit,
 	TabPaneContainer,
 	TabListVerticalPropedSettingPage,

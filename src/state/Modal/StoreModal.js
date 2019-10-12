@@ -5,12 +5,12 @@ import reactElementToJSXString from 'react-element-to-jsx-string'
 
 import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
-const STORE_AUTH_MODAL = 'authModal'
-const STORE_AUTH_MODAL_STATE_BODY = 'body'
-const STORE_AUTH_MODAL_STATE_OPEN = 'isOpen'
-const STORE_AUTH_MODAL_STATE_TITLE = 'title'
-const STORE_AUTH_MODAL_STATE_LOADER = 'loader'
-const STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK = 'callback'
+const STORE_MODAL = 'Modal'
+const STORE_MODAL_STATE_BODY = 'body'
+const STORE_MODAL_STATE_OPEN = 'isOpen'
+const STORE_MODAL_STATE_TITLE = 'title'
+const STORE_MODAL_STATE_LOADER = 'loader'
+const STORE_MODAL_STATE_CONTINUED_CALLBACK = 'callback'
 const SHOW = 'show'
 const CLOSE = 'close'
 const TOGGLE = 'toggle'
@@ -23,14 +23,14 @@ const PROCESS_REDIRECT_RESULT = 'processRedirectResult'
 const ON_CONTINUE = 'onSuccessfulSubmission'
 
 const defaultValues = () => ({
-	[STORE_AUTH_MODAL_STATE_BODY]: '',
-	[STORE_AUTH_MODAL_STATE_TITLE]: '',
-	[STORE_AUTH_MODAL_STATE_OPEN]: false,
-	[STORE_AUTH_MODAL_STATE_LOADER]: false,
-	[STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK]: () => {},
+	[STORE_MODAL_STATE_BODY]: '',
+	[STORE_MODAL_STATE_TITLE]: '',
+	[STORE_MODAL_STATE_OPEN]: false,
+	[STORE_MODAL_STATE_LOADER]: false,
+	[STORE_MODAL_STATE_CONTINUED_CALLBACK]: () => {},
 })
 
-class StoreAuthModal extends Container {
+class StoreModal extends Container {
 	constructor() {
 		super()
 		this[STATE] = defaultValues()
@@ -39,7 +39,7 @@ class StoreAuthModal extends Container {
 
 	[TOGGLE] = () => {
 		this.setState(state => {
-			state[STORE_AUTH_MODAL_STATE_OPEN] = !state[STORE_AUTH_MODAL_STATE_OPEN]
+			state[STORE_MODAL_STATE_OPEN] = !state[STORE_MODAL_STATE_OPEN]
 			return state
 		})
 		return this
@@ -51,32 +51,32 @@ class StoreAuthModal extends Container {
 	};
 
 	[CLOSE] = () => {
-		this.setState({ [STORE_AUTH_MODAL_STATE_OPEN]: false })
+		this.setState({ [STORE_MODAL_STATE_OPEN]: false })
 		return this
 	};
 
 	[ON_CONTINUE] = () => {
-		this[STATE][STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK]()
+		this[STATE][STORE_MODAL_STATE_CONTINUED_CALLBACK]()
 		this[RESET_STATE]()
 		return
 	};
 
 	[GET_ITEM] = () => {
-		return JSON.parse(sessionStorage.getItem(STORE_AUTH_MODAL))
+		return JSON.parse(sessionStorage.getItem(STORE_MODAL))
 	};
 
 	[REMOVE_ITEM] = () => {
-		sessionStorage.removeItem(STORE_AUTH_MODAL)
+		sessionStorage.removeItem(STORE_MODAL)
 		return this
 	};
 
 	[SET_ITEM] = (title = '', body = '', restProps = {}) => {
 		sessionStorage.setItem(
-			STORE_AUTH_MODAL,
+			STORE_MODAL,
 			JSON.stringify({
 				...restProps,
-				[STORE_AUTH_MODAL_STATE_BODY]: body,
-				[STORE_AUTH_MODAL_STATE_TITLE]: title,
+				[STORE_MODAL_STATE_BODY]: body,
+				[STORE_MODAL_STATE_TITLE]: title,
 			})
 		)
 		return this
@@ -89,11 +89,11 @@ class StoreAuthModal extends Container {
 		afterContinueCallback = () => {}
 	) => {
 		this.setState({
-			[STORE_AUTH_MODAL_STATE_OPEN]: true,
-			[STORE_AUTH_MODAL_STATE_BODY]: body,
-			[STORE_AUTH_MODAL_STATE_TITLE]: title,
-			[STORE_AUTH_MODAL_STATE_LOADER]: loader,
-			[STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK]: afterContinueCallback,
+			[STORE_MODAL_STATE_OPEN]: true,
+			[STORE_MODAL_STATE_BODY]: body,
+			[STORE_MODAL_STATE_TITLE]: title,
+			[STORE_MODAL_STATE_LOADER]: loader,
+			[STORE_MODAL_STATE_CONTINUED_CALLBACK]: afterContinueCallback,
 		})
 		return this
 	};
@@ -102,14 +102,14 @@ class StoreAuthModal extends Container {
 		const item = this[GET_ITEM]()
 		if (item) {
 			this.setState({
-				[STORE_AUTH_MODAL_STATE_BODY]: (
-					<Interweave content={item[STORE_AUTH_MODAL_STATE_BODY]} />
+				[STORE_MODAL_STATE_BODY]: (
+					<Interweave content={item[STORE_MODAL_STATE_BODY]} />
 				),
-				[STORE_AUTH_MODAL_STATE_OPEN]: true,
-				[STORE_AUTH_MODAL_STATE_TITLE]: (
-					<Interweave content={item[STORE_AUTH_MODAL_STATE_TITLE]} />
+				[STORE_MODAL_STATE_OPEN]: true,
+				[STORE_MODAL_STATE_TITLE]: (
+					<Interweave content={item[STORE_MODAL_STATE_TITLE]} />
 				),
-				[STORE_AUTH_MODAL_STATE_LOADER]: true,
+				[STORE_MODAL_STATE_LOADER]: true,
 			})
 		}
 		return this
@@ -117,7 +117,7 @@ class StoreAuthModal extends Container {
 
 	[ON_AUTH_STATE_CHANGE] = () => {
 		const item = this[GET_ITEM]()
-		!item && this.setState({ [STORE_AUTH_MODAL_STATE_OPEN]: false })
+		!item && this.setState({ [STORE_MODAL_STATE_OPEN]: false })
 		return this
 	};
 
@@ -161,12 +161,12 @@ class StoreAuthModal extends Container {
 }
 
 export {
-	StoreAuthModal,
-	STORE_AUTH_MODAL_STATE_BODY,
-	STORE_AUTH_MODAL_STATE_OPEN,
-	STORE_AUTH_MODAL_STATE_TITLE,
-	STORE_AUTH_MODAL_STATE_LOADER,
-	STORE_AUTH_MODAL_STATE_CONTINUED_CALLBACK,
+	StoreModal,
+	STORE_MODAL_STATE_BODY,
+	STORE_MODAL_STATE_OPEN,
+	STORE_MODAL_STATE_TITLE,
+	STORE_MODAL_STATE_LOADER,
+	STORE_MODAL_STATE_CONTINUED_CALLBACK,
 	SHOW,
 	CLOSE,
 	TOGGLE,

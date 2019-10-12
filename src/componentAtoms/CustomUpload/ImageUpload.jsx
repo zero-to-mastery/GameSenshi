@@ -11,7 +11,7 @@ import {
 } from 'state'
 // component
 import { Button } from 'reactstrap'
-import { ImageCropper } from 'componentAtoms/Modals'
+import { ModalImageCropper } from 'componentAtoms/ModalImageCropper'
 // constants
 import { FIREBASE_STORAGE_USER_AVATAR } from 'constantValues'
 // image
@@ -106,7 +106,7 @@ const ImageUpload = props => {
 				return (
 					<div className='fileinput text-center'>
 						<input type='file' onChange={handleImageChange} ref={fileInput} />
-						<ImageCropper
+						<ModalImageCropper
 							src={readerResult}
 							isOpen={isOpen}
 							setIsOpen={setIsOpen}

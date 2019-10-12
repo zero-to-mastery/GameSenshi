@@ -2,9 +2,9 @@ import React from 'react'
 // states
 import {
 	storeAlertShow,
-	storeAuthModalRemoveItem,
-	storeAuthModalProcessRedirectResult,
-	storeAuthModalShow,
+	storeModalRemoveItem,
+	storeModalProcessRedirectResult,
+	storeModalShow,
 } from 'state'
 
 import { handleDifferentCredential } from 'firebaseInit/handleDifferentCredential'
@@ -30,18 +30,18 @@ const getRedirectResult = (promise, auth) =>
 				const linkWithRedirect = provider2 => {
 					user.linkWithRedirect(new auth[provider2]())
 				}
-				storeAuthModalProcessRedirectResult(showAlert, linkWithRedirect)
+				storeModalProcessRedirectResult(showAlert, linkWithRedirect)
 			}
 		})
 		.catch(err => {
 			// remove this item whether it is success or not
-			storeAuthModalRemoveItem()
+			storeModalRemoveItem()
 			const { code, credential, email } = err
 			if (code === 'auth/account-exists-with-different-credential') {
 				handleDifferentCredential(auth, email, credential)
 			} else {
 				const body = simplerErrorMessage(false, UNEXPECTED_ERROR_CODE_6, err)
-				storeAuthModalShow('Error', body, false)
+				storeModalShow('Error', body, false)
 			}
 		})
 

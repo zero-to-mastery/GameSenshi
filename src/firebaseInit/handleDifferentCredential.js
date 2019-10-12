@@ -4,9 +4,9 @@ import reactElementToJSXString from 'react-element-to-jsx-string'
 import {
 	storeAlertShow,
 	storeSignInShow,
-	storeAuthModalShow,
-	storeAuthModalClose,
-	storeAuthModalSetItem,
+	storeModalShow,
+	storeModalClose,
+	storeModalSetItem,
 } from 'state'
 
 const handleDifferentCredential = (auth, email, credential) => {
@@ -39,7 +39,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 			const name2 =
 				provider2 === 'password' ? email : getName(credential.signInMethod)
 			// close modal if any
-			await storeAuthModalClose()
+			await storeModalClose()
 			setTimeout(() => {
 				const body = (
 					<>
@@ -55,8 +55,8 @@ const handleDifferentCredential = (auth, email, credential) => {
 				)
 
 				const title = 'Linking Your Social Login'
-				storeAuthModalShow(title, body, false, async () => {
-					await storeAuthModalClose()
+				storeModalShow(title, body, false, async () => {
+					await storeModalClose()
 					if (provider1 === 'password') {
 						storeSignInShow(email, async () => {
 							const body = (
@@ -68,11 +68,11 @@ const handleDifferentCredential = (auth, email, credential) => {
 								</>
 							)
 							const title = 'Linking Your Social Login'
-							await storeAuthModalShow(title, body, true)
+							await storeModalShow(title, body, true)
 							auth()
 								.currentUser.linkWithCredential(credential)
 								.then(async () => {
-									await storeAuthModalClose()
+									await storeModalClose()
 									storeAlertShow(
 										'Social login linked successful!',
 										'success',
@@ -80,7 +80,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 									)
 								})
 								.catch(async () => {
-									await storeAuthModalClose()
+									await storeModalClose()
 									storeAlertShow(
 										'Social login linked unsuccessful!',
 										'danger',
@@ -108,7 +108,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 							name2,
 							isLinked: false,
 						}
-						storeAuthModalSetItem(title, body, restProps)
+						storeModalSetItem(title, body, restProps)
 						auth().signInWithRedirect(new auth[provider1]())
 					}
 				})

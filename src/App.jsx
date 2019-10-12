@@ -35,7 +35,7 @@ const {
 	PasswordResetPage,
 	Error404Page,
 	FormSignInPropedDefaultStoreSignIn,
-	ModalAuthStoreAuthModal,
+	ModalStoreModalPropedAuth,
 	NavbarIndexStoreAlert,
 	AlertCommonStoreAlert,
 } = stopUndefined(ExportViews)
@@ -81,7 +81,7 @@ const App = () => {
 									<AlertCommonStoreAlert />
 								</NavbarIndexStoreAlert>
 								<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
-								<ModalAuthStoreAuthModal />
+								<ModalStoreModalPropedAuth />
 							</Router>
 						)
 					}}
