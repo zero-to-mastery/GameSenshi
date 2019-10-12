@@ -1,5 +1,4 @@
-import React, { useState, useRef } from 'react'
-import { firebaseDefaultStorage, auth } from 'firebaseInit'
+import React, { useRef } from 'react'
 import Cropper from 'react-cropper'
 import 'cropperjs/dist/cropper.css'
 // components
@@ -7,8 +6,8 @@ import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
 // state management
 import { storeUser, STORE_USER_STATE_AVATAR_URL } from 'state'
 
-const ImageCropper = props => {
-	const { isOpen, src, setIsOpen } = props
+const ModalImageCropper = props => {
+	const { isOpen, src, setIsOpen, toggle } = props
 	const cropperRef = useRef(null)
 
 	const onCropping = () => {
@@ -17,29 +16,28 @@ const ImageCropper = props => {
 		setIsOpen(false)
 	}
 	return (
-		<Modal isOpen={isOpen}>
+		<Modal
+			isOpen={isOpen}
+			toggle={toggle}
+			backdrop='static'
+			modalClassName='modal-black '>
 			<ModalBody>
 				<Cropper
+					className='justify-content-center'
 					ref={cropperRef}
 					src={src}
-					style={{ height: 300, width: 400 }}
+					style={{ height: '100%', width: '100%' }}
 					// Cropper.js options
-					aspectRatio={16 / 9}
-					autoCropArea={0}
-					strict={false}
-					highlight={false}
-					cropBoxMovable={false}
-					cropBoxResizable={false}
-					guides={false}
+					aspectRatio={1}
 				/>
 			</ModalBody>
 			<ModalFooter>
 				<Button color='success' onClick={() => onCropping()}>
 					Set new profile picture
-				</Button>{' '}
+				</Button>
 			</ModalFooter>
 		</Modal>
 	)
 }
 
-export { ImageCropper }
+export { ModalImageCropper }
