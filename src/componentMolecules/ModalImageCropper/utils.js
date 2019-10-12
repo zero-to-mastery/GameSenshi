@@ -1,36 +1,30 @@
 import { firebaseDefaultStorage, auth, firestore } from 'firebaseInit'
 import {
-	storeUser,
 	storeUserSetState,
 	storeAlertShow,
 	storeProgress,
-	STATE,
-	STORE_USER_STATE_UID,
 	STORE_USER_STATE_AVATAR,
 } from 'state'
-
-// constants
 import {
 	FB_STORAGE_USER_AVATAR,
 	fbfsSettingsGeneral,
 	FB_FS_SETTINGS_GENERAL_USER_AVATAR,
 } from 'constantValues'
 
-const onCrop = dataUrl => {
+const onCrop = (dataUrl, toggle) => {
+	const uid = auth().currentUser.uid
+
 	const avatarRef = firebaseDefaultStorage.ref(
-		`${FB_STORAGE_USER_AVATAR}/${storeUser[STATE][STORE_USER_STATE_UID]}.jpg`
+		`${FB_STORAGE_USER_AVATAR}/${uid}.jpg`
 	)
-	const task = avatarRef.put(dataUrl)
+	const task = avatarRef.putString(dataUrl, 'data_url')
 
 	task.on(
 		'state_changed',
 		snapshot => {
 			const { bytesTransferred, totalBytes } = snapshot
-			const percentage = (bytesTransferred / totalBytes) * 100
-			storeProgress.show(
-				Math.max(percentage, Math.floor(10 + Math.random() * 10)),
-				'primary'
-			)
+			const percentage = Math.floor((bytesTransferred / totalBytes) * 100)
+			storeProgress.show(percentage)
 		},
 		err => {
 			console.log(err)
@@ -41,6 +35,7 @@ const onCrop = dataUrl => {
 			)
 		},
 		async () => {
+			toggle()
 			storeUserSetState({ [STORE_USER_STATE_AVATAR]: dataUrl })
 			const url = await avatarRef.getDownloadURL().catch(() => {
 				storeAlertShow(
@@ -58,7 +53,7 @@ const onCrop = dataUrl => {
 					.then(() => {
 						storeProgress.close()
 						storeAlertShow(
-							'Imaged updated, It may take a few moments to update across the site.',
+							'Profile picture updated, It may take a few moments to update across the site.',
 							'success',
 							'tim-icons icon-bell-55'
 						)
@@ -67,7 +62,7 @@ const onCrop = dataUrl => {
 						console.log(err)
 						storeProgress.close()
 						storeAlertShow(
-							'Something went wrong, unable to update profile',
+							'Something went wrong, unable to update profile picture',
 							'danger',
 							'tim-icons icon-alert-circle-exc'
 						)

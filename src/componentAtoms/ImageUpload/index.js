@@ -5,6 +5,7 @@ import {
 	IMAGE_UPLOAD_ON_ERROR,
 	IMAGE_UPLOAD_ON_REMOVE,
 } from 'componentAtoms/ImageUpload/ImageUpload'
+import { onRemove } from 'componentAtoms/ImageUpload/utils'
 import defaultAvatar from 'assets/img/placeholder.jpg'
 import {
 	StateContainer,
@@ -19,7 +20,10 @@ const mapStoreUserStateToProps = {
 
 const mapStoreUserMethodToProps = {
 	[IMAGE_UPLOAD_ON_ERROR]: storeUserResetAvatar,
-	[IMAGE_UPLOAD_ON_REMOVE]: storeUserResetAvatar,
+	[IMAGE_UPLOAD_ON_REMOVE]: () => {
+		storeUserResetAvatar()
+		onRemove()
+	},
 }
 
 const AvatarUserStoreUser = StateContainer(

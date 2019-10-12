@@ -103,6 +103,8 @@ class StoreUser extends Container {
 				[STORE_USER_STATE_DISPLAY_NAME]: '',
 				[STORE_USER_STATE_AVATAR]: defaultAvatar,
 			}
+			userData_[STORE_USER_STATE_AVATAR] =
+				userData_[STORE_USER_STATE_AVATAR] || defaultAvatar
 			const publicInfo = {
 				[STORE_USER_STATE_DISPLAY_NAME]:
 					userData_[STORE_USER_STATE_DISPLAY_NAME],

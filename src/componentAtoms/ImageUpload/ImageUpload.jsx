@@ -48,6 +48,7 @@ const ImageUpload = props => {
 
 	const handleRemove = useCallback(() => {
 		fileInput.current.value = null
+
 		onRemove_()
 	}, [onRemove_])
 
