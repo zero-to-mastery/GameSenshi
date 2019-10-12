@@ -18,12 +18,15 @@ import {
 	ButtonSignUpStoreUserPropedIndexNavbar,
 } from 'componentAtoms/ButtonSignInUp'
 import ErrorBoundary from 'componentAtoms/ErrorBoundary/ErrorBoundary'
-import ImageUpload from 'componentAtoms/CustomUpload/ImageUpload'
+import { AvatarUserStoreUserPropedSettings } from 'componentAtoms/ImageUpload'
 import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
 import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
 import { CheckBox } from 'componentAtoms/CheckBox'
 import { HeaderLined } from 'componentAtoms/HeaderLined'
-import { ModalStoreModalPropedAuth } from 'componentAtoms/ModalCommon'
+import {
+	ModalStoreModalPropedAuth,
+	ModalCommon,
+} from 'componentAtoms/ModalCommon'
 import { ButtonSubmit } from 'componentAtoms/ButtonSubmit/ButtonSubmit'
 import { TabPaneContainer } from 'componentAtoms/TabPaneContainer/TabPaneContainer'
 import { TabListVerticalPropedSettingPage } from 'componentAtoms/TabListVertical'
@@ -50,7 +53,7 @@ export const ExportAtoms = {
 	FinalForm,
 	IndexHeader,
 	ErrorBoundary,
-	ImageUpload,
+	AvatarUserStoreUserPropedSettings,
 	AlertCommonStoreAlert,
 	ProgressCommonStoreProgress,
 	ButtonsSocialAuthPropedDefault,
@@ -67,6 +70,7 @@ export const ExportAtoms = {
 	CheckBox,
 	HeaderLined,
 	ModalStoreModalPropedAuth,
+	ModalCommon,
 	ButtonSubmit,
 	TabPaneContainer,
 	TabListVerticalPropedSettingPage,

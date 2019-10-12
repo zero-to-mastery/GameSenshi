@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { stopUndefined } from 'utils'
-// reactstrap components
 import { Container, Row, Col } from 'reactstrap'
-// route
 import {
 	ROUTE_PAGE_SETTINGS_PAYMENT,
 	ROUTE_PAGE_SETTINGS_ACCOUNT,
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
 } from 'routes'
-// core components
+import { stopUndefined } from 'utils'
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
 const {
@@ -17,13 +14,12 @@ const {
 	TabPanePaymentSettings,
 	TabPaneAccountSettings,
 	TabPaneSettingListStoreUserPropedNotification,
-	ImageUpload,
 	TabListVerticalPropedSettingPage,
+	UploaderUserAvatar,
 } = stopUndefined(ExportMultiOrganisms)
 
 const SettingsPage = props => {
 	const [TabPane, setTabPane] = useState(() => TabPaneGeneralSettings)
-
 	const wrapper = useRef(null)
 
 	const {
@@ -65,7 +61,7 @@ const SettingsPage = props => {
 							<div className='section'>
 								{/* User Information */}
 								<section className='text-center'>
-									<ImageUpload avatar addBtnColor='default' />
+									<UploaderUserAvatar />
 								</section>
 								{/* User Information */}
 								{/* Profile Sidebar */}
