@@ -1,6 +1,6 @@
 import React from 'react'
-import { ModalImageCropper } from 'componentAtoms/ModalImageCropper/ModalImageCropper'
-import { onCrop } from 'componentAtoms/ModalImageCropper/utils'
+import { ModalImageCropper } from 'componentMolecules/ModalImageCropper/ModalImageCropper'
+import { onCrop } from 'componentMolecules/ModalImageCropper/utils'
 
 const ModalImageCropperPropedSettings = props => {
 	return (
