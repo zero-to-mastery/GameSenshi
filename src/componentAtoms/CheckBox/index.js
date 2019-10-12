@@ -1,3 +1,3 @@
-import { CheckBox } from 'componentAtoms/CheckBox/CheckBox.jsx'
+import { CheckBox } from 'componentAtoms/CheckBox/CheckBox'
 
 export { CheckBox }
