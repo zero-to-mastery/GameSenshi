@@ -5,6 +5,7 @@ import {
 	storeModalRemoveItem,
 	storeModalProcessRedirectResult,
 	storeModalShow,
+	storeUserSetSigningIn,
 } from 'state'
 
 import { handleDifferentCredential } from 'firebaseInit/handleDifferentCredential'
@@ -16,6 +17,7 @@ const getRedirectResult = (promise, auth) =>
 		.then(result => {
 			const { user } = result
 			if (user) {
+				storeUserSetSigningIn(true)
 				// need this condition because this part run when webpage start
 				// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 				const showAlert = name2 => {
