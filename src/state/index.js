@@ -1,6 +1,6 @@
 import { Subscribe, Provider } from 'unstated'
 import { STATE, RESET_STATE } from 'state/constants'
-import { StateContainer } from 'state/StateContainer'
+import { StateContainer } from './StateContainer'
 
 import {
 	storeAlert,
@@ -12,7 +12,7 @@ import {
 	STORE_ALERT_STATE_OPEN,
 	STORE_ALERT_STATE_COLOR,
 	STORE_ALERT_STATE_ICON,
-} from 'state/Alert'
+} from './Alert'
 
 import {
 	storeModal,
@@ -33,7 +33,7 @@ import {
 	STORE_MODAL_STATE_LOADER,
 	STORE_MODAL_STATE_OPEN,
 	STORE_MODAL_STATE_CONTINUED_CALLBACK,
-} from 'state/Modal'
+} from './Modal'
 
 import {
 	storeSignIn,
@@ -46,7 +46,7 @@ import {
 	STORE_SIGN_IN_STATE_EMAIL,
 	STORE_SIGN_IN_STATE_OPEN,
 	STORE_SIGN_IN_STATE_SUBMITTED_CALLBACK,
-} from 'state/SignIn'
+} from './SignIn'
 
 import {
 	storeProgress,
@@ -57,7 +57,7 @@ import {
 	STORE_PROGRESS_STATE_VALUE,
 	STORE_PROGRESS_STATE_COLOR,
 	STORE_PROGRESS_STATE_OPEN,
-} from 'state/Progress'
+} from './Progress'
 
 import {
 	storeUser,
@@ -81,7 +81,7 @@ import {
 	STORE_USER_STATE_PROVIDER_DATA,
 	STORE_USER_STATE_EMAIL_VERIFIED,
 	STORE_USER_STATE_SIGNING_IN,
-} from 'state/User'
+} from './User'
 
 export {
 	STATE,

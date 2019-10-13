@@ -20,7 +20,7 @@ import {
 	RESET_AVATAR,
 	ON_SIGN_IN,
 	ON_SIGN_OUT,
-} from 'state/User/StoreUser'
+} from './StoreUser'
 
 const storeUser = new StoreUser()
 const storeUserSetState = storeUser[SET_STATE]

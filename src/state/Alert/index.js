@@ -8,7 +8,7 @@ import {
 	TOGGLE,
 	SET_STATE,
 	RESET_STATE,
-} from 'state/Alert/StoreAlert'
+} from './StoreAlert'
 
 const storeAlert = new StoreAlert()
 const storeAlertShow = storeAlert[SHOW]

@@ -9,7 +9,7 @@ import {
 	ON_SUCCESSFUL_SUBMISSION,
 	SET_STATE,
 	RESET_STATE,
-} from 'state/SignIn/StoreSignIn'
+} from './StoreSignIn'
 
 const storeSignIn = new StoreSignIn()
 const storeSignInShow = storeSignIn[SHOW]

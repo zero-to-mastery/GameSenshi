@@ -7,7 +7,7 @@ import {
 	CLOSE,
 	SET_STATE,
 	RESET_STATE,
-} from 'state/Progress/StoreProgress'
+} from './StoreProgress'
 
 const storeProgress = new StoreProgress()
 const storeProgressShow = storeProgress[SHOW]

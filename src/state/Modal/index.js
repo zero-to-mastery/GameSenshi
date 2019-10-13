@@ -17,7 +17,7 @@ import {
 	ON_CONTINUE,
 	SET_STATE,
 	RESET_STATE,
-} from 'state/Modal/StoreModal'
+} from './StoreModal'
 
 const storeModal = new StoreModal()
 const storeModalShow = storeModal[SHOW]
