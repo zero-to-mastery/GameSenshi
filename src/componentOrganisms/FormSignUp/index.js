@@ -4,7 +4,7 @@ import {
 	FINAL_TEXT_EMAIL,
 	FINAL_TEXT_PASSWORD,
 	FINAL_TEXT_NAME,
-} from 'componentOrganisms/FormSignUp/FormSignUp'
+} from './FormSignUp'
 // routing
 import { withLastLocation, ROUTE_PAGE_SIGN_IN } from 'routes'
 // api
@@ -14,7 +14,7 @@ import {
 	API_SIGN_UP_PASSWORD,
 } from 'api'
 // utils
-import { onSuccessfulSignUp } from 'componentOrganisms/FormSignUp/utils'
+import { onSuccessfulSignUp } from './utils'
 import { FB_FS_SETTINGS_GENERAL_DISPLAY_NAME } from 'constantValues'
 
 const FormSignUpPropedDefault = withLastLocation(props => {

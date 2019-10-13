@@ -14,7 +14,7 @@ import {
 	SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION,
 	FINAL_TEXT_EMAIL,
 	FINAL_TEXT_PASSWORD,
-} from 'componentOrganisms/FormSignIn/FormSignIn'
+} from './FormSignIn'
 // store
 import {
 	storeSignIn,

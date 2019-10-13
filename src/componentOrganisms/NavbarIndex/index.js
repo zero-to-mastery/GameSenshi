@@ -1,7 +1,4 @@
-import {
-	NavbarIndex,
-	NAVBAR_INDEX_HEIGHT_CHANGED,
-} from 'componentOrganisms/NavbarIndex/NavbarIndex'
+import { NavbarIndex, NAVBAR_INDEX_HEIGHT_CHANGED } from './NavbarIndex'
 import { StateContainer, storeAlert, STORE_ALERT_STATE_OPEN } from 'state'
 
 const mapStoreAlertStateToProp = {

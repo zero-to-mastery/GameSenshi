@@ -1,3 +1,3 @@
-import { TabPaneGeneralSettings } from 'componentOrganisms/TabPaneGeneralSettings/TabPaneGeneralSettings'
+import { TabPaneGeneralSettings } from './TabPaneGeneralSettings'
 
 export { TabPaneGeneralSettings }

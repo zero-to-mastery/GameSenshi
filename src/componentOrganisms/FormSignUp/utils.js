@@ -1,10 +1,7 @@
 import React from 'react'
 // state management
 import { storeAlertShow } from 'state'
-import {
-	FINAL_TEXT_EMAIL,
-	FINAL_TEXT_NAME,
-} from 'componentOrganisms/FormSignUp/FormSignUp'
+import { FINAL_TEXT_EMAIL, FINAL_TEXT_NAME } from './FormSignUp'
 
 const onSuccessfulSignUp = values => {
 	const { [FINAL_TEXT_EMAIL]: email, [FINAL_TEXT_NAME]: username } = values

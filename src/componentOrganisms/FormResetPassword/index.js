@@ -1,8 +1,5 @@
 import React, { useCallback } from 'react'
-import {
-	FormResetPassword,
-	FINAL_TEXT_EMAIL,
-} from 'componentOrganisms/FormResetPassword/FormResetPassword'
+import { FormResetPassword, FINAL_TEXT_EMAIL } from './FormResetPassword'
 // api
 import { handlePasswordReset } from 'api'
 // route

@@ -1,3 +1,3 @@
-import { TabPaneAccountSettings } from 'componentOrganisms/TabPaneAccountSettings/TabPaneAccountSettings'
+import { TabPaneAccountSettings } from './TabPaneAccountSettings'
 
 export { TabPaneAccountSettings }
