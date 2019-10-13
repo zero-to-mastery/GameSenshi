@@ -1,5 +1,4 @@
-// ! anti pattern import
-import { history } from './constants'
+import { history } from 'routes/constants'
 
 const LAST_ROUTE = 'lastRoute'
 const LAST_ROUTE_REAL = 'lastRouteReal'

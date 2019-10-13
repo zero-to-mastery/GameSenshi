@@ -8,7 +8,6 @@ import {
 	LIST_NAV_ITEM_ON_CLICK,
 } from './ListNavItem'
 
-// ! anti pattern import
 import { AvatarUserStoreUser } from 'componentAtoms/AvatarUser'
 import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from 'state'
 

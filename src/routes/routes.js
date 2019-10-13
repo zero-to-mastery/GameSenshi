@@ -1,4 +1,3 @@
-// ! anti pattern import
 import {
 	ROUTE_TO,
 	ROUTE_FROM,
@@ -16,7 +15,7 @@ import {
 	ROUTE_PAGE_SETTINGS_GENERAL,
 	ROUTE_PAGE_PASSWORD_RESET,
 	history,
-} from './constants'
+} from 'routes/constants'
 
 const routes = [
 	{
