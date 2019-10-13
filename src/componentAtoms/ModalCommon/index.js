@@ -46,7 +46,7 @@ const ModalCommonStoreModalPropedAuth = props => {
 
 const ModalCommonStoreModalPropedImageCropper = props => {
 	return (
-		<ModalCommonStoreModalPropedImageCropper
+		<ModalCommonStoreModal
 			title='Set New Profile Picture'
 			footer='Crop and Update Profile Image'
 			{...props}
