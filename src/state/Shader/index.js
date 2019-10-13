@@ -1,6 +1,6 @@
 import {
 	StoreShader,
-	STORE_SHADER_STATE_OPEN,
+	STORE_SHADER_STATE_IS_OPEN,
 	SHOW,
 	CLOSE,
 	SET_STATE,
@@ -19,5 +19,5 @@ export {
 	storeShaderClose,
 	storeShaderSetState,
 	storeShaderResetState,
-	STORE_SHADER_STATE_OPEN,
+	STORE_SHADER_STATE_IS_OPEN,
 }

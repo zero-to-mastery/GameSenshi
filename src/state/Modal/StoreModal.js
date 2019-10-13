@@ -7,7 +7,7 @@ import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
 const STORE_MODAL = 'Modal'
 const STORE_MODAL_STATE_BODY = 'body'
-const STORE_MODAL_STATE_OPEN = 'isOpen'
+const STORE_MODAL_STATE_IS_OPEN = 'isOpen'
 const STORE_MODAL_STATE_TITLE = 'title'
 const STORE_MODAL_STATE_LOADER = 'loader'
 const STORE_MODAL_STATE_CONTINUED_CALLBACK = 'callback'
@@ -25,7 +25,7 @@ const ON_CONTINUE = 'onSuccessfulSubmission'
 const defaultValues = () => ({
 	[STORE_MODAL_STATE_BODY]: '',
 	[STORE_MODAL_STATE_TITLE]: '',
-	[STORE_MODAL_STATE_OPEN]: false,
+	[STORE_MODAL_STATE_IS_OPEN]: false,
 	[STORE_MODAL_STATE_LOADER]: false,
 	[STORE_MODAL_STATE_CONTINUED_CALLBACK]: () => {},
 })
@@ -39,7 +39,7 @@ class StoreModal extends Container {
 
 	[TOGGLE] = () => {
 		this.setState(state => {
-			state[STORE_MODAL_STATE_OPEN] = !state[STORE_MODAL_STATE_OPEN]
+			state[STORE_MODAL_STATE_IS_OPEN] = !state[STORE_MODAL_STATE_IS_OPEN]
 			return state
 		})
 		return this
@@ -51,7 +51,7 @@ class StoreModal extends Container {
 	};
 
 	[CLOSE] = () => {
-		this.setState({ [STORE_MODAL_STATE_OPEN]: false })
+		this.setState({ [STORE_MODAL_STATE_IS_OPEN]: false })
 		return this
 	};
 
@@ -89,7 +89,7 @@ class StoreModal extends Container {
 		afterContinueCallback = () => {}
 	) => {
 		this.setState({
-			[STORE_MODAL_STATE_OPEN]: true,
+			[STORE_MODAL_STATE_IS_OPEN]: true,
 			[STORE_MODAL_STATE_BODY]: body,
 			[STORE_MODAL_STATE_TITLE]: title,
 			[STORE_MODAL_STATE_LOADER]: loader,
@@ -105,7 +105,7 @@ class StoreModal extends Container {
 				[STORE_MODAL_STATE_BODY]: (
 					<Interweave content={item[STORE_MODAL_STATE_BODY]} />
 				),
-				[STORE_MODAL_STATE_OPEN]: true,
+				[STORE_MODAL_STATE_IS_OPEN]: true,
 				[STORE_MODAL_STATE_TITLE]: (
 					<Interweave content={item[STORE_MODAL_STATE_TITLE]} />
 				),
@@ -117,7 +117,7 @@ class StoreModal extends Container {
 
 	[ON_AUTH_STATE_CHANGE] = () => {
 		const item = this[GET_ITEM]()
-		!item && this.setState({ [STORE_MODAL_STATE_OPEN]: false })
+		!item && this.setState({ [STORE_MODAL_STATE_IS_OPEN]: false })
 		return this
 	};
 
@@ -163,7 +163,7 @@ class StoreModal extends Container {
 export {
 	StoreModal,
 	STORE_MODAL_STATE_BODY,
-	STORE_MODAL_STATE_OPEN,
+	STORE_MODAL_STATE_IS_OPEN,
 	STORE_MODAL_STATE_TITLE,
 	STORE_MODAL_STATE_LOADER,
 	STORE_MODAL_STATE_CONTINUED_CALLBACK,

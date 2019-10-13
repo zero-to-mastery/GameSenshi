@@ -9,7 +9,7 @@ import {
 	storeAlertSetState,
 	storeAlertResetState,
 	STORE_ALERT_STATE_BODY,
-	STORE_ALERT_STATE_OPEN,
+	STORE_ALERT_STATE_IS_OPEN,
 	STORE_ALERT_STATE_COLOR,
 	STORE_ALERT_STATE_ICON,
 } from './Alert'
@@ -31,7 +31,7 @@ import {
 	STORE_MODAL_STATE_BODY,
 	STORE_MODAL_STATE_TITLE,
 	STORE_MODAL_STATE_LOADER,
-	STORE_MODAL_STATE_OPEN,
+	STORE_MODAL_STATE_IS_OPEN,
 	STORE_MODAL_STATE_CONTINUED_CALLBACK,
 } from './Modal'
 
@@ -44,7 +44,7 @@ import {
 	storeSignInResetState,
 	storeSignInOnSuccessfulSubmission,
 	STORE_SIGN_IN_STATE_EMAIL,
-	STORE_SIGN_IN_STATE_OPEN,
+	STORE_SIGN_IN_STATE_IS_OPEN,
 	STORE_SIGN_IN_STATE_SUBMITTED_CALLBACK,
 } from './SignIn'
 
@@ -56,7 +56,7 @@ import {
 	storeProgressResetState,
 	STORE_PROGRESS_STATE_VALUE,
 	STORE_PROGRESS_STATE_COLOR,
-	STORE_PROGRESS_STATE_OPEN,
+	STORE_PROGRESS_STATE_IS_OPEN,
 } from './Progress'
 
 import {
@@ -89,7 +89,7 @@ import {
 	storeShaderClose,
 	storeShaderSetState,
 	storeShaderResetState,
-	STORE_SHADER_STATE_OPEN,
+	STORE_SHADER_STATE_IS_OPEN,
 } from './Shader'
 
 export {
@@ -125,7 +125,7 @@ export {
 	storeAlertSetState,
 	storeAlertResetState,
 	STORE_ALERT_STATE_BODY,
-	STORE_ALERT_STATE_OPEN,
+	STORE_ALERT_STATE_IS_OPEN,
 	STORE_ALERT_STATE_COLOR,
 	STORE_ALERT_STATE_ICON,
 	storeProgress,
@@ -135,7 +135,7 @@ export {
 	storeProgressResetState,
 	STORE_PROGRESS_STATE_VALUE,
 	STORE_PROGRESS_STATE_COLOR,
-	STORE_PROGRESS_STATE_OPEN,
+	STORE_PROGRESS_STATE_IS_OPEN,
 	storeSignIn,
 	storeSignInShow,
 	storeSignInClose,
@@ -144,7 +144,7 @@ export {
 	storeSignInResetState,
 	storeSignInOnSuccessfulSubmission,
 	STORE_SIGN_IN_STATE_EMAIL,
-	STORE_SIGN_IN_STATE_OPEN,
+	STORE_SIGN_IN_STATE_IS_OPEN,
 	STORE_SIGN_IN_STATE_SUBMITTED_CALLBACK,
 	storeModal,
 	storeModalShow,
@@ -162,12 +162,12 @@ export {
 	STORE_MODAL_STATE_BODY,
 	STORE_MODAL_STATE_TITLE,
 	STORE_MODAL_STATE_LOADER,
-	STORE_MODAL_STATE_OPEN,
+	STORE_MODAL_STATE_IS_OPEN,
 	STORE_MODAL_STATE_CONTINUED_CALLBACK,
 	storeShader,
 	storeShaderShow,
 	storeShaderClose,
 	storeShaderSetState,
 	storeShaderResetState,
-	STORE_SHADER_STATE_OPEN,
+	STORE_SHADER_STATE_IS_OPEN,
 }

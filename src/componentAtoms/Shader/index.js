@@ -1,8 +1,8 @@
-import { Shader, SHADE_STATE_OPEN } from './Shader'
-import { storeShader, StateContainer, STORE_SHADER_STATE_OPEN } from 'state'
+import { Shader, SHADE_STATE_IS_OPEN } from './Shader'
+import { storeShader, StateContainer, STORE_SHADER_STATE_IS_OPEN } from 'state'
 
 const mapStoreShadeStateToProps = {
-	[SHADE_STATE_OPEN]: STORE_SHADER_STATE_OPEN,
+	[SHADE_STATE_IS_OPEN]: STORE_SHADER_STATE_IS_OPEN,
 }
 
 const ShaderStoreShader = StateContainer(

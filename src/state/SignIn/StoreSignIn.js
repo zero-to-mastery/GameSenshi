@@ -2,7 +2,7 @@ import { Container } from 'unstated'
 import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
 const STORE_SIGN_IN_STATE_EMAIL = 'email'
-const STORE_SIGN_IN_STATE_OPEN = 'isOpen'
+const STORE_SIGN_IN_STATE_IS_OPEN = 'isOpen'
 const STORE_SIGN_IN_STATE_SUBMITTED_CALLBACK = 'callback'
 
 const ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
@@ -12,7 +12,7 @@ const TOGGLE = 'toggle'
 
 const defaultValues = () => ({
 	[STORE_SIGN_IN_STATE_EMAIL]: '',
-	[STORE_SIGN_IN_STATE_OPEN]: false,
+	[STORE_SIGN_IN_STATE_IS_OPEN]: false,
 	[STORE_SIGN_IN_STATE_SUBMITTED_CALLBACK]: () => {},
 })
 
@@ -31,20 +31,20 @@ class StoreSignIn extends Container {
 	[SHOW] = (email, afterSubmitCallback = () => {}) => {
 		this.setState({
 			[STORE_SIGN_IN_STATE_EMAIL]: email,
-			[STORE_SIGN_IN_STATE_OPEN]: true,
+			[STORE_SIGN_IN_STATE_IS_OPEN]: true,
 			[STORE_SIGN_IN_STATE_SUBMITTED_CALLBACK]: afterSubmitCallback,
 		})
 		return this
 	};
 
 	[CLOSE] = () => {
-		this.setState({ [STORE_SIGN_IN_STATE_OPEN]: false })
+		this.setState({ [STORE_SIGN_IN_STATE_IS_OPEN]: false })
 		return this
 	};
 
 	[TOGGLE] = () => {
 		this.setState(state => {
-			state[STORE_SIGN_IN_STATE_OPEN] = !state[STORE_SIGN_IN_STATE_OPEN]
+			state[STORE_SIGN_IN_STATE_IS_OPEN] = !state[STORE_SIGN_IN_STATE_IS_OPEN]
 			return state
 		})
 		return this
@@ -60,7 +60,7 @@ class StoreSignIn extends Container {
 export {
 	StoreSignIn,
 	STORE_SIGN_IN_STATE_EMAIL,
-	STORE_SIGN_IN_STATE_OPEN,
+	STORE_SIGN_IN_STATE_IS_OPEN,
 	STORE_SIGN_IN_STATE_SUBMITTED_CALLBACK,
 	SHOW,
 	CLOSE,

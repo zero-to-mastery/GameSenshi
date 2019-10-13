@@ -3,7 +3,7 @@ import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
 const STORE_PROGRESS_STATE_VALUE = 'value'
 const STORE_PROGRESS_STATE_COLOR = 'color'
-const STORE_PROGRESS_STATE_OPEN = 'isOpen'
+const STORE_PROGRESS_STATE_IS_OPEN = 'isOpen'
 
 const SHOW = 'show'
 const CLOSE = 'close'
@@ -13,7 +13,7 @@ const DEFAULT_VALUE = '0'
 
 const defaultValues = () => ({
 	[STORE_PROGRESS_STATE_VALUE]: DEFAULT_VALUE,
-	[STORE_PROGRESS_STATE_OPEN]: false,
+	[STORE_PROGRESS_STATE_IS_OPEN]: false,
 	[STORE_PROGRESS_STATE_COLOR]: DEFAULT_COLOR,
 })
 
@@ -31,7 +31,7 @@ class StoreProgress extends Container {
 
 	[SHOW] = (value = DEFAULT_VALUE, color = DEFAULT_COLOR) => {
 		this.setState({
-			[STORE_PROGRESS_STATE_OPEN]: true,
+			[STORE_PROGRESS_STATE_IS_OPEN]: true,
 			[STORE_PROGRESS_STATE_COLOR]: color,
 			[STORE_PROGRESS_STATE_VALUE]: value,
 		})
@@ -48,7 +48,7 @@ export {
 	StoreProgress,
 	STORE_PROGRESS_STATE_VALUE,
 	STORE_PROGRESS_STATE_COLOR,
-	STORE_PROGRESS_STATE_OPEN,
+	STORE_PROGRESS_STATE_IS_OPEN,
 	SHOW,
 	CLOSE,
 	STATE,

@@ -9,7 +9,7 @@ import { handleSignInWithEmailAndPassword } from 'api'
 import {
 	FormSignIn,
 	SIGN_IN_FORM_STATE_EMAIL,
-	SIGN_IN_FORM_STATE_OPEN,
+	SIGN_IN_FORM_STATE_IS_OPEN,
 	SIGN_IN_FORM_TOGGLE,
 	SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION,
 	FINAL_TEXT_EMAIL,
@@ -22,7 +22,7 @@ import {
 	storeSignInToggle,
 	storeSignInOnSuccessfulSubmission,
 	STORE_SIGN_IN_STATE_EMAIL,
-	STORE_SIGN_IN_STATE_OPEN,
+	STORE_SIGN_IN_STATE_IS_OPEN,
 } from 'state'
 
 // inject staple props that suitable for this app
@@ -51,7 +51,7 @@ const FormSignInPropedDefault = withLastLocation(props => {
 
 const mapStoreSignInStateToProp = {
 	[SIGN_IN_FORM_STATE_EMAIL]: STORE_SIGN_IN_STATE_EMAIL,
-	[SIGN_IN_FORM_STATE_OPEN]: STORE_SIGN_IN_STATE_OPEN,
+	[SIGN_IN_FORM_STATE_IS_OPEN]: STORE_SIGN_IN_STATE_IS_OPEN,
 }
 
 const mapStoreSignInMethodToProp = {

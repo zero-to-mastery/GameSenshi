@@ -1,13 +1,13 @@
 import { Container } from 'unstated'
 import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
-const STORE_SHADER_STATE_OPEN = 'isOpen'
+const STORE_SHADER_STATE_IS_OPEN = 'isOpen'
 
 const SHOW = 'show'
 const CLOSE = 'close'
 
 const defaultValues = () => ({
-	[STORE_SHADER_STATE_OPEN]: false,
+	[STORE_SHADER_STATE_IS_OPEN]: false,
 })
 
 class StoreShader extends Container {
@@ -24,7 +24,7 @@ class StoreShader extends Container {
 
 	[SHOW] = () => {
 		this.setState({
-			[STORE_SHADER_STATE_OPEN]: true,
+			[STORE_SHADER_STATE_IS_OPEN]: true,
 		})
 		return this
 	};
@@ -37,7 +37,7 @@ class StoreShader extends Container {
 
 export {
 	StoreShader,
-	STORE_SHADER_STATE_OPEN,
+	STORE_SHADER_STATE_IS_OPEN,
 	SHOW,
 	CLOSE,
 	STATE,

@@ -31,7 +31,7 @@ const {
 } = stopUndefined(ExportCompounds)
 
 const SIGN_IN_FORM_STATE_EMAIL = 'email'
-const SIGN_IN_FORM_STATE_OPEN = 'isOPne'
+const SIGN_IN_FORM_STATE_IS_OPEN = 'isOPne'
 const SIGN_IN_FORM_TOGGLE = 'toggle'
 const SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
@@ -40,7 +40,7 @@ const FormSignIn = props => {
 
 	const {
 		[SIGN_IN_FORM_STATE_EMAIL]: email,
-		[SIGN_IN_FORM_STATE_OPEN]: isOpen,
+		[SIGN_IN_FORM_STATE_IS_OPEN]: isOpen,
 		modal,
 		passwordOnly,
 		forgotPasswordLink,
@@ -165,7 +165,7 @@ const FormSignIn = props => {
 export {
 	FormSignIn,
 	SIGN_IN_FORM_STATE_EMAIL,
-	SIGN_IN_FORM_STATE_OPEN,
+	SIGN_IN_FORM_STATE_IS_OPEN,
 	SIGN_IN_FORM_TOGGLE,
 	SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION,
 	FINAL_TEXT_EMAIL,
