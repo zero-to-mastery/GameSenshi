@@ -1,3 +1,3 @@
-import { ButtonSubmit } from 'componentAtoms/ButtonSubmit/ButtonSubmit'
+import { ButtonSubmit } from './ButtonSubmit'
 
 export { ButtonSubmit }

@@ -2,7 +2,7 @@ import React from 'react'
 import {
 	IconNotification,
 	ICON_NOTIFICATION_STATE_SIGNED_IN,
-} from 'componentAtoms/IconNotification/IconNotification'
+} from './IconNotification'
 import { StateContainer, storeUser, STORE_USER_STATE_SIGNED_IN } from 'state'
 import { ROUTE_PAGE_NOTIFICATIONS } from 'routes'
 

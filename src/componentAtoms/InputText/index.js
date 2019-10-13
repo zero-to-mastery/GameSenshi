@@ -1,3 +1,3 @@
-import { InputText } from 'componentAtoms/InputText/InputText'
+import { InputText } from './InputText'
 
 export { InputText }

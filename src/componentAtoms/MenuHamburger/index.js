@@ -1,3 +1,3 @@
-import { MenuHamburger } from 'componentAtoms/MenuHamburger/MenuHamburger'
+import { MenuHamburger } from './MenuHamburger'
 
 export { MenuHamburger }

@@ -8,7 +8,7 @@ import {
 	MODAL_COMMON_STATE_OPEN,
 	MODAL_COMMON_TOGGLE,
 	MODAL_COMMON_ON_CONTINUE,
-} from 'componentAtoms/ModalCommon/ModalCommon'
+} from './ModalCommon'
 
 import {
 	StateContainer,

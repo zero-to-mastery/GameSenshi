@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Shader.css'
+import styles from './styles.css'
 
 const Shader = props => {
 	const { children } = props

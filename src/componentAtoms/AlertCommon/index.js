@@ -5,7 +5,7 @@ import {
 	ALERT_COMMON_STATE_OPEN,
 	ALERT_COMMON_STATE_COLOR,
 	ALERT_COMMON_TOGGLE,
-} from 'componentAtoms/AlertCommon/AlertCommon'
+} from './AlertCommon'
 
 import {
 	StateContainer,

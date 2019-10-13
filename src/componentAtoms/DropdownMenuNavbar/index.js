@@ -1,7 +1,7 @@
 import React from 'react'
-import { DropdownMenuNavbar } from 'componentAtoms/DropdownMenuNavbar/DropdownMenuNavbar'
+import { DropdownMenuNavbar } from './DropdownMenuNavbar'
 import { StateContainer, storeUser } from 'state'
-import { NavbarIndexItems } from 'componentAtoms/DropdownMenuNavbar/utils'
+import { NavbarIndexItems } from './utils'
 
 const DropdownMenuNavbarStoreUser = StateContainer(
 	DropdownMenuNavbar,

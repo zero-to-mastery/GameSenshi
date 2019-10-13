@@ -5,8 +5,8 @@ import {
 	ICON,
 	COLOR,
 	TOOLTIP,
-} from 'componentAtoms/ButtonsSocialAuth/ButtonsSocialAuth'
-import { buttonSocialAuthOnClicks } from 'componentAtoms/ButtonsSocialAuth/utils'
+} from './ButtonsSocialAuth'
+import { buttonSocialAuthOnClicks } from './utils'
 // routing
 import { withLastLocation } from 'routes'
 

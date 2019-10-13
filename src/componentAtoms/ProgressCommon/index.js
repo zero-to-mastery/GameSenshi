@@ -3,7 +3,7 @@ import {
 	PROGRESS_COMMON_STATE_OPEN,
 	PROGRESS_COMMON_STATE_COLOR,
 	PROGRESS_COMMON_STATE_VALUE,
-} from 'componentAtoms/ProgressCommon/ProgressCommon'
+} from './ProgressCommon'
 
 import {
 	StateContainer,

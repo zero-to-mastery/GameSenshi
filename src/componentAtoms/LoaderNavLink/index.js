@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-	LoaderNavLink,
-	LABEL_SMALL_STATE_IS_LOADING,
-} from 'componentAtoms/LoaderNavLink/LoaderNavLink'
+import { LoaderNavLink, LABEL_SMALL_STATE_IS_LOADING } from './LoaderNavLink'
 import { StateContainer, storeUser, STORE_USER_STATE_SIGNING_IN } from 'state'
 
 const LoaderNavLinkPropedIndexNavbar = props => {

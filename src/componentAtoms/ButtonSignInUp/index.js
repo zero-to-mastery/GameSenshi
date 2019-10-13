@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-	ButtonSignInUp,
-	BUTTON_SIGN_IN_STATE_SHOW,
-} from 'componentAtoms/ButtonSignInUp/ButtonSignInUp'
+import { ButtonSignInUp, BUTTON_SIGN_IN_STATE_SHOW } from './ButtonSignInUp'
 import { withRouter } from 'react-router-dom'
 //constants
 import { ROUTE_PAGE_SIGN_IN, ROUTE_PAGE_SIGN_UP } from 'routes'

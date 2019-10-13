@@ -1,3 +1,3 @@
-import { HeaderLined } from 'componentAtoms/HeaderLined/HeaderLined'
+import { HeaderLined } from './HeaderLined'
 
 export { HeaderLined }

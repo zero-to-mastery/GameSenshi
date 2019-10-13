@@ -4,8 +4,8 @@ import {
 	IMAGE_UPLOAD_STATE_IMAGE,
 	IMAGE_UPLOAD_ON_ERROR,
 	IMAGE_UPLOAD_ON_REMOVE,
-} from 'componentAtoms/ImageUpload/ImageUpload'
-import { onRemove } from 'componentAtoms/ImageUpload/utils'
+} from './ImageUpload'
+import { onRemove } from './utils'
 import defaultAvatar from 'assets/img/placeholder.jpg'
 import {
 	StateContainer,

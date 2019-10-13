@@ -1,52 +1,43 @@
 import { ExportProton } from 'componentaProton'
-import { FinalForm } from 'componentAtoms/FinalForm'
-import { ListText } from 'componentAtoms/ListText'
-import {
-	InputSelect,
-	VALUE,
-	LABEL,
-	DISABLE,
-	COLOR,
-} from 'componentAtoms/InputSelect'
-import { InputText } from 'componentAtoms/InputText'
-import { PopoverCommon } from 'componentAtoms/PopoverCommon'
-import Footer from 'componentAtoms/Footers/Footer'
-import IndexHeader from 'componentAtoms/Headers/IndexHeader.jsx'
-import { ButtonsSocialAuthPropedDefault } from 'componentAtoms/ButtonsSocialAuth'
+import { FinalForm } from './FinalForm'
+import { ListText } from './ListText'
+import { InputSelect, VALUE, LABEL, DISABLE, COLOR } from './InputSelect'
+import { InputText } from './InputText'
+import { PopoverCommon } from './PopoverCommon'
+import Footer from './Footers/Footer'
+import IndexHeader from './Headers/IndexHeader.jsx'
+import { ButtonsSocialAuthPropedDefault } from './ButtonsSocialAuth'
 import {
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
-} from 'componentAtoms/ButtonSignInUp'
-import ErrorBoundary from 'componentAtoms/ErrorBoundary/ErrorBoundary'
-import { AvatarUserStoreUserPropedSettings } from 'componentAtoms/ImageUpload'
-import { AlertCommonStoreAlert } from 'componentAtoms/AlertCommon'
-import { ProgressCommonStoreProgress } from 'componentAtoms/ProgressCommon'
-import { CheckBox } from 'componentAtoms/CheckBox'
-import { HeaderLined } from 'componentAtoms/HeaderLined'
-import {
-	ModalStoreModalPropedAuth,
-	ModalCommon,
-} from 'componentAtoms/ModalCommon'
-import { ButtonSubmit } from 'componentAtoms/ButtonSubmit/ButtonSubmit'
-import { TabPaneContainer } from 'componentAtoms/TabPaneContainer/TabPaneContainer'
-import { TabListVerticalPropedSettingPage } from 'componentAtoms/TabListVertical'
-import { IconCard } from 'componentAtoms/IconCard'
-import { LabelForm, LabelFormSimple } from 'componentAtoms/LabelForm'
-import { InputDate } from 'componentAtoms/InputDate'
-import { BrandNavbarPropedIndexNavbarStoreUser } from 'componentAtoms/BrandNavbar'
-import { LoaderNavLinkPropedIndexNavbarStoreUser } from 'componentAtoms/LoaderNavLink'
-import { IconNotificationStoreUserPropedIndexNavbar } from 'componentAtoms/IconNotification'
+} from './ButtonSignInUp'
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+import { AvatarUserStoreUserPropedSettings } from './ImageUpload'
+import { AlertCommonStoreAlert } from './AlertCommon'
+import { ProgressCommonStoreProgress } from './ProgressCommon'
+import { CheckBox } from './CheckBox'
+import { HeaderLined } from './HeaderLined'
+import { ModalStoreModalPropedAuth, ModalCommon } from './ModalCommon'
+import { ButtonSubmit } from './ButtonSubmit'
+import { TabPaneContainer } from './TabPaneContainer/TabPaneContainer'
+import { TabListVerticalPropedSettingPage } from './TabListVertical'
+import { IconCard } from './IconCard'
+import { LabelForm, LabelFormSimple } from './LabelForm'
+import { InputDate } from './InputDate'
+import { BrandNavbarPropedIndexNavbarStoreUser } from './BrandNavbar'
+import { LoaderNavLinkPropedIndexNavbarStoreUser } from './LoaderNavLink'
+import { IconNotificationStoreUserPropedIndexNavbar } from './IconNotification'
 import {
 	ListNavItemStoreUserPropedNavbarIndex,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
-} from 'componentAtoms/ListNavItem'
-import { MenuHamburger } from 'componentAtoms/MenuHamburger'
-import { HeaderCollapsedPropedNavbarIndex } from 'componentAtoms/HeaderCollapsed'
-import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from 'componentAtoms/DropdownMenuNavbar'
-import { AvatarUserStoreUser } from 'componentAtoms/AvatarUser'
-import { DropdownNavbarStoreUser } from 'componentAtoms/DropdownNavbar'
-import { Shader } from 'componentAtoms/Shader'
+} from './ListNavItem'
+import { MenuHamburger } from './MenuHamburger'
+import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
+import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from './DropdownMenuNavbar'
+import { AvatarUserStoreUser } from './AvatarUser'
+import { DropdownNavbarStoreUser } from './DropdownNavbar'
+import { Shader } from './Shader'
 
 export const ExportAtoms = {
 	...ExportProton,

@@ -6,8 +6,9 @@ import {
 	LIST_NAV_ITEM_PROPS_BODY,
 	LIST_NAV_ITEM_PROPS_LINK_CLASS_NAME,
 	LIST_NAV_ITEM_ON_CLICK,
-} from 'componentAtoms/ListNavItem/ListNavItem'
+} from './ListNavItem'
 
+// ! anti pattern import
 import { AvatarUserStoreUser } from 'componentAtoms/AvatarUser'
 import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from 'state'
 

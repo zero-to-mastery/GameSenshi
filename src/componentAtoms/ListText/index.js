@@ -1,3 +1,3 @@
-import { ListText } from 'componentAtoms/ListText/ListText'
+import { ListText } from './ListText'
 
 export { ListText }

@@ -1,3 +1,3 @@
-import { FinalForm } from 'componentAtoms/FinalForm/FinalForm'
+import { FinalForm } from './FinalForm'
 
 export { FinalForm }

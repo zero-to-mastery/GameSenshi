@@ -4,7 +4,7 @@ import {
 	DROP_DOWN_MENU_NAVBAR_PROPS_BODY,
 	DROP_DOWN_MENU_NAVBAR_PROPS_DIVIDER,
 	DROP_DOWN_MENU_NAVBAR_ON_CLICK,
-} from 'componentAtoms/DropdownMenuNavbar/DropdownMenuNavbar'
+} from './DropdownMenuNavbar'
 import {
 	ROUTE_PAGE_SETTINGS_GENERAL,
 	ROUTE_PAGE_HELP,

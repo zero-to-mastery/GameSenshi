@@ -1,5 +1,5 @@
 import React from 'react'
-import { LabelForm } from 'componentAtoms/LabelForm/LabelForm'
+import { LabelForm } from './LabelForm'
 // reactstrap components
 import { FormGroup } from 'reactstrap'
 

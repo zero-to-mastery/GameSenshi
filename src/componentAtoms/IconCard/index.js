@@ -1,3 +1,3 @@
-import { IconCard } from 'componentAtoms/IconCard/IconCard'
+import { IconCard } from './IconCard'
 
 export { IconCard }

@@ -1,3 +1,3 @@
-import { TabPaneContainer } from 'componentAtoms/TabPaneContainer/TabPaneContainer'
+import { TabPaneContainer } from './TabPaneContainer/TabPaneContainer'
 
 export { TabPaneContainer }

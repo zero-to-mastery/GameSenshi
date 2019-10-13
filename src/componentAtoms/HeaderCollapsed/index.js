@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeaderCollapsed } from 'componentAtoms/HeaderCollapsed/HeaderCollapsed'
+import { HeaderCollapsed } from './HeaderCollapsed'
 import { ROUTE_PAGE_INDEX } from 'routes'
 
 const HeaderCollapsedPropedNavbarIndex = props => {

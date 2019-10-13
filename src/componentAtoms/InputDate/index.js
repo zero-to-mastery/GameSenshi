@@ -1,3 +1,3 @@
-import { InputDate } from 'componentAtoms/InputDate/InputDate'
+import { InputDate } from './InputDate'
 
 export { InputDate }

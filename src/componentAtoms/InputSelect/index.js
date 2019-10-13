@@ -1,9 +1,3 @@
-import {
-	InputSelect,
-	VALUE,
-	LABEL,
-	DISABLE,
-	COLOR,
-} from 'componentAtoms/InputSelect/InputSelect'
+import { InputSelect, VALUE, LABEL, DISABLE, COLOR } from './InputSelect'
 
 export { InputSelect, VALUE, LABEL, DISABLE, COLOR }

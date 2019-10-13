@@ -2,7 +2,7 @@ import {
 	AvatarUser,
 	AVATAR_USER_ON_ERROR,
 	AVATAR_USER_STATE_SRC,
-} from 'componentAtoms/AvatarUser/AvatarUser'
+} from './AvatarUser'
 
 import {
 	StateContainer,

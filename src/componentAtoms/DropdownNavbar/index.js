@@ -1,7 +1,4 @@
-import {
-	DropdownNavbar,
-	DROPDOWN_NAVBAR_STATE_SHOW,
-} from 'componentAtoms/DropdownNavbar/DropdownNavbar'
+import { DropdownNavbar, DROPDOWN_NAVBAR_STATE_SHOW } from './DropdownNavbar'
 import { StateContainer, storeUser, STORE_USER_STATE_SIGNED_IN } from 'state'
 
 const mapStoreUserStateToProp = {

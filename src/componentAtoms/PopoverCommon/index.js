@@ -1,3 +1,3 @@
-import { PopoverCommon } from 'componentAtoms/PopoverCommon/PopoverCommon'
+import { PopoverCommon } from './PopoverCommon'
 
 export { PopoverCommon }
