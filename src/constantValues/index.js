@@ -11,7 +11,7 @@ import {
 	API_SIGN_UP_EMAIL,
 	API_SIGN_UP_PASSWORD,
 	API_SIGN_UP_DISPLAY_NAME,
-} from 'constantValues/ApiConstants'
+} from './ApiConstants'
 
 import {
 	ENV,
@@ -19,7 +19,7 @@ import {
 	ENV_ENABLE_PLAYGROUND,
 	ENV_APOLLO_ENGINE_API_KEY,
 	ENV_CORS_WHITELIST,
-} from 'constantValues/EnvKeyConstants'
+} from './EnvKeyConstants'
 
 import {
 	INTERNAL_ERROR_CODE_1,
@@ -28,7 +28,7 @@ import {
 	INTERNAL_ERROR_CODE_4,
 	INTERNAL_ERROR_CODE_5,
 	INTERNAL_ERROR_CODE_6,
-} from 'constantValues/InternalErrorConstants'
+} from './InternalErrorConstants'
 
 import {
 	UNEXPECTED_ERROR_CODE_1,
@@ -38,7 +38,7 @@ import {
 	UNEXPECTED_ERROR_CODE_5,
 	UNEXPECTED_ERROR_CODE_6,
 	UNEXPECTED_ERROR_CODE_7,
-} from 'constantValues/UnexpectedErrorConstants'
+} from './UnexpectedErrorConstants'
 
 import {
 	FB_FS_USER,
@@ -59,7 +59,7 @@ import {
 	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
 	FB_FS_SETTINGS_GENERAL_LANGUAGES,
 	FB_FS_SETTINGS_GENERAL_USER_AVATAR,
-} from 'constantValues/FirebaseConstants'
+} from './FirebaseConstants'
 
 export {
 	API_DATA,
