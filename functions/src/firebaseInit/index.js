@@ -8,7 +8,7 @@ import {
 	ENV_APOLLO_ENGINE_API_KEY,
 } from 'constantValues'
 
-import { onUserCreate } from 'firebaseInit/onUserCreate'
+import { onUserCreate } from './onUserCreate'
 
 admin.initializeApp(functions.config().firebase)
 
