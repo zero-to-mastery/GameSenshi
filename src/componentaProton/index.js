@@ -1,3 +1,3 @@
-import { Link } from 'componentaProton/Link'
+import { Link } from './Link'
 
 export const ExportProton = { Link }

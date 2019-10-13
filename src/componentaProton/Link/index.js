@@ -1,3 +1,3 @@
-import { Link } from 'componentaProton/Link/Link'
+import { Link } from './Link'
 
 export { Link }
