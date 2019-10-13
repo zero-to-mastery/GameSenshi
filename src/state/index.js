@@ -83,6 +83,15 @@ import {
 	STORE_USER_STATE_SIGNING_IN,
 } from './User'
 
+import {
+	storeShader,
+	storeShaderShow,
+	storeShaderClose,
+	storeShaderSetState,
+	storeShaderResetState,
+	STORE_SHADER_STATE_OPEN,
+} from './Shader'
+
 export {
 	STATE,
 	RESET_STATE,
@@ -155,4 +164,10 @@ export {
 	STORE_MODAL_STATE_LOADER,
 	STORE_MODAL_STATE_OPEN,
 	STORE_MODAL_STATE_CONTINUED_CALLBACK,
+	storeShader,
+	storeShaderShow,
+	storeShaderClose,
+	storeShaderSetState,
+	storeShaderResetState,
+	STORE_SHADER_STATE_OPEN,
 }
