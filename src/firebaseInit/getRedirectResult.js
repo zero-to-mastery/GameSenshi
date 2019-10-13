@@ -7,7 +7,8 @@ import {
 	storeModalShow,
 } from 'state'
 
-import { handleDifferentCredential } from 'firebaseInit/handleDifferentCredential'
+// ! antipattern import
+import { handleDifferentCredential } from './handleDifferentCredential'
 import { simplerErrorMessage } from 'utils'
 import { UNEXPECTED_ERROR_CODE_6 } from 'constantValues'
 

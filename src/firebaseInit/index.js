@@ -5,8 +5,8 @@ import 'firebase/functions'
 import 'firebase/storage'
 import 'firebase/firestore'
 
-import { onAuthChanged } from 'firebaseInit/onAuthChanged'
-import { getRedirectResult } from 'firebaseInit/getRedirectResult'
+import { onAuthChanged } from './onAuthChanged'
+import { getRedirectResult } from './getRedirectResult'
 
 import { fbfsSettingsGeneral } from 'constantValues'
 
