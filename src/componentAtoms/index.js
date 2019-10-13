@@ -46,9 +46,11 @@ import { HeaderCollapsedPropedNavbarIndex } from 'componentAtoms/HeaderCollapsed
 import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from 'componentAtoms/DropdownMenuNavbar'
 import { AvatarUserStoreUser } from 'componentAtoms/AvatarUser'
 import { DropdownNavbarStoreUser } from 'componentAtoms/DropdownNavbar'
+import { Shader } from 'componentAtoms/Shader'
 
 export const ExportAtoms = {
 	...ExportProton,
+	Shader,
 	Footer,
 	FinalForm,
 	IndexHeader,

@@ -23,9 +23,9 @@ import {
 	STATE,
 	STORE_USER_STATE_SIGNING_IN,
 } from 'state'
+
 //core components
 import { ExportViews } from 'componentViews'
-// import { Shader } from 'componentAtoms/Shader'
 
 const {
 	SettingsPage,
@@ -39,6 +39,7 @@ const {
 	ModalStoreModalPropedAuth,
 	NavbarIndexStoreAlert,
 	AlertCommonStoreAlert,
+	Shader,
 } = stopUndefined(ExportViews)
 
 const MapRoutesToPages = {
