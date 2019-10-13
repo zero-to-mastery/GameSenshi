@@ -6,8 +6,8 @@ import {
 	Redirect,
 } from 'react-router-dom'
 import { LastLocationProvider } from 'react-router-last-location'
-import { routes, redirects } from 'routes/routes'
-// constants
+// ! anti pattern import
+import { routes, redirects } from './routes'
 import {
 	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_SIGN_IN,

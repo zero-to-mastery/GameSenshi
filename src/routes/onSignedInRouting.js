@@ -4,9 +4,9 @@
 // * if user sign in with social auth, call this function BEFORE signed in, this is because firebase redirect back to your last page and you want your last page to be meaningful
 // * there is case that you need to reauthenticate user (eg, reset password) and you want to stay in the same page, in this case you dont want to call this function
 
-import { ROUTE_PAGE_SIGN_UP, ROUTE_PAGE_SIGN_IN } from 'routes/constants'
-
-import { history } from 'routes/constants'
+// ! anti pattern import
+import { ROUTE_PAGE_SIGN_UP, ROUTE_PAGE_SIGN_IN } from './constants'
+import { history } from './constants'
 
 const onSignedInRouting = lastLocation => {
 	if (lastLocation) {
