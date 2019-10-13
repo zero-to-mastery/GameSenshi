@@ -1,3 +1,3 @@
-import { TabPaneContainer } from './TabPaneContainer/TabPaneContainer'
+import { TabPaneContainer } from './TabPaneContainer'
 
 export { TabPaneContainer }

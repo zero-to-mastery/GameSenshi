@@ -1,15 +1,15 @@
 import { Shader, SHADE_STATE_IS_OPEN } from './Shader'
-import { storeShader, StateContainer, STORE_SHADER_STATE_IS_OPEN } from 'state'
+import { StateContainer, storeModal, STORE_MODAL_STATE_IS_OPEN } from 'state'
 
-const mapStoreShadeStateToProps = {
-	[SHADE_STATE_IS_OPEN]: STORE_SHADER_STATE_IS_OPEN,
+const mapStoreModalStateToProps = {
+	[SHADE_STATE_IS_OPEN]: STORE_MODAL_STATE_IS_OPEN,
 }
 
-const ShaderStoreShader = StateContainer(
+const ShaderStoreModal = StateContainer(
 	Shader,
-	[storeShader],
-	[mapStoreShadeStateToProps],
+	[storeModal],
+	[mapStoreModalStateToProps],
 	[]
 )
 
-export { ShaderStoreShader }
+export { ShaderStoreModal }

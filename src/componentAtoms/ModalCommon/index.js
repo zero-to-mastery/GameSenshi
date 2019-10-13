@@ -33,15 +33,28 @@ const mapStoreModalMethodToProp = {
 	[MODAL_COMMON_ON_CONTINUE]: storeModalOnContinue,
 }
 
-const ModalStoreModal = StateContainer(
+const ModalCommonStoreModal = StateContainer(
 	ModalCommon,
 	[storeModal],
 	[mapStoreModalStateToProp],
 	[mapStoreModalMethodToProp]
 )
 
-const ModalStoreModalPropedAuth = props => {
-	return <ModalStoreModal footer='continue' {...props} />
+const ModalCommonStoreModalPropedAuth = props => {
+	return <ModalCommonStoreModal footer='continue' {...props} />
 }
 
-export { ModalCommon, ModalStoreModalPropedAuth }
+const ModalCommonStoreModalPropedImageCropper = props => {
+	return (
+		<ModalCommonStoreModalPropedImageCropper
+			title='Set New Profile Picture'
+			footer='Crop and Update Profile Image'
+			{...props}
+		/>
+	)
+}
+
+export {
+	ModalCommonStoreModalPropedImageCropper,
+	ModalCommonStoreModalPropedAuth,
+}

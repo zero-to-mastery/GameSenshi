@@ -17,9 +17,12 @@ import { AlertCommonStoreAlert } from './AlertCommon'
 import { ProgressCommonStoreProgress } from './ProgressCommon'
 import { CheckBox } from './CheckBox'
 import { HeaderLined } from './HeaderLined'
-import { ModalStoreModalPropedAuth, ModalCommon } from './ModalCommon'
+import {
+	ModalCommonStoreModalPropedAuth,
+	ModalCommonStoreModalPropedImageCropper,
+} from './ModalCommon'
 import { ButtonSubmit } from './ButtonSubmit'
-import { TabPaneContainer } from './TabPaneContainer/TabPaneContainer'
+import { TabPaneContainer } from './TabPaneContainer'
 import { TabListVerticalPropedSettingPage } from './TabListVertical'
 import { IconCard } from './IconCard'
 import { LabelForm, LabelFormSimple } from './LabelForm'
@@ -37,7 +40,7 @@ import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
-import { ShaderStoreShader } from './Shader'
+import { ShaderStoreModal } from './Shader'
 
 export const ExportAtoms = {
 	...ExportProton,
@@ -61,8 +64,8 @@ export const ExportAtoms = {
 	PopoverCommon,
 	CheckBox,
 	HeaderLined,
-	ModalStoreModalPropedAuth,
-	ModalCommon,
+	ModalCommonStoreModalPropedAuth,
+	ModalCommonStoreModalPropedImageCropper,
 	ButtonSubmit,
 	TabPaneContainer,
 	TabListVerticalPropedSettingPage,
@@ -81,5 +84,5 @@ export const ExportAtoms = {
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
-	ShaderStoreShader,
+	ShaderStoreModal,
 }

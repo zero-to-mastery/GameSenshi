@@ -4,7 +4,7 @@ import 'cropperjs/dist/cropper.css'
 import { ExportAtoms } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
-const { ModalCommon } = stopUndefined(ExportAtoms)
+const { ModalCommonStoreModalPropedImageCropper } = stopUndefined(ExportAtoms)
 const emptyFunction = () => {}
 const ModalImageCropper = props => {
 	const { isOpen, src, toggle, onCrop, title, footer } = props
@@ -34,7 +34,7 @@ const ModalImageCropper = props => {
 	)
 
 	return (
-		<ModalCommon
+		<ModalCommonStoreModalPropedImageCropper
 			title={title}
 			isOpen={isOpen}
 			toggle={toggle}
@@ -48,7 +48,7 @@ const ModalImageCropper = props => {
 				aspectRatio={1}
 				crop={crop}
 			/>
-		</ModalCommon>
+		</ModalCommonStoreModalPropedImageCropper>
 	)
 }
 
