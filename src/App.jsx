@@ -39,7 +39,7 @@ const {
 	ModalStoreModalPropedAuth,
 	NavbarIndexStoreAlert,
 	AlertCommonStoreAlert,
-	Shader,
+	//Shader,
 } = stopUndefined(ExportViews)
 
 const MapRoutesToPages = {

@@ -6,7 +6,7 @@ const ModalImageCropperPropedSettings = props => {
 	return (
 		<ModalImageCropper
 			title='Set New Profile Picture'
-			footer='Crop'
+			footer='Crop and Update Profile Image'
 			onCrop={onCrop}
 			{...props}
 		/>
