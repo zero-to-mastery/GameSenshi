@@ -1,3 +1,3 @@
-import { TabPanePaymentSettings } from 'componentpMultiOrganisms/TabPanePaymentSettings/TabPanePaymentSettings'
+import { TabPanePaymentSettings } from './TabPanePaymentSettings'
 
 export { TabPanePaymentSettings }
