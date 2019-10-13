@@ -1,12 +1,12 @@
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-import { IndexPage } from 'componentViews/IndexPage.jsx'
-import { ProfilePage } from 'componentViews/ProfilePage.jsx'
-import { SettingsPage } from 'componentViews/SettingsPage'
-import { SignInPage } from 'componentViews/SignInPage'
-import { SignUpPage } from 'componentViews/SignUpPage'
-import { PasswordResetPage } from 'componentViews/PasswordResetPage'
-import { Error404Page } from 'componentViews/Error404Page'
+import { IndexPage } from './IndexPage.jsx'
+import { ProfilePage } from './ProfilePage.jsx'
+import { SettingsPage } from './SettingsPage'
+import { SignInPage } from './SignInPage'
+import { SignUpPage } from './SignUpPage'
+import { PasswordResetPage } from './PasswordResetPage'
+import { Error404Page } from './Error404Page'
 
 export const ExportViews = {
 	...ExportMultiOrganisms,
