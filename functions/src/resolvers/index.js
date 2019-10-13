@@ -1,6 +1,6 @@
-import Mutation from 'resolvers/Mutation'
-import Query from 'resolvers/Query'
-import typeDefs from 'resolvers/typeDefs'
+import { Mutation } from './Mutation'
+import { Query } from './Query'
+import { typeDefs } from './typeDefs'
 
 const resolvers = { Mutation, Query }
 
