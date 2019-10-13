@@ -1,2 +1,3 @@
-import { Shader } from 'componentAtoms/Shader/Shader'
+import { Shader } from './Shader'
+
 export { Shader }
