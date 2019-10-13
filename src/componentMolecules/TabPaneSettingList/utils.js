@@ -1,10 +1,4 @@
-import {
-	BODY,
-	NAME,
-	SECTION,
-	CHECKBOXES,
-	TITLE,
-} from 'componentMolecules/TabPaneSettingList/TabPaneSettingList'
+import { BODY, NAME, SECTION, CHECKBOXES, TITLE } from './TabPaneSettingList'
 
 import {
 	FB_FS_SETTINGS_NOTIFICATION_EMAIL,

@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { FinalInput } from 'componentMolecules/FinalInput/FinalInput'
+import { FinalInput } from './FinalInput'
 import { ExportAtoms } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 

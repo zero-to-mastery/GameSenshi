@@ -3,8 +3,8 @@ import {
 	TabPaneSettingList,
 	TAB_PANE_SETTING_LIST_STATE_NAME,
 	TAB_PANE_SETTING_LIST_LOADING2,
-} from 'componentMolecules/TabPaneSettingList/TabPaneSettingList'
-import { settingListNotification } from 'componentMolecules/TabPaneSettingList/utils'
+} from './TabPaneSettingList'
+import { settingListNotification } from './utils'
 import {
 	handleNotificationSettingLoad,
 	handleNotificationSettingSave,
