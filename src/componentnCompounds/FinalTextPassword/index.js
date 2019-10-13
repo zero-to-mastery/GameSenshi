@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-	FinalTextPassword,
-	FINAL_TEXT_PASSWORD,
-} from 'componentnCompounds/FinalTextPassword/FinalTextPassword'
+import { FinalTextPassword, FINAL_TEXT_PASSWORD } from './FinalTextPassword'
 
 import {
 	signUpPasswordValidation,

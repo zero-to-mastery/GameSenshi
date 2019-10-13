@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-	FinalTextCardCVC,
-	FINAL_TEXT_CARD_CVC,
-} from 'componentnCompounds/FinalTextCardCVC/FinalTextCardCVC'
+import { FinalTextCardCVC, FINAL_TEXT_CARD_CVC } from './FinalTextCardCVC'
 import { cardCvcValidation } from 'utils'
 import { Col } from 'reactstrap'
 

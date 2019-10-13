@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-	FinalTextName,
-	FINAL_TEXT_NAME,
-} from 'componentnCompounds/FinalTextName/FinalTextName'
+import { FinalTextName, FINAL_TEXT_NAME } from './FinalTextName'
 
 import { signUpUsernameValidation, stopUndefined } from 'utils'
 

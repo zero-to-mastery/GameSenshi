@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-	FinalDateBirthDate,
-	FINAL_DATE_BIRTH_DATE,
-} from 'componentnCompounds/FinalDateBirthDate/FinalDateBirthDate'
+import { FinalDateBirthDate, FINAL_DATE_BIRTH_DATE } from './FinalDateBirthDate'
 
 import { stopUndefined } from 'utils'
 

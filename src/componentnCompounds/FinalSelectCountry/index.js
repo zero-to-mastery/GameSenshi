@@ -1,9 +1,6 @@
 import React from 'react'
 
-import {
-	FinalSelectCountry,
-	FINAL_SELECT_COUNTRY,
-} from 'componentnCompounds/FinalSelectCountry/FinalSelectCountry'
+import { FinalSelectCountry, FINAL_SELECT_COUNTRY } from './FinalSelectCountry'
 
 // components
 import { stopUndefined } from 'utils'

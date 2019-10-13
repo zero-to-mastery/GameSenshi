@@ -2,7 +2,7 @@ import React from 'react'
 import {
 	FinalSelectLanguages,
 	FINAL_SELECT_LANGUAGES,
-} from 'componentnCompounds/FinalSelectLanguages/FinalSelectLanguages'
+} from './FinalSelectLanguages'
 
 // components
 import { stopUndefined } from 'utils'

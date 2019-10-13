@@ -1,3 +1,3 @@
-import { UploaderUserAvatar } from 'componentnCompounds/UploaderUserAvatar/UploaderUserAvatar'
+import { UploaderUserAvatar } from './UploaderUserAvatar'
 
 export { UploaderUserAvatar }

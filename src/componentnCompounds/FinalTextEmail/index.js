@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-	FinalTextEmail,
-	FINAL_TEXT_EMAIL,
-} from 'componentnCompounds/FinalTextEmail/FinalTextEmail'
+import { FinalTextEmail, FINAL_TEXT_EMAIL } from './FinalTextEmail'
 // api
 import { handleIsEmailNotExist, handleIsPasswordResetAble } from 'api'
 // validation

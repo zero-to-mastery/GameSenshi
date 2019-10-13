@@ -2,7 +2,7 @@ import React from 'react'
 import {
 	FinalSelectExpiryMonth,
 	FINAL_SELECT_EXPIRY_MONTH,
-} from 'componentnCompounds/FinalSelectExpiryMonth/FinalSelectExpiryMonth'
+} from './FinalSelectExpiryMonth'
 import { cardExpiryValidation } from 'utils'
 import { Col } from 'reactstrap'
 

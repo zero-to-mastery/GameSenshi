@@ -2,58 +2,58 @@ import { ExportMolecules } from 'componentMolecules'
 import {
 	FinalTextCardNumberPropedDefault,
 	FINAL_TEXT_CARD_NUMBER,
-} from 'componentnCompounds/FinalTextCardNumber'
+} from './FinalTextCardNumber'
 import {
 	FinalTextCardHolderNamePropedDefault,
 	FINAL_TEXT_CARD_HOLDER_NAME,
-} from 'componentnCompounds/FinalTextCardHolderName'
+} from './FinalTextCardHolderName'
 import {
 	FinalSelectExpiryMonthPropedDefault,
 	FINAL_SELECT_EXPIRY_MONTH,
-} from 'componentnCompounds/FinalSelectExpiryMonth'
+} from './FinalSelectExpiryMonth'
 import {
 	FinalSelectExpiryYearPropedDefault,
 	FINAL_SELECT_EXPIRY_YEAR,
-} from 'componentnCompounds/FinalSelectExpiryYear'
+} from './FinalSelectExpiryYear'
 import {
 	FinalTextCardCVCPropedDefault,
 	FINAL_TEXT_CARD_CVC,
-} from 'componentnCompounds/FinalTextCardCVC'
+} from './FinalTextCardCVC'
 import {
 	FinalTextEmailPropedSignUp,
 	FinalTextEmailPropedSignIn,
 	FinalTextEmailPropedForgotPassword,
 	FinalTextEmailPropedAccount,
 	FINAL_TEXT_EMAIL,
-} from 'componentnCompounds/FinalTextEmail'
+} from './FinalTextEmail'
 import {
 	FinalTextPasswordPropedSignUp,
 	FinalTextPasswordPropedSignIn,
 	FinalTextPasswordPropedAccount,
 	FINAL_TEXT_PASSWORD,
-} from 'componentnCompounds/FinalTextPassword'
+} from './FinalTextPassword'
 import {
 	FinalTextNamePropedSignUp,
 	FinalTextNamePropedGeneraL,
 	FINAL_TEXT_NAME,
-} from 'componentnCompounds/FinalTextName'
+} from './FinalTextName'
 import {
 	FinalSelectCountryPropedGeneraL,
 	FINAL_SELECT_COUNTRY,
-} from 'componentnCompounds/FinalSelectCountry'
+} from './FinalSelectCountry'
 import {
 	FinalSelectGenderPropedGeneraL,
 	FINAL_SELECT_GENDER,
-} from 'componentnCompounds/FinalSelectGender'
+} from './FinalSelectGender'
 import {
 	FinalSelectLanguagesPropedGeneraL,
 	FINAL_SELECT_LANGUAGES,
-} from 'componentnCompounds/FinalSelectLanguages'
+} from './FinalSelectLanguages'
 import {
 	FinalDateBirthDatePropedGeneraL,
 	FINAL_DATE_BIRTH_DATE,
-} from 'componentnCompounds/FinalDateBirthDate'
-import { UploaderUserAvatar } from 'componentnCompounds/UploaderUserAvatar'
+} from './FinalDateBirthDate'
+import { UploaderUserAvatar } from './UploaderUserAvatar'
 
 export const ExportCompounds = {
 	...ExportMolecules,

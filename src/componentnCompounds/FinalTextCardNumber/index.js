@@ -2,7 +2,7 @@ import React from 'react'
 import {
 	FinalTextCardNumber,
 	FINAL_TEXT_CARD_NUMBER,
-} from 'componentnCompounds/FinalTextCardNumber/FinalTextCardNumber'
+} from './FinalTextCardNumber'
 import { cardNumberValidation } from 'utils'
 import { Col, Row } from 'reactstrap'
 

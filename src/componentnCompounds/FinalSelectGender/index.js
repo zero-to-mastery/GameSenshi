@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-	FinalSelectGender,
-	FINAL_SELECT_GENDER,
-} from 'componentnCompounds/FinalSelectGender/FinalSelectGender'
+import { FinalSelectGender, FINAL_SELECT_GENDER } from './FinalSelectGender'
 
 // components
 import { stopUndefined } from 'utils'
