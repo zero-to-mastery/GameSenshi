@@ -2,14 +2,14 @@ import {
 	handleSignUpWithEmailAndPassword,
 	API_SIGN_UP_EMAIL,
 	API_SIGN_UP_PASSWORD,
-} from 'api/handleSignUpWithEmailAndPassword'
-import { handleIsEmailNotExist } from 'api/handleIsEmailNotExist'
-import { handleIsPasswordResetAble } from 'api/handleIsPasswordResetAble'
-import { handleSignInWithEmailAndPassword } from 'api/handleSignInWithEmailAndPassword'
-import { handleSignInWithSocials } from 'api/handleSignInWithSocials'
-import { handlePasswordReset } from 'api/handlePasswordReset'
-import { handleNotificationSettingLoad } from 'api/handleNotificationSettingLoad'
-import { handleNotificationSettingSave } from 'api/handleNotificationSettingSave'
+} from './handleSignUpWithEmailAndPassword'
+import { handleIsEmailNotExist } from './handleIsEmailNotExist'
+import { handleIsPasswordResetAble } from './handleIsPasswordResetAble'
+import { handleSignInWithEmailAndPassword } from './handleSignInWithEmailAndPassword'
+import { handleSignInWithSocials } from './handleSignInWithSocials'
+import { handlePasswordReset } from './handlePasswordReset'
+import { handleNotificationSettingLoad } from './handleNotificationSettingLoad'
+import { handleNotificationSettingSave } from './handleNotificationSettingSave'
 
 export {
 	handleSignUpWithEmailAndPassword,
