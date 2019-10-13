@@ -7,8 +7,8 @@ import {
 	API_CODE,
 	API_MESSAGE,
 	API_DATA,
-} from 'utils/objects'
-import { stopUndefined } from 'utils/codeToolings'
+} from './objects'
+import { stopUndefined } from './codeToolings'
 
 import {
 	signUpEmailValidation,
@@ -25,7 +25,7 @@ import {
 	cardCvcValidation,
 	cardExpiryValidation,
 	usernameLength,
-} from 'utils/validation'
+} from './validation'
 
 export {
 	resObj,
