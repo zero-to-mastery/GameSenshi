@@ -39,7 +39,7 @@ const {
 	ModalStoreModalPropedAuth,
 	NavbarIndexStoreAlert,
 	AlertCommonStoreAlert,
-	//Shader,
+	ShaderStoreShader,
 } = stopUndefined(ExportViews)
 
 const MapRoutesToPages = {
@@ -76,15 +76,17 @@ const App = () => {
 							},
 						} = storeUser
 						return (
-							<Router
-								isUserSignedIn={isUserSignedIn || isUserSigningIn}
-								pages={MapRoutesToPages}>
-								<NavbarIndexStoreAlert>
-									<AlertCommonStoreAlert />
-								</NavbarIndexStoreAlert>
-								<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
-								<ModalStoreModalPropedAuth />
-							</Router>
+							<ShaderStoreShader>
+								<Router
+									isUserSignedIn={isUserSignedIn || isUserSigningIn}
+									pages={MapRoutesToPages}>
+									<NavbarIndexStoreAlert>
+										<AlertCommonStoreAlert />
+									</NavbarIndexStoreAlert>
+									<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
+									<ModalStoreModalPropedAuth />
+								</Router>
+							</ShaderStoreShader>
 						)
 					}}
 				</Subscribe>
