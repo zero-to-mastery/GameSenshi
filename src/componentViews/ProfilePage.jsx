@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
-// ReactJS plugin for a nice carousel
-import Slick from 'react-slick'
 // reactstrap components
 import {
 	Button,
@@ -17,7 +15,7 @@ import {
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer } = stopUndefined(ExportMultiOrganisms)
+const { Footer, CarouselCommon } = stopUndefined(ExportMultiOrganisms)
 
 const ProfilePage = props => {
 	const wrapper = useRef(null)
@@ -123,7 +121,9 @@ const ProfilePage = props => {
 						<h1>Images</h1>
 					</Row>
 					<Row>
-						<Col md='12'></Col>
+						<Col md='12'>
+							<CarouselCommon />
+						</Col>
 					</Row>
 				</Container>
 			</section>
