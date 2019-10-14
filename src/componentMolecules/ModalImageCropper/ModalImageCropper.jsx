@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState, useEffect } from 'react'
+import React, { useRef, useCallback, useState, memo } from 'react'
 import Cropper from 'react-cropper'
 import 'cropperjs/dist/cropper.css'
 import { ExportAtoms } from 'componentAtoms'
@@ -6,8 +6,9 @@ import { stopUndefined } from 'utils'
 
 const { ModalCommon } = stopUndefined(ExportAtoms)
 const emptyFunction = () => {}
-const ModalImageCropper = props => {
+const ModalImageCropper = memo(props => {
 	const { src, toggle, onCrop, ...otherProps } = props
+
 	const onCrop_ = onCrop || emptyFunction
 
 	const [dataUrl, setDataUrl] = useState('')
@@ -20,7 +21,7 @@ const ModalImageCropper = props => {
 		// the lag is less noticeable as built files
 		clearTimeout(timeoutId.current)
 		timeoutId.current = setTimeout(() => {
-			setDataUrl(cropperRef.current.cropper.getCroppedCanvas().toDataURL())
+			setDataUrl(cropperRef.current.getCroppedCanvas().toDataURL())
 		}, 500)
 	}, [])
 
@@ -49,6 +50,6 @@ const ModalImageCropper = props => {
 			/>
 		</ModalCommon>
 	)
-}
+})
 
 export { ModalImageCropper }
