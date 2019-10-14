@@ -1,28 +1,30 @@
 // temp data array
+import { SRC, ALT_TEXT } from './CarouselCommon'
+
 const slides = [
 	{
-		src: require('assets/img/denys.jpg'),
-		altText: 'Slide 1',
+		[SRC]: require('assets/img/denys.jpg'),
+		[ALT_TEXT]: 'Slide 1',
 	},
 	{
-		src: require('assets/img/fabien-bazanegue.jpg'),
-		altText: 'Slide 2',
+		[SRC]: require('assets/img/fabien-bazanegue.jpg'),
+		[ALT_TEXT]: 'Slide 2',
 	},
 	{
-		src: require('assets/img/mark-finn.jpg'),
-		altText: 'Slide 3',
+		[SRC]: require('assets/img/mark-finn.jpg'),
+		[ALT_TEXT]: 'Slide 3',
 	},
 	{
-		src: require('assets/img/denys.jpg'),
-		altText: 'Slide 4',
+		[SRC]: require('assets/img/denys.jpg'),
+		[ALT_TEXT]: 'Slide 4',
 	},
 	{
-		src: require('assets/img/fabien-bazanegue.jpg'),
-		altText: 'Slide 5',
+		[SRC]: require('assets/img/fabien-bazanegue.jpg'),
+		[ALT_TEXT]: 'Slide 5',
 	},
 	{
-		src: require('assets/img/mark-finn.jpg'),
-		altText: 'Slide 6',
+		[SRC]: require('assets/img/mark-finn.jpg'),
+		[ALT_TEXT]: 'Slide 6',
 	},
 ]
 

@@ -15,7 +15,9 @@ import {
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, CarouselCommon } = stopUndefined(ExportMultiOrganisms)
+const { Footer, CarouselCommonPropedProfile } = stopUndefined(
+	ExportMultiOrganisms
+)
 
 const ProfilePage = props => {
 	const wrapper = useRef(null)
@@ -124,7 +126,7 @@ const ProfilePage = props => {
 					</Row>
 					<Row>
 						<Col md='12'>
-							<CarouselCommon />
+							<CarouselCommonPropedProfile />
 						</Col>
 					</Row>
 				</Container>
