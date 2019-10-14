@@ -118,7 +118,7 @@ const ProfilePage = props => {
 			<section className='section'>
 				<Container>
 					<Row>
-						<h1>Images</h1>
+						<h1 className='align-center'>Images</h1>
 					</Row>
 					<Row>
 						<Col md='12'>
@@ -127,7 +127,6 @@ const ProfilePage = props => {
 					</Row>
 				</Container>
 			</section>
-
 			<Footer />
 		</div>
 	)
