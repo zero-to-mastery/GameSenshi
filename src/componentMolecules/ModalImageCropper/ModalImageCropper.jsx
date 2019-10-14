@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState, memo, useEffect } from 'react'
+import React, { useRef, useCallback, useState, memo } from 'react'
 import Cropper from 'react-cropper'
 import 'cropperjs/dist/cropper.css'
 import { ExportAtoms } from 'componentAtoms'
