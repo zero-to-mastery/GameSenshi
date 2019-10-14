@@ -24,7 +24,6 @@ const ImageUpload = props => {
 
 	const handleImageChange = useCallback(
 		e => {
-			e.preventDefault()
 			const reader = new FileReader()
 			const file = e.target.files[0]
 			if (file) {
@@ -33,6 +32,7 @@ const ImageUpload = props => {
 					onSelect_(result)
 				}
 				reader.readAsDataURL(file)
+				e.target.value = ''
 			}
 		},
 		[onSelect_]
@@ -43,14 +43,13 @@ const ImageUpload = props => {
 			fileInput.current.click()
 			onClick_(e)
 		},
-		[onClick_]
+		[onClick_, fileInput.current]
 	)
 
 	const handleRemove = useCallback(() => {
 		fileInput.current.value = null
-
 		onRemove_()
-	}, [onRemove_])
+	}, [onRemove_, fileInput.current])
 
 	return (
 		<div className='fileinput text-center'>
