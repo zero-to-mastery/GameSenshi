@@ -13,57 +13,13 @@ import {
 	Row,
 	Col,
 	UncontrolledTooltip,
-	Carousel,
-	CarouselItem,
-	CarouselIndicators,
 } from 'reactstrap'
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
 const { Footer } = stopUndefined(ExportMultiOrganisms)
 
-let imageSlickSettings = {
-	dots: true,
-	infinite: true,
-	slidesToShow: 4,
-	slidesToScroll: 4,
-	responsive: [
-		{
-			breakpoint: 1024,
-			settings: {
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				infinite: true,
-			},
-		},
-		// You can unslick at a given breakpoint now by adding:
-		// settings: "unslick"
-		// instead of a settings object
-	],
-}
-
-const items = [
-	{
-		altText: '',
-		caption: 'Big City Life, United States',
-		src: require('assets/img/denys.jpg'),
-	},
-	{
-		altText: '',
-		caption: 'Somewhere Beyond, United States',
-		src: require('assets/img/fabien-bazanegue.jpg'),
-	},
-	{
-		altText: '',
-		caption: 'Stocks, United States',
-		src: require('assets/img/mark-finn.jpg'),
-	},
-]
-
 const ProfilePage = props => {
-	const [activeIndex, setActiveIndex] = useState(0)
-	const [animating] = useState({ value: false })
-
 	const wrapper = useRef(null)
 
 	useEffect(() => {
@@ -76,30 +32,30 @@ const ProfilePage = props => {
 		}
 	}, [])
 
-	const onExiting = () => {
-		animating.value = true
-	}
+	// const onExiting = () => {
+	// 	animating.value = true
+	// }
 
-	const onExited = () => {
-		animating.value = false
-	}
+	// const onExited = () => {
+	// 	animating.value = false
+	// }
 
-	const next = () => {
-		if (animating.value) return
-		const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1
-		setActiveIndex(nextIndex)
-	}
+	// const next = () => {
+	// 	if (animating.value) return
+	// 	// const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1
+	// 	// setActiveIndex(nextIndex)
+	// }
 
-	const previous = () => {
-		if (animating.value) return
-		const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1
-		setActiveIndex(nextIndex)
-	}
+	// const previous = () => {
+	// 	if (animating.value) return
+	// 	// const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1
+	// 	// setActiveIndex(nextIndex)
+	// }
 
-	const goToIndex = newIndex => {
-		if (animating.value) return
-		setActiveIndex(newIndex)
-	}
+	// const goToIndex = newIndex => {
+	// 	if (animating.value) return
+	// 	setActiveIndex(newIndex)
+	// }
 	return (
 		<div className='wrapper' ref={wrapper}>
 			<div className='page-header'>
@@ -156,26 +112,7 @@ const ProfilePage = props => {
 						</Col>
 						<Col lg='6' md='6'>
 							<h1 className='text-left'>Favorite Games</h1>
-							<Row className='btn-wrapper profile justify-content-center pt-3'>
-								<Button
-									className='btn-icon btn-round'
-									href='#games/chess'
-									target='_blank'>
-									<i className='fab fa-chess' />
-								</Button>
-								<Button
-									className='btn-icon btn-round'
-									href='#games/puzzle'
-									target='_blank'>
-									<i className='fab fa-puzzle-piece' />
-								</Button>
-								<Button
-									className='btn-icon btn-round'
-									href='#games/solitaire'
-									target='_blank'>
-									<i className='fab fa-heart' />
-								</Button>
-							</Row>
+							<Row className='btn-wrapper profile justify-content-center pt-3'></Row>
 						</Col>
 					</Row>
 				</Container>
@@ -186,88 +123,11 @@ const ProfilePage = props => {
 						<h1>Images</h1>
 					</Row>
 					<Row>
-						<Col md='12'>
-							<Slick {...imageSlickSettings}>
-								<div>
-									<Media object data-src='holder.js/150x150?text=1' alt='...' />
-								</div>
-								<div>
-									<Media object data-src='holder.js/150x150?text=2' alt='...' />
-								</div>
-								<div>
-									<Media object data-src='holder.js/150x150?text=3' alt='...' />
-								</div>
-								<div>
-									<Media object data-src='holder.js/150x150?text=4' alt='...' />
-								</div>
-								<div>
-									<Media object data-src='holder.js/150x150?text=5' alt='...' />
-								</div>
-								<div>
-									<Media object data-src='holder.js/150x150?text=6' alt='...' />
-								</div>
-								<div>
-									<Media object data-src='holder.js/150x150?text=7' alt='...' />
-								</div>
-								<div>
-									<Media object data-src='holder.js/150x150?text=8' alt='...' />
-								</div>
-							</Slick>
-						</Col>
+						<Col md='12'></Col>
 					</Row>
 				</Container>
 			</section>
-			<section className='section'>
-				<Container>
-					<Row>
-						<h1>Videos</h1>
-					</Row>
-					<Row className='justify-content-center'>
-						<Carousel activeIndex={activeIndex} next={next} previous={previous}>
-							<CarouselIndicators
-								items={items}
-								activeIndex={activeIndex}
-								onClickHandler={goToIndex}
-							/>
-							{items.map((prop, key) => {
-								return (
-									<CarouselItem
-										onExiting={onExiting}
-										onExited={onExited}
-										key={prop.src}>
-										<img src={prop.src} alt='...' className='d-block' />
-										<div className='carousel-caption d-none d-md-block'>
-											<h5>{prop.caption}</h5>
-										</div>
-									</CarouselItem>
-								)
-							})}
-							<a
-								className='carousel-control-prev'
-								data-slide='prev'
-								href='#pablo'
-								onClick={e => {
-									e.preventDefault()
-									previous()
-								}}
-								role='button'>
-								<i className='tim-icons icon-minimal-left' />
-							</a>
-							<a
-								className='carousel-control-next'
-								data-slide='next'
-								href='#pablo'
-								onClick={e => {
-									e.preventDefault()
-									next()
-								}}
-								role='button'>
-								<i className='tim-icons icon-minimal-right' />
-							</a>
-						</Carousel>
-					</Row>
-				</Container>
-			</section>
+
 			<Footer />
 		</div>
 	)
