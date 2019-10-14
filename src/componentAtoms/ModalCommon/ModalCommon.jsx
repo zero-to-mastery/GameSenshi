@@ -21,14 +21,15 @@ const ModalCommon = props => {
 		[MODAL_COMMON_ON_CONTINUE]: onContinue,
 		[MODAL_COMMON_STATE_FOOTER]: footer,
 		children,
-		...otherProps
 	} = props
+
 	return (
 		<Modal
 			isOpen={isOpen}
 			toggle={toggle}
 			backdrop='static'
-			modalClassName='modal-black'>
+			wrapClassName='modal-backdrop'
+			modalClassName='modal-black '>
 			<div className='modal-header'>
 				<button
 					type='button'
