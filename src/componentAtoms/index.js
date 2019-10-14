@@ -37,6 +37,7 @@ import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
+import { Carousel } from './Carousel'
 
 export const ExportAtoms = {
 	...ExportProton,
@@ -80,4 +81,5 @@ export const ExportAtoms = {
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
+	Carousel,
 }
