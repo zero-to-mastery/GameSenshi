@@ -44,17 +44,4 @@ const ModalCommonStoreModalPropedAuth = props => {
 	return <ModalCommonStoreModal footer='continue' {...props} />
 }
 
-const ModalCommonStoreModalPropedImageCropper = props => {
-	return (
-		<ModalCommonStoreModal
-			title='Set New Profile Picture'
-			footer='Crop and Update Profile Image'
-			{...props}
-		/>
-	)
-}
-
-export {
-	ModalCommonStoreModalPropedImageCropper,
-	ModalCommonStoreModalPropedAuth,
-}
+export { ModalCommon, ModalCommonStoreModalPropedAuth }

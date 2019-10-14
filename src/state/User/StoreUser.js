@@ -135,16 +135,8 @@ class StoreUser extends Container {
 	};
 
 	[ON_SIGN_OUT] = () => {
-		try {
-			this[RESET_STATE]()
-			try {
-				localStorage.removeItem(STORE_USER)
-			} catch (e) {
-				//console.log(e)
-			}
-		} catch (e) {
-			console.log(e)
-		}
+		this[RESET_STATE]()
+		localStorage.removeItem(STORE_USER)
 
 		return this
 	}

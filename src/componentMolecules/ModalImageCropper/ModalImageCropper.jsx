@@ -1,13 +1,13 @@
-import React, { useRef, useCallback, useState } from 'react'
+import React, { useRef, useCallback, useState, useEffect } from 'react'
 import Cropper from 'react-cropper'
 import 'cropperjs/dist/cropper.css'
 import { ExportAtoms } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
-const { ModalCommonStoreModalPropedImageCropper } = stopUndefined(ExportAtoms)
+const { ModalCommon } = stopUndefined(ExportAtoms)
 const emptyFunction = () => {}
 const ModalImageCropper = props => {
-	const { isOpen, src, toggle, onCrop, title, footer } = props
+	const { src, toggle, onCrop, ...otherProps } = props
 	const onCrop_ = onCrop || emptyFunction
 
 	const [dataUrl, setDataUrl] = useState('')
@@ -17,8 +17,7 @@ const ModalImageCropper = props => {
 	const crop = useCallback(() => {
 		// setState here cause lagness due too much setState with each movement
 		// setTimeout is added, the more timeout, the smoother
-		// the lag is more unnoticeable after build
-		// TODO need a better solution
+		// the lag is less noticeable as built files
 		clearTimeout(timeoutId.current)
 		timeoutId.current = setTimeout(() => {
 			setDataUrl(cropperRef.current.cropper.getCroppedCanvas().toDataURL())
@@ -34,12 +33,12 @@ const ModalImageCropper = props => {
 	)
 
 	return (
-		<ModalCommonStoreModalPropedImageCropper
-			title={title}
-			isOpen={isOpen}
+		<ModalCommon
+			title='Set New Profile Picture'
+			footer='Crop and Update Profile Image'
 			toggle={toggle}
-			footer={footer}
-			onContinue={onContinue}>
+			onContinue={onContinue}
+			{...otherProps}>
 			<Cropper
 				ref={cropperRef}
 				src={src}
@@ -48,7 +47,7 @@ const ModalImageCropper = props => {
 				aspectRatio={1}
 				crop={crop}
 			/>
-		</ModalCommonStoreModalPropedImageCropper>
+		</ModalCommon>
 	)
 }
 

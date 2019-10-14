@@ -12,15 +12,12 @@ import {
 	ButtonSignUpStoreUserPropedIndexNavbar,
 } from './ButtonSignInUp'
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
-import { AvatarUserStoreUserPropedSettings } from './ImageUpload'
+import { ImageUploadStoreUserPropedSettings } from './ImageUpload'
 import { AlertCommonStoreAlert } from './AlertCommon'
 import { ProgressCommonStoreProgress } from './ProgressCommon'
 import { CheckBox } from './CheckBox'
 import { HeaderLined } from './HeaderLined'
-import {
-	ModalCommonStoreModalPropedAuth,
-	ModalCommonStoreModalPropedImageCropper,
-} from './ModalCommon'
+import { ModalCommonStoreModalPropedAuth, ModalCommon } from './ModalCommon'
 import { ButtonSubmit } from './ButtonSubmit'
 import { TabPaneContainer } from './TabPaneContainer'
 import { TabListVerticalPropedSettingPage } from './TabListVertical'
@@ -40,7 +37,7 @@ import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
-import { ShaderStoreModal } from './Shader'
+import { ShaderStoreModal, ShaderStoreShader } from './Shader'
 
 export const ExportAtoms = {
 	...ExportProton,
@@ -48,7 +45,7 @@ export const ExportAtoms = {
 	FinalForm,
 	IndexHeader,
 	ErrorBoundary,
-	AvatarUserStoreUserPropedSettings,
+	ImageUploadStoreUserPropedSettings,
 	AlertCommonStoreAlert,
 	ProgressCommonStoreProgress,
 	ButtonsSocialAuthPropedDefault,
@@ -65,7 +62,7 @@ export const ExportAtoms = {
 	CheckBox,
 	HeaderLined,
 	ModalCommonStoreModalPropedAuth,
-	ModalCommonStoreModalPropedImageCropper,
+	ModalCommon,
 	ButtonSubmit,
 	TabPaneContainer,
 	TabListVerticalPropedSettingPage,
@@ -85,4 +82,5 @@ export const ExportAtoms = {
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
 	ShaderStoreModal,
+	ShaderStoreShader,
 }

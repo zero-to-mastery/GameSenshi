@@ -35,9 +35,9 @@ const TabPaneSettingList = props => {
 					}
 					setLoading(false)
 				})
-				.catch(e => {
+				.catch(err => {
 					// TODO need better error handling
-					console.log(e)
+					console.log(err)
 					setLoading(false)
 				})
 		}
@@ -48,9 +48,9 @@ const TabPaneSettingList = props => {
 		try {
 			settingCached = JSON.parse(localStorage.getItem(name))
 			setValue(settingCached)
-		} catch (e) {
+		} catch (err) {
 			// TODO need better error handling
-			console.log(e)
+			console.log(err)
 			setLoading(!settingCached)
 		}
 	}, [])

@@ -21,6 +21,7 @@ const ModalCommon = props => {
 		[MODAL_COMMON_ON_CONTINUE]: onContinue,
 		[MODAL_COMMON_STATE_FOOTER]: footer,
 		children,
+		...otherProps
 	} = props
 	return (
 		<Modal

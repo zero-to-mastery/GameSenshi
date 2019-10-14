@@ -223,8 +223,8 @@ const FinalInput = memo(props => {
 											// * if we catch the error when handleSubmit need the event handler (which is undefined)
 											// * the program can continue to work normally (need more research)
 											submitRef.current.onClick()
-										} catch (e) {
-											//console.log(e)
+										} catch (err) {
+											console.log(err)
 										}
 									},
 									state.fulfilled &&

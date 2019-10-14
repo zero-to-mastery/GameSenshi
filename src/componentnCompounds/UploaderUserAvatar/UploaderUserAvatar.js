@@ -3,7 +3,7 @@ import { stopUndefined } from 'utils'
 import { ExportMolecules } from 'componentMolecules'
 
 const {
-	AvatarUserStoreUserPropedSettings,
+	ImageUploadStoreUserPropedSettings,
 	ModalImageCropperPropedSettings,
 } = stopUndefined(ExportMolecules)
 
@@ -11,10 +11,13 @@ const UploaderUserAvatar = () => {
 	const [imageDataUrl, setImageDataUrl] = useState('')
 	const [openCropper, setOpenCropper] = useState(false)
 
-	const onSelectImageFile = useCallback(imageDataUrl => {
-		setImageDataUrl(imageDataUrl)
-		setOpenCropper(true)
-	}, [])
+	const onSelectImageFile = useCallback(
+		imageDataUrl => {
+			setImageDataUrl(imageDataUrl)
+			setOpenCropper(true)
+		},
+		[imageDataUrl]
+	)
 
 	const toggleCropper = useCallback(() => {
 		setOpenCropper(state => !state)
@@ -27,7 +30,7 @@ const UploaderUserAvatar = () => {
 				toggle={toggleCropper}
 				src={imageDataUrl}
 			/>
-			<AvatarUserStoreUserPropedSettings onSelect={onSelectImageFile} />
+			<ImageUploadStoreUserPropedSettings onSelect={onSelectImageFile} />
 		</>
 	)
 }

@@ -26,15 +26,15 @@ const mapStoreUserMethodToProps = {
 	},
 }
 
-const AvatarUserStoreUser = StateContainer(
+const ImageUploadStoreUser = StateContainer(
 	ImageUpload,
 	[storeUser],
 	[mapStoreUserStateToProps],
 	[mapStoreUserMethodToProps]
 )
 
-const AvatarUserStoreUserPropedSettings = props => {
-	return <AvatarUserStoreUser defaultImage={defaultAvatar} {...props} />
+const ImageUploadStoreUserPropedSettings = props => {
+	return <ImageUploadStoreUser defaultImage={defaultAvatar} {...props} />
 }
 
-export { AvatarUserStoreUserPropedSettings }
+export { ImageUploadStoreUserPropedSettings }
