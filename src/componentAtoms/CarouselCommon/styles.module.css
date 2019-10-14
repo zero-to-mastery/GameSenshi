@@ -1,0 +1,11 @@
+.slideWrapper {
+ display: flex;
+ justify-content: center;
+ align-items: center;;
+
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+}

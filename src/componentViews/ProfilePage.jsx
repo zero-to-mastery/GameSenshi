@@ -118,7 +118,9 @@ const ProfilePage = props => {
 			<section className='section'>
 				<Container>
 					<Row>
-						<h1 className='align-center'>Images</h1>
+						<Col sm='12' md={{ size: 6, offset: 5 }}>
+							<h1>Images</h1>
+						</Col>
 					</Row>
 					<Row>
 						<Col md='12'>
