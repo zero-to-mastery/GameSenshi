@@ -29,6 +29,7 @@ const ModalCommon = props => {
 			toggle={toggle}
 			backdrop='static'
 			modalClassName='modal-black'
+			wrapClassName='modal-backdrop'
 			style={{ border: '1px solid #00d6d1', borderRadius: '5px' }}>
 			<div className='modal-header'>
 				<button
