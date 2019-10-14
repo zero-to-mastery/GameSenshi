@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
 // reactstrap components
 import {
@@ -6,7 +6,6 @@ import {
 	Card,
 	CardHeader,
 	CardBody,
-	Media,
 	Container,
 	Row,
 	Col,
