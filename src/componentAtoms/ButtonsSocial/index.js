@@ -4,7 +4,7 @@ import { ButtonsSocial, ID, COLOR, ICON, TOOLTIP } from './ButtonsSocial'
 const buttons = [
 	{
 		[ID]: 'facebook',
-		[ICON]: 'fab fa-facebook',
+		[ICON]: 'fab fa-facebook-f',
 		[COLOR]: 'facebook',
 		[TOOLTIP]: 'Connect via Facebook',
 	},

@@ -14,7 +14,7 @@ const buttons = [
 	{
 		[ID]: 'google',
 		[ICON]: 'fab fa-google',
-		[COLOR]: 'warning',
+		[COLOR]: 'google',
 		[TOOLTIP]: 'Sign in with Google!',
 	},
 	{
