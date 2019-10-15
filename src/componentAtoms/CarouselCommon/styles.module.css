@@ -1,11 +1,12 @@
 .slideWrapper {
  display: flex;
- justify-content: center;
- align-items: center;;
-
+ justify-content: space-around;
+ align-items: center;
+ margin: 0;
+ padding: 0;
 }
 
 .slideImage {
   width: 100%;
-  height: 100%;
+  height: 200px;
 }

@@ -1,22 +1,15 @@
 import React, { useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
 // reactstrap components
-import {
-	Button,
-	Card,
-	CardHeader,
-	CardBody,
-	Container,
-	Row,
-	Col,
-	UncontrolledTooltip,
-} from 'reactstrap'
+import { Card, CardHeader, CardBody, Container, Row, Col } from 'reactstrap'
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, CarouselCommonPropedProfile } = stopUndefined(
-	ExportMultiOrganisms
-)
+const {
+	Footer,
+	CarouselCommonPropedProfile,
+	ButtonsSocialPropedDefault,
+} = stopUndefined(ExportMultiOrganisms)
 
 const ProfilePage = props => {
 	const wrapper = useRef(null)
@@ -73,32 +66,7 @@ const ProfilePage = props => {
 									<h3 className='title'>Mike Scheinder</h3>
 									<p className='text-muted text-center'>@mighty_mike</p>
 									{/* Social icons */}
-									<Row className='btn-wrapper profile justify-content-center pt-3'>
-										<Button
-											className='btn-icon btn-round'
-											color='twitch'
-											href='https://twitch.tv/#my_channel'
-											id='tooltip_twitch_icon'
-											target='_blank'>
-											<i className='fab fa-twitch' />
-										</Button>
-										<UncontrolledTooltip delay={0} target='tooltip_twitch_icon'>
-											Subscribe to us
-										</UncontrolledTooltip>
-										<Button
-											className='btn-icon btn-round'
-											color='youtube'
-											href='https://youtube.com/channel/#my_channel'
-											id='tooltip_youtube_icon'
-											target='_blank'>
-											<i className='fab fa-youtube' />
-										</Button>
-										<UncontrolledTooltip
-											delay={0}
-											target='tooltip_youtube_icon'>
-											Subscribe to us
-										</UncontrolledTooltip>
-									</Row>
+									<Row className='btn-wrapper profile justify-content-center pt-3'></Row>
 								</CardHeader>
 								<CardBody>
 									{/* Biography */}
@@ -111,7 +79,9 @@ const ProfilePage = props => {
 						</Col>
 						<Col lg='6' md='6'>
 							<h1 className='text-left'>Favorite Games</h1>
-							<Row className='btn-wrapper profile justify-content-center pt-3'></Row>
+							<Row className='btn-wrapper profile justify-content-center pt-3'>
+								<ButtonsSocialPropedDefault />
+							</Row>
 						</Col>
 					</Row>
 				</Container>
@@ -119,7 +89,10 @@ const ProfilePage = props => {
 			<section className='section'>
 				<Container>
 					<Row>
-						<Col sm='12' md={{ size: 6, offset: 5 }}>
+						<Col
+							xs={{ size: 6, offset: 4 }}
+							sm={{ size: 6, offset: 5 }}
+							md={{ size: 6, offset: 5 }}>
 							<h1>Images</h1>
 						</Col>
 					</Row>

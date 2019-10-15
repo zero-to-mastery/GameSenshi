@@ -36,4 +36,7 @@
 	&.btn-behance {
 		@include social-buttons-color($behance, $behance-states);
 	}
+	&.btn-twitch {
+		@include social-buttons-color($twitch, $twitch-states);
+	}
 }
