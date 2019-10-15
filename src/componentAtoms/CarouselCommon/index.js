@@ -14,6 +14,8 @@ const CarouselCommonPropedProfile = props => {
 			infinite={true}
 			speed={1000}
 			responsive={sliderResponsive}
+			pauseOnHover={true}
+			arrows={false}
 			{...props}
 		/>
 	)

@@ -119,7 +119,10 @@ const ProfilePage = props => {
 			<section className='section'>
 				<Container>
 					<Row>
-						<Col sm='12' md={{ size: 6, offset: 5 }}>
+						<Col
+							xs={{ size: 6, offset: 4 }}
+							sm={{ size: 6, offset: 5 }}
+							md={{ size: 6, offset: 5 }}>
 							<h1>Images</h1>
 						</Col>
 					</Row>
