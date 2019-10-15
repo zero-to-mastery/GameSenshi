@@ -38,6 +38,7 @@ import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from './DropdownMenuNavb
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
 import { CarouselCommonPropedProfile } from './CarouselCommon'
+import { ButtonsSocial } from './ButtonsSocial'
 
 export const ExportAtoms = {
 	...ExportProton,
@@ -82,4 +83,5 @@ export const ExportAtoms = {
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
 	CarouselCommonPropedProfile,
+	ButtonsSocial,
 }
