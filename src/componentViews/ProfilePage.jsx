@@ -1,22 +1,15 @@
 import React, { useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
 // reactstrap components
-import {
-	Button,
-	Card,
-	CardHeader,
-	CardBody,
-	Container,
-	Row,
-	Col,
-	UncontrolledTooltip,
-} from 'reactstrap'
+import { Card, CardHeader, CardBody, Container, Row, Col } from 'reactstrap'
 // core components
 import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-const { Footer, CarouselCommonPropedProfile, ButtonsSocial } = stopUndefined(
-	ExportMultiOrganisms
-)
+const {
+	Footer,
+	CarouselCommonPropedProfile,
+	ButtonsSocialPropedDefault,
+} = stopUndefined(ExportMultiOrganisms)
 
 const ProfilePage = props => {
 	const wrapper = useRef(null)
@@ -87,7 +80,7 @@ const ProfilePage = props => {
 						<Col lg='6' md='6'>
 							<h1 className='text-left'>Favorite Games</h1>
 							<Row className='btn-wrapper profile justify-content-center pt-3'>
-								<ButtonsSocial />
+								<ButtonsSocialPropedDefault />
 							</Row>
 						</Col>
 					</Row>

@@ -29,7 +29,8 @@ const ButtonsSocial = props => {
 							href=''
 							id={id}
 							target='_blank'
-							onClick={onClicks[i]}>
+							// onClick={onClicks[i]}
+						>
 							<i className={icon} />
 						</Button>
 						<UncontrolledTooltip delay={0} target={id}>
@@ -42,4 +43,4 @@ const ButtonsSocial = props => {
 	)
 }
 
-export { ButtonsSocial }
+export { ButtonsSocial, ID, ICON, COLOR, TOOLTIP, BUTTONS_SOCIAL_PROFILE }

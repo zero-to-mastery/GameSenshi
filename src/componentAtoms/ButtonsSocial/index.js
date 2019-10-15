@@ -5,25 +5,26 @@ const buttons = [
 	{
 		[ID]: 'facebook',
 		[ICON]: 'fab fa-facebook',
-		[COLOR]: '#3b5998',
+		[COLOR]: 'facebook',
 		[TOOLTIP]: 'Connect via Facebook',
 	},
 	{
 		[ID]: 'twitch',
 		[ICON]: 'fab fa-twitch',
-		[COLOR]: '#6441a5',
+		[COLOR]: 'twitch',
 		[TOOLTIP]: 'Connect via Twitch',
 	},
 	{
 		[ID]: 'youtube',
 		[ICON]: 'fab fa-youtube',
-		[COLOR]: '#c4302b',
+		[COLOR]: 'youtube',
 		[TOOLTIP]: 'Connect via Youtube',
 	},
 ]
 
 const ButtonsSocialPropedDefault = props => {
-	return <ButtonsSocial buttons={buttons} />
+	const { ...restProps } = props
+	return <ButtonsSocial buttons={buttons} {...restProps} />
 }
 
 export { ButtonsSocial, ButtonsSocialPropedDefault }
