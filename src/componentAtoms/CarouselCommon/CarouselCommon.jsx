@@ -17,8 +17,17 @@ const CarouselItem = props => {
 		<div className={styles.slideWrapper}>
 			{isVideo ? (
 				<ReactPlayer
-					url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
-					playing
+					url='https://www.youtube.com/watch?v=5HeVYC42grI'
+					light={false}
+					width={250}
+					height={200}
+					controls={true}
+					volume={1}
+					config={{
+						youtube: {
+							playerVars: { showinfo: 1 },
+						},
+					}}
 				/>
 			) : (
 				<img className={styles.slideImage} src={src} alt={altText} />
