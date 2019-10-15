@@ -11,24 +11,32 @@ const SRC = 'src'
 const ALT_TEXT = 'altText'
 const IS_VIDEO = 'isVideo'
 
+const ReactPlayerGeneric = props => {
+	const { [SRC]: src } = props
+	return (
+		<ReactPlayer
+			url={src}
+			light={false}
+			width='100%'
+			height='200px'
+			controls={true}
+			volume={1}
+			config={{
+				youtube: {
+					playerVars: { showinfo: 1 },
+				},
+			}}
+			{...props}
+		/>
+	)
+}
+
 const CarouselItem = props => {
 	const { [SRC]: src, [ALT_TEXT]: altText, [IS_VIDEO]: isVideo } = props
 	return (
 		<div className={styles.slideWrapper}>
 			{isVideo ? (
-				<ReactPlayer
-					url='https://www.youtube.com/watch?v=5HeVYC42grI'
-					light={false}
-					width={250}
-					height={200}
-					controls={true}
-					volume={1}
-					config={{
-						youtube: {
-							playerVars: { showinfo: 1 },
-						},
-					}}
-				/>
+				<ReactPlayerGeneric src={src} />
 			) : (
 				<img className={styles.slideImage} src={src} alt={altText} />
 			)}

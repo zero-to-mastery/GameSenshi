@@ -1,6 +1,9 @@
 // temp data array
 import { SRC, ALT_TEXT, IS_VIDEO } from './CarouselCommon'
 
+// temporary youtube video url
+const URL = 'https://www.youtube.com/watch?v=5HeVYC42grI'
+
 const slides = [
 	{
 		[SRC]: require('assets/img/denys.jpg'),
@@ -8,7 +11,7 @@ const slides = [
 		[IS_VIDEO]: false,
 	},
 	{
-		[SRC]: require('assets/img/fabien-bazanegue.jpg'),
+		[SRC]: URL,
 		[ALT_TEXT]: 'Slide 2',
 		[IS_VIDEO]: true,
 	},
@@ -18,7 +21,7 @@ const slides = [
 		[IS_VIDEO]: false,
 	},
 	{
-		[SRC]: require('assets/img/denys.jpg'),
+		[SRC]: URL,
 		[ALT_TEXT]: 'Slide 4',
 		[IS_VIDEO]: true,
 	},
@@ -28,7 +31,7 @@ const slides = [
 		[IS_VIDEO]: false,
 	},
 	{
-		[SRC]: require('assets/img/mark-finn.jpg'),
+		[SRC]: URL,
 		[ALT_TEXT]: 'Slide 6',
 		[IS_VIDEO]: true,
 	},
