@@ -5,15 +5,13 @@ import { FinalSelectGame, FINAL_SELECT_GAME } from './FinalSelectGame'
 import { stopUndefined } from 'utils'
 import { ExportMolecules } from 'componentMolecules'
 
-const { LabelForm, FinalForm } = stopUndefined(ExportMolecules)
+const { LabelForm } = stopUndefined(ExportMolecules)
 
 const FinalSelectGamePropedGeneraL = props => {
 	return (
-		<FinalForm>
-			<LabelForm label='Games' htmlFor={FINAL_SELECT_GAME}>
-				<FinalSelectGame hideSuccess onlyShowErrorAfterSubmit {...props} />
-			</LabelForm>
-		</FinalForm>
+		<LabelForm label='Games' htmlFor={FINAL_SELECT_GAME}>
+			<FinalSelectGame hideSuccess onlyShowErrorAfterSubmit {...props} />
+		</LabelForm>
 	)
 }
 

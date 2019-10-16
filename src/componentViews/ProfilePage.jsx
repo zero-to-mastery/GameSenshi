@@ -9,7 +9,7 @@ const {
 	Footer,
 	CarouselCommonPropedProfile,
 	ButtonsSocialPropedStreams,
-	FinalSelectGamePropedGeneraL,
+	FormProfile,
 } = stopUndefined(ExportMultiOrganisms)
 
 const ProfilePage = props => {
@@ -80,10 +80,12 @@ const ProfilePage = props => {
 								</CardBody>
 							</Card>
 						</Col>
-						<Col lg='6' md='6'>
+						<Col lg='8' md='6'>
 							<h1 className='text-left'>Player profile</h1>
-							<Row className='btn-wrapper profile justify-content-center pt-3'>
-								<FinalSelectGamePropedGeneraL />
+							<Row>
+								<Col lg='12' md='12'>
+									<FormProfile />
+								</Col>
 							</Row>
 						</Col>
 					</Row>
