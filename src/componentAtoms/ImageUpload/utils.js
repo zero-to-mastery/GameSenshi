@@ -24,12 +24,7 @@ const onRemove = async () => {
 		})
 
 	if (removed) {
-		try {
-			// for some reason this does not return promise as stated in https://firebase.google.com/docs/reference/js/firebase.storage.Reference.html?authuser=0#delete
-			handleUserAvatarRemove()
-		} catch (e) {
-			//
-		}
+		handleUserAvatarRemove().catch(() => {})
 	}
 }
 
