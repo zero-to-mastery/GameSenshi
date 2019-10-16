@@ -10,6 +10,7 @@ const {
 	CarouselCommonPropedProfile,
 	ButtonsSocialPropedStreams,
 	FormProfile,
+	RatingProfile,
 } = stopUndefined(ExportMultiOrganisms)
 
 const ProfilePage = props => {
@@ -83,7 +84,12 @@ const ProfilePage = props => {
 						<Col lg='8' md='6'>
 							<h1 className='text-left'>Player profile</h1>
 							<Row>
-								<Col lg='12' md='12'>
+								<Col lg='8' md='6'>
+									<RatingProfile />
+								</Col>
+							</Row>
+							<Row>
+								<Col lg='6' md='6'>
 									<FormProfile />
 								</Col>
 							</Row>

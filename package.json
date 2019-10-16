@@ -48,6 +48,9 @@
 		"p-fs-rule": "env-cmd .config/prod.env npm run fs-rule"
 	},
 	"dependencies": {
+		"@material-ui/core": "^4.5.1",
+		"@material-ui/icons": "^4.5.1",
+		"@material-ui/lab": "^4.0.0-alpha.29",
 		"apollo-cache-inmemory": "^1.6.2",
 		"apollo-cache-persist": "^0.1.1",
 		"apollo-client": "^2.6.3",
