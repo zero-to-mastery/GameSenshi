@@ -6,7 +6,7 @@ import { ExportMolecules } from 'componentMolecules'
 const { FinalInputSelect, VALUE, LABEL } = stopUndefined(ExportMolecules)
 
 const gameOptions = [
-	{ [VALUE]: '0', [LABEL]: 'Dota 2' },
+	{ [VALUE]: '', [LABEL]: 'Select a game' },
 	{ [VALUE]: '1', [LABEL]: 'Fifa 20' },
 	{ [VALUE]: '2', [LABEL]: 'Counter-Strike Global Offensive' },
 	{ [VALUE]: '3', [LABEL]: 'League of Legends' },
