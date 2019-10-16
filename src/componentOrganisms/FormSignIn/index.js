@@ -23,6 +23,7 @@ import {
 	storeSignInOnSuccessfulSubmission,
 	STORE_SIGN_IN_STATE_EMAIL,
 	STORE_SIGN_IN_STATE_IS_OPEN,
+	storeUserSetSigningIn,
 } from 'state'
 
 // inject staple props that suitable for this app
@@ -38,7 +39,8 @@ const FormSignInPropedDefault = withLastLocation(props => {
 
 	const onSuccessfulSubmission = useCallback(() => {
 		onSignedInRouting(lastLocation)
-	}, [])
+		storeUserSetSigningIn(true)
+	}, [lastLocation])
 	return (
 		<FormSignIn
 			forgotPasswordLink={ROUTE_PAGE_PASSWORD_RESET}

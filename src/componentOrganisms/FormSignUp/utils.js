@@ -1,6 +1,6 @@
 import React from 'react'
 // state management
-import { storeAlertShow } from 'state'
+import { storeAlertShow, storeUserSetSigningIn } from 'state'
 import { FINAL_TEXT_EMAIL, FINAL_TEXT_NAME } from './FormSignUp'
 
 const onSuccessfulSignUp = values => {
@@ -17,6 +17,7 @@ const onSuccessfulSignUp = values => {
 			</a>
 		</span>
 	)
+	storeUserSetSigningIn(true)
 	storeAlertShow(alertBody, 'success', 'tim-icons icon-bell-55')
 }
 

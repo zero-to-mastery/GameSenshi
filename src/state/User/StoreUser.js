@@ -30,6 +30,7 @@ const INITIALIZE = 'initialize'
 const RESET_AVATAR = 'resetAvatar'
 const ON_SIGN_IN = 'onSignIn'
 const ON_SIGN_OUT = 'onSignOut'
+const TIMEOUT_ID = 'timeOutID'
 
 const defaultValues = () => ({
 	[STORE_USER_STATE_SIGNING_IN]: false,
@@ -52,6 +53,7 @@ class StoreUser extends Container {
 		super()
 		this[STATE] = defaultValues()
 		this[SET_STATE] = this[SET_STATE].bind(this)
+		this[TIMEOUT_ID] = -1
 	}
 
 	[RESET_STATE] = () => {
@@ -80,12 +82,13 @@ class StoreUser extends Container {
 		onAutoSignedInFailed = () => {}
 	) => {
 		this[SET_STATE]({ [STORE_USER_STATE_SIGNING_IN]: value }, callback)
+		clearTimeout(this[TIMEOUT_ID])
 		if (value) {
-			setTimeout(() => {
+			this[TIMEOUT_ID] = setTimeout(() => {
 				if (this[STATE][STORE_USER_STATE_SIGNING_IN]) {
 					onAutoSignedInFailed()
+					this[SET_STATE]({ [STORE_USER_STATE_SIGNING_IN]: false })
 				}
-				this[SET_SIGNING_IN](false)
 			}, 10000)
 		}
 		return this
@@ -119,9 +122,10 @@ class StoreUser extends Container {
 					...userData_,
 					[STORE_USER_STATE_AUTH]: userAuth,
 					[STORE_USER_STATE_SIGNED_IN]: true,
+					[STORE_USER_STATE_SIGNING_IN]: false,
 				}
 			})
-			this[SET_SIGNING_IN](false)
+
 			// do not store sensitive information in localStorage
 			localStorage.setItem(
 				STORE_USER,
