@@ -1,0 +1,13 @@
+.inputNumber {
+  text-align: center;
+  font-size: 16px;
+  border: none;
+}
+
+.inputNumber:hover,
+.inputNumber:active,
+.inputNumber:focus {
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+}

@@ -12,6 +12,7 @@ const {
 	FormProfile,
 	RatingProfile,
 	ButtonAddToCartPropedProfile,
+	QuantityProfile,
 } = stopUndefined(ExportMultiOrganisms)
 
 const ProfilePage = props => {
@@ -98,6 +99,9 @@ const ProfilePage = props => {
 								</Col>
 							</Row>
 							<Row>
+								<Col lg='6' md='6'>
+									<QuantityProfile />
+								</Col>
 								<Col lg='6' md='6'>
 									<FormProfile />
 								</Col>
