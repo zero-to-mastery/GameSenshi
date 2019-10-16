@@ -1,4 +1,6 @@
 import {
+	CREATED_AT,
+	UPDATED_AT,
 	fbfsSettingsNotificationPath,
 	FB_FS_SETTINGS_NOTIFICATION_EMAIL,
 	FB_FS_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES,
@@ -22,14 +24,20 @@ const onUserCreate = (userRecord, eventContext, firestore) => {
 		data => data.providerId === 'password'
 	)
 
+	const date = new Date()
+
 	if (!isPasswordExist) {
 		firestore.doc(fbfsSettingsGeneralPath(uid)).set({
+			[CREATED_AT]: date,
+			[UPDATED_AT]: date,
 			[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]:
 				userRecord.displayName || userRecord.uid,
 		})
 	}
 
 	return firestore.doc(fbfsSettingsNotificationPath(uid)).set({
+		[CREATED_AT]: date,
+		[UPDATED_AT]: date,
 		[FB_FS_SETTINGS_NOTIFICATION_EMAIL]: {
 			[FB_FS_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES]: true,
 			[FB_FS_SETTINGS_NOTIFICATION_EMAIL_CHATS]: true,
