@@ -42,6 +42,7 @@ import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
 import { CarouselCommonPropedProfile } from './CarouselCommon'
 import { RatingProfile } from './RatingProfile'
+import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 
 export const ExportAtoms = {
 	...ExportProton,
@@ -88,4 +89,5 @@ export const ExportAtoms = {
 	ListNavItemStoreUserPropedCollapsedUnsigned,
 	CarouselCommonPropedProfile,
 	RatingProfile,
+	ButtonAddToCartPropedProfile,
 }

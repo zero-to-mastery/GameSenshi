@@ -11,6 +11,7 @@ const {
 	ButtonsSocialPropedStreams,
 	FormProfile,
 	RatingProfile,
+	ButtonAddToCartPropedProfile,
 } = stopUndefined(ExportMultiOrganisms)
 
 const ProfilePage = props => {
@@ -82,7 +83,15 @@ const ProfilePage = props => {
 							</Card>
 						</Col>
 						<Col lg='8' md='6'>
-							<h1 className='text-left'>Player profile</h1>
+							<Row>
+								<Col
+									className='py-2'
+									xs={{ size: 12, offset: 3 }}
+									sm={{ size: 12, offset: 1 }}
+									md={{ size: 12, offset: 1 }}>
+									<h1>Player profile</h1>
+								</Col>
+							</Row>
 							<Row>
 								<Col lg='8' md='6' className='py-3'>
 									<RatingProfile />
@@ -91,6 +100,11 @@ const ProfilePage = props => {
 							<Row>
 								<Col lg='6' md='6'>
 									<FormProfile />
+								</Col>
+							</Row>
+							<Row>
+								<Col lg='6' md='6' className='py-3'>
+									<ButtonAddToCartPropedProfile />
 								</Col>
 							</Row>
 						</Col>
