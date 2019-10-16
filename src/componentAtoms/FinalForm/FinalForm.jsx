@@ -4,6 +4,7 @@ import { FORM_ERROR } from 'final-form'
 import createDecorator from 'final-form-focus'
 
 const focusOnError = createDecorator()
+const emptyFunction = () => {}
 
 const FinalForm = props => {
 	const { onSubmit, onSuccessfulSubmission, ...otherProps } = props
@@ -13,7 +14,7 @@ const FinalForm = props => {
 			const response = await onSubmit(values)
 			const { status, data, message } = response
 
-			const onSuccessfulSubmission_ = onSuccessfulSubmission || (() => {})
+			const onSuccessfulSubmission_ = onSuccessfulSubmission || emptyFunction
 
 			if (status) {
 				onSuccessfulSubmission_(values)

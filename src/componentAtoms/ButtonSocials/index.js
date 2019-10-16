@@ -15,7 +15,7 @@ const ButtonsSocialPropedAuth = withLastLocation(props => {
 	)
 })
 
-// !TODO onClicks functionality
+// TODO onClicks functionality
 const ButtonsSocialPropedStreams = props => {
 	return <ButtonSocials onClicks={[]} buttons={buttonStreams} {...props} />
 }
