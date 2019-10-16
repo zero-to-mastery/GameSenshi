@@ -84,7 +84,7 @@ const ProfilePage = props => {
 						<Col lg='8' md='6'>
 							<h1 className='text-left'>Player profile</h1>
 							<Row>
-								<Col lg='8' md='6'>
+								<Col lg='8' md='6' className='py-3'>
 									<RatingProfile />
 								</Col>
 							</Row>

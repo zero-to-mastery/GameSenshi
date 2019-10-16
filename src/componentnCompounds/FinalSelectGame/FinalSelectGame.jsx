@@ -8,7 +8,7 @@ const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(
 )
 
 const gameOptions = [
-	{ [VALUE]: '', [LABEL]: 'Select a game', [DISABLE]: true },
+	{ [VALUE]: '', [LABEL]: 'Game', [DISABLE]: true },
 	{ [VALUE]: '0', [LABEL]: 'Fifa 20' },
 	{ [VALUE]: '1', [LABEL]: 'Counter-Strike Global Offensive' },
 	{ [VALUE]: '2', [LABEL]: 'League of Legends' },
