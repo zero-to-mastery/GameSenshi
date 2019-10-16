@@ -9,7 +9,7 @@ const { LabelForm } = stopUndefined(ExportMolecules)
 
 const FinalSelectGamePropedGeneraL = props => {
 	return (
-		<LabelForm label='Games' htmlFor={FINAL_SELECT_GAME}>
+		<LabelForm label='Select a game' htmlFor={FINAL_SELECT_GAME}>
 			<FinalSelectGame hideSuccess onlyShowErrorAfterSubmit {...props} />
 		</LabelForm>
 	)
