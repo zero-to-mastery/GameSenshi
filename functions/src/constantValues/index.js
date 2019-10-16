@@ -42,7 +42,6 @@ import {
 
 import {
 	FB_FS_USER,
-	FB_AUTH_UID,
 	FB_FS_SETTINGS,
 	fbfsSettingsNotification,
 	FB_FS_SETTINGS_NOTIFICATION_EMAIL,
@@ -91,7 +90,6 @@ export {
 	UNEXPECTED_ERROR_CODE_7,
 	FB_STORAGE_USER_AVATAR,
 	FB_FS_USER,
-	FB_AUTH_UID,
 	FB_FS_SETTINGS,
 	fbfsSettingsNotification,
 	FB_FS_SETTINGS_NOTIFICATION_EMAIL,

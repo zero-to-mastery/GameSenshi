@@ -24,10 +24,13 @@ const handleSignUpWithEmailAndPassword = async (
 	return auth()
 		.createUserWithEmailAndPassword(email, password)
 		.then(async credential => {
-			const { user } = credential
+			const {
+				user,
+				user: { uid },
+			} = credential
 			onSuccessfulSignUp()
 			user.sendEmailVerification().catch()
-			const userRef = firestore.doc(fbfsSettingsGeneral(user))
+			const userRef = firestore.doc(fbfsSettingsGeneral(uid))
 			try {
 				await userRef.set({
 					[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,

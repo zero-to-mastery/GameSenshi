@@ -46,7 +46,7 @@ const onCrop = (dataUrl, toggle) => {
 			})
 			if (url) {
 				firestore
-					.doc(fbfsSettingsGeneral(auth().currentUser))
+					.doc(fbfsSettingsGeneral(auth().currentUser.uid))
 					.set({
 						[FB_FS_SETTINGS_GENERAL_USER_AVATAR]: url,
 					})

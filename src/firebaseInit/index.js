@@ -40,7 +40,7 @@ auth().useDeviceLanguage()
 auth().onAuthStateChanged(userAuth => {
 	onAuthChanged(userAuth, (next, error) =>
 		firestore
-			.doc(fbfsSettingsGeneral(userAuth))
+			.doc(fbfsSettingsGeneral(userAuth.uid))
 			.onSnapshot({ includeMetadataChanges: true }, { next, error }, error)
 	)
 })

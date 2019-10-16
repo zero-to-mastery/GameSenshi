@@ -10,7 +10,7 @@ const emptyString = ''
 
 const onRemove = async () => {
 	const removed = await firestore
-		.doc(fbfsSettingsGeneral(auth().currentUser))
+		.doc(fbfsSettingsGeneral(auth().currentUser.uid))
 		.set({
 			[FB_FS_SETTINGS_GENERAL_USER_AVATAR]: emptyString,
 		})

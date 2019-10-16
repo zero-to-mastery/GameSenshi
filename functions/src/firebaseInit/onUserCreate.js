@@ -15,18 +15,21 @@ import {
 
 const onUserCreate = (userRecord, eventContext, firestore) => {
 	console.log(userRecord, eventContext)
+
+	const { uid } = userRecord
+
 	const isPasswordExist = userRecord.providerData.some(
 		data => data.providerId === 'password'
 	)
 
 	if (!isPasswordExist) {
-		firestore.doc(fbfsSettingsGeneral(userRecord)).set({
+		firestore.doc(fbfsSettingsGeneral(uid)).set({
 			[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]:
 				userRecord.displayName || userRecord.uid,
 		})
 	}
 
-	return firestore.doc(fbfsSettingsNotification(userRecord)).set({
+	return firestore.doc(fbfsSettingsNotification(uid)).set({
 		[FB_FS_SETTINGS_NOTIFICATION_EMAIL]: {
 			[FB_FS_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES]: true,
 			[FB_FS_SETTINGS_NOTIFICATION_EMAIL_CHATS]: true,
