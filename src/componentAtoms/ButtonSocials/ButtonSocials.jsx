@@ -8,10 +8,11 @@ const COLOR = 'color'
 const TOOLTIP = 'tooltip'
 const BUTTONS = 'buttons'
 
-const ButtonsSocialAuth = props => {
+const ButtonSocials = props => {
 	const {
 		[BUTTONS_SOCIAL_AUTH_ON_CLICKS]: onClicks,
 		[BUTTONS]: buttons,
+		...otherProps
 	} = props
 
 	return (
@@ -32,7 +33,8 @@ const ButtonsSocialAuth = props => {
 							href=''
 							id={id}
 							target='_blank'
-							onClick={onClicks[i]}>
+							onClick={onClicks[i]}
+							{...otherProps}>
 							<i className={icon} />
 						</Button>
 						<UncontrolledTooltip delay={0} target={id}>
@@ -46,7 +48,7 @@ const ButtonsSocialAuth = props => {
 }
 
 export {
-	ButtonsSocialAuth,
+	ButtonSocials,
 	BUTTONS_SOCIAL_AUTH_ON_CLICKS,
 	ID,
 	ICON,

@@ -20,7 +20,7 @@ import {
 // core components
 import { ExportCompounds } from 'componentnCompounds'
 const {
-	ButtonsSocialAuthPropedDefault,
+	ButtonsSocialPropedAuth,
 	FinalForm,
 	ButtonSubmit,
 	FinalTextEmailPropedSignIn,
@@ -110,7 +110,7 @@ const FormSignIn = props => {
 									</InputGroup>
 								) : (
 									<>
-										<ButtonsSocialAuthPropedDefault />
+										<ButtonsSocialPropedAuth />
 										<Row>
 											<Col className='text-center text-muted mb-4 mt-3' xs='12'>
 												<small>Or Classically</small>

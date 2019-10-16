@@ -8,7 +8,7 @@ import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
 const {
 	Footer,
 	CarouselCommonPropedProfile,
-	ButtonsSocialPropedDefault,
+	ButtonsSocialPropedStreams,
 } = stopUndefined(ExportMultiOrganisms)
 
 const ProfilePage = props => {
@@ -80,7 +80,7 @@ const ProfilePage = props => {
 						<Col lg='6' md='6'>
 							<h1 className='text-left'>Favorite Games</h1>
 							<Row className='btn-wrapper profile justify-content-center pt-3'>
-								<ButtonsSocialPropedDefault />
+								<ButtonsSocialPropedStreams />
 							</Row>
 						</Col>
 					</Row>

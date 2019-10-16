@@ -6,7 +6,10 @@ import { InputText } from './InputText'
 import { PopoverCommon } from './PopoverCommon'
 import Footer from './Footers/Footer'
 import IndexHeader from './Headers/IndexHeader.jsx'
-import { ButtonsSocialAuthPropedDefault } from './ButtonsSocialAuth'
+import {
+	ButtonsSocialPropedAuth,
+	ButtonsSocialPropedStreams,
+} from './ButtonSocials'
 import {
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
@@ -38,7 +41,6 @@ import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from './DropdownMenuNavb
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
 import { CarouselCommonPropedProfile } from './CarouselCommon'
-import { ButtonsSocialPropedDefault } from './ButtonsSocial'
 
 export const ExportAtoms = {
 	...ExportProton,
@@ -49,7 +51,8 @@ export const ExportAtoms = {
 	ImageUploadStoreUserPropedSettings,
 	AlertCommonStoreAlert,
 	ProgressCommonStoreProgress,
-	ButtonsSocialAuthPropedDefault,
+	ButtonsSocialPropedAuth,
+	ButtonsSocialPropedStreams,
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
 	ListText,
@@ -83,5 +86,4 @@ export const ExportAtoms = {
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
 	CarouselCommonPropedProfile,
-	ButtonsSocialPropedDefault,
 }
