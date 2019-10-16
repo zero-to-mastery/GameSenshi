@@ -1,10 +1,7 @@
-import { firestore, auth } from 'firebaseInit'
-import { fbfsSettingsNotification } from 'constantValues'
+import { docNotificationSettingSet } from 'firebaseInit'
 
 const handleNotificationSettingSave = data => {
-	return firestore
-		.doc(fbfsSettingsNotification(auth().currentUser.uid))
-		.set(data)
+	return docNotificationSettingSet(data)
 }
 
 export { handleNotificationSettingSave }

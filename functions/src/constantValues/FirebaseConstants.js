@@ -1,8 +1,15 @@
 const FB_STORAGE_USER_AVATAR = 'userAvatar'
 
+const fbStorageUserAvatarPath = uid => {
+	return `${FB_STORAGE_USER_AVATAR}/${uid}.jpg`
+}
+
+const CREATED_AT = 'createdAt'
+const UPDATED_AT = 'updatedAt'
+
 const FB_FS_USER = 'users/'
 const FB_FS_SETTINGS = 'settings/'
-const fbfsSettingsNotification = uid => {
+const fbfsSettingsNotificationPath = uid => {
 	return FB_FS_USER + uid + '/' + FB_FS_SETTINGS + 'notifications/'
 }
 
@@ -16,19 +23,22 @@ const FB_FS_SETTINGS_NOTIFICATION_PUSH_ORDER_UPDATES = 'orderUpdates'
 const FB_FS_SETTINGS_NOTIFICATION_PUSH_CHATS = 'chats'
 const FB_FS_SETTINGS_NOTIFICATION_PUSH_COMMENTS = 'comments'
 
-const fbfsSettingsGeneral = uid => {
+const fbfsSettingsGeneralPath = uid => {
 	return FB_FS_USER + uid + '/' + FB_FS_SETTINGS + 'general/'
 }
 
 const FB_FS_SETTINGS_GENERAL_DISPLAY_NAME = 'displayName'
 const FB_FS_SETTINGS_GENERAL_LANGUAGES = 'languages'
-const FB_FS_SETTINGS_GENERAL_USER_AVATAR = 'userAvatar'
+const FB_FS_SETTINGS_GENERAL_USER_AVATAR = FB_STORAGE_USER_AVATAR
 
 export {
+	CREATED_AT,
+	UPDATED_AT,
+	fbStorageUserAvatarPath,
 	FB_STORAGE_USER_AVATAR,
 	FB_FS_USER,
 	FB_FS_SETTINGS,
-	fbfsSettingsNotification,
+	fbfsSettingsNotificationPath,
 	FB_FS_SETTINGS_NOTIFICATION_EMAIL,
 	FB_FS_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES,
 	FB_FS_SETTINGS_NOTIFICATION_EMAIL_NEWS_LETTER,
@@ -38,7 +48,7 @@ export {
 	FB_FS_SETTINGS_NOTIFICATION_PUSH_ORDER_UPDATES,
 	FB_FS_SETTINGS_NOTIFICATION_PUSH_CHATS,
 	FB_FS_SETTINGS_NOTIFICATION_PUSH_COMMENTS,
-	fbfsSettingsGeneral,
+	fbfsSettingsGeneralPath,
 	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
 	FB_FS_SETTINGS_GENERAL_LANGUAGES,
 	FB_FS_SETTINGS_GENERAL_USER_AVATAR,

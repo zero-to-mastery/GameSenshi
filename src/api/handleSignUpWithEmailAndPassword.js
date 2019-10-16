@@ -1,6 +1,6 @@
 import { simplerResponseHandling } from 'utils'
-import { auth, firestore } from 'firebaseInit'
-import { fbfsSettingsGeneral } from 'constantValues'
+import { auth, docGeneralSettingSet } from 'firebaseInit'
+import { CREATED_AT } from 'constantValues'
 
 import {
 	API_SIGN_UP_EMAIL,
@@ -24,15 +24,13 @@ const handleSignUpWithEmailAndPassword = async (
 	return auth()
 		.createUserWithEmailAndPassword(email, password)
 		.then(async credential => {
-			const {
-				user,
-				user: { uid },
-			} = credential
+			const { user } = credential
 			onSuccessfulSignUp()
 			user.sendEmailVerification().catch()
-			const userRef = firestore.doc(fbfsSettingsGeneral(uid))
+
 			try {
-				await userRef.set({
+				await docGeneralSettingSet({
+					[CREATED_AT]: new Date(),
 					[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
 					[FB_FS_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
 				})

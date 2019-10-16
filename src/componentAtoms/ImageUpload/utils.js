@@ -1,19 +1,9 @@
-import { firebaseDefaultStorage, auth, firestore } from 'firebaseInit'
 import { storeAlertShow, storeUserResetAvatar } from 'state'
-import {
-	FB_STORAGE_USER_AVATAR,
-	fbfsSettingsGeneral,
-	FB_FS_SETTINGS_GENERAL_USER_AVATAR,
-} from 'constantValues'
-
+import { handleUserAvatarUrlSave, handleUserAvatarRemove } from 'api'
 const emptyString = ''
 
 const onRemove = async () => {
-	const removed = await firestore
-		.doc(fbfsSettingsGeneral(auth().currentUser.uid))
-		.set({
-			[FB_FS_SETTINGS_GENERAL_USER_AVATAR]: emptyString,
-		})
+	const removed = await handleUserAvatarUrlSave(emptyString)
 		.then(() => {
 			storeUserResetAvatar()
 			storeAlertShow(
@@ -34,12 +24,12 @@ const onRemove = async () => {
 		})
 
 	if (removed) {
-		const uid = auth().currentUser.uid
-
-		const avatarRef = firebaseDefaultStorage.ref(
-			`${FB_STORAGE_USER_AVATAR}/${uid}.jpg`
-		)
-		avatarRef.delete().catch(() => {})
+		try {
+			// for some reason this does not return promise as stated in https://firebase.google.com/docs/reference/js/firebase.storage.Reference.html?authuser=0#delete
+			handleUserAvatarRemove()
+		} catch (e) {
+			//
+		}
 	}
 }
 

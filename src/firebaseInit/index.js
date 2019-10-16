@@ -8,7 +8,12 @@ import 'firebase/firestore'
 import { onAuthChanged } from './onAuthChanged'
 import { getRedirectResult } from './getRedirectResult'
 
-import { fbfsSettingsGeneral } from 'constantValues'
+import {
+	fbfsSettingsGeneralPath,
+	fbfsSettingsNotificationPath,
+	UPDATED_AT,
+	fbStorageUserAvatarPath,
+} from 'constantValues'
 
 const env = process.env
 
@@ -28,10 +33,43 @@ const functions = firebase.functions()
 
 const firestore = firebase.firestore()
 
-// load default storage bucket
-const firebaseDefaultStorage = firebase.storage()
-
 const auth = firebase.auth
+
+const docGetSetGenerator = path => {
+	const ref = () => firestore.doc(path(auth().currentUser.uid))
+	const get = () => ref().get()
+	const set = (data, options = { merge: true }) =>
+		ref().set({ [UPDATED_AT]: new Date(), ...data }, options)
+	const onSanpshot = (...args) => ref().onSnapshot(...args)
+	return [get, set, onSanpshot]
+}
+
+const [
+	docGeneralSettingGet,
+	docGeneralSettingSet,
+	docGeneralSettingOnSnapshot,
+] = docGetSetGenerator(fbfsSettingsGeneralPath)
+const [
+	docNotificationSettingGet,
+	docNotificationSettingSet,
+] = docGetSetGenerator(fbfsSettingsNotificationPath)
+
+// load default storage bucket
+const firebaseStorage = firebase.storage()
+
+const storageSetGenerator = path => {
+	const ref = () => firebaseStorage.ref(path(auth().currentUser.uid))
+	const get = () => ref().getDownloadURL()
+	const set = dataUrl => ref().putString(dataUrl, 'data_url')
+	const remove = () => ref().delete
+	return [get, set, remove]
+}
+
+const [
+	storageUserAvatarGet,
+	storageUserAvatarSet,
+	storageUserAvatarRemove,
+] = storageSetGenerator(fbStorageUserAvatarPath)
 
 // use device default language
 auth().useDeviceLanguage()
@@ -39,13 +77,26 @@ auth().useDeviceLanguage()
 // user auth listener
 auth().onAuthStateChanged(userAuth => {
 	onAuthChanged(userAuth, (next, error) =>
-		firestore
-			.doc(fbfsSettingsGeneral(userAuth.uid))
-			.onSnapshot({ includeMetadataChanges: true }, { next, error }, error)
+		docGeneralSettingOnSnapshot(
+			{ includeMetadataChanges: true },
+			{ next, error }
+		)
 	)
 })
 
 // listener to get back sign in token from federated identity provider
 getRedirectResult(auth().getRedirectResult(), auth)
 
-export { functions, firebase, auth, firebaseDefaultStorage, firestore }
+export {
+	functions,
+	firebase,
+	auth,
+	firebaseStorage,
+	docGeneralSettingGet,
+	docGeneralSettingSet,
+	docNotificationSettingGet,
+	docNotificationSettingSet,
+	storageUserAvatarGet,
+	storageUserAvatarSet,
+	storageUserAvatarRemove,
+}

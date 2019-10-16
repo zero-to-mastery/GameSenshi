@@ -1,5 +1,5 @@
 import {
-	fbfsSettingsNotification,
+	fbfsSettingsNotificationPath,
 	FB_FS_SETTINGS_NOTIFICATION_EMAIL,
 	FB_FS_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES,
 	FB_FS_SETTINGS_NOTIFICATION_EMAIL_NEWS_LETTER,
@@ -9,7 +9,7 @@ import {
 	FB_FS_SETTINGS_NOTIFICATION_PUSH_ORDER_UPDATES,
 	FB_FS_SETTINGS_NOTIFICATION_PUSH_CHATS,
 	FB_FS_SETTINGS_NOTIFICATION_PUSH_COMMENTS,
-	fbfsSettingsGeneral,
+	fbfsSettingsGeneralPath,
 	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
 } from 'constantValues'
 
@@ -23,13 +23,13 @@ const onUserCreate = (userRecord, eventContext, firestore) => {
 	)
 
 	if (!isPasswordExist) {
-		firestore.doc(fbfsSettingsGeneral(uid)).set({
+		firestore.doc(fbfsSettingsGeneralPath(uid)).set({
 			[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]:
 				userRecord.displayName || userRecord.uid,
 		})
 	}
 
-	return firestore.doc(fbfsSettingsNotification(uid)).set({
+	return firestore.doc(fbfsSettingsNotificationPath(uid)).set({
 		[FB_FS_SETTINGS_NOTIFICATION_EMAIL]: {
 			[FB_FS_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES]: true,
 			[FB_FS_SETTINGS_NOTIFICATION_EMAIL_CHATS]: true,

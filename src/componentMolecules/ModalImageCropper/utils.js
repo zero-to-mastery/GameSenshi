@@ -1,25 +1,18 @@
-import { firebaseDefaultStorage, auth, firestore } from 'firebaseInit'
 import {
 	storeUserSetState,
 	storeAlertShow,
 	storeProgress,
 	STORE_USER_STATE_AVATAR,
 } from 'state'
+
 import {
-	FB_STORAGE_USER_AVATAR,
-	fbfsSettingsGeneral,
-	FB_FS_SETTINGS_GENERAL_USER_AVATAR,
-} from 'constantValues'
+	handleUserAvatarUrlSave,
+	handleUserAvatarSave,
+	handleUserAvatarLoad,
+} from 'api'
 
 const onCrop = (dataUrl, toggle) => {
-	const uid = auth().currentUser.uid
-
-	const avatarRef = firebaseDefaultStorage.ref(
-		`${FB_STORAGE_USER_AVATAR}/${uid}.jpg`
-	)
-	const task = avatarRef.putString(dataUrl, 'data_url')
-
-	task.on(
+	handleUserAvatarSave(dataUrl).on(
 		'state_changed',
 		snapshot => {
 			const { bytesTransferred, totalBytes } = snapshot
@@ -37,7 +30,7 @@ const onCrop = (dataUrl, toggle) => {
 		async () => {
 			toggle()
 			storeUserSetState({ [STORE_USER_STATE_AVATAR]: dataUrl })
-			const url = await avatarRef.getDownloadURL().catch(() => {
+			const url = await handleUserAvatarLoad().catch(() => {
 				storeAlertShow(
 					'Something went wrong, unable to update image',
 					'danger',
@@ -45,11 +38,7 @@ const onCrop = (dataUrl, toggle) => {
 				)
 			})
 			if (url) {
-				firestore
-					.doc(fbfsSettingsGeneral(auth().currentUser.uid))
-					.set({
-						[FB_FS_SETTINGS_GENERAL_USER_AVATAR]: url,
-					})
+				handleUserAvatarUrlSave(url)
 					.then(() => {
 						storeProgress.close()
 						storeAlertShow(
