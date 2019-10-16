@@ -9,6 +9,10 @@ const {
 	Footer,
 	CarouselCommonPropedProfile,
 	ButtonsSocialPropedStreams,
+	FormProfile,
+	RatingProfile,
+	ButtonAddToCartPropedProfile,
+	QuantityProfile,
 } = stopUndefined(ExportMultiOrganisms)
 
 const ProfilePage = props => {
@@ -66,7 +70,9 @@ const ProfilePage = props => {
 									<h3 className='title'>Mike Scheinder</h3>
 									<p className='text-muted text-center'>@mighty_mike</p>
 									{/* Social icons */}
-									<Row className='btn-wrapper profile justify-content-center pt-3'></Row>
+									<Row className='btn-wrapper profile justify-content-center pt-3'>
+										<ButtonsSocialPropedStreams />
+									</Row>
 								</CardHeader>
 								<CardBody>
 									{/* Biography */}
@@ -77,10 +83,33 @@ const ProfilePage = props => {
 								</CardBody>
 							</Card>
 						</Col>
-						<Col lg='6' md='6'>
-							<h1 className='text-left'>Favorite Games</h1>
-							<Row className='btn-wrapper profile justify-content-center pt-3'>
-								<ButtonsSocialPropedStreams />
+						<Col lg='8' md='6'>
+							<Row>
+								<Col
+									className='py-2'
+									xs={{ size: 12, offset: 3 }}
+									sm={{ size: 12, offset: 1 }}
+									md={{ size: 12, offset: 1 }}>
+									<h1>Player profile</h1>
+								</Col>
+							</Row>
+							<Row>
+								<Col lg='8' md='6' className='py-3'>
+									<RatingProfile />
+								</Col>
+							</Row>
+							<Row>
+								<Col lg='6' md='6'>
+									<QuantityProfile />
+								</Col>
+								<Col lg='6' md='6'>
+									<FormProfile />
+								</Col>
+							</Row>
+							<Row>
+								<Col lg='6' md='6' className='py-3'>
+									<ButtonAddToCartPropedProfile />
+								</Col>
 							</Row>
 						</Col>
 					</Row>
