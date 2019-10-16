@@ -12,7 +12,6 @@ const ButtonSocials = props => {
 	const {
 		[BUTTONS_SOCIAL_AUTH_ON_CLICKS]: onClicks,
 		[BUTTONS]: buttons,
-		...otherProps
 	} = props
 
 	return (
@@ -33,8 +32,7 @@ const ButtonSocials = props => {
 							href=''
 							id={id}
 							target='_blank'
-							onClick={onClicks[i]}
-							{...otherProps}>
+							onClick={onClicks[i]}>
 							<i className={icon} />
 						</Button>
 						<UncontrolledTooltip delay={0} target={id}>
