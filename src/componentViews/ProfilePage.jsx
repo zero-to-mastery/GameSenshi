@@ -66,7 +66,9 @@ const ProfilePage = props => {
 									<h3 className='title'>Mike Scheinder</h3>
 									<p className='text-muted text-center'>@mighty_mike</p>
 									{/* Social icons */}
-									<Row className='btn-wrapper profile justify-content-center pt-3'></Row>
+									<Row className='btn-wrapper profile justify-content-center pt-3'>
+										<ButtonsSocialPropedStreams />
+									</Row>
 								</CardHeader>
 								<CardBody>
 									{/* Biography */}
@@ -78,10 +80,8 @@ const ProfilePage = props => {
 							</Card>
 						</Col>
 						<Col lg='6' md='6'>
-							<h1 className='text-left'>Favorite Games</h1>
-							<Row className='btn-wrapper profile justify-content-center pt-3'>
-								<ButtonsSocialPropedStreams />
-							</Row>
+							<h1 className='text-left'>Player profile</h1>
+							<Row className='btn-wrapper profile justify-content-center pt-3'></Row>
 						</Col>
 					</Row>
 				</Container>
