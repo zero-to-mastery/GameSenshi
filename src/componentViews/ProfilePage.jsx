@@ -14,6 +14,7 @@ const {
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
+	Comment,
 } = stopUndefined(ExportMultiOrganisms)
 
 const ProfilePage = props => {
@@ -139,6 +140,20 @@ const ProfilePage = props => {
 					<Row>
 						<Col md='12'>
 							<CarouselCommonPropedProfile />
+						</Col>
+					</Row>
+					<Row>
+						<Col
+							className='py-5'
+							xs={{ size: 6, offset: 4 }}
+							sm={{ size: 6, offset: 5 }}
+							md={{ size: 6, offset: 5 }}>
+							<h1>Comments</h1>
+						</Col>
+					</Row>
+					<Row>
+						<Col md={{ size: 8, offset: 2 }} className='pt-5 pb-5'>
+							<Comment />
 						</Col>
 					</Row>
 				</Container>
