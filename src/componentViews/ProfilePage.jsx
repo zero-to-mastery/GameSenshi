@@ -92,6 +92,23 @@ const ProfilePage = props => {
 									</Col>
 								</Row>
 								<Row>
+									<Col md={{ size: 6, offset: 1 }} className='pt-2'>
+										<h2>$30/h</h2>
+									</Col>
+								</Row>
+								<Row>
+									<Col md={{ size: 11, offset: 1 }} className='pb-2'>
+										<h4>Description</h4>
+										<p>
+											Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+											Optio nulla quos reiciendis praesentium. Reiciendis quod
+											dignissimos et quasi sequi. Placeat quaerat iusto
+											reprehenderit quia inventore recusandae nihil voluptas
+											reiciendis numquam?
+										</p>
+									</Col>
+								</Row>
+								<Row>
 									<Col md={{ size: 5, offset: 1 }} className='py-2'>
 										<QuantityProfile />
 									</Col>
