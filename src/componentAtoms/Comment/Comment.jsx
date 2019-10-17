@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Media, Button, UncontrolledTooltip } from 'reactstrap'
+import { Media, Button } from 'reactstrap'
 
 const ID = 'id'
 const NAME = 'name'
