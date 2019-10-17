@@ -11,9 +11,11 @@ import {
 import { handleDifferentCredential } from 'firebaseInit/handleDifferentCredential'
 import { simplerErrorMessage } from 'utils'
 import { UNEXPECTED_ERROR_CODE_6 } from 'constantValues'
+import { auth } from 'firebaseInit/core'
 
-const getRedirectResult = (getRedirectResult, auth) =>
-	getRedirectResult
+const getRedirectResult = () =>
+	auth()
+		.getRedirectResult()
 		.then(result => {
 			const { user } = result
 			if (user) {
