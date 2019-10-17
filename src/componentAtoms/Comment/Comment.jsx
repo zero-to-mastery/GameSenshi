@@ -15,7 +15,7 @@ const CommentHeader = props => {
 	return (
 		<Media heading tag='h5'>
 			{name}
-			<small className='text-muted'>. {time}</small>
+			<small className='text-muted'>· {time}</small>
 		</Media>
 	)
 }
@@ -38,7 +38,7 @@ const CommentBody = props => {
 	return (
 		<Media body>
 			<CommentHeader name={name} time={time} />
-			<p> {body}</p>
+			<p>{body}</p>
 			<CommentFooter commentsNumber={commentsNumber} />
 		</Media>
 	)
