@@ -1,3 +1,9 @@
+import React from 'react'
 import { Comment } from './Comment'
+import { comments } from './utils'
 
-export { Comment }
+const CommentCommonPropedProfile = props => {
+	return <Comment comments={comments} {...props} />
+}
+
+export { CommentCommonPropedProfile }

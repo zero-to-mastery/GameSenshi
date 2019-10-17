@@ -1,83 +1,108 @@
-/* eslint-disable prettier/prettier */
 import React, { Fragment } from 'react'
 import { Media, Button, UncontrolledTooltip } from 'reactstrap'
 
+const ID = 'id'
+const NAME = 'name'
+const POSTED_TIME = 'postedTime'
+const AVATAR = 'avatar'
+const BODY = 'body'
+const NUM_COMMENTS = 'numComments'
+const TOOLTIP = 'tooltip'
+const COMMENTS = 'comments'
+
 const CommentHeader = props => {
-  const { name, time } = props
-  return (
-    <Media heading tag="h5">
-      Tina Andrew{" "}
-      <small className="text-muted">· 7 minutes ago</small>
-    </Media>
-  )
+	const { [NAME]: name, [POSTED_TIME]: time } = props
+	return (
+		<Media heading tag='h5'>
+			{name}
+			<small className='text-muted'>{time}</small>
+		</Media>
+	)
 }
 
 const CommentAvatar = props => {
-  return (
-    <Fragment>
-      <a className='pull-left' href='#pablo' onClick={e => e.preventDefault()}>
-        <div className='avatar'>
-          <Media
-            alt='...'
-            className='img-raised'
-            src={require('assets/img/james.jpg')}
-          />
-        </div>
-      </a>
-    </Fragment>
-  )
+	const { src } = props
+	return (
+		<Fragment>
+			<a className='pull-left' href='#pablo' onClick={e => e.preventDefault()}>
+				<div className='avatar'>
+					<Media alt='...' className='img-raised' src={src} />
+				</div>
+			</a>
+		</Fragment>
+	)
 }
 
 const CommentBody = props => {
-  const { commentText } = props
-  return (
-    <Media body>
-      <CommentHeader />
-      <p>
-        {' '}
-        Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1
-				song in the country. Panda! Don't be scared of the truth because we need
-				to restart the human foundation in truth I stand with the most humility.
-				We are so blessed!
-			</p>
-      <CommentFooter />
-    </Media>
-  )
+	const { [BODY]: body, name, time, tooltip, commentsNumber } = props
+	return (
+		<Media body>
+			<CommentHeader name={name} time={time} />
+			<p> {body}</p>
+			<CommentFooter tooltip={tooltip} commentsNumber={commentsNumber} />
+		</Media>
+	)
 }
 
 const CommentFooter = props => {
-  return (
-    <div className='media-footer'>
-      <Button
-        className='btn-simple pull-right'
-        color='primary'
-        href='#pablo'
-        id='tooltip871944617'
-        onClick={e => e.preventDefault()}
-        size='sm'>
-        <i className='tim-icons icon-send' /> Reply
+	const { tooltip, commentsNumber } = props
+	return (
+		<div className='media-footer'>
+			<Button
+				className='btn-simple pull-right'
+				color='primary'
+				href='#pablo'
+				id='tooltip871944617'
+				onClick={e => e.preventDefault()}
+				size='sm'>
+				<i className='tim-icons icon-send' /> Reply
 			</Button>
-      <UncontrolledTooltip delay={0} target='tooltip871944617'>
-        Reply to Comment
+			<UncontrolledTooltip delay={0} target='tooltip871944617'>
+				{tooltip}
 			</UncontrolledTooltip>
-      <Button
-        className='btn-simple pull-right'
-        color='danger'
-        href='#pablo'
-        onClick={e => e.preventDefault()}
-        size='sm'>
-        <i className='tim-icons icon-heart-2' /> 243
+			<Button
+				className='btn-simple pull-right'
+				color='danger'
+				href='#pablo'
+				onClick={e => e.preventDefault()}
+				size='sm'>
+				<i className='tim-icons icon-heart-2' />
+				{commentsNumber}
 			</Button>
-    </div>
-  )
+		</div>
+	)
 }
 const Comment = props => {
-  return (
-    <Media>
-      <CommentAvatar />c
-			<CommentBody />
-    </Media>
-  )
+	const { [COMMENTS]: comments } = props
+	return (
+		<div className='comment-wrapper'>
+			{comments.map((comment, i) => {
+				const {
+					[ID]: id,
+					[NAME]: name,
+					[POSTED_TIME]: time,
+					[AVATAR]: src,
+					[BODY]: body,
+					[NUM_COMMENTS]: commentsNumber,
+					[TOOLTIP]: tooltip,
+				} = comment
+				return (
+					<Fragment key={id}>
+						<Media>
+							<CommentAvatar src={src} />
+							<CommentBody
+								name={name}
+								time={time}
+								body={body}
+								commentsNumber={commentsNumber}
+								tooltip={tooltip}
+							/>
+						</Media>
+					</Fragment>
+				)
+			})}
+		</div>
+	)
 }
 
-export { Comment }
+export { Comment, NAME, POSTED_TIME, AVATAR, BODY, NUM_COMMENTS, TOOLTIP, ID }
