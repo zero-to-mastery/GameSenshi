@@ -11,11 +11,11 @@ const TOOLTIP = 'tooltip'
 const COMMENTS = 'comments'
 
 const CommentHeader = props => {
-	const { [NAME]: name, [POSTED_TIME]: time } = props
+	const { name, time } = props
 	return (
 		<Media heading tag='h5'>
 			{name}
-			<small className='text-muted'>{time}</small>
+			<small className='text-muted'>. {time}</small>
 		</Media>
 	)
 }
@@ -26,7 +26,7 @@ const CommentAvatar = props => {
 		<Fragment>
 			<a className='pull-left' href='#pablo' onClick={e => e.preventDefault()}>
 				<div className='avatar'>
-					<Media alt='...' className='img-raised' src={src} />
+					<Media alt='Avatar Comment' className='img-raised' src={src} />
 				</div>
 			</a>
 		</Fragment>
@@ -34,18 +34,18 @@ const CommentAvatar = props => {
 }
 
 const CommentBody = props => {
-	const { [BODY]: body, name, time, tooltip, commentsNumber } = props
+	const { body, name, time, commentsNumber } = props
 	return (
 		<Media body>
 			<CommentHeader name={name} time={time} />
 			<p> {body}</p>
-			<CommentFooter tooltip={tooltip} commentsNumber={commentsNumber} />
+			<CommentFooter commentsNumber={commentsNumber} />
 		</Media>
 	)
 }
 
 const CommentFooter = props => {
-	const { tooltip, commentsNumber } = props
+	const { commentsNumber } = props
 	return (
 		<div className='media-footer'>
 			<Button
@@ -57,9 +57,6 @@ const CommentFooter = props => {
 				size='sm'>
 				<i className='tim-icons icon-send' /> Reply
 			</Button>
-			<UncontrolledTooltip delay={0} target='tooltip871944617'>
-				{tooltip}
-			</UncontrolledTooltip>
 			<Button
 				className='btn-simple pull-right'
 				color='danger'
@@ -84,18 +81,17 @@ const Comment = props => {
 					[AVATAR]: src,
 					[BODY]: body,
 					[NUM_COMMENTS]: commentsNumber,
-					[TOOLTIP]: tooltip,
 				} = comment
 				return (
 					<Fragment key={id}>
 						<Media>
 							<CommentAvatar src={src} />
 							<CommentBody
+								id={id}
 								name={name}
 								time={time}
 								body={body}
 								commentsNumber={commentsNumber}
-								tooltip={tooltip}
 							/>
 						</Media>
 					</Fragment>
