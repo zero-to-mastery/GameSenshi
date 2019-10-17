@@ -46,6 +46,7 @@ import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
 import { CommentCommonPropedProfile } from './Comment'
+import { paginationCommon } from './PaginationCommon'
 
 export const ExportAtoms = {
 	...ExportProton,
@@ -96,4 +97,5 @@ export const ExportAtoms = {
 	QuantityProfile,
 	ContainerTitledPropedDefault,
 	CommentCommonPropedProfile,
+	PaginationCommon,
 }

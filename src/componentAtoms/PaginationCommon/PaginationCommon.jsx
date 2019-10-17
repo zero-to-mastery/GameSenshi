@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Pagination, PaginationItem, PaginationLink } from 'reactstrap'
+// JS utility library
 import { uniqueId, range } from 'lodash'
 
 const PaginationCommon = props => {
@@ -35,7 +37,35 @@ const PaginationCommon = props => {
 	}
 	return (
 		<div className='pagination'>
-			<div className='pagination-controls'>{renderControls}</div>
+			<Pagination
+				className='pagination pagination-primary'
+				listClassName='pagination-primary'>
+				<PaginationItem>
+					<PaginationLink
+						aria-label='Previous'
+						href='#pablo'
+						onClick={e => e.preventDefault()}>
+						<span aria-hidden={true}>
+							<i aria-hidden={true} className='fa fa-angle-double-left' />
+						</span>
+					</PaginationLink>
+				</PaginationItem>
+				<PaginationItem>
+					<PaginationLink href='#pablo' onClick={e => e.preventDefault()}>
+						{renderControls}
+					</PaginationLink>
+				</PaginationItem>
+				<PaginationItem>
+					<PaginationLink
+						aria-label='Next'
+						href='#pablo'
+						onClick={e => e.preventDefault()}>
+						<span aria-hidden={true}>
+							<i aria-hidden={true} className='fa fa-angle-double-right' />
+						</span>
+					</PaginationLink>
+				</PaginationItem>
+			</Pagination>
 		</div>
 	)
 }
