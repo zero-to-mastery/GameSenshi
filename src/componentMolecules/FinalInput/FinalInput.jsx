@@ -273,7 +273,6 @@ const FinalInput = memo(props => {
 							onKeyPress={onKeyPress_}
 							{...restProps}>
 							{(!onlyShowErrorAfterSubmit || submitFailed) &&
-								!errorMessages &&
 								!spinner &&
 								!spinner2 &&
 								!submitting &&
@@ -289,12 +288,12 @@ const FinalInput = memo(props => {
 						</Component>
 						{popoverMessages_.length > 0 && (
 							<PopoverCommon
-								isOpen={active}
+								isOpen={active || !!(errorMessages && state.delay)}
 								target={name}
 								spinner={spinner_}
 								header={`${name} rules`}>
 								<ul>
-									{popoverMessages_.map((errorMessage, i) => {
+									{popoverMessages_.map(errorMessage => {
 										return (
 											<li
 												className={
