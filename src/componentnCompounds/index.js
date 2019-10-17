@@ -54,6 +54,10 @@ import {
 	FINAL_DATE_BIRTH_DATE,
 } from './FinalDateBirthDate'
 import { UploaderUserAvatar } from './UploaderUserAvatar'
+import {
+	FinalSelectGamePropedGeneraL,
+	FINAL_SELECT_GAME,
+} from './FinalSelectGame'
 
 export const ExportCompounds = {
 	...ExportMolecules,
@@ -88,4 +92,6 @@ export const ExportCompounds = {
 	FinalDateBirthDatePropedGeneraL,
 	FINAL_DATE_BIRTH_DATE,
 	UploaderUserAvatar,
+	FinalSelectGamePropedGeneraL,
+	FINAL_SELECT_GAME,
 }

@@ -4,12 +4,15 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import styles from './styles.module.css'
+// ja utility library
+import { uniqueId } from 'lodash'
 // custom react video player
 import ReactPlayer from 'react-player'
 
 const SRC = 'src'
 const ALT_TEXT = 'altText'
 const IS_VIDEO = 'isVideo'
+const KEY = 'key'
 
 const ReactPlayerGeneric = props => {
 	const { [SRC]: src } = props
@@ -32,9 +35,14 @@ const ReactPlayerGeneric = props => {
 }
 
 const CarouselItem = props => {
-	const { [SRC]: src, [ALT_TEXT]: altText, [IS_VIDEO]: isVideo } = props
+	const {
+		[SRC]: src,
+		[ALT_TEXT]: altText,
+		[IS_VIDEO]: isVideo,
+		[KEY]: key,
+	} = props
 	return (
-		<div className={styles.slideWrapper}>
+		<div key={key} className={styles.slideWrapper}>
 			{isVideo ? (
 				<ReactPlayerGeneric src={src} />
 			) : (
@@ -50,7 +58,14 @@ const CarouselCommon = props => {
 		<Slider {...otherProps}>
 			{slides.map(slide => {
 				const { [SRC]: src, [ALT_TEXT]: altText, [IS_VIDEO]: isVideo } = slide
-				return <CarouselItem src={src} altText={altText} isVideo={isVideo} />
+				return (
+					<CarouselItem
+						key={uniqueId()}
+						src={src}
+						altText={altText}
+						isVideo={isVideo}
+					/>
+				)
 			})}
 		</Slider>
 	)
