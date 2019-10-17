@@ -12,8 +12,8 @@ import { handleDifferentCredential } from 'firebaseInit/handleDifferentCredentia
 import { simplerErrorMessage } from 'utils'
 import { UNEXPECTED_ERROR_CODE_6 } from 'constantValues'
 
-const getRedirectResult = (promise, auth) =>
-	promise
+const getRedirectResult = (getRedirectResult, auth) =>
+	getRedirectResult()
 		.then(result => {
 			const { user } = result
 			if (user) {
