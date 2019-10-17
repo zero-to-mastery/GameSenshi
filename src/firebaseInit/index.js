@@ -25,7 +25,7 @@ auth().onAuthStateChanged(userAuth => {
 })
 
 // listener to get back sign in token from federated identity provider
-getRedirectResult(auth().getRedirectResult, auth)
+getRedirectResult(auth().getRedirectResult(), auth)
 
 export {
 	auth,
