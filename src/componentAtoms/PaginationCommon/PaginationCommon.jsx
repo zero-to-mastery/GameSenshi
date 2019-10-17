@@ -52,7 +52,17 @@ const PaginationCommon = props => {
 				</PaginationItem>
 				<PaginationItem>
 					<PaginationLink href='#pablo' onClick={e => e.preventDefault()}>
-						{renderControls}
+						1
+					</PaginationLink>
+				</PaginationItem>
+				<PaginationItem>
+					<PaginationLink href='#pablo' onClick={e => e.preventDefault()}>
+						2
+					</PaginationLink>
+				</PaginationItem>
+				<PaginationItem>
+					<PaginationLink href='#pablo' onClick={e => e.preventDefault()}>
+						3
 					</PaginationLink>
 				</PaginationItem>
 				<PaginationItem>
