@@ -13,6 +13,9 @@ const {
 	RatingProfile,
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
+	ContainerTitledPropedDefault,
+	CommentCommonPropedProfile,
+	PaginationCommon,
 } = stopUndefined(ExportMultiOrganisms)
 
 const ProfilePage = props => {
@@ -59,33 +62,43 @@ const ProfilePage = props => {
 							</Card>
 						</Col>
 						<Col lg='8' md='6'>
-							<Row>
-								<Col
-									className='py-2'
-									xs={{ size: 12, offset: 3 }}
-									sm={{ size: 12, offset: 1 }}
-									md={{ size: 12, offset: 1 }}>
-									<h1>Player profile</h1>
-								</Col>
-							</Row>
-							<Row>
-								<Col lg='8' md='6' className='py-3'>
-									<RatingProfile />
-								</Col>
-							</Row>
-							<Row>
-								<Col lg='6' md='6'>
-									<QuantityProfile />
-								</Col>
-								<Col lg='6' md='6'>
-									<FormProfile />
-								</Col>
-							</Row>
-							<Row>
-								<Col lg='6' md='6' className='py-3'>
-									<ButtonAddToCartPropedProfile />
-								</Col>
-							</Row>
+							<ContainerTitledPropedDefault>
+								<Row>
+									<Col md={{ size: 6, offset: 1 }} className='py-2'>
+										<RatingProfile />
+									</Col>
+								</Row>
+								<Row>
+									<Col md={{ size: 6, offset: 1 }} className='pt-2'>
+										<h2>$30/h</h2>
+									</Col>
+								</Row>
+								<Row>
+									<Col md={{ size: 11, offset: 1 }} className='pb-2'>
+										<h4>Description</h4>
+										<p>
+											Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+											Optio nulla quos reiciendis praesentium. Reiciendis quod
+											dignissimos et quasi sequi. Placeat quaerat iusto
+											reprehenderit quia inventore recusandae nihil voluptas
+											reiciendis numquam?
+										</p>
+									</Col>
+								</Row>
+								<Row>
+									<Col md={{ size: 5, offset: 1 }} className='py-2'>
+										<QuantityProfile />
+									</Col>
+									<Col md={{ size: 6 }} className='py-2'>
+										<FormProfile />
+									</Col>
+								</Row>
+								<Row>
+									<Col md={{ size: 5, offset: 1 }} className='py-2'>
+										<ButtonAddToCartPropedProfile />
+									</Col>
+								</Row>
+							</ContainerTitledPropedDefault>
 						</Col>
 					</Row>
 				</Container>
@@ -103,6 +116,21 @@ const ProfilePage = props => {
 					<Row>
 						<Col md='12'>
 							<CarouselCommonPropedProfile />
+						</Col>
+					</Row>
+					<Row>
+						<Col
+							className='py-5'
+							xs={{ size: 6, offset: 4 }}
+							sm={{ size: 6, offset: 5 }}
+							md={{ size: 6, offset: 5 }}>
+							<h1>Comments</h1>
+						</Col>
+					</Row>
+					<Row>
+						<Col md={{ size: 8, offset: 2 }} className='pt-5 pb-5'>
+							<CommentCommonPropedProfile />
+							<PaginationCommon />
 						</Col>
 					</Row>
 				</Container>
