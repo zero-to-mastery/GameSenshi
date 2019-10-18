@@ -23,11 +23,11 @@ const InputSelect = props => {
 		<FormGroup>
 			<Select
 				className={classnames(
+					'react-select mb-0',
 					{
 						'react-select-danger': hasDanger,
 						'react-select-success': hasSuccess,
 						'react-select-info': hasFocus,
-						'react-select mb-0': true,
 					},
 					className
 				)}
