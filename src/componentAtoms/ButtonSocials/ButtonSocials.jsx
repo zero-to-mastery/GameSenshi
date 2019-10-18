@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { Button, UncontrolledTooltip } from 'reactstrap'
+import classNames from 'classnames'
 
 const BUTTONS_SOCIAL_AUTH_ON_CLICKS = 'onClicks'
 const ID = 'id'
@@ -12,10 +13,11 @@ const ButtonSocials = props => {
 	const {
 		[BUTTONS_SOCIAL_AUTH_ON_CLICKS]: onClicks,
 		[BUTTONS]: buttons,
+		className,
 	} = props
 
 	return (
-		<div className='btn-wrapper text-center'>
+		<div className={classNames('btn-wrapper', 'text-center', className)}>
 			{buttons.map((button, i) => {
 				const {
 					[ID]: id,

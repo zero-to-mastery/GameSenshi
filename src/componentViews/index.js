@@ -1,4 +1,4 @@
-import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
+import { Exports as ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
 import { IndexPage } from './IndexPage.jsx'
 import { ProfilePage } from './ProfilePage.jsx'
@@ -8,7 +8,7 @@ import { SignUpPage } from './SignUpPage'
 import { PasswordResetPage } from './PasswordResetPage'
 import { Error404Page } from './Error404Page'
 
-export const ExportViews = {
+export const Exports = {
 	...ExportMultiOrganisms,
 	IndexPage,
 	ProfilePage,

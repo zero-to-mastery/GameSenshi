@@ -14,7 +14,7 @@ import {
 } from 'reactstrap'
 // core components
 import Cards from 'react-credit-cards'
-import { ExportCompounds } from 'componentnCompounds'
+import { Exports } from 'componentnCompounds'
 // styles
 import 'react-credit-cards/lib/styles.scss'
 
@@ -32,7 +32,7 @@ const {
 	FinalTextCardCVCPropedDefault,
 	FINAL_TEXT_CARD_CVC,
 	ButtonSubmit,
-} = stopUndefined(ExportCompounds)
+} = stopUndefined(Exports)
 
 const onSubmission = async (
 	formError,

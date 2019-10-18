@@ -34,7 +34,7 @@ const ButtonDecrement = memo(props => {
 	)
 })
 
-const Quantity = memo(props => {
+const Quantity = props => {
 	const [quantity, setQuantity] = useState(1)
 	return (
 		<Fragment>
@@ -52,6 +52,6 @@ const Quantity = memo(props => {
 			</InputGroup>
 		</Fragment>
 	)
-})
+}
 
 export { Quantity, INPUT_QUANTITY_NAME }

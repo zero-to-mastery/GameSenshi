@@ -4,10 +4,10 @@ import classnames from 'classnames'
 // reactstrap components
 import { NavItem, NavLink, Nav } from 'reactstrap'
 
-import { ExportProton } from 'componentaProton'
+import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 
-const { Link } = stopUndefined(ExportProton)
+const { Link } = stopUndefined(Exports)
 
 const TabListVertical = props => {
 	const { onClick, pathname, navItems } = props

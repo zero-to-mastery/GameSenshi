@@ -3,10 +3,10 @@ import { withRouter } from 'react-router-dom'
 // reactstrap components
 import { Button, NavItem, NavLink } from 'reactstrap'
 
-import { ExportProton } from 'componentaProton'
+import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 
-const { Link } = stopUndefined(ExportProton)
+const { Link } = stopUndefined(Exports)
 
 const BUTTON_SIGN_IN_STATE_SHOW = 'show'
 

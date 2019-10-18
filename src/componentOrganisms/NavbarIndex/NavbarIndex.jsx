@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { stopUndefined } from 'utils'
-import { ExportCompounds } from 'componentnCompounds'
+import { Exports } from 'componentnCompounds'
 // reactstrap components
 import { Collapse, Navbar, Nav, Container } from 'reactstrap'
 
@@ -22,7 +22,7 @@ const {
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
-} = stopUndefined(ExportCompounds)
+} = stopUndefined(Exports)
 
 const NAVBAR_INDEX_HEIGHT_CHANGED = 'heightChanged'
 

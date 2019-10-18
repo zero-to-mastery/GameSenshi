@@ -3,7 +3,7 @@ import { stopUndefined } from 'utils'
 // reactstrap components
 import { Button, Label, FormGroup, Input, Table } from 'reactstrap'
 
-import { ExportOrganisms } from 'componentOrganisms'
+import { Exports } from 'componentOrganisms'
 
 const {
 	FormCard,
@@ -13,7 +13,7 @@ const {
 	FINAL_SELECT_EXPIRY_MONTH,
 	FINAL_SELECT_EXPIRY_YEAR,
 	FORM_CARD_DEFAULT,
-} = stopUndefined(ExportOrganisms)
+} = stopUndefined(Exports)
 
 // * currently this is for demo, normally should fetch the card from api
 const defaultCards = [

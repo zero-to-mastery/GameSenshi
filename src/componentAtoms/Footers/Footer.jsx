@@ -12,10 +12,10 @@ import {
 } from 'reactstrap'
 // constants
 import { ROUTE_PAGE_PROFILE } from 'routes'
-import { ExportProton } from 'componentaProton'
+import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 
-const { Link } = stopUndefined(ExportProton)
+const { Link } = stopUndefined(Exports)
 
 class Footer extends React.Component {
 	render() {

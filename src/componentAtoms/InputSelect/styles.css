@@ -1,0 +1,7 @@
+.react-select
+	.react-select__control
+	.react-select__value-container--has-value
+	.react-select__single-value {
+	top: 48%;
+	color: #cad1d7;
+}

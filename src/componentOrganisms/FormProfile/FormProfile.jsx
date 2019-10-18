@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Form } from 'reactstrap'
 import { stopUndefined } from 'utils'
-import { ExportCompounds } from 'componentnCompounds'
+import { Exports } from 'componentnCompounds'
 const {
 	FinalForm,
 	FinalSelectGamePropedGeneraL,
 	FINAL_SELECT_GENDER,
-} = stopUndefined(ExportCompounds)
+} = stopUndefined(Exports)
 const FormProfile = props => {
 	const [game, setGame] = useState('')
 	const { onSubmit, onSuccessfulSubmission } = props

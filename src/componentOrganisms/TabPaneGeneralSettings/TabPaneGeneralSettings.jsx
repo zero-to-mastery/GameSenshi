@@ -3,7 +3,7 @@ import { stopUndefined } from 'utils'
 // reactstrap components
 import { Row, Col, Form } from 'reactstrap'
 
-import { ExportCompounds } from 'componentnCompounds'
+import { Exports } from 'componentnCompounds'
 const {
 	FinalForm,
 	ButtonSubmit,
@@ -18,7 +18,7 @@ const {
 	FINAL_SELECT_LANGUAGES,
 	FinalDateBirthDatePropedGeneraL,
 	FINAL_DATE_BIRTH_DATE,
-} = stopUndefined(ExportCompounds)
+} = stopUndefined(Exports)
 
 const TabPaneGeneralSettings = props => {
 	const submitButton = useRef(null)

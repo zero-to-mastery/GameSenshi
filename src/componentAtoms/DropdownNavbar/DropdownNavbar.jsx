@@ -1,9 +1,9 @@
 import React from 'react'
-import { ExportProton } from 'componentaProton'
+import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 import { UncontrolledDropdown, DropdownToggle } from 'reactstrap'
 
-const { Link } = stopUndefined(ExportProton)
+const { Link } = stopUndefined(Exports)
 const DROPDOWN_NAVBAR_STATE_SHOW = 'show'
 
 const DropdownNavbar = props => {

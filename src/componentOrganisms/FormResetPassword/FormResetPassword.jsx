@@ -14,7 +14,7 @@ import {
 	Col,
 } from 'reactstrap'
 // core components
-import { ExportCompounds } from 'componentnCompounds'
+import { Exports } from 'componentnCompounds'
 
 const {
 	FinalForm,
@@ -22,7 +22,7 @@ const {
 	FinalTextEmailPropedForgotPassword,
 	FINAL_TEXT_EMAIL,
 	Link,
-} = stopUndefined(ExportCompounds)
+} = stopUndefined(Exports)
 
 const FormResetPassword = props => {
 	const [sent, setSent] = useState(false)

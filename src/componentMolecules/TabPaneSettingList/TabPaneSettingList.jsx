@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback, Fragment } from 'react'
 import { stopUndefined } from 'utils'
 import { Form, Container, Row, Col } from 'reactstrap'
-import { ExportAtoms } from 'componentAtoms'
+import { Exports } from 'componentAtoms'
 
-const { CheckBox, HeaderLined, TabPaneContainer } = stopUndefined(ExportAtoms)
+const { CheckBox, HeaderLined, TabPaneContainer } = stopUndefined(Exports)
 
 const BODY = 'body'
 const NAME = 'name'

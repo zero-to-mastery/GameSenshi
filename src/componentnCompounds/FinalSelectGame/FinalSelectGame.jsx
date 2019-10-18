@@ -1,11 +1,9 @@
 import React from 'react'
 import { stopUndefined } from 'utils'
 //components
-import { ExportMolecules } from 'componentMolecules'
+import { Exports } from 'componentMolecules'
 
-const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(
-	ExportMolecules
-)
+const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(Exports)
 
 const gameOptions = [
 	{ [VALUE]: '', [LABEL]: 'Game', [DISABLE]: true },

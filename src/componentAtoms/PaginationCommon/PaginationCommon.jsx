@@ -20,36 +20,20 @@ const PaginationCommon = props => {
 		if (page < 1 || page > pager.totalPages) {
 			return
 		}
-
-		// get new pager object for specified page
-		// eslint-disable-next-line no-const-assign
 		pager_ = getPager(items.length, page, pageSize)
-
-		// get new page of items from items array
 		const pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1)
-
-		// update state
 		setPager({ pager_ })
-		// call change page function in parent component
 		onChangePage(pageOfItems)
 	}
 	const getPager = (totalItems, currentPage, pageSize) => {
-		// default to first page
 		currentPage = currentPage || 1
-
-		// default page size is 10
 		pageSize = pageSize || 10
-
-		// calculate total pages
 		const totalPages = Math.ceil(totalItems / pageSize)
-
 		let startPage, endPage
 		if (totalPages <= 10) {
-			// less than 10 total pages so show all
 			startPage = 1
 			endPage = totalPages
 		} else {
-			// more than 10 total pages so calculate start and end pages
 			if (currentPage <= 6) {
 				startPage = 1
 				endPage = 10
@@ -61,17 +45,11 @@ const PaginationCommon = props => {
 				endPage = currentPage + 4
 			}
 		}
-
-		// calculate start and end item indexes
 		const startIndex = (currentPage - 1) * pageSize
 		const endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1)
-
-		// create an array of pages to ng-repeat in the pager control
 		const pages = [...Array(endPage + 1 - startPage).keys()].map(
 			i => startPage + i
 		)
-
-		// return object with all pager properties required by the view
 		return {
 			totalItems: totalItems,
 			currentPage: currentPage,
@@ -109,26 +87,6 @@ const PaginationCommon = props => {
 				<a onClick={() => setPage(pager.totalPages)}>Last</a>
 			</li>
 		</ul>
-
-		// <Pagination
-		// 	className='pagination pagination-primary'
-		// 	listClassName='pagination-primary'>
-		// 	<PaginationItem>
-		// 		<PaginationLink aria-label='Previous' previous onClick={() => {}}>
-		// 			<span aria-hidden={true}>
-		// 				<i aria-hidden={true} className='fa fa-angle-double-left' />
-		// 			</span>
-		// 		</PaginationLink>
-		// 	</PaginationItem>
-
-		// 	<PaginationItem>
-		// 		<PaginationLink aria-label='Next' next onClick={() => {}}>
-		// 			<span aria-hidden={true}>
-		// 				<i aria-hidden={true} className='fa fa-angle-double-right' />
-		// 			</span>
-		// 		</PaginationLink>
-		// 	</PaginationItem>
-		// </Pagination>
 	)
 }
 

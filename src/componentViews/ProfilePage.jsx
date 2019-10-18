@@ -3,7 +3,7 @@ import { stopUndefined } from 'utils'
 // reactstrap components
 import { Card, CardHeader, CardBody, Container, Row, Col } from 'reactstrap'
 // core components
-import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
+import { Exports } from 'componentpMultiOrganisms'
 
 const {
 	Footer,
@@ -16,9 +16,9 @@ const {
 	ContainerTitledPropedDefault,
 	CommentCommonPropedDefault,
 	PaginationCommonPropedDefault,
-} = stopUndefined(ExportMultiOrganisms)
+} = stopUndefined(Exports)
 
-const ProfilePage = props => {
+const ProfilePage = () => {
 	const wrapper = useRef(null)
 
 	useEffect(() => {
@@ -31,30 +31,6 @@ const ProfilePage = props => {
 		}
 	}, [])
 
-	// const onExiting = () => {
-	// 	animating.value = true
-	// }
-
-	// const onExited = () => {
-	// 	animating.value = false
-	// }
-
-	// const next = () => {
-	// 	if (animating.value) return
-	// 	// const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1
-	// 	// setActiveIndex(nextIndex)
-	// }
-
-	// const previous = () => {
-	// 	if (animating.value) return
-	// 	// const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1
-	// 	// setActiveIndex(nextIndex)
-	// }
-
-	// const goToIndex = newIndex => {
-	// 	if (animating.value) return
-	// 	setActiveIndex(newIndex)
-	// }
 	return (
 		<div className='wrapper' ref={wrapper}>
 			<div className='page-header'>
@@ -72,14 +48,13 @@ const ProfilePage = props => {
 									/>
 									<h3 className='title'>Mike Scheinder</h3>
 									<p className='text-muted text-center'>@mighty_mike</p>
+									{/*badges like female,verified,pro,highest rating,new member,highest rating*/}
 									{/* Social icons */}
-									<Row className='btn-wrapper profile justify-content-center pt-3'>
-										<ButtonsSocialPropedStreams />
-									</Row>
+									<ButtonsSocialPropedStreams className='pt-2' />
 								</CardHeader>
 								<CardBody>
-									{/* Biography */}
-									<p className='profile-description'>
+									{/* Signature */}
+									<p className='pl-2'>
 										A veteran in MOBA and FPS games, I can give you a
 										significant boost in ranking mode.
 									</p>

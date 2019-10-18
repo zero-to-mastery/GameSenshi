@@ -1,9 +1,9 @@
 import React from 'react'
 import { stopUndefined } from 'utils'
 //components
-import { ExportMolecules } from 'componentMolecules'
+import { Exports } from 'componentMolecules'
 
-const { FinalInputText } = stopUndefined(ExportMolecules)
+const { FinalInputText } = stopUndefined(Exports)
 
 const onChange = (e, onValueChange = () => {}) => {
 	const {

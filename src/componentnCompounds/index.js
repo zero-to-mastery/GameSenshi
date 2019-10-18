@@ -1,4 +1,4 @@
-import { ExportMolecules } from 'componentMolecules'
+import { Exports as ExportMolecules } from 'componentMolecules'
 import {
 	FinalTextCardNumberPropedDefault,
 	FINAL_TEXT_CARD_NUMBER,
@@ -59,7 +59,7 @@ import {
 	FINAL_SELECT_GAME,
 } from './FinalSelectGame'
 
-export const ExportCompounds = {
+export const Exports = {
 	...ExportMolecules,
 	FinalTextCardNumberPropedDefault,
 	FINAL_TEXT_CARD_NUMBER,

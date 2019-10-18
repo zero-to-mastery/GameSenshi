@@ -6,9 +6,9 @@ import {
 
 // components
 import { stopUndefined } from 'utils'
-import { ExportMolecules } from 'componentMolecules'
+import { Exports } from 'componentMolecules'
 
-const { LabelForm } = stopUndefined(ExportMolecules)
+const { LabelForm } = stopUndefined(Exports)
 
 const FinalSelectLanguagesPropedGeneraL = props => {
 	return (

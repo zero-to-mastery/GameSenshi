@@ -1,4 +1,4 @@
-import { ExportCompounds } from 'componentnCompounds'
+import { Exports as ExportCompounds } from 'componentnCompounds'
 import {
 	FormSignInPropedDefault,
 	FormSignInPropedDefaultStoreSignIn,
@@ -11,7 +11,7 @@ import { FormResetPasswordPropedDefault } from './FormResetPassword'
 import { NavbarIndexStoreAlert } from './NavbarIndex'
 import { FormProfile } from './FormProfile'
 
-export const ExportOrganisms = {
+export const Exports = {
 	...ExportCompounds,
 	FormSignInPropedDefault,
 	FormSignInPropedDefaultStoreSignIn,

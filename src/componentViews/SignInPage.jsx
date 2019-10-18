@@ -3,9 +3,9 @@ import { stopUndefined } from 'utils'
 // reactstrap components
 import { Container, Col } from 'reactstrap'
 // core components
-import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
+import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer, FormSignInPropedDefault } = stopUndefined(ExportMultiOrganisms)
+const { Footer, FormSignInPropedDefault } = stopUndefined(Exports)
 
 const SignInPage = props => {
 	useEffect(() => {

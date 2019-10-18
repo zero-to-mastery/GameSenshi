@@ -18,7 +18,7 @@ import {
 	Row,
 } from 'reactstrap'
 // core components
-import { ExportCompounds } from 'componentnCompounds'
+import { Exports } from 'componentnCompounds'
 const {
 	ButtonsSocialPropedAuth,
 	FinalForm,
@@ -28,7 +28,7 @@ const {
 	FinalTextPasswordPropedSignIn,
 	FINAL_TEXT_PASSWORD,
 	Link,
-} = stopUndefined(ExportCompounds)
+} = stopUndefined(Exports)
 
 const SIGN_IN_FORM_STATE_EMAIL = 'email'
 const SIGN_IN_FORM_STATE_IS_OPEN = 'isOPne'

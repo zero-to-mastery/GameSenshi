@@ -25,7 +25,7 @@ import {
 } from 'state'
 
 //core components
-import { ExportViews } from 'componentViews'
+import { Exports } from 'componentViews'
 
 const {
 	SettingsPage,
@@ -39,7 +39,7 @@ const {
 	ModalCommonStoreModalPropedAuth,
 	NavbarIndexStoreAlert,
 	AlertCommonStoreAlert,
-} = stopUndefined(ExportViews)
+} = stopUndefined(Exports)
 
 const MapRoutesToPages = {
 	[ROUTE_PAGE_INDEX]: IndexPage,

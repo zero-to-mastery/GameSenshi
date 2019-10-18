@@ -2,9 +2,9 @@ import React from 'react'
 import moment from 'moment'
 import { stopUndefined } from 'utils'
 //components
-import { ExportMolecules } from 'componentMolecules'
+import { Exports } from 'componentMolecules'
 
-const { FinalInputDate } = stopUndefined(ExportMolecules)
+const { FinalInputDate } = stopUndefined(Exports)
 
 const FINAL_DATE_BIRTH_DATE = 'birthDate'
 

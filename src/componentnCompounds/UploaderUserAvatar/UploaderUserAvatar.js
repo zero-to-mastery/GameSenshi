@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from 'react'
 import { stopUndefined } from 'utils'
-import { ExportMolecules } from 'componentMolecules'
+import { Exports } from 'componentMolecules'
 
 const {
 	ImageUploadStoreUserPropedSettings,
 	ModalImageCropperPropedSettings,
-} = stopUndefined(ExportMolecules)
+} = stopUndefined(Exports)
 
 const UploaderUserAvatar = () => {
 	const [imageDataUrl, setImageDataUrl] = useState('')

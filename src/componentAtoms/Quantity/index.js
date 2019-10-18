@@ -6,7 +6,7 @@ import { LabelForm } from 'componentAtoms/LabelForm'
 const QuantityProfile = props => {
 	return (
 		<LabelForm label='Hours' htmlFor={INPUT_QUANTITY_NAME}>
-			<Quantity />
+			<Quantity {...props} />
 		</LabelForm>
 	)
 }
