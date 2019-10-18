@@ -1,5 +1,10 @@
 import React from 'react'
-import { ID, ICON, COLOR, TOOLTIP } from './ButtonSocials'
+import {
+	BUTTON_SOCIALS_ID,
+	BUTTON_SOCIALS_ICON,
+	BUTTON_SOCIALS_COLOR,
+	BUTTON_SOCIALS_TOOLTIP,
+} from './ButtonSocials'
 import reactElementToJSXString from 'react-element-to-jsx-string'
 // routing and api
 import { setLastRoute, toIndexIfPublic } from 'routes'
@@ -9,21 +14,21 @@ import { storeModalShow, storeModalSetItem } from 'state'
 
 const buttonAuths = [
 	{
-		[ID]: 'Google',
-		[ICON]: 'fab fa-google',
-		[COLOR]: 'google',
-		[TOOLTIP]: 'Sign in with Google!',
+		[BUTTON_SOCIALS_ID]: 'Google',
+		[BUTTON_SOCIALS_ICON]: 'fab fa-google',
+		[BUTTON_SOCIALS_COLOR]: 'google',
+		[BUTTON_SOCIALS_TOOLTIP]: 'Sign in with Google!',
 	},
 	{
-		[ID]: 'Facebook',
-		[ICON]: 'fab fa-facebook-square',
-		[COLOR]: 'facebook',
-		[TOOLTIP]: 'Sign in with Facebook!',
+		[BUTTON_SOCIALS_ID]: 'Facebook',
+		[BUTTON_SOCIALS_ICON]: 'fab fa-facebook-square',
+		[BUTTON_SOCIALS_COLOR]: 'facebook',
+		[BUTTON_SOCIALS_TOOLTIP]: 'Sign in with Facebook!',
 	},
 ]
 const buttonSocialAuthOnClicks = lastLocation => {
 	return buttonAuths.map((buttonAuth, i) => {
-		const { [ID]: id } = buttonAuth
+		const { [BUTTON_SOCIALS_ID]: id } = buttonAuth
 		const onSignIn = handleSignInWithSocials[i]
 
 		return () => {
@@ -50,25 +55,4 @@ const buttonSocialAuthOnClicks = lastLocation => {
 	})
 }
 
-const buttonStreams = [
-	{
-		[ID]: 'facebook',
-		[ICON]: 'fab fa-facebook-f',
-		[COLOR]: 'facebook',
-		[TOOLTIP]: 'Follow me on my Facebook',
-	},
-	{
-		[ID]: 'twitch',
-		[ICON]: 'fab fa-twitch',
-		[COLOR]: 'twitch',
-		[TOOLTIP]: 'Subscribe to my Twitch channel',
-	},
-	{
-		[ID]: 'youtube',
-		[ICON]: 'fab fa-youtube',
-		[COLOR]: 'youtube',
-		[TOOLTIP]: 'Subscribe to my Youtube channel',
-	},
-]
-
-export { buttonSocialAuthOnClicks, buttonAuths, buttonStreams }
+export { buttonSocialAuthOnClicks, buttonAuths }

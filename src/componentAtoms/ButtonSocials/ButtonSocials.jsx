@@ -2,16 +2,16 @@ import React, { Fragment } from 'react'
 import { Button, UncontrolledTooltip } from 'reactstrap'
 import classNames from 'classnames'
 
-const BUTTONS_SOCIAL_AUTH_ON_CLICKS = 'onClicks'
-const ID = 'id'
-const ICON = 'icon'
-const COLOR = 'color'
-const TOOLTIP = 'tooltip'
+const BUTTON_SOCIALS_AUTH_ON_CLICKS = 'onClicks'
+const BUTTON_SOCIALS_ID = 'id'
+const BUTTON_SOCIALS_ICON = 'icon'
+const BUTTON_SOCIALS_COLOR = 'color'
+const BUTTON_SOCIALS_TOOLTIP = 'tooltip'
 const BUTTONS = 'buttons'
 
 const ButtonSocials = props => {
 	const {
-		[BUTTONS_SOCIAL_AUTH_ON_CLICKS]: onClicks,
+		[BUTTON_SOCIALS_AUTH_ON_CLICKS]: onClicks,
 		[BUTTONS]: buttons,
 		className,
 	} = props
@@ -20,10 +20,10 @@ const ButtonSocials = props => {
 		<div className={classNames('btn-wrapper', 'text-center', className)}>
 			{buttons.map((button, i) => {
 				const {
-					[ID]: id,
-					[ICON]: icon,
-					[COLOR]: color,
-					[TOOLTIP]: tooltip,
+					[BUTTON_SOCIALS_ID]: id,
+					[BUTTON_SOCIALS_ICON]: icon,
+					[BUTTON_SOCIALS_COLOR]: color,
+					[BUTTON_SOCIALS_TOOLTIP]: tooltip,
 				} = button
 				return (
 					<Fragment key={id}>
@@ -49,9 +49,9 @@ const ButtonSocials = props => {
 
 export {
 	ButtonSocials,
-	BUTTONS_SOCIAL_AUTH_ON_CLICKS,
-	ID,
-	ICON,
-	COLOR,
-	TOOLTIP,
+	BUTTON_SOCIALS_AUTH_ON_CLICKS,
+	BUTTON_SOCIALS_ID,
+	BUTTON_SOCIALS_ICON,
+	BUTTON_SOCIALS_COLOR,
+	BUTTON_SOCIALS_TOOLTIP,
 }
