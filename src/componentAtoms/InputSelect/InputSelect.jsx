@@ -2,6 +2,7 @@ import React from 'react'
 import Select from 'react-select'
 import { FormGroup } from 'reactstrap'
 import classnames from 'classnames'
+import './styles.css'
 
 const VALUE = 'value'
 const LABEL = 'label'
@@ -15,19 +16,21 @@ const InputSelect = props => {
 		hasFocus,
 		className,
 		classNamePrefix,
-		value,
 		children,
 		...restProps
 	} = props
 	return (
 		<FormGroup>
 			<Select
-				className={classnames(className, {
-					'react-select-danger': hasDanger,
-					'react-select-success': hasSuccess,
-					'react-select-info': hasFocus,
-					'react-select mb-0': true,
-				})}
+				className={classnames(
+					{
+						'react-select-danger': hasDanger,
+						'react-select-success': hasSuccess,
+						'react-select-info': hasFocus,
+						'react-select mb-0': true,
+					},
+					className
+				)}
 				classNamePrefix={classNamePrefix || 'react-select'}
 				{...restProps}
 			/>
