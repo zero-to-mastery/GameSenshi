@@ -18,7 +18,7 @@ const {
 	PaginationCommon,
 } = stopUndefined(ExportMultiOrganisms)
 
-const ProfilePage = props => {
+const ProfilePage = () => {
 	const wrapper = useRef(null)
 
 	useEffect(() => {
