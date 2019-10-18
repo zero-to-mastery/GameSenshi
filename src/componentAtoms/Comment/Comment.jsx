@@ -72,31 +72,33 @@ const CommentFooter = props => {
 const Comment = props => {
 	const { [COMMENTS]: comments } = props
 	return (
-		<div className='comment-wrapper'>
-			{comments.map((comment, i) => {
-				const {
-					[ID]: id,
-					[NAME]: name,
-					[POSTED_TIME]: time,
-					[AVATAR]: src,
-					[BODY]: body,
-					[NUM_COMMENTS]: commentsNumber,
-				} = comment
-				return (
-					<Fragment key={id}>
-						<Media>
-							<CommentAvatar src={src} />
-							<CommentBody
-								id={id}
-								name={name}
-								time={time}
-								body={body}
-								commentsNumber={commentsNumber}
-							/>
-						</Media>
-					</Fragment>
-				)
-			})}
+		<div className='container'>
+			<div className='comment-wrapper'>
+				{comments.map((comment, i) => {
+					const {
+						[ID]: id,
+						[NAME]: name,
+						[POSTED_TIME]: time,
+						[AVATAR]: src,
+						[BODY]: body,
+						[NUM_COMMENTS]: commentsNumber,
+					} = comment
+					return (
+						<Fragment key={id}>
+							<Media>
+								<CommentAvatar src={src} />
+								<CommentBody
+									id={id}
+									name={name}
+									time={time}
+									body={body}
+									commentsNumber={commentsNumber}
+								/>
+							</Media>
+						</Fragment>
+					)
+				})}
+			</div>
 		</div>
 	)
 }
