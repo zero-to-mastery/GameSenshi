@@ -45,7 +45,7 @@ import { RatingProfile } from './RatingProfile'
 import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
-import { CommentCommonPropedProfile } from './Comment'
+import { CommentCommonPropedDefault } from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
 
 export const ExportAtoms = {
@@ -96,6 +96,6 @@ export const ExportAtoms = {
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
-	CommentCommonPropedProfile,
+	CommentCommonPropedDefault,
 	PaginationCommonPropedDefault,
 }

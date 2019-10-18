@@ -70,7 +70,7 @@ const CommentFooter = props => {
 	)
 }
 const Comment = props => {
-	const { [COMMENTS]: comments } = props
+	const { comments } = props
 	return (
 		<div className='container'>
 			<div className='comment-wrapper'>

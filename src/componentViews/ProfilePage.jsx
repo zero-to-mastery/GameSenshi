@@ -14,7 +14,7 @@ const {
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
-	CommentCommonPropedProfile,
+	CommentCommonPropedDefault,
 	PaginationCommonPropedDefault,
 } = stopUndefined(ExportMultiOrganisms)
 
@@ -154,7 +154,7 @@ const ProfilePage = props => {
 					</Row>
 					<Row>
 						<Col md={{ size: 8, offset: 2 }} className='pt-5 pb-5'>
-							<CommentCommonPropedProfile />
+							<CommentCommonPropedDefault />
 							<PaginationCommonPropedDefault />
 						</Col>
 					</Row>
