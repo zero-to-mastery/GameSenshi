@@ -4,9 +4,9 @@ import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
 
 // core components
-import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
+import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer } = stopUndefined(ExportMultiOrganisms)
+const { Footer } = stopUndefined(Exports)
 
 const Error404Page = props => {
 	const wrapper = useRef(null)

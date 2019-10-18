@@ -1,7 +1,7 @@
-import { ExportOrganisms } from 'componentOrganisms'
+import { Exports as ExportOrganisms } from 'componentOrganisms'
 import { TabPanePaymentSettings } from './TabPanePaymentSettings'
 
-export const ExportMultiOrganisms = {
+export const Exports = {
 	...ExportOrganisms,
 	TabPanePaymentSettings,
 }

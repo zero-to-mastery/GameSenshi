@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react'
 import { FinalInput } from './FinalInput'
-import { ExportAtoms } from 'componentAtoms'
+import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
-const { InputText, InputSelect, InputDate } = stopUndefined(ExportAtoms)
+const { InputText, InputSelect, InputDate } = stopUndefined(Exports)
 
 const emptyPromise = () => Promise.resolve()
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap'
 
-import { ExportProton } from 'componentaProton'
+import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 
-const { Link } = stopUndefined(ExportProton)
+const { Link } = stopUndefined(Exports)
 
 const HeaderCollapsed = props => {
 	const { isOpen, toggle, children, to } = props

@@ -3,7 +3,7 @@ import { stopUndefined } from 'utils'
 // reactstrap components
 import { Card, CardHeader, CardBody, Container, Row, Col } from 'reactstrap'
 // core components
-import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
+import { Exports } from 'componentpMultiOrganisms'
 
 const {
 	Footer,
@@ -16,7 +16,7 @@ const {
 	ContainerTitledPropedDefault,
 	CommentCommonPropedProfile,
 	PaginationCommon,
-} = stopUndefined(ExportMultiOrganisms)
+} = stopUndefined(Exports)
 
 const ProfilePage = () => {
 	const wrapper = useRef(null)

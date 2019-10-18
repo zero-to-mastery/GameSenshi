@@ -1,9 +1,9 @@
 import React from 'react'
 import { stopUndefined } from 'utils'
 //components
-import { ExportMolecules } from 'componentMolecules'
+import { Exports } from 'componentMolecules'
 
-const { FinalInputSelect, VALUE, LABEL, COLOR } = stopUndefined(ExportMolecules)
+const { FinalInputSelect, VALUE, LABEL, COLOR } = stopUndefined(Exports)
 
 const languageOptions = [
 	{ [VALUE]: '0', [LABEL]: 'Languages', [COLOR]: '#9a9a9a' },

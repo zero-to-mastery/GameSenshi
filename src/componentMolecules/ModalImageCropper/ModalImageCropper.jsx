@@ -1,10 +1,10 @@
 import React, { useRef, useCallback, useState, memo } from 'react'
 import Cropper from 'react-cropper'
 import 'cropperjs/dist/cropper.css'
-import { ExportAtoms } from 'componentAtoms'
+import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
-const { ModalCommon } = stopUndefined(ExportAtoms)
+const { ModalCommon } = stopUndefined(Exports)
 const emptyFunction = () => {}
 const ModalImageCropper = memo(props => {
 	const { src, toggle, onCrop, ...otherProps } = props

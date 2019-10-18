@@ -1,10 +1,10 @@
 import React, { memo } from 'react'
 import { NavItem, NavLink } from 'reactstrap'
 
-import { ExportProton } from 'componentaProton'
+import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 
-const { Link } = stopUndefined(ExportProton)
+const { Link } = stopUndefined(Exports)
 
 const ICON_NOTIFICATION_STATE_SIGNED_IN = 'signedIn'
 

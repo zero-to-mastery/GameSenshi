@@ -14,7 +14,7 @@ import {
 	Col,
 } from 'reactstrap'
 // core components
-import { ExportCompounds } from 'componentnCompounds'
+import { Exports } from 'componentnCompounds'
 
 const {
 	ButtonsSocialPropedAuth,
@@ -27,7 +27,7 @@ const {
 	FinalTextNamePropedSignUp,
 	FINAL_TEXT_NAME,
 	Link,
-} = stopUndefined(ExportCompounds)
+} = stopUndefined(Exports)
 
 const FormSignUp = props => {
 	const submitButton = useRef(null)

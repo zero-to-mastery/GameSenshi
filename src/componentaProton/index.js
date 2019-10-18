@@ -1,3 +1,3 @@
 import { Link } from './Link'
 
-export const ExportProton = { Link }
+export const Exports = { Link }

@@ -1,10 +1,10 @@
 import React, { memo, useCallback } from 'react'
 import { NavItem, NavLink } from 'reactstrap'
 
-import { ExportProton } from 'componentaProton'
+import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 
-const { Link } = stopUndefined(ExportProton)
+const { Link } = stopUndefined(Exports)
 
 const LIST_NAV_ITEM_PROPS_TO = 'to'
 const LIST_NAV_ITEM_PROPS_BODY = 'body'

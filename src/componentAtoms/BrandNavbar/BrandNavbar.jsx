@@ -2,10 +2,10 @@ import React, { memo } from 'react'
 // reactstrap
 import { Media, NavbarBrand } from 'reactstrap'
 // components
-import { ExportProton } from 'componentaProton'
+import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 
-const { Link } = stopUndefined(ExportProton)
+const { Link } = stopUndefined(Exports)
 
 const NAVBAR_BRAND_ON_ERROR = 'onError'
 

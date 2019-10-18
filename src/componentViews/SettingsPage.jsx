@@ -6,7 +6,7 @@ import {
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
 } from 'routes'
 import { stopUndefined } from 'utils'
-import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
+import { Exports } from 'componentpMultiOrganisms'
 
 const {
 	Footer,
@@ -16,7 +16,7 @@ const {
 	TabPaneSettingListStoreUserPropedNotification,
 	TabListVerticalPropedSettingPage,
 	UploaderUserAvatar,
-} = stopUndefined(ExportMultiOrganisms)
+} = stopUndefined(Exports)
 
 const SettingsPage = props => {
 	const [TabPane, setTabPane] = useState(() => TabPaneGeneralSettings)

@@ -2,11 +2,9 @@ import React, { useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
 
 // core components
-import { ExportMultiOrganisms } from 'componentpMultiOrganisms'
+import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer, FormResetPasswordPropedDefault } = stopUndefined(
-	ExportMultiOrganisms
-)
+const { Footer, FormResetPasswordPropedDefault } = stopUndefined(Exports)
 
 const PasswordResetPage = props => {
 	const wrapper = useRef(null)

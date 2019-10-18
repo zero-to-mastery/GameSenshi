@@ -3,9 +3,9 @@ import React from 'react'
 import { stopUndefined } from 'utils'
 import { string } from 'yup'
 //components
-import { ExportMolecules } from 'componentMolecules'
+import { Exports } from 'componentMolecules'
 
-const { FinalInputText } = stopUndefined(ExportMolecules)
+const { FinalInputText } = stopUndefined(Exports)
 
 const FINAL_TEXT_CARD_NUMBER = 'cardnumber'
 

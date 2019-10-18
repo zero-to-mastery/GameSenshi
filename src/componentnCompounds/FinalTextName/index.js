@@ -4,9 +4,9 @@ import { FinalTextName, FINAL_TEXT_NAME } from './FinalTextName'
 import { signUpUsernameValidation, stopUndefined } from 'utils'
 
 // components
-import { ExportMolecules } from 'componentMolecules'
+import { Exports } from 'componentMolecules'
 
-const { LabelForm } = stopUndefined(ExportMolecules)
+const { LabelForm } = stopUndefined(Exports)
 
 const FinalTextNamePropedSignUp = props => {
 	return <FinalTextName validation={signUpUsernameValidation} {...props} />

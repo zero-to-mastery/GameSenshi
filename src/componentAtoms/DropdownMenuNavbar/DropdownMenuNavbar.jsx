@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 import { DropdownMenu, DropdownItem } from 'reactstrap'
 
-import { ExportProton } from 'componentaProton'
+import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 
-const { Link } = stopUndefined(ExportProton)
+const { Link } = stopUndefined(Exports)
 
 const DROP_DOWN_MENU_NAVBAR_PROPS_TO = 'to'
 const DROP_DOWN_MENU_NAVBAR_PROPS_BODY = 'body'

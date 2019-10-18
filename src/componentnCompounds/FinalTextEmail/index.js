@@ -9,9 +9,9 @@ import {
 	stopUndefined,
 } from 'utils'
 // components
-import { ExportMolecules } from 'componentMolecules'
+import { Exports } from 'componentMolecules'
 
-const { LabelForm } = stopUndefined(ExportMolecules)
+const { LabelForm } = stopUndefined(Exports)
 
 const FinalTextEmailPropedSignUp = props => {
 	return (

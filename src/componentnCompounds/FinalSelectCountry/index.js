@@ -4,9 +4,9 @@ import { FinalSelectCountry, FINAL_SELECT_COUNTRY } from './FinalSelectCountry'
 
 // components
 import { stopUndefined } from 'utils'
-import { ExportMolecules } from 'componentMolecules'
+import { Exports } from 'componentMolecules'
 
-const { LabelForm } = stopUndefined(ExportMolecules)
+const { LabelForm } = stopUndefined(Exports)
 
 const FinalSelectCountryPropedGeneraL = props => {
 	return (

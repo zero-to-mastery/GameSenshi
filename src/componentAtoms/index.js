@@ -1,4 +1,4 @@
-import { ExportProton } from 'componentaProton'
+import { Exports as ExportProtons } from 'componentaProton'
 import { FinalForm } from './FinalForm'
 import { ListText } from './ListText'
 import { InputSelect, VALUE, LABEL, DISABLE, COLOR } from './InputSelect'
@@ -48,8 +48,8 @@ import { ContainerTitledPropedDefault } from './ContainerTitled'
 import { CommentCommonPropedProfile } from './Comment'
 import { PaginationCommon } from './PaginationCommon'
 
-export const ExportAtoms = {
-	...ExportProton,
+export const Exports = {
+	...ExportProtons,
 	Footer,
 	FinalForm,
 	IndexHeader,

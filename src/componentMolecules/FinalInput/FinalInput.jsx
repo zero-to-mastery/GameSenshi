@@ -2,9 +2,9 @@ import React, { useState, useEffect, useCallback, memo } from 'react'
 import { Field } from 'react-final-form'
 import { stopUndefined } from 'utils'
 // core components
-import { ExportAtoms } from 'componentAtoms'
+import { Exports } from 'componentAtoms'
 
-const { ListText, PopoverCommon } = stopUndefined(ExportAtoms)
+const { ListText, PopoverCommon } = stopUndefined(Exports)
 
 const DELAY = 1000
 

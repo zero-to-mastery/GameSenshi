@@ -3,7 +3,7 @@ import { stopUndefined } from 'utils'
 // reactstrap components
 import { Row, Col, Form } from 'reactstrap'
 
-import { ExportCompounds } from 'componentnCompounds'
+import { Exports } from 'componentnCompounds'
 
 const {
 	FinalForm,
@@ -14,7 +14,7 @@ const {
 	FINAL_TEXT_EMAIL,
 	FinalTextPasswordPropedAccount,
 	FINAL_TEXT_PASSWORD,
-} = stopUndefined(ExportCompounds)
+} = stopUndefined(Exports)
 
 const TabPaneAccountSettings = props => {
 	const {

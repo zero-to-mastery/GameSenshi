@@ -1,8 +1,8 @@
 import React from 'react'
 import { Card, CardHeader, CardBody, Col } from 'reactstrap'
-import { ExportAtoms } from 'componentAtoms'
+import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
-const { ButtonsSocialPropedStreams } = stopUndefined(ExportAtoms)
+const { ButtonsSocialPropedStreams } = stopUndefined(Exports)
 
 const AvatarProfile = props => {
 	return (

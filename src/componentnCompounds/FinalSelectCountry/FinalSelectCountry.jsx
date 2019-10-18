@@ -2,11 +2,9 @@ import React from 'react'
 import { stopUndefined } from 'utils'
 import { getCodes, getNames } from 'country-list'
 //components
-import { ExportMolecules } from 'componentMolecules'
+import { Exports } from 'componentMolecules'
 
-const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(
-	ExportMolecules
-)
+const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(Exports)
 const FINAL_SELECT_COUNTRY = 'expiryMonth'
 
 const countries = getNames()
