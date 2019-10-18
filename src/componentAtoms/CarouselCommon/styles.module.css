@@ -2,11 +2,9 @@
  display: flex;
  justify-content: space-around;
  align-items: center;
- margin: 0;
- padding: 0;
 }
 
-.slideImage {
-  width: 100%;
+.slideWrapper img{
+  width: 300px;
   height: 200px;
 }

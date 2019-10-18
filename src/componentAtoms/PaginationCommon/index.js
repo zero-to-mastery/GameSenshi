@@ -1,11 +1,11 @@
 import React from 'react'
 import { PaginationCommon } from './PaginationCommon'
 
-const dataSet = [...Array(10)].map((a, i) => 'Record ' + (i + 1))
-
 const PaginationCommonPropedDefault = props => {
-	const { data } = props
-	return <PaginationCommon items={dataSet} {...props} />
+	const { comments, onChangePage } = props
+	return (
+		<PaginationCommon items={comments} onChangePage={onChangePage} {...props} />
+	)
 }
 
 export { PaginationCommonPropedDefault }

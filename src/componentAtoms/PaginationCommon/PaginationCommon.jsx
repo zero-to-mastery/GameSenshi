@@ -14,7 +14,7 @@ const PaginationCommon = props => {
 	})
 
 	const setPage = page => {
-		const { items, pageSize } = this.props
+		const { items, pageSize, onChangePage } = this.props
 		const pager_ = pager
 
 		if (page < 1 || page > pager.totalPages) {
@@ -31,7 +31,7 @@ const PaginationCommon = props => {
 		// update state
 		setPager({ pager_ })
 		// call change page function in parent component
-		this.props.onChangePage(pageOfItems)
+		onChangePage(pageOfItems)
 	}
 	const getPager = (totalItems, currentPage, pageSize) => {
 		// default to first page

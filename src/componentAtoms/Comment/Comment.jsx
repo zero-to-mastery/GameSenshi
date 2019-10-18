@@ -7,8 +7,6 @@ const POSTED_TIME = 'postedTime'
 const AVATAR = 'avatar'
 const BODY = 'body'
 const NUM_COMMENTS = 'numComments'
-const TOOLTIP = 'tooltip'
-const COMMENTS = 'comments'
 
 const CommentHeader = props => {
 	const { name, time } = props
@@ -71,10 +69,11 @@ const CommentFooter = props => {
 }
 const Comment = props => {
 	const { comments } = props
+	const comments_ = comments || []
 	return (
 		<div className='container'>
 			<div className='comment-wrapper'>
-				{comments.map((comment, i) => {
+				{comments_.map((comment, i) => {
 					const {
 						[ID]: id,
 						[NAME]: name,
@@ -103,4 +102,4 @@ const Comment = props => {
 	)
 }
 
-export { Comment, NAME, POSTED_TIME, AVATAR, BODY, NUM_COMMENTS, TOOLTIP, ID }
+export { Comment, NAME, POSTED_TIME, AVATAR, BODY, NUM_COMMENTS, ID }
