@@ -55,19 +55,19 @@ const buttonStreams = [
 		[ID]: 'facebook',
 		[ICON]: 'fab fa-facebook-f',
 		[COLOR]: 'facebook',
-		[TOOLTIP]: 'Connect via Facebook',
+		[TOOLTIP]: 'Follow me on my Facebook',
 	},
 	{
 		[ID]: 'twitch',
 		[ICON]: 'fab fa-twitch',
 		[COLOR]: 'twitch',
-		[TOOLTIP]: 'Connect via Twitch',
+		[TOOLTIP]: 'Subscribe to my Twitch channel',
 	},
 	{
 		[ID]: 'youtube',
 		[ICON]: 'fab fa-youtube',
 		[COLOR]: 'youtube',
-		[TOOLTIP]: 'Connect via Youtube',
+		[TOOLTIP]: 'Subscribe to my Youtube channel',
 	},
 ]
 
