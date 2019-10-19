@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, CardHeader, CardBody, Col, Row } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
-const { ButtonSocials, Badges } = stopUndefined(Exports)
+const { ButtonSocials, Badges, IconGames } = stopUndefined(Exports)
 
 const onClicks = socials => []
 
@@ -11,7 +11,7 @@ const AvatarProfile = props => {
 		badges,
 		signature,
 		avatar,
-		gameIcons,
+		games,
 		nickname,
 		username,
 		socials,
@@ -30,7 +30,11 @@ const AvatarProfile = props => {
 						<Badges badges={badges} />
 					</Row>
 					<h3 className='title mt-3 mb-1'>{nickname}</h3>
-					<p className='text-muted text-center'>@{username}</p>
+					<p className='text-muted text-center mb-3'>@{username}</p>
+					<Row className='justify-content-center'>
+						{/*Game icons*/}
+						<IconGames games={games} />
+					</Row>
 					<Row className='justify-content-center'>
 						{/* Social icons */}
 						<ButtonSocials
@@ -41,10 +45,6 @@ const AvatarProfile = props => {
 					</Row>
 				</CardHeader>
 				<CardBody>
-					<Row className='justify-content-center'>
-						{/*Game icons*/}
-						{gameIcons}
-					</Row>
 					<Row className='justify-content-center'>
 						{/* Signature */}
 						<p className='pl-2 font-italic'>

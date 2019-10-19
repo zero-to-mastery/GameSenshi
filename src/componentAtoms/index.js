@@ -52,6 +52,7 @@ import { ContainerTitledPropedDefault } from './ContainerTitled'
 import { CommentCommonPropedProfile } from './Comment'
 import { PaginationCommon } from './PaginationCommon'
 import { Badges, BADGES_OPTIONS } from './Badges'
+import { IconGames } from './IconGames'
 
 export const Exports = {
 	...ExportProtons,
@@ -109,4 +110,5 @@ export const Exports = {
 	PaginationCommon,
 	Badges,
 	BADGES_OPTIONS,
+	IconGames,
 }

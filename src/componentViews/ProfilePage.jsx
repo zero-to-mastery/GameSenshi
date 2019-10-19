@@ -41,6 +41,14 @@ const buttonStreams = [
 
 const badges = ['female', 'verified', 'risingStar']
 
+const games = [
+	'Dota 2',
+	'PUBG',
+	'League of Legends',
+	'Apex Legends',
+	'Fortnite',
+]
+
 const ProfilePage = () => {
 	const wrapper = useRef(null)
 
@@ -68,6 +76,7 @@ const ProfilePage = () => {
 							socials={buttonStreams}
 							signature='I will kick your ass'
 							badges={badges}
+							games={games}
 						/>
 						<Col lg='8' md='6'>
 							<ContainerTitledPropedDefault>
