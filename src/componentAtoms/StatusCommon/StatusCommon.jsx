@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import styles from './styles.module.css'
+
 const StatusCommon = props => {
 	const { on, bodyOn, bodyOff } = props
 	return (
