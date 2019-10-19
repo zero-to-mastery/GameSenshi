@@ -3,11 +3,7 @@ import ReactDOM from 'react-dom'
 import App from 'App'
 import * as serviceWorker from 'serviceWorker'
 // state management
-import {
-	storeModalInitialize,
-	storeUserInitialize,
-	storeAlertShow,
-} from 'state'
+import { storeModalInitialize, storeUserInitialize } from 'state'
 import { goLastRoute } from 'routes'
 // Initialize firebase
 import 'firebaseInit'
@@ -23,13 +19,7 @@ storeUserInitialize()
 goLastRoute()
 
 // modal for auth
-storeModalInitialize(() => {
-	storeAlertShow(
-		'Connection timeout, please sign in manually',
-		'danger',
-		'tim-icons icon-alert-circle-exc'
-	)
-})
+storeModalInitialize()
 
 ReactDOM.render(<App />, document.getElementById('root'))
 
