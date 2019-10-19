@@ -51,7 +51,7 @@ import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
 import { CommentCommonPropedProfile } from './Comment'
 import { PaginationCommon } from './PaginationCommon'
-import { Badges, BADGES_OPTIONS } from './Badges'
+import { BadgesPropedSenshi } from './Badges'
 import { IconGames } from './IconGames'
 
 export const Exports = {
@@ -108,7 +108,6 @@ export const Exports = {
 	ContainerTitledPropedDefault,
 	CommentCommonPropedProfile,
 	PaginationCommon,
-	Badges,
-	BADGES_OPTIONS,
+	BadgesPropedSenshi,
 	IconGames,
 }

@@ -1,35 +1,15 @@
 import React from 'react'
 import { Badge, UncontrolledTooltip } from 'reactstrap'
+import classNames from 'classnames'
 
 const BADGES_COLOR = 'color'
 const BADGES_BODY = 'body'
 const BADGES_ID = 'id'
 const BADGES_TOOLTIP = 'tooltip'
 
-const BADGES_OPTIONS = ['female', 'verified', 'risingStar']
-
-const options = [
-	{
-		[BADGES_ID]: BADGES_OPTIONS[0],
-		[BADGES_COLOR]: 'primary',
-		[BADGES_BODY]: 'Female',
-	},
-	{
-		[BADGES_ID]: BADGES_OPTIONS[1],
-		[BADGES_COLOR]: 'info',
-		[BADGES_BODY]: 'Verified',
-	},
-	{
-		[BADGES_ID]: BADGES_OPTIONS[2],
-		[BADGES_COLOR]: 'warning',
-		[BADGES_BODY]: 'Rising Star',
-		[BADGES_TOOLTIP]: 'New player that gaining attention fast!',
-	},
-]
-
 const Badges = props => {
-	const { badges } = props
-	return badges.map(badge => {
+	const { badges, options } = props
+	return badges.map((badge, i) => {
 		const {
 			[BADGES_COLOR]: color,
 			[BADGES_BODY]: body,
@@ -39,7 +19,11 @@ const Badges = props => {
 
 		return (
 			<>
-				<Badge color={color} key={id} className='ml-1' id={id}>
+				<Badge
+					color={color}
+					key={id}
+					className={classNames({ 'mr-1': i !== badges.length - 1 })}
+					id={id}>
 					{body}
 				</Badge>
 				{tooltip && (
@@ -52,4 +36,4 @@ const Badges = props => {
 	})
 }
 
-export { Badges, BADGES_OPTIONS }
+export { Badges, BADGES_COLOR, BADGES_BODY, BADGES_ID, BADGES_TOOLTIP }

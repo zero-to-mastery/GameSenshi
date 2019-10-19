@@ -1,3 +1,9 @@
-import { Badges, BADGES_OPTIONS } from './Badges'
+import React from 'react'
+import { Badges } from './Badges'
+import { options } from './utils'
 
-export { Badges, BADGES_OPTIONS }
+const BadgesPropedSenshi = props => {
+	return <Badges options={options} {...props} />
+}
+
+export { BadgesPropedSenshi }
