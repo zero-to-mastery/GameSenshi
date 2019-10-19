@@ -7,7 +7,7 @@ import { Exports } from 'componentOrganisms'
 
 const {
 	FormCard,
-	IconCard,
+	IconCards,
 	FINAL_TEXT_CARD_HOLDER_NAME,
 	FINAL_TEXT_CARD_NUMBER,
 	FINAL_SELECT_EXPIRY_MONTH,
@@ -122,7 +122,7 @@ const TabPanePaymentSettings = () => {
 						return (
 							<tr key={cardNumber.slice(-4)}>
 								<th scope='row'>
-									<IconCard cardNumber={cardNumber} />
+									<IconCards cardNumber={cardNumber} />
 								</th>
 								<td>
 									<span className='d-block'>

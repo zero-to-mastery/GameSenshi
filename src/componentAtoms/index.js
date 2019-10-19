@@ -28,7 +28,7 @@ import { ModalCommonStoreModalPropedAuth, ModalCommon } from './ModalCommon'
 import { ButtonSubmit } from './ButtonSubmit'
 import { TabPaneContainer } from './TabPaneContainer'
 import { TabListVerticalPropedSettingPage } from './TabListVertical'
-import { IconCard } from './IconCard'
+import { IconCards } from './IconCards'
 import { LabelForm, LabelFormSimple } from './LabelForm'
 import { InputDate } from './InputDate'
 import { BrandNavbarPropedIndexNavbarStoreUser } from './BrandNavbar'
@@ -85,7 +85,7 @@ export const Exports = {
 	ButtonSubmit,
 	TabPaneContainer,
 	TabListVerticalPropedSettingPage,
-	IconCard,
+	IconCards,
 	LabelForm,
 	LabelFormSimple,
 	InputDate,

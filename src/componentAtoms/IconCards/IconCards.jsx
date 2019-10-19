@@ -37,7 +37,7 @@ const cardType = cardNumber => {
 	}
 }
 
-const IconCard = props => {
+const IconCards = props => {
 	const { cardNumber } = props
 
 	return (
@@ -49,4 +49,4 @@ const IconCard = props => {
 	)
 }
 
-export { IconCard }
+export { IconCards }
