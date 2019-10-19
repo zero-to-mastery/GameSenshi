@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Badge, UncontrolledTooltip } from 'reactstrap'
 import classNames from 'classnames'
 
@@ -18,10 +18,9 @@ const Badges = props => {
 		} = options.find(option => option[BADGES_ID] === badge)
 
 		return (
-			<>
+			<Fragment key={id}>
 				<Badge
 					color={color}
-					key={id}
 					className={classNames({ 'mr-1': i !== badges.length - 1 })}
 					id={id}>
 					{body}
@@ -31,7 +30,7 @@ const Badges = props => {
 						{tooltip}
 					</UncontrolledTooltip>
 				)}
-			</>
+			</Fragment>
 		)
 	})
 }

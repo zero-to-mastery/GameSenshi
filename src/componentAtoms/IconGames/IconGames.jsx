@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import classNames from 'classnames'
 import { UncontrolledTooltip } from 'reactstrap'
 
@@ -8,7 +8,7 @@ const IconGames = props => {
 	return games.map((game, i) => {
 		const id = game + 'icon'
 		return (
-			<>
+			<Fragment key={game}>
 				<img
 					src={require(`assets/icons/games/${game}.ico`)}
 					style={{ width: '48px', height: '48px' }}
@@ -19,7 +19,7 @@ const IconGames = props => {
 				<UncontrolledTooltip delay={0} target={id}>
 					{game}
 				</UncontrolledTooltip>
-			</>
+			</Fragment>
 		)
 	})
 }

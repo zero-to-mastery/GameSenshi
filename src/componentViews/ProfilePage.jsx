@@ -68,7 +68,7 @@ const ProfilePage = () => {
 							username='mighty_mike'
 							avatar={require('assets/img/mike.jpg')}
 							socials={buttonStreams}
-							signature='I will kick your ass'
+							signature='Nice to meet you!'
 							badges={badges}
 							games={games}
 						/>
