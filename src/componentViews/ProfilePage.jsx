@@ -39,23 +39,7 @@ const buttonStreams = [
 	},
 ]
 
-const badges = [
-	{
-		id: 'female',
-		color: 'primary',
-		body: 'Female',
-	},
-	{
-		id: 'verified',
-		color: 'info',
-		body: 'Verified',
-	},
-	{
-		id: 'risingStar',
-		color: 'warning',
-		body: 'Rising Star',
-	},
-]
+const badges = ['female', 'verified', 'risingStar']
 
 const ProfilePage = () => {
 	const wrapper = useRef(null)

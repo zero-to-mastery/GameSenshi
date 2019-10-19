@@ -1,3 +1,3 @@
-import { Badges, BADGES_COLOR, BADGES_BODY, BADGES_ID } from './Badges'
+import { Badges, BADGES_OPTIONS } from './Badges'
 
-export { Badges, BADGES_COLOR, BADGES_BODY, BADGES_ID }
+export { Badges, BADGES_OPTIONS }

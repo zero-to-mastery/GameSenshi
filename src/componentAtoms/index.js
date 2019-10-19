@@ -51,7 +51,7 @@ import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
 import { CommentCommonPropedProfile } from './Comment'
 import { PaginationCommon } from './PaginationCommon'
-import { Badges, BADGES_COLOR, BADGES_BODY, BADGES_ID } from './Badges'
+import { Badges, BADGES_OPTIONS } from './Badges'
 
 export const Exports = {
 	...ExportProtons,
@@ -108,7 +108,5 @@ export const Exports = {
 	CommentCommonPropedProfile,
 	PaginationCommon,
 	Badges,
-	BADGES_COLOR,
-	BADGES_BODY,
-	BADGES_ID,
+	BADGES_OPTIONS,
 }
