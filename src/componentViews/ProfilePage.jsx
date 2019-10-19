@@ -71,6 +71,7 @@ const ProfilePage = () => {
 							signature='Nice to meet you!'
 							badges={badges}
 							games={games}
+							online
 						/>
 						<Col lg='8' md='6'>
 							<ContainerTitledPropedDefault>

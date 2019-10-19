@@ -2,7 +2,12 @@ import React from 'react'
 import { Card, CardHeader, CardBody, Col, Row } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
-const { ButtonSocials, BadgesPropedSenshi, IconGames } = stopUndefined(Exports)
+const {
+	ButtonSocials,
+	BadgesPropedSenshi,
+	IconGames,
+	StatusCommonPropedOnline,
+} = stopUndefined(Exports)
 
 const onClicks = socials => []
 
@@ -15,6 +20,7 @@ const AvatarProfile = props => {
 		nickname,
 		username,
 		socials,
+		online,
 	} = props
 	return (
 		<Col className='ml-auto mr-auto' lg='4' md='6'>
@@ -25,6 +31,9 @@ const AvatarProfile = props => {
 						className='img-center img-fluid rounded-circle'
 						src={avatar}
 					/>
+					<Row className='justify-content-center mt-2'>
+						<StatusCommonPropedOnline on={online} />
+					</Row>
 					<Row className='justify-content-center mt-3'>
 						{/*badges like female,verified,pro,highest rating,new member,highest rating*/}
 						<BadgesPropedSenshi badges={badges} />

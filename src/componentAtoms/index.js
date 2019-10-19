@@ -53,6 +53,7 @@ import { CommentCommonPropedProfile } from './Comment'
 import { PaginationCommon } from './PaginationCommon'
 import { BadgesPropedSenshi } from './Badges'
 import { IconGames } from './IconGames'
+import { StatusCommonPropedOnline } from './StatusCommon'
 
 export const Exports = {
 	...ExportProtons,
@@ -110,4 +111,5 @@ export const Exports = {
 	PaginationCommon,
 	BadgesPropedSenshi,
 	IconGames,
+	StatusCommonPropedOnline,
 }
