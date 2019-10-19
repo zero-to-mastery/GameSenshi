@@ -23,31 +23,25 @@ const buttonStreams = [
 		id: 'facebook',
 		icon: 'fab fa-facebook-f',
 		color: 'facebook',
-		tooltip: 'Follow me on my Facebook',
+		tooltip: 'Follow me on my Facebook!',
 	},
 	{
 		id: 'twitch',
 		icon: 'fab fa-twitch',
 		color: 'twitch',
-		tooltip: 'Subscribe to my Twitch channel',
+		tooltip: 'Subscribe to my Twitch channel!',
 	},
 	{
 		id: 'youtube',
 		icon: 'fab fa-youtube',
 		color: 'youtube',
-		tooltip: 'Subscribe to my Youtube channel',
+		tooltip: 'Subscribe to my Youtube channel!',
 	},
 ]
 
 const badges = ['female', 'verified', 'risingStar']
 
-const games = [
-	'Dota 2',
-	'PUBG',
-	'League of Legends',
-	'Apex Legends',
-	'Fortnite',
-]
+const games = ['Dota2', 'PUBG', 'LeagueOfLegends', 'ApexLegends', 'Fortnite']
 
 const ProfilePage = () => {
 	const wrapper = useRef(null)
