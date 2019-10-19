@@ -21,19 +21,19 @@ const {
 const buttonStreams = [
 	{
 		id: 'facebook',
-		icon: 'fab fa-facebook-f',
+		icon: 'fab fa-facebook-f font-1-6',
 		color: 'facebook',
 		tooltip: 'Follow me on my Facebook!',
 	},
 	{
 		id: 'twitch',
-		icon: 'fab fa-twitch',
+		icon: 'fab fa-twitch font-1-6',
 		color: 'twitch',
 		tooltip: 'Subscribe to my Twitch channel!',
 	},
 	{
 		id: 'youtube',
-		icon: 'fab fa-youtube',
+		icon: 'ml-n1 fab fa-youtube font-1-6',
 		color: 'youtube',
 		tooltip: 'Subscribe to my Youtube channel!',
 	},
