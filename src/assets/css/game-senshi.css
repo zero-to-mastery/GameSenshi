@@ -10,3 +10,7 @@
 .editable:hover {
 	cursor: pointer;
 }
+
+.font-1-6.font-1-6.font-1-6.font-1-6 {
+	font-size: 1.6rem !important;
+}
