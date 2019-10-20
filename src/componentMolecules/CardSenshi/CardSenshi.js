@@ -14,7 +14,7 @@ const {
 
 const onClicks = socials => []
 
-const AvatarProfile = props => {
+const CardSenshi = props => {
 	const {
 		badges,
 		signature,
@@ -78,4 +78,4 @@ const AvatarProfile = props => {
 	)
 }
 
-export { AvatarProfile }
+export { CardSenshi }

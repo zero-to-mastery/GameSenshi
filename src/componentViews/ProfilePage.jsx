@@ -14,7 +14,7 @@ const {
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
-	AvatarProfile,
+	CardSenshi,
 	CommentWithPaginationPropedDefault,
 } = stopUndefined(Exports)
 
@@ -63,7 +63,7 @@ const ProfilePage = () => {
 				<img alt='...' className='path' src={require('assets/img/path4.png')} />
 				<Container className='align-items-center'>
 					<Row>
-						<AvatarProfile
+						<CardSenshi
 							nickname='Mike Scheinder'
 							username='mighty_mike'
 							avatar={require('assets/img/mike.jpg')}
