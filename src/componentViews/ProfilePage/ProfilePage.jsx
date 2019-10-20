@@ -5,6 +5,8 @@ import { Container, Row, Col } from 'reactstrap'
 // core components
 import { Exports } from 'componentpMultiOrganisms'
 import audioSample from 'assets/audio/sampleVoice.mp3'
+import styles from './styles.module.css'
+import classNames from 'classnames'
 
 const {
 	Footer,
@@ -61,7 +63,8 @@ const ProfilePage = () => {
 			<div className='page-header'>
 				<img alt='...' className='dots' src={require('assets/img/dots.png')} />
 				<img alt='...' className='path' src={require('assets/img/path4.png')} />
-				<Container className='align-items-center'>
+				<Container
+					className={classNames('align-items-center', styles.container2)}>
 					<Row>
 						<CardSenshi
 							nickname='Mike Scheinder'

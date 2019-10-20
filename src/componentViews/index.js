@@ -1,7 +1,7 @@
 import { Exports as ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-import { IndexPage } from './IndexPage.jsx'
-import { ProfilePage } from './ProfilePage.jsx'
+import { IndexPage } from './IndexPage'
+import { ProfilePage } from './ProfilePage'
 import { SettingsPage } from './SettingsPage'
 import { SignInPage } from './SignInPage'
 import { SignUpPage } from './SignUpPage'
