@@ -18,7 +18,7 @@ const convertToMinutes = duration => {
 const ButtonSound = props => {
 	const [playStatus, setPlayStatus] = useState(stopped)
 	const [position, setPosition] = useState('')
-	const [duration, setDuration] = useState('')
+	const [duration, setDuration] = useState('Play')
 	const [loading, setLoading] = useState(false)
 	const [Icon, setIcon] = useState(() => VolumeUpIcon)
 	const delay = useRef(0)
@@ -70,7 +70,7 @@ const ButtonSound = props => {
 		[loading]
 	)
 
-	const onFinishedPlaying = useCallback(() => {
+	const reset = useCallback(() => {
 		setPlayStatus(stopped)
 		clearInterval(intervalId.current)
 		setTimeout(() => {
@@ -79,11 +79,15 @@ const ButtonSound = props => {
 		delay.current = 0
 	}, [])
 
+	const onFinishedPlaying = useCallback(() => {
+		reset()
+	}, [])
+
 	const onClick = useCallback(() => {
 		if (playStatus === stopped) {
 			setPlayStatus(playing)
 		} else if (playStatus === playing) {
-			setPlayStatus(stopped)
+			reset()
 		}
 	}, [playStatus])
 

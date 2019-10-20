@@ -5,6 +5,8 @@ import { Container, Row, Col } from 'reactstrap'
 // core components
 import { Exports } from 'componentpMultiOrganisms'
 import audioSample from 'assets/audio/sampleVoice.mp3'
+import styles from './styles.module.css'
+import classNames from 'classnames'
 
 const {
 	Footer,
@@ -14,7 +16,7 @@ const {
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
-	AvatarProfile,
+	CardSenshi,
 	CommentWithPaginationPropedDefault,
 } = stopUndefined(Exports)
 
@@ -61,9 +63,10 @@ const ProfilePage = () => {
 			<div className='page-header'>
 				<img alt='...' className='dots' src={require('assets/img/dots.png')} />
 				<img alt='...' className='path' src={require('assets/img/path4.png')} />
-				<Container className='align-items-center'>
+				<Container
+					className={classNames('align-items-center', styles.container2)}>
 					<Row>
-						<AvatarProfile
+						<CardSenshi
 							nickname='Mike Scheinder'
 							username='mighty_mike'
 							avatar={require('assets/img/mike.jpg')}
@@ -73,6 +76,7 @@ const ProfilePage = () => {
 							games={games}
 							online
 							audio={audioSample}
+							favorite
 						/>
 						<Col lg='8' md='6'>
 							<ContainerTitledPropedDefault>

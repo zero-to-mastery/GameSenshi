@@ -17,7 +17,7 @@ const CheckBox = props => {
 	const onChange_ = useCallback(
 		e => {
 			setChecked_(value => !value)
-			onChange && onChange(e)
+			onChange && onChange(e, setChecked_)
 		},
 		[onChange]
 	)
