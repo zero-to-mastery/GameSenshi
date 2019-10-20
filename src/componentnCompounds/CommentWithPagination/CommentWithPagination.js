@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useCallback } from 'react'
+import React, { Fragment, useState, useCallback, useEffect } from 'react'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentAtoms'
 
@@ -6,11 +6,15 @@ const {
 	CommentCommonPropedDefault,
 	PaginationCommonPropedDefault,
 } = stopUndefined(Exports)
+
 const PAGE_SIZE = 2
 const INITIAL_PAGE = 1
+
 const CommentWithPagination = props => {
 	const { comments } = props
 	const [myPageOfItems, setPageOfItems] = useState([])
+
+	useEffect(() => {}, [comments])
 
 	const onChangePage = useCallback(
 		pageOfItems => {

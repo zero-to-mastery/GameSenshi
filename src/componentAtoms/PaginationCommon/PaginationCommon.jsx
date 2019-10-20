@@ -4,14 +4,11 @@ import { Pagination, PaginationItem, PaginationLink } from 'reactstrap'
 
 const PaginationCommon = props => {
 	const [pager, setPager] = useState({})
-	const items = useRef(props.items)
+	// const items = useRef(props.items)
 
 	useEffect(() => {
-		if (props.items !== items.current) {
-			setPage(props.initialPage)
-		}
-		items.current = props.items
-	})
+		setPage(props.initialPage)
+	}, [props.items])
 
 	const getPager = (totalItems, currentPage, pageSize) => {
 		currentPage = currentPage || 1
