@@ -28,7 +28,7 @@ const ModalImageCropper = memo(props => {
 	const onContinue = useCallback(
 		e => {
 			// e is normally not needed but incase some need it
-			onCrop_(dataUrl, toggle, e)
+			onCrop_(e, dataUrl, toggle)
 		},
 		[onCrop_, dataUrl]
 	)

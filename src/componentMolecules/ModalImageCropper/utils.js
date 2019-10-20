@@ -11,7 +11,7 @@ import {
 	handleUserAvatarLoad,
 } from 'api'
 
-const onCrop = (dataUrl, toggle) => {
+const onCrop = (e, dataUrl, toggle) => {
 	handleUserAvatarSave(dataUrl).on(
 		'state_changed',
 		snapshot => {
