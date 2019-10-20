@@ -95,6 +95,7 @@
 		"react-scripts": "^2.1.5",
 		"react-select": "^2.4.3",
 		"react-slick": "^0.24.0",
+		"react-sound": "^1.2.0",
 		"react-tagsinput": "^3.19.0",
 		"reactstrap": "^7.1.0",
 		"slick-carousel": "^1.8.1",
