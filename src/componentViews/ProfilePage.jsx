@@ -13,9 +13,8 @@ const {
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
-	CommentCommonPropedDefault,
-	PaginationCommonPropedDefault,
 	AvatarProfile,
+	CommentWithPaginationPropedDefault,
 } = stopUndefined(Exports)
 
 const buttonStreams = [
@@ -138,8 +137,7 @@ const ProfilePage = () => {
 					</Row>
 					<Row>
 						<Col md={{ size: 8, offset: 2 }} className='pt-5 pb-5'>
-							<CommentCommonPropedDefault />
-							<PaginationCommonPropedDefault />
+							<CommentWithPaginationPropedDefault />
 						</Col>
 					</Row>
 				</Container>
