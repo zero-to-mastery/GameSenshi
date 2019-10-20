@@ -43,10 +43,15 @@ const CarouselItem = props => {
 	} = props
 	return (
 		<div key={key} className={styles.slideWrapper}>
-			{isVideo ? (
-				<ReactPlayerGeneric src={src} />
+			{!isVideo ? (
+				<img
+					className={styles.slideImage}
+					style={{ width: 300 }}
+					src={src}
+					alt={altText}
+				/>
 			) : (
-				<img className={styles.slideImage} src={src} alt={altText} />
+				<ReactPlayerGeneric src={src} />
 			)}
 		</div>
 	)
