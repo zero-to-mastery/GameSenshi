@@ -7,8 +7,12 @@ import { PopoverCommon } from './PopoverCommon'
 import Footer from './Footers/Footer'
 import IndexHeader from './Headers/IndexHeader.jsx'
 import {
+	ButtonSocials,
 	ButtonsSocialPropedAuth,
-	ButtonsSocialPropedStreams,
+	BUTTON_SOCIALS_ID,
+	BUTTON_SOCIALS_ICON,
+	BUTTON_SOCIALS_COLOR,
+	BUTTON_SOCIALS_TOOLTIP,
 } from './ButtonSocials'
 import {
 	ButtonSignInStoreUserPropedIndexNavbar,
@@ -45,8 +49,16 @@ import { RatingProfile } from './RatingProfile'
 import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
+<<<<<<< HEAD
 import { CommentCommonPropedDefault } from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
+=======
+import { CommentCommonPropedProfile } from './Comment'
+import { PaginationCommon } from './PaginationCommon'
+import { BadgesPropedSenshi } from './Badges'
+import { IconGames } from './IconGames'
+import { StatusCommonPropedOnline } from './StatusCommon'
+>>>>>>> ac166870566e5a2c6a375aa0e76ae6c75145b5a5
 
 export const Exports = {
 	...ExportProtons,
@@ -57,8 +69,12 @@ export const Exports = {
 	ImageUploadStoreUserPropedSettings,
 	AlertCommonStoreAlert,
 	ProgressCommonStoreProgress,
+	ButtonSocials,
 	ButtonsSocialPropedAuth,
-	ButtonsSocialPropedStreams,
+	BUTTON_SOCIALS_ID,
+	BUTTON_SOCIALS_ICON,
+	BUTTON_SOCIALS_COLOR,
+	BUTTON_SOCIALS_TOOLTIP,
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
 	ListText,
@@ -96,6 +112,14 @@ export const Exports = {
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
+<<<<<<< HEAD
 	CommentCommonPropedDefault,
 	PaginationCommonPropedDefault,
+=======
+	CommentCommonPropedProfile,
+	PaginationCommon,
+	BadgesPropedSenshi,
+	IconGames,
+	StatusCommonPropedOnline,
+>>>>>>> ac166870566e5a2c6a375aa0e76ae6c75145b5a5
 }

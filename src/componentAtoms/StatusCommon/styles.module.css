@@ -1,0 +1,13 @@
+.dot {
+	height: 0.75rem;
+	width: 0.75rem;
+	border-radius: 50%;
+}
+
+.on {
+	background-color: #66ff00;
+}
+
+.off {
+	background-color: gray;
+}

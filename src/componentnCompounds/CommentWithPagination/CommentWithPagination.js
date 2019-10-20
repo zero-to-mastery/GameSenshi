@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useCallback } from 'react'
 import { stopUndefined } from 'utils'
 import { ExportAtoms } from 'componentAtoms'
 
@@ -10,9 +10,12 @@ const {
 const CommentWithPagination = props => {
 	const { comments } = props
 	const [pageOfItems, setPageOfItems] = useState([])
-	const onChangePage = pageOfItems => {
-		setPageOfItems(pageOfItems)
-	}
+	const onChangePage = useCallback(
+		pageOfItems => {
+			setPageOfItems(pageOfItems)
+		},
+		[pageOfItems]
+	)
 	return (
 		<Fragment>
 			<CommentCommonPropedDefault comments={pageOfItems} />

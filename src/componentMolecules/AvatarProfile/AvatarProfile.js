@@ -1,10 +1,27 @@
 import React from 'react'
-import { Card, CardHeader, CardBody, Col } from 'reactstrap'
+import { Card, CardHeader, CardBody, Col, Row } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
-const { ButtonsSocialPropedStreams } = stopUndefined(Exports)
+const {
+	ButtonSocials,
+	BadgesPropedSenshi,
+	IconGames,
+	StatusCommonPropedOnline,
+} = stopUndefined(Exports)
+
+const onClicks = socials => []
 
 const AvatarProfile = props => {
+	const {
+		badges,
+		signature,
+		avatar,
+		games,
+		nickname,
+		username,
+		socials,
+		online,
+	} = props
 	return (
 		<Col className='ml-auto mr-auto' lg='4' md='6'>
 			<Card className='card-coin card-plain'>
@@ -12,20 +29,37 @@ const AvatarProfile = props => {
 					<img
 						alt='...'
 						className='img-center img-fluid rounded-circle'
-						src={require('assets/img/mike.jpg')}
+						src={avatar}
 					/>
-					<h3 className='title'>Mike Scheinder</h3>
-					<p className='text-muted text-center'>@mighty_mike</p>
-					{/*badges like female,verified,pro,highest rating,new member,highest rating*/}
-					{/* Social icons */}
-					<ButtonsSocialPropedStreams className='pt-2' />
+					<Row className='justify-content-center mt-2'>
+						<StatusCommonPropedOnline on={online} />
+					</Row>
+					<Row className='justify-content-center mt-3'>
+						{/*badges like female,verified,pro,highest rating,new member,highest rating*/}
+						<BadgesPropedSenshi badges={badges} />
+					</Row>
+					<h3 className='title mt-3 mb-1'>{nickname}</h3>
+					<p className='text-muted text-center mb-3'>@{username}</p>
+					<Row className='justify-content-center'>
+						{/*Game icons*/}
+						<IconGames games={games} />
+					</Row>
+					<Row className='justify-content-center'>
+						{/* Social icons */}
+						<ButtonSocials
+							buttons={socials}
+							onClicks={onClicks}
+							className='pt-2'
+						/>
+					</Row>
 				</CardHeader>
 				<CardBody>
-					{/* Signature */}
-					<p className='pl-2'>
-						A veteran in MOBA and FPS games, I can give you a significant boost
-						in ranking mode.
-					</p>
+					<Row className='justify-content-center'>
+						{/* Signature */}
+						<p className='pl-2 font-italic'>
+							"{signature || 'Nice to meet you!'}"
+						</p>
+					</Row>
 				</CardBody>
 			</Card>
 		</Col>

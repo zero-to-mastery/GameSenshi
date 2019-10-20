@@ -1,22 +1,52 @@
 import React, { useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
 // reactstrap components
-import { Card, CardHeader, CardBody, Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 // core components
 import { Exports } from 'componentpMultiOrganisms'
 
 const {
 	Footer,
 	CarouselCommonPropedProfile,
-	ButtonsSocialPropedStreams,
 	FormProfile,
 	RatingProfile,
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
+<<<<<<< HEAD
 	CommentCommonPropedDefault,
 	PaginationCommonPropedDefault,
+=======
+	CommentCommonPropedProfile,
+	PaginationCommon,
+	AvatarProfile,
+>>>>>>> ac166870566e5a2c6a375aa0e76ae6c75145b5a5
 } = stopUndefined(Exports)
+
+const buttonStreams = [
+	{
+		id: 'facebook',
+		icon: 'fab fa-facebook-f font-1-6',
+		color: 'facebook',
+		tooltip: 'Follow me on my Facebook!',
+	},
+	{
+		id: 'twitch',
+		icon: 'fab fa-twitch font-1-6',
+		color: 'twitch',
+		tooltip: 'Subscribe to my Twitch channel!',
+	},
+	{
+		id: 'youtube',
+		icon: 'ml-n1 fab fa-youtube font-1-6',
+		color: 'youtube',
+		tooltip: 'Subscribe to my Youtube channel!',
+	},
+]
+
+const badges = ['female', 'verified', 'risingStar']
+
+const games = ['Dota2', 'PUBG', 'LeagueOfLegends', 'ApexLegends', 'Fortnite']
 
 const ProfilePage = () => {
 	const wrapper = useRef(null)
@@ -38,29 +68,16 @@ const ProfilePage = () => {
 				<img alt='...' className='path' src={require('assets/img/path4.png')} />
 				<Container className='align-items-center'>
 					<Row>
-						<Col className='ml-auto mr-auto' lg='4' md='6'>
-							<Card className='card-coin card-plain'>
-								<CardHeader>
-									<img
-										alt='...'
-										className='img-center img-fluid rounded-circle'
-										src={require('assets/img/mike.jpg')}
-									/>
-									<h3 className='title'>Mike Scheinder</h3>
-									<p className='text-muted text-center'>@mighty_mike</p>
-									{/*badges like female,verified,pro,highest rating,new member,highest rating*/}
-									{/* Social icons */}
-									<ButtonsSocialPropedStreams className='pt-2' />
-								</CardHeader>
-								<CardBody>
-									{/* Signature */}
-									<p className='pl-2'>
-										A veteran in MOBA and FPS games, I can give you a
-										significant boost in ranking mode.
-									</p>
-								</CardBody>
-							</Card>
-						</Col>
+						<AvatarProfile
+							nickname='Mike Scheinder'
+							username='mighty_mike'
+							avatar={require('assets/img/mike.jpg')}
+							socials={buttonStreams}
+							signature='Nice to meet you!'
+							badges={badges}
+							games={games}
+							online
+						/>
 						<Col lg='8' md='6'>
 							<ContainerTitledPropedDefault>
 								<Row>
@@ -77,11 +94,8 @@ const ProfilePage = () => {
 									<Col md={{ size: 11, offset: 1 }} className='pb-2'>
 										<h4>Description</h4>
 										<p>
-											Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-											Optio nulla quos reiciendis praesentium. Reiciendis quod
-											dignissimos et quasi sequi. Placeat quaerat iusto
-											reprehenderit quia inventore recusandae nihil voluptas
-											reiciendis numquam?
+											A veteran in MOBA and FPS games, I can give you a
+											significant boost in ranking mode.
 										</p>
 									</Col>
 								</Row>

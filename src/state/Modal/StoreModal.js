@@ -100,6 +100,7 @@ class StoreModal extends Container {
 
 	[INITIALIZE] = () => {
 		const item = this[GET_ITEM]()
+		this[REMOVE_ITEM]()
 		if (item) {
 			this.setState({
 				[STORE_MODAL_STATE_BODY]: (

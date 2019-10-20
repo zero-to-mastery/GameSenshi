@@ -1,6 +1,12 @@
 import React from 'react'
-import { ButtonSocials } from './ButtonSocials'
-import { buttonSocialAuthOnClicks, buttonAuths, buttonStreams } from './utils'
+import {
+	ButtonSocials,
+	BUTTON_SOCIALS_ID,
+	BUTTON_SOCIALS_ICON,
+	BUTTON_SOCIALS_COLOR,
+	BUTTON_SOCIALS_TOOLTIP,
+} from './ButtonSocials'
+import { buttonSocialAuthOnClicks, buttonAuths } from './utils'
 // routing
 import { withLastLocation } from 'routes'
 
@@ -15,8 +21,11 @@ const ButtonsSocialPropedAuth = withLastLocation(props => {
 	)
 })
 
-// TODO onClicks functionality
-const ButtonsSocialPropedStreams = props => {
-	return <ButtonSocials onClicks={[]} buttons={buttonStreams} {...props} />
+export {
+	ButtonsSocialPropedAuth,
+	ButtonSocials,
+	BUTTON_SOCIALS_ID,
+	BUTTON_SOCIALS_ICON,
+	BUTTON_SOCIALS_COLOR,
+	BUTTON_SOCIALS_TOOLTIP,
 }
-export { ButtonsSocialPropedStreams, ButtonsSocialPropedAuth }
