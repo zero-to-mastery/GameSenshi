@@ -7,6 +7,7 @@ const {
 	BadgesPropedSenshi,
 	IconGames,
 	StatusCommonPropedOnline,
+	ButtonSound,
 } = stopUndefined(Exports)
 
 const onClicks = socials => []
@@ -21,6 +22,7 @@ const AvatarProfile = props => {
 		username,
 		socials,
 		online,
+		audio,
 	} = props
 	return (
 		<Col className='ml-auto mr-auto' lg='4' md='6'>
@@ -59,6 +61,9 @@ const AvatarProfile = props => {
 						<p className='pl-2 font-italic'>
 							"{signature || 'Nice to meet you!'}"
 						</p>
+					</Row>
+					<Row className='justify-content-center'>
+						<ButtonSound url={audio} />
 					</Row>
 				</CardBody>
 			</Card>

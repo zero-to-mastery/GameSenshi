@@ -4,6 +4,7 @@ import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
 // core components
 import { Exports } from 'componentpMultiOrganisms'
+import audioSample from 'assets/audio/sampleVoice.mp3'
 
 const {
 	Footer,
@@ -72,6 +73,7 @@ const ProfilePage = () => {
 							badges={badges}
 							games={games}
 							online
+							audio={audioSample}
 						/>
 						<Col lg='8' md='6'>
 							<ContainerTitledPropedDefault>

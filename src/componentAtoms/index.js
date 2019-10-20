@@ -51,10 +51,10 @@ import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
 import { CommentCommonPropedDefault } from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
-import { PaginationCommon } from './PaginationCommon'
 import { BadgesPropedSenshi } from './Badges'
 import { IconGames } from './IconGames'
 import { StatusCommonPropedOnline } from './StatusCommon'
+import { ButtonSound } from './ButtonSound'
 
 export const Exports = {
 	...ExportProtons,
@@ -113,4 +113,5 @@ export const Exports = {
 	BadgesPropedSenshi,
 	IconGames,
 	StatusCommonPropedOnline,
+	ButtonSound,
 }
