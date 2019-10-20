@@ -7,8 +7,6 @@ const POSTED_TIME = 'postedTime'
 const AVATAR = 'avatar'
 const BODY = 'body'
 const NUM_COMMENTS = 'numComments'
-const TOOLTIP = 'tooltip'
-const COMMENTS = 'comments'
 
 const CommentHeader = props => {
 	const { name, time } = props
@@ -70,35 +68,38 @@ const CommentFooter = props => {
 	)
 }
 const Comment = props => {
-	const { [COMMENTS]: comments } = props
+	const { comments } = props
+	const comments_ = comments || []
 	return (
-		<div className='comment-wrapper'>
-			{comments.map((comment, i) => {
-				const {
-					[ID]: id,
-					[NAME]: name,
-					[POSTED_TIME]: time,
-					[AVATAR]: src,
-					[BODY]: body,
-					[NUM_COMMENTS]: commentsNumber,
-				} = comment
-				return (
-					<Fragment key={id}>
-						<Media>
-							<CommentAvatar src={src} />
-							<CommentBody
-								id={id}
-								name={name}
-								time={time}
-								body={body}
-								commentsNumber={commentsNumber}
-							/>
-						</Media>
-					</Fragment>
-				)
-			})}
+		<div className='container'>
+			<div className='comment-wrapper'>
+				{comments_.map((comment, i) => {
+					const {
+						[ID]: id,
+						[NAME]: name,
+						[POSTED_TIME]: time,
+						[AVATAR]: src,
+						[BODY]: body,
+						[NUM_COMMENTS]: commentsNumber,
+					} = comment
+					return (
+						<Fragment key={id}>
+							<Media>
+								<CommentAvatar src={src} />
+								<CommentBody
+									id={id}
+									name={name}
+									time={time}
+									body={body}
+									commentsNumber={commentsNumber}
+								/>
+							</Media>
+						</Fragment>
+					)
+				})}
+			</div>
 		</div>
 	)
 }
 
-export { Comment, NAME, POSTED_TIME, AVATAR, BODY, NUM_COMMENTS, TOOLTIP, ID }
+export { Comment, NAME, POSTED_TIME, AVATAR, BODY, NUM_COMMENTS, ID }

@@ -1,82 +1,92 @@
-import React, { useState } from 'react'
+/* eslint-disable no-undef */
+import React, { useState, useEffect, useRef } from 'react'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap'
-// JS utility library
-import { uniqueId, range } from 'lodash'
 
 const PaginationCommon = props => {
-	const [currentPage, setCurrentPage] = useState(0)
-	const [pageCount, setPageCount] = useState(0)
+	const [pager, setPager] = useState({})
+	const items = useRef(props.items)
 
-	const handlePageChange = page => {
-		const { onPageChange } = this.props
-		const currentPage = Math.max(0, Math.min(page, this.state.pageCount))
-		const paginationData = {
-			currentPage,
-			totalPages: this.state.pageCount,
-			pageLimit: this.props.pageSize,
-			totalRecords: this.props.totalRecords,
+	useEffect(() => {
+		if (props.items !== items.current) {
+			setPage(props.initialPage)
 		}
-		setCurrentPage()
+		items.current = props.items
+	})
+
+	const setPage = page => {
+		const { items, pageSize, onChangePage } = this.props
+		const pager_ = pager
+
+		if (page < 1 || page > pager.totalPages) {
+			return
+		}
+		pager_ = getPager(items.length, page, pageSize)
+		const pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1)
+		setPager({ pager_ })
+		onChangePage(pageOfItems)
 	}
-	const renderControls = () => {
-		const pageCount = this.state.pageCount
-		const numberOfPages = range(1, pageCount + 1)
-		return numberOfPages.map(pageNumber => {
-			const baseClassName = 'pagination-controls__button'
-			const activeClassName =
-				pageNumber === this.state.currentPage ? `${baseClassName}--active` : ''
-			return (
-				<div
-					key={uniqueId()}
-					className={`${baseClassName} ${activeClassName}`}
-					onClick={() => handlePageChange(pageNumber)}>
-					{pageNumber}
-				</div>
-			)
-		})
+	const getPager = (totalItems, currentPage, pageSize) => {
+		currentPage = currentPage || 1
+		pageSize = pageSize || 10
+		const totalPages = Math.ceil(totalItems / pageSize)
+		let startPage, endPage
+		if (totalPages <= 10) {
+			startPage = 1
+			endPage = totalPages
+		} else {
+			if (currentPage <= 6) {
+				startPage = 1
+				endPage = 10
+			} else if (currentPage + 4 >= totalPages) {
+				startPage = totalPages - 9
+				endPage = totalPages
+			} else {
+				startPage = currentPage - 5
+				endPage = currentPage + 4
+			}
+		}
+		const startIndex = (currentPage - 1) * pageSize
+		const endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1)
+		const pages = [...Array(endPage + 1 - startPage).keys()].map(
+			i => startPage + i
+		)
+		return {
+			totalItems: totalItems,
+			currentPage: currentPage,
+			pageSize: pageSize,
+			totalPages: totalPages,
+			startPage: startPage,
+			endPage: endPage,
+			startIndex: startIndex,
+			endIndex: endIndex,
+			pages: pages,
+		}
 	}
+
+	// if (!pager.pages || pager.pages.length <= 1) {
+	// 	// don't display pager if there is only 1 page
+	// 	return null
+	// }
 	return (
-		<div className='pagination'>
-			<Pagination
-				className='pagination pagination-primary'
-				listClassName='pagination-primary'>
-				<PaginationItem>
-					<PaginationLink
-						aria-label='Previous'
-						href='#pablo'
-						onClick={e => e.preventDefault()}>
-						<span aria-hidden={true}>
-							<i aria-hidden={true} className='fa fa-angle-double-left' />
-						</span>
-					</PaginationLink>
-				</PaginationItem>
-				<PaginationItem>
-					<PaginationLink href='#pablo' onClick={e => e.preventDefault()}>
-						1
-					</PaginationLink>
-				</PaginationItem>
-				<PaginationItem>
-					<PaginationLink href='#pablo' onClick={e => e.preventDefault()}>
-						2
-					</PaginationLink>
-				</PaginationItem>
-				<PaginationItem>
-					<PaginationLink href='#pablo' onClick={e => e.preventDefault()}>
-						3
-					</PaginationLink>
-				</PaginationItem>
-				<PaginationItem>
-					<PaginationLink
-						aria-label='Next'
-						href='#pablo'
-						onClick={e => e.preventDefault()}>
-						<span aria-hidden={true}>
-							<i aria-hidden={true} className='fa fa-angle-double-right' />
-						</span>
-					</PaginationLink>
-				</PaginationItem>
-			</Pagination>
-		</div>
+		<ul className='pagination'>
+			<li className={pager.currentPage === 1 ? 'disabled' : ''}>
+				<a onClick={() => setPage(1)}>First</a>
+			</li>
+			<li className={pager.currentPage === 1 ? 'disabled' : ''}>
+				<a onClick={() => setPage(pager.currentPage - 1)}>Previous</a>
+			</li>
+			{/* {pager.pages.map((page, index) => (
+				<li key={index} className={pager.currentPage === page ? 'active' : ''}>
+					<a onClick={() => setPage(page)}>{page}</a>
+				</li>
+			))} */}
+			<li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+				<a onClick={() => setPage(pager.currentPage + 1)}>Next</a>
+			</li>
+			<li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+				<a onClick={() => setPage(pager.totalPages)}>Last</a>
+			</li>
+		</ul>
 	)
 }
 
