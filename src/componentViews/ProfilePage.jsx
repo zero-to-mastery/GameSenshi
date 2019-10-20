@@ -73,6 +73,7 @@ const ProfilePage = () => {
 							games={games}
 							online
 							audio={audioSample}
+							favorite
 						/>
 						<Col lg='8' md='6'>
 							<ContainerTitledPropedDefault>

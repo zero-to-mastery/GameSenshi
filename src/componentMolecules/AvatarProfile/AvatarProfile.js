@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardHeader, CardBody, Col, Row } from 'reactstrap'
+import { Card, CardHeader, CardBody, Col, Row, Button } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 const {
@@ -8,6 +8,8 @@ const {
 	IconGames,
 	StatusCommonPropedOnline,
 	ButtonSound,
+	ButtonIconPropedFavorite,
+	ButtonIconPropedTip,
 } = stopUndefined(Exports)
 
 const onClicks = socials => []
@@ -23,6 +25,7 @@ const AvatarProfile = props => {
 		socials,
 		online,
 		audio,
+		favorite,
 	} = props
 	return (
 		<Col className='ml-auto mr-auto' lg='4' md='6'>
@@ -64,6 +67,10 @@ const AvatarProfile = props => {
 					</Row>
 					<Row className='justify-content-center'>
 						<ButtonSound url={audio} />
+					</Row>
+					<Row className='justify-content-center'>
+						<ButtonIconPropedFavorite fill={favorite} />
+						<ButtonIconPropedTip />
 					</Row>
 				</CardBody>
 			</Card>

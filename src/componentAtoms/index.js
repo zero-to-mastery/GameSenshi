@@ -64,6 +64,7 @@ import { BadgesPropedSenshi } from './Badges'
 import { IconGames } from './IconGames'
 import { StatusCommonPropedOnline } from './StatusCommon'
 import { ButtonSound } from './ButtonSound'
+import { ButtonIconPropedFavorite, ButtonIconPropedTip } from './ButtonIcon'
 
 export const Exports = {
 	...ExportProtons,
@@ -129,4 +130,6 @@ export const Exports = {
 	AVATAR,
 	BODY,
 	NUM_COMMENTS,
+	ButtonIconPropedFavorite,
+	ButtonIconPropedTip,
 }

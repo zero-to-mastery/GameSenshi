@@ -18,7 +18,7 @@ const convertToMinutes = duration => {
 const ButtonSound = props => {
 	const [playStatus, setPlayStatus] = useState(stopped)
 	const [position, setPosition] = useState('')
-	const [duration, setDuration] = useState('')
+	const [duration, setDuration] = useState('Play')
 	const [loading, setLoading] = useState(false)
 	const [Icon, setIcon] = useState(() => VolumeUpIcon)
 	const delay = useRef(0)
