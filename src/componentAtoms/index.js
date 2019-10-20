@@ -49,7 +49,16 @@ import { RatingProfile } from './RatingProfile'
 import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
-import { CommentCommonPropedDefault } from './Comment'
+
+import {
+	CommentCommonPropedDefault,
+	ID,
+	NAME,
+	POSTED_TIME,
+	AVATAR,
+	BODY,
+	NUM_COMMENTS,
+} from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
 import { BadgesPropedSenshi } from './Badges'
 import { IconGames } from './IconGames'
@@ -108,10 +117,16 @@ export const Exports = {
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
-	CommentCommonPropedDefault,
-	PaginationCommonPropedDefault,
 	BadgesPropedSenshi,
 	IconGames,
 	StatusCommonPropedOnline,
 	ButtonSound,
+	CommentCommonPropedDefault,
+	PaginationCommonPropedDefault,
+	ID,
+	NAME,
+	POSTED_TIME,
+	AVATAR,
+	BODY,
+	NUM_COMMENTS,
 }

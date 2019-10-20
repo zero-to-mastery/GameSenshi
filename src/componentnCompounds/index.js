@@ -59,6 +59,8 @@ import {
 	FINAL_SELECT_GAME,
 } from './FinalSelectGame'
 
+import { CommentWithPaginationPropedDefault } from './CommentWithPagination'
+
 export const Exports = {
 	...ExportMolecules,
 	FinalTextCardNumberPropedDefault,
@@ -94,4 +96,5 @@ export const Exports = {
 	UploaderUserAvatar,
 	FinalSelectGamePropedGeneraL,
 	FINAL_SELECT_GAME,
+	CommentWithPaginationPropedDefault,
 }
