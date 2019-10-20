@@ -70,7 +70,7 @@ const ButtonSound = props => {
 		[loading]
 	)
 
-	const onFinishedPlaying = useCallback(() => {
+	const reset = useCallback(() => {
 		setPlayStatus(stopped)
 		clearInterval(intervalId.current)
 		setTimeout(() => {
@@ -79,11 +79,15 @@ const ButtonSound = props => {
 		delay.current = 0
 	}, [])
 
+	const onFinishedPlaying = useCallback(() => {
+		reset()
+	}, [])
+
 	const onClick = useCallback(() => {
 		if (playStatus === stopped) {
 			setPlayStatus(playing)
 		} else if (playStatus === playing) {
-			setPlayStatus(stopped)
+			reset()
 		}
 	}, [playStatus])
 
