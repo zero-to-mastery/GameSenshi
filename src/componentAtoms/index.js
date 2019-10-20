@@ -49,16 +49,20 @@ import { RatingProfile } from './RatingProfile'
 import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
-<<<<<<< HEAD
-import { CommentCommonPropedDefault } from './Comment'
+
+import {
+	CommentCommonPropedDefault,
+	ID,
+	NAME,
+	POSTED_TIME,
+	AVATAR,
+	BODY,
+	NUM_COMMENTS,
+} from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
-=======
-import { CommentCommonPropedProfile } from './Comment'
-import { PaginationCommon } from './PaginationCommon'
 import { BadgesPropedSenshi } from './Badges'
 import { IconGames } from './IconGames'
 import { StatusCommonPropedOnline } from './StatusCommon'
->>>>>>> ac166870566e5a2c6a375aa0e76ae6c75145b5a5
 
 export const Exports = {
 	...ExportProtons,
@@ -112,14 +116,15 @@ export const Exports = {
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
-<<<<<<< HEAD
-	CommentCommonPropedDefault,
-	PaginationCommonPropedDefault,
-=======
-	CommentCommonPropedProfile,
-	PaginationCommon,
 	BadgesPropedSenshi,
 	IconGames,
 	StatusCommonPropedOnline,
->>>>>>> ac166870566e5a2c6a375aa0e76ae6c75145b5a5
+	CommentCommonPropedDefault,
+	PaginationCommonPropedDefault,
+	ID,
+	NAME,
+	POSTED_TIME,
+	AVATAR,
+	BODY,
+	NUM_COMMENTS,
 }

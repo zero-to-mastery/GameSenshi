@@ -14,8 +14,8 @@ const PaginationCommon = props => {
 	})
 
 	const setPage = page => {
-		const { items, pageSize, onChangePage } = this.props
-		const pager_ = pager
+		const { items, pageSize, onChangePage } = props
+		let pager_ = pager
 
 		if (page < 1 || page > pager.totalPages) {
 			return

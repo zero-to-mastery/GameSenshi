@@ -1,13 +1,10 @@
 import React from 'react'
 import { CommentWithPagination } from './CommentWithPagination'
-import {
-	ID,
-	NAME,
-	POSTED_TIME,
-	AVATAR,
-	BODY,
-	NUM_COMMENTS,
-} from 'componentAtoms/Comment'
+import { Exports } from 'componentAtoms'
+import { stopUndefined } from 'utils'
+const { ID, NAME, POSTED_TIME, AVATAR, BODY, NUM_COMMENTS } = stopUndefined(
+	Exports
+)
 
 const comments = [
 	{
@@ -48,8 +45,8 @@ const comments = [
 	},
 ]
 
-const CommentWithPaginationPropdeDefault = props => {
+const CommentWithPaginationPropedDefault = props => {
 	return <CommentWithPagination comments={comments} {...props} />
 }
 
-export { CommentWithPaginationPropdeDefault }
+export { CommentWithPaginationPropedDefault }
