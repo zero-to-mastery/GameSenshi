@@ -7,22 +7,25 @@ const {
 	PaginationCommonPropedDefault,
 } = stopUndefined(Exports)
 const PAGE_SIZE = 2
+const INITIAL_PAGE = 1
 const CommentWithPagination = props => {
 	const { comments } = props
-	const [pageOfItems, setPageOfItems] = useState(comments)
+	const [myPageOfItems, setPageOfItems] = useState([])
+
 	const onChangePage = useCallback(
 		pageOfItems => {
 			setPageOfItems(pageOfItems)
 		},
-		[pageOfItems]
+		[myPageOfItems]
 	)
 	return (
 		<Fragment>
-			<CommentCommonPropedDefault comments={pageOfItems} />
+			<CommentCommonPropedDefault comments={myPageOfItems} />
 			<PaginationCommonPropedDefault
 				onChangePage={onChangePage}
 				comments={comments}
 				pageSize={PAGE_SIZE}
+				initialPage={INITIAL_PAGE}
 			/>
 		</Fragment>
 	)
