@@ -2,9 +2,14 @@ import React from 'react'
 import { PaginationCommon } from './PaginationCommon'
 
 const PaginationCommonPropedDefault = props => {
-	const { comments, onChangePage } = props
+	const { comments, onChangePage, pageSize } = props
 	return (
-		<PaginationCommon items={comments} onChangePage={onChangePage} {...props} />
+		<PaginationCommon
+			items={comments}
+			pageSize={pageSize}
+			onChangePage={onChangePage}
+			{...props}
+		/>
 	)
 }
 

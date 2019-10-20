@@ -13,21 +13,9 @@ const PaginationCommon = props => {
 		items.current = props.items
 	})
 
-	const setPage = page => {
-		const { items, pageSize, onChangePage } = props
-		let pager_ = pager
-
-		if (page < 1 || page > pager.totalPages) {
-			return
-		}
-		pager_ = getPager(items.length, page, pageSize)
-		const pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1)
-		setPager({ pager_ })
-		onChangePage(pageOfItems)
-	}
 	const getPager = (totalItems, currentPage, pageSize) => {
 		currentPage = currentPage || 1
-		pageSize = pageSize || 10
+		pageSize = pageSize || 3
 		const totalPages = Math.ceil(totalItems / pageSize)
 		let startPage, endPage
 		if (totalPages <= 10) {
@@ -63,30 +51,42 @@ const PaginationCommon = props => {
 		}
 	}
 
-	// if (!pager.pages || pager.pages.length <= 1) {
-	// 	// don't display pager if there is only 1 page
-	// 	return null
-	// }
+	const setPage = page => {
+		const { items, pageSize, onChangePage } = props
+		// let pager_ = pager
+		if (page < 1 || page > pager.totalPages) {
+			return
+		}
+		// pager_ = getPager(items.length, page, pageSize)
+		const pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1) || []
+		setPager(getPager(items.length, page, pageSize))
+		console.log('pager', pager)
+		onChangePage(pageOfItems)
+	}
+
 	return (
-		<ul className='pagination'>
-			<li className={pager.currentPage === 1 ? 'disabled' : ''}>
-				<a onClick={() => setPage(1)}>First</a>
-			</li>
-			<li className={pager.currentPage === 1 ? 'disabled' : ''}>
-				<a onClick={() => setPage(pager.currentPage - 1)}>Previous</a>
-			</li>
-			{/* {pager.pages.map((page, index) => (
-				<li key={index} className={pager.currentPage === page ? 'active' : ''}>
-					<a onClick={() => setPage(page)}>{page}</a>
-				</li>
-			))} */}
-			<li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-				<a onClick={() => setPage(pager.currentPage + 1)}>Next</a>
-			</li>
-			<li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-				<a onClick={() => setPage(pager.totalPages)}>Last</a>
-			</li>
-		</ul>
+		<Pagination aria-label='Page navigation example'>
+			<PaginationItem disabled={pager.currentPage <= pager.totalPages}>
+				<PaginationLink
+					onClick={() => setPage(pager.currentPage - 1)}
+					previous
+				/>
+			</PaginationItem>
+			{pager &&
+				pager.pages &&
+				pager.pages.map((page, index) => {
+					return (
+						<PaginationItem active={page === pager.currentPage} key={index}>
+							<PaginationLink onClick={() => setPage(page)}>
+								{page}
+							</PaginationLink>
+						</PaginationItem>
+					)
+				})}
+			<PaginationItem disabled={pager.currentPage >= pager.totalPages}>
+				<PaginationLink onClick={() => setPage(pager.currentPage + 1)} next />
+			</PaginationItem>
+		</Pagination>
 	)
 }
 
