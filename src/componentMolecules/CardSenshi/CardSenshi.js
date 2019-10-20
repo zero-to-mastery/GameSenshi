@@ -12,7 +12,7 @@ const {
 	ButtonIconPropedTip,
 } = stopUndefined(Exports)
 
-const onClicks = socials => []
+const onClicks = () => []
 
 const CardSenshi = props => {
 	const {
