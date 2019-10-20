@@ -6,7 +6,7 @@ const IconGames = props => {
 	const { games } = props
 
 	return games.map((game, i) => {
-		const id = game + 'icon'
+		const id = game.replace(/ /g, '') + 'icon'
 		return (
 			<Fragment key={game}>
 				<img

@@ -41,7 +41,7 @@ const buttonStreams = [
 
 const badges = ['female', 'verified', 'risingStar']
 
-const games = ['Dota2', 'PUBG', 'LeagueOfLegends', 'ApexLegends', 'Fortnite']
+const games = ['Dota2', 'PUBG', 'League Of Legends', 'Apex Legends', 'Fortnite']
 
 const ProfilePage = () => {
 	const wrapper = useRef(null)
