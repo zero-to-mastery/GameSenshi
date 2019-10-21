@@ -4,7 +4,7 @@ import { ID, NAME, POSTED_TIME, AVATAR, BODY, NUM_COMMENTS } from './Comment'
 
 const CommentCommonPropedDefault = props => {
 	const { comments } = props
-	return <Comment comments={comments} />
+	return <Comment comments={comments} {...props} />
 }
 
 export {

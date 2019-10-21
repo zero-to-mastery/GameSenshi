@@ -10,6 +10,7 @@ import {
 	ROUTE_PAGE_PROFILE,
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
+	ROUTE_PAGE_PRIVACY,
 	ROUTE_PAGE_SETTINGS_COMMON,
 	ROUTE_PAGE_PASSWORD_RESET,
 	ROUTE_PAGE_404,
@@ -39,6 +40,7 @@ const {
 	ModalCommonStoreModalPropedAuth,
 	NavbarIndexStoreAlert,
 	AlertCommonStoreAlert,
+	PrivacyPolicy,
 } = stopUndefined(Exports)
 
 const MapRoutesToPages = {
@@ -46,6 +48,7 @@ const MapRoutesToPages = {
 	[ROUTE_PAGE_PROFILE]: ProfilePage,
 	[ROUTE_PAGE_SIGN_UP]: SignUpPage,
 	[ROUTE_PAGE_SIGN_IN]: SignInPage,
+	[ROUTE_PAGE_PRIVACY]: PrivacyPolicy,
 	[ROUTE_PAGE_SETTINGS_COMMON]: SettingsPage,
 	[ROUTE_PAGE_PASSWORD_RESET]: PasswordResetPage,
 	[ROUTE_PAGE_404]: Error404Page,
