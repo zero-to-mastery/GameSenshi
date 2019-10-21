@@ -1,58 +1,52 @@
 // temp data array
-import { SRC, ALT_TEXT, IS_VIDEO } from './CarouselCommon'
+import {
+	CAROUSEL_COMMON_IMAGE,
+	CAROUSEL_COMMON_YOUTUBE,
+} from './CarouselCommon'
 
-// temporary youtube video url
-const URL = 'https://www.youtube.com/watch?v=5HeVYC42grI'
-
-const slides = [
+const items = [
 	{
-		[SRC]: require('assets/img/denys.jpg'),
-		[ALT_TEXT]: 'Slide 1',
-		[IS_VIDEO]: false,
+		[CAROUSEL_COMMON_IMAGE]: require('assets/img/denys.jpg'),
 	},
 	{
-		[SRC]: URL,
-		[ALT_TEXT]: 'Slide 2',
-		[IS_VIDEO]: true,
+		[CAROUSEL_COMMON_YOUTUBE]: 'OGKbzhME3UI',
+		// [THUMBNAIL]: thumnailUrl('OGKbzhME3UI'),
+		// [RENDER_ITEM]: () => (
+		// 	<div
+		// 		className='image-gallery-image'
+		// 		style={{
+		// 			position: 'relative',
+		// 			padding: `33.35% 0`,
+		// 			height: 0,
+		// 		}}>
+		// 		<ReactPlayer
+		// 			url={embededUrl('OGKbzhME3UI')}
+		// 			controls
+		// 			light
+		// 			width='100%'
+		// 			height='100%'
+		// 			style={{
+		// 				position: 'absolute',
+		// 				top: 0,
+		// 				left: 0,
+		// 				width: '100%',
+		// 				height: '100%',
+		// 			}}
+		// 		/>
+		// 	</div>
+		// ),
 	},
 	{
-		[SRC]: require('assets/img/mark-finn.jpg'),
-		[ALT_TEXT]: 'Slide 3',
-		[IS_VIDEO]: false,
+		[CAROUSEL_COMMON_IMAGE]: require('assets/img/mark-finn.jpg'),
 	},
 	{
-		[SRC]: URL,
-		[ALT_TEXT]: 'Slide 4',
-		[IS_VIDEO]: true,
+		[CAROUSEL_COMMON_YOUTUBE]: '5HeVYC42grI',
 	},
 	{
-		[SRC]: require('assets/img/fabien-bazanegue.jpg'),
-		[ALT_TEXT]: 'Slide 5',
-		[IS_VIDEO]: false,
+		[CAROUSEL_COMMON_IMAGE]: require('assets/img/fabien-bazanegue.jpg'),
 	},
 	{
-		[SRC]: URL,
-		[ALT_TEXT]: 'Slide 6',
-		[IS_VIDEO]: true,
+		[CAROUSEL_COMMON_YOUTUBE]: 'vtjorh21b8Q',
 	},
 ]
-
-const sliderResponsive = [
-	{
-		breakpoint: 1024,
-		settings: {
-			slidesToShow: 2,
-			slidesToScroll: 1,
-			infinite: true,
-		},
-	},
-	{
-		breakpoint: 772,
-		settings: {
-			slidesToShow: 1,
-			slidesToScroll: 1,
-		},
-	},
-]
-
-export { slides, sliderResponsive }
+export { items }
