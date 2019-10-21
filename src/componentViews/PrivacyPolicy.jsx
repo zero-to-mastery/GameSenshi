@@ -51,7 +51,7 @@ const PrivacyPolicy = props => {
 	return (
 		<>
 			<Container>
-				<Row style={{ height: 100 }}></Row>
+				<Row style={{ height: 120 }}></Row>
 				<Row>
 					<Col lg='2' md='3'>
 						<Nav
