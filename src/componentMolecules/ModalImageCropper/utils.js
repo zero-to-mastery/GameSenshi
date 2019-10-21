@@ -1,9 +1,4 @@
-import {
-	storeUserSetState,
-	storeAlertShow,
-	storeProgress,
-	STORE_USER_STATE_AVATAR,
-} from 'state'
+import { storeAlertShow, storeProgress } from 'state'
 
 import {
 	handleUserAvatarUrlSave,
@@ -29,7 +24,7 @@ const onCrop = (e, dataUrl, toggle) => {
 		},
 		async () => {
 			toggle()
-			storeUserSetState({ [STORE_USER_STATE_AVATAR]: dataUrl })
+
 			const url = await handleUserAvatarLoad().catch(() => {
 				storeAlertShow(
 					'Something went wrong, unable to update image',

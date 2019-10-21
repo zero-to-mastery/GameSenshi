@@ -2,7 +2,6 @@ import React from 'react'
 import {
 	ImageUpload,
 	IMAGE_UPLOAD_STATE_IMAGE,
-	IMAGE_UPLOAD_ON_ERROR,
 	IMAGE_UPLOAD_ON_REMOVE,
 } from './ImageUpload'
 import { onRemove } from './utils'
@@ -19,7 +18,6 @@ const mapStoreUserStateToProps = {
 }
 
 const mapStoreUserMethodToProps = {
-	[IMAGE_UPLOAD_ON_ERROR]: storeUserResetAvatar,
 	[IMAGE_UPLOAD_ON_REMOVE]: () => {
 		storeUserResetAvatar()
 		onRemove()

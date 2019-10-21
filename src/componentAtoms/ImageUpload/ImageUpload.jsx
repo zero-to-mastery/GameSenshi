@@ -1,10 +1,10 @@
 import React, { useRef, useCallback } from 'react'
 import { Button } from 'reactstrap'
+import Image from 'material-ui-image'
 
 const emptyFunction = () => {}
 
 const IMAGE_UPLOAD_STATE_IMAGE = 'image'
-const IMAGE_UPLOAD_ON_ERROR = 'onError'
 const IMAGE_UPLOAD_ON_REMOVE = 'onRemove'
 
 const ImageUpload = props => {
@@ -12,7 +12,6 @@ const ImageUpload = props => {
 		onRemove,
 		defaultImage,
 		[IMAGE_UPLOAD_STATE_IMAGE]: image,
-		[IMAGE_UPLOAD_ON_ERROR]: onError,
 		onSelect,
 		onClick,
 	} = props
@@ -50,13 +49,14 @@ const ImageUpload = props => {
 		fileInput.current.value = null
 		onRemove_()
 	}, [onRemove_, fileInput.current])
-
 	return (
-		<div className='fileinput text-center'>
+		<div
+			className='fileinput text-center w-100 h-100'
+			style={{ maxWidth: 250, maxHeight: 250 }}>
 			<input type='file' onChange={handleImageChange} ref={fileInput} />
 			{/* Our cropper component */}
-			<div className='thumbnail '>
-				<img src={image} alt='user avatar' onError={onError} />
+			<div className='thumbnail d-block'>
+				<Image src={image} alt='user avatar' />
 			</div>
 			<div>
 				{image === defaultImage ? (
@@ -88,9 +88,4 @@ const ImageUpload = props => {
 	)
 }
 
-export {
-	ImageUpload,
-	IMAGE_UPLOAD_STATE_IMAGE,
-	IMAGE_UPLOAD_ON_ERROR,
-	IMAGE_UPLOAD_ON_REMOVE,
-}
+export { ImageUpload, IMAGE_UPLOAD_STATE_IMAGE, IMAGE_UPLOAD_ON_REMOVE }
