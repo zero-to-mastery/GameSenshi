@@ -10,31 +10,6 @@ const items = [
 	},
 	{
 		[CAROUSEL_COMMON_YOUTUBE]: 'OGKbzhME3UI',
-		// [THUMBNAIL]: thumnailUrl('OGKbzhME3UI'),
-		// [RENDER_ITEM]: () => (
-		// 	<div
-		// 		className='image-gallery-image'
-		// 		style={{
-		// 			position: 'relative',
-		// 			padding: `33.35% 0`,
-		// 			height: 0,
-		// 		}}>
-		// 		<ReactPlayer
-		// 			url={embededUrl('OGKbzhME3UI')}
-		// 			controls
-		// 			light
-		// 			width='100%'
-		// 			height='100%'
-		// 			style={{
-		// 				position: 'absolute',
-		// 				top: 0,
-		// 				left: 0,
-		// 				width: '100%',
-		// 				height: '100%',
-		// 			}}
-		// 		/>
-		// 	</div>
-		// ),
 	},
 	{
 		[CAROUSEL_COMMON_IMAGE]: require('assets/img/mark-finn.jpg'),
