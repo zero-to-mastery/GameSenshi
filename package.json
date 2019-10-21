@@ -70,7 +70,6 @@
 		"history": "^4.10.1",
 		"interweave": "^11.1.0",
 		"localforage": "^1.7.3",
-		"lodash": "^4.17.15",
 		"material-ui-image": "^3.2.2",
 		"moment": "^2.24.0",
 		"node-sass": "^4.11.0",
@@ -88,6 +87,7 @@
 		"react-element-to-jsx-string": "^14.1.0",
 		"react-final-form": "^5.0.2",
 		"react-google-maps": "9.4.5",
+		"react-image-gallery": "^0.9.1",
 		"react-loader-spinner": "^2.3.0",
 		"react-player": "^1.13.0",
 		"react-router-dom": "^4.3.1",
@@ -99,7 +99,6 @@
 		"react-sound": "^1.2.0",
 		"react-tagsinput": "^3.19.0",
 		"reactstrap": "^7.1.0",
-		"slick-carousel": "^1.8.1",
 		"unstated": "^2.1.1",
 		"yup": "^0.27.0"
 	},
