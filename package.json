@@ -71,6 +71,7 @@
 		"interweave": "^11.1.0",
 		"localforage": "^1.7.3",
 		"lodash": "^4.17.15",
+		"material-ui-image": "^3.2.2",
 		"moment": "^2.24.0",
 		"node-sass": "^4.11.0",
 		"nouislider": "^13.1.1",
