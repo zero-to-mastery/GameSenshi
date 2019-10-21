@@ -11,6 +11,10 @@ import {
 	Nav,
 	NavItem,
 	NavLink,
+	CardHeader,
+	Collapse,
+	CardBody,
+	Card,
 } from 'reactstrap'
 
 // core components
@@ -20,6 +24,8 @@ const { Footer } = stopUndefined(Exports)
 
 const PrivacyPolicy = props => {
 	const [tab, setTab] = useState(1)
+	const [collapse, setCollapse] = useState()
+	const [openedCollapse, setOpenedCollapse] = useState(['collapseOne'])
 	useEffect(() => {
 		document.body.classList.add('index-page')
 		document.documentElement.scrollTop = 0
@@ -31,6 +37,16 @@ const PrivacyPolicy = props => {
 	const toggleTab = (e, index) => {
 		e.preventDefault()
 		setTab(index)
+	}
+	const collapseToggle = selected => {
+		let openedCollapses = openedCollapse
+		if (openedCollapses.includes(selected)) {
+			setOpenedCollapse(openedCollapse =>
+				openedCollapse.filter(prop => prop !== selected)
+			)
+		} else {
+			setOpenedCollapse([...openedCollapse, selected])
+		}
 	}
 	return (
 		<>
@@ -71,8 +87,38 @@ const PrivacyPolicy = props => {
 						</Nav>
 					</Col>
 					<Col lg='9' md='8'>
-						<TabContent activeTab={'viTabs' + tab}>
+						<TabContent activeTab={'viTabs' + tab} className='mb-5'>
 							<TabPane tabId='viTabs1'>
+								{/* <div id='collapse'>
+									<div
+										aria-multiselectable={true}
+										className='card-collapse'
+										id='accordion'
+										role='tablist'>
+										<Card className='card-plain'>
+											<CardHeader id='headingOne' role='tab'>
+												<a
+													className='d-flex'
+													href='#pablo'
+													data-toggle='collapse'
+													aria-expanded={openedCollapse.includes('collapseOne')}
+													onClick={e => {
+														e.preventDefault()
+														collapseToggle('collapseOne')
+													}}>
+													Automatic collection of information{' '}
+													<i className='tim-icons icon-minimal-down ml-auto' />
+												</a>
+											</CardHeader>
+											<Collapse
+												role='tabpanel'
+												isOpen={openedCollapse.includes('collapseOne')}>
+												<CardBody>Hello</CardBody>
+											</Collapse>
+										</Card>
+									</div>
+								</div> */}
+
 								<h1 className='paragraph-heading'>Privacy Policy</h1>
 								<p className='paragraph-content'>
 									This privacy policy describes how Game Senshi collects,
@@ -638,7 +684,7 @@ const PrivacyPolicy = props => {
 								</p>
 								<ul>
 									<li>
-										mail: <strong>admin@gamesenshi.com</strong>E
+										<strong>Email: admin@gamesenshi.com</strong>
 									</li>
 								</ul>
 							</TabPane>
