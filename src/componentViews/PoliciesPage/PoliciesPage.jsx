@@ -97,7 +97,9 @@ const PoliciesPage = () => {
 								const { [NAME]: name, [POLICY]: Policy } = policy
 								return (
 									<TabPane tabId={name}>
-										<Policy />
+										<div className='overflow-auto' style={{ height: 768 }}>
+											<Policy />
+										</div>
 									</TabPane>
 								)
 							})}
