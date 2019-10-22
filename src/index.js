@@ -13,6 +13,7 @@ import 'assets/scss/blk-design-system-pro-react.scss?v1.0.0'
 import 'assets/demo/demo.css'
 import 'assets/demo/react-demo.css'
 import 'assets/css/game-senshi.css'
+import '@fortawesome/fontawesome-free/css/all.css'
 
 // check if user data in indexed db, pre-sign in user
 storeUserInitialize()
