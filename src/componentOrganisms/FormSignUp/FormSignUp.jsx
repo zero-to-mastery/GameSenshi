@@ -108,15 +108,18 @@ const FormSignUp = props => {
 					</Form>
 				)}
 			</FinalForm>
-			<Label className='mb-3 text-center'>
-				By creating account, you agree to our
-				<Link
-					className='link footer-link'
-					style={{ color: '#ba54f5', fontSize: 12 }}
-					to={terms}>
-					&nbsp;Terms of Service.
-				</Link>
-			</Label>
+			<Row className='justify-content-center'>
+				<Label className='mb-3 text-center text-wrap w-75 '>
+					You agree to our{' '}
+					<Link
+						className='link footer-link'
+						style={{ color: '#ba54f5', fontSize: 12 }}
+						to={terms}>
+						Privacy Policy and Terms of Service
+					</Link>{' '}
+					by creating account.
+				</Label>
+			</Row>
 		</Card>
 	)
 }
