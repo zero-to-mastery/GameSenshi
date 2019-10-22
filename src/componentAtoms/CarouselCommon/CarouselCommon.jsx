@@ -2,10 +2,12 @@ import React, { useCallback, useState } from 'react'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 import ReactPlayer from 'react-player'
+import Image from 'material-ui-image'
 
 const ORIGINAL = 'original'
 const THUMBNAIL = 'thumbnail'
 const RENDER_ITEM = 'renderItem'
+const RENDER_THUMB_INNER = 'renderThumbInner'
 
 const CAROUSEL_COMMON_IMAGE = 'image'
 const CAROUSEL_COMMON_YOUTUBE = 'youtube'
@@ -18,7 +20,9 @@ const getYoutubeThumnailUrl = id => `https://img.youtube.com/vi/${id}/0.jpg`
 const CarouselCommon = props => {
 	const [showUI, setShowUI] = useState(true)
 	const [videoPlaying, setVideoPlaying] = useState(true)
-	const { items, ...otherProps } = props
+	const { items, aspectRatio, ...otherProps } = props
+
+	const aspectRatio_ = 100 / (aspectRatio || 3)
 
 	const onSlide = useCallback(() => {
 		if (!showUI) {
@@ -35,7 +39,15 @@ const CarouselCommon = props => {
 				[CAROUSEL_COMMON_YOUTUBE]: youtube,
 			} = item
 			if (image) {
-				return { [ORIGINAL]: image, [THUMBNAIL]: image }
+				const img = () => {
+					return <Image src={image} style={{ padding: `${aspectRatio_}% 0` }} />
+				}
+				return {
+					[ORIGINAL]: image,
+					[THUMBNAIL]: image,
+					[RENDER_ITEM]: img,
+					[RENDER_THUMB_INNER]: img,
+				}
 			} else if (youtube) {
 				const setShowUIFalse = useCallback(() => {
 					setShowUI(false)
@@ -47,7 +59,7 @@ const CarouselCommon = props => {
 							className='image-gallery-image'
 							style={{
 								position: 'relative',
-								padding: `33.35% 0`,
+								padding: `${aspectRatio_}% 0`,
 								height: 0,
 							}}>
 							<ReactPlayer
@@ -62,15 +74,20 @@ const CarouselCommon = props => {
 									position: 'absolute',
 									top: 0,
 									left: 0,
-									width: '100%',
-									height: '100%',
 								}}
 							/>
 						</div>
 					) : null
 				}
 				const image = getYoutubeThumnailUrl(youtube)
-				return { [ORIGINAL]: image, [THUMBNAIL]: image, [RENDER_ITEM]: player }
+				return {
+					[ORIGINAL]: image,
+					[THUMBNAIL]: image,
+					[RENDER_ITEM]: player,
+					[RENDER_THUMB_INNER]: () => (
+						<Image src={image} style={{ padding: `${aspectRatio_}% 0` }} />
+					),
+				}
 			} else {
 				return {}
 			}
