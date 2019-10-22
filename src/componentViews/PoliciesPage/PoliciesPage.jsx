@@ -4,6 +4,9 @@ import { stopUndefined } from 'utils'
 import { Privacy } from './Privacy'
 import { Cookie } from './Cookie'
 import { Terms } from './Terms'
+import 'react-perfect-scrollbar/dist/css/styles.css'
+import PerfectScrollbar from 'react-perfect-scrollbar'
+
 import {
 	TabContent,
 	TabPane,
@@ -97,9 +100,9 @@ const PoliciesPage = () => {
 								const { [NAME]: name, [POLICY]: Policy } = policy
 								return (
 									<TabPane tabId={name}>
-										<div className='overflow-auto' style={{ height: 768 }}>
+										<PerfectScrollbar className='pr-3' style={{ height: 768 }}>
 											<Policy />
-										</div>
+										</PerfectScrollbar>
 									</TabPane>
 								)
 							})}
