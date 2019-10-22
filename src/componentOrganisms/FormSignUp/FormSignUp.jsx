@@ -31,7 +31,7 @@ const {
 
 const FormSignUp = props => {
 	const submitButton = useRef(null)
-	const { signInLink, onSuccessfulSubmission, onSubmit } = props
+	const { signInLink, onSuccessfulSubmission, onSubmit, terms } = props
 
 	return (
 		<Card className='card-register' style={{ zIndex: 1000 }}>
@@ -113,7 +113,7 @@ const FormSignUp = props => {
 				<Link
 					className='link footer-link'
 					style={{ color: '#ba54f5', fontSize: 12 }}
-					to='/term'>
+					to={terms}>
 					&nbsp;Terms of Service.
 				</Link>
 			</Label>

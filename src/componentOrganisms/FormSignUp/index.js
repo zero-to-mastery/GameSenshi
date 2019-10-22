@@ -6,7 +6,7 @@ import {
 	FINAL_TEXT_NAME,
 } from './FormSignUp'
 // routing
-import { withLastLocation, ROUTE_PAGE_SIGN_IN } from 'routes'
+import { withLastLocation, ROUTE_PAGE_SIGN_IN, ROUTE_PAGE_POLICY } from 'routes'
 // api
 import {
 	handleSignUpWithEmailAndPassword,
@@ -32,6 +32,7 @@ const FormSignUpPropedDefault = withLastLocation(props => {
 		<FormSignUp
 			signInLink={ROUTE_PAGE_SIGN_IN}
 			onSubmit={onSubmit}
+			terms={ROUTE_PAGE_POLICY}
 			{...props}
 		/>
 	)
