@@ -8,9 +8,11 @@ const Cookie = () => {
 			</h1>
 			<p className='paragraph-content mb-5'>
 				This is the Cookie Policy for{' '}
-				<span className='font-weight-bold text-primary'>Game Senshi</span>,
+				<span className='font-weight-bold text-success'>Game Senshi</span>,
 				accessible from{' '}
-				<a href='https://www.gamesenshi.com' className='font-weight-bold'>
+				<a
+					href='https://www.gamesenshi.com'
+					className='font-weight-bold text-success'>
 					https://www.gamesenshi.com
 				</a>
 			</p>
@@ -23,8 +25,8 @@ const Cookie = () => {
 				We will also share how you can prevent these cookies from being stored
 				however this may downgrade or 'break' certain elements of the sites
 				functionality.
-			</p>
-			<p className='paragraph-content mb-5'>
+				<br />
+				<br />
 				For more general information on cookies see the Wikipedia article on{' '}
 				<a href='https://en.wikipedia.org/wiki/HTTP_cookie'>HTTP Cookies.</a>
 			</p>
@@ -149,12 +151,13 @@ const Cookie = () => {
 						experience. These cookies may track things such as how long you
 						spend on the site and the pages that you visit so we can continue to
 						produce engaging content.
-					</p>
-					<p className='paragraph-content mb-5'>
+						<br />
+						<br />
 						For more information on Google Analytics cookies, see the{' '}
 						<a href='https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage'>
-							official Google Analytics page.
+							official Google Analytics page
 						</a>
+						.
 					</p>
 				</li>
 
@@ -194,12 +197,13 @@ const Cookie = () => {
 						The Google AdSense service we use to serve to advertise uses a
 						DoubleClick cookie to serve more relevant ads across the web and
 						limit the number of times that a given ad is shown to you.
-					</p>
-					<p className='paragraph-content mb-5'>
+						<br />
+						<br />
 						For more information on Google AdSense see the{' '}
 						<a href='https://support.google.com/adsense/answer/3394713?hl=en'>
-							official Google AdSense privacy FAQ.
+							official Google AdSense privacy FAQ
 						</a>
+						.
 					</p>
 				</li>
 
@@ -253,14 +257,16 @@ const Cookie = () => {
 					Terms and Conditions Template
 				</a>
 				.
-			</p>
-			<p className='paragraph-content mb-5'>
+				<br />
+				<br />
 				However if you are still looking for more information then you can
 				contact us through one of our preferred contact methods:
 			</p>
 			<ul>
 				<li>
-					<a href='https://admin@gamesenshi.com' className='font-weight-bold'>
+					<a
+						href='https://admin@gamesenshi.com'
+						className='font-weight-bold text-success'>
 						Email: admin@gamesenshi.com
 					</a>
 				</li>

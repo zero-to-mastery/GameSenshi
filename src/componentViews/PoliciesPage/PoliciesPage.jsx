@@ -3,6 +3,7 @@ import classnames from 'classnames'
 import { stopUndefined } from 'utils'
 import { Privacy } from './Privacy'
 import { Cookie } from './Cookie'
+import { Terms } from './Terms'
 import {
 	TabContent,
 	TabPane,
@@ -17,24 +18,28 @@ import { Exports } from 'componentpMultiOrganisms'
 
 const { Footer } = stopUndefined(Exports)
 
-const NAME = 'id'
+const NAME = 'name'
 const ICON = 'icon'
+const POLICY = 'policy'
 const PRIVACY = 'Privacy Policy'
 const COOKIE = 'Cookie Policy'
-const TERM = 'Term And Condition'
+const TERM = 'Terms And Conditions'
 
 const policies = [
 	{
 		[NAME]: PRIVACY,
 		[ICON]: 'tim-icons icon-lock-circle',
+		[POLICY]: Privacy,
 	},
 	{
 		[NAME]: COOKIE,
 		[ICON]: 'fas fa-cookie-bite',
+		[POLICY]: Cookie,
 	},
 	{
 		[NAME]: TERM,
 		[ICON]: 'tim-icons icon-single-copy-04',
+		[POLICY]: Terms,
 	},
 ]
 
@@ -88,12 +93,14 @@ const PoliciesPage = () => {
 					</Col>
 					<Col lg='9' md='8'>
 						<TabContent activeTab={tab} className='mb-5'>
-							<TabPane tabId={PRIVACY}>
-								<Privacy />
-							</TabPane>
-							<TabPane tabId={COOKIE}>
-								<Cookie />
-							</TabPane>
+							{policies.map(policy => {
+								const { [NAME]: name, [POLICY]: Policy } = policy
+								return (
+									<TabPane tabId={name}>
+										<Policy />
+									</TabPane>
+								)
+							})}
 						</TabContent>
 					</Col>
 				</Row>

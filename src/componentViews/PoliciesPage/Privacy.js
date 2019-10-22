@@ -3,15 +3,24 @@ import React from 'react'
 const Privacy = () => {
 	return (
 		<>
-			<h1 className='paragraph-content text-capitalize'>Privacy Policy</h1>
+			<h1 className='paragraph-content text-capitalize'>
+				Privacy Policy For GameSenshi
+			</h1>
 			<p className='paragraph-content mb-5'>
-				This privacy policy describes how Game Senshi collects, protects and
-				uses the personally identifiable information you may provide on the
-				gamesenshi.com website and any of its products or services . It also
-				describes the choices available to you regarding our use of your
-				Personal Information and how you can access and update this information.
-				This Policy does not apply to the practices of companies that we do not
-				own or control, or to individuals that we do not employ or manage.
+				This privacy policy describes how{' '}
+				<span className='font-weight-bold text-success'>Game Senshi</span>{' '}
+				collects, protects and uses the personally identifiable information you
+				may provide on the{' '}
+				<a
+					href='https://www.gamesenshi.com'
+					className='font-weight-bold text-success'>
+					https://www.gamesenshi.com
+				</a>{' '}
+				website and any of its products or services . It also describes the
+				choices available to you regarding our use of your Personal Information
+				and how you can access and update this information. This Policy does not
+				apply to the practices of companies that we do not own or control, or to
+				individuals that we do not employ or manage.
 			</p>
 			<h4 className='paragraph-content text-capitalize'>
 				Automatic collection of information
