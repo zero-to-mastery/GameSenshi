@@ -3,11 +3,10 @@ import { Button, Input, InputGroup } from 'reactstrap'
 import styles from './styles.module.css'
 
 const SET_QUANTITY = 'setQuantity'
-const QUANTITY = 'quantity'
 const INPUT_QUANTITY_NAME = 'name'
 
 const ButtonIncrement = memo(props => {
-	const { [SET_QUANTITY]: setQuantity, [QUANTITY]: quantity } = props
+	const { [SET_QUANTITY]: setQuantity } = props
 	return (
 		<div className='input-group-btn'>
 			<Button
@@ -21,7 +20,7 @@ const ButtonIncrement = memo(props => {
 })
 
 const ButtonDecrement = memo(props => {
-	const { [SET_QUANTITY]: setQuantity, [QUANTITY]: quantity } = props
+	const { [SET_QUANTITY]: setQuantity } = props
 	return (
 		<div className='input-group-btn'>
 			<Button
@@ -39,7 +38,7 @@ const Quantity = props => {
 	return (
 		<Fragment>
 			<InputGroup>
-				<ButtonDecrement quantity={quantity} setQuantity={setQuantity} />
+				<ButtonDecrement setQuantity={setQuantity} />
 				<Input
 					className={styles.inputNumber}
 					name={INPUT_QUANTITY_NAME}
@@ -48,7 +47,7 @@ const Quantity = props => {
 					type='text'
 					onChange={e => setQuantity(parseInt(e.target.value))}
 				/>
-				<ButtonIncrement quantity={quantity} setQuantity={setQuantity} />
+				<ButtonIncrement setQuantity={setQuantity} />
 			</InputGroup>
 		</Fragment>
 	)
