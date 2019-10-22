@@ -85,25 +85,53 @@ const Privacy = () => {
 				otherwise aggregated in such a way that would identify any particular
 				user of the system.
 				<br />
+				<br />
 				We may process Personal Information related to you if one of the
-				following applies: (i) You have given your consent for one or more
-				specific purposes. Note that under some legislations we may be allowed
-				to process information until you object to such processing (by opting
-				out), without having to rely on consent or any other of the following
-				legal bases below. This, however, does not apply, whenever the
-				processing of Personal Information is subject to European data
-				protection law; (ii) Provision of information is necessary for the
-				performance of an agreement with you and/or for any pre-contractual
-				obligations thereof; (iii) Processing is necessary for compliance with a
-				legal obligation to which you are subject; (iv) Processing is related to
-				a task that is carried out in the public interest or in the exercise of
-				official authority vested in us; (v) Processing is necessary for the
-				purposes of the legitimate interests pursued by us or by a third party.
-				In any case, we will be happy to clarify the specific legal basis that
-				applies to the processing, and in particular whether the provision of
-				Personal Information is a statutory or contractual requirement, or a
-				requirement necessary to enter into a contract.
+				following applies:
 			</p>
+			<ul>
+				<li>
+					<p className='paragraph-content mb-5'>
+						You have given your consent for one or more specific purposes. Note
+						that under some legislations we may be allowed to process
+						information until you object to such processing (by opting out),
+						without having to rely on consent or any other of the following
+						legal bases below. This, however, does not apply, whenever the
+						processing of Personal Information is subject to European data
+						protection law;
+					</p>
+				</li>
+				<li>
+					<p className='paragraph-content mb-5'>
+						Provision of information is necessary for the performance of an
+						agreement with you and/or for any pre-contractual obligations
+						thereof;
+					</p>
+				</li>
+				<li>
+					<p className='paragraph-content mb-5'>
+						Processing is necessary for compliance with a legal obligation to
+						which you are subject;
+					</p>
+				</li>
+				<li>
+					<p className='paragraph-content mb-5'>
+						Processing is related to a task that is carried out in the public
+						interest or in the exercise of official authority vested in us;
+					</p>
+				</li>
+				<li>
+					<p className='paragraph-content mb-5'>
+						Processing is necessary for the purposes of the legitimate interests
+						pursued by us or by a third party. In any case, we will be happy to
+						clarify the specific legal basis that applies to the processing, and
+						in particular whether the provision of Personal Information is a
+						statutory or contractual requirement, or a requirement necessary to
+						enter into a contract.
+					</p>
+				</li>
+			</ul>
+
 			<h4 className='paragraph-content text-capitalize'>
 				Information transfer and storage
 			</h4>
@@ -121,27 +149,60 @@ const Privacy = () => {
 			<h4 className='paragraph-content text-capitalize'>The rights of users</h4>
 			<p className='paragraph-content mb-5'>
 				You may exercise certain rights regarding your information processed by
-				us. In particular, you have the right to do the following: (i) you have
-				the right to withdraw consent where you have previously given your
-				consent to the processing of your information; (ii) you have the right
-				to object to the processing of your information if the processing is
-				carried out on a legal basis other than consent; (iii) you have the
-				right to learn if information is being processed by us, obtain
-				disclosure regarding certain aspects of the processing and obtain a copy
-				of the information undergoing processing; (iv) you have the right to
-				verify the accuracy of your information and ask for it to be updated or
-				corrected; (v) you have the right, under certain circumstances, to
-				restrict the processing of your information, in which case, we will not
-				process your information for any purpose other than storing it; (vi) you
-				have the right, under certain circumstances, to obtain the erasure of
-				your Personal Information from us; (vii) you have the right to receive
-				your information in a structured, commonly used and machine readable
-				format and, if technically feasible, to have it transmitted to another
-				controller without any hindrance. This provision is applicable provided
-				that your information is processed by automated means and that the
-				processing is based on your consent, on a contract which you are part of
-				or on pre-contractual obligations thereof.
+				us. In particular, you have the right to do the following:{' '}
 			</p>
+			<ul>
+				<li>
+					<p className='paragraph-content mb-5'>
+						You have the right to withdraw consent where you have previously
+						given your consent to the processing of your information;
+					</p>
+				</li>
+				<li>
+					<p className='paragraph-content mb-5'>
+						You have the right to object to the processing of your information
+						if the processing is carried out on a legal basis other than
+						consent;
+					</p>
+				</li>
+				<li>
+					<p className='paragraph-content mb-5'>
+						You have the right to learn if information is being processed by us,
+						obtain disclosure regarding certain aspects of the processing and
+						obtain a copy of the information undergoing processing;
+					</p>
+				</li>
+				<li>
+					<p className='paragraph-content mb-5'>
+						You have the right to verify the accuracy of your information and
+						ask for it to be updated or corrected;
+					</p>
+				</li>
+				<li>
+					<p className='paragraph-content mb-5'>
+						You have the right, under certain circumstances, to restrict the
+						processing of your information, in which case, we will not process
+						your information for any purpose other than storing it;
+					</p>
+				</li>
+				<li>
+					<p className='paragraph-content mb-5'>
+						You have the right, under certain circumstances, to obtain the
+						erasure of your Personal Information from us;
+					</p>
+				</li>
+				<li>
+					<p className='paragraph-content mb-5'>
+						You have the right to receive your information in a structured,
+						commonly used and machine readable format and, if technically
+						feasible, to have it transmitted to another controller without any
+						hindrance. This provision is applicable provided that your
+						information is processed by automated means and that the processing
+						is based on your consent, on a contract which you are part of or on
+						pre-contractual obligations thereof.{' '}
+					</p>
+				</li>
+			</ul>
 			<h4 className='paragraph-content text-capitalize'>
 				The right to object to processing
 			</h4>
