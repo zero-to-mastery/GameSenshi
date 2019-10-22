@@ -56,7 +56,7 @@ const PoliciesPage = () => {
 
 	return (
 		<>
-			<Container>
+			<Container className='mt-5 mb-5'>
 				<Row style={{ height: 120 }}></Row>
 				<Row>
 					<Col lg='2' md='3'>
