@@ -1,0 +1,106 @@
+import React, { useEffect, useState, useCallback } from 'react'
+import classnames from 'classnames'
+import { stopUndefined } from 'utils'
+import { Privacy } from './Privacy'
+import { Cookie } from './Cookie'
+import {
+	TabContent,
+	TabPane,
+	Container,
+	Row,
+	Col,
+	Nav,
+	NavItem,
+	NavLink,
+} from 'reactstrap'
+import { Exports } from 'componentpMultiOrganisms'
+
+const { Footer } = stopUndefined(Exports)
+
+const NAME = 'id'
+const ICON = 'icon'
+const PRIVACY = 'Privacy Policy'
+const COOKIE = 'Cookie Policy'
+const TERM = 'Term And Condition'
+
+const policies = [
+	{
+		[NAME]: PRIVACY,
+		[ICON]: 'tim-icons icon-lock-circle',
+	},
+	{
+		[NAME]: COOKIE,
+		[ICON]: 'fas fa-cookie-bite',
+	},
+	{
+		[NAME]: TERM,
+		[ICON]: 'tim-icons icon-single-copy-04',
+	},
+]
+
+const PoliciesPage = () => {
+	const [tab, setTab] = useState(PRIVACY)
+
+	useEffect(() => {
+		document.body.classList.add('index-page')
+		document.documentElement.scrollTop = 0
+		document.scrollingElement.scrollTop = 0
+		return () => {
+			document.body.classList.remove('index-page')
+		}
+	}, [])
+	const toggleTab = useCallback(e => {
+		// * icon :before don't have name prop
+		setTab(e.target.name || e.target.parentElement.name)
+	}, [])
+
+	return (
+		<>
+			<Container>
+				<Row style={{ height: 120 }}></Row>
+				<Row>
+					<Col lg='2' md='3'>
+						<Nav
+							className='nav-pills-primary nav-pills-icons flex-column'
+							pills
+							role='tablist'>
+							<NavItem>
+								{policies.map(policy => {
+									const { [NAME]: name, [ICON]: icon } = policy
+									return (
+										<NavLink
+											name={name}
+											className={classnames({
+												active: tab === name,
+											})}
+											onClick={toggleTab}>
+											<i
+												style={{ fontSize: '40px' }}
+												className={icon}
+												onClick={toggleTab}
+											/>
+											{name}
+										</NavLink>
+									)
+								})}
+							</NavItem>
+						</Nav>
+					</Col>
+					<Col lg='9' md='8'>
+						<TabContent activeTab={tab} className='mb-5'>
+							<TabPane tabId={PRIVACY}>
+								<Privacy />
+							</TabPane>
+							<TabPane tabId={COOKIE}>
+								<Cookie />
+							</TabPane>
+						</TabContent>
+					</Col>
+				</Row>
+			</Container>
+			<Footer />
+		</>
+	)
+}
+
+export { PoliciesPage }
