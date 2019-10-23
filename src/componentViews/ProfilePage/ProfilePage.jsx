@@ -27,7 +27,7 @@ const channels = {
 	youtube: 'https://youtube.com',
 }
 const badges = ['female', 'verified', 'risingStar']
-const games = ['Dota2', 'PUBG', 'League Of Legends', 'Apex Legends', 'Fortnite']
+const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 
 const ProfilePage = () => {
 	const wrapper = useRef(null)

@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from 'react'
+import React, { Fragment, useCallback, useMemo } from 'react'
 import { Button, UncontrolledTooltip } from 'reactstrap'
 import classNames from 'classnames'
 
@@ -30,21 +30,22 @@ const ButtonsIcon = props => {
 					},
 					[onClick, button]
 				)
+				const id_ = useMemo(() => 'ButtonsIcon' + id.replace(/ /g, ''), [id])
 
 				return (
-					<Fragment key={id}>
+					<Fragment key={id_}>
 						<Button
 							size='lg'
 							className='btn-icon btn-round'
 							color={color}
 							href={href_}
-							id={id}
+							id={id_}
 							target='_blank'
 							rel='noopener noreferrer'
 							onClick={onClick_}>
 							<i className={icon} />
 						</Button>
-						<UncontrolledTooltip delay={0} target={id}>
+						<UncontrolledTooltip delay={0} target={id_}>
 							{tooltip}
 						</UncontrolledTooltip>
 					</Fragment>
