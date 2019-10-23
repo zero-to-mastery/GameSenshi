@@ -7,8 +7,8 @@ import { PopoverCommon } from './PopoverCommon'
 import Footer from './Footers/Footer'
 import IndexHeader from './Headers/IndexHeader.jsx'
 import {
-	ButtonSocials,
-	ButtonsSocialPropedAuth,
+	ButtonsSocialOptioned,
+	ButtonsSocialsPropedAuth,
 	BUTTON_SOCIALS_ID,
 	BUTTON_SOCIALS_ICON,
 	BUTTON_SOCIALS_COLOR,
@@ -60,7 +60,7 @@ import {
 	NUM_COMMENTS,
 } from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
-import { BadgesPropedSenshi } from './Badges'
+import { BadgesPropedDefault } from './Badges'
 import { IconGames } from './IconGames'
 import { StatusCommonPropedOnline } from './StatusCommon'
 import { ButtonSound } from './ButtonSound'
@@ -75,8 +75,8 @@ export const Exports = {
 	ImageUploadStoreUserPropedSettings,
 	AlertCommonStoreAlert,
 	ProgressCommonStoreProgress,
-	ButtonSocials,
-	ButtonsSocialPropedAuth,
+	ButtonsSocialOptioned,
+	ButtonsSocialsPropedAuth,
 	BUTTON_SOCIALS_ID,
 	BUTTON_SOCIALS_ICON,
 	BUTTON_SOCIALS_COLOR,
@@ -118,7 +118,7 @@ export const Exports = {
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
-	BadgesPropedSenshi,
+	BadgesPropedDefault,
 	IconGames,
 	StatusCommonPropedOnline,
 	ButtonSound,

@@ -20,29 +20,13 @@ const {
 	CommentWithPaginationPropedDefault,
 } = stopUndefined(Exports)
 
-const buttonStreams = [
-	{
-		id: 'facebook',
-		icon: 'fab fa-facebook-f font-1-6',
-		color: 'facebook',
-		tooltip: 'Follow me on my Facebook!',
-	},
-	{
-		id: 'twitch',
-		icon: 'fab fa-twitch font-1-6',
-		color: 'twitch',
-		tooltip: 'Subscribe to my Twitch channel!',
-	},
-	{
-		id: 'youtube',
-		icon: 'ml-n1 fab fa-youtube font-1-6',
-		color: 'youtube',
-		tooltip: 'Subscribe to my Youtube channel!',
-	},
-]
-
+// fake data
+const channels = {
+	facebook: 'https://facebook.com',
+	twitch: 'https://twitch.com',
+	youtube: 'https://youtube.com',
+}
 const badges = ['female', 'verified', 'risingStar']
-
 const games = ['Dota2', 'PUBG', 'League Of Legends', 'Apex Legends', 'Fortnite']
 
 const ProfilePage = () => {
@@ -70,7 +54,7 @@ const ProfilePage = () => {
 							nickname='Mike Scheinder'
 							username='mighty_mike'
 							avatar={require('assets/img/mike.jpg')}
-							socials={buttonStreams}
+							channels={channels}
 							signature='Nice to meet you!'
 							badges={badges}
 							games={games}

@@ -3,16 +3,14 @@ import { Card, CardHeader, CardBody, Col, Row } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 const {
-	ButtonSocials,
-	BadgesPropedSenshi,
+	BadgesPropedDefault,
 	IconGames,
 	StatusCommonPropedOnline,
 	ButtonSound,
 	ButtonIconPropedFavorite,
 	ButtonIconPropedTip,
+	ButtonsSocialOptioned,
 } = stopUndefined(Exports)
-
-const onClicks = () => []
 
 const CardSenshi = props => {
 	const {
@@ -22,7 +20,7 @@ const CardSenshi = props => {
 		games,
 		nickname,
 		username,
-		socials,
+		channels,
 		online,
 		audio,
 		favorite,
@@ -41,7 +39,7 @@ const CardSenshi = props => {
 					</Row>
 					<Row className='justify-content-center mt-3'>
 						{/*badges like female,verified,pro,highest rating,new member,highest rating*/}
-						<BadgesPropedSenshi badges={badges} />
+						<BadgesPropedDefault badges={badges} />
 					</Row>
 					<h3 className='title mt-3 mb-1'>{nickname}</h3>
 					<p className='text-muted text-center mb-3'>@{username}</p>
@@ -50,12 +48,8 @@ const CardSenshi = props => {
 						<IconGames games={games} />
 					</Row>
 					<Row className='justify-content-center'>
-						{/* Social icons */}
-						<ButtonSocials
-							buttons={socials}
-							onClicks={onClicks}
-							className='pt-2'
-						/>
+						{/* Channels icons */}
+						<ButtonsSocialOptioned buttons={channels} />
 					</Row>
 				</CardHeader>
 				<CardBody>

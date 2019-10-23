@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import {
 	ButtonSocials,
 	BUTTON_SOCIALS_ID,
@@ -6,24 +6,33 @@ import {
 	BUTTON_SOCIALS_COLOR,
 	BUTTON_SOCIALS_TOOLTIP,
 } from './ButtonSocials'
-import { buttonSocialAuthOnClicks, buttonAuths } from './utils'
+import { buttonSocialAuthOnClick, buttonSocialAuths, getButtons } from './utils'
 // routing
 import { withLastLocation } from 'routes'
 
-const ButtonsSocialPropedAuth = withLastLocation(props => {
+const ButtonsSocialsPropedAuth = withLastLocation(props => {
 	const { lastLocation, ...restProps } = props
+	const onClick = useMemo(() => buttonSocialAuthOnClick(lastLocation), [
+		lastLocation,
+	])
 	return (
 		<ButtonSocials
-			onClicks={buttonSocialAuthOnClicks(lastLocation)}
-			buttons={buttonAuths}
+			onClick={onClick}
+			buttons={buttonSocialAuths}
 			{...restProps}
 		/>
 	)
 })
 
+const ButtonsSocialOptioned = props => {
+	const { buttons, ...otherProps } = props
+	const buttons_ = useMemo(() => getButtons(buttons), [buttons])
+	return <ButtonSocials buttons={buttons_} {...otherProps} />
+}
+
 export {
-	ButtonsSocialPropedAuth,
-	ButtonSocials,
+	ButtonsSocialsPropedAuth,
+	ButtonsSocialOptioned,
 	BUTTON_SOCIALS_ID,
 	BUTTON_SOCIALS_ICON,
 	BUTTON_SOCIALS_COLOR,
