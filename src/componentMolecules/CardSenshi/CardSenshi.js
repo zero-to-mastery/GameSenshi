@@ -7,8 +7,8 @@ const {
 	IconGames,
 	StatusCommonPropedOnline,
 	ButtonSound,
-	ButtonIconPropedFavorite,
-	ButtonIconPropedTip,
+	CheckBoxIconPropedFavorite,
+	CheckBoxIconPropedTip,
 	ButtonsSocialOptioned,
 } = stopUndefined(Exports)
 
@@ -63,8 +63,8 @@ const CardSenshi = props => {
 						<ButtonSound url={audio} />
 					</Row>
 					<Row className='justify-content-center'>
-						<ButtonIconPropedFavorite fill={favorite} />
-						<ButtonIconPropedTip />
+						<CheckBoxIconPropedFavorite fill={favorite} />
+						<CheckBoxIconPropedTip />
 					</Row>
 				</CardBody>
 			</Card>

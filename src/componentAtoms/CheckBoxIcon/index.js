@@ -1,9 +1,9 @@
 import React from 'react'
-import { ButtonIcon } from './ButtonIcon'
+import { CheckBoxIcon } from './CheckBoxIcon'
 
-const ButtonIconPropedFavorite = props => {
+const CheckBoxIconPropedFavorite = props => {
 	return (
-		<ButtonIcon
+		<CheckBoxIcon
 			color='danger'
 			tooltip='Favourite me! 😘'
 			tooltip2={`Please don't unfavorite me! 😭`}
@@ -13,9 +13,9 @@ const ButtonIconPropedFavorite = props => {
 	)
 }
 
-const ButtonIconPropedTip = props => {
+const CheckBoxIconPropedTip = props => {
 	return (
-		<ButtonIcon
+		<CheckBoxIcon
 			color='success'
 			tooltip='Like me? Tip me!💖'
 			icon='tim-icons icon-coins'
@@ -24,4 +24,4 @@ const ButtonIconPropedTip = props => {
 	)
 }
 
-export { ButtonIconPropedFavorite, ButtonIconPropedTip }
+export { CheckBoxIconPropedFavorite, CheckBoxIconPropedTip }

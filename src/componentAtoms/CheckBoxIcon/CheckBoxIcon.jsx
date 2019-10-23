@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { Button, UncontrolledTooltip } from 'reactstrap'
 import classnames from 'classnames'
 
-const ButtonIcon = props => {
+const CheckBoxIcon = props => {
 	const { color, icon, onClick, fill, tooltip, tooltip2 } = props
 	const [fill_, setFill_] = useState(fill)
 	const id = icon.replace(/ /g, '')
@@ -39,4 +39,4 @@ const ButtonIcon = props => {
 	)
 }
 
-export { ButtonIcon }
+export { CheckBoxIcon }

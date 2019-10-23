@@ -64,7 +64,10 @@ import { BadgesPropedDefault } from './Badges'
 import { IconGames } from './IconGames'
 import { StatusCommonPropedOnline } from './StatusCommon'
 import { ButtonSound } from './ButtonSound'
-import { ButtonIconPropedFavorite, ButtonIconPropedTip } from './ButtonIcon'
+import {
+	CheckBoxIconPropedFavorite,
+	CheckBoxIconPropedTip,
+} from './CheckBoxIcon'
 
 export const Exports = {
 	...ExportProtons,
@@ -130,6 +133,6 @@ export const Exports = {
 	AVATAR,
 	BODY,
 	NUM_COMMENTS,
-	ButtonIconPropedFavorite,
-	ButtonIconPropedTip,
+	CheckBoxIconPropedFavorite,
+	CheckBoxIconPropedTip,
 }
