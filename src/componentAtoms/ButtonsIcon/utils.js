@@ -1,11 +1,11 @@
 import React from 'react'
 import {
-	BUTTON_SOCIALS_ID,
-	BUTTON_SOCIALS_ICON,
-	BUTTON_SOCIALS_COLOR,
-	BUTTON_SOCIALS_TOOLTIP,
-	BUTTON_SOCIALS_HREF,
-} from './ButtonIcons'
+	BUTTONS_ICON_ID,
+	BUTTONS_ICON_ICON,
+	BUTTONS_ICON_COLOR,
+	BUTTONS_ICON_TOOLTIP,
+	BUTTONS_ICON_HREF,
+} from './ButtonsIcon'
 import reactElementToJSXString from 'react-element-to-jsx-string'
 import { setLastRoute, toIndexIfPublic } from 'routes'
 import { handleSignInWithSocials } from 'api'
@@ -21,40 +21,40 @@ const FACEBOOK = 'facebook'
 
 const options = [
 	{
-		[BUTTON_SOCIALS_ID]: GOOGLE,
-		[BUTTON_SOCIALS_ICON]: 'fab fa-google',
-		[BUTTON_SOCIALS_COLOR]: 'google',
-		[BUTTON_SOCIALS_TOOLTIP]: 'Sign in with Google!',
+		[BUTTONS_ICON_ID]: GOOGLE,
+		[BUTTONS_ICON_ICON]: 'fab fa-google',
+		[BUTTONS_ICON_COLOR]: 'google',
+		[BUTTONS_ICON_TOOLTIP]: 'Sign in with Google!',
 	},
 	{
-		[BUTTON_SOCIALS_ID]: FACEBOOK,
-		[BUTTON_SOCIALS_ICON]: 'fab fa-facebook-square',
-		[BUTTON_SOCIALS_COLOR]: 'facebook',
-		[BUTTON_SOCIALS_TOOLTIP]: 'Sign in with Facebook!',
+		[BUTTONS_ICON_ID]: FACEBOOK,
+		[BUTTONS_ICON_ICON]: 'fab fa-facebook-square',
+		[BUTTONS_ICON_COLOR]: 'facebook',
+		[BUTTONS_ICON_TOOLTIP]: 'Sign in with Facebook!',
 	},
 	{
-		[BUTTON_SOCIALS_ID]: FB_FS_CHANNELS_FACEBOOK,
-		[BUTTON_SOCIALS_ICON]: 'fab fa-facebook-f font-1-6',
-		[BUTTON_SOCIALS_COLOR]: 'facebook',
-		[BUTTON_SOCIALS_TOOLTIP]: 'Follow me on my Facebook!',
+		[BUTTONS_ICON_ID]: FB_FS_CHANNELS_FACEBOOK,
+		[BUTTONS_ICON_ICON]: 'fab fa-facebook-f font-1-6',
+		[BUTTONS_ICON_COLOR]: 'facebook',
+		[BUTTONS_ICON_TOOLTIP]: 'Follow me on my Facebook!',
 	},
 	{
-		[BUTTON_SOCIALS_ID]: FB_FS_CHANNELS_TWITCH,
-		[BUTTON_SOCIALS_ICON]: 'fab fa-twitch font-1-6',
-		[BUTTON_SOCIALS_COLOR]: 'twitch',
-		[BUTTON_SOCIALS_TOOLTIP]: 'Subscribe to my Twitch channel!',
+		[BUTTONS_ICON_ID]: FB_FS_CHANNELS_TWITCH,
+		[BUTTONS_ICON_ICON]: 'fab fa-twitch font-1-6',
+		[BUTTONS_ICON_COLOR]: 'twitch',
+		[BUTTONS_ICON_TOOLTIP]: 'Subscribe to my Twitch channel!',
 	},
 	{
-		[BUTTON_SOCIALS_ID]: FB_FS_CHANNELS_YOUTUBE,
-		[BUTTON_SOCIALS_ICON]: 'ml-n1 fab fa-youtube font-1-6',
-		[BUTTON_SOCIALS_COLOR]: 'youtube',
-		[BUTTON_SOCIALS_TOOLTIP]: 'Subscribe to my Youtube channel!',
+		[BUTTONS_ICON_ID]: FB_FS_CHANNELS_YOUTUBE,
+		[BUTTONS_ICON_ICON]: 'ml-n1 fab fa-youtube font-1-6',
+		[BUTTONS_ICON_COLOR]: 'youtube',
+		[BUTTONS_ICON_TOOLTIP]: 'Subscribe to my Youtube channel!',
 	},
 ]
 
 const buttonSocialAuthOnClick = lastLocation => {
 	return (e, button) => {
-		const { [BUTTON_SOCIALS_ID]: id } = button
+		const { [BUTTONS_ICON_ID]: id } = button
 		const body = (
 			<>
 				Please wait while we signing you in with <b>{id}</b>.
@@ -87,8 +87,8 @@ const getButtons = buttons => {
 	const getButtons_ = []
 	for (var prop in buttons) {
 		getButtons_.push({
-			...options.find(option => option[BUTTON_SOCIALS_ID] === prop),
-			[BUTTON_SOCIALS_HREF]: buttons[prop],
+			...options.find(option => option[BUTTONS_ICON_ID] === prop),
+			[BUTTONS_ICON_HREF]: buttons[prop],
 		})
 	}
 	return getButtons_

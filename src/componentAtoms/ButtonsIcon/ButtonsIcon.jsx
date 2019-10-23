@@ -2,24 +2,24 @@ import React, { Fragment, useCallback } from 'react'
 import { Button, UncontrolledTooltip } from 'reactstrap'
 import classNames from 'classnames'
 
-const BUTTON_SOCIALS_ID = 'id'
-const BUTTON_SOCIALS_ICON = 'icon'
-const BUTTON_SOCIALS_COLOR = 'color'
-const BUTTON_SOCIALS_TOOLTIP = 'tooltip'
-const BUTTON_SOCIALS_HREF = 'href'
+const BUTTONS_ICON_ID = 'id'
+const BUTTONS_ICON_ICON = 'icon'
+const BUTTONS_ICON_COLOR = 'color'
+const BUTTONS_ICON_TOOLTIP = 'tooltip'
+const BUTTONS_ICON_HREF = 'href'
 
-const ButtonIcons = props => {
+const ButtonsIcon = props => {
 	const { onClick, buttons, className } = props
 
 	return (
 		<div className={classNames('btn-wrapper', 'text-center', className)}>
 			{buttons.map(button => {
 				const {
-					[BUTTON_SOCIALS_ID]: id,
-					[BUTTON_SOCIALS_ICON]: icon,
-					[BUTTON_SOCIALS_COLOR]: color,
-					[BUTTON_SOCIALS_TOOLTIP]: tooltip,
-					[BUTTON_SOCIALS_HREF]: href,
+					[BUTTONS_ICON_ID]: id,
+					[BUTTONS_ICON_ICON]: icon,
+					[BUTTONS_ICON_COLOR]: color,
+					[BUTTONS_ICON_TOOLTIP]: tooltip,
+					[BUTTONS_ICON_HREF]: href,
 				} = button
 
 				const href_ = href || ''
@@ -55,10 +55,10 @@ const ButtonIcons = props => {
 }
 
 export {
-	ButtonIcons,
-	BUTTON_SOCIALS_ID,
-	BUTTON_SOCIALS_ICON,
-	BUTTON_SOCIALS_COLOR,
-	BUTTON_SOCIALS_TOOLTIP,
-	BUTTON_SOCIALS_HREF,
+	ButtonsIcon,
+	BUTTONS_ICON_ID,
+	BUTTONS_ICON_ICON,
+	BUTTONS_ICON_COLOR,
+	BUTTONS_ICON_TOOLTIP,
+	BUTTONS_ICON_HREF,
 }

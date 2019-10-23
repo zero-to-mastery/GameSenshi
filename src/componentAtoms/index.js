@@ -8,12 +8,12 @@ import Footer from './Footers/Footer'
 import IndexHeader from './Headers/IndexHeader.jsx'
 import {
 	ButtonsSocialOptioned,
-	ButtonsSocialsPropedAuth,
-	BUTTON_SOCIALS_ID,
-	BUTTON_SOCIALS_ICON,
-	BUTTON_SOCIALS_COLOR,
-	BUTTON_SOCIALS_TOOLTIP,
-} from './ButtonIcons'
+	ButtonsSocialPropedAuth,
+	BUTTONS_ICON_ID,
+	BUTTONS_ICON_ICON,
+	BUTTONS_ICON_COLOR,
+	BUTTONS_ICON_TOOLTIP,
+} from './ButtonsIcon'
 import {
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
@@ -79,11 +79,11 @@ export const Exports = {
 	AlertCommonStoreAlert,
 	ProgressCommonStoreProgress,
 	ButtonsSocialOptioned,
-	ButtonsSocialsPropedAuth,
-	BUTTON_SOCIALS_ID,
-	BUTTON_SOCIALS_ICON,
-	BUTTON_SOCIALS_COLOR,
-	BUTTON_SOCIALS_TOOLTIP,
+	ButtonsSocialPropedAuth,
+	BUTTONS_ICON_ID,
+	BUTTONS_ICON_ICON,
+	BUTTONS_ICON_COLOR,
+	BUTTONS_ICON_TOOLTIP,
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
 	ListText,
