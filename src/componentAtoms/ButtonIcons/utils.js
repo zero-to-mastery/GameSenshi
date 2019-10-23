@@ -5,7 +5,7 @@ import {
 	BUTTON_SOCIALS_COLOR,
 	BUTTON_SOCIALS_TOOLTIP,
 	BUTTON_SOCIALS_HREF,
-} from './ButtonSocials'
+} from './ButtonIcons'
 import reactElementToJSXString from 'react-element-to-jsx-string'
 import { setLastRoute, toIndexIfPublic } from 'routes'
 import { handleSignInWithSocials } from 'api'

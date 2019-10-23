@@ -8,7 +8,7 @@ const BUTTON_SOCIALS_COLOR = 'color'
 const BUTTON_SOCIALS_TOOLTIP = 'tooltip'
 const BUTTON_SOCIALS_HREF = 'href'
 
-const ButtonSocials = props => {
+const ButtonIcons = props => {
 	const { onClick, buttons, className } = props
 
 	return (
@@ -55,7 +55,7 @@ const ButtonSocials = props => {
 }
 
 export {
-	ButtonSocials,
+	ButtonIcons,
 	BUTTON_SOCIALS_ID,
 	BUTTON_SOCIALS_ICON,
 	BUTTON_SOCIALS_COLOR,

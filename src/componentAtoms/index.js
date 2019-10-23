@@ -13,7 +13,7 @@ import {
 	BUTTON_SOCIALS_ICON,
 	BUTTON_SOCIALS_COLOR,
 	BUTTON_SOCIALS_TOOLTIP,
-} from './ButtonSocials'
+} from './ButtonIcons'
 import {
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,

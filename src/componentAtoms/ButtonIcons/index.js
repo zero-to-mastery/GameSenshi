@@ -8,7 +8,7 @@ import {
 } from './ButtonIcons'
 import { buttonSocialAuthOnClick, buttonSocialAuths, getButtons } from './utils'
 // routing
-import { withLastLocation } from './node_modules/routes'
+import { withLastLocation } from 'routes'
 
 const ButtonsSocialsPropedAuth = withLastLocation(props => {
 	const { lastLocation, ...restProps } = props
