@@ -8,6 +8,12 @@ import 'react-perfect-scrollbar/dist/css/styles.css'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 import {
+	ROUTE_PAGE_POLICY_COOKIES,
+	ROUTE_PAGE_POLICY_TERMS,
+	ROUTE_PAGE_POLICY_PRIVACY_POLICY,
+} from 'routes'
+
+import {
 	TabContent,
 	TabPane,
 	Container,
@@ -46,8 +52,8 @@ const policies = [
 	},
 ]
 
-const PoliciesPage = () => {
-	const [tab, setTab] = useState(PRIVACY)
+const PoliciesPage = props => {
+	const [TabPane, setTabPane] = useState(() => Privacy)
 
 	useEffect(() => {
 		document.body.classList.add('index-page')
@@ -57,10 +63,26 @@ const PoliciesPage = () => {
 			document.body.classList.remove('index-page')
 		}
 	}, [])
-	const toggleTab = useCallback(e => {
-		// * icon :before don't have name prop
-		setTab(e.target.name || e.target.parentElement.name)
-	}, [])
+	const {
+		location: { pathname },
+	} = props
+	useEffect(() => {
+		switch (pathname) {
+			case ROUTE_PAGE_POLICY_COOKIES:
+				setTabPane(() => Cookie)
+				break
+			case ROUTE_PAGE_POLICY_TERMS:
+				setTabPane(() => Terms)
+				break
+			default:
+				setTabPane(() => Privacy)
+				break
+		}
+	}, [pathname])
+	// const toggleTab = useCallback(e => {
+	// 	// * icon :before don't have name prop
+	// 	setTab(e.target.name || e.target.parentElement.name)
+	// }, [])
 
 	return (
 		<>
@@ -95,8 +117,8 @@ const PoliciesPage = () => {
 						</Nav>
 					</Col>
 					<Col lg='9' md='8'>
-						<TabContent activeTab={tab} className='mb-5'>
-							{policies.map(policy => {
+						<TabContent activeTab={TabPane} className='mb-5'>
+							{/* {policies.map(policy => {
 								const { [NAME]: name, [POLICY]: Policy } = policy
 								return (
 									<TabPane tabId={name}>
@@ -105,7 +127,12 @@ const PoliciesPage = () => {
 										</PerfectScrollbar>
 									</TabPane>
 								)
-							})}
+							})} */}
+							<TabPane tabId={name}>
+								<PerfectScrollbar className='pr-3' style={{ height: 768 }}>
+									<TabPane />
+								</PerfectScrollbar>
+							</TabPane>
 						</TabContent>
 					</Col>
 				</Row>
