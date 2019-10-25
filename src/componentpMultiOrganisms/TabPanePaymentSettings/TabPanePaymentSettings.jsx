@@ -90,7 +90,7 @@ const TabPanePaymentSettings = () => {
 			<FormCard
 				isOpen={isOpenCardModal}
 				toggle={() => {
-					setIsOpenCardModal(isOpenCardModal => !isOpenCardModal)
+					setIsOpenCardModal(!isOpenCardModal)
 				}}
 				onSuccessfulSubmission={values => {
 					listNewCard(values, cards, setCards)

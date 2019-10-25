@@ -70,7 +70,7 @@ const NavbarIndex = props => {
 
 	const toggleCollapse = () => {
 		document.documentElement.classList.toggle('nav-open')
-		setCollapseOpen(collapseOpen => !collapseOpen)
+		setCollapseOpen(!collapseOpen)
 	}
 	const onCollapseEntering = () => {
 		setCollapseExited(false)

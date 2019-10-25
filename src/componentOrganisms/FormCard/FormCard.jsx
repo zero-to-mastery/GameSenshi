@@ -183,7 +183,7 @@ const FormCard = props => {
 													<CheckBox
 														checked={isDefault}
 														onClick={() => {
-															setIsDefault(state => !state)
+															setIsDefault(!isDefault)
 														}}>
 														<span className='text-success'>
 															set as default?

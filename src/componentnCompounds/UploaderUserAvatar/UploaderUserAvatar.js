@@ -20,7 +20,7 @@ const UploaderUserAvatar = () => {
 	)
 
 	const toggleCropper = useCallback(() => {
-		setOpenCropper(state => !state)
+		setOpenCropper(!openCropper)
 	}, [])
 
 	return (
