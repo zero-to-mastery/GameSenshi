@@ -13,6 +13,7 @@ const DROP_DOWN_MENU_NAVBAR_ON_CLICK = 'onClick'
 
 const DropdownMenuNavbar = props => {
 	const { items } = props
+
 	return (
 		<DropdownMenu aria-labelledby='navbarDropdownMenuLink' right>
 			{items.map(item => {

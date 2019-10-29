@@ -126,10 +126,9 @@ const NavbarIndex = props => {
 									{/* big screen size or not collapsed*/}
 									<ListNavItemStoreUserPropedNavbarIndex />
 									<IconNotificationStoreUserPropedIndexNavbar className='d-none d-lg-inline-flex' />
-									<DropdownNavbarStoreUser
-										avatar={<AvatarUserStoreUser height={36} width={36} />}
-										menu={<DropdownMenuNavbarStoreUserPropedNavbarIndex />}
-									/>
+									<DropdownNavbarStoreUser avatar={AvatarUserStoreUser}>
+										<DropdownMenuNavbarStoreUserPropedNavbarIndex />
+									</DropdownNavbarStoreUser>
 									<ButtonSignInStoreUserPropedIndexNavbar />
 									<ButtonSignUpStoreUserPropedIndexNavbar />
 								</LoaderNavLinkPropedIndexNavbarStoreUser>

@@ -94,7 +94,7 @@
 		"react-player": "^1.13.0",
 		"react-router-dom": "^4.3.1",
 		"react-router-last-location": "^2.0.0-beta.3",
-		"react-router-link-nostack": "^0.5.0",
+		"react-router-link-nostack": "^0.5.2",
 		"react-scripts": "^2.1.5",
 		"react-select": "^2.4.3",
 		"react-slick": "^0.24.0",
