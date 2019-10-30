@@ -20,7 +20,7 @@ const CheckBoxIcon = props => {
 	)
 
 	useEffect(() => {
-		// this is for parent component re-render ButtonIcon
+		// this is needed when parent component rerender 
 		setFill_(fill)
 	}, [fill])
 

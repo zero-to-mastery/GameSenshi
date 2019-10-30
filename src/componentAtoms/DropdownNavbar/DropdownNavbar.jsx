@@ -7,7 +7,7 @@ const { Link } = stopUndefined(Exports)
 const DROPDOWN_NAVBAR_STATE_SHOW = 'show'
 
 const DropdownNavbar = props => {
-	const { avatar, menu, [DROPDOWN_NAVBAR_STATE_SHOW]: show } = props
+	const { avatar: Avatar, [DROPDOWN_NAVBAR_STATE_SHOW]: show, children } = props
 
 	const show_ = show !== undefined ? show : true
 
@@ -24,9 +24,9 @@ const DropdownNavbar = props => {
 					to='#'
 					id='navbarDropdownMenuLink'
 					className='d-flex align-items-center pt-0 pb-0'>
-					{avatar}
+					<Avatar />
 				</DropdownToggle>
-				{menu}
+				{children}
 			</UncontrolledDropdown>
 		)
 	)
