@@ -63,7 +63,7 @@ const CardSenshi = props => {
 						<ButtonSound url={audio} />
 					</Row>
 					<Row className='justify-content-center'>
-						<CheckBoxIconPropedFavorite fill={favorite} />
+						<CheckBoxIconPropedFavorite checked={favorite} />
 						<CheckBoxIconPropedTip />
 					</Row>
 				</CardBody>

@@ -6,7 +6,7 @@ const CheckBoxIconPropedFavorite = props => {
 		<CheckBoxIcon
 			color='danger'
 			tooltipOn='Favourite me! 😘'
-			tooltipOff={`Please don't unfavorite me! 😭`}
+			tooltipOff="Please don't unfavorite me! 😭"
 			icon='tim-icons icon-heart-2'
 			{...props}
 		/>
