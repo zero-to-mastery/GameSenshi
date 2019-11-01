@@ -1,43 +1,52 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Button, UncontrolledTooltip } from 'reactstrap'
+import { Button, Tooltip } from 'reactstrap'
 import classnames from 'classnames'
 
 const CheckBoxIcon = props => {
-	const { color, icon, onClick, fill, tooltipOn, tooltipOff } = props
-	const [fill_, setFill_] = useState(fill)
-	const [hover, setHover] = useState(false)
-	const [clicked, setClicked] = useState(false)
+	const { color, icon, onClick, checked, tooltipOn, tooltipOff } = props
+	const [checked_, setChecked_] = useState(checked)
+	const [showTooltip, setShowTooltip] = useState(false)
+	const [tooltipMount, setTooltipMount] = useState(true)
 	const id = icon.replace(/ /g, '')
 
 	const onClick_ = useCallback(
 		e => {
-			setFill_(!fill_)
-			onClick && onClick(e, setFill_)
-			setHover(!hover)
-			setClicked(true)
+			onClick && onClick(e, setChecked_)
+			if (tooltipOff) {
+				// if tooltip off is not provided, this is not treated as checkbox
+				setChecked_(!checked_)
+				// unmount tooltip upon click
+				setTooltipMount(false)
+			}
 		},
-		[onClick, fill_, hover]
+		[onClick, checked_]
 	)
 
 	useEffect(() => {
-		// this is needed when parent component rerender 
-		setFill_(fill)
-	}, [fill])
+		// this is needed to remount tooltip so that it display text correctly after click
+		if (!tooltipMount) {
+			setTooltipMount(true)
+		}
+	}, [tooltipMount])
+
+	useEffect(() => {
+		// this is needed when parent component rerender
+		setChecked_(checked)
+	}, [checked])
 
 	const onMouseEnter = useCallback(() => {
-		setHover(!hover)
-	}, [hover])
+		setShowTooltip(true)
+	}, [])
 
 	const onMouseLeave = useCallback(() => {
-		!clicked && setHover(!hover)
-		setClicked(false)
-	}, [hover])
+		setShowTooltip(false)
+	}, [])
 
 	return (
 		<>
 			<Button
 				className={classnames(
-					{ 'btn-simple': hover ? fill_ : !fill_ },
+					{ 'btn-simple': !checked_ },
 					'btn-icon btn-round ml-1'
 				)}
 				color={color}
@@ -48,10 +57,16 @@ const CheckBoxIcon = props => {
 				id={id}>
 				<i className={icon} />
 			</Button>
-			{!clicked && (
-				<UncontrolledTooltip delay={0} target={id}>
-					{fill_ ? (tooltipOff ? tooltipOff : tooltipOn) : tooltipOn}
-				</UncontrolledTooltip>
+			{tooltipMount && (
+				<Tooltip delay={100} target={id} isOpen={showTooltip} placement='top'>
+					{checked_
+						? tooltipOff
+							? tooltipOn
+							: tooltipOff
+						: tooltipOff
+						? tooltipOff
+						: tooltipOn}
+				</Tooltip>
 			)}
 		</>
 	)
