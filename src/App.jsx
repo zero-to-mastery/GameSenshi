@@ -14,6 +14,7 @@ import {
 	ROUTE_PAGE_SETTINGS_COMMON,
 	ROUTE_PAGE_PASSWORD_RESET,
 	ROUTE_PAGE_404,
+	ROUTE_PAGE_CHECKOUT,
 } from 'routes'
 // state management
 import {
@@ -41,6 +42,7 @@ const {
 	NavbarIndexStoreAlert,
 	AlertCommonStoreAlert,
 	PoliciesPage,
+	CheckoutPage,
 } = stopUndefined(Exports)
 
 const MapRoutesToPages = {
@@ -49,6 +51,7 @@ const MapRoutesToPages = {
 	[ROUTE_PAGE_SIGN_UP]: SignUpPage,
 	[ROUTE_PAGE_SIGN_IN]: SignInPage,
 	[ROUTE_PAGE_POLICY]: PoliciesPage,
+	[ROUTE_PAGE_CHECKOUT]: CheckoutPage,
 	[ROUTE_PAGE_SETTINGS_COMMON]: SettingsPage,
 	[ROUTE_PAGE_PASSWORD_RESET]: PasswordResetPage,
 	[ROUTE_PAGE_404]: Error404Page,

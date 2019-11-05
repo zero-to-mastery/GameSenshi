@@ -10,6 +10,7 @@ import { TabPaneGeneralSettings } from './TabPaneGeneralSettings'
 import { FormResetPasswordPropedDefault } from './FormResetPassword'
 import { NavbarIndexStoreAlert } from './NavbarIndex'
 import { FormProfile } from './FormProfile'
+import { CheckoutCardPropedDefault } from './CheckoutCard'
 
 export const Exports = {
 	...ExportCompounds,
@@ -23,4 +24,5 @@ export const Exports = {
 	FormResetPasswordPropedDefault,
 	NavbarIndexStoreAlert,
 	FormProfile,
+	CheckoutCardPropedDefault,
 }

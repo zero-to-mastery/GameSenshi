@@ -8,6 +8,7 @@ import { SignUpPage } from './SignUpPage'
 import { PasswordResetPage } from './PasswordResetPage'
 import { Error404Page } from './Error404Page'
 import { PoliciesPage } from './PoliciesPage'
+import { CheckoutPage } from './CheckoutPage'
 
 export const Exports = {
 	...ExportMultiOrganisms,
@@ -19,4 +20,5 @@ export const Exports = {
 	PasswordResetPage,
 	Error404Page,
 	PoliciesPage,
+	CheckoutPage,
 }
