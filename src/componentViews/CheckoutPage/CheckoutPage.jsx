@@ -32,7 +32,7 @@ const CheckoutPage = () => {
 						sm={{ size: 12 }}
 						md={{ size: 8, offset: 2 }}
 						lg={{ size: 4, offset: 4 }}>
-						<h2 className='title'>Order summary</h2>
+						<h2 className='title text-center'>Order summary</h2>
 						<Card>
 							<CardBody>
 								<Media className='align-items-center mb-3'>
