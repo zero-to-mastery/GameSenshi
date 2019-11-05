@@ -27,7 +27,11 @@ const CheckoutPage = () => {
 		<div classname='wrapper'>
 			<Container className='pt-5 pb-5'>
 				<Row className='pt-5 pb-5'>
-					<Col lg='4'>
+					<Col
+						xs={{ size: 12 }}
+						sm={{ size: 12 }}
+						md={{ size: 8, offset: 2 }}
+						lg={{ size: 4, offset: 4 }}>
 						<h2 className='title'>Order summary</h2>
 						<Card>
 							<CardBody>
