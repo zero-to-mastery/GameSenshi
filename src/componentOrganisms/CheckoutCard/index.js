@@ -1,2 +1,9 @@
+import React from 'react'
 import { CheckoutCard } from './CheckoutCard'
-export { CheckoutCard }
+import { products } from './utils'
+
+const CheckoutCardpropedDefault = () => {
+	return <CheckoutCard products={products} />
+}
+
+export { CheckoutCardpropedDefault }
