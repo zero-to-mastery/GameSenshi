@@ -16,6 +16,7 @@ const ROUTE_PAGE_SIGN_IN = '/signIn'
 const ROUTE_PAGE_SETTINGS = '/settings'
 const ROUTE_PAGE_NOTIFICATIONS = '/notifications'
 const ROUTE_PAGE_404 = '/404'
+const ROUTE_PAGE_CHECKOUT = '/checkout'
 const ROUTE_PAGE_JOIN = '/join'
 const ROUTE_PAGE_HELP = '/help'
 const ROUTE_PAGE_APPOINTMENTS = '/appointments'
@@ -73,4 +74,5 @@ export {
 	ROUTE_PAGE_POLICY_COOKIES,
 	ROUTE_PAGE_POLICY_TERMS,
 	ROUTE_PAGE_POLICY_PRIVACY_POLICY,
+	ROUTE_PAGE_CHECKOUT,
 }
