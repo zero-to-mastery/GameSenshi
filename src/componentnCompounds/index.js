@@ -60,7 +60,12 @@ import {
 } from './FinalSelectGame'
 
 import { CommentWithPaginationPropedDefault } from './CommentWithPagination'
-import { FinalTextDiscountPropedCheckout } from './FinalTextDiscount'
+
+import {
+	FinalTextDiscountPropedCheckout,
+	FINAL_TEXT_DISCOUNT,
+} from './FinalTextDiscount'
+
 export const Exports = {
 	...ExportMolecules,
 	FinalTextCardNumberPropedDefault,
@@ -96,6 +101,7 @@ export const Exports = {
 	UploaderUserAvatar,
 	FinalSelectGamePropedGeneraL,
 	FINAL_SELECT_GAME,
-	CommentWithPaginationPropedDefault,
 	FinalTextDiscountPropedCheckout,
+	FINAL_TEXT_DISCOUNT,
+	CommentWithPaginationPropedDefault,
 }

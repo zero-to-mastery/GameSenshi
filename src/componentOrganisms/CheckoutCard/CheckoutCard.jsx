@@ -1,5 +1,13 @@
 import React, { Fragment, useState } from 'react'
-import { Card, CardBody, Media, Col } from 'reactstrap'
+import { Card, CardBody, Media, Col, Form } from 'reactstrap'
+import { stopUndefined } from 'utils'
+// components
+import { Exports } from 'componentMolecules'
+const {
+	FinalForm,
+	// FinalTextDiscountPropedCheckout,
+	// FINAL_TEXT_DISCOUNT,
+} = stopUndefined(Exports)
 
 const PRODUCT_IMAGE = 'productImage'
 const PRODUCT_NAME = 'productName'
@@ -7,7 +15,7 @@ const PRODUCT_PRICE = 'productPrice'
 const PRODUCT_SIZE = 'productSize'
 
 const CheckoutCard = props => {
-	const { products } = props
+	const { products, onSubmit, onSuccessfulSubmission } = props
 	const [discountFocus, setDiscountFocus] = useState(false)
 	return (
 		<Fragment>
@@ -40,8 +48,21 @@ const CheckoutCard = props => {
 						)
 					})}
 					<hr className='line-info mb-5' />
+					{/* <FinalForm
+						initialValues={{
+							[FINAL_TEXT_DISCOUNT]: '',
+						}}
+						onSubmit={onSubmit}
+						onSuccessfulSubmission={onSuccessfulSubmission}>
+						{({ handleSubmit, submitting, submitError, form }) => {
+							return (
+								<Form>
+									<FinalTextDiscountPropedCheckout />
+								</Form>
+							)
+						}}
+					</FinalForm> */}
 
-					{/* Form */}
 					<hr className='line-info mb-3' />
 					<Media className='align-items-center'>
 						<h3 className='h6 text-secondary mr-3'>Subtotal</h3>

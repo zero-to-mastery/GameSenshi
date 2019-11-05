@@ -8,7 +8,7 @@ import classNames from 'classnames'
 // core components
 import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer, CheckoutCardpropedDefault } = stopUndefined(Exports)
+const { Footer, CheckoutCardPropedDefault } = stopUndefined(Exports)
 
 const CheckoutPage = () => {
 	return (
@@ -21,7 +21,7 @@ const CheckoutPage = () => {
 						md={{ size: 8, offset: 2 }}
 						lg={{ size: 4, offset: 4 }}>
 						<h2 className='title text-center'>Order summary</h2>
-						<CheckoutCardpropedDefault />
+						<CheckoutCardPropedDefault />
 					</Col>
 				</Row>
 			</Container>

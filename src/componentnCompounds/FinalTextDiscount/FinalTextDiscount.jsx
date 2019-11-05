@@ -1,33 +1,20 @@
 import React from 'react'
-import classnames from 'classnames'
-import { Form, InputGroup, Input, InputGroupAddon, Button } from 'reactstrap'
+import { stopUndefined } from 'utils'
+//components
+import { Exports } from 'componentMolecules'
+
+const { FinalInputText } = stopUndefined(Exports)
 
 const FINAL_TEXT_DISCOUNT = 'Discount'
 
 const FinalTextDiscount = props => {
-	const { discountFocus, setDiscountFocus } = props
+	const { ...otherProps } = props
 	return (
-		<Form className='code-validate'>
-			<label>Discount</label>
-			<InputGroup
-				className={classnames({
-					'input-group-focus': discountFocus,
-				})}>
-				<Input
-					aria-label='Discount'
-					name={FINAL_TEXT_DISCOUNT}
-					placeholder='Discount Code'
-					type='text'
-					onFocus={() => setDiscountFocus(true)}
-					onBlur={() => setDiscountFocus(false)}
-				/>
-				<InputGroupAddon addonType='append'>
-					<Button color='info' type='button'>
-						Apply
-					</Button>
-				</InputGroupAddon>
-			</InputGroup>
-		</Form>
+		<FinalInputText
+			name={FINAL_TEXT_DISCOUNT}
+			placeholder='Discount Code'
+			{...otherProps}
+		/>
 	)
 }
 

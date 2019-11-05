@@ -7,11 +7,12 @@ import { Exports } from 'componentMolecules'
 const { LabelForm } = stopUndefined(Exports)
 
 const FinalTextDiscountPropedCheckout = props => {
+	const { ...otherProps } = props
 	return (
 		<LabelForm label='Discount' htmlFor={FINAL_TEXT_DISCOUNT}>
-			<FinalTextDiscount {...props} />
+			<FinalTextDiscount {...otherProps} />
 		</LabelForm>
 	)
 }
 
-export { FinalTextDiscountPropedCheckout }
+export { FinalTextDiscountPropedCheckout, FINAL_TEXT_DISCOUNT }
