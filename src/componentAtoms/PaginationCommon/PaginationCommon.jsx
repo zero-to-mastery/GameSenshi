@@ -1,35 +1,34 @@
 /* eslint-disable no-undef */
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap'
 
 const PaginationCommon = props => {
-	// const { setPage, initialPage, items, pager } = props
-	// useEffect(() => {
-	// 	setPage(initialPage)
-	// }, [items])
+	const { handleClick, currentPage } = props
+	const [pageCount, setPageCount] = useState(0)
 
+	useEffect(() => {
+		const { limit, numOfRecords } = props
+		setPageCount(Math.ceil(numOfRecords / limit))
+	}, [currentPage])
 	return (
 		<Pagination aria-label='Page navigation example'>
-			{/* <PaginationItem disabled={pager.currentPage === 1}>
+			<PaginationItem disabled={currentPage <= 0}>
 				<PaginationLink
-					onClick={() => setPage(pager.currentPage - 1)}
+					onClick={e => handleClick(e, currentPage - 1)}
 					previous
 				/>
 			</PaginationItem>
-			{pager &&
-				pager.pages &&
-				pager.pages.map((page, index) => {
-					return (
-						<PaginationItem active={page === pager.currentPage} key={index}>
-							<PaginationLink onClick={() => setPage(page)}>
-								{page}
-							</PaginationLink>
-						</PaginationItem>
-					)
-				})}
-			<PaginationItem disabled={pager.currentPage === pager.totalPages}>
-				<PaginationLink onClick={() => setPage(pager.currentPage + 1)} next />
-			</PaginationItem> */}
+			{[...Array(pageCount)].map((page, i) => (
+				<PaginationItem active={i === currentPage} key={i}>
+					<PaginationLink onClick={e => handleClick(e, i)}>
+						{i + 1}
+					</PaginationLink>
+				</PaginationItem>
+			))}
+
+			<PaginationItem disabled={currentPage >= pageCount - 1}>
+				<PaginationLink onClick={e => handleClick(e, currentPage + 1)} next />
+			</PaginationItem>
 		</Pagination>
 	)
 }
