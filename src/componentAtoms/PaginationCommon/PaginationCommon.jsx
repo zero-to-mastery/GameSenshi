@@ -7,9 +7,10 @@ const PaginationCommon = props => {
 	const [pageCount, setPageCount] = useState(0)
 
 	useEffect(() => {
-		const { limit, numOfRecords } = props
-		setPageCount(Math.ceil(numOfRecords / limit))
+		const { limit, comments } = props
+		setPageCount(Math.ceil(comments.length / limit))
 	}, [currentPage])
+
 	return (
 		<Pagination aria-label='Page navigation example'>
 			<PaginationItem disabled={currentPage <= 0}>
@@ -25,7 +26,6 @@ const PaginationCommon = props => {
 					</PaginationLink>
 				</PaginationItem>
 			))}
-
 			<PaginationItem disabled={currentPage >= pageCount - 1}>
 				<PaginationLink onClick={e => handleClick(e, currentPage + 1)} next />
 			</PaginationItem>

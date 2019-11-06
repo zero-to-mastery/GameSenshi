@@ -32,7 +32,7 @@ const comments = [
 		[AVATAR]: require('assets/img/michael.jpg'),
 		[BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '211',
+		[NUM_COMMENTS]: '217',
 	},
 	{
 		[ID]: 4,
@@ -41,7 +41,7 @@ const comments = [
 		[AVATAR]: require('assets/img/michael.jpg'),
 		[BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '211',
+		[NUM_COMMENTS]: '192',
 	},
 ]
 

@@ -8,7 +8,6 @@ const {
 } = stopUndefined(Exports)
 
 const LIMIT = 2
-const NUM_OF_RECORDS = 4
 
 const CommentWithPagination = props => {
 	const { comments } = props
@@ -23,15 +22,15 @@ const CommentWithPagination = props => {
 		(currentPage + 1) * LIMIT
 	)
 	return (
-		<Fragment>
+		<div className='d-flex flex-column align-items-center'>
 			<CommentCommonPropedDefault comments={paginatedComments} />
 			<PaginationCommonPropedDefault
 				limit={LIMIT}
-				numOfRecords={NUM_OF_RECORDS}
+				comments={comments}
 				handleClick={handleClick}
 				currentPage={currentPage}
 			/>
-		</Fragment>
+		</div>
 	)
 }
 
