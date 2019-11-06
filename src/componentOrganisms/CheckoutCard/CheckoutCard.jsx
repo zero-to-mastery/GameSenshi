@@ -1,5 +1,17 @@
 import React, { Fragment, useState } from 'react'
-import { Card, CardBody, Media, Col, Form } from 'reactstrap'
+import {
+	Card,
+	CardBody,
+	Media,
+	Col,
+	Form,
+	Button,
+	Input,
+	InputGroup,
+	InputGroupAddon,
+} from 'reactstrap'
+import classnames from 'classnames'
+
 import { stopUndefined } from 'utils'
 // components
 import { Exports } from 'componentMolecules'
@@ -62,7 +74,22 @@ const CheckoutCard = props => {
 							)
 						}}
 					</FinalForm> */}
-
+					<Form className='code-validate'>
+						<label>Discount</label>
+						<InputGroup className='d-flex flex-row align-items-center'>
+							<Input
+								aria-label='Discount'
+								name='name'
+								placeholder='Discount Code'
+								type='text'
+							/>
+							<InputGroupAddon addonType='append'>
+								<Button color='info' type='button'>
+									Apply
+								</Button>
+							</InputGroupAddon>
+						</InputGroup>
+					</Form>
 					<hr className='line-info mb-3' />
 					<Media className='align-items-center'>
 						<h3 className='h6 text-secondary mr-3'>Subtotal</h3>
