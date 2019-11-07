@@ -1,13 +1,16 @@
 import React, { useEffect, useState, Fragment } from 'react'
 import classnames from 'classnames'
 import { stopUndefined } from 'utils'
-import { policyPageTabList } from './index'
 import { Cookie } from './Cookie'
 import { Terms } from './Terms'
 import { Privacy } from './Privacy'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import { ROUTE_PAGE_POLICY_COOKIES, ROUTE_PAGE_POLICY_TERMS, ROUTE_PAGE_POLICY_PRIVACY_POLICY } from 'routes'
+import {
+	ROUTE_PAGE_POLICY_COOKIES,
+	ROUTE_PAGE_POLICY_TERMS,
+	ROUTE_PAGE_POLICY_PRIVACY_POLICY,
+} from 'routes'
 import {
 	TabContent,
 	Container,
@@ -78,7 +81,6 @@ const PoliciesPage = props => {
 				setTabName(() => Privacy)
 		}
 	}, [pathname])
-	console.log("pathname", props)
 	return (
 		<>
 			<Container className='mt-5 mb-5'>
@@ -99,7 +101,11 @@ const PoliciesPage = props => {
 											})}
 											to={to}
 											tag={Link}>
-											<i className={`tim-icons ${icon}`} /> {name}
+											<i
+												style={{ fontSize: '40px' }}
+												className={`tim-icons ${icon}`}
+											/>{' '}
+											{name}
 										</NavLink>
 									)
 								})}
