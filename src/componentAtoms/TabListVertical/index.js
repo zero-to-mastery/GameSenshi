@@ -7,7 +7,7 @@ import {
 } from './TabListVertical'
 import { withRouter } from 'react-router-dom'
 
-const TabListVerticalPropedSettingPage = withRouter(props => {
+const TabListVerticalPropedWithRouter = withRouter(props => {
 	const {
 		location: { pathname },
 		tablist,
@@ -16,7 +16,7 @@ const TabListVerticalPropedSettingPage = withRouter(props => {
 })
 
 export {
-	TabListVerticalPropedSettingPage,
+	TabListVerticalPropedWithRouter,
 	TAB_LIST_VERTICAL_NAME,
 	TAB_LIST_VERTICAL_TO,
 	TAB_LIST_VERTICAL_ICON,

@@ -22,7 +22,7 @@ const {
 	TabPanePaymentSettings,
 	TabPaneAccountSettings,
 	TabPaneSettingListStoreUserPropedNotification,
-	TabListVerticalPropedSettingPage,
+	TabListVerticalPropedWithRouter,
 	UploaderUserAvatar,
 	TAB_LIST_VERTICAL_NAME,
 	TAB_LIST_VERTICAL_TO,
@@ -84,7 +84,7 @@ const SettingsPage = () => {
 								{/* Profile Sidebar */}
 								<section>
 									<br />
-									<TabListVerticalPropedSettingPage tablist={settingTabs} />
+									<TabListVerticalPropedWithRouter tablist={settingTabs} />
 								</section>
 								{/* End Profile Sidebar */}
 								{/* Profile Completion */}

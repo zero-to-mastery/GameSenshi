@@ -28,7 +28,7 @@ import { ModalCommonStoreModalPropedAuth, ModalCommon } from './ModalCommon'
 import { ButtonSubmit } from './ButtonSubmit'
 import { TabPaneContainer } from './TabPaneContainer'
 import {
-	TabListVerticalPropedSettingPage,
+	TabListVerticalPropedWithRouter,
 	TAB_LIST_VERTICAL_NAME,
 	TAB_LIST_VERTICAL_TO,
 	TAB_LIST_VERTICAL_ICON,
@@ -105,7 +105,7 @@ export const Exports = {
 	ModalCommon,
 	ButtonSubmit,
 	TabPaneContainer,
-	TabListVerticalPropedSettingPage,
+	TabListVerticalPropedWithRouter,
 	TAB_LIST_VERTICAL_NAME,
 	TAB_LIST_VERTICAL_TO,
 	TAB_LIST_VERTICAL_ICON,
