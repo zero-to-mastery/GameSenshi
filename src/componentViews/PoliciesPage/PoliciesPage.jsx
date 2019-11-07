@@ -1,10 +1,10 @@
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { stopUndefined } from 'utils'
-import { Privacy } from './Privacy'
+import { policyPageTabList } from './index'
 import { Cookie } from './Cookie'
 import { Terms } from './Terms'
-import { policyPageTabList } from './index'
+import { Privacy } from './Privacy'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { ROUTE_PAGE_POLICY_COOKIES, ROUTE_PAGE_POLICY_TERMS } from 'routes'
@@ -30,7 +30,7 @@ const COOKIE = 'Cookie Policy'
 const TERM = 'Terms And Conditions'
 
 const PoliciesPage = props => {
-	const [tab, setTab] = useState(() => Privacy)
+	const [TabPane, setTabPane] = useState(() => Privacy)
 
 	useEffect(() => {
 		document.body.classList.add('index-page')
@@ -43,18 +43,20 @@ const PoliciesPage = props => {
 	const {
 		location: { pathname },
 	} = props
+
 	useEffect(() => {
 		switch (pathname) {
 			case ROUTE_PAGE_POLICY_COOKIES:
-				setTab(() => Cookie)
+				setTabPane(() => Cookie)
 				break
 			case ROUTE_PAGE_POLICY_TERMS:
-				setTab(() => Terms)
+				setTabPane(() => Terms)
 				break
 			default:
-				setTab(() => Privacy)
+				setTabPane(() => Privacy)
 		}
 	}, [pathname])
+	console.log("pathname", props)
 	return (
 		<>
 			<Container className='mt-5 mb-5'>
@@ -105,7 +107,7 @@ const PoliciesPage = props => {
 						</Nav>
 					</Col>
 					<Col lg='9' md='8'>
-						<TabContent activeTab={tab} className='mb-5'>
+						<TabContent activeTab={TabPane} className='mb-5'>
 							{/* {policyPageTabList.map(policy => {
 								const { [NAME]: name, [POLICY]: Policy } = policy
 								return (

@@ -10,7 +10,6 @@ import {
 	InputGroup,
 	InputGroupAddon,
 } from 'reactstrap'
-import classnames from 'classnames'
 
 const PRODUCT_IMAGE = 'productImage'
 const PRODUCT_NAME = 'productName'
