@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import classnames from 'classnames'
 import { stopUndefined } from 'utils'
-import { Privacy } from './Privacy'
 import { Cookie } from './Cookie'
 import { Terms } from './Terms'
+import { Privacy } from './Privacy'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { Route, Switch } from 'react-router-dom'
@@ -14,11 +14,11 @@ import {
 } from 'routes'
 import {
 	TabContent,
-	TabPane,
 	Container,
 	Row,
 	Col,
 	Nav,
+	TabPane,
 	NavItem,
 	NavLink,
 } from 'reactstrap'
@@ -55,8 +55,6 @@ const policies = [
 	},
 ]
 const PoliciesPage = props => {
-	const [tab, setTabName] = useState(() => Privacy)
-
 	useEffect(() => {
 		document.body.classList.add('index-page')
 		document.documentElement.scrollTop = 0
@@ -98,8 +96,8 @@ const PoliciesPage = props => {
 							</NavItem>
 						</Nav>
 					</Col>
-					<Col lg='9' md='8'>
-						<TabContent activeTab='123' className='mb-5'>
+					<Col lg='9' md='8' className='mb-5'>
+						<TabContent activeTab='123'>
 							<TabPane tabId='123'>
 								<PerfectScrollbar className='pr-3' style={{ height: 768 }}>
 									<Switch>
