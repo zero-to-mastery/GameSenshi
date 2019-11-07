@@ -82,7 +82,6 @@ const PoliciesPage = props => {
 									return (
 										<NavLink
 											key={name}
-											name={name}
 											className={classnames({
 												active: pathname.toLowerCase() === to.toLowerCase(),
 											})}
@@ -97,28 +96,20 @@ const PoliciesPage = props => {
 						</Nav>
 					</Col>
 					<Col lg='9' md='8' className='mb-5'>
-						<TabContent activeTab='123'>
-							<TabPane tabId='123'>
-								<PerfectScrollbar className='pr-3' style={{ height: 768 }}>
-									<Switch>
-										{policies.map(policy => {
-											const {
-												[NAME]: name,
-												[POLICY]: Policy,
-												[TO]: to,
-											} = policy
-											return (
-												<Route
-													key={name}
-													path={to}
-													render={prop => <Policy {...prop} />}
-												/>
-											)
-										})}
-									</Switch>
-								</PerfectScrollbar>
-							</TabPane>
-						</TabContent>
+						<PerfectScrollbar className='pr-3' style={{ height: 768 }}>
+							<Switch>
+								{policies.map(policy => {
+									const { [NAME]: name, [POLICY]: Policy, [TO]: to } = policy
+									return (
+										<Route
+											key={name}
+											path={to}
+											render={prop => <Policy {...prop} />}
+										/>
+									)
+								})}
+							</Switch>
+						</PerfectScrollbar>
 					</Col>
 				</Row>
 			</Container>
