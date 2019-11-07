@@ -1,13 +1,15 @@
 import React, { Fragment, useState } from 'react'
-import { Card, CardBody, Media, Col, Form } from 'reactstrap'
-import { stopUndefined } from 'utils'
-// components
-import { Exports } from 'componentMolecules'
-const {
-	FinalForm,
-	// FinalTextDiscountPropedCheckout,
-	// FINAL_TEXT_DISCOUNT,
-} = stopUndefined(Exports)
+import {
+	Card,
+	CardBody,
+	Media,
+	Col,
+	Form,
+	Button,
+	Input,
+	InputGroup,
+	InputGroupAddon,
+} from 'reactstrap'
 
 const PRODUCT_IMAGE = 'productImage'
 const PRODUCT_NAME = 'productName'
@@ -48,21 +50,22 @@ const CheckoutCard = props => {
 						)
 					})}
 					<hr className='line-info mb-5' />
-					{/* <FinalForm
-						initialValues={{
-							[FINAL_TEXT_DISCOUNT]: '',
-						}}
-						onSubmit={onSubmit}
-						onSuccessfulSubmission={onSuccessfulSubmission}>
-						{({ handleSubmit, submitting, submitError, form }) => {
-							return (
-								<Form>
-									<FinalTextDiscountPropedCheckout />
-								</Form>
-							)
-						}}
-					</FinalForm> */}
-
+					<Form className='code-validate'>
+						<label>Discount</label>
+						<InputGroup className='d-flex flex-row align-items-center'>
+							<Input
+								aria-label='Discount'
+								name='name'
+								placeholder='Discount Code'
+								type='text'
+							/>
+							<InputGroupAddon addonType='append'>
+								<Button color='info' type='button'>
+									Apply
+								</Button>
+							</InputGroupAddon>
+						</InputGroup>
+					</Form>
 					<hr className='line-info mb-3' />
 					<Media className='align-items-center'>
 						<h3 className='h6 text-secondary mr-3'>Subtotal</h3>
