@@ -99,6 +99,7 @@ const PoliciesPage = props => {
 											className={classnames({
 												active: pathname.toLowerCase() === to.toLowerCase(),
 											})}
+											key={name}
 											to={to}
 											tag={Link}>
 											<i
@@ -115,7 +116,9 @@ const PoliciesPage = props => {
 					<Col lg='9' md='8'>
 						<TabContent activeTab={TabName} className='mb-5'>
 							<TabPane tabId={TabName}>
-								<PerfectScrollbar className='pr-3' style={{ height: 768 }}>
+								<PerfectScrollbar
+									className='pr-3'
+									style={{ height: 768, opacity: 1 }}>
 									<TabName />
 								</PerfectScrollbar>
 							</TabPane>
