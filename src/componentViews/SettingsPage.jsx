@@ -1,12 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import {
+	ROUTE_PAGE_SETTINGS_GENERAL,
 	ROUTE_PAGE_SETTINGS_PAYMENT,
 	ROUTE_PAGE_SETTINGS_ACCOUNT,
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
 } from 'routes'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
+import { Route, Switch } from 'react-router-dom'
+
+const GENERAL = 'General'
+const PAYMENT = 'Payment'
+const ACCOUNT = 'Account'
+const NOTIFICATION = 'Notifications'
+const SETTING = 'setting'
 
 const {
 	Footer,
@@ -14,33 +22,42 @@ const {
 	TabPanePaymentSettings,
 	TabPaneAccountSettings,
 	TabPaneSettingListStoreUserPropedNotification,
-	TabListVerticalPropedSettingPage,
+	TabListVerticalPropedWithRouter,
 	UploaderUserAvatar,
+	TAB_LIST_VERTICAL_NAME,
+	TAB_LIST_VERTICAL_TO,
+	TAB_LIST_VERTICAL_ICON,
 } = stopUndefined(Exports)
 
-const SettingsPage = props => {
-	const [TabPane, setTabPane] = useState(() => TabPaneGeneralSettings)
-	const wrapper = useRef(null)
+const settingTabs = [
+	{
+		[TAB_LIST_VERTICAL_NAME]: GENERAL,
+		[TAB_LIST_VERTICAL_ICON]: 'icon-single-02',
+		[TAB_LIST_VERTICAL_TO]: ROUTE_PAGE_SETTINGS_GENERAL,
+		[SETTING]: TabPaneGeneralSettings,
+	},
+	{
+		[TAB_LIST_VERTICAL_NAME]: PAYMENT,
+		[TAB_LIST_VERTICAL_ICON]: 'icon-credit-card',
+		[TAB_LIST_VERTICAL_TO]: ROUTE_PAGE_SETTINGS_PAYMENT,
+		[SETTING]: TabPanePaymentSettings,
+	},
+	{
+		[TAB_LIST_VERTICAL_NAME]: ACCOUNT,
+		[TAB_LIST_VERTICAL_ICON]: 'icon-lock-circle',
+		[TAB_LIST_VERTICAL_TO]: ROUTE_PAGE_SETTINGS_ACCOUNT,
+		[SETTING]: TabPaneAccountSettings,
+	},
+	{
+		[TAB_LIST_VERTICAL_NAME]: NOTIFICATION,
+		[TAB_LIST_VERTICAL_ICON]: 'icon-volume-98',
+		[TAB_LIST_VERTICAL_TO]: ROUTE_PAGE_SETTINGS_NOTIFICATION,
+		[SETTING]: TabPaneSettingListStoreUserPropedNotification,
+	},
+]
 
-	const {
-		location: { pathname },
-	} = props
-	useEffect(() => {
-		switch (pathname) {
-			case ROUTE_PAGE_SETTINGS_PAYMENT:
-				setTabPane(() => TabPanePaymentSettings)
-				break
-			case ROUTE_PAGE_SETTINGS_ACCOUNT:
-				setTabPane(() => TabPaneAccountSettings)
-				break
-			case ROUTE_PAGE_SETTINGS_NOTIFICATION:
-				setTabPane(() => TabPaneSettingListStoreUserPropedNotification)
-				break
-			default:
-				setTabPane(() => TabPaneGeneralSettings)
-				break
-		}
-	}, [pathname])
+const SettingsPage = () => {
+	const wrapper = useRef(null)
 
 	useEffect(() => {
 		document.documentElement.scrollTop = 0
@@ -67,7 +84,7 @@ const SettingsPage = props => {
 								{/* Profile Sidebar */}
 								<section>
 									<br />
-									<TabListVerticalPropedSettingPage />
+									<TabListVerticalPropedWithRouter tablist={settingTabs} />
 								</section>
 								{/* End Profile Sidebar */}
 								{/* Profile Completion */}
@@ -79,7 +96,22 @@ const SettingsPage = props => {
 						</Col>
 						<Col className='ml-auto' md='8'>
 							<div className='section'>
-								<TabPane />
+								<Switch>
+									{settingTabs.map(policy => {
+										const {
+											[TAB_LIST_VERTICAL_NAME]: name,
+											[SETTING]: Setting,
+											[TAB_LIST_VERTICAL_TO]: to,
+										} = policy
+										return (
+											<Route
+												key={name}
+												path={to}
+												render={prop => <Setting {...prop} />}
+											/>
+										)
+									})}
+								</Switch>
 							</div>
 						</Col>
 					</Row>

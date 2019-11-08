@@ -27,7 +27,12 @@ import { HeaderLined } from './HeaderLined'
 import { ModalCommonStoreModalPropedAuth, ModalCommon } from './ModalCommon'
 import { ButtonSubmit } from './ButtonSubmit'
 import { TabPaneContainer } from './TabPaneContainer'
-import { TabListVerticalPropedSettingPage } from './TabListVertical'
+import {
+	TabListVerticalPropedWithRouter,
+	TAB_LIST_VERTICAL_NAME,
+	TAB_LIST_VERTICAL_TO,
+	TAB_LIST_VERTICAL_ICON,
+} from './TabListVertical'
 import { IconCard } from './IconCard'
 import { LabelForm, LabelFormSimple } from './LabelForm'
 import { InputDate } from './InputDate'
@@ -100,7 +105,10 @@ export const Exports = {
 	ModalCommon,
 	ButtonSubmit,
 	TabPaneContainer,
-	TabListVerticalPropedSettingPage,
+	TabListVerticalPropedWithRouter,
+	TAB_LIST_VERTICAL_NAME,
+	TAB_LIST_VERTICAL_TO,
+	TAB_LIST_VERTICAL_ICON,
 	IconCard,
 	LabelForm,
 	LabelFormSimple,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect } from 'react'
 import classnames from 'classnames'
 import { stopUndefined } from 'utils'
 import { Cookie } from './Cookie'
@@ -6,10 +6,11 @@ import { Terms } from './Terms'
 import { Privacy } from './Privacy'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import PerfectScrollbar from 'react-perfect-scrollbar'
+import { Route, Switch } from 'react-router-dom'
 import {
 	ROUTE_PAGE_POLICY_COOKIES,
 	ROUTE_PAGE_POLICY_TERMS,
-	ROUTE_PAGE_POLICY_PRIVACY_POLICY,
+	ROUTE_PAGE_POLICY_PRIVACY,
 } from 'routes'
 import {
 	TabContent,
@@ -25,10 +26,10 @@ import { Exports } from 'componentpMultiOrganisms'
 
 const { Footer, Link } = stopUndefined(Exports)
 
-const TO = 'to'
 const NAME = 'name'
 const ICON = 'icon'
 const POLICY = 'policy'
+const TO = 'to'
 const PRIVACY = 'Privacy Policy'
 const COOKIE = 'Cookie Policy'
 const TERM = 'Terms And Conditions'
@@ -38,7 +39,7 @@ const policies = [
 		[NAME]: PRIVACY,
 		[ICON]: 'tim-icons icon-lock-circle',
 		[POLICY]: Privacy,
-		[TO]: ROUTE_PAGE_POLICY_PRIVACY_POLICY,
+		[TO]: ROUTE_PAGE_POLICY_PRIVACY,
 	},
 	{
 		[NAME]: COOKIE,
@@ -53,10 +54,7 @@ const policies = [
 		[TO]: ROUTE_PAGE_POLICY_TERMS,
 	},
 ]
-
 const PoliciesPage = props => {
-	const [TabName, setTabName] = useState(() => Privacy)
-
 	useEffect(() => {
 		document.body.classList.add('index-page')
 		document.documentElement.scrollTop = 0
@@ -68,19 +66,6 @@ const PoliciesPage = props => {
 	const {
 		location: { pathname },
 	} = props
-
-	useEffect(() => {
-		switch (pathname) {
-			case ROUTE_PAGE_POLICY_COOKIES:
-				setTabName(() => Cookie)
-				break
-			case ROUTE_PAGE_POLICY_TERMS:
-				setTabName(() => Terms)
-				break
-			default:
-				setTabName(() => Privacy)
-		}
-	}, [pathname])
 	return (
 		<>
 			<Container className='mt-5 mb-5'>
@@ -96,6 +81,7 @@ const PoliciesPage = props => {
 									const { [NAME]: name, [ICON]: icon, [TO]: to } = policy
 									return (
 										<NavLink
+											key={name}
 											className={classnames({
 												active: pathname.toLowerCase() === to.toLowerCase(),
 											})}
@@ -113,16 +99,21 @@ const PoliciesPage = props => {
 							</NavItem>
 						</Nav>
 					</Col>
-					<Col lg='9' md='8'>
-						<TabContent activeTab={TabName} className='mb-5'>
-							<TabPane tabId={TabName}>
-								<PerfectScrollbar
-									className='pr-3'
-									style={{ height: 768, opacity: 1 }}>
-									<TabName />
-								</PerfectScrollbar>
-							</TabPane>
-						</TabContent>
+					<Col lg='9' md='8' className='mb-5'>
+						<PerfectScrollbar className='pr-3' style={{ height: 768 }}>
+							<Switch>
+								{policies.map(policy => {
+									const { [NAME]: name, [POLICY]: Policy, [TO]: to } = policy
+									return (
+										<Route
+											key={name}
+											path={to}
+											render={prop => <Policy {...prop} />}
+										/>
+									)
+								})}
+							</Switch>
+						</PerfectScrollbar>
 					</Col>
 				</Row>
 			</Container>
