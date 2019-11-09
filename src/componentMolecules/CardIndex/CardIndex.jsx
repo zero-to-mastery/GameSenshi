@@ -21,7 +21,7 @@ const LEVEL = 'level'
 const CardIndex = props => {
 	const { cards } = props
 	return (
-		<div className=' d-flex flex-row align-items-stretch justify-content-between'>
+		<div className='d-flex flex-row align-items-stretch justify-content-between'>
 			{cards.map(card => {
 				const {
 					[NAME]: name,

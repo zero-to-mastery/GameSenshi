@@ -32,20 +32,17 @@ const IndexPage = props => {
 				<Container>
 					<Row>
 						<Col
-							xs={{ size: 10, offset: 1 }}
-							sm={{ size: 10, offset: 1 }}
-							md={{ size: 10, offset: 1 }}
-							lg={{ size: 10, offset: 1 }}>
+							xs={{ size: 12 }}
+							sm={{ size: 12 }}
+							md={{ size: 12 }}
+							lg={{ size: 12 }}>
 							<CarouselCommonPropedIndex />
 						</Col>
 					</Row>
 					<Row>
 						<Col className='py-5'>
 							{' '}
-							<div className='text-center'>
-								<h1 className='heading-primary'>Signed up recently</h1>
-								<hr className='line-primary' />
-							</div>
+							<h1 className='text-center'>Signed up recently</h1>
 						</Col>
 					</Row>
 					<Row className='pb-5'>

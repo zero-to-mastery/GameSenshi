@@ -9,7 +9,8 @@ const TEXT = 'text'
 const CarouselCommon = props => {
 	const { items } = props
 	const settings = {
-		dots: true,
+		dots: false,
+		arrows: false,
 		infinite: true,
 		slidesToShow: 1,
 		slidesToScroll: 1,
@@ -28,8 +29,8 @@ const CarouselCommon = props => {
 							<div className={styles.imgWrapper}>
 								<img src={src} alt='Slide' className={styles.carouselImage} />
 							</div>
-							<div className={styles.textOverlay}>
-								<p className={styles.carouselText}>{text}</p>
+							<div className={styles.carouselText}>
+								<p className={styles.text}>{text}</p>
 							</div>
 						</div>
 					)
