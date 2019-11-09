@@ -3,7 +3,7 @@ import { FinalInputText, FinalInputSelect, FinalInputDate } from './FinalInput'
 import { TabPaneSettingListStoreUserPropedNotification } from './TabPaneSettingList'
 import { ModalImageCropperPropedSettings } from './ModalImageCropper'
 import { CardSenshi } from './CardSenshi'
-import { CardIndex } from './CardIndex'
+import { CardIndexPropedDefault } from './CardIndex'
 
 export const Exports = {
 	...ExportAtoms,
@@ -13,5 +13,5 @@ export const Exports = {
 	FinalInputDate,
 	ModalImageCropperPropedSettings,
 	CardSenshi,
-	CardIndex,
+	CardIndexPropedDefault,
 }

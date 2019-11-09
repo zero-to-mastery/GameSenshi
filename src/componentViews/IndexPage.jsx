@@ -9,7 +9,7 @@ const {
 	Footer,
 	IndexHeader,
 	CarouselCommonPropedIndex,
-	CardIndex,
+	CardIndexPropedDefault,
 } = stopUndefined(Exports)
 
 const IndexPage = props => {
@@ -42,17 +42,14 @@ const IndexPage = props => {
 					<Row>
 						<Col className='py-5'>
 							{' '}
-							<h1 className='text-center'>Signed up recently</h1>
+							<div className='text-center'>
+								<h1 className='heading-primary'>Signed up recently</h1>
+								<hr className='line-primary' />
+							</div>
 						</Col>
 					</Row>
-					<Row>
-						<Col
-							xs={{ size: 3, offset: 1 }}
-							sm={{ size: 3, offset: 1 }}
-							md={{ size: 3, offset: 1 }}
-							lg={{ size: 3, offset: 1 }}>
-							<CardIndex />
-						</Col>
+					<Row className='pb-5'>
+						<CardIndexPropedDefault />
 					</Row>
 				</Container>
 			</div>
