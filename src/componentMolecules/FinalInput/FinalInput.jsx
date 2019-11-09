@@ -45,7 +45,7 @@ const FinalInput = memo(props => {
 	const [state] = useState({
 		delay: 0, // initial delay is 0 for fast first time background validation
 		timeOutID: 0,
-		onSubmitTimeOutID: 0,
+		submitKeyPressed: false,
 		focused: true,
 		promise: Promise.resolve(['Invalid']),
 		resolve: () => {},
@@ -95,6 +95,11 @@ const FinalInput = memo(props => {
 				resolve(filtered.length === 0 ? ['error'] : filtered)
 			}
 			state.validated = true
+			if (state.submitKeyPressed) {
+				// if use click enter while status.validated is false, it will submit when status.validated is true
+				state.submitKeyPressed = false
+				submitRef.current.onClick()
+			}
 			return filtered
 		}
 	}
@@ -213,23 +218,11 @@ const FinalInput = memo(props => {
 						onKeyPress && onKeyPress(e)
 						if ((e.key === 'Enter' || e.keyCode === 13) && submitRef) {
 							e.preventDefault()
-							clearInterval(state.onSubmitTimeOutID)
-
-							state.onSubmitTimeOutID = setTimeout(
-								() => {
-									try {
-										// * the ref is real dom node, it doesn't trigger react synthetic event
-										// * thus no event handler is available to onClick
-										// * final form handleSubmit need event handler occasionally (need more research)
-										// * if we catch the error when handleSubmit need the event handler (which is undefined)
-										// * the program can continue to work normally (need more research)
-										submitRef.current.onClick()
-									} catch (err) {
-										console.log(err)
-									}
-								},
-								state.validated ? 0 : DELAY //TODO the logic here is not good enough as the delay value here is only correct if there is no server validation
-							)
+							if (state.validated) {
+								submitRef.current.onClick()
+							} else {
+								state.submitKeyPressed = true
+							}
 						}
 					},
 					[onKeyPress, submitRef, serverValidation]
