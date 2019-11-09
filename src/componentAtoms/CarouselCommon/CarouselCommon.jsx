@@ -29,8 +29,8 @@ const CarouselCommon = props => {
 							<div className={styles.imgWrapper}>
 								<img src={src} alt='Slide' className={styles.carouselImage} />
 							</div>
-							<div className={styles.carouselText}>
-								<p className={styles.text}>{text}</p>
+							<div className={styles.textWrapper}>
+								<p className={styles.carouselText}>{text}</p>
 							</div>
 						</div>
 					)
