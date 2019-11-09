@@ -1,3 +1,9 @@
+import React from 'react'
 import { ButtonOutlineCommon } from './ButtonOutlineCommon'
+import { options } from '../IconsCommon'
 
-export { ButtonOutlineCommon }
+const ButtonOutlineCommonPropedIndex = props => {
+	return <ButtonOutlineCommon options={options} {...props} />
+}
+
+export { ButtonOutlineCommonPropedIndex }

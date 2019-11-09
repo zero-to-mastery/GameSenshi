@@ -50,36 +50,6 @@ const options = [
 		[BUTTONS_ICON_COLOR]: 'youtube',
 		[BUTTONS_ICON_TOOLTIP]: 'Subscribe to my Youtube channel!',
 	},
-	{
-		[BUTTONS_ICON_ID]: 'LOL',
-		[BUTTONS_ICON_ICON]: require('assets/icons/games/LOL.ico'),
-		[BUTTONS_ICON_COLOR]: 'reddit',
-		[BUTTONS_ICON_TOOLTIP]: 'League of Legends',
-	},
-	{
-		[BUTTONS_ICON_ID]: 'Dota2',
-		[BUTTONS_ICON_ICON]: require('assets/icons/games/Dota2.ico'),
-		[BUTTONS_ICON_COLOR]: 'reddit',
-		[BUTTONS_ICON_TOOLTIP]: 'Dota 2',
-	},
-	{
-		[BUTTONS_ICON_ID]: 'Apex',
-		[BUTTONS_ICON_ICON]: require('assets/icons/games/Apex.ico'),
-		[BUTTONS_ICON_COLOR]: 'reddit',
-		[BUTTONS_ICON_TOOLTIP]: 'Apex',
-	},
-	{
-		[BUTTONS_ICON_ID]: 'Fortnite',
-		[BUTTONS_ICON_ICON]: require('assets/icons/games/Fortnite.ico'),
-		[BUTTONS_ICON_COLOR]: 'reddit',
-		[BUTTONS_ICON_TOOLTIP]: 'Fortnite',
-	},
-	{
-		[BUTTONS_ICON_ID]: 'PUBG',
-		[BUTTONS_ICON_ICON]: require('assets/icons/games/PUBG.ico'),
-		[BUTTONS_ICON_COLOR]: 'reddit',
-		[BUTTONS_ICON_TOOLTIP]: 'PUBG',
-	},
 ]
 
 const buttonSocialAuthOnClick = lastLocation => {

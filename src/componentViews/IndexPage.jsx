@@ -4,13 +4,14 @@ import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 // layout library
 import { Container, Row, Col } from 'reactstrap'
+import { ButtonOutlineCommon } from '../componentAtoms/ButtonOutlineCommon/ButtonOutlineCommon'
 
 const {
 	Footer,
 	IndexHeader,
 	CarouselCommonPropedIndex,
 	CardIndexPropedDefault,
-	ButtonsSocialCatalogue,
+	ButtonOutlineCommonPropedIndex,
 } = stopUndefined(Exports)
 
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
@@ -50,7 +51,7 @@ const IndexPage = props => {
 					</Row>
 					<Row>
 						<Col>
-							<ButtonsSocialCatalogue buttons={games} />
+							<ButtonOutlineCommonPropedIndex />
 						</Col>
 					</Row>
 					<Row>

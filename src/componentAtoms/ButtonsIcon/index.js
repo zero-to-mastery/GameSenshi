@@ -26,16 +26,9 @@ const ButtonsSocialOptioned = props => {
 	return <ButtonsIcon buttons={buttons_} {...otherProps} />
 }
 
-const ButtonsSocialCatalogue = props => {
-	const { buttons, ...otherProps } = props
-	const buttons_ = useMemo(() => getButtons(buttons), [buttons])
-	return <ButtonsIcon buttons={buttons_} {...otherProps} />
-}
-
 export {
 	ButtonsSocialPropedAuth,
 	ButtonsSocialOptioned,
-	ButtonsSocialCatalogue,
 	BUTTONS_ICON_ID,
 	BUTTONS_ICON_ICON,
 	BUTTONS_ICON_COLOR,

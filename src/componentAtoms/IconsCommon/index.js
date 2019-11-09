@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import { IconsCommon } from './IconsCommon'
 import { getIcons } from './utils'
 import styles from './styles.module.css'
+import { options } from './utils'
 
 const IconsCommonOptioned = props => {
 	const { icons, ...otherProps } = props
@@ -13,4 +14,4 @@ const IconsCommonOptionedPropedGameIcons = props => {
 	return <IconsCommonOptioned className={styles.games} {...props} />
 }
 
-export { IconsCommonOptionedPropedGameIcons }
+export { IconsCommonOptionedPropedGameIcons, options }
