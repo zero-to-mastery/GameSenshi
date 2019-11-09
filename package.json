@@ -76,7 +76,6 @@
 		"node-sass": "^4.11.0",
 		"nouislider": "^13.1.1",
 		"payment-icons": "^1.2.1",
-		"perfect-scrollbar": "^1.4.0",
 		"react": "^16.8.3",
 		"react-apollo": "^2.5.8",
 		"react-bootstrap-switch": "^15.5.3",
