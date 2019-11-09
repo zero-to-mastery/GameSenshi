@@ -5,7 +5,7 @@ import styles from './styles.module.css'
 
 const IconsCommonOptioned = props => {
 	const { icons, ...otherProps } = props
-	const icons_ = useMemo(() => getIcons(icons))
+	const icons_ = useMemo(() => getIcons(icons), [icons])
 	return <IconsCommon icons={icons_} {...otherProps} />
 }
 
