@@ -3,7 +3,9 @@ import { stopUndefined } from 'utils'
 // core components
 import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer, IndexHeader } = stopUndefined(Exports)
+const { Footer, IndexHeader, CarouselCommonPropedIndex } = stopUndefined(
+	Exports
+)
 
 const IndexPage = props => {
 	const wrapper = useRef(null)
@@ -20,8 +22,11 @@ const IndexPage = props => {
 
 	return (
 		<div className='wrapper' ref={wrapper}>
-			{/* <IndexHeader />
-			<div className='main'></div> */}
+			<IndexHeader />
+			<div className='main'>
+				<CarouselCommonPropedIndex />
+			</div>
+
 			<Footer />
 		</div>
 	)
