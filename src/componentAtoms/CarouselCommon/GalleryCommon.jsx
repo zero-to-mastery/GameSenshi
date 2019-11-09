@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import ImageGallery from 'react-image-gallery'
-import 'react-image-gallery/styles/css/image-gallery.css'
+import './node_modules/react-image-gallery/styles/css/image-gallery.css'
 import ReactPlayer from 'react-player'
 import Image from 'material-ui-image'
 
@@ -9,15 +9,15 @@ const THUMBNAIL = 'thumbnail'
 const RENDER_ITEM = 'renderItem'
 const RENDER_THUMB_INNER = 'renderThumbInner'
 
-const CAROUSEL_COMMON_IMAGE = 'image'
-const CAROUSEL_COMMON_YOUTUBE = 'youtube'
+const GALLERY_COMMON_IMAGE = 'image'
+const GALLERY_COMMON_YOUTUBE = 'youtube'
 
 const getYoutubeEmbededUrl = id =>
 	`https://www.youtube.com/embed/${id}?autoplay=1&showinfo=0`
 
 const getYoutubeThumnailUrl = id => `https://img.youtube.com/vi/${id}/0.jpg`
 
-const CarouselCommon = props => {
+const GalleryCommon = props => {
 	const [showUI, setShowUI] = useState(true)
 	const [videoPlaying, setVideoPlaying] = useState(true)
 	const { items, aspectRatio, ...otherProps } = props
@@ -35,8 +35,8 @@ const CarouselCommon = props => {
 	const items_ = () => {
 		return items.map(item => {
 			const {
-				[CAROUSEL_COMMON_IMAGE]: image,
-				[CAROUSEL_COMMON_YOUTUBE]: youtube,
+				[GALLERY_COMMON_IMAGE]: image,
+				[GALLERY_COMMON_YOUTUBE]: youtube,
 			} = item
 			if (image) {
 				const img = () => {
@@ -107,4 +107,4 @@ const CarouselCommon = props => {
 	)
 }
 
-export { CarouselCommon, CAROUSEL_COMMON_IMAGE, CAROUSEL_COMMON_YOUTUBE }
+export { GalleryCommon, GALLERY_COMMON_IMAGE, GALLERY_COMMON_YOUTUBE }

@@ -20,8 +20,8 @@ const IndexPage = props => {
 
 	return (
 		<div className='wrapper' ref={wrapper}>
-			<IndexHeader />
-			<div className='main'>{/* include stuff here in future */}</div>
+			{/* <IndexHeader />
+			<div className='main'></div> */}
 			<Footer />
 		</div>
 	)
