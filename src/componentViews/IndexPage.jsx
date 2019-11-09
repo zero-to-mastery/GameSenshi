@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
 // core components
 import { Exports } from 'componentpMultiOrganisms'
+// layout library
+import { Container, Row, Col } from 'reactstrap'
 
 const { Footer, IndexHeader, CarouselCommonPropedIndex } = stopUndefined(
 	Exports
@@ -24,7 +26,17 @@ const IndexPage = props => {
 		<div className='wrapper' ref={wrapper}>
 			<IndexHeader />
 			<div className='main'>
-				<CarouselCommonPropedIndex />
+				<Container>
+					<Row>
+						<Col
+							xs={{ size: 6 }}
+							sm={{ size: 6 }}
+							md={{ size: 6 }}
+							lg={{ size: 6 }}>
+							<CarouselCommonPropedIndex />
+						</Col>
+					</Row>
+				</Container>
 			</div>
 
 			<Footer />
