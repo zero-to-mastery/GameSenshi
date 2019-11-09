@@ -5,9 +5,12 @@ import { Exports } from 'componentpMultiOrganisms'
 // layout library
 import { Container, Row, Col } from 'reactstrap'
 
-const { Footer, IndexHeader, CarouselCommonPropedIndex } = stopUndefined(
-	Exports
-)
+const {
+	Footer,
+	IndexHeader,
+	CarouselCommonPropedIndex,
+	CardIndex,
+} = stopUndefined(Exports)
 
 const IndexPage = props => {
 	const wrapper = useRef(null)
@@ -34,6 +37,21 @@ const IndexPage = props => {
 							md={{ size: 10, offset: 1 }}
 							lg={{ size: 10, offset: 1 }}>
 							<CarouselCommonPropedIndex />
+						</Col>
+					</Row>
+					<Row>
+						<Col className='py-5'>
+							{' '}
+							<h1 className='text-center'>Signed up recently</h1>
+						</Col>
+					</Row>
+					<Row>
+						<Col
+							xs={{ size: 3, offset: 1 }}
+							sm={{ size: 3, offset: 1 }}
+							md={{ size: 3, offset: 1 }}
+							lg={{ size: 3, offset: 1 }}>
+							<CardIndex />
 						</Col>
 					</Row>
 				</Container>
