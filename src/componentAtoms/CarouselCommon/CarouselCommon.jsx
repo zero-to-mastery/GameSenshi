@@ -2,7 +2,7 @@ import React from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-
+import styles from './styles.module.css'
 const IMAGE = 'image'
 const TEXT = 'text'
 
@@ -14,8 +14,8 @@ const CarouselCommon = props => {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		autoplay: true,
-		speed: 1500,
-		autoplaySpeed: 1500,
+		speed: 1000,
+		autoplaySpeed: 3500,
 		cssEase: 'linear',
 	}
 	return (
@@ -24,12 +24,12 @@ const CarouselCommon = props => {
 				{items.map(item => {
 					const { [IMAGE]: src, [TEXT]: text } = item
 					return (
-						<div className='carousel-item'>
-							<div className='img-wrapper'>
-								<img src={src} alt='Slide' className='carousel-image' />
+						<div className={styles.carouselItem}>
+							<div className={styles.imgWrapper}>
+								<img src={src} alt='Slide' className={styles.carouselImage} />
 							</div>
-							<div className='text-overlay'>
-								<p className='carousel-text'>{text}</p>
+							<div className={styles.textOverlay}>
+								<p className={styles.carouselText}>{text}</p>
 							</div>
 						</div>
 					)

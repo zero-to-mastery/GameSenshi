@@ -24,15 +24,15 @@ const IndexPage = props => {
 
 	return (
 		<div className='wrapper' ref={wrapper}>
-			<IndexHeader />
+			{/* <IndexHeader /> */}
 			<div className='main'>
 				<Container>
 					<Row>
 						<Col
-							xs={{ size: 6 }}
-							sm={{ size: 6 }}
-							md={{ size: 6 }}
-							lg={{ size: 6 }}>
+							xs={{ size: 10, offset: 1 }}
+							sm={{ size: 10, offset: 1 }}
+							md={{ size: 10, offset: 1 }}
+							lg={{ size: 10, offset: 1 }}>
 							<CarouselCommonPropedIndex />
 						</Col>
 					</Row>
