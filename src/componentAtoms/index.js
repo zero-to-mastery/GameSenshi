@@ -74,6 +74,7 @@ import {
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 } from './CheckBoxIcon'
+import { ButtonsSocialCatalogue } from './ButtonsIcon'
 
 export const Exports = {
 	...ExportProtons,
@@ -145,4 +146,5 @@ export const Exports = {
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 	CarouselCommonPropedIndex,
+	ButtonsSocialCatalogue,
 }

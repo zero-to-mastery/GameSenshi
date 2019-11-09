@@ -10,7 +10,10 @@ const {
 	IndexHeader,
 	CarouselCommonPropedIndex,
 	CardIndexPropedDefault,
+	ButtonsSocialCatalogue,
 } = stopUndefined(Exports)
+
+const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 
 const IndexPage = props => {
 	const wrapper = useRef(null)
@@ -37,6 +40,17 @@ const IndexPage = props => {
 							md={{ size: 12 }}
 							lg={{ size: 12 }}>
 							<CarouselCommonPropedIndex />
+						</Col>
+					</Row>
+					<Row>
+						<Col className='py-5'>
+							{' '}
+							<h1 className='text-center'>Catalogue</h1>
+						</Col>
+					</Row>
+					<Row>
+						<Col>
+							<ButtonsSocialCatalogue buttons={games} />
 						</Col>
 					</Row>
 					<Row>
