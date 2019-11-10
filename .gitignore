@@ -11,11 +11,6 @@
 # production
 /build
 
-# environments
-.config/dev.env
-.config/prod.env
-.config.zip
-
 # cache
 /.firebase
 

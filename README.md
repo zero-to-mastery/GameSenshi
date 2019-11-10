@@ -50,8 +50,6 @@ After git clone
 node install.js
 ```
 
-request the `.config` folder(s) from `tylim#9831` in `Discord`
-
 ```bash
 npm run dev
 // run with dev env var, this may not work as dev is connect to dev server (experiment server)  
