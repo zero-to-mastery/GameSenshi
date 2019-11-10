@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useCallback, memo } from 'react'
 import { Field } from 'react-final-form'
 import { stopUndefined } from 'utils'
+import classNames from 'classnames'
 // core components
 import { Exports } from 'componentAtoms'
 
-const { ListText, PopoverCommon } = stopUndefined(Exports)
+const { TextAlert, PopoverCommon } = stopUndefined(Exports)
 
-const DELAY = 1000
+const DELAY = 1
+const DELAY2 = 1000
 
 const emptyArray = []
 
@@ -39,62 +41,70 @@ const FinalInput = memo(props => {
 	// set default value
 
 	const [popoverFailedItems, setPopoverFailedItems] = useState({})
-	const [onSubmitTimeOutID, setOnSubmitTimeOutId] = useState(0)
 	const [filteredMessages, setFilteredMessages] = useState([])
 	const [valid, setValid] = useState(false) // * this is needed as when typing, error from meta become undefined
 	const [state] = useState({
 		delay: 0, // initial delay is 0 for fast first time background validation
 		timeOutID: 0,
+		submitKeyPressed: false,
 		focused: true,
 		promise: Promise.resolve(['Invalid']),
 		resolve: () => {},
-		fulfilled: true,
-		fulfilledServer: true,
+		validated: true,
 	})
 	const [spinner, showSpinner] = useState(false)
-	const [spinner2, showSpinner2] = useState(false)
 
-	const generateTextListWithState = (validationResult, resolve) => {
-		const validationResult_ = validationResult || {}
-		const { status, message } = validationResult_
-		// if validationResult is undefined, it passed validation, do not show List
-		// if validationResult is {status:true/false, message:string/array of string} and if the status is true, it passed validation, show List
-		// if validationResult is string or array of string, it failed validation, show List
+	//console.log(name, state, filteredMessages)
 
-		const messages = message
-			? [message]
-			: Array.isArray(validationResult)
-			? validationResult
-			: validationResult
-			? validationResult
-			: []
+	const generateTextListWithState = (validationResult, resolve, timeOutID) => {
+		if (timeOutID === state.timeOutID) {
+			const validationResult_ = validationResult || {}
+			const { status, message } = validationResult_
+			// validationResult value is either undefined or {status:true/false, message:string/array of string} or string or array of string
+			// if validationResult is undefined, it passed validation, do not show List
+			// if validationResult is status true, it passed validation, show List if message available
+			// if validationResult is status if failed or string or array of string, it failed validation, it must show List because failed validation must has reason
 
-		setPopoverFailedItems({})
+			const messages = message
+				? [message]
+				: Array.isArray(validationResult)
+				? validationResult
+				: validationResult
+				? validationResult
+				: []
 
-		const filtered = messages.filter(message => {
-			setPopoverFailedItems(state => {
-				state[message] = true
-				return state
+			setPopoverFailedItems({})
+
+			const filtered = messages.filter(message => {
+				setPopoverFailedItems(state => {
+					state[message] = true
+					return state
+				})
+				return !popoverMessages_.includes(message)
 			})
-			return !popoverMessages_.includes(message)
-		})
 
-		setFilteredMessages(filtered)
+			setFilteredMessages(filtered)
 
-		showSpinner(false)
-		!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
+			showSpinner(false)
+			!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
 
-		if (validationResult === undefined || status) {
-			// if validation passed
-			setValid(true)
-			resolve()
-		} else {
-			// if validation failed
-			setValid(false)
-			resolve(filtered.length === 0 ? ['error'] : filtered)
+			if (validationResult === undefined || status) {
+				// if validation passed
+				setValid(true)
+				resolve()
+			} else {
+				// if validation failed
+				setValid(false)
+				resolve(filtered.length === 0 ? ['error'] : filtered)
+			}
+			state.validated = true
+			if (state.submitKeyPressed) {
+				// if use click enter while status.validated is false, it will submit when status.validated is true
+				state.submitKeyPressed = false
+				submitRef.current.onClick()
+			}
+			return filtered
 		}
-		state.fulfilled = true
-		return filtered
 	}
 
 	useEffect(() => {
@@ -117,45 +127,44 @@ const FinalInput = memo(props => {
 						// cancel and invalidate previous validation (did not cancel server validation)
 						// do not reject when doing server validation
 						state.resolve(['validating'])
-						if (serverValidation) {
-							showSpinner2(false)
-							state.fulfilledServer = false
-						}
 						state.resolve = resolve
-						state.fulfilled = false
+						state.validated = false
 						// don't show spinner on first time(when delay=0)
-						state.delay && showSpinner(true)
+						state.delay > 500 && showSpinner('Puff')
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
 						const timeOutID = setTimeout(() => {
 							validation(value || '')
 								.then(() => {
 									if (serverValidation) {
-										showSpinner2(true)
-										state.fulfilled = true
+										showSpinner('ThreeDots')
 										// server side validation on typing
-										serverValidation(value || '').then(validationResult => {
-											// do not close run this if user resume typing before server validation end
-											if (state.fulfilled) {
-												showSpinner2(false)
-												generateTextListWithState(validationResult, resolve)
-												state.fulfilledServer = true
-											}
-										})
+										clearTimeout(state.timeOutID)
+										const timeOutID = setTimeout(() => {
+											serverValidation(value || '').then(validationResult => {
+												// do not close run this if user resume typing before server validation end
+												generateTextListWithState(
+													validationResult,
+													resolve,
+													timeOutID
+												)
+											})
+										}, DELAY2)
+										state.timeOutID = timeOutID
 									} else {
-										generateTextListWithState(undefined, resolve)
+										generateTextListWithState(undefined, resolve, timeOutID)
 									}
 								})
 								.catch(result => {
-									generateTextListWithState(result.errors, resolve)
+									generateTextListWithState(result.errors, resolve, timeOutID)
 								})
 						}, state.delay)
 						state.timeOutID = timeOutID
 					}))
 				}
 				return state.promise
-				// this prevent from returning undefined which is valid when component is not focused
-				// this happen because final form run validation on all form even there is only one field is onChange
+				// this prevent from returning undefined which is valid validation when component is not focused
+				// this happen because final form run validation on all form even though there is only one field is onChange
 				// so always return your own promise that has been made
 			}}>
 			{({ input, meta }) => {
@@ -212,27 +221,11 @@ const FinalInput = memo(props => {
 						onKeyPress && onKeyPress(e)
 						if ((e.key === 'Enter' || e.keyCode === 13) && submitRef) {
 							e.preventDefault()
-							clearInterval(onSubmitTimeOutID)
-							setOnSubmitTimeOutId(
-								setTimeout(
-									() => {
-										try {
-											// * the ref is real dom node, it doesn't trigger react synthetic event
-											// * thus no event handler is available to onClick
-											// * final form handleSubmit need event handler occasionally (need more research)
-											// * if we catch the error when handleSubmit need the event handler (which is undefined)
-											// * the program can continue to work normally (need more research)
-											submitRef.current.onClick()
-										} catch (err) {
-											console.log(err)
-										}
-									},
-									state.fulfilled &&
-										(!serverValidation || state.fulfilledServer)
-										? 0
-										: DELAY
-								)
-							)
+							if (state.validated) {
+								submitRef.current.onClick()
+							} else {
+								state.submitKeyPressed = true
+							}
 						}
 					},
 					[onKeyPress, submitRef, serverValidation]
@@ -242,7 +235,6 @@ const FinalInput = memo(props => {
 					!submitting &&
 					(!onlyShowErrorAfterSubmit || submitFailed) &&
 					!spinner &&
-					!spinner2 &&
 					errorMessages &&
 					((touched && !active) || (active && modified))
 
@@ -250,11 +242,8 @@ const FinalInput = memo(props => {
 					!submitting &&
 					!hideSuccess &&
 					!spinner &&
-					!spinner2 &&
 					!errorMessages &&
 					((touched && !active) || (active && modified))
-
-				const spinner_ = (spinner2 && 'Puff') || (spinner && 'ThreeDots')
 
 				const result = value_ || input.value // the input.value has no purpose other than suppress uncontrollable to controllable warning
 				return (
@@ -263,7 +252,7 @@ const FinalInput = memo(props => {
 							id={name}
 							name={name}
 							value={result}
-							spinner={spinner_}
+							spinner={spinner}
 							hasDanger={hasDanger}
 							hasSuccess={hasSuccess}
 							hasFocus={active}
@@ -272,25 +261,28 @@ const FinalInput = memo(props => {
 							onChange={onChange_}
 							onKeyPress={onKeyPress_}
 							{...restProps}>
-							{(!onlyShowErrorAfterSubmit || submitFailed) &&
-								!spinner &&
-								!spinner2 &&
-								!submitting &&
-								!submitSucceeded &&
-								(touched || (active && modified)) && (
-									<ListText
-										isValid={valid}
-										messages={
-											(!dirtySinceLastSubmit && submitError) || filteredMessages
-										}
-									/>
-								)}
+							<TextAlert
+								icon={classNames('tim-icons', {
+									'icon-check-2': valid,
+									'icon-alert-circle-exc': !valid,
+								})}
+								messages={
+									(!dirtySinceLastSubmit && submitError) || filteredMessages
+								}
+								isOpen={
+									(!onlyShowErrorAfterSubmit || submitFailed) &&
+									!spinner &&
+									!submitting &&
+									!submitSucceeded &&
+									(touched || (active && modified))
+								}
+							/>
 						</Component>
 						{popoverMessages_.length > 0 && (
 							<PopoverCommon
 								isOpen={active || !!(errorMessages && state.delay)}
 								target={name}
-								spinner={spinner_}
+								spinner={spinner}
 								header={`${name} rules`}>
 								<ul>
 									{popoverMessages_.map(errorMessage => {

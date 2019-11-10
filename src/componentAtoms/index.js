@@ -1,6 +1,6 @@
 import { Exports as ExportProtons } from 'componentaProton'
 import { FinalForm } from './FinalForm'
-import { ListText } from './ListText'
+import { TextAlert } from './TextAlert'
 import { InputSelect, VALUE, LABEL, DISABLE, COLOR } from './InputSelect'
 import { InputText } from './InputText'
 import { PopoverCommon } from './PopoverCommon'
@@ -95,7 +95,7 @@ export const Exports = {
 	BUTTONS_ICON_TOOLTIP,
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
-	ListText,
+	TextAlert,
 	InputSelect,
 	VALUE,
 	LABEL,
