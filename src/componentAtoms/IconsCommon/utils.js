@@ -50,4 +50,4 @@ const getIcons = icons => {
 	)
 }
 
-export { getIcons, options }
+export { getIcons }

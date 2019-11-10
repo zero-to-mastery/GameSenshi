@@ -1,9 +1,13 @@
 import React from 'react'
-import { ButtonOutlineCommon } from './ButtonOutlineCommon'
-import { options } from '../IconsCommon'
+import {
+	ButtonOutlineCommon,
+	GAME_NAME,
+	GAME_TEXT,
+} from './ButtonOutlineCommon'
+import { games } from './utils'
 
 const ButtonOutlineCommonPropedIndex = props => {
-	return <ButtonOutlineCommon options={options} {...props} />
+	return <ButtonOutlineCommon games={games} {...props} />
 }
 
-export { ButtonOutlineCommonPropedIndex }
+export { ButtonOutlineCommonPropedIndex, GAME_NAME, GAME_TEXT }
