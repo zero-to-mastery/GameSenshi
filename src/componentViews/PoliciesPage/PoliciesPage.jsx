@@ -85,9 +85,13 @@ const PoliciesPage = props => {
 											className={classnames({
 												active: pathname.toLowerCase() === to.toLowerCase(),
 											})}
-											tag={Link}
-											to={to}>
-											<i style={{ fontSize: '40px' }} className={icon} />
+											key={name}
+											to={to}
+											tag={Link}>
+											<i
+												style={{ fontSize: '40px' }}
+												className={`tim-icons ${icon}`}
+											/>{' '}
 											{name}
 										</NavLink>
 									)

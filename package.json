@@ -100,6 +100,7 @@
 		"react-sound": "^1.2.0",
 		"react-tagsinput": "^3.19.0",
 		"reactstrap": "^8.1.1",
+		"slick-carousel": "^1.8.1",
 		"unstated": "^2.1.1",
 		"yup": "^0.27.0"
 	},

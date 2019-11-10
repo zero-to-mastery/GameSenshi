@@ -49,11 +49,12 @@ import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
-import { CarouselCommonPropedProfile } from './CarouselCommon'
+import { GalleryCommonPropedProfile } from './GalleryCommon'
 import { RatingProfile } from './RatingProfile'
 import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
+import { CarouselCommonPropedIndex } from './CarouselCommon'
 
 import {
 	CommentCommonPropedDefault,
@@ -66,7 +67,10 @@ import {
 } from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
 import { BadgesPropedDefault } from './Badges'
-import { IconsCommonOptionedPropedGameIcons } from './IconsCommon'
+import {
+	IconsCommonOptionedPropedGameIcons,
+	IconsCommonOptioned,
+} from './IconsCommon'
 import { StatusCommonPropedOnline } from './StatusCommon'
 import { ButtonSound } from './ButtonSound'
 import {
@@ -124,13 +128,14 @@ export const Exports = {
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
-	CarouselCommonPropedProfile,
+	GalleryCommonPropedProfile,
 	RatingProfile,
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
 	BadgesPropedDefault,
 	IconsCommonOptionedPropedGameIcons,
+	IconsCommonOptioned,
 	StatusCommonPropedOnline,
 	ButtonSound,
 	CommentCommonPropedDefault,
@@ -143,4 +148,5 @@ export const Exports = {
 	NUM_COMMENTS,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
+	CarouselCommonPropedIndex,
 }

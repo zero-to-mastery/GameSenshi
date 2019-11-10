@@ -1,6 +1,5 @@
 import { Exports as ExportMultiOrganisms } from 'componentpMultiOrganisms'
 
-import { IndexPage } from './IndexPage'
 import { ProfilePage } from './ProfilePage'
 import { SettingsPage } from './SettingsPage'
 import { SignInPage } from './SignInPage'
@@ -9,10 +8,10 @@ import { PasswordResetPage } from './PasswordResetPage'
 import { Error404Page } from './Error404Page'
 import { PoliciesPage } from './PoliciesPage'
 import { CheckoutPage } from './CheckoutPage'
+import { IndexPage } from './IndexPage'
 
 export const Exports = {
 	...ExportMultiOrganisms,
-	IndexPage,
 	ProfilePage,
 	SettingsPage,
 	SignInPage,
@@ -21,4 +20,5 @@ export const Exports = {
 	Error404Page,
 	PoliciesPage,
 	CheckoutPage,
+	IndexPage,
 }

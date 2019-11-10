@@ -1,9 +1,9 @@
 import React from 'react'
 import { CarouselCommon } from './CarouselCommon'
-import { items } from './utils'
+import { carouselItems } from './utils'
 
-const CarouselCommonPropedProfile = props => {
-	return <CarouselCommon items={items} {...props} />
+const CarouselCommonPropedIndex = props => {
+	return <CarouselCommon items={carouselItems} {...props} />
 }
 
-export { CarouselCommonPropedProfile }
+export { CarouselCommonPropedIndex }

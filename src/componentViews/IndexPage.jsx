@@ -2,8 +2,19 @@ import React, { useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
 // core components
 import { Exports } from 'componentpMultiOrganisms'
+// layout library
+import { Container, Row, Col } from 'reactstrap'
+import { ButtonOutlineCommon } from '../componentMolecules/ButtonOutlineCommon/ButtonOutlineCommon'
 
-const { Footer, IndexHeader } = stopUndefined(Exports)
+const {
+	Footer,
+	IndexHeader,
+	CarouselCommonPropedIndex,
+	CardIndexPropedDefault,
+	ButtonOutlineCommonPropedIndex,
+} = stopUndefined(Exports)
+
+const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 
 const IndexPage = props => {
 	const wrapper = useRef(null)
@@ -20,8 +31,58 @@ const IndexPage = props => {
 
 	return (
 		<div className='wrapper' ref={wrapper}>
-			<IndexHeader />
-			<div className='main'>{/* include stuff here in future */}</div>
+			{/* <IndexHeader /> */}
+			<div className='main'>
+				<Container>
+					<Row>
+						<Col
+							xs={{ size: 12 }}
+							sm={{ size: 12 }}
+							md={{ size: 12 }}
+							lg={{ size: 12 }}>
+							<CarouselCommonPropedIndex />
+						</Col>
+					</Row>
+					<Row>
+						<Col className='py-5'>
+							{' '}
+							<h1 className='text-center'>Catalogue</h1>
+						</Col>
+					</Row>
+					<Row>
+						<Col
+							xs={{ size: 1, offset: 2 }}
+							sm={{ size: 2, offset: 2 }}
+							md={{ size: 6, offset: 2 }}
+							lg={{ size: 8, offset: 2 }}>
+							<ButtonOutlineCommonPropedIndex />
+						</Col>
+					</Row>
+					<Row>
+						<Col className='py-5'>
+							{' '}
+							<h1 className='text-center'>Recommendations</h1>
+						</Col>
+					</Row>
+					<Row className='pb-5'>
+						<CardIndexPropedDefault />
+					</Row>
+					<Row>
+						<Col className='py-5'>
+							{' '}
+							<h1 className='text-center'>Signed up recently</h1>
+						</Col>
+					</Row>
+					<Row className='pb-5'>
+						<CardIndexPropedDefault />
+					</Row>
+					<Row className='pb-5'>
+						{' '}
+						<h1 className='text-center'>Random</h1>
+					</Row>
+				</Container>
+			</div>
+
 			<Footer />
 		</div>
 	)

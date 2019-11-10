@@ -10,7 +10,7 @@ import classNames from 'classnames'
 
 const {
 	Footer,
-	CarouselCommonPropedProfile,
+	GalleryCommonPropedProfile,
 	FormProfile,
 	RatingProfile,
 	ButtonAddToCartPropedProfile,
@@ -113,7 +113,7 @@ const ProfilePage = () => {
 					</Row>
 					<Row>
 						<Col md='12'>
-							<CarouselCommonPropedProfile />
+							<GalleryCommonPropedProfile />
 						</Col>
 					</Row>
 					<Row>
