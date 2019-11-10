@@ -53,7 +53,6 @@ const FinalInput = memo(props => {
 		validated: false,
 	})
 	const [spinner, showSpinner] = useState(false)
-	const [validated, setValidated] = useState(false)
 
 	const generateTextListWithState = (validationResult, resolve, timeOutID) => {
 		if (timeOutID === state.timeOutID) {
