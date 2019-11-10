@@ -50,11 +50,9 @@ const FinalInput = memo(props => {
 		focused: true,
 		promise: Promise.resolve(['Invalid']),
 		resolve: () => {},
-		validated: true,
 	})
 	const [spinner, showSpinner] = useState(false)
-
-	//console.log(name, state, filteredMessages)
+	const [validated, setValidated] = useState(false)
 
 	const generateTextListWithState = (validationResult, resolve, timeOutID) => {
 		if (timeOutID === state.timeOutID) {
@@ -97,9 +95,9 @@ const FinalInput = memo(props => {
 				setValid(false)
 				resolve(filtered.length === 0 ? ['error'] : filtered)
 			}
-			state.validated = true
+			setValidated(true)
 			if (state.submitKeyPressed) {
-				// if use click enter while status.validated is false, it will submit when status.validated is true
+				// if use click enter while state.validated is false, it will submit when state.validated is true
 				state.submitKeyPressed = false
 				submitRef.current.onClick()
 			}
@@ -128,7 +126,7 @@ const FinalInput = memo(props => {
 						// do not reject when doing server validation
 						state.resolve(['validating'])
 						state.resolve = resolve
-						state.validated = false
+						setValidated(false)
 						// don't show spinner on first time(when delay=0)
 						state.delay > 500 && showSpinner('Puff')
 						// validate after user stop typing for certain miliseconds
@@ -221,7 +219,7 @@ const FinalInput = memo(props => {
 						onKeyPress && onKeyPress(e)
 						if ((e.key === 'Enter' || e.keyCode === 13) && submitRef) {
 							e.preventDefault()
-							if (state.validated) {
+							if (validated) {
 								submitRef.current.onClick()
 							} else {
 								state.submitKeyPressed = true
@@ -271,7 +269,7 @@ const FinalInput = memo(props => {
 								}
 								isOpen={
 									(!onlyShowErrorAfterSubmit || submitFailed) &&
-									!spinner &&
+									validated &&
 									!submitting &&
 									!submitSucceeded &&
 									(touched || (active && modified))
