@@ -50,7 +50,11 @@ const IndexPage = props => {
 						</Col>
 					</Row>
 					<Row>
-						<Col>
+						<Col
+							xs={{ size: 8, offset: 2 }}
+							sm={{ size: 8, offset: 2 }}
+							md={{ size: 8, offset: 2 }}
+							lg={{ size: 8, offset: 2 }}>
 							<ButtonOutlineCommonPropedIndex />
 						</Col>
 					</Row>
