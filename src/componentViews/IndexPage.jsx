@@ -51,12 +51,21 @@ const IndexPage = props => {
 					</Row>
 					<Row>
 						<Col
-							xs={{ size: 8, offset: 2 }}
-							sm={{ size: 8, offset: 2 }}
-							md={{ size: 8, offset: 2 }}
+							xs={{ size: 1, offset: 2 }}
+							sm={{ size: 2, offset: 2 }}
+							md={{ size: 6, offset: 2 }}
 							lg={{ size: 8, offset: 2 }}>
 							<ButtonOutlineCommonPropedIndex />
 						</Col>
+					</Row>
+					<Row>
+						<Col className='py-5'>
+							{' '}
+							<h1 className='text-center'>Recommendations</h1>
+						</Col>
+					</Row>
+					<Row className='pb-5'>
+						<CardIndexPropedDefault />
 					</Row>
 					<Row>
 						<Col className='py-5'>
@@ -66,6 +75,10 @@ const IndexPage = props => {
 					</Row>
 					<Row className='pb-5'>
 						<CardIndexPropedDefault />
+					</Row>
+					<Row className='pb-5'>
+						{' '}
+						<h1 className='text-center'>Random</h1>
 					</Row>
 				</Container>
 			</div>
