@@ -4,6 +4,7 @@ import { TabPaneSettingListStoreUserPropedNotification } from './TabPaneSettingL
 import { ModalImageCropperPropedSettings } from './ModalImageCropper'
 import { CardSenshi } from './CardSenshi'
 import { CardIndexPropedDefault } from './CardIndex'
+import {ButtonOutlineCommonPropedIndex} from './ButtonOutlineCommon'
 
 export const Exports = {
 	...ExportAtoms,
@@ -14,4 +15,5 @@ export const Exports = {
 	ModalImageCropperPropedSettings,
 	CardSenshi,
 	CardIndexPropedDefault,
+	ButtonOutlineCommon
 }

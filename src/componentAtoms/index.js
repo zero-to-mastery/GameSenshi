@@ -74,7 +74,6 @@ import {
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 } from './CheckBoxIcon'
-import { ButtonOutlineCommonPropedIndex } from './ButtonOutlineCommon'
 
 export const Exports = {
 	...ExportProtons,
@@ -146,5 +145,4 @@ export const Exports = {
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 	CarouselCommonPropedIndex,
-	ButtonOutlineCommonPropedIndex,
 }

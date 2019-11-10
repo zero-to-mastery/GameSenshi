@@ -4,7 +4,7 @@ import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 // layout library
 import { Container, Row, Col } from 'reactstrap'
-import { ButtonOutlineCommon } from '../componentAtoms/ButtonOutlineCommon/ButtonOutlineCommon'
+import { ButtonOutlineCommon } from '../componentMolecules/ButtonOutlineCommon/ButtonOutlineCommon'
 
 const {
 	Footer,
