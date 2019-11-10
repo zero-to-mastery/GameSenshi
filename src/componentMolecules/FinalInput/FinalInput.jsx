@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback, memo } from 'react'
 import { Field } from 'react-final-form'
 import { stopUndefined } from 'utils'
+import classNames from 'classnames'
 // core components
 import { Exports } from 'componentAtoms'
 
-const { ListText, PopoverCommon } = stopUndefined(Exports)
+const { TextAlert, PopoverCommon } = stopUndefined(Exports)
 
 const DELAY = 1
 const DELAY2 = 1000
@@ -53,6 +54,8 @@ const FinalInput = memo(props => {
 	})
 	const [spinner, showSpinner] = useState(false)
 
+	//console.log(name, state, filteredMessages)
+
 	const generateTextListWithState = (validationResult, resolve, timeOutID) => {
 		if (timeOutID === state.timeOutID) {
 			const validationResult_ = validationResult || {}
@@ -60,7 +63,7 @@ const FinalInput = memo(props => {
 			// validationResult value is either undefined or {status:true/false, message:string/array of string} or string or array of string
 			// if validationResult is undefined, it passed validation, do not show List
 			// if validationResult is status true, it passed validation, show List if message available
-			// if validationResult is status if failed or string or array of string, it failed validation, it must show List because failed validation must come with reason
+			// if validationResult is status if failed or string or array of string, it failed validation, it must show List because failed validation must has reason
 
 			const messages = message
 				? [message]
@@ -258,18 +261,22 @@ const FinalInput = memo(props => {
 							onChange={onChange_}
 							onKeyPress={onKeyPress_}
 							{...restProps}>
-							{(!onlyShowErrorAfterSubmit || submitFailed) &&
-								!spinner &&
-								!submitting &&
-								!submitSucceeded &&
-								(touched || (active && modified)) && (
-									<ListText
-										isValid={valid}
-										messages={
-											(!dirtySinceLastSubmit && submitError) || filteredMessages
-										}
-									/>
-								)}
+							<TextAlert
+								icon={classNames('tim-icons', {
+									'icon-check-2': valid,
+									'icon-alert-circle-exc': !valid,
+								})}
+								messages={
+									(!dirtySinceLastSubmit && submitError) || filteredMessages
+								}
+								isOpen={
+									(!onlyShowErrorAfterSubmit || submitFailed) &&
+									!spinner &&
+									!submitting &&
+									!submitSucceeded &&
+									(touched || (active && modified))
+								}
+							/>
 						</Component>
 						{popoverMessages_.length > 0 && (
 							<PopoverCommon
