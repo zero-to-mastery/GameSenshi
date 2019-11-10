@@ -46,6 +46,8 @@ A step by step series of examples that tell you how to get the development env r
 
 After git clone
 
+request the `.config` folder(s) from `tylim#9831` in `Discord`
+
 ```bash
 node install.js
 ```
