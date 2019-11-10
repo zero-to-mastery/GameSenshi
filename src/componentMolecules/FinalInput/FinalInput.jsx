@@ -47,9 +47,10 @@ const FinalInput = memo(props => {
 		delay: 0, // initial delay is 0 for fast first time background validation
 		timeOutID: 0,
 		submitKeyPressed: false,
-		focused: true,
+		focused: true, //first round should be true for initial auto check
 		promise: Promise.resolve(['Invalid']),
 		resolve: () => {},
+		validated: false,
 	})
 	const [spinner, showSpinner] = useState(false)
 	const [validated, setValidated] = useState(false)
@@ -81,21 +82,26 @@ const FinalInput = memo(props => {
 				return !popoverMessages_.includes(message)
 			})
 
-			setFilteredMessages(filtered)
-
 			showSpinner(false)
 			!state.delay && (state.focused = false) // one time only, reset back to false after first time background validation
 
 			if (validationResult === undefined || status) {
 				// if validation passed
 				setValid(true)
+				setFilteredMessages([])
 				resolve()
 			} else {
 				// if validation failed
 				setValid(false)
-				resolve(filtered.length === 0 ? ['error'] : filtered)
+				if (filtered.length > 0) {
+					setFilteredMessages(filtered)
+					resolve(filtered)
+				} else {
+					setFilteredMessages(['something is wrong'])
+					resolve(['error'])
+				}
 			}
-			setValidated(true)
+			state.validated = true
 			if (state.submitKeyPressed) {
 				// if use click enter while state.validated is false, it will submit when state.validated is true
 				state.submitKeyPressed = false
@@ -126,7 +132,7 @@ const FinalInput = memo(props => {
 						// do not reject when doing server validation
 						state.resolve(['validating'])
 						state.resolve = resolve
-						setValidated(false)
+						state.validated = false
 						// don't show spinner on first time(when delay=0)
 						state.delay > 500 && showSpinner('Puff')
 						// validate after user stop typing for certain miliseconds
@@ -219,7 +225,7 @@ const FinalInput = memo(props => {
 						onKeyPress && onKeyPress(e)
 						if ((e.key === 'Enter' || e.keyCode === 13) && submitRef) {
 							e.preventDefault()
-							if (validated) {
+							if (state.validated) {
 								submitRef.current.onClick()
 							} else {
 								state.submitKeyPressed = true
@@ -269,7 +275,8 @@ const FinalInput = memo(props => {
 								}
 								isOpen={
 									(!onlyShowErrorAfterSubmit || submitFailed) &&
-									validated &&
+									filteredMessages.length > 0 &&
+									!spinner &&
 									!submitting &&
 									!submitSucceeded &&
 									(touched || (active && modified))
@@ -278,7 +285,7 @@ const FinalInput = memo(props => {
 						</Component>
 						{popoverMessages_.length > 0 && (
 							<PopoverCommon
-								isOpen={active || !!(errorMessages && state.delay)}
+								isOpen={active}
 								target={name}
 								spinner={spinner}
 								header={`${name} rules`}>
