@@ -7,8 +7,8 @@ import { PopoverCommon } from './PopoverCommon'
 import Footer from './Footers/Footer'
 import IndexHeader from './Headers/IndexHeader.jsx'
 import {
-	ButtonsSocialOptioned,
-	ButtonsSocialPropedAuth,
+	ButtonsIconOptioned,
+	ButtonsIconPropedAuth,
 	BUTTONS_ICON_ID,
 	BUTTONS_ICON_ICON,
 	BUTTONS_ICON_COLOR,
@@ -87,8 +87,8 @@ export const Exports = {
 	ImageUploadStoreUserPropedSettings,
 	AlertCommonStoreAlert,
 	ProgressCommonStoreProgress,
-	ButtonsSocialOptioned,
-	ButtonsSocialPropedAuth,
+	ButtonsIconOptioned,
+	ButtonsIconPropedAuth,
 	BUTTONS_ICON_ID,
 	BUTTONS_ICON_ICON,
 	BUTTONS_ICON_COLOR,

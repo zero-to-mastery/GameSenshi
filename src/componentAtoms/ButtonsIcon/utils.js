@@ -17,7 +17,7 @@ import {
 } from 'constantValues'
 
 const GOOGLE = 'Google'
-const FACEBOOK = 'facebook'
+const FACEBOOK = 'Facebook'
 
 const options = [
 	{
@@ -52,7 +52,16 @@ const options = [
 	},
 ]
 
-const buttonSocialAuthOnClick = lastLocation => {
+const options_ = () => {
+	const ids = options.map(option => option[BUTTONS_ICON_ID])
+	if (ids.length !== new Set(ids).size) {
+		throw 'duplicated id'
+	} else {
+		return options
+	}
+}
+
+const buttonIconAuthOnClick = lastLocation => {
 	return (e, button) => {
 		const { [BUTTONS_ICON_ID]: id } = button
 		const body = (
@@ -81,17 +90,17 @@ const buttonSocialAuthOnClick = lastLocation => {
 	}
 }
 
-const buttonSocialAuths = options.slice(0, 2)
+const buttonIconAuths = { [GOOGLE]: '', [FACEBOOK]: '' }
 
-const getButtons = buttons => {
-	const getButtons_ = []
+const getButtonsIcon = buttons => {
+	const getButtons = []
 	for (var prop in buttons) {
-		getButtons_.push({
-			...options.find(option => option[BUTTONS_ICON_ID] === prop),
-			[BUTTONS_ICON_HREF]: buttons[prop],
+		getButtons.push({
+			...options_().find(option => option[BUTTONS_ICON_ID] === prop),
+			...(buttons[prop] && { [BUTTONS_ICON_HREF]: buttons[prop] }),
 		})
 	}
-	return getButtons_
+	return getButtons
 }
 
-export { buttonSocialAuthOnClick, getButtons, buttonSocialAuths }
+export { buttonIconAuthOnClick, getButtonsIcon, buttonIconAuths }

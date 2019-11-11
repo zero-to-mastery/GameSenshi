@@ -9,7 +9,7 @@ const {
 	ButtonSound,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
-	ButtonsSocialOptioned,
+	ButtonsIconOptioned,
 } = stopUndefined(Exports)
 
 const CardSenshi = props => {
@@ -49,7 +49,7 @@ const CardSenshi = props => {
 					</Row>
 					<Row className='justify-content-center'>
 						{/* Channels icons */}
-						<ButtonsSocialOptioned buttons={channels} />
+						<ButtonsIconOptioned buttons={channels} />
 					</Row>
 				</CardHeader>
 				<CardBody>

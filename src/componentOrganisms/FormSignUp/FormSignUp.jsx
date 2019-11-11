@@ -17,7 +17,7 @@ import {
 import { Exports } from 'componentnCompounds'
 
 const {
-	ButtonsSocialPropedAuth,
+	ButtonsIconPropedAuth,
 	FinalForm,
 	ButtonSubmit,
 	FinalTextEmailPropedSignUp,
@@ -59,7 +59,7 @@ const FormSignUp = props => {
 				{({ handleSubmit, submitting, submitError }) => (
 					<Form className='form'>
 						<CardBody>
-							<ButtonsSocialPropedAuth />
+							<ButtonsIconPropedAuth />
 							<Row>
 								<Col />
 								<Col className='text-center text-muted mb-4 mt-3 col-auto'>
