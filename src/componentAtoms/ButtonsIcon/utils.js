@@ -15,6 +15,7 @@ import {
 	FB_FS_CHANNELS_TWITCH,
 	FB_FS_CHANNELS_YOUTUBE,
 } from 'constantValues'
+import { duplicatedIds } from 'utils'
 
 const GOOGLE = 'Google'
 const FACEBOOK = 'Facebook'
@@ -52,15 +53,6 @@ const options = [
 	},
 ]
 
-const options_ = () => {
-	const ids = options.map(option => option[BUTTONS_ICON_ID])
-	if (ids.length !== new Set(ids).size) {
-		throw 'duplicated id'
-	} else {
-		return options
-	}
-}
-
 const buttonIconAuthOnClick = lastLocation => {
 	return (e, button) => {
 		const { [BUTTONS_ICON_ID]: id } = button
@@ -96,7 +88,9 @@ const getButtonsIcon = buttons => {
 	const getButtons = []
 	for (var prop in buttons) {
 		getButtons.push({
-			...options_().find(option => option[BUTTONS_ICON_ID] === prop),
+			...duplicatedIds(options, BUTTONS_ICON_ID).find(
+				option => option[BUTTONS_ICON_ID] === prop
+			),
 			...(buttons[prop] && { [BUTTONS_ICON_HREF]: buttons[prop] }),
 		})
 	}

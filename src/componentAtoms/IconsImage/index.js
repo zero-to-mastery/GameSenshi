@@ -1,16 +1,16 @@
 import React, { useMemo } from 'react'
 import { IconsImage } from './IconsImage'
-import { getIcons } from './utils'
+import { getIconsImage } from './utils'
 import styles from './styles.module.css'
 
 const IconsImageOptioned = props => {
 	const { icons, ...otherProps } = props
-	const icons_ = useMemo(() => getIcons(icons), [icons])
+	const icons_ = useMemo(() => getIconsImage(icons), [icons])
 	return <IconsImage className={styles.games} icons={icons_} {...otherProps} />
 }
 
-const IconsImageOptionedPropedGameIcons = props => {
+const IconsImagePropedGameIcons = props => {
 	return <IconsImageOptioned className={styles.games} {...props} />
 }
 
-export { IconsImageOptionedPropedGameIcons, IconsImageOptioned }
+export { IconsImagePropedGameIcons, IconsImageOptioned, IconsImage }
