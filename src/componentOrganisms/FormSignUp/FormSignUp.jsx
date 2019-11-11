@@ -31,7 +31,7 @@ const {
 
 const FormSignUp = props => {
 	const submitButton = useRef(null)
-	const { signInLink, onSuccessfulSubmission, onSubmit, terms } = props
+	const { signInLink, onSuccessfulSubmission, onSubmit, terms, privacy } = props
 
 	return (
 		<Card className='card-register' style={{ zIndex: 1000 }}>
@@ -110,14 +110,22 @@ const FormSignUp = props => {
 			</FinalForm>
 			<Row className='justify-content-center'>
 				<Label className='mb-3 text-center text-wrap w-75 '>
-					You agree to our{' '}
+					By creating account, you agree to our{' '}
 					<Link
 						className='link footer-link'
 						style={{ color: '#ba54f5', fontSize: 12 }}
-						to={terms}>
-						Privacy Policy and Terms of Service
+						to={privacy}
+						target='_blank'>
+						Privacy Policy
 					</Link>{' '}
-					by creating account.
+					and{' '}
+					<Link
+						className='link footer-link'
+						style={{ color: '#ba54f5', fontSize: 12 }}
+						to={terms}
+						target='_blank'>
+						Terms & Conditions
+					</Link>{' '}
 				</Label>
 			</Row>
 		</Card>
