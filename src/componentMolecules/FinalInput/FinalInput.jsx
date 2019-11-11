@@ -34,11 +34,10 @@ const FinalInput = memo(props => {
 		...restProps
 	} = props
 
+	// set default value
 	const setValue_ = setValue || seLocalValue
 	const value_ = setValue || value ? value : localValue
 	const popoverMessages_ = popoverMessages || emptyArray
-
-	// set default value
 
 	const [popoverFailedItems, setPopoverFailedItems] = useState({})
 	const [filteredMessages, setFilteredMessages] = useState([])
@@ -132,7 +131,6 @@ const FinalInput = memo(props => {
 						state.resolve(['validating'])
 						state.resolve = resolve
 						state.validated = false
-						// don't show spinner on first time(when delay=0)
 						state.delay > 500 && showSpinner('Puff')
 						// validate after user stop typing for certain miliseconds
 						clearTimeout(state.timeOutID)
