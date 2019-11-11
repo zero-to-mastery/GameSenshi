@@ -4,19 +4,15 @@ import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 // layout library
 import { Container, Row, Col } from 'reactstrap'
-import { ButtonOutlineCommon } from '../componentMolecules/ButtonOutlineCommon/ButtonOutlineCommon'
 
 const {
 	Footer,
-	IndexHeader,
 	CarouselCommonPropedIndex,
 	CardIndexPropedDefault,
-	ButtonOutlineCommonPropedIndex,
+	ButtonsIconImagePropedIndex,
 } = stopUndefined(Exports)
 
-const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
-
-const IndexPage = props => {
+const IndexPage = () => {
 	const wrapper = useRef(null)
 
 	useEffect(() => {
@@ -55,7 +51,7 @@ const IndexPage = props => {
 							sm={{ size: 2, offset: 2 }}
 							md={{ size: 6, offset: 2 }}
 							lg={{ size: 8, offset: 2 }}>
-							<ButtonOutlineCommonPropedIndex />
+							<ButtonsIconImagePropedIndex />
 						</Col>
 					</Row>
 					<Row>

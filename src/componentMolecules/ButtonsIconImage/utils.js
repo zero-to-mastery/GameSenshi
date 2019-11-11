@@ -1,4 +1,4 @@
-import { GAME_NAME, GAME_TEXT } from './ButtonOutlineCommon'
+import { GAME_NAME, GAME_TEXT } from './ButtonsIconImage'
 
 const games = [
 	{ [GAME_NAME]: 'Dota2', [GAME_TEXT]: 'Dota 2' },

@@ -2,7 +2,7 @@ import {
 	ICONS_COMMON_ID,
 	ICON_COMMON_PATH,
 	ICONS_COMMON_TOOLTIP,
-} from './IconsCommon'
+} from './IconsImage'
 
 import {
 	FB_FS_GAMES_DOTA2,
