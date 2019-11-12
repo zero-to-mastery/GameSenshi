@@ -8,16 +8,16 @@ const widthBreakPoint = 991
 const bgPurple = 'bg-purple'
 
 const {
-	BrandNavbarPropedIndexNavbarStoreUser,
+	BrandNavbarStoreUserPropedNavbar,
 	ProgressCommonStoreProgress,
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
-	LoaderNavLinkPropedIndexNavbarStoreUser,
-	IconNotificationStoreUserPropedIndexNavbar,
+	LoaderNavLinkStoreUserPropedNavbar,
+	IconNotificationStoreUserPropedNavbar,
 	ListNavItemStoreUserPropedNavbarIndex,
 	MenuHamburger,
 	HeaderCollapsedPropedNavbarIndex,
-	DropdownMenuNavbarStoreUserPropedNavbarIndex,
+	DropdownMenuNavbarStoreUserPropedNavbar,
 	AvatarUserStoreUser,
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
@@ -96,13 +96,13 @@ const NavbarIndex = props => {
 				<Container>
 					<div className='navbar-translate'>
 						{/*small screen size*/}
-						<BrandNavbarPropedIndexNavbarStoreUser />
+						<BrandNavbarStoreUserPropedNavbar />
 						<Nav className='flex-row' navbar>
-							<LoaderNavLinkPropedIndexNavbarStoreUser small>
-								<IconNotificationStoreUserPropedIndexNavbar small />
+							<LoaderNavLinkStoreUserPropedNavbar small>
+								<IconNotificationStoreUserPropedNavbar small />
 								<ButtonSignUpStoreUserPropedIndexNavbar small />
 								<ButtonSignInStoreUserPropedIndexNavbar small />
-							</LoaderNavLinkPropedIndexNavbarStoreUser>
+							</LoaderNavLinkStoreUserPropedNavbar>
 							<MenuHamburger isOpen={collapseOpen} toggle={toggleCollapse} />
 						</Nav>
 					</div>
@@ -122,16 +122,16 @@ const NavbarIndex = props => {
 						/>
 						<Nav navbar>
 							{(!collapseOpen && collapseExited) || overWidthBreakPoint ? (
-								<LoaderNavLinkPropedIndexNavbarStoreUser>
+								<LoaderNavLinkStoreUserPropedNavbar>
 									{/* big screen size or not collapsed*/}
 									<ListNavItemStoreUserPropedNavbarIndex />
-									<IconNotificationStoreUserPropedIndexNavbar className='d-none d-lg-inline-flex' />
+									<IconNotificationStoreUserPropedNavbar className='d-none d-lg-inline-flex' />
 									<DropdownNavbarStoreUser avatar={AvatarUserStoreUser}>
-										<DropdownMenuNavbarStoreUserPropedNavbarIndex />
+										<DropdownMenuNavbarStoreUserPropedNavbar />
 									</DropdownNavbarStoreUser>
 									<ButtonSignInStoreUserPropedIndexNavbar />
 									<ButtonSignUpStoreUserPropedIndexNavbar />
-								</LoaderNavLinkPropedIndexNavbarStoreUser>
+								</LoaderNavLinkStoreUserPropedNavbar>
 							) : (
 								<>
 									{/* small screen size and collapsed*/}

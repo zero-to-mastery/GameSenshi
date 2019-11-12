@@ -36,9 +36,9 @@ import {
 import { IconCard } from './IconCard'
 import { LabelForm, LabelFormSimple } from './LabelForm'
 import { InputDate } from './InputDate'
-import { BrandNavbarPropedIndexNavbarStoreUser } from './BrandNavbar'
-import { LoaderNavLinkPropedIndexNavbarStoreUser } from './LoaderNavLink'
-import { IconNotificationStoreUserPropedIndexNavbar } from './IconNotification'
+import { BrandNavbarStoreUserPropedNavbar } from './BrandNavbar'
+import { LoaderNavLinkStoreUserPropedNavbar } from './LoaderNavLink'
+import { IconNotificationStoreUserPropedNavbar } from './IconNotification'
 import {
 	ListNavItemStoreUserPropedNavbarIndex,
 	ListNavItemStoreUserPropedCollapsed,
@@ -46,7 +46,7 @@ import {
 } from './ListNavItem'
 import { MenuHamburger } from './MenuHamburger'
 import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
-import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from './DropdownMenuNavbar'
+import { DropdownMenuNavbarStoreUserPropedNavbar } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
 import { GalleryCommonPropedProfile } from './GalleryCommon'
@@ -118,13 +118,13 @@ export const Exports = {
 	LabelForm,
 	LabelFormSimple,
 	InputDate,
-	BrandNavbarPropedIndexNavbarStoreUser,
-	LoaderNavLinkPropedIndexNavbarStoreUser,
-	IconNotificationStoreUserPropedIndexNavbar,
+	BrandNavbarStoreUserPropedNavbar,
+	LoaderNavLinkStoreUserPropedNavbar,
+	IconNotificationStoreUserPropedNavbar,
 	ListNavItemStoreUserPropedNavbarIndex,
 	MenuHamburger,
 	HeaderCollapsedPropedNavbarIndex,
-	DropdownMenuNavbarStoreUserPropedNavbarIndex,
+	DropdownMenuNavbarStoreUserPropedNavbar,
 	AvatarUserStoreUser,
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
