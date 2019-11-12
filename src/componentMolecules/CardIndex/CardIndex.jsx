@@ -11,11 +11,11 @@ import {
 	Col,
 } from 'reactstrap'
 
-const NAME = 'name'
-const IMAGE = 'image'
-const SKILLS = 'skills'
-const HOBBIES = 'hobbies'
-const LEVEL = 'level'
+const CARD_INDEX_NAME = 'name'
+const CARD_INDEX_IMAGE = 'image'
+const CARD_INDEX_SKILLS = 'skills'
+const CARD_INDEX_HOBBIES = 'hobbies'
+const CARD_INDEX_LEVEL = 'level'
 
 const CardIndex = props => {
 	const { cards } = props
@@ -23,11 +23,11 @@ const CardIndex = props => {
 		<Fragment>
 			{cards.map(card => {
 				const {
-					[NAME]: name,
-					[IMAGE]: src,
-					[SKILLS]: skills,
-					[HOBBIES]: hobbies,
-					[LEVEL]: level,
+					[CARD_INDEX_NAME]: name,
+					[CARD_INDEX_IMAGE]: src,
+					[CARD_INDEX_SKILLS]: skills,
+					[CARD_INDEX_HOBBIES]: hobbies,
+					[CARD_INDEX_LEVEL]: level,
 				} = card
 				return (
 					<Col>
@@ -95,4 +95,11 @@ const CardIndex = props => {
 	)
 }
 
-export { CardIndex, NAME, IMAGE, HOBBIES, SKILLS, LEVEL }
+export {
+	CardIndex,
+	CARD_INDEX_NAME,
+	CARD_INDEX_IMAGE,
+	CARD_INDEX_HOBBIES,
+	CARD_INDEX_SKILLS,
+	CARD_INDEX_LEVEL,
+}
