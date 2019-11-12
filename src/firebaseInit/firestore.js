@@ -6,7 +6,7 @@ import {
 	UPDATED_AT,
 } from 'constantValues'
 
-const docGetSetGenerator = path => {
+const createDocGetSet = path => {
 	const ref = () => firestore.doc(path(auth().currentUser.uid))
 	const get = () => ref().get()
 	const set = (data, options = { merge: true }) =>
@@ -19,11 +19,10 @@ const [
 	docGeneralSettingGet,
 	docGeneralSettingSet,
 	docGeneralSettingOnSnapshot,
-] = docGetSetGenerator(fbfsSettingsGeneralPath)
-const [
-	docNotificationSettingGet,
-	docNotificationSettingSet,
-] = docGetSetGenerator(fbfsSettingsNotificationPath)
+] = createDocGetSet(fbfsSettingsGeneralPath)
+const [docNotificationSettingGet, docNotificationSettingSet] = createDocGetSet(
+	fbfsSettingsNotificationPath
+)
 
 export {
 	docGeneralSettingGet,
