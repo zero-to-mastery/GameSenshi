@@ -9,6 +9,7 @@ const {
 	Footer,
 	CardIndexPropedDefault,
 	ButtonsIconImagePropedIndex,
+	GalleryCommonPropedIndex,
 } = stopUndefined(Exports)
 
 const IndexPage = () => {
@@ -31,10 +32,14 @@ const IndexPage = () => {
 				<Container>
 					<Row>
 						<Col
+							className='pt-5'
+							style={{ marginTop: '50px' }}
 							xs={{ size: 12 }}
 							sm={{ size: 12 }}
 							md={{ size: 12 }}
-							lg={{ size: 12 }}></Col>
+							lg={{ size: 12 }}>
+							<GalleryCommonPropedIndex IndexGallery />
+						</Col>
 					</Row>
 					<Row>
 						<Col className='py-5'>

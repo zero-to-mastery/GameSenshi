@@ -20,7 +20,7 @@ const getYoutubeThumnailUrl = id => `https://img.youtube.com/vi/${id}/0.jpg`
 const GalleryCommon = props => {
 	const [showUI, setShowUI] = useState(true)
 	const [videoPlaying, setVideoPlaying] = useState(true)
-	const { items, aspectRatio, ...otherProps } = props
+	const { items, aspectRatio, IndexGallery, ...otherProps } = props
 
 	const aspectRatio_ = 100 / (aspectRatio || 3)
 
@@ -94,7 +94,17 @@ const GalleryCommon = props => {
 		})
 	}
 
-	return (
+	return IndexGallery ? (
+		<ImageGallery
+			items={items_()}
+			showIndex={showUI}
+			showBullets={showUI}
+			showPlayButton={showUI}
+			showFullscreenButton={showUI}
+			onSlide={onSlide}
+			{...otherProps}
+		/>
+	) : (
 		<ImageGallery
 			items={items_()}
 			showIndex={showUI}

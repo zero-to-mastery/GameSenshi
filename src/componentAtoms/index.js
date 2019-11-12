@@ -73,6 +73,7 @@ import {
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 } from './CheckBoxIcon'
+import { GalleryCommonPropedIndex } from './GalleryCommon'
 
 export const Exports = {
 	...ExportProtons,
@@ -144,4 +145,5 @@ export const Exports = {
 	NUM_COMMENTS,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
+	GalleryCommonPropedIndex,
 }
