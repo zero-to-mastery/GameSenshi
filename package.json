@@ -126,7 +126,8 @@
 			"react-app",
 			"prettier/react",
 			"eslint:recommended",
-			"plugin:prettier/recommended"
+			"plugin:prettier/recommended",
+			"prettier"
 		],
 		"rules": {
 			"no-console": "warn",
