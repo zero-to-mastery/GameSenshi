@@ -1,33 +1,36 @@
 import React from 'react'
-import { Button, Label, Col } from 'reactstrap'
-
+import { Button, Label, Row, Col } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 const { IconsImageOptioned } = stopUndefined(Exports)
 
-const GAME_NAME = 'name'
-const GAME_TEXT = 'text'
+const BUTTONS_ICON_IMAGE_ID = 'id'
+const BUTTONS_ICON_IMAGE_TEXT = 'text'
 
 const ButtonsIconImage = props => {
-	const { games } = props
+	const { buttons } = props
 	return (
-		<div className='btn-wrapper d-flex flex-row'>
-			{games.map(game => {
-				const { [GAME_NAME]: name, [GAME_TEXT]: text } = game
+		<Row>
+			{buttons.map(button => {
+				const {
+					[BUTTONS_ICON_IMAGE_ID]: id,
+					[BUTTONS_ICON_IMAGE_TEXT]: text,
+				} = button
 				return (
-					<div
-						key={name}
-						style={{ marginLeft: '30px' }}
-						className='d-flex flex-column justify-content-center align-items-center'>
-						<Button className='btn-simple' color='reddit'>
-							<IconsImageOptioned icons={name} />
-						</Button>
-						<Label>{text}</Label>
-					</div>
+					<Col key={id}>
+						<Row className='justify-content-center'>
+							<Button className='btn-simple' color='reddit'>
+								<IconsImageOptioned icons={id} />
+							</Button>
+						</Row>
+						<Row className='justify-content-center'>
+							<Label>{text}</Label>
+						</Row>
+					</Col>
 				)
 			})}
-		</div>
+		</Row>
 	)
 }
 
-export { ButtonsIconImage, GAME_NAME, GAME_TEXT }
+export { ButtonsIconImage, BUTTONS_ICON_IMAGE_ID, BUTTONS_ICON_IMAGE_TEXT }

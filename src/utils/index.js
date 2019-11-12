@@ -8,7 +8,11 @@ import {
 	API_MESSAGE,
 	API_DATA,
 } from './objects'
-import { stopUndefined, duplicatedIds } from './codeToolings'
+import {
+	stopUndefined,
+	checkDuplicatedObject,
+	createGetOptions,
+} from './codeToolings'
 
 import {
 	signUpEmailValidation,
@@ -37,7 +41,8 @@ export {
 	API_DATA,
 	signUpResObj,
 	stopUndefined,
-	duplicatedIds,
+	checkDuplicatedObject,
+	createGetOptions,
 	signUpEmailValidation,
 	signUpPasswordValidation,
 	checkBoxValidation,
