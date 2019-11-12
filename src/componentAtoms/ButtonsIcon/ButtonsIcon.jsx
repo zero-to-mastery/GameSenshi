@@ -12,7 +12,7 @@ const ButtonsIcon = props => {
 	const { onClick, buttons, className } = props
 
 	return (
-		<div className={classNames('btn-wrapper', 'text-center', className)}>
+		<div className={classNames('text-center', className)}>
 			{buttons.map(button => {
 				const {
 					[BUTTONS_ICON_ID]: id,

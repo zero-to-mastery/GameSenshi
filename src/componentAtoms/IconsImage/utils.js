@@ -11,9 +11,7 @@ import {
 	FB_FS_GAMES_APEX,
 	FB_FS_GAMES_FORTNITE,
 } from 'constantValues'
-import { isArray } from 'util'
-
-import { duplicatedIds } from 'utils'
+import { checkDuplicatedObject } from 'utils'
 
 const gameIconsPath = game => require(`assets/icons/games/${game}.ico`)
 
@@ -46,12 +44,13 @@ const options = [
 ]
 
 const getIconsImage = icons => {
-	const icons_ = isArray(icons) ? icons : [icons]
-	return icons_.map(icon =>
-		duplicatedIds(options, ICONS_COMMON_ID).find(
-			option => option[ICONS_COMMON_ID] === icon
-		)
-	)
+	const icons_ = Array.isArray(icons) ? icons : [icons]
+	const getIconsObject = icons_.map(icon => {
+		checkDuplicatedObject(options, ICONS_COMMON_ID)
+		const iconObjects = options.find(option => option[ICONS_COMMON_ID] === icon)
+		return iconObjects
+	})
+	return getIconsObject
 }
 
 export { getIconsImage }

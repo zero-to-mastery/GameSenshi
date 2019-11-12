@@ -15,7 +15,7 @@ import {
 	FB_FS_CHANNELS_TWITCH,
 	FB_FS_CHANNELS_YOUTUBE,
 } from 'constantValues'
-import { duplicatedIds } from 'utils'
+import { checkDuplicatedObject } from 'utils'
 
 const GOOGLE = 'Google'
 const FACEBOOK = 'Facebook'
@@ -88,7 +88,7 @@ const getButtonsIcon = buttons => {
 	const getButtons = []
 	for (var prop in buttons) {
 		getButtons.push({
-			...duplicatedIds(options, BUTTONS_ICON_ID).find(
+			...checkDuplicatedObject(options, BUTTONS_ICON_ID).find(
 				option => option[BUTTONS_ICON_ID] === prop
 			),
 			...(buttons[prop] && { [BUTTONS_ICON_HREF]: buttons[prop] }),

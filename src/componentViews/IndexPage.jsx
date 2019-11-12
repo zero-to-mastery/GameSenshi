@@ -41,7 +41,6 @@ const IndexPage = () => {
 					</Row>
 					<Row>
 						<Col className='py-5'>
-							{' '}
 							<h1 className='text-center'>Catalogue</h1>
 						</Col>
 					</Row>
