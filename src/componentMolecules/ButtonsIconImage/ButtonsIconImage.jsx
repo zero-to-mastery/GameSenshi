@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Label } from 'reactstrap'
+import { Button, Label, Col } from 'reactstrap'
 
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'

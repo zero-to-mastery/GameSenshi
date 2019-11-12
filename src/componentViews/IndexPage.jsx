@@ -32,13 +32,12 @@ const IndexPage = () => {
 				<Container>
 					<Row>
 						<Col
-							className='pt-5'
-							style={{ marginTop: '50px' }}
+							style={{ marginTop: '80px' }}
 							xs={{ size: 12 }}
 							sm={{ size: 12 }}
 							md={{ size: 12 }}
 							lg={{ size: 12 }}>
-							<GalleryCommonPropedIndex IndexGallery />
+							<GalleryCommonPropedIndex indexGallery />
 						</Col>
 					</Row>
 					<Row>
@@ -49,9 +48,9 @@ const IndexPage = () => {
 					</Row>
 					<Row>
 						<Col
-							xs={{ size: 1, offset: 2 }}
-							sm={{ size: 2, offset: 2 }}
-							md={{ size: 6, offset: 2 }}
+							xs={{ size: 8, offset: 2 }}
+							sm={{ size: 8, offset: 2 }}
+							md={{ size: 8, offset: 2 }}
 							lg={{ size: 8, offset: 2 }}>
 							<ButtonsIconImagePropedIndex />
 						</Col>
