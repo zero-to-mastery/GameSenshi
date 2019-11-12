@@ -7,7 +7,7 @@ const ICONS_COMMON_ID = 'id'
 const ICONS_COMMON_TOOLTIP = 'tooltip'
 const ICON_COMMON_PATH = 'path'
 
-const IconsCommon = props => {
+const IconsImage = props => {
 	const { icons, className } = props
 
 	return icons.map(icon => {
@@ -16,7 +16,7 @@ const IconsCommon = props => {
 			[ICON_COMMON_PATH]: path,
 			[ICONS_COMMON_TOOLTIP]: tooltip,
 		} = icon
-		const id_ = 'IconsCommon' + id.replace(/ /g, '')
+		const id_ = 'IconsImage' + id.replace(/ /g, '')
 		return (
 			<div key={id_} className={classNames('m-1', className)}>
 				<Image
@@ -33,4 +33,4 @@ const IconsCommon = props => {
 	})
 }
 
-export { IconsCommon, ICONS_COMMON_ID, ICON_COMMON_PATH, ICONS_COMMON_TOOLTIP }
+export { IconsImage, ICONS_COMMON_ID, ICON_COMMON_PATH, ICONS_COMMON_TOOLTIP }

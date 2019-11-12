@@ -4,12 +4,12 @@ import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 const {
 	BadgesPropedDefault,
-	IconsCommonOptionedPropedGameIcons,
+	IconsImagePropedGameIcons,
 	StatusCommonPropedOnline,
 	ButtonSound,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
-	ButtonsSocialOptioned,
+	ButtonsIconOptioned,
 } = stopUndefined(Exports)
 
 const CardSenshi = props => {
@@ -45,11 +45,11 @@ const CardSenshi = props => {
 					<p className='text-muted text-center mb-3'>@{username}</p>
 					<Row className='justify-content-center'>
 						{/*Game icons*/}
-						<IconsCommonOptionedPropedGameIcons icons={games} />
+						<IconsImagePropedGameIcons icons={games} />
 					</Row>
 					<Row className='justify-content-center'>
 						{/* Channels icons */}
-						<ButtonsSocialOptioned buttons={channels} />
+						<ButtonsIconOptioned buttons={channels} />
 					</Row>
 				</CardHeader>
 				<CardBody>

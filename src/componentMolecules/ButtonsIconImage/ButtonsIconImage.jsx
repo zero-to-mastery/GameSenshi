@@ -1,28 +1,28 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Button, Label } from 'reactstrap'
 
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
-const { IconsCommonOptioned } = stopUndefined(Exports)
+const { IconsImageOptioned } = stopUndefined(Exports)
 
 const GAME_NAME = 'name'
-const GAME_LABEL = 'text'
+const GAME_TEXT = 'text'
 
-const ButtonOutlineCommon = props => {
+const ButtonsIconImage = props => {
 	const { games } = props
 	return (
 		<div className='btn-wrapper d-flex flex-row'>
 			{games.map(game => {
-				const { [GAME_NAME]: name, [GAME_LABEL]: label } = game
+				const { [GAME_NAME]: name, [GAME_TEXT]: text } = game
 				return (
 					<div
 						key={name}
 						style={{ marginLeft: '30px' }}
 						className='d-flex flex-column justify-content-center align-items-center'>
 						<Button className='btn-simple' color='reddit'>
-							<IconsCommonOptioned icons={name} />
+							<IconsImageOptioned icons={name} />
 						</Button>
-						<Label>{label}</Label>
+						<Label>{text}</Label>
 					</div>
 				)
 			})}
@@ -30,4 +30,4 @@ const ButtonOutlineCommon = props => {
 	)
 }
 
-export { ButtonOutlineCommon, GAME_NAME, GAME_LABEL }
+export { ButtonsIconImage, GAME_NAME, GAME_TEXT }

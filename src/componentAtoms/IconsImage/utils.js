@@ -2,7 +2,7 @@ import {
 	ICONS_COMMON_ID,
 	ICON_COMMON_PATH,
 	ICONS_COMMON_TOOLTIP,
-} from './IconsCommon'
+} from './IconsImage'
 
 import {
 	FB_FS_GAMES_DOTA2,
@@ -12,6 +12,8 @@ import {
 	FB_FS_GAMES_FORTNITE,
 } from 'constantValues'
 import { isArray } from 'util'
+
+import { duplicatedIds } from 'utils'
 
 const gameIconsPath = game => require(`assets/icons/games/${game}.ico`)
 
@@ -43,11 +45,13 @@ const options = [
 	},
 ]
 
-const getIcons = icons => {
+const getIconsImage = icons => {
 	const icons_ = isArray(icons) ? icons : [icons]
 	return icons_.map(icon =>
-		options.find(option => option[ICONS_COMMON_ID] === icon)
+		duplicatedIds(options, ICONS_COMMON_ID).find(
+			option => option[ICONS_COMMON_ID] === icon
+		)
 	)
 }
 
-export { getIcons }
+export { getIconsImage }

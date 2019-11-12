@@ -11,4 +11,13 @@ const stopUndefined = obj => {
 	})
 }
 
-export { stopUndefined }
+const duplicatedIds = (options, prop) => {
+	const ids = options.map(option => option[prop])
+	if (ids.length !== new Set(ids).size) {
+		throw 'duplicated id'
+	} else {
+		return options
+	}
+}
+
+export { stopUndefined, duplicatedIds }

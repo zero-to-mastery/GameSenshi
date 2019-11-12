@@ -46,11 +46,11 @@ A step by step series of examples that tell you how to get the development env r
 
 After git clone
 
+request the `.config` folder(s) from `tylim#9831` in `Discord`
+
 ```bash
 node install.js
 ```
-
-request the `.config` folder(s) from `tylim#9831` in `Discord`
 
 ```bash
 npm run dev
@@ -97,7 +97,6 @@ after deployment, you can view it at
 - [Create-React-App](http://www.dropwizard.io/1.0.2/docs/) - React Project Generator
 - [Blk• Design System React](https://github.com/creativetimofficial/blk-design-system-react/) - Bootstrap
 - [Firebase](https://firebase.google.com/) - Backend
-- [Apollo(client and server)](https://www.apollographql.com/) - Endpoint
 
 Please read [wiki](https://github.com/tylim88/GameSenshi/wiki) for details of our code, techs, guides and resources.
 
