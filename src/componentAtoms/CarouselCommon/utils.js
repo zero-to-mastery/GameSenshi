@@ -1,18 +1,42 @@
-import { IMAGE, TEXT } from './CarouselCommon'
+// temp data array
+import {
+	CAROUSEL_COMMON_IMAGE,
+	CAROUSEL_COMMON_YOUTUBE,
+} from './CarouselCommon'
 
-const carouselItems = [
+const itemsProfile = [
 	{
-		[IMAGE]: require('assets/img/dota2.jpg'),
-		[TEXT]: 'Dota 2',
+		[CAROUSEL_COMMON_IMAGE]: require('assets/img/denys.jpg'),
 	},
 	{
-		[IMAGE]: require('assets/img/lol.jpg'),
-		[TEXT]: 'League of Legends',
+		[CAROUSEL_COMMON_YOUTUBE]: 'OGKbzhME3UI',
 	},
 	{
-		[IMAGE]: require('assets/img/zelda.jpg'),
-		[TEXT]: 'Legends of Zelda',
+		[CAROUSEL_COMMON_IMAGE]: require('assets/img/mark-finn.jpg'),
+	},
+	{
+		[CAROUSEL_COMMON_YOUTUBE]: '5HeVYC42grI',
+	},
+	{
+		[CAROUSEL_COMMON_IMAGE]: require('assets/img/fabien-bazanegue.jpg'),
+	},
+	{
+		[CAROUSEL_COMMON_YOUTUBE]: 'vtjorh21b8Q',
 	},
 ]
 
-export { carouselItems }
+const getIndexImage = name => require(`assets/img/index/${name}.jpg`)
+
+const itemsIndex = [
+	{
+		[CAROUSEL_COMMON_IMAGE]: getIndexImage('dota2'),
+	},
+	{
+		[CAROUSEL_COMMON_IMAGE]: getIndexImage('lol'),
+	},
+	{
+		[CAROUSEL_COMMON_IMAGE]: getIndexImage('fornite'),
+	},
+]
+
+export { itemsProfile, itemsIndex }

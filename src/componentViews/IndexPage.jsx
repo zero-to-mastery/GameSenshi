@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
-// core components
 import { Exports } from 'componentpMultiOrganisms'
-// layout library
 import { Container, Row, Col } from 'reactstrap'
 
 const {
@@ -27,15 +25,10 @@ const IndexPage = () => {
 
 	return (
 		<div className='wrapper' ref={wrapper}>
-			{/* <IndexHeader /> */}
 			<div className='main'>
-				<Container>
+				<Container style={{ marginTop: 100 }}>
 					<Row>
-						<Col
-							xs={{ size: 12 }}
-							sm={{ size: 12 }}
-							md={{ size: 12 }}
-							lg={{ size: 12 }}>
+						<Col>
 							<CarouselCommonPropedIndex />
 						</Col>
 					</Row>
@@ -45,17 +38,12 @@ const IndexPage = () => {
 						</Col>
 					</Row>
 					<Row>
-						<Col
-							xs={{ size: 1, offset: 2 }}
-							sm={{ size: 2, offset: 2 }}
-							md={{ size: 6, offset: 2 }}
-							lg={{ size: 8, offset: 2 }}>
+						<Col>
 							<ButtonsIconImagePropedIndex />
 						</Col>
 					</Row>
 					<Row>
 						<Col className='py-5'>
-							{' '}
 							<h1 className='text-center'>Recommendations</h1>
 						</Col>
 					</Row>
@@ -64,7 +52,6 @@ const IndexPage = () => {
 					</Row>
 					<Row>
 						<Col className='py-5'>
-							{' '}
 							<h1 className='text-center'>Signed up recently</h1>
 						</Col>
 					</Row>
@@ -72,7 +59,6 @@ const IndexPage = () => {
 						<CardIndexPropedDefault />
 					</Row>
 					<Row className='pb-5'>
-						{' '}
 						<h1 className='text-center'>Random</h1>
 					</Row>
 				</Container>

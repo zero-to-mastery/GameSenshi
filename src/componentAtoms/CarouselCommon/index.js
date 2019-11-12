@@ -1,9 +1,24 @@
 import React from 'react'
 import { CarouselCommon } from './CarouselCommon'
-import { carouselItems } from './utils'
+import { itemsProfile, itemsIndex } from './utils'
 
-const CarouselCommonPropedIndex = props => {
-	return <CarouselCommon items={carouselItems} {...props} />
+const CarouselCommonPropedProfile = props => {
+	return <CarouselCommon items={itemsProfile} {...props} />
 }
 
-export { CarouselCommonPropedIndex }
+const CarouselCommonPropedIndex = props => {
+	return (
+		<CarouselCommon
+			showThumbnails={false}
+			showFullscreenButton={false}
+			showPlayButton={false}
+			showIndex={false}
+			autoPlay
+			aspectRatio={9 / 16}
+			items={itemsIndex}
+			{...props}
+		/>
+	)
+}
+
+export { CarouselCommonPropedProfile, CarouselCommonPropedIndex }

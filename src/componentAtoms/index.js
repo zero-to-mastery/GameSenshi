@@ -49,12 +49,14 @@ import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbar } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
-import { GalleryCommonPropedProfile } from './GalleryCommon'
 import { RatingProfile } from './RatingProfile'
 import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
-import { CarouselCommonPropedIndex } from './CarouselCommon'
+import {
+	CarouselCommonPropedProfile,
+	CarouselCommonPropedIndex,
+} from './CarouselCommon'
 
 import {
 	CommentCommonPropedDefault,
@@ -129,7 +131,6 @@ export const Exports = {
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
-	GalleryCommonPropedProfile,
 	RatingProfile,
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
@@ -150,5 +151,6 @@ export const Exports = {
 	NUM_COMMENTS,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
+	CarouselCommonPropedProfile,
 	CarouselCommonPropedIndex,
 }
