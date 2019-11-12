@@ -6,10 +6,20 @@ import {
 } from './ButtonsIconImage'
 import { buttonsIndex, getButtonsIconImage } from './utils'
 
+import { Exports } from 'componentAtoms'
+import { stopUndefined } from 'utils'
+const { IconsImageOptioned } = stopUndefined(Exports)
+
 const ButtonsIconImageOptioned = props => {
 	const { buttons, otherProps } = props
 	const buttons_ = useMemo(() => getButtonsIconImage(buttons), [buttons])
-	return <ButtonsIconImage buttons={buttons_} {...otherProps} />
+	return (
+		<ButtonsIconImage
+			buttons={buttons_}
+			iconAs={IconsImageOptioned}
+			{...otherProps}
+		/>
+	)
 }
 
 const ButtonsIconImagePropedIndex = props => {

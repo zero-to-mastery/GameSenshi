@@ -67,7 +67,11 @@ import {
 } from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
 import { BadgesPropedDefault } from './Badges'
-import { IconsImagePropedGameIcons, IconsImageOptioned } from './IconsImage'
+import {
+	IconsImagePropedGameIcons,
+	IconsImageOptioned,
+	IconsImage,
+} from './IconsImage'
 import { StatusCommonPropedOnline } from './StatusCommon'
 import { ButtonSound } from './ButtonSound'
 import {
@@ -133,6 +137,7 @@ export const Exports = {
 	BadgesPropedDefault,
 	IconsImagePropedGameIcons,
 	IconsImageOptioned,
+	IconsImage,
 	StatusCommonPropedOnline,
 	ButtonSound,
 	CommentCommonPropedDefault,
