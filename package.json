@@ -121,7 +121,8 @@
 		"trailingComma": "es5",
 		"semi": false,
 		"jsxBracketSameLine": true,
-		"useTabs": true
+		"useTabs": true,
+		"jsxBracketSameLine": false
 	},
 	"eslintConfig": {
 		"extends": [
