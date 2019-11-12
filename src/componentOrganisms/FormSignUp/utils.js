@@ -12,7 +12,8 @@ const onSuccessfulSignUp = values => {
 				href={'https://' + email}
 				target='_blank'
 				rel='noopener noreferrer'
-				className='alert-link'>
+				className='alert-link'
+			>
 				{` ${email}`}
 			</a>
 		</span>

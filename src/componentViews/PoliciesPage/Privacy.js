@@ -13,7 +13,8 @@ const Privacy = () => {
 				may provide on the{' '}
 				<a
 					href='https://www.gamesenshi.com'
-					className='font-weight-bold text-success'>
+					className='font-weight-bold text-success'
+				>
 					https://www.gamesenshi.com
 				</a>{' '}
 				website and any of its products or services . It also describes the

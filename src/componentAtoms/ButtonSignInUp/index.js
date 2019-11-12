@@ -28,7 +28,8 @@ const ButtonSignInStoreUserPropedIndexNavbar = withRouter(props => {
 				navItemClass='p-0'
 				buttonClass={'btn-simple font-weight-bold'}
 				to={ROUTE_PAGE_SIGN_IN}
-				{...props}>
+				{...props}
+			>
 				Sign In
 			</ButtonSignInUpStoreUser>
 		)
@@ -40,7 +41,8 @@ const ButtonSignUpStoreUserPropedIndexNavbar = props => {
 		<ButtonSignInUpStoreUser
 			navItemClass='active'
 			to={ROUTE_PAGE_SIGN_UP}
-			{...props}>
+			{...props}
+		>
 			Sign Up
 		</ButtonSignInUpStoreUser>
 	)
