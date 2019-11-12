@@ -7,6 +7,7 @@ import { ApolloProvider } from 'react-apollo'
 import { Router } from 'routes'
 import {
 	ROUTE_PAGE_INDEX,
+	ROUTE_PAGE_SEARCHED,
 	ROUTE_PAGE_PROFILE,
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
@@ -32,6 +33,7 @@ import { Exports } from 'componentViews'
 const {
 	SettingsPage,
 	IndexPage,
+	SearchedPage,
 	ProfilePage,
 	SignInPage,
 	SignUpPage,
@@ -47,6 +49,7 @@ const {
 
 const MapRoutesToPages = {
 	[ROUTE_PAGE_INDEX]: IndexPage,
+	[ROUTE_PAGE_SEARCHED]: SearchedPage,
 	[ROUTE_PAGE_PROFILE]: ProfilePage,
 	[ROUTE_PAGE_SIGN_UP]: SignUpPage,
 	[ROUTE_PAGE_SIGN_IN]: SignInPage,
@@ -83,7 +86,8 @@ const App = () => {
 						return (
 							<Router
 								isUserSignedIn={isUserSignedIn || isUserSigningIn}
-								pages={MapRoutesToPages}>
+								pages={MapRoutesToPages}
+							>
 								<NavbarIndexStoreAlert>
 									<AlertCommonStoreAlert />
 								</NavbarIndexStoreAlert>

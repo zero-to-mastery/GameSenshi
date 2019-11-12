@@ -9,6 +9,7 @@ import { Error404Page } from './Error404Page'
 import { PoliciesPage } from './PoliciesPage'
 import { CheckoutPage } from './CheckoutPage'
 import { IndexPage } from './IndexPage'
+import { SearchedPage } from './SearchedPage'
 
 export const Exports = {
 	...ExportMultiOrganisms,
@@ -21,4 +22,5 @@ export const Exports = {
 	PoliciesPage,
 	CheckoutPage,
 	IndexPage,
+	SearchedPage,
 }
