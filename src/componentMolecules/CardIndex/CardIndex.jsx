@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 // reactstrap components
 import {
 	Card,
@@ -9,7 +9,6 @@ import {
 	UncontrolledDropdown,
 	Table,
 	Col,
-	Row,
 } from 'reactstrap'
 
 const NAME = 'name'
@@ -21,7 +20,7 @@ const LEVEL = 'level'
 const CardIndex = props => {
 	const { cards } = props
 	return (
-		<div className='d-flex flex-row align-items-stretch justify-content-between'>
+		<Fragment>
 			{cards.map(card => {
 				const {
 					[NAME]: name,
@@ -31,11 +30,7 @@ const CardIndex = props => {
 					[LEVEL]: level,
 				} = card
 				return (
-					<Col
-						xs={{ size: 12 }}
-						sm={{ size: 12 }}
-						md={{ size: 4 }}
-						lg={{ size: 3 }}>
+					<Col>
 						<Card className='card-profile'>
 							<div className='card-image'>
 								<h4 className='title'>{name}</h4>
@@ -46,18 +41,21 @@ const CardIndex = props => {
 										className='btn-icon'
 										color='link'
 										data-toggle='dropdown'
-										type='button'>
+										type='button'
+									>
 										<i className='tim-icons icon-settings-gear-63' />
 									</DropdownToggle>
 									<DropdownMenu right x-placement='bottom-end'>
 										<DropdownItem
 											href='#pablo'
-											onClick={e => e.preventDefault()}>
+											onClick={e => e.preventDefault()}
+										>
 											See full profile
 										</DropdownItem>
 										<DropdownItem
 											href='#pablo'
-											onClick={e => e.preventDefault()}>
+											onClick={e => e.preventDefault()}
+										>
 											Send message
 										</DropdownItem>
 									</DropdownMenu>
@@ -93,7 +91,7 @@ const CardIndex = props => {
 					</Col>
 				)
 			})}
-		</div>
+		</Fragment>
 	)
 }
 

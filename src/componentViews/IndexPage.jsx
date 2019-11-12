@@ -36,7 +36,8 @@ const IndexPage = () => {
 							xs={{ size: 12 }}
 							sm={{ size: 12 }}
 							md={{ size: 12 }}
-							lg={{ size: 12 }}>
+							lg={{ size: 12 }}
+						>
 							<GalleryCommonPropedIndex indexGallery />
 						</Col>
 					</Row>
@@ -50,7 +51,8 @@ const IndexPage = () => {
 							xs={{ size: 8, offset: 2 }}
 							sm={{ size: 8, offset: 2 }}
 							md={{ size: 8, offset: 2 }}
-							lg={{ size: 8, offset: 2 }}>
+							lg={{ size: 8, offset: 2 }}
+						>
 							<ButtonsIconImagePropedIndex />
 						</Col>
 					</Row>
