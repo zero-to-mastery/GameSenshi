@@ -20,4 +20,14 @@ const checkDuplicatedObject = (options, prop) => {
 	}
 }
 
-export { stopUndefined, checkDuplicatedObject }
+const createGetOptions = (fullOptions, prop) => arrayString => {
+	const criteria = Array.isArray(arrayString) ? arrayString : [arrayString]
+	const getOptions = criteria.map(button =>
+		checkDuplicatedObject(fullOptions, prop).find(
+			option => option[prop] === button
+		)
+	)
+	return getOptions
+}
+
+export { stopUndefined, checkDuplicatedObject, createGetOptions }

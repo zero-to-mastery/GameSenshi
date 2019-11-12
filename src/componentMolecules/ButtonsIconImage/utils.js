@@ -3,7 +3,7 @@ import {
 	BUTTONS_ICON_IMAGE_TEXT,
 } from './ButtonsIconImage'
 
-import { checkDuplicatedObject } from 'utils'
+import { createGetOptions } from 'utils'
 
 import {
 	FB_FS_GAMES_DOTA2,
@@ -44,14 +44,6 @@ const buttonsIndex = [
 	FB_FS_GAMES_FORTNITE,
 ]
 
-const getButtonsIconImage = buttons => {
-	const buttons_ = Array.isArray(buttons) ? buttons : [buttons]
-	const getButtons = buttons_.map(button =>
-		checkDuplicatedObject(options, BUTTONS_ICON_IMAGE_ID).find(
-			option => option[BUTTONS_ICON_IMAGE_ID] === button
-		)
-	)
-	return getButtons
-}
+const getButtonsIconImage = createGetOptions(options, BUTTONS_ICON_IMAGE_ID)
 
 export { buttonsIndex, getButtonsIconImage }
