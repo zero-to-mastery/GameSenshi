@@ -6,4 +6,8 @@ const GalleryCommonPropedProfile = props => {
 	return <GalleryCommon items={items} {...props} />
 }
 
-export { GalleryCommonPropedProfile }
+const GalleryCommonPropedIndex = props => {
+	return <GalleryCommon items={items} {...props} />
+}
+
+export { GalleryCommonPropedProfile, GalleryCommonPropedIndex }

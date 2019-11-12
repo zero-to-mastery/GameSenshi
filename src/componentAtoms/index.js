@@ -54,7 +54,6 @@ import { RatingProfile } from './RatingProfile'
 import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
-import { CarouselCommonPropedIndex } from './CarouselCommon'
 
 import {
 	CommentCommonPropedDefault,
@@ -145,5 +144,4 @@ export const Exports = {
 	NUM_COMMENTS,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
-	CarouselCommonPropedIndex,
 }

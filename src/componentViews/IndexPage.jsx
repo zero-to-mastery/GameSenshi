@@ -7,7 +7,6 @@ import { Container, Row, Col } from 'reactstrap'
 
 const {
 	Footer,
-	CarouselCommonPropedIndex,
 	CardIndexPropedDefault,
 	ButtonsIconImagePropedIndex,
 } = stopUndefined(Exports)
@@ -35,9 +34,7 @@ const IndexPage = () => {
 							xs={{ size: 12 }}
 							sm={{ size: 12 }}
 							md={{ size: 12 }}
-							lg={{ size: 12 }}>
-							<CarouselCommonPropedIndex />
-						</Col>
+							lg={{ size: 12 }}></Col>
 					</Row>
 					<Row>
 						<Col className='py-5'>
@@ -72,9 +69,14 @@ const IndexPage = () => {
 					<Row className='pb-5'>
 						<CardIndexPropedDefault />
 					</Row>
-					<Row className='pb-5'>
+					<Row>
 						{' '}
-						<h1 className='text-center'>Random</h1>
+						<Col className='pb-5'>
+							<h1 className='text-center'>Random</h1>
+						</Col>
+					</Row>
+					<Row className='pb-5'>
+						<CardIndexPropedDefault />
 					</Row>
 				</Container>
 			</div>
