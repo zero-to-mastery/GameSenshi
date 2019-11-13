@@ -38,7 +38,7 @@ const ContainerSearchResults = props => {
 	return (
 		<Container>
 			<Row>
-				<Col md={{ size: 3 }}>
+				<Col style={{ marginTop: '35px' }} md={{ size: 3 }}>
 					<Row className='d-flex flex-row justify-content-center align-items-baseline'>
 						<Col md={{ size: 2 }}>
 							<i style={{ fontSize: '16px' }} class='fas fa-filter'></i>
@@ -79,6 +79,20 @@ const ContainerSearchResults = props => {
 							})}
 						</Col>
 					</Row>
+					<Row className='py-3 d-flex flex-row justify-content-center'>
+						<Col>
+							<Button className='btn-round ml-2' color='danger' type='button'>
+								Apply
+							</Button>
+						</Col>
+					</Row>
+					<Row className='d-flex flex-row justify-content-center'>
+						<Col>
+							<Button className='btn-round ml-1' color='danger' type='button'>
+								Clear All
+							</Button>
+						</Col>
+					</Row>
 				</Col>
 				<Col md={{ size: 8 }}>
 					<Row className='pt-4'>
@@ -89,15 +103,15 @@ const ContainerSearchResults = props => {
 							<Row className='d-flex flex-row justify-content-center align-items-baseline'>
 								<Col md={{ size: 6 }}>
 									<Button
-										style={{ marginLeft: '5px', marginRight: '5px' }}
-										color='info'
 										type='button'
+										className='btn-simple ml-1 mr-1'
+										color='twitter'
 									>
 										Top sales{' '}
 									</Button>
 									<Button
-										style={{ marginLeft: '5px', marginRight: '5px' }}
-										color='info'
+										className='btn-simple ml-1 mr-1'
+										color='twitter'
 										type='button'
 									>
 										Latest{' '}
