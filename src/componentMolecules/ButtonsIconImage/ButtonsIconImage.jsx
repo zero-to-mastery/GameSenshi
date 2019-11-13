@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, Label, Row, Col } from 'reactstrap'
-
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 const { IconsImage } = stopUndefined(Exports)

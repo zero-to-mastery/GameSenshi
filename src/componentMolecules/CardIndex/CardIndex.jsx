@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 // reactstrap components
 import {
 	Card,
@@ -9,33 +9,28 @@ import {
 	UncontrolledDropdown,
 	Table,
 	Col,
-	Row,
 } from 'reactstrap'
 
-const NAME = 'name'
-const IMAGE = 'image'
-const SKILLS = 'skills'
-const HOBBIES = 'hobbies'
-const LEVEL = 'level'
+const CARD_INDEX_NAME = 'name'
+const CARD_INDEX_IMAGE = 'image'
+const CARD_INDEX_SKILLS = 'skills'
+const CARD_INDEX_HOBBIES = 'hobbies'
+const CARD_INDEX_LEVEL = 'level'
 
 const CardIndex = props => {
 	const { cards } = props
 	return (
-		<div className='d-flex flex-row align-items-stretch justify-content-between'>
+		<Fragment>
 			{cards.map(card => {
 				const {
-					[NAME]: name,
-					[IMAGE]: src,
-					[SKILLS]: skills,
-					[HOBBIES]: hobbies,
-					[LEVEL]: level,
+					[CARD_INDEX_NAME]: name,
+					[CARD_INDEX_IMAGE]: src,
+					[CARD_INDEX_SKILLS]: skills,
+					[CARD_INDEX_HOBBIES]: hobbies,
+					[CARD_INDEX_LEVEL]: level,
 				} = card
 				return (
-					<Col
-						xs={{ size: 12 }}
-						sm={{ size: 12 }}
-						md={{ size: 4 }}
-						lg={{ size: 3 }}>
+					<Col key={name}>
 						<Card className='card-profile'>
 							<div className='card-image'>
 								<h4 className='title'>{name}</h4>
@@ -46,18 +41,21 @@ const CardIndex = props => {
 										className='btn-icon'
 										color='link'
 										data-toggle='dropdown'
-										type='button'>
+										type='button'
+									>
 										<i className='tim-icons icon-settings-gear-63' />
 									</DropdownToggle>
 									<DropdownMenu right x-placement='bottom-end'>
 										<DropdownItem
 											href='#pablo'
-											onClick={e => e.preventDefault()}>
+											onClick={e => e.preventDefault()}
+										>
 											See full profile
 										</DropdownItem>
 										<DropdownItem
 											href='#pablo'
-											onClick={e => e.preventDefault()}>
+											onClick={e => e.preventDefault()}
+										>
 											Send message
 										</DropdownItem>
 									</DropdownMenu>
@@ -93,8 +91,15 @@ const CardIndex = props => {
 					</Col>
 				)
 			})}
-		</div>
+		</Fragment>
 	)
 }
 
-export { CardIndex, NAME, IMAGE, HOBBIES, SKILLS, LEVEL }
+export {
+	CardIndex,
+	CARD_INDEX_NAME,
+	CARD_INDEX_IMAGE,
+	CARD_INDEX_HOBBIES,
+	CARD_INDEX_SKILLS,
+	CARD_INDEX_LEVEL,
+}

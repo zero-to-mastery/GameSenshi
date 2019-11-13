@@ -5,9 +5,9 @@ import { Container, Row, Col } from 'reactstrap'
 
 const {
 	Footer,
-	CarouselCommonPropedIndex,
 	CardIndexPropedDefault,
 	ButtonsIconImagePropedIndex,
+	CarouselCommonPropedIndex,
 } = stopUndefined(Exports)
 
 const IndexPage = () => {
@@ -28,8 +28,13 @@ const IndexPage = () => {
 			<div className='main'>
 				<Container style={{ marginTop: 100 }}>
 					<Row>
-						<Col>
-							<CarouselCommonPropedIndex />
+						<Col
+							xs={{ size: 12 }}
+							sm={{ size: 12 }}
+							md={{ size: 12 }}
+							lg={{ size: 12 }}
+						>
+							<CarouselCommonPropedIndex indexGallery />
 						</Col>
 					</Row>
 					<Row>
@@ -38,7 +43,11 @@ const IndexPage = () => {
 						</Col>
 					</Row>
 					<Row>
-						<Col>
+						<Col
+							xs={{ size: 1, offset: 2 }}
+							sm={{ size: 2, offset: 2 }}
+							md={{ size: 6, offset: 2 }}
+							lg={{ size: 8, offset: 2 }}>
 							<ButtonsIconImagePropedIndex />
 						</Col>
 					</Row>
@@ -58,12 +67,17 @@ const IndexPage = () => {
 					<Row className='pb-5'>
 						<CardIndexPropedDefault />
 					</Row>
+					<Row>
+						{' '}
+						<Col className='pb-5'>
+							<h1 className='text-center'>Random</h1>
+						</Col>
+					</Row>
 					<Row className='pb-5'>
-						<h1 className='text-center'>Random</h1>
+						<CardIndexPropedDefault />
 					</Row>
 				</Container>
 			</div>
-
 			<Footer />
 		</div>
 	)

@@ -10,6 +10,7 @@ import { toIndexIfPublic } from './routes'
 import {
 	history,
 	ROUTE_PAGE_INDEX,
+	ROUTE_PAGE_SEARCHED,
 	ROUTE_PAGE_PROFILE,
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
@@ -44,6 +45,7 @@ export {
 	goLastRoute,
 	toIndexIfPublic,
 	ROUTE_PAGE_INDEX,
+	ROUTE_PAGE_SEARCHED,
 	ROUTE_PAGE_PROFILE,
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
