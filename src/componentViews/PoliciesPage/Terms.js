@@ -14,7 +14,8 @@ const Terms = () => {
 				accessible from{' '}
 				<a
 					href='https://www.gamesenshi.com'
-					className='font-weight-bold text-success'>
+					className='font-weight-bold text-success'
+				>
 					https://www.gamesenshi.com
 				</a>
 				<br />

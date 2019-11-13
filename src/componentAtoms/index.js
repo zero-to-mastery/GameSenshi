@@ -36,9 +36,9 @@ import {
 import { IconCard } from './IconCard'
 import { LabelForm, LabelFormSimple } from './LabelForm'
 import { InputDate } from './InputDate'
-import { BrandNavbarPropedIndexNavbarStoreUser } from './BrandNavbar'
-import { LoaderNavLinkPropedIndexNavbarStoreUser } from './LoaderNavLink'
-import { IconNotificationStoreUserPropedIndexNavbar } from './IconNotification'
+import { BrandNavbarStoreUserPropedNavbar } from './BrandNavbar'
+import { LoaderNavLinkStoreUserPropedNavbar } from './LoaderNavLink'
+import { IconNotificationStoreUserPropedNavbar } from './IconNotification'
 import {
 	ListNavItemStoreUserPropedNavbarIndex,
 	ListNavItemStoreUserPropedCollapsed,
@@ -46,14 +46,20 @@ import {
 } from './ListNavItem'
 import { MenuHamburger } from './MenuHamburger'
 import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
-import { DropdownMenuNavbarStoreUserPropedNavbarIndex } from './DropdownMenuNavbar'
+import { DropdownMenuNavbarStoreUserPropedNavbar } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
-import { GalleryCommonPropedProfile } from './GalleryCommon'
 import { RatingProfile } from './RatingProfile'
 import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
+<<<<<<< HEAD
+=======
+import {
+	CarouselCommonPropedProfile,
+	CarouselCommonPropedIndex,
+} from './CarouselCommon'
+>>>>>>> 3cc7e1d60c8c893a28ac8b89a2e95d893bd8e6bd
 
 import {
 	CommentCommonPropedDefault,
@@ -66,7 +72,11 @@ import {
 } from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
 import { BadgesPropedDefault } from './Badges'
-import { IconsImagePropedGameIcons, IconsImageOptioned } from './IconsImage'
+import {
+	IconsImagePropedGameIcons,
+	IconsImageOptioned,
+	IconsImage,
+} from './IconsImage'
 import { StatusCommonPropedOnline } from './StatusCommon'
 import { ButtonSound } from './ButtonSound'
 import {
@@ -114,18 +124,17 @@ export const Exports = {
 	LabelForm,
 	LabelFormSimple,
 	InputDate,
-	BrandNavbarPropedIndexNavbarStoreUser,
-	LoaderNavLinkPropedIndexNavbarStoreUser,
-	IconNotificationStoreUserPropedIndexNavbar,
+	BrandNavbarStoreUserPropedNavbar,
+	LoaderNavLinkStoreUserPropedNavbar,
+	IconNotificationStoreUserPropedNavbar,
 	ListNavItemStoreUserPropedNavbarIndex,
 	MenuHamburger,
 	HeaderCollapsedPropedNavbarIndex,
-	DropdownMenuNavbarStoreUserPropedNavbarIndex,
+	DropdownMenuNavbarStoreUserPropedNavbar,
 	AvatarUserStoreUser,
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
-	GalleryCommonPropedProfile,
 	RatingProfile,
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
@@ -133,6 +142,7 @@ export const Exports = {
 	BadgesPropedDefault,
 	IconsImagePropedGameIcons,
 	IconsImageOptioned,
+	IconsImage,
 	StatusCommonPropedOnline,
 	ButtonSound,
 	CommentCommonPropedDefault,
@@ -145,5 +155,10 @@ export const Exports = {
 	NUM_COMMENTS,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
+<<<<<<< HEAD
 	GalleryCommonPropedIndex,
+=======
+	CarouselCommonPropedProfile,
+	CarouselCommonPropedIndex,
+>>>>>>> 3cc7e1d60c8c893a28ac8b89a2e95d893bd8e6bd
 }

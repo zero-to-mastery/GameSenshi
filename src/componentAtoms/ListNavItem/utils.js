@@ -59,7 +59,8 @@ const signedInNavItemsCollapsed = () => [
 					style={{
 						paddingLeft: 12,
 						paddingRight: 18,
-					}}>
+					}}
+				>
 					<AvatarUserStoreUser height={24} width={24} />
 				</Col>
 				<Col>

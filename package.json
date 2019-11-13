@@ -96,11 +96,9 @@
 		"react-router-link-nostack": "^0.5.3",
 		"react-scripts": "^2.1.5",
 		"react-select": "^2.4.3",
-		"react-slick": "^0.24.0",
 		"react-sound": "^1.2.0",
 		"react-tagsinput": "^3.19.0",
 		"reactstrap": "^8.1.1",
-		"slick-carousel": "^1.8.1",
 		"unstated": "^2.1.1",
 		"yup": "^0.27.0"
 	},
@@ -120,16 +118,16 @@
 		"jsxSingleQuote": true,
 		"trailingComma": "es5",
 		"semi": false,
-		"jsxBracketSameLine": true,
-		"useTabs": true,
-		"jsxBracketSameLine": false
+		"jsxBracketSameLine": false,
+		"useTabs": true
 	},
 	"eslintConfig": {
 		"extends": [
 			"react-app",
 			"prettier/react",
 			"eslint:recommended",
-			"plugin:prettier/recommended"
+			"plugin:prettier/recommended",
+			"prettier"
 		],
 		"rules": {
 			"no-console": "warn",

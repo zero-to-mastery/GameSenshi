@@ -4,11 +4,11 @@ import { BrandNavbar, NAVBAR_BRAND_ON_ERROR } from './BrandNavbar'
 import logo from 'assets/img/favicon.ico'
 import { StateContainer, storeUser, storeUserResetAvatar } from 'state'
 
-const BrandNavbarPropedIndexNavbar = memo(props => {
+const BrandNavbarStoreUserPropedNavbar = memo(props => {
 	return (
-		<BrandNavbar logo={logo} to={ROUTE_PAGE_INDEX} {...props}>
+		<BrandNavbarStoreUser logo={logo} to={ROUTE_PAGE_INDEX} {...props}>
 			GAME SENSHI
-		</BrandNavbar>
+		</BrandNavbarStoreUser>
 	)
 })
 
@@ -16,11 +16,11 @@ const mapStoreUserMethodToProp = {
 	[NAVBAR_BRAND_ON_ERROR]: storeUserResetAvatar,
 }
 
-const BrandNavbarPropedIndexNavbarStoreUser = StateContainer(
-	BrandNavbarPropedIndexNavbar,
+const BrandNavbarStoreUser = StateContainer(
+	BrandNavbar,
 	[storeUser],
 	[],
 	[mapStoreUserMethodToProp]
 )
 
-export { BrandNavbarPropedIndexNavbarStoreUser }
+export { BrandNavbarStoreUserPropedNavbar }

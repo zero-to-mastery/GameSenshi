@@ -10,8 +10,8 @@ const DropdownMenuNavbarStoreUser = StateContainer(
 	[]
 )
 
-const DropdownMenuNavbarStoreUserPropedNavbarIndex = props => {
+const DropdownMenuNavbarStoreUserPropedNavbar = props => {
 	return <DropdownMenuNavbarStoreUser items={NavbarIndexItems()} {...props} />
 }
 
-export { DropdownMenuNavbarStoreUserPropedNavbarIndex }
+export { DropdownMenuNavbarStoreUserPropedNavbar }
