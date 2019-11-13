@@ -53,13 +53,10 @@ import { RatingProfile } from './RatingProfile'
 import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
-<<<<<<< HEAD
-=======
 import {
 	CarouselCommonPropedProfile,
 	CarouselCommonPropedIndex,
 } from './CarouselCommon'
->>>>>>> 3cc7e1d60c8c893a28ac8b89a2e95d893bd8e6bd
 
 import {
 	CommentCommonPropedDefault,
@@ -83,7 +80,6 @@ import {
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 } from './CheckBoxIcon'
-import { GalleryCommonPropedIndex } from './GalleryCommon'
 
 export const Exports = {
 	...ExportProtons,

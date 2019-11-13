@@ -29,7 +29,6 @@ const IndexPage = () => {
 				<Container style={{ marginTop: 100 }}>
 					<Row>
 						<Col
-							style={{ marginTop: '80px' }}
 							xs={{ size: 12 }}
 							sm={{ size: 12 }}
 							md={{ size: 12 }}
@@ -44,7 +43,11 @@ const IndexPage = () => {
 						</Col>
 					</Row>
 					<Row>
-						<Col>
+						<Col
+							xs={{ size: 1, offset: 2 }}
+							sm={{ size: 2, offset: 2 }}
+							md={{ size: 6, offset: 2 }}
+							lg={{ size: 8, offset: 2 }}>
 							<ButtonsIconImagePropedIndex />
 						</Col>
 					</Row>
@@ -72,13 +75,9 @@ const IndexPage = () => {
 					</Row>
 					<Row className='pb-5'>
 						<CardIndexPropedDefault />
-						<Row className='pb-5'>
-							<h1 className='text-center'>Random</h1>
-						</Row>
 					</Row>
 				</Container>
 			</div>
-
 			<Footer />
 		</div>
 	)
