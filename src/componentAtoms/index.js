@@ -155,10 +155,7 @@ export const Exports = {
 	NUM_COMMENTS,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
-<<<<<<< HEAD
-	GalleryCommonPropedIndex,
-=======
 	CarouselCommonPropedProfile,
 	CarouselCommonPropedIndex,
->>>>>>> 3cc7e1d60c8c893a28ac8b89a2e95d893bd8e6bd
+
 }
