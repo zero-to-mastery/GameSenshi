@@ -37,4 +37,16 @@ const cardPlayers = [
 	},
 ]
 
-export { cardPlayers }
+// maps array of names with card object
+const getCards = (name, cardPlayers) => {
+	let result = []
+	let data = [...cardPlayers]
+	data.map(card => {
+		if (name === card.name) {
+			result.push(card)
+		}
+	})
+	return result
+}
+
+export { cardPlayers, getCards }

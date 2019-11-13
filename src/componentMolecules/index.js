@@ -3,10 +3,10 @@ import { FinalInputText, FinalInputSelect, FinalInputDate } from './FinalInput'
 import { TabPaneSettingListStoreUserPropedNotification } from './TabPaneSettingList'
 import { ModalImageCropperPropedSettings } from './ModalImageCropper'
 import { CardSenshi } from './CardSenshi'
-import { CardIndexPropedDefault } from './CardIndex'
+import { CardIndexPropedDefault, CardSearchedPropedDefault } from './CardIndex'
 import { ButtonsIconImagePropedIndex } from './ButtonsIconImage'
 import { PanelSortBy } from './PanelSortBy'
-import { PanelSearchFilter } from './PanelSearchFilter'
+import { PanelFilterSearch } from './PanelFilterSearch'
 
 export const Exports = {
 	...ExportAtoms,
@@ -19,5 +19,6 @@ export const Exports = {
 	CardIndexPropedDefault,
 	ButtonsIconImagePropedIndex,
 	PanelSortBy,
-	PanelSearchFilter,
+	PanelFilterSearch,
+	CardSearchedPropedDefault,
 }

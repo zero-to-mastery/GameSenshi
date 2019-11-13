@@ -30,7 +30,7 @@ const CardIndex = props => {
 					[CARD_INDEX_LEVEL]: level,
 				} = card
 				return (
-					<Col>
+					<Col key={name}>
 						<Card className='card-profile'>
 							<div className='card-image'>
 								<h4 className='title'>{name}</h4>

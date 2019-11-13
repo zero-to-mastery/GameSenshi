@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { CardIndex } from './CardIndex'
-import { cardPlayers } from './utils'
+import { cardPlayers, getCards } from './utils'
 
 const CardIndexPropedDefault = props => {
 	return <CardIndex cards={cardPlayers} {...props} />
 }
 
-export { CardIndexPropedDefault }
+const CardSearchedPropedDefault = props => {
+	const { cards } = props
+	const cards_ = useMemo(() => getCards(cards, cardPlayers), [cards])
+	return <CardIndex cards={cards_} {...props} />
+}
+
+export { CardIndexPropedDefault, CardSearchedPropedDefault }

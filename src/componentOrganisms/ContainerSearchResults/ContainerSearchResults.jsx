@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 // reactstrap components
 import { Container, Row, Col } from 'reactstrap'
 
@@ -7,30 +7,33 @@ import { Exports } from 'componentMolecules'
 
 const {
 	PanelSortBy,
-	PanelSearchFilter,
-	CardIndexPropedDefault,
+	PanelFilterSearch,
+	CardSearchedPropedDefault,
 } = stopUndefined(Exports)
-
-const SEARCH_RESULT_CARD_NAME = 'name'
-const SEARCH_RESULT_CARD_IMAGE = 'image'
-const SEARCH_RESULT_CARD_SKILLS = 'skills'
-const SEARCH_RESULT_CARD_HOBBIES = 'hobbies'
-const SEARCH_RESULT_CARD_LEVEL = 'level'
 
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 const ratings = ['5 stars', '4 stars', '3 stars', '2 stars', '1 star']
-
+const tempCards = [
+	'Mila Skylar',
+	'Mark Johnsson',
+	'Dylan Wyatt',
+	'Olivia Smith',
+]
 const ContainerSearchResults = props => {
-	const { results } = props
-
 	return (
 		<Container>
 			<Row>
-				<PanelSearchFilter games={games} ratings={ratings} />
+				<PanelFilterSearch games={games} ratings={ratings} />
 				<Col md={{ size: 8 }}>
 					<PanelSortBy />
 					<Row>
-						<CardIndexPropedDefault />
+						{tempCards.map(card => {
+							return (
+								<Col md={{ size: 4 }}>
+									<CardSearchedPropedDefault key={card} cards={tempCards} />
+								</Col>
+							)
+						})}
 					</Row>
 				</Col>
 			</Row>
@@ -38,11 +41,4 @@ const ContainerSearchResults = props => {
 	)
 }
 
-export {
-	ContainerSearchResults,
-	SEARCH_RESULT_CARD_NAME,
-	SEARCH_RESULT_CARD_IMAGE,
-	SEARCH_RESULT_CARD_SKILLS,
-	SEARCH_RESULT_CARD_HOBBIES,
-	SEARCH_RESULT_CARD_LEVEL,
-}
+export { ContainerSearchResults }

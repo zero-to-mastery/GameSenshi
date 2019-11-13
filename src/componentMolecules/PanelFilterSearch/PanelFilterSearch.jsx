@@ -2,7 +2,7 @@ import React from 'react'
 // reactstrap components
 import { Row, Col, Label, Input, FormGroup, Button } from 'reactstrap'
 
-const PanelSearchFilter = props => {
+const PanelFilterSearch = props => {
 	const { games, ratings } = props
 	return (
 		<Col style={{ marginTop: '35px' }} md={{ size: 3 }}>
@@ -64,4 +64,4 @@ const PanelSearchFilter = props => {
 	)
 }
 
-export { PanelSearchFilter }
+export { PanelFilterSearch }
