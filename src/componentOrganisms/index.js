@@ -11,7 +11,7 @@ import { FormResetPasswordPropedDefault } from './FormResetPassword'
 import { NavbarIndexStoreAlert } from './NavbarIndex'
 import { FormProfile } from './FormProfile'
 import { CheckoutCardPropedDefault } from './CheckoutCard'
-import { ContainerSearchResults } from './ContainerSearchResults'
+import { ContainerSearchResultsPropedDefault } from './ContainerSearchResults'
 export const Exports = {
 	...ExportCompounds,
 	FormSignInPropedDefault,
@@ -25,5 +25,5 @@ export const Exports = {
 	NavbarIndexStoreAlert,
 	FormProfile,
 	CheckoutCardPropedDefault,
-	ContainerSearchResults,
+	ContainerSearchResultsPropedDefault,
 }
