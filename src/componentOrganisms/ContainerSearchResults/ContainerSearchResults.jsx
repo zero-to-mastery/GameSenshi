@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 // reactstrap components
-import { Container, Row, Col, Label, Input, FormGroup } from 'reactstrap'
+import {
+	Container,
+	Row,
+	Col,
+	Label,
+	Input,
+	FormGroup,
+	Button,
+	Card,
+	Table,
+	DropdownToggle,
+	DropdownItem,
+	DropdownMenu,
+	UncontrolledDropdown,
+	CardBody,
+} from 'reactstrap'
+import Select from 'react-select'
 
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
@@ -18,15 +34,16 @@ const ratings = ['5 stars', '4 stars', '3 stars', '2 stars', '1 star']
 
 const ContainerSearchResults = props => {
 	const { results } = props
+	const [selectValue, setSelectValue] = useState('')
 	return (
 		<Container>
 			<Row>
-				<Col md={{ size: 4 }}>
+				<Col md={{ size: 3 }}>
 					<Row className='d-flex flex-row justify-content-center align-items-baseline'>
-						<Col md={{ size: 1 }}>
+						<Col md={{ size: 2 }}>
 							<i style={{ fontSize: '16px' }} class='fas fa-filter'></i>
 						</Col>
-						<Col md={{ size: 11 }}>
+						<Col md={{ size: 10 }}>
 							<h4 className='text-uppercase'>Search filter</h4>
 						</Col>
 					</Row>
@@ -64,9 +81,326 @@ const ContainerSearchResults = props => {
 					</Row>
 				</Col>
 				<Col md={{ size: 8 }}>
-					{/* {results.map(result => {
-						return <CardIndexPropedDefault cards={result} />
-					})} */}
+					<Row className='pt-4'>
+						<Col md={{ size: 2 }}>
+							<h5 className='text-capitalize py-3'>sort by</h5>
+						</Col>
+						<Col md={{ size: 10 }}>
+							<Row className='d-flex flex-row justify-content-center align-items-baseline'>
+								<Col md={{ size: 6 }}>
+									<Button
+										style={{ marginLeft: '5px', marginRight: '5px' }}
+										color='info'
+										type='button'
+									>
+										Top sales{' '}
+									</Button>
+									<Button
+										style={{ marginLeft: '5px', marginRight: '5px' }}
+										color='info'
+										type='button'
+									>
+										Latest{' '}
+									</Button>
+								</Col>
+								<Col md={{ size: 3 }}>
+									<Select
+										className='react-select react-select-primary mb-2'
+										classNamePrefix='react-select'
+										name='singleSelect'
+										value={selectValue}
+										onChange={value => setSelectValue(value)}
+										options={[
+											{
+												value: '',
+												label: 'Game',
+												isDisabled: true,
+											},
+											{ value: '2', label: 'Dota 2' },
+											{ value: '3', label: 'Fortnite' },
+											{ value: '4', label: 'Apex Legends' },
+										]}
+										placeholder='Game'
+									/>
+								</Col>
+								<Col md={{ size: 3 }}>
+									<Select
+										className='react-select react-select-primary mb-2'
+										classNamePrefix='react-select'
+										name='singleSelect'
+										value={selectValue}
+										onChange={value => setSelectValue(value)}
+										options={[
+											{
+												value: '',
+												label: 'Price',
+												isDisabled: true,
+											},
+											{ value: '2', label: 'Highest to lowest' },
+											{ value: '3', label: 'Lowest to highest' },
+										]}
+										placeholder='Price'
+									/>
+								</Col>
+							</Row>
+						</Col>
+					</Row>
+					<Row>
+						<Col md={{ size: 4 }}>
+							<Card className='card-profile'>
+								<div className='card-image'>
+									<h4 className='title'>Olivia Smith</h4>
+									<UncontrolledDropdown>
+										<DropdownToggle
+											aria-expanded={false}
+											caret
+											className='btn-icon'
+											color='link'
+											data-toggle='dropdown'
+											type='button'
+										>
+											<i className='tim-icons icon-settings-gear-63' />
+										</DropdownToggle>
+										<DropdownMenu right x-placement='bottom-end'>
+											<DropdownItem
+												href='#pablo'
+												onClick={e => e.preventDefault()}
+											>
+												See full profile
+											</DropdownItem>
+											<DropdownItem
+												href='#pablo'
+												onClick={e => e.preventDefault()}
+											>
+												Send message
+											</DropdownItem>
+										</DropdownMenu>
+									</UncontrolledDropdown>
+									<img
+										alt='...'
+										className='img img-raised rounded'
+										src={require('assets/img/olivia.jpg')}
+									/>
+								</div>
+								<CardBody>
+									<hr className='line-primary' />
+									<Table className='tablesorter' responsive>
+										<tbody>
+											<tr>
+												<td className='text-left'>
+													<i className='tim-icons icon-atom' /> Skills
+												</td>
+												<td className='text-right'>fortnite</td>
+											</tr>
+											<tr>
+												<td className='text-left'>
+													<i className='tim-icons icon-user-run' /> Hobbies
+												</td>
+												<td className='text-right'>sport</td>
+											</tr>
+											<tr>
+												<td className='text-left'>
+													<i className='tim-icons icon-chart-bar-32' /> Level
+												</td>
+												<td className='text-right'>3</td>
+											</tr>
+										</tbody>
+									</Table>
+								</CardBody>
+							</Card>
+						</Col>
+						<Col md={{ size: 4 }}>
+							<Card className='card-profile'>
+								<div className='card-image'>
+									<h4 className='title'>Olivia Smith</h4>
+									<UncontrolledDropdown>
+										<DropdownToggle
+											aria-expanded={false}
+											caret
+											className='btn-icon'
+											color='link'
+											data-toggle='dropdown'
+											type='button'
+										>
+											<i className='tim-icons icon-settings-gear-63' />
+										</DropdownToggle>
+										<DropdownMenu right x-placement='bottom-end'>
+											<DropdownItem
+												href='#pablo'
+												onClick={e => e.preventDefault()}
+											>
+												See full profile
+											</DropdownItem>
+											<DropdownItem
+												href='#pablo'
+												onClick={e => e.preventDefault()}
+											>
+												Send message
+											</DropdownItem>
+										</DropdownMenu>
+									</UncontrolledDropdown>
+									<img
+										alt='...'
+										className='img img-raised rounded'
+										src={require('assets/img/olivia.jpg')}
+									/>
+								</div>
+								<CardBody>
+									<hr className='line-primary' />
+									<Table className='tablesorter' responsive>
+										<tbody>
+											<tr>
+												<td className='text-left'>
+													<i className='tim-icons icon-atom' /> Skills
+												</td>
+												<td className='text-right'>fortnite</td>
+											</tr>
+											<tr>
+												<td className='text-left'>
+													<i className='tim-icons icon-user-run' /> Hobbies
+												</td>
+												<td className='text-right'>sport</td>
+											</tr>
+											<tr>
+												<td className='text-left'>
+													<i className='tim-icons icon-chart-bar-32' /> Level
+												</td>
+												<td className='text-right'>3</td>
+											</tr>
+										</tbody>
+									</Table>
+								</CardBody>
+							</Card>
+						</Col>
+						<Col md={{ size: 4 }}>
+							<Card className='card-profile'>
+								<div className='card-image'>
+									<h4 className='title'>Olivia Smith</h4>
+									<UncontrolledDropdown>
+										<DropdownToggle
+											aria-expanded={false}
+											caret
+											className='btn-icon'
+											color='link'
+											data-toggle='dropdown'
+											type='button'
+										>
+											<i className='tim-icons icon-settings-gear-63' />
+										</DropdownToggle>
+										<DropdownMenu right x-placement='bottom-end'>
+											<DropdownItem
+												href='#pablo'
+												onClick={e => e.preventDefault()}
+											>
+												See full profile
+											</DropdownItem>
+											<DropdownItem
+												href='#pablo'
+												onClick={e => e.preventDefault()}
+											>
+												Send message
+											</DropdownItem>
+										</DropdownMenu>
+									</UncontrolledDropdown>
+									<img
+										alt='...'
+										className='img img-raised rounded'
+										src={require('assets/img/olivia.jpg')}
+									/>
+								</div>
+								<CardBody>
+									<hr className='line-primary' />
+									<Table className='tablesorter' responsive>
+										<tbody>
+											<tr>
+												<td className='text-left'>
+													<i className='tim-icons icon-atom' /> Skills
+												</td>
+												<td className='text-right'>fortnite</td>
+											</tr>
+											<tr>
+												<td className='text-left'>
+													<i className='tim-icons icon-user-run' /> Hobbies
+												</td>
+												<td className='text-right'>sport</td>
+											</tr>
+											<tr>
+												<td className='text-left'>
+													<i className='tim-icons icon-chart-bar-32' /> Level
+												</td>
+												<td className='text-right'>3</td>
+											</tr>
+										</tbody>
+									</Table>
+								</CardBody>
+							</Card>
+						</Col>
+					</Row>
+					<Row>
+						<Col md={{ size: 4 }}>
+							<Card className='card-profile'>
+								<div className='card-image'>
+									<h4 className='title'>Olivia Smith</h4>
+									<UncontrolledDropdown>
+										<DropdownToggle
+											aria-expanded={false}
+											caret
+											className='btn-icon'
+											color='link'
+											data-toggle='dropdown'
+											type='button'
+										>
+											<i className='tim-icons icon-settings-gear-63' />
+										</DropdownToggle>
+										<DropdownMenu right x-placement='bottom-end'>
+											<DropdownItem
+												href='#pablo'
+												onClick={e => e.preventDefault()}
+											>
+												See full profile
+											</DropdownItem>
+											<DropdownItem
+												href='#pablo'
+												onClick={e => e.preventDefault()}
+											>
+												Send message
+											</DropdownItem>
+										</DropdownMenu>
+									</UncontrolledDropdown>
+									<img
+										alt='...'
+										className='img img-raised rounded'
+										src={require('assets/img/olivia.jpg')}
+									/>
+								</div>
+								<CardBody>
+									<hr className='line-primary' />
+									<Table className='tablesorter' responsive>
+										<tbody>
+											<tr>
+												<td className='text-left'>
+													<i className='tim-icons icon-atom' /> Skills
+												</td>
+												<td className='text-right'>fortnite</td>
+											</tr>
+											<tr>
+												<td className='text-left'>
+													<i className='tim-icons icon-user-run' /> Hobbies
+												</td>
+												<td className='text-right'>sport</td>
+											</tr>
+											<tr>
+												<td className='text-left'>
+													<i className='tim-icons icon-chart-bar-32' /> Level
+												</td>
+												<td className='text-right'>3</td>
+											</tr>
+										</tbody>
+									</Table>
+								</CardBody>
+							</Card>
+						</Col>
+					</Row>
 				</Col>
 			</Row>
 		</Container>

@@ -5,4 +5,5 @@ import { cardPlayers } from './utils'
 const CardIndexPropedDefault = props => {
 	return <CardIndex cards={cardPlayers} {...props} />
 }
+
 export { CardIndexPropedDefault }

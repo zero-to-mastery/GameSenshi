@@ -20,7 +20,7 @@ const SearchedPage = () => {
 	return (
 		<div className='wrapper' ref={wrapper}>
 			<div className='main'>
-				<Container style={{ marginTop: 100 }}>
+				<Container className='py-5' style={{ marginTop: 100 }}>
 					<ContainerSearchResultsPropedDefault />
 				</Container>
 			</div>
