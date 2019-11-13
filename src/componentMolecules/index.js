@@ -6,6 +6,7 @@ import { CardSenshi } from './CardSenshi'
 import { CardIndexPropedDefault } from './CardIndex'
 import { ButtonsIconImagePropedIndex } from './ButtonsIconImage'
 import { PanelSortBy } from './PanelSortBy'
+import { PanelSearchFilter } from './PanelSearchFilter'
 
 export const Exports = {
 	...ExportAtoms,
@@ -18,4 +19,5 @@ export const Exports = {
 	CardIndexPropedDefault,
 	ButtonsIconImagePropedIndex,
 	PanelSortBy,
+	PanelSearchFilter,
 }

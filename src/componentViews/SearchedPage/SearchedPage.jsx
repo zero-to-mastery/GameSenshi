@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
-import { Container, Row, Col } from 'reactstrap'
+import { Container } from 'reactstrap'
 
 const { ContainerSearchResultsPropedDefault, Footer } = stopUndefined(Exports)
 
