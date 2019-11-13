@@ -5,6 +5,7 @@ import { ModalImageCropperPropedSettings } from './ModalImageCropper'
 import { CardSenshi } from './CardSenshi'
 import { CardIndexPropedDefault } from './CardIndex'
 import { ButtonsIconImagePropedIndex } from './ButtonsIconImage'
+import { PanelSortBy } from './PanelSortBy'
 
 export const Exports = {
 	...ExportAtoms,
@@ -16,4 +17,5 @@ export const Exports = {
 	CardSenshi,
 	CardIndexPropedDefault,
 	ButtonsIconImagePropedIndex,
+	PanelSortBy,
 }
