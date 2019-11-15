@@ -16,7 +16,11 @@ const Wrapper = props => {
 	}, [])
 
 	return (
-		<div className={classNames('', className)} ref={wrapper} {...otherProps} />
+		<div
+			className={classNames('mt-5', className)}
+			ref={wrapper}
+			{...otherProps}
+		/>
 	)
 }
 

@@ -50,7 +50,7 @@ const PoliciesPage = props => {
 		location: { pathname },
 	} = props
 	return (
-		<WrapperPropedIndex className='mt-5'>
+		<WrapperPropedIndex>
 			<Section>
 				<Container className='mt-4 mb-5'>
 					<Row>

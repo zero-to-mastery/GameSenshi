@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import {
 	ROUTE_PAGE_SETTINGS_GENERAL,
@@ -27,6 +27,8 @@ const {
 	TAB_LIST_VERTICAL_NAME,
 	TAB_LIST_VERTICAL_TO,
 	TAB_LIST_VERTICAL_ICON,
+	WrapperPropedAccount,
+	Section,
 } = stopUndefined(Exports)
 
 const settingTabs = [
@@ -57,25 +59,13 @@ const settingTabs = [
 ]
 
 const SettingsPage = () => {
-	const wrapper = useRef(null)
-
-	useEffect(() => {
-		document.documentElement.scrollTop = 0
-		document.scrollingElement.scrollTop = 0
-		wrapper.current.scrollTop = 0
-		document.body.classList.add('account-settings')
-		return () => {
-			document.body.classList.remove('account-settings')
-		}
-	}, [])
-
 	return (
-		<div className='wrapper' ref={wrapper}>
-			<div className='section'>
+		<WrapperPropedAccount>
+			<Section>
 				<Container>
 					<Row>
 						<Col md='3'>
-							<div className='section'>
+							<Section>
 								{/* User Information */}
 								<section className='text-center'>
 									<UploaderUserAvatar />
@@ -92,10 +82,10 @@ const SettingsPage = () => {
 								<br />
 								<br />
 								{/* End Profile Completion */}
-							</div>
+							</Section>
 						</Col>
 						<Col className='ml-auto' md='8'>
-							<div className='section'>
+							<Section>
 								<Switch>
 									{settingTabs.map(policy => {
 										const {
@@ -112,13 +102,13 @@ const SettingsPage = () => {
 										)
 									})}
 								</Switch>
-							</div>
+							</Section>
 						</Col>
 					</Row>
 				</Container>
-			</div>
+			</Section>
 			<Footer />
-		</div>
+		</WrapperPropedAccount>
 	)
 }
 
