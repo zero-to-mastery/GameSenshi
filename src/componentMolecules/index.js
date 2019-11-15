@@ -3,7 +3,10 @@ import { FinalInputText, FinalInputSelect, FinalInputDate } from './FinalInput'
 import { TabPaneSettingListStoreUserPropedNotification } from './TabPaneSettingList'
 import { ModalImageCropperPropedSettings } from './ModalImageCropper'
 import { CardSenshi } from './CardSenshi'
-import { CardIndexPropedDefault, CardSearchedPropedDefault } from './CardIndex'
+import {
+	CardIndexPropedDefault,
+	CardSearchedPropedDefault,
+} from './CardProfile'
 import { ButtonsIconImagePropedIndex } from './ButtonsIconImage'
 import { PanelSortBy } from './PanelSortBy'
 import { PanelFilterSearch } from './PanelFilterSearch'

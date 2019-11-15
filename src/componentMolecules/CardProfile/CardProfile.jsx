@@ -17,7 +17,7 @@ const CARD_INDEX_SKILLS = 'skills'
 const CARD_INDEX_HOBBIES = 'hobbies'
 const CARD_INDEX_LEVEL = 'level'
 
-const CardIndex = props => {
+const CardProfile = props => {
 	const { cards } = props
 	return (
 		<Fragment>
@@ -96,7 +96,7 @@ const CardIndex = props => {
 }
 
 export {
-	CardIndex,
+	CardProfile,
 	CARD_INDEX_NAME,
 	CARD_INDEX_IMAGE,
 	CARD_INDEX_HOBBIES,

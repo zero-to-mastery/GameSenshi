@@ -4,7 +4,7 @@ import {
 	CARD_INDEX_HOBBIES,
 	CARD_INDEX_SKILLS,
 	CARD_INDEX_LEVEL,
-} from './CardIndex'
+} from './CardProfile'
 
 const cardPlayers = [
 	{
