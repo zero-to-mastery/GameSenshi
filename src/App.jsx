@@ -8,6 +8,7 @@ import { Router } from 'routes'
 import {
 	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_SEARCHED,
+	ROUTE_PAGE_HELP,
 	ROUTE_PAGE_PROFILE,
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
@@ -34,6 +35,7 @@ const {
 	SettingsPage,
 	IndexPage,
 	SearchedPage,
+	HelpPage,
 	ProfilePage,
 	SignInPage,
 	SignUpPage,
@@ -50,6 +52,7 @@ const {
 const MapRoutesToPages = {
 	[ROUTE_PAGE_INDEX]: IndexPage,
 	[ROUTE_PAGE_SEARCHED]: SearchedPage,
+	[ROUTE_PAGE_HELP]: HelpPage,
 	[ROUTE_PAGE_PROFILE]: ProfilePage,
 	[ROUTE_PAGE_SIGN_UP]: SignUpPage,
 	[ROUTE_PAGE_SIGN_IN]: SignInPage,

@@ -3,7 +3,7 @@ import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 
 // reactstrap components
-import { Container, Row } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 
 const { Footer } = stopUndefined(Exports)
 
@@ -19,8 +19,10 @@ const HelpPage = () => {
 	return (
 		<>
 			<Container>
-				<Row>
-					<h1>hello</h1>
+				<Row style={{ height: '100vh' }} className='py-5'>
+					<Col md={{ size: 7, offset: 5 }}>
+						<h1 className='py-5'>Help Page</h1>
+					</Col>
 				</Row>
 			</Container>
 			<Footer />
