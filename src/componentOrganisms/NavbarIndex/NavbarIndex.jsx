@@ -84,7 +84,7 @@ const NavbarIndex = props => {
 	}
 
 	return (
-		<div className='mb-3'>
+		<div className='mb-5'>
 			<ProgressCommonStoreProgress />
 			<Navbar
 				className={(heightChanged && bgPurple) || color}

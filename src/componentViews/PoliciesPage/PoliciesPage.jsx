@@ -59,8 +59,7 @@ const PoliciesPage = props => {
 	} = props
 	return (
 		<>
-			<Container className='mt-5 mb-5'>
-				<Row style={{ height: '1rem' }} />
+			<Container className='mt-4 mb-5'>
 				<Row>
 					<Col lg='2' md='3'>
 						<Nav
