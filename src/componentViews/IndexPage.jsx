@@ -8,65 +8,70 @@ const {
 	CardIndexPropedDefault,
 	ButtonsIconImagePropedIndex,
 	CarouselCommonPropedIndex,
+	Section,
+	WrapperPropedIndex,
 } = stopUndefined(Exports)
 
 const IndexPage = () => {
-	const wrapper = useRef(null)
-
-	useEffect(() => {
-		document.body.classList.add('index-page')
-		document.documentElement.scrollTop = 0
-		document.scrollingElement.scrollTop = 0
-		wrapper.current.scrollTop = 0
-		return () => {
-			document.body.classList.remove('index-page')
-		}
-	}, [])
-
 	return (
-		<div className='wrapper' ref={wrapper}>
-			<div className='main'>
+		<WrapperPropedIndex>
+			<Section>
 				<Container>
 					<Row>
 						<Col>
 							<CarouselCommonPropedIndex />
 						</Col>
 					</Row>
+				</Container>
+			</Section>
+			<Section>
+				<Container>
 					<Row>
-						<Col className='py-5'>
-							<h1 className='text-center'>Catalogue</h1>
+						<Col>
+							<h1>Catalogue</h1>
 						</Col>
 					</Row>
 					<ButtonsIconImagePropedIndex />
+				</Container>
+			</Section>
+			<Section>
+				<Container>
 					<Row>
-						<Col className='py-5'>
-							<h1 className='text-center'>Recommendations</h1>
+						<Col>
+							<h1>Recommendations</h1>
 						</Col>
 					</Row>
-					<Row className='pb-5'>
-						<CardIndexPropedDefault />
-					</Row>
 					<Row>
-						<Col className='py-5'>
-							<h1 className='text-center'>Signed up recently</h1>
-						</Col>
-					</Row>
-					<Row className='pb-5'>
-						<CardIndexPropedDefault />
-					</Row>
-					<Row>
-						{' '}
-						<Col className='pb-5'>
-							<h1 className='text-center'>Random</h1>
-						</Col>
-					</Row>
-					<Row className='pb-5'>
 						<CardIndexPropedDefault />
 					</Row>
 				</Container>
-			</div>
+			</Section>
+			<Section>
+				<Container>
+					<Row>
+						<Col>
+							<h1>New</h1>
+						</Col>
+					</Row>
+					<Row>
+						<CardIndexPropedDefault />
+					</Row>
+				</Container>
+			</Section>
+			<Section>
+				<Container>
+					<Row>
+						<Col>
+							<h1>Random</h1>
+						</Col>
+					</Row>
+					<Row>
+						<CardIndexPropedDefault />
+					</Row>
+				</Container>
+			</Section>
 			<Footer />
-		</div>
+		</WrapperPropedIndex>
 	)
 }
 

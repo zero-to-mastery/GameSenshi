@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 import { stopUndefined } from 'utils'
 import { Cookie } from './Cookie'
@@ -15,7 +15,7 @@ import {
 import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer, Link } = stopUndefined(Exports)
+const { Footer, Link, Section, WrapperPropedIndex } = stopUndefined(Exports)
 
 const NAME = 'name'
 const ICON = 'icon'
@@ -46,70 +46,64 @@ const policies = [
 	},
 ]
 const PoliciesPage = props => {
-	useEffect(() => {
-		document.body.classList.add('index-page')
-		document.documentElement.scrollTop = 0
-		document.scrollingElement.scrollTop = 0
-		return () => {
-			document.body.classList.remove('index-page')
-		}
-	}, [])
 	const {
 		location: { pathname },
 	} = props
 	return (
-		<>
-			<Container className='mt-4 mb-5'>
-				<Row>
-					<Col lg='2' md='3'>
-						<Nav
-							className='nav-pills-primary nav-pills-icons flex-column'
-							pills
-							role='tablist'
-						>
-							<NavItem>
-								{policies.map(policy => {
-									const { [NAME]: name, [ICON]: icon, [TO]: to } = policy
-									return (
-										<NavLink
-											key={name}
-											className={classnames({
-												active: pathname.toLowerCase() === to.toLowerCase(),
-											})}
-											to={to}
-											tag={Link}
-										>
-											<i
-												style={{ fontSize: '40px' }}
-												className={`tim-icons ${icon}`}
+		<WrapperPropedIndex className='mt-5'>
+			<Section>
+				<Container className='mt-4 mb-5'>
+					<Row>
+						<Col lg='2' md='3'>
+							<Nav
+								className='nav-pills-primary nav-pills-icons flex-column'
+								pills
+								role='tablist'
+							>
+								<NavItem>
+									{policies.map(policy => {
+										const { [NAME]: name, [ICON]: icon, [TO]: to } = policy
+										return (
+											<NavLink
+												key={name}
+												className={classnames({
+													active: pathname.toLowerCase() === to.toLowerCase(),
+												})}
+												to={to}
+												tag={Link}
+											>
+												<i
+													style={{ fontSize: '40px' }}
+													className={`tim-icons ${icon}`}
+												/>
+												{name}
+											</NavLink>
+										)
+									})}
+								</NavItem>
+							</Nav>
+						</Col>
+						<Col lg='9' md='8' className='mb-5'>
+							<PerfectScrollbar className='pr-3' style={{ height: 768 }}>
+								<Switch>
+									{policies.map(policy => {
+										const { [NAME]: name, [POLICY]: Policy, [TO]: to } = policy
+										return (
+											<Route
+												key={name}
+												path={to}
+												render={prop => <Policy {...prop} />}
 											/>
-											{name}
-										</NavLink>
-									)
-								})}
-							</NavItem>
-						</Nav>
-					</Col>
-					<Col lg='9' md='8' className='mb-5'>
-						<PerfectScrollbar className='pr-3' style={{ height: 768 }}>
-							<Switch>
-								{policies.map(policy => {
-									const { [NAME]: name, [POLICY]: Policy, [TO]: to } = policy
-									return (
-										<Route
-											key={name}
-											path={to}
-											render={prop => <Policy {...prop} />}
-										/>
-									)
-								})}
-							</Switch>
-						</PerfectScrollbar>
-					</Col>
-				</Row>
-			</Container>
-			<Footer />
-		</>
+										)
+									})}
+								</Switch>
+							</PerfectScrollbar>
+						</Col>
+					</Row>
+				</Container>
+				<Footer />
+			</Section>
+		</WrapperPropedIndex>
 	)
 }
 export { PoliciesPage }
