@@ -26,15 +26,10 @@ const IndexPage = () => {
 	return (
 		<div className='wrapper' ref={wrapper}>
 			<div className='main'>
-				<Container style={{ marginTop: 100 }}>
+				<Container>
 					<Row>
-						<Col
-							xs={{ size: 12 }}
-							sm={{ size: 12 }}
-							md={{ size: 12 }}
-							lg={{ size: 12 }}
-						>
-							<CarouselCommonPropedIndex indexGallery />
+						<Col>
+							<CarouselCommonPropedIndex />
 						</Col>
 					</Row>
 					<Row>
@@ -42,15 +37,7 @@ const IndexPage = () => {
 							<h1 className='text-center'>Catalogue</h1>
 						</Col>
 					</Row>
-					<Row>
-						<Col
-							xs={{ size: 1, offset: 2 }}
-							sm={{ size: 2, offset: 2 }}
-							md={{ size: 6, offset: 2 }}
-							lg={{ size: 8, offset: 2 }}>
-							<ButtonsIconImagePropedIndex />
-						</Col>
-					</Row>
+					<ButtonsIconImagePropedIndex />
 					<Row>
 						<Col className='py-5'>
 							<h1 className='text-center'>Recommendations</h1>
