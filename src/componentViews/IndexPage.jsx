@@ -59,7 +59,7 @@ const Cards = () => {
 					[CARD_INDEX_SKILLS]: skills,
 				} = card
 				return (
-					<Col xs={{ size: 10, offset: 1 }} md={{ size: 3 }}>
+					<Col sm='6' md='3'>
 						<CardIndexPropedDefault
 							name={name}
 							src={src}
