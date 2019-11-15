@@ -12,16 +12,7 @@ import {
 	ROUTE_PAGE_POLICY_TERMS,
 	ROUTE_PAGE_POLICY_PRIVACY,
 } from 'routes'
-import {
-	TabContent,
-	Container,
-	Row,
-	Col,
-	Nav,
-	TabPane,
-	NavItem,
-	NavLink,
-} from 'reactstrap'
+import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 
 const { Footer, Link } = stopUndefined(Exports)
@@ -69,13 +60,14 @@ const PoliciesPage = props => {
 	return (
 		<>
 			<Container className='mt-5 mb-5'>
-				<Row style={{ height: 120 }}></Row>
+				<Row style={{ height: '1rem' }} />
 				<Row>
 					<Col lg='2' md='3'>
 						<Nav
 							className='nav-pills-primary nav-pills-icons flex-column'
 							pills
-							role='tablist'>
+							role='tablist'
+						>
 							<NavItem>
 								{policies.map(policy => {
 									const { [NAME]: name, [ICON]: icon, [TO]: to } = policy
@@ -85,13 +77,13 @@ const PoliciesPage = props => {
 											className={classnames({
 												active: pathname.toLowerCase() === to.toLowerCase(),
 											})}
-											key={name}
 											to={to}
-											tag={Link}>
+											tag={Link}
+										>
 											<i
 												style={{ fontSize: '40px' }}
 												className={`tim-icons ${icon}`}
-											/>{' '}
+											/>
 											{name}
 										</NavLink>
 									)
