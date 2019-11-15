@@ -84,15 +84,13 @@ const NavbarIndex = props => {
 	}
 
 	return (
-		<div className='fixed-top'>
+		<div className='mb-3'>
 			<ProgressCommonStoreProgress />
 			<Navbar
-				style={{
-					zIndex: 90000,
-				}}
 				className={(heightChanged && bgPurple) || color}
 				color-on-scroll='100'
-				expand='lg'>
+				expand='lg'
+			>
 				<Container>
 					<div className='navbar-translate'>
 						{/*small screen size*/}
@@ -115,7 +113,8 @@ const NavbarIndex = props => {
 						isOpen={collapseOpen}
 						onEntering={onCollapseEntering}
 						onExiting={onCollapseExiting}
-						onExited={onCollapseExited}>
+						onExited={onCollapseExited}
+					>
 						<HeaderCollapsedPropedNavbarIndex
 							isOpen={collapseOpen}
 							toggle={toggleCollapse}
