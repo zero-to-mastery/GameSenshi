@@ -14,6 +14,8 @@ A platform for gamers/streamers to provide their casual service and link up with
 
 ![policy.png](./src/assets/img/readme/policy.png)
 
+![profile.png](./src/assets/img/readme/profile.png)
+
 ## Introduction
 
 This is a project that is designed to allow the user the ability to temporarily hire other gamers to play with them. Similar to hiring someone to work with you, this allows you the opportunity to hire another gamer to game with you. It is all about gaming companionship.
