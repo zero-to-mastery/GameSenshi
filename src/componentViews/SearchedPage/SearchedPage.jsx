@@ -3,7 +3,7 @@ import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 import { Container } from 'reactstrap'
 
-const { ContainerSearchResultsPropedDefault, Footer } = stopUndefined(Exports)
+const { ContainerSearchResultsPropedDefault } = stopUndefined(Exports)
 
 const SearchedPage = () => {
 	const wrapper = useRef(null)
@@ -24,7 +24,6 @@ const SearchedPage = () => {
 					<ContainerSearchResultsPropedDefault />
 				</Container>
 			</div>
-			<Footer />
 		</div>
 	)
 }

@@ -5,7 +5,6 @@ import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 
 const {
-	Footer,
 	FormResetPasswordPropedDefault,
 	WrapperPropedReset,
 	Section,
@@ -31,7 +30,6 @@ const PasswordResetPage = () => {
 				</Container>
 				<div className='mb-5' />
 			</Section>
-			<Footer />
 		</WrapperPropedReset>
 	)
 }

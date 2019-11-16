@@ -45,6 +45,7 @@ const {
 	AlertCommonStoreAlert,
 	PoliciesPage,
 	CheckoutPage,
+	Footer,
 } = stopUndefined(Exports)
 
 const MapRoutesToPages = {
@@ -87,13 +88,17 @@ const App = () => {
 							<Router
 								isUserSignedIn={isUserSignedIn || isUserSigningIn}
 								pages={MapRoutesToPages}
-							>
-								<NavbarIndexStoreAlert>
-									<AlertCommonStoreAlert />
-								</NavbarIndexStoreAlert>
-								<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
-								<ModalCommonStoreModalPropedAuth />
-							</Router>
+								header={
+									<>
+										<NavbarIndexStoreAlert>
+											<AlertCommonStoreAlert />
+										</NavbarIndexStoreAlert>
+										<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
+										<ModalCommonStoreModalPropedAuth />
+									</>
+								}
+								footer={<Footer />}
+							></Router>
 						)
 					}}
 				</Subscribe>

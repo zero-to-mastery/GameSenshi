@@ -1,16 +1,11 @@
 import React from 'react'
 import { stopUndefined } from 'utils'
-// reactstrap components
 import { Container, Row, Col } from 'reactstrap'
-// core components
 import { Exports } from 'componentpMultiOrganisms'
 
-const {
-	Footer,
-	FormSignInPropedDefault,
-	WrapperPropedLogin,
-	Section,
-} = stopUndefined(Exports)
+const { FormSignInPropedDefault, WrapperPropedLogin, Section } = stopUndefined(
+	Exports
+)
 
 const SignInPage = () => {
 	return (
@@ -32,7 +27,6 @@ const SignInPage = () => {
 				</Container>
 				<div className='mt-5' />
 			</Section>
-			<Footer />
 		</WrapperPropedLogin>
 	)
 }

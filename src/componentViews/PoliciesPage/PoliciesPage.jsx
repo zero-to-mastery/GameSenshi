@@ -15,7 +15,7 @@ import {
 import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer, Link, Section, WrapperPropedIndex } = stopUndefined(Exports)
+const { Link, Section, WrapperPropedIndex } = stopUndefined(Exports)
 
 const NAME = 'name'
 const ICON = 'icon'
@@ -101,7 +101,6 @@ const PoliciesPage = props => {
 						</Col>
 					</Row>
 				</Container>
-				<Footer />
 			</Section>
 		</WrapperPropedIndex>
 	)

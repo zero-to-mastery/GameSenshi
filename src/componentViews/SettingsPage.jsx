@@ -17,7 +17,6 @@ const NOTIFICATION = 'Notifications'
 const SETTING = 'setting'
 
 const {
-	Footer,
 	TabPaneGeneralSettings,
 	TabPanePaymentSettings,
 	TabPaneAccountSettings,
@@ -107,7 +106,6 @@ const SettingsPage = () => {
 					</Row>
 				</Container>
 			</Section>
-			<Footer />
 		</WrapperPropedAccount>
 	)
 }

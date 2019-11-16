@@ -1,14 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { stopUndefined } from 'utils'
-// reactstrap components
 import { Container, Row, Col } from 'reactstrap'
-
-// utility library
-import classNames from 'classnames'
-// core components
 import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer, CheckoutCardPropedDefault } = stopUndefined(Exports)
+const { CheckoutCardPropedDefault } = stopUndefined(Exports)
 
 const CheckoutPage = () => {
 	return (
@@ -19,13 +14,13 @@ const CheckoutPage = () => {
 						xs={{ size: 12 }}
 						sm={{ size: 12 }}
 						md={{ size: 8, offset: 2 }}
-						lg={{ size: 4, offset: 4 }}>
+						lg={{ size: 4, offset: 4 }}
+					>
 						<h2 className='title text-center'>Order summary</h2>
 						<CheckoutCardPropedDefault />
 					</Col>
 				</Row>
 			</Container>
-			<Footer />
 		</div>
 	)
 }

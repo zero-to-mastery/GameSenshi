@@ -4,7 +4,6 @@ import { Exports } from 'componentpMultiOrganisms'
 import { Container, Row, Col } from 'reactstrap'
 
 const {
-	Footer,
 	CardIndexPropedDefault,
 	ButtonsIconImagePropedIndex,
 	CarouselCommonPropedIndex,
@@ -70,7 +69,6 @@ const IndexPage = () => {
 					</Row>
 				</Container>
 			</Section>
-			<Footer />
 		</WrapperPropedIndex>
 	)
 }

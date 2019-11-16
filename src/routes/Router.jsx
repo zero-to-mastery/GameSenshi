@@ -23,11 +23,11 @@ import {
 } from 'routes/constants'
 
 const Router = memo(props => {
-	const { children, pages, isUserSignedIn } = props
+	const { header, pages, isUserSignedIn, footer } = props
 	return (
 		<ReactRouter history={history}>
 			<LastLocationProvider>
-				{children}
+				{header}
 				<Switch>
 					{routes.map(route => {
 						const {
@@ -72,6 +72,7 @@ const Router = memo(props => {
 						}}
 					/>
 				</Switch>
+				{footer}
 			</LastLocationProvider>
 		</ReactRouter>
 	)

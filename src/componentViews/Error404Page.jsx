@@ -1,29 +1,13 @@
-import React, { useRef, useEffect } from 'react'
+import React from 'react'
 import { stopUndefined } from 'utils'
-// reactstrap components
 import { Container, Row, Col } from 'reactstrap'
-
-// core components
 import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer } = stopUndefined(Exports)
+const { WrapperPropedError } = stopUndefined(Exports)
 
-const Error404Page = props => {
-	const wrapper = useRef(null)
-
-	useEffect(() => {
-		document.documentElement.scrollTop = 0
-		document.scrollingElement.scrollTop = 0
-		wrapper.current.scrollTop = 0
-		document.body.classList.add('error-page')
-
-		return () => {
-			document.body.classList.remove('error-page')
-		}
-	}, [])
-
+const Error404Page = () => {
 	return (
-		<div className='wrapper' ref={wrapper}>
+		<WrapperPropedError>
 			<div className='page-header error-page header-filter'>
 				<div
 					className='page-header-image'
@@ -43,8 +27,7 @@ const Error404Page = props => {
 					</Row>
 				</Container>
 			</div>
-			<Footer />
-		</div>
+		</WrapperPropedError>
 	)
 }
 

@@ -7,7 +7,6 @@ import { Exports } from 'componentpMultiOrganisms'
 import audioSample from 'assets/audio/sampleVoice.mp3'
 
 const {
-	Footer,
 	CarouselCommonPropedProfile,
 	FormProfile,
 	RatingProfile,
@@ -116,7 +115,6 @@ const ProfilePage = () => {
 					</Row>
 				</Container>
 			</Section>
-			<Footer />
 		</WrapperPropedProfile>
 	)
 }

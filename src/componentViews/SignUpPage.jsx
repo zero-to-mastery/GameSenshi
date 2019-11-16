@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { stopUndefined } from 'utils'
-// react libraries components
 import { Container, Row, Col } from 'reactstrap'
-
-// core components
 import { Exports } from 'componentpMultiOrganisms'
 
 const {
-	Footer,
 	FormSignUpPropedDefault,
 	WrapperPropedRegister,
 	Section,
@@ -38,7 +34,7 @@ const SignUpPage = () => {
 
 	useEffect(() => {
 		// stop this listener in dev mode to ease development
-		// in dev mode, it setState a LOT! and causing lag (but not lag in class component
+		// in dev mode, it setState a LOT! and causing lag
 		if (process.env.REACT_APP_FOLLOW_CURSOR) {
 			document.documentElement.addEventListener('mousemove', followCursor)
 		}
@@ -101,7 +97,6 @@ const SignUpPage = () => {
 					/>
 				</div>
 			</Section>
-			<Footer />
 		</WrapperPropedRegister>
 	)
 }
