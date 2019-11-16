@@ -1,32 +1,27 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { stopUndefined } from 'utils'
-// reactstrap components
 import { Container, Row, Col } from 'reactstrap'
-
-// utility library
-import classNames from 'classnames'
-// core components
 import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer, CheckoutCardPropedDefault } = stopUndefined(Exports)
+const { CheckoutCardPropedDefault, Section } = stopUndefined(Exports)
 
 const CheckoutPage = () => {
 	return (
-		<div classname='wrapper'>
+		<Section>
 			<Container className='pt-5 pb-5'>
 				<Row className='pt-5 pb-5'>
 					<Col
 						xs={{ size: 12 }}
 						sm={{ size: 12 }}
 						md={{ size: 8, offset: 2 }}
-						lg={{ size: 4, offset: 4 }}>
+						lg={{ size: 4, offset: 4 }}
+					>
 						<h2 className='title text-center'>Order summary</h2>
 						<CheckoutCardPropedDefault />
 					</Col>
 				</Row>
 			</Container>
-			<Footer />
-		</div>
+		</Section>
 	)
 }
 

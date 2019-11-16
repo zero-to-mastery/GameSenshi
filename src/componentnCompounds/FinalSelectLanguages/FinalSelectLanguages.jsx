@@ -14,7 +14,7 @@ const languageOptions = [
 	{ [VALUE]: '5', [LABEL]: 'Russian', [COLOR]: '#FF8B00' },
 ]
 
-const FINAL_SELECT_LANGUAGES = 'Gender'
+const FINAL_SELECT_LANGUAGES = 'Languages'
 
 const FinalSelectLanguages = props => {
 	return (

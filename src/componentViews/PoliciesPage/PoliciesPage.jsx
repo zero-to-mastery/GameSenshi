@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 import { stopUndefined } from 'utils'
 import { Cookie } from './Cookie'
@@ -12,19 +12,10 @@ import {
 	ROUTE_PAGE_POLICY_TERMS,
 	ROUTE_PAGE_POLICY_PRIVACY,
 } from 'routes'
-import {
-	TabContent,
-	Container,
-	Row,
-	Col,
-	Nav,
-	TabPane,
-	NavItem,
-	NavLink,
-} from 'reactstrap'
+import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer, Link } = stopUndefined(Exports)
+const { Link, Section } = stopUndefined(Exports)
 
 const NAME = 'name'
 const ICON = 'icon'
@@ -55,27 +46,19 @@ const policies = [
 	},
 ]
 const PoliciesPage = props => {
-	useEffect(() => {
-		document.body.classList.add('index-page')
-		document.documentElement.scrollTop = 0
-		document.scrollingElement.scrollTop = 0
-		return () => {
-			document.body.classList.remove('index-page')
-		}
-	}, [])
 	const {
 		location: { pathname },
 	} = props
 	return (
-		<>
-			<Container className='mt-5 mb-5'>
-				<Row style={{ height: 120 }}></Row>
+		<Section>
+			<Container className='mt-4 mb-5'>
 				<Row>
 					<Col lg='2' md='3'>
 						<Nav
 							className='nav-pills-primary nav-pills-icons flex-column'
 							pills
-							role='tablist'>
+							role='tablist'
+						>
 							<NavItem>
 								{policies.map(policy => {
 									const { [NAME]: name, [ICON]: icon, [TO]: to } = policy
@@ -85,13 +68,13 @@ const PoliciesPage = props => {
 											className={classnames({
 												active: pathname.toLowerCase() === to.toLowerCase(),
 											})}
-											key={name}
 											to={to}
-											tag={Link}>
+											tag={Link}
+										>
 											<i
 												style={{ fontSize: '40px' }}
 												className={`tim-icons ${icon}`}
-											/>{' '}
+											/>
 											{name}
 										</NavLink>
 									)
@@ -117,8 +100,7 @@ const PoliciesPage = props => {
 					</Col>
 				</Row>
 			</Container>
-			<Footer />
-		</>
+		</Section>
 	)
 }
 export { PoliciesPage }

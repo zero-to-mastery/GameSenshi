@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import {
 	ROUTE_PAGE_SETTINGS_GENERAL,
@@ -17,7 +17,6 @@ const NOTIFICATION = 'Notifications'
 const SETTING = 'setting'
 
 const {
-	Footer,
 	TabPaneGeneralSettings,
 	TabPanePaymentSettings,
 	TabPaneAccountSettings,
@@ -27,6 +26,7 @@ const {
 	TAB_LIST_VERTICAL_NAME,
 	TAB_LIST_VERTICAL_TO,
 	TAB_LIST_VERTICAL_ICON,
+	Section,
 } = stopUndefined(Exports)
 
 const settingTabs = [
@@ -57,68 +57,53 @@ const settingTabs = [
 ]
 
 const SettingsPage = () => {
-	const wrapper = useRef(null)
-
-	useEffect(() => {
-		document.documentElement.scrollTop = 0
-		document.scrollingElement.scrollTop = 0
-		wrapper.current.scrollTop = 0
-		document.body.classList.add('account-settings')
-		return () => {
-			document.body.classList.remove('account-settings')
-		}
-	}, [])
-
 	return (
-		<div className='wrapper' ref={wrapper}>
-			<div className='section'>
-				<Container>
-					<Row>
-						<Col md='3'>
-							<div className='section'>
-								{/* User Information */}
-								<section className='text-center'>
-									<UploaderUserAvatar />
-								</section>
-								{/* User Information */}
-								{/* Profile Sidebar */}
-								<section>
-									<br />
-									<TabListVerticalPropedWithRouter tablist={settingTabs} />
-								</section>
-								{/* End Profile Sidebar */}
-								{/* Profile Completion */}
+		<Section>
+			<Container>
+				<Row>
+					<Col md='3'>
+						<Section>
+							{/* User Information */}
+							<section className='text-center'>
+								<UploaderUserAvatar />
+							</section>
+							{/* User Information */}
+							{/* Profile Sidebar */}
+							<section>
 								<br />
-								<br />
-								<br />
-								{/* End Profile Completion */}
-							</div>
-						</Col>
-						<Col className='ml-auto' md='8'>
-							<div className='section'>
-								<Switch>
-									{settingTabs.map(policy => {
-										const {
-											[TAB_LIST_VERTICAL_NAME]: name,
-											[SETTING]: Setting,
-											[TAB_LIST_VERTICAL_TO]: to,
-										} = policy
-										return (
-											<Route
-												key={name}
-												path={to}
-												render={prop => <Setting {...prop} />}
-											/>
-										)
-									})}
-								</Switch>
-							</div>
-						</Col>
-					</Row>
-				</Container>
-			</div>
-			<Footer />
-		</div>
+								<TabListVerticalPropedWithRouter tablist={settingTabs} />
+							</section>
+							{/* End Profile Sidebar */}
+							{/* Profile Completion */}
+							<br />
+							<br />
+							<br />
+							{/* End Profile Completion */}
+						</Section>
+					</Col>
+					<Col className='ml-auto' md='8'>
+						<Section>
+							<Switch>
+								{settingTabs.map(policy => {
+									const {
+										[TAB_LIST_VERTICAL_NAME]: name,
+										[SETTING]: Setting,
+										[TAB_LIST_VERTICAL_TO]: to,
+									} = policy
+									return (
+										<Route
+											key={name}
+											path={to}
+											render={prop => <Setting {...prop} />}
+										/>
+									)
+								})}
+							</Switch>
+						</Section>
+					</Col>
+				</Row>
+			</Container>
+		</Section>
 	)
 }
 

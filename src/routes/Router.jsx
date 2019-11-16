@@ -23,55 +23,58 @@ import {
 } from 'routes/constants'
 
 const Router = memo(props => {
-	const { children, pages, isUserSignedIn } = props
+	const { header, pages, isUserSignedIn, footer, wrapper: Wrapper } = props
 	return (
 		<ReactRouter history={history}>
 			<LastLocationProvider>
-				{children}
-				<Switch>
-					{routes.map(route => {
-						const {
-							[ROUTE_PATH]: path,
-							[ROUTE_ACCESSIBILITY]: accessibility,
-						} = route
-						const Page = pages[path]
-						return (
-							<Route
-								key={path}
-								path={path}
-								exact
-								render={props => {
-									if (accessibility === ROUTE_ACCESSIBILITY_FREE) {
-										return <Page {...props} />
-									} else if (isUserSignedIn) {
-										if (accessibility === ROUTE_ACCESSIBILITY_PRIVATE) {
+				{header}
+				<Wrapper>
+					<Switch>
+						{routes.map(route => {
+							const {
+								[ROUTE_PATH]: path,
+								[ROUTE_ACCESSIBILITY]: accessibility,
+							} = route
+							const Page = pages[path]
+							return (
+								<Route
+									key={path}
+									path={path}
+									exact
+									render={props => {
+										if (accessibility === ROUTE_ACCESSIBILITY_FREE) {
 											return <Page {...props} />
+										} else if (isUserSignedIn) {
+											if (accessibility === ROUTE_ACCESSIBILITY_PRIVATE) {
+												return <Page {...props} />
+											} else {
+												return <Redirect from={path} to={ROUTE_PAGE_INDEX} />
+											}
 										} else {
-											return <Redirect from={path} to={ROUTE_PAGE_INDEX} />
+											if (accessibility === ROUTE_ACCESSIBILITY_PUBLIC) {
+												return <Page {...props} />
+											} else {
+												return <Redirect from={path} to={ROUTE_PAGE_SIGN_IN} />
+											}
 										}
-									} else {
-										if (accessibility === ROUTE_ACCESSIBILITY_PUBLIC) {
-											return <Page {...props} />
-										} else {
-											return <Redirect from={path} to={ROUTE_PAGE_SIGN_IN} />
-										}
-									}
-								}}
-							/>
-						)
-					})}
-					{redirects.map(redirect => {
-						const { [ROUTE_FROM]: from, [ROUTE_TO]: to } = redirect
-						return <Redirect key={to} from={from} to={to} exact />
-					})}
-					<Route
-						path='/'
-						render={props => {
-							const Page404 = pages[ROUTE_PAGE_404]
-							return <Page404 {...props} />
-						}}
-					/>
-				</Switch>
+									}}
+								/>
+							)
+						})}
+						{redirects.map(redirect => {
+							const { [ROUTE_FROM]: from, [ROUTE_TO]: to } = redirect
+							return <Redirect key={to} from={from} to={to} exact />
+						})}
+						<Route
+							path='/'
+							render={props => {
+								const Page404 = pages[ROUTE_PAGE_404]
+								return <Page404 {...props} />
+							}}
+						/>
+					</Switch>
+				</Wrapper>
+				{footer}
 			</LastLocationProvider>
 		</ReactRouter>
 	)

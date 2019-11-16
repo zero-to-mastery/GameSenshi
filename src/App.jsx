@@ -47,6 +47,8 @@ const {
 	AlertCommonStoreAlert,
 	PoliciesPage,
 	CheckoutPage,
+	Footer,
+	WrapperPropedApp,
 } = stopUndefined(Exports)
 
 const MapRoutesToPages = {
@@ -90,13 +92,18 @@ const App = () => {
 							<Router
 								isUserSignedIn={isUserSignedIn || isUserSigningIn}
 								pages={MapRoutesToPages}
-							>
-								<NavbarIndexStoreAlert>
-									<AlertCommonStoreAlert />
-								</NavbarIndexStoreAlert>
-								<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
-								<ModalCommonStoreModalPropedAuth />
-							</Router>
+								wrapper={WrapperPropedApp}
+								header={
+									<>
+										<NavbarIndexStoreAlert>
+											<AlertCommonStoreAlert />
+										</NavbarIndexStoreAlert>
+										<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
+										<ModalCommonStoreModalPropedAuth />
+									</>
+								}
+								footer={<Footer />}
+							></Router>
 						)
 					}}
 				</Subscribe>

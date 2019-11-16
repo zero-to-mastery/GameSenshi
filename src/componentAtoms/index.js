@@ -5,7 +5,6 @@ import { InputSelect, VALUE, LABEL, DISABLE, COLOR } from './InputSelect'
 import { InputText } from './InputText'
 import { PopoverCommon } from './PopoverCommon'
 import Footer from './Footers/Footer'
-import IndexHeader from './Headers/IndexHeader.jsx'
 import {
 	ButtonsIconOptioned,
 	ButtonsIconPropedAuth,
@@ -80,12 +79,22 @@ import {
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 } from './CheckBoxIcon'
+import { Section } from './Section'
+import {
+	WrapperPropedIndex,
+	WrapperPropedAccount,
+	WrapperPropedProfile,
+	WrapperPropedRegister,
+	WrapperPropedLogin,
+	WrapperPropedReset,
+	WrapperPropedError,
+	WrapperPropedApp,
+} from './Wrapper'
 
 export const Exports = {
 	...ExportProtons,
 	Footer,
 	FinalForm,
-	IndexHeader,
 	ErrorBoundary,
 	ImageUploadStoreUserPropedSettings,
 	AlertCommonStoreAlert,
@@ -153,5 +162,13 @@ export const Exports = {
 	CheckBoxIconPropedTip,
 	CarouselCommonPropedProfile,
 	CarouselCommonPropedIndex,
-
+	Section,
+	WrapperPropedIndex,
+	WrapperPropedAccount,
+	WrapperPropedProfile,
+	WrapperPropedRegister,
+	WrapperPropedLogin,
+	WrapperPropedReset,
+	WrapperPropedError,
+	WrapperPropedApp,
 }

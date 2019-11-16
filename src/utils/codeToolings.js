@@ -14,7 +14,7 @@ const stopUndefined = obj => {
 const checkDuplicatedObject = (options, prop) => {
 	const ids = options.map(option => option[prop])
 	if (ids.length !== new Set(ids).size) {
-		throw 'duplicated id'
+		throw new Error('duplicated id')
 	} else {
 		return options
 	}

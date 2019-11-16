@@ -1,5 +1,5 @@
 import React, { Fragment, useCallback, useMemo } from 'react'
-import { Button, UncontrolledTooltip } from 'reactstrap'
+import { Button, UncontrolledTooltip, Row } from 'reactstrap'
 import classNames from 'classnames'
 
 const BUTTONS_ICON_ID = 'id'
@@ -12,7 +12,7 @@ const ButtonsIcon = props => {
 	const { onClick, buttons, className } = props
 
 	return (
-		<div className={classNames('text-center', className)}>
+		<Row className={classNames('justify-content-center', className)}>
 			{buttons.map(button => {
 				const {
 					[BUTTONS_ICON_ID]: id,
@@ -42,7 +42,8 @@ const ButtonsIcon = props => {
 							id={id_}
 							target='_blank'
 							rel='noopener noreferrer'
-							onClick={onClick_}>
+							onClick={onClick_}
+						>
 							<i className={icon} />
 						</Button>
 						<UncontrolledTooltip delay={0} target={id_}>
@@ -51,7 +52,7 @@ const ButtonsIcon = props => {
 					</Fragment>
 				)
 			})}
-		</div>
+		</Row>
 	)
 }
 

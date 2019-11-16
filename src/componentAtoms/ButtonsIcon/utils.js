@@ -86,11 +86,10 @@ const buttonIconAuths = { [GOOGLE]: '', [FACEBOOK]: '' }
 
 const getButtonsIcon = buttons => {
 	const getButtons = []
-	for (var prop in buttons) {
+	checkDuplicatedObject(options, BUTTONS_ICON_ID)
+	for (let prop in buttons) {
 		getButtons.push({
-			...checkDuplicatedObject(options, BUTTONS_ICON_ID).find(
-				option => option[BUTTONS_ICON_ID] === prop
-			),
+			...options.find(option => option[BUTTONS_ICON_ID] === prop),
 			...(buttons[prop] && { [BUTTONS_ICON_HREF]: buttons[prop] }),
 		})
 	}

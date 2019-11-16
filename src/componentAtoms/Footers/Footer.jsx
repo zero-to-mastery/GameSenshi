@@ -20,7 +20,7 @@ const { Link } = stopUndefined(Exports)
 class Footer extends React.Component {
 	render() {
 		return (
-			<footer className='footer'>
+			<footer className='footer mt-5'>
 				<Container>
 					<Row>
 						<Col md='3'>
@@ -82,7 +82,8 @@ class Footer extends React.Component {
 									color='default'
 									href='https://twitter.com/creativetim'
 									id='tooltip622135962'
-									target='_blank'>
+									target='_blank'
+								>
 									<i className='fab fa-twitter' />
 								</Button>
 								<UncontrolledTooltip delay={0} target='tooltip622135962'>
@@ -93,7 +94,8 @@ class Footer extends React.Component {
 									color='default'
 									href='https://www.facebook.com/creativetim'
 									id='tooltip230450801'
-									target='_blank'>
+									target='_blank'
+								>
 									<i className='fab fa-facebook-square' />
 								</Button>
 								<UncontrolledTooltip delay={0} target='tooltip230450801'>
@@ -104,7 +106,8 @@ class Footer extends React.Component {
 									color='default'
 									href='https://dribbble.com/creativetim'
 									id='tooltip318450378'
-									target='_blank'>
+									target='_blank'
+								>
 									<i className='fab fa-dribbble' />
 								</Button>
 								<UncontrolledTooltip delay={0} target='tooltip318450378'>
