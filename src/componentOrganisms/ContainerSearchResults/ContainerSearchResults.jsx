@@ -13,13 +13,15 @@ const {
 
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 const ratings = ['5 stars', '4 stars', '3 stars', '2 stars', '1 star']
-const tempCards = [
-	'Mila Skylar',
-	'Mark Johnsson',
-	'Dylan Wyatt',
-	'Olivia Smith',
-]
+
+const CARD_SEARCHED_NAME = 'name'
+const CARD_SEARCHED_IMAGE = 'image'
+const CARD_SEARCHED_SKILLS = 'skills'
+const CARD_SEARCHED_HOBBIES = 'hobbies'
+const CARD_SEARCHED_LEVEL = 'level'
+
 const ContainerSearchResults = props => {
+	const { cards } = props
 	return (
 		<Container>
 			<Row>
@@ -27,10 +29,23 @@ const ContainerSearchResults = props => {
 				<Col md={{ size: 8 }}>
 					<PanelSortBy />
 					<Row>
-						{tempCards.map(card => {
+						{cards.map(card => {
+							const {
+								[CARD_SEARCHED_NAME]: name,
+								[CARD_SEARCHED_IMAGE]: src,
+								[CARD_SEARCHED_HOBBIES]: hobbies,
+								[CARD_SEARCHED_LEVEL]: level,
+								[CARD_SEARCHED_SKILLS]: skills,
+							} = card
 							return (
 								<Col md={{ size: 4 }}>
-									<CardSearchedPropedDefault key={card} cards={tempCards} />
+									<CardSearchedPropedDefault
+										name={name}
+										src={src}
+										hobbies={hobbies}
+										level={level}
+										skills={skills}
+									/>
 								</Col>
 							)
 						})}
@@ -41,4 +56,11 @@ const ContainerSearchResults = props => {
 	)
 }
 
-export { ContainerSearchResults }
+export {
+	ContainerSearchResults,
+	CARD_SEARCHED_NAME,
+	CARD_SEARCHED_SKILLS,
+	CARD_SEARCHED_HOBBIES,
+	CARD_SEARCHED_IMAGE,
+	CARD_SEARCHED_LEVEL,
+}
