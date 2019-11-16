@@ -1,5 +1,5 @@
 import React, { Fragment, useCallback, useMemo } from 'react'
-import { Button, UncontrolledTooltip, Row, Col } from 'reactstrap'
+import { Button, UncontrolledTooltip, Row } from 'reactstrap'
 import classNames from 'classnames'
 
 const BUTTONS_ICON_ID = 'id'
