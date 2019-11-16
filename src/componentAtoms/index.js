@@ -80,7 +80,11 @@ import {
 	CheckBoxIconPropedTip,
 } from './CheckBoxIcon'
 import { Section } from './Section'
-import { WrapperPropedIndex, WrapperPropedAccount } from './Wrapper'
+import {
+	WrapperPropedIndex,
+	WrapperPropedAccount,
+	WrapperPropedProfile,
+} from './Wrapper'
 
 export const Exports = {
 	...ExportProtons,
@@ -156,4 +160,5 @@ export const Exports = {
 	Section,
 	WrapperPropedIndex,
 	WrapperPropedAccount,
+	WrapperPropedProfile,
 }

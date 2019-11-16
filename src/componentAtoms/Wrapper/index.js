@@ -8,4 +8,8 @@ const WrapperPropedIndex = props => {
 const WrapperPropedAccount = props => {
 	return <Wrapper bodyClassName='account-settings' {...props} />
 }
-export { WrapperPropedIndex, WrapperPropedAccount }
+
+const WrapperPropedProfile = props => {
+	return <Wrapper bodyClassName='profile-page' {...props} />
+}
+export { WrapperPropedIndex, WrapperPropedAccount, WrapperPropedProfile }
