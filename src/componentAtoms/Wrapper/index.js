@@ -19,9 +19,14 @@ const WrapperPropedRegister = props => {
 	return <Wrapper bodyClassName='register-page' {...props} />
 }
 
+const WrapperPropedLogin = props => {
+	return <Wrapper bodyClassName='login-page' {...props} />
+}
+
 export {
 	WrapperPropedIndex,
 	WrapperPropedAccount,
 	WrapperPropedProfile,
 	WrapperPropedRegister,
+	WrapperPropedLogin,
 }

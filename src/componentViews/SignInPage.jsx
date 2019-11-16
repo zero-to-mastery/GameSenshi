@@ -1,25 +1,21 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { stopUndefined } from 'utils'
 // reactstrap components
-import { Container, Col } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 // core components
 import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer, FormSignInPropedDefault } = stopUndefined(Exports)
+const {
+	Footer,
+	FormSignInPropedDefault,
+	WrapperPropedLogin,
+	Section,
+} = stopUndefined(Exports)
 
-const SignInPage = props => {
-	useEffect(() => {
-		document.documentElement.scrollTop = 0
-		document.scrollingElement.scrollTop = 0
-		document.body.classList.add('login-page')
-		return () => {
-			document.body.classList.remove('login-page')
-		}
-	}, [])
-
+const SignInPage = () => {
 	return (
-		<>
-			<div className='page-header'>
+		<WrapperPropedLogin>
+			<Section>
 				<div className='squares square1' />
 				<div className='squares square2' />
 				<div className='squares square3' />
@@ -28,13 +24,16 @@ const SignInPage = props => {
 				<div className='squares square6' />
 				<div className='page-header-image' />
 				<Container>
-					<Col className='mx-auto' lg='5' md='8'>
-						<FormSignInPropedDefault />
-					</Col>
+					<Row>
+						<Col className='mx-auto' lg='5' md='8'>
+							<FormSignInPropedDefault />
+						</Col>
+					</Row>
 				</Container>
-			</div>
+				<div className='mt-5' />
+			</Section>
 			<Footer />
-		</>
+		</WrapperPropedLogin>
 	)
 }
 
