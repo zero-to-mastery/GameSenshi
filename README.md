@@ -8,7 +8,11 @@ A platform for gamers/streamers to provide their casual service and link up with
 
 [**Demo Page**](https://www.gamesenshi.com/index)
 
-![index.png](./src/assets/img/index.png)
+![index.png](./src/assets/img/readme/index.png)
+
+![settings.png](./src/assets/img/readme/settings.png)
+
+![policy.png](./src/assets/img/readme/policy.png)
 
 ## Introduction
 
