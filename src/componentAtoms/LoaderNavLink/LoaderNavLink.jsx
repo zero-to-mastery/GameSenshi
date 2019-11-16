@@ -2,11 +2,11 @@ import React, { memo } from 'react'
 import { NavItem, NavLink } from 'reactstrap'
 import Loader from 'react-loader-spinner'
 
-const LABEL_SMALL_STATE_IS_LOADING = 'loading'
+const LOADER_NAV_LINK_STATE_IS_LOADING = 'loading'
 
 const LoaderNavLink = memo(props => {
 	const {
-		[LABEL_SMALL_STATE_IS_LOADING]: isLoading,
+		[LOADER_NAV_LINK_STATE_IS_LOADING]: isLoading,
 		body,
 		children,
 		small,
@@ -16,7 +16,8 @@ const LoaderNavLink = memo(props => {
 			<NavLink
 				disabled
 				href='#pablo'
-				className='p-0 d-flex align-items-center font-weight-bold'>
+				className='p-0 d-flex align-items-center font-weight-bold'
+			>
 				<Loader type='Hearts' color='#00BFFF' height='36' width='36' />
 				&nbsp;&nbsp;{body}
 			</NavLink>
@@ -26,4 +27,4 @@ const LoaderNavLink = memo(props => {
 	)
 })
 
-export { LoaderNavLink, LABEL_SMALL_STATE_IS_LOADING }
+export { LoaderNavLink, LOADER_NAV_LINK_STATE_IS_LOADING }
