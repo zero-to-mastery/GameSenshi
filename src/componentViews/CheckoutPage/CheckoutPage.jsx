@@ -3,11 +3,11 @@ import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 
-const { CheckoutCardPropedDefault } = stopUndefined(Exports)
+const { CheckoutCardPropedDefault, Section } = stopUndefined(Exports)
 
 const CheckoutPage = () => {
 	return (
-		<div classname='wrapper'>
+		<Section>
 			<Container className='pt-5 pb-5'>
 				<Row className='pt-5 pb-5'>
 					<Col
@@ -21,7 +21,7 @@ const CheckoutPage = () => {
 					</Col>
 				</Row>
 			</Container>
-		</div>
+		</Section>
 	)
 }
 

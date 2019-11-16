@@ -26,7 +26,6 @@ const {
 	TAB_LIST_VERTICAL_NAME,
 	TAB_LIST_VERTICAL_TO,
 	TAB_LIST_VERTICAL_ICON,
-	WrapperPropedAccount,
 	Section,
 } = stopUndefined(Exports)
 
@@ -59,54 +58,52 @@ const settingTabs = [
 
 const SettingsPage = () => {
 	return (
-		<WrapperPropedAccount>
-			<Section>
-				<Container>
-					<Row>
-						<Col md='3'>
-							<Section>
-								{/* User Information */}
-								<section className='text-center'>
-									<UploaderUserAvatar />
-								</section>
-								{/* User Information */}
-								{/* Profile Sidebar */}
-								<section>
-									<br />
-									<TabListVerticalPropedWithRouter tablist={settingTabs} />
-								</section>
-								{/* End Profile Sidebar */}
-								{/* Profile Completion */}
+		<Section>
+			<Container>
+				<Row>
+					<Col md='3'>
+						<Section>
+							{/* User Information */}
+							<section className='text-center'>
+								<UploaderUserAvatar />
+							</section>
+							{/* User Information */}
+							{/* Profile Sidebar */}
+							<section>
 								<br />
-								<br />
-								<br />
-								{/* End Profile Completion */}
-							</Section>
-						</Col>
-						<Col className='ml-auto' md='8'>
-							<Section>
-								<Switch>
-									{settingTabs.map(policy => {
-										const {
-											[TAB_LIST_VERTICAL_NAME]: name,
-											[SETTING]: Setting,
-											[TAB_LIST_VERTICAL_TO]: to,
-										} = policy
-										return (
-											<Route
-												key={name}
-												path={to}
-												render={prop => <Setting {...prop} />}
-											/>
-										)
-									})}
-								</Switch>
-							</Section>
-						</Col>
-					</Row>
-				</Container>
-			</Section>
-		</WrapperPropedAccount>
+								<TabListVerticalPropedWithRouter tablist={settingTabs} />
+							</section>
+							{/* End Profile Sidebar */}
+							{/* Profile Completion */}
+							<br />
+							<br />
+							<br />
+							{/* End Profile Completion */}
+						</Section>
+					</Col>
+					<Col className='ml-auto' md='8'>
+						<Section>
+							<Switch>
+								{settingTabs.map(policy => {
+									const {
+										[TAB_LIST_VERTICAL_NAME]: name,
+										[SETTING]: Setting,
+										[TAB_LIST_VERTICAL_TO]: to,
+									} = policy
+									return (
+										<Route
+											key={name}
+											path={to}
+											render={prop => <Setting {...prop} />}
+										/>
+									)
+								})}
+							</Switch>
+						</Section>
+					</Col>
+				</Row>
+			</Container>
+		</Section>
 	)
 }
 

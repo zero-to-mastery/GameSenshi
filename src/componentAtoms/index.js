@@ -88,6 +88,7 @@ import {
 	WrapperPropedLogin,
 	WrapperPropedReset,
 	WrapperPropedError,
+	WrapperPropedApp,
 } from './Wrapper'
 
 export const Exports = {
@@ -169,4 +170,5 @@ export const Exports = {
 	WrapperPropedLogin,
 	WrapperPropedReset,
 	WrapperPropedError,
+	WrapperPropedApp,
 }

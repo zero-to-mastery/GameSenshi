@@ -31,6 +31,10 @@ const WrapperPropedError = props => {
 	return <Wrapper bodyClassName='error-page' {...props} />
 }
 
+const WrapperPropedApp = props => {
+	return <Wrapper bodyClassName='index-page' {...props} />
+}
+
 export {
 	WrapperPropedIndex,
 	WrapperPropedAccount,
@@ -39,4 +43,5 @@ export {
 	WrapperPropedLogin,
 	WrapperPropedReset,
 	WrapperPropedError,
+	WrapperPropedApp,
 }

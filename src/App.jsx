@@ -46,6 +46,7 @@ const {
 	PoliciesPage,
 	CheckoutPage,
 	Footer,
+	WrapperPropedApp,
 } = stopUndefined(Exports)
 
 const MapRoutesToPages = {
@@ -88,6 +89,7 @@ const App = () => {
 							<Router
 								isUserSignedIn={isUserSignedIn || isUserSigningIn}
 								pages={MapRoutesToPages}
+								wrapper={WrapperPropedApp}
 								header={
 									<>
 										<NavbarIndexStoreAlert>

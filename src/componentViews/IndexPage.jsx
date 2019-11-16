@@ -8,12 +8,11 @@ const {
 	ButtonsIconImagePropedIndex,
 	CarouselCommonPropedIndex,
 	Section,
-	WrapperPropedIndex,
 } = stopUndefined(Exports)
 
 const IndexPage = () => {
 	return (
-		<WrapperPropedIndex>
+		<>
 			<Section>
 				<Container>
 					<Row>
@@ -69,7 +68,7 @@ const IndexPage = () => {
 					</Row>
 				</Container>
 			</Section>
-		</WrapperPropedIndex>
+		</>
 	)
 }
 

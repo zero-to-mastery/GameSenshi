@@ -3,11 +3,7 @@ import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 
-const {
-	FormSignUpPropedDefault,
-	WrapperPropedRegister,
-	Section,
-} = stopUndefined(Exports)
+const { FormSignUpPropedDefault, Section } = stopUndefined(Exports)
 
 const SignUpPage = () => {
 	const [squares1to6, setSquares1to6] = useState('')
@@ -44,60 +40,58 @@ const SignUpPage = () => {
 	}, [])
 
 	return (
-		<WrapperPropedRegister>
-			<Section>
-				<Container>
-					<Row>
-						<Col className='mx-auto' lg='5' md='8'>
-							<div
-								className='square square-7'
-								id='square7'
-								style={{ transform: squares7and8 }}
-							/>
-							<div
-								className='square square-8'
-								id='square8'
-								style={{ transform: squares7and8 }}
-							/>
-							<FormSignUpPropedDefault />
-						</Col>
-					</Row>
-				</Container>
-				<div style={{ height: 0 }} className='mt-5'>
-					<div className='register-bg' />
-					<div
-						className='square square-1'
-						id='square1'
-						style={{ transform: squares1to6 }}
-					/>
-					<div
-						className='square square-2'
-						id='square2'
-						style={{ transform: squares1to6 }}
-					/>
-					<div
-						className='square square-3'
-						id='square3'
-						style={{ transform: squares1to6 }}
-					/>
-					<div
-						className='square square-4'
-						id='square4'
-						style={{ transform: squares1to6 }}
-					/>
-					<div
-						className='square square-5'
-						id='square5'
-						style={{ transform: squares1to6 }}
-					/>
-					<div
-						className='square square-6'
-						id='square6'
-						style={{ transform: squares1to6 }}
-					/>
-				</div>
-			</Section>
-		</WrapperPropedRegister>
+		<Section>
+			<Container>
+				<Row>
+					<Col className='mx-auto' lg='5' md='8'>
+						<div
+							className='square square-7'
+							id='square7'
+							style={{ transform: squares7and8 }}
+						/>
+						<div
+							className='square square-8'
+							id='square8'
+							style={{ transform: squares7and8 }}
+						/>
+						<FormSignUpPropedDefault />
+					</Col>
+				</Row>
+			</Container>
+			<div style={{ height: 0 }} className='mt-5'>
+				<div className='register-bg' />
+				<div
+					className='square square-1'
+					id='square1'
+					style={{ transform: squares1to6 }}
+				/>
+				<div
+					className='square square-2'
+					id='square2'
+					style={{ transform: squares1to6 }}
+				/>
+				<div
+					className='square square-3'
+					id='square3'
+					style={{ transform: squares1to6 }}
+				/>
+				<div
+					className='square square-4'
+					id='square4'
+					style={{ transform: squares1to6 }}
+				/>
+				<div
+					className='square square-5'
+					id='square5'
+					style={{ transform: squares1to6 }}
+				/>
+				<div
+					className='square square-6'
+					id='square6'
+					style={{ transform: squares1to6 }}
+				/>
+			</div>
+		</Section>
 	)
 }
 

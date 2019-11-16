@@ -1,8 +1,6 @@
 import React from 'react'
 import { stopUndefined } from 'utils'
-// reactstrap components
 import { Container, Row, Col } from 'reactstrap'
-// core components
 import { Exports } from 'componentpMultiOrganisms'
 import audioSample from 'assets/audio/sampleVoice.mp3'
 
@@ -15,7 +13,6 @@ const {
 	ContainerTitledPropedDefault,
 	CardSenshi,
 	CommentWithPaginationPropedDefault,
-	WrapperPropedProfile,
 	Section,
 } = stopUndefined(Exports)
 
@@ -30,7 +27,7 @@ const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 
 const ProfilePage = () => {
 	return (
-		<WrapperPropedProfile>
+		<>
 			<Section>
 				<img alt='...' className='dots' src={require('assets/img/dots.png')} />
 				<img alt='...' className='path' src={require('assets/img/path4.png')} />
@@ -115,7 +112,7 @@ const ProfilePage = () => {
 					</Row>
 				</Container>
 			</Section>
-		</WrapperPropedProfile>
+		</>
 	)
 }
 
