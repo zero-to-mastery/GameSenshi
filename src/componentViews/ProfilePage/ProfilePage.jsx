@@ -1,12 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { stopUndefined } from 'utils'
 // reactstrap components
 import { Container, Row, Col } from 'reactstrap'
 // core components
 import { Exports } from 'componentpMultiOrganisms'
 import audioSample from 'assets/audio/sampleVoice.mp3'
-import styles from './styles.module.css'
-import classNames from 'classnames'
 
 const {
 	Footer,
@@ -18,6 +16,8 @@ const {
 	ContainerTitledPropedDefault,
 	CardSenshi,
 	CommentWithPaginationPropedDefault,
+	WrapperPropedProfile,
+	Section,
 } = stopUndefined(Exports)
 
 // fake data
@@ -30,25 +30,12 @@ const badges = ['female', 'verified', 'risingStar']
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 
 const ProfilePage = () => {
-	const wrapper = useRef(null)
-
-	useEffect(() => {
-		document.documentElement.scrollTop = 0
-		document.scrollingElement.scrollTop = 0
-		wrapper.current.scrollTop = 0
-		document.body.classList.add('profile-page')
-		return () => {
-			document.body.classList.remove('profile-page')
-		}
-	}, [])
-
 	return (
-		<div className='wrapper' ref={wrapper}>
-			<div className='page-header'>
+		<WrapperPropedProfile>
+			<Section>
 				<img alt='...' className='dots' src={require('assets/img/dots.png')} />
 				<img alt='...' className='path' src={require('assets/img/path4.png')} />
-				<Container
-					className={classNames('align-items-center', styles.container2)}>
+				<Container>
 					<Row>
 						<CardSenshi
 							nickname='Mike Scheinder'
@@ -100,14 +87,11 @@ const ProfilePage = () => {
 						</Col>
 					</Row>
 				</Container>
-			</div>
-			<section className='section'>
+			</Section>
+			<Section>
 				<Container>
 					<Row>
-						<Col
-							xs={{ size: 6, offset: 4 }}
-							sm={{ size: 6, offset: 5 }}
-							md={{ size: 6, offset: 5 }}>
+						<Col>
 							<h1>Images</h1>
 						</Col>
 					</Row>
@@ -116,24 +100,24 @@ const ProfilePage = () => {
 							<CarouselCommonPropedProfile />
 						</Col>
 					</Row>
+				</Container>
+			</Section>
+			<Section>
+				<Container>
 					<Row>
-						<Col
-							className='py-5'
-							xs={{ size: 6, offset: 4 }}
-							sm={{ size: 6, offset: 5 }}
-							md={{ size: 6, offset: 5 }}>
+						<Col>
 							<h1>Comments</h1>
 						</Col>
 					</Row>
 					<Row>
-						<Col md={{ size: 8, offset: 2 }} className='pt-5 pb-5'>
+						<Col>
 							<CommentWithPaginationPropedDefault />
 						</Col>
 					</Row>
 				</Container>
-			</section>
+			</Section>
 			<Footer />
-		</div>
+		</WrapperPropedProfile>
 	)
 }
 
