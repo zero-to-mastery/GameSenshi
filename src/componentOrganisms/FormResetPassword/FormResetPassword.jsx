@@ -10,8 +10,6 @@ import {
 	CardImg,
 	CardTitle,
 	Form,
-	Container,
-	Col,
 } from 'reactstrap'
 // core components
 import { Exports } from 'componentnCompounds'
