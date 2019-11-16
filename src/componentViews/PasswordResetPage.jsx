@@ -1,27 +1,20 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { stopUndefined } from 'utils'
-
+import { Container, Row, Col } from 'reactstrap'
 // core components
 import { Exports } from 'componentpMultiOrganisms'
 
-const { Footer, FormResetPasswordPropedDefault } = stopUndefined(Exports)
+const {
+	Footer,
+	FormResetPasswordPropedDefault,
+	WrapperPropedReset,
+	Section,
+} = stopUndefined(Exports)
 
-const PasswordResetPage = props => {
-	const wrapper = useRef(null)
-
-	useEffect(() => {
-		document.documentElement.scrollTop = 0
-		document.scrollingElement.scrollTop = 0
-		wrapper.current.scrollTop = 0
-		document.body.classList.add('reset-page')
-		return () => {
-			document.body.classList.remove('reset-page')
-		}
-	}, [])
-
+const PasswordResetPage = () => {
 	return (
-		<div className='wrapper' ref={wrapper}>
-			<div className='page-header'>
+		<WrapperPropedReset>
+			<Section>
 				<div className='squares square1' />
 				<div className='squares square2' />
 				<div className='squares square3' />
@@ -29,10 +22,17 @@ const PasswordResetPage = props => {
 				<div className='squares square5' />
 				<div className='squares square6' />
 				<div className='page-header-image' />
-				<FormResetPasswordPropedDefault />
-			</div>
+				<Container>
+					<Row className='ml-0 mr-0'>
+						<Col className='mx-auto' lg='5' md='8'>
+							<FormResetPasswordPropedDefault />
+						</Col>
+					</Row>
+				</Container>
+				<div className='mb-5' />
+			</Section>
 			<Footer />
-		</div>
+		</WrapperPropedReset>
 	)
 }
 

@@ -16,6 +16,8 @@ A platform for gamers/streamers to provide their casual service and link up with
 
 ![signIn.png](./src/assets/img/readme/signIn.png)
 
+![reset.png](./src/assets/img/readme/reset.png)
+
 ![settings.png](./src/assets/img/readme/settings.png)
 
 ![policy.png](./src/assets/img/readme/policy.png)
