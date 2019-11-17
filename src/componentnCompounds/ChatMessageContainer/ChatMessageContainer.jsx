@@ -61,16 +61,27 @@ const ConversationDropdown = props => {
 }
 
 const SingleMessage = props => {
-	const { body, date } = props
+	const { body, date, index } = props
 	return (
-		<Row className='justify-content-start'>
+		<Row
+			className={
+				index % 2 === 0
+					? 'justify-content-start'
+					: 'justify-content-end text-right'
+			}
+		>
 			<Col xs={{ size: 'auto' }}>
-				<Card>
+				<Card className={index % 2 === 0 ? null : 'bg-primary text-white'}>
 					<CardBody className='p-2'>
 						<p className='mb-1'>{body}</p>
 						<div>
 							<small className='opacity-60'>
-								<i className='far fa-clock' /> {date}
+								<i
+									className={
+										index % 2 === 0 ? 'far fa-clock' : 'tim-icons icon-check-2'
+									}
+								/>{' '}
+								{date}
 							</small>
 						</div>
 					</CardBody>
@@ -85,8 +96,8 @@ const ChatMessageContainer = props => {
 	const { messages } = props
 	return (
 		<Card className='card-plain'>
-			<PerfectScrollbar>
-				<CardHeader className='d-inline-block'>
+			<PerfectScrollbar className='pr-3' style={{ height: 768 }}>
+				<CardHeader className='d-block'>
 					<Row>
 						<Col md='10'>
 							<Media className='align-items-center'>
@@ -126,12 +137,12 @@ const ChatMessageContainer = props => {
 					</Row>
 				</CardHeader>
 				<CardBody>
-					{messages.map(message => {
+					{messages.map((message, index) => {
 						const {
 							[CHAT_MESSAGE_BODY]: body,
 							[CHAT_MESSAGE_SENT_DATE]: date,
 						} = message
-						return <SingleMessage body={body} date={date} />
+						return <SingleMessage index={index} body={body} date={date} />
 					})}
 					<Row className='mt-4'>
 						<Col className='text-center' md='12'>
