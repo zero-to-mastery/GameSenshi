@@ -105,7 +105,7 @@ const IndexPage = () => {
 						</Col>
 					</Row>
 					<Row>
-						<CardIndexPropedDefault />
+						<Cards />
 					</Row>
 				</Container>
 			</Section>
@@ -117,7 +117,7 @@ const IndexPage = () => {
 						</Col>
 					</Row>
 					<Row>
-						<CardIndexPropedDefault />
+						<Cards />
 					</Row>
 				</Container>
 			</Section>
@@ -129,7 +129,7 @@ const IndexPage = () => {
 						</Col>
 					</Row>
 					<Row>
-						<CardIndexPropedDefault />
+						<Cards />
 					</Row>
 				</Container>
 			</Section>
