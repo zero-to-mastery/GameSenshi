@@ -25,12 +25,12 @@ class StoreProgress extends Container {
 	}
 
 	[RESET_STATE] = () => {
-		this.setState(defaultValues())
+		this[SET_STATE](defaultValues())
 		return this
 	};
 
 	[SHOW] = (value = DEFAULT_VALUE, color = DEFAULT_COLOR) => {
-		this.setState({
+		this[SET_STATE]({
 			[STORE_PROGRESS_STATE_IS_OPEN]: true,
 			[STORE_PROGRESS_STATE_COLOR]: color,
 			[STORE_PROGRESS_STATE_VALUE]: value,
@@ -39,7 +39,7 @@ class StoreProgress extends Container {
 	};
 
 	[CLOSE] = () => {
-		this.setState(defaultValues)
+		this[SET_STATE](defaultValues)
 		return this
 	}
 }
@@ -51,7 +51,6 @@ export {
 	STORE_PROGRESS_STATE_IS_OPEN,
 	SHOW,
 	CLOSE,
-	STATE,
 	SET_STATE,
 	RESET_STATE,
 }
