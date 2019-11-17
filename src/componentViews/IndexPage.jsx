@@ -61,7 +61,13 @@ const Cards = () => {
 				} = card
 				return (
 					<Col sm='6' md='3'>
-						<CardIndexPropedDefault name={name} src={src} level={level} hobbies={hobbies} skills={skills} />
+						<CardIndexPropedDefault
+							name={name}
+							src={src}
+							level={level}
+							hobbies={hobbies}
+							skills={skills}
+						/>
 					</Col>
 				)
 			})}

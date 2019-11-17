@@ -11,6 +11,7 @@ import { CheckoutPage } from './CheckoutPage'
 import { IndexPage } from './IndexPage'
 import { SearchedPage } from './SearchedPage'
 import { HelpPage } from './HelpPage'
+import { ChatPage } from './ChatPage'
 
 export const Exports = {
 	...ExportMultiOrganisms,
@@ -25,4 +26,5 @@ export const Exports = {
 	IndexPage,
 	SearchedPage,
 	HelpPage,
+	ChatPage,
 }
