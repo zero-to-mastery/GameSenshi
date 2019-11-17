@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import PerfectScrollbar from 'react-perfect-scrollbar'
 import {
 	Card,
 	CardHeader,
@@ -13,7 +14,18 @@ import {
 	DropdownItem,
 	DropdownMenu,
 	Badge,
+	CardFooter,
+	Input,
+	Form,
+	InputGroup,
+	InputGroupAddon,
+	InputGroupText,
 } from 'reactstrap'
+
+import classnames from 'classnames'
+
+const CHAT_MESSAGE_BODY = 'body'
+const CHAT_MESSAGE_SENT_DATE = 'date'
 
 const ConversationDropdown = props => {
 	return (
@@ -49,140 +61,127 @@ const ConversationDropdown = props => {
 }
 
 const SingleMessage = props => {
-	return <div></div>
+	const { body, date } = props
+	return (
+		<Row className='justify-content-start'>
+			<Col xs={{ size: 'auto' }}>
+				<Card>
+					<CardBody className='p-2'>
+						<p className='mb-1'>{body}</p>
+						<div>
+							<small className='opacity-60'>
+								<i className='far fa-clock' /> {date}
+							</small>
+						</div>
+					</CardBody>
+				</Card>
+			</Col>
+		</Row>
+	)
 }
 
 const ChatMessageContainer = props => {
+	const [yourMessage, setYourMessage] = useState(false)
+	const { messages } = props
 	return (
 		<Card className='card-plain'>
-			<CardHeader className='d-inline-block'>
-				<Row>
-					<Col md='10'>
-						<Media className='align-items-center'>
-							<img
-								alt='...'
-								className='avatar'
-								src={require('assets/img/p10.jpg')}
-							/>
-							<Media body>
-								<h6 className='mb-0 d-block'>Charlie Watson</h6>
-								<span className='text-muted text-small'>
-									last seen today at 1:53am
-								</span>
+			<PerfectScrollbar>
+				<CardHeader className='d-inline-block'>
+					<Row>
+						<Col md='10'>
+							<Media className='align-items-center'>
+								<img
+									alt='...'
+									className='avatar'
+									src={require('assets/img/p10.jpg')}
+								/>
+								<Media body>
+									<h6 className='mb-0 d-block'>Charlie Watson</h6>
+									<span className='text-muted text-small'>
+										last seen today at 1:53am
+									</span>
+								</Media>
 							</Media>
-						</Media>
-					</Col>
-					<Col md='1'>
-						<Button
-							className='btn-link'
-							color='info'
-							id='tooltip487083381'
-							type='button'
+						</Col>
+						<Col md='1'>
+							<Button
+								className='btn-link'
+								color='info'
+								id='tooltip487083381'
+								type='button'
+							>
+								<i className='tim-icons icon-video-66' />
+							</Button>
+							<UncontrolledTooltip
+								delay={0}
+								placement='top'
+								target='tooltip487083381'
+							>
+								Video call
+							</UncontrolledTooltip>
+						</Col>
+						<Col md='1'>
+							<ConversationDropdown />
+						</Col>
+					</Row>
+				</CardHeader>
+				<CardBody>
+					{messages.map(message => {
+						const {
+							[CHAT_MESSAGE_BODY]: body,
+							[CHAT_MESSAGE_SENT_DATE]: date,
+						} = message
+						return <SingleMessage body={body} date={date} />
+					})}
+					<Row className='mt-4'>
+						<Col className='text-center' md='12'>
+							<Badge className='text-white' color=''>
+								Wed, 3:27pm
+							</Badge>
+						</Col>
+					</Row>
+					<Row className='justify-content-start'>
+						<Col xs={{ size: 'auto' }}>
+							<Card>
+								<CardBody className='p-2'>
+									<div className='spinner'>
+										<div className='bounce1' />
+										<div className='bounce2' />
+										<div className='bounce3' />
+									</div>
+									<p className='d-inline-block mr-2'>Typing...</p>
+								</CardBody>
+							</Card>
+						</Col>
+					</Row>
+				</CardBody>
+				<CardFooter className='d-block'>
+					<Form className='align-items-center'>
+						<InputGroup
+							className={classnames('d-flex', 'form-control-lg', {
+								'input-group-focus': yourMessage,
+							})}
 						>
-							<i className='tim-icons icon-video-66' />
-						</Button>
-						<UncontrolledTooltip
-							delay={0}
-							placement='top'
-							target='tooltip487083381'
-						>
-							Video call
-						</UncontrolledTooltip>
-					</Col>
-					<Col md='1'>
-						<ConversationDropdown />
-					</Col>
-				</Row>
-			</CardHeader>
-			<CardBody>
-				<Row className='justify-content-start'>
-					<Col xs={{ size: 'auto' }}>
-						<Card>
-							<CardBody className='p-2'>
-								<p className='mb-1'>
-									It contains a lot of good lessons about effective practices
-								</p>
-								<div>
-									<small className='opacity-60'>
-										<i className='far fa-clock' /> 3:14am
-									</small>
-								</div>
-							</CardBody>
-						</Card>
-					</Col>
-				</Row>
-				<Row className='justify-content-end text-right'>
-					<Col xs={{ size: 'auto' }}>
-						<Card className='bg-primary text-white'>
-							<CardBody className='p-2'>
-								<p className='mb-1'>
-									Can it generate daily design links that include essays and
-									data visualizations ? <br />
-								</p>
-								<div>
-									<small className='opacity-60'>3:30am</small>{' '}
-									<i className='tim-icons icon-check-2' />
-								</div>
-							</CardBody>
-						</Card>
-					</Col>
-				</Row>
-				<Row className='mt-4'>
-					<Col className='text-center' md='12'>
-						<Badge className='text-white' color=''>
-							Wed, 3:27pm
-						</Badge>
-					</Col>
-				</Row>
-				<Row className='justify-content-start'>
-					<Col xs={{ size: 'auto' }}>
-						<Card>
-							<CardBody className='p-2'>
-								<p className='mb-1'>
-									Yeah! Responsive Design is geared towards those trying to
-									build web apps
-								</p>
-								<div>
-									<small className='opacity-60'>
-										<i className='far fa-clock' /> 4:31pm
-									</small>
-								</div>
-							</CardBody>
-						</Card>
-					</Col>
-				</Row>
-				<Row className='justify-content-end text-right'>
-					<Col xs={{ size: 'auto' }}>
-						<Card className='bg-primary text-white'>
-							<CardBody className='p-2'>
-								<p className='mb-1'>Excellent, I want it now !</p>
-								<div>
-									<small className='opacity-60'>4:40pm</small>{' '}
-									<i className='tim-icons icon-check-2' />
-								</div>
-							</CardBody>
-						</Card>
-					</Col>
-				</Row>
-				<Row className='justify-content-start'>
-					<Col xs={{ size: 'auto' }}>
-						<Card>
-							<CardBody className='p-2'>
-								<p className='mb-1'>
-									You can easily get it; The content here is all free
-								</p>
-								<div>
-									<small className='opacity-60'>
-										<i className='far fa-clock' /> 4:42pm
-									</small>
-								</div>
-							</CardBody>
-						</Card>
-					</Col>
-				</Row>
-			</CardBody>
+							<InputGroupAddon addonType='prepend' className='d-flex'>
+								<InputGroupText>
+									<i className='tim-icons icon-pencil' />
+								</InputGroupText>
+							</InputGroupAddon>
+							<Input
+								placeholder='Your message'
+								type='text'
+								onFocus={() => setYourMessage(true)}
+								onBlur={() => setYourMessage(false)}
+							/>
+							<Button className='btn-simple ml-2' color='primary'>
+								<i className='tim-icons icon-send' />
+							</Button>
+						</InputGroup>
+					</Form>
+				</CardFooter>
+			</PerfectScrollbar>
 		</Card>
 	)
 }
 
-export { ChatMessageContainer }
+export { ChatMessageContainer, CHAT_MESSAGE_BODY, CHAT_MESSAGE_SENT_DATE }

@@ -7,7 +7,7 @@ const {
 	Section,
 	WrapperStoreWrapperPropedIndex,
 	ChatContactListWithProps,
-	ChatMessageContainer,
+	ChatMessageContainerWithProps,
 } = stopUndefined(Exports)
 
 const ChatPage = () => {
@@ -33,7 +33,7 @@ const ChatPage = () => {
 							<ChatContactListWithProps />
 						</Col>
 						<Col md='8'>
-							<ChatMessageContainer />
+							<ChatMessageContainerWithProps />
 						</Col>
 					</Row>
 				</Container>
