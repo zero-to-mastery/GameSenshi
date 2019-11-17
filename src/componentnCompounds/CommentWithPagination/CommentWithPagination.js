@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentAtoms'
 
@@ -13,10 +13,13 @@ const CommentWithPagination = props => {
 	const { comments } = props
 	const [currentPage, setCurrentPage] = useState(0)
 
-	const handleClick = (event, index) => {
-		event.preventDefault()
-		setCurrentPage(index)
-	}
+	const handleClick = useCallback(
+		(event, index) => {
+			event.preventDefault()
+			setCurrentPage(index)
+		},
+		[currentPage]
+	)
 	const paginatedComments = comments.slice(
 		currentPage * LIMIT,
 		(currentPage + 1) * LIMIT

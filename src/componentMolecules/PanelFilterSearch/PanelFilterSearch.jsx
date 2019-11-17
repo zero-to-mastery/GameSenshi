@@ -48,7 +48,12 @@ const PanelFilterSearch = props => {
 			</Row>
 			<Row className='py-3 d-flex flex-row justify-content-center'>
 				<Col>
-					<Button className='btn-round ml-2' color='danger' type='button'>
+					<Button
+						style={{ paddingLeft: '38px', paddingRight: '38px' }}
+						className='btn-round ml-1'
+						color='danger'
+						type='button'
+					>
 						Apply
 					</Button>
 				</Col>
