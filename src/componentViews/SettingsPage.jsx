@@ -27,7 +27,7 @@ const {
 	TAB_LIST_VERTICAL_TO,
 	TAB_LIST_VERTICAL_ICON,
 	Section,
-	WrapperPropedAccount,
+	WrapperStoreWrapperPropedAccount,
 } = stopUndefined(Exports)
 
 const settingTabs = [
@@ -59,7 +59,7 @@ const settingTabs = [
 
 const SettingsPage = () => {
 	return (
-		<WrapperPropedAccount>
+		<WrapperStoreWrapperPropedAccount>
 			<Section>
 				<Container>
 					<Row>
@@ -87,18 +87,8 @@ const SettingsPage = () => {
 							<Section>
 								<Switch>
 									{settingTabs.map(policy => {
-										const {
-											[TAB_LIST_VERTICAL_NAME]: name,
-											[SETTING]: Setting,
-											[TAB_LIST_VERTICAL_TO]: to,
-										} = policy
-										return (
-											<Route
-												key={name}
-												path={to}
-												render={prop => <Setting {...prop} />}
-											/>
-										)
+										const { [TAB_LIST_VERTICAL_NAME]: name, [SETTING]: Setting, [TAB_LIST_VERTICAL_TO]: to } = policy
+										return <Route key={name} path={to} render={prop => <Setting {...prop} />} />
 									})}
 								</Switch>
 							</Section>
@@ -106,7 +96,7 @@ const SettingsPage = () => {
 					</Row>
 				</Container>
 			</Section>
-		</WrapperPropedAccount>
+		</WrapperStoreWrapperPropedAccount>
 	)
 }
 

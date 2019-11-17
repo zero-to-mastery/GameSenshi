@@ -81,14 +81,14 @@ import {
 } from './CheckBoxIcon'
 import { Section } from './Section'
 import {
-	WrapperPropedIndex,
-	WrapperPropedAccount,
-	WrapperPropedProfile,
-	WrapperPropedRegister,
-	WrapperPropedLogin,
-	WrapperPropedReset,
-	WrapperPropedError,
-	WrapperPropedCheckout,
+	WrapperStoreWrapperPropedIndex,
+	WrapperStoreWrapperPropedAccount,
+	WrapperStoreWrapperPropedProfile,
+	WrapperStoreWrapperPropedRegister,
+	WrapperStoreWrapperPropedLogin,
+	WrapperStoreWrapperPropedReset,
+	WrapperStoreWrapperPropedError,
+	WrapperStoreWrapperPropedCheckout,
 } from './Wrapper'
 
 export const Exports = {
@@ -163,12 +163,12 @@ export const Exports = {
 	CarouselCommonPropedProfile,
 	CarouselCommonPropedIndex,
 	Section,
-	WrapperPropedIndex,
-	WrapperPropedAccount,
-	WrapperPropedProfile,
-	WrapperPropedRegister,
-	WrapperPropedLogin,
-	WrapperPropedReset,
-	WrapperPropedError,
-	WrapperPropedCheckout,
+	WrapperStoreWrapperPropedIndex,
+	WrapperStoreWrapperPropedAccount,
+	WrapperStoreWrapperPropedProfile,
+	WrapperStoreWrapperPropedRegister,
+	WrapperStoreWrapperPropedLogin,
+	WrapperStoreWrapperPropedReset,
+	WrapperStoreWrapperPropedError,
+	WrapperStoreWrapperPropedCheckout,
 }

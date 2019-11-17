@@ -8,7 +8,7 @@ import { FormCard, FORM_CARD_DEFAULT } from './FormCard'
 import { TabPaneAccountSettings } from './TabPaneAccountSettings'
 import { TabPaneGeneralSettings } from './TabPaneGeneralSettings'
 import { FormResetPasswordPropedDefault } from './FormResetPassword'
-import { NavbarIndexStoreAlert } from './NavbarIndex'
+import { NavbarIndexStoreAlertPropApp } from './NavbarIndex'
 import { FormProfile } from './FormProfile'
 import { CheckoutCardPropedDefault } from './CheckoutCard'
 import { ContainerSearchResultsPropedDefault } from './ContainerSearchResults'
@@ -22,7 +22,7 @@ export const Exports = {
 	TabPaneAccountSettings,
 	TabPaneGeneralSettings,
 	FormResetPasswordPropedDefault,
-	NavbarIndexStoreAlert,
+	NavbarIndexStoreAlertPropApp,
 	FormProfile,
 	CheckoutCardPropedDefault,
 	ContainerSearchResultsPropedDefault,

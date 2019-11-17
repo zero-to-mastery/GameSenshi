@@ -7,15 +7,11 @@ import { Privacy } from './Privacy'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { Route, Switch } from 'react-router-dom'
-import {
-	ROUTE_PAGE_POLICY_COOKIES,
-	ROUTE_PAGE_POLICY_TERMS,
-	ROUTE_PAGE_POLICY_PRIVACY,
-} from 'routes'
+import { ROUTE_PAGE_POLICY_COOKIES, ROUTE_PAGE_POLICY_TERMS, ROUTE_PAGE_POLICY_PRIVACY } from 'routes'
 import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 
-const { Link, Section, WrapperPropedIndex } = stopUndefined(Exports)
+const { Link, Section, WrapperStoreWrapperPropedIndex } = stopUndefined(Exports)
 
 const NAME = 'name'
 const ICON = 'icon'
@@ -50,16 +46,12 @@ const PoliciesPage = props => {
 		location: { pathname },
 	} = props
 	return (
-		<WrapperPropedIndex>
+		<WrapperStoreWrapperPropedIndex>
 			<Section>
 				<Container className='mt-4 mb-5'>
 					<Row>
 						<Col lg='2' md='3'>
-							<Nav
-								className='nav-pills-primary nav-pills-icons flex-column'
-								pills
-								role='tablist'
-							>
+							<Nav className='nav-pills-primary nav-pills-icons flex-column' pills role='tablist'>
 								<NavItem>
 									{policies.map(policy => {
 										const { [NAME]: name, [ICON]: icon, [TO]: to } = policy
@@ -72,10 +64,7 @@ const PoliciesPage = props => {
 												to={to}
 												tag={Link}
 											>
-												<i
-													style={{ fontSize: '40px' }}
-													className={`tim-icons ${icon}`}
-												/>
+												<i style={{ fontSize: '40px' }} className={`tim-icons ${icon}`} />
 												{name}
 											</NavLink>
 										)
@@ -88,13 +77,7 @@ const PoliciesPage = props => {
 								<Switch>
 									{policies.map(policy => {
 										const { [NAME]: name, [POLICY]: Policy, [TO]: to } = policy
-										return (
-											<Route
-												key={name}
-												path={to}
-												render={prop => <Policy {...prop} />}
-											/>
-										)
+										return <Route key={name} path={to} render={prop => <Policy {...prop} />} />
 									})}
 								</Switch>
 							</PerfectScrollbar>
@@ -102,7 +85,7 @@ const PoliciesPage = props => {
 					</Row>
 				</Container>
 			</Section>
-		</WrapperPropedIndex>
+		</WrapperStoreWrapperPropedIndex>
 	)
 }
 export { PoliciesPage }

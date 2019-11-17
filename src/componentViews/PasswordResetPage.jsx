@@ -3,15 +3,11 @@ import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 
-const {
-	FormResetPasswordPropedDefault,
-	Section,
-	WrapperPropedReset,
-} = stopUndefined(Exports)
+const { FormResetPasswordPropedDefault, Section, WrapperStoreWrapperPropedReset } = stopUndefined(Exports)
 
 const PasswordResetPage = () => {
 	return (
-		<WrapperPropedReset>
+		<WrapperStoreWrapperPropedReset>
 			<Section>
 				<div className='squares square1' />
 				<div className='squares square2' />
@@ -29,7 +25,7 @@ const PasswordResetPage = () => {
 				</Container>
 				<div className='mb-5' />
 			</Section>
-		</WrapperPropedReset>
+		</WrapperStoreWrapperPropedReset>
 	)
 }
 

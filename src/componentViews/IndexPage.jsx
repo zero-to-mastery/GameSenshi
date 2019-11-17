@@ -8,7 +8,7 @@ const {
 	ButtonsIconImagePropedIndex,
 	CarouselCommonPropedIndex,
 	Section,
-	WrapperPropedIndex,
+	WrapperStoreWrapperPropedIndex,
 } = stopUndefined(Exports)
 
 const CARD_INDEX_NAME = 'name'
@@ -61,13 +61,7 @@ const Cards = () => {
 				} = card
 				return (
 					<Col sm='6' md='3'>
-						<CardIndexPropedDefault
-							name={name}
-							src={src}
-							level={level}
-							hobbies={hobbies}
-							skills={skills}
-						/>
+						<CardIndexPropedDefault name={name} src={src} level={level} hobbies={hobbies} skills={skills} />
 					</Col>
 				)
 			})}
@@ -77,7 +71,7 @@ const Cards = () => {
 
 const IndexPage = () => {
 	return (
-		<WrapperPropedIndex>
+		<WrapperStoreWrapperPropedIndex>
 			<Section>
 				<Container>
 					<Row>
@@ -133,7 +127,7 @@ const IndexPage = () => {
 					</Row>
 				</Container>
 			</Section>
-		</WrapperPropedIndex>
+		</WrapperStoreWrapperPropedIndex>
 	)
 }
 

@@ -1,47 +1,61 @@
 import React from 'react'
-import { Wrapper } from './Wrapper'
+import { Wrapper, WRAPPER_STATE_OFFSET_TOP } from './Wrapper'
+import {
+	StateContainer,
+	storeWrapper,
+	STORE_WRAPPER_STATE_OFFSET_TOP,
+} from 'state'
 
-// some pages use the same body class
-
-const WrapperPropedIndex = props => {
-	return <Wrapper bodyClassName='index-page' {...props} />
+const mapStoreWrapperStateToProp = {
+	[WRAPPER_STATE_OFFSET_TOP]: STORE_WRAPPER_STATE_OFFSET_TOP,
 }
 
-const WrapperPropedAccount = props => {
-	return <Wrapper bodyClassName='account-settings' {...props} />
+const WrapperStoreWrapper = StateContainer(
+	Wrapper,
+	[storeWrapper],
+	[mapStoreWrapperStateToProp]
+)
+
+// index-page is default body class
+const WrapperStoreWrapperPropedIndex = props => {
+	return <WrapperStoreWrapper bodyClassName='index-page' {...props} />
 }
 
-const WrapperPropedProfile = props => {
-	return <Wrapper bodyClassName='profile-page' {...props} />
+const WrapperStoreWrapperPropedAccount = props => {
+	return <WrapperStoreWrapper bodyClassName='account-settings' {...props} />
 }
 
-const WrapperPropedRegister = props => {
-	return <Wrapper bodyClassName='register-page' {...props} />
+const WrapperStoreWrapperPropedProfile = props => {
+	return <WrapperStoreWrapper bodyClassName='profile-page' {...props} />
 }
 
-const WrapperPropedLogin = props => {
-	return <Wrapper bodyClassName='login-page' {...props} />
+const WrapperStoreWrapperPropedRegister = props => {
+	return <WrapperStoreWrapper bodyClassName='register-page' {...props} />
 }
 
-const WrapperPropedReset = props => {
-	return <Wrapper bodyClassName='reset-page' {...props} />
+const WrapperStoreWrapperPropedLogin = props => {
+	return <WrapperStoreWrapper bodyClassName='login-page' {...props} />
 }
 
-const WrapperPropedError = props => {
-	return <Wrapper bodyClassName='error-page' {...props} />
+const WrapperStoreWrapperPropedReset = props => {
+	return <WrapperStoreWrapper bodyClassName='reset-page' {...props} />
 }
 
-const WrapperPropedCheckout = props => {
-	return <Wrapper bodyClassName='checkout-page' {...props} />
+const WrapperStoreWrapperPropedError = props => {
+	return <WrapperStoreWrapper bodyClassName='error-page' {...props} />
+}
+
+const WrapperStoreWrapperPropedCheckout = props => {
+	return <WrapperStoreWrapper bodyClassName='checkout-page' {...props} />
 }
 
 export {
-	WrapperPropedIndex,
-	WrapperPropedAccount,
-	WrapperPropedProfile,
-	WrapperPropedRegister,
-	WrapperPropedLogin,
-	WrapperPropedReset,
-	WrapperPropedError,
-	WrapperPropedCheckout,
+	WrapperStoreWrapperPropedIndex,
+	WrapperStoreWrapperPropedAccount,
+	WrapperStoreWrapperPropedProfile,
+	WrapperStoreWrapperPropedRegister,
+	WrapperStoreWrapperPropedLogin,
+	WrapperStoreWrapperPropedReset,
+	WrapperStoreWrapperPropedError,
+	WrapperStoreWrapperPropedCheckout,
 }

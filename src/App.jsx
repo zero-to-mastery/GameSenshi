@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import { stopUndefined } from 'utils'
 import { tempClient, initApollo, setClient } from 'apolloInit'
 import { ApolloProvider } from 'react-apollo'
 import { Router } from 'routes'
-import ReactResizeDetector from 'react-resize-detector'
 import {
 	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_SEARCHED,
@@ -39,11 +38,10 @@ const {
 	Error404Page,
 	FormSignInPropedDefaultStoreSignIn,
 	ModalCommonStoreModalPropedAuth,
-	NavbarIndexStoreAlert,
-	AlertCommonStoreAlert,
 	PoliciesPage,
 	CheckoutPage,
 	Footer,
+	NavbarIndexStoreAlertPropApp,
 } = stopUndefined(Exports)
 
 const MapRoutesToPages = {
@@ -72,8 +70,6 @@ const App = () => {
 		initApolloClient()
 	}, [])
 
-	const onResize = useCallback((width, height) => {}, [])
-
 	return (
 		<ApolloProvider client={apolloClient}>
 			<Provider>
@@ -91,10 +87,7 @@ const App = () => {
 								pages={MapRoutesToPages}
 								header={
 									<>
-										<NavbarIndexStoreAlert>
-											<ReactResizeDetector handleHeight onResize={onResize} />
-											<AlertCommonStoreAlert />
-										</NavbarIndexStoreAlert>
+										<NavbarIndexStoreAlertPropApp />
 										<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
 										<ModalCommonStoreModalPropedAuth />
 									</>

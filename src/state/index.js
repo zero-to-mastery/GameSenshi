@@ -83,6 +83,14 @@ import {
 	STORE_USER_STATE_SIGNING_IN,
 } from './User'
 
+import {
+	storeWrapper,
+	storeWrapperSetState,
+	storeWrapperResetState,
+	storeWrapperSetOffsetTop,
+	STORE_WRAPPER_STATE_OFFSET_TOP,
+} from './Wrapper'
+
 export {
 	STATE,
 	RESET_STATE,
@@ -155,4 +163,9 @@ export {
 	STORE_MODAL_STATE_LOADER,
 	STORE_MODAL_STATE_IS_OPEN,
 	STORE_MODAL_STATE_CONTINUED_CALLBACK,
+	storeWrapper,
+	storeWrapperSetState,
+	storeWrapperResetState,
+	storeWrapperSetOffsetTop,
+	STORE_WRAPPER_STATE_OFFSET_TOP,
 }

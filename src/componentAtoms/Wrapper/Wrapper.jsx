@@ -1,9 +1,18 @@
 import React, { useEffect, useRef } from 'react'
 import classNames from 'classnames'
+
+const WRAPPER_STATE_OFFSET_TOP = 'offsetTop'
+
 const Wrapper = props => {
 	const wrapper = useRef(null)
 
-	const { bodyClassName, className, children, offsetTop, ...otherProps } = props
+	const {
+		bodyClassName,
+		className,
+		children,
+		[WRAPPER_STATE_OFFSET_TOP]: offsetTop,
+		...otherProps
+	} = props
 
 	useEffect(() => {
 		document.body.classList.add(bodyClassName)
@@ -27,4 +36,4 @@ const Wrapper = props => {
 	)
 }
 
-export { Wrapper }
+export { Wrapper, WRAPPER_STATE_OFFSET_TOP }
