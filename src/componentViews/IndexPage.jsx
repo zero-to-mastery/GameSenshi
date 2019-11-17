@@ -61,7 +61,13 @@ const Cards = () => {
 				} = card
 				return (
 					<Col sm='6' md='3'>
-						<CardIndexPropedDefault name={name} src={src} level={level} hobbies={hobbies} skills={skills} />
+						<CardIndexPropedDefault
+							name={name}
+							src={src}
+							level={level}
+							hobbies={hobbies}
+							skills={skills}
+						/>
 					</Col>
 				)
 			})}
@@ -83,11 +89,6 @@ const IndexPage = () => {
 			</Section>
 			<Section>
 				<Container>
-					<Row>
-						<Col>
-							<h1>Catalogue</h1>
-						</Col>
-					</Row>
 					<ButtonsIconImagePropedIndex />
 				</Container>
 			</Section>
@@ -95,7 +96,7 @@ const IndexPage = () => {
 				<Container>
 					<Row>
 						<Col>
-							<h1>Recommendations</h1>
+							<h1 className='mb-0'>Recommendations</h1>
 						</Col>
 					</Row>
 					<Row>
@@ -107,7 +108,7 @@ const IndexPage = () => {
 				<Container>
 					<Row>
 						<Col>
-							<h1>New</h1>
+							<h1 className='mb-0'>New</h1>
 						</Col>
 					</Row>
 					<Row>
@@ -119,7 +120,7 @@ const IndexPage = () => {
 				<Container>
 					<Row>
 						<Col>
-							<h1>Random</h1>
+							<h1 className='mb-0'>Random</h1>
 						</Col>
 					</Row>
 					<Row>
