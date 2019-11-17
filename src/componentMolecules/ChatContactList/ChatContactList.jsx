@@ -11,6 +11,11 @@ import {
 } from 'reactstrap'
 import classnames from 'classnames'
 
+const CHAT_CONTACT_NAME = 'name'
+const CHAT_CONTACT_IMAGE = 'image'
+const CHAT_CONTACT_LAST_SEEN = 'lastVisit'
+const CHAT_CONTACT_LABEL = 'label'
+
 const ChatContactList = props => {
 	const [searchContact, setSearchContact] = useState(null)
 	return (
@@ -42,4 +47,10 @@ const ChatContactList = props => {
 	)
 }
 
-export { ChatContactList }
+export {
+	ChatContactList,
+	CHAT_CONTACT_IMAGE,
+	CHAT_CONTACT_LABEL,
+	CHAT_CONTACT_LAST_SEEN,
+	CHAT_CONTACT_NAME,
+}
