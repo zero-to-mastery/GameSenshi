@@ -31,8 +31,8 @@ const WrapperPropedError = props => {
 	return <Wrapper bodyClassName='error-page' {...props} />
 }
 
-const WrapperPropedApp = props => {
-	return <Wrapper bodyClassName='index-page' {...props} />
+const WrapperPropedCheckout = props => {
+	return <Wrapper bodyClassName='checkout-page' {...props} />
 }
 
 export {
@@ -43,5 +43,5 @@ export {
 	WrapperPropedLogin,
 	WrapperPropedReset,
 	WrapperPropedError,
-	WrapperPropedApp,
+	WrapperPropedCheckout,
 }

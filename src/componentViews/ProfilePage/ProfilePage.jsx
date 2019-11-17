@@ -14,6 +14,7 @@ const {
 	CardSenshi,
 	CommentWithPaginationPropedDefault,
 	Section,
+	WrapperPropedProfile,
 } = stopUndefined(Exports)
 
 // fake data
@@ -27,7 +28,7 @@ const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 
 const ProfilePage = () => {
 	return (
-		<>
+		<WrapperPropedProfile>
 			<Section>
 				<img alt='...' className='dots' src={require('assets/img/dots.png')} />
 				<img alt='...' className='path' src={require('assets/img/path4.png')} />
@@ -112,7 +113,7 @@ const ProfilePage = () => {
 					</Row>
 				</Container>
 			</Section>
-		</>
+		</WrapperPropedProfile>
 	)
 }
 

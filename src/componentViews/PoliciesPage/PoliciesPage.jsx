@@ -15,7 +15,7 @@ import {
 import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 
-const { Link, Section } = stopUndefined(Exports)
+const { Link, Section, WrapperPropedIndex } = stopUndefined(Exports)
 
 const NAME = 'name'
 const ICON = 'icon'
@@ -50,57 +50,59 @@ const PoliciesPage = props => {
 		location: { pathname },
 	} = props
 	return (
-		<Section>
-			<Container className='mt-4 mb-5'>
-				<Row>
-					<Col lg='2' md='3'>
-						<Nav
-							className='nav-pills-primary nav-pills-icons flex-column'
-							pills
-							role='tablist'
-						>
-							<NavItem>
-								{policies.map(policy => {
-									const { [NAME]: name, [ICON]: icon, [TO]: to } = policy
-									return (
-										<NavLink
-											key={name}
-											className={classnames({
-												active: pathname.toLowerCase() === to.toLowerCase(),
-											})}
-											to={to}
-											tag={Link}
-										>
-											<i
-												style={{ fontSize: '40px' }}
-												className={`tim-icons ${icon}`}
+		<WrapperPropedIndex>
+			<Section>
+				<Container className='mt-4 mb-5'>
+					<Row>
+						<Col lg='2' md='3'>
+							<Nav
+								className='nav-pills-primary nav-pills-icons flex-column'
+								pills
+								role='tablist'
+							>
+								<NavItem>
+									{policies.map(policy => {
+										const { [NAME]: name, [ICON]: icon, [TO]: to } = policy
+										return (
+											<NavLink
+												key={name}
+												className={classnames({
+													active: pathname.toLowerCase() === to.toLowerCase(),
+												})}
+												to={to}
+												tag={Link}
+											>
+												<i
+													style={{ fontSize: '40px' }}
+													className={`tim-icons ${icon}`}
+												/>
+												{name}
+											</NavLink>
+										)
+									})}
+								</NavItem>
+							</Nav>
+						</Col>
+						<Col lg='9' md='8' className='mb-5'>
+							<PerfectScrollbar className='pr-3' style={{ height: 768 }}>
+								<Switch>
+									{policies.map(policy => {
+										const { [NAME]: name, [POLICY]: Policy, [TO]: to } = policy
+										return (
+											<Route
+												key={name}
+												path={to}
+												render={prop => <Policy {...prop} />}
 											/>
-											{name}
-										</NavLink>
-									)
-								})}
-							</NavItem>
-						</Nav>
-					</Col>
-					<Col lg='9' md='8' className='mb-5'>
-						<PerfectScrollbar className='pr-3' style={{ height: 768 }}>
-							<Switch>
-								{policies.map(policy => {
-									const { [NAME]: name, [POLICY]: Policy, [TO]: to } = policy
-									return (
-										<Route
-											key={name}
-											path={to}
-											render={prop => <Policy {...prop} />}
-										/>
-									)
-								})}
-							</Switch>
-						</PerfectScrollbar>
-					</Col>
-				</Row>
-			</Container>
-		</Section>
+										)
+									})}
+								</Switch>
+							</PerfectScrollbar>
+						</Col>
+					</Row>
+				</Container>
+			</Section>
+		</WrapperPropedIndex>
 	)
 }
 export { PoliciesPage }

@@ -42,7 +42,6 @@ const {
 	PoliciesPage,
 	CheckoutPage,
 	Footer,
-	WrapperPropedApp,
 } = stopUndefined(Exports)
 
 const MapRoutesToPages = {
@@ -60,7 +59,6 @@ const MapRoutesToPages = {
 
 const App = () => {
 	const [apolloClient, setApolloClient] = useState(tempClient)
-	const [offsetHeight, setOffsetHeight] = useState(80)
 
 	useEffect(() => {
 		const initApolloClient = async () => {
@@ -71,19 +69,7 @@ const App = () => {
 		initApolloClient()
 	}, [])
 
-	const onResize = useCallback((width, height) => {
-		setOffsetHeight(height)
-	}, [])
-
-	const Wrapper = useCallback(
-		children => (
-			<WrapperPropedApp offsetHeight={offsetHeight}>
-				<div className='w-100' style={{ height: offsetHeight }} />
-				{children}
-			</WrapperPropedApp>
-		),
-		[offsetHeight]
-	)
+	const onResize = useCallback((width, height) => {}, [])
 
 	return (
 		<ApolloProvider client={apolloClient}>
@@ -100,7 +86,6 @@ const App = () => {
 							<Router
 								isUserSignedIn={isUserSignedIn || isUserSigningIn}
 								pages={MapRoutesToPages}
-								wrapper={WrapperPropedApp}
 								header={
 									<>
 										<NavbarIndexStoreAlert>
