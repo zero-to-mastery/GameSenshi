@@ -20,7 +20,7 @@ const { Link } = stopUndefined(Exports)
 class Footer extends React.Component {
 	render() {
 		return (
-			<footer className='footer mt-5'>
+			<footer className='footer'>
 				<Container>
 					<Row>
 						<Col md='3'>

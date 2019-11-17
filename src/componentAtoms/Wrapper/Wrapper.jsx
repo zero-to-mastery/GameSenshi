@@ -3,7 +3,7 @@ import classNames from 'classnames'
 const Wrapper = props => {
 	const wrapper = useRef(null)
 
-	const { bodyClassName, className, ...otherProps } = props
+	const { bodyClassName, className, children, offsetTop, ...otherProps } = props
 
 	useEffect(() => {
 		document.body.classList.add(bodyClassName)
@@ -17,10 +17,13 @@ const Wrapper = props => {
 
 	return (
 		<div
-			className={classNames('wrapper mt-5', className)}
+			className={classNames('wrapper mt-5 mb-5', className)}
 			ref={wrapper}
 			{...otherProps}
-		/>
+		>
+			<div className='w-100' style={{ height: offsetTop }} />
+			{children}
+		</div>
 	)
 }
 

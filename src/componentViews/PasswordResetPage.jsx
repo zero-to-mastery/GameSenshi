@@ -1,7 +1,6 @@
 import React from 'react'
 import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
-// core components
 import { Exports } from 'componentpMultiOrganisms'
 
 const {
