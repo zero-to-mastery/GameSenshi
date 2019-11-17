@@ -26,8 +26,7 @@ import {
 	storeUserSetSigningIn,
 } from 'state'
 
-// inject staple props that suitable for this app
-const FormSignInPropedDefault = withLastLocation(props => {
+const FormSignInPropedSignIn = withLastLocation(props => {
 	const { lastLocation, ...restProps } = props
 
 	const onSubmit = useCallback(values => {
@@ -61,15 +60,15 @@ const mapStoreSignInMethodToProp = {
 	[SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION]: storeSignInOnSuccessfulSubmission,
 }
 
-const FormSignInPropedDefaultStoreSignIn = StateContainer(
-	FormSignInPropedDefault,
+const FormSignInPropedSignInStoreSignIn = StateContainer(
+	FormSignInPropedSignIn,
 	[storeSignIn],
 	[mapStoreSignInStateToProp],
 	[mapStoreSignInMethodToProp]
 )
 
-export {
-	FormSignIn,
-	FormSignInPropedDefault,
-	FormSignInPropedDefaultStoreSignIn,
+const FormSignInStoreSignInPropedApp = props => {
+	return <FormSignInPropedSignInStoreSignIn modal passwordOnly {...props} />
 }
+
+export { FormSignInPropedSignIn, FormSignInStoreSignInPropedApp }

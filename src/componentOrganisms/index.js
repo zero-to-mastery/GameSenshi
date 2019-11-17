@@ -1,7 +1,7 @@
 import { Exports as ExportCompounds } from 'componentnCompounds'
 import {
-	FormSignInPropedDefault,
-	FormSignInPropedDefaultStoreSignIn,
+	FormSignInPropedSignIn,
+	FormSignInStoreSignInPropedApp,
 } from './FormSignIn'
 import { FormSignUpPropedDefault } from './FormSignUp'
 import { FormCard, FORM_CARD_DEFAULT } from './FormCard'
@@ -14,8 +14,8 @@ import { CheckoutCardPropedDefault } from './CheckoutCard'
 import { ContainerSearchResultsPropedDefault } from './ContainerSearchResults'
 export const Exports = {
 	...ExportCompounds,
-	FormSignInPropedDefault,
-	FormSignInPropedDefaultStoreSignIn,
+	FormSignInPropedSignIn,
+	FormSignInStoreSignInPropedApp,
 	FormSignUpPropedDefault,
 	FormCard,
 	FORM_CARD_DEFAULT,

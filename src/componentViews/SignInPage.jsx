@@ -3,7 +3,11 @@ import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 
-const { FormSignInPropedDefault, Section, WrapperStoreWrapperPropedLogin } = stopUndefined(Exports)
+const {
+	FormSignInPropedSignIn,
+	Section,
+	WrapperStoreWrapperPropedLogin,
+} = stopUndefined(Exports)
 
 const SignInPage = () => {
 	return (
@@ -19,7 +23,7 @@ const SignInPage = () => {
 				<Container>
 					<Row>
 						<Col className='mx-auto' lg='5' md='8'>
-							<FormSignInPropedDefault />
+							<FormSignInPropedSignIn />
 						</Col>
 					</Row>
 				</Container>

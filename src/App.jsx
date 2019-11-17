@@ -36,7 +36,7 @@ const {
 	SignUpPage,
 	PasswordResetPage,
 	Error404Page,
-	FormSignInPropedDefaultStoreSignIn,
+	FormSignInStoreSignInPropedApp,
 	ModalCommonStoreModalPropedAuth,
 	PoliciesPage,
 	CheckoutPage,
@@ -88,7 +88,7 @@ const App = () => {
 								header={
 									<>
 										<NavbarIndexStoreAlertPropApp />
-										<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
+										<FormSignInStoreSignInPropedApp />
 										<ModalCommonStoreModalPropedAuth />
 									</>
 								}
