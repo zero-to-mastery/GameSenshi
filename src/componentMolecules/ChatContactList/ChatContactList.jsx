@@ -42,37 +42,35 @@ const ListItem = props => {
 						<Media>
 							<img alt='...' className='avatar' src={src} />
 							<Media body className='ml-2'>
-								{name === 'Charlie Watson' ? (
-									<>
-										<div className='justify-content-between align-items-center'>
-											<h6 className='mb-0'>Jane Doe</h6>
-											<div>
-												<small className='text-white'>1 hour ago</small>
-											</div>
-										</div>
-										<Col
-											className='text-white text-small p-0 text-truncate d-block'
-											xs='11'
+								<div className='justify-content-between align-items-center'>
+									{name === 'Charlie Watson' ? (
+										<h6 className='mb-0'>
+											{name} <Badge color='success' />
+										</h6>
+									) : (
+										<h6 className='mb-0'>{name}</h6>
+									)}
+
+									<div>
+										<small
+											className={
+												name === 'Charlie Watson' ? 'text-white' : 'text-muted'
+											}
 										>
-											Computer users and programmers
-										</Col>
-									</>
-								) : (
-									<>
-										<div className='justify-content-between align-items-center'>
-											<h6 className='mb-0'>Jane Doe</h6>
-											<div>
-												<small className='text-muted'>1 hour ago</small>
-											</div>
-										</div>
-										<Col
-											className='text-muted text-small p-0 text-truncate d-block'
-											xs='11'
-										>
-											Computer users and programmers
-										</Col>
-									</>
-								)}
+											{seen}
+										</small>
+									</div>
+								</div>
+								<Col
+									className={
+										name === 'Charlie Watson'
+											? 'text-white text-small p-0 text-truncate d-block'
+											: 'text-muted text-small p-0 text-truncate d-block'
+									}
+									xs='11'
+								>
+									{label}
+								</Col>
 							</Media>
 						</Media>
 					</ListGroupItem>

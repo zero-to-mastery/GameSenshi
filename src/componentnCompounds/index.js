@@ -60,6 +60,7 @@ import {
 } from './FinalSelectGame'
 
 import { CommentWithPaginationPropedDefault } from './CommentWithPagination'
+import { ChatMessageContainer } from './ChatMessageContainer'
 
 export const Exports = {
 	...ExportMolecules,
@@ -97,4 +98,5 @@ export const Exports = {
 	FinalSelectGamePropedGeneraL,
 	FINAL_SELECT_GAME,
 	CommentWithPaginationPropedDefault,
+	ChatMessageContainer,
 }
