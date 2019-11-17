@@ -10,7 +10,7 @@ import {
 import { ButtonsIconImagePropedIndex } from './ButtonsIconImage'
 import { PanelSortBy } from './PanelSortBy'
 import { PanelFilterSearch } from './PanelFilterSearch'
-import { ChatContactList } from './ChatContactList'
+import { ChatContactListWithProps } from './ChatContactList'
 
 export const Exports = {
 	...ExportAtoms,
@@ -25,5 +25,5 @@ export const Exports = {
 	PanelSortBy,
 	PanelFilterSearch,
 	CardSearchedPropedDefault,
-	ChatContactList,
+	ChatContactListWithProps,
 }

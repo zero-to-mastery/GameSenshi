@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 import { Container, Row, Col } from 'reactstrap'
@@ -6,10 +6,18 @@ import { Container, Row, Col } from 'reactstrap'
 const {
 	Section,
 	WrapperStoreWrapperPropedIndex,
-	ChatContactList,
+	ChatContactListWithProps,
 } = stopUndefined(Exports)
 
 const ChatPage = () => {
+	useEffect(() => {
+		document.documentElement.scrollTop = 0
+		document.scrollingElement.scrollTop = 0
+		document.body.classList.add('chat-page')
+		return () => {
+			document.body.classList.remove('chat-page')
+		}
+	}, [])
 	return (
 		<WrapperStoreWrapperPropedIndex>
 			<Section>
@@ -21,7 +29,7 @@ const ChatPage = () => {
 					</Row>
 					<Row>
 						<Col md='4'>
-							<ChatContactList />
+							<ChatContactListWithProps />
 						</Col>
 						<Col md='8'>conversation section</Col>
 					</Row>
