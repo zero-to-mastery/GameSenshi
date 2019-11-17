@@ -5,7 +5,7 @@ import { Exports } from 'componentpMultiOrganisms'
 // reactstrap components
 import { Container, Row, Col } from 'reactstrap'
 
-const { Footer } = stopUndefined(Exports)
+const { WrapperPropedIndex } = stopUndefined(Exports)
 
 const HelpPage = () => {
 	useEffect(() => {
@@ -17,7 +17,7 @@ const HelpPage = () => {
 		}
 	}, [])
 	return (
-		<>
+		<WrapperPropedIndex>
 			<Container>
 				<Row style={{ height: '100vh' }} className='py-5'>
 					<Col md={{ size: 7, offset: 5 }}>
@@ -25,8 +25,7 @@ const HelpPage = () => {
 					</Col>
 				</Row>
 			</Container>
-			<Footer />
-		</>
+		</WrapperPropedIndex>
 	)
 }
 
