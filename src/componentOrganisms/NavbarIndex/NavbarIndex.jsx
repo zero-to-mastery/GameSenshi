@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentnCompounds'
-// reactstrap components
 import { Collapse, Navbar, Nav, Container } from 'reactstrap'
 
 const widthBreakPoint = 991
@@ -47,8 +46,8 @@ const NavbarIndex = props => {
 
 	const changeColor = () => {
 		if (
-			document.documentElement.scrollTop > 299 ||
-			document.body.scrollTop > 299
+			document.documentElement.scrollTop > 310 ||
+			document.body.scrollTop > 310
 		) {
 			setColor(bgPurple)
 		} else if (
@@ -66,7 +65,7 @@ const NavbarIndex = props => {
 			window.removeEventListener('scroll', changeColor)
 			window.removeEventListener('resize', onDimensionChange)
 		}
-	})
+	}, [])
 
 	const toggleCollapse = () => {
 		document.documentElement.classList.toggle('nav-open')
