@@ -1,9 +1,12 @@
 import React from 'react'
+import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
+import { Exports } from 'componentpMultiOrganisms'
+const { WrapperPropedError } = stopUndefined(Exports)
 
 const Error404Page = () => {
 	return (
-		<>
+		<WrapperPropedError>
 			<div className='page-header error-page header-filter'>
 				<div
 					className='page-header-image'
@@ -23,7 +26,7 @@ const Error404Page = () => {
 					</Row>
 				</Container>
 			</div>
-		</>
+		</WrapperPropedError>
 	)
 }
 
