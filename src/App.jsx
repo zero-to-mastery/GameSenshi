@@ -15,6 +15,7 @@ import {
 	ROUTE_PAGE_PASSWORD_RESET,
 	ROUTE_PAGE_404,
 	ROUTE_PAGE_CHECKOUT,
+	ROUTE_PAGE_CHAT,
 } from 'routes'
 import {
 	Provider,
@@ -42,6 +43,7 @@ const {
 	CheckoutPage,
 	Footer,
 	NavbarIndexStoreAlertPropApp,
+	ChatPage,
 } = stopUndefined(Exports)
 
 const MapRoutesToPages = {
@@ -54,6 +56,7 @@ const MapRoutesToPages = {
 	[ROUTE_PAGE_POLICY_COMMON]: PoliciesPage,
 	[ROUTE_PAGE_CHECKOUT]: CheckoutPage,
 	[ROUTE_PAGE_SETTINGS_COMMON]: SettingsPage,
+	[ROUTE_PAGE_CHAT]: ChatPage,
 	[ROUTE_PAGE_PASSWORD_RESET]: PasswordResetPage,
 	[ROUTE_PAGE_404]: Error404Page,
 }

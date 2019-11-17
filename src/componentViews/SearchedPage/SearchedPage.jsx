@@ -3,7 +3,11 @@ import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 import { Container } from 'reactstrap'
 
-const { ContainerSearchResultsPropedDefault, Section, WrapperStoreWrapperPropedIndex } = stopUndefined(Exports)
+const {
+	ContainerSearchResultsPropedDefault,
+	Section,
+	WrapperStoreWrapperPropedIndex,
+} = stopUndefined(Exports)
 
 const SearchedPage = () => {
 	return (
