@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { stopUndefined } from 'utils'
-// Apollo
 import { tempClient, initApollo, setClient } from 'apolloInit'
 import { ApolloProvider } from 'react-apollo'
-// routing
 import { Router } from 'routes'
+import ReactResizeDetector from 'react-resize-detector'
 import {
 	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_SEARCHED,
@@ -17,7 +16,6 @@ import {
 	ROUTE_PAGE_404,
 	ROUTE_PAGE_CHECKOUT,
 } from 'routes'
-// state management
 import {
 	Provider,
 	Subscribe,
@@ -26,8 +24,6 @@ import {
 	STATE,
 	STORE_USER_STATE_SIGNING_IN,
 } from 'state'
-
-//core components
 import { Exports } from 'componentViews'
 
 const {
@@ -64,6 +60,7 @@ const MapRoutesToPages = {
 
 const App = () => {
 	const [apolloClient, setApolloClient] = useState(tempClient)
+	const [offsetHeight, setOffsetHeight] = useState(80)
 
 	useEffect(() => {
 		const initApolloClient = async () => {
@@ -73,6 +70,20 @@ const App = () => {
 		}
 		initApolloClient()
 	}, [])
+
+	const onResize = useCallback((width, height) => {
+		setOffsetHeight(height)
+	}, [])
+
+	const Wrapper = useCallback(
+		children => (
+			<WrapperPropedApp offsetHeight={offsetHeight}>
+				<div className='w-100' style={{ height: offsetHeight }} />
+				{children}
+			</WrapperPropedApp>
+		),
+		[offsetHeight]
+	)
 
 	return (
 		<ApolloProvider client={apolloClient}>
@@ -93,6 +104,7 @@ const App = () => {
 								header={
 									<>
 										<NavbarIndexStoreAlert>
+											<ReactResizeDetector handleHeight onResize={onResize} />
 											<AlertCommonStoreAlert />
 										</NavbarIndexStoreAlert>
 										<FormSignInPropedDefaultStoreSignIn modal passwordOnly />
