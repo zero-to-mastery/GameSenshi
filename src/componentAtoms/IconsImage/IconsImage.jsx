@@ -1,5 +1,5 @@
 import React from 'react'
-import classNames from 'classnames'
+import classnames from 'classnames'
 import { UncontrolledTooltip } from 'reactstrap'
 import Image from 'material-ui-image'
 
@@ -11,20 +11,11 @@ const IconsImage = props => {
 	const { icons, className } = props
 
 	return icons.map(icon => {
-		const {
-			[ICONS_COMMON_ID]: id,
-			[ICON_COMMON_PATH]: path,
-			[ICONS_COMMON_TOOLTIP]: tooltip,
-		} = icon
+		const { [ICONS_COMMON_ID]: id, [ICON_COMMON_PATH]: path, [ICONS_COMMON_TOOLTIP]: tooltip } = icon
 		const id_ = 'IconsImage' + id.replace(/ /g, '')
 		return (
-			<div key={id_} className={classNames('m-1', className)}>
-				<Image
-					src={path}
-					alt={tooltip}
-					id={id_}
-					style={{ backgroundColor: 'transparent' }}
-				/>
+			<div key={id_} className={classnames('m-1', className)}>
+				<Image src={path} alt={tooltip} id={id_} style={{ backgroundColor: 'transparent' }} />
 				<UncontrolledTooltip delay={0} target={id_}>
 					{tooltip}
 				</UncontrolledTooltip>

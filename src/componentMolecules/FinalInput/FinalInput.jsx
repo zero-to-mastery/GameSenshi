@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, memo } from 'react'
 import { Field } from 'react-final-form'
 import { stopUndefined } from 'utils'
-import classNames from 'classnames'
+import classnames from 'classnames'
 // core components
 import { Exports } from 'componentAtoms'
 
@@ -144,11 +144,7 @@ const FinalInput = memo(props => {
 										const timeOutID = setTimeout(() => {
 											serverValidation(value || '').then(validationResult => {
 												// do not close run this if user resume typing before server validation end
-												generateTextListWithState(
-													validationResult,
-													resolve,
-													timeOutID
-												)
+												generateTextListWithState(validationResult, resolve, timeOutID)
 											})
 										}, DELAY2)
 										state.timeOutID = timeOutID
@@ -167,7 +163,8 @@ const FinalInput = memo(props => {
 				// this prevent from returning undefined which is valid validation when component is not focused
 				// this happen because final form run validation on all form even though there is only one field is onChange
 				// so always return your own promise that has been made
-			}}>
+			}}
+		>
 			{({ input, meta }) => {
 				const {
 					error,
@@ -240,11 +237,7 @@ const FinalInput = memo(props => {
 					((touched && !active) || (active && modified))
 
 				const hasSuccess =
-					!submitting &&
-					!hideSuccess &&
-					!spinner &&
-					!errorMessages &&
-					((touched && !active) || (active && modified))
+					!submitting && !hideSuccess && !spinner && !errorMessages && ((touched && !active) || (active && modified))
 
 				const result = value_ || input.value // the input.value has no purpose other than suppress uncontrollable to controllable warning
 				return (
@@ -261,15 +254,14 @@ const FinalInput = memo(props => {
 							onFocus={onFocus_}
 							onChange={onChange_}
 							onKeyPress={onKeyPress_}
-							{...restProps}>
+							{...restProps}
+						>
 							<TextAlert
-								icon={classNames('tim-icons', {
+								icon={classnames('tim-icons', {
 									'icon-check-2': valid,
 									'icon-alert-circle-exc': !valid,
 								})}
-								messages={
-									(!dirtySinceLastSubmit && submitError) || filteredMessages
-								}
+								messages={(!dirtySinceLastSubmit && submitError) || filteredMessages}
 								isOpen={
 									(!onlyShowErrorAfterSubmit || submitFailed) &&
 									filteredMessages.length > 0 &&
@@ -281,26 +273,12 @@ const FinalInput = memo(props => {
 							/>
 						</Component>
 						{popoverMessages_.length > 0 && (
-							<PopoverCommon
-								isOpen={active}
-								target={name}
-								spinner={spinner}
-								header={`${name} rules`}>
+							<PopoverCommon isOpen={active} target={name} spinner={spinner} header={`${name} rules`}>
 								<ul>
 									{popoverMessages_.map(errorMessage => {
 										return (
-											<li
-												className={
-													popoverFailedItems[errorMessage]
-														? 'text-dark'
-														: 'text-info'
-												}
-												key={errorMessage}>
-												{popoverFailedItems[errorMessage] ? (
-													errorMessage
-												) : (
-													<del>{errorMessage}</del>
-												)}
+											<li className={popoverFailedItems[errorMessage] ? 'text-dark' : 'text-info'} key={errorMessage}>
+												{popoverFailedItems[errorMessage] ? errorMessage : <del>{errorMessage}</del>}
 											</li>
 										)
 									})}
