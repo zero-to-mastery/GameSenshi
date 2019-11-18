@@ -78,8 +78,8 @@ const Cards = () => {
 const IndexPage = () => {
 	return (
 		<WrapperStoreWrapperPropedIndex>
-			<Section>
-				<Container>
+			<Section className='bg-dark-navy'>
+				<Container className='pt-3'>
 					<Row>
 						<Col>
 							<CarouselCommonPropedIndex />
@@ -87,16 +87,16 @@ const IndexPage = () => {
 					</Row>
 				</Container>
 			</Section>
-			<Section>
+			<Section className='bg-dark-navy mb-4'>
 				<Container>
 					<ButtonsIconImagePropedIndex />
 				</Container>
 			</Section>
 			<Section>
-				<Container>
+				<Container className='bg-dark-navy'>
 					<Row>
 						<Col>
-							<h1 className='mb-0'>Recommendations</h1>
+							<h1 className='mb-0 mt-3'>Recommendations</h1>
 						</Col>
 					</Row>
 					<Row>
@@ -105,10 +105,10 @@ const IndexPage = () => {
 				</Container>
 			</Section>
 			<Section>
-				<Container>
+				<Container className='bg-dark-navy'>
 					<Row>
 						<Col>
-							<h1 className='mb-0'>New</h1>
+							<h1 className='mb-0 mt-3'>New</h1>
 						</Col>
 					</Row>
 					<Row>
@@ -117,10 +117,10 @@ const IndexPage = () => {
 				</Container>
 			</Section>
 			<Section>
-				<Container>
+				<Container className='bg-dark-navy'>
 					<Row>
 						<Col>
-							<h1 className='mb-0'>Random</h1>
+							<h1 className='mb-0 mt-3'>Random</h1>
 						</Col>
 					</Row>
 					<Row>
