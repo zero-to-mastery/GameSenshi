@@ -17,6 +17,7 @@ const ButtonsIconImageOptioned = props => {
 		<ButtonsIconImage
 			buttons={buttons_}
 			iconAs={IconsImageOptioned}
+			to='/index'
 			{...otherProps}
 		/>
 	)

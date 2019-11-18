@@ -2,14 +2,14 @@ import React from 'react'
 import { Button, Label, Row, Col } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
-const { IconsImage } = stopUndefined(Exports)
+const { IconsImage, Link } = stopUndefined(Exports)
 
 const BUTTONS_ICON_IMAGE_ID = 'id'
 const BUTTONS_ICON_IMAGE_TEXT = 'text'
 const BUTTONS_ICON_IMAGE_ICON = 'icon'
 
 const ButtonsIconImage = props => {
-	const { buttons, iconAs } = props
+	const { buttons, iconAs, to } = props
 	return (
 		<Row>
 			{buttons.map(button => {
@@ -24,7 +24,12 @@ const ButtonsIconImage = props => {
 				return (
 					<Col key={id}>
 						<Row className='justify-content-center'>
-							<Button className='btn-simple' color='reddit'>
+							<Button
+								tag={Link}
+								className='btn-simple p-2'
+								color='reddit'
+								to={to}
+							>
 								<IconAs icons={icon} />
 							</Button>
 						</Row>
