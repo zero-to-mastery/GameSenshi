@@ -2,6 +2,10 @@
 	background-color: #613dc1;
 } */
 
+.bg-dark-navy {
+	background-color: #1f2251;
+}
+
 .has-success:after,
 .has-danger:after {
 	top: calc(50% - 7px);
