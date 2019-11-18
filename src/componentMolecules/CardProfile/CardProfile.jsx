@@ -8,7 +8,6 @@ const CardProfile = props => {
 	return (
 		<Card className='card-profile'>
 			<div className='card-image'>
-				<h4 className='title-overwritten'>{name}</h4>
 				<img alt='...' className='img img-raised rounded' src={src} />
 			</div>
 			<CardBody>

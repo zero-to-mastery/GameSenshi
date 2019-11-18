@@ -97,6 +97,7 @@
 			background: rgba(0, 0, 0, 0.6);
 			border-top-left-radius: $border-radius !important;
 			border-top-right-radius: $border-radius !important;
+
 		}
 
 		&.no-mask {
@@ -155,6 +156,9 @@
 			z-index: 2;
 			border-radius: 6px;
 			opacity: 0.9;
+			&:hover {
+				opacity: 0.2
+			}
 
 			.job-title,
 			.table td {
