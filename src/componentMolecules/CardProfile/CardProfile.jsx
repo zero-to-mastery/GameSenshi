@@ -1,45 +1,17 @@
 import React from 'react'
 // reactstrap components
-import {
-	Card,
-	CardBody,
-	DropdownToggle,
-	DropdownMenu,
-	DropdownItem,
-	UncontrolledDropdown,
-	Table,
-} from 'reactstrap'
+import { Card, CardBody, Table } from 'reactstrap'
+import './CardProfile.styles.scss'
 
 const CardProfile = props => {
-	const { name, src, skills, hobbies, level } = props
+	const { name, src, skills, level } = props
 	return (
 		<Card className='card-profile'>
 			<div className='card-image'>
-				<h4 className='title'>{name}</h4>
-				<UncontrolledDropdown>
-					<DropdownToggle
-						aria-expanded={false}
-						caret
-						className='btn-icon'
-						color='link'
-						data-toggle='dropdown'
-						type='button'
-					>
-						<i className='tim-icons icon-settings-gear-63' />
-					</DropdownToggle>
-					<DropdownMenu right x-placement='bottom-end'>
-						<DropdownItem href='#pablo' onClick={e => e.preventDefault()}>
-							See full profile
-						</DropdownItem>
-						<DropdownItem href='#pablo' onClick={e => e.preventDefault()}>
-							Send message
-						</DropdownItem>
-					</DropdownMenu>
-				</UncontrolledDropdown>
+				<h4 className='title-overwritten'>{name}</h4>
 				<img alt='...' className='img img-raised rounded' src={src} />
 			</div>
 			<CardBody>
-				<hr className='line-primary' />
 				<Table className='tablesorter' responsive>
 					<tbody>
 						<tr>
@@ -47,12 +19,6 @@ const CardProfile = props => {
 								<i className='tim-icons icon-atom' /> Skills
 							</td>
 							<td className='text-right'>{skills}</td>
-						</tr>
-						<tr>
-							<td className='text-left'>
-								<i className='tim-icons icon-user-run' /> Hobbies
-							</td>
-							<td className='text-right'>{hobbies}</td>
 						</tr>
 						<tr>
 							<td className='text-left'>
