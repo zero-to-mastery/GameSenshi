@@ -23,10 +23,10 @@ const {
 	ListNavItemStoreUserPropedCollapsedUnsigned,
 } = stopUndefined(Exports)
 
-const NAVBAR_INDEX_HEIGHT_CHANGED = 'heightChanged'
+const NAVBAR_COLORED = 'colored'
 
 const NavbarIndex = props => {
-	const { children, [NAVBAR_INDEX_HEIGHT_CHANGED]: heightChanged } = props
+	const { children, [NAVBAR_COLORED]: colored } = props
 
 	const [color, setColor] = useState('navbar-transparent')
 	const [collapseOpen, setCollapseOpen] = useState(false)
@@ -46,15 +46,15 @@ const NavbarIndex = props => {
 
 	const changeColor = () => {
 		if (
-			document.documentElement.scrollTop > 310 ||
-			document.body.scrollTop > 310
+			document.documentElement.scrollTop > 330 ||
+			document.body.scrollTop > 330
 		) {
 			setColor(bgColor)
 		} else if (
 			document.documentElement.scrollTop < 300 ||
 			document.body.scrollTop < 300
 		) {
-			setColor((heightChanged && bgColor) || 'navbar-transparent')
+			setColor((colored && bgColor) || 'navbar-transparent')
 		}
 	}
 
@@ -86,7 +86,7 @@ const NavbarIndex = props => {
 		<div className='fixed-top'>
 			<ProgressCommonStoreProgress />
 			<Navbar
-				className={(heightChanged && bgColor) || color}
+				className={(colored && bgColor) || color}
 				color-on-scroll='100'
 				expand='lg'
 			>
@@ -150,4 +150,4 @@ const NavbarIndex = props => {
 	)
 }
 
-export { NavbarIndex, NAVBAR_INDEX_HEIGHT_CHANGED }
+export { NavbarIndex, NAVBAR_COLORED }

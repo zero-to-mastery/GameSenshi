@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavbarIndex, NAVBAR_INDEX_HEIGHT_CHANGED } from './NavbarIndex'
+import { NavbarIndex, NAVBAR_COLORED } from './NavbarIndex'
 import { StateContainer, storeAlert, STORE_ALERT_STATE_IS_OPEN } from 'state'
 import ReactResizeDetector from 'react-resize-detector'
 import { stopUndefined } from 'utils'
@@ -9,7 +9,7 @@ import { Exports } from 'componentnCompounds'
 const { AlertCommonStoreAlert } = stopUndefined(Exports)
 
 const mapStoreAlertStateToProp = {
-	[NAVBAR_INDEX_HEIGHT_CHANGED]: STORE_ALERT_STATE_IS_OPEN,
+	[NAVBAR_COLORED]: STORE_ALERT_STATE_IS_OPEN,
 }
 
 const NavbarIndexStoreAlert = StateContainer(
