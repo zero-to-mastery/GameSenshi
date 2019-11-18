@@ -4,7 +4,7 @@ import { Exports } from 'componentnCompounds'
 import { Collapse, Navbar, Nav, Container } from 'reactstrap'
 
 const widthBreakPoint = 991
-const bgPurple = 'bg-purple'
+const bgColor = 'bg-primary'
 
 const {
 	BrandNavbarStoreUserPropedNavbar,
@@ -49,12 +49,12 @@ const NavbarIndex = props => {
 			document.documentElement.scrollTop > 310 ||
 			document.body.scrollTop > 310
 		) {
-			setColor(bgPurple)
+			setColor(bgColor)
 		} else if (
 			document.documentElement.scrollTop < 300 ||
 			document.body.scrollTop < 300
 		) {
-			setColor((heightChanged && bgPurple) || 'navbar-transparent')
+			setColor((heightChanged && bgColor) || 'navbar-transparent')
 		}
 	}
 
@@ -86,7 +86,7 @@ const NavbarIndex = props => {
 		<div className='fixed-top'>
 			<ProgressCommonStoreProgress />
 			<Navbar
-				className={(heightChanged && bgPurple) || color}
+				className={(heightChanged && bgColor) || color}
 				color-on-scroll='100'
 				expand='lg'
 			>
