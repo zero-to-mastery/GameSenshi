@@ -9,6 +9,9 @@ const {
 	CarouselCommonPropedIndex,
 	Section,
 	WrapperStoreWrapperPropedIndex,
+	HeaderIconImagePropedPopularPlayer,
+	HeaderIconImagePropedNewPlayer,
+	HeaderIconImagePropedRandomPlayer,
 } = stopUndefined(Exports)
 
 const CARD_INDEX_NAME = 'name'
@@ -94,11 +97,7 @@ const IndexPage = () => {
 			</Section>
 			<Section>
 				<Container className='bg-dark-navy'>
-					<Row>
-						<Col>
-							<h1 className='mb-0 mt-3'>Recommendations</h1>
-						</Col>
-					</Row>
+					<HeaderIconImagePropedPopularPlayer />
 					<Row>
 						<Cards />
 					</Row>
@@ -106,11 +105,7 @@ const IndexPage = () => {
 			</Section>
 			<Section>
 				<Container className='bg-dark-navy'>
-					<Row>
-						<Col>
-							<h1 className='mb-0 mt-3'>New</h1>
-						</Col>
-					</Row>
+					<HeaderIconImagePropedNewPlayer />
 					<Row>
 						<Cards />
 					</Row>
@@ -118,11 +113,7 @@ const IndexPage = () => {
 			</Section>
 			<Section>
 				<Container className='bg-dark-navy'>
-					<Row>
-						<Col>
-							<h1 className='mb-0 mt-3'>Random</h1>
-						</Col>
-					</Row>
+					<HeaderIconImagePropedRandomPlayer />
 					<Row>
 						<Cards />
 					</Row>
