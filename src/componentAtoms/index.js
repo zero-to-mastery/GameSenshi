@@ -177,7 +177,6 @@ export const Exports = {
 	WrapperStoreWrapperPropedError,
 	WrapperStoreWrapperPropedCheckout,
 	HeaderIconImagePropedPopularPlayer,
-	HeaderIconImagePropedPopularPlayer,
 	HeaderIconImagePropedNewPlayer,
 	HeaderIconImagePropedRandomPlayer,
 }
