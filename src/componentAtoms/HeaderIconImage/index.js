@@ -8,8 +8,6 @@ const HeaderIconImagePropedIndex = props => {
 		<HeaderIconImage
 			src={'none'}
 			h='h1'
-			iconHeight={34}
-			iconWidth={34}
 			className={classnames('font-weight-bold', className)}
 			{...otherProps}
 		/>
@@ -21,11 +19,10 @@ const HeaderIconImagePropedPopularPlayer = props => {
 	return (
 		<HeaderIconImagePropedIndex
 			className={classnames('text-primary', className)}
+			aria-label='recommended player'
+			emoji='💖'
 			{...otherProps}
 		>
-			<span role='img' aria-label='recommended player'>
-				💖
-			</span>{' '}
 			Recommended
 		</HeaderIconImagePropedIndex>
 	)
@@ -36,11 +33,10 @@ const HeaderIconImagePropedNewPlayer = props => {
 	return (
 		<HeaderIconImagePropedIndex
 			className={classnames('text-success', className)}
+			aria-label='new player'
+			emoji='🌻'
 			{...otherProps}
 		>
-			<span role='img' aria-label='new player'>
-				🌻
-			</span>{' '}
 			New Player
 		</HeaderIconImagePropedIndex>
 	)
@@ -51,11 +47,10 @@ const HeaderIconImagePropedRandomPlayer = props => {
 	return (
 		<HeaderIconImagePropedIndex
 			className={classnames('text-warning', className)}
+			aria-label='random player'
+			emoji='🏆'
 			{...otherProps}
 		>
-			<span role='img' aria-label='random player'>
-				🏆
-			</span>{' '}
 			Random
 		</HeaderIconImagePropedIndex>
 	)

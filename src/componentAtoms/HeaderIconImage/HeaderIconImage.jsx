@@ -13,6 +13,9 @@ const HeaderIconImage = props => {
 		src,
 		iconHeight,
 		iconWidth,
+		emoji,
+		fallbackToEmoji,
+		['aria-label']: aria,
 		...otherProps
 	} = props
 
@@ -24,7 +27,7 @@ const HeaderIconImage = props => {
 		<Row>
 			<Col>
 				<H className={classnames('title d-flex', className)} {...otherProps}>
-					{!error && (
+					{!emoji && !error && (
 						<div className='mr-2'>
 							<Image
 								src={src}
@@ -37,6 +40,11 @@ const HeaderIconImage = props => {
 								}}
 							/>
 						</div>
+					)}
+					{(emoji || (fallbackToEmoji && error)) && (
+						<span role='img' aria-label={aria}>
+							{emoji}{' '}
+						</span>
 					)}
 					{children}
 				</H>
