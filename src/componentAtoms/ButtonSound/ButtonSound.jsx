@@ -10,8 +10,9 @@ const { PLAYING: playing, STOPPED: stopped } = Sound.status
 const DELAY = 1000
 const convertToMinutes = duration => {
 	const time = Math.round(duration / 1000)
-	const minutes = ('0' + Math.round(time / 60)).slice(-2)
+	const minutes = ('0' + Math.floor(time / 60)).slice(-2)
 	const seconds = ('0' + (time - minutes * 60)).slice(-2)
+	console.log(minutes, '  ', seconds)
 	return minutes + ':' + seconds
 }
 
