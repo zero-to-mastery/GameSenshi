@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import Sound from 'react-sound'
-import { Button, Row, Col } from 'reactstrap'
+import { Button, Row, Col, Container } from 'reactstrap'
 import VolumeMuteIcon from '@material-ui/icons/VolumeMute'
 import VolumeDownIcon from '@material-ui/icons/VolumeDown'
 import VolumeUpIcon from '@material-ui/icons/VolumeUp'
@@ -99,25 +99,28 @@ const ButtonSound = props => {
 	return (
 		<>
 			<Button
-				className='btn-round ml-1'
+				className='btn-round p-1'
 				color='primary'
 				type='button'
 				onClick={onClick}
-				style={{ width: 150 }}>
-				<Row className='d-flex align-items-center'>
-					<Col xs='4' className='pr-0'>
-						<Icon />
-					</Col>
-					<Col xs='8' className='justify-content-end pl-0'>
-						{loading ? (
-							<Loader type='Oval' height={24} width={24} color='#fff' />
-						) : playStatus === stopped ? (
-							duration
-						) : (
-							position
-						)}
-					</Col>
-				</Row>
+				style={{ width: 120 }}
+			>
+				<Container>
+					<Row className='d-flex align-items-center'>
+						<Col xs='4'>
+							<Icon />
+						</Col>
+						<Col xs='8'>
+							{loading ? (
+								<Loader type='Oval' height={24} width={24} color='#fff' />
+							) : playStatus === stopped ? (
+								duration
+							) : (
+								position
+							)}
+						</Col>
+					</Row>
+				</Container>
 			</Button>
 			<Sound
 				url={url}
