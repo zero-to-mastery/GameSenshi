@@ -12,7 +12,7 @@ const AvatarUser = memo(props => {
 			<Image
 				color='transparent'
 				alt='user avatar'
-				className='img-raised'
+				className='img-raised media'
 				style={size}
 				src={src}
 				loading={null}

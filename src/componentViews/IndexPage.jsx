@@ -62,6 +62,7 @@ const Cards = () => {
 		} = card
 		return (
 			<CardIndexPropedDefault
+				key={name}
 				name={name}
 				src={src}
 				level={level}
