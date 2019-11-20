@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import Image from 'material-ui-image'
 import { Row, Col } from 'reactstrap'
 
-const HeaderIconImage = props => {
+const TextIcon = props => {
 	const [error, setError] = useState(false)
 
 	const {
@@ -26,7 +26,7 @@ const HeaderIconImage = props => {
 	return (
 		<Row>
 			<Col>
-				<H className={classnames('title d-flex', className)} {...otherProps}>
+				<H className={classnames('d-flex', className)} {...otherProps}>
 					{!emoji && !error && (
 						<div className='mr-2'>
 							<Image
@@ -53,4 +53,4 @@ const HeaderIconImage = props => {
 	)
 }
 
-export { HeaderIconImage }
+export { TextIcon }

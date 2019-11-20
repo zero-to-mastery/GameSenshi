@@ -1,62 +1,62 @@
 import React from 'react'
-import { HeaderIconImage } from './HeaderIconImage'
+import { TextIcon } from './TextIcon'
 import classnames from 'classnames'
 
-const HeaderIconImagePropedIndex = props => {
+const TextIconPropedIndex = props => {
 	const { className, ...otherProps } = props
 	return (
-		<HeaderIconImage
+		<TextIcon
 			src={'none'}
 			h='h1'
-			className={classnames('font-weight-bold', className)}
+			className={classnames('font-weight-bold title', className)}
 			{...otherProps}
 		/>
 	)
 }
 
-const HeaderIconImagePropedPopularPlayer = props => {
+const TextIconPropedPopularPlayer = props => {
 	const { className, ...otherProps } = props
 	return (
-		<HeaderIconImagePropedIndex
+		<TextIconPropedIndex
 			className={classnames('text-primary', className)}
 			aria-label='recommended player'
 			emoji='💖'
 			{...otherProps}
 		>
 			Recommended
-		</HeaderIconImagePropedIndex>
+		</TextIconPropedIndex>
 	)
 }
 
-const HeaderIconImagePropedNewPlayer = props => {
+const TextIconPropedNewPlayer = props => {
 	const { className, ...otherProps } = props
 	return (
-		<HeaderIconImagePropedIndex
+		<TextIconPropedIndex
 			className={classnames('text-success', className)}
 			aria-label='new player'
 			emoji='🌻'
 			{...otherProps}
 		>
 			New Player
-		</HeaderIconImagePropedIndex>
+		</TextIconPropedIndex>
 	)
 }
 
-const HeaderIconImagePropedRandomPlayer = props => {
+const TextIconPropedRandomPlayer = props => {
 	const { className, ...otherProps } = props
 	return (
-		<HeaderIconImagePropedIndex
+		<TextIconPropedIndex
 			className={classnames('text-warning', className)}
 			aria-label='discover'
 			emoji='🏆'
 			{...otherProps}
 		>
 			Discover
-		</HeaderIconImagePropedIndex>
+		</TextIconPropedIndex>
 	)
 }
 export {
-	HeaderIconImagePropedPopularPlayer,
-	HeaderIconImagePropedNewPlayer,
-	HeaderIconImagePropedRandomPlayer,
+	TextIconPropedPopularPlayer,
+	TextIconPropedNewPlayer,
+	TextIconPropedRandomPlayer,
 }
