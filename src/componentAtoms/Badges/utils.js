@@ -4,8 +4,17 @@ import {
 	FB_FS_SENSHI_BADGES_RISING_STAR,
 	FB_FS_SENSHI_BADGES_ONLINE,
 } from 'constantValues'
-import { BADGES_COLOR, BADGES_BODY, BADGES_ID, BADGES_TOOLTIP } from './Badges'
+import {
+	BADGES_COLOR,
+	BADGES_BODY,
+	BADGES_ID,
+	BADGES_TOOLTIP,
+	BADGES_CLASS,
+} from './Badges'
 import { createGetOptions } from 'utils'
+import styles from './styles.module.css'
+
+console.log(styles.online)
 
 const options = [
 	{
@@ -20,8 +29,9 @@ const options = [
 	},
 	{
 		[BADGES_ID]: FB_FS_SENSHI_BADGES_ONLINE,
-		[BADGES_COLOR]: 'info',
-		[BADGES_BODY]: 'Verified',
+		//[BADGES_COLOR]: 'success',
+		[BADGES_BODY]: 'Online',
+		[BADGES_CLASS]: `${styles.online} text-white`,
 	},
 	{
 		[BADGES_ID]: FB_FS_SENSHI_BADGES_RISING_STAR,

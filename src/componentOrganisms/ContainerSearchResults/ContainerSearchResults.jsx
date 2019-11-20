@@ -8,7 +8,7 @@ import { Exports } from 'componentMolecules'
 const {
 	PanelSortBy,
 	PanelFilterSearch,
-	CardSearchedPropedDefault,
+	CardProfilePropedSearch,
 } = stopUndefined(Exports)
 
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
@@ -39,7 +39,8 @@ const ContainerSearchResults = props => {
 							} = card
 							return (
 								<Col md={{ size: 4 }}>
-									<CardSearchedPropedDefault
+									<CardProfilePropedSearch
+										badge={[]}
 										name={name}
 										src={src}
 										hobbies={hobbies}

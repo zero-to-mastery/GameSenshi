@@ -1,12 +1,20 @@
 import React from 'react'
 import { CardProfile } from './CardProfile'
+import { Exports } from 'componentAtoms'
+import { stopUndefined } from 'utils'
+import { FB_FS_SENSHI_BADGES_ONLINE } from 'constantValues'
+const { BadgesOptioned } = stopUndefined(Exports)
 
-const CardIndexPropedDefault = props => {
-	return <CardProfile {...props} />
+const CardProfileOptioned = props => {
+	return <CardProfile badgeAs={BadgesOptioned} {...props} />
 }
 
-const CardSearchedPropedDefault = props => {
-	return <CardProfile {...props} />
+const CardProfilePropedIndex = props => {
+	return <CardProfileOptioned badge={[FB_FS_SENSHI_BADGES_ONLINE]} {...props} />
 }
 
-export { CardIndexPropedDefault, CardSearchedPropedDefault }
+const CardProfilePropedSearch = props => {
+	return <CardProfileOptioned {...props} />
+}
+
+export { CardProfilePropedIndex, CardProfilePropedSearch }

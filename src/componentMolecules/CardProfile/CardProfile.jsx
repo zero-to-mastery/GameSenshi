@@ -1,13 +1,19 @@
 import React from 'react'
-import { Card, CardBody, Table, Col } from 'reactstrap'
+import { Card, CardBody, Row, Col } from 'reactstrap'
 import styles from './styles.module.css'
 import classnames from 'classnames'
 import Image from 'material-ui-image'
+import { Exports } from 'componentAtoms'
+import { stopUndefined } from 'utils'
+
+const { Badges } = stopUndefined(Exports)
 
 const CardProfile = props => {
-	const { name, src, skills, hobbies } = props
+	const { name, src, badgeAs, badge, gender } = props
+
+	const BadgeAs = badgeAs || Badges
 	return (
-		<Col sm='6' md='3'>
+		<Col xs='6' lg='3'>
 			<Card className='card-profile mt-0'>
 				<div className={classnames('card-image', styles.clear)}>
 					<Image
@@ -16,25 +22,24 @@ const CardProfile = props => {
 						color='transparent' //this is needed or else there is tiny white background even when OTHER image in carousel move, very weird behavior
 						src={src}
 					/>
-					<h4 className='title'>{name}</h4>
 				</div>
 				<CardBody>
-					<Table className='tablesorter' responsive>
-						<tbody>
-							<tr>
-								<td className='text-left'>
-									<i className='tim-icons icon-atom' /> Skills
-								</td>
-								<td className='text-right'>{skills}</td>
-							</tr>
-							<tr>
-								<td className='text-left'>
-									<i className='tim-icons icon-user-run' /> Hobbies
-								</td>
-								<td className='text-right'>{hobbies}</td>
-							</tr>
-						</tbody>
-					</Table>
+					<Row>
+						<Col xs='9' className='p-0'>
+							<h4
+								className={classnames('title mb-1 mt-1 font-weight-bold', {
+									'text-danger ': !gender,
+									'text-primary': gender,
+								})}
+								align='left'
+							>
+								{name}
+							</h4>
+						</Col>
+						<Col xs='3' className='p-0'>
+							<BadgeAs badges={badge} />
+						</Col>
+					</Row>
 				</CardBody>
 			</Card>
 		</Col>
