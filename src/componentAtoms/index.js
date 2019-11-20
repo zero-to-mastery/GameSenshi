@@ -56,6 +56,11 @@ import {
 	CarouselCommonPropedProfile,
 	CarouselCommonPropedIndex,
 } from './CarouselCommon'
+import {
+	TextIconPropedPopularPlayer,
+	TextIconPropedNewPlayer,
+	TextIconPropedRandomPlayer,
+} from './TextIcon'
 
 import {
 	CommentCommonPropedDefault,
@@ -171,4 +176,7 @@ export const Exports = {
 	WrapperStoreWrapperPropedReset,
 	WrapperStoreWrapperPropedError,
 	WrapperStoreWrapperPropedCheckout,
+	TextIconPropedPopularPlayer,
+	TextIconPropedNewPlayer,
+	TextIconPropedRandomPlayer,
 }

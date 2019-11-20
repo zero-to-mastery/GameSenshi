@@ -1,14 +1,10 @@
 import React from 'react'
-import classNames from 'classnames'
+import classnames from 'classnames'
 import { Row, Col, Alert } from 'reactstrap'
 
 const TextAlert = props => {
 	const { messages, icon, isOpen, timeout } = props
-	let messages_ = messages
-		? Array.isArray(messages)
-			? messages
-			: [messages]
-		: []
+	let messages_ = messages ? (Array.isArray(messages) ? messages : [messages]) : []
 
 	return messages_.map(message => {
 		return (
@@ -21,10 +17,11 @@ const TextAlert = props => {
 				}}
 				fade={true}
 				isOpen={isOpen}
-				timeout={timeout}>
+				timeout={timeout}
+			>
 				<Row>
 					<Col xs='1'>
-						<i className={classNames('text-success', icon)} />
+						<i className={classnames('text-success', icon)} />
 					</Col>
 					<Col xs='auto'>
 						<small className='text-muted'>{message}</small>

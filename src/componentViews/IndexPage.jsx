@@ -9,6 +9,9 @@ const {
 	CarouselCommonPropedIndex,
 	Section,
 	WrapperStoreWrapperPropedIndex,
+	TextIconPropedPopularPlayer,
+	TextIconPropedNewPlayer,
+	TextIconPropedRandomPlayer,
 } = stopUndefined(Exports)
 
 const CARD_INDEX_NAME = 'name'
@@ -49,30 +52,24 @@ const cardPlayers = [
 ]
 
 const Cards = () => {
-	return (
-		<>
-			{cardPlayers.map(card => {
-				const {
-					[CARD_INDEX_NAME]: name,
-					[CARD_INDEX_IMAGE]: src,
-					[CARD_INDEX_LEVEL]: level,
-					[CARD_INDEX_HOBBIES]: hobbies,
-					[CARD_INDEX_SKILLS]: skills,
-				} = card
-				return (
-					<Col sm='6' md='3'>
-						<CardIndexPropedDefault
-							name={name}
-							src={src}
-							level={level}
-							hobbies={hobbies}
-							skills={skills}
-						/>
-					</Col>
-				)
-			})}
-		</>
-	)
+	return cardPlayers.map(card => {
+		const {
+			[CARD_INDEX_NAME]: name,
+			[CARD_INDEX_IMAGE]: src,
+			[CARD_INDEX_LEVEL]: level,
+			[CARD_INDEX_HOBBIES]: hobbies,
+			[CARD_INDEX_SKILLS]: skills,
+		} = card
+		return (
+			<CardIndexPropedDefault
+				name={name}
+				src={src}
+				level={level}
+				hobbies={hobbies}
+				skills={skills}
+			/>
+		)
+	})
 }
 
 const IndexPage = () => {
@@ -94,10 +91,9 @@ const IndexPage = () => {
 			</Section>
 			<Section>
 				<Container className='bg-dark-navy'>
+					<TextIconPropedPopularPlayer />
 					<Row>
-						<Col>
-							<h1 className='mb-0 mt-3'>Recommendations</h1>
-						</Col>
+						<Cards />
 					</Row>
 					<Row>
 						<Cards />
@@ -106,10 +102,9 @@ const IndexPage = () => {
 			</Section>
 			<Section>
 				<Container className='bg-dark-navy'>
+					<TextIconPropedNewPlayer />
 					<Row>
-						<Col>
-							<h1 className='mb-0 mt-3'>New</h1>
-						</Col>
+						<Cards />
 					</Row>
 					<Row>
 						<Cards />
@@ -118,10 +113,9 @@ const IndexPage = () => {
 			</Section>
 			<Section>
 				<Container className='bg-dark-navy'>
+					<TextIconPropedRandomPlayer />
 					<Row>
-						<Col>
-							<h1 className='mb-0 mt-3'>Random</h1>
-						</Col>
+						<Cards />
 					</Row>
 					<Row>
 						<Cards />

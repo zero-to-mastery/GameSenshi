@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Badge, UncontrolledTooltip } from 'reactstrap'
-import classNames from 'classnames'
+import classnames from 'classnames'
 
 const BADGES_COLOR = 'color'
 const BADGES_BODY = 'body'
@@ -10,19 +10,13 @@ const BADGES_TOOLTIP = 'tooltip'
 const Badges = props => {
 	const { badges, options } = props
 	return badges.map((badge, i) => {
-		const {
-			[BADGES_COLOR]: color,
-			[BADGES_BODY]: body,
-			[BADGES_ID]: id,
-			[BADGES_TOOLTIP]: tooltip,
-		} = options.find(option => option[BADGES_ID] === badge)
+		const { [BADGES_COLOR]: color, [BADGES_BODY]: body, [BADGES_ID]: id, [BADGES_TOOLTIP]: tooltip } = options.find(
+			option => option[BADGES_ID] === badge
+		)
 
 		return (
 			<Fragment key={id}>
-				<Badge
-					color={color}
-					className={classNames({ 'mr-1': i !== badges.length - 1 })}
-					id={id}>
+				<Badge color={color} className={classnames({ 'mr-1': i !== badges.length - 1 })} id={id}>
 					{body}
 				</Badge>
 				{tooltip && (
