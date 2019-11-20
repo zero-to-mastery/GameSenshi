@@ -52,30 +52,26 @@ const cardPlayers = [
 ]
 
 const Cards = () => {
-	return (
-		<>
-			{cardPlayers.map(card => {
-				const {
-					[CARD_INDEX_NAME]: name,
-					[CARD_INDEX_IMAGE]: src,
-					[CARD_INDEX_LEVEL]: level,
-					[CARD_INDEX_HOBBIES]: hobbies,
-					[CARD_INDEX_SKILLS]: skills,
-				} = card
-				return (
-					<Col sm='6' md='3'>
-						<CardIndexPropedDefault
-							name={name}
-							src={src}
-							level={level}
-							hobbies={hobbies}
-							skills={skills}
-						/>
-					</Col>
-				)
-			})}
-		</>
-	)
+	return cardPlayers.map(card => {
+		const {
+			[CARD_INDEX_NAME]: name,
+			[CARD_INDEX_IMAGE]: src,
+			[CARD_INDEX_LEVEL]: level,
+			[CARD_INDEX_HOBBIES]: hobbies,
+			[CARD_INDEX_SKILLS]: skills,
+		} = card
+		return (
+			<Col sm='6' md='3' key={name}>
+				<CardIndexPropedDefault
+					name={name}
+					src={src}
+					level={level}
+					hobbies={hobbies}
+					skills={skills}
+				/>
+			</Col>
+		)
+	})
 }
 
 const IndexPage = () => {
@@ -101,6 +97,9 @@ const IndexPage = () => {
 					<Row>
 						<Cards />
 					</Row>
+					<Row>
+						<Cards />
+					</Row>
 				</Container>
 			</Section>
 			<Section>
@@ -109,11 +108,17 @@ const IndexPage = () => {
 					<Row>
 						<Cards />
 					</Row>
+					<Row>
+						<Cards />
+					</Row>
 				</Container>
 			</Section>
 			<Section>
 				<Container className='bg-dark-navy'>
 					<HeaderIconImagePropedRandomPlayer />
+					<Row>
+						<Cards />
+					</Row>
 					<Row>
 						<Cards />
 					</Row>

@@ -43,7 +43,7 @@ const HeaderIconImage = props => {
 					)}
 					{(emoji || (fallbackToEmoji && error)) && (
 						<span role='img' aria-label={aria}>
-							{emoji}{' '}
+							{emoji}
 						</span>
 					)}
 					{children}

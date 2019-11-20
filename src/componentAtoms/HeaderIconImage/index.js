@@ -47,11 +47,11 @@ const HeaderIconImagePropedRandomPlayer = props => {
 	return (
 		<HeaderIconImagePropedIndex
 			className={classnames('text-warning', className)}
-			aria-label='random player'
+			aria-label='discover'
 			emoji='🏆'
 			{...otherProps}
 		>
-			Random
+			Discover
 		</HeaderIconImagePropedIndex>
 	)
 }
