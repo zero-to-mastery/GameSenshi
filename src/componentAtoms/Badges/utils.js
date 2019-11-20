@@ -2,8 +2,10 @@ import {
 	FB_FS_SENSHI_BADGES_VERIFIED,
 	FB_FS_SENSHI_BADGES_FEMALE,
 	FB_FS_SENSHI_BADGES_RISING_STAR,
+	FB_FS_SENSHI_BADGES_ONLINE,
 } from 'constantValues'
 import { BADGES_COLOR, BADGES_BODY, BADGES_ID, BADGES_TOOLTIP } from './Badges'
+import { createGetOptions } from 'utils'
 
 const options = [
 	{
@@ -17,6 +19,11 @@ const options = [
 		[BADGES_BODY]: 'Verified',
 	},
 	{
+		[BADGES_ID]: FB_FS_SENSHI_BADGES_ONLINE,
+		[BADGES_COLOR]: 'info',
+		[BADGES_BODY]: 'Verified',
+	},
+	{
 		[BADGES_ID]: FB_FS_SENSHI_BADGES_RISING_STAR,
 		[BADGES_COLOR]: 'warning',
 		[BADGES_BODY]: 'Rising Star',
@@ -24,4 +31,6 @@ const options = [
 	},
 ]
 
-export { options }
+const getOptions = createGetOptions(options, BADGES_ID)
+
+export { getOptions }
