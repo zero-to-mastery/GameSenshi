@@ -14,7 +14,7 @@ const CardProfilePropedIndex = props => {
 }
 
 const CardProfilePropedSearch = props => {
-	return <CardProfileOptioned {...props} />
+	return <CardProfileOptioned badge={[FB_FS_SENSHI_BADGES_ONLINE]} {...props} />
 }
 
 export { CardProfilePropedIndex, CardProfilePropedSearch }

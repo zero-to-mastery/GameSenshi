@@ -16,9 +16,33 @@ const ratings = ['5 stars', '4 stars', '3 stars', '2 stars', '1 star']
 
 const CARD_SEARCHED_NAME = 'name'
 const CARD_SEARCHED_IMAGE = 'image'
-const CARD_SEARCHED_SKILLS = 'skills'
-const CARD_SEARCHED_HOBBIES = 'hobbies'
-const CARD_SEARCHED_LEVEL = 'level'
+const CARD_SEARCHED_GENDER = 'gender'
+const CARD_SEARCHED_AUDIO = 'audioSrc'
+const CARD_SEARCHED_PRICE = 'price'
+const CARD_SEARCHED_DESCRIPTION = 'description'
+
+const Cards = props => {
+	const { cards } = props
+	return cards.map(card => {
+		const {
+			[CARD_SEARCHED_NAME]: name,
+			[CARD_SEARCHED_IMAGE]: src,
+			[CARD_SEARCHED_AUDIO]: audioSrc,
+			[CARD_SEARCHED_DESCRIPTION]: description,
+			[CARD_SEARCHED_PRICE]: price,
+		} = card
+		return (
+			<CardProfilePropedSearch
+				badge={[]}
+				name={name}
+				src={src}
+				audioSrc={audioSrc}
+				price={price}
+				description={description}
+			/>
+		)
+	})
+}
 
 const ContainerSearchResults = props => {
 	const { cards } = props
@@ -29,27 +53,7 @@ const ContainerSearchResults = props => {
 				<Col md={{ size: 8 }}>
 					<PanelSortBy />
 					<Row>
-						{cards.map(card => {
-							const {
-								[CARD_SEARCHED_NAME]: name,
-								[CARD_SEARCHED_IMAGE]: src,
-								[CARD_SEARCHED_HOBBIES]: hobbies,
-								[CARD_SEARCHED_LEVEL]: level,
-								[CARD_SEARCHED_SKILLS]: skills,
-							} = card
-							return (
-								<Col md={{ size: 4 }}>
-									<CardProfilePropedSearch
-										badge={[]}
-										name={name}
-										src={src}
-										hobbies={hobbies}
-										level={level}
-										skills={skills}
-									/>
-								</Col>
-							)
-						})}
+						<Cards cards={cards} />
 					</Row>
 				</Col>
 			</Row>
@@ -60,8 +64,9 @@ const ContainerSearchResults = props => {
 export {
 	ContainerSearchResults,
 	CARD_SEARCHED_NAME,
-	CARD_SEARCHED_SKILLS,
-	CARD_SEARCHED_HOBBIES,
 	CARD_SEARCHED_IMAGE,
-	CARD_SEARCHED_LEVEL,
+	CARD_SEARCHED_GENDER,
+	CARD_SEARCHED_DESCRIPTION,
+	CARD_SEARCHED_AUDIO,
+	CARD_SEARCHED_PRICE,
 }
