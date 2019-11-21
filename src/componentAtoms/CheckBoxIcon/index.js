@@ -4,7 +4,7 @@ import { CheckBoxIcon } from './CheckBoxIcon'
 const CheckBoxIconPropedFavorite = props => {
 	return (
 		<CheckBoxIcon
-			color='danger'
+			color='primary'
 			tooltipOn='Favourite me! 😘'
 			tooltipOff="Please don't unfavorite me! 😭"
 			icon='tim-icons icon-heart-2'

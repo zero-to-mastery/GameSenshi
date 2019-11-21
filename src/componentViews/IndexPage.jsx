@@ -2,7 +2,7 @@ import React from 'react'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 import { Container, Row, Col } from 'reactstrap'
-
+import audioSample from 'assets/audio/sampleVoice.mp3'
 const {
 	CardProfilePropedIndex,
 	ButtonsIconImagePropedIndex,
@@ -14,46 +14,60 @@ const {
 	TextIconPropedRandomPlayer,
 } = stopUndefined(Exports)
 
-const CARD_INDEX_NAME = 'name'
-const CARD_INDEX_IMAGE = 'image'
-const CARD_INDEX_GENDER = ''
+const CARD_PROFILE_NAME = 'name'
+const CARD_PROFILE_IMAGE = 'image'
+const CARD_PROFILE_GENDER = 'gender'
+const CARD_PROFILE_AUDIO = 'audioSrc'
+const CARD_PROFILE_PRICE = 'price'
 
 const cardPlayers = [
 	{
-		[CARD_INDEX_NAME]: 'Dylan Wyatt',
-		[CARD_INDEX_IMAGE]: require('assets/img/christian.jpg'),
-		[CARD_INDEX_GENDER]: false,
+		[CARD_PROFILE_NAME]: 'Dylan Wyatt',
+		[CARD_PROFILE_IMAGE]: require('assets/img/christian.jpg'),
+		[CARD_PROFILE_GENDER]: false,
+		[CARD_PROFILE_AUDIO]: audioSample,
+		[CARD_PROFILE_PRICE]: '30',
 	},
 	{
-		[CARD_INDEX_NAME]: 'Mila Skylar',
-		[CARD_INDEX_IMAGE]: require('assets/img/johana.jpg'),
-		[CARD_INDEX_GENDER]: true,
+		[CARD_PROFILE_NAME]: 'Mila Skylar',
+		[CARD_PROFILE_IMAGE]: require('assets/img/johana.jpg'),
+		[CARD_PROFILE_GENDER]: true,
+		[CARD_PROFILE_AUDIO]: audioSample,
+		[CARD_PROFILE_PRICE]: '40',
 	},
 	{
-		[CARD_INDEX_NAME]: 'Mark Johnsson',
-		[CARD_INDEX_IMAGE]: require('assets/img/mike.jpeg'),
-		[CARD_INDEX_GENDER]: false,
+		[CARD_PROFILE_NAME]: 'Mark Johnsson',
+		[CARD_PROFILE_IMAGE]: require('assets/img/mike.jpeg'),
+		[CARD_PROFILE_GENDER]: false,
+		[CARD_PROFILE_AUDIO]: audioSample,
+		[CARD_PROFILE_PRICE]: '50',
 	},
 	{
-		[CARD_INDEX_NAME]: 'Olivia Smith',
-		[CARD_INDEX_IMAGE]: require('assets/img/olivia.jpg'),
-		[CARD_INDEX_GENDER]: true,
+		[CARD_PROFILE_NAME]: 'Olivia Smith',
+		[CARD_PROFILE_IMAGE]: require('assets/img/olivia.jpg'),
+		[CARD_PROFILE_GENDER]: true,
+		[CARD_PROFILE_AUDIO]: audioSample,
+		[CARD_PROFILE_PRICE]: '60',
 	},
 ]
 
 const Cards = () => {
 	return cardPlayers.map(card => {
 		const {
-			[CARD_INDEX_NAME]: name,
-			[CARD_INDEX_IMAGE]: src,
-			[CARD_INDEX_GENDER]: gender,
+			[CARD_PROFILE_NAME]: name,
+			[CARD_PROFILE_IMAGE]: src,
+			[CARD_PROFILE_GENDER]: gender,
+			[CARD_PROFILE_PRICE]: price,
+			[CARD_PROFILE_AUDIO]: audioSrc,
 		} = card
 		return (
 			<CardProfilePropedIndex
 				key={name}
+				audioSrc={audioSrc}
 				name={name}
 				src={src}
 				gender={gender}
+				price={price}
 			/>
 		)
 	})

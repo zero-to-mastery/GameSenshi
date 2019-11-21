@@ -14,7 +14,7 @@ const ProgressCommon = props => {
 	} = props
 	return isOpen ? (
 		<div className={`progress-container progress-${color}`}>
-			<Progress className='mt-0 mb-0' max='100' value={value} animated>
+			<Progress className='my-0' max='100' value={value} animated>
 				{value}%
 			</Progress>
 		</div>

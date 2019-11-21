@@ -72,7 +72,7 @@ import {
 	NUM_COMMENTS,
 } from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
-import { BadgesOptioned, Badges } from './Badges'
+import { BadgesOptioned, Badges, BadgesPropedSenshi } from './Badges'
 import {
 	IconsImagePropedGameIcons,
 	IconsImageOptioned,
@@ -151,6 +151,7 @@ export const Exports = {
 	ContainerTitledPropedDefault,
 	BadgesOptioned,
 	Badges,
+	BadgesPropedSenshi,
 	IconsImagePropedGameIcons,
 	IconsImageOptioned,
 	IconsImage,

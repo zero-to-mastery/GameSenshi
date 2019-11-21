@@ -4,12 +4,16 @@ import { Row, Col, Alert } from 'reactstrap'
 
 const TextAlert = props => {
 	const { messages, icon, isOpen, timeout } = props
-	let messages_ = messages ? (Array.isArray(messages) ? messages : [messages]) : []
+	let messages_ = messages
+		? Array.isArray(messages)
+			? messages
+			: [messages]
+		: []
 
 	return messages_.map(message => {
 		return (
 			<Alert
-				className={'mb-0 pb-0 pt-0'}
+				className={'mb-0 py-0'}
 				color='danger'
 				key={message}
 				style={{

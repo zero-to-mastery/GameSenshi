@@ -2,3 +2,7 @@
 	content: '';
 	background: rgb(0, 0, 0, 0);
 }
+
+.goldenYellow.goldenYellow {
+	color: #ffdf00 !important;
+}

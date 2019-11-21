@@ -6,22 +6,25 @@ const BADGES_COLOR = 'color'
 const BADGES_BODY = 'body'
 const BADGES_ID = 'id'
 const BADGES_TOOLTIP = 'tooltip'
-const BADGES_CLASS = 'className'
+const BADGES_CLASS = 'classname'
 
 const Badges = props => {
-	const { badges } = props
+	const { badges, className } = props
 	return badges.map(badge => {
 		const {
 			[BADGES_COLOR]: color,
 			[BADGES_BODY]: body,
 			[BADGES_ID]: id,
 			[BADGES_TOOLTIP]: tooltip,
-			[BADGES_CLASS]: className,
+			[BADGES_CLASS]: classname,
 		} = badge
-
 		return (
 			<Fragment key={id}>
-				<Badge color={color} className={classnames('m-1', className)} id={id}>
+				<Badge
+					color={color}
+					className={classnames(classname, className)}
+					id={id}
+				>
 					{body}
 				</Badge>
 				{tooltip && (

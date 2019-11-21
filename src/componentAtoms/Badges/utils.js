@@ -14,8 +14,6 @@ import {
 import { createGetOptions } from 'utils'
 import styles from './styles.module.css'
 
-console.log(styles.online)
-
 const options = [
 	{
 		[BADGES_ID]: FB_FS_SENSHI_BADGES_FEMALE,

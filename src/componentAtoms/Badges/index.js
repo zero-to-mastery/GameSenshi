@@ -8,4 +8,8 @@ const BadgesOptioned = props => {
 	return <Badges badges={badges_} {...otherProps} />
 }
 
-export { BadgesOptioned, Badges }
+const BadgesPropedSenshi = props => {
+	return <BadgesOptioned className='mx-1' {...props} />
+}
+
+export { BadgesOptioned, BadgesPropedSenshi, Badges }

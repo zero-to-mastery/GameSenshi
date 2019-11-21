@@ -6,10 +6,10 @@ import Image from 'material-ui-image'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
-const { Badges } = stopUndefined(Exports)
+const { Badges, ButtonSound } = stopUndefined(Exports)
 
 const CardProfile = props => {
-	const { name, src, badgeAs, badge, gender } = props
+	const { name, src, badgeAs, badge, gender, audioSrc, price } = props
 
 	const BadgeAs = badgeAs || Badges
 	return (
@@ -25,19 +25,40 @@ const CardProfile = props => {
 				</div>
 				<CardBody>
 					<Row>
-						<Col xs='9' className='p-0'>
+						<Col xs='8'>
 							<h4
-								className={classnames('title mb-1 mt-1 font-weight-bold', {
-									'text-danger ': !gender,
-									'text-primary': gender,
-								})}
+								className={classnames(
+									'title my-0 font-weight-bold text-nowrap text-white'
+								)}
 								align='left'
 							>
 								{name}
 							</h4>
 						</Col>
-						<Col xs='3' className='p-0'>
-							<BadgeAs badges={badge} />
+						<Col xs='4' align='right'>
+							<BadgeAs badges={badge} className='mx-0' />
+						</Col>
+					</Row>
+					<Row className='align-items-center'>
+						<Col>
+							<ButtonSound
+								url={audioSrc}
+								color={classnames({
+									warning: gender,
+									success: !gender,
+								})}
+							/>
+						</Col>
+						<Col>
+							<h4
+								align='right'
+								className={classnames(
+									'title my-0 text-white',
+									styles.goldenYellow
+								)}
+							>
+								${price}
+							</h4>
 						</Col>
 					</Row>
 				</CardBody>
