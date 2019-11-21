@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Badges } from './Badges'
-import { options } from './utils'
+import { getOptions } from './utils'
 
-const BadgesPropedDefault = props => {
-	return <Badges options={options} {...props} />
+const BadgesOptioned = props => {
+	const { badges, ...otherProps } = props
+	const badges_ = useMemo(() => getOptions(badges), [badges])
+	return <Badges badges={badges_} {...otherProps} />
 }
 
-export { BadgesPropedDefault }
+const BadgesPropedSenshi = props => {
+	return <BadgesOptioned className='mx-1' {...props} />
+}
+
+export { BadgesOptioned, BadgesPropedSenshi, Badges }

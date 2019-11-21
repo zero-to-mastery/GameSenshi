@@ -40,7 +40,14 @@ const CarouselCommon = props => {
 			} = item
 			if (image) {
 				const img = () => {
-					return <Image src={image} style={{ padding: `${aspectRatio_}% 0` }} />
+					return (
+						<Image
+							className='img img-raised rounded'
+							color='transparent'
+							src={image}
+							style={{ padding: `${aspectRatio_}% 0` }}
+						/>
+					)
 				}
 				return {
 					[ORIGINAL]: image,
@@ -61,7 +68,8 @@ const CarouselCommon = props => {
 								position: 'relative',
 								padding: `${aspectRatio_}% 0`,
 								height: 0,
-							}}>
+							}}
+						>
 							<ReactPlayer
 								onReady={setShowUIFalse}
 								url={getYoutubeEmbededUrl(youtube)}

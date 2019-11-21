@@ -55,7 +55,8 @@ const FormSignUp = props => {
 					[FINAL_TEXT_NAME]: '',
 				}}
 				onSubmit={onSubmit}
-				onSuccessfulSubmission={onSuccessfulSubmission}>
+				onSuccessfulSubmission={onSuccessfulSubmission}
+			>
 				{({ handleSubmit, submitting, submitError }) => (
 					<Form className='form'>
 						<CardBody>
@@ -79,14 +80,15 @@ const FormSignUp = props => {
 							</Row>
 							<Row className='d-flex'>
 								<Col xs='2' />
-								<Col className='pl-0 pr-0 d-flex justify-content-center'>
+								<Col className='px-0 d-flex justify-content-center'>
 									<ButtonSubmit
 										submitRef={submitButton}
 										disabled={submitting}
 										onClick={handleSubmit}
 										className='btn-round'
 										size='lg'
-										color='primary'>
+										color='primary'
+									>
 										{submitting ? 'Signing Up' : 'Sign Up'}
 									</ButtonSubmit>
 								</Col>
@@ -115,7 +117,8 @@ const FormSignUp = props => {
 						className='link footer-link'
 						style={{ color: '#ba54f5', fontSize: 12 }}
 						to={privacy}
-						target='_blank'>
+						target='_blank'
+					>
 						Privacy Policy
 					</Link>{' '}
 					and{' '}
@@ -123,7 +126,8 @@ const FormSignUp = props => {
 						className='link footer-link'
 						style={{ color: '#ba54f5', fontSize: 12 }}
 						to={terms}
-						target='_blank'>
+						target='_blank'
+					>
 						Terms & Conditions
 					</Link>{' '}
 				</Label>

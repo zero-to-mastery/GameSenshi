@@ -3,10 +3,10 @@ import { Card, CardHeader, CardBody, Col, Row } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 const {
-	BadgesPropedDefault,
+	BadgesPropedSenshi,
 	IconsImagePropedGameIcons,
 	StatusCommonPropedOnline,
-	ButtonSound,
+	ButtonSoundPropedGender,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 	ButtonsIconOptioned,
@@ -26,7 +26,7 @@ const CardSenshi = props => {
 		favorite,
 	} = props
 	return (
-		<Col className='ml-auto mr-auto' lg='4' md='6'>
+		<Col className='ml-auto mr-auto'>
 			<Card className='card-coin card-plain'>
 				<CardHeader>
 					<img
@@ -39,7 +39,7 @@ const CardSenshi = props => {
 					</Row>
 					<Row className='justify-content-center mt-3'>
 						{/*badges like female,verified,pro,highest rating,new member,highest rating*/}
-						<BadgesPropedDefault badges={badges} />
+						<BadgesPropedSenshi badges={badges} />
 					</Row>
 					<h3 className='title mt-3 mb-1'>{nickname}</h3>
 					<p className='text-muted text-center mb-3'>@{username}</p>
@@ -55,12 +55,12 @@ const CardSenshi = props => {
 				<CardBody>
 					<Row className='justify-content-center'>
 						{/* Signature */}
-						<p className='pl-2 font-italic'>
-							"{signature || 'Nice to meet you!'}"
-						</p>
+						<p className='font-italic'>"{signature || 'Nice to meet you!'}"</p>
 					</Row>
 					<Row className='justify-content-center'>
-						<ButtonSound url={audio} />
+						<Col xs='3' sm='4' md='5'>
+							<ButtonSoundPropedGender gender={true} url={audio} />
+						</Col>
 					</Row>
 					<Row className='justify-content-center'>
 						<CheckBoxIconPropedFavorite checked={favorite} />

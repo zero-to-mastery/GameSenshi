@@ -14,18 +14,10 @@ const PanelSortBy = props => {
 			<Col md={{ size: 10 }}>
 				<Row className='d-flex flex-row justify-content-center align-items-baseline'>
 					<Col md={{ size: 6 }}>
-						<Button
-							type='button'
-							className='btn-simple ml-1 mr-1'
-							color='twitter'
-						>
+						<Button type='button' className='btn-simple mx-1' color='twitter'>
 							Top sales{' '}
 						</Button>
-						<Button
-							className='btn-simple ml-1 mr-1'
-							color='twitter'
-							type='button'
-						>
+						<Button className='btn-simple mx-1' color='twitter' type='button'>
 							Latest{' '}
 						</Button>
 					</Col>

@@ -12,7 +12,6 @@ const convertToMinutes = duration => {
 	const time = Math.round(duration / 1000)
 	const minutes = ('0' + Math.floor(time / 60)).slice(-2)
 	const seconds = ('0' + (time - minutes * 60)).slice(-2)
-	console.log(minutes, '  ', seconds)
 	return minutes + ':' + seconds
 }
 
@@ -25,7 +24,7 @@ const ButtonSound = props => {
 	const delay = useRef(0)
 	const icon = useRef(Icon)
 	const intervalId = useRef(-1)
-	const { url } = props
+	const { url, color } = props
 
 	useEffect(() => {
 		icon.current = Icon
@@ -100,18 +99,17 @@ const ButtonSound = props => {
 	return (
 		<>
 			<Button
-				className='btn-round p-1'
-				color='primary'
+				className='btn-round btn w-100 p-1'
+				color={color}
 				type='button'
 				onClick={onClick}
-				style={{ width: 120 }}
 			>
 				<Container>
-					<Row className='d-flex align-items-center'>
-						<Col xs='4'>
+					<Row className='align-items-center'>
+						<Col xs='4' className='p-0'>
 							<Icon />
 						</Col>
-						<Col xs='8'>
+						<Col xs='8' className='p-0'>
 							{loading ? (
 								<Loader type='Oval' height={24} width={24} color='#fff' />
 							) : playStatus === stopped ? (

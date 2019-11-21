@@ -6,17 +6,25 @@ const BADGES_COLOR = 'color'
 const BADGES_BODY = 'body'
 const BADGES_ID = 'id'
 const BADGES_TOOLTIP = 'tooltip'
+const BADGES_CLASS = 'classname'
 
 const Badges = props => {
-	const { badges, options } = props
-	return badges.map((badge, i) => {
-		const { [BADGES_COLOR]: color, [BADGES_BODY]: body, [BADGES_ID]: id, [BADGES_TOOLTIP]: tooltip } = options.find(
-			option => option[BADGES_ID] === badge
-		)
-
+	const { badges, className } = props
+	return badges.map(badge => {
+		const {
+			[BADGES_COLOR]: color,
+			[BADGES_BODY]: body,
+			[BADGES_ID]: id,
+			[BADGES_TOOLTIP]: tooltip,
+			[BADGES_CLASS]: classname,
+		} = badge
 		return (
 			<Fragment key={id}>
-				<Badge color={color} className={classnames({ 'mr-1': i !== badges.length - 1 })} id={id}>
+				<Badge
+					color={color}
+					className={classnames(classname, className)}
+					id={id}
+				>
 					{body}
 				</Badge>
 				{tooltip && (
@@ -29,4 +37,11 @@ const Badges = props => {
 	})
 }
 
-export { Badges, BADGES_COLOR, BADGES_BODY, BADGES_ID, BADGES_TOOLTIP }
+export {
+	Badges,
+	BADGES_COLOR,
+	BADGES_BODY,
+	BADGES_ID,
+	BADGES_TOOLTIP,
+	BADGES_CLASS,
+}

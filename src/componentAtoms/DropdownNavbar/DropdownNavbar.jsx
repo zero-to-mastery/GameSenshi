@@ -15,7 +15,8 @@ const DropdownNavbar = props => {
 		show_ && (
 			<UncontrolledDropdown // user menu bar
 				nav
-				className='d-none d-lg-inline-flex'>
+				className='d-none d-lg-inline-flex'
+			>
 				<DropdownToggle
 					caret
 					color='default'
@@ -23,7 +24,8 @@ const DropdownNavbar = props => {
 					tag={Link}
 					to='#'
 					id='navbarDropdownMenuLink'
-					className='d-flex align-items-center pt-0 pb-0'>
+					className='d-flex align-items-center py-0'
+				>
 					<Avatar />
 				</DropdownToggle>
 				{children}

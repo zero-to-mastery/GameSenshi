@@ -72,14 +72,14 @@ import {
 	NUM_COMMENTS,
 } from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
-import { BadgesPropedDefault } from './Badges'
+import { BadgesOptioned, Badges, BadgesPropedSenshi } from './Badges'
 import {
 	IconsImagePropedGameIcons,
 	IconsImageOptioned,
 	IconsImage,
 } from './IconsImage'
 import { StatusCommonPropedOnline } from './StatusCommon'
-import { ButtonSound } from './ButtonSound'
+import { ButtonSoundPropedGender } from './ButtonSound'
 import {
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
@@ -149,12 +149,14 @@ export const Exports = {
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
-	BadgesPropedDefault,
+	BadgesOptioned,
+	Badges,
+	BadgesPropedSenshi,
 	IconsImagePropedGameIcons,
 	IconsImageOptioned,
 	IconsImage,
 	StatusCommonPropedOnline,
-	ButtonSound,
+	ButtonSoundPropedGender,
 	CommentCommonPropedDefault,
 	PaginationCommonPropedDefault,
 	ID,
