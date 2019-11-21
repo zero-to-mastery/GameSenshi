@@ -24,7 +24,7 @@ const CardProfile = props => {
 	return (
 		<Col xs='6' lg='3'>
 			<Card className='card-profile mt-0'>
-				<div className={classnames('card-image', styles.clear)}>
+				<div className={classnames('card-image', styles.clear, styles.zoom)}>
 					<Image
 						alt={name}
 						className='img img-raised rounded'
@@ -33,7 +33,7 @@ const CardProfile = props => {
 					/>
 				</div>
 				<CardBody>
-					<Row>
+					<Row className='align-items-center'>
 						<Col xs='8'>
 							<h4
 								className={classnames(
@@ -45,7 +45,7 @@ const CardProfile = props => {
 							</h4>
 						</Col>
 						<Col xs='4' align='right'>
-							<BadgeAs badges={badge} className='mx-0' />
+							<BadgeAs badges={badge} className='mx-0 my-0' />
 						</Col>
 					</Row>
 					<Row className='align-items-center'>
@@ -66,7 +66,9 @@ const CardProfile = props => {
 					</Row>
 					<Row>
 						<Col>
-							<p className='text-white text-nowrap'>{description}</p>
+							<p align='center' className='text-white text-nowrap'>
+								{description}
+							</p>
 						</Col>
 					</Row>
 				</CardBody>
