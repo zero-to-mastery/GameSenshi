@@ -19,6 +19,7 @@ const CARD_PROFILE_IMAGE = 'image'
 const CARD_PROFILE_GENDER = 'gender'
 const CARD_PROFILE_AUDIO = 'audioSrc'
 const CARD_PROFILE_PRICE = 'price'
+const CARD_PROFILE_DESCRIPTION = 'description'
 
 const cardPlayers = [
 	{
@@ -27,6 +28,7 @@ const cardPlayers = [
 		[CARD_PROFILE_GENDER]: false,
 		[CARD_PROFILE_AUDIO]: audioSample,
 		[CARD_PROFILE_PRICE]: '30',
+		[CARD_PROFILE_DESCRIPTION]: 'hello',
 	},
 	{
 		[CARD_PROFILE_NAME]: 'Mila Skylar',
@@ -34,6 +36,7 @@ const cardPlayers = [
 		[CARD_PROFILE_GENDER]: true,
 		[CARD_PROFILE_AUDIO]: audioSample,
 		[CARD_PROFILE_PRICE]: '40',
+		[CARD_PROFILE_DESCRIPTION]: 'hello',
 	},
 	{
 		[CARD_PROFILE_NAME]: 'Mark Johnsson',
@@ -41,6 +44,7 @@ const cardPlayers = [
 		[CARD_PROFILE_GENDER]: false,
 		[CARD_PROFILE_AUDIO]: audioSample,
 		[CARD_PROFILE_PRICE]: '50',
+		[CARD_PROFILE_DESCRIPTION]: 'hello',
 	},
 	{
 		[CARD_PROFILE_NAME]: 'Olivia Smith',
@@ -48,6 +52,7 @@ const cardPlayers = [
 		[CARD_PROFILE_GENDER]: true,
 		[CARD_PROFILE_AUDIO]: audioSample,
 		[CARD_PROFILE_PRICE]: '60',
+		[CARD_PROFILE_DESCRIPTION]: 'hello',
 	},
 ]
 
@@ -59,6 +64,7 @@ const Cards = () => {
 			[CARD_PROFILE_GENDER]: gender,
 			[CARD_PROFILE_PRICE]: price,
 			[CARD_PROFILE_AUDIO]: audioSrc,
+			[CARD_PROFILE_DESCRIPTION]: description,
 		} = card
 		return (
 			<CardProfilePropedIndex
@@ -68,6 +74,7 @@ const Cards = () => {
 				src={src}
 				gender={gender}
 				price={price}
+				description={description}
 			/>
 		)
 	})

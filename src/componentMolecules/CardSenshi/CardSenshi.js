@@ -6,7 +6,7 @@ const {
 	BadgesPropedSenshi,
 	IconsImagePropedGameIcons,
 	StatusCommonPropedOnline,
-	ButtonSound,
+	ButtonSoundPropedGender,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 	ButtonsIconOptioned,
@@ -59,7 +59,7 @@ const CardSenshi = props => {
 					</Row>
 					<Row className='justify-content-center'>
 						<Col xs='3' sm='4' md='5'>
-							<ButtonSound color='warning' url={audio} />
+							<ButtonSoundPropedGender gender={true} url={audio} />
 						</Col>
 					</Row>
 					<Row className='justify-content-center'>

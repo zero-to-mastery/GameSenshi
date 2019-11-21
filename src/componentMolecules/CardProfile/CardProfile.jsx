@@ -6,10 +6,19 @@ import Image from 'material-ui-image'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
-const { Badges, ButtonSound } = stopUndefined(Exports)
+const { Badges, ButtonSoundPropedGender } = stopUndefined(Exports)
 
 const CardProfile = props => {
-	const { name, src, badgeAs, badge, gender, audioSrc, price } = props
+	const {
+		name,
+		src,
+		badgeAs,
+		badge,
+		gender,
+		audioSrc,
+		price,
+		description,
+	} = props
 
 	const BadgeAs = badgeAs || Badges
 	return (
@@ -41,24 +50,23 @@ const CardProfile = props => {
 					</Row>
 					<Row className='align-items-center'>
 						<Col>
-							<ButtonSound
-								url={audioSrc}
-								color={classnames({
-									warning: gender,
-									success: !gender,
-								})}
-							/>
+							<ButtonSoundPropedGender gender={gender} url={audioSrc} />
 						</Col>
 						<Col>
 							<h4
 								align='right'
 								className={classnames(
-									'title my-0 text-white',
+									'title my-0 text-white text-nowrap',
 									styles.goldenYellow
 								)}
 							>
 								${price}
 							</h4>
+						</Col>
+					</Row>
+					<Row>
+						<Col>
+							<p className='text-white text-nowrap'>{description}</p>
 						</Col>
 					</Row>
 				</CardBody>
