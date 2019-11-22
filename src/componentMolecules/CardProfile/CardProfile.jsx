@@ -35,7 +35,7 @@ const CardProfile = props => {
 					})}
 				>
 					<Row className='w-100 position-absolute mt-3' style={{ zIndex: 2 }}>
-						<Col align='right'>
+						<Col className='px-0' align='right'>
 							<BadgesOptioned badges={badge} className='m-0' />
 						</Col>
 					</Row>
@@ -59,7 +59,7 @@ const CardProfile = props => {
 							</h4>
 						</Col>
 					</Row>
-					<Row className='align-items-center'>
+					<Row className='align-items-center my-1'>
 						<Col>
 							<ButtonSoundPropedGender gender={gender} url={audioSrc} />
 						</Col>
@@ -77,7 +77,7 @@ const CardProfile = props => {
 					</Row>
 					<Row>
 						<Col>
-							<p align='center' className='text-white text-nowrap'>
+							<p align='left' className='text-white text-nowrap'>
 								{description}
 							</p>
 						</Col>
