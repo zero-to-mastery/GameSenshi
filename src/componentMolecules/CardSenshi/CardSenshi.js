@@ -58,7 +58,7 @@ const CardSenshi = props => {
 						<p className='font-italic'>"{signature || 'Nice to meet you!'}"</p>
 					</Row>
 					<Row className='justify-content-center'>
-						<Col xs='3' sm='4' md='5'>
+						<Col xs='5' sm='4' md='5'>
 							<ButtonSoundPropedGender gender={true} url={audio} />
 						</Col>
 					</Row>
