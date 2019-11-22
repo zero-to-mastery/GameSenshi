@@ -19,6 +19,7 @@ import { checkDuplicatedObject } from 'utils'
 
 const GOOGLE = 'Google'
 const FACEBOOK = 'Facebook'
+const TWITCH = 'Twitch'
 
 const options = [
 	{
@@ -32,6 +33,12 @@ const options = [
 		[BUTTONS_ICON_ICON]: 'fab fa-facebook-square',
 		[BUTTONS_ICON_COLOR]: 'facebook',
 		[BUTTONS_ICON_TOOLTIP]: 'Sign in with Facebook!',
+	},
+	{
+		[BUTTONS_ICON_ID]: TWITCH,
+		[BUTTONS_ICON_ICON]: 'fab fa-twitch',
+		[BUTTONS_ICON_COLOR]: 'twitch',
+		[BUTTONS_ICON_TOOLTIP]: 'Sign in with Twitch!',
 	},
 	{
 		[BUTTONS_ICON_ID]: FB_FS_CHANNELS_FACEBOOK,
@@ -82,7 +89,7 @@ const buttonIconAuthOnClick = lastLocation => {
 	}
 }
 
-const buttonIconAuths = { [GOOGLE]: '', [FACEBOOK]: '' }
+const buttonIconAuths = { [GOOGLE]: '', [FACEBOOK]: '', [TWITCH]: '' }
 
 const getButtonsIcon = buttons => {
 	const getButtons = []
