@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useCallback, useRef } from 'react'
 import { Card, CardBody, Row, Col } from 'reactstrap'
 import styles from './styles.module.css'
 import classnames from 'classnames'
@@ -6,25 +6,39 @@ import Image from 'material-ui-image'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
-const { Badges, ButtonSoundPropedGender } = stopUndefined(Exports)
+const { ButtonSoundPropedGender, BadgesOptioned } = stopUndefined(Exports)
 
 const CardProfile = props => {
-	const {
-		name,
-		src,
-		badgeAs,
-		badge,
-		gender,
-		audioSrc,
-		price,
-		description,
-	} = props
+	const [hover, setHover] = useState(false)
+	const [leave, setLeave] = useState(false)
+	const { name, src, badge, gender, audioSrc, price, description } = props
 
-	const BadgeAs = badgeAs || Badges
+	const onMouseEnter = useCallback(() => {
+		setHover(true)
+	}, [])
+
+	const onMouseLeave = useCallback(() => {
+		setLeave(true)
+		setTimeout(() => {
+			setHover(false)
+			setLeave(false)
+		}, 500)
+	}, [])
+
 	return (
-		<Col xs='6' lg='3'>
+		<Col xs='6' lg='3' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
 			<Card className='card-profile mt-0'>
-				<div className={classnames('card-image', styles.clear, styles.zoom)}>
+				<div
+					className={classnames('card-image', styles.clear, {
+						[styles.zoomIn]: hover,
+						[styles.zoomOut]: leave,
+					})}
+				>
+					<Row className='w-100 position-absolute mt-3' style={{ zIndex: 2 }}>
+						<Col align='right'>
+							<BadgesOptioned badges={badge} className='m-0' />
+						</Col>
+					</Row>
 					<Image
 						alt={name}
 						className='img img-raised rounded'
@@ -34,7 +48,7 @@ const CardProfile = props => {
 				</div>
 				<CardBody>
 					<Row className='align-items-center'>
-						<Col xs='8'>
+						<Col>
 							<h4
 								className={classnames(
 									'title my-0 font-weight-bold text-nowrap text-white'
@@ -43,9 +57,6 @@ const CardProfile = props => {
 							>
 								{name}
 							</h4>
-						</Col>
-						<Col xs='4' align='right'>
-							<BadgeAs badges={badge} className='mx-0 my-0' />
 						</Col>
 					</Row>
 					<Row className='align-items-center'>

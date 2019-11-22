@@ -7,11 +7,14 @@
 	color: #ffdf00 !important;
 }
 
-.zoom:hover {
+.zoomIn {
 	transform: scale(1.05);
+	-webkit-transition: transform 0.5s;
+	transition: transform 0.5s;
 }
 
-.zoom {
+.zoomOut {
+	transform: scale(1);
 	-webkit-transition: transform 0.5s;
 	transition: transform 0.5s;
 }

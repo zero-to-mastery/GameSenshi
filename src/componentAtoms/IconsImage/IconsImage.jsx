@@ -25,9 +25,11 @@ const IconsImage = props => {
 					id={id_}
 					style={{ backgroundColor: 'transparent' }}
 				/>
-				<UncontrolledTooltip delay={0} target={id_}>
-					{tooltip}
-				</UncontrolledTooltip>
+				{tooltip && (
+					<UncontrolledTooltip delay={0} target={id_}>
+						{tooltip}
+					</UncontrolledTooltip>
+				)}
 			</div>
 		)
 	})
