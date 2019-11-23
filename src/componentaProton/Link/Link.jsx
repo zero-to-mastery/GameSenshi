@@ -7,7 +7,7 @@ const LinkNoBase = createLinkNoStack(Link1, withRouter)
 
 const Link = props => {
 	return (
-		<ButtonBase>
+		<ButtonBase component='span'>
 			<LinkNoBase {...props} />
 		</ButtonBase>
 	)

@@ -1,5 +1,6 @@
 import React from 'react'
 import Loader from 'react-loader-spinner'
+//import { Button } from 'reactstrap'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 const { Button } = stopUndefined(Exports)
