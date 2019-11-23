@@ -14,8 +14,11 @@ import {
 } from 'routes'
 import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
+import ButtonBase from '@material-ui/core/ButtonBase'
 
-const { Link, Section, WrapperStoreWrapperPropedIndex } = stopUndefined(Exports)
+const { LinkNoBase, Section, WrapperStoreWrapperPropedIndex } = stopUndefined(
+	Exports
+)
 
 const NAME = 'name'
 const ICON = 'icon'
@@ -70,13 +73,23 @@ const PoliciesPage = props => {
 													active: pathname.toLowerCase() === to.toLowerCase(),
 												})}
 												to={to}
-												tag={Link}
+												tag={LinkNoBase}
 											>
-												<i
-													style={{ fontSize: '40px' }}
-													className={`tim-icons ${icon}`}
-												/>
-												{name}
+												<ButtonBase>
+													<Container>
+														<Row>
+															<Col>
+																<i
+																	style={{ fontSize: '40px' }}
+																	className={`tim-icons ${icon}`}
+																/>
+															</Col>
+														</Row>
+														<Row>
+															<Col>{name}</Col>
+														</Row>
+													</Container>
+												</ButtonBase>
 											</NavLink>
 										)
 									})}

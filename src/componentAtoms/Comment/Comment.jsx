@@ -1,5 +1,10 @@
-import React, { Fragment, useEffect } from 'react'
-import { Media, Button, Input } from 'reactstrap'
+
+import React, { Fragment } from 'react'
+import { Media } from 'reactstrap'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+
+const { Button } = stopUndefined(Exports)
 
 const ID = 'id'
 const NAME = 'name'

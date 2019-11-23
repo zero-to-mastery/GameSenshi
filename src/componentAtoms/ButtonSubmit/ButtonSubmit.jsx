@@ -1,6 +1,9 @@
 import React from 'react'
-import { Button } from 'reactstrap'
 import Loader from 'react-loader-spinner'
+//import { Button } from 'reactstrap'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
 
 const ButtonSubmit = props => {
 	const {
@@ -21,7 +24,8 @@ const ButtonSubmit = props => {
 			color={color}
 			size={size}
 			disabled={disabled}
-			onClick={onClick}>
+			onClick={onClick}
+		>
 			{disabled ? (
 				<>
 					<Loader type='Watch' color='#00BFFF' height='19px' width='19px' />

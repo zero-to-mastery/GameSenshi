@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Button, Tooltip } from 'reactstrap'
+import { Tooltip } from 'reactstrap'
 import classnames from 'classnames'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
 
 const CheckBoxIcon = props => {
 	const { color, icon, onClick, checked, tooltipOn, tooltipOff } = props
@@ -54,7 +57,8 @@ const CheckBoxIcon = props => {
 				onClick={onClick_}
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
-				id={id}>
+				id={id}
+			>
 				<i className={icon} />
 			</Button>
 			{tooltipMount && (

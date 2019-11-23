@@ -1,6 +1,9 @@
-import React, { Fragment, useCallback, useMemo } from 'react'
-import { Button, UncontrolledTooltip, Row } from 'reactstrap'
+import React, { Fragment, useCallback } from 'react'
+import { Row } from 'reactstrap'
 import classnames from 'classnames'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button, UncontrolledTooltip } = stopUndefined(Exports)
 
 const BUTTONS_ICON_ID = 'id'
 const BUTTONS_ICON_ICON = 'icon'
@@ -30,7 +33,7 @@ const ButtonsIcon = props => {
 					},
 					[onClick, button]
 				)
-				const id_ = useMemo(() => 'ButtonsIcon' + id.replace(/ /g, ''), [id])
+				const id_ = 'ButtonsIcon' + id
 
 				return (
 					<Fragment key={id_}>
@@ -56,4 +59,11 @@ const ButtonsIcon = props => {
 	)
 }
 
-export { ButtonsIcon, BUTTONS_ICON_ID, BUTTONS_ICON_ICON, BUTTONS_ICON_COLOR, BUTTONS_ICON_TOOLTIP, BUTTONS_ICON_HREF }
+export {
+	ButtonsIcon,
+	BUTTONS_ICON_ID,
+	BUTTONS_ICON_ICON,
+	BUTTONS_ICON_COLOR,
+	BUTTONS_ICON_TOOLTIP,
+	BUTTONS_ICON_HREF,
+}

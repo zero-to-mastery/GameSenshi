@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
-// reactstrap
 import {
-	Button,
 	Modal,
 	ModalBody,
 	ModalFooter,
@@ -12,10 +10,8 @@ import {
 	FormGroup,
 	Form,
 } from 'reactstrap'
-// core components
 import Cards from 'react-credit-cards'
 import { Exports } from 'componentnCompounds'
-// styles
 import 'react-credit-cards/lib/styles.scss'
 
 const {
@@ -32,6 +28,7 @@ const {
 	FinalTextCardCVCPropedDefault,
 	FINAL_TEXT_CARD_CVC,
 	ButtonSubmit,
+	Button,
 } = stopUndefined(Exports)
 
 const onSubmission = async (
@@ -88,14 +85,16 @@ const FormCard = props => {
 				setFocus('number')
 			}}
 			backdrop='static'
-			modalClassName='modal-black'>
+			modalClassName='modal-black'
+		>
 			<div className='modal-header'>
 				<button
 					type='button'
 					className='close'
 					data-dismiss='modal'
 					aria-label='Close'
-					onClick={toggle}>
+					onClick={toggle}
+				>
 					<i className='tim-icons icon-simple-remove' />
 				</button>
 				<h5 className='modal-title'>Card</h5>
@@ -119,7 +118,8 @@ const FormCard = props => {
 						})
 						toggle()
 					})
-				}}>
+				}}
+			>
 				{({ handleSubmit, submitting, submitError }) => (
 					<Form className='form'>
 						<ModalBody>
@@ -128,7 +128,8 @@ const FormCard = props => {
 									<Col
 										xs='12'
 										md='5'
-										className='d-flex align-items-center justify-content-center'>
+										className='d-flex align-items-center justify-content-center'
+									>
 										<FormGroup>
 											<Cards
 												number={cardNumber}
@@ -184,7 +185,8 @@ const FormCard = props => {
 														checked={isDefault}
 														onClick={() => {
 															setIsDefault(!isDefault)
-														}}>
+														}}
+													>
 														<span className='text-success'>
 															set as default?
 														</span>
@@ -205,7 +207,8 @@ const FormCard = props => {
 								submitRef={submitButton}
 								disabled={submitting}
 								onClick={handleSubmit}
-								color='primary'>
+								color='primary'
+							>
 								{submitting ? 'Saving' : 'Save'}
 							</ButtonSubmit>
 						</ModalFooter>

@@ -1,10 +1,13 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import Sound from 'react-sound'
-import { Button, Row, Col, Container } from 'reactstrap'
+import { Row, Col, Container } from 'reactstrap'
 import VolumeMuteIcon from '@material-ui/icons/VolumeMute'
 import VolumeDownIcon from '@material-ui/icons/VolumeDown'
 import VolumeUpIcon from '@material-ui/icons/VolumeUp'
 import Loader from 'react-loader-spinner'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
 
 const { PLAYING: playing, STOPPED: stopped } = Sound.status
 const DELAY = 1000
@@ -99,10 +102,11 @@ const ButtonSound = props => {
 	return (
 		<>
 			<Button
-				className='btn-round btn w-100 p-1'
+				className='btn-round btn p-1'
 				color={color}
 				type='button'
 				onClick={onClick}
+				style={{ width: 100 }}
 			>
 				<Container>
 					<Row className='align-items-center'>

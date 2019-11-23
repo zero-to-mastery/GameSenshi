@@ -1,3 +1,3 @@
-import { Link } from './Link'
+import { Link, LinkNoBase } from './Link'
 
-export { Link }
+export { Link, LinkNoBase }

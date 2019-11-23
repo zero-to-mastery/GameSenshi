@@ -1,6 +1,8 @@
 import React from 'react'
-// reactstrap components
-import { Row, Col, Label, Input, FormGroup, Button } from 'reactstrap'
+import { Row, Col, Label, Input, FormGroup } from 'reactstrap'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
 
 const PanelFilterSearch = props => {
 	const { games, ratings } = props

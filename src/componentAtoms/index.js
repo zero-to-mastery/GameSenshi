@@ -48,7 +48,6 @@ import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbar } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
-import { RatingProfile } from './RatingProfile'
 import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 import { QuantityProfile } from './Quantity'
 import { ContainerTitledPropedDefault } from './ContainerTitled'
@@ -145,7 +144,6 @@ export const Exports = {
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
-	RatingProfile,
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
