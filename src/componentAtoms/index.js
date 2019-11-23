@@ -94,6 +94,7 @@ import {
 	WrapperStoreWrapperPropedError,
 	WrapperStoreWrapperPropedCheckout,
 } from './Wrapper'
+import { CarouselNewPlayer } from './CarouselNewPalyer'
 
 export const Exports = {
 	...ExportProtons,
@@ -179,4 +180,5 @@ export const Exports = {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
+	CarouselNewPlayer,
 }

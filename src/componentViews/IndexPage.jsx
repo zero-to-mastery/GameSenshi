@@ -12,6 +12,7 @@ const {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
+	CarouselNewPlayer,
 } = stopUndefined(Exports)
 
 const CARD_PROFILE_NAME = 'name'
