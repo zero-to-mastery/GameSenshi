@@ -116,7 +116,7 @@ const IndexPage = () => {
 						<CarouselNewPlayerWithProps />
 					</Row>
 					<Row style={{ marginTop: '30px' }}>
-					<CarouselNewPlayerWithProps />
+						<CarouselNewPlayerWithProps />
 					</Row>
 				</Container>
 			</Section>

@@ -46,6 +46,7 @@ const CarouselNewPlayer = props => {
 		infinite: true,
 		slidesToShow: 4,
 		slidesToScroll: 1,
+		className: 'slider',
 		autoplay: true,
 		speed: 500,
 		autoplaySpeed: 3000,
@@ -80,7 +81,11 @@ const CarouselNewPlayer = props => {
 			<Slider {...settings}>
 				{cards.map(card => {
 					const { [CARD_SIMPLE_IMAGE]: src, [CARD_SIMPLE_NAME]: name } = card
-					return <CardPlayerSimple src={src} name={name} />
+					return (
+						<div>
+							<CardPlayerSimple src={src} name={name} />
+						</div>
+					)
 				})}
 			</Slider>
 		</Col>
