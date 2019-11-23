@@ -13,6 +13,7 @@ const {
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
 	CarouselNewPlayer,
+	CardPlayerSimple,
 } = stopUndefined(Exports)
 
 const CARD_PROFILE_NAME = 'name'
@@ -113,11 +114,11 @@ const IndexPage = () => {
 				<Container className='bg-dark-navy'>
 					<TextIconPropedNewPlayer />
 					<Row>
-						<Cards />
+						<CardPlayerSimple />
+						{/* <Cards /> */}
 					</Row>
-					<Row>
-						<Cards />
-					</Row>
+					<Row>{/* <Cards /> */}
+						<CardPlayerSimple /></Row>
 				</Container>
 			</Section>
 			<Section>
