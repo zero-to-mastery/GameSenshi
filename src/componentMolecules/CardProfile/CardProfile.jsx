@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { Card, CardBody, Row, Col } from 'reactstrap'
 import styles from './styles.module.css'
 import classnames from 'classnames'
@@ -26,7 +26,13 @@ const CardProfile = props => {
 	}, [])
 
 	return (
-		<Col xs='6' lg='3' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+		<Col
+			xs='6'
+			lg='3'
+			onMouseEnter={onMouseEnter}
+			onMouseLeave={onMouseLeave}
+			onMouseMove={onMouseEnter}
+		>
 			<Card className='card-profile mt-0'>
 				<div
 					className={classnames('card-image', styles.clear, {

@@ -35,7 +35,7 @@ const ButtonSound = props => {
 
 	const onPlaying = useCallback(
 		sound => {
-			loading && setLoading(false)
+			setLoading(false)
 			if (!delay.current) {
 				setTimeout(() => {
 					setPosition(convertToMinutes(sound.position))
@@ -67,7 +67,7 @@ const ButtonSound = props => {
 
 	const onLoading = useCallback(
 		sound => {
-			!loading && setLoading(true)
+			setLoading(true)
 			setDuration(convertToMinutes(sound.duration))
 		},
 		[loading]
