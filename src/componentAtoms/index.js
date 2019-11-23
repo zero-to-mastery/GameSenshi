@@ -94,7 +94,6 @@ import {
 	WrapperStoreWrapperPropedError,
 	WrapperStoreWrapperPropedCheckout,
 } from './Wrapper'
-import { CarouselNewPlayer } from './CarouselNewPalyer'
 import { CardPlayerSimple } from './CardPlayerSimple'
 
 export const Exports = {
@@ -181,6 +180,5 @@ export const Exports = {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
-	CarouselNewPlayer,
 	CardPlayerSimple,
 }
