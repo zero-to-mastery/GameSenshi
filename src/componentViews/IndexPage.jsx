@@ -82,6 +82,13 @@ const Cards = () => {
 	})
 }
 
+const CardSimple = () => {
+	return cardPlayers.map(card => {
+		const { [CARD_PROFILE_NAME]: name, [CARD_PROFILE_IMAGE]: src } = card
+		return <CardPlayerSimple name={name} src={src} />
+	})
+}
+
 const IndexPage = () => {
 	return (
 		<WrapperStoreWrapperPropedIndex>
@@ -114,11 +121,11 @@ const IndexPage = () => {
 				<Container className='bg-dark-navy'>
 					<TextIconPropedNewPlayer />
 					<Row>
-						<CardPlayerSimple />
-						{/* <Cards /> */}
+						<CardSimple />
 					</Row>
-					<Row>{/* <Cards /> */}
-						<CardPlayerSimple /></Row>
+					<Row>
+						<CardSimple />
+					</Row>
 				</Container>
 			</Section>
 			<Section>
