@@ -95,6 +95,7 @@ import {
 	WrapperStoreWrapperPropedCheckout,
 } from './Wrapper'
 import { CarouselNewPlayer } from './CarouselNewPalyer'
+import { CardPlayerSimple } from './CardPlayerSimple'
 
 export const Exports = {
 	...ExportProtons,
@@ -181,4 +182,5 @@ export const Exports = {
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
 	CarouselNewPlayer,
+	CardPlayerSimple,
 }
