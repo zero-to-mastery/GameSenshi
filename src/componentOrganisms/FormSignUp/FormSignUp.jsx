@@ -99,7 +99,10 @@ const FormSignUp = props => {
 								<Col xs='auto'>
 									<Label>
 										Already a member?{' '}
-										<Link to={signInLink} className='font-weight-bold'>
+										<Link
+											to={signInLink}
+											className='font-weight-bold text-success'
+										>
 											Sign In
 										</Link>
 									</Label>

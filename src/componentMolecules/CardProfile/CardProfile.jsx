@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useRef } from 'react'
 import { Card, CardBody, Row, Col } from 'reactstrap'
 import styles from './styles.module.css'
 import classnames from 'classnames'
@@ -11,15 +11,18 @@ const { ButtonSoundPropedGender, BadgesOptioned } = stopUndefined(Exports)
 const CardProfile = props => {
 	const [hover, setHover] = useState(false)
 	const [leave, setLeave] = useState(false)
+	const timeId = useRef(0)
 	const { name, src, badge, gender, audioSrc, price, description } = props
 
-	const onMouseEnter = useCallback(() => {
+	const setHoverTrue = useCallback(() => {
+		clearTimeout(timeId.current)
 		setHover(true)
+		setLeave(false)
 	}, [])
 
-	const onMouseLeave = useCallback(() => {
+	const setHoverFalse = useCallback(() => {
 		setLeave(true)
-		setTimeout(() => {
+		timeId.current = setTimeout(() => {
 			setHover(false)
 			setLeave(false)
 		}, 500)
@@ -29,9 +32,9 @@ const CardProfile = props => {
 		<Col
 			xs='6'
 			lg='3'
-			onMouseEnter={onMouseEnter}
-			onMouseLeave={onMouseLeave}
-			onMouseMove={onMouseEnter}
+			onMouseEnter={setHoverTrue}
+			onMouseLeave={setHoverFalse}
+			onMouseMove={setHoverTrue}
 		>
 			<Card className='card-profile mt-0'>
 				<div
