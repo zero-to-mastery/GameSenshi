@@ -8,18 +8,25 @@ A platform for gamers/streamers to provide their casual service and link up with
 
 [**Demo Page**](https://www.gamesenshi.com/index)
 
+route:index
 ![index.png](./src/assets/img/readme/index.png)
 
+route:profile
 ![profile.png](./src/assets/img/readme/profile.png)
 
+route:signup
 ![signUp.png](./src/assets/img/readme/signUp.png)
 
+route:signin
 ![signIn.png](./src/assets/img/readme/signIn.png)
 
+route:reset
 ![reset.png](./src/assets/img/readme/reset.png)
 
+route:settings
 ![settings.png](./src/assets/img/readme/settings.png)
 
+route:policy
 ![policy.png](./src/assets/img/readme/policy.png)
 
 ## Introduction

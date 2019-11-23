@@ -7,7 +7,6 @@ import audioSample from 'assets/audio/sampleVoice.mp3'
 const {
 	CarouselCommonPropedProfile,
 	FormProfile,
-	RatingProfile,
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
@@ -49,11 +48,6 @@ const ProfilePage = () => {
 						<Col lg='8' md='6'>
 							<ContainerTitledPropedDefault>
 								<Row>
-									<Col md={{ size: 6, offset: 1 }} className='py-2'>
-										<RatingProfile />
-									</Col>
-								</Row>
-								<Row>
 									<Col md={{ size: 6, offset: 1 }} className='pt-2'>
 										<h2>$30/h</h2>
 									</Col>
@@ -61,7 +55,10 @@ const ProfilePage = () => {
 								<Row>
 									<Col md={{ size: 11, offset: 1 }} className='pb-2'>
 										<h4>Description</h4>
-										<p>A veteran in MOBA and FPS games, I can give you a significant boost in ranking mode.</p>
+										<p>
+											A veteran in MOBA and FPS games, I can give you a
+											significant boost in ranking mode.
+										</p>
 									</Col>
 								</Row>
 								<Row>

@@ -14,8 +14,10 @@
 		"Firebase",
 		"Game Senshi",
 		"social",
-		"casual",
-		"service"
+		"gaming",
+		"platform",
+		"service",
+		"bootstrap"
 	],
 	"author": "tylim",
 	"license": "MIT",
