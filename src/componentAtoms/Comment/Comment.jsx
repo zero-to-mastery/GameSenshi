@@ -1,6 +1,5 @@
-
 import React, { Fragment } from 'react'
-import { Media } from 'reactstrap'
+import { Media, Input } from 'reactstrap'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 
