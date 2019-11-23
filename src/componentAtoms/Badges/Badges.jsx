@@ -1,6 +1,10 @@
 import React, { Fragment } from 'react'
-import { Badge, UncontrolledTooltip } from 'reactstrap'
+import { Badge } from 'reactstrap'
 import classnames from 'classnames'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+
+const { UncontrolledTooltip } = stopUndefined(Exports)
 
 const BADGES_COLOR = 'color'
 const BADGES_BODY = 'body'
@@ -27,11 +31,9 @@ const Badges = props => {
 				>
 					{body}
 				</Badge>
-				{tooltip && (
-					<UncontrolledTooltip delay={0} target={id}>
-						{tooltip}
-					</UncontrolledTooltip>
-				)}
+				<UncontrolledTooltip delay={0} target={id}>
+					{tooltip}
+				</UncontrolledTooltip>
 			</Fragment>
 		)
 	})

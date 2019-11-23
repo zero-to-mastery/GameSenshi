@@ -1,18 +1,10 @@
 import React from 'react'
-import {
-	NavItem,
-	NavLink,
-	Nav,
-	Container,
-	Row,
-	Col,
-	UncontrolledTooltip,
-} from 'reactstrap'
+import { NavItem, NavLink, Nav, Container, Row, Col } from 'reactstrap'
 import { ROUTE_PAGE_PROFILE } from 'routes'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 
-const { Link, Button } = stopUndefined(Exports)
+const { Link, Button, UncontrolledTooltip } = stopUndefined(Exports)
 
 class Footer extends React.Component {
 	render() {

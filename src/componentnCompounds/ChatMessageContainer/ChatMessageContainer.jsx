@@ -7,7 +7,6 @@ import {
 	Row,
 	Col,
 	Media,
-	UncontrolledTooltip,
 	UncontrolledDropdown,
 	DropdownToggle,
 	DropdownItem,
@@ -25,7 +24,7 @@ import classnames from 'classnames'
 
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
-const { Button } = stopUndefined(Exports)
+const { Button, UncontrolledTooltip } = stopUndefined(Exports)
 
 const CHAT_MESSAGE_BODY = 'body'
 const CHAT_MESSAGE_SENT_DATE = 'date'

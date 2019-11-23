@@ -1,9 +1,9 @@
 import React, { Fragment, useCallback } from 'react'
-import { UncontrolledTooltip, Row } from 'reactstrap'
+import { Row } from 'reactstrap'
 import classnames from 'classnames'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
-const { Button } = stopUndefined(Exports)
+const { Button, UncontrolledTooltip } = stopUndefined(Exports)
 
 const BUTTONS_ICON_ID = 'id'
 const BUTTONS_ICON_ICON = 'icon'
@@ -49,11 +49,9 @@ const ButtonsIcon = props => {
 						>
 							<i className={icon} />
 						</Button>
-						{tooltip && (
-							<UncontrolledTooltip delay={0} target={id_}>
-								{tooltip}
-							</UncontrolledTooltip>
-						)}
+						<UncontrolledTooltip delay={0} target={id_}>
+							{tooltip}
+						</UncontrolledTooltip>
 					</Fragment>
 				)
 			})}

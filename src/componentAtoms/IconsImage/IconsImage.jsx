@@ -1,7 +1,9 @@
 import React from 'react'
 import classnames from 'classnames'
-import { UncontrolledTooltip } from 'reactstrap'
 import Image from 'material-ui-image'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { UncontrolledTooltip } = stopUndefined(Exports)
 
 const ICONS_COMMON_ID = 'id'
 const ICONS_COMMON_TOOLTIP = 'tooltip'
@@ -25,11 +27,9 @@ const IconsImage = props => {
 					id={id_}
 					style={{ backgroundColor: 'transparent' }}
 				/>
-				{tooltip && (
-					<UncontrolledTooltip delay={0} target={id_}>
-						{tooltip}
-					</UncontrolledTooltip>
-				)}
+				<UncontrolledTooltip delay={0} target={id_}>
+					{tooltip}
+				</UncontrolledTooltip>
 			</div>
 		)
 	})
