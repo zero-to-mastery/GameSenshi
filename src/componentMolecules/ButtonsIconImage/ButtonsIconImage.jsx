@@ -1,8 +1,8 @@
 import React from 'react'
-import { Button, Label, Row, Col } from 'reactstrap'
+import { Label, Row, Col } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
-const { IconsImageOptioned, Link } = stopUndefined(Exports)
+const { IconsImageOptioned, Link, Button } = stopUndefined(Exports)
 
 const BUTTONS_ICON_IMAGE_ID = 'id'
 const BUTTONS_ICON_IMAGE_TEXT = 'text'

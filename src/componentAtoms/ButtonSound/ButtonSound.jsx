@@ -1,10 +1,13 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import Sound from 'react-sound'
-import { Button, Row, Col, Container } from 'reactstrap'
+import { Row, Col, Container } from 'reactstrap'
 import VolumeMuteIcon from '@material-ui/icons/VolumeMute'
 import VolumeDownIcon from '@material-ui/icons/VolumeDown'
 import VolumeUpIcon from '@material-ui/icons/VolumeUp'
 import Loader from 'react-loader-spinner'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
 
 const { PLAYING: playing, STOPPED: stopped } = Sound.status
 const DELAY = 1000

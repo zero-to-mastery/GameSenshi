@@ -1,15 +1,17 @@
-import React, { Fragment, useState } from 'react'
+import React from 'react'
 import {
 	Card,
 	CardBody,
 	Media,
 	Col,
 	Form,
-	Button,
 	Input,
 	InputGroup,
 	InputGroupAddon,
 } from 'reactstrap'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
 
 const PRODUCT_IMAGE = 'productImage'
 const PRODUCT_NAME = 'productName'
@@ -17,10 +19,10 @@ const PRODUCT_PRICE = 'productPrice'
 const PRODUCT_SIZE = 'productSize'
 
 const CheckoutCard = props => {
-	const { products, onSubmit, onSuccessfulSubmission } = props
-	const [discountFocus, setDiscountFocus] = useState(false)
+	const { products } = props
+
 	return (
-		<Fragment>
+		<>
 			<Card>
 				<CardBody>
 					{products.map(product => {
@@ -88,7 +90,7 @@ const CheckoutCard = props => {
 					</Media>
 				</CardBody>
 			</Card>
-		</Fragment>
+		</>
 	)
 }
 

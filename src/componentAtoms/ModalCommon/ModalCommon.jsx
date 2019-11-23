@@ -1,7 +1,10 @@
 // the purpose of this modal is to link user social auth
 import React from 'react'
 import Loader from 'react-loader-spinner'
-import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
+import { Modal, ModalBody, ModalFooter } from 'reactstrap'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
 
 const MODAL_COMMON_STATE_BODY = 'body'
 const MODAL_COMMON_STATE_TITLE = 'title'
@@ -30,14 +33,16 @@ const ModalCommon = props => {
 			backdrop='static'
 			modalClassName='modal-black'
 			wrapClassName='modal-backdrop'
-			style={{ border: '1px solid #00d6d1', borderRadius: '5px' }}>
+			style={{ border: '1px solid #00d6d1', borderRadius: '5px' }}
+		>
 			<div className='modal-header'>
 				<button
 					type='button'
 					className='close'
 					data-dismiss='modal'
 					aria-label='Close'
-					onClick={toggle}>
+					onClick={toggle}
+				>
 					<i className='tim-icons icon-simple-remove' />
 				</button>
 				<h5 className='modal-title'>{title}</h5>
@@ -47,7 +52,8 @@ const ModalCommon = props => {
 				{children}
 			</ModalBody>
 			<ModalFooter
-				className={`d-flex justify-content-${loader ? 'center' : 'end'}`}>
+				className={`d-flex justify-content-${loader ? 'center' : 'end'}`}
+			>
 				{loader ? (
 					<Loader type='Plane' color='#FFD700' height={80} width={80} />
 				) : (

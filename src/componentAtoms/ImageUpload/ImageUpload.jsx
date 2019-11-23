@@ -1,6 +1,8 @@
 import React, { useRef, useCallback } from 'react'
-import { Button } from 'reactstrap'
 import Image from 'material-ui-image'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
 
 const emptyFunction = () => {}
 
@@ -52,7 +54,8 @@ const ImageUpload = props => {
 	return (
 		<div
 			className='fileinput text-center w-100 h-100'
-			style={{ maxWidth: 250, maxHeight: 250 }}>
+			style={{ maxWidth: 250, maxHeight: 250 }}
+		>
 			<input type='file' onChange={handleImageChange} ref={fileInput} />
 			{/* Our cropper component */}
 			<div className='thumbnail d-block'>
@@ -63,7 +66,8 @@ const ImageUpload = props => {
 					<Button
 						className='w-100 btn-round'
 						color='primary'
-						onClick={handleClick}>
+						onClick={handleClick}
+					>
 						Edit Image
 					</Button>
 				) : (
@@ -71,14 +75,16 @@ const ImageUpload = props => {
 						<Button
 							className='w-100 btn-round'
 							color='primary'
-							onClick={handleClick}>
+							onClick={handleClick}
+						>
 							Change
 						</Button>
 						<br />
 						<Button
 							className='w-100 btn-round'
 							color='danger'
-							onClick={handleRemove}>
+							onClick={handleRemove}
+						>
 							<i className='fa fa-times' /> Remove
 						</Button>
 					</span>

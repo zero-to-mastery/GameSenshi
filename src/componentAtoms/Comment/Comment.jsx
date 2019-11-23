@@ -1,5 +1,8 @@
-import React, { Fragment, useEffect } from 'react'
-import { Media, Button } from 'reactstrap'
+import React, { Fragment } from 'react'
+import { Media } from 'reactstrap'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
 
 const ID = 'id'
 const NAME = 'name'
@@ -52,7 +55,8 @@ const CommentFooter = props => {
 				href='#pablo'
 				id='tooltip871944617'
 				onClick={e => e.preventDefault()}
-				size='sm'>
+				size='sm'
+			>
 				<i className='tim-icons icon-send' /> Reply
 			</Button>
 			<Button
@@ -60,7 +64,8 @@ const CommentFooter = props => {
 				color='danger'
 				href='#pablo'
 				onClick={e => e.preventDefault()}
-				size='sm'>
+				size='sm'
+			>
 				<i className='tim-icons icon-heart-2' />
 				{commentsNumber}
 			</Button>

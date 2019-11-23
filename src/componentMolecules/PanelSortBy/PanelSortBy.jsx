@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-// reactstrap
-import { Row, Col, Button } from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 import Select from 'react-select'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
 
-const PanelSortBy = props => {
+const PanelSortBy = () => {
 	const [selectGame, setSelectGame] = useState('')
 	const [selectPrice, setSelectPrice] = useState('')
 	return (

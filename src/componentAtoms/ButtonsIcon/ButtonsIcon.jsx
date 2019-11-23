@@ -1,6 +1,9 @@
 import React, { Fragment, useCallback } from 'react'
-import { Button, UncontrolledTooltip, Row } from 'reactstrap'
+import { UncontrolledTooltip, Row } from 'reactstrap'
 import classnames from 'classnames'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
 
 const BUTTONS_ICON_ID = 'id'
 const BUTTONS_ICON_ICON = 'icon'

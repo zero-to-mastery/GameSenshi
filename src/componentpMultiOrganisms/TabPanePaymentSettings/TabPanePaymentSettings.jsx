@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { stopUndefined } from 'utils'
-// reactstrap components
-import { Button, Label, FormGroup, Input, Table } from 'reactstrap'
+import { Label, FormGroup, Input, Table } from 'reactstrap'
 
 import { Exports } from 'componentOrganisms'
 
 const {
+	Button,
 	FormCard,
 	IconCard,
 	FINAL_TEXT_CARD_HOLDER_NAME,
@@ -165,7 +165,8 @@ const TabPanePaymentSettings = () => {
 												cards.splice(i, 1)
 												return [...cards]
 											})
-										}}>
+										}}
+									>
 										<i className='tim-icons icon-simple-remove' /> Remove card
 									</Button>
 								</td>
@@ -180,7 +181,8 @@ const TabPanePaymentSettings = () => {
 				type='button'
 				onClick={() => {
 					setIsOpenCardModal(true)
-				}}>
+				}}
+			>
 				<i className='tim-icons icon-simple-add' /> Add card
 			</Button>
 		</>

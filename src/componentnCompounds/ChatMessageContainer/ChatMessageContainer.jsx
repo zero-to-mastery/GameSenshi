@@ -7,7 +7,6 @@ import {
 	Row,
 	Col,
 	Media,
-	Button,
 	UncontrolledTooltip,
 	UncontrolledDropdown,
 	DropdownToggle,
@@ -24,10 +23,14 @@ import {
 
 import classnames from 'classnames'
 
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
+
 const CHAT_MESSAGE_BODY = 'body'
 const CHAT_MESSAGE_SENT_DATE = 'date'
 
-const ConversationDropdown = props => {
+const ConversationDropdown = () => {
 	return (
 		<UncontrolledDropdown>
 			<DropdownToggle className='btn-link' color='primary'>

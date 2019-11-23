@@ -1,6 +1,9 @@
 import React, { Fragment, memo, useState } from 'react'
-import { Button, Input, InputGroup } from 'reactstrap'
+import { Input, InputGroup } from 'reactstrap'
 import styles from './styles.module.css'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Button } = stopUndefined(Exports)
 
 const SET_QUANTITY = 'setQuantity'
 const INPUT_QUANTITY_NAME = 'name'
@@ -12,7 +15,8 @@ const ButtonIncrement = memo(props => {
 			<Button
 				className='btn-round btn-simple'
 				color='warning'
-				onClick={() => setQuantity(q => q + 1)}>
+				onClick={() => setQuantity(q => q + 1)}
+			>
 				<i className='tim-icons icon-simple-add' />
 			</Button>
 		</div>
@@ -26,7 +30,8 @@ const ButtonDecrement = memo(props => {
 			<Button
 				className='btn-round btn-simple'
 				color='warning'
-				onClick={() => setQuantity(q => q - 1)}>
+				onClick={() => setQuantity(q => q - 1)}
+			>
 				<i className='tim-icons icon-simple-delete' />
 			</Button>
 		</div>
