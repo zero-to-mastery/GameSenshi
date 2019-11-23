@@ -2,10 +2,11 @@ import React from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { Col, Button, Carousel, CarouselItem } from 'reactstrap'
+//reactstrap components
+import { Col, Button } from 'reactstrap'
+// import from atoms
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentAtoms'
-import './styles.module.css'
 
 const { CardPlayerSimple } = stopUndefined(Exports)
 
@@ -21,20 +22,18 @@ const PrevButton = props => {
 			type='button'
 			onClick={props.onClick}
 			style={{
-				...props.style, display: 'block'
+				...props.style,
+				display: 'block',
 			}}
 		>
 			<i className='tim-icons icon-minimal-left' />
-		</Button >
+		</Button>
 	)
 }
 
 const NextButton = props => {
 	return (
-		<div
-			className={props.className}
-			onClick={props.onClick}
-		>
+		<div className={props.className} onClick={props.onClick}>
 			<i className='tim-icons icon-minimal-right' />
 		</div>
 	)
@@ -77,7 +76,7 @@ const CarouselNewPlayer = props => {
 		],
 	}
 	return (
-		<Col md="12" style={{ marginTop: '-100px' }}>
+		<Col md='12' style={{ marginTop: '-100px' }}>
 			<Slider {...settings}>
 				{cards.map(card => {
 					const { [CARD_SIMPLE_IMAGE]: src, [CARD_SIMPLE_NAME]: name } = card
