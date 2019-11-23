@@ -60,10 +60,10 @@ const CardProfile = props => {
 						</Col>
 					</Row>
 					<Row className='align-items-center my-1'>
-						<Col>
+						<Col xs='8' align='left'>
 							<ButtonSoundPropedGender gender={gender} url={audioSrc} />
 						</Col>
-						<Col>
+						<Col xs='4'>
 							<h4
 								align='right'
 								className={classnames(
@@ -71,7 +71,7 @@ const CardProfile = props => {
 									styles.goldenYellow
 								)}
 							>
-								${price}
+								${price}/h
 							</h4>
 						</Col>
 					</Row>

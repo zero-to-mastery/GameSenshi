@@ -4,7 +4,7 @@ import { Exports } from 'componentnCompounds'
 import { Collapse, Navbar, Nav, Container } from 'reactstrap'
 
 const widthBreakPoint = 991
-const bgColor = 'bg-primary'
+const bgColor = 'bg-indigo'
 
 const {
 	BrandNavbarStoreUserPropedNavbar,
