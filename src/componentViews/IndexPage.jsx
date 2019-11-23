@@ -12,8 +12,7 @@ const {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
-	CarouselNewPlayer,
-	CardPlayerSimple,
+	CarouselNewPlayerWithProps,
 } = stopUndefined(Exports)
 
 const CARD_PROFILE_NAME = 'name'
@@ -82,13 +81,6 @@ const Cards = () => {
 	})
 }
 
-const CardSimple = () => {
-	return cardPlayers.map(card => {
-		const { [CARD_PROFILE_NAME]: name, [CARD_PROFILE_IMAGE]: src } = card
-		return <CardPlayerSimple name={name} src={src} />
-	})
-}
-
 const IndexPage = () => {
 	return (
 		<WrapperStoreWrapperPropedIndex>
@@ -121,10 +113,10 @@ const IndexPage = () => {
 				<Container className='bg-dark-navy'>
 					<TextIconPropedNewPlayer />
 					<Row>
-						<CardSimple />
+						<CarouselNewPlayerWithProps />
 					</Row>
 					<Row style={{ marginTop: '30px' }}>
-						<CardSimple />
+					<CarouselNewPlayerWithProps />
 					</Row>
 				</Container>
 			</Section>
