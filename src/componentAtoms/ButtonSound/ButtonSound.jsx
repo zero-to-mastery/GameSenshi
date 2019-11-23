@@ -99,10 +99,11 @@ const ButtonSound = props => {
 	return (
 		<>
 			<Button
-				className='btn-round btn w-100 p-1'
+				className='btn-round btn p-1'
 				color={color}
 				type='button'
 				onClick={onClick}
+				style={{ width: 100 }}
 			>
 				<Container>
 					<Row className='align-items-center'>
