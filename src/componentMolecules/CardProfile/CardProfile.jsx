@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Card, CardBody, Row, Col } from 'reactstrap'
 import styles from './styles.module.css'
 import classnames from 'classnames'
