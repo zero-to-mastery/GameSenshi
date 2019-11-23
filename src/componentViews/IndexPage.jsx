@@ -123,7 +123,7 @@ const IndexPage = () => {
 					<Row>
 						<CardSimple />
 					</Row>
-					<Row>
+					<Row style={{ marginTop: '30px' }}>
 						<CardSimple />
 					</Row>
 				</Container>
