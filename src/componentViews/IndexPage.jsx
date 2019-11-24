@@ -81,12 +81,12 @@ const Cards = () => {
 	})
 }
 
-const containerClass = 'bg-dark-navy py-2 px-4'
+const containerClass = 'bg-dark-navy-gradient pt-2 pb-3 px-4 rounded'
 
 const IndexPage = () => {
 	return (
 		<WrapperStoreWrapperPropedIndex>
-			<Section className='bg-dark-navy'>
+			<Section className='bg-dark-navy-gradient'>
 				<Container className='pt-3'>
 					<Row>
 						<Col>

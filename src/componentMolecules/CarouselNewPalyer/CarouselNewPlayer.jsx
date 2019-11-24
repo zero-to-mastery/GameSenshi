@@ -42,12 +42,12 @@ const CarouselNewPlayer = props => {
 	const { cards } = props
 	const settings = {
 		dots: false,
-		arrows: false,
+		arrows: true,
 		infinite: true,
 		slidesToShow: 4,
-		slidesToScroll: 1,
+		slidesToScroll: 2,
 		className: 'slider',
-		autoplay: true,
+		autoplay: false,
 		speed: 500,
 		autoplaySpeed: 3000,
 		pauseOnHover: false,
