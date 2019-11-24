@@ -81,6 +81,8 @@ const Cards = () => {
 	})
 }
 
+const containerClass = 'bg-dark-navy py-2 pl-3 pr-4'
+
 const IndexPage = () => {
 	return (
 		<WrapperStoreWrapperPropedIndex>
@@ -91,15 +93,15 @@ const IndexPage = () => {
 							<CarouselCommonPropedIndex />
 						</Col>
 					</Row>
-				</Container>
-			</Section>
-			<Section className='bg-dark-navy mb-4'>
-				<Container>
-					<ButtonsIconImagePropedIndex />
+					<Row className='mt-3'>
+						<Col>
+							<ButtonsIconImagePropedIndex />
+						</Col>
+					</Row>
 				</Container>
 			</Section>
 			<Section>
-				<Container className='bg-dark-navy'>
+				<Container className={containerClass}>
 					<TextIconPropedPopularPlayer />
 					<Row>
 						<Cards />
@@ -110,7 +112,7 @@ const IndexPage = () => {
 				</Container>
 			</Section>
 			<Section>
-				<Container className='bg-dark-navy'>
+				<Container className={containerClass}>
 					<TextIconPropedNewPlayer />
 					<Row>
 						<CarouselNewPlayerWithProps />
@@ -121,7 +123,7 @@ const IndexPage = () => {
 				</Container>
 			</Section>
 			<Section>
-				<Container className='bg-dark-navy'>
+				<Container className={containerClass}>
 					<TextIconPropedRandomPlayer />
 					<Row>
 						<Cards />

@@ -8,7 +8,7 @@ const TextIconPropedIndex = props => {
 		<TextIcon
 			src={'none'}
 			h='h1'
-			className={classnames('font-weight-bold title', className)}
+			className={classnames('font-weight-bold title mt-3 mb-3', className)}
 			{...otherProps}
 		/>
 	)

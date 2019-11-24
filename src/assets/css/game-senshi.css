@@ -6,6 +6,14 @@
 	background-color: #5603ad;
 }
 
+.bg-blue-gradient {
+	background: linear-gradient(40deg, #4568dc, #b06ab3);
+}
+
+.bg-purple-gradient {
+	background: linear-gradient(40deg, #ff6ec4, #7873f5);
+}
+
 .bg-dark-navy {
 	background-color: #1f2251;
 }

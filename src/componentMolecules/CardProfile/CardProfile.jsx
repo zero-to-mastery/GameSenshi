@@ -32,11 +32,12 @@ const CardProfile = props => {
 		<Col
 			xs='6'
 			lg='3'
+			className='pl-1'
 			onMouseEnter={setHoverTrue}
 			onMouseLeave={setHoverFalse}
 			onMouseMove={setHoverTrue}
 		>
-			<Card className='card-profile mt-0'>
+			<Card className='card-profile m-2 px-2 pt-2 bg-blue-gradient'>
 				<div
 					className={classnames('card-image', styles.clear, {
 						[styles.zoomIn]: hover,
@@ -57,7 +58,7 @@ const CardProfile = props => {
 				</div>
 				<CardBody>
 					<Row className='align-items-center'>
-						<Col>
+						<Col className={classnames('px-2')} align='left'>
 							<h4
 								className={classnames(
 									'title my-0 font-weight-bold text-nowrap text-white'
@@ -69,10 +70,10 @@ const CardProfile = props => {
 						</Col>
 					</Row>
 					<Row className='align-items-center my-1'>
-						<Col xs='8' align='left'>
+						<Col xs='8' align='left' className='px-2'>
 							<ButtonSoundPropedGender gender={gender} url={audioSrc} />
 						</Col>
-						<Col xs='4'>
+						<Col xs='4' className='px-2'>
 							<h4
 								align='right'
 								className={classnames(
@@ -85,8 +86,8 @@ const CardProfile = props => {
 						</Col>
 					</Row>
 					<Row>
-						<Col>
-							<p align='left' className='text-white text-nowrap'>
+						<Col className='px-2'>
+							<p align='left' className='text-white m-0 text-nowrap'>
 								{description}
 							</p>
 						</Col>

@@ -7,7 +7,7 @@ const ButtonSoundPropedGender = props => {
 	return (
 		<ButtonSound
 			color={classnames({
-				warning: gender,
+				primary: gender,
 				success: !gender,
 			})}
 			{...otherProps}
