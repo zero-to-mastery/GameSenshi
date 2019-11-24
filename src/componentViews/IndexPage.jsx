@@ -81,7 +81,7 @@ const Cards = () => {
 	})
 }
 
-const containerClass = 'bg-dark-navy py-2 pl-3 pr-4'
+const containerClass = 'bg-dark-navy py-2 px-4'
 
 const IndexPage = () => {
 	return (

@@ -5,6 +5,8 @@ import VolumeMuteIcon from '@material-ui/icons/VolumeMute'
 import VolumeDownIcon from '@material-ui/icons/VolumeDown'
 import VolumeUpIcon from '@material-ui/icons/VolumeUp'
 import Loader from 'react-loader-spinner'
+import styles from './styles.module.css'
+import classnames from 'classnames'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 const { Button } = stopUndefined(Exports)
@@ -20,14 +22,14 @@ const convertToMinutes = duration => {
 
 const ButtonSound = props => {
 	const [playStatus, setPlayStatus] = useState(stopped)
-	const [position, setPosition] = useState('')
+	const [position, setPosition] = useState('loading')
 	const [duration, setDuration] = useState('Play')
 	const [loading, setLoading] = useState(false)
 	const [Icon, setIcon] = useState(() => VolumeUpIcon)
 	const delay = useRef(0)
 	const icon = useRef(Icon)
 	const intervalId = useRef(-1)
-	const { url, color } = props
+	const { url, color, simplify } = props
 
 	useEffect(() => {
 		icon.current = Icon
@@ -102,18 +104,22 @@ const ButtonSound = props => {
 	return (
 		<>
 			<Button
-				className='btn-round btn p-1'
+				baseClass='w-100 justify-content-start'
+				baseStyle={{ maxWidth: 100 }}
+				className='btn-round btn p-1 w-100'
 				color={color}
 				type='button'
 				onClick={onClick}
-				style={{ width: 100 }}
 			>
 				<Container>
 					<Row className='align-items-center'>
-						<Col xs='4' className='p-0'>
+						<Col
+							xs='4'
+							className={classnames('p-0', { [styles.hide]: simplify })}
+						>
 							<Icon />
 						</Col>
-						<Col xs='8' className='p-0'>
+						<Col className={classnames('p-0', { [styles.play]: simplify })}>
 							{loading ? (
 								<Loader type='Oval' height={24} width={24} color='#fff' />
 							) : playStatus === stopped ? (

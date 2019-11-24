@@ -18,3 +18,13 @@
 	-webkit-transition: transform 0.5s;
 	transition: transform 0.5s;
 }
+
+.sound {
+}
+
+/* this 450px is shared with sound, potential source of error if there is no sure way to share this value */
+@media only screen and (max-width: 500px) {
+	.sound {
+		flex: 0 0 50% !important;
+	}
+}
