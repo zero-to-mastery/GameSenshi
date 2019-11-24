@@ -94,6 +94,7 @@ import {
 	WrapperStoreWrapperPropedError,
 	WrapperStoreWrapperPropedCheckout,
 } from './Wrapper'
+import { CardPlayerSimple } from './CardPlayerSimple'
 
 export const Exports = {
 	...ExportProtons,
@@ -179,4 +180,5 @@ export const Exports = {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
+	CardPlayerSimple,
 }
