@@ -9,6 +9,7 @@
 .bg-blue-gradient {
 	background: linear-gradient(40deg, #4568dc, #b06ab3);
 }
+/* https://digitalsynopsis.com/design/beautiful-color-ui-gradients-backgrounds/ */
 
 .bg-purple-gradient {
 	background: linear-gradient(40deg, #ff6ec4, #7873f5);
@@ -18,6 +19,11 @@
 	background: linear-gradient(40deg, #1f2251, #262a65, #2e3379);
 }
 /* #070813,#0F1028,#17193C,#1F2251,#262A65,#2E3379,#363B8E */
+
+.bg-lying-shepherd {
+	background-image: linear-gradient(315deg, #f8ef42 0%, #0fd64f 74%);
+}
+/* https://www.eggradients.com/category/natural-gradient */
 
 .has-success:after,
 .has-danger:after {

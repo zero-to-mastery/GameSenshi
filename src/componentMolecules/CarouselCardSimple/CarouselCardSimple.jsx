@@ -2,43 +2,15 @@ import React from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-//reactstrap components
-import { Col, Button } from 'reactstrap'
-// import from atoms
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentAtoms'
-
-const { CardPlayerSimple } = stopUndefined(Exports)
+import { Col } from 'reactstrap'
+const { CardProfileSimple } = stopUndefined(Exports)
 
 const CARD_SIMPLE_NAME = 'name'
 const CARD_SIMPLE_IMAGE = 'image'
 
-const PrevButton = props => {
-	return (
-		<Button
-			className='btn-round btn-icon btn-simple slick-prev slick-arrow'
-			color='primary'
-			aria-label='Previous'
-			type='button'
-			onClick={props.onClick}
-			style={{
-				...props.style,
-				display: 'block',
-			}}
-		>
-			<i className='tim-icons icon-minimal-left' />
-		</Button>
-	)
-}
-
-const NextButton = props => {
-	return (
-		<div className={props.className} onClick={props.onClick}>
-			<i className='tim-icons icon-minimal-right' />
-		</div>
-	)
-}
-const CarouselNewPlayer = props => {
+const CarouselCardSimple = props => {
 	const { cards } = props
 	const settings = {
 		dots: false,
@@ -83,7 +55,7 @@ const CarouselNewPlayer = props => {
 					const { [CARD_SIMPLE_IMAGE]: src, [CARD_SIMPLE_NAME]: name } = card
 					return (
 						<div>
-							<CardPlayerSimple src={src} name={name} />
+							<CardProfileSimple src={src} name={name} />
 						</div>
 					)
 				})}
@@ -92,4 +64,4 @@ const CarouselNewPlayer = props => {
 	)
 }
 
-export { CarouselNewPlayer, CARD_SIMPLE_IMAGE, CARD_SIMPLE_NAME }
+export { CarouselCardSimple, CARD_SIMPLE_IMAGE, CARD_SIMPLE_NAME }

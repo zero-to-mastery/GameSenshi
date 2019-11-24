@@ -1,4 +1,4 @@
-import { CARD_SIMPLE_IMAGE, CARD_SIMPLE_NAME } from './CarouselNewPlayer'
+import { CARD_SIMPLE_IMAGE, CARD_SIMPLE_NAME } from './CarouselCardSimple'
 const cardPlayers = [
 	{
 		[CARD_SIMPLE_NAME]: 'Dylan Wyatt',

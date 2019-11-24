@@ -49,12 +49,14 @@ const CardProfile = props => {
 							<BadgesOptioned badges={badge} className='m-0' />
 						</Col>
 					</Row>
-					<Image
-						alt={name}
-						className='img img-raised rounded px-2 pt-2'
-						color='transparent' //this is needed or else there is tiny white background even when OTHER image in carousel move, very weird behavior
-						src={src}
-					/>
+					<div className='px-2 pt-2'>
+						<Image
+							alt={name}
+							className='img img-raised rounded '
+							color='transparent' //this is needed or else there is tiny white background even when OTHER image in carousel move, very weird behavior
+							src={src}
+						/>
+					</div>
 				</div>
 				<CardBody>
 					<Row className='align-items-center'>

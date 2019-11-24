@@ -6,9 +6,10 @@ import ButtonBase from '@material-ui/core/ButtonBase'
 const LinkNoBase = createLinkNoStack(Link1, withRouter)
 
 const Link = props => {
+	const { baseClass, baseStyle, ...otherProps } = props
 	return (
-		<ButtonBase component='span'>
-			<LinkNoBase {...props} />
+		<ButtonBase component='span' className={baseClass} style={baseStyle}>
+			<LinkNoBase {...otherProps} />
 		</ButtonBase>
 	)
 }

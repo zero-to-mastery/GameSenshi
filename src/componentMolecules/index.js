@@ -8,7 +8,7 @@ import { ButtonsIconImagePropedIndex } from './ButtonsIconImage'
 import { PanelSortBy } from './PanelSortBy'
 import { PanelFilterSearch } from './PanelFilterSearch'
 import { ChatContactListWithProps } from './ChatContactList'
-import { CarouselNewPlayerWithProps } from './CarouselNewPalyer'
+import { CarouselCardSimplePropedNew } from './CarouselCardSimple'
 
 export const Exports = {
 	...ExportAtoms,
@@ -24,5 +24,5 @@ export const Exports = {
 	PanelFilterSearch,
 	CardProfilePropedSearch,
 	ChatContactListWithProps,
-	CarouselNewPlayerWithProps,
+	CarouselCardSimplePropedNew,
 }
