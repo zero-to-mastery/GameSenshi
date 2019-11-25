@@ -33,7 +33,7 @@ const discoverSections = [
 	},
 	{
 		[CARD_DISCOVER_NAME]: 'Mark Johnsson',
-		[CARD_DISCOVER_IMAGE]: require('assets/img/mike.jpeg'),
+		[CARD_DISCOVER_IMAGE]: require('assets/img/mike-resized.jpg'),
 		[CARD_DISCOVER_GENDER]: false,
 		[CARD_DISCOVER_AUDIO]: audioSample,
 		[CARD_DISCOVER_PRICE]: '50',
