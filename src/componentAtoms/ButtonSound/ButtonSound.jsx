@@ -12,6 +12,7 @@ import { stopUndefined } from 'utils'
 const { Button } = stopUndefined(Exports)
 
 const { PLAYING: playing, STOPPED: stopped } = Sound.status
+const Spinner = <Loader type='Oval' height={24} width={24} color='#fff' />
 const DELAY = 1000
 const convertToMinutes = duration => {
 	const time = Math.round(duration / 1000)
@@ -19,8 +20,6 @@ const convertToMinutes = duration => {
 	const seconds = ('0' + (time - minutes * 60)).slice(-2)
 	return minutes + ':' + seconds
 }
-
-const Spinner = <Loader type='Oval' height={24} width={24} color='#fff' />
 
 const ButtonSound = props => {
 	const [playStatus, setPlayStatus] = useState(stopped)
@@ -39,7 +38,6 @@ const ButtonSound = props => {
 
 	const onPlaying = useCallback(
 		sound => {
-			setLoading(false)
 			if (!delay.current) {
 				setTimeout(() => {
 					setPosition(convertToMinutes(sound.position))
@@ -103,7 +101,6 @@ const ButtonSound = props => {
 	)
 
 	const onLoad = useCallback(() => {
-		// ! sometime this is not working, so we do it again in onPlaying
 		setLoading(false)
 	}, [])
 
@@ -133,6 +130,7 @@ const ButtonSound = props => {
 			</Button>
 			<Sound
 				url={url}
+				ignoreMobileRestrictions
 				playStatus={playStatus}
 				onLoading={onLoading}
 				onLoad={onLoad}
