@@ -9,7 +9,7 @@ const cardPlayers = [
 		[CARD_SIMPLE_IMAGE]: require('assets/img/johana.jpg'),
 	},
 	{
-		[CARD_SIMPLE_NAME]: 'Mark Johnsson',
+		[CARD_SIMPLE_NAME]: 'Mark',
 		[CARD_SIMPLE_IMAGE]: require('assets/img/mike.jpeg'),
 	},
 	{
@@ -17,7 +17,7 @@ const cardPlayers = [
 		[CARD_SIMPLE_IMAGE]: require('assets/img/olivia.jpg'),
 	},
 	{
-		[CARD_SIMPLE_NAME]: 'Mark Johnsson',
+		[CARD_SIMPLE_NAME]: 'Mark',
 		[CARD_SIMPLE_IMAGE]: require('assets/img/mike.jpeg'),
 	},
 	{
@@ -33,7 +33,7 @@ const cardPlayers = [
 		[CARD_SIMPLE_IMAGE]: require('assets/img/johana.jpg'),
 	},
 	{
-		[CARD_SIMPLE_NAME]: 'Mark Johnsson',
+		[CARD_SIMPLE_NAME]: 'Mark',
 		[CARD_SIMPLE_IMAGE]: require('assets/img/mike.jpeg'),
 	},
 	{
@@ -41,7 +41,7 @@ const cardPlayers = [
 		[CARD_SIMPLE_IMAGE]: require('assets/img/olivia.jpg'),
 	},
 	{
-		[CARD_SIMPLE_NAME]: 'Mark Johnsson',
+		[CARD_SIMPLE_NAME]: 'Mark',
 		[CARD_SIMPLE_IMAGE]: require('assets/img/mike.jpeg'),
 	},
 	{
