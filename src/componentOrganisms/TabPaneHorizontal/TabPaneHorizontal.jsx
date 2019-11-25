@@ -6,6 +6,7 @@ const TabPaneHorizontal = props => {
 		<Row>
 			<Col>
 				<h1>Tab Content</h1>
+				<h4>{props.name}</h4>
 			</Col>
 		</Row>
 	)
