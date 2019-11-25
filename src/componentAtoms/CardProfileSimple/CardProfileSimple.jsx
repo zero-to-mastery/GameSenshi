@@ -15,8 +15,8 @@ const CardProfileSimple = props => {
 			rel='noopener noreferrer'
 			className='w-100'
 		>
-			<Card className='card-testimonial'>
-				<div className='card-avatar w-100'>
+			<Card className='card-testimonial p-2 bg-deep-blue'>
+				<div className='card-avatar w-100 '>
 					<Image
 						alt={name}
 						className='img img-raised'
@@ -24,8 +24,8 @@ const CardProfileSimple = props => {
 						src={src}
 					/>
 				</div>
-				<CardFooter>
-					<h4 className='text-white font-weight-bold'>{name}</h4>
+				<CardFooter className='mb-0'>
+					<h4 className=' text-white font-weight-bold'>{name}</h4>
 				</CardFooter>
 			</Card>
 		</Link>
