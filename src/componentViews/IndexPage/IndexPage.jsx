@@ -12,7 +12,6 @@ const {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
-	CarouselNewPlayerWithProps,
 } = stopUndefined(Exports)
 
 const CARD_PROFILE_NAME = 'name'
@@ -114,12 +113,12 @@ const IndexPage = () => {
 			<Section>
 				<Container className={containerClass}>
 					<TextIconPropedNewPlayer />
-					<Row>
-						<CarouselNewPlayerWithProps />
+					{/* <Row style={{ marginTop: '30px' }}>
+						<CarouselCardSimplePropedNew />
 					</Row>
 					<Row style={{ marginTop: '30px' }}>
-						<CarouselNewPlayerWithProps />
-					</Row>
+						<CarouselCardSimplePropedNew />
+					</Row> */}
 				</Container>
 			</Section>
 			<Section>
