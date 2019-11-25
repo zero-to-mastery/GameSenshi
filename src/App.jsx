@@ -96,7 +96,7 @@ const App = () => {
 									</>
 								}
 								footer={<Footer />}
-							></Router>
+							/>
 						)
 					}}
 				</Subscribe>

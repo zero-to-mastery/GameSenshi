@@ -9,9 +9,10 @@ const BUTTONS_ICON_IMAGE_TEXT = 'text'
 const BUTTONS_ICON_IMAGE_ICON = 'icon'
 
 const ButtonsIconImage = props => {
-	const { buttons, to } = props
+	const { buttons, to, className } = props
+
 	return (
-		<Row>
+		<Row className={className}>
 			{buttons.map(button => {
 				const {
 					[BUTTONS_ICON_IMAGE_ID]: id,
