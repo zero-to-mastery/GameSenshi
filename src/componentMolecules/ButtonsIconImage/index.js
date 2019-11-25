@@ -7,13 +7,19 @@ import {
 import { buttonsIndex, getButtonsIconImage } from './utils'
 
 const ButtonsIconImageOptioned = props => {
-	const { buttons, otherProps } = props
+	const { buttons, ...otherProps } = props
 	const buttons_ = useMemo(() => getButtonsIconImage(buttons), [buttons])
 	return <ButtonsIconImage buttons={buttons_} to='/index' {...otherProps} />
 }
 
 const ButtonsIconImagePropedIndex = props => {
-	return <ButtonsIconImageOptioned buttons={buttonsIndex} {...props} />
+	return (
+		<ButtonsIconImageOptioned
+			className='mt-3'
+			buttons={buttonsIndex}
+			{...props}
+		/>
+	)
 }
 
 export {

@@ -1,6 +1,16 @@
-/* .bg-purple {
-	background-color: #613dc1;
-} */
+.slick-list.slick-list {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+}
+
+@media screen and (max-width: 576px) {
+	.slick-slider {
+		margin-top: 0px;
+	}
+}
 
 .bg-indigo {
 	background-color: #5603ad;

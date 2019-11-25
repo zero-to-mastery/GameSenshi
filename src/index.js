@@ -14,6 +14,7 @@ import 'assets/demo/demo.css'
 import 'assets/demo/react-demo.css'
 import 'assets/css/game-senshi.css'
 import '@fortawesome/fontawesome-free/css/all.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 // check if user data in indexed db, pre-sign in user
 storeUserInitialize()

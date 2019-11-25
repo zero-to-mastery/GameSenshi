@@ -1,16 +1,21 @@
 import React from 'react'
 import { TextIcon } from './TextIcon'
 import classnames from 'classnames'
+import { Row, Col } from 'reactstrap'
 
 const TextIconPropedIndex = props => {
 	const { className, ...otherProps } = props
 	return (
-		<TextIcon
-			src={'none'}
-			h='h1'
-			className={classnames('font-weight-bold title mt-3 mb-3', className)}
-			{...otherProps}
-		/>
+		<Row>
+			<Col>
+				<TextIcon
+					src={'none'}
+					h='h1'
+					className={classnames('font-weight-bold title mt-3 mb-3', className)}
+					{...otherProps}
+				/>
+			</Col>
+		</Row>
 	)
 }
 
