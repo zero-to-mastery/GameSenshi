@@ -1,5 +1,6 @@
 import React from 'react'
 import Slider from 'react-slick'
+import { Col } from 'reactstrap'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentAtoms'
 const { CardProfileSimple } = stopUndefined(Exports)
