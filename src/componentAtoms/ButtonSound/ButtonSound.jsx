@@ -88,13 +88,17 @@ const ButtonSound = props => {
 		reset()
 	}, [])
 
-	const onClick = useCallback(() => {
-		if (playStatus === stopped) {
-			setPlayStatus(playing)
-		} else if (playStatus === playing) {
-			reset()
-		}
-	}, [playStatus])
+	const onClick = useCallback(
+		e => {
+			e.preventDefault()
+			if (playStatus === stopped) {
+				setPlayStatus(playing)
+			} else if (playStatus === playing) {
+				reset()
+			}
+		},
+		[playStatus]
+	)
 
 	const onLoad = useCallback(() => {
 		// ! sometime this is not working, so we do it again in onPlaying
