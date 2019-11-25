@@ -125,12 +125,6 @@ const IndexPage = () => {
 			<Section>
 				<Container className={containerClass}>
 					<TextIconPropedRandomPlayer />
-					{/* <Row>
-						<Cards />
-					</Row>
-					<Row>
-						<Cards />
-					</Row> */}
 					<SectionDiscover />
 				</Container>
 			</Section>
