@@ -3,6 +3,7 @@ import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 import { Container, Row, Col } from 'reactstrap'
 import audioSample from 'assets/audio/sampleVoice.mp3'
+import { SectionDiscover } from './SectionDiscover'
 const {
 	CardProfilePropedIndex,
 	ButtonsIconImagePropedIndex,
@@ -124,12 +125,13 @@ const IndexPage = () => {
 			<Section>
 				<Container className={containerClass}>
 					<TextIconPropedRandomPlayer />
-					<Row>
+					{/* <Row>
 						<Cards />
 					</Row>
 					<Row>
 						<Cards />
-					</Row>
+					</Row> */}
+					<SectionDiscover />
 				</Container>
 			</Section>
 		</WrapperStoreWrapperPropedIndex>
