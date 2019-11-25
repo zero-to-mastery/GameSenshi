@@ -11,11 +11,18 @@ const CarouselCardSimple = props => {
 	const { cards } = props
 	const settings = {
 		infinite: false,
-		slidesToShow: 4,
-		slidesToScroll: 2,
+		slidesToShow: 5,
+		slidesToScroll: 3,
 		speed: 500,
 		autoplaySpeed: 3000,
 		responsive: [
+			{
+				breakpoint: 1200,
+				settings: {
+					slidesToShow: 4,
+					slidesToScroll: 2,
+				},
+			},
 			{
 				breakpoint: 992,
 				settings: {

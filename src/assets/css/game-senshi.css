@@ -6,6 +6,10 @@
 	padding: 0;
 }
 
+.slick-slide {
+	margin: 0 0.5rem;
+}
+
 @media screen and (max-width: 576px) {
 	.slick-slider {
 		margin-top: 0px;
@@ -28,12 +32,11 @@
 .bg-dark-navy-gradient {
 	background: linear-gradient(40deg, #1f2251, #262a65, #2e3379);
 }
-/* #070813,#0F1028,#17193C,#1F2251,#262A65,#2E3379,#363B8E */
 
-.bg-lying-shepherd {
-	background-image: linear-gradient(315deg, #f8ef42 0%, #0fd64f 74%);
+.bg-deep-blue {
+	background: linear-gradient(40deg, #e0c3fc, #8ec5fc);
 }
-/* https://www.eggradients.com/category/natural-gradient */
+https://webgradients.com/
 
 .has-success:after,
 .has-danger:after {

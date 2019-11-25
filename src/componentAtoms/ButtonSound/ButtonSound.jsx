@@ -20,9 +20,11 @@ const convertToMinutes = duration => {
 	return minutes + ':' + seconds
 }
 
+const Spinner = <Loader type='Oval' height={24} width={24} color='#fff' />
+
 const ButtonSound = props => {
 	const [playStatus, setPlayStatus] = useState(stopped)
-	const [position, setPosition] = useState('loading')
+	const [position, setPosition] = useState(Spinner)
 	const [duration, setDuration] = useState('Play')
 	const [loading, setLoading] = useState(false)
 	const [Icon, setIcon] = useState(() => VolumeUpIcon)
@@ -124,13 +126,7 @@ const ButtonSound = props => {
 							<Icon />
 						</Col>
 						<Col className={classnames('p-0', { [styles.play]: simplify })}>
-							{loading ? (
-								<Loader type='Oval' height={24} width={24} color='#fff' />
-							) : playStatus === stopped ? (
-								duration
-							) : (
-								position
-							)}
+							{loading ? Spinner : playStatus === stopped ? duration : position}
 						</Col>
 					</Row>
 				</Container>
