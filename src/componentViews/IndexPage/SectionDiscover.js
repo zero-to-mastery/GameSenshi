@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { Nav, NavItem, NavLink, TabContent, TabPane, Row } from 'reactstrap'
 import audioSample from 'assets/audio/sampleVoice.mp3'
 import classnames from 'classnames'
@@ -78,10 +78,13 @@ const sections = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
 const SectionDiscover = () => {
 	const [tab, setTab] = useState('Dota 2')
 
-	const toggleTabs = (e, index) => {
-		e.preventDefault()
-		setTab(index)
-	}
+	const toggleTabs = useCallback(
+		(e, index) => {
+			e.preventDefault()
+			setTab(index)
+		},
+		[tab]
+	)
 	return (
 		<div>
 			<Nav className='nav-pills-primary' pills role='tablist'>
