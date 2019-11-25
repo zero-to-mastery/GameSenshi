@@ -1,8 +1,7 @@
 import React from 'react'
-import { Row, Col } from 'reactstrap'
 
 const TabPaneHorizontal = props => {
-	return <>{props.children}</>
+	return <section>{props.children}</section>
 }
 
 export { TabPaneHorizontal }

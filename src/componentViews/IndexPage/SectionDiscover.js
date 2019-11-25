@@ -1,26 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import {
-	Nav,
-	NavItem,
-	NavLink,
-	TabContent,
-	TabPane,
-	Row,
-	Col,
-} from 'reactstrap'
+import React, { useState } from 'react'
+import { Nav, NavItem, NavLink, TabContent, TabPane, Row } from 'reactstrap'
 import audioSample from 'assets/audio/sampleVoice.mp3'
 import classnames from 'classnames'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 
-const {
-	TabPaneHorizontalPropedApex,
-	TabPaneHorizontalPropedDota2,
-	TabPaneHorizontalPropedFortnite,
-	TabPaneHorizontalPropedLOL,
-	TabPaneHorizontalPropedPUBG,
-	CardProfilePropedIndex,
-} = stopUndefined(Exports)
+const { TabPaneHorizontal, CardProfilePropedIndex } = stopUndefined(Exports)
 
 const CARD_DISCOVER_NAME = 'name'
 const CARD_DISCOVER_IMAGE = 'image'
@@ -28,8 +13,6 @@ const CARD_DISCOVER_GENDER = 'gender'
 const CARD_DISCOVER_AUDIO = 'audio'
 const CARD_DISCOVER_PRICE = 'price'
 const CARD_DISCOVER_DESCRIPTION = 'description'
-
-const sections = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
 
 const discoverSections = [
 	{
@@ -90,6 +73,8 @@ const Cards = () => {
 	})
 }
 
+const sections = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
+
 const SectionDiscover = () => {
 	const [tab, setTab] = useState('Dota 2')
 
@@ -118,23 +103,54 @@ const SectionDiscover = () => {
 			</Nav>
 			<TabContent className='tab-space' activeTab={tab}>
 				<TabPane tabId='Dota 2'>
-					<TabPaneHorizontalPropedDota2>
+					<TabPaneHorizontal>
 						<Row>
 							<Cards />
 						</Row>
-					</TabPaneHorizontalPropedDota2>
+						<Row>
+							<Cards />
+						</Row>
+					</TabPaneHorizontal>
 				</TabPane>
 				<TabPane tabId='PUBG'>
-					<TabPaneHorizontalPropedPUBG />
+					<TabPaneHorizontal>
+						<Row>
+							<Cards />
+						</Row>
+						<Row>
+							<Cards />
+						</Row>
+					</TabPaneHorizontal>
 				</TabPane>
 				<TabPane tabId='LOL'>
-					<TabPaneHorizontalPropedLOL />
+					<TabPaneHorizontal>
+						<Row>
+							<Cards />
+						</Row>
+						<Row>
+							<Cards />
+						</Row>
+					</TabPaneHorizontal>
 				</TabPane>
 				<TabPane tabId='Apex Legends'>
-					<TabPaneHorizontalPropedApex />
+					<TabPaneHorizontal>
+						<Row>
+							<Cards />
+						</Row>
+						<Row>
+							<Cards />
+						</Row>{' '}
+					</TabPaneHorizontal>
 				</TabPane>
 				<TabPane tabId='Fortnite'>
-					<TabPaneHorizontalPropedFortnite />
+					<TabPaneHorizontal>
+						<Row>
+							<Cards />
+						</Row>
+						<Row>
+							<Cards />
+						</Row>
+					</TabPaneHorizontal>
 				</TabPane>
 			</TabContent>
 		</div>
