@@ -87,7 +87,7 @@ const SectionDiscover = () => {
 	)
 	return (
 		<div>
-			<Nav className='nav-pills-primary' pills role='tablist'>
+			<Nav className='nav-pills-neutral' pills role='tablist'>
 				{sections.map(section => {
 					return (
 						<NavItem>
