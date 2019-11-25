@@ -25,7 +25,7 @@ const CardProfileSimple = props => {
 					/>
 				</div>
 				<CardFooter className='mb-0'>
-					<h4 className=' text-default font-weight-bold'>{name}</h4>
+					<h4 className=' text-default font-weight-bold text-nowrap'>{name}</h4>
 				</CardFooter>
 			</Card>
 		</Link>
