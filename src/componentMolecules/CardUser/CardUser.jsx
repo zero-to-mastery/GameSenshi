@@ -6,9 +6,11 @@ import Image from 'material-ui-image'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
-const { ButtonSoundPropedCardProfile, BadgesOptioned, Link } = stopUndefined(
-	Exports
-)
+const {
+	ButtonSoundStoreSoundPropedCardUser,
+	BadgesOptioned,
+	Link,
+} = stopUndefined(Exports)
 
 const CardUser = props => {
 	const [hover, setHover] = useState(false)
@@ -86,7 +88,10 @@ const CardUser = props => {
 								className={classnames('pr-0', styles.sound)}
 								align='left'
 							>
-								<ButtonSoundPropedCardProfile gender={gender} url={audioSrc} />
+								<ButtonSoundStoreSoundPropedCardUser
+									gender={gender}
+									url={audioSrc}
+								/>
 							</Col>
 							<Col className='pl-0'>
 								<h4

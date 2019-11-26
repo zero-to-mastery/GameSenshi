@@ -91,6 +91,14 @@ import {
 	STORE_WRAPPER_STATE_OFFSET_TOP,
 } from './Wrapper'
 
+import {
+	storeSound,
+	storeSoundSetState,
+	storeSoundResetState,
+	storeSoundSetUuid,
+	STORE_SOUND_STATE_UUID,
+} from './Sound'
+
 export {
 	STATE,
 	RESET_STATE,
@@ -168,4 +176,9 @@ export {
 	storeWrapperResetState,
 	storeWrapperSetOffsetTop,
 	STORE_WRAPPER_STATE_OFFSET_TOP,
+	storeSound,
+	storeSoundSetState,
+	storeSoundResetState,
+	storeSoundSetUuid,
+	STORE_SOUND_STATE_UUID,
 }

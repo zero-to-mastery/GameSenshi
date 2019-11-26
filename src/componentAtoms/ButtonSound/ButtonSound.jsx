@@ -7,9 +7,13 @@ import VolumeUpIcon from '@material-ui/icons/VolumeUp'
 import Loader from 'react-loader-spinner'
 import styles from './styles.module.css'
 import classnames from 'classnames'
+import uuidV4 from 'uuid/v4'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 const { Button } = stopUndefined(Exports)
+
+const BUTTON_SOUND_SET_UUID = 'setUuid'
+const BUTTON_SOUND_STATE_UUID = 'uuid'
 
 const { PLAYING: playing, STOPPED: stopped } = Sound.status
 const Spinner = <Loader type='Oval' height={24} width={24} color='#fff' />
@@ -27,10 +31,17 @@ const ButtonSound = props => {
 	const [duration, setDuration] = useState('Play')
 	const [loading, setLoading] = useState(false)
 	const [Icon, setIcon] = useState(() => VolumeUpIcon)
+	const ref = useRef(uuidV4())
 	const delay = useRef(0)
 	const icon = useRef(Icon)
 	const intervalId = useRef(-1)
-	const { url, color, mobile } = props
+	const {
+		url,
+		color,
+		mobile,
+		[BUTTON_SOUND_STATE_UUID]: uuid,
+		[BUTTON_SOUND_SET_UUID]: setUuid,
+	} = props
 
 	useEffect(() => {
 		icon.current = Icon
@@ -88,12 +99,19 @@ const ButtonSound = props => {
 		reset()
 	}, [])
 
+	useEffect(() => {
+		if (ref.current !== uuid && uuid !== null) {
+			reset()
+		}
+	}, [uuid])
+
 	const onClick = useCallback(
 		e => {
 			e.preventDefault()
 			if (playStatus === stopped) {
+				setUuid(ref.current)
 				setPlayStatus(playing)
-			} else if (playStatus === playing) {
+			} else {
 				reset()
 			}
 		},
@@ -141,4 +159,4 @@ const ButtonSound = props => {
 	)
 }
 
-export { ButtonSound }
+export { ButtonSound, BUTTON_SOUND_STATE_UUID, BUTTON_SOUND_SET_UUID }

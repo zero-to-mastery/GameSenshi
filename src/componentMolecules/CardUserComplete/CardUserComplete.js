@@ -6,7 +6,7 @@ const {
 	BadgesPropedSenshi,
 	IconsImagePropedGameIcons,
 	StatusCommonPropedOnline,
-	ButtonSoundPropedGender,
+	ButtonSoundStoreSoundPropedGender,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 	ButtonsIconOptioned,
@@ -59,7 +59,7 @@ const CardUserComplete = props => {
 					</Row>
 					<Row>
 						<Col align='center'>
-							<ButtonSoundPropedGender gender={true} url={audio} />
+							<ButtonSoundStoreSoundPropedGender gender={true} url={audio} />
 						</Col>
 					</Row>
 					<Row className='justify-content-center'>

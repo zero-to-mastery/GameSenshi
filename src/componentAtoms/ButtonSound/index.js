@@ -1,11 +1,36 @@
 import React from 'react'
-import { ButtonSound } from './ButtonSound'
+import {
+	ButtonSound,
+	BUTTON_SOUND_STATE_UUID,
+	BUTTON_SOUND_SET_UUID,
+} from './ButtonSound'
 import classnames from 'classnames'
+import {
+	StateContainer,
+	storeSound,
+	storeSoundSetUuid,
+	STORE_SOUND_STATE_UUID,
+} from 'state'
 
-const ButtonSoundPropedGender = props => {
+const mapStoreButtonSoundStateToProp = {
+	[BUTTON_SOUND_STATE_UUID]: STORE_SOUND_STATE_UUID,
+}
+
+const mapStoreButtonSoundMethodToProp = {
+	[BUTTON_SOUND_SET_UUID]: storeSoundSetUuid,
+}
+
+const ButtonSoundStoreSound = StateContainer(
+	ButtonSound,
+	[storeSound],
+	[mapStoreButtonSoundStateToProp],
+	[mapStoreButtonSoundMethodToProp]
+)
+
+const ButtonSoundStoreSoundPropedGender = props => {
 	const { gender, ...otherProps } = props
 	return (
-		<ButtonSound
+		<ButtonSoundStoreSound
 			color={classnames({
 				primary: gender,
 				success: !gender,
@@ -15,8 +40,11 @@ const ButtonSoundPropedGender = props => {
 	)
 }
 
-const ButtonSoundPropedCardProfile = props => {
-	return <ButtonSoundPropedGender mobile {...props} />
+const ButtonSoundStoreSoundPropedCardUser = props => {
+	return <ButtonSoundStoreSoundPropedGender mobile {...props} />
 }
 
-export { ButtonSoundPropedGender, ButtonSoundPropedCardProfile }
+export {
+	ButtonSoundStoreSoundPropedGender,
+	ButtonSoundStoreSoundPropedCardUser,
+}

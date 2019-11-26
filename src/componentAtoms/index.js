@@ -79,8 +79,8 @@ import {
 } from './IconsImage'
 import { StatusCommonPropedOnline } from './StatusCommon'
 import {
-	ButtonSoundPropedGender,
-	ButtonSoundPropedCardProfile,
+	ButtonSoundStoreSoundPropedGender,
+	ButtonSoundStoreSoundPropedCardUser,
 } from './ButtonSound'
 import {
 	CheckBoxIconPropedFavorite,
@@ -158,8 +158,8 @@ export const Exports = {
 	IconsImageOptioned,
 	IconsImage,
 	StatusCommonPropedOnline,
-	ButtonSoundPropedGender,
-	ButtonSoundPropedCardProfile,
+	ButtonSoundStoreSoundPropedGender,
+	ButtonSoundStoreSoundPropedCardUser,
 	CommentCommonPropedDefault,
 	PaginationCommonPropedDefault,
 	ID,
