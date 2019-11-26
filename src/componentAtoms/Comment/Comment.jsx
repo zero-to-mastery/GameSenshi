@@ -42,11 +42,11 @@ const Comment = props => {
 	const { body, name, time, commentsNumber, src } = props
 	return (
 		<Media>
-			<a className='pull-left' href='#pablo' onClick={e => e.preventDefault()}>
+			<div className='pull-left'>
 				<div className='avatar'>
 					<Media alt='Avatar Comment' className='img-raised' src={src} />
 				</div>
-			</a>
+			</div>
 			<Media body>
 				<Media heading tag='h5'>
 					{name}

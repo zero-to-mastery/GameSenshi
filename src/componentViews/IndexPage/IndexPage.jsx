@@ -3,6 +3,7 @@ import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 import { Container, Row, Col } from 'reactstrap'
 import audioSample from 'assets/audio/sampleVoice.mp3'
+import { SectionDiscover } from './SectionDiscover'
 const {
 	CardProfilePropedIndex,
 	ButtonsIconImagePropedIndex,
@@ -41,7 +42,7 @@ const cardPlayers = [
 	},
 	{
 		[CARD_PROFILE_NAME]: 'Mark Johnsson',
-		[CARD_PROFILE_IMAGE]: require('assets/img/mike.jpeg'),
+		[CARD_PROFILE_IMAGE]: require('assets/img/mike-resized.jpg'),
 		[CARD_PROFILE_GENDER]: false,
 		[CARD_PROFILE_AUDIO]: audioSample,
 		[CARD_PROFILE_PRICE]: '50',
@@ -93,7 +94,11 @@ const IndexPage = () => {
 							<CarouselCommonPropedIndex />
 						</Col>
 					</Row>
-					<ButtonsIconImagePropedIndex />
+					<Row className='mt-3'>
+						<Col>
+							<ButtonsIconImagePropedIndex />
+						</Col>
+					</Row>
 				</Container>
 			</Section>
 			<Section>
@@ -110,7 +115,7 @@ const IndexPage = () => {
 			<Section>
 				<Container className={containerClass}>
 					<TextIconPropedNewPlayer />
-					<Row>
+					<Row style={{ marginTop: '7px' }}>
 						<Col>
 							<CarouselCardSimplePropedNew />
 						</Col>
@@ -120,12 +125,7 @@ const IndexPage = () => {
 			<Section>
 				<Container className={containerClass}>
 					<TextIconPropedRandomPlayer />
-					<Row>
-						<Cards />
-					</Row>
-					<Row>
-						<Cards />
-					</Row>
+					<SectionDiscover />
 				</Container>
 			</Section>
 		</WrapperStoreWrapperPropedIndex>
