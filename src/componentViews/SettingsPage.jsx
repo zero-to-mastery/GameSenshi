@@ -87,8 +87,18 @@ const SettingsPage = () => {
 							<Section>
 								<Switch>
 									{settingTabs.map(policy => {
-										const { [TAB_LIST_VERTICAL_NAME]: name, [SETTING]: Setting, [TAB_LIST_VERTICAL_TO]: to } = policy
-										return <Route key={name} path={to} render={prop => <Setting {...prop} />} />
+										const {
+											[TAB_LIST_VERTICAL_NAME]: name,
+											[SETTING]: Setting,
+											[TAB_LIST_VERTICAL_TO]: to,
+										} = policy
+										return (
+											<Route
+												key={name}
+												path={to}
+												render={prop => <Setting {...prop} />}
+											/>
+										)
 									})}
 								</Switch>
 							</Section>
