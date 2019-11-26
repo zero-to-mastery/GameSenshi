@@ -10,7 +10,7 @@ const { ButtonSoundPropedCardProfile, BadgesOptioned, Link } = stopUndefined(
 	Exports
 )
 
-const CardProfile = props => {
+const CardUser = props => {
 	const [hover, setHover] = useState(false)
 	const [leave, setLeave] = useState(false)
 	const timeId = useRef(0)
@@ -114,4 +114,4 @@ const CardProfile = props => {
 	)
 }
 
-export { CardProfile }
+export { CardUser }

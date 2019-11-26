@@ -2,7 +2,7 @@ import React from 'react'
 import Slider from 'react-slick'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentAtoms'
-const { CardProfileSimple } = stopUndefined(Exports)
+const { CardUserSimple } = stopUndefined(Exports)
 
 const CARD_SIMPLE_NAME = 'name'
 const CARD_SIMPLE_IMAGE = 'image'
@@ -43,7 +43,7 @@ const CarouselCardSimple = props => {
 		<Slider {...settings}>
 			{cards.map(card => {
 				const { [CARD_SIMPLE_IMAGE]: src, [CARD_SIMPLE_NAME]: name } = card
-				return <CardProfileSimple src={src} name={name} key={name} />
+				return <CardUserSimple src={src} name={name} key={name} />
 			})}
 		</Slider>
 	)

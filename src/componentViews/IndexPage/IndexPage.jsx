@@ -94,7 +94,7 @@ const IndexPage = () => {
 							<CarouselCommonPropedIndex />
 						</Col>
 					</Row>
-					<Row className='mt-3'>
+					<Row>
 						<Col>
 							<ButtonsIconImagePropedIndex />
 						</Col>
@@ -115,7 +115,7 @@ const IndexPage = () => {
 			<Section>
 				<Container className={containerClass}>
 					<TextIconPropedNewPlayer />
-					<Row style={{ marginTop: '7px' }}>
+					<Row>
 						<Col>
 							<CarouselCardSimplePropedNew />
 						</Col>

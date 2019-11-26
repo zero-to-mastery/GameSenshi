@@ -16,7 +16,7 @@ const ButtonSoundPropedGender = props => {
 }
 
 const ButtonSoundPropedCardProfile = props => {
-	return <ButtonSoundPropedGender simplify {...props} />
+	return <ButtonSoundPropedGender mobile {...props} />
 }
 
 export { ButtonSoundPropedGender, ButtonSoundPropedCardProfile }

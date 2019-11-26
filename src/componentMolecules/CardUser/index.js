@@ -1,9 +1,9 @@
 import React from 'react'
-import { CardProfile } from './CardProfile'
+import { CardUser } from './CardUser'
 import { FB_FS_SENSHI_BADGES_ONLINE } from 'constantValues'
 
 const CardProfileOptioned = props => {
-	return <CardProfile {...props} />
+	return <CardUser {...props} />
 }
 
 const CardProfilePropedIndex = props => {

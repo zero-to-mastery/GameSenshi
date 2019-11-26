@@ -10,7 +10,7 @@ const {
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	ContainerTitledPropedDefault,
-	CardSenshi,
+	CardUserComplete,
 	CommentWithPaginationPropedDefault,
 	Section,
 	WrapperStoreWrapperPropedProfile,
@@ -33,7 +33,7 @@ const ProfilePage = () => {
 				<img alt='...' className='path' src={require('assets/img/path4.png')} />
 				<Container>
 					<Row>
-						<CardSenshi
+						<CardUserComplete
 							nickname='Mike Scheinder'
 							username='mighty_mike'
 							avatar={require('assets/img/mike.jpg')}

@@ -2,8 +2,8 @@ import { Exports as ExportAtoms } from 'componentAtoms'
 import { FinalInputText, FinalInputSelect, FinalInputDate } from './FinalInput'
 import { TabPaneSettingListStoreUserPropedNotification } from './TabPaneSettingList'
 import { ModalImageCropperPropedSettings } from './ModalImageCropper'
-import { CardSenshi } from './CardSenshi'
-import { CardProfilePropedIndex, CardProfilePropedSearch } from './CardProfile'
+import { CardUserComplete } from './CardUserComplete'
+import { CardProfilePropedIndex, CardProfilePropedSearch } from './CardUser'
 import { ButtonsIconImagePropedIndex } from './ButtonsIconImage'
 import { PanelSortBy } from './PanelSortBy'
 import { PanelFilterSearch } from './PanelFilterSearch'
@@ -17,7 +17,7 @@ export const Exports = {
 	FinalInputSelect,
 	FinalInputDate,
 	ModalImageCropperPropedSettings,
-	CardSenshi,
+	CardUserComplete,
 	CardProfilePropedIndex,
 	ButtonsIconImagePropedIndex,
 	PanelSortBy,

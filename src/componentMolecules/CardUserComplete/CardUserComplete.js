@@ -12,7 +12,7 @@ const {
 	ButtonsIconOptioned,
 } = stopUndefined(Exports)
 
-const CardSenshi = props => {
+const CardUserComplete = props => {
 	const {
 		badges,
 		signature,
@@ -72,4 +72,4 @@ const CardSenshi = props => {
 	)
 }
 
-export { CardSenshi }
+export { CardUserComplete }

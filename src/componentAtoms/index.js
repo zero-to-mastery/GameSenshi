@@ -97,7 +97,7 @@ import {
 	WrapperStoreWrapperPropedError,
 	WrapperStoreWrapperPropedCheckout,
 } from './Wrapper'
-import { CardProfileSimple } from './CardProfileSimple'
+import { CardUserSimple } from './CardUserSimple'
 
 export const Exports = {
 	...ExportProtons,
@@ -184,5 +184,5 @@ export const Exports = {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
-	CardProfileSimple,
+	CardUserSimple,
 }

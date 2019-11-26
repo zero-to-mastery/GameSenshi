@@ -30,7 +30,7 @@ const ButtonSound = props => {
 	const delay = useRef(0)
 	const icon = useRef(Icon)
 	const intervalId = useRef(-1)
-	const { url, color, simplify } = props
+	const { url, color, mobile } = props
 
 	useEffect(() => {
 		icon.current = Icon
@@ -118,11 +118,11 @@ const ButtonSound = props => {
 					<Row className='align-items-center'>
 						<Col
 							xs='4'
-							className={classnames('p-0', { [styles.hide]: simplify })}
+							className={classnames('p-0', { [styles.hide]: mobile })}
 						>
 							<Icon />
 						</Col>
-						<Col className={classnames('p-0', { [styles.play]: simplify })}>
+						<Col className={classnames('p-0', { [styles.play]: mobile })}>
 							{loading ? Spinner : playStatus === stopped ? duration : position}
 						</Col>
 					</Row>

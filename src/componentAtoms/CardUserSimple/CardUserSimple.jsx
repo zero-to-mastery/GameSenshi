@@ -5,7 +5,7 @@ import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 const { Link } = stopUndefined(Exports)
 
-const CardProfileSimple = props => {
+const CardUserSimple = props => {
 	const { src, name } = props
 	return (
 		<Link
@@ -32,4 +32,4 @@ const CardProfileSimple = props => {
 	)
 }
 
-export { CardProfileSimple }
+export { CardUserSimple }
