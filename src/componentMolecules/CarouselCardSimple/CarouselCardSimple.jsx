@@ -43,7 +43,7 @@ const CarouselCardSimple = props => {
 		<Slider {...settings}>
 			{cards.map(card => {
 				const { [CARD_SIMPLE_IMAGE]: src, [CARD_SIMPLE_NAME]: name } = card
-				return <CardProfileSimple src={src} name={name} />
+				return <CardProfileSimple src={src} name={name} key={name} />
 			})}
 		</Slider>
 	)
