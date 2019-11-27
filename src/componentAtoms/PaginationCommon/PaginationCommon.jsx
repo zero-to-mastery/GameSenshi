@@ -1,9 +1,5 @@
-/* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap'
-
-const LEFT_PAGE = 'LEFT'
-const RIGHT_PAGE = 'RIGHT'
 
 const range = (from, to, step = 1) => {
 	let i = from
@@ -16,6 +12,9 @@ const range = (from, to, step = 1) => {
 
 	return range
 }
+
+const LEFT_PAGE = 'LEFT'
+const RIGHT_PAGE = 'RIGHT'
 
 const PaginationCommon = props => {
 	const {
@@ -36,28 +35,34 @@ const PaginationCommon = props => {
 		const totalBlocks = totalNumbers + 2
 
 		if (totalPages > totalBlocks) {
-			const startPage = Math.max(2, currentPage - pageNeighbours)
-			const endPage = Math.min(totalPages - 1, currentPage + pageNeighbours)
+			let pages = []
 
-			let pages = range(startPage, endPage)
+			const leftBound = currentPage - pageNeighbours
+			const rightBound = currentPage + pageNeighbours
+			const beforeLastPage = totalPages - 1
 
-			const hasLeftSpill = startPage > 2
-			const hasRightSpill = totalPages - endPage > 1
-			const spillOffset = totalNumbers - (pages.length + 1)
+			const startPage = leftBound > 2 ? leftBound : 2
+			const endPage = rightBound < beforeLastPage ? rightBound : beforeLastPage
 
-			switch (true) {
-				// handle: (1) < {5 6} [7] {8 9} (10)
-				case hasLeftSpill && !hasRightSpill: {
-					const extraPages = range(startPage - spillOffset, startPage - 1)
-					pages = [LEFT_PAGE, ...extraPages, ...pages]
-					break
-				}
-				// handle: (1) < {4 5} [6] {7 8} > (10)
-				case hasLeftSpill && hasRightSpill:
-				default: {
-					pages = [LEFT_PAGE, ...pages, RIGHT_PAGE]
-					break
-				}
+			pages = range(startPage, endPage)
+
+			const pagesCount = pages.length
+			const singleSpillOffset = totalNumbers - pagesCount - 1
+
+			const leftSpill = startPage > 2
+			const rightSpill = endPage < beforeLastPage
+
+			const leftSpillPage = LEFT_PAGE
+			const rightSpillPage = RIGHT_PAGE
+
+			if (leftSpill && !rightSpill) {
+				const extraPages = range(startPage - singleSpillOffset, startPage - 1)
+				pages = [leftSpillPage, ...extraPages, ...pages]
+			} else if (!leftSpill && rightSpill) {
+				const extraPages = range(endPage + 1, endPage + singleSpillOffset)
+				pages = [...pages, ...extraPages, rightSpillPage]
+			} else if (leftSpill && rightSpill) {
+				pages = [leftSpillPage, ...pages, rightSpillPage]
 			}
 			return [1, ...pages, totalPages]
 		}
@@ -92,7 +97,7 @@ const PaginationCommon = props => {
 					)
 
 				return (
-					<PaginationItem active={currentPage === index} key={index}>
+					<PaginationItem active={currentPage === page} key={index}>
 						<PaginationLink onClick={e => onPageChanged(e, page)}>
 							{page}
 						</PaginationLink>
