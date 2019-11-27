@@ -70,9 +70,11 @@ const PaginationCommon = props => {
 	}
 
 	const pages = fetchPageNumbers()
-
 	return (
 		<Pagination aria-label='Page navigation'>
+			<PaginationItem>
+				<PaginationLink first onClick={e => onPageChanged(e, 1)} />
+			</PaginationItem>
 			{pages.map((page, index) => {
 				if (page === LEFT_PAGE)
 					return (
@@ -104,6 +106,12 @@ const PaginationCommon = props => {
 					</PaginationItem>
 				)
 			})}
+			<PaginationItem>
+				<PaginationLink
+					last
+					onClick={e => onPageChanged(e, pages[pages.length - 1])}
+				/>
+			</PaginationItem>
 		</Pagination>
 	)
 }
