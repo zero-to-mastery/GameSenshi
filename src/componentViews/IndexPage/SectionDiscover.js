@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 
-const { TabPaneHorizontal, CardProfilePropedIndex } = stopUndefined(Exports)
+const { CardProfilePropedIndex } = stopUndefined(Exports)
 
 const CARD_DISCOVER_NAME = 'name'
 const CARD_DISCOVER_IMAGE = 'image'
@@ -106,54 +106,44 @@ const SectionDiscover = () => {
 			</Nav>
 			<TabContent className='tab-space' activeTab={tab}>
 				<TabPane tabId='Dota 2'>
-					<TabPaneHorizontal>
-						<Row>
-							<Cards />
-						</Row>
-						<Row>
-							<Cards />
-						</Row>
-					</TabPaneHorizontal>
+					<Row>
+						<Cards />
+					</Row>
+					<Row>
+						<Cards />
+					</Row>
 				</TabPane>
 				<TabPane tabId='PUBG'>
-					<TabPaneHorizontal>
-						<Row>
-							<Cards />
-						</Row>
-						<Row>
-							<Cards />
-						</Row>
-					</TabPaneHorizontal>
+					<Row>
+						<Cards />
+					</Row>
+					<Row>
+						<Cards />
+					</Row>
 				</TabPane>
 				<TabPane tabId='LOL'>
-					<TabPaneHorizontal>
-						<Row>
-							<Cards />
-						</Row>
-						<Row>
-							<Cards />
-						</Row>
-					</TabPaneHorizontal>
+					<Row>
+						<Cards />
+					</Row>
+					<Row>
+						<Cards />
+					</Row>
 				</TabPane>
 				<TabPane tabId='Apex Legends'>
-					<TabPaneHorizontal>
-						<Row>
-							<Cards />
-						</Row>
-						<Row>
-							<Cards />
-						</Row>{' '}
-					</TabPaneHorizontal>
+					<Row>
+						<Cards />
+					</Row>
+					<Row>
+						<Cards />
+					</Row>{' '}
 				</TabPane>
 				<TabPane tabId='Fortnite'>
-					<TabPaneHorizontal>
-						<Row>
-							<Cards />
-						</Row>
-						<Row>
-							<Cards />
-						</Row>
-					</TabPaneHorizontal>
+					<Row>
+						<Cards />
+					</Row>
+					<Row>
+						<Cards />
+					</Row>
 				</TabPane>
 			</TabContent>
 		</div>

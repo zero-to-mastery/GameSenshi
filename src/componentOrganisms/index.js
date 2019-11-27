@@ -12,7 +12,6 @@ import { NavbarIndexStoreAlertPropApp } from './NavbarIndex'
 import { FormProfile } from './FormProfile'
 import { CheckoutCardPropedDefault } from './CheckoutCard'
 import { ContainerSearchResultsPropedDefault } from './ContainerSearchResults'
-import { TabPaneHorizontal } from './TabPaneHorizontal'
 
 export const Exports = {
 	...ExportCompounds,
@@ -28,5 +27,4 @@ export const Exports = {
 	FormProfile,
 	CheckoutCardPropedDefault,
 	ContainerSearchResultsPropedDefault,
-	TabPaneHorizontal,
 }
