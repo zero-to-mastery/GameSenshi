@@ -11,7 +11,7 @@ const CommentWithPagination = props => {
 	const { comments } = props
 	const [currentPage, setCurrentPage] = useState(1)
 	const NUM_OF_RECORDS = comments.length
-	const LIMIT = 2
+	const LIMIT = 3
 
 	const onPageChanged = useCallback(
 		(event, page) => {
