@@ -11,7 +11,7 @@ const LIMIT = 2
 
 const CommentWithPagination = props => {
 	const { comments } = props
-	const [currentPage, setCurrentPage] = useState(0)
+	const [currentPage, setCurrentPage] = useState(1)
 
 	const handleClick = useCallback(
 		(event, index) => {

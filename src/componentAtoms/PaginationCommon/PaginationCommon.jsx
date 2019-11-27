@@ -2,6 +2,21 @@
 import React, { useState, useEffect } from 'react'
 import { Pagination, PaginationItem, PaginationLink } from 'reactstrap'
 
+const LEFT_PAGE = 'LEFT'
+const RIGHT_PAGE = 'RIGHT'
+
+const range = (from, to, step = 1) => {
+	let i = from
+	const range = []
+
+	while (i <= to) {
+		range.push(i)
+		i += step
+	}
+
+	return range
+}
+
 const PaginationCommon = props => {
 	const { handleClick, currentPage } = props
 	const [pageCount, setPageCount] = useState(0)
