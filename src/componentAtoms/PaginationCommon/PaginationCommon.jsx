@@ -17,6 +17,7 @@ const LEFT_PAGE = 'LEFT'
 const RIGHT_PAGE = 'RIGHT'
 
 const PaginationCommon = props => {
+	const [totalPages, setTotalPages] = useState(0)
 	const {
 		totalRecords,
 		pageLimit,
@@ -24,7 +25,6 @@ const PaginationCommon = props => {
 		onPageChanged,
 		currentPage,
 	} = props
-	const [totalPages, setTotalPages] = useState(0)
 
 	useEffect(() => {
 		setTotalPages(Math.ceil(totalRecords / pageLimit))

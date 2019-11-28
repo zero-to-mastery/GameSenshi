@@ -14,6 +14,7 @@ const {
 	CommentWithPaginationPropedDefault,
 	Section,
 	WrapperStoreWrapperPropedProfile,
+	TabsProfile,
 } = stopUndefined(Exports)
 
 // fake data
@@ -47,7 +48,8 @@ const ProfilePage = () => {
 						/>
 						<Col lg='8' md='6'>
 							<ContainerTitledPropedDefault>
-								<Row>
+								<TabsProfile />
+								{/* <Row>
 									<Col md={{ size: 6, offset: 1 }} className='pt-2'>
 										<h2>$30/h</h2>
 									</Col>
@@ -73,7 +75,7 @@ const ProfilePage = () => {
 									<Col md={{ size: 5, offset: 1 }} className='py-2'>
 										<ButtonAddToCartPropedProfile />
 									</Col>
-								</Row>
+								</Row> */}
 							</ContainerTitledPropedDefault>
 						</Col>
 					</Row>
