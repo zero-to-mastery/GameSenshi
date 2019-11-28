@@ -13,6 +13,10 @@ import {
 	CardBody,
 	CardHeader,
 } from 'reactstrap'
+import { stopUndefined } from 'utils'
+import { Exports } from 'componentnCompounds'
+
+const { QuantityProfile, IconsImagePropedTabs } = stopUndefined(Exports)
 
 const sections = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
 
@@ -38,7 +42,7 @@ const TabsProfile = props => {
 										onClick={e => toggleTabs(e, 1)}
 										href='#pablo'
 									>
-										Profile
+										League of Legends
 									</NavLink>
 								</NavItem>
 								<NavItem>
@@ -46,7 +50,7 @@ const TabsProfile = props => {
 										className={classnames({
 											active: tab === 2,
 										})}
-										onClick={e => this.toggleTabs(e, 2)}
+										onClick={e => toggleTabs(e, 2)}
 										href='#pablo'
 									>
 										Settings
@@ -68,12 +72,14 @@ const TabsProfile = props => {
 						<CardBody>
 							<TabContent className='tab-space' activeTab={'hTabs' + tab}>
 								<TabPane tabId='hTabs1'>
-									Collaboratively administrate empowered markets via
-									plug-and-play networks. Dynamically procrastinate B2C users
-									after installed base benefits. <br />
-									<br />
-									Dramatically visualize customer directed convergence without
-									revolutionary ROI.
+									<Row>
+										<Col md='4'>
+											<IconsImagePropedTabs icons='LOL' />
+										</Col>
+										<Col md='8'>
+											<QuantityProfile />
+										</Col>
+									</Row>
 								</TabPane>
 								<TabPane tabId='hTabs2'>
 									Efficiently unleash cross-media information without

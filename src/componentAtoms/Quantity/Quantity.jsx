@@ -1,5 +1,5 @@
-import React, { Fragment, memo, useState } from 'react'
-import { Input, InputGroup } from 'reactstrap'
+import React, { memo, useState } from 'react'
+import { Input, InputGroup, Col } from 'reactstrap'
 import styles from './styles.module.css'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
@@ -41,7 +41,7 @@ const ButtonDecrement = memo(props => {
 const Quantity = props => {
 	const [quantity, setQuantity] = useState(1)
 	return (
-		<Fragment>
+		<Col md='6'>
 			<InputGroup>
 				<ButtonDecrement setQuantity={setQuantity} />
 				<Input
@@ -54,7 +54,7 @@ const Quantity = props => {
 				/>
 				<ButtonIncrement setQuantity={setQuantity} />
 			</InputGroup>
-		</Fragment>
+		</Col>
 	)
 }
 

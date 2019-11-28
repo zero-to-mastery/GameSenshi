@@ -75,6 +75,7 @@ import { BadgesOptioned, Badges, BadgesPropedSenshi } from './Badges'
 import {
 	IconsImagePropedGameIcons,
 	IconsImageOptioned,
+	IconsImagePropedTabs,
 	IconsImage,
 } from './IconsImage'
 import { StatusCommonPropedOnline } from './StatusCommon'
@@ -155,6 +156,7 @@ export const Exports = {
 	Badges,
 	BadgesPropedSenshi,
 	IconsImagePropedGameIcons,
+	IconsImagePropedTabs,
 	IconsImageOptioned,
 	IconsImage,
 	StatusCommonPropedOnline,
