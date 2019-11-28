@@ -76,15 +76,18 @@ const TabsProfile = props => {
 						<CardBody>
 							<TabContent className='tab-space' activeTab={'hTabs' + tab}>
 								<TabPane tabId='hTabs1'>
-									<Row>
+									<Row className='py-2'>
 										<Col md='4'>
 											<IconsImagePropedTabs icons='LOL' />
 										</Col>
-										<Col md='8'>
+										<Col md='2'>
+											<h2>$30/h</h2>
+										</Col>
+										<Col md='6'>
 											<QuantityProfile />
 										</Col>
 									</Row>
-									<Row>
+									<Row className='py-2'>
 										<Col>
 											<h4>Description</h4>
 											<p>
@@ -93,8 +96,10 @@ const TabsProfile = props => {
 											</p>
 										</Col>
 									</Row>
-									<Row>
-										<ButtonAddToCartPropedProfile />
+									<Row className='py-2'>
+										<Col>
+											<ButtonAddToCartPropedProfile />
+										</Col>
 									</Row>
 								</TabPane>
 								<TabPane tabId='hTabs2'>
