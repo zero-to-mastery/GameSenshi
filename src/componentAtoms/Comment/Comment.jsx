@@ -80,7 +80,7 @@ const Comment = props => {
 	)
 }
 
-const AddCommentInput = props => {
+const CreateCommentInput = props => {
 	return (
 		<Media className='media-post'>
 			<a
@@ -123,7 +123,7 @@ const CommentsList = props => {
 		<>
 			<div className='container'>
 				<h3 className='title text-center'>Post your comment</h3>
-				<AddCommentInput />
+				<CreateCommentInput />
 			</div>
 			<div className='container'>
 				<Comments comments={comments} />
