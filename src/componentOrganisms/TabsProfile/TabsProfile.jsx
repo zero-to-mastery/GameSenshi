@@ -16,7 +16,11 @@ import {
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentnCompounds'
 
-const { QuantityProfile, IconsImagePropedTabs } = stopUndefined(Exports)
+const {
+	QuantityProfile,
+	IconsImagePropedTabs,
+	ButtonAddToCartPropedProfile,
+} = stopUndefined(Exports)
 
 const sections = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
 
@@ -79,6 +83,18 @@ const TabsProfile = props => {
 										<Col md='8'>
 											<QuantityProfile />
 										</Col>
+									</Row>
+									<Row>
+										<Col>
+											<h4>Description</h4>
+											<p>
+												A veteran in MOBA and FPS games, I can give you a
+												significant boost in ranking mode.
+											</p>
+										</Col>
+									</Row>
+									<Row>
+										<ButtonAddToCartPropedProfile />
 									</Row>
 								</TabPane>
 								<TabPane tabId='hTabs2'>
