@@ -1,24 +1,12 @@
 import React, { useState } from 'react'
 import { stopUndefined } from 'utils'
-import {
-	Container,
-	Row,
-	Col,
-	Nav,
-	NavItem,
-	NavLink,
-	TabContent,
-	TabPane,
-} from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 import audioSample from 'assets/audio/sampleVoice.mp3'
-import classnames from 'classnames'
 
 const {
 	CarouselCommonPropedProfile,
-	FormProfile,
-	ButtonAddToCartPropedProfile,
-	QuantityProfile,
+	CardGift,
 	ContainerTitledPropedDefault,
 	CardUserComplete,
 	CommentWithPaginationPropedDefault,
@@ -59,34 +47,12 @@ const ProfilePage = () => {
 						<Col lg='8' md='6'>
 							<ContainerTitledPropedDefault>
 								<TabsProfile />
-								{/* <Row>
-									<Col md={{ size: 6, offset: 1 }} className='pt-2'>
-										<h2>$30/h</h2>
-									</Col>
-								</Row>
-								<Row>
-									<Col md={{ size: 11, offset: 1 }} className='pb-2'>
-										<h4>Description</h4>
-										<p>
-											A veteran in MOBA and FPS games, I can give you a
-											significant boost in ranking mode.
-										</p>
-									</Col>
-								</Row>
-								<Row>
-									<Col md={{ size: 5, offset: 1 }} className='py-2'>
-										<QuantityProfile />
-									</Col>
-									<Col md={{ size: 6 }} className='py-2'>
-										<FormProfile />
-									</Col>
-								</Row>
-								<Row>
-									<Col md={{ size: 5, offset: 1 }} className='py-2'>
-										<ButtonAddToCartPropedProfile />
-									</Col>
-								</Row> */}
 							</ContainerTitledPropedDefault>
+						</Col>
+					</Row>
+					<Row>
+						<Col>
+							<CardGift />
 						</Col>
 					</Row>
 				</Container>

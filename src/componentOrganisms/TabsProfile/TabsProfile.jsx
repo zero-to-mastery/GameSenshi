@@ -74,11 +74,11 @@ const SingleTabContent = props => {
 const sections = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
 
 const TabsProfile = props => {
-	const [tab, setTab] = useState('Fortnite')
+	const [tab, setTab] = useState('Dota 2')
 
 	return (
 		<div>
-			<Nav className='nav-pills-neutral' pills>
+			<Nav className='nav-pills-neutral' pills role='tablist'>
 				{sections.map(section => {
 					return (
 						<NavItem>
