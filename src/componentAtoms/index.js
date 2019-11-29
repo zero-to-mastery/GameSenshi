@@ -50,7 +50,6 @@ import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
 import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
 import { QuantityProfile } from './Quantity'
-import { ContainerTitledPropedDefault } from './ContainerTitled'
 import {
 	CarouselCommonPropedProfile,
 	CarouselCommonPropedIndex,
@@ -155,7 +154,6 @@ export const Exports = {
 	ListNavItemStoreUserPropedCollapsedUnsigned,
 	ButtonAddToCartPropedProfile,
 	QuantityProfile,
-	ContainerTitledPropedDefault,
 	BadgesOptioned,
 	Badges,
 	BadgesPropedSenshi,
