@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { stopUndefined } from 'utils'
-import { Container, Row, Col } from 'reactstrap'
+import {
+	Container,
+	Row,
+	Col,
+	Nav,
+	NavItem,
+	NavLink,
+	TabContent,
+	TabPane,
+} from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 import audioSample from 'assets/audio/sampleVoice.mp3'
+import classnames from 'classnames'
 
 const {
 	CarouselCommonPropedProfile,
