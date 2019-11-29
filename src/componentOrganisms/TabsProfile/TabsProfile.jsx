@@ -12,6 +12,7 @@ import {
 	Card,
 	CardBody,
 	CardHeader,
+	Table,
 } from 'reactstrap'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentnCompounds'
@@ -76,31 +77,32 @@ const TabsProfile = props => {
 						<CardBody>
 							<TabContent className='tab-space' activeTab={'hTabs' + tab}>
 								<TabPane tabId='hTabs1'>
-									<Row className='py-2'>
-										<Col md='4'>
-											<IconsImagePropedTabs icons='LOL' />
-										</Col>
-										<Col md='2'>
-											<h2>$30/h</h2>
-										</Col>
-										<Col md='6'>
-											<QuantityProfile />
-										</Col>
-									</Row>
-									<Row className='py-2'>
-										<Col>
-											<h4>Description</h4>
-											<p>
-												A veteran in MOBA and FPS games, I can give you a
-												significant boost in ranking mode.
-											</p>
-										</Col>
-									</Row>
-									<Row className='py-2'>
-										<Col>
-											<ButtonAddToCartPropedProfile />
-										</Col>
-									</Row>
+									<Table>
+										<tbody>
+											<tr>
+												<td>
+													<IconsImagePropedTabs icons='LOL' />
+												</td>
+												<td>
+													<QuantityProfile />
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<h4>Description</h4>
+													<p>
+														A veteran in MOBA and FPS games, I can give you a
+														significant boost in ranking mode.
+													</p>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<ButtonAddToCartPropedProfile />
+												</td>
+											</tr>
+										</tbody>
+									</Table>
 								</TabPane>
 								<TabPane tabId='hTabs2'>
 									Efficiently unleash cross-media information without
