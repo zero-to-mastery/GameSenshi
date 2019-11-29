@@ -16,4 +16,4 @@ const CardGift = props => {
 	)
 }
 
-export { CardGift }
+export { CardGift, IMAGE }
