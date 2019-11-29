@@ -59,6 +59,10 @@ import {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
+	TextIconPropedProfileName,
+	TextIconPropedProfileGift,
+	TextIconPropedProfileGallery,
+	TextIconPropedProfileComments,
 } from './TextIcon'
 
 import {
@@ -186,5 +190,9 @@ export const Exports = {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
+	TextIconPropedProfileName,
+	TextIconPropedProfileGift,
+	TextIconPropedProfileGallery,
+	TextIconPropedProfileComments,
 	CardUserSimple,
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
@@ -7,7 +7,10 @@ import audioSample from 'assets/audio/sampleVoice.mp3'
 const {
 	CarouselCommonPropedProfile,
 	CardGiftWithProps,
-	ContainerTitledPropedDefault,
+	TextIconPropedProfileName,
+	TextIconPropedProfileGift,
+	TextIconPropedProfileGallery,
+	TextIconPropedProfileComments,
 	CardUserComplete,
 	CommentWithPaginationPropedDefault,
 	Section,
@@ -45,9 +48,13 @@ const ProfilePage = () => {
 							favorite
 						/>
 						<Col lg='8' md='6'>
-							<ContainerTitledPropedDefault>
-								<TabsProfile />
-							</ContainerTitledPropedDefault>
+							<TextIconPropedProfileName />
+							<TabsProfile />
+						</Col>
+					</Row>
+					<Row>
+						<Col>
+							<TextIconPropedProfileGift />
 						</Col>
 					</Row>
 					<Row>
@@ -61,7 +68,7 @@ const ProfilePage = () => {
 				<Container>
 					<Row>
 						<Col>
-							<h1>Images</h1>
+							<TextIconPropedProfileGallery />
 						</Col>
 					</Row>
 					<Row>
@@ -75,7 +82,7 @@ const ProfilePage = () => {
 				<Container>
 					<Row>
 						<Col>
-							<h1>Comments</h1>
+							<TextIconPropedProfileComments />
 						</Col>
 					</Row>
 					<Row>

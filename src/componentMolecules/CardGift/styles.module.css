@@ -1,12 +1,13 @@
 .imgWrapper {
   width: 64px;
   height: 64px;
-  border: 1px solid red
+  border: 1px solid #f0a6e4;
 }
 
 .gridContainer {
   width: 350px;
-  height: auto;
+  margin: 0 auto;
+  margin-top: 60px;
   display: grid;
   grid-template-columns: repeat(5, 64px);
   grid-template-rows: repeat(5, 64px);
