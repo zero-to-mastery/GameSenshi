@@ -9,7 +9,7 @@ import { PanelSortBy } from './PanelSortBy'
 import { PanelFilterSearch } from './PanelFilterSearch'
 import { ChatContactListWithProps } from './ChatContactList'
 import { CarouselCardSimplePropedNew } from './CarouselCardSimple'
-import { CardGift } from './CardGift'
+import { CardGiftWithProps } from './CardGift'
 
 export const Exports = {
 	...ExportAtoms,
@@ -26,5 +26,5 @@ export const Exports = {
 	CardProfilePropedSearch,
 	ChatContactListWithProps,
 	CarouselCardSimplePropedNew,
-	CardGift,
+	CardGiftWithProps,
 }

@@ -6,7 +6,7 @@ import audioSample from 'assets/audio/sampleVoice.mp3'
 
 const {
 	CarouselCommonPropedProfile,
-	CardGift,
+	CardGiftWithProps,
 	ContainerTitledPropedDefault,
 	CardUserComplete,
 	CommentWithPaginationPropedDefault,
@@ -52,7 +52,7 @@ const ProfilePage = () => {
 					</Row>
 					<Row>
 						<Col>
-							<CardGift />
+							<CardGiftWithProps />
 						</Col>
 					</Row>
 				</Container>
