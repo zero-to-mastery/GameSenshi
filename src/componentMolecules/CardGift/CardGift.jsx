@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Card, CardBody, Row, Col } from 'reactstrap'
 import Image from 'material-ui-image'
 import styles from './styles.module.css'
@@ -16,11 +16,13 @@ const CardGift = props => {
 							{icons.map((icon, index) => {
 								const { [IMAGE]: src } = icon
 								return (
-									<div className={`grid-item-${index + 1}`}>
-										<div className={styles.imgWrapper}>
-											<Image src={src} alt={src} />
+									<Fragment key={index}>
+										<div className={`grid-item-${index + 1}`}>
+											<div className={styles.imgWrapper}>
+												<Image src={src} alt={src} />
+											</div>
 										</div>
-									</div>
+									</Fragment>
 								)
 							})}
 						</div>
