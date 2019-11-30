@@ -1,6 +1,6 @@
 import { IMAGE } from './CardGift'
 
-const giftIconsPath = game => require(`assets/icons/gifts/${game}.png`)
+const giftIconsPath = icon => require(`assets/icons/gifts/${icon}.png`)
 
 const gifts = [
 	{

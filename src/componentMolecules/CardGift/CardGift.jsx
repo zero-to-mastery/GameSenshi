@@ -11,18 +11,20 @@ const CardGift = props => {
 		<Row>
 			<Col md='5'>
 				<Card className='card card-raised' color='secondary'>
-					<div className={styles.gridContainer}>
-						{icons.map((icon, index) => {
-							const { [IMAGE]: src } = icon
-							return (
-								<div className={`grid-item-${index + 1}`}>
-									<div className={styles.imgWrapper}>
-										<Image src={src} alt={src} />
+					<CardBody>
+						<div className={styles.gridContainer}>
+							{icons.map((icon, index) => {
+								const { [IMAGE]: src } = icon
+								return (
+									<div className={`grid-item-${index + 1}`}>
+										<div className={styles.imgWrapper}>
+											<Image src={src} alt={src} />
+										</div>
 									</div>
-								</div>
-							)
-						})}
-					</div>
+								)
+							})}
+						</div>
+					</CardBody>
 				</Card>
 			</Col>
 		</Row>

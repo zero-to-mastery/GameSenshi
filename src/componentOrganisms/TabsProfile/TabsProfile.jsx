@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import classnames from 'classnames'
 import {
 	Nav,
@@ -16,7 +16,7 @@ import { Exports } from 'componentnCompounds'
 const {
 	QuantityProfile,
 	IconsImagePropedTabs,
-	ButtonAddToCartPropedProfile,
+	ButtonGroupProfile,
 	ButtonSoundStoreSoundPropedCardUser,
 } = stopUndefined(Exports)
 
@@ -62,9 +62,9 @@ const SingleTabContent = props => {
 					<p>{description}</p>
 				</Col>
 			</Row>
-			<Row className='py-5 text-right'>
+			<Row className='pt-5 text-right'>
 				<Col md={{ offset: 8, size: 4 }}>
-					<ButtonAddToCartPropedProfile />
+					<ButtonGroupProfile />
 				</Col>
 			</Row>
 		</Container>

@@ -48,7 +48,7 @@ import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbar } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
-import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
+import { ButtonGroupProfile } from './ButtonWithIcon'
 import { QuantityProfile } from './Quantity'
 import {
 	CarouselCommonPropedProfile,
@@ -152,7 +152,6 @@ export const Exports = {
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
-	ButtonAddToCartPropedProfile,
 	QuantityProfile,
 	BadgesOptioned,
 	Badges,
@@ -193,4 +192,5 @@ export const Exports = {
 	TextIconPropedProfileGallery,
 	TextIconPropedProfileComments,
 	CardUserSimple,
+	ButtonGroupProfile,
 }

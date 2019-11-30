@@ -86,7 +86,7 @@ const TextIconPropedProfileName = props => {
 			emoji='🧑'
 			{...otherProps}
 		>
-			Profile Page
+			Profile
 		</TextIconPropedProfile>
 	)
 }
