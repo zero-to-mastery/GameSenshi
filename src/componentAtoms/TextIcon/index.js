@@ -19,6 +19,22 @@ const TextIconPropedIndex = props => {
 	)
 }
 
+const TextIconPropedProfile = props => {
+	const { className, ...otherProps } = props
+	return (
+		<Row>
+			<Col>
+				<TextIcon
+					src={'none'}
+					h='h1'
+					className={classnames('font-weight-bold title mt-3 mb-3', className)}
+					{...otherProps}
+				/>
+			</Col>
+		</Row>
+	)
+}
+
 const TextIconPropedPopularPlayer = props => {
 	const { className, ...otherProps } = props
 	return (
@@ -60,8 +76,69 @@ const TextIconPropedRandomPlayer = props => {
 		</TextIconPropedIndex>
 	)
 }
+
+const TextIconPropedProfileName = props => {
+	const { className, ...otherProps } = props
+	return (
+		<TextIconPropedProfile
+			className={classnames('text-warning', className)}
+			aria-label='discover'
+			emoji='🧑'
+			{...otherProps}
+		>
+			Profile
+		</TextIconPropedProfile>
+	)
+}
+
+const TextIconPropedProfileGift = props => {
+	const { className, ...otherProps } = props
+	return (
+		<TextIconPropedProfile
+			className={classnames('text-warning', className)}
+			aria-label='discover'
+			emoji='🎁'
+			{...otherProps}
+		>
+			Gifts
+		</TextIconPropedProfile>
+	)
+}
+
+const TextIconPropedProfileGallery = props => {
+	const { className, ...otherProps } = props
+	return (
+		<TextIconPropedProfile
+			className={classnames('text-warning', className)}
+			aria-label='discover'
+			emoji='📸'
+			{...otherProps}
+		>
+			Images
+		</TextIconPropedProfile>
+	)
+}
+
+const TextIconPropedProfileComments = props => {
+	const { className, ...otherProps } = props
+	return (
+		<TextIconPropedProfile
+			className={classnames('text-warning', className)}
+			aria-label='discover'
+			emoji='💬'
+			{...otherProps}
+		>
+			Comments
+		</TextIconPropedProfile>
+	)
+}
+
 export {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
+	TextIconPropedProfileName,
+	TextIconPropedProfileGift,
+	TextIconPropedProfileGallery,
+	TextIconPropedProfileComments,
 }

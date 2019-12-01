@@ -12,6 +12,7 @@ const CommentWithPagination = props => {
 	const [currentPage, setCurrentPage] = useState(1)
 	const NUM_OF_RECORDS = comments.length
 	const LIMIT = 3
+	const PAGE_NEIGHBOURS = 1
 
 	const onPageChanged = useCallback(
 		(event, page) => {
@@ -30,7 +31,7 @@ const CommentWithPagination = props => {
 			<PaginationCommonPropedDefault
 				totalRecords={NUM_OF_RECORDS}
 				pageLimit={LIMIT}
-				pageNeighbours={1}
+				pageNeighbours={PAGE_NEIGHBOURS}
 				onPageChanged={onPageChanged}
 				currentPage={currentPage}
 			/>

@@ -13,4 +13,13 @@ const IconsImagePropedGameIcons = props => {
 	return <IconsImageOptioned className={styles.games} {...props} />
 }
 
-export { IconsImagePropedGameIcons, IconsImageOptioned, IconsImage }
+const IconsImagePropedTabs = props => {
+	return <IconsImageOptioned className={styles.iconTab} {...props} />
+}
+
+export {
+	IconsImagePropedGameIcons,
+	IconsImageOptioned,
+	IconsImage,
+	IconsImagePropedTabs,
+}
