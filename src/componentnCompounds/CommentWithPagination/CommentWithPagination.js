@@ -7,30 +7,32 @@ const {
 	PaginationCommonPropedDefault,
 } = stopUndefined(Exports)
 
-const LIMIT = 2
-
 const CommentWithPagination = props => {
 	const { comments } = props
-	const [currentPage, setCurrentPage] = useState(0)
+	const [currentPage, setCurrentPage] = useState(1)
+	const NUM_OF_RECORDS = comments.length
+	const LIMIT = 3
+	const PAGE_NEIGHBOURS = 1
 
-	const handleClick = useCallback(
-		(event, index) => {
+	const onPageChanged = useCallback(
+		(event, page) => {
 			event.preventDefault()
-			setCurrentPage(index)
+			setCurrentPage(page)
 		},
 		[currentPage]
 	)
-	const paginatedComments = comments.slice(
-		currentPage * LIMIT,
-		(currentPage + 1) * LIMIT
+	const currentComments = comments.slice(
+		(currentPage - 1) * LIMIT,
+		(currentPage - 1) * LIMIT + LIMIT
 	)
 	return (
 		<div className='d-flex flex-column align-items-center'>
-			<CommentCommonPropedDefault comments={paginatedComments} />
+			<CommentCommonPropedDefault comments={currentComments} />
 			<PaginationCommonPropedDefault
-				limit={LIMIT}
-				comments={comments}
-				handleClick={handleClick}
+				totalRecords={NUM_OF_RECORDS}
+				pageLimit={LIMIT}
+				pageNeighbours={PAGE_NEIGHBOURS}
+				onPageChanged={onPageChanged}
 				currentPage={currentPage}
 			/>
 		</div>

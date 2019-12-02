@@ -1,8 +1,33 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Row, Col, Label, Input, FormGroup } from 'reactstrap'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 const { Button } = stopUndefined(Exports)
+
+const ButtonGroup = props => {
+	return (
+		<Col md='10 pt-3'>
+			<div className='d-flex flex-column'>
+				<Button
+					style={{ flex: 1 }}
+					className='btn-round ml-1'
+					color='danger'
+					type='button'
+				>
+					Apply
+				</Button>
+				<Button
+					style={{ flex: 1 }}
+					className='btn-round ml-1'
+					color='danger'
+					type='button'
+				>
+					Clear All
+				</Button>
+			</div>
+		</Col>
+	)
+}
 
 const PanelFilterSearch = props => {
 	const { games, ratings } = props
@@ -48,25 +73,7 @@ const PanelFilterSearch = props => {
 					})}
 				</Col>
 			</Row>
-			<Row className='py-3 d-flex flex-row justify-content-center'>
-				<Col>
-					<Button
-						style={{ paddingLeft: '38px', paddingRight: '38px' }}
-						className='btn-round ml-1'
-						color='danger'
-						type='button'
-					>
-						Apply
-					</Button>
-				</Col>
-			</Row>
-			<Row className='d-flex flex-row justify-content-center'>
-				<Col>
-					<Button className='btn-round ml-1' color='danger' type='button'>
-						Clear All
-					</Button>
-				</Col>
-			</Row>
+			<ButtonGroup />
 		</Col>
 	)
 }

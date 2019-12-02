@@ -48,9 +48,8 @@ import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbar } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
-import { ButtonAddToCartPropedProfile } from './ButtonAddToCart'
+import { ButtonGroupProfile } from './ButtonWithIcon'
 import { QuantityProfile } from './Quantity'
-import { ContainerTitledPropedDefault } from './ContainerTitled'
 import {
 	CarouselCommonPropedProfile,
 	CarouselCommonPropedIndex,
@@ -59,6 +58,10 @@ import {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
+	TextIconPropedProfileName,
+	TextIconPropedProfileGift,
+	TextIconPropedProfileGallery,
+	TextIconPropedProfileComments,
 } from './TextIcon'
 
 import {
@@ -75,6 +78,7 @@ import { BadgesOptioned, Badges, BadgesPropedSenshi } from './Badges'
 import {
 	IconsImagePropedGameIcons,
 	IconsImageOptioned,
+	IconsImagePropedTabs,
 	IconsImage,
 } from './IconsImage'
 import { StatusCommonPropedOnline } from './StatusCommon'
@@ -148,13 +152,12 @@ export const Exports = {
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
-	ButtonAddToCartPropedProfile,
 	QuantityProfile,
-	ContainerTitledPropedDefault,
 	BadgesOptioned,
 	Badges,
 	BadgesPropedSenshi,
 	IconsImagePropedGameIcons,
+	IconsImagePropedTabs,
 	IconsImageOptioned,
 	IconsImage,
 	StatusCommonPropedOnline,
@@ -184,5 +187,10 @@ export const Exports = {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
+	TextIconPropedProfileName,
+	TextIconPropedProfileGift,
+	TextIconPropedProfileGallery,
+	TextIconPropedProfileComments,
 	CardUserSimple,
+	ButtonGroupProfile,
 }
