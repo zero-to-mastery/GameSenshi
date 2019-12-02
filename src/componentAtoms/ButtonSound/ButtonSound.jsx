@@ -88,6 +88,7 @@ const ButtonSound = props => {
 
 	const reset = useCallback(() => {
 		setPlayStatus(stopped)
+		setLoading(false)
 		clearInterval(intervalId.current)
 		setTimeout(() => {
 			setIcon(() => VolumeUpIcon)
