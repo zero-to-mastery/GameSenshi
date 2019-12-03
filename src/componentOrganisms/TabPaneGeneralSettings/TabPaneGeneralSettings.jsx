@@ -44,7 +44,8 @@ const TabPaneGeneralSettings = props => {
 				[FINAL_DATE_BIRTH_DATE]: '',
 			}}
 			onSubmit={onSubmit}
-			onSuccessfulSubmission={onSuccessfulSubmission}>
+			onSuccessfulSubmission={onSuccessfulSubmission}
+		>
 			{({ handleSubmit, submitting, submitError, form }) => {
 				const formReset = useCallback(() => {
 					form.reset()
@@ -90,10 +91,10 @@ const TabPaneGeneralSettings = props => {
 									{submitError && !submitting && `Error: ${submitError}`}
 									<ButtonSubmit
 										color='info'
-										type='button'
 										submitRef={submitButton}
-										disabled={submitting}
-										onClick={handleSubmit}>
+										submitting={submitting}
+										onClick={handleSubmit}
+									>
 										{submitting ? 'Saving Changes' : 'Save Changes'}
 									</ButtonSubmit>
 								</Col>

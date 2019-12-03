@@ -35,7 +35,8 @@ const TabPaneAccountSettings = props => {
 						[FINAL_TEXT_EMAIL]: '',
 					}}
 					onSubmit={onSubmitEmail}
-					onSuccessfulSubmission={onSuccessfulSubmissionEmail}>
+					onSuccessfulSubmission={onSuccessfulSubmissionEmail}
+				>
 					{({ submitError, handleSubmit, submitting, form }) => {
 						const formReset = useCallback(() => {
 							form.reset()
@@ -51,10 +52,10 @@ const TabPaneAccountSettings = props => {
 										{submitError && !submitting && `Error: ${submitError}`}
 										<ButtonSubmit
 											color='info'
-											type='button'
 											submitRef={submitButtonEmail}
 											disabled={submitting}
-											onClick={handleSubmit}>
+											onClick={handleSubmit}
+										>
 											{submitting ? 'Changing Email' : 'Change Email'}
 										</ButtonSubmit>
 									</Col>
@@ -73,7 +74,8 @@ const TabPaneAccountSettings = props => {
 						[FINAL_TEXT_PASSWORD]: '',
 					}}
 					onSubmit={onSubmitPassword}
-					onSuccessfulSubmission={onSuccessfulSubmissionPassword}>
+					onSuccessfulSubmission={onSuccessfulSubmissionPassword}
+				>
 					{({ submitError, handleSubmit, submitting, form }) => {
 						const formReset = useCallback(() => {
 							form.reset()
@@ -89,10 +91,10 @@ const TabPaneAccountSettings = props => {
 										{submitError && !submitting && `Error: ${submitError}`}
 										<ButtonSubmit
 											color='info'
-											type='button'
 											submitRef={submitButtonPassWord}
-											disabled={submitting}
-											onClick={handleSubmit}>
+											submitting={submitting}
+											onClick={handleSubmit}
+										>
 											{submitting ? 'Changing Password' : 'Change Password'}
 										</ButtonSubmit>
 									</Col>

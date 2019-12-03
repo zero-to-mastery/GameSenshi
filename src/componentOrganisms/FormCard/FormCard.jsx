@@ -205,7 +205,7 @@ const FormCard = props => {
 							{submitError && !submitting && `Error: ${submitError}`}
 							<ButtonSubmit
 								submitRef={submitButton}
-								disabled={submitting}
+								submitting={submitting}
 								onClick={handleSubmit}
 								color='primary'
 							>

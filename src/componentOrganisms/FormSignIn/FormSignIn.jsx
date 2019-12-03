@@ -22,7 +22,7 @@ import { Exports } from 'componentnCompounds'
 const {
 	ButtonsIconPropedAuth,
 	FinalForm,
-	ButtonSubmit,
+	ButtonSubmitPropedRound,
 	FinalTextEmailPropedSignIn,
 	FINAL_TEXT_EMAIL,
 	FinalTextPasswordPropedSignIn,
@@ -69,7 +69,8 @@ const FormSignIn = props => {
 							className='close'
 							data-dismiss='modal'
 							type='button'
-							onClick={toggle}>
+							onClick={toggle}
+						>
 							<i className='tim-icons icon-simple-remove' />
 						</button>
 					)}
@@ -87,7 +88,8 @@ const FormSignIn = props => {
 						[FINAL_TEXT_PASSWORD]: '',
 					}}
 					onSubmit={onSubmit}
-					onSuccessfulSubmission={onSuccessfulSubmission}>
+					onSuccessfulSubmission={onSuccessfulSubmission}
+				>
 					{({ submitError, handleSubmit, submitting }) => (
 						<Form action='' className='form' method=''>
 							<CardBody>
@@ -98,7 +100,8 @@ const FormSignIn = props => {
 												style={{
 													backgroundColor: '#1d253b',
 													cursor: 'not-allowed',
-												}}>
+												}}
+											>
 												<i className='tim-icons icon-email-85' />
 											</InputGroupText>
 										</InputGroupAddon>
@@ -123,23 +126,24 @@ const FormSignIn = props => {
 							</CardBody>
 							<CardFooter className='text-center'>
 								{submitError && !submitting && `Error: ${submitError}`}
-								<ButtonSubmit
+								<ButtonSubmitPropedRound
 									submitRef={submitButton}
 									block
-									disabled={submitting}
+									submitting={submitting}
 									onClick={handleSubmit}
-									className='btn-round'
 									size='lg'
-									color='primary'>
+									color='primary'
+								>
 									{submitting ? 'Signing In' : 'Sign In'}
-								</ButtonSubmit>
+								</ButtonSubmitPropedRound>
 							</CardFooter>
 							<div className='pull-left ml-3 mb-3'>
 								<h6>
 									<Link
 										className='link footer-link'
 										style={{ color: '#ba54f5', fontSize: 12 }}
-										to='signUp'>
+										to='signUp'
+									>
 										Create Account
 									</Link>
 								</h6>
@@ -149,7 +153,8 @@ const FormSignIn = props => {
 									<Link
 										className='link footer-link'
 										style={{ color: '#ba54f5', fontSize: 12 }}
-										to={forgotPasswordLink}>
+										to={forgotPasswordLink}
+									>
 										Forgot Password?
 									</Link>
 								</h6>

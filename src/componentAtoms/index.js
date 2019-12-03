@@ -24,7 +24,7 @@ import { ProgressCommonStoreProgress } from './ProgressCommon'
 import { CheckBox } from './CheckBox'
 import { HeaderLined } from './HeaderLined'
 import { ModalCommonStoreModalPropedAuth, ModalCommon } from './ModalCommon'
-import { ButtonSubmit } from './ButtonSubmit'
+import { ButtonSubmit, ButtonSubmitPropedRound } from './ButtonSubmit'
 import { TabPaneContainer } from './TabPaneContainer'
 import {
 	TabListVerticalPropedWithRouter,
@@ -132,6 +132,7 @@ export const Exports = {
 	ModalCommonStoreModalPropedAuth,
 	ModalCommon,
 	ButtonSubmit,
+	ButtonSubmitPropedRound,
 	TabPaneContainer,
 	TabListVerticalPropedWithRouter,
 	TAB_LIST_VERTICAL_NAME,
