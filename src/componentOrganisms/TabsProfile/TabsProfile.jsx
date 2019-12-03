@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import classnames from 'classnames'
 import {
 	Nav,
@@ -9,6 +9,7 @@ import {
 	TabPane,
 	Container,
 	Col,
+	Button,
 } from 'reactstrap'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentnCompounds'
@@ -20,17 +21,17 @@ const {
 	ButtonSoundStoreSoundPropedCardUser,
 } = stopUndefined(Exports)
 
-const PRICE = 'price'
-const NUM_ORDERS = 'orders'
-const ICON = 'icon'
-const DESCRIPTION = 'description'
+const TAB_PANE_PRICE = 'price'
+const TAB_PANE_NUM_ORDERS = 'orders'
+const TAB_PANE_ICON = 'icon'
+const TAB_PANE_DESCRIPTION = 'description'
 
 const SingleTabContent = props => {
 	const {
-		[PRICE]: price,
-		[NUM_ORDERS]: orders,
-		[ICON]: icon,
-		[DESCRIPTION]: description,
+		[TAB_PANE_PRICE]: price,
+		[TAB_PANE_NUM_ORDERS]: orders,
+		[TAB_PANE_ICON]: icon,
+		[TAB_PANE_DESCRIPTION]: description,
 	} = props
 	return (
 		<Container>
@@ -71,7 +72,7 @@ const SingleTabContent = props => {
 	)
 }
 
-const sections = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
+const tabs = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
 
 const TabsProfile = props => {
 	const [tab, setTab] = useState('Dota 2')
@@ -79,17 +80,24 @@ const TabsProfile = props => {
 	return (
 		<div>
 			<Nav className='nav-pills-neutral' pills role='tablist'>
-				{sections.map(section => {
+				{tabs.map(tab_ => {
+					const toggleTabs = useCallback(
+						e => {
+							e.preventDefault()
+							setTab(tab_)
+						},
+						[tab_]
+					)
 					return (
 						<NavItem>
 							<NavLink
 								className={classnames({
-									active: tab === section,
+									active: tab === tab_,
 								})}
-								onClick={() => setTab(section)}
-								href='#pablo'
+								onClick={toggleTabs}
+								tag={Button}
 							>
-								{section}
+								{tab_}
 							</NavLink>
 						</NavItem>
 					)
