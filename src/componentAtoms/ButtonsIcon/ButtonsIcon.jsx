@@ -1,6 +1,7 @@
 import React, { Fragment, useCallback } from 'react'
 import { Row } from 'reactstrap'
 import classnames from 'classnames'
+import './styles.module.css'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 const { Button, UncontrolledTooltip } = stopUndefined(Exports)
@@ -11,6 +12,7 @@ const BUTTONS_ICON_COLOR = 'color'
 const BUTTONS_ICON_TOOLTIP = 'tooltip'
 const BUTTONS_ICON_HREF = 'href'
 const BUTTONS_ICON_LABEL = 'label'
+const BUTTONS_ICON_CLASS_NAME = 'class'
 
 const ButtonsIcon = props => {
 	const { onClick, buttons, className } = props
@@ -25,6 +27,7 @@ const ButtonsIcon = props => {
 					[BUTTONS_ICON_TOOLTIP]: tooltip,
 					[BUTTONS_ICON_HREF]: href,
 					[BUTTONS_ICON_LABEL]: label,
+					[BUTTONS_ICON_CLASS_NAME]: className,
 				} = button
 
 				const href_ = href || ''
@@ -36,12 +39,12 @@ const ButtonsIcon = props => {
 					[onClick, button]
 				)
 				const id_ = 'ButtonsIcon' + id
-
 				return (
 					<Fragment key={id_}>
 						<Button
 							size='lg'
-							className='btn-icon btn-round'
+							className={className}
+							style={{ paddindLeft: '100px' }}
 							color={color}
 							href={href_}
 							id={id_}
@@ -49,7 +52,7 @@ const ButtonsIcon = props => {
 							rel='noopener noreferrer'
 							onClick={onClick_}
 						>
-							{label ? label : null} <i className={icon} />
+							{label && label} <i className={icon} />
 						</Button>
 						<UncontrolledTooltip delay={0} target={id_}>
 							{tooltip}
@@ -68,4 +71,6 @@ export {
 	BUTTONS_ICON_COLOR,
 	BUTTONS_ICON_TOOLTIP,
 	BUTTONS_ICON_HREF,
+	BUTTONS_ICON_LABEL,
+	BUTTONS_ICON_CLASS_NAME,
 }
