@@ -15,7 +15,7 @@ const { Button } = stopUndefined(Exports)
 const BUTTON_SOUND_SET_UUID = 'setUuid'
 const BUTTON_SOUND_STATE_UUID = 'uuid'
 
-const { PLAYING: playing, STOPPED: stopped } = Sound.status
+const { PLAYING, STOPPED } = Sound.status
 const Spinner = <Loader type='Oval' height={24} width={24} color='#fff' />
 const DELAY = 1000
 const convertToMinutes = duration => {
@@ -26,7 +26,7 @@ const convertToMinutes = duration => {
 }
 
 const ButtonSound = props => {
-	const [playStatus, setPlayStatus] = useState(stopped)
+	const [playStatus, setPlayStatus] = useState(STOPPED)
 	const [position, setPosition] = useState(Spinner)
 	const [duration, setDuration] = useState('Play')
 	const [loading, setLoading] = useState(false)
@@ -87,7 +87,7 @@ const ButtonSound = props => {
 	)
 
 	const reset = useCallback(() => {
-		setPlayStatus(stopped)
+		setPlayStatus(STOPPED)
 		setLoading(false)
 		clearInterval(intervalId.current)
 		setTimeout(() => {
@@ -109,9 +109,10 @@ const ButtonSound = props => {
 	const onClick = useCallback(
 		e => {
 			e.preventDefault()
-			if (playStatus === stopped) {
+			e.stopPropagation()
+			if (playStatus === STOPPED) {
 				setUuid(ref.current)
-				setPlayStatus(playing)
+				setPlayStatus(PLAYING)
 			} else {
 				reset()
 			}
@@ -142,7 +143,7 @@ const ButtonSound = props => {
 							<Icon />
 						</Col>
 						<Col className={classnames('p-0', { [styles.play]: mobile })}>
-							{loading ? Spinner : playStatus === stopped ? duration : position}
+							{loading ? Spinner : playStatus === STOPPED ? duration : position}
 						</Col>
 					</Row>
 				</Container>
