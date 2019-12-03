@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { Nav, NavItem, NavLink, TabContent, TabPane, Row } from 'reactstrap'
 import audioSample from 'assets/audio/sampleVoice.mp3'
+import ButtonBase from '@material-ui/core/ButtonBase'
 import classnames from 'classnames'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
@@ -73,32 +74,33 @@ const Cards = () => {
 	})
 }
 
-const sections = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
+const tabs = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
 
 const SectionDiscover = () => {
 	const [tab, setTab] = useState('Dota 2')
 
-	const toggleTabs = useCallback(
-		(e, index) => {
-			e.preventDefault()
-			setTab(index)
-		},
-		[tab]
-	)
 	return (
 		<div>
 			<Nav className='nav-pills-neutral' pills role='tablist'>
-				{sections.map(section => {
+				{tabs.map(tab_ => {
+					const toggleTabs = useCallback(
+						e => {
+							e.preventDefault()
+							setTab(tab_)
+						},
+						[tab_]
+					)
+
 					return (
 						<NavItem>
 							<NavLink
 								className={classnames({
-									active: tab === section,
+									active: tab === tab_,
 								})}
-								onClick={e => toggleTabs(e, section)}
-								href='#pablo'
+								onClick={toggleTabs}
+								tag={ButtonBase}
 							>
-								{section}
+								{tab_}
 							</NavLink>
 						</NavItem>
 					)
