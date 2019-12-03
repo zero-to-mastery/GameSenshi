@@ -10,6 +10,7 @@ const BUTTONS_ICON_ICON = 'icon'
 const BUTTONS_ICON_COLOR = 'color'
 const BUTTONS_ICON_TOOLTIP = 'tooltip'
 const BUTTONS_ICON_HREF = 'href'
+const BUTTONS_ICON_LABEL = 'label'
 
 const ButtonsIcon = props => {
 	const { onClick, buttons, className } = props
@@ -23,6 +24,7 @@ const ButtonsIcon = props => {
 					[BUTTONS_ICON_COLOR]: color,
 					[BUTTONS_ICON_TOOLTIP]: tooltip,
 					[BUTTONS_ICON_HREF]: href,
+					[BUTTONS_ICON_LABEL]: label,
 				} = button
 
 				const href_ = href || ''
@@ -47,7 +49,7 @@ const ButtonsIcon = props => {
 							rel='noopener noreferrer'
 							onClick={onClick_}
 						>
-							<i className={icon} />
+							{label ? label : null} <i className={icon} />
 						</Button>
 						<UncontrolledTooltip delay={0} target={id_}>
 							{tooltip}

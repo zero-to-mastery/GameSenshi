@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { Button } from 'reactstrap'
 import {
 	ButtonsIcon,
 	BUTTONS_ICON_ID,
@@ -30,6 +31,48 @@ const ButtonsIconPropedAuth = withLastLocation(props => {
 	)
 })
 
+const ButtonIconChat = props => {
+	const { ...otherProps } = props
+	return (
+		<ButtonsIcon
+			id={1}
+			color='success'
+			href='#'
+			className='btn btn-simple'
+			type='button'
+			icon='tim-icons icon-chat-33'
+			label='Chat'
+			onClick={() => {}}
+			{...otherProps}
+		/>
+	)
+}
+
+const ButtonIconAddToCart = props => {
+	const { ...otherProps } = props
+	return (
+		<ButtonsIcon
+			id={2}
+			color='warning'
+			href='#'
+			className='btn btn-simple'
+			icon='tim-icons icon-cart'
+			label='Add to cart'
+			onClick={() => {}}
+			{...otherProps}
+		/>
+	)
+}
+
+const ButtonGroupProfile = props => {
+	return (
+		<div className='d-flex flex-column'>
+			<ButtonIconChat />
+			<ButtonIconAddToCart />
+		</div>
+	)
+}
+
 export {
 	ButtonsIconPropedAuth,
 	ButtonsIconOptioned,
@@ -37,4 +80,5 @@ export {
 	BUTTONS_ICON_ICON,
 	BUTTONS_ICON_COLOR,
 	BUTTONS_ICON_TOOLTIP,
+	ButtonGroupProfile,
 }
