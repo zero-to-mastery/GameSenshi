@@ -7,7 +7,6 @@ import audioSample from 'assets/audio/sampleVoice.mp3'
 const {
 	CarouselCommonPropedProfile,
 	CardGiftWithProps,
-	TextIconPropedProfileName,
 	TextIconPropedProfileGift,
 	TextIconPropedProfileGallery,
 	TextIconPropedProfileComments,
@@ -48,7 +47,6 @@ const ProfilePage = () => {
 							favorite
 						/>
 						<Col lg='8' md='6'>
-							<TextIconPropedProfileName />
 							<TabsProfile />
 						</Col>
 					</Row>
