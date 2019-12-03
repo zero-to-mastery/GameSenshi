@@ -6,7 +6,7 @@ const Button = forwardRef((props, ref) => {
 	const { baseClass, baseStyle, ...otherProps } = props
 	return (
 		<ButtonBase component='span' className={baseClass} style={baseStyle}>
-			<Button1 ref={ref} {...otherProps} />
+			<Button1 style={baseStyle} ref={ref} {...otherProps} />
 		</ButtonBase>
 	)
 })

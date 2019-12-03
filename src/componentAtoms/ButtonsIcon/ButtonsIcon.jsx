@@ -1,7 +1,6 @@
 import React, { Fragment, useCallback } from 'react'
 import { Row } from 'reactstrap'
 import classnames from 'classnames'
-import './styles.module.css'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 const { Button, UncontrolledTooltip } = stopUndefined(Exports)
@@ -39,12 +38,13 @@ const ButtonsIcon = props => {
 					[onClick, button]
 				)
 				const id_ = 'ButtonsIcon' + id
+				const baseStyle_ = label ? { flex: 1 } : null
 				return (
 					<Fragment key={id_}>
 						<Button
 							size='lg'
 							className={className}
-							style={{ paddindLeft: '100px' }}
+							baseStyle={baseStyle_}
 							color={color}
 							href={href_}
 							id={id_}
