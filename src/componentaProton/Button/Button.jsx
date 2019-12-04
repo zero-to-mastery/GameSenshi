@@ -15,7 +15,12 @@ const Button = forwardRef((props, ref) => {
 			})}
 			style={baseStyle}
 		>
-			<Button1 ref={ref} className={className} {...otherProps} />
+			<Button1
+				ref={ref}
+				style={baseStyle}
+				className={className}
+				{...otherProps}
+			/>
 		</ButtonBase>
 	)
 })
