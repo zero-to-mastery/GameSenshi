@@ -32,7 +32,7 @@ const ButtonChat = props => {
 const ButtonGroupProfile = props => {
 	return (
 		<div className='d-flex flex-column'>
-			<ButtonChat />
+			<ButtonChat {...props} />
 			<ButtonAddToCart />
 		</div>
 	)
