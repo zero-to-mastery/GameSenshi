@@ -24,6 +24,11 @@ const {
 	ButtonGroupProfile,
 } = stopUndefined(Exports)
 
+const TAB_PANE_PRICE = 'price'
+const TAB_PANE_NUM_ORDERS = 'orders'
+const TAB_PANE_ICON = 'icon'
+const TAB_PANE_DESCRIPTION = 'description'
+
 const profileTabs = [
 	{
 		[TAB_PANE_PRICE]: '25',
@@ -61,11 +66,6 @@ const profileTabs = [
 			'	A veteran in MOBA and FPS games, I can give you a significant boost in ranking mode.',
 	},
 ]
-
-const TAB_PANE_PRICE = 'price'
-const TAB_PANE_NUM_ORDERS = 'orders'
-const TAB_PANE_ICON = 'icon'
-const TAB_PANE_DESCRIPTION = 'description'
 
 const TabsContent = profileTabs.map(tab => {
 	const {
@@ -122,6 +122,13 @@ const channels = {
 const badges = ['female', 'verified', 'risingStar']
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 
+const tabs = games.map((tab, index) => {
+	return {
+		[TAB_COMMON_TAB_NAME]: tab,
+		[TAB_COMMON_TAB_CONTENT]: TabsContent[index],
+	}
+})
+
 const ProfilePage = () => {
 	return (
 		<WrapperStoreWrapperPropedProfile>
@@ -143,7 +150,7 @@ const ProfilePage = () => {
 							favorite
 						/>
 						<Col lg='8' md='6'>
-							<TabsProfile />
+							<TabCommon tabs={tabs} />
 						</Col>
 					</Row>
 					<Row>

@@ -58,7 +58,7 @@ const ButtonIconAddToCart = props => {
 	)
 }
 
-const ButtonGroupProfile = props => {
+const ButtonGroupProfile = () => {
 	return (
 		<div className='d-flex flex-column'>
 			<ButtonIconChat />

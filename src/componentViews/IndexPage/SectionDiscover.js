@@ -77,7 +77,7 @@ const Cards = discoverSections.map(card => {
 
 const randomCards = uniqueRandomArray(Cards)
 
-const tabNames = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
+const tabNames = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 
 const tabs = tabNames.map(tabname => {
 	return {
