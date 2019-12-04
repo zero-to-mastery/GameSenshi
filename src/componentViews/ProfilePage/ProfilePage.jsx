@@ -67,13 +67,13 @@ const TAB_PANE_NUM_ORDERS = 'orders'
 const TAB_PANE_ICON = 'icon'
 const TAB_PANE_DESCRIPTION = 'description'
 
-const SingleTabContent = props => {
+const TabsContent = profileTabs.map(tab => {
 	const {
 		[TAB_PANE_PRICE]: price,
 		[TAB_PANE_NUM_ORDERS]: orders,
 		[TAB_PANE_ICON]: icon,
 		[TAB_PANE_DESCRIPTION]: description,
-	} = props
+	} = tab
 	return (
 		<Container>
 			<Row className='py-2 d-flex align-items-center'>
@@ -111,7 +111,7 @@ const SingleTabContent = props => {
 			</Row>
 		</Container>
 	)
-}
+})
 
 // fake data
 const channels = {
