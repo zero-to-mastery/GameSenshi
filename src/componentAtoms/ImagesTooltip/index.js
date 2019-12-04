@@ -11,17 +11,8 @@ const ImagesTooltipOptioned = props => {
 	)
 }
 
-const ImagesTooltipPropedGameIcons = props => {
-	return <ImagesTooltipOptioned className={styles.games} {...props} />
-}
-
 const ImagesTooltipPropedTabs = props => {
 	return <ImagesTooltipOptioned className={styles.iconTab} {...props} />
 }
 
-export {
-	ImagesTooltipPropedGameIcons,
-	ImagesTooltipOptioned,
-	ImagesTooltip,
-	ImagesTooltipPropedTabs,
-}
+export { ImagesTooltipOptioned, ImagesTooltip, ImagesTooltipPropedTabs }

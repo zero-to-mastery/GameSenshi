@@ -4,7 +4,6 @@ import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 const {
 	BadgesPropedSenshi,
-	ImagesTooltipPropedGameIcons,
 	StatusCommonPropedOnline,
 	ButtonSoundStoreSoundPropedGender,
 	CheckBoxIconPropedFavorite,
@@ -17,7 +16,6 @@ const CardUserComplete = props => {
 		badges,
 		signature,
 		avatar,
-		games,
 		nickname,
 		username,
 		channels,
@@ -43,10 +41,6 @@ const CardUserComplete = props => {
 					</Row>
 					<h3 className='title mt-3 mb-1'>{nickname}</h3>
 					<p className='text-muted text-center mb-3'>@{username}</p>
-					<Row className='justify-content-center'>
-						{/*Game icons*/}
-						<ImagesTooltipPropedGameIcons icons={games} />
-					</Row>
 					<Row className='justify-content-center'>
 						{/* Channels icons */}
 						<ButtonsIconOptioned buttons={channels} />

@@ -76,7 +76,6 @@ import {
 import { PaginationCommonPropedDefault } from './PaginationCommon'
 import { BadgesOptioned, Badges, BadgesPropedSenshi } from './Badges'
 import {
-	ImagesTooltipPropedGameIcons,
 	ImagesTooltipOptioned,
 	ImagesTooltipPropedTabs,
 	ImagesTooltip,
@@ -161,7 +160,6 @@ export const Exports = {
 	BadgesOptioned,
 	Badges,
 	BadgesPropedSenshi,
-	ImagesTooltipPropedGameIcons,
 	ImagesTooltipPropedTabs,
 	ImagesTooltipOptioned,
 	ImagesTooltip,
