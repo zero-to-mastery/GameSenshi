@@ -16,7 +16,7 @@ import { Exports } from 'componentnCompounds'
 
 const {
 	FinalForm,
-	ButtonSubmitPropedRound,
+	ButtonSubmit,
 	FinalTextEmailPropedForgotPassword,
 	FINAL_TEXT_EMAIL,
 	Link,
@@ -82,16 +82,17 @@ const FormResetPassword = props => {
 									</CardBody>
 									<CardFooter className='text-center'>
 										{submitError && !submitting && `Error: ${submitError}`}
-										<ButtonSubmitPropedRound
+										<ButtonSubmit
 											submitRef={submitButton}
 											block
 											color='warning'
 											submitting={submitting}
 											onClick={handleSubmit}
 											size='lg'
+											className='btn-round'
 										>
 											{submitting ? 'Requesting reset' : '	Request Reset'}
-										</ButtonSubmitPropedRound>
+										</ButtonSubmit>
 									</CardFooter>
 								</>
 							)}
