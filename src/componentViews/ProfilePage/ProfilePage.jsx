@@ -24,7 +24,43 @@ const {
 	ButtonGroupProfile,
 } = stopUndefined(Exports)
 
-const profileTabs = [{}]
+const profileTabs = [
+	{
+		[TAB_PANE_PRICE]: '25',
+		[TAB_PANE_NUM_ORDERS]: '12',
+		[TAB_PANE_ICON]: 'Dota2',
+		[TAB_PANE_DESCRIPTION]:
+			'	A veteran in MOBA and FPS games, I can give you a significant boost in ranking mode.',
+	},
+	{
+		[TAB_PANE_PRICE]: '35',
+		[TAB_PANE_NUM_ORDERS]: '25',
+		[TAB_PANE_ICON]: 'PUBG',
+		[TAB_PANE_DESCRIPTION]:
+			'	A veteran in MOBA and FPS games, I can give you a significant boost in ranking mode.',
+	},
+	{
+		[TAB_PANE_PRICE]: '45',
+		[TAB_PANE_NUM_ORDERS]: '11',
+		[TAB_PANE_ICON]: 'LOL',
+		[TAB_PANE_DESCRIPTION]:
+			'	A veteran in MOBA and FPS games, I can give you a significant boost in ranking mode.',
+	},
+	{
+		[TAB_PANE_PRICE]: '50',
+		[TAB_PANE_NUM_ORDERS]: '12',
+		[TAB_PANE_ICON]: 'Apex',
+		[TAB_PANE_DESCRIPTION]:
+			'	A veteran in MOBA and FPS games, I can give you a significant boost in ranking mode.',
+	},
+	{
+		[TAB_PANE_PRICE]: '60',
+		[TAB_PANE_NUM_ORDERS]: '23',
+		[TAB_PANE_ICON]: 'Fortnite',
+		[TAB_PANE_DESCRIPTION]:
+			'	A veteran in MOBA and FPS games, I can give you a significant boost in ranking mode.',
+	},
+]
 
 const TAB_PANE_PRICE = 'price'
 const TAB_PANE_NUM_ORDERS = 'orders'
