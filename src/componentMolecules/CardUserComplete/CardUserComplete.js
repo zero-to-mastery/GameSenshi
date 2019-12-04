@@ -4,7 +4,7 @@ import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 const {
 	BadgesPropedSenshi,
-	IconsImagePropedGameIcons,
+	ImagesTooltipPropedGameIcons,
 	StatusCommonPropedOnline,
 	ButtonSoundStoreSoundPropedGender,
 	CheckBoxIconPropedFavorite,
@@ -45,7 +45,7 @@ const CardUserComplete = props => {
 					<p className='text-muted text-center mb-3'>@{username}</p>
 					<Row className='justify-content-center'>
 						{/*Game icons*/}
-						<IconsImagePropedGameIcons icons={games} />
+						<ImagesTooltipPropedGameIcons icons={games} />
 					</Row>
 					<Row className='justify-content-center'>
 						{/* Channels icons */}

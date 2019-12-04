@@ -15,7 +15,7 @@ import { Exports } from 'componentnCompounds'
 
 const {
 	QuantityProfile,
-	IconsImagePropedTabs,
+	ImagesTooltipPropedTabs,
 	ButtonGroupProfile,
 	ButtonSoundStoreSoundPropedCardUser,
 } = stopUndefined(Exports)
@@ -36,7 +36,7 @@ const SingleTabContent = props => {
 		<Container>
 			<Row className='py-2 d-flex align-items-center'>
 				<Col>
-					<IconsImagePropedTabs icons={icon} />
+					<ImagesTooltipPropedTabs icons={icon} />
 				</Col>
 				<Col>
 					<div style={{ width: '200px' }}>
