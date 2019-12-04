@@ -2,7 +2,7 @@ import {
 	BUTTONS_ICON_IMAGE_ID,
 	BUTTONS_ICON_IMAGE_TEXT,
 	BUTTONS_ICON_IMAGE_ICON,
-} from './ButtonsIconImage'
+} from './ButtonsImage'
 
 import { createGetOptions } from 'utils'
 
@@ -50,6 +50,6 @@ const buttonsIndex = [
 	FB_FS_GAMES_FORTNITE,
 ]
 
-const getButtonsIconImage = createGetOptions(options, BUTTONS_ICON_IMAGE_ID)
+const getButtonsImage = createGetOptions(options, BUTTONS_ICON_IMAGE_ID)
 
-export { buttonsIndex, getButtonsIconImage }
+export { buttonsIndex, getButtonsImage }

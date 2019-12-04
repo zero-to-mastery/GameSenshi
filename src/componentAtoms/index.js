@@ -75,11 +75,11 @@ import {
 import { PaginationCommonPropedDefault } from './PaginationCommon'
 import { BadgesOptioned, Badges, BadgesPropedSenshi } from './Badges'
 import {
-	IconsImagePropedGameIcons,
-	IconsImageOptioned,
-	IconsImagePropedTabs,
-	IconsImage,
-} from './IconsImage'
+	ImagesTooltipPropedGameIcons,
+	ImagesTooltipOptioned,
+	ImagesTooltipPropedTabs,
+	ImagesTooltip,
+} from './ImagesTooltip'
 import { StatusCommonPropedOnline } from './StatusCommon'
 import {
 	ButtonSoundStoreSoundPropedGender,
@@ -160,10 +160,10 @@ export const Exports = {
 	BadgesOptioned,
 	Badges,
 	BadgesPropedSenshi,
-	IconsImagePropedGameIcons,
-	IconsImagePropedTabs,
-	IconsImageOptioned,
-	IconsImage,
+	ImagesTooltipPropedGameIcons,
+	ImagesTooltipPropedTabs,
+	ImagesTooltipOptioned,
+	ImagesTooltip,
 	StatusCommonPropedOnline,
 	ButtonSoundStoreSoundPropedGender,
 	ButtonSoundStoreSoundPropedCardUser,

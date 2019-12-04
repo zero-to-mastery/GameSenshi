@@ -4,7 +4,7 @@ import { TabPaneSettingListStoreUserPropedNotification } from './TabPaneSettingL
 import { ModalImageCropperPropedSettings } from './ModalImageCropper'
 import { CardUserComplete } from './CardUserComplete'
 import { CardProfilePropedIndex, CardProfilePropedSearch } from './CardUser'
-import { ButtonsIconImagePropedIndex } from './ButtonsIconImage'
+import { ButtonsImagePropedIndex } from './ButtonsImage'
 import { PanelSortBy } from './PanelSortBy'
 import { PanelFilterSearch } from './PanelFilterSearch'
 import { ChatContactListWithProps } from './ChatContactList'
@@ -20,7 +20,7 @@ export const Exports = {
 	ModalImageCropperPropedSettings,
 	CardUserComplete,
 	CardProfilePropedIndex,
-	ButtonsIconImagePropedIndex,
+	ButtonsImagePropedIndex,
 	PanelSortBy,
 	PanelFilterSearch,
 	CardProfilePropedSearch,

@@ -49,6 +49,7 @@ const ButtonSound = props => {
 
 	const onPlaying = useCallback(
 		sound => {
+			setLoading(false) // * this line is needed because sometime onLoading doesn't work correctly
 			if (!delay.current) {
 				setTimeout(() => {
 					setPosition(convertToMinutes(sound.position))

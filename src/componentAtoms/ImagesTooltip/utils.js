@@ -2,7 +2,7 @@ import {
 	ICONS_COMMON_ID,
 	ICON_COMMON_PATH,
 	ICONS_COMMON_TOOLTIP,
-} from './IconsImage'
+} from './ImagesTooltip'
 
 import {
 	FB_FS_GAMES_DOTA2,
@@ -43,6 +43,6 @@ const options = [
 	},
 ]
 
-const getIconsImage = createGetOptions(options, ICONS_COMMON_ID)
+const getImagesTooltip = createGetOptions(options, ICONS_COMMON_ID)
 
-export { getIconsImage }
+export { getImagesTooltip }

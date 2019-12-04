@@ -6,7 +6,7 @@ import audioSample from 'assets/audio/sampleVoice.mp3'
 import { SectionDiscover } from './SectionDiscover'
 const {
 	CardProfilePropedIndex,
-	ButtonsIconImagePropedIndex,
+	ButtonsImagePropedIndex,
 	CarouselCommonPropedIndex,
 	Section,
 	WrapperStoreWrapperPropedIndex,
@@ -96,7 +96,7 @@ const IndexPage = () => {
 					</Row>
 					<Row>
 						<Col>
-							<ButtonsIconImagePropedIndex />
+							<ButtonsImagePropedIndex />
 						</Col>
 					</Row>
 				</Container>

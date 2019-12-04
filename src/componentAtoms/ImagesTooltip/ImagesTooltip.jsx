@@ -9,7 +9,7 @@ const ICONS_COMMON_ID = 'id'
 const ICONS_COMMON_TOOLTIP = 'tooltip'
 const ICON_COMMON_PATH = 'path'
 
-const IconsImage = props => {
+const ImagesTooltip = props => {
 	const { icons, className } = props
 
 	return icons.map(icon => {
@@ -18,15 +18,10 @@ const IconsImage = props => {
 			[ICON_COMMON_PATH]: path,
 			[ICONS_COMMON_TOOLTIP]: tooltip,
 		} = icon
-		const id_ = 'IconsImage' + id.replace(/ /g, '')
+		const id_ = 'ImagesTooltip' + id.replace(/ /g, '')
 		return (
 			<div key={id_} className={classnames('m-1', className)}>
-				<Image
-					src={path}
-					alt={tooltip}
-					id={id_}
-					style={{ backgroundColor: 'transparent' }}
-				/>
+				<Image src={path} alt={tooltip} id={id_} color={'transparent'} />
 				<UncontrolledTooltip delay={0} target={id_}>
 					{tooltip}
 				</UncontrolledTooltip>
@@ -35,4 +30,9 @@ const IconsImage = props => {
 	})
 }
 
-export { IconsImage, ICONS_COMMON_ID, ICON_COMMON_PATH, ICONS_COMMON_TOOLTIP }
+export {
+	ImagesTooltip,
+	ICONS_COMMON_ID,
+	ICON_COMMON_PATH,
+	ICONS_COMMON_TOOLTIP,
+}
