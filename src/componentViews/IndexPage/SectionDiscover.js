@@ -1,12 +1,15 @@
-import React, { useState, useCallback } from 'react'
-import { Nav, NavItem, NavLink, TabContent, TabPane, Row } from 'reactstrap'
+import React from 'react'
 import audioSample from 'assets/audio/sampleVoice.mp3'
-import ButtonBase from '@material-ui/core/ButtonBase'
-import classnames from 'classnames'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
+import uniqueRandomArray from 'unique-random-array'
 
-const { CardProfilePropedIndex } = stopUndefined(Exports)
+const {
+	CardProfilePropedIndex,
+	TabCommon,
+	TAB_COMMON_TAB_NAME,
+	TAB_COMMON_TAB_CONTENT,
+} = stopUndefined(Exports)
 
 const CARD_DISCOVER_NAME = 'name'
 const CARD_DISCOVER_IMAGE = 'image'
@@ -50,106 +53,46 @@ const discoverSections = [
 	},
 ]
 
-const Cards = () => {
-	return discoverSections.map(card => {
-		const {
-			[CARD_DISCOVER_NAME]: name,
-			[CARD_DISCOVER_IMAGE]: src,
-			[CARD_DISCOVER_GENDER]: gender,
-			[CARD_DISCOVER_PRICE]: price,
-			[CARD_DISCOVER_AUDIO]: audioSrc,
-			[CARD_DISCOVER_DESCRIPTION]: description,
-		} = card
-		return (
-			<CardProfilePropedIndex
-				key={name}
-				audioSrc={audioSrc}
-				name={name}
-				src={src}
-				gender={gender}
-				price={price}
-				description={description}
-			/>
-		)
-	})
-}
+const Cards = discoverSections.map(card => {
+	const {
+		[CARD_DISCOVER_NAME]: name,
+		[CARD_DISCOVER_IMAGE]: src,
+		[CARD_DISCOVER_GENDER]: gender,
+		[CARD_DISCOVER_PRICE]: price,
+		[CARD_DISCOVER_AUDIO]: audioSrc,
+		[CARD_DISCOVER_DESCRIPTION]: description,
+	} = card
+	return (
+		<CardProfilePropedIndex
+			key={name}
+			audioSrc={audioSrc}
+			name={name}
+			src={src}
+			gender={gender}
+			price={price}
+			description={description}
+		/>
+	)
+})
 
-const tabs = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
+const randomCards = uniqueRandomArray(Cards)
+
+const tabNames = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
+
+const tabs = tabNames.map(tabname => {
+	return {
+		[TAB_COMMON_TAB_NAME]: tabname,
+		[TAB_COMMON_TAB_CONTENT]: [
+			randomCards(),
+			randomCards(),
+			randomCards(),
+			randomCards(),
+		],
+	}
+})
 
 const SectionDiscover = () => {
-	const [tab, setTab] = useState('Dota 2')
-
-	return (
-		<div>
-			<Nav className='nav-pills-neutral' pills role='tablist'>
-				{tabs.map(tab_ => {
-					const toggleTabs = useCallback(
-						e => {
-							e.preventDefault()
-							setTab(tab_)
-						},
-						[tab_]
-					)
-
-					return (
-						<NavItem>
-							<NavLink
-								className={classnames({
-									active: tab === tab_,
-								})}
-								onClick={toggleTabs}
-								tag={ButtonBase}
-							>
-								{tab_}
-							</NavLink>
-						</NavItem>
-					)
-				})}
-			</Nav>
-			<TabContent className='tab-space' activeTab={tab}>
-				<TabPane tabId='Dota 2'>
-					<Row>
-						<Cards />
-					</Row>
-					<Row>
-						<Cards />
-					</Row>
-				</TabPane>
-				<TabPane tabId='PUBG'>
-					<Row>
-						<Cards />
-					</Row>
-					<Row>
-						<Cards />
-					</Row>
-				</TabPane>
-				<TabPane tabId='LOL'>
-					<Row>
-						<Cards />
-					</Row>
-					<Row>
-						<Cards />
-					</Row>
-				</TabPane>
-				<TabPane tabId='Apex Legends'>
-					<Row>
-						<Cards />
-					</Row>
-					<Row>
-						<Cards />
-					</Row>{' '}
-				</TabPane>
-				<TabPane tabId='Fortnite'>
-					<Row>
-						<Cards />
-					</Row>
-					<Row>
-						<Cards />
-					</Row>
-				</TabPane>
-			</TabContent>
-		</div>
-	)
+	return <TabCommon tabs={tabs} />
 }
 
 export { SectionDiscover }

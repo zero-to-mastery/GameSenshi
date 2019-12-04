@@ -102,6 +102,11 @@ import {
 	WrapperStoreWrapperPropedCheckout,
 } from './Wrapper'
 import { CardUserSimple } from './CardUserSimple'
+import {
+	TabCommon,
+	TAB_COMMON_TAB_NAME,
+	TAB_COMMON_TAB_CONTENT,
+} from './TabCommon'
 
 export const Exports = {
 	...ExportProtons,
@@ -193,4 +198,7 @@ export const Exports = {
 	TextIconPropedProfileComments,
 	CardUserSimple,
 	ButtonGroupProfile,
+	TabCommon,
+	TAB_COMMON_TAB_NAME,
+	TAB_COMMON_TAB_CONTENT,
 }
