@@ -101,6 +101,7 @@
 		"react-tagsinput": "^3.19.0",
 		"reactstrap": "^8.1.1",
 		"slick-carousel": "^1.8.1",
+		"unique-random-array": "^2.0.0",
 		"unstated": "^2.1.1",
 		"uuid": "^3.3.3",
 		"widths": "0.0.2",

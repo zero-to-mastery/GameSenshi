@@ -22,7 +22,7 @@ import { Exports } from 'componentnCompounds'
 const {
 	ButtonsIconPropedAuth,
 	FinalForm,
-	ButtonSubmitPropedRound,
+	ButtonSubmit,
 	FinalTextEmailPropedSignIn,
 	FINAL_TEXT_EMAIL,
 	FinalTextPasswordPropedSignIn,
@@ -126,16 +126,17 @@ const FormSignIn = props => {
 							</CardBody>
 							<CardFooter className='text-center'>
 								{submitError && !submitting && `Error: ${submitError}`}
-								<ButtonSubmitPropedRound
+								<ButtonSubmit
 									submitRef={submitButton}
 									block
 									submitting={submitting}
 									onClick={handleSubmit}
 									size='lg'
 									color='primary'
+									className='btn-round'
 								>
 									{submitting ? 'Signing In' : 'Sign In'}
-								</ButtonSubmitPropedRound>
+								</ButtonSubmit>
 							</CardFooter>
 							<div className='pull-left ml-3 mb-3'>
 								<h6>

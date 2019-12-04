@@ -1,0 +1,9 @@
+.btn-round.btn-round {
+	border-width: 1px;
+	border-radius: 30px;
+}
+
+.btn.btn {
+	border-width: 2px;
+	border-radius: 0.4285rem;
+}

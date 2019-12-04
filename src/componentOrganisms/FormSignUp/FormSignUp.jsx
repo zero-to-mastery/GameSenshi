@@ -19,7 +19,7 @@ import { Exports } from 'componentnCompounds'
 const {
 	ButtonsIconPropedAuth,
 	FinalForm,
-	ButtonSubmitPropedRound,
+	ButtonSubmit,
 	FinalTextEmailPropedSignUp,
 	FINAL_TEXT_EMAIL,
 	FinalTextPasswordPropedSignUp,
@@ -81,15 +81,16 @@ const FormSignUp = props => {
 							<Row className='d-flex'>
 								<Col xs='2' />
 								<Col className='px-0 d-flex justify-content-center'>
-									<ButtonSubmitPropedRound
+									<ButtonSubmit
 										submitRef={submitButton}
 										submitting={submitting}
 										onClick={handleSubmit}
 										size='lg'
 										color='primary'
+										className='btn-round'
 									>
 										{submitting ? 'Signing Up' : 'Sign Up'}
-									</ButtonSubmitPropedRound>
+									</ButtonSubmit>
 								</Col>
 								<Col xs='2' />
 							</Row>
