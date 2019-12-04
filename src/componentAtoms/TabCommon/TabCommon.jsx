@@ -38,7 +38,7 @@ const TabCommon = props => {
 					)
 				})}
 			</Nav>
-			<TabContent className='tab-space' activeTab={tabName}>
+			<TabContent activeTab={tabName}>
 				{tabs.map(tab => {
 					const {
 						[TAB_COMMON_TAB_NAME]: tabName_,
