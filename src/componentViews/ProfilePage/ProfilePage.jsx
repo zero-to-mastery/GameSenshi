@@ -14,7 +14,6 @@ const {
 	CommentWithPaginationPropedDefault,
 	Section,
 	WrapperStoreWrapperPropedProfile,
-	TabsProfile,
 	TabCommon,
 	TAB_COMMON_TAB_NAME,
 	TAB_COMMON_TAB_CONTENT,
