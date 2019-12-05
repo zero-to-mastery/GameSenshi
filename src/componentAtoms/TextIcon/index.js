@@ -77,20 +77,6 @@ const TextIconPropedRandomPlayer = props => {
 	)
 }
 
-const TextIconPropedProfileName = props => {
-	const { className, ...otherProps } = props
-	return (
-		<TextIconPropedProfile
-			className={classnames('text-warning', className)}
-			aria-label='discover'
-			emoji='🧑'
-			{...otherProps}
-		>
-			Profile
-		</TextIconPropedProfile>
-	)
-}
-
 const TextIconPropedProfileGift = props => {
 	const { className, ...otherProps } = props
 	return (
@@ -137,7 +123,6 @@ export {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
-	TextIconPropedProfileName,
 	TextIconPropedProfileGift,
 	TextIconPropedProfileGallery,
 	TextIconPropedProfileComments,

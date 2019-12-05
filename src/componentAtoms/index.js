@@ -48,7 +48,7 @@ import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbar } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
-import { ButtonGroupProfile } from './ButtonWithIcon'
+import { ButtonGroupProfile } from './ButtonsIcon'
 import { QuantityProfile } from './Quantity'
 import {
 	CarouselCommonPropedProfile,
@@ -58,7 +58,6 @@ import {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
-	TextIconPropedProfileName,
 	TextIconPropedProfileGift,
 	TextIconPropedProfileGallery,
 	TextIconPropedProfileComments,
@@ -190,7 +189,6 @@ export const Exports = {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
-	TextIconPropedProfileName,
 	TextIconPropedProfileGift,
 	TextIconPropedProfileGallery,
 	TextIconPropedProfileComments,

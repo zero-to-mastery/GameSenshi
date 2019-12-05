@@ -5,6 +5,8 @@ import {
 	BUTTONS_ICON_COLOR,
 	BUTTONS_ICON_TOOLTIP,
 	BUTTONS_ICON_HREF,
+	BUTTONS_ICON_LABEL,
+	BUTTONS_ICON_CLASS_NAME,
 } from './ButtonsIcon'
 import reactElementToJSXString from 'react-element-to-jsx-string'
 import { setLastRoute, toIndexIfPublic } from 'routes'
@@ -27,39 +29,66 @@ const options = [
 		[BUTTONS_ICON_ICON]: 'fab fa-google',
 		[BUTTONS_ICON_COLOR]: 'google',
 		[BUTTONS_ICON_TOOLTIP]: 'Sign in with Google!',
+		[BUTTONS_ICON_CLASS_NAME]: 'btn-icon btn-round',
 	},
 	{
 		[BUTTONS_ICON_ID]: FACEBOOK,
 		[BUTTONS_ICON_ICON]: 'fab fa-facebook-square',
 		[BUTTONS_ICON_COLOR]: 'facebook',
 		[BUTTONS_ICON_TOOLTIP]: 'Sign in with Facebook!',
+		[BUTTONS_ICON_CLASS_NAME]: 'btn-icon btn-round',
 	},
 	{
 		[BUTTONS_ICON_ID]: TWITCH,
 		[BUTTONS_ICON_ICON]: 'fab fa-twitch',
 		[BUTTONS_ICON_COLOR]: 'twitch',
 		[BUTTONS_ICON_TOOLTIP]: 'Sign in with Twitch!',
+		[BUTTONS_ICON_CLASS_NAME]: 'btn-icon btn-round',
 	},
 	{
 		[BUTTONS_ICON_ID]: FB_FS_CHANNELS_FACEBOOK,
 		[BUTTONS_ICON_ICON]: 'fab fa-facebook-f font-1-6',
 		[BUTTONS_ICON_COLOR]: 'facebook',
 		[BUTTONS_ICON_TOOLTIP]: 'Follow me on my Facebook!',
+		[BUTTONS_ICON_CLASS_NAME]: 'btn-icon btn-round',
 	},
 	{
 		[BUTTONS_ICON_ID]: FB_FS_CHANNELS_TWITCH,
 		[BUTTONS_ICON_ICON]: 'fab fa-twitch font-1-6',
 		[BUTTONS_ICON_COLOR]: 'twitch',
 		[BUTTONS_ICON_TOOLTIP]: 'Subscribe to my Twitch channel!',
+		[BUTTONS_ICON_CLASS_NAME]: 'btn-icon btn-round',
 	},
 	{
 		[BUTTONS_ICON_ID]: FB_FS_CHANNELS_YOUTUBE,
 		[BUTTONS_ICON_ICON]: 'ml-n1 fab fa-youtube font-1-6',
 		[BUTTONS_ICON_COLOR]: 'youtube',
 		[BUTTONS_ICON_TOOLTIP]: 'Subscribe to my Youtube channel!',
+		[BUTTONS_ICON_CLASS_NAME]: 'btn-icon btn-round',
 	},
 ]
 
+const profileButtonChat = [
+	{
+		[BUTTONS_ICON_ID]: 'chat',
+		[BUTTONS_ICON_ICON]: 'tim-icons icon-chat-33',
+		[BUTTONS_ICON_COLOR]: 'success',
+		[BUTTONS_ICON_TOOLTIP]: 'Chat',
+		[BUTTONS_ICON_LABEL]: 'Chat',
+		[BUTTONS_ICON_CLASS_NAME]: 'btn',
+	},
+]
+
+const profileButtonAddToCart = [
+	{
+		[BUTTONS_ICON_ID]: 'add-to-cart',
+		[BUTTONS_ICON_ICON]: 'tim-icons icon-cart',
+		[BUTTONS_ICON_COLOR]: 'warning',
+		[BUTTONS_ICON_TOOLTIP]: 'Add to cart',
+		[BUTTONS_ICON_LABEL]: 'Add to cart',
+		[BUTTONS_ICON_CLASS_NAME]: 'btn',
+	},
+]
 const buttonIconAuthOnClick = lastLocation => {
 	return (e, button) => {
 		const { [BUTTONS_ICON_ID]: id } = button
@@ -103,4 +132,10 @@ const getButtonsIcon = buttons => {
 	return getButtons
 }
 
-export { buttonIconAuthOnClick, getButtonsIcon, buttonIconAuths }
+export {
+	buttonIconAuthOnClick,
+	getButtonsIcon,
+	buttonIconAuths,
+	profileButtonChat,
+	profileButtonAddToCart,
+}
