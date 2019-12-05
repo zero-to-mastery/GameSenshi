@@ -30,7 +30,8 @@ const DropdownMenuNavbar = props => {
 							tag={Link}
 							className='text-dark mt-0 py-1 px-4'
 							style={{ fontSize: '1rem' }}
-							onClick={onClick}>
+							onClick={onClick}
+						>
 							{body}
 						</DropdownItem>
 						{divider && <DropdownItem divider />}

@@ -34,7 +34,8 @@ const TabListVertical = props => {
 								onClick={onClick}
 								to={to}
 								tag={Link}
-								key={name}>
+								key={name}
+							>
 								<i className={`tim-icons ${icon}`} /> {name}
 							</NavLink>
 						</NavItem>

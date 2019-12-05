@@ -6,7 +6,13 @@ const WRAPPER_STATE_OFFSET_TOP = 'offsetTop'
 const Wrapper = props => {
 	const wrapper = useRef(null)
 
-	const { bodyClassName, className, children, [WRAPPER_STATE_OFFSET_TOP]: offsetTop, ...otherProps } = props
+	const {
+		bodyClassName,
+		className,
+		children,
+		[WRAPPER_STATE_OFFSET_TOP]: offsetTop,
+		...otherProps
+	} = props
 
 	useEffect(() => {
 		document.body.classList.add(bodyClassName)
@@ -19,7 +25,11 @@ const Wrapper = props => {
 	}, [])
 
 	return (
-		<div className={classnames('wrapper pt-2 pb-5', className)} ref={wrapper} {...otherProps}>
+		<div
+			className={classnames('wrapper pt-2 pb-5', className)}
+			ref={wrapper}
+			{...otherProps}
+		>
 			<div className='w-100' style={{ height: offsetTop }} />
 			{children}
 		</div>

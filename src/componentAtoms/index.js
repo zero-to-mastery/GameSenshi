@@ -65,12 +65,12 @@ import {
 
 import {
 	CommentCommonPropedDefault,
-	ID,
-	NAME,
-	POSTED_TIME,
-	AVATAR,
-	BODY,
-	NUM_COMMENTS,
+	COMMENT_ID,
+	COMMENT_NAME,
+	COMMENT_POSTED_TIME,
+	COMMENT_AVATAR,
+	COMMENT_BODY,
+	COMMENT_NUM_COMMENTS,
 } from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
 import { BadgesOptioned, Badges, BadgesPropedSenshi } from './Badges'
@@ -169,12 +169,12 @@ export const Exports = {
 	ButtonSoundStoreSoundPropedCardUser,
 	CommentCommonPropedDefault,
 	PaginationCommonPropedDefault,
-	ID,
-	NAME,
-	POSTED_TIME,
-	AVATAR,
-	BODY,
-	NUM_COMMENTS,
+	COMMENT_ID,
+	COMMENT_NAME,
+	COMMENT_POSTED_TIME,
+	COMMENT_AVATAR,
+	COMMENT_BODY,
+	COMMENT_NUM_COMMENTS,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 	CarouselCommonPropedProfile,

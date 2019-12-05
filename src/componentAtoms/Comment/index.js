@@ -1,6 +1,13 @@
 import React from 'react'
 import { CommentsList } from './Comment'
-import { ID, NAME, POSTED_TIME, AVATAR, BODY, NUM_COMMENTS } from './Comment'
+import {
+	COMMENT_ID,
+	COMMENT_NAME,
+	COMMENT_POSTED_TIME,
+	COMMENT_AVATAR,
+	COMMENT_BODY,
+	COMMENT_NUM_COMMENTS,
+} from './Comment'
 
 const CommentCommonPropedDefault = props => {
 	const { comments } = props
@@ -9,10 +16,10 @@ const CommentCommonPropedDefault = props => {
 
 export {
 	CommentCommonPropedDefault,
-	ID,
-	NAME,
-	POSTED_TIME,
-	AVATAR,
-	BODY,
-	NUM_COMMENTS,
+	COMMENT_ID,
+	COMMENT_NAME,
+	COMMENT_POSTED_TIME,
+	COMMENT_AVATAR,
+	COMMENT_BODY,
+	COMMENT_NUM_COMMENTS,
 }

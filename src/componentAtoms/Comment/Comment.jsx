@@ -5,24 +5,24 @@ import { stopUndefined } from 'utils'
 
 const { Button } = stopUndefined(Exports)
 
-const ID = 'id'
-const NAME = 'name'
-const POSTED_TIME = 'postedTime'
-const AVATAR = 'avatar'
-const BODY = 'body'
-const NUM_COMMENTS = 'numComments'
+const COMMENT_ID = 'id'
+const COMMENT_NAME = 'name'
+const COMMENT_POSTED_TIME = 'postedTime'
+const COMMENT_AVATAR = 'avatar'
+const COMMENT_BODY = 'body'
+const COMMENT_NUM_COMMENTS = 'numComments'
 
 const Comments = props => {
 	const { comments } = props
 	const comments_ = comments || []
 	return comments_.map((comment, i) => {
 		const {
-			[ID]: id,
-			[NAME]: name,
-			[POSTED_TIME]: time,
-			[AVATAR]: src,
-			[BODY]: body,
-			[NUM_COMMENTS]: commentsNumber,
+			[COMMENT_ID]: id,
+			[COMMENT_NAME]: name,
+			[COMMENT_POSTED_TIME]: time,
+			[COMMENT_AVATAR]: src,
+			[COMMENT_BODY]: body,
+			[COMMENT_NUM_COMMENTS]: commentsNumber,
 		} = comment
 		return (
 			<Fragment key={id}>
@@ -134,11 +134,11 @@ const CommentsList = props => {
 
 export {
 	Comment,
-	NAME,
-	POSTED_TIME,
-	AVATAR,
-	BODY,
-	NUM_COMMENTS,
-	ID,
+	COMMENT_NAME,
+	COMMENT_POSTED_TIME,
+	COMMENT_AVATAR,
+	COMMENT_BODY,
+	COMMENT_NUM_COMMENTS,
+	COMMENT_ID,
 	CommentsList,
 }

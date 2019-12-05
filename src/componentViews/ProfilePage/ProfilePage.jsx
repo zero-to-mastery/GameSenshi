@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
@@ -74,7 +74,7 @@ const TabsContent = profileTabs.map(tab => {
 		[TAB_PANE_DESCRIPTION]: description,
 	} = tab
 	return (
-		<Container>
+		<Container style={{ zIndex: 99 }}>
 			<Row className='py-2 d-flex align-items-center'>
 				<Col>
 					<ImagesTooltipPropedTabs icons={icon} />

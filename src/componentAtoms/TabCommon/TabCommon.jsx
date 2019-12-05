@@ -24,7 +24,7 @@ const TabCommon = props => {
 					)
 
 					return (
-						<NavItem key={tabName_}>
+						<NavItem style={{ zIndex: 99 }} key={tabName_}>
 							<NavLink
 								className={classnames({
 									active: tabName === tabName_,

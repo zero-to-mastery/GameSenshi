@@ -4,21 +4,23 @@ import {
 	CAROUSEL_COMMON_YOUTUBE,
 } from './CarouselCommon'
 
+const getProfileImage = name => require(`assets/img/${name}.jpg`)
+
 const itemsProfile = [
 	{
-		[CAROUSEL_COMMON_IMAGE]: require('assets/img/denys.jpg'),
+		[CAROUSEL_COMMON_IMAGE]: getProfileImage('denys'),
 	},
 	{
 		[CAROUSEL_COMMON_YOUTUBE]: 'OGKbzhME3UI',
 	},
 	{
-		[CAROUSEL_COMMON_IMAGE]: require('assets/img/mark-finn.jpg'),
+		[CAROUSEL_COMMON_IMAGE]: getProfileImage('mark-finn'),
 	},
 	{
 		[CAROUSEL_COMMON_YOUTUBE]: '5HeVYC42grI',
 	},
 	{
-		[CAROUSEL_COMMON_IMAGE]: require('assets/img/fabien-bazanegue.jpg'),
+		[CAROUSEL_COMMON_IMAGE]: getProfileImage('fabien-bazanegue'),
 	},
 	{
 		[CAROUSEL_COMMON_YOUTUBE]: 'vtjorh21b8Q',
