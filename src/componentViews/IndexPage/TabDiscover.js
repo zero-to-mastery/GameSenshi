@@ -75,8 +75,7 @@ const Cards = discoverSections.map(card => {
 		/>
 	)
 })
-
-const tabNames = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
+const tabNames = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 
 const tabs = tabNames.map(tabname => {
 	return {

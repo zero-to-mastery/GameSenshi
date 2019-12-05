@@ -10,6 +10,8 @@ const BUTTONS_ICON_ICON = 'icon'
 const BUTTONS_ICON_COLOR = 'color'
 const BUTTONS_ICON_TOOLTIP = 'tooltip'
 const BUTTONS_ICON_HREF = 'href'
+const BUTTONS_ICON_LABEL = 'label'
+const BUTTONS_ICON_CLASS_NAME = 'class'
 
 const ButtonsIcon = props => {
 	const { onClick, buttons, className } = props
@@ -23,6 +25,8 @@ const ButtonsIcon = props => {
 					[BUTTONS_ICON_COLOR]: color,
 					[BUTTONS_ICON_TOOLTIP]: tooltip,
 					[BUTTONS_ICON_HREF]: href,
+					[BUTTONS_ICON_LABEL]: label,
+					[BUTTONS_ICON_CLASS_NAME]: className,
 				} = button
 
 				const href_ = href || ''
@@ -34,12 +38,13 @@ const ButtonsIcon = props => {
 					[onClick, button]
 				)
 				const id_ = 'ButtonsIcon' + id
-
+				const baseStyle_ = label ? { flex: 1 } : null
 				return (
 					<Fragment key={id_}>
 						<Button
 							size='lg'
-							className='btn-icon btn-round'
+							className={className}
+							baseStyle={baseStyle_}
 							color={color}
 							href={href_}
 							id={id_}
@@ -47,7 +52,7 @@ const ButtonsIcon = props => {
 							rel='noopener noreferrer'
 							onClick={onClick_}
 						>
-							<i className={icon} />
+							{label && label} <i className={icon} />
 						</Button>
 						<UncontrolledTooltip delay={0} target={id_}>
 							{tooltip}
@@ -66,4 +71,6 @@ export {
 	BUTTONS_ICON_COLOR,
 	BUTTONS_ICON_TOOLTIP,
 	BUTTONS_ICON_HREF,
+	BUTTONS_ICON_LABEL,
+	BUTTONS_ICON_CLASS_NAME,
 }

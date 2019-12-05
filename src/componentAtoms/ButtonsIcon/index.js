@@ -6,7 +6,13 @@ import {
 	BUTTONS_ICON_COLOR,
 	BUTTONS_ICON_TOOLTIP,
 } from './ButtonsIcon'
-import { buttonIconAuthOnClick, buttonIconAuths, getButtonsIcon } from './utils'
+import {
+	buttonIconAuthOnClick,
+	buttonIconAuths,
+	getButtonsIcon,
+	profileButtonChat,
+	profileButtonAddToCart,
+} from './utils'
 // routing
 import { withLastLocation } from 'routes'
 
@@ -30,6 +36,37 @@ const ButtonsIconPropedAuth = withLastLocation(props => {
 	)
 })
 
+const ButtonIconChat = props => {
+	const { ...otherProps } = props
+	return (
+		<ButtonsIcon
+			buttons={profileButtonChat}
+			onClick={() => {}}
+			{...otherProps}
+		/>
+	)
+}
+
+const ButtonIconAddToCart = props => {
+	const { ...otherProps } = props
+	return (
+		<ButtonsIcon
+			buttons={profileButtonAddToCart}
+			onClick={() => {}}
+			{...otherProps}
+		/>
+	)
+}
+
+const ButtonGroupProfile = () => {
+	return (
+		<div className='d-flex flex-column'>
+			<ButtonIconChat />
+			<ButtonIconAddToCart />
+		</div>
+	)
+}
+
 export {
 	ButtonsIconPropedAuth,
 	ButtonsIconOptioned,
@@ -37,4 +74,5 @@ export {
 	BUTTONS_ICON_ICON,
 	BUTTONS_ICON_COLOR,
 	BUTTONS_ICON_TOOLTIP,
+	ButtonGroupProfile,
 }

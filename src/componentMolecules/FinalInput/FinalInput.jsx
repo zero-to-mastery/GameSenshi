@@ -144,7 +144,11 @@ const FinalInput = memo(props => {
 										const timeOutID = setTimeout(() => {
 											serverValidation(value || '').then(validationResult => {
 												// do not close run this if user resume typing before server validation end
-												generateTextListWithState(validationResult, resolve, timeOutID)
+												generateTextListWithState(
+													validationResult,
+													resolve,
+													timeOutID
+												)
 											})
 										}, DELAY2)
 										state.timeOutID = timeOutID
@@ -237,7 +241,11 @@ const FinalInput = memo(props => {
 					((touched && !active) || (active && modified))
 
 				const hasSuccess =
-					!submitting && !hideSuccess && !spinner && !errorMessages && ((touched && !active) || (active && modified))
+					!submitting &&
+					!hideSuccess &&
+					!spinner &&
+					!errorMessages &&
+					((touched && !active) || (active && modified))
 
 				const result = value_ || input.value // the input.value has no purpose other than suppress uncontrollable to controllable warning
 				return (
@@ -261,7 +269,9 @@ const FinalInput = memo(props => {
 									'icon-check-2': valid,
 									'icon-alert-circle-exc': !valid,
 								})}
-								messages={(!dirtySinceLastSubmit && submitError) || filteredMessages}
+								messages={
+									(!dirtySinceLastSubmit && submitError) || filteredMessages
+								}
 								isOpen={
 									(!onlyShowErrorAfterSubmit || submitFailed) &&
 									filteredMessages.length > 0 &&
@@ -273,12 +283,28 @@ const FinalInput = memo(props => {
 							/>
 						</Component>
 						{popoverMessages_.length > 0 && (
-							<PopoverCommon isOpen={active} target={name} spinner={spinner} header={`${name} rules`}>
+							<PopoverCommon
+								isOpen={active}
+								target={name}
+								spinner={spinner}
+								header={`${name} rules`}
+							>
 								<ul>
 									{popoverMessages_.map(errorMessage => {
 										return (
-											<li className={popoverFailedItems[errorMessage] ? 'text-dark' : 'text-info'} key={errorMessage}>
-												{popoverFailedItems[errorMessage] ? errorMessage : <del>{errorMessage}</del>}
+											<li
+												className={
+													popoverFailedItems[errorMessage]
+														? 'text-dark'
+														: 'text-info'
+												}
+												key={errorMessage}
+											>
+												{popoverFailedItems[errorMessage] ? (
+													errorMessage
+												) : (
+													<del>{errorMessage}</del>
+												)}
 											</li>
 										)
 									})}
