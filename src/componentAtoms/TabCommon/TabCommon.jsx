@@ -46,7 +46,7 @@ const TabCommon = props => {
 					} = tab
 					return (
 						<TabPane tabId={tabName_} key={tabName_}>
-							<Row>{tabContent}</Row>
+							{tabContent}
 						</TabPane>
 					)
 				})}

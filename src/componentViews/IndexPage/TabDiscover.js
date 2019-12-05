@@ -2,10 +2,11 @@ import React from 'react'
 import audioSample from 'assets/audio/sampleVoice.mp3'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
-import uniqueRandomArray from 'unique-random-array'
+import { Row } from 'reactstrap'
+import suffle from 'array-shuffle'
 
 const {
-	CardProfilePropedIndex,
+	CardUserPropedDiscover,
 	TabCommon,
 	TAB_COMMON_TAB_NAME,
 	TAB_COMMON_TAB_CONTENT,
@@ -63,7 +64,7 @@ const Cards = discoverSections.map(card => {
 		[CARD_DISCOVER_DESCRIPTION]: description,
 	} = card
 	return (
-		<CardProfilePropedIndex
+		<CardUserPropedDiscover
 			key={name}
 			audioSrc={audioSrc}
 			name={name}
@@ -75,24 +76,17 @@ const Cards = discoverSections.map(card => {
 	)
 })
 
-const randomCards = uniqueRandomArray(Cards)
-
 const tabNames = ['Dota 2', 'PUBG', 'LOL', 'Apex Legends', 'Fortnite']
 
 const tabs = tabNames.map(tabname => {
 	return {
 		[TAB_COMMON_TAB_NAME]: tabname,
-		[TAB_COMMON_TAB_CONTENT]: [
-			randomCards(),
-			randomCards(),
-			randomCards(),
-			randomCards(),
-		],
+		[TAB_COMMON_TAB_CONTENT]: <Row>{suffle(Cards)}</Row>,
 	}
 })
 
-const SectionDiscover = () => {
+const TabDiscover = () => {
 	return <TabCommon tabs={tabs} />
 }
 
-export { SectionDiscover }
+export { TabDiscover }

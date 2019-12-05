@@ -3,9 +3,9 @@ import { stopUndefined } from 'utils'
 import { Exports } from 'componentpMultiOrganisms'
 import { Container, Row, Col } from 'reactstrap'
 import audioSample from 'assets/audio/sampleVoice.mp3'
-import { SectionDiscover } from './SectionDiscover'
+import { TabDiscover } from './TabDiscover'
 const {
-	CardProfilePropedIndex,
+	CardUserPropedDiscover,
 	ButtonsImagePropedIndex,
 	CarouselCommonPropedIndex,
 	Section,
@@ -69,7 +69,7 @@ const Cards = () => {
 			[CARD_PROFILE_DESCRIPTION]: description,
 		} = card
 		return (
-			<CardProfilePropedIndex
+			<CardUserPropedDiscover
 				key={name}
 				audioSrc={audioSrc}
 				name={name}
@@ -125,7 +125,7 @@ const IndexPage = () => {
 			<Section>
 				<Container className={containerClass}>
 					<TextIconPropedRandomPlayer />
-					<SectionDiscover />
+					<TabDiscover />
 				</Container>
 			</Section>
 		</WrapperStoreWrapperPropedIndex>
