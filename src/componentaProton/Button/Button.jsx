@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { Button as Button1 } from 'reactstrap'
+import { Button as ButtonRS } from 'reactstrap'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import classnames from 'classnames'
 import styles from './styles.module.css'
@@ -16,7 +16,7 @@ const Button = forwardRef((props, ref) => {
 			})}
 			style={baseStyle}
 		>
-			<Button1
+			<ButtonRS
 				ref={ref}
 				style={baseStyle}
 				className={className}

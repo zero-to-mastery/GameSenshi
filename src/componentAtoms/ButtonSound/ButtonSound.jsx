@@ -126,29 +126,24 @@ const ButtonSound = props => {
 	}, [])
 
 	return (
-		<>
-			<Button
-				baseClass='w-100 justify-content-start'
-				baseStyle={{ maxWidth: 100 }}
-				className='btn-round btn p-1 w-100'
-				color={color}
-				type='button'
-				onClick={onClick}
-			>
-				<Container>
-					<Row className='align-items-center'>
-						<Col
-							xs='4'
-							className={classnames('p-0', { [styles.hide]: mobile })}
-						>
-							<Icon />
-						</Col>
-						<Col className={classnames('p-0', { [styles.play]: mobile })}>
-							{loading ? Spinner : playStatus === STOPPED ? duration : position}
-						</Col>
-					</Row>
-				</Container>
-			</Button>
+		<Button
+			baseClass='w-100 justify-content-start'
+			baseStyle={{ maxWidth: 100 }}
+			className='btn-round btn p-1 w-100'
+			color={color}
+			type='button'
+			onClick={onClick}
+		>
+			<Container>
+				<Row className='align-items-center'>
+					<Col xs='4' className={classnames('p-0', { [styles.hide]: mobile })}>
+						<Icon />
+					</Col>
+					<Col className={classnames('p-0', { [styles.play]: mobile })}>
+						{loading ? Spinner : playStatus === STOPPED ? duration : position}
+					</Col>
+				</Row>
+			</Container>
 			<Sound
 				url={url}
 				ignoreMobileRestrictions
@@ -158,7 +153,7 @@ const ButtonSound = props => {
 				onPlaying={onPlaying}
 				onFinishedPlaying={onFinishedPlaying}
 			/>
-		</>
+		</Button>
 	)
 }
 

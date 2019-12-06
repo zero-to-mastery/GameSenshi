@@ -36,7 +36,7 @@ const CardUser = props => {
 		<Col
 			xs='6'
 			lg='3'
-			className='pl-1'
+			className='p-2'
 			onMouseEnter={setHoverTrue}
 			onMouseLeave={setHoverFalse}
 			onMouseMove={setHoverTrue}
@@ -48,7 +48,7 @@ const CardUser = props => {
 				rel='noopener noreferrer'
 				className='w-100'
 			>
-				<Card className='card-profile m-2 bg-blue-gradient'>
+				<Card className='card-profile bg-blue-gradient'>
 					<div
 						className={classnames('card-image', styles.clear, {
 							[styles.zoomIn]: hover,
@@ -87,6 +87,10 @@ const CardUser = props => {
 								xs='8'
 								className={classnames('pr-0', styles.sound)}
 								align='left'
+								onClick={e => {
+									e.preventDefault()
+									e.stopPropagation()
+								}}
 							>
 								<ButtonSoundStoreSoundPropedCardUser
 									gender={gender}
