@@ -1,48 +1,24 @@
-import React, { useState, useCallback } from 'react'
+import React from 'react'
 import classnames from 'classnames'
-import Image from 'material-ui-image'
+import { Exports } from 'componentaProton'
+import { stopUndefined } from 'utils'
+const { Icon } = stopUndefined(Exports)
 
 const TextIcon = props => {
-	const [error, setError] = useState(false)
-
 	const {
 		h: H,
 		className,
 		children,
-		src,
-		iconHeight,
-		iconWidth,
+		image,
+		icon,
 		emoji,
-		fallbackToEmoji,
-		['aria-label']: aria,
+		aria,
 		...otherProps
 	} = props
 
-	const onError = useCallback(() => {
-		setError(true)
-	}, [])
-
 	return (
 		<H className={classnames('d-flex', className)} {...otherProps}>
-			{!emoji && !error && (
-				<div className='mr-2'>
-					<Image
-						src={src}
-						onError={onError}
-						color='transparent'
-						style={{
-							width: iconWidth,
-							height: iconHeight,
-							padding: 0,
-						}}
-					/>
-				</div>
-			)}
-			{(emoji || (fallbackToEmoji && error)) && (
-				<span role='img' aria-label={aria}>
-					{emoji}
-				</span>
-			)}
+			<Icon image={image} emoji={emoji} icon={icon} aria-label={aria} />
 			{children}
 		</H>
 	)

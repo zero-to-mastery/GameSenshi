@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import styles from './styles.module.css'
 
 const Button = forwardRef((props, ref) => {
-	const { baseClass, baseStyle, className, ...otherProps } = props
+	const { baseClass, baseStyle, className, tag, ...otherProps } = props
 	const className_ = className || ''
 	return (
 		<ButtonBase
@@ -18,9 +18,10 @@ const Button = forwardRef((props, ref) => {
 		>
 			<ButtonRS
 				ref={ref}
-				style={baseStyle}
-				className={className}
+				tag={tag}
+				className={classnames(className)}
 				{...otherProps}
+				{...(tag && { baseClass, baseStyle })}
 			/>
 		</ButtonBase>
 	)

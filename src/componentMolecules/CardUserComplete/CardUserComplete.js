@@ -8,7 +8,7 @@ const {
 	ButtonSoundStoreSoundPropedGender,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
-	ButtonsIconOptioned,
+	ButtonsCommonOptioned,
 } = stopUndefined(Exports)
 
 const CardUserComplete = props => {
@@ -43,7 +43,7 @@ const CardUserComplete = props => {
 					<p className='text-muted text-center mb-3'>@{username}</p>
 					<Row className='justify-content-center'>
 						{/* Channels icons */}
-						<ButtonsIconOptioned buttons={channels} />
+						<ButtonsCommonOptioned buttons={channels} />
 					</Row>
 				</CardHeader>
 				<CardBody>

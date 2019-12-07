@@ -9,7 +9,6 @@ const TextIconPropedIndex = props => {
 		<Row>
 			<Col>
 				<TextIcon
-					src={'none'}
 					h='h1'
 					className={classnames('font-weight-bold title mt-3 mb-3', className)}
 					{...otherProps}
@@ -25,7 +24,6 @@ const TextIconPropedProfile = props => {
 		<Row>
 			<Col>
 				<TextIcon
-					src={'none'}
 					h='h1'
 					className={classnames('font-weight-bold title mt-3 mb-3', className)}
 					{...otherProps}
@@ -40,7 +38,7 @@ const TextIconPropedPopularPlayer = props => {
 	return (
 		<TextIconPropedIndex
 			className={classnames('text-primary', className)}
-			aria-label='recommended player'
+			aria='recommended player'
 			emoji='💖'
 			{...otherProps}
 		>
@@ -54,7 +52,7 @@ const TextIconPropedNewPlayer = props => {
 	return (
 		<TextIconPropedIndex
 			className={classnames('text-success', className)}
-			aria-label='new player'
+			aria='new player'
 			emoji='🌻'
 			{...otherProps}
 		>
@@ -68,7 +66,7 @@ const TextIconPropedRandomPlayer = props => {
 	return (
 		<TextIconPropedIndex
 			className={classnames('text-warning', className)}
-			aria-label='discover'
+			aria='discover'
 			emoji='🏆'
 			{...otherProps}
 		>
@@ -82,7 +80,7 @@ const TextIconPropedProfileGift = props => {
 	return (
 		<TextIconPropedProfile
 			className={classnames('text-warning', className)}
-			aria-label='discover'
+			aria='discover'
 			emoji='🎁'
 			{...otherProps}
 		>
@@ -96,7 +94,7 @@ const TextIconPropedProfileGallery = props => {
 	return (
 		<TextIconPropedProfile
 			className={classnames('text-warning', className)}
-			aria-label='discover'
+			aria='discover'
 			emoji='📸'
 			{...otherProps}
 		>
@@ -110,7 +108,7 @@ const TextIconPropedProfileComments = props => {
 	return (
 		<TextIconPropedProfile
 			className={classnames('text-warning', className)}
-			aria-label='discover'
+			aria='discover'
 			emoji='💬'
 			{...otherProps}
 		>

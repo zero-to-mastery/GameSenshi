@@ -3,19 +3,24 @@ import { stopUndefined } from 'utils'
 //components
 import { Exports } from 'componentMolecules'
 
-const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(Exports)
+const {
+	FinalInputSelect,
+	INPUT_SELECT_VALUE,
+	INPUT_SELECT_LABEL,
+	INPUT_SELECT_DISABLED,
+} = stopUndefined(Exports)
 
 const genderOptions = [
 	{
-		[VALUE]: '',
-		[LABEL]: 'Gender',
-		[DISABLE]: true,
+		[INPUT_SELECT_VALUE]: '',
+		[INPUT_SELECT_LABEL]: 'Gender',
+		[INPUT_SELECT_DISABLED]: true,
 	},
-	{ [VALUE]: '0', [LABEL]: 'Male' },
-	{ [VALUE]: '1', [LABEL]: 'Female' },
+	{ [INPUT_SELECT_VALUE]: '0', [INPUT_SELECT_LABEL]: 'Male' },
+	{ [INPUT_SELECT_VALUE]: '1', [INPUT_SELECT_LABEL]: 'Female' },
 	{
-		[VALUE]: '2',
-		[LABEL]: 'Feeling Lucky',
+		[INPUT_SELECT_VALUE]: '2',
+		[INPUT_SELECT_LABEL]: 'Feeling Lucky',
 	},
 ]
 

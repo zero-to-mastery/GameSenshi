@@ -3,15 +3,44 @@ import { stopUndefined } from 'utils'
 //components
 import { Exports } from 'componentMolecules'
 
-const { FinalInputSelect, VALUE, LABEL, COLOR } = stopUndefined(Exports)
+const {
+	FinalInputSelect,
+	INPUT_SELECT_VALUE,
+	INPUT_SELECT_LABEL,
+	COLOR,
+} = stopUndefined(Exports)
 
 const languageOptions = [
-	{ [VALUE]: '0', [LABEL]: 'Languages', [COLOR]: '#9a9a9a' },
-	{ [VALUE]: '1', [LABEL]: 'English', [COLOR]: '#00B8D9' },
-	{ [VALUE]: '2', [LABEL]: 'French', [COLOR]: '#0052CC' },
-	{ [VALUE]: '3', [LABEL]: 'Spanish', [COLOR]: '#5243AA' },
-	{ [VALUE]: '4', [LABEL]: 'Deutsche', [COLOR]: '#FF5630' },
-	{ [VALUE]: '5', [LABEL]: 'Russian', [COLOR]: '#FF8B00' },
+	{
+		[INPUT_SELECT_VALUE]: '0',
+		[INPUT_SELECT_LABEL]: 'Languages',
+		[COLOR]: '#9a9a9a',
+	},
+	{
+		[INPUT_SELECT_VALUE]: '1',
+		[INPUT_SELECT_LABEL]: 'English',
+		[COLOR]: '#00B8D9',
+	},
+	{
+		[INPUT_SELECT_VALUE]: '2',
+		[INPUT_SELECT_LABEL]: 'French',
+		[COLOR]: '#0052CC',
+	},
+	{
+		[INPUT_SELECT_VALUE]: '3',
+		[INPUT_SELECT_LABEL]: 'Spanish',
+		[COLOR]: '#5243AA',
+	},
+	{
+		[INPUT_SELECT_VALUE]: '4',
+		[INPUT_SELECT_LABEL]: 'Deutsche',
+		[COLOR]: '#FF5630',
+	},
+	{
+		[INPUT_SELECT_VALUE]: '5',
+		[INPUT_SELECT_LABEL]: 'Russian',
+		[COLOR]: '#FF8B00',
+	},
 ]
 
 const FINAL_SELECT_LANGUAGES = 'Languages'

@@ -4,9 +4,9 @@ import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 const { ImagesTooltipOptioned, Link, Button } = stopUndefined(Exports)
 
-const BUTTONS_ICON_IMAGE_ID = 'id'
-const BUTTONS_ICON_IMAGE_TEXT = 'text'
-const BUTTONS_ICON_IMAGE_ICON = 'icon'
+const BUTTONS_COMMON_IMAGE_ID = 'id'
+const BUTTONS_COMMON_IMAGE_TEXT = 'text'
+const BUTTONS_COMMON_IMAGE_ICON = 'icon'
 
 const ButtonsImage = props => {
 	const { buttons, to, className } = props
@@ -15,9 +15,9 @@ const ButtonsImage = props => {
 		<Row className={className}>
 			{buttons.map(button => {
 				const {
-					[BUTTONS_ICON_IMAGE_ID]: id,
-					[BUTTONS_ICON_IMAGE_TEXT]: text,
-					[BUTTONS_ICON_IMAGE_ICON]: icon,
+					[BUTTONS_COMMON_IMAGE_ID]: id,
+					[BUTTONS_COMMON_IMAGE_TEXT]: text,
+					[BUTTONS_COMMON_IMAGE_ICON]: icon,
 				} = button
 
 				return (
@@ -44,7 +44,7 @@ const ButtonsImage = props => {
 
 export {
 	ButtonsImage,
-	BUTTONS_ICON_IMAGE_ID,
-	BUTTONS_ICON_IMAGE_TEXT,
-	BUTTONS_ICON_IMAGE_ICON,
+	BUTTONS_COMMON_IMAGE_ID,
+	BUTTONS_COMMON_IMAGE_TEXT,
+	BUTTONS_COMMON_IMAGE_ICON,
 }

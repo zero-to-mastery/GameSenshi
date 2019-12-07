@@ -1,18 +1,17 @@
 import { Exports as ExportProtons } from 'componentaProton'
 import { FinalForm } from './FinalForm'
 import { TextAlert } from './TextAlert'
-import { InputSelect, VALUE, LABEL, DISABLE, COLOR } from './InputSelect'
+import {
+	InputSelect,
+	INPUT_SELECT_VALUE,
+	INPUT_SELECT_LABEL,
+	INPUT_SELECT_DISABLED,
+	COLOR,
+} from './InputSelect'
 import { InputText } from './InputText'
 import { PopoverCommon } from './PopoverCommon'
 import Footer from './Footers/Footer'
-import {
-	ButtonsIconOptioned,
-	ButtonsIconPropedAuth,
-	BUTTONS_ICON_ID,
-	BUTTONS_ICON_ICON,
-	BUTTONS_ICON_COLOR,
-	BUTTONS_ICON_TOOLTIP,
-} from './ButtonsIcon'
+import { ButtonsCommonOptioned, ButtonsCommonPropedAuth } from './ButtonsCommon'
 import {
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
@@ -48,7 +47,7 @@ import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbar } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
-import { ButtonGroupProfile } from './ButtonsIcon'
+import { ButtonsCommonChatAndCheckout } from './ButtonsCommon'
 import { QuantityProfile } from './Quantity'
 import {
 	CarouselCommonPropedProfile,
@@ -114,19 +113,15 @@ export const Exports = {
 	ImageUploadStoreUserPropedSettings,
 	AlertCommonStoreAlert,
 	ProgressCommonStoreProgress,
-	ButtonsIconOptioned,
-	ButtonsIconPropedAuth,
-	BUTTONS_ICON_ID,
-	BUTTONS_ICON_ICON,
-	BUTTONS_ICON_COLOR,
-	BUTTONS_ICON_TOOLTIP,
+	ButtonsCommonOptioned,
+	ButtonsCommonPropedAuth,
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
 	TextAlert,
 	InputSelect,
-	VALUE,
-	LABEL,
-	DISABLE,
+	INPUT_SELECT_VALUE,
+	INPUT_SELECT_LABEL,
+	INPUT_SELECT_DISABLED,
 	COLOR,
 	InputText,
 	PopoverCommon,
@@ -193,7 +188,7 @@ export const Exports = {
 	TextIconPropedProfileGallery,
 	TextIconPropedProfileComments,
 	CardUserSimple,
-	ButtonGroupProfile,
+	ButtonsCommonChatAndCheckout,
 	TabCommon,
 	TAB_COMMON_TAB_NAME,
 	TAB_COMMON_TAB_CONTENT,

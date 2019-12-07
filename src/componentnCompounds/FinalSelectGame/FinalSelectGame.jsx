@@ -3,15 +3,27 @@ import { stopUndefined } from 'utils'
 //components
 import { Exports } from 'componentMolecules'
 
-const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(Exports)
+const {
+	FinalInputSelect,
+	INPUT_SELECT_VALUE,
+	INPUT_SELECT_LABEL,
+	INPUT_SELECT_DISABLED,
+} = stopUndefined(Exports)
 
 const gameOptions = [
-	{ [VALUE]: '', [LABEL]: 'Game', [DISABLE]: true },
-	{ [VALUE]: '0', [LABEL]: 'Fifa 20' },
-	{ [VALUE]: '1', [LABEL]: 'Counter-Strike Global Offensive' },
-	{ [VALUE]: '2', [LABEL]: 'League of Legends' },
-	{ [VALUE]: '3', [LABEL]: 'Tekken' },
-	{ [VALUE]: '4', [LABEL]: 'Warcraft III' },
+	{
+		[INPUT_SELECT_VALUE]: '',
+		[INPUT_SELECT_LABEL]: 'Game',
+		[INPUT_SELECT_DISABLED]: true,
+	},
+	{ [INPUT_SELECT_VALUE]: '0', [INPUT_SELECT_LABEL]: 'Fifa 20' },
+	{
+		[INPUT_SELECT_VALUE]: '1',
+		[INPUT_SELECT_LABEL]: 'Counter-Strike Global Offensive',
+	},
+	{ [INPUT_SELECT_VALUE]: '2', [INPUT_SELECT_LABEL]: 'League of Legends' },
+	{ [INPUT_SELECT_VALUE]: '3', [INPUT_SELECT_LABEL]: 'Tekken' },
+	{ [INPUT_SELECT_VALUE]: '4', [INPUT_SELECT_LABEL]: 'Warcraft III' },
 ]
 
 const FINAL_SELECT_GAME = 'Games'

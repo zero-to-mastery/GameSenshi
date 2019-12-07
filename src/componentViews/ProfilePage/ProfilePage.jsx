@@ -20,7 +20,7 @@ const {
 	ImagesTooltipPropedTabs,
 	ButtonSoundStoreSoundPropedCardUser,
 	QuantityProfile,
-	ButtonGroupProfile,
+	ButtonsCommonChatAndCheckout,
 } = stopUndefined(Exports)
 
 const TAB_PANE_PRICE = 'price'
@@ -105,7 +105,7 @@ const TabsContent = profileTabs.map(tab => {
 			</Row>
 			<Row className='pt-5 text-right'>
 				<Col md={{ offset: 8, size: 4 }}>
-					<ButtonGroupProfile />
+					<ButtonsCommonChatAndCheckout />
 				</Col>
 			</Row>
 		</Container>
