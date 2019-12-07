@@ -136,18 +136,20 @@ const ProfilePage = () => {
 				<img alt='...' className='path' src={require('assets/img/path4.png')} />
 				<Container>
 					<Row>
-						<CardUserComplete
-							nickname='Mike Scheinder'
-							username='mighty_mike'
-							avatar={require('assets/img/mike.jpg')}
-							channels={channels}
-							signature='Nice to meet you!'
-							badges={badges}
-							games={games}
-							online
-							audio={audioSample}
-							favorite
-						/>
+						<Col>
+							<CardUserComplete
+								nickname='Mike Scheinder'
+								username='mighty_mike'
+								avatar={require('assets/img/mike.jpg')}
+								channels={channels}
+								signature='Nice to meet you!'
+								badges={badges}
+								games={games}
+								online
+								audio={audioSample}
+								favorite
+							/>
+						</Col>
 						<Col lg='8' md='6'>
 							<TabCommon tabs={tabs} />
 						</Col>

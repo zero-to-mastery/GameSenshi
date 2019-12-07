@@ -13,7 +13,9 @@ import {
 	FB_FS_SETTINGS_NOTIFICATION_PUSH_COMMENTS,
 	fbfsSettingsGeneralPath,
 	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
+	FB_FS_SETTINGS_GENERAL_SHORT_ID,
 } from 'constantValues'
+import nanoid from 'nanoid'
 
 const onUserCreate = (userRecord, eventContext, firestore) => {
 	console.log(userRecord, eventContext)
@@ -26,12 +28,14 @@ const onUserCreate = (userRecord, eventContext, firestore) => {
 
 	const date = new Date()
 
+	const shortId = nanoid(10)
+
 	if (!isPasswordExist) {
 		firestore.doc(fbfsSettingsGeneralPath(uid)).set({
 			[CREATED_AT]: date,
 			[UPDATED_AT]: date,
-			[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]:
-				userRecord.displayName || userRecord.uid,
+			[FB_FS_SETTINGS_GENERAL_SHORT_ID]: shortId,
+			[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: userRecord.displayName || shortId,
 		})
 	}
 

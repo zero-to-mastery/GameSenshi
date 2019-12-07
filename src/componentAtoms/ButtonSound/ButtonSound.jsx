@@ -129,7 +129,7 @@ const ButtonSound = props => {
 		<Button
 			baseClass='w-100 justify-content-start'
 			baseStyle={{ maxWidth: 100 }}
-			className='btn-round btn p-1 w-100'
+			className='btn-round p-1 w-100'
 			color={color}
 			type='button'
 			onClick={onClick}
