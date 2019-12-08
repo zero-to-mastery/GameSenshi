@@ -3,7 +3,7 @@ import { FinalInputText, FinalInputSelect, FinalInputDate } from './FinalInput'
 import { TabPaneSettingListStoreUserPropedNotification } from './TabPaneSettingList'
 import { ModalImageCropperPropedSettings } from './ModalImageCropper'
 import { CardUserComplete } from './CardUserComplete'
-import { CardProfilePropedIndex, CardProfilePropedSearch } from './CardUser'
+import { CardUserPropedDiscover, CardProfilePropedSearch } from './CardUser'
 import { ButtonsImagePropedIndex } from './ButtonsImage'
 import { PanelSortBy } from './PanelSortBy'
 import { PanelFilterSearch } from './PanelFilterSearch'
@@ -19,7 +19,7 @@ export const Exports = {
 	FinalInputDate,
 	ModalImageCropperPropedSettings,
 	CardUserComplete,
-	CardProfilePropedIndex,
+	CardUserPropedDiscover,
 	ButtonsImagePropedIndex,
 	PanelSortBy,
 	PanelFilterSearch,

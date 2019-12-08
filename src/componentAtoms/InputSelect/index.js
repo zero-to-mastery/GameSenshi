@@ -1,3 +1,15 @@
-import { InputSelect, VALUE, LABEL, DISABLE, COLOR } from './InputSelect'
+import {
+	InputSelect,
+	INPUT_SELECT_VALUE,
+	INPUT_SELECT_LABEL,
+	INPUT_SELECT_DISABLED,
+	COLOR,
+} from './InputSelect'
 
-export { InputSelect, VALUE, LABEL, DISABLE, COLOR }
+export {
+	InputSelect,
+	INPUT_SELECT_VALUE,
+	INPUT_SELECT_LABEL,
+	INPUT_SELECT_DISABLED,
+	COLOR,
+}

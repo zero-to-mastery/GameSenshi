@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
 import {
 	ButtonsImage,
-	BUTTONS_ICON_IMAGE_ID,
-	BUTTONS_ICON_IMAGE_TEXT,
+	BUTTONS_COMMON_IMAGE_ID,
+	BUTTONS_COMMON_IMAGE_TEXT,
 } from './ButtonsImage'
 import { buttonsIndex, getButtonsImage } from './utils'
 
@@ -20,6 +20,6 @@ const ButtonsImagePropedIndex = props => {
 
 export {
 	ButtonsImagePropedIndex,
-	BUTTONS_ICON_IMAGE_ID,
-	BUTTONS_ICON_IMAGE_TEXT,
+	BUTTONS_COMMON_IMAGE_ID,
+	BUTTONS_COMMON_IMAGE_TEXT,
 }

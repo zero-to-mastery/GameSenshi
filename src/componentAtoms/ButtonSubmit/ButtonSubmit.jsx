@@ -22,7 +22,6 @@ const ButtonSubmit = props => {
 			className={className}
 			color={color}
 			size={size}
-			submitting={submitting}
 			onClick={onClick}
 		>
 			{submitting ? (

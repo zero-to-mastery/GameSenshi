@@ -3,7 +3,12 @@ import { stopUndefined } from 'utils'
 //components
 import { Exports } from 'componentMolecules'
 
-const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(Exports)
+const {
+	FinalInputSelect,
+	INPUT_SELECT_VALUE,
+	INPUT_SELECT_LABEL,
+	INPUT_SELECT_DISABLED,
+} = stopUndefined(Exports)
 
 const FINAL_SELECT_EXPIRY_YEAR = 'expiryYear'
 
@@ -11,10 +16,14 @@ const year = new Date().getFullYear()
 
 const yearOptions = Array.from(new Array(30), (e, i) => {
 	const yearString = (year + i).toString()
-	return { [VALUE]: yearString, [LABEL]: yearString }
+	return { [INPUT_SELECT_VALUE]: yearString, [INPUT_SELECT_LABEL]: yearString }
 })
 
-yearOptions.unshift({ [VALUE]: '', [LABEL]: 'Year', [DISABLE]: true })
+yearOptions.unshift({
+	[INPUT_SELECT_VALUE]: '',
+	[INPUT_SELECT_LABEL]: 'Year',
+	[INPUT_SELECT_DISABLED]: true,
+})
 
 const FinalSelectExpiryYear = props => {
 	return (

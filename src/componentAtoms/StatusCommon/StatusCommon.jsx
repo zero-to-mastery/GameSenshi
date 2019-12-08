@@ -22,7 +22,8 @@ const StatusCommon = props => {
 			/>
 			<p
 				className={classnames('mb-0', {
-					'text-muted': on,
+					'text-muted': !on,
+					'text-white': on,
 				})}
 			>
 				{on ? bodyOn : bodyOff}

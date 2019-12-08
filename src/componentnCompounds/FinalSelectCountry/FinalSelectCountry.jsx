@@ -4,22 +4,30 @@ import { getCodes, getNames } from 'country-list'
 //components
 import { Exports } from 'componentMolecules'
 
-const { FinalInputSelect, VALUE, LABEL, DISABLE } = stopUndefined(Exports)
+const {
+	FinalInputSelect,
+	INPUT_SELECT_VALUE,
+	INPUT_SELECT_LABEL,
+	INPUT_SELECT_DISABLED,
+} = stopUndefined(Exports)
 const FINAL_SELECT_COUNTRY = 'expiryMonth'
 
 const countries = getNames()
 const countryCodes = getCodes()
 
 const countriesAndCodes = countries.reduce((acc, country, i) => {
-	acc.push({ [VALUE]: countryCodes[i], [LABEL]: country })
+	acc.push({
+		[INPUT_SELECT_VALUE]: countryCodes[i],
+		[INPUT_SELECT_LABEL]: country,
+	})
 	return acc
 }, [])
 
 const countryOptions = [
 	{
-		[VALUE]: '',
-		[LABEL]: 'Country',
-		[DISABLE]: true,
+		[INPUT_SELECT_VALUE]: '',
+		[INPUT_SELECT_LABEL]: 'Country',
+		[INPUT_SELECT_DISABLED]: true,
 	},
 	...countriesAndCodes,
 ]

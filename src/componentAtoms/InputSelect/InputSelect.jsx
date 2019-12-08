@@ -4,9 +4,9 @@ import { FormGroup } from 'reactstrap'
 import classnames from 'classnames'
 import './styles.css'
 
-const VALUE = 'value'
-const LABEL = 'label'
-const DISABLE = 'isDisabled'
+const INPUT_SELECT_VALUE = 'value'
+const INPUT_SELECT_LABEL = 'label'
+const INPUT_SELECT_DISABLED = 'isDisabled'
 const COLOR = 'color'
 
 const InputSelect = props => {
@@ -39,4 +39,10 @@ const InputSelect = props => {
 	)
 }
 
-export { InputSelect, VALUE, LABEL, DISABLE, COLOR }
+export {
+	InputSelect,
+	INPUT_SELECT_VALUE,
+	INPUT_SELECT_LABEL,
+	INPUT_SELECT_DISABLED,
+	COLOR,
+}
