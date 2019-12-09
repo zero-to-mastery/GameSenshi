@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 import { Media, Input } from 'reactstrap'
-import { Exports } from 'componentaProton'
+import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
-const { Button } = stopUndefined(Exports)
+const { Button, AvatarUserStoreUser } = stopUndefined(Exports)
 
 const COMMENT_ID = 'id'
 const COMMENT_NAME = 'name'
@@ -15,7 +15,7 @@ const COMMENT_NUM_COMMENTS = 'numComments'
 const Comments = props => {
 	const { comments } = props
 	const comments_ = comments || []
-	return comments_.map((comment, i) => {
+	return comments_.map(comment => {
 		const {
 			[COMMENT_ID]: id,
 			[COMMENT_NAME]: name,
@@ -81,7 +81,6 @@ const Comment = props => {
 }
 
 const CreateCommentInput = props => {
-	const { src } = props
 	return (
 		<Media className='media-post'>
 			<a
@@ -89,9 +88,7 @@ const CreateCommentInput = props => {
 				href='#pablo'
 				onClick={e => e.preventDefault()}
 			>
-				<div className='avatar'>
-					<Media alt='...' className='img-raised' src={src} />
-				</div>
+				<AvatarUserStoreUser />
 			</a>
 			<Media body>
 				<Input
@@ -115,17 +112,17 @@ const CreateCommentInput = props => {
 }
 
 const CommentsList = props => {
-	const { comments, [AVATAR_COMMENT_USER_STATE_SRC]: src } = props
+	const { comments } = props
 	return (
-		<>
+		<Fragment>
 			<div className='container'>
 				<h3 className='title text-center'>Post your comment</h3>
-				<CreateCommentInput src={src} />
+				<CreateCommentInput />
+				<div className='container'>
+					<Comments comments={comments} />
+				</div>
 			</div>
-			<div className='container'>
-				<Comments comments={comments} />
-			</div>
-		</>
+		</Fragment>
 	)
 }
 
@@ -138,5 +135,4 @@ export {
 	COMMENT_NUM_COMMENTS,
 	COMMENT_ID,
 	CommentsList,
-	AVATAR_COMMENT_USER_STATE_SRC,
 }

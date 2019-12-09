@@ -62,7 +62,6 @@ import {
 	TextIconPropedProfileComments,
 } from './TextIcon'
 
-import { PaginationCommonPropedDefault } from './PaginationCommon'
 import { BadgesOptioned, Badges, BadgesPropedSenshi } from './Badges'
 import {
 	ImagesTooltipOptioned,
