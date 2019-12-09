@@ -1,3 +1,12 @@
+.gridContainer {
+  margin: 0 auto;
+  padding: 3rem 0;
+  display: grid;
+  grid-template-columns: repeat(5, 64px);
+  grid-template-rows: repeat(4, 64px);
+  gap: 15px;
+}
+
 .imgWrapper {
   width: 64px;
   height: 64px;
@@ -11,16 +20,11 @@
   align-items: center;
   border-radius: 5px;
 }
-
-.gridContainer {
-  margin: 0 auto;
-  padding: 3rem 0;
-  display: grid;
-  grid-template-columns: repeat(5, 64px);
-  grid-template-rows: repeat(4, 64px);
-  gap: 15px;
+.tooltipBody {
+  width: 100px;
+  height: 100px;
+  background-color: #667eea;
 }
-
 .grid-item-1 {
   grid-column: 0 / 1;
   grid-row: 0 / 1;
