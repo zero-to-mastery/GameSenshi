@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { Media, Input } from 'reactstrap'
+import './styles.module.css'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
@@ -42,7 +43,7 @@ const Comments = props => {
 }
 
 const Comment = props => {
-	const { body, name, time, commentsNumber, src } = props
+	const { body, name, time, src } = props
 	return (
 		<Media>
 			<div className='pull-left'>
@@ -58,7 +59,7 @@ const Comment = props => {
 				<p>{body}</p>
 				<div className='media-footer'>
 					<Button
-						className='btn-simple pull-right'
+						className='btn-simple pull-right no-border'
 						color='primary'
 						href='#pablo'
 						id='tooltip871944617'
@@ -66,16 +67,6 @@ const Comment = props => {
 						size='sm'
 					>
 						<i className='tim-icons icon-send' /> Reply
-					</Button>
-					<Button
-						className='btn-simple pull-right'
-						color='danger'
-						href='#pablo'
-						onClick={e => e.preventDefault()}
-						size='sm'
-					>
-						<i className='tim-icons icon-heart-2' />
-						{commentsNumber}
 					</Button>
 				</div>
 			</Media>
@@ -103,12 +94,12 @@ const CreateCommentInput = props => {
 				/>
 				<div className='media-footer'>
 					<Button
-						className='pull-right'
+						className='btn-simple pull-right'
 						color='primary'
 						href='#pablo'
 						onClick={e => e.preventDefault()}
 					>
-						Reply
+						<i className='tim-icons icon-send' /> Reply
 					</Button>
 				</div>
 			</Media>
