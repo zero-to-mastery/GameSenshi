@@ -34,9 +34,9 @@ const ModalCommon = props => {
 			isOpen={isOpen}
 			toggle={toggle}
 			size={size}
-			backdrop={backdrop ? false : 'static'}
+			backdrop='static'
 			modalClassName='modal-black'
-			wrapClassName=''
+			wrapClassName={backdrop ? '' : 'modal-backdrop'}
 			style={{ border: '1px solid #00d6d1', borderRadius: '5px' }}
 		>
 			<div className='modal-header'>

@@ -1,12 +1,14 @@
 import React, { Fragment, useState } from 'react'
-import { Col } from 'reactstrap'
+import { Col, Input, InputGroup } from 'reactstrap'
 import Image from 'material-ui-image'
 import styles from './styles.module.css'
 
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentAtoms'
 
-const { UncontrolledTooltip, ModalCommonPropedProfile } = stopUndefined(Exports)
+const { UncontrolledTooltip, ModalCommonPropedProfile, Button } = stopUndefined(
+	Exports
+)
 
 const CARD_GIFT_IMAGE = 'image'
 const CARD_GIFT_TOOLTIP = 'tooltip'
@@ -31,6 +33,21 @@ const CardGift = props => {
 						const id_ = `Id${index + 1}`
 						return (
 							<Fragment key={index}>
+								<ModalCommonPropedProfile
+									title={modalId}
+									isOpen={isOpen}
+									toggle={() => toggleModal()}
+									backdrop
+									footer='Send a gift'
+								>
+									Icon with id: {modalId}
+									<InputGroup>
+										<Input
+											label='No of gifts'
+											placeholder='Select number of gifts'
+										/>
+									</InputGroup>
+								</ModalCommonPropedProfile>
 								<div
 									onClick={() => toggleModal(id_)}
 									id={id_}
@@ -47,15 +64,6 @@ const CardGift = props => {
 										{tooltip}
 									</UncontrolledTooltip>
 								</div>
-								<ModalCommonPropedProfile
-									title={modalId}
-									isOpen={isOpen}
-									toggle={() => toggleModal(id_)}
-									backdrop
-									footer='Send a gift'
-								>
-									Icon with id: {id_}
-								</ModalCommonPropedProfile>
 							</Fragment>
 						)
 					})}
