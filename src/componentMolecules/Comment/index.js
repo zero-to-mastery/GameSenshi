@@ -1,5 +1,4 @@
 import React from 'react'
-import { CommentsList } from './Comment'
 import {
 	COMMENT_ID,
 	COMMENT_NAME,
@@ -7,6 +6,7 @@ import {
 	COMMENT_AVATAR,
 	COMMENT_BODY,
 	COMMENT_NUM_COMMENTS,
+	CommentsList,
 } from './Comment'
 
 const CommentCommonPropedDefault = props => {

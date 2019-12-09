@@ -62,15 +62,6 @@ import {
 	TextIconPropedProfileComments,
 } from './TextIcon'
 
-import {
-	CommentCommonPropedDefault,
-	COMMENT_ID,
-	COMMENT_NAME,
-	COMMENT_POSTED_TIME,
-	COMMENT_AVATAR,
-	COMMENT_BODY,
-	COMMENT_NUM_COMMENTS,
-} from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
 import { BadgesOptioned, Badges, BadgesPropedSenshi } from './Badges'
 import {
@@ -160,14 +151,6 @@ export const Exports = {
 	StatusCommonPropedOnline,
 	ButtonSoundStoreSoundPropedGender,
 	ButtonSoundStoreSoundPropedCardUser,
-	CommentCommonPropedDefault,
-	PaginationCommonPropedDefault,
-	COMMENT_ID,
-	COMMENT_NAME,
-	COMMENT_POSTED_TIME,
-	COMMENT_AVATAR,
-	COMMENT_BODY,
-	COMMENT_NUM_COMMENTS,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 	CarouselCommonPropedProfile,

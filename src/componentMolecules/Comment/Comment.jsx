@@ -81,6 +81,7 @@ const Comment = props => {
 }
 
 const CreateCommentInput = props => {
+	const { src } = props
 	return (
 		<Media className='media-post'>
 			<a
@@ -89,11 +90,7 @@ const CreateCommentInput = props => {
 				onClick={e => e.preventDefault()}
 			>
 				<div className='avatar'>
-					<Media
-						alt='...'
-						className='img-raised'
-						src={require('assets/img/olivia.jpg')}
-					/>
+					<Media alt='...' className='img-raised' src={src} />
 				</div>
 			</a>
 			<Media body>
@@ -118,12 +115,12 @@ const CreateCommentInput = props => {
 }
 
 const CommentsList = props => {
-	const { comments } = props
+	const { comments, [AVATAR_COMMENT_USER_STATE_SRC]: src } = props
 	return (
 		<>
 			<div className='container'>
 				<h3 className='title text-center'>Post your comment</h3>
-				<CreateCommentInput />
+				<CreateCommentInput src={src} />
 			</div>
 			<div className='container'>
 				<Comments comments={comments} />
@@ -141,4 +138,5 @@ export {
 	COMMENT_NUM_COMMENTS,
 	COMMENT_ID,
 	CommentsList,
+	AVATAR_COMMENT_USER_STATE_SRC,
 }

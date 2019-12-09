@@ -10,6 +10,7 @@ import { PanelFilterSearch } from './PanelFilterSearch'
 import { ChatContactListWithProps } from './ChatContactList'
 import { CarouselCardSimplePropedNew } from './CarouselCardSimple'
 import { CardGiftWithProps } from './CardGift'
+import { CommentCommonPropedDefault } from './Comment'
 
 export const Exports = {
 	...ExportAtoms,
@@ -27,4 +28,5 @@ export const Exports = {
 	ChatContactListWithProps,
 	CarouselCardSimplePropedNew,
 	CardGiftWithProps,
+	CommentCommonPropedDefault,
 }
