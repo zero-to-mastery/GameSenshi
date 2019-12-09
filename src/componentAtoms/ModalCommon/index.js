@@ -44,4 +44,12 @@ const ModalCommonStoreModalPropedAuth = props => {
 	return <ModalCommonStoreModal footer='continue' {...props} />
 }
 
-export { ModalCommon, ModalCommonStoreModalPropedAuth }
+const ModalCommonPropedProfile = props => {
+	return <ModalCommon {...props} />
+}
+
+export {
+	ModalCommon,
+	ModalCommonStoreModalPropedAuth,
+	ModalCommonPropedProfile,
+}

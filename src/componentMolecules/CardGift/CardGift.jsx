@@ -1,18 +1,24 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Col } from 'reactstrap'
 import Image from 'material-ui-image'
 import styles from './styles.module.css'
 
 import { stopUndefined } from 'utils'
-import { Exports } from 'componentaProton'
+import { Exports } from 'componentAtoms'
 
-const { UncontrolledTooltip } = stopUndefined(Exports)
+const { UncontrolledTooltip, ModalCommonPropedProfile } = stopUndefined(Exports)
 
 const CARD_GIFT_IMAGE = 'image'
 const CARD_GIFT_TOOLTIP = 'tooltip'
 
 const CardGift = props => {
+	const [isOpen, setIsOpen] = useState(false)
+	const [modalId, setModalId] = useState('')
 	const { icons } = props
+	const toggleModal = id => {
+		setIsOpen(isOpen => !isOpen)
+		setModalId(id)
+	}
 	return (
 		<Col>
 			<div className={styles.bgGradient} style={{ zIndex: 99 }}>
@@ -25,7 +31,11 @@ const CardGift = props => {
 						const id_ = `Id${index + 1}`
 						return (
 							<Fragment key={index}>
-								<div id={id_} className={`grid-item-${index + 1}`}>
+								<div
+									onClick={() => toggleModal(id_)}
+									id={id_}
+									className={`grid-item-${index + 1}`}
+								>
 									<div className={styles.imgWrapper}>
 										<Image src={src} alt={src} />
 									</div>
@@ -37,6 +47,15 @@ const CardGift = props => {
 										{tooltip}
 									</UncontrolledTooltip>
 								</div>
+								<ModalCommonPropedProfile
+									title={modalId}
+									isOpen={isOpen}
+									toggle={() => toggleModal(id_)}
+									backdrop
+									footer='Send a gift'
+								>
+									Icon with id: {id_}
+								</ModalCommonPropedProfile>
 							</Fragment>
 						)
 					})}

@@ -22,7 +22,11 @@ import { AlertCommonStoreAlert } from './AlertCommon'
 import { ProgressCommonStoreProgress } from './ProgressCommon'
 import { CheckBox } from './CheckBox'
 import { HeaderLined } from './HeaderLined'
-import { ModalCommonStoreModalPropedAuth, ModalCommon } from './ModalCommon'
+import {
+	ModalCommonStoreModalPropedAuth,
+	ModalCommon,
+	ModalCommonPropedProfile,
+} from './ModalCommon'
 import { ButtonSubmit } from './ButtonSubmit'
 import { TabPaneContainer } from './TabPaneContainer'
 import {
@@ -174,4 +178,5 @@ export const Exports = {
 	TabCommon,
 	TAB_COMMON_TAB_NAME,
 	TAB_COMMON_TAB_CONTENT,
+	ModalCommonPropedProfile,
 }
