@@ -14,8 +14,7 @@ const onCrop = (e, dataUrl, toggle) => {
 			const percentage = Math.floor((bytesTransferred / totalBytes) * 100)
 			storeProgress.show(percentage)
 		},
-		err => {
-			console.log(err)
+		() => {
 			storeAlertShow(
 				'Something went wrong, upload profile image failed',
 				'danger',
@@ -42,8 +41,7 @@ const onCrop = (e, dataUrl, toggle) => {
 							'tim-icons icon-bell-55'
 						)
 					})
-					.catch(err => {
-						console.log(err)
+					.catch(() => {
 						storeProgress.close()
 						storeAlertShow(
 							'Something went wrong, unable to update profile picture',

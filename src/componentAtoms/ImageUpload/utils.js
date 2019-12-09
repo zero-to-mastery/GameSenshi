@@ -13,8 +13,7 @@ const onRemove = async () => {
 			)
 			return true
 		})
-		.catch(err => {
-			console.log(err)
+		.catch(() => {
 			storeAlertShow(
 				'Something went wrong, unable to remove profile picture',
 				'danger',
