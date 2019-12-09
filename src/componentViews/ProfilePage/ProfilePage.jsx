@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
@@ -9,7 +9,6 @@ const {
 	CardGiftWithProps,
 	TextIconPropedProfileGift,
 	TextIconPropedProfileGallery,
-	TextIconPropedProfileComments,
 	CardUserComplete,
 	CommentWithPaginationPropedDefault,
 	Section,
@@ -181,16 +180,6 @@ const ProfilePage = () => {
 							<CarouselCommonPropedProfile />
 						</Col>
 					</Row>
-				</Container>
-			</Section>
-			<Section>
-				<Container>
-					<Row>
-						<Col>
-							<TextIconPropedProfileComments />
-						</Col>
-					</Row>
-					<Row></Row>
 				</Container>
 			</Section>
 		</WrapperStoreWrapperPropedProfile>

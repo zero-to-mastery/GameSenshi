@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import { Media, Input } from 'reactstrap'
-import './styles.module.css'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
