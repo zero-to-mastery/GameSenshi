@@ -56,8 +56,8 @@ const ProfilePage = () => {
 							/>
 						</Col>
 					</Row>
-					<Row>
-						<Col lg='8' md='6'>
+					<Row className='pt-5'>
+						<Col lg='12' md='12'>
 							<TabCommon tabs={tabs} />
 						</Col>
 					</Row>
