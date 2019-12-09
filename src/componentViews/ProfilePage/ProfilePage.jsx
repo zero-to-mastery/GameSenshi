@@ -15,7 +15,7 @@ const {
 	TabCommon,
 	TAB_COMMON_TAB_NAME,
 	TAB_COMMON_TAB_CONTENT,
-	TabProductPropedGame,
+	TabProductPropedProfile,
 } = stopUndefined(Exports)
 
 // fake data
@@ -30,7 +30,7 @@ const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 const tabs = games.map((tab, index) => {
 	return {
 		[TAB_COMMON_TAB_NAME]: tab,
-		[TAB_COMMON_TAB_CONTENT]: TabProductPropedGame[index],
+		[TAB_COMMON_TAB_CONTENT]: TabProductPropedProfile[index],
 	}
 })
 
