@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Badge } from 'reactstrap'
+import { Badge, Row, Col } from 'reactstrap'
 import classnames from 'classnames'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
@@ -13,30 +13,35 @@ const BADGES_TOOLTIP = 'tooltip'
 const BADGES_CLASS = 'classname'
 
 const Badges = props => {
-	const { badges, className } = props
-	return badges.map(badge => {
-		const {
-			[BADGES_COLOR]: color,
-			[BADGES_BODY]: body,
-			[BADGES_ID]: id,
-			[BADGES_TOOLTIP]: tooltip,
-			[BADGES_CLASS]: classname,
-		} = badge
-		return (
-			<Fragment key={id}>
-				<Badge
-					color={color}
-					className={classnames(classname, className)}
-					id={id}
-				>
-					{body}
-				</Badge>
-				<UncontrolledTooltip delay={0} target={id}>
-					{tooltip}
-				</UncontrolledTooltip>
-			</Fragment>
-		)
-	})
+	const { badges, className, col, badgeClass } = props
+	const EnclosureCol = col ? Col : Fragment
+	return (
+		<Row className={classnames(className)}>
+			{badges.map(badge => {
+				const {
+					[BADGES_COLOR]: color,
+					[BADGES_BODY]: body,
+					[BADGES_ID]: id,
+					[BADGES_TOOLTIP]: tooltip,
+					[BADGES_CLASS]: classname,
+				} = badge
+				return (
+					<EnclosureCol key={id}>
+						<Badge
+							color={color}
+							className={classnames(badgeClass, classname)}
+							id={id}
+						>
+							{body}
+						</Badge>
+						<UncontrolledTooltip delay={0} target={id}>
+							{tooltip}
+						</UncontrolledTooltip>
+					</EnclosureCol>
+				)
+			})}
+		</Row>
+	)
 }
 
 export {

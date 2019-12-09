@@ -1,0 +1,8 @@
+.border-card {
+	border: 2px solid #344675;
+	z-index: 3;
+}
+
+.avatar.avatar {
+	width: 120px;
+}

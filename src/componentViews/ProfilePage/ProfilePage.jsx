@@ -2,14 +2,13 @@ import React from 'react'
 import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
-import audioSample from 'assets/audio/sampleVoice.mp3'
 
 const {
 	CarouselCommonPropedProfile,
 	CardGiftWithProps,
 	TextIconPropedProfileGift,
 	TextIconPropedProfileGallery,
-	CardUserComplete,
+	CardUserHorizontal,
 	CommentWithPaginationPropedDefault,
 	Section,
 	WrapperStoreWrapperPropedProfile,
@@ -136,19 +135,20 @@ const ProfilePage = () => {
 				<Container>
 					<Row>
 						<Col>
-							<CardUserComplete
-								nickname='Mike Scheinder'
-								username='mighty_mike'
+							<CardUserHorizontal
+								username='Mike Scheinder'
 								avatar={require('assets/img/mike.jpg')}
 								channels={channels}
 								signature='Nice to meet you!'
 								badges={badges}
 								games={games}
 								online
-								audio={audioSample}
+								uid={'123456'}
 								favorite
 							/>
 						</Col>
+					</Row>
+					<Row>
 						<Col lg='8' md='6'>
 							<TabCommon tabs={tabs} />
 						</Col>

@@ -1,3 +1,8 @@
 .online.online {
 	background-color: #10b93c;
 }
+
+.padding-y {
+	padding-left: 15px;
+	padding-right: 15px;
+}

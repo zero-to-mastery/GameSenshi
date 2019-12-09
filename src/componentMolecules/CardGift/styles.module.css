@@ -20,11 +20,7 @@
   align-items: center;
   border-radius: 5px;
 }
-.tooltipBody {
-  width: 100px;
-  height: 100px;
-  background-color: #667eea;
-}
+
 .grid-item-1 {
   grid-column: 0 / 1;
   grid-row: 0 / 1;
