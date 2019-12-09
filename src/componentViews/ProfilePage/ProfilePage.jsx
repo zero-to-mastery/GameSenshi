@@ -160,8 +160,11 @@ const ProfilePage = () => {
 						</Col>
 					</Row>
 					<Row>
-						<Col>
+						<Col md='6'>
 							<CardGiftWithProps />
+						</Col>
+						<Col md='6'>
+							<CommentWithPaginationPropedDefault />
 						</Col>
 					</Row>
 				</Container>
@@ -187,11 +190,7 @@ const ProfilePage = () => {
 							<TextIconPropedProfileComments />
 						</Col>
 					</Row>
-					<Row>
-						<Col>
-							<CommentWithPaginationPropedDefault />
-						</Col>
-					</Row>
+					<Row></Row>
 				</Container>
 			</Section>
 		</WrapperStoreWrapperPropedProfile>
