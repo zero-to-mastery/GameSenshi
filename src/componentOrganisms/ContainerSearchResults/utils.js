@@ -27,7 +27,7 @@ const cardPlayers = [
 	},
 	{
 		[CARD_SEARCHED_NAME]: 'Mark Johnsson',
-		[CARD_SEARCHED_IMAGE]: require('assets/img/mike-resized.jpg'),
+		[CARD_SEARCHED_IMAGE]: require('assets/img/mike.jpg'),
 		[CARD_SEARCHED_GENDER]: false,
 		[CARD_SEARCHED_AUDIO]: audioSample,
 		[CARD_SEARCHED_PRICE]: '50',

@@ -30,7 +30,6 @@ const options = [
 		[BADGES_ID]: FB_FS_SENSHI_BADGES_ONLINE,
 		[BADGES_BODY]: <i className='fas fa-wifi' />,
 		[BADGES_CLASS]: `${styles.online} text-white`,
-		//	[BADGES_TOOLTIP]: 'Online!',
 	},
 	{
 		[BADGES_ID]: FB_FS_SENSHI_BADGES_RISING_STAR,

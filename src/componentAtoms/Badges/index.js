@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import { Badges } from './Badges'
 import { getOptions } from './utils'
+import styles from './styles.module.css'
 
 const BadgesOptioned = props => {
 	const { badges, ...otherProps } = props
@@ -9,7 +10,13 @@ const BadgesOptioned = props => {
 }
 
 const BadgesPropedSenshi = props => {
-	return <BadgesOptioned className='mx-1' {...props} />
+	return (
+		<BadgesOptioned
+			badgeClass='mx-1'
+			className={styles['padding-y']}
+			{...props}
+		/>
+	)
 }
 
 export { BadgesOptioned, BadgesPropedSenshi, Badges }

@@ -18,6 +18,7 @@ const BUTTONS_COMMON_BASE_CLASS = 'baseClass'
 const ButtonsCommon = props => {
 	const { onClick, buttons, className, col } = props
 
+	const EnclosureCol = col ? Col : Fragment
 	return (
 		<Row className={classnames('justify-content-center', className)}>
 			{buttons.map(button => {
@@ -41,10 +42,8 @@ const ButtonsCommon = props => {
 				)
 				const id_ = 'ButtonsCommon' + id
 
-				const Enclosure = col ? Col : Fragment
-
 				return (
-					<Enclosure key={id_}>
+					<EnclosureCol key={id_}>
 						<Button
 							size='lg'
 							baseClass={baseClass}
@@ -65,7 +64,7 @@ const ButtonsCommon = props => {
 						<UncontrolledTooltip delay={0} target={id_}>
 							{tooltip}
 						</UncontrolledTooltip>
-					</Enclosure>
+					</EnclosureCol>
 				)
 			})}
 		</Row>
