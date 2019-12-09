@@ -37,9 +37,9 @@ const CardUserHorizontal = props => {
 				<Row>
 					<Col xs='auto'>
 						<Row>
-							<Col>
+							<Col className={styles.avatar} align='center'>
 								<Image
-									alt={username}
+									alt={'picture of ' + username}
 									color='transparent'
 									className='img-center img-fluid rounded-circle'
 									src={avatar}
