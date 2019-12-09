@@ -17,7 +17,9 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 				const userData = doc.data()
 				storeUserOnSignIn(userAuth, userData)
 			},
-			err => console.log(err)
+			() => {
+				//handle error here
+			}
 		)
 	}
 	// reset all store if user sign out
