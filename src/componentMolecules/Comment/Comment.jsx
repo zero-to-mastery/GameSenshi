@@ -12,6 +12,9 @@ const COMMENT_AVATAR = 'avatar'
 const COMMENT_BODY = 'body'
 const COMMENT_NUM_COMMENTS = 'numComments'
 
+const AVATAR_WIDTH = 64
+const AVATAR_HEIGHT = 64
+
 const Comments = props => {
 	const { comments } = props
 	const comments_ = comments || []
@@ -88,7 +91,9 @@ const CreateCommentInput = props => {
 				href='#pablo'
 				onClick={e => e.preventDefault()}
 			>
-				<AvatarUserStoreUser />
+				<div className='avatar pl-3'>
+					<AvatarUserStoreUser height={AVATAR_HEIGHT} width={AVATAR_WIDTH} />
+				</div>
 			</a>
 			<Media body>
 				<Input
