@@ -7,7 +7,7 @@
 	"desc": [
 		"__**Use Cases:**__ \n:small_orange_diamond: Hire professional gamer or famous streamer! \n:small_orange_diamond: Hire game coach, level up your skill! \n:small_orange_diamond: Hire strong team mate, face challenge and rank up! \n:small_orange_diamond: Hire players to play your less known multiplayer game! \n:small_orange_diamond: Hang out and socialize with gamers/streamers in a relaxed environment!",
 		"__**Application Features:**__ \n:diamonds: Marketplace \n:diamonds: Payment \n:diamonds: Chat \n:diamonds: Gaming Contents \n:diamonds: Event Organizer ",
-		"__**Tech Stack:**__ \n:small_blue_diamond: React \n:small_blue_diamond: Progressive Web App \n:small_blue_diamond: CSS in JS, CSS module \n:small_blue_diamond: Bootstrap \n:small_blue_diamond: Firebase"
+		"__**Tech Stack:**__ \n:small_blue_diamond: React \n:small_blue_diamond: Progressive Web App \n:small_blue_diamond: Styled Component \n:small_blue_diamond: Bootstrap \n:small_blue_diamond: Firebase"
 	],
 	"team": [
 		["tylim", "Project Lead"],
