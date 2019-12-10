@@ -1,15 +1,15 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import Sound from 'react-sound'
-import { Row, Col, Container } from 'reactstrap'
+import { Row, Container } from 'reactstrap'
 import VolumeMuteIcon from '@material-ui/icons/VolumeMute'
 import VolumeDownIcon from '@material-ui/icons/VolumeDown'
 import VolumeUpIcon from '@material-ui/icons/VolumeUp'
 import Loader from 'react-loader-spinner'
-import styles from './styles.module.css'
 import classnames from 'classnames'
 import uuidV4 from 'uuid/v4'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
+import { ColStyledHidden, ColStyledPlay } from './styled'
 const { Button } = stopUndefined(Exports)
 
 const BUTTON_SOUND_SET_UUID = 'setUuid'
@@ -38,7 +38,6 @@ const ButtonSound = props => {
 	const {
 		url,
 		color,
-		mobile,
 		[BUTTON_SOUND_STATE_UUID]: uuid,
 		[BUTTON_SOUND_SET_UUID]: setUuid,
 	} = props
@@ -136,12 +135,12 @@ const ButtonSound = props => {
 		>
 			<Container>
 				<Row className='align-items-center'>
-					<Col xs='4' className={classnames('p-0', { [styles.hide]: mobile })}>
+					<ColStyledHidden xs='4' className={classnames('p-0')}>
 						<Icon />
-					</Col>
-					<Col className={classnames('p-0', { [styles.play]: mobile })}>
+					</ColStyledHidden>
+					<ColStyledPlay className={classnames('p-0')}>
 						{loading ? Spinner : playStatus === STOPPED ? duration : position}
-					</Col>
+					</ColStyledPlay>
 				</Row>
 			</Container>
 			<Sound

@@ -41,7 +41,7 @@ const ButtonSoundStoreSoundPropedGender = props => {
 }
 
 const ButtonSoundStoreSoundPropedCardUser = props => {
-	return <ButtonSoundStoreSoundPropedGender mobile {...props} />
+	return <ButtonSoundStoreSoundPropedGender {...props} />
 }
 
 export {

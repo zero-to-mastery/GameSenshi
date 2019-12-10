@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useRef } from 'react'
 import { Card, CardBody, Row, Col } from 'reactstrap'
-import styles from './styles.module.css'
 import classnames from 'classnames'
 import Image from 'material-ui-image'
+import { ColStyledSound, DivStyledHover, TextStyledYellow } from './styled'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
@@ -49,11 +49,10 @@ const CardUser = props => {
 				className='w-100'
 			>
 				<Card className='card-profile bg-blue-gradient'>
-					<div
-						className={classnames('card-image', styles.clear, {
-							[styles.zoomIn]: hover,
-							[styles.zoomOut]: leave,
-						})}
+					<DivStyledHover
+						styledHover={hover}
+						styledLeave={leave}
+						className={classnames('card-image')}
 					>
 						<Row className='w-100 position-absolute mt-3' style={{ zIndex: 2 }}>
 							<Col className='px-0' align='right'>
@@ -68,7 +67,7 @@ const CardUser = props => {
 								src={src}
 							/>
 						</div>
-					</div>
+					</DivStyledHover>
 					<CardBody>
 						<Row className='align-items-center'>
 							<Col align='left'>
@@ -83,30 +82,23 @@ const CardUser = props => {
 							</Col>
 						</Row>
 						<Row className='align-items-center my-1'>
-							<Col
+							<ColStyledSound
 								xs='8'
-								className={classnames('pr-0', styles.sound)}
+								className={classnames('pr-0')}
 								align='left'
-								onClick={e => {
-									e.preventDefault()
-									e.stopPropagation()
-								}}
 							>
 								<ButtonSoundStoreSoundPropedCardUser
 									gender={gender}
 									url={audioSrc}
 								/>
-							</Col>
+							</ColStyledSound>
 							<Col className='pl-0'>
-								<h4
+								<TextStyledYellow
 									align='right'
-									className={classnames(
-										'title my-0 text-white text-nowrap',
-										styles.goldenYellow
-									)}
+									className={classnames('title my-0 text-white text-nowrap')}
 								>
 									${price}/h
-								</h4>
+								</TextStyledYellow>
 							</Col>
 						</Row>
 						<Row>

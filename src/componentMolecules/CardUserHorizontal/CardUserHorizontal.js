@@ -3,8 +3,8 @@ import { Container, Col, Row } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 import classnames from 'classnames'
-import styles from './styles.module.css'
 import Image from 'material-ui-image'
+import { SectionStyled, ColStyledAvatar } from './styled'
 
 const {
 	BadgesPropedSenshi,
@@ -12,7 +12,6 @@ const {
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 	ButtonsCommonOptioned,
-	Section,
 } = stopUndefined(Exports)
 
 const CardUserHorizontal = props => {
@@ -26,8 +25,9 @@ const CardUserHorizontal = props => {
 		favorite,
 		uid,
 	} = props
+
 	return (
-		<Section className={classnames('rounded-lg', styles['border-card'])}>
+		<SectionStyled className={classnames('rounded-lg')}>
 			<Container>
 				<Row className='mb-3'>
 					<Col>
@@ -37,14 +37,14 @@ const CardUserHorizontal = props => {
 				<Row>
 					<Col xs='auto'>
 						<Row>
-							<Col className={styles.avatar} align='center'>
+							<ColStyledAvatar align='center'>
 								<Image
 									alt={'picture of ' + username}
 									color='transparent'
 									className='img-center img-fluid rounded-circle'
 									src={avatar}
 								/>
-							</Col>
+							</ColStyledAvatar>
 						</Row>
 						<Row className='mt-2'>
 							<Col>
@@ -86,7 +86,7 @@ const CardUserHorizontal = props => {
 					</Col>
 				</Row>
 			</Container>
-		</Section>
+		</SectionStyled>
 	)
 }
 

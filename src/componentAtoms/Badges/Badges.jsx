@@ -13,10 +13,11 @@ const BADGES_TOOLTIP = 'tooltip'
 const BADGES_CLASS = 'classname'
 
 const Badges = props => {
-	const { badges, className, col, badgeClass } = props
+	const { badges, className, col, row, badgeClass } = props
 	const EnclosureCol = col ? Col : Fragment
+	const EnclosureRow = row ? Row : Fragment
 	return (
-		<Row className={classnames(className)}>
+		<EnclosureRow {...(row && { className: classnames(className) })}>
 			{badges.map(badge => {
 				const {
 					[BADGES_COLOR]: color,
@@ -40,7 +41,7 @@ const Badges = props => {
 					</EnclosureCol>
 				)
 			})}
-		</Row>
+		</EnclosureRow>
 	)
 }
 
