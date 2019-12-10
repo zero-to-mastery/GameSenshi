@@ -63,13 +63,7 @@ const CheckBoxIcon = props => {
 			</Button>
 			{tooltipMount && (
 				<Tooltip delay={100} target={id} isOpen={showTooltip} placement='top'>
-					{checked_
-						? tooltipOff
-							? tooltipOn
-							: tooltipOff
-						: tooltipOff
-						? tooltipOff
-						: tooltipOn}
+					{checked_ ? (tooltipOff ? tooltipOff : tooltipOn) : tooltipOn}
 				</Tooltip>
 			)}
 		</>

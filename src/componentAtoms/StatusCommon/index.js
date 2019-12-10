@@ -6,7 +6,7 @@ const StatusCommonPropedOnline = props => {
 		<StatusCommon
 			bodyOn='Online!'
 			bodyOff='Offline'
-			className='justify-content-center'
+			className='justify-content-center mt-2'
 			{...props}
 		/>
 	)

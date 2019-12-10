@@ -5,8 +5,8 @@ const CheckBoxIconPropedFavorite = props => {
 	return (
 		<CheckBoxIcon
 			color='primary'
-			tooltipOn='Favourite me! 😘'
-			tooltipOff="Please don't unfavorite me! 😭"
+			tooltipOn='😘Favourite me! '
+			tooltipOff='😭unfavorite me...'
 			icon='tim-icons icon-heart-2'
 			{...props}
 		/>
@@ -17,7 +17,7 @@ const CheckBoxIconPropedTip = props => {
 	return (
 		<CheckBoxIcon
 			color='success'
-			tooltipOn='Like me? Tip me!💖'
+			tooltipOn='💖Tip me!'
 			icon='tim-icons icon-coins'
 			{...props}
 		/>

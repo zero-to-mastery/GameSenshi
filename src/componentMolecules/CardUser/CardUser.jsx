@@ -62,7 +62,7 @@ const CardUser = props => {
 						<div className='px-2 pt-2'>
 							<Image
 								alt={name}
-								className='img img-raised rounded '
+								className='img img-raised rounded-lg'
 								color='transparent' //this is needed or else there is tiny white background even when OTHER image in carousel move, very weird behavior
 								src={src}
 							/>

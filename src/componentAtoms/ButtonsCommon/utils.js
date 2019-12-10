@@ -69,7 +69,7 @@ const options = [
 	},
 	{
 		[BUTTONS_COMMON_ID]: FB_FS_CHANNELS_YOUTUBE,
-		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'ml-n1 fab fa-youtube font-1-6' },
+		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-youtube font-1-6' },
 		[BUTTONS_COMMON_COLOR]: 'youtube',
 		[BUTTONS_COMMON_TOOLTIP]: 'Subscribe to my Youtube channel!',
 		[BUTTONS_COMMON_CLASS]: 'btn-icon btn-round',

@@ -42,7 +42,7 @@ const CarouselCommon = props => {
 				const img = () => {
 					return (
 						<Image
-							className='img img-raised rounded'
+							className='img img-raised rounded-lg'
 							color='transparent'
 							src={image}
 							style={{ padding: `${aspectRatio_}% 0` }}
