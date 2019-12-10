@@ -75,37 +75,38 @@ const PaginationCommon = props => {
 			<PaginationItem>
 				<PaginationLink first onClick={e => onPageChanged(e, 1)} />
 			</PaginationItem>
-			{pages.map((page, index) => {
-				if (page === LEFT_PAGE)
+			{pages &&
+				pages.map((page, index) => {
+					if (page === LEFT_PAGE)
+						return (
+							<PaginationItem disabled={currentPage <= 0}>
+								<PaginationLink
+									onClick={e => onPageChanged(e, currentPage - 1)}
+									aria-label='Previous'
+									previous
+								/>
+							</PaginationItem>
+						)
+
+					if (page === RIGHT_PAGE)
+						return (
+							<PaginationItem disabled={currentPage >= totalPages - 1}>
+								<PaginationLink
+									onClick={e => onPageChanged(e, currentPage + 1)}
+									aria-label='Next'
+									next
+								/>
+							</PaginationItem>
+						)
+
 					return (
-						<PaginationItem disabled={currentPage <= 0}>
-							<PaginationLink
-								onClick={e => onPageChanged(e, currentPage - 1)}
-								aria-label='Previous'
-								previous
-							/>
+						<PaginationItem active={currentPage === page} key={index}>
+							<PaginationLink onClick={e => onPageChanged(e, page)}>
+								{page}
+							</PaginationLink>
 						</PaginationItem>
 					)
-
-				if (page === RIGHT_PAGE)
-					return (
-						<PaginationItem disabled={currentPage >= totalPages - 1}>
-							<PaginationLink
-								onClick={e => onPageChanged(e, currentPage + 1)}
-								aria-label='Next'
-								next
-							/>
-						</PaginationItem>
-					)
-
-				return (
-					<PaginationItem active={currentPage === page} key={index}>
-						<PaginationLink onClick={e => onPageChanged(e, page)}>
-							{page}
-						</PaginationLink>
-					</PaginationItem>
-				)
-			})}
+				})}
 			<PaginationItem>
 				<PaginationLink
 					last

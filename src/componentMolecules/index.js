@@ -10,6 +10,16 @@ import { PanelFilterSearch } from './PanelFilterSearch'
 import { ChatContactListWithProps } from './ChatContactList'
 import { CarouselCardSimplePropedNew } from './CarouselCardSimple'
 import { CardGiftWithProps } from './CardGift'
+import {
+	CommentCommonPropedDefault,
+	COMMENT_ID,
+	COMMENT_NAME,
+	COMMENT_POSTED_TIME,
+	COMMENT_AVATAR,
+	COMMENT_BODY,
+	COMMENT_NUM_COMMENTS,
+} from './Comment'
+import { PaginationCommonPropedDefault } from './PaginationCommon'
 
 export const Exports = {
 	...ExportAtoms,
@@ -27,4 +37,12 @@ export const Exports = {
 	ChatContactListWithProps,
 	CarouselCardSimplePropedNew,
 	CardGiftWithProps,
+	CommentCommonPropedDefault,
+	COMMENT_ID,
+	COMMENT_NAME,
+	COMMENT_POSTED_TIME,
+	COMMENT_AVATAR,
+	COMMENT_BODY,
+	COMMENT_NUM_COMMENTS,
+	PaginationCommonPropedDefault,
 }

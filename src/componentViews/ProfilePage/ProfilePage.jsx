@@ -8,7 +8,6 @@ const {
 	CardGiftWithProps,
 	TextIconPropedProfileGift,
 	TextIconPropedProfileGallery,
-	TextIconPropedProfileComments,
 	CardUserHorizontal,
 	CommentWithPaginationPropedDefault,
 	Section,
@@ -16,100 +15,8 @@ const {
 	TabCommon,
 	TAB_COMMON_TAB_NAME,
 	TAB_COMMON_TAB_CONTENT,
-	ImagesTooltipPropedTabs,
-	ButtonSoundStoreSoundPropedCardUser,
-	QuantityProfile,
-	ButtonsCommonChatAndCheckout,
+	TabProductPropedProfile,
 } = stopUndefined(Exports)
-
-const TAB_PANE_PRICE = 'price'
-const TAB_PANE_NUM_ORDERS = 'orders'
-const TAB_PANE_ICON = 'icon'
-const TAB_PANE_DESCRIPTION = 'description'
-
-const profileTabs = [
-	{
-		[TAB_PANE_PRICE]: '25',
-		[TAB_PANE_NUM_ORDERS]: '12',
-		[TAB_PANE_ICON]: 'Dota2',
-		[TAB_PANE_DESCRIPTION]:
-			'	A veteran in MOBA and FPS games, I can give you a significant boost in ranking mode.',
-	},
-	{
-		[TAB_PANE_PRICE]: '35',
-		[TAB_PANE_NUM_ORDERS]: '25',
-		[TAB_PANE_ICON]: 'PUBG',
-		[TAB_PANE_DESCRIPTION]:
-			'	A veteran in MOBA and FPS games, I can give you a significant boost in ranking mode.',
-	},
-	{
-		[TAB_PANE_PRICE]: '45',
-		[TAB_PANE_NUM_ORDERS]: '11',
-		[TAB_PANE_ICON]: 'LOL',
-		[TAB_PANE_DESCRIPTION]:
-			'	A veteran in MOBA and FPS games, I can give you a significant boost in ranking mode.',
-	},
-	{
-		[TAB_PANE_PRICE]: '50',
-		[TAB_PANE_NUM_ORDERS]: '12',
-		[TAB_PANE_ICON]: 'Apex',
-		[TAB_PANE_DESCRIPTION]:
-			'	A veteran in MOBA and FPS games, I can give you a significant boost in ranking mode.',
-	},
-	{
-		[TAB_PANE_PRICE]: '60',
-		[TAB_PANE_NUM_ORDERS]: '23',
-		[TAB_PANE_ICON]: 'Fortnite',
-		[TAB_PANE_DESCRIPTION]:
-			'	A veteran in MOBA and FPS games, I can give you a significant boost in ranking mode.',
-	},
-]
-
-const TabsContent = profileTabs.map(tab => {
-	const {
-		[TAB_PANE_PRICE]: price,
-		[TAB_PANE_NUM_ORDERS]: orders,
-		[TAB_PANE_ICON]: icon,
-		[TAB_PANE_DESCRIPTION]: description,
-	} = tab
-	return (
-		<Container>
-			<Row className='py-2 d-flex align-items-center'>
-				<Col>
-					<ImagesTooltipPropedTabs icons={icon} />
-				</Col>
-				<Col>
-					<div style={{ width: '200px' }}>
-						<h4>{price}$ per hour</h4>
-						<h4>
-							<i className='tim-icons icon-check-2 text-success'></i> {orders}{' '}
-							orders completed
-						</h4>
-						<ButtonSoundStoreSoundPropedCardUser gender={true} />
-					</div>
-				</Col>
-				<Col>
-					<QuantityProfile />
-				</Col>
-			</Row>
-			<Row className='pt-3'>
-				<Col md='12'>
-					<hr className='line-primary' />
-				</Col>
-			</Row>
-			<Row>
-				<Col>
-					<p>{description}</p>
-				</Col>
-			</Row>
-			<Row className='pt-5 text-right'>
-				<Col md={{ offset: 8, size: 4 }}>
-					<ButtonsCommonChatAndCheckout />
-				</Col>
-			</Row>
-		</Container>
-	)
-})
 
 // fake data
 const channels = {
@@ -123,7 +30,7 @@ const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 const tabs = games.map((tab, index) => {
 	return {
 		[TAB_COMMON_TAB_NAME]: tab,
-		[TAB_COMMON_TAB_CONTENT]: TabsContent[index],
+		[TAB_COMMON_TAB_CONTENT]: TabProductPropedProfile[index],
 	}
 })
 
@@ -149,8 +56,8 @@ const ProfilePage = () => {
 							/>
 						</Col>
 					</Row>
-					<Row>
-						<Col lg='8' md='6'>
+					<Row className='pt-5'>
+						<Col>
 							<TabCommon tabs={tabs} />
 						</Col>
 					</Row>
@@ -160,8 +67,11 @@ const ProfilePage = () => {
 						</Col>
 					</Row>
 					<Row>
-						<Col>
+						<Col md='6'>
 							<CardGiftWithProps />
+						</Col>
+						<Col md='6'>
+							<CommentWithPaginationPropedDefault />
 						</Col>
 					</Row>
 				</Container>
@@ -176,20 +86,6 @@ const ProfilePage = () => {
 					<Row>
 						<Col md='12'>
 							<CarouselCommonPropedProfile />
-						</Col>
-					</Row>
-				</Container>
-			</Section>
-			<Section>
-				<Container>
-					<Row>
-						<Col>
-							<TextIconPropedProfileComments />
-						</Col>
-					</Row>
-					<Row>
-						<Col>
-							<CommentWithPaginationPropedDefault />
 						</Col>
 					</Row>
 				</Container>

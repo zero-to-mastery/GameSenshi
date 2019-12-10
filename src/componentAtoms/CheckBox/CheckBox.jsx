@@ -30,7 +30,8 @@ const CheckBox = props => {
 		<FormGroup
 			check={!loading}
 			className={`mb-0 ${className}`}
-			style={{ marginTop: '8px' }}>
+			style={{ marginTop: '8px' }}
+		>
 			<Label check>
 				{!loading && (
 					<Input

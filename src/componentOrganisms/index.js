@@ -12,6 +12,7 @@ import { FormResetPasswordPropedDefault } from './FormResetPassword'
 import { NavbarIndexStoreAlertPropApp } from './NavbarIndex'
 import { CheckoutCardPropedDefault } from './CheckoutCard'
 import { ContainerSearchResultsPropedDefault } from './ContainerSearchResults'
+import { TabProductPropedProfile } from './TabProduct'
 
 export const Exports = {
 	...ExportCompounds,
@@ -27,4 +28,5 @@ export const Exports = {
 	NavbarIndexStoreAlertPropApp,
 	CheckoutCardPropedDefault,
 	ContainerSearchResultsPropedDefault,
+	TabProductPropedProfile,
 }

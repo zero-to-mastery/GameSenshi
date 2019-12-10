@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { stopUndefined } from 'utils'
-import { Exports } from 'componentAtoms'
+import { Exports } from 'componentMolecules'
 
 const {
 	CommentCommonPropedDefault,

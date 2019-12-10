@@ -22,7 +22,11 @@ import { AlertCommonStoreAlert } from './AlertCommon'
 import { ProgressCommonStoreProgress } from './ProgressCommon'
 import { CheckBox } from './CheckBox'
 import { HeaderLined } from './HeaderLined'
-import { ModalCommonStoreModalPropedAuth, ModalCommon } from './ModalCommon'
+import {
+	ModalCommonStoreModalPropedAuth,
+	ModalCommon,
+	ModalCommonPropedProfile,
+} from './ModalCommon'
 import { ButtonSubmit } from './ButtonSubmit'
 import { TabPaneContainer } from './TabPaneContainer'
 import {
@@ -62,16 +66,6 @@ import {
 	TextIconPropedProfileComments,
 } from './TextIcon'
 
-import {
-	CommentCommonPropedDefault,
-	ID,
-	NAME,
-	POSTED_TIME,
-	AVATAR,
-	BODY,
-	NUM_COMMENTS,
-} from './Comment'
-import { PaginationCommonPropedDefault } from './PaginationCommon'
 import { BadgesOptioned, Badges, BadgesPropedSenshi } from './Badges'
 import {
 	ImagesTooltipOptioned,
@@ -160,14 +154,6 @@ export const Exports = {
 	StatusCommonPropedOnline,
 	ButtonSoundStoreSoundPropedGender,
 	ButtonSoundStoreSoundPropedCardUser,
-	CommentCommonPropedDefault,
-	PaginationCommonPropedDefault,
-	ID,
-	NAME,
-	POSTED_TIME,
-	AVATAR,
-	BODY,
-	NUM_COMMENTS,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 	CarouselCommonPropedProfile,
@@ -192,4 +178,5 @@ export const Exports = {
 	TabCommon,
 	TAB_COMMON_TAB_NAME,
 	TAB_COMMON_TAB_CONTENT,
+	ModalCommonPropedProfile,
 }

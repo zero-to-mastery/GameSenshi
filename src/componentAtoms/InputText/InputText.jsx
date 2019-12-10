@@ -31,14 +31,16 @@ const InputText = props => {
 					'has-success': hasSuccess,
 					'input-group-focus': hasFocus,
 					'mb-0': true,
-				})}>
+				})}
+			>
 				{icon && (
 					<InputGroupAddon addonType='prepend'>
 						<InputGroupText>
 							{spinner ? (
 								<div
 									style={{ height: 16 }}
-									className='d-flex align-items-center'>
+									className='d-flex align-items-center'
+								>
 									<Loader
 										type={spinner}
 										color='#00BFFF'

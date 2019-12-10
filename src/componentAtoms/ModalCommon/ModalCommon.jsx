@@ -13,6 +13,7 @@ const MODAL_COMMON_STATE_IS_OPEN = 'isOpen'
 const MODAL_COMMON_STATE_FOOTER = 'footer'
 const MODAL_COMMON_TOGGLE = 'toggle'
 const MODAL_COMMON_ON_CONTINUE = 'onContinue'
+const MODAL_COMMON_SIZE = 'size'
 
 const ModalCommon = props => {
 	const {
@@ -23,6 +24,8 @@ const ModalCommon = props => {
 		[MODAL_COMMON_TOGGLE]: toggle,
 		[MODAL_COMMON_ON_CONTINUE]: onContinue,
 		[MODAL_COMMON_STATE_FOOTER]: footer,
+		[MODAL_COMMON_SIZE]: size,
+		backdrop,
 		children,
 	} = props
 
@@ -30,9 +33,10 @@ const ModalCommon = props => {
 		<Modal
 			isOpen={isOpen}
 			toggle={toggle}
+			size={size}
 			backdrop='static'
 			modalClassName='modal-black'
-			wrapClassName='modal-backdrop'
+			wrapClassName={backdrop ? '' : 'modal-backdrop'}
 			style={{ border: '1px solid #00d6d1', borderRadius: '5px' }}
 		>
 			<div className='modal-header'>

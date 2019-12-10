@@ -1,227 +1,232 @@
 import React from 'react'
 import { CommentWithPagination } from './CommentWithPagination'
-import { Exports } from 'componentAtoms'
+import { Exports } from 'componentMolecules'
 import { stopUndefined } from 'utils'
-const { ID, NAME, POSTED_TIME, AVATAR, BODY, NUM_COMMENTS } = stopUndefined(
-	Exports
-)
+const {
+	COMMENT_ID,
+	COMMENT_NAME,
+	COMMENT_POSTED_TIME,
+	COMMENT_AVATAR,
+	COMMENT_BODY,
+	COMMENT_NUM_COMMENTS,
+} = stopUndefined(Exports)
 
 const comments = [
 	{
-		[ID]: 1,
-		[NAME]: 'Tina Andrew',
-		[POSTED_TIME]: '7 minutes ago',
-		[AVATAR]: require('assets/img/james.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 1,
+		[COMMENT_NAME]: 'Tina Andrew',
+		[COMMENT_POSTED_TIME]: '7 minutes ago',
+		[COMMENT_AVATAR]: require('assets/img/james.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '243',
+		[COMMENT_NUM_COMMENTS]: '243',
 	},
 	{
-		[ID]: 2,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 2,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '211',
+		[COMMENT_NUM_COMMENTS]: '211',
 	},
 	{
-		[ID]: 3,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 3,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '217',
+		[COMMENT_NUM_COMMENTS]: '217',
 	},
 	{
-		[ID]: 4,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 4,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '192',
+		[COMMENT_NUM_COMMENTS]: '192',
 	},
 	{
-		[ID]: 5,
-		[NAME]: 'Tina Andrew',
-		[POSTED_TIME]: '7 minutes ago',
-		[AVATAR]: require('assets/img/james.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 5,
+		[COMMENT_NAME]: 'Tina Andrew',
+		[COMMENT_POSTED_TIME]: '7 minutes ago',
+		[COMMENT_AVATAR]: require('assets/img/james.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '243',
+		[COMMENT_NUM_COMMENTS]: '243',
 	},
 	{
-		[ID]: 6,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 6,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '211',
+		[COMMENT_NUM_COMMENTS]: '211',
 	},
 	{
-		[ID]: 7,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 7,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '217',
+		[COMMENT_NUM_COMMENTS]: '217',
 	},
 	{
-		[ID]: 8,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 8,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '192',
+		[COMMENT_NUM_COMMENTS]: '192',
 	},
 	{
-		[ID]: 9,
-		[NAME]: 'Tina Andrew',
-		[POSTED_TIME]: '7 minutes ago',
-		[AVATAR]: require('assets/img/james.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 9,
+		[COMMENT_NAME]: 'Tina Andrew',
+		[COMMENT_POSTED_TIME]: '7 minutes ago',
+		[COMMENT_AVATAR]: require('assets/img/james.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '243',
+		[COMMENT_NUM_COMMENTS]: '243',
 	},
 	{
-		[ID]: 10,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 10,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '211',
+		[COMMENT_NUM_COMMENTS]: '211',
 	},
 	{
-		[ID]: 11,
-		[NAME]: 'Tina Andrew',
-		[POSTED_TIME]: '7 minutes ago',
-		[AVATAR]: require('assets/img/james.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 11,
+		[COMMENT_NAME]: 'Tina Andrew',
+		[COMMENT_POSTED_TIME]: '7 minutes ago',
+		[COMMENT_AVATAR]: require('assets/img/james.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '243',
+		[COMMENT_NUM_COMMENTS]: '243',
 	},
 	{
-		[ID]: 12,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 12,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '211',
+		[COMMENT_NUM_COMMENTS]: '211',
 	},
 	{
-		[ID]: 13,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 13,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '217',
+		[COMMENT_NUM_COMMENTS]: '217',
 	},
 	{
-		[ID]: 14,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 14,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '192',
+		[COMMENT_NUM_COMMENTS]: '192',
 	},
 	{
-		[ID]: 15,
-		[NAME]: 'Tina Andrew',
-		[POSTED_TIME]: '7 minutes ago',
-		[AVATAR]: require('assets/img/james.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 15,
+		[COMMENT_NAME]: 'Tina Andrew',
+		[COMMENT_POSTED_TIME]: '7 minutes ago',
+		[COMMENT_AVATAR]: require('assets/img/james.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '243',
+		[COMMENT_NUM_COMMENTS]: '243',
 	},
 	{
-		[ID]: 16,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 16,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '211',
+		[COMMENT_NUM_COMMENTS]: '211',
 	},
 	{
-		[ID]: 17,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 17,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '217',
+		[COMMENT_NUM_COMMENTS]: '217',
 	},
 	{
-		[ID]: 18,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 18,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '192',
+		[COMMENT_NUM_COMMENTS]: '192',
 	},
 	{
-		[ID]: 19,
-		[NAME]: 'Tina Andrew',
-		[POSTED_TIME]: '7 minutes ago',
-		[AVATAR]: require('assets/img/james.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 19,
+		[COMMENT_NAME]: 'Tina Andrew',
+		[COMMENT_POSTED_TIME]: '7 minutes ago',
+		[COMMENT_AVATAR]: require('assets/img/james.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '243',
+		[COMMENT_NUM_COMMENTS]: '243',
 	},
 	{
-		[ID]: 20,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 20,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '211',
+		[COMMENT_NUM_COMMENTS]: '211',
 	},
 	{
-		[ID]: 21,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 21,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '217',
+		[COMMENT_NUM_COMMENTS]: '217',
 	},
 	{
-		[ID]: 22,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 22,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '192',
+		[COMMENT_NUM_COMMENTS]: '192',
 	},
 	{
-		[ID]: 23,
-		[NAME]: 'Tina Andrew',
-		[POSTED_TIME]: '7 minutes ago',
-		[AVATAR]: require('assets/img/james.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 23,
+		[COMMENT_NAME]: 'Tina Andrew',
+		[COMMENT_POSTED_TIME]: '7 minutes ago',
+		[COMMENT_AVATAR]: require('assets/img/james.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '243',
+		[COMMENT_NUM_COMMENTS]: '243',
 	},
 	{
-		[ID]: 24,
-		[NAME]: 'John Camber',
-		[POSTED_TIME]: 'Yesterday',
-		[AVATAR]: require('assets/img/michael.jpg'),
-		[BODY]:
+		[COMMENT_ID]: 24,
+		[COMMENT_NAME]: 'John Camber',
+		[COMMENT_POSTED_TIME]: 'Yesterday',
+		[COMMENT_AVATAR]: require('assets/img/michael.jpg'),
+		[COMMENT_BODY]:
 			"Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!",
-		[NUM_COMMENTS]: '211',
+		[COMMENT_NUM_COMMENTS]: '211',
 	},
 ]
 

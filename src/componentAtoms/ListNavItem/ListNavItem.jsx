@@ -39,7 +39,8 @@ const ListNavItem = memo(props => {
 						tag={Link}
 						to={to}
 						className={linkClassName}
-						onClick={onClick_}>
+						onClick={onClick_}
+					>
 						{body}
 					</NavLink>
 				</NavItem>

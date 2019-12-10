@@ -1,28 +1,31 @@
 import React, { Fragment } from 'react'
 import { Media, Input } from 'reactstrap'
-import { Exports } from 'componentaProton'
+import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
-const { Button } = stopUndefined(Exports)
+const { Button, AvatarUserStoreUser } = stopUndefined(Exports)
 
-const ID = 'id'
-const NAME = 'name'
-const POSTED_TIME = 'postedTime'
-const AVATAR = 'avatar'
-const BODY = 'body'
-const NUM_COMMENTS = 'numComments'
+const COMMENT_ID = 'id'
+const COMMENT_NAME = 'name'
+const COMMENT_POSTED_TIME = 'postedTime'
+const COMMENT_AVATAR = 'avatar'
+const COMMENT_BODY = 'body'
+const COMMENT_NUM_COMMENTS = 'numComments'
+
+const AVATAR_WIDTH = 64
+const AVATAR_HEIGHT = 64
 
 const Comments = props => {
 	const { comments } = props
 	const comments_ = comments || []
-	return comments_.map((comment, i) => {
+	return comments_.map(comment => {
 		const {
-			[ID]: id,
-			[NAME]: name,
-			[POSTED_TIME]: time,
-			[AVATAR]: src,
-			[BODY]: body,
-			[NUM_COMMENTS]: commentsNumber,
+			[COMMENT_ID]: id,
+			[COMMENT_NAME]: name,
+			[COMMENT_POSTED_TIME]: time,
+			[COMMENT_AVATAR]: src,
+			[COMMENT_BODY]: body,
+			[COMMENT_NUM_COMMENTS]: commentsNumber,
 		} = comment
 		return (
 			<Fragment key={id}>
@@ -39,7 +42,7 @@ const Comments = props => {
 }
 
 const Comment = props => {
-	const { body, name, time, commentsNumber, src } = props
+	const { body, name, time, src } = props
 	return (
 		<Media>
 			<div className='pull-left'>
@@ -55,7 +58,7 @@ const Comment = props => {
 				<p>{body}</p>
 				<div className='media-footer'>
 					<Button
-						className='btn-simple pull-right'
+						className='btn-simple pull-right no-border'
 						color='primary'
 						href='#pablo'
 						id='tooltip871944617'
@@ -63,16 +66,6 @@ const Comment = props => {
 						size='sm'
 					>
 						<i className='tim-icons icon-send' /> Reply
-					</Button>
-					<Button
-						className='btn-simple pull-right'
-						color='danger'
-						href='#pablo'
-						onClick={e => e.preventDefault()}
-						size='sm'
-					>
-						<i className='tim-icons icon-heart-2' />
-						{commentsNumber}
 					</Button>
 				</div>
 			</Media>
@@ -88,12 +81,8 @@ const CreateCommentInput = props => {
 				href='#pablo'
 				onClick={e => e.preventDefault()}
 			>
-				<div className='avatar'>
-					<Media
-						alt='...'
-						className='img-raised'
-						src={require('assets/img/olivia.jpg')}
-					/>
+				<div className='avatar pl-3'>
+					<AvatarUserStoreUser height={AVATAR_HEIGHT} width={AVATAR_WIDTH} />
 				</div>
 			</a>
 			<Media body>
@@ -104,12 +93,12 @@ const CreateCommentInput = props => {
 				/>
 				<div className='media-footer'>
 					<Button
-						className='pull-right'
+						className='btn-simple pull-right'
 						color='primary'
 						href='#pablo'
 						onClick={e => e.preventDefault()}
 					>
-						Reply
+						<i className='tim-icons icon-send' /> Reply
 					</Button>
 				</div>
 			</Media>
@@ -120,25 +109,25 @@ const CreateCommentInput = props => {
 const CommentsList = props => {
 	const { comments } = props
 	return (
-		<>
+		<Fragment>
 			<div className='container'>
 				<h3 className='title text-center'>Post your comment</h3>
 				<CreateCommentInput />
+				<div className='container'>
+					<Comments comments={comments} />
+				</div>
 			</div>
-			<div className='container'>
-				<Comments comments={comments} />
-			</div>
-		</>
+		</Fragment>
 	)
 }
 
 export {
 	Comment,
-	NAME,
-	POSTED_TIME,
-	AVATAR,
-	BODY,
-	NUM_COMMENTS,
-	ID,
+	COMMENT_NAME,
+	COMMENT_POSTED_TIME,
+	COMMENT_AVATAR,
+	COMMENT_BODY,
+	COMMENT_NUM_COMMENTS,
+	COMMENT_ID,
 	CommentsList,
 }
