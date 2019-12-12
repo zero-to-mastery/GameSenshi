@@ -15,6 +15,9 @@ const MODAL_COMMON_STATE_FOOTER = 'footer'
 const MODAL_COMMON_TOGGLE = 'toggle'
 const MODAL_COMMON_ON_CONTINUE = 'onContinue'
 const MODAL_COMMON_SIZE = 'size'
+const MODAL_COMMON_MODAL_CLASS_NAME = 'modalClassName'
+const MODAL_COMMON_MODAL_WRAP_NAME = 'modalWrapName'
+const MODAL_COMMON_MODAL_BACKDROP = 'modalBackdrop'
 
 const ModalCommon = props => {
 	const {
@@ -26,10 +29,10 @@ const ModalCommon = props => {
 		[MODAL_COMMON_ON_CONTINUE]: onContinue,
 		[MODAL_COMMON_STATE_FOOTER]: footer,
 		[MODAL_COMMON_SIZE]: size,
-		backdrop,
+		[MODAL_COMMON_MODAL_BACKDROP]: backdrop,
+		[MODAL_COMMON_MODAL_CLASS_NAME]: modalClassName,
+		[MODAL_COMMON_MODAL_WRAP_NAME]: wrapClassName,
 		children,
-		modalClassName,
-		wrapClassName,
 	} = props
 
 	return (
