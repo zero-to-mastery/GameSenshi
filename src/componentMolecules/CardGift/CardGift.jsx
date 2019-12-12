@@ -1,14 +1,17 @@
 import React, { Fragment, useState, useCallback } from 'react'
-import { Col, Input, InputGroup } from 'reactstrap'
+import { Col, Input } from 'reactstrap'
 import Image from 'material-ui-image'
-import styles from './styles.module.css'
-import { ModalBodyWrapper } from './styled'
+import {
+	ModalBodyWrapper,
+	GridContainer,
+	GradientContainer,
+	ImageWrapper,
+	GridItemWrapper,
+} from './styled'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentAtoms'
 
-const { UncontrolledTooltip, ModalCommonPropedProfile, Button } = stopUndefined(
-	Exports
-)
+const { UncontrolledTooltip, ModalCommonPropedProfile } = stopUndefined(Exports)
 
 const CARD_GIFT_IMAGE = 'image'
 const CARD_GIFT_TOOLTIP = 'tooltip'
@@ -17,13 +20,12 @@ const CardGift = props => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [modalId, setModalId] = useState('')
 	const { icons } = props
-
 	const onContinue = useCallback(e => {}, [])
 
 	return (
 		<Col>
-			<div className={styles.bgGradient} style={{ zIndex: 99 }}>
-				<div className={styles.gridContainer}>
+			<GradientContainer>
+				<GridContainer>
 					{icons.map((icon, index) => {
 						const {
 							[CARD_GIFT_IMAGE]: src,
@@ -55,14 +57,10 @@ const CardGift = props => {
 										/>
 									</ModalBodyWrapper>
 								</ModalCommonPropedProfile>
-								<div
-									onClick={toggleModal}
-									id={id_}
-									className={`grid-item-${index + 1}`}
-								>
-									<div className={styles.imgWrapper}>
+								<div onClick={toggleModal} id={id_}>
+									<ImageWrapper>
 										<Image src={src} alt={src} />
-									</div>
+									</ImageWrapper>
 									<UncontrolledTooltip
 										placement='bottom'
 										delay={0}
@@ -74,8 +72,8 @@ const CardGift = props => {
 							</Fragment>
 						)
 					})}
-				</div>
-			</div>
+				</GridContainer>
+			</GradientContainer>
 		</Col>
 	)
 }
