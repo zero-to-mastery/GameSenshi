@@ -4,6 +4,7 @@ import Loader from 'react-loader-spinner'
 import { Modal, ModalBody, ModalFooter } from 'reactstrap'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
+
 const { Button } = stopUndefined(Exports)
 
 const MODAL_COMMON_STATE_BODY = 'body'
@@ -27,6 +28,8 @@ const ModalCommon = props => {
 		[MODAL_COMMON_SIZE]: size,
 		backdrop,
 		children,
+		modalClassName,
+		wrapClassName,
 	} = props
 
 	return (
@@ -34,9 +37,9 @@ const ModalCommon = props => {
 			isOpen={isOpen}
 			toggle={toggle}
 			size={size}
-			backdrop='static'
-			modalClassName='modal-black'
-			wrapClassName={backdrop ? '' : 'modal-backdrop'}
+			backdrop={backdrop}
+			modalClassName={modalClassName}
+			wrapClassName={wrapClassName}
 			style={{ border: '1px solid #00d6d1', borderRadius: '5px' }}
 		>
 			<div className='modal-header'>
