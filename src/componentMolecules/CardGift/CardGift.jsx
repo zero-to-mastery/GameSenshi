@@ -6,7 +6,6 @@ import {
 	GridContainer,
 	GradientContainer,
 	ImageWrapper,
-	GridItemWrapper,
 } from './styled'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentAtoms'
@@ -20,7 +19,17 @@ const CardGift = props => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [modalId, setModalId] = useState('')
 	const { icons } = props
-	const onContinue = useCallback(e => {}, [])
+
+	const onContinue = useCallback(e => { }, [])
+
+	const toggleModal = useCallback(
+		(e, id) => {
+			e.preventDefault()
+			setIsOpen(isOpen => !isOpen)
+			setModalId(id)
+		},
+		[isOpen]
+	)
 
 	return (
 		<Col>
@@ -32,32 +41,9 @@ const CardGift = props => {
 							[CARD_GIFT_TOOLTIP]: tooltip,
 						} = icon
 						const id_ = `Id${index + 1}`
-
-						const toggleModal = useCallback(() => {
-							setIsOpen(isOpen => !isOpen)
-							setModalId(id_)
-						}, [isOpen])
 						return (
-							<Fragment key={index}>
-								<ModalCommonPropedProfile
-									title={modalId}
-									isOpen={isOpen}
-									toggle={toggleModal}
-									onContinue={onContinue}
-									backdrop='static'
-									modalClassName='modal-black'
-									size='sm'
-									footer='Send a gift'
-								>
-									<ModalBodyWrapper>
-										Icon with : {modalId}
-										<Input
-											label='No of gifts'
-											placeholder='Select number of gifts'
-										/>
-									</ModalBodyWrapper>
-								</ModalCommonPropedProfile>
-								<div onClick={toggleModal} id={id_}>
+							<Fragment key={id_}>
+								<div onClick={e => toggleModal(e, id_)} id={id_}>
 									<ImageWrapper>
 										<Image src={src} alt={src} />
 									</ImageWrapper>
@@ -72,6 +58,21 @@ const CardGift = props => {
 							</Fragment>
 						)
 					})}
+					<ModalCommonPropedProfile
+						title='You have selected a gift'
+						isOpen={isOpen}
+						toggle={toggleModal}
+						onContinue={onContinue}
+						backdrop='static'
+						modalClassName='modal-black'
+						size='sm'
+						footer='Send a gift'
+					>
+						<ModalBodyWrapper>
+							Icon with : {modalId}
+							<Input label='No of gifts' placeholder='Select number of gifts' />
+						</ModalBodyWrapper>
+					</ModalCommonPropedProfile>
 				</GridContainer>
 			</GradientContainer>
 		</Col>

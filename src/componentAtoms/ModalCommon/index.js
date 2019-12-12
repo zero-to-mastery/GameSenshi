@@ -41,7 +41,13 @@ const ModalCommonStoreModal = StateContainer(
 )
 
 const ModalCommonStoreModalPropedAuth = props => {
-	return <ModalCommonStoreModal footer='continue' {...props} />
+	return (
+		<ModalCommonStoreModal
+			modalClassName='modal-black'
+			footer='continue'
+			{...props}
+		/>
+	)
 }
 
 const ModalCommonPropedProfile = props => {
