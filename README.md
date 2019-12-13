@@ -62,7 +62,7 @@ Optional Features:
 
 Andrei's [React Course](https://www.udemy.com/complete-react-developer-zero-to-mastery/?couponCode=ZTMREACTLAUNCH) has almost all knowledge you need to get started.  
 
-PS: this is not advertising, this is coincidence, this project already exist for 3 months before the course is released.
+PS: this is not advertising, this is coincidence, this project already existed for 3 months before the course was released.
 
 ## Installation
 
