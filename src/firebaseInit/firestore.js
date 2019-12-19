@@ -1,4 +1,4 @@
-import { firestore, auth } from 'firebaseInit/core'
+import { firestore, auth, getServerTimestamp } from 'firebaseInit/core'
 
 import {
 	fbfsSettingsGeneralPath,
@@ -10,7 +10,13 @@ const createDocGetSet = path => {
 	const ref = () => firestore.doc(path(auth().currentUser.uid))
 	const get = () => ref().get()
 	const set = (data, options = { merge: true }) =>
-		ref().set({ [UPDATED_AT]: new Date(), ...data }, options)
+		ref().set(
+			{
+				[UPDATED_AT]: getServerTimestamp(),
+				...data,
+			},
+			options
+		)
 	const onSanpshot = (...args) => ref().onSnapshot(...args)
 	return [get, set, onSanpshot]
 }

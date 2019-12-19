@@ -26,7 +26,9 @@
 		"p-logs": "env-cmd .config/prod.env npm run logs",
 		"p-serve": "env-cmd .config/prod.env npm run serve",
 		"p-start": "env-cmd .config/prod.env npm run start",
-		"p-deploy": "env-cmd .config/prod.env npm run deploy"
+		"p-deploy": "env-cmd .config/prod.env npm run deploy",
+		"divider4": "-------------------------------------------------all-----------------------------------------------------------------",
+		"a-deploy": "npm run d-deploy && npm run p-deploy"
 	},
 	"engines": {
 		"node": "8"
