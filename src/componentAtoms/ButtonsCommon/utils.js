@@ -99,14 +99,15 @@ const buttonCommonAuthOnClick = lastLocation => {
 		const { [BUTTONS_COMMON_ID]: id } = button
 		const body = (
 			<>
-				Please wait while we signing you in with <b>{id}</b>.
+				Please wait while we signing you in with{' '}
+				<b className='text-success'>{id}</b>.
 			</>
 		)
 		const title = 'Signing You In...'
 		storeModalShow(title, body, true)
 		const body2 = reactElementToJSXString(
 			<span>
-				Signing in with <b>{id}</b>...
+				Signing in with <b className='text-success'>{id}</b>...
 				<br />
 				<br />
 				Almost there!

@@ -19,9 +19,9 @@ const getRedirectResult = () =>
 		.getRedirectResult()
 		.then(result => {
 			const { user } = result
+			// need this condition because this part run when webpage start
 			if (user) {
 				storeUserSetSigningIn(true)
-				// need this condition because this part run when webpage start
 				// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 				const showAlert = name2 => {
 					storeAlertShow(

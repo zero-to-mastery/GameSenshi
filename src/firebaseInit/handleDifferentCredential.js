@@ -43,14 +43,17 @@ const handleDifferentCredential = (auth, email, credential) => {
 			setTimeout(() => {
 				const body = (
 					<>
-						It seem like you already registered with <b>{name1}</b>, we will try
-						to link both of your <b>{name1}</b> and
-						<b> {name2}</b> social login by signing you in with
-						<b> {name1}</b> first then <b>{name2}. </b>
+						It seem like you already registered with{' '}
+						<b className='text-info'>{name1}</b>, we will try to link both of
+						your <b className='text-info'>{name1}</b> and
+						<b className='text-success'> {name2}</b> social login by signing you
+						in with
+						<b className='text-info'> {name1}</b> first then{' '}
+						<b className='text-success'>{name2}. </b>
 						<br />
 						<br />
 						Please click
-						<b> Continue</b> to link your account.
+						<b className='text-primary'> Continue</b> to link your account.
 					</>
 				)
 
@@ -61,7 +64,8 @@ const handleDifferentCredential = (auth, email, credential) => {
 						storeSignInShow(email, async () => {
 							const body = (
 								<>
-									Linking<b> {name1} </b>to<b> {name2} </b>
+									Linking<b className='text-info'> {name1} </b>to
+									<b className='text-success'> {name2} </b>
 									<br />
 									<br />
 									Please Wait...
@@ -93,11 +97,11 @@ const handleDifferentCredential = (auth, email, credential) => {
 						const body = reactElementToJSXString(
 							<span>
 								Please wait while we signing you in with
-								<b> {name1}. </b>
+								<b className='text-info'> {name1}. </b>
 								<br />
 								<br />
 								After that we will signing you in with
-								<b> {name2}. </b>
+								<b className='text-success'> {name2}. </b>
 							</span>
 						)
 						const title = 'Signing You In...'
