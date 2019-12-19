@@ -42,7 +42,6 @@ const getRedirectResult = () =>
 			}
 		})
 		.catch(err => {
-			// remove this item whether it is success or not
 			storeModalRemoveItem()
 			const { code, credential, email } = err
 			if (code === 'auth/account-exists-with-different-credential') {
