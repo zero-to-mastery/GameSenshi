@@ -6,6 +6,7 @@ import {
 	storeModalProcessRedirectResult,
 	storeModalShow,
 	storeUserSetSigningIn,
+	storeModalClose,
 } from 'state'
 
 import { handleDifferentCredential } from 'firebaseInit/handleDifferentCredential'
@@ -37,6 +38,7 @@ const getRedirectResult = () =>
 				storeModalProcessRedirectResult(showAlert, linkWithRedirect)
 			} else {
 				storeModalRemoveItem()
+				storeModalClose()
 			}
 		})
 		.catch(err => {
