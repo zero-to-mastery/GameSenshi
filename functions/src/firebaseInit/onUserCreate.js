@@ -18,8 +18,6 @@ import {
 import nanoid from 'nanoid'
 
 const onUserCreate = (userRecord, eventContext, firestore) => {
-	console.log(userRecord, eventContext)
-
 	const { uid } = userRecord
 
 	const isPasswordExist = userRecord.providerData.some(
