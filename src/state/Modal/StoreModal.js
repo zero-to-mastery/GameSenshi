@@ -38,7 +38,7 @@ class StoreModal extends Container {
 	}
 
 	[TOGGLE] = () => {
-		this.setState(state => {
+		this[SET_STATE](state => {
 			state[STORE_MODAL_STATE_IS_OPEN] = !state[STORE_MODAL_STATE_IS_OPEN]
 			return state
 		})
@@ -46,12 +46,12 @@ class StoreModal extends Container {
 	};
 
 	[RESET_STATE] = () => {
-		this.setState(defaultValues())
+		this[SET_STATE](defaultValues())
 		return this
 	};
 
 	[CLOSE] = () => {
-		this.setState({ [STORE_MODAL_STATE_IS_OPEN]: false })
+		this[SET_STATE]({ [STORE_MODAL_STATE_IS_OPEN]: false })
 		return this
 	};
 
@@ -88,7 +88,7 @@ class StoreModal extends Container {
 		loader = false,
 		afterContinueCallback = () => {}
 	) => {
-		this.setState({
+		this[SET_STATE]({
 			[STORE_MODAL_STATE_IS_OPEN]: true,
 			[STORE_MODAL_STATE_BODY]: body,
 			[STORE_MODAL_STATE_TITLE]: title,
@@ -100,9 +100,8 @@ class StoreModal extends Container {
 
 	[INITIALIZE] = () => {
 		const item = this[GET_ITEM]()
-		this[REMOVE_ITEM]()
 		if (item) {
-			this.setState({
+			this[SET_STATE]({
 				[STORE_MODAL_STATE_BODY]: (
 					<Interweave content={item[STORE_MODAL_STATE_BODY]} />
 				),
@@ -118,7 +117,7 @@ class StoreModal extends Container {
 
 	[ON_AUTH_STATE_CHANGE] = () => {
 		const item = this[GET_ITEM]()
-		!item && this.setState({ [STORE_MODAL_STATE_IS_OPEN]: false })
+		!item && this[SET_STATE]({ [STORE_MODAL_STATE_IS_OPEN]: false })
 		return this
 	};
 

@@ -35,6 +35,8 @@ const getRedirectResult = () =>
 					user.linkWithRedirect(new auth[provider2]())
 				}
 				storeModalProcessRedirectResult(showAlert, linkWithRedirect)
+			} else {
+				storeModalRemoveItem()
 			}
 		})
 		.catch(err => {
