@@ -1,14 +1,16 @@
-import React, { Fragment, useState } from 'react'
-import { Col, Input, InputGroup } from 'reactstrap'
+import React, { Fragment, useState, useCallback } from 'react'
+import { Col, Input } from 'reactstrap'
 import Image from 'material-ui-image'
-import styles from './styles.module.css'
-
+import {
+	ModalBodyWrapper,
+	GridContainer,
+	GradientContainer,
+	ImageWrapper,
+} from './styled'
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentAtoms'
 
-const { UncontrolledTooltip, ModalCommonPropedProfile, Button } = stopUndefined(
-	Exports
-)
+const { UncontrolledTooltip, ModalCommonPropedProfile } = stopUndefined(Exports)
 
 const CARD_GIFT_IMAGE = 'image'
 const CARD_GIFT_TOOLTIP = 'tooltip'
@@ -17,14 +19,22 @@ const CardGift = props => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [modalId, setModalId] = useState('')
 	const { icons } = props
-	const toggleModal = id => {
-		setIsOpen(isOpen => !isOpen)
-		setModalId(id)
-	}
+
+	const onContinue = useCallback(e => { }, [])
+
+	const toggleModal = useCallback(
+		(e, id) => {
+			e.preventDefault()
+			setIsOpen(isOpen => !isOpen)
+			setModalId(id)
+		},
+		[isOpen]
+	)
+
 	return (
 		<Col>
-			<div className={styles.bgGradient} style={{ zIndex: 99 }}>
-				<div className={styles.gridContainer}>
+			<GradientContainer>
+				<GridContainer>
 					{icons.map((icon, index) => {
 						const {
 							[CARD_GIFT_IMAGE]: src,
@@ -32,30 +42,11 @@ const CardGift = props => {
 						} = icon
 						const id_ = `Id${index + 1}`
 						return (
-							<Fragment key={index}>
-								<ModalCommonPropedProfile
-									title={modalId}
-									isOpen={isOpen}
-									toggle={() => toggleModal()}
-									backdrop
-									footer='Send a gift'
-								>
-									Icon with id: {modalId}
-									<InputGroup>
-										<Input
-											label='No of gifts'
-											placeholder='Select number of gifts'
-										/>
-									</InputGroup>
-								</ModalCommonPropedProfile>
-								<div
-									onClick={() => toggleModal(id_)}
-									id={id_}
-									className={`grid-item-${index + 1}`}
-								>
-									<div className={styles.imgWrapper}>
+							<Fragment key={id_}>
+								<div onClick={e => toggleModal(e, id_)} id={id_}>
+									<ImageWrapper>
 										<Image src={src} alt={src} />
-									</div>
+									</ImageWrapper>
 									<UncontrolledTooltip
 										placement='bottom'
 										delay={0}
@@ -67,8 +58,23 @@ const CardGift = props => {
 							</Fragment>
 						)
 					})}
-				</div>
-			</div>
+					<ModalCommonPropedProfile
+						title='You have selected a gift'
+						isOpen={isOpen}
+						toggle={toggleModal}
+						onContinue={onContinue}
+						backdrop='static'
+						modalClassName='modal-black'
+						size='sm'
+						footer='Send a gift'
+					>
+						<ModalBodyWrapper>
+							Icon with : {modalId}
+							<Input label='No of gifts' placeholder='Select number of gifts' />
+						</ModalBodyWrapper>
+					</ModalCommonPropedProfile>
+				</GridContainer>
+			</GradientContainer>
 		</Col>
 	)
 }
