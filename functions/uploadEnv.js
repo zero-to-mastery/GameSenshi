@@ -7,19 +7,26 @@ import {
 	ENV_CORS_WHITELIST,
 	ENV_ENABLE_PLAYGROUND,
 	ENV_APOLLO_ENGINE_API_KEY,
+	ENV_TWITCH_ID,
+	ENV_TWITCH_SECRET,
 } from './src/constantValues'
 
 const spawn = child_process.spawn
 
-const env = process.env
+const names = [
+	ENV_PROJECT_ID,
+	ENV_CORS_WHITELIST,
+	ENV_ENABLE_PLAYGROUND, //ENV_ENABLE_PLAYGROUND env value can be undefine, the rest cannot
+	ENV_APOLLO_ENGINE_API_KEY,
+	ENV_TWITCH_ID,
+	ENV_TWITCH_SECRET,
+]
 
 const obj = {
-	[ENV]: {
-		[ENV_PROJECT_ID]: env[ENV_PROJECT_ID],
-		[ENV_ENABLE_PLAYGROUND]: env[ENV_ENABLE_PLAYGROUND],
-		[ENV_APOLLO_ENGINE_API_KEY]: env[ENV_APOLLO_ENGINE_API_KEY],
-		[ENV_CORS_WHITELIST]: env[ENV_CORS_WHITELIST],
-	},
+	[ENV]: names.reduce((acc, name) => {
+		acc[name] = process.env[name.toUpperCase()]
+		return acc
+	}, {}),
 }
 
 const isObj = x => x !== null && typeof x === 'object'
