@@ -18,6 +18,9 @@ import {
 	FB_FS_CHANNELS_FACEBOOK,
 	FB_FS_CHANNELS_TWITCH,
 	FB_FS_CHANNELS_YOUTUBE,
+	API_GOOGLE,
+	API_FACEBOOK,
+	API_TWITCH,
 } from 'constantValues'
 import { ROUTE_PAGE_CHECKOUT, ROUTE_PAGE_CHAT } from 'routes'
 import { checkDuplicatedObject } from 'utils'
@@ -25,29 +28,26 @@ import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 const { ICON_ICON } = stopUndefined(Exports)
 
-const GOOGLE = 'Google'
-const FACEBOOK = 'Facebook'
-const TWITCH = 'Twitch'
 const CHECKOUT = 'checkout'
 const CHAT = 'chat'
 
 const options = [
 	{
-		[BUTTONS_COMMON_ID]: GOOGLE,
+		[BUTTONS_COMMON_ID]: API_GOOGLE,
 		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-google' },
 		[BUTTONS_COMMON_COLOR]: 'google',
 		[BUTTONS_COMMON_TOOLTIP]: 'Sign in with Google!',
 		[BUTTONS_COMMON_CLASS]: 'btn-icon btn-round',
 	},
 	{
-		[BUTTONS_COMMON_ID]: FACEBOOK,
+		[BUTTONS_COMMON_ID]: API_FACEBOOK,
 		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-facebook-square' },
 		[BUTTONS_COMMON_COLOR]: 'facebook',
 		[BUTTONS_COMMON_TOOLTIP]: 'Sign in with Facebook!',
 		[BUTTONS_COMMON_CLASS]: 'btn-icon btn-round',
 	},
 	{
-		[BUTTONS_COMMON_ID]: TWITCH,
+		[BUTTONS_COMMON_ID]: API_TWITCH,
 		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-twitch' },
 		[BUTTONS_COMMON_COLOR]: 'twitch',
 		[BUTTONS_COMMON_TOOLTIP]: 'Sign in with Twitch!',
@@ -116,15 +116,15 @@ const buttonCommonAuthOnClick = lastLocation => {
 		const title2 = 'Signing You In...'
 		storeModalSetItem(title2, body2)
 		setLastRoute(toIndexIfPublic(lastLocation))
-		if (id === GOOGLE) {
-			handleSignInWithSocials[0]()
-		} else if (id === FACEBOOK) {
-			handleSignInWithSocials[1]()
-		}
+		handleSignInWithSocials[id]()
 	}
 }
 
-const buttonsCommonAuth = { [GOOGLE]: '', [FACEBOOK]: '', [TWITCH]: '' }
+const buttonsCommonAuth = {
+	[API_GOOGLE]: '',
+	[API_FACEBOOK]: '',
+	[API_TWITCH]: '',
+}
 
 const buttonsCommonChatAndCheckout = { [CHAT]: '', [CHECKOUT]: '' }
 
