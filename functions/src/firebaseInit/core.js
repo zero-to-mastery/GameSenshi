@@ -6,6 +6,8 @@ import {
 	ENV_CORS_WHITELIST,
 	ENV_ENABLE_PLAYGROUND,
 	ENV_APOLLO_ENGINE_API_KEY,
+	ENV_TWITCH_ID,
+	ENV_TWITCH_SECRET,
 } from 'constantValues'
 
 admin.initializeApp(functions.config().firebase)
@@ -17,6 +19,8 @@ const {
 	[ENV_CORS_WHITELIST]: corsWhitelist,
 	[ENV_ENABLE_PLAYGROUND]: playgroundEnabled,
 	[ENV_APOLLO_ENGINE_API_KEY]: apolloEngineApiKey,
+	[ENV_TWITCH_ID]: twitchID,
+	[ENV_TWITCH_SECRET]: twitchSecret,
 } = env
 
 export {
@@ -27,4 +31,6 @@ export {
 	apolloEngineApiKey,
 	getServerTimestamp,
 	firestore,
+	twitchID,
+	twitchSecret,
 }

@@ -29,6 +29,8 @@ const obj = {
 	}, {}),
 }
 
+console.log(obj)
+
 const isObj = x => x !== null && typeof x === 'object'
 
 const parse = tree => {

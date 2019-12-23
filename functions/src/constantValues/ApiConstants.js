@@ -3,13 +3,14 @@ const API_STATUS = 'status'
 const API_CODE = 'code'
 const API_MESSAGE = 'message'
 const API_SIGN_UP = 'signUp'
+const API_GOOGLE = 'Google'
+const API_FACEBOOK = 'Facebook'
+const API_TWITCH = 'Twitch'
 const API_SIGN_UP_INPUT = API_SIGN_UP + 'Input'
 const API_SIGN_UP_EMAIL = 'email'
 const API_SIGN_UP_PASSWORD = 'password'
 const API_SIGN_UP_DISPLAY_NAME = 'displayName'
-const API_GOOGLE = 'Google'
-const API_FACEBOOK = 'Facebook'
-const API_TWITCH = 'Twitch'
+const API_SIGN_UP_TWITCH = API_SIGN_UP + API_TWITCH
 
 // TODO: gonna remove extra height feature someday
 
@@ -26,4 +27,5 @@ export {
 	API_GOOGLE,
 	API_FACEBOOK,
 	API_TWITCH,
+	API_SIGN_UP_TWITCH,
 }

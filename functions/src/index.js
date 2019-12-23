@@ -1,5 +1,5 @@
 // https://firebase.google.com/docs/functions/write-firebase-functions
-import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
+//import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
 
 import {
 	onUserCreation,
@@ -15,6 +15,9 @@ import { MemcachedCache } from 'apollo-server-cache-memcached'
 import express from 'express'
 
 import { typeDefs, resolvers } from 'resolvers'
+
+import { API_SIGN_UP_TWITCH } from 'constantValues'
+import { signUpTwitch } from 'endpoints'
 
 const app = express()
 
@@ -58,4 +61,5 @@ server.applyMiddleware({
 module.exports = {
 	endpoint: functions.https.onRequest(app),
 	onUserCreation,
+	[API_SIGN_UP_TWITCH]: functions.https.onCall(signUpTwitch),
 }
