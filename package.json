@@ -36,6 +36,7 @@
 		"deploy": "npm run lint && npm run build && cross-env-shell \"firebase use $REACT_APP_PROJECT_ID\" && firebase deploy --only hosting",
 		"fs-rule": "cross-env-shell \"firebase use $REACT_APP_PROJECT_ID\" && firebase deploy --only firestore:rules",
 		"divider2": "-----------------------------------------------dev-----------------------------------------------------------------",
+		"local": "env-cmd .config/local.env npm run start",
 		"dev": "env-cmd .config/dev.env npm run start",
 		"d-build": "env-cmd .config/dev.env npm run build",
 		"d-deploy": "env-cmd .config/dev.env npm run deploy",

@@ -6,7 +6,7 @@ import * as serviceWorker from 'serviceWorker'
 import { storeModalInitialize, storeUserInitialize } from 'state'
 import { goLastRoute } from 'routes'
 // Initialize firebase
-import 'firebaseInit'
+import { storeRedirectUrl, getRedirectResult, onAuthChange } from 'firebaseInit'
 // styles
 import 'assets/css/nucleo-icons.css'
 import 'assets/scss/blk-design-system-pro-react.scss?v1.0.0'
@@ -15,6 +15,15 @@ import 'assets/demo/react-demo.css'
 import 'assets/css/game-senshi.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import 'slick-carousel/slick/slick-theme.css'
+
+//handle auth change
+onAuthChange()
+
+// get access token on url before redirect to other page
+storeRedirectUrl()
+
+//handle redirect
+getRedirectResult()
 
 // check if user data in indexed db, pre-sign in user
 storeUserInitialize()

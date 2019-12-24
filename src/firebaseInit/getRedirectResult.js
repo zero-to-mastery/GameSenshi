@@ -14,6 +14,16 @@ import { simplerErrorMessage } from 'utils'
 import { UNEXPECTED_ERROR_CODE_6 } from 'constantValues'
 import { auth } from 'firebaseInit/core'
 
+const REDIRECT_URL = 'redirect_url'
+
+const storeRedirectUrl = () =>
+	sessionStorage.setItem(REDIRECT_URL, window.location.href)
+
+const clearAuth = () => {
+	storeModalRemoveItem()
+	storeModalClose()
+}
+
 const getRedirectResult = () =>
 	auth()
 		.getRedirectResult()
@@ -37,8 +47,22 @@ const getRedirectResult = () =>
 				}
 				storeModalProcessRedirectResult(showAlert, linkWithRedirect)
 			} else {
-				storeModalRemoveItem()
-				storeModalClose()
+				const redirectedUrl = sessionStorage.getItem(REDIRECT_URL)
+				if (redirectedUrl) {
+					sessionStorage.removeItem(REDIRECT_URL)
+					const searchParams = new URLSearchParams(redirectedUrl)
+					let token = null
+					for (let p of searchParams) {
+						if (p[0].includes('access_token')) {
+							token = p[1]
+						}
+					}
+					if (!token) {
+						clearAuth()
+					}
+				} else {
+					clearAuth()
+				}
 			}
 		})
 		.catch(err => {
@@ -52,4 +76,4 @@ const getRedirectResult = () =>
 			}
 		})
 
-export { getRedirectResult }
+export { getRedirectResult, storeRedirectUrl }

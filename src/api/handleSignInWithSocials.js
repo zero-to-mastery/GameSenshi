@@ -1,5 +1,12 @@
 import { auth } from 'firebaseInit'
-import { API_GOOGLE, API_FACEBOOK, API_TWITCH } from 'constantValues'
+import {
+	API_GOOGLE,
+	API_FACEBOOK,
+	API_TWITCH,
+	ENV_TWITCH_CLIENT,
+	ENV_TWITCH_REDIRECT,
+} from 'constantValues'
+
 const providerGoogle = new auth.GoogleAuthProvider()
 const providerFacebook = new auth.FacebookAuthProvider()
 
@@ -23,5 +30,9 @@ const handleSignInWithSocials = providers.reduce((acc, provider) => {
 			.catch(onFailure)
 	return acc
 }, {})
+
+handleSignInWithSocials[API_TWITCH] = () => {
+	window.location = `https://id.twitch.tv/oauth2/authorize?client_id=${ENV_TWITCH_CLIENT}&redirect_uri=${ENV_TWITCH_REDIRECT}&response_type=token&scope=user:edit`
+}
 
 export { handleSignInWithSocials }

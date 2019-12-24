@@ -1,5 +1,5 @@
 import { onAuthChanged } from './onAuthChanged'
-import { getRedirectResult } from './getRedirectResult'
+import { getRedirectResult, storeRedirectUrl } from './getRedirectResult'
 import { auth } from './core'
 import {
 	storageUserAvatarGet,
@@ -15,7 +15,7 @@ import {
 } from './fireStored'
 
 // user auth listener
-auth().onAuthStateChanged(userAuth => {
+const onAuthChange = auth().onAuthStateChanged(userAuth => {
 	onAuthChanged(userAuth, (next, error) =>
 		docGeneralSettingOnSnapshot(
 			{ includeMetadataChanges: true },
@@ -23,9 +23,6 @@ auth().onAuthStateChanged(userAuth => {
 		)
 	)
 })
-
-// listener to get back sign in token from federated identity provider
-getRedirectResult()
 
 export {
 	auth,
@@ -36,4 +33,7 @@ export {
 	storageUserAvatarGet,
 	storageUserAvatarSet,
 	storageUserAvatarRemove,
+	storeRedirectUrl,
+	getRedirectResult,
+	onAuthChange,
 }
