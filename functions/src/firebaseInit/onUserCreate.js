@@ -16,9 +16,9 @@ import {
 	FB_FS_SETTINGS_GENERAL_SHORT_ID,
 } from 'constantValues'
 import nanoid from 'nanoid'
-import { functions, firestore, getServerTimestamp } from './core'
+import { functions, fireStored, getServerTimestamp } from './core'
 
-const onUserCreate = (userRecord, eventContext, firestore) => {
+const onUserCreate = (userRecord, eventContext, fireStored) => {
 	const { uid } = userRecord
 
 	const isPasswordExist = userRecord.providerData.some(
@@ -30,7 +30,7 @@ const onUserCreate = (userRecord, eventContext, firestore) => {
 	const shortId = nanoid(10)
 
 	if (!isPasswordExist) {
-		firestore.doc(fbfsSettingsGeneralPath(uid)).set({
+		fireStored.doc(fbfsSettingsGeneralPath(uid)).set({
 			[CREATED_AT]: serverTimestamp,
 			[UPDATED_AT]: serverTimestamp,
 			[FB_FS_SETTINGS_GENERAL_SHORT_ID]: shortId,
@@ -38,7 +38,7 @@ const onUserCreate = (userRecord, eventContext, firestore) => {
 		})
 	}
 
-	return firestore.doc(fbfsSettingsNotificationPath(uid)).set({
+	return fireStored.doc(fbfsSettingsNotificationPath(uid)).set({
 		[CREATED_AT]: serverTimestamp,
 		[UPDATED_AT]: serverTimestamp,
 		[FB_FS_SETTINGS_NOTIFICATION_EMAIL]: {
@@ -58,7 +58,7 @@ const onUserCreate = (userRecord, eventContext, firestore) => {
 const onUserCreation = functions.auth
 	.user()
 	.onCreate((userRecord, eventContext) => {
-		return onUserCreate(userRecord, eventContext, firestore)
+		return onUserCreate(userRecord, eventContext, fireStored)
 	})
 
 export { onUserCreation }

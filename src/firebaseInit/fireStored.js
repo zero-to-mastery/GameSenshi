@@ -1,4 +1,4 @@
-import { firestore, auth, getServerTimestamp } from 'firebaseInit/core'
+import { fireStored, auth, getServerTimestamp } from 'firebaseInit/core'
 
 import {
 	fbfsSettingsGeneralPath,
@@ -7,7 +7,7 @@ import {
 } from 'constantValues'
 
 const createDocGetSet = path => {
-	const ref = () => firestore.doc(path(auth().currentUser.uid))
+	const ref = () => fireStored().doc(path(auth().currentUser.uid))
 	const get = () => ref().get()
 	const set = (data, options = { merge: true }) =>
 		ref().set(

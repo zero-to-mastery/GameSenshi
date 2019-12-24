@@ -13,7 +13,7 @@ import {
 admin.initializeApp(functions.config().firebase)
 
 const env = functions.config()[ENV]
-const firestore = new admin.firestore.Firestore()
+const fireStored = new admin.firestore.Firestore()
 let getServerTimestamp = admin.firestore.FieldValue.serverTimestamp
 const {
 	[ENV_CORS_WHITELIST]: corsWhitelist,
@@ -30,7 +30,7 @@ export {
 	playgroundEnabled,
 	apolloEngineApiKey,
 	getServerTimestamp,
-	firestore,
+	fireStored,
 	twitchID,
 	twitchSecret,
 }

@@ -12,7 +12,7 @@ import {
 	docGeneralSettingOnSnapshot,
 	docNotificationSettingGet,
 	docNotificationSettingSet,
-} from './firestore'
+} from './fireStored'
 
 // user auth listener
 auth().onAuthStateChanged(userAuth => {
