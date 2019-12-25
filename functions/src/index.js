@@ -17,7 +17,7 @@ import express from 'express'
 import { typeDefs, resolvers } from 'resolvers'
 
 import { FUNCTION_SIGN_UP_TWITCH } from 'constantValues'
-import { signUpTwitch } from 'endpoints'
+import { signUpTwitch } from 'functions'
 
 const app = express()
 
