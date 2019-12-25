@@ -3,16 +3,11 @@ const FUNCTION_STATUS = 'status'
 const FUNCTION_CODE = 'code'
 const FUNCTION_MESSAGE = 'message'
 const FUNCTION_SIGN_UP = 'signUp'
-const AUTH_GOOGLE = 'Google'
-const AUTH_FACEBOOK = 'Facebook'
-const AUTH_TWITCH = 'Twitch'
 const FUNCTION_SIGN_UP_INPUT = FUNCTION_SIGN_UP + 'Input'
 const FUNCTION_SIGN_UP_EMAIL = 'email'
 const FUNCTION_SIGN_UP_PASSWORD = 'password'
 const FUNCTION_SIGN_UP_DISPLAY_NAME = 'displayName'
-const FUNCTION_SIGN_UP_TWITCH = FUNCTION_SIGN_UP + AUTH_TWITCH
-
-// TODO: gonna remove extra height feature someday
+const FUNCTION_SIGN_UP_TWITCH = FUNCTION_SIGN_UP + 'Twitch'
 
 export {
 	FUNCTION_DATA,
@@ -24,8 +19,5 @@ export {
 	FUNCTION_SIGN_UP_EMAIL,
 	FUNCTION_SIGN_UP_PASSWORD,
 	FUNCTION_SIGN_UP_DISPLAY_NAME,
-	AUTH_GOOGLE,
-	AUTH_FACEBOOK,
-	AUTH_TWITCH,
 	FUNCTION_SIGN_UP_TWITCH,
 }
