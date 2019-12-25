@@ -1,7 +1,7 @@
 import {
 	CREATED_AT,
 	UPDATED_AT,
-	fbfsSettingsNotificationPath,
+	fireStorePathSettingsNotification,
 	FIRESTORE_SETTINGS_NOTIFICATION_EMAIL,
 	FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES,
 	FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_NEWS_LETTER,
@@ -11,7 +11,7 @@ import {
 	FIRESTORE_SETTINGS_NOTIFICATION_PUSH_ORDER_UPDATES,
 	FIRESTORE_SETTINGS_NOTIFICATION_PUSH_CHATS,
 	FIRESTORE_SETTINGS_NOTIFICATION_PUSH_COMMENTS,
-	fbfsSettingsGeneralPath,
+	firestorePathSettingsGeneral,
 	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_SETTINGS_GENERAL_SHORT_ID,
 } from 'constantValues'
@@ -30,15 +30,16 @@ const onUserCreate = (userRecord, eventContext, fireStored) => {
 	const shortId = nanoid(10)
 
 	if (!isPasswordExist) {
-		fireStored.doc(fbfsSettingsGeneralPath(uid)).set({
+		fireStored.doc(firestorePathSettingsGeneral(uid)).set({
 			[CREATED_AT]: serverTimestamp,
 			[UPDATED_AT]: serverTimestamp,
 			[FIRESTORE_SETTINGS_GENERAL_SHORT_ID]: shortId,
-			[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: userRecord.displayName || shortId,
+			[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]:
+				userRecord.displayName || shortId,
 		})
 	}
 
-	return fireStored.doc(fbfsSettingsNotificationPath(uid)).set({
+	return fireStored.doc(fireStorePathSettingsNotification(uid)).set({
 		[CREATED_AT]: serverTimestamp,
 		[UPDATED_AT]: serverTimestamp,
 		[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL]: {

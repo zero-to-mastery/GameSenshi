@@ -1,6 +1,6 @@
 import { firebaseStorage, auth } from 'firebaseInit/core'
 
-import { fbStorageUserAvatarPath } from 'constantValues'
+import { storagePathUserAvatar } from 'constantValues'
 
 const storageSetGenerator = path => {
 	const ref = () => firebaseStorage().ref(path(auth().currentUser.uid))
@@ -14,6 +14,6 @@ const [
 	storageUserAvatarGet,
 	storageUserAvatarSet,
 	storageUserAvatarRemove,
-] = storageSetGenerator(fbStorageUserAvatarPath)
+] = storageSetGenerator(storagePathUserAvatar)
 
 export { storageUserAvatarGet, storageUserAvatarSet, storageUserAvatarRemove }

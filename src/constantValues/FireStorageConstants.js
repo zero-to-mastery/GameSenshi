@@ -1,6 +1,6 @@
 const STORAGE_USER_AVATAR = 'userAvatar'
 
-const fbStorageUserAvatarPath = uid => {
+const storagePathUserAvatar = uid => {
 	return `${STORAGE_USER_AVATAR}/${uid}.jpg`
 }
 
@@ -9,7 +9,7 @@ const UPDATED_AT = 'updatedAt'
 
 const FIRESTORE_USER = 'users/'
 const FIRESTORE_SETTINGS = 'settings/'
-const fbfsSettingsNotificationPath = uid => {
+const fireStorePathSettingsNotification = uid => {
 	return FIRESTORE_USER + uid + '/' + FIRESTORE_SETTINGS + 'notifications/'
 }
 
@@ -23,7 +23,7 @@ const FIRESTORE_SETTINGS_NOTIFICATION_PUSH_ORDER_UPDATES = 'orderUpdates'
 const FIRESTORE_SETTINGS_NOTIFICATION_PUSH_CHATS = 'chats'
 const FIRESTORE_SETTINGS_NOTIFICATION_PUSH_COMMENTS = 'comments'
 
-const fbfsSettingsGeneralPath = uid => {
+const firestorePathSettingsGeneral = uid => {
 	return FIRESTORE_USER + uid + '/' + FIRESTORE_SETTINGS + 'general/'
 }
 
@@ -50,11 +50,11 @@ const FIRESTORE_GAMES_FORTNITE = 'Fortnite'
 export {
 	CREATED_AT,
 	UPDATED_AT,
-	fbStorageUserAvatarPath,
+	storagePathUserAvatar,
 	STORAGE_USER_AVATAR,
 	FIRESTORE_USER,
 	FIRESTORE_SETTINGS,
-	fbfsSettingsNotificationPath,
+	fireStorePathSettingsNotification,
 	FIRESTORE_SETTINGS_NOTIFICATION_EMAIL,
 	FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES,
 	FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_NEWS_LETTER,
@@ -64,7 +64,7 @@ export {
 	FIRESTORE_SETTINGS_NOTIFICATION_PUSH_ORDER_UPDATES,
 	FIRESTORE_SETTINGS_NOTIFICATION_PUSH_CHATS,
 	FIRESTORE_SETTINGS_NOTIFICATION_PUSH_COMMENTS,
-	fbfsSettingsGeneralPath,
+	firestorePathSettingsGeneral,
 	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_SETTINGS_GENERAL_LANGUAGES,
 	FIRESTORE_SETTINGS_GENERAL_USER_AVATAR,

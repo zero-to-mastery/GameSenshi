@@ -1,8 +1,8 @@
 import { fireStored, auth, getServerTimestamp } from 'firebaseInit/core'
 
 import {
-	fbfsSettingsGeneralPath,
-	fbfsSettingsNotificationPath,
+	firestorePathSettingsGeneral,
+	fireStorePathSettingsNotification,
 	UPDATED_AT,
 } from 'constantValues'
 import { FIRESTORE_SETTINGS_GENERAL_USER_AVATAR } from 'constantValues'
@@ -26,9 +26,9 @@ const [
 	docGeneralSettingGet,
 	docGeneralSettingSet,
 	docGeneralSettingOnSnapshot,
-] = createDocGetSet(fbfsSettingsGeneralPath)
+] = createDocGetSet(firestorePathSettingsGeneral)
 const [docNotificationSettingGet, docNotificationSettingSet] = createDocGetSet(
-	fbfsSettingsNotificationPath
+	fireStorePathSettingsNotification
 )
 const docGeneralSettingSetAvatar = url =>
 	docGeneralSettingSet({
