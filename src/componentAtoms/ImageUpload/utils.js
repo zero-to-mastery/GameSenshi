@@ -1,9 +1,13 @@
 import { storeAlertShow, storeUserResetAvatar } from 'state'
-import { handleUserAvatarUrlSave, handleUserAvatarRemove } from 'api'
+import {
+	docGeneralSettingSetAvatar,
+	storageUserAvatarRemove,
+} from 'firebaseInit'
+
 const emptyString = ''
 
 const onRemove = async () => {
-	const removed = await handleUserAvatarUrlSave(emptyString)
+	const removed = await docGeneralSettingSetAvatar(emptyString)
 		.then(() => {
 			storeUserResetAvatar()
 			storeAlertShow(
@@ -23,7 +27,7 @@ const onRemove = async () => {
 		})
 
 	if (removed) {
-		handleUserAvatarRemove().catch(() => {})
+		storageUserAvatarRemove().catch(() => {})
 	}
 }
 

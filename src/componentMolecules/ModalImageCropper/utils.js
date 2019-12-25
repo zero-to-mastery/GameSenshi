@@ -1,13 +1,13 @@
 import { storeAlertShow, storeProgress } from 'state'
 
 import {
-	handleUserAvatarUrlSave,
-	handleUserAvatarSave,
-	handleUserAvatarLoad,
-} from 'api'
+	docGeneralSettingSetAvatar,
+	storageUserAvatarSet,
+	storageUserAvatarGet,
+} from 'firebaseInit'
 
 const onCrop = (e, dataUrl, toggle) => {
-	handleUserAvatarSave(dataUrl).on(
+	storageUserAvatarSet(dataUrl).on(
 		'state_changed',
 		snapshot => {
 			const { bytesTransferred, totalBytes } = snapshot
@@ -24,7 +24,7 @@ const onCrop = (e, dataUrl, toggle) => {
 		async () => {
 			toggle()
 
-			const url = await handleUserAvatarLoad().catch(() => {
+			const url = await storageUserAvatarGet().catch(() => {
 				storeAlertShow(
 					'Something went wrong, unable to update image',
 					'danger',
@@ -32,7 +32,7 @@ const onCrop = (e, dataUrl, toggle) => {
 				)
 			})
 			if (url) {
-				handleUserAvatarUrlSave(url)
+				docGeneralSettingSetAvatar(url)
 					.then(() => {
 						storeProgress.close()
 						storeAlertShow(

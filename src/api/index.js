@@ -10,10 +10,6 @@ import { handleSignInWithSocials } from './handleSignInWithSocials'
 import { handlePasswordReset } from './handlePasswordReset'
 import { handleNotificationSettingLoad } from './handleNotificationSettingLoad'
 import { handleNotificationSettingSave } from './handleNotificationSettingSave'
-import { handleUserAvatarUrlSave } from './handleUserAvatarUrlSave'
-import { handleUserAvatarSave } from './handleUserAvatarSave'
-import { handleUserAvatarLoad } from './handleUserAvatarLoad'
-import { handleUserAvatarRemove } from './handleUserAvatarRemove'
 
 export {
 	handleSignUpWithEmailAndPassword,
@@ -26,8 +22,4 @@ export {
 	handlePasswordReset,
 	handleNotificationSettingLoad,
 	handleNotificationSettingSave,
-	handleUserAvatarUrlSave,
-	handleUserAvatarSave,
-	handleUserAvatarLoad,
-	handleUserAvatarRemove,
 }

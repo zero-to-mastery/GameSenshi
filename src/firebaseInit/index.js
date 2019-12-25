@@ -12,6 +12,7 @@ import {
 	docGeneralSettingOnSnapshot,
 	docNotificationSettingGet,
 	docNotificationSettingSet,
+	docGeneralSettingSetAvatar,
 } from './fireStored'
 
 // user auth listener
@@ -30,6 +31,7 @@ export {
 	docGeneralSettingSet,
 	docNotificationSettingGet,
 	docNotificationSettingSet,
+	docGeneralSettingSetAvatar,
 	storageUserAvatarGet,
 	storageUserAvatarSet,
 	storageUserAvatarRemove,

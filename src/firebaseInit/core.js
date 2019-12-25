@@ -15,7 +15,7 @@ const getServerTimestamp = fireStored.FieldValue.serverTimestamp
 
 const auth = firebase.auth
 
-const firebaseStorage = firebase.storage()
+const firebaseStorage = firebase.storage
 
 // use device default language
 auth().useDeviceLanguage()
