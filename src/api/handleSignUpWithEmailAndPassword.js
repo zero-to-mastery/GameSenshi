@@ -3,13 +3,13 @@ import { auth, docGeneralSettingSet } from 'firebaseInit'
 import {
 	CREATED_AT,
 	UPDATED_AT,
-	FB_FS_SETTINGS_GENERAL_SHORT_ID,
+	FIRESTORE_SETTINGS_GENERAL_SHORT_ID,
 } from 'constantValues'
 import {
-	API_SIGN_UP_EMAIL,
-	API_SIGN_UP_PASSWORD,
-	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
-	FB_FS_SETTINGS_GENERAL_LANGUAGES,
+	FUNCTION_SIGN_UP_EMAIL,
+	FUNCTION_SIGN_UP_PASSWORD,
+	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
+	FIRESTORE_SETTINGS_GENERAL_LANGUAGES,
 	UNEXPECTED_ERROR_CODE_5,
 	UNEXPECTED_ERROR_CODE_7,
 } from 'constantValues'
@@ -20,9 +20,9 @@ const handleSignUpWithEmailAndPassword = async (
 	onSuccessfulSignUp = () => {}
 ) => {
 	const {
-		[API_SIGN_UP_EMAIL]: email,
-		[API_SIGN_UP_PASSWORD]: password,
-		[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
+		[FUNCTION_SIGN_UP_EMAIL]: email,
+		[FUNCTION_SIGN_UP_PASSWORD]: password,
+		[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
 	} = values
 
 	return auth()
@@ -38,9 +38,9 @@ const handleSignUpWithEmailAndPassword = async (
 				await docGeneralSettingSet({
 					[CREATED_AT]: date,
 					[UPDATED_AT]: date,
-					[FB_FS_SETTINGS_GENERAL_SHORT_ID]: nanoid(10),
-					[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
-					[FB_FS_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
+					[FIRESTORE_SETTINGS_GENERAL_SHORT_ID]: nanoid(10),
+					[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
+					[FIRESTORE_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
 				})
 			} catch (err) {
 				return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_7, err)
@@ -53,7 +53,7 @@ const handleSignUpWithEmailAndPassword = async (
 
 export {
 	handleSignUpWithEmailAndPassword,
-	API_SIGN_UP_EMAIL,
-	API_SIGN_UP_PASSWORD,
-	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
+	FUNCTION_SIGN_UP_EMAIL,
+	FUNCTION_SIGN_UP_PASSWORD,
+	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
 }

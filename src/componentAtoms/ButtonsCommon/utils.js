@@ -15,12 +15,12 @@ import { setLastRoute, toIndexIfPublic } from 'routes'
 import { handleSignInWithSocials } from 'api'
 import { storeModalShow, storeModalSetItem } from 'state'
 import {
-	FB_FS_CHANNELS_FACEBOOK,
-	FB_FS_CHANNELS_TWITCH,
-	FB_FS_CHANNELS_YOUTUBE,
-	API_GOOGLE,
-	API_FACEBOOK,
-	API_TWITCH,
+	FIRESTORE_CHANNELS_FACEBOOK,
+	FIRESTORE_CHANNELS_TWITCH,
+	FIRESTORE_CHANNELS_YOUTUBE,
+	AUTH_GOOGLE,
+	AUTH_FACEBOOK,
+	AUTH_TWITCH,
 } from 'constantValues'
 import { ROUTE_PAGE_CHECKOUT, ROUTE_PAGE_CHAT } from 'routes'
 import { checkDuplicatedObject } from 'utils'
@@ -33,42 +33,42 @@ const CHAT = 'chat'
 
 const options = [
 	{
-		[BUTTONS_COMMON_ID]: API_GOOGLE,
+		[BUTTONS_COMMON_ID]: AUTH_GOOGLE,
 		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-google' },
 		[BUTTONS_COMMON_COLOR]: 'google',
 		[BUTTONS_COMMON_TOOLTIP]: 'Sign in with Google!',
 		[BUTTONS_COMMON_CLASS]: 'btn-icon btn-round',
 	},
 	{
-		[BUTTONS_COMMON_ID]: API_FACEBOOK,
+		[BUTTONS_COMMON_ID]: AUTH_FACEBOOK,
 		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-facebook-square' },
 		[BUTTONS_COMMON_COLOR]: 'facebook',
 		[BUTTONS_COMMON_TOOLTIP]: 'Sign in with Facebook!',
 		[BUTTONS_COMMON_CLASS]: 'btn-icon btn-round',
 	},
 	{
-		[BUTTONS_COMMON_ID]: API_TWITCH,
+		[BUTTONS_COMMON_ID]: AUTH_TWITCH,
 		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-twitch' },
 		[BUTTONS_COMMON_COLOR]: 'twitch',
 		[BUTTONS_COMMON_TOOLTIP]: 'Sign in with Twitch!',
 		[BUTTONS_COMMON_CLASS]: 'btn-icon btn-round',
 	},
 	{
-		[BUTTONS_COMMON_ID]: FB_FS_CHANNELS_FACEBOOK,
+		[BUTTONS_COMMON_ID]: FIRESTORE_CHANNELS_FACEBOOK,
 		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-facebook-f font-1-6' },
 		[BUTTONS_COMMON_COLOR]: 'facebook',
 		[BUTTONS_COMMON_TOOLTIP]: 'Follow me on my Facebook!',
 		[BUTTONS_COMMON_CLASS]: 'btn-icon btn-round',
 	},
 	{
-		[BUTTONS_COMMON_ID]: FB_FS_CHANNELS_TWITCH,
+		[BUTTONS_COMMON_ID]: FIRESTORE_CHANNELS_TWITCH,
 		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-twitch font-1-6' },
 		[BUTTONS_COMMON_COLOR]: 'twitch',
 		[BUTTONS_COMMON_TOOLTIP]: 'Subscribe to my Twitch channel!',
 		[BUTTONS_COMMON_CLASS]: 'btn-icon btn-round',
 	},
 	{
-		[BUTTONS_COMMON_ID]: FB_FS_CHANNELS_YOUTUBE,
+		[BUTTONS_COMMON_ID]: FIRESTORE_CHANNELS_YOUTUBE,
 		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-youtube font-1-6' },
 		[BUTTONS_COMMON_COLOR]: 'youtube',
 		[BUTTONS_COMMON_TOOLTIP]: 'Subscribe to my Youtube channel!',
@@ -121,9 +121,9 @@ const buttonCommonAuthOnClick = lastLocation => {
 }
 
 const buttonsCommonAuth = {
-	[API_GOOGLE]: '',
-	[API_FACEBOOK]: '',
-	[API_TWITCH]: '',
+	[AUTH_GOOGLE]: '',
+	[AUTH_FACEBOOK]: '',
+	[AUTH_TWITCH]: '',
 }
 
 const buttonsCommonChatAndCheckout = { [CHAT]: '', [CHECKOUT]: '' }

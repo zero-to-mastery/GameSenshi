@@ -1,4 +1,4 @@
-import { API_STATUS, API_CODE, API_MESSAGE, API_DATA } from 'constantValues'
+import { FUNCTION_STATUS, FUNCTION_CODE, FUNCTION_MESSAGE, FUNCTION_DATA } from 'constantValues'
 
 const simplerErrorMessage = (error = {}, defaultErrorMessage = '') => {
 	const { code, message } = error
@@ -15,10 +15,10 @@ const simplerErrorMessage = (error = {}, defaultErrorMessage = '') => {
 
 const resObj = (status = false, message = '', code = 9999, data = {}) => {
 	return {
-		[API_STATUS]: status,
-		[API_CODE]: code,
-		[API_MESSAGE]: message,
-		[API_DATA]: data,
+		[FUNCTION_STATUS]: status,
+		[FUNCTION_CODE]: code,
+		[FUNCTION_MESSAGE]: message,
+		[FUNCTION_DATA]: data,
 	}
 }
 
@@ -44,8 +44,8 @@ export {
 	signUpResObj,
 	simplerResponseHandling,
 	simplerErrorMessage,
-	API_STATUS,
-	API_CODE,
-	API_MESSAGE,
-	API_DATA,
+	FUNCTION_STATUS,
+	FUNCTION_CODE,
+	FUNCTION_MESSAGE,
+	FUNCTION_DATA,
 }

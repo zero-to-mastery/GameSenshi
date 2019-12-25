@@ -15,19 +15,19 @@ import {
 // api
 import {
 	handleSignUpWithEmailAndPassword,
-	API_SIGN_UP_EMAIL,
-	API_SIGN_UP_PASSWORD,
+	FUNCTION_SIGN_UP_EMAIL,
+	FUNCTION_SIGN_UP_PASSWORD,
 } from 'api'
 // utils
 import { onSuccessfulSignUp } from './utils'
-import { FB_FS_SETTINGS_GENERAL_DISPLAY_NAME } from 'constantValues'
+import { FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME } from 'constantValues'
 
 const FormSignUpPropedDefault = withLastLocation(props => {
 	const onSubmit = useCallback(values => {
 		const values_ = {
-			[API_SIGN_UP_EMAIL]: values[FINAL_TEXT_EMAIL],
-			[API_SIGN_UP_PASSWORD]: values[FINAL_TEXT_PASSWORD],
-			[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: values[FINAL_TEXT_NAME],
+			[FUNCTION_SIGN_UP_EMAIL]: values[FINAL_TEXT_EMAIL],
+			[FUNCTION_SIGN_UP_PASSWORD]: values[FINAL_TEXT_PASSWORD],
+			[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: values[FINAL_TEXT_NAME],
 		}
 		return handleSignUpWithEmailAndPassword(values_, () => {
 			onSuccessfulSignUp(values)

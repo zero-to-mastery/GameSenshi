@@ -16,7 +16,7 @@ import express from 'express'
 
 import { typeDefs, resolvers } from 'resolvers'
 
-import { API_SIGN_UP_TWITCH } from 'constantValues'
+import { FUNCTION_SIGN_UP_TWITCH } from 'constantValues'
 import { signUpTwitch } from 'endpoints'
 
 const app = express()
@@ -61,5 +61,5 @@ server.applyMiddleware({
 module.exports = {
 	endpoint: functions.https.onRequest(app),
 	onUserCreation,
-	[API_SIGN_UP_TWITCH]: functions.https.onCall(signUpTwitch),
+	[FUNCTION_SIGN_UP_TWITCH]: functions.https.onCall(signUpTwitch),
 }

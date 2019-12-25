@@ -5,7 +5,7 @@ import {
 	fbfsSettingsNotificationPath,
 	UPDATED_AT,
 } from 'constantValues'
-import { FB_FS_SETTINGS_GENERAL_USER_AVATAR } from 'constantValues'
+import { FIRESTORE_SETTINGS_GENERAL_USER_AVATAR } from 'constantValues'
 
 const createDocGetSet = path => {
 	const ref = () => fireStored().doc(path(auth().currentUser.uid))
@@ -32,7 +32,7 @@ const [docNotificationSettingGet, docNotificationSettingSet] = createDocGetSet(
 )
 const docGeneralSettingSetAvatar = url =>
 	docGeneralSettingSet({
-		[FB_FS_SETTINGS_GENERAL_USER_AVATAR]: url,
+		[FIRESTORE_SETTINGS_GENERAL_USER_AVATAR]: url,
 	})
 export {
 	docGeneralSettingGet,

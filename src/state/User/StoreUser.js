@@ -1,9 +1,9 @@
 import { Container } from 'unstated'
 import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 import {
-	API_SIGN_UP_EMAIL,
-	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
-	FB_FS_SETTINGS_GENERAL_USER_AVATAR,
+	FUNCTION_SIGN_UP_EMAIL,
+	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
+	FIRESTORE_SETTINGS_GENERAL_USER_AVATAR,
 } from 'constantValues'
 
 import defaultAvatar from 'assets/img/placeholder.jpg'
@@ -15,11 +15,11 @@ const STORE_USER_STATE_LANGUAGES = 'languages'
 const STORE_USER_STATE_SIGNED_IN = 'signedIn'
 const STORE_USER_STATE_GENDER = 'gender'
 // * we don't use displayName and photoUrl from firebase user object because this get overwrite when user sign in with social auth
-const STORE_USER_STATE_AVATAR = FB_FS_SETTINGS_GENERAL_USER_AVATAR
-const STORE_USER_STATE_DISPLAY_NAME = FB_FS_SETTINGS_GENERAL_DISPLAY_NAME
+const STORE_USER_STATE_AVATAR = FIRESTORE_SETTINGS_GENERAL_USER_AVATAR
+const STORE_USER_STATE_DISPLAY_NAME = FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME
 // * below constant name follow firebase user object properties name for consistency https://firebase.google.com/docs/reference/js/firebase.User
 const STORE_USER_STATE_UID = 'uid'
-const STORE_USER_STATE_EMAIL = API_SIGN_UP_EMAIL
+const STORE_USER_STATE_EMAIL = FUNCTION_SIGN_UP_EMAIL
 const STORE_USER_STATE_COUNTRY = 'country'
 const STORE_USER_STATE_PHONE_NUMBER = 'phoneNumber'
 const STORE_USER_STATE_PROVIDER_DATA = 'providerData'
