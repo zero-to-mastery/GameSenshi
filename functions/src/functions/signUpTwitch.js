@@ -20,22 +20,33 @@ const signUpTwitch = data => {
 	return axios
 		.post(uri)
 		.then(response => {
-			const { access_token } = response
-			console.log('success', access_token)
-			admin
+			const {
+				data: { access_token },
+			} = response
+			return admin
 				.auth()
 				.createCustomToken(access_token)
 				.then(customToken => {
 					return { [FUNCTION_OAUTH_TOKEN]: customToken }
 				})
 				.catch(err => {
-					const errObj = resObj(false, INTERNAL_ERROR_CODE_2, 2, '')
+					const errObj = resObj(
+						false,
+						INTERNAL_ERROR_CODE_2[0],
+						INTERNAL_ERROR_CODE_2[1],
+						''
+					)
 					console.log(errObj, err)
 					return errObj
 				})
 		})
 		.catch(err => {
-			const errObj = resObj(false, INTERNAL_ERROR_CODE_1, 1, '')
+			const errObj = resObj(
+				false,
+				INTERNAL_ERROR_CODE_1[0],
+				INTERNAL_ERROR_CODE_1[1],
+				''
+			)
 			console.log(errObj, err)
 			return errObj
 		})

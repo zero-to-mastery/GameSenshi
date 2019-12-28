@@ -1,5 +1,5 @@
-const INTERNAL_ERROR_CODE_1 = 'Fail to aquire Twitch user access token'
-const INTERNAL_ERROR_CODE_2 = 'Error creating Twitch custom token'
+const INTERNAL_ERROR_CODE_1 = ['1', 'Request Twitch Access Token Error']
+const INTERNAL_ERROR_CODE_2 = ['2', 'Generate Twitch Custome Token Error']
 const INTERNAL_ERROR_CODE_3 = 'Internal Error Code 3'
 const INTERNAL_ERROR_CODE_4 = 'Internal Error Code 4'
 const INTERNAL_ERROR_CODE_5 = 'Internal Error Code 5'

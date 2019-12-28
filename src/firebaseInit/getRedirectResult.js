@@ -59,12 +59,11 @@ const getRedirectResult = () =>
 					const searchParams = new URLSearchParams(redirectUrl)
 					let oauthCode = null
 					for (let p of searchParams) {
-						if (p[0].includes('access_token')) {
+						if (p[0].includes('code')) {
 							oauthCode = p[1]
 						}
 					}
 					if (oauthCode) {
-						console.log(oauthCode)
 						functTwicth({
 							[FUNCTION_OAUTH_CODE]: oauthCode,
 							[FUNCTION_REDIRECT_URI]: ENV_TWITCH_REDIRECT,
@@ -78,7 +77,7 @@ const getRedirectResult = () =>
 			}
 		})
 		.catch(err => {
-			storeModalRemoveItem()
+			clearAuth()
 			console.log(err)
 			const { code, credential, email } = err
 			if (code === 'auth/account-exists-with-different-credential') {

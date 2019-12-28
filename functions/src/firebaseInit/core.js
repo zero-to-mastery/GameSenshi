@@ -10,7 +10,7 @@ import {
 	ENV_TWITCH_SECRET,
 } from 'constantValues'
 
-admin.initializeApp(functions.config().firebase)
+admin.initializeApp()
 
 const env = functions.config()[ENV]
 const fireStored = new admin.firestore.Firestore()
