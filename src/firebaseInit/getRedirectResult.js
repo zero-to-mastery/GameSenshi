@@ -9,10 +9,16 @@ import {
 	storeModalClose,
 } from 'state'
 
-import { handleDifferentCredential } from 'firebaseInit/handleDifferentCredential'
+import { handleDifferentCredential } from './handleDifferentCredential'
+import { auth } from './core'
 import { simplerErrorMessage } from 'utils'
-import { UNEXPECTED_ERROR_CODE_6 } from 'constantValues'
-import { auth } from 'firebaseInit/core'
+import {
+	UNEXPECTED_ERROR_CODE_6,
+	FUNCTION_OAUTH_CODE,
+	FUNCTION_REDIRECT_URI,
+	ENV_TWITCH_REDIRECT,
+} from 'constantValues'
+import { functTwicth } from './cloudFunct'
 
 const REDIRECT_URL = 'redirect_url'
 
@@ -47,17 +53,23 @@ const getRedirectResult = () =>
 				}
 				storeModalProcessRedirectResult(showAlert, linkWithRedirect)
 			} else {
-				const redirectedUrl = sessionStorage.getItem(REDIRECT_URL)
-				if (redirectedUrl) {
+				const redirectUrl = sessionStorage.getItem(REDIRECT_URL)
+				if (redirectUrl) {
 					sessionStorage.removeItem(REDIRECT_URL)
-					const searchParams = new URLSearchParams(redirectedUrl)
-					let token = null
+					const searchParams = new URLSearchParams(redirectUrl)
+					let oauthCode = null
 					for (let p of searchParams) {
 						if (p[0].includes('access_token')) {
-							token = p[1]
+							oauthCode = p[1]
 						}
 					}
-					if (!token) {
+					if (oauthCode) {
+						console.log(oauthCode)
+						functTwicth({
+							[FUNCTION_OAUTH_CODE]: oauthCode,
+							[FUNCTION_REDIRECT_URI]: ENV_TWITCH_REDIRECT,
+						}).then(console.log)
+					} else {
 						clearAuth()
 					}
 				} else {
@@ -67,6 +79,7 @@ const getRedirectResult = () =>
 		})
 		.catch(err => {
 			storeModalRemoveItem()
+			console.log(err)
 			const { code, credential, email } = err
 			if (code === 'auth/account-exists-with-different-credential') {
 				handleDifferentCredential(auth, email, credential)

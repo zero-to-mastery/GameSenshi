@@ -24,15 +24,14 @@ const providers = [
 ]
 
 const handleSignInWithSocials = providers.reduce((acc, provider) => {
-	acc[provider[NAME]] = provider => onFailure =>
-		auth()
-			.signInWithRedirect(provider)
-			.catch(onFailure)
+	acc[provider[NAME]] = () => {
+		return auth().signInWithRedirect(provider[AUTH])
+	}
 	return acc
 }, {})
 
 handleSignInWithSocials[AUTH_TWITCH] = () => {
-	window.location = `https://id.twitch.tv/oauth2/authorize?client_id=${ENV_TWITCH_CLIENT}&redirect_uri=${ENV_TWITCH_REDIRECT}&response_type=token&scope=user:edit`
+	window.location = `https://id.twitch.tv/oauth2/authorize?client_id=${ENV_TWITCH_CLIENT}&redirect_uri=${ENV_TWITCH_REDIRECT}&response_type=token&scope=openid+user_read&`
 }
 
 export { handleSignInWithSocials }

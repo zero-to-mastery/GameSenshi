@@ -16,7 +16,7 @@ import {
 	FIRESTORE_SETTINGS_GENERAL_SHORT_ID,
 } from 'constantValues'
 import nanoid from 'nanoid'
-import { functions, fireStored, getServerTimestamp } from './core'
+import { functions, fireStored, getServerTimestamp } from 'firebaseInit'
 
 const onUserCreate = (userRecord, eventContext, fireStored) => {
 	const { uid } = userRecord
