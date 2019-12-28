@@ -24,7 +24,7 @@ const names = [
 
 const obj = {
 	[ENV]: names.reduce((acc, name) => {
-		acc[name] = process.env[name.toUpperCase()]
+		acc[name] = process.env[name]
 		return acc
 	}, {}),
 }
