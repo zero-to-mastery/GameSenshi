@@ -1,5 +1,5 @@
-import { admin, twitchID, twitchSecret } from 'firebaseInit'
-import request from 'request-promise-native'
+import { admin, TWITCH_ID, TWITCH_SECRET } from 'firebaseInit'
+import axios from 'axios'
 import {
 	INTERNAL_ERROR_CODE_1,
 	INTERNAL_ERROR_CODE_2,
@@ -9,29 +9,36 @@ import {
 } from 'constantValues'
 import { resObj } from 'utils'
 
+// ! cannot return complex object (no nested object)
+
 const signUpTwitch = data => {
 	const {
 		[FUNCTION_OAUTH_CODE]: code,
 		[FUNCTION_REDIRECT_URI]: redirectUri,
 	} = data
-	try {
-		const { access_token } = request({
-			method: 'POST',
-			uri: `https://id.twitch.tv/oauth2/token?client_id=${twitchID}&client_secret=${twitchSecret}&code=${code}&grant_type=authorization_code&redirect_uri=${redirectUri}`,
-			json: true,
+	const uri = `https://id.twitch.tv/oauth2/token?client_id=${TWITCH_ID}&client_secret=${TWITCH_SECRET}&code=${code}&grant_type=authorization_code&redirect_uri=${redirectUri}`
+	return axios
+		.post(uri)
+		.then(response => {
+			const { access_token } = response
+			console.log('success', access_token)
+			admin
+				.auth()
+				.createCustomToken(access_token)
+				.then(customToken => {
+					return { [FUNCTION_OAUTH_TOKEN]: customToken }
+				})
+				.catch(err => {
+					const errObj = resObj(false, INTERNAL_ERROR_CODE_2, 2, '')
+					console.log(errObj, err)
+					return errObj
+				})
 		})
-		return admin
-			.auth()
-			.createCustomToken(access_token)
-			.then(customToken => {
-				return { [FUNCTION_OAUTH_TOKEN]: customToken }
-			})
-			.catch(err => {
-				return resObj(false, 2, INTERNAL_ERROR_CODE_2, err)
-			})
-	} catch (err) {
-		return resObj(false, 1, INTERNAL_ERROR_CODE_1, err)
-	}
+		.catch(err => {
+			const errObj = resObj(false, INTERNAL_ERROR_CODE_1, 1, '')
+			console.log(errObj, err)
+			return errObj
+		})
 }
 
 export { signUpTwitch }

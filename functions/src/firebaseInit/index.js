@@ -1,18 +1,19 @@
 import {
 	admin,
 	functions,
-	corsWhitelist,
-	playgroundEnabled,
-	apolloEngineApiKey,
+	CORS_WHITE_LIST,
+	PLAYGROUND_ENABLED,
+	APOLLO_ENGINE_API_KEY,
+	TWITCH_ID,
+	TWITCH_SECRET,
 } from './core'
-
-import { onUserCreation } from './onUserCreate'
 
 export {
 	admin,
 	functions,
-	corsWhitelist,
-	playgroundEnabled,
-	apolloEngineApiKey,
-	onUserCreation,
+	CORS_WHITE_LIST,
+	PLAYGROUND_ENABLED,
+	APOLLO_ENGINE_API_KEY,
+	TWITCH_ID,
+	TWITCH_SECRET,
 }

@@ -2,11 +2,10 @@
 //import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
 
 import {
-	onUserCreation,
 	functions,
-	corsWhitelist,
-	playgroundEnabled,
-	apolloEngineApiKey,
+	CORS_WHITE_LIST,
+	PLAYGROUND_ENABLED,
+	APOLLO_ENGINE_API_KEY,
 } from 'firebaseInit'
 
 import cors from 'cors'
@@ -17,13 +16,13 @@ import express from 'express'
 import { typeDefs, resolvers } from 'resolvers'
 
 import { FUNCTION_SIGN_UP_TWITCH } from 'constantValues'
-import { signUpTwitch } from 'functions'
+import { signUpTwitch, onUserCreation } from 'functions'
 
 const app = express()
 
 app.use(
 	cors({
-		origin: corsWhitelist.split(','),
+		origin: CORS_WHITE_LIST.split(','),
 		credentials: true,
 	})
 )
@@ -31,8 +30,8 @@ app.use(
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	introspection: playgroundEnabled, //https://github.com/apollographql/apollo-server/issues/1112
-	playground: playgroundEnabled,
+	introspection: PLAYGROUND_ENABLED, //https://github.com/apollographql/apollo-server/issues/1112
+	playground: PLAYGROUND_ENABLED === 'true',
 	persistedQueries: {
 		//https://www.apollographql.com/docs/apollo-server/whats-new/#automatic-persisted-queries
 		cache: new MemcachedCache(
@@ -42,7 +41,7 @@ const server = new ApolloServer({
 	},
 	engine: {
 		//https://www.apollographql.com/docs/apollo-server/whats-new/#performance-monitoring
-		apiKey: apolloEngineApiKey,
+		apiKey: APOLLO_ENGINE_API_KEY,
 	},
 	onHealthCheck: () =>
 		//https://www.apollographql.com/docs/apollo-server/whats-new/#health-checks
