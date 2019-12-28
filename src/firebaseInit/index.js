@@ -14,16 +14,19 @@ import {
 	docNotificationSettingSet,
 	docGeneralSettingSetAvatar,
 } from './fireStored'
+import { functTwicth } from './cloudFunct'
 
 // user auth listener
-const onAuthChange = auth().onAuthStateChanged(userAuth => {
-	onAuthChanged(userAuth, (next, error) =>
-		docGeneralSettingOnSnapshot(
-			{ includeMetadataChanges: true },
-			{ next, error }
+const onAuthChange = () => {
+	auth().onAuthStateChanged(userAuth => {
+		onAuthChanged(userAuth, (next, error) =>
+			docGeneralSettingOnSnapshot(
+				{ includeMetadataChanges: true },
+				{ next, error }
+			)
 		)
-	)
-})
+	})
+}
 
 export {
 	auth,
@@ -38,4 +41,5 @@ export {
 	storeRedirectUrl,
 	getRedirectResult,
 	onAuthChange,
+	functTwicth,
 }
