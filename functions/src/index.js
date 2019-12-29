@@ -1,5 +1,5 @@
 // https://firebase.google.com/docs/functions/write-firebase-functions
-//import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
+import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
 
 import {
 	functions,

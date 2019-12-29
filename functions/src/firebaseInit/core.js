@@ -13,6 +13,7 @@ import {
 admin.initializeApp()
 
 const env = functions.config()[ENV]
+const auth = admin.auth
 const fireStored = new admin.firestore.Firestore()
 let getServerTimestamp = admin.firestore.FieldValue.serverTimestamp
 const {
@@ -24,7 +25,7 @@ const {
 } = env
 
 export {
-	admin,
+	auth,
 	functions,
 	CORS_WHITE_LIST,
 	PLAYGROUND_ENABLED,

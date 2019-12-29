@@ -1,5 +1,5 @@
 import {
-	admin,
+	auth,
 	functions,
 	getServerTimestamp,
 	CORS_WHITE_LIST,
@@ -18,7 +18,7 @@ import {
 } from './fireStored'
 
 export {
-	admin,
+	auth,
 	functions,
 	getServerTimestamp,
 	CORS_WHITE_LIST,
