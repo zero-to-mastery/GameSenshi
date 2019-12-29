@@ -57,6 +57,7 @@ const signUpTwitch = async data => {
 
 	let customToken = null
 	const { id, email, display_name, profile_image_url } = userData
+	const uid = 'twitch:' + id
 	try {
 		customToken = await auth().createCustomToken(id)
 	} catch (err) {
@@ -79,7 +80,7 @@ const signUpTwitch = async data => {
 	let newUserError = null
 	try {
 		newUser = await auth().createUser({
-			uid: id,
+			uid,
 			email,
 			displayName: display_name,
 		})
@@ -89,7 +90,7 @@ const signUpTwitch = async data => {
 
 	try {
 		if (newUser) {
-			return await docGeneralSettingSetAvatar(id, profile_image_url).then(
+			return await docGeneralSettingSetAvatar(uid, profile_image_url).then(
 				() => {
 					return tokenData
 				}

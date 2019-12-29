@@ -27,8 +27,8 @@ const [docGeneralSettingGet, docGeneralSettingSet] = createDocGetSet(
 const [docNotificationSettingGet, docNotificationSettingSet] = createDocGetSet(
 	fireStorePathSettingsNotification
 )
-const docGeneralSettingSetAvatar = url =>
-	docGeneralSettingSet({
+const docGeneralSettingSetAvatar = (uid, url) =>
+	docGeneralSettingSet(uid, {
 		[FIRESTORE_SETTINGS_GENERAL_USER_AVATAR]: url,
 	})
 export {
