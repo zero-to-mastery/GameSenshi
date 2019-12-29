@@ -1,11 +1,6 @@
 import { simplerResponseHandling } from 'utils'
 import { auth, docGeneralSettingSet } from 'firebaseInit'
 import {
-	CREATED_AT,
-	UPDATED_AT,
-	FIRESTORE_SETTINGS_GENERAL_SHORT_ID,
-} from 'constantValues'
-import {
 	FUNCTION_EMAIL,
 	FUNCTION_PASSWORD,
 	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
@@ -13,7 +8,6 @@ import {
 	UNEXPECTED_ERROR_CODE_5,
 	UNEXPECTED_ERROR_CODE_7,
 } from 'constantValues'
-import nanoid from 'nanoid'
 
 const handleSignUpWithEmailAndPassword = async (
 	values,
@@ -32,13 +26,8 @@ const handleSignUpWithEmailAndPassword = async (
 			onSuccessfulSignUp()
 			user.sendEmailVerification().catch()
 
-			const date = new Date()
-
 			try {
 				await docGeneralSettingSet({
-					[CREATED_AT]: date,
-					[UPDATED_AT]: date,
-					[FIRESTORE_SETTINGS_GENERAL_SHORT_ID]: nanoid(10),
 					[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
 					[FIRESTORE_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
 				})

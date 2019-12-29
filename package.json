@@ -76,7 +76,6 @@
 		"localforage": "^1.7.3",
 		"material-ui-image": "^3.2.2",
 		"moment": "^2.24.0",
-		"nanoid": "^2.1.7",
 		"node-sass": "^4.11.0",
 		"nouislider": "^13.1.1",
 		"payment-icons": "^1.2.1",

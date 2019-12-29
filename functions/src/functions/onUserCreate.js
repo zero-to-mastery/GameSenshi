@@ -34,34 +34,36 @@ const onUserCreate = (userRecord, eventContext) => {
 
 	const shortId = nanoid(10)
 
-	if (!isPasswordExist) {
-		docGeneralSettingSet(uid, {
-			[CREATED_AT]: serverTimestamp,
-			[UPDATED_AT]: serverTimestamp,
-			[FIRESTORE_SETTINGS_GENERAL_SHORT_ID]: shortId,
-			[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName || shortId,
-		}).catch(err => {
-			console.log(resObj(false, INTERNAL_ERROR_CODE_5, err))
-		})
-	}
-
-	return docNotificationSettingSet(uid, {
+	return docGeneralSettingSet(uid, {
 		[CREATED_AT]: serverTimestamp,
 		[UPDATED_AT]: serverTimestamp,
-		[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL]: {
-			[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES]: true,
-			[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_CHATS]: true,
-			[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_COMMENTS]: true,
-			[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_NEWS_LETTER]: true,
-		},
-		[FIRESTORE_SETTINGS_NOTIFICATION_PUSH]: {
-			[FIRESTORE_SETTINGS_NOTIFICATION_PUSH_ORDER_UPDATES]: true,
-			[FIRESTORE_SETTINGS_NOTIFICATION_PUSH_CHATS]: true,
-			[FIRESTORE_SETTINGS_NOTIFICATION_PUSH_COMMENTS]: true,
-		},
-	}).catch(err => {
-		console.log(resObj(false, INTERNAL_ERROR_CODE_6, err))
+		[FIRESTORE_SETTINGS_GENERAL_SHORT_ID]: shortId,
+		...(!isPasswordExist && {
+			[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName || shortId,
+		}),
 	})
+		.then(() => {
+			return docNotificationSettingSet(uid, {
+				[CREATED_AT]: serverTimestamp,
+				[UPDATED_AT]: serverTimestamp,
+				[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL]: {
+					[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES]: true,
+					[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_CHATS]: true,
+					[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_COMMENTS]: true,
+					[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_NEWS_LETTER]: true,
+				},
+				[FIRESTORE_SETTINGS_NOTIFICATION_PUSH]: {
+					[FIRESTORE_SETTINGS_NOTIFICATION_PUSH_ORDER_UPDATES]: true,
+					[FIRESTORE_SETTINGS_NOTIFICATION_PUSH_CHATS]: true,
+					[FIRESTORE_SETTINGS_NOTIFICATION_PUSH_COMMENTS]: true,
+				},
+			}).catch(err => {
+				console.log(resObj(false, INTERNAL_ERROR_CODE_6, err))
+			})
+		})
+		.catch(err => {
+			console.log(resObj(false, INTERNAL_ERROR_CODE_5, err))
+		})
 }
 
 const onUserCreation = functions.auth
