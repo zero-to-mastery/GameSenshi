@@ -1,10 +1,10 @@
-const UNEXPECTED_ERROR_CODE_1 = 'Unexpected Error Code 1'
-const UNEXPECTED_ERROR_CODE_2 = 'Unexpected Error Code 2'
-const UNEXPECTED_ERROR_CODE_3 = 'Unexpected Error Code 3'
-const UNEXPECTED_ERROR_CODE_4 = 'Unexpected Error Code 4'
-const UNEXPECTED_ERROR_CODE_5 = 'Unexpected Error Code 5'
-const UNEXPECTED_ERROR_CODE_6 = 'Unexpected Error Code 6'
-const UNEXPECTED_ERROR_CODE_7 = 'Unexpected Error Code 7'
+const UNEXPECTED_ERROR_CODE_1 = [1, 'Password Reset-able Error']
+const UNEXPECTED_ERROR_CODE_2 = [2, 'Email Not Exist']
+const UNEXPECTED_ERROR_CODE_3 = [3, 'Password Reset Error']
+const UNEXPECTED_ERROR_CODE_4 = [4, 'Email Sign In Error']
+const UNEXPECTED_ERROR_CODE_5 = [5, 'Create User with Email Error']
+const UNEXPECTED_ERROR_CODE_6 = [6, 'Get Redirect Result Error']
+const UNEXPECTED_ERROR_CODE_7 = [7, 'Set User Initial General Setting Error']
 
 export {
 	UNEXPECTED_ERROR_CODE_1,
