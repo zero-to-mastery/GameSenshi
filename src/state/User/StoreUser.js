@@ -1,7 +1,7 @@
 import { Container } from 'unstated'
 import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 import {
-	FUNCTION_SIGN_UP_EMAIL,
+	FUNCTION_EMAIL,
 	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_SETTINGS_GENERAL_USER_AVATAR,
 } from 'constantValues'
@@ -19,7 +19,7 @@ const STORE_USER_STATE_AVATAR = FIRESTORE_SETTINGS_GENERAL_USER_AVATAR
 const STORE_USER_STATE_DISPLAY_NAME = FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME
 // * below constant name follow firebase user object properties name for consistency https://firebase.google.com/docs/reference/js/firebase.User
 const STORE_USER_STATE_UID = 'uid'
-const STORE_USER_STATE_EMAIL = FUNCTION_SIGN_UP_EMAIL
+const STORE_USER_STATE_EMAIL = FUNCTION_EMAIL
 const STORE_USER_STATE_COUNTRY = 'country'
 const STORE_USER_STATE_PHONE_NUMBER = 'phoneNumber'
 const STORE_USER_STATE_PROVIDER_DATA = 'providerData'

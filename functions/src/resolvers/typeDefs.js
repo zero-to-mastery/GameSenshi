@@ -1,10 +1,10 @@
 import { gql } from 'apollo-server-express'
 import {
 	FUNCTION_SIGN_UP,
-	FUNCTION_SIGN_UP_EMAIL,
-	FUNCTION_SIGN_UP_PASSWORD,
-	FUNCTION_SIGN_UP_DISPLAY_NAME,
-	FUNCTION_SIGN_UP_INPUT,
+	FUNCTION_EMAIL,
+	FUNCTION_PASSWORD,
+	FUNCTION_DISPLAY_NAME,
+	FUNCTION_INPUT,
 	FUNCTION_CODE,
 	FUNCTION_DATA,
 	FUNCTION_STATUS,
@@ -17,13 +17,13 @@ const typeDefs = gql`
   }
 
 	type Mutation {
-		${FUNCTION_SIGN_UP}(${FUNCTION_DATA}: ${FUNCTION_SIGN_UP_INPUT}!): SignUpRespond!
+		${FUNCTION_SIGN_UP}(${FUNCTION_DATA}: ${FUNCTION_INPUT}!): SignUpRespond!
   }
   
-  input ${FUNCTION_SIGN_UP_INPUT}{
-    ${FUNCTION_SIGN_UP_DISPLAY_NAME}:String!
-    ${FUNCTION_SIGN_UP_EMAIL}:String!
-    ${FUNCTION_SIGN_UP_PASSWORD}:String!
+  input ${FUNCTION_INPUT}{
+    ${FUNCTION_DISPLAY_NAME}:String!
+    ${FUNCTION_EMAIL}:String!
+    ${FUNCTION_PASSWORD}:String!
   }
 
   interface Respond{
@@ -33,9 +33,9 @@ const typeDefs = gql`
   }
 
   type SignUpData {
-    ${FUNCTION_SIGN_UP_DISPLAY_NAME}:[String]
-    ${FUNCTION_SIGN_UP_EMAIL}:[String]
-    ${FUNCTION_SIGN_UP_PASSWORD}:[String]
+    ${FUNCTION_DISPLAY_NAME}:[String]
+    ${FUNCTION_EMAIL}:[String]
+    ${FUNCTION_PASSWORD}:[String]
   }
 
   type SignUpRespond implements Respond{

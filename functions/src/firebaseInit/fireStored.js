@@ -1,4 +1,4 @@
-import { fireStored, auth, getServerTimestamp } from './core'
+import { fireStored, getServerTimestamp } from './core'
 
 import {
 	firestorePathSettingsGeneral,
@@ -8,25 +8,22 @@ import {
 import { FIRESTORE_SETTINGS_GENERAL_USER_AVATAR } from 'constantValues'
 
 const createDocGetSet = path => {
-	const ref = () => fireStored().doc(path(auth().currentUser.uid))
-	const get = () => ref().get()
-	const set = (data, options = { merge: true }) =>
-		ref().set(
+	const ref = uid => fireStored.doc(path(uid))
+	const get = uid => ref(uid).get()
+	const set = (uid, data, options = { merge: true }) =>
+		ref(uid).set(
 			{
 				[UPDATED_AT]: getServerTimestamp(),
 				...data,
 			},
 			options
 		)
-	const onSanpshot = (...args) => ref().onSnapshot(...args)
-	return [get, set, onSanpshot]
+	return [get, set]
 }
 
-const [
-	docGeneralSettingGet,
-	docGeneralSettingSet,
-	docGeneralSettingOnSnapshot,
-] = createDocGetSet(firestorePathSettingsGeneral)
+const [docGeneralSettingGet, docGeneralSettingSet] = createDocGetSet(
+	firestorePathSettingsGeneral
+)
 const [docNotificationSettingGet, docNotificationSettingSet] = createDocGetSet(
 	fireStorePathSettingsNotification
 )
@@ -37,7 +34,6 @@ const docGeneralSettingSetAvatar = url =>
 export {
 	docGeneralSettingGet,
 	docGeneralSettingSet,
-	docGeneralSettingOnSnapshot,
 	docNotificationSettingGet,
 	docNotificationSettingSet,
 	docGeneralSettingSetAvatar,

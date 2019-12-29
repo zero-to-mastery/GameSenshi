@@ -1,7 +1,7 @@
 import {
 	handleSignUpWithEmailAndPassword,
-	FUNCTION_SIGN_UP_EMAIL,
-	FUNCTION_SIGN_UP_PASSWORD,
+	FUNCTION_EMAIL,
+	FUNCTION_PASSWORD,
 } from './handleSignUpWithEmailAndPassword'
 import { handleIsEmailNotExist } from './handleIsEmailNotExist'
 import { handleIsPasswordResetAble } from './handleIsPasswordResetAble'
@@ -13,8 +13,8 @@ import { handleNotificationSettingSave } from './handleNotificationSettingSave'
 
 export {
 	handleSignUpWithEmailAndPassword,
-	FUNCTION_SIGN_UP_EMAIL,
-	FUNCTION_SIGN_UP_PASSWORD,
+	FUNCTION_EMAIL,
+	FUNCTION_PASSWORD,
 	handleIsEmailNotExist,
 	handleIsPasswordResetAble,
 	handleSignInWithSocials,

@@ -1,8 +1,15 @@
-import { admin, TWITCH_ID, TWITCH_SECRET } from 'firebaseInit'
+import {
+	admin,
+	TWITCH_ID,
+	TWITCH_SECRET,
+	docGeneralSettingSetAvatar,
+} from 'firebaseInit'
 import axios from 'axios'
 import {
 	INTERNAL_ERROR_CODE_1,
 	INTERNAL_ERROR_CODE_2,
+	INTERNAL_ERROR_CODE_3,
+	INTERNAL_ERROR_CODE_4,
 	FUNCTION_OAUTH_CODE,
 	FUNCTION_OAUTH_TOKEN,
 	FUNCTION_REDIRECT_URI,
@@ -23,30 +30,63 @@ const signUpTwitch = data => {
 			const {
 				data: { access_token },
 			} = response
-			return admin
-				.auth()
-				.createCustomToken(access_token)
-				.then(customToken => {
-					return { [FUNCTION_OAUTH_TOKEN]: customToken }
+			return axios
+				.get('https://api.twitch.tv/helix/users', {
+					headers: {
+						Authorization: `Bearer ${access_token}`,
+					},
+				})
+				.then(response => {
+					const { data } = response
+					const { id, email, display_name, profile_image_url } = data.data[0]
+					console.log('data', data.data)
+					return admin
+						.auth()
+						.createCustomToken(id)
+						.then(customToken => {
+							const tokenData = { [FUNCTION_OAUTH_TOKEN]: customToken }
+							return admin
+								.auth()
+								.getUser(id)
+								.then(() => {
+									return tokenData
+								})
+								.catch(() => {
+									return admin.auth
+										.createUser({
+											uid: id,
+											email,
+											displayName: display_name,
+										})
+										.then(() => {
+											return docGeneralSettingSetAvatar(
+												id,
+												profile_image_url
+											).then(() => {
+												return tokenData
+											})
+										})
+										.catch(err => {
+											const errObj = resObj(false, INTERNAL_ERROR_CODE_4, '')
+											console.log(errObj, err)
+											return errObj
+										})
+								})
+						})
+						.catch(err => {
+							const errObj = resObj(false, INTERNAL_ERROR_CODE_2, '')
+							console.log(errObj, err)
+							return errObj
+						})
 				})
 				.catch(err => {
-					const errObj = resObj(
-						false,
-						INTERNAL_ERROR_CODE_2[0],
-						INTERNAL_ERROR_CODE_2[1],
-						''
-					)
+					const errObj = resObj(false, INTERNAL_ERROR_CODE_3, '')
 					console.log(errObj, err)
 					return errObj
 				})
 		})
 		.catch(err => {
-			const errObj = resObj(
-				false,
-				INTERNAL_ERROR_CODE_1[0],
-				INTERNAL_ERROR_CODE_1[1],
-				''
-			)
+			const errObj = resObj(false, INTERNAL_ERROR_CODE_1, '')
 			console.log(errObj, err)
 			return errObj
 		})

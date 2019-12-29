@@ -1,6 +1,5 @@
 import {
 	resObj,
-	signUpResObj,
 	simplerResponseHandling,
 	simplerErrorMessage,
 	FUNCTION_STATUS,
@@ -39,7 +38,6 @@ export {
 	FUNCTION_CODE,
 	FUNCTION_MESSAGE,
 	FUNCTION_DATA,
-	signUpResObj,
 	stopUndefined,
 	checkDuplicatedObject,
 	createGetOptions,

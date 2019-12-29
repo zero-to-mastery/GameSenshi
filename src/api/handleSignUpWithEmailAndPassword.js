@@ -6,8 +6,8 @@ import {
 	FIRESTORE_SETTINGS_GENERAL_SHORT_ID,
 } from 'constantValues'
 import {
-	FUNCTION_SIGN_UP_EMAIL,
-	FUNCTION_SIGN_UP_PASSWORD,
+	FUNCTION_EMAIL,
+	FUNCTION_PASSWORD,
 	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_SETTINGS_GENERAL_LANGUAGES,
 	UNEXPECTED_ERROR_CODE_5,
@@ -20,8 +20,8 @@ const handleSignUpWithEmailAndPassword = async (
 	onSuccessfulSignUp = () => {}
 ) => {
 	const {
-		[FUNCTION_SIGN_UP_EMAIL]: email,
-		[FUNCTION_SIGN_UP_PASSWORD]: password,
+		[FUNCTION_EMAIL]: email,
+		[FUNCTION_PASSWORD]: password,
 		[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
 	} = values
 
@@ -53,7 +53,7 @@ const handleSignUpWithEmailAndPassword = async (
 
 export {
 	handleSignUpWithEmailAndPassword,
-	FUNCTION_SIGN_UP_EMAIL,
-	FUNCTION_SIGN_UP_PASSWORD,
+	FUNCTION_EMAIL,
+	FUNCTION_PASSWORD,
 	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
 }

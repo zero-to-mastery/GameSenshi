@@ -1,7 +1,6 @@
 import {
 	CREATED_AT,
 	UPDATED_AT,
-	fireStorePathSettingsNotification,
 	FIRESTORE_SETTINGS_NOTIFICATION_EMAIL,
 	FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES,
 	FIRESTORE_SETTINGS_NOTIFICATION_EMAIL_NEWS_LETTER,
@@ -11,15 +10,19 @@ import {
 	FIRESTORE_SETTINGS_NOTIFICATION_PUSH_ORDER_UPDATES,
 	FIRESTORE_SETTINGS_NOTIFICATION_PUSH_CHATS,
 	FIRESTORE_SETTINGS_NOTIFICATION_PUSH_COMMENTS,
-	firestorePathSettingsGeneral,
 	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_SETTINGS_GENERAL_SHORT_ID,
 } from 'constantValues'
 import nanoid from 'nanoid'
-import { functions, fireStored, getServerTimestamp } from 'firebaseInit'
+import {
+	functions,
+	getServerTimestamp,
+	docGeneralSettingSet,
+	docNotificationSettingSet,
+} from 'firebaseInit'
 
-const onUserCreate = (userRecord, eventContext, fireStored) => {
-	const { uid } = userRecord
+const onUserCreate = (userRecord, eventContext) => {
+	const { uid, displayName } = userRecord
 
 	const isPasswordExist = userRecord.providerData.some(
 		data => data.providerId === 'password'
@@ -30,16 +33,15 @@ const onUserCreate = (userRecord, eventContext, fireStored) => {
 	const shortId = nanoid(10)
 
 	if (!isPasswordExist) {
-		fireStored.doc(firestorePathSettingsGeneral(uid)).set({
+		docGeneralSettingSet(uid, {
 			[CREATED_AT]: serverTimestamp,
 			[UPDATED_AT]: serverTimestamp,
 			[FIRESTORE_SETTINGS_GENERAL_SHORT_ID]: shortId,
-			[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]:
-				userRecord.displayName || shortId,
+			[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName || shortId,
 		})
 	}
 
-	return fireStored.doc(fireStorePathSettingsNotification(uid)).set({
+	return docNotificationSettingSet(uid, {
 		[CREATED_AT]: serverTimestamp,
 		[UPDATED_AT]: serverTimestamp,
 		[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL]: {
@@ -59,7 +61,7 @@ const onUserCreate = (userRecord, eventContext, fireStored) => {
 const onUserCreation = functions.auth
 	.user()
 	.onCreate((userRecord, eventContext) => {
-		return onUserCreate(userRecord, eventContext, fireStored)
+		return onUserCreate(userRecord, eventContext)
 	})
 
 export { onUserCreation }

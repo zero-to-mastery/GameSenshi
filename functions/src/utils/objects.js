@@ -18,22 +18,13 @@ const simplerErrorMessage = (error = {}, defaultErrorMessage = '') => {
 	}
 }
 
-const resObj = (status = false, message = '', code = 9999, data = {}) => {
+const resObj = (status = false, message = [], data = {}) => {
 	return {
 		[FUNCTION_STATUS]: status,
-		[FUNCTION_CODE]: code,
-		[FUNCTION_MESSAGE]: message,
+		[FUNCTION_CODE]: message[0],
+		[FUNCTION_MESSAGE]: message[1],
 		[FUNCTION_DATA]: data,
 	}
-}
-
-const signUpResObj = (status = false, message = '', code = 9999, data = {}) => {
-	for (const key in data) {
-		if (!Array.isArray(data[key])) {
-			data[key] && (data[key] = [data[key]])
-		}
-	}
-	return resObj(status, message, code, data)
 }
 
 const simplerResponseHandling = (
@@ -46,7 +37,6 @@ const simplerResponseHandling = (
 
 export {
 	resObj,
-	signUpResObj,
 	simplerResponseHandling,
 	simplerErrorMessage,
 	FUNCTION_STATUS,
