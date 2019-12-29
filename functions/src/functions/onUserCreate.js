@@ -12,6 +12,8 @@ import {
 	FIRESTORE_SETTINGS_NOTIFICATION_PUSH_COMMENTS,
 	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_SETTINGS_GENERAL_SHORT_ID,
+	INTERNAL_ERROR_CODE_5,
+	INTERNAL_ERROR_CODE_6,
 } from 'constantValues'
 import nanoid from 'nanoid'
 import {
@@ -20,7 +22,7 @@ import {
 	docGeneralSettingSet,
 	docNotificationSettingSet,
 } from 'firebaseInit'
-
+import { resObj } from 'utils'
 const onUserCreate = (userRecord, eventContext) => {
 	const { uid, displayName } = userRecord
 
@@ -38,6 +40,8 @@ const onUserCreate = (userRecord, eventContext) => {
 			[UPDATED_AT]: serverTimestamp,
 			[FIRESTORE_SETTINGS_GENERAL_SHORT_ID]: shortId,
 			[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName || shortId,
+		}).catch(err => {
+			console.log(resObj(false, INTERNAL_ERROR_CODE_5, err))
 		})
 	}
 
@@ -55,6 +59,8 @@ const onUserCreate = (userRecord, eventContext) => {
 			[FIRESTORE_SETTINGS_NOTIFICATION_PUSH_CHATS]: true,
 			[FIRESTORE_SETTINGS_NOTIFICATION_PUSH_COMMENTS]: true,
 		},
+	}).catch(err => {
+		console.log(resObj(false, INTERNAL_ERROR_CODE_6, err))
 	})
 }
 
