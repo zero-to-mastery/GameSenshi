@@ -5,7 +5,13 @@ import {
 	storeModalOnAuthStateChange,
 	storeUserOnSignOut,
 } from 'state'
-import * as allStore from 'state'
+import {
+	storeAlert,
+	storeSignIn,
+	storeProgress,
+	storeUser,
+	storeWrapper,
+} from 'state'
 
 let unsubscribe = () => {}
 
@@ -27,13 +33,16 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 		storeUserOnSignOut()
 		unsubscribe()
 		unsubscribe = () => {}
-		for (let store in allStore) {
-			try {
-				allStore[store][RESET_STATE]()
-			} catch (e) {
-				//
-			}
-		}
+		const stores = [
+			storeAlert,
+			storeSignIn,
+			storeProgress,
+			storeUser,
+			storeWrapper,
+		]
+		stores.forEach(store => {
+			store[RESET_STATE]()
+		})
 	}
 }
 
