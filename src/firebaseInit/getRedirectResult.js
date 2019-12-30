@@ -3,19 +3,23 @@ import {
 	storeModalShow,
 	storeUserSetSigningIn,
 	storeMNodalClear,
+	storeModalSimpleError,
 } from 'state'
 import {
 	handleDifferentCredential,
 	linkedThen,
-	linkedCatch,
 } from './handleDifferentCredential'
 import { auth } from './core'
 import { simplerErrorMessage } from 'utils'
 import {
 	UNEXPECTED_ERROR_CODE_6,
+	UNEXPECTED_ERROR_CODE_8,
+	UNEXPECTED_ERROR_CODE_9,
+	UNEXPECTED_ERROR_CODE_10,
 	FUNCTION_OAUTH_CODE,
 	FUNCTION_REDIRECT_URI,
 	ENV_TWITCH_REDIRECT,
+	FUNCTION_OAUTH_TOKEN,
 } from 'constantValues'
 import { functTwicth } from './cloudFunct'
 
@@ -27,14 +31,16 @@ const storeRedirectUrl = () =>
 const getRedirectResult = () =>
 	auth()
 		.getRedirectResult()
-		.then(result => {
+		.then(async result => {
 			const { user } = result
 			// need this condition because this part run when webpage start
 			if (user) {
 				storeUserSetSigningIn(true)
 				// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 				const linkWithRedirect = provider2 => {
-					user.linkWithRedirect(new auth[provider2]()).catch(linkedCatch)
+					user.linkWithRedirect(new auth[provider2]()).catch(err => {
+						storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_8[1])
+					})
 				}
 				storeModalProcessLinking(linkWithRedirect, linkedThen)
 			} else {
@@ -49,10 +55,26 @@ const getRedirectResult = () =>
 						}
 					}
 					if (oauthCode) {
-						functTwicth({
-							[FUNCTION_OAUTH_CODE]: oauthCode,
-							[FUNCTION_REDIRECT_URI]: ENV_TWITCH_REDIRECT,
-						}).then(console.log)
+						let customTokenData = null
+						try {
+							customTokenData = await functTwicth({
+								[FUNCTION_OAUTH_CODE]: oauthCode,
+								[FUNCTION_REDIRECT_URI]: ENV_TWITCH_REDIRECT,
+							})
+						} catch (err) {
+							console.log(err)
+							storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_9[1])
+						}
+						try {
+							if (customTokenData) {
+								auth().signInWithCustomToken(
+									customTokenData.data[FUNCTION_OAUTH_TOKEN]
+								)
+							}
+						} catch (err) {
+							console.log(err)
+							storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_10[1])
+						}
 					} else {
 						storeMNodalClear()
 					}

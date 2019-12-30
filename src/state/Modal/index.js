@@ -18,6 +18,7 @@ import {
 	SET_STATE,
 	RESET_STATE,
 	CLEAR,
+	SIMPLE_ERROR,
 } from './StoreModal'
 
 const storeModal = new StoreModal()
@@ -34,6 +35,7 @@ const storeModalOnContinue = storeModal[ON_CONTINUE]
 const storeModalSetState = storeModal[SET_STATE]
 const storeModalResetState = storeModal[RESET_STATE]
 const storeMNodalClear = storeModal[CLEAR]
+const storeModalSimpleError = storeModal[SIMPLE_ERROR]
 
 export {
 	storeModal,
@@ -50,6 +52,7 @@ export {
 	storeModalSetState,
 	storeModalResetState,
 	storeMNodalClear,
+	storeModalSimpleError,
 	STORE_MODAL_STATE_BODY,
 	STORE_MODAL_STATE_IS_OPEN,
 	STORE_MODAL_STATE_TITLE,

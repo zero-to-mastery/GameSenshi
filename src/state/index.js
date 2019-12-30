@@ -1,5 +1,5 @@
 import { Subscribe, Provider } from 'unstated'
-import { STATE, RESET_STATE } from 'state/constants'
+import { STATE, RESET_STATE } from './constants'
 import { StateContainer } from './StateContainer'
 
 import {
@@ -29,6 +29,7 @@ import {
 	storeModalSetState,
 	storeModalResetState,
 	storeMNodalClear,
+	storeModalSimpleError,
 	STORE_MODAL_STATE_BODY,
 	STORE_MODAL_STATE_TITLE,
 	STORE_MODAL_STATE_LOADER,
@@ -168,6 +169,7 @@ export {
 	storeModalSetState,
 	storeModalResetState,
 	storeMNodalClear,
+	storeModalSimpleError,
 	STORE_MODAL_STATE_BODY,
 	STORE_MODAL_STATE_TITLE,
 	STORE_MODAL_STATE_LOADER,

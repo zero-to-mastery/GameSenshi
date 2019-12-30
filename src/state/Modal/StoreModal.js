@@ -2,7 +2,7 @@ import React from 'react'
 import { Container } from 'unstated'
 import Interweave from 'interweave'
 import reactElementToJSXString from 'react-element-to-jsx-string'
-
+import { simplerErrorMessage } from 'utils'
 import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
 
 const STORE_MODAL = 'Modal'
@@ -22,6 +22,7 @@ const ON_AUTH_STATE_CHANGE = 'onAuthStateChange'
 const PROCESS_REDIRECT_RESULT = 'processRedirectResult'
 const ON_CONTINUE = 'onSuccessfulSubmission'
 const CLEAR = 'clear'
+const SIMPLE_ERROR = 'simpleError'
 
 const defaultValues = () => ({
 	[STORE_MODAL_STATE_BODY]: '',
@@ -168,6 +169,13 @@ class StoreModal extends Container {
 		this[REMOVE_ITEM]()
 		this[CLOSE]()
 		return this
+	};
+	[SIMPLE_ERROR] = (err = {}, defaultErrorMessage = '') => {
+		this[SHOW](
+			<span className='text-danger'>Error</span>,
+			simplerErrorMessage(err, defaultErrorMessage),
+			false
+		)
 	}
 }
 
@@ -191,4 +199,5 @@ export {
 	SET_STATE,
 	RESET_STATE,
 	CLEAR,
+	SIMPLE_ERROR,
 }

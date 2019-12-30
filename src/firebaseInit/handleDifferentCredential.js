@@ -6,8 +6,8 @@ import {
 	storeModalShow,
 	storeModalClose,
 	storeModalSetItem,
+	storeModalSimpleError,
 } from 'state'
-import { simplerErrorMessage } from 'utils'
 import { UNEXPECTED_ERROR_CODE_8 } from 'constantValues'
 
 const linkedThen = () => {
@@ -16,14 +16,6 @@ const linkedThen = () => {
 		'Social login linked successful!',
 		'success',
 		'tim-icons icon-bell-55'
-	)
-}
-
-const linkedCatch = err => {
-	storeModalShow(
-		<span className='text-danger'>Error</span>,
-		simplerErrorMessage(err, UNEXPECTED_ERROR_CODE_8[1]),
-		false
 	)
 }
 
@@ -96,7 +88,9 @@ const handleDifferentCredential = (auth, email, credential) => {
 								.then(() => {
 									linkedThen()
 								})
-								.catch(linkedCatch)
+								.catch(err => {
+									storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_8[1])
+								})
 						})
 					} else {
 						// need to save this credential before hand in cache, remember delete it later.
@@ -128,4 +122,4 @@ const handleDifferentCredential = (auth, email, credential) => {
 		})
 }
 
-export { handleDifferentCredential, linkedThen, linkedCatch }
+export { handleDifferentCredential, linkedThen }
