@@ -67,9 +67,13 @@ const getRedirectResult = () =>
 						}
 						try {
 							if (customTokenData) {
-								auth().signInWithCustomToken(
-									customTokenData.data[FUNCTION_OAUTH_TOKEN]
-								)
+								auth()
+									.signInWithCustomToken(
+										customTokenData.data[FUNCTION_OAUTH_TOKEN]
+									)
+									.then(() => {
+										storeMNodalClear()
+									})
 							}
 						} catch (err) {
 							console.log(err)
