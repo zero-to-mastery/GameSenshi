@@ -39,7 +39,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 			const name2 =
 				provider2 === 'password' ? email : getName(credential.signInMethod)
 			// close modal if any
-			await storeModalClose()
+			storeModalClose()
 			setTimeout(() => {
 				const body = (
 					<>
@@ -59,7 +59,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 
 				const title = 'Linking Your Social Login'
 				storeModalShow(title, body, false, async () => {
-					await storeModalClose()
+					storeModalClose()
 					if (provider1 === 'password') {
 						storeSignInShow(email, async () => {
 							const body = (
@@ -76,7 +76,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 							auth()
 								.currentUser.linkWithCredential(credential)
 								.then(async () => {
-									await storeModalClose()
+									storeModalClose()
 									storeAlertShow(
 										'Social login linked successful!',
 										'success',
@@ -84,7 +84,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 									)
 								})
 								.catch(async () => {
-									await storeModalClose()
+									storeModalClose()
 									storeAlertShow(
 										'Social login linked unsuccessful!',
 										'danger',

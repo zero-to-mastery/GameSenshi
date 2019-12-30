@@ -21,6 +21,7 @@ const REMOVE_ITEM = 'removeItem'
 const ON_AUTH_STATE_CHANGE = 'onAuthStateChange'
 const PROCESS_REDIRECT_RESULT = 'processRedirectResult'
 const ON_CONTINUE = 'onSuccessfulSubmission'
+const CLEAR = 'clear'
 
 const defaultValues = () => ({
 	[STORE_MODAL_STATE_BODY]: '',
@@ -121,10 +122,7 @@ class StoreModal extends Container {
 		return this
 	};
 
-	[PROCESS_REDIRECT_RESULT] = (
-		LinkedCallBack = () => {},
-		linkingCallBack = () => {}
-	) => {
+	[PROCESS_REDIRECT_RESULT] = (linkingCallBack = () => {}) => {
 		const item = this[GET_ITEM]()
 		const {
 			name1,
@@ -134,7 +132,13 @@ class StoreModal extends Container {
 			//credential,
 		} = item
 		if (isLinked) {
-			LinkedCallBack(name2)
+			this[SHOW](
+				<span>
+					Successfully linked your <strong>{name2}</strong> account!
+				</span>,
+				'success',
+				'tim-icons icon-bell-55'
+			)
 			this[REMOVE_ITEM]()
 		} else if (item) {
 			// show modal on link redirect
@@ -156,6 +160,11 @@ class StoreModal extends Container {
 			linkingCallBack(provider2)
 			//}
 		}
+		return this
+	};
+	[CLEAR] = () => {
+		this[REMOVE_ITEM]()
+		this[CLOSE]()
 		return this
 	}
 }
@@ -179,4 +188,5 @@ export {
 	ON_CONTINUE,
 	SET_STATE,
 	RESET_STATE,
+	CLEAR,
 }

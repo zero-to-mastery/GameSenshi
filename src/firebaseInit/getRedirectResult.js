@@ -1,14 +1,9 @@
-import React from 'react'
-// states
 import {
-	storeAlertShow,
-	storeModalRemoveItem,
-	storeModalProcessRedirectResult,
+	storeModalProcessLinking,
 	storeModalShow,
 	storeUserSetSigningIn,
-	storeModalClose,
+	storeMNodalClear,
 } from 'state'
-
 import { handleDifferentCredential } from './handleDifferentCredential'
 import { auth } from './core'
 import { simplerErrorMessage } from 'utils'
@@ -25,11 +20,6 @@ const REDIRECT_URL = 'redirect_url'
 const storeRedirectUrl = () =>
 	sessionStorage.setItem(REDIRECT_URL, window.location.href)
 
-const clearAuth = () => {
-	storeModalRemoveItem()
-	storeModalClose()
-}
-
 const getRedirectResult = () =>
 	auth()
 		.getRedirectResult()
@@ -39,19 +29,10 @@ const getRedirectResult = () =>
 			if (user) {
 				storeUserSetSigningIn(true)
 				// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
-				const showAlert = name2 => {
-					storeAlertShow(
-						<span>
-							Successfully linked your <strong>{name2}</strong> account!
-						</span>,
-						'success',
-						'tim-icons icon-bell-55'
-					)
-				}
 				const linkWithRedirect = provider2 => {
 					user.linkWithRedirect(new auth[provider2]())
 				}
-				storeModalProcessRedirectResult(showAlert, linkWithRedirect)
+				storeModalProcessLinking(linkWithRedirect)
 			} else {
 				const redirectUrl = sessionStorage.getItem(REDIRECT_URL)
 				if (redirectUrl) {
@@ -69,15 +50,15 @@ const getRedirectResult = () =>
 							[FUNCTION_REDIRECT_URI]: ENV_TWITCH_REDIRECT,
 						}).then(console.log)
 					} else {
-						clearAuth()
+						storeMNodalClear()
 					}
 				} else {
-					clearAuth()
+					storeMNodalClear()
 				}
 			}
 		})
 		.catch(err => {
-			clearAuth()
+			storeMNodalClear()
 			console.log(err)
 			const { code, credential, email } = err
 			if (code === 'auth/account-exists-with-different-credential') {
