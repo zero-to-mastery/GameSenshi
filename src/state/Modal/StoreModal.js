@@ -122,7 +122,10 @@ class StoreModal extends Container {
 		return this
 	};
 
-	[PROCESS_REDIRECT_RESULT] = (linkingCallBack = () => {}) => {
+	[PROCESS_REDIRECT_RESULT] = (
+		linkingCallBack = () => {},
+		linkedCallback = () => {}
+	) => {
 		const item = this[GET_ITEM]()
 		const {
 			name1,
@@ -132,16 +135,7 @@ class StoreModal extends Container {
 			linking,
 			//credential,
 		} = item
-		if (isLinked) {
-			this[SHOW](
-				<span>
-					Successfully linked your <strong>{name2}</strong> account!
-				</span>,
-				'success',
-				'tim-icons icon-bell-55'
-			)
-			this[REMOVE_ITEM]()
-		} else if (linking) {
+		if (linking) {
 			// show modal on link redirect
 			const JSXString = reactElementToJSXString(
 				<span>
@@ -161,6 +155,9 @@ class StoreModal extends Container {
 			// } else {
 			linkingCallBack(provider2)
 			//}
+		} else if (isLinked) {
+			linkedCallback()
+			this[REMOVE_ITEM]()
 		} else {
 			this[CLOSE]()
 		}

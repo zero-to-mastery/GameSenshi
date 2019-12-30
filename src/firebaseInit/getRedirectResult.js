@@ -4,7 +4,11 @@ import {
 	storeUserSetSigningIn,
 	storeMNodalClear,
 } from 'state'
-import { handleDifferentCredential } from './handleDifferentCredential'
+import {
+	handleDifferentCredential,
+	linkedThen,
+	linkedCatch,
+} from './handleDifferentCredential'
 import { auth } from './core'
 import { simplerErrorMessage } from 'utils'
 import {
@@ -30,9 +34,9 @@ const getRedirectResult = () =>
 				storeUserSetSigningIn(true)
 				// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 				const linkWithRedirect = provider2 => {
-					user.linkWithRedirect(new auth[provider2]())
+					user.linkWithRedirect(new auth[provider2]()).catch(linkedCatch)
 				}
-				storeModalProcessLinking(linkWithRedirect)
+				storeModalProcessLinking(linkWithRedirect, linkedThen)
 			} else {
 				const redirectUrl = sessionStorage.getItem(REDIRECT_URL)
 				if (redirectUrl) {
@@ -64,7 +68,7 @@ const getRedirectResult = () =>
 			if (code === 'auth/account-exists-with-different-credential') {
 				handleDifferentCredential(auth, email, credential)
 			} else {
-				const body = simplerErrorMessage(false, UNEXPECTED_ERROR_CODE_6, err)
+				const body = simplerErrorMessage(err, UNEXPECTED_ERROR_CODE_6[1])
 				storeModalShow('Error', body, false)
 			}
 		})

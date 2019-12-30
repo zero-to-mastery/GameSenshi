@@ -1,6 +1,5 @@
 import React from 'react'
 import reactElementToJSXString from 'react-element-to-jsx-string'
-// states
 import {
 	storeAlertShow,
 	storeSignInShow,
@@ -8,11 +7,30 @@ import {
 	storeModalClose,
 	storeModalSetItem,
 } from 'state'
+import { simplerErrorMessage } from 'utils'
+import { UNEXPECTED_ERROR_CODE_8 } from 'constantValues'
+
+const linkedThen = () => {
+	storeModalClose()
+	storeAlertShow(
+		'Social login linked successful!',
+		'success',
+		'tim-icons icon-bell-55'
+	)
+}
+
+const linkedCatch = err => {
+	storeModalShow(
+		<span className='text-danger'>Error</span>,
+		simplerErrorMessage(err, UNEXPECTED_ERROR_CODE_8[1]),
+		false
+	)
+}
 
 const handleDifferentCredential = (auth, email, credential) => {
 	auth()
 		.fetchSignInMethodsForEmail(email)
-		.then(async methods => {
+		.then(methods => {
 			const getProvider = method => {
 				switch (method) {
 					case 'google.com':
@@ -58,10 +76,10 @@ const handleDifferentCredential = (auth, email, credential) => {
 				)
 
 				const title = 'Linking Your Social Login'
-				storeModalShow(title, body, false, async () => {
+				storeModalShow(title, body, false, () => {
 					storeModalClose()
 					if (provider1 === 'password') {
-						storeSignInShow(email, async () => {
+						storeSignInShow(email, () => {
 							const body = (
 								<>
 									Linking<b className='text-info'> {name1} </b>to
@@ -72,25 +90,13 @@ const handleDifferentCredential = (auth, email, credential) => {
 								</>
 							)
 							const title = 'Linking Your Social Login'
-							await storeModalShow(title, body, true)
+							storeModalShow(title, body, true)
 							auth()
 								.currentUser.linkWithCredential(credential)
-								.then(async () => {
-									storeModalClose()
-									storeAlertShow(
-										'Social login linked successful!',
-										'success',
-										'tim-icons icon-bell-55'
-									)
+								.then(() => {
+									linkedThen()
 								})
-								.catch(async () => {
-									storeModalClose()
-									storeAlertShow(
-										'Social login linked unsuccessful!',
-										'danger',
-										'tim-icons icon-alert-circle-exc'
-									)
-								})
+								.catch(linkedCatch)
 						})
 					} else {
 						// need to save this credential before hand in cache, remember delete it later.
@@ -122,4 +128,4 @@ const handleDifferentCredential = (auth, email, credential) => {
 		})
 }
 
-export { handleDifferentCredential }
+export { handleDifferentCredential, linkedThen, linkedCatch }
