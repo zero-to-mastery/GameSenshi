@@ -35,6 +35,10 @@ const handleSignUpWithEmailAndPassword = async (
 				return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_7, err)
 			}
 
+			user.updateProfile({ displayName }).catch(() => {
+				//this is not important, doesnt matter if it failed
+			})
+
 			return simplerResponseHandling(true)
 		})
 		.catch(err => simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err))

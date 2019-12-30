@@ -90,10 +90,7 @@ const cardExpiryValidation = (value, selectObjArray) => {
 		.shape({
 			value: string()
 				.required('required!')
-				.oneOf(
-					selectObjArray.map(obj => obj.value),
-					'invalid value!'
-				),
+				.oneOf(selectObjArray.map(obj => obj.value), 'invalid value!'),
 		})
 		.validate(value)
 }

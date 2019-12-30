@@ -23,6 +23,7 @@ import {
 	docNotificationSettingSet,
 } from 'firebaseInit'
 import { resObj } from 'utils'
+
 const onUserCreate = async userRecord => {
 	const { uid, displayName } = userRecord
 

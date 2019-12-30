@@ -77,7 +77,7 @@ const signUpTwitch = async data => {
 		//
 	}
 	let newUser = null
-	let newUserError = null
+	let existingUser = null
 	try {
 		newUser = await auth().createUser({
 			uid,
@@ -85,7 +85,23 @@ const signUpTwitch = async data => {
 			displayName: display_name,
 		})
 	} catch (err) {
-		newUserError = err
+		const message = err.message
+		if (
+			message.includes('The email address is already in use by another account')
+		) {
+			// user already have google/email/facebook account
+			existingUser = message
+		} else if (
+			message.includes('The user with the provided uid already exists')
+		) {
+			// user already have twitch account
+			return tokenData
+		} else {
+			// some unexpected error
+			const errObj = resObj(false, INTERNAL_ERROR_CODE_4, '')
+			console.log(errObj, err)
+			return errObj
+		}
 	}
 
 	try {
@@ -103,31 +119,21 @@ const signUpTwitch = async data => {
 	}
 
 	try {
-		if (newUserError) {
-			if (
-				newUserError.message.includes(
-					'The email address is already in use by another account'
-				)
-			) {
-				const { providerData } = await auth().getUserByEmail(email)
-				const accounts = providerData
-					.map(provider => {
-						const removeCom = provider.providerId.replace('.com', '')
-						return removeCom.charAt(0).toUpperCase() + removeCom.slice(1)
-					})
-					.join(', ')
-				const message = `The email address already in use by ${accounts} account(s), please login with ${accounts}`
-				const errObj = resObj(false, message)
-				console.log(errObj, newUserError)
-				return errObj
-			} else {
-				const errObj = resObj(false, INTERNAL_ERROR_CODE_8, '')
-				console.log(errObj, newUserError)
-				return errObj
-			}
+		if (existingUser) {
+			const { providerData } = await auth().getUserByEmail(email)
+			const accounts = providerData
+				.map(provider => {
+					const removeCom = provider.providerId.replace('.com', '')
+					return removeCom.charAt(0).toUpperCase() + removeCom.slice(1)
+				})
+				.join(', ')
+			const message = `The email address already in use by ${accounts} account(s), please login with ${accounts}`
+			const errObj = resObj(false, message, '')
+			console.log(errObj, existingUser)
+			return errObj
 		}
 	} catch (err) {
-		const errObj = resObj(false, INTERNAL_ERROR_CODE_4, '')
+		const errObj = resObj(false, INTERNAL_ERROR_CODE_8, '')
 		console.log(errObj, err)
 		return errObj
 	}
