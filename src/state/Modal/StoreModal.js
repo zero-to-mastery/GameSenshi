@@ -129,6 +129,7 @@ class StoreModal extends Container {
 			name2,
 			isLinked,
 			provider2,
+			linking,
 			//credential,
 		} = item
 		if (isLinked) {
@@ -140,7 +141,7 @@ class StoreModal extends Container {
 				'tim-icons icon-bell-55'
 			)
 			this[REMOVE_ITEM]()
-		} else if (item) {
+		} else if (linking) {
 			// show modal on link redirect
 			const JSXString = reactElementToJSXString(
 				<span>
@@ -152,6 +153,7 @@ class StoreModal extends Container {
 			const restProps = {
 				...item,
 				isLinked: true,
+				linking: false,
 			}
 			this[SET_ITEM]('Linking...', JSXString, restProps)
 			// if (provider2 === 'password') {
@@ -159,9 +161,12 @@ class StoreModal extends Container {
 			// } else {
 			linkingCallBack(provider2)
 			//}
+		} else {
+			this[CLOSE]()
 		}
 		return this
 	};
+
 	[CLEAR] = () => {
 		this[REMOVE_ITEM]()
 		this[CLOSE]()

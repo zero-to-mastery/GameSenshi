@@ -111,6 +111,7 @@ const handleDifferentCredential = (auth, email, credential) => {
 							name1,
 							name2,
 							isLinked: false,
+							linking: true,
 						}
 						storeModalSetItem(title, body, restProps)
 						auth().signInWithRedirect(new auth[provider1]())
