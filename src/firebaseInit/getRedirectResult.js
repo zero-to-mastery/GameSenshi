@@ -1,15 +1,14 @@
 import {
 	storeModalProcessLinking,
 	storeModalShow,
-	storeUserSetSigningIn,
 	storeMNodalClear,
 	storeModalSimpleError,
 } from 'state'
 import {
 	handleDifferentCredential,
 	linkedThen,
-} from './handleDifferentCredential'
-import { auth } from './core'
+} from 'firebaseInit/handleDifferentCredential'
+import { auth } from 'firebaseInit/core'
 import { simplerErrorMessage } from 'utils'
 import {
 	UNEXPECTED_ERROR_CODE_6,
@@ -21,7 +20,7 @@ import {
 	ENV_TWITCH_REDIRECT,
 	FUNCTION_OAUTH_TOKEN,
 } from 'constantValues'
-import { functTwicth } from './cloudFunct'
+import { functTwicth } from 'firebaseInit/cloudFunct'
 
 const REDIRECT_URL = 'redirect_url'
 

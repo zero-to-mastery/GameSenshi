@@ -1,7 +1,7 @@
-import { FUNCTION_SIGN_UP } from 'constantValues'
+import { FUNCTION_SIGN_IN } from 'constantValues'
 
 const Mutation = {
-	[FUNCTION_SIGN_UP]: () => {},
+	[FUNCTION_SIGN_IN]: () => {},
 }
 
 export { Mutation }

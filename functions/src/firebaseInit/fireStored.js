@@ -1,4 +1,4 @@
-import { fireStored, getServerTimestamp } from './core'
+import { fireStored, getServerTimestamp } from 'firebaseInit/core'
 
 import {
 	firestorePathSettingsGeneral,

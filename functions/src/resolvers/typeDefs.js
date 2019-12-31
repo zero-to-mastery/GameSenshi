@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express'
 import {
-	FUNCTION_SIGN_UP,
+	FUNCTION_SIGN_IN,
 	FUNCTION_EMAIL,
 	FUNCTION_PASSWORD,
 	FUNCTION_DISPLAY_NAME,
@@ -17,7 +17,7 @@ const typeDefs = gql`
   }
 
 	type Mutation {
-		${FUNCTION_SIGN_UP}(${FUNCTION_DATA}: ${FUNCTION_INPUT}!): SignUpRespond!
+		${FUNCTION_SIGN_IN}(${FUNCTION_DATA}: ${FUNCTION_INPUT}!): SignUpRespond!
   }
   
   input ${FUNCTION_INPUT}{

@@ -15,8 +15,8 @@ import express from 'express'
 
 import { typeDefs, resolvers } from 'resolvers'
 
-import { FUNCTION_SIGN_UP_TWITCH } from 'constantValues'
-import { signUpTwitch, onUserCreation } from 'functions'
+import { FUNCTION_SIGN_IN_TWITCH } from 'constantValues'
+import { onSignInTwitch, onCreateUser } from 'functions'
 
 const app = express()
 
@@ -58,7 +58,7 @@ server.applyMiddleware({
 // unable to use property accessor in es6 non export, revert to es5 exports statement
 // es5 export also have clearner name
 module.exports = {
-	endpoint: functions.https.onRequest(app),
-	onUserCreation,
-	[FUNCTION_SIGN_UP_TWITCH]: functions.https.onCall(signUpTwitch),
+	api: functions.https.onRequest(app),
+	onCreateUser,
+	[FUNCTION_SIGN_IN_TWITCH]: functions.https.onCall(onSignInTwitch),
 }

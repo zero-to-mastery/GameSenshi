@@ -24,7 +24,7 @@ import {
 } from 'firebaseInit'
 import { resObj } from 'utils'
 
-const onUserCreate = async userRecord => {
+const onCreateUser_ = async userRecord => {
 	const { uid, displayName } = userRecord
 
 	const isPasswordExist = userRecord.providerData.some(
@@ -68,10 +68,10 @@ const onUserCreate = async userRecord => {
 	}
 }
 
-const onUserCreation = functions.auth
+const onCreateUser = functions.auth
 	.user()
 	.onCreate((userRecord, eventContext) => {
-		return onUserCreate(userRecord, eventContext)
+		return onCreateUser_(userRecord, eventContext)
 	})
 
-export { onUserCreation }
+export { onCreateUser }

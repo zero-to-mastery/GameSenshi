@@ -1,4 +1,4 @@
-import { signUpTwitch } from './signUpTwitch'
-import { onUserCreation } from './onUserCreate'
+import { onSignInTwitch } from './onSignInTwitch'
+import { onCreateUser } from './onCreateUser'
 
-export { signUpTwitch, onUserCreation }
+export { onSignInTwitch, onCreateUser }

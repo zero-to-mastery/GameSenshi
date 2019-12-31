@@ -38,10 +38,13 @@ const handleDifferentCredential = (auth, email, credential) => {
 				}
 			}
 
-			const getName = (
-				string // remove .com and capitalized 1st letter
-			) =>
-				(string.charAt(0).toUpperCase() + string.slice(1)).replace('.com', '')
+			const getName = string => {
+				// remove .com and capitalized 1st letter
+				return (string.charAt(0).toUpperCase() + string.slice(1)).replace(
+					'.com',
+					''
+				)
+			}
 
 			const provider1 = getProvider(methods[0])
 			const provider2 = getProvider(credential.signInMethod)
