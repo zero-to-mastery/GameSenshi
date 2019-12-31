@@ -57,9 +57,9 @@ const signUpTwitch = async data => {
 
 	let customToken = null
 	const { id, email, display_name, profile_image_url } = userData
-	const uid = 'twitch:' + id
+	const uid = 'twitch_' + id
 	try {
-		customToken = await auth().createCustomToken(id)
+		customToken = await auth().createCustomToken(uid)
 	} catch (err) {
 		const errObj = resObj(false, INTERNAL_ERROR_CODE_2, '')
 		console.log(errObj, err)
@@ -69,7 +69,7 @@ const signUpTwitch = async data => {
 	const tokenData = { [FUNCTION_OAUTH_TOKEN]: customToken }
 	try {
 		return await auth()
-			.getUser(id)
+			.getUser(uid)
 			.then(() => {
 				return tokenData
 			})
