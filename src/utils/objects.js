@@ -5,7 +5,7 @@ import {
 	FUNCTION_DATA,
 } from 'constantValues'
 
-const simplerErrorMessage = (error = {}, defaultErrorMessage = []) => {
+const simplerErrorMessage = (error = {}, defaultErrorMessage = ['']) => {
 	const { code, message } = error
 	// code is error from firebase, message is error from graphql
 	if (
@@ -14,11 +14,13 @@ const simplerErrorMessage = (error = {}, defaultErrorMessage = []) => {
 	) {
 		return 'network failure'
 	} else {
-		return defaultErrorMessage
+		return Array.isArray(defaultErrorMessage)
+			? defaultErrorMessage[1]
+			: defaultErrorMessage
 	}
 }
 
-const resObj = (status = false, message = [], data = {}) => {
+const resObj = (status = false, message = [''], data = {}) => {
 	const message_ = Array.isArray(message) ? message[1] : message
 	const code = Array.isArray(message) ? message[0] : -1
 	return {

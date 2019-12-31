@@ -171,10 +171,14 @@ class StoreModal extends Container {
 		this[CLOSE]()
 		return this
 	};
-	[SIMPLE_ERROR] = (err = {}, defaultErrorMessage = '') => {
+	[SIMPLE_ERROR] = (err = {}, defaultErrorMessage = ['']) => {
 		this[SHOW](
 			<span className='text-danger'>Error</span>,
-			simplerErrorMessage(err, defaultErrorMessage),
+			<>
+				{simplerErrorMessage(err, defaultErrorMessage)}.
+				<br />
+				{`Code: ${defaultErrorMessage[0]}`}
+			</>,
 			false
 		)
 	}

@@ -14,7 +14,7 @@ import {
 	docNotificationSettingSet,
 	docGeneralSettingSetAvatar,
 } from './fireStored'
-import { functTwicth } from './cloudFunct'
+import { functSignInTwicth, functSignInOther } from './cloudFunct'
 
 // user auth listener
 const onAuthChange = () => {
@@ -41,5 +41,6 @@ export {
 	storeRedirectUrl,
 	getRedirectResult,
 	onAuthChange,
-	functTwicth,
+	functSignInTwicth,
+	functSignInOther,
 }
