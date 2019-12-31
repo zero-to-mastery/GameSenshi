@@ -30,12 +30,11 @@ const storeRedirectUrl = () =>
 
 const getRedirectResult = () =>
 	auth()
-		.getRedirectResult()
+		.getRedirectResult() // redirect run when website start
 		.then(async result => {
 			const { user } = result
 			// need this condition because this part run when webpage start
 			if (user) {
-				storeUserSetSigningIn(true)
 				// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 				const linkWithRedirect = provider2 => {
 					user.linkWithRedirect(new auth[provider2]()).catch(err => {
@@ -91,7 +90,7 @@ const getRedirectResult = () =>
 			storeMNodalClear()
 			console.log(err)
 			const { code, credential, email } = err
-			if (code === 'auth/account-exists-with-different-credential') {
+			if (code.includes('auth/account-exists-with-different-credential')) {
 				handleDifferentCredential(auth, email, credential)
 			} else {
 				const body = simplerErrorMessage(err, UNEXPECTED_ERROR_CODE_6[1])

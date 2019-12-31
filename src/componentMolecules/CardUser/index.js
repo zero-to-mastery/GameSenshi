@@ -7,11 +7,15 @@ const CardProfileOptioned = props => {
 }
 
 const CardUserPropedDiscover = props => {
-	return <CardProfileOptioned badge={[FIRESTORE_SENSHI_BADGES_ONLINE]} {...props} />
+	return (
+		<CardProfileOptioned badge={[FIRESTORE_SENSHI_BADGES_ONLINE]} {...props} />
+	)
 }
 
 const CardProfilePropedSearch = props => {
-	return <CardProfileOptioned badge={[FIRESTORE_SENSHI_BADGES_ONLINE]} {...props} />
+	return (
+		<CardProfileOptioned badge={[FIRESTORE_SENSHI_BADGES_ONLINE]} {...props} />
+	)
 }
 
 export { CardUserPropedDiscover, CardProfilePropedSearch }

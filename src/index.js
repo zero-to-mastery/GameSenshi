@@ -2,12 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from 'App'
 import * as serviceWorker from 'serviceWorker'
-// state management
-import { storeModalInitialize, storeUserInitialize } from 'state'
+import {
+	storeModalInitialize,
+	storeUserInitialize,
+	storeUserSetSigningIn,
+} from 'state'
 import { goLastRoute } from 'routes'
-// Initialize firebase
 import { storeRedirectUrl, getRedirectResult, onAuthChange } from 'firebaseInit'
-// styles
 import 'assets/css/nucleo-icons.css'
 import 'assets/scss/blk-design-system-pro-react.scss?v1.0.0'
 import 'assets/demo/demo.css'
@@ -30,7 +31,9 @@ storeUserInitialize()
 goLastRoute()
 
 // modal for auth
-storeModalInitialize()
+storeModalInitialize(() => {
+	storeUserSetSigningIn(true)
+})
 
 ReactDOM.render(<App />, document.getElementById('root'))
 

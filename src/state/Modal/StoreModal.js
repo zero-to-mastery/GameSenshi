@@ -100,9 +100,10 @@ class StoreModal extends Container {
 		return this
 	};
 
-	[INITIALIZE] = () => {
+	[INITIALIZE] = (callback = () => {}) => {
 		const item = this[GET_ITEM]()
 		if (item) {
+			callback()
 			this[SET_STATE]({
 				[STORE_MODAL_STATE_BODY]: (
 					<Interweave content={item[STORE_MODAL_STATE_BODY]} />

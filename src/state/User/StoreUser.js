@@ -57,7 +57,11 @@ class StoreUser extends Container {
 	}
 
 	[RESET_STATE] = () => {
-		this[SET_STATE](defaultValues())
+		// prevent signing in state from reset because this is needed during redirect
+		this[SET_STATE]({
+			...defaultValues(),
+			[STORE_USER_STATE_SIGNING_IN]: this[STATE][STORE_USER_STATE_SIGNING_IN],
+		})
 		return this
 	};
 
