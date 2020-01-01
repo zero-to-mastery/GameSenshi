@@ -4,6 +4,7 @@ import Interweave from 'interweave'
 import reactElementToJSXString from 'react-element-to-jsx-string'
 import { simplerErrorMessage } from 'utils'
 import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
+import { UNEXPECTED_ERROR_CODE_14 } from 'constantValues'
 
 const STORE_MODAL = 'Modal'
 const STORE_MODAL_STATE_BODY = 'body'
@@ -23,6 +24,7 @@ const PROCESS_REDIRECT_RESULT = 'processRedirectResult'
 const ON_CONTINUE = 'onSuccessfulSubmission'
 const CLEAR = 'clear'
 const SIMPLE_ERROR = 'simpleError'
+const TIMEOUT_ID = 'timeOutID'
 
 const defaultValues = () => ({
 	[STORE_MODAL_STATE_BODY]: '',
@@ -37,6 +39,7 @@ class StoreModal extends Container {
 		super()
 		this[STATE] = defaultValues()
 		this[SET_STATE] = this[SET_STATE].bind(this)
+		this[TIMEOUT_ID] = -1
 	}
 
 	[TOGGLE] = () => {
@@ -53,6 +56,7 @@ class StoreModal extends Container {
 	};
 
 	[CLOSE] = () => {
+		clearTimeout(this[TIMEOUT_ID])
 		this[SET_STATE]({ [STORE_MODAL_STATE_IS_OPEN]: false })
 		return this
 	};
@@ -90,6 +94,7 @@ class StoreModal extends Container {
 		loader = false,
 		afterContinueCallback = () => {}
 	) => {
+		clearTimeout(this[TIMEOUT_ID])
 		this[SET_STATE]({
 			[STORE_MODAL_STATE_IS_OPEN]: true,
 			[STORE_MODAL_STATE_BODY]: body,
@@ -97,6 +102,11 @@ class StoreModal extends Container {
 			[STORE_MODAL_STATE_LOADER]: loader,
 			[STORE_MODAL_STATE_CONTINUED_CALLBACK]: afterContinueCallback,
 		})
+		if (loader) {
+			this[TIMEOUT_ID] = setTimeout(() => {
+				this[SIMPLE_ERROR]({}, UNEXPECTED_ERROR_CODE_14)
+			}, 10000)
+		}
 		return this
 	};
 
