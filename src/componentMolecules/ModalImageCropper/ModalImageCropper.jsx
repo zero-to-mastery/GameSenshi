@@ -38,9 +38,6 @@ const ModalImageCropper = memo(props => {
 			title='Set New Profile Picture'
 			footer='Crop and Update Profile Image'
 			toggle={toggle}
-			backdrop='static'
-			modalClassName='modal-black'
-			wrapClassName='modal-backdrop'
 			onContinue={onContinue}
 			{...otherProps}
 		>

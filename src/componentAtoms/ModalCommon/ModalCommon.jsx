@@ -14,10 +14,6 @@ const MODAL_COMMON_STATE_IS_OPEN = 'isOpen'
 const MODAL_COMMON_STATE_FOOTER = 'footer'
 const MODAL_COMMON_TOGGLE = 'toggle'
 const MODAL_COMMON_ON_CONTINUE = 'onContinue'
-const MODAL_COMMON_SIZE = 'size'
-const MODAL_COMMON_MODAL_CLASS_NAME = 'modalClassName'
-const MODAL_COMMON_MODAL_WRAP_NAME = 'modalWrapName'
-const MODAL_COMMON_MODAL_BACKDROP = 'modalBackdrop'
 
 const ModalCommon = props => {
 	const {
@@ -28,22 +24,19 @@ const ModalCommon = props => {
 		[MODAL_COMMON_TOGGLE]: toggle,
 		[MODAL_COMMON_ON_CONTINUE]: onContinue,
 		[MODAL_COMMON_STATE_FOOTER]: footer,
-		[MODAL_COMMON_SIZE]: size,
-		[MODAL_COMMON_MODAL_BACKDROP]: backdrop,
-		[MODAL_COMMON_MODAL_CLASS_NAME]: modalClassName,
-		[MODAL_COMMON_MODAL_WRAP_NAME]: wrapClassName,
 		children,
+		...otherProps
 	} = props
 
 	return (
 		<Modal
 			isOpen={isOpen}
 			toggle={toggle}
-			size={size}
-			backdrop={backdrop}
-			modalClassName={modalClassName}
-			wrapClassName={wrapClassName}
+			backdrop='static'
+			wrapClassName='modal-backdrop'
+			modalClassName='modal-black'
 			style={{ border: '1px solid #00d6d1', borderRadius: '5px' }}
+			{...otherProps}
 		>
 			<div className='modal-header'>
 				<button
