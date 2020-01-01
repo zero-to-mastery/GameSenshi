@@ -6,15 +6,15 @@ const handleIsPasswordResetAble = email => {
 	return auth()
 		.fetchSignInMethodsForEmail(email)
 		.then(methods => {
-			if (!methods.includes('password')) {
-				return simplerResponseHandling(
-					false,
-					'this email does not have password account.'
-				)
-			} else {
+			if (methods.includes('password')) {
 				return simplerResponseHandling(
 					true,
 					'this account password is reset-able'
+				)
+			} else {
+				return simplerResponseHandling(
+					false,
+					'this email does not have password account.'
 				)
 			}
 		})

@@ -18,30 +18,32 @@ const handleSignUpWithEmailAndPassword = async (
 		[FUNCTION_PASSWORD]: password,
 		[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
 	} = values
+	let credential = null
+	try {
+		credential = await auth().createUserWithEmailAndPassword(email, password)
+	} catch (err) {
+		console.log(err)
+		return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err)
+	}
+	const { user } = credential
+	onSuccessfulSignUp()
+	user.sendEmailVerification().catch(() => {
+		//this is not important, doesnt matter if it failed
+	})
 
-	return auth()
-		.createUserWithEmailAndPassword(email, password)
-		.then(async credential => {
-			const { user } = credential
-			onSuccessfulSignUp()
-			user.sendEmailVerification().catch()
-
-			try {
-				await docGeneralSettingSet({
-					[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
-					[FIRESTORE_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
-				})
-			} catch (err) {
-				return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_7, err)
-			}
-
-			user.updateProfile({ displayName }).catch(() => {
-				//this is not important, doesnt matter if it failed
-			})
-
-			return simplerResponseHandling(true)
+	try {
+		await docGeneralSettingSet({
+			[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
+			[FIRESTORE_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
 		})
-		.catch(err => simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err))
+	} catch (err) {
+		return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_7, err)
+	}
+
+	user.updateProfile({ displayName }).catch(() => {
+		//this is not important, doesnt matter if it failed
+	})
+	return simplerResponseHandling(true)
 }
 
 export {

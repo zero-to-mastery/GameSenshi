@@ -1,17 +1,17 @@
 // states
 import {
 	RESET_STATE,
-	storeUserOnSignIn,
-	storeModalOnAuthStateChange,
-	storeUserOnSignOut,
-} from 'state'
-import {
 	storeAlert,
 	storeSignIn,
 	storeProgress,
 	storeUser,
 	storeWrapper,
+	storeUserOnSignIn,
+	storeModalOnAuthStateChange,
+	storeUserOnSignOut,
 } from 'state'
+import { auth } from 'firebaseInit/core'
+import { docGeneralSettingOnSnapshot } from 'firebaseInit/fireStored'
 
 let unsubscribe = () => {}
 
@@ -46,4 +46,15 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 	}
 }
 
-export { onAuthChanged }
+const onAuthChange = () => {
+	auth().onAuthStateChanged(userAuth => {
+		onAuthChanged(userAuth, (next, error) =>
+			docGeneralSettingOnSnapshot(
+				{ includeMetadataChanges: true },
+				{ next, error }
+			)
+		)
+	})
+}
+
+export { onAuthChange }

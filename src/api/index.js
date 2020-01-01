@@ -3,7 +3,7 @@ import {
 	FUNCTION_EMAIL,
 	FUNCTION_PASSWORD,
 } from './handleSignUpWithEmailAndPassword'
-import { handleIsEmailNotExist } from './handleIsEmailNotExist'
+import { handleIsEmailAccountNotExist } from './handleIsEmailAccountNotExist'
 import { handleIsPasswordResetAble } from './handleIsPasswordResetAble'
 import { handleSignInWithEmailAndPassword } from './handleSignInWithEmailAndPassword'
 import { handleSignInWithSocials } from './handleSignInWithSocials'
@@ -15,7 +15,7 @@ export {
 	handleSignUpWithEmailAndPassword,
 	FUNCTION_EMAIL,
 	FUNCTION_PASSWORD,
-	handleIsEmailNotExist,
+	handleIsEmailAccountNotExist,
 	handleIsPasswordResetAble,
 	handleSignInWithSocials,
 	handleSignInWithEmailAndPassword,

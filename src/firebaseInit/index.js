@@ -1,4 +1,4 @@
-import { onAuthChanged } from './onAuthChanged'
+import { onAuthChange } from './onAuthChange'
 import { getRedirectResult, storeRedirectUrl } from './getRedirectResult'
 import { auth } from './core'
 import {
@@ -9,24 +9,11 @@ import {
 import {
 	docGeneralSettingGet,
 	docGeneralSettingSet,
-	docGeneralSettingOnSnapshot,
 	docNotificationSettingGet,
 	docNotificationSettingSet,
 	docGeneralSettingSetAvatar,
 } from './fireStored'
 import { functSignInTwicth, functSignInOther } from './cloudFunct'
-
-// user auth listener
-const onAuthChange = () => {
-	auth().onAuthStateChanged(userAuth => {
-		onAuthChanged(userAuth, (next, error) =>
-			docGeneralSettingOnSnapshot(
-				{ includeMetadataChanges: true },
-				{ next, error }
-			)
-		)
-	})
-}
 
 export {
 	auth,
