@@ -94,19 +94,22 @@ class StoreModal extends Container {
 		loader = false,
 		afterContinueCallback = () => {}
 	) => {
-		clearTimeout(this[TIMEOUT_ID])
-		this[SET_STATE]({
-			[STORE_MODAL_STATE_IS_OPEN]: true,
-			[STORE_MODAL_STATE_BODY]: body,
-			[STORE_MODAL_STATE_TITLE]: title,
-			[STORE_MODAL_STATE_LOADER]: loader,
-			[STORE_MODAL_STATE_CONTINUED_CALLBACK]: afterContinueCallback,
-		})
-		if (loader) {
-			this[TIMEOUT_ID] = setTimeout(() => {
-				this[SIMPLE_ERROR]({}, UNEXPECTED_ERROR_CODE_14)
-			}, 10000)
-		}
+		this[CLOSE]()
+		setTimeout(() => {
+			// clearTimeout(this[TIMEOUT_ID])
+			this[SET_STATE]({
+				[STORE_MODAL_STATE_IS_OPEN]: true,
+				[STORE_MODAL_STATE_BODY]: body,
+				[STORE_MODAL_STATE_TITLE]: title,
+				[STORE_MODAL_STATE_LOADER]: loader,
+				[STORE_MODAL_STATE_CONTINUED_CALLBACK]: afterContinueCallback,
+			})
+			if (loader) {
+				this[TIMEOUT_ID] = setTimeout(() => {
+					this[SIMPLE_ERROR]({}, UNEXPECTED_ERROR_CODE_14)
+				}, 10000)
+			}
+		}, 150)
 		return this
 	};
 

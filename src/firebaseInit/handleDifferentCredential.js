@@ -75,70 +75,65 @@ const handleDifferentCredential = async (email, credential) => {
 		window.location = ENV_VALUE_TWITCH_OAUTH_LINK
 		storeModalSetItem('Signing In', `Signing In With ${name2}`, credentialInfo)
 	} else {
-		// close modal if any
-		storeModalClose()
-		setTimeout(() => {
-			const body = (
-				<>
-					It seem like you already registered with{' '}
-					<b className='text-info'>{name1}</b>, we will try to link both of your{' '}
-					<b className='text-info'>{name1}</b> and
-					<b className='text-success'> {name2}</b> social login by signing you
-					in with
-					<b className='text-info'> {name1}</b> first then{' '}
-					<b className='text-success'>{name2}. </b>
-					<br />
-					<br />
-					Please click
-					<b className='text-primary'> Continue</b> to link your account.
-				</>
-			)
+		const body = (
+			<>
+				It seem like you already registered with{' '}
+				<b className='text-info'>{name1}</b>, we will try to link both of your{' '}
+				<b className='text-info'>{name1}</b> and
+				<b className='text-success'> {name2}</b> social login by signing you in
+				with
+				<b className='text-info'> {name1}</b> first then{' '}
+				<b className='text-success'>{name2}. </b>
+				<br />
+				<br />
+				Please click
+				<b className='text-primary'> Continue</b> to link your account.
+			</>
+		)
 
-			const title = 'Linking Your Social Login'
-			storeModalShow(title, body, false, () => {
-				storeModalClose()
-				if (provider1 === 'password') {
-					storeSignInShow(email, () => {
-						const body = (
-							<>
-								Linking<b className='text-info'> {name1} </b>to
-								<b className='text-success'> {name2} </b>
-								<br />
-								<br />
-								Please Wait...
-							</>
-						)
-						const title = 'Linking Your Social Login'
-						storeModalShow(title, body, true)
-						auth()
-							.currentUser.linkWithCredential(credential)
-							.then(() => {
-								linkedThen()
-							})
-							.catch(err => {
-								storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_8[1])
-							})
-					})
-				} else {
-					// need to save this credential before hand in cache, remember delete it later.
-					const body = reactElementToJSXString(
-						<span>
-							Please wait while we signing you in with
-							<b className='text-info'> {name1}. </b>
+		const title = 'Linking Your Social Login'
+		storeModalShow(title, body, false, () => {
+			if (provider1 === 'password') {
+				storeSignInShow(email, () => {
+					const body = (
+						<>
+							Linking<b className='text-info'> {name1} </b>to
+							<b className='text-success'> {name2} </b>
 							<br />
 							<br />
-							After that we will signing you in with
-							<b className='text-success'> {name2}. </b>
-						</span>
+							Please Wait...
+						</>
 					)
-					const title = 'Signing You In...'
+					const title = 'Linking Your Social Login'
+					storeModalShow(title, body, true)
+					auth()
+						.currentUser.linkWithCredential(credential)
+						.then(() => {
+							linkedThen()
+						})
+						.catch(err => {
+							storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_8[1])
+						})
+				})
+			} else {
+				// need to save this credential before hand in cache, remember delete it later.
+				const body = reactElementToJSXString(
+					<span>
+						Please wait while we signing you in with
+						<b className='text-info'> {name1}. </b>
+						<br />
+						<br />
+						After that we will signing you in with
+						<b className='text-success'> {name2}. </b>
+					</span>
+				)
+				const title = 'Signing You In...'
 
-					storeModalSetItem(title, body, credentialInfo)
-					auth().signInWithRedirect(new auth[provider1]())
-					//}
-				}
-			})
-		}, 150)
+				storeModalSetItem(title, body, credentialInfo)
+				auth().signInWithRedirect(new auth[provider1]())
+				//}
+			}
+		})
 	}
 	//continue on getRedirectResult event listener
 }
