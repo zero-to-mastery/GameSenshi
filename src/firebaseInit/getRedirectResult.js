@@ -2,6 +2,7 @@ import {
 	storeModalProcessLinking,
 	storeMNodalClear,
 	storeModalSimpleError,
+	storeModalRemoveItem,
 } from 'state'
 import {
 	handleDifferentCredential,
@@ -30,12 +31,15 @@ const getRedirectResult = async () => {
 	try {
 		result = await auth().getRedirectResult() // redirect run when website start
 	} catch (err) {
-		storeMNodalClear()
 		console.log(err)
 		const { code, credential, email } = err
-		if (code === 'auth/account-exists-with-different-credential') {
-			handleDifferentCredential(auth, email, credential)
+		if (
+			code &&
+			code.includes('auth/account-exists-with-different-credential')
+		) {
+			handleDifferentCredential(email, credential)
 		} else {
+			storeModalRemoveItem()
 			storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_6)
 		}
 		return
