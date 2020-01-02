@@ -23,8 +23,9 @@ import {
 	FUNCTION_CUSTOM_TOKEN,
 	AUTH_TWITCH,
 	FUNCTION_ID_TOKEN,
+	FUNCTION_ACCESS_TOKEN,
 } from 'constantValues'
-import { functSignInTwicth, functSignInOther } from 'firebaseInit/cloudFunct'
+import { functSignInTwicth, functSignInFacebook } from 'firebaseInit/cloudFunct'
 
 const REDIRECT_URL = 'redirect_url'
 
@@ -35,9 +36,7 @@ const getRedirectResult = async () => {
 	let result = null
 	try {
 		result = await auth().getRedirectResult() // redirect run when website start
-		console.log(result)
 	} catch (err) {
-		console.log(err)
 		const { code, credential, email } = err
 		if (
 			code &&
@@ -45,6 +44,7 @@ const getRedirectResult = async () => {
 		) {
 			handleDifferentCredential(email, credential)
 		} else {
+			console.log(err)
 			storeModalRemoveItem()
 			storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_6)
 		}
@@ -59,15 +59,15 @@ const getRedirectResult = async () => {
 			if (name1 === AUTH_TWITCH) {
 				let idToken = null
 				try {
-					idToken = await auth().currentUser.getIdToken
+					idToken = await auth().currentUser.getIdToken(true)
 				} catch (err) {
 					return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_15)
 				}
 				let otherTokenData = null
 				try {
-					otherTokenData = await functSignInOther({
+					otherTokenData = await functSignInFacebook({
 						[FUNCTION_ID_TOKEN]: idToken,
-						[FUNCTION_OAUTH_CODE]: accessToken,
+						[FUNCTION_ACCESS_TOKEN]: accessToken,
 					})
 				} catch (err) {
 					return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_12)

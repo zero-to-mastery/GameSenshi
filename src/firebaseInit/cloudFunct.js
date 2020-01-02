@@ -5,6 +5,6 @@ import {
 } from 'constantValues'
 
 const functSignInTwicth = fireFunct().httpsCallable(FUNCTION_SIGN_IN_TWITCH)
-const functSignInOther = fireFunct().httpsCallable(FUNCTION_SIGN_IN_FACEBOOK)
+const functSignInFacebook = fireFunct().httpsCallable(FUNCTION_SIGN_IN_FACEBOOK)
 
-export { functSignInTwicth, functSignInOther }
+export { functSignInTwicth, functSignInFacebook }

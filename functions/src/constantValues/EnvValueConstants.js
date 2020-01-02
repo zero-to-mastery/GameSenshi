@@ -11,7 +11,7 @@ const ENV_VALUE_FIREBASE_CONFIG = Object.freeze({
 })
 
 const ENV_VALUE_TWITCH_CLIENT = env.REACT_APP_TWITCH_CLIENT
-const ENV_VALUE_TWITCH_REDIRECT = env.REACT_APP_TWITCH_REDIRECT
+const ENV_VALUE_TWITCH_REDIRECT = env.REACT_APP_REDIRECT_URL
 
 const ENV_VALUE_TWITCH_OAUTH_LINK = `https://id.twitch.tv/oauth2/authorize?client_id=${ENV_VALUE_TWITCH_CLIENT}&redirect_uri=${ENV_VALUE_TWITCH_REDIRECT}&response_type=code&scope=openid+user_read+user:read:email&`
 
