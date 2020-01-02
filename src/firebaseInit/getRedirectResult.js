@@ -3,6 +3,7 @@ import {
 	storeMNodalClear,
 	storeModalSimpleError,
 	storeModalRemoveItem,
+	storeModalGetRedirectUrl,
 } from 'state'
 import {
 	handleDifferentCredential,
@@ -26,11 +27,6 @@ import {
 	FUNCTION_ACCESS_TOKEN,
 } from 'constantValues'
 import { functSignInTwicth, functSignInFacebook } from 'firebaseInit/cloudFunct'
-
-const REDIRECT_URL = 'redirect_url'
-
-const storeRedirectUrl = () =>
-	sessionStorage.setItem(REDIRECT_URL, window.location.href)
 
 const getRedirectResult = async () => {
 	let result = null
@@ -91,9 +87,8 @@ const getRedirectResult = async () => {
 		}
 		storeModalProcessLinking(linkWithRedirect, linkedThen)
 	} else {
-		const redirectUrl = sessionStorage.getItem(REDIRECT_URL)
+		const redirectUrl = storeModalGetRedirectUrl()
 		if (redirectUrl) {
-			sessionStorage.removeItem(REDIRECT_URL)
 			const searchParams = new URLSearchParams(redirectUrl)
 			let oauthCode = null
 			for (let p of searchParams) {
@@ -133,4 +128,4 @@ const getRedirectResult = async () => {
 	}
 }
 
-export { getRedirectResult, storeRedirectUrl }
+export { getRedirectResult }

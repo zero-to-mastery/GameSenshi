@@ -19,6 +19,7 @@ import {
 	RESET_STATE,
 	CLEAR,
 	SIMPLE_ERROR,
+	GET_REDIRECT_URL,
 } from './StoreModal'
 
 const storeModal = new StoreModal()
@@ -36,6 +37,7 @@ const storeModalSetState = storeModal[SET_STATE]
 const storeModalResetState = storeModal[RESET_STATE]
 const storeMNodalClear = storeModal[CLEAR]
 const storeModalSimpleError = storeModal[SIMPLE_ERROR]
+const storeModalGetRedirectUrl = storeModal[GET_REDIRECT_URL]
 
 export {
 	storeModal,
@@ -53,6 +55,7 @@ export {
 	storeModalResetState,
 	storeMNodalClear,
 	storeModalSimpleError,
+	storeModalGetRedirectUrl,
 	STORE_MODAL_STATE_BODY,
 	STORE_MODAL_STATE_IS_OPEN,
 	STORE_MODAL_STATE_TITLE,

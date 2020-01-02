@@ -8,7 +8,7 @@ import {
 	storeUserSetSigningIn,
 } from 'state'
 import { goLastRoute } from 'routes'
-import { storeRedirectUrl, getRedirectResult, onAuthChange } from 'firebaseInit'
+import { getRedirectResult, onAuthChange } from 'firebaseInit'
 import 'assets/css/nucleo-icons.css'
 import 'assets/scss/blk-design-system-pro-react.scss?v1.0.0'
 import 'assets/demo/demo.css'
@@ -19,9 +19,6 @@ import 'slick-carousel/slick/slick-theme.css'
 
 //handle auth change
 onAuthChange()
-
-// get access token on url before redirect to other page
-storeRedirectUrl()
 
 //handle redirect
 getRedirectResult()

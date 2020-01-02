@@ -1,5 +1,5 @@
 import { onAuthChange } from './onAuthChange'
-import { getRedirectResult, storeRedirectUrl } from './getRedirectResult'
+import { getRedirectResult } from './getRedirectResult'
 import { auth } from './core'
 import {
 	storageUserAvatarGet,
@@ -26,7 +26,6 @@ export {
 	storageUserAvatarGet,
 	storageUserAvatarSet,
 	storageUserAvatarRemove,
-	storeRedirectUrl,
 	getRedirectResult,
 	onAuthChange,
 	functSignInTwicth,

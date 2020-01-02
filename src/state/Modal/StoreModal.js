@@ -25,6 +25,8 @@ const ON_CONTINUE = 'onSuccessfulSubmission'
 const CLEAR = 'clear'
 const SIMPLE_ERROR = 'simpleError'
 const TIMEOUT_ID = 'timeOutID'
+const REDIRECT_URL = 'redirectURL'
+const GET_REDIRECT_URL = 'getRedirectUrl'
 
 const defaultValues = () => ({
 	[STORE_MODAL_STATE_BODY]: '',
@@ -40,6 +42,7 @@ class StoreModal extends Container {
 		this[STATE] = defaultValues()
 		this[SET_STATE] = this[SET_STATE].bind(this)
 		this[TIMEOUT_ID] = -1
+		this[REDIRECT_URL] = window.location.href
 	}
 
 	[TOGGLE] = () => {
@@ -76,6 +79,16 @@ class StoreModal extends Container {
 		return this
 	};
 
+	[CLEAR] = () => {
+		this[REMOVE_ITEM]()
+		this[CLOSE]()
+		return this
+	};
+
+	[GET_REDIRECT_URL] = () => {
+		return this[REDIRECT_URL]
+	};
+
 	[SET_ITEM] = (title = '', body = '', restProps = {}) => {
 		sessionStorage.setItem(
 			STORE_MODAL,
@@ -85,6 +98,19 @@ class StoreModal extends Container {
 				[STORE_MODAL_STATE_TITLE]: title,
 			})
 		)
+		return this
+	};
+
+	[INITIALIZE] = (callback = () => {}) => {
+		const item = this[GET_ITEM]()
+		if (item) {
+			callback()
+			this[SHOW](
+				<Interweave content={item[STORE_MODAL_STATE_TITLE]} />,
+				<Interweave content={item[STORE_MODAL_STATE_BODY]} />,
+				true
+			)
+		}
 		return this
 	};
 
@@ -113,22 +139,23 @@ class StoreModal extends Container {
 		return this
 	};
 
-	[INITIALIZE] = (callback = () => {}) => {
-		const item = this[GET_ITEM]()
-		if (item) {
-			callback()
-			this[SHOW](
-				<Interweave content={item[STORE_MODAL_STATE_TITLE]} />,
-				<Interweave content={item[STORE_MODAL_STATE_BODY]} />,
-				true
-			)
-		}
-		return this
-	};
-
 	[ON_AUTH_STATE_CHANGE] = () => {
 		const item = this[GET_ITEM]()
 		!item && this[SET_STATE]({ [STORE_MODAL_STATE_IS_OPEN]: false })
+		return this
+	};
+
+	[SIMPLE_ERROR] = (err = {}, defaultErrorMessage = ['']) => {
+		this[SHOW](
+			<span className='text-danger'>Error</span>,
+			<>
+				{simplerErrorMessage(err, defaultErrorMessage)}.
+				<br />
+				{`Code: ${defaultErrorMessage[0]}`}
+			</>,
+			false
+		)
+
 		return this
 	};
 
@@ -172,25 +199,6 @@ class StoreModal extends Container {
 			this[CLOSE]()
 		}
 		return this
-	};
-
-	[CLEAR] = () => {
-		this[REMOVE_ITEM]()
-		this[CLOSE]()
-		return this
-	};
-	[SIMPLE_ERROR] = (err = {}, defaultErrorMessage = ['']) => {
-		this[SHOW](
-			<span className='text-danger'>Error</span>,
-			<>
-				{simplerErrorMessage(err, defaultErrorMessage)}.
-				<br />
-				{`Code: ${defaultErrorMessage[0]}`}
-			</>,
-			false
-		)
-
-		return this
 	}
 }
 
@@ -215,4 +223,5 @@ export {
 	RESET_STATE,
 	CLEAR,
 	SIMPLE_ERROR,
+	GET_REDIRECT_URL,
 }
