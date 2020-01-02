@@ -1,5 +1,5 @@
 import { onSignInTwitch } from './onSignInTwitch'
 import { onCreateUser } from './onCreateUser'
-import { onOtherToken } from './onOtherToken'
+import { onSignInFacebook } from './onSignInFacebook'
 
-export { onSignInTwitch, onCreateUser, onOtherToken }
+export { onSignInTwitch, onCreateUser, onSignInFacebook }

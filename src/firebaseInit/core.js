@@ -3,9 +3,9 @@ import 'firebase/auth' // https://stackoverflow.com/questions/48592656/firebase-
 import 'firebase/functions'
 import 'firebase/storage'
 import 'firebase/firestore'
-import { ENV_FIREBASE_CONFIG } from 'constantValues'
+import { ENV_VALUE_FIREBASE_CONFIG } from 'constantValues'
 
-firebase.initializeApp(ENV_FIREBASE_CONFIG)
+firebase.initializeApp(ENV_VALUE_FIREBASE_CONFIG)
 
 const fireFunct = firebase.functions
 

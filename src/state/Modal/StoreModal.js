@@ -140,7 +140,7 @@ class StoreModal extends Container {
 			isLinked,
 			provider2,
 			linking,
-			//credential,
+			credential: { accessToken },
 		} = item
 		if (linking) {
 			// show modal on link redirect
@@ -160,7 +160,7 @@ class StoreModal extends Container {
 			// if (provider2 === 'password') {
 			// TODO allow user to create password account and link to existing social account
 			// } else {
-			linkingCallBack(provider2)
+			linkingCallBack(provider2, name1, accessToken)
 			//}
 		} else if (isLinked) {
 			linkedCallback()

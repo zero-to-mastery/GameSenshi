@@ -12,7 +12,7 @@ const UNEXPECTED_ERROR_CODE_11 = [11, 'Fetch Sign In Methods For Email Error']
 const UNEXPECTED_ERROR_CODE_12 = [12, 'Fetch Other Token Error']
 const UNEXPECTED_ERROR_CODE_13 = [13, 'Other Token Sign In Error']
 const UNEXPECTED_ERROR_CODE_14 = [14, 'Something is Wrong, Please Try Again!']
-
+const UNEXPECTED_ERROR_CODE_15 = [15, 'Get Id Token Error!']
 export {
 	UNEXPECTED_ERROR_CODE_1,
 	UNEXPECTED_ERROR_CODE_2,
@@ -28,4 +28,5 @@ export {
 	UNEXPECTED_ERROR_CODE_12,
 	UNEXPECTED_ERROR_CODE_13,
 	UNEXPECTED_ERROR_CODE_14,
+	UNEXPECTED_ERROR_CODE_15,
 }
