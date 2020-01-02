@@ -17,7 +17,8 @@ import {
 	FUNCTION_EMAIL,
 	FUNCTION_CUSTOM_TOKEN,
 } from 'constantValues'
-import { functSignInOther } from 'firebaseInit'
+import { functSignInOther } from 'firebaseInit/cloudFunct'
+import { auth } from 'firebaseInit/core'
 
 const linkedThen = () => {
 	storeModalClose()
@@ -43,12 +44,12 @@ const getProvider = method => {
 	}
 }
 
-const getName = string => {
+const beautifyProviderName = string => {
 	// remove .com and capitalized 1st letter
 	return (string.charAt(0).toUpperCase() + string.slice(1)).replace('.com', '')
 }
 
-const handleDifferentCredential = async (auth, email, credential) => {
+const handleDifferentCredential = async (email, credential) => {
 	let methods = []
 	try {
 		methods = await auth().fetchSignInMethodsForEmail(email)
@@ -76,9 +77,12 @@ const handleDifferentCredential = async (auth, email, credential) => {
 	} else {
 		const provider1 = getProvider(methods[0])
 		const provider2 = getProvider(credential.signInMethod)
-		const name1 = provider1 === 'password' ? email : getName(methods[0])
+		const name1 =
+			provider1 === 'password' ? email : beautifyProviderName(methods[0])
 		const name2 =
-			provider2 === 'password' ? email : getName(credential.signInMethod)
+			provider2 === 'password'
+				? email
+				: beautifyProviderName(credential.signInMethod)
 		// close modal if any
 		storeModalClose()
 		setTimeout(() => {

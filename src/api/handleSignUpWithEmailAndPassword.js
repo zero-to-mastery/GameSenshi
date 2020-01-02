@@ -1,5 +1,9 @@
 import { simplerResponseHandling } from 'utils'
-import { auth, docGeneralSettingSet } from 'firebaseInit'
+import {
+	auth,
+	docGeneralSettingSet,
+	handleDifferentCredential,
+} from 'firebaseInit'
 import {
 	FUNCTION_EMAIL,
 	FUNCTION_PASSWORD,
@@ -22,8 +26,21 @@ const handleSignUpWithEmailAndPassword = async (
 	try {
 		credential = await auth().createUserWithEmailAndPassword(email, password)
 	} catch (err) {
-		console.log(err)
-		return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err)
+		const { code } = err
+		if (code && code.includes('auth/email-already-in-use')) {
+			handleDifferentCredential(
+				email,
+				auth.EmailAuthProvider.credential(email, password)
+			)
+			return simplerResponseHandling(
+				false,
+				'link email account to existing account canceled',
+				err
+			)
+		} else {
+			console.log(err)
+			return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err)
+		}
 	}
 	const { user } = credential
 	onSuccessfulSignUp()

@@ -114,16 +114,11 @@ class StoreModal extends Container {
 		const item = this[GET_ITEM]()
 		if (item) {
 			callback()
-			this[SET_STATE]({
-				[STORE_MODAL_STATE_BODY]: (
-					<Interweave content={item[STORE_MODAL_STATE_BODY]} />
-				),
-				[STORE_MODAL_STATE_IS_OPEN]: true,
-				[STORE_MODAL_STATE_TITLE]: (
-					<Interweave content={item[STORE_MODAL_STATE_TITLE]} />
-				),
-				[STORE_MODAL_STATE_LOADER]: true,
-			})
+			this[SHOW](
+				<Interweave content={item[STORE_MODAL_STATE_TITLE]} />,
+				<Interweave content={item[STORE_MODAL_STATE_BODY]} />,
+				true
+			)
 		}
 		return this
 	};
@@ -191,6 +186,8 @@ class StoreModal extends Container {
 			</>,
 			false
 		)
+
+		return this
 	}
 }
 

@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import { stopUndefined } from 'utils'
-// react libraries components
 import {
 	Card,
 	CardHeader,
@@ -13,7 +12,6 @@ import {
 	Row,
 	Col,
 } from 'reactstrap'
-// core components
 import { Exports } from 'componentnCompounds'
 
 const {
@@ -74,9 +72,7 @@ const FormSignUp = props => {
 						</CardBody>
 						<CardFooter>
 							<Row className='d-flex text-center'>
-								<Col>
-									{submitError && !submitting && `Error: ${submitError}`}
-								</Col>
+								<Col>{submitError && !submitting && `${submitError}`}</Col>
 							</Row>
 							<Row className='d-flex'>
 								<Col xs='2' />

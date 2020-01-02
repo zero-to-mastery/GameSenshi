@@ -14,6 +14,7 @@ import {
 	docGeneralSettingSetAvatar,
 } from './fireStored'
 import { functSignInTwicth, functSignInOther } from './cloudFunct'
+import { handleDifferentCredential } from './handleDifferentCredential'
 
 export {
 	auth,
@@ -30,4 +31,5 @@ export {
 	onAuthChange,
 	functSignInTwicth,
 	functSignInOther,
+	handleDifferentCredential,
 }
