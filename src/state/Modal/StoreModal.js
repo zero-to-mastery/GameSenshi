@@ -172,9 +172,8 @@ class StoreModal extends Container {
 			isLinked,
 			provider2,
 			linking,
-			credential: { accessToken },
+			//credential: { accessToken },
 		} = item
-		console.log('789')
 		if (linking) {
 			// show modal on link redirect
 			const JSXString = reactElementToJSXString(
@@ -193,7 +192,7 @@ class StoreModal extends Container {
 			// if (provider2 === 'password') {
 			// TODO allow user to create password account and link to existing social account
 			// } else {
-			linkingCallBack(provider2, name1, accessToken)
+			linkingCallBack(provider2)
 			//}
 		} else if (isLinked) {
 			linkedCallback()

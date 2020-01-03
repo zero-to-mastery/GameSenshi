@@ -15,11 +15,8 @@ import express from 'express'
 
 import { typeDefs, resolvers } from 'resolvers'
 
-import {
-	FUNCTION_SIGN_IN_TWITCH,
-	FUNCTION_SIGN_IN_FACEBOOK,
-} from 'constantValues'
-import { onSignInTwitch, onCreateUser, onSignInFacebook } from 'functions'
+import { FUNCTION_SIGN_IN_TWITCH } from 'constantValues'
+import { onSignInTwitch, onCreateUser } from 'functions'
 
 const app = express()
 
@@ -64,5 +61,4 @@ module.exports = {
 	api: functions.https.onRequest(app),
 	onCreateUser,
 	[FUNCTION_SIGN_IN_TWITCH]: functions.https.onCall(onSignInTwitch),
-	[FUNCTION_SIGN_IN_FACEBOOK]: functions.https.onCall(onSignInFacebook),
 }

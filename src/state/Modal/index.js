@@ -35,7 +35,7 @@ const storeModalProcessLinking = storeModal[PROCESS_REDIRECT_RESULT]
 const storeModalOnContinue = storeModal[ON_CONTINUE]
 const storeModalSetState = storeModal[SET_STATE]
 const storeModalResetState = storeModal[RESET_STATE]
-const storeMNodalClear = storeModal[CLEAR]
+const storeModalClear = storeModal[CLEAR]
 const storeModalSimpleError = storeModal[SIMPLE_ERROR]
 const storeModalGetRedirectUrl = storeModal[GET_REDIRECT_URL]
 
@@ -53,7 +53,7 @@ export {
 	storeModalOnContinue,
 	storeModalSetState,
 	storeModalResetState,
-	storeMNodalClear,
+	storeModalClear,
 	storeModalSimpleError,
 	storeModalGetRedirectUrl,
 	STORE_MODAL_STATE_BODY,

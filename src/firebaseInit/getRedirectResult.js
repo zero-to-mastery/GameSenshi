@@ -1,6 +1,6 @@
 import {
 	storeModalProcessLinking,
-	storeMNodalClear,
+	storeModalClear,
 	storeModalSimpleError,
 	storeModalRemoveItem,
 	storeModalGetRedirectUrl,
@@ -15,18 +15,21 @@ import {
 	UNEXPECTED_ERROR_CODE_8,
 	UNEXPECTED_ERROR_CODE_9,
 	UNEXPECTED_ERROR_CODE_10,
-	UNEXPECTED_ERROR_CODE_12,
-	UNEXPECTED_ERROR_CODE_13,
-	UNEXPECTED_ERROR_CODE_15,
 	FUNCTION_OAUTH_CODE,
 	FUNCTION_REDIRECT_URI,
 	ENV_VALUE_TWITCH_REDIRECT,
 	FUNCTION_CUSTOM_TOKEN,
-	AUTH_TWITCH,
-	FUNCTION_ID_TOKEN,
-	FUNCTION_ACCESS_TOKEN,
 } from 'constantValues'
-import { functSignInTwicth, functSignInFacebook } from 'firebaseInit/cloudFunct'
+import { functSignInTwicth } from 'firebaseInit/cloudFunct'
+
+// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
+const linkWithRedirect = async provider2 => {
+	auth()
+		.currentUser.linkWithRedirect(new auth[provider2]())
+		.catch(err => {
+			storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_8)
+		})
+}
 
 const getRedirectResult = async () => {
 	let result = null
@@ -48,43 +51,8 @@ const getRedirectResult = async () => {
 	}
 
 	const { user } = result
-	// need this condition because this part run when webpage start
+
 	if (user) {
-		// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
-		const linkWithRedirect = async (provider2, name1, accessToken) => {
-			if (name1 === AUTH_TWITCH) {
-				let idToken = null
-				try {
-					idToken = await auth().currentUser.getIdToken(true)
-				} catch (err) {
-					return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_15)
-				}
-				let otherTokenData = null
-				try {
-					otherTokenData = await functSignInFacebook({
-						[FUNCTION_ID_TOKEN]: idToken,
-						[FUNCTION_ACCESS_TOKEN]: accessToken,
-					})
-				} catch (err) {
-					return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_12)
-				}
-				if (otherTokenData) {
-					return auth()
-						.signInWithCustomToken(otherTokenData.data[FUNCTION_CUSTOM_TOKEN])
-						.then(() => {
-							storeMNodalClear()
-						})
-						.catch(err => {
-							console.log(err)
-							storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_13)
-						})
-				}
-			} else {
-				user.linkWithRedirect(new auth[provider2]()).catch(err => {
-					storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_8)
-				})
-			}
-		}
 		storeModalProcessLinking(linkWithRedirect, linkedThen)
 	} else {
 		const redirectUrl = storeModalGetRedirectUrl()
@@ -109,21 +77,21 @@ const getRedirectResult = async () => {
 				}
 
 				if (customTokenData) {
-					auth()
-						.signInWithCustomToken(customTokenData.data[FUNCTION_CUSTOM_TOKEN])
-						.then(() => {
-							storeMNodalClear()
-						})
-						.catch(err => {
-							console.log(err)
-							storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_10)
-						})
+					try {
+						await auth().signInWithCustomToken(
+							customTokenData.data[FUNCTION_CUSTOM_TOKEN]
+						)
+					} catch (err) {
+						console.log(err)
+						return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_10)
+					}
+					storeModalProcessLinking(linkWithRedirect, linkedThen)
 				}
 			} else {
-				storeMNodalClear()
+				storeModalClear()
 			}
 		} else {
-			storeMNodalClear()
+			storeModalClear()
 		}
 	}
 }

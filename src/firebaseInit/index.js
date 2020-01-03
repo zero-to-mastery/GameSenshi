@@ -13,7 +13,7 @@ import {
 	docNotificationSettingSet,
 	docGeneralSettingSetAvatar,
 } from './fireStored'
-import { functSignInTwicth, functSignInFacebook } from './cloudFunct'
+import { functSignInTwicth } from './cloudFunct'
 import { handleDifferentCredential } from './handleDifferentCredential'
 
 export {
@@ -29,6 +29,5 @@ export {
 	getRedirectResult,
 	onAuthChange,
 	functSignInTwicth,
-	functSignInFacebook,
 	handleDifferentCredential,
 }
