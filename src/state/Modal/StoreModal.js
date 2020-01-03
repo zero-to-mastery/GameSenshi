@@ -156,6 +156,8 @@ class StoreModal extends Container {
 			false
 		)
 
+		this[REMOVE_ITEM]()
+
 		return this
 	};
 
@@ -172,6 +174,7 @@ class StoreModal extends Container {
 			linking,
 			credential: { accessToken },
 		} = item
+		console.log('789')
 		if (linking) {
 			// show modal on link redirect
 			const JSXString = reactElementToJSXString(
