@@ -29,8 +29,8 @@ const handleSignInWithSocials = providers.reduce((acc, provider) => {
 	return acc
 }, {})
 
-handleSignInWithSocials[AUTH_TWITCH] = () => {
-	window.location = ENV_VALUE_TWITCH_OAUTH_LINK
+handleSignInWithSocials[AUTH_TWITCH] = async () => {
+	return (window.location = ENV_VALUE_TWITCH_OAUTH_LINK)
 }
 
 export { handleSignInWithSocials }

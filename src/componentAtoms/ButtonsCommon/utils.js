@@ -1,4 +1,3 @@
-import React from 'react'
 import {
 	BUTTONS_COMMON_ID,
 	BUTTONS_COMMON_ICON,
@@ -10,13 +9,17 @@ import {
 	BUTTONS_COMMON_TO,
 	BUTTONS_COMMON_BASE_CLASS,
 } from './ButtonsCommon'
-import reactElementToJSXString from 'react-element-to-jsx-string'
-import { setLastRoute, toIndexIfPublic } from 'routes'
+import {
+	setLastRoute,
+	toIndexIfPublic,
+	ROUTE_PAGE_CHECKOUT,
+	ROUTE_PAGE_CHAT,
+} from 'routes'
 import { handleSignInWithSocials } from 'api'
 import {
-	storeModalShow,
-	storeModalSetItem,
 	STORE_USER_STATE_SIGNING_IN,
+	storeModalSetItem,
+	storeModalSimpleError,
 } from 'state'
 import {
 	FIRESTORE_CHANNELS_FACEBOOK,
@@ -25,11 +28,10 @@ import {
 	AUTH_GOOGLE,
 	AUTH_FACEBOOK,
 	AUTH_TWITCH,
+	UNEXPECTED_ERROR_CODE_13,
 } from 'constantValues'
-import { ROUTE_PAGE_CHECKOUT, ROUTE_PAGE_CHAT } from 'routes'
-import { checkDuplicatedObject } from 'utils'
 import { Exports } from 'componentaProton'
-import { stopUndefined } from 'utils'
+import { stopUndefined, checkDuplicatedObject } from 'utils'
 const { ICON_ICON } = stopUndefined(Exports)
 
 const CHECKOUT = 'checkout'
@@ -121,7 +123,9 @@ const buttonCommonAuthOnClick = lastLocation => {
 		// const title2 = 'Signing You In...'
 		// storeModalSetItem(title2, body2)
 		setLastRoute(toIndexIfPublic(lastLocation))
-		handleSignInWithSocials[id]()
+		handleSignInWithSocials[id]().catch(err => {
+			storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_13)
+		})
 	}
 }
 

@@ -10,7 +10,7 @@ const UNEXPECTED_ERROR_CODE_9 = [9, 'Fetch Custom Token Error']
 const UNEXPECTED_ERROR_CODE_10 = [10, 'Custom Token Sign In Error']
 const UNEXPECTED_ERROR_CODE_11 = [11, 'Fetch Sign In Methods For Email Error']
 const UNEXPECTED_ERROR_CODE_12 = [12, 'Link With Credential Error']
-const UNEXPECTED_ERROR_CODE_13 = [13, '']
+const UNEXPECTED_ERROR_CODE_13 = [13, 'Sign In With Redirect Error']
 const UNEXPECTED_ERROR_CODE_14 = [14, 'Something is Wrong, Please Try Again!']
 const UNEXPECTED_ERROR_CODE_15 = [15, '']
 export {
