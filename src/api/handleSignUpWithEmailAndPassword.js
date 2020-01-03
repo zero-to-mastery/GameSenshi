@@ -32,11 +32,7 @@ const handleSignUpWithEmailAndPassword = async (
 				email,
 				auth.EmailAuthProvider.credential(email, password)
 			)
-			return simplerResponseHandling(
-				false,
-				'link email account to existing account canceled',
-				err
-			)
+			return simplerResponseHandling(false, '', err)
 		} else {
 			console.log(err)
 			return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err)

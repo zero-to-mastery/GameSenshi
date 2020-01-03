@@ -4,9 +4,9 @@ import {
 	storeAlertShow,
 	storeSignInShow,
 	storeModalShow,
-	storeModalClose,
 	storeModalSetItem,
 	storeModalSimpleError,
+	storeModalClear,
 } from 'state'
 import {
 	UNEXPECTED_ERROR_CODE_8,
@@ -17,7 +17,7 @@ import {
 import { auth } from 'firebaseInit/core'
 
 const linkedThen = () => {
-	storeModalClose()
+	storeModalClear()
 	storeAlertShow(
 		'Social login linked successfully!',
 		'success',
@@ -125,14 +125,12 @@ const handleDifferentCredential = async (email, credential) => {
 				isLinked: false,
 				linking: true,
 			}
-
 			storeModalSetItem(title, body, credentialInfo)
 			if (name1 === AUTH_TWITCH) {
 				window.location = ENV_VALUE_TWITCH_OAUTH_LINK
 			} else {
 				auth().signInWithRedirect(new auth[provider1]())
 			}
-			//}
 		}
 	})
 

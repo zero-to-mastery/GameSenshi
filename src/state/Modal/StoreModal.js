@@ -89,11 +89,11 @@ class StoreModal extends Container {
 		return this[REDIRECT_URL]
 	};
 
-	[SET_ITEM] = (title = '', body = '', restProps = {}) => {
+	[SET_ITEM] = (title = '', body = '', items = {}) => {
 		sessionStorage.setItem(
 			STORE_MODAL,
 			JSON.stringify({
-				...restProps,
+				...items,
 				[STORE_MODAL_STATE_BODY]: body,
 				[STORE_MODAL_STATE_TITLE]: title,
 			})
@@ -161,19 +161,12 @@ class StoreModal extends Container {
 		return this
 	};
 
-	[PROCESS_REDIRECT_RESULT] = (
+	[PROCESS_REDIRECT_RESULT] = async (
 		linkingCallBack = () => {},
 		linkedCallback = () => {}
 	) => {
 		const item = this[GET_ITEM]()
-		const {
-			name1,
-			name2,
-			isLinked,
-			provider2,
-			linking,
-			//credential: { accessToken },
-		} = item
+		const { name1, name2, isLinked, provider2, linking, credential } = item
 		if (linking) {
 			// show modal on link redirect
 			const JSXString = reactElementToJSXString(
@@ -189,11 +182,7 @@ class StoreModal extends Container {
 				linking: false,
 			}
 			this[SET_ITEM]('Linking...', JSXString, restProps)
-			// if (provider2 === 'password') {
-			// TODO allow user to create password account and link to existing social account
-			// } else {
-			linkingCallBack(provider2)
-			//}
+			linkingCallBack(provider2, credential)
 		} else if (isLinked) {
 			linkedCallback()
 			this[REMOVE_ITEM]()

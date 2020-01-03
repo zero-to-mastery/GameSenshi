@@ -15,6 +15,7 @@ import {
 	UNEXPECTED_ERROR_CODE_8,
 	UNEXPECTED_ERROR_CODE_9,
 	UNEXPECTED_ERROR_CODE_10,
+	UNEXPECTED_ERROR_CODE_12,
 	FUNCTION_OAUTH_CODE,
 	FUNCTION_REDIRECT_URI,
 	ENV_VALUE_TWITCH_REDIRECT,
@@ -23,12 +24,23 @@ import {
 import { functSignInTwicth } from 'firebaseInit/cloudFunct'
 
 // ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
-const linkWithRedirect = async provider2 => {
-	auth()
-		.currentUser.linkWithRedirect(new auth[provider2]())
-		.catch(err => {
-			storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_8)
-		})
+const linkWithRedirect = (provider2, credential) => {
+	if (provider2 === 'password') {
+		return auth()
+			.currentUser.linkWithCredential(auth.AuthCredential.fromJSON(credential))
+			.then(() => {
+				linkedThen()
+			})
+			.catch(err => {
+				storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_12)
+			})
+	} else {
+		return auth()
+			.currentUser.linkWithRedirect(new auth[provider2]())
+			.catch(err => {
+				storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_8)
+			})
+	}
 }
 
 const getRedirectResult = async () => {
