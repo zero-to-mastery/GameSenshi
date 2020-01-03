@@ -63,7 +63,6 @@ const getRedirectResult = async () => {
 	}
 
 	const { user } = result
-
 	if (user) {
 		storeModalProcessLinking(linkWithRedirect, linkedThen)
 	} else {

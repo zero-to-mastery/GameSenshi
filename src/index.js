@@ -6,6 +6,7 @@ import {
 	storeModalInitialize,
 	storeUserInitialize,
 	storeUserSetSigningIn,
+	STORE_USER_STATE_SIGNING_IN,
 } from 'state'
 import { goLastRoute } from 'routes'
 import { getRedirectResult, onAuthChange } from 'firebaseInit'
@@ -28,8 +29,11 @@ storeUserInitialize()
 goLastRoute()
 
 // modal for auth
-storeModalInitialize(() => {
-	storeUserSetSigningIn(true)
+storeModalInitialize(items => {
+	const { [STORE_USER_STATE_SIGNING_IN]: signingIn } = items
+	if (signingIn) {
+		storeUserSetSigningIn(true)
+	}
 })
 
 ReactDOM.render(<App />, document.getElementById('root'))

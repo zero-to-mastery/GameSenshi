@@ -104,12 +104,18 @@ class StoreModal extends Container {
 	[INITIALIZE] = (callback = () => {}) => {
 		const item = this[GET_ITEM]()
 		if (item) {
-			callback()
-			this[SHOW](
-				<Interweave content={item[STORE_MODAL_STATE_TITLE]} />,
-				<Interweave content={item[STORE_MODAL_STATE_BODY]} />,
-				true
-			)
+			callback(item)
+			const {
+				[STORE_MODAL_STATE_TITLE]: title,
+				[STORE_MODAL_STATE_BODY]: body,
+			} = item
+			if (body && title) {
+				this[SHOW](
+					<Interweave content={item[STORE_MODAL_STATE_TITLE]} />,
+					<Interweave content={item[STORE_MODAL_STATE_BODY]} />,
+					true
+				)
+			}
 		}
 		return this
 	};
@@ -133,7 +139,7 @@ class StoreModal extends Container {
 			if (loader) {
 				this[TIMEOUT_ID] = setTimeout(() => {
 					this[SIMPLE_ERROR]({}, UNEXPECTED_ERROR_CODE_14)
-				}, 10000)
+				}, 15000)
 			}
 		}, 150)
 		return this
@@ -166,30 +172,32 @@ class StoreModal extends Container {
 		linkedCallback = () => {}
 	) => {
 		const item = this[GET_ITEM]()
-		const { name1, name2, isLinked, provider2, linking, credential } = item
-		if (linking) {
-			// show modal on link redirect
-			const JSXString = reactElementToJSXString(
-				<span>
-					Please wait while we linking your
-					<b> {name2} </b>
-					account to your<b> {name1} </b>account.
-				</span>
-			)
-			const restProps = {
-				...item,
-				isLinked: true,
-				linking: false,
+		if (item) {
+			const { name1, name2, isLinked, provider2, linking, credential } = item
+			if (linking) {
+				// show modal on link redirect
+				const JSXString = reactElementToJSXString(
+					<span>
+						Please wait while we linking your
+						<b> {name2} </b>
+						account to your<b> {name1} </b>account.
+					</span>
+				)
+				const restProps = {
+					...item,
+					isLinked: true,
+					linking: false,
+				}
+				this[SET_ITEM]('Linking...', JSXString, restProps)
+				linkingCallBack(provider2, credential)
+			} else if (isLinked) {
+				linkedCallback()
+				this[REMOVE_ITEM]()
+			} else {
+				this[CLEAR]()
 			}
-			this[SET_ITEM]('Linking...', JSXString, restProps)
-			linkingCallBack(provider2, credential)
-		} else if (isLinked) {
-			linkedCallback()
-			this[REMOVE_ITEM]()
-		} else {
-			this[CLOSE]()
+			return this
 		}
-		return this
 	}
 }
 

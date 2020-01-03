@@ -75,7 +75,7 @@ const handleDifferentCredential = async (email, credential) => {
 			<br />
 			<br />
 			Please click
-			<b className='text-primary'> Continue</b> to link your account.
+			<b className='text-primary'> Continue</b> to link your accounts.
 		</>
 	)
 

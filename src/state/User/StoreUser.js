@@ -24,7 +24,7 @@ const STORE_USER_STATE_COUNTRY = 'country'
 const STORE_USER_STATE_PHONE_NUMBER = 'phoneNumber'
 const STORE_USER_STATE_PROVIDER_DATA = 'providerData'
 const STORE_USER_STATE_EMAIL_VERIFIED = 'emailVerified'
-const STORE_USER_STATE_SIGNING_IN = 'isSigningIn'
+const STORE_USER_STATE_SIGNING_IN = 'signingIn'
 const SET_SIGNING_IN = 'setIsSigningIn'
 const INITIALIZE = 'initialize'
 const RESET_AVATAR = 'resetAvatar'
@@ -93,7 +93,7 @@ class StoreUser extends Container {
 					onAutoSignedInFailed()
 					this[SET_STATE]({ [STORE_USER_STATE_SIGNING_IN]: false })
 				}
-			}, 10000)
+			}, 15000)
 		}
 		return this
 	};

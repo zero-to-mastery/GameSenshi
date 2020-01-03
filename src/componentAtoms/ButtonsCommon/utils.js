@@ -13,7 +13,11 @@ import {
 import reactElementToJSXString from 'react-element-to-jsx-string'
 import { setLastRoute, toIndexIfPublic } from 'routes'
 import { handleSignInWithSocials } from 'api'
-import { storeModalShow, storeModalSetItem } from 'state'
+import {
+	storeModalShow,
+	storeModalSetItem,
+	STORE_USER_STATE_SIGNING_IN,
+} from 'state'
 import {
 	FIRESTORE_CHANNELS_FACEBOOK,
 	FIRESTORE_CHANNELS_TWITCH,
@@ -97,24 +101,25 @@ const options = [
 const buttonCommonAuthOnClick = lastLocation => {
 	return (e, button) => {
 		const { [BUTTONS_COMMON_ID]: id } = button
-		const body = (
-			<>
-				Please wait while we signing you in with{' '}
-				<b className='text-success'>{id}</b>.
-			</>
-		)
-		const title = 'Signing You In...'
-		storeModalShow(title, body, true)
-		const body2 = reactElementToJSXString(
-			<span>
-				Signing in with <b className='text-success'>{id}</b>...
-				<br />
-				<br />
-				Almost there!
-			</span>
-		)
-		const title2 = 'Signing You In...'
-		storeModalSetItem(title2, body2)
+		storeModalSetItem(null, null, { [STORE_USER_STATE_SIGNING_IN]: true })
+		// const body = (
+		// 	<>
+		// 		Please wait while we signing you in with{' '}
+		// 		<b className='text-success'>{id}</b>.
+		// 	</>
+		// )
+		// const title = 'Signing You In...'
+		// storeModalShow(title, body, true)
+		// const body2 = reactElementToJSXString(
+		// 	<span>
+		// 		Signing in with <b className='text-success'>{id}</b>...
+		// 		<br />
+		// 		<br />
+		// 		Almost there!
+		// 	</span>
+		// )
+		// const title2 = 'Signing You In...'
+		// storeModalSetItem(title2, body2)
 		setLastRoute(toIndexIfPublic(lastLocation))
 		handleSignInWithSocials[id]()
 	}
