@@ -52,7 +52,7 @@ const CardGift = props => {
 										delay={0}
 										target={id_}
 									>
-										{tooltip}
+										Gift number {(index + 1)}
 									</UncontrolledTooltip>
 								</div>
 							</Fragment>
