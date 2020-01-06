@@ -104,11 +104,11 @@ const CarouselCommon = props => {
 
 	return (
 		<ImageGallery
+			showFullscreenButton={false}
 			items={items_()}
 			showIndex={showUI}
 			showBullets={showUI}
 			showPlayButton={showUI}
-			showFullscreenButton={showUI}
 			onSlide={onSlide}
 			{...otherProps}
 		/>

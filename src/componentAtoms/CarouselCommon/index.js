@@ -10,7 +10,6 @@ const CarouselCommonPropedIndex = props => {
 	return (
 		<CarouselCommon
 			showThumbnails={false}
-			showFullscreenButton={false}
 			showPlayButton={false}
 			showIndex={false}
 			autoPlay
