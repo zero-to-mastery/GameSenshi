@@ -11,11 +11,11 @@ const LightBox = props => {
 	const sources_ = useMemo(() => {
 		return sources.map(source => {
 			const {
-				[FIRESTORE_SENSHI_MEDIA_YOUTUBE]: youtube,
+				[FIRESTORE_SENSHI_MEDIA_YOUTUBE]: youTube,
 				[FIRESTORE_SENSHI_MEDIA_IMAGE]: image,
 			} = source
-			if (youtube) {
-				return `https://www.youtube.com/watch?v=${youtube}`
+			if (youTube) {
+				return `https://www.youtube.com/watch?v=${youTube}`
 			} else if (image) {
 				return image
 			}

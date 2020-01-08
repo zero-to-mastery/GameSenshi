@@ -15,7 +15,6 @@ const CarouselLightBox = props => {
 	const onImageClick = useCallback(() => {
 		setToggle(state => !state)
 	}, [])
-
 	return (
 		<>
 			<LightBox sources={items} slide={slide + 1} toggle={toggle} />

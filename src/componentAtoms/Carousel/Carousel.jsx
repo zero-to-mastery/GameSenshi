@@ -10,8 +10,6 @@ import {
 	FIRESTORE_SENSHI_MEDIA_IMAGE,
 } from 'constantValues'
 
-const ORIGINAL = 'original'
-const THUMBNAIL = 'thumbnail'
 const RENDER_ITEM = 'renderItem'
 const RENDER_THUMB_INNER = 'renderThumbInner'
 
@@ -29,13 +27,16 @@ const Carousel = props => {
 	}, [])
 	const aspectRatio_ = (aspectRatio / 2 || 1 / 3) * 100
 
-	const onSlide_ = useCallback(() => {
-		setVideoPlaying(false)
-		onSlide && onSlide()
-		if (!showUI) {
-			setShowUI(true)
-		}
-	}, [showUI])
+	const onSlide_ = useCallback(
+		currentIndex => {
+			setVideoPlaying(false)
+			onSlide && onSlide(currentIndex)
+			if (!showUI) {
+				setShowUI(true)
+			}
+		},
+		[showUI]
+	)
 
 	const videoOnClick = useCallback(() => {
 		setVideoPlaying(state => !state)
@@ -48,22 +49,24 @@ const Carousel = props => {
 				[FIRESTORE_SENSHI_MEDIA_YOUTUBE]: youTube,
 			} = item
 			if (image) {
-				const img = () => {
+				const ImgThumb = props => {
+					const { onClick } = props
 					return (
 						<ImageStyled
 							className='img img-raised rounded-lg'
 							color='transparent'
 							src={image}
-							onClick={onImageClick}
 							style={{ padding: `${aspectRatio_}% 0` }}
+							onClick={onClick}
 						/>
 					)
 				}
+				const Img = () => {
+					return <ImgThumb onClick={onImageClick} />
+				}
 				return {
-					[ORIGINAL]: image,
-					[THUMBNAIL]: image,
-					[RENDER_ITEM]: img,
-					[RENDER_THUMB_INNER]: img,
+					[RENDER_ITEM]: Img,
+					[RENDER_THUMB_INNER]: ImgThumb,
 				}
 			} else if (youTube) {
 				const player = () => {
@@ -96,8 +99,6 @@ const Carousel = props => {
 				}
 				const image = getYoutubeThumnailUrl(youTube)
 				return {
-					[ORIGINAL]: image,
-					[THUMBNAIL]: image,
 					[RENDER_ITEM]: player,
 					[RENDER_THUMB_INNER]: () => (
 						<Image src={image} style={{ padding: `${aspectRatio_}% 0` }} />
