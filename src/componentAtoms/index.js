@@ -94,6 +94,7 @@ import {
 	TAB_COMMON_TAB_NAME,
 	TAB_COMMON_TAB_CONTENT,
 } from './TabCommon'
+import { LightBox } from './LightBox'
 
 export const Exports = {
 	...ExportProtons,
@@ -174,4 +175,5 @@ export const Exports = {
 	TabCommon,
 	TAB_COMMON_TAB_NAME,
 	TAB_COMMON_TAB_CONTENT,
+	LightBox,
 }

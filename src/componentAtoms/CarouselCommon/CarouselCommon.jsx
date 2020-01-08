@@ -1,16 +1,17 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState, useMemo } from 'react'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 import ReactPlayer from 'react-player'
 import Image from 'material-ui-image'
+import {
+	FIRESTORE_SENSHI_MEDIA_YOUTUBE,
+	FIRESTORE_SENSHI_MEDIA_IMAGE,
+} from 'constantValues'
 
 const ORIGINAL = 'original'
 const THUMBNAIL = 'thumbnail'
 const RENDER_ITEM = 'renderItem'
 const RENDER_THUMB_INNER = 'renderThumbInner'
-
-const CAROUSEL_COMMON_IMAGE = 'image'
-const CAROUSEL_COMMON_YOUTUBE = 'youtube'
 
 const getYoutubeEmbededUrl = id =>
 	`https://www.youtube.com/embed/${id}?autoplay=1&showinfo=0`
@@ -32,11 +33,11 @@ const CarouselCommon = props => {
 		}
 	}, [showUI])
 
-	const items_ = () => {
+	const items_ = useMemo(() => {
 		return items.map(item => {
 			const {
-				[CAROUSEL_COMMON_IMAGE]: image,
-				[CAROUSEL_COMMON_YOUTUBE]: youtube,
+				[FIRESTORE_SENSHI_MEDIA_IMAGE]: image,
+				[FIRESTORE_SENSHI_MEDIA_YOUTUBE]: youtube,
 			} = item
 			if (image) {
 				const img = () => {
@@ -100,7 +101,7 @@ const CarouselCommon = props => {
 				return {}
 			}
 		})
-	}
+	}, [items])
 
 	return (
 		<ImageGallery
@@ -115,4 +116,4 @@ const CarouselCommon = props => {
 	)
 }
 
-export { CarouselCommon, CAROUSEL_COMMON_IMAGE, CAROUSEL_COMMON_YOUTUBE }
+export { CarouselCommon }
