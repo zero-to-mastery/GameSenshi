@@ -22,7 +22,13 @@ const LightBox = props => {
 		})
 	}, [sources])
 
-	return <FsLightbox toggler={toggle} sources={sources_} slide={slide} />
+	const key = useMemo(() => {
+		return Math.floor(Math.random() * Math.floor(1000))
+	}, [sources])
+
+	return (
+		<FsLightbox toggler={toggle} sources={sources_} slide={slide} key={key} />
+	)
 }
 
 export { LightBox }
