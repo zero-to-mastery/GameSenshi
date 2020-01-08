@@ -1,10 +1,6 @@
 import React from 'react'
 import { Carousel } from './Carousel'
-import { itemsProfile, itemsIndex } from './utils'
-
-const CarouselPropedProfile = props => {
-	return <Carousel items={itemsProfile} {...props} />
-}
+import { itemsIndex } from './utils'
 
 const CarouselPropedIndex = props => {
 	return (
@@ -20,4 +16,4 @@ const CarouselPropedIndex = props => {
 	)
 }
 
-export { CarouselPropedProfile, CarouselPropedIndex }
+export { Carousel, CarouselPropedIndex }

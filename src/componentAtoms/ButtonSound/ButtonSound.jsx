@@ -144,7 +144,7 @@ const ButtonSound = props => {
 				</Row>
 			</Container>
 			<Sound
-				url={url}
+				url={url || ''}
 				ignoreMobileRestrictions
 				playStatus={playStatus}
 				onLoading={onLoading}

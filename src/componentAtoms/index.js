@@ -49,7 +49,7 @@ import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
 import { ButtonsCommonChatAndCheckout } from './ButtonsCommon'
 import { QuantityProfile } from './Quantity'
-import { CarouselPropedProfile, CarouselPropedIndex } from './Carousel'
+import { Carousel, CarouselPropedIndex } from './Carousel'
 import {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
@@ -146,7 +146,7 @@ export const Exports = {
 	ButtonSoundStoreSoundPropedCardUser,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
-	CarouselPropedProfile,
+	Carousel,
 	CarouselPropedIndex,
 	Section,
 	WrapperStoreWrapperPropedIndex,

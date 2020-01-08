@@ -21,8 +21,10 @@ const getYoutubeThumnailUrl = id => `https://img.youtube.com/vi/${id}/0.jpg`
 const Carousel = props => {
 	const [showUI, setShowUI] = useState(true)
 	const [videoPlaying, setVideoPlaying] = useState(true)
-	const { items, aspectRatio, ...otherProps } = props
-
+	const { items, aspectRatio, onImageClick, ...otherProps } = props
+	const setShowUIFalse = useCallback(() => {
+		setShowUI(false)
+	}, [])
 	const aspectRatio_ = (aspectRatio / 2 || 1 / 3) * 100
 
 	const onSlide = useCallback(() => {
@@ -46,6 +48,7 @@ const Carousel = props => {
 							className='img img-raised rounded-lg'
 							color='transparent'
 							src={image}
+							onClick={onImageClick}
 							style={{ padding: `${aspectRatio_}% 0` }}
 						/>
 					)
@@ -57,10 +60,6 @@ const Carousel = props => {
 					[RENDER_THUMB_INNER]: img,
 				}
 			} else if (youtube) {
-				const setShowUIFalse = useCallback(() => {
-					setShowUI(false)
-				}, [])
-
 				const player = () => {
 					return videoPlaying ? (
 						<div
@@ -106,7 +105,7 @@ const Carousel = props => {
 	return (
 		<ImageGallery
 			showFullscreenButton={false}
-			items={items_()}
+			items={items_}
 			showIndex={showUI}
 			showBullets={showUI}
 			showPlayButton={showUI}

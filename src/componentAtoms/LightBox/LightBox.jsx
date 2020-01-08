@@ -6,8 +6,8 @@ import {
 } from 'constantValues'
 
 const LightBox = props => {
-	const { toggle, sources, slide } = props
-
+	const { toggle, sources, ...otherProps } = props
+	// whether the toggle is true or false really matter, as long as it change, it will toggle the lightbox
 	const sources_ = useMemo(() => {
 		return sources.map(source => {
 			const {
@@ -24,11 +24,13 @@ const LightBox = props => {
 	}, [sources])
 
 	const key = useMemo(() => {
+		// rerender wont rerender the new source
+		// need key to unmount and mount it
 		return Math.floor(Math.random() * Math.floor(1000))
 	}, [sources])
 
 	return (
-		<FsLightBox toggler={toggle} sources={sources_} slide={slide} key={key} />
+		<FsLightBox toggler={toggle} sources={sources_} key={key} {...otherProps} />
 	)
 }
 
