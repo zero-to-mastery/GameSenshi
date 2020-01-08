@@ -91,7 +91,7 @@ const TabPaneGeneralSettings = props => {
 									{submitError && !submitting && `Error: ${submitError}`}
 									<ButtonSubmit
 										color='info'
-										submitRef={submitButton}
+										ref={submitButton}
 										submitting={submitting}
 										onClick={handleSubmit}
 									>

@@ -52,7 +52,7 @@ const TabPaneAccountSettings = props => {
 										{submitError && !submitting && `Error: ${submitError}`}
 										<ButtonSubmit
 											color='info'
-											submitRef={submitButtonEmail}
+											ref={submitButtonEmail}
 											disabled={submitting}
 											onClick={handleSubmit}
 										>

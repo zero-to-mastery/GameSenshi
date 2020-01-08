@@ -78,7 +78,7 @@ const FormSignUp = props => {
 								<Col xs='2' />
 								<Col className='px-0 d-flex justify-content-center'>
 									<ButtonSubmit
-										submitRef={submitButton}
+										ref={submitButton}
 										submitting={submitting}
 										onClick={handleSubmit}
 										size='lg'

@@ -127,7 +127,7 @@ const FormSignIn = props => {
 							<CardFooter className='text-center'>
 								{submitError && !submitting && `Error: ${submitError}`}
 								<ButtonSubmit
-									submitRef={submitButton}
+									ref={submitButton}
 									block
 									submitting={submitting}
 									onClick={handleSubmit}

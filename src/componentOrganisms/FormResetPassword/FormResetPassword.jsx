@@ -83,7 +83,7 @@ const FormResetPassword = props => {
 									<CardFooter className='text-center'>
 										{submitError && !submitting && `Error: ${submitError}`}
 										<ButtonSubmit
-											submitRef={submitButton}
+											ref={submitButton}
 											block
 											color='warning'
 											submitting={submitting}
