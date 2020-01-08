@@ -8,7 +8,7 @@ const bgColor = 'bg-indigo'
 
 const {
 	BrandNavbarStoreUserPropedNavbar,
-	ProgressCommonStoreProgress,
+	ProgressStoreProgress,
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
 	LoaderNavLinkStoreUserPropedNavbar,
@@ -84,7 +84,7 @@ const NavbarIndex = props => {
 
 	return (
 		<div className='fixed-top'>
-			<ProgressCommonStoreProgress />
+			<ProgressStoreProgress />
 			<Navbar
 				className={(colored && bgColor) || color}
 				color-on-scroll='100'

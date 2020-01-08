@@ -1,11 +1,10 @@
-import React, { memo, useState } from 'react'
-import { Input, InputGroup, Col, Button } from 'reactstrap'
+import React, { useState } from 'react'
+import { Input, InputGroup, Button } from 'reactstrap'
 import styles from './styles.module.css'
 
-const SET_QUANTITY = 'setQuantity'
 const INPUT_QUANTITY_NAME = 'name'
 
-const Quantity = props => {
+const Quantity = () => {
 	const [quantity, setQuantity] = useState(1)
 	return (
 		<InputGroup>

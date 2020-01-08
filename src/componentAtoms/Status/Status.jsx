@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import styles from './styles.module.css'
 import animate from 'assets/css/animate.module.css'
 
-const StatusCommon = props => {
+const Status = props => {
 	const { on, bodyOn, bodyOff, className } = props
 	return (
 		<div className={classnames(className, 'd-flex align-items-center')}>
@@ -32,4 +32,4 @@ const StatusCommon = props => {
 	)
 }
 
-export { StatusCommon }
+export { Status }

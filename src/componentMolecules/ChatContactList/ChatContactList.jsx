@@ -83,7 +83,7 @@ const ListItem = props => {
 const ChatContactList = props => {
 	const { contactList } = props
 	const [searchContact, setSearchContact] = useState(null)
-	const [isActive, setIsActive] = useState(true)
+	const [isActive] = useState(true)
 	return (
 		<Row>
 			<Col>

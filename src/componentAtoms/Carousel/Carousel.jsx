@@ -18,7 +18,7 @@ const getYoutubeEmbededUrl = id =>
 
 const getYoutubeThumnailUrl = id => `https://img.youtube.com/vi/${id}/0.jpg`
 
-const CarouselCommon = props => {
+const Carousel = props => {
 	const [showUI, setShowUI] = useState(true)
 	const [videoPlaying, setVideoPlaying] = useState(true)
 	const { items, aspectRatio, ...otherProps } = props
@@ -116,4 +116,4 @@ const CarouselCommon = props => {
 	)
 }
 
-export { CarouselCommon }
+export { Carousel }

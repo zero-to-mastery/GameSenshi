@@ -1,9 +1,9 @@
 import React from 'react'
-import { StatusCommon } from './StatusCommon'
+import { Status } from './Status'
 
-const StatusCommonPropedOnline = props => {
+const StatusPropedOnline = props => {
 	return (
-		<StatusCommon
+		<Status
 			bodyOn='Online!'
 			bodyOff='Offline'
 			className='justify-content-center mt-2'
@@ -12,4 +12,4 @@ const StatusCommonPropedOnline = props => {
 	)
 }
 
-export { StatusCommonPropedOnline }
+export { StatusPropedOnline }

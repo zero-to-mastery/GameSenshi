@@ -5,7 +5,6 @@ import {
 } from './FormSignIn'
 import { FormSignUpPropedDefault } from './FormSignUp'
 import { FormCard, FORM_CARD_DEFAULT } from './FormCard'
-import { FormProfile } from './FormProfile'
 import { TabPaneAccountSettings } from './TabPaneAccountSettings'
 import { TabPaneGeneralSettings } from './TabPaneGeneralSettings'
 import { FormResetPasswordPropedDefault } from './FormResetPassword'
@@ -20,7 +19,6 @@ export const Exports = {
 	FormSignInStoreSignInPropedApp,
 	FormSignUpPropedDefault,
 	FormCard,
-	FormProfile,
 	FORM_CARD_DEFAULT,
 	TabPaneAccountSettings,
 	TabPaneGeneralSettings,

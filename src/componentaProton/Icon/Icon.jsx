@@ -12,7 +12,7 @@ const Icon = props => {
 		[ICON_IMAGE]: image,
 		[ICON_EMOJI]: emoji,
 		[ICON_ICON]: icon,
-		['aria-label']: aria,
+		'aria-label': aria,
 	} = props
 
 	const onError = useCallback(() => {

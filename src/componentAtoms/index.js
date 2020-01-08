@@ -9,7 +9,7 @@ import {
 	COLOR,
 } from './InputSelect'
 import { InputText } from './InputText'
-import { PopoverCommon } from './PopoverCommon'
+import { Popover } from './Popover'
 import Footer from './Footers/Footer'
 import { ButtonsCommonOptioned, ButtonsCommonPropedAuth } from './ButtonsCommon'
 import {
@@ -18,11 +18,11 @@ import {
 } from './ButtonSignInUp'
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 import { ImageUploadStoreUserPropedSettings } from './ImageUpload'
-import { AlertCommonStoreAlert } from './AlertCommon'
-import { ProgressCommonStoreProgress } from './ProgressCommon'
+import { AlertStoreAlert } from './Alert'
+import { ProgressStoreProgress } from './Progress'
 import { CheckBox } from './CheckBox'
 import { HeaderLined } from './HeaderLined'
-import { ModalCommonStoreModalPropedAuth, ModalCommon } from './ModalCommon'
+import { ModalStoreModalPropedAuth, Modal } from './Modal'
 import { ButtonSubmit } from './ButtonSubmit'
 import { TabPaneContainer } from './TabPaneContainer'
 import {
@@ -49,10 +49,7 @@ import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
 import { ButtonsCommonChatAndCheckout } from './ButtonsCommon'
 import { QuantityProfile } from './Quantity'
-import {
-	CarouselCommonPropedProfile,
-	CarouselCommonPropedIndex,
-} from './CarouselCommon'
+import { CarouselPropedProfile, CarouselPropedIndex } from './Carousel'
 import {
 	TextIconPropedPopularPlayer,
 	TextIconPropedNewPlayer,
@@ -68,7 +65,7 @@ import {
 	ImagesTooltipPropedTabs,
 	ImagesTooltip,
 } from './ImagesTooltip'
-import { StatusCommonPropedOnline } from './StatusCommon'
+import { StatusPropedOnline } from './Status'
 import {
 	ButtonSoundStoreSoundPropedGender,
 	ButtonSoundStoreSoundPropedCardUser,
@@ -89,11 +86,7 @@ import {
 	WrapperStoreWrapperPropedCheckout,
 } from './Wrapper'
 import { CardUserSimple } from './CardUserSimple'
-import {
-	TabCommon,
-	TAB_COMMON_TAB_NAME,
-	TAB_COMMON_TAB_CONTENT,
-} from './TabCommon'
+import { Tab, TAB_NAME, TAB_CONTENT } from './Tab'
 import { LightBox } from './LightBox'
 
 export const Exports = {
@@ -102,8 +95,8 @@ export const Exports = {
 	FinalForm,
 	ErrorBoundary,
 	ImageUploadStoreUserPropedSettings,
-	AlertCommonStoreAlert,
-	ProgressCommonStoreProgress,
+	AlertStoreAlert,
+	ProgressStoreProgress,
 	ButtonsCommonOptioned,
 	ButtonsCommonPropedAuth,
 	ButtonSignInStoreUserPropedIndexNavbar,
@@ -115,11 +108,11 @@ export const Exports = {
 	INPUT_SELECT_DISABLED,
 	COLOR,
 	InputText,
-	PopoverCommon,
+	Popover,
 	CheckBox,
 	HeaderLined,
-	ModalCommonStoreModalPropedAuth,
-	ModalCommon,
+	ModalStoreModalPropedAuth,
+	Modal,
 	ButtonSubmit,
 	TabPaneContainer,
 	TabListVerticalPropedWithRouter,
@@ -148,13 +141,13 @@ export const Exports = {
 	ImagesTooltipPropedTabs,
 	ImagesTooltipOptioned,
 	ImagesTooltip,
-	StatusCommonPropedOnline,
+	StatusPropedOnline,
 	ButtonSoundStoreSoundPropedGender,
 	ButtonSoundStoreSoundPropedCardUser,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
-	CarouselCommonPropedProfile,
-	CarouselCommonPropedIndex,
+	CarouselPropedProfile,
+	CarouselPropedIndex,
 	Section,
 	WrapperStoreWrapperPropedIndex,
 	WrapperStoreWrapperPropedAccount,
@@ -172,8 +165,8 @@ export const Exports = {
 	TextIconPropedProfileComments,
 	CardUserSimple,
 	ButtonsCommonChatAndCheckout,
-	TabCommon,
-	TAB_COMMON_TAB_NAME,
-	TAB_COMMON_TAB_CONTENT,
+	Tab,
+	TAB_NAME,
+	TAB_CONTENT,
 	LightBox,
 }

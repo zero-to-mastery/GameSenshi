@@ -1,16 +1,23 @@
 import React from 'react'
 import Loader from 'react-loader-spinner'
-import { Popover, PopoverHeader, PopoverBody, Row, Col } from 'reactstrap'
+import {
+	Popover as PopoverRS,
+	PopoverHeader,
+	PopoverBody,
+	Row,
+	Col,
+} from 'reactstrap'
 
-const PopoverCommon = props => {
+const Popover = props => {
 	const { isOpen, target, spinner, header, children } = props
 
 	return (
-		<Popover
+		<PopoverRS
 			placement='top-end'
 			isOpen={isOpen}
 			target={target}
-			className='popover-primary'>
+			className='popover-primary'
+		>
 			<PopoverHeader>
 				<Row>
 					<Col xs='1'>
@@ -27,8 +34,8 @@ const PopoverCommon = props => {
 				</Row>
 			</PopoverHeader>
 			<PopoverBody className='pl-0 pb-0'>{children}</PopoverBody>
-		</Popover>
+		</PopoverRS>
 	)
 }
 
-export { PopoverCommon }
+export { Popover }

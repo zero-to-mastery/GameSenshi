@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import FsLightbox from 'fslightbox-react'
+import FsLightBox from 'fslightbox-react'
 import {
 	FIRESTORE_SENSHI_MEDIA_YOUTUBE,
 	FIRESTORE_SENSHI_MEDIA_IMAGE,
@@ -19,6 +19,7 @@ const LightBox = props => {
 			} else if (image) {
 				return image
 			}
+			return ''
 		})
 	}, [sources])
 
@@ -27,7 +28,7 @@ const LightBox = props => {
 	}, [sources])
 
 	return (
-		<FsLightbox toggler={toggle} sources={sources_} slide={slide} key={key} />
+		<FsLightBox toggler={toggle} sources={sources_} slide={slide} key={key} />
 	)
 }
 

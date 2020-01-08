@@ -5,12 +5,9 @@ import { Exports } from 'componentpMultiOrganisms'
 import { Row } from 'reactstrap'
 import suffle from 'array-shuffle'
 
-const {
-	CardUserPropedDiscover,
-	TabCommon,
-	TAB_COMMON_TAB_NAME,
-	TAB_COMMON_TAB_CONTENT,
-} = stopUndefined(Exports)
+const { CardUserPropedDiscover, Tab, TAB_NAME, TAB_CONTENT } = stopUndefined(
+	Exports
+)
 
 const CARD_DISCOVER_NAME = 'name'
 const CARD_DISCOVER_IMAGE = 'image'
@@ -79,13 +76,13 @@ const tabNames = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 
 const tabs = tabNames.map(tabname => {
 	return {
-		[TAB_COMMON_TAB_NAME]: tabname,
-		[TAB_COMMON_TAB_CONTENT]: <Row>{suffle(Cards)}</Row>,
+		[TAB_NAME]: tabname,
+		[TAB_CONTENT]: <Row>{suffle(Cards)}</Row>,
 	}
 })
 
 const TabDiscover = () => {
-	return <TabCommon tabs={tabs} />
+	return <Tab tabs={tabs} />
 }
 
 export { TabDiscover }

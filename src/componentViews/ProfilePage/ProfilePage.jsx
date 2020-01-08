@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 
 const {
-	CarouselCommonPropedProfile,
+	CarouselPropedProfile,
 	CardGiftWithProps,
 	TextIconPropedProfileGift,
 	TextIconPropedProfileGallery,
@@ -12,9 +12,9 @@ const {
 	CommentWithPaginationPropedDefault,
 	Section,
 	WrapperStoreWrapperPropedProfile,
-	TabCommon,
-	TAB_COMMON_TAB_NAME,
-	TAB_COMMON_TAB_CONTENT,
+	Tab,
+	TAB_NAME,
+	TAB_CONTENT,
 	TabProductPropedProfile,
 } = stopUndefined(Exports)
 
@@ -29,8 +29,8 @@ const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 
 const tabs = games.map((tab, index) => {
 	return {
-		[TAB_COMMON_TAB_NAME]: tab,
-		[TAB_COMMON_TAB_CONTENT]: TabProductPropedProfile[index],
+		[TAB_NAME]: tab,
+		[TAB_CONTENT]: TabProductPropedProfile[index],
 	}
 })
 
@@ -58,7 +58,7 @@ const ProfilePage = () => {
 					</Row>
 					<Row className='pt-5'>
 						<Col>
-							<TabCommon tabs={tabs} />
+							<Tab tabs={tabs} />
 						</Col>
 					</Row>
 					<Row>
@@ -85,7 +85,7 @@ const ProfilePage = () => {
 					</Row>
 					<Row>
 						<Col md='12'>
-							<CarouselCommonPropedProfile />
+							<CarouselPropedProfile />
 						</Col>
 					</Row>
 				</Container>

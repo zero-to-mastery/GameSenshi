@@ -14,7 +14,7 @@ import {
 
 const {
 	BadgesPropedSenshi,
-	StatusCommonPropedOnline,
+	StatusPropedOnline,
 	CheckBoxIconPropedFavorite,
 	CheckBoxIconPropedTip,
 	ButtonsCommonOptioned,
@@ -46,7 +46,7 @@ const CardUserHorizontal = props => {
 								</DivStyledImage>
 							</Col>
 							<Col>
-								<StatusCommonPropedOnline on={online} />
+								<StatusPropedOnline on={online} />
 							</Col>
 						</Row>
 					</Col>

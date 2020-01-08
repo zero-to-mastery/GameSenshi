@@ -10,7 +10,7 @@ import {
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentAtoms'
 
-const { UncontrolledTooltip, ModalCommon } = stopUndefined(Exports)
+const { UncontrolledTooltip, Modal } = stopUndefined(Exports)
 
 const CARD_GIFT_IMAGE = 'image'
 const CARD_GIFT_TOOLTIP = 'tooltip'
@@ -58,7 +58,7 @@ const CardGift = props => {
 							</Fragment>
 						)
 					})}
-					<ModalCommon
+					<Modal
 						title='You have selected a gift'
 						isOpen={isOpen}
 						toggle={toggleModal}
@@ -72,7 +72,7 @@ const CardGift = props => {
 							Icon with : {modalId}
 							<Input label='No of gifts' placeholder='Select number of gifts' />
 						</ModalBodyWrapper>
-					</ModalCommon>
+					</Modal>
 				</GridContainer>
 			</GradientContainer>
 		</Col>

@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Row, Col, Label, Input, FormGroup } from 'reactstrap'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 const { Button } = stopUndefined(Exports)
 
-const ButtonGroup = props => {
+const ButtonGroup = () => {
 	return (
 		<Col md='10 pt-3'>
 			<div className='d-flex flex-column'>

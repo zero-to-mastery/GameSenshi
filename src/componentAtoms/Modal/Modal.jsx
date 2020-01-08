@@ -1,35 +1,35 @@
 // the purpose of this modal is to link user social auth
 import React from 'react'
 import Loader from 'react-loader-spinner'
-import { Modal, ModalBody, ModalFooter } from 'reactstrap'
+import { Modal as ModalRS, ModalBody, ModalFooter } from 'reactstrap'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 
 const { Button } = stopUndefined(Exports)
 
-const MODAL_COMMON_STATE_BODY = 'body'
-const MODAL_COMMON_STATE_TITLE = 'title'
-const MODAL_COMMON_STATE_LOADER = 'loader'
-const MODAL_COMMON_STATE_IS_OPEN = 'isOpen'
-const MODAL_COMMON_STATE_FOOTER = 'footer'
-const MODAL_COMMON_TOGGLE = 'toggle'
-const MODAL_COMMON_ON_CONTINUE = 'onContinue'
+const MODAL_STATE_BODY = 'body'
+const MODAL_STATE_TITLE = 'title'
+const MODAL_STATE_LOADER = 'loader'
+const MODAL_STATE_IS_OPEN = 'isOpen'
+const MODAL_STATE_FOOTER = 'footer'
+const MODAL_TOGGLE = 'toggle'
+const MODAL_ON_CONTINUE = 'onContinue'
 
-const ModalCommon = props => {
+const Modal = props => {
 	const {
-		[MODAL_COMMON_STATE_BODY]: body,
-		[MODAL_COMMON_STATE_TITLE]: title,
-		[MODAL_COMMON_STATE_LOADER]: loader,
-		[MODAL_COMMON_STATE_IS_OPEN]: isOpen,
-		[MODAL_COMMON_TOGGLE]: toggle,
-		[MODAL_COMMON_ON_CONTINUE]: onContinue,
-		[MODAL_COMMON_STATE_FOOTER]: footer,
+		[MODAL_STATE_BODY]: body,
+		[MODAL_STATE_TITLE]: title,
+		[MODAL_STATE_LOADER]: loader,
+		[MODAL_STATE_IS_OPEN]: isOpen,
+		[MODAL_TOGGLE]: toggle,
+		[MODAL_ON_CONTINUE]: onContinue,
+		[MODAL_STATE_FOOTER]: footer,
 		children,
 		...otherProps
 	} = props
 
 	return (
-		<Modal
+		<ModalRS
 			isOpen={isOpen}
 			toggle={toggle}
 			backdrop='static'
@@ -65,17 +65,17 @@ const ModalCommon = props => {
 					</Button>
 				)}
 			</ModalFooter>
-		</Modal>
+		</ModalRS>
 	)
 }
 
 export {
-	ModalCommon,
-	MODAL_COMMON_STATE_BODY,
-	MODAL_COMMON_STATE_TITLE,
-	MODAL_COMMON_STATE_LOADER,
-	MODAL_COMMON_STATE_IS_OPEN,
-	MODAL_COMMON_TOGGLE,
-	MODAL_COMMON_ON_CONTINUE,
-	MODAL_COMMON_STATE_FOOTER,
+	Modal,
+	MODAL_STATE_BODY,
+	MODAL_STATE_TITLE,
+	MODAL_STATE_LOADER,
+	MODAL_STATE_IS_OPEN,
+	MODAL_TOGGLE,
+	MODAL_ON_CONTINUE,
+	MODAL_STATE_FOOTER,
 }
