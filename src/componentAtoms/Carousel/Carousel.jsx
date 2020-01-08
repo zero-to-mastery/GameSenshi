@@ -1,8 +1,10 @@
-import React, { useCallback, useState, useMemo } from 'react'
+import React, { useCallback, useState, useMemo, useEffect } from 'react'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 import ReactPlayer from 'react-player'
+import { ImageStyled } from './styled'
 import Image from 'material-ui-image'
+
 import {
 	FIRESTORE_SENSHI_MEDIA_YOUTUBE,
 	FIRESTORE_SENSHI_MEDIA_IMAGE,
@@ -20,31 +22,35 @@ const getYoutubeThumnailUrl = id => `https://img.youtube.com/vi/${id}/0.jpg`
 
 const Carousel = props => {
 	const [showUI, setShowUI] = useState(true)
-	const [videoPlaying, setVideoPlaying] = useState(true)
-	const { items, aspectRatio, onImageClick, ...otherProps } = props
+	const [videoPlaying, setVideoPlaying] = useState(false)
+	const { items, aspectRatio, onImageClick, onSlide, ...otherProps } = props
 	const setShowUIFalse = useCallback(() => {
 		setShowUI(false)
 	}, [])
 	const aspectRatio_ = (aspectRatio / 2 || 1 / 3) * 100
 
-	const onSlide = useCallback(() => {
+	const onSlide_ = useCallback(() => {
+		setVideoPlaying(false)
+		onSlide && onSlide()
 		if (!showUI) {
 			setShowUI(true)
-			setVideoPlaying(false)
-			setVideoPlaying(true)
 		}
 	}, [showUI])
+
+	const videoOnClick = useCallback(() => {
+		setVideoPlaying(state => !state)
+	}, [])
 
 	const items_ = useMemo(() => {
 		return items.map(item => {
 			const {
 				[FIRESTORE_SENSHI_MEDIA_IMAGE]: image,
-				[FIRESTORE_SENSHI_MEDIA_YOUTUBE]: youtube,
+				[FIRESTORE_SENSHI_MEDIA_YOUTUBE]: youTube,
 			} = item
 			if (image) {
 				const img = () => {
 					return (
-						<Image
+						<ImageStyled
 							className='img img-raised rounded-lg'
 							color='transparent'
 							src={image}
@@ -59,9 +65,9 @@ const Carousel = props => {
 					[RENDER_ITEM]: img,
 					[RENDER_THUMB_INNER]: img,
 				}
-			} else if (youtube) {
+			} else if (youTube) {
 				const player = () => {
-					return videoPlaying ? (
+					return (
 						<div
 							className='image-gallery-image'
 							style={{
@@ -72,10 +78,11 @@ const Carousel = props => {
 						>
 							<ReactPlayer
 								onReady={setShowUIFalse}
-								url={getYoutubeEmbededUrl(youtube)}
-								playing={true}
+								url={getYoutubeEmbededUrl(youTube)}
+								playing={videoPlaying}
 								controls
 								light
+								onClick={videoOnClick}
 								width='100%'
 								height='100%'
 								style={{
@@ -85,9 +92,9 @@ const Carousel = props => {
 								}}
 							/>
 						</div>
-					) : null
+					)
 				}
-				const image = getYoutubeThumnailUrl(youtube)
+				const image = getYoutubeThumnailUrl(youTube)
 				return {
 					[ORIGINAL]: image,
 					[THUMBNAIL]: image,
@@ -100,7 +107,7 @@ const Carousel = props => {
 				return {}
 			}
 		})
-	}, [items])
+	}, [items, videoPlaying])
 
 	return (
 		<ImageGallery
@@ -109,7 +116,7 @@ const Carousel = props => {
 			showIndex={showUI}
 			showBullets={showUI}
 			showPlayButton={showUI}
-			onSlide={onSlide}
+			onSlide={onSlide_}
 			{...otherProps}
 		/>
 	)

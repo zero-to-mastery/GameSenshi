@@ -11,13 +11,13 @@ const itemsProfile = [
 		[FIRESTORE_SENSHI_MEDIA_IMAGE]: getProfileImage('denys'),
 	},
 	{
-		[FIRESTORE_SENSHI_MEDIA_YOUTUBE]: 'OGKbzhME3UI',
+		[FIRESTORE_SENSHI_MEDIA_YOUTUBE]: 'bdgTa9ni4S8',
 	},
 	{
 		[FIRESTORE_SENSHI_MEDIA_IMAGE]: getProfileImage('mark-finn'),
 	},
 	{
-		[FIRESTORE_SENSHI_MEDIA_YOUTUBE]: '5HeVYC42grI',
+		[FIRESTORE_SENSHI_MEDIA_YOUTUBE]: 'vZX8WJJyXvM',
 	},
 	{
 		[FIRESTORE_SENSHI_MEDIA_IMAGE]: getProfileImage('fabien-bazanegue'),
