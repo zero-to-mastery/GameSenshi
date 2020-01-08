@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useMemo, useEffect } from 'react'
+import React, { useCallback, useState, useMemo } from 'react'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 import ReactPlayer from 'react-player'
