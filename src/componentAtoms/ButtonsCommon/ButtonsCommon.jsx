@@ -14,11 +14,11 @@ const BUTTONS_COMMON_LABEL = 'label'
 const BUTTONS_COMMON_TO = 'to'
 
 const ButtonsCommon = props => {
-	const { onClick, buttons, className, col, baseClass, buttonClass } = props
+	const { onClick, buttons, className, col, baseClass, rowClass } = props
 
 	const EnclosureCol = col ? Col : Fragment
 	return (
-		<Row className={classnames('justify-content-center', className)}>
+		<Row className={classnames('justify-content-center', rowClass)}>
 			{buttons.map(button => {
 				const {
 					[BUTTONS_COMMON_ID]: id,
@@ -42,7 +42,7 @@ const ButtonsCommon = props => {
 						<Button
 							size='lg'
 							baseClass={baseClass}
-							className={buttonClass || 'btn-icon btn-round'}
+							className={className || 'btn-icon btn-round'}
 							color={color}
 							id={id_}
 							{...(to && { tag: Link, to })} // visit other page

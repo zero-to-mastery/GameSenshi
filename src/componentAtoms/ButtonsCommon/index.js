@@ -32,7 +32,7 @@ const ButtonsCommonChatAndCheckout = props => {
 	return (
 		<ButtonsCommonOptioned
 			buttons={buttonsCommonChatAndCheckout}
-			buttonClass='w-100'
+			className='w-100'
 			baseClass='w-100'
 			{...props}
 		/>
