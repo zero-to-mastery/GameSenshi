@@ -11,7 +11,6 @@ import {
 	storeUserOnSignOut,
 } from 'state'
 import { auth } from 'firebaseInit/core'
-import { docGeneralSettingOnSnapshot } from 'firebaseInit/fireStored'
 
 let unsubscribe = () => {}
 
@@ -46,10 +45,10 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 	}
 }
 
-const onAuthChange = () => {
+const onAuthChange = docSettingGeneralOnSnapshot => {
 	auth().onAuthStateChanged(userAuth => {
 		onAuthChanged(userAuth, (next, error) =>
-			docGeneralSettingOnSnapshot(
+			docSettingGeneralOnSnapshot(
 				{ includeMetadataChanges: true },
 				{ next, error }
 			)

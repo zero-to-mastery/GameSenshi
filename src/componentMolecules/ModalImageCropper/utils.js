@@ -1,10 +1,6 @@
 import { storeAlertShow, storeProgress } from 'state'
-
-import {
-	docGeneralSettingSetAvatar,
-	storageUserAvatarSet,
-	storageUserAvatarGet,
-} from 'firebaseInit'
+import { storageUserAvatarSet, storageUserAvatarGet } from 'firebaseInit'
+import { docSettingGeneralAvatarSet } from 'fireStored'
 
 const onCrop = (e, dataUrl, toggle) => {
 	storageUserAvatarSet(dataUrl).on(
@@ -32,7 +28,7 @@ const onCrop = (e, dataUrl, toggle) => {
 				)
 			})
 			if (url) {
-				docGeneralSettingSetAvatar(url)
+				docSettingGeneralAvatarSet(url)
 					.then(() => {
 						storeProgress.close()
 						storeAlertShow(

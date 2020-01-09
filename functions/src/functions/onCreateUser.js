@@ -19,8 +19,8 @@ import nanoid from 'nanoid'
 import {
 	functions,
 	getServerTimestamp,
-	docGeneralSettingSet,
-	docNotificationSettingSet,
+	docSettingGeneralSet,
+	docSettingNotificationSet,
 } from 'firebaseInit'
 import { resObj } from 'utils'
 
@@ -36,7 +36,7 @@ const onCreateUser_ = async userRecord => {
 	const shortId = nanoid(10)
 
 	try {
-		await docGeneralSettingSet(uid, {
+		await docSettingGeneralSet(uid, {
 			[CREATED_AT]: serverTimestamp,
 			[UPDATED_AT]: serverTimestamp,
 			[FIRESTORE_SETTINGS_GENERAL_SHORT_ID]: shortId,
@@ -48,7 +48,7 @@ const onCreateUser_ = async userRecord => {
 		return console.log(resObj(false, INTERNAL_ERROR_CODE_5, err))
 	}
 	try {
-		await docNotificationSettingSet(uid, {
+		await docSettingNotificationSet(uid, {
 			[CREATED_AT]: serverTimestamp,
 			[UPDATED_AT]: serverTimestamp,
 			[FIRESTORE_SETTINGS_NOTIFICATION_EMAIL]: {

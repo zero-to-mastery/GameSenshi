@@ -1,9 +1,6 @@
 import { simplerResponseHandling } from 'utils'
-import {
-	auth,
-	docGeneralSettingSet,
-	handleDifferentCredential,
-} from 'firebaseInit'
+import { auth, handleDifferentCredential } from 'firebaseInit'
+import { docSettingGeneralSet } from 'fireStored'
 import {
 	FUNCTION_EMAIL,
 	FUNCTION_PASSWORD,
@@ -45,7 +42,7 @@ const handleSignUpWithEmailAndPassword = async (
 	})
 
 	try {
-		await docGeneralSettingSet({
+		await docSettingGeneralSet({
 			[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
 			[FIRESTORE_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
 		})

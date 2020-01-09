@@ -21,20 +21,20 @@ const createDocGetSet = path => {
 	return [get, set]
 }
 
-const [docGeneralSettingGet, docGeneralSettingSet] = createDocGetSet(
+const [docSettingGeneralGet, docSettingGeneralSet] = createDocGetSet(
 	firestorePathSettingsGeneral
 )
-const [docNotificationSettingGet, docNotificationSettingSet] = createDocGetSet(
+const [docSettingNotificationGet, docSettingNotificationSet] = createDocGetSet(
 	fireStorePathSettingsNotification
 )
-const docGeneralSettingSetAvatar = (uid, url) =>
-	docGeneralSettingSet(uid, {
+const docSettingGeneralAvatarSet = (uid, url) =>
+	docSettingGeneralSet(uid, {
 		[FIRESTORE_SETTINGS_GENERAL_USER_AVATAR]: url,
 	})
 export {
-	docGeneralSettingGet,
-	docGeneralSettingSet,
-	docNotificationSettingGet,
-	docNotificationSettingSet,
-	docGeneralSettingSetAvatar,
+	docSettingGeneralGet,
+	docSettingGeneralSet,
+	docSettingNotificationGet,
+	docSettingNotificationSet,
+	docSettingGeneralAvatarSet,
 }
