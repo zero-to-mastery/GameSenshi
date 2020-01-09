@@ -7,6 +7,15 @@ import {
 	docSettingGeneralAvatarSet,
 } from './Settings'
 
+import {
+	docSenshiProfileGet,
+	docSenshiProfileSet,
+	docSenshiProfileOnSnapshot,
+	docSenshiProfileAvatarSet,
+	docSenshiProfileCarouselSet,
+	docSenshiProfileChannelSet,
+} from './Profile'
+
 export {
 	docSettingGeneralGet,
 	docSettingGeneralSet,
@@ -14,4 +23,10 @@ export {
 	docSettingNotificationGet,
 	docSettingNotificationSet,
 	docSettingGeneralAvatarSet,
+	docSenshiProfileGet,
+	docSenshiProfileSet,
+	docSenshiProfileOnSnapshot,
+	docSenshiProfileAvatarSet,
+	docSenshiProfileCarouselSet,
+	docSenshiProfileChannelSet,
 }

@@ -3,8 +3,8 @@ import { createDocGetSet } from './utils'
 import {
 	firestorePathSettingsGeneral,
 	fireStorePathSettingsNotification,
+	FIRESTORE_SENSHI_PROFILE_AVATAR,
 } from 'constantValues'
-import { FIRESTORE_SETTINGS_GENERAL_USER_AVATAR } from 'constantValues'
 
 const [
 	docSettingGeneralGet,
@@ -17,7 +17,7 @@ const [docSettingNotificationGet, docSettingNotificationSet] = createDocGetSet(
 )
 const docSettingGeneralAvatarSet = url =>
 	docSettingGeneralSet({
-		[FIRESTORE_SETTINGS_GENERAL_USER_AVATAR]: url,
+		[FIRESTORE_SENSHI_PROFILE_AVATAR]: url,
 	})
 
 export {

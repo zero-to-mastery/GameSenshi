@@ -6,8 +6,8 @@ import { ImageStyled } from './styled'
 import Image from 'material-ui-image'
 
 import {
-	FIRESTORE_SENSHI_MEDIA_YOUTUBE,
-	FIRESTORE_SENSHI_MEDIA_IMAGE,
+	FIRESTORE_SENSHI_PROFILE_CAROUSEL_YOUTUBE,
+	FIRESTORE_SENSHI_PROFILE_CAROUSEL_IMAGE,
 } from 'constantValues'
 
 const RENDER_ITEM = 'renderItem'
@@ -45,8 +45,8 @@ const Carousel = props => {
 	const items_ = useMemo(() => {
 		return items.map(item => {
 			const {
-				[FIRESTORE_SENSHI_MEDIA_IMAGE]: image,
-				[FIRESTORE_SENSHI_MEDIA_YOUTUBE]: youTube,
+				[FIRESTORE_SENSHI_PROFILE_CAROUSEL_IMAGE]: image,
+				[FIRESTORE_SENSHI_PROFILE_CAROUSEL_YOUTUBE]: youTube,
 			} = item
 			if (image) {
 				const ImgThumb = props => {

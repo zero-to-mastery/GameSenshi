@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
 import FsLightBox from 'fslightbox-react'
 import {
-	FIRESTORE_SENSHI_MEDIA_YOUTUBE,
-	FIRESTORE_SENSHI_MEDIA_IMAGE,
+	FIRESTORE_SENSHI_PROFILE_CAROUSEL_YOUTUBE,
+	FIRESTORE_SENSHI_PROFILE_CAROUSEL_IMAGE,
 } from 'constantValues'
 
 const LightBox = props => {
@@ -11,8 +11,8 @@ const LightBox = props => {
 	const sources_ = useMemo(() => {
 		return sources.map(source => {
 			const {
-				[FIRESTORE_SENSHI_MEDIA_YOUTUBE]: youTube,
-				[FIRESTORE_SENSHI_MEDIA_IMAGE]: image,
+				[FIRESTORE_SENSHI_PROFILE_CAROUSEL_YOUTUBE]: youTube,
+				[FIRESTORE_SENSHI_PROFILE_CAROUSEL_IMAGE]: image,
 			} = source
 			if (youTube) {
 				return `https://www.youtube.com/watch?v=${youTube}`

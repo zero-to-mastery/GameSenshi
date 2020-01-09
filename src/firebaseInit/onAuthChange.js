@@ -49,6 +49,7 @@ const onAuthChange = docSettingGeneralOnSnapshot => {
 	auth().onAuthStateChanged(userAuth => {
 		onAuthChanged(userAuth, (next, error) =>
 			docSettingGeneralOnSnapshot(
+				undefined,
 				{ includeMetadataChanges: true },
 				{ next, error }
 			)
