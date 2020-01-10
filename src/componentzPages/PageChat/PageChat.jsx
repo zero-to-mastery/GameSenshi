@@ -10,7 +10,7 @@ const {
 	ChatMessageContainerWithProps,
 } = stopUndefined(Exports)
 
-const ChatPage = () => {
+const PageChat = () => {
 	useEffect(() => {
 		document.documentElement.scrollTop = 0
 		document.scrollingElement.scrollTop = 0
@@ -42,4 +42,4 @@ const ChatPage = () => {
 	)
 }
 
-export { ChatPage }
+export { PageChat }

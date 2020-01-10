@@ -9,7 +9,7 @@ const {
 	WrapperStoreWrapperPropedIndex,
 } = stopUndefined(Exports)
 
-const SearchedPage = () => {
+const PageFilter = () => {
 	return (
 		<WrapperStoreWrapperPropedIndex>
 			<Section>
@@ -21,4 +21,4 @@ const SearchedPage = () => {
 	)
 }
 
-export { SearchedPage }
+export { PageFilter }

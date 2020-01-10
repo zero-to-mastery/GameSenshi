@@ -38,7 +38,7 @@ const tabs = games.map((tab, index) => {
 	}
 })
 
-const ProfilePage = props => {
+const PageProfile = props => {
 	const {
 		match: {
 			params: { [ROUTE_PARAM_ID]: id },
@@ -146,4 +146,4 @@ const ProfilePage = props => {
 	)
 }
 
-export { ProfilePage }
+export { PageProfile }

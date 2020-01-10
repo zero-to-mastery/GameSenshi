@@ -9,7 +9,7 @@ const {
 	WrapperStoreWrapperPropedRegister,
 } = stopUndefined(Exports)
 
-const SignUpPage = () => {
+const PageSignUp = () => {
 	const [squares1to6, setSquares1to6] = useState('')
 	const [squares7and8, setSquares7and8] = useState('')
 
@@ -101,4 +101,4 @@ const SignUpPage = () => {
 	)
 }
 
-export { SignUpPage }
+export { PageSignUp }

@@ -9,7 +9,7 @@ const {
 	WrapperStoreWrapperPropedReset,
 } = stopUndefined(Exports)
 
-const PasswordResetPage = () => {
+const PagePasswordReset = () => {
 	return (
 		<WrapperStoreWrapperPropedReset>
 			<Section>
@@ -33,4 +33,4 @@ const PasswordResetPage = () => {
 	)
 }
 
-export { PasswordResetPage }
+export { PagePasswordReset }
