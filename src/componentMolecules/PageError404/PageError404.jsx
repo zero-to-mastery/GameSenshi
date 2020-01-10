@@ -4,7 +4,8 @@ import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 const { WrapperStoreWrapperPropedError } = stopUndefined(Exports)
 
-const PageError404 = () => {
+const PageError404 = props => {
+	const { generic } = props
 	return (
 		<WrapperStoreWrapperPropedError>
 			<div className='page-header error-page header-filter'>
@@ -19,9 +20,22 @@ const PageError404 = () => {
 					<Row>
 						<Col md='12'>
 							<h1 className='title'>404</h1>
-							<h2 className='description'>Page not found :(</h2>
-							<h4 className='description'>Ooooups! Looks like you got lost.</h4>
-							<h5 className='description'>You might have typo in your url.</h5>
+							{generic ? (
+								<>
+									<h2 className='description'>Something went wrong :(</h2>
+									<h4 className='description'>Please try again later.</h4>
+								</>
+							) : (
+								<>
+									<h2 className='description'>Page not found :(</h2>
+									<h4 className='description'>
+										Ooooups! Looks like you got lost.
+									</h4>
+									<h5 className='description'>
+										You might have typo in your url.
+									</h5>
+								</>
+							)}
 						</Col>
 					</Row>
 				</Container>

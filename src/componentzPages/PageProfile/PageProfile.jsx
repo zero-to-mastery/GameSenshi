@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { stopUndefined } from 'utils'
 import Loader from 'react-loader-spinner'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
-import { ROUTE_PARAM_ID } from 'routes'
-import { docSenshiProfileGet } from 'fireStored'
+import { ROUTE_PARAM_UID } from 'routes'
+import { docSenshiProfileGet, docSenshiProfileOnSnapshot } from 'fireStored'
+import {
+	UNEXPECTED_ERROR_CODE_15,
+	UNEXPECTED_ERROR_CODE_16,
+	UNEXPECTED_ERROR_CODE_17,
+} from 'constantValues'
+import { storeModalSimpleError } from 'state'
 
 const {
 	CarouselLightBoxPropedProfile,
@@ -41,21 +47,60 @@ const tabs = games.map((tab, index) => {
 const PageProfile = props => {
 	const {
 		match: {
-			params: { [ROUTE_PARAM_ID]: id },
+			params: { [ROUTE_PARAM_UID]: uid },
 		},
 	} = props
 	const [loading, setLoading] = useState(true)
 	const [exist, setExist] = useState(true)
+	const [data, setData] = useState(null)
+	const [genericError, setGenericError] = useState(false)
+	const observer = useRef(() => {})
+
 	useEffect(() => {
-		docSenshiProfileGet(id).then(doc => {
-			setLoading(false)
-			if (doc.exists) {
-				setExist(true)
+		return observer.current
+	}, [])
+
+	useEffect(() => {
+		const attachListener = async () => {
+			let doc = null
+			try {
+				doc = await docSenshiProfileGet(uid)
+			} catch (err) {
+				setLoading(false)
+				setExist(false)
+				setGenericError(true)
+				return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_15)
+			}
+
+			if (doc && doc.exists) {
+				observer.current = docSenshiProfileOnSnapshot(
+					uid,
+					async docSnapshot => {
+						try {
+							const data = await docSnapshot.data()
+							setData(data)
+							setLoading(false)
+							setExist(true)
+						} catch (err) {
+							setExist(false)
+							setGenericError(true)
+							storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_17)
+						}
+					},
+					err => {
+						setExist(false)
+						setGenericError(true)
+						storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_16)
+					}
+				)
 			} else {
 				setExist(false)
+				setGenericError(false)
 			}
-		})
-	}, [id])
+		}
+
+		attachListener()
+	}, [uid])
 
 	return exist ? (
 		<WrapperStoreWrapperPropedProfile>
@@ -92,6 +137,7 @@ const PageProfile = props => {
 							<Row>
 								<Col>
 									<CardUserHorizontal
+										data={data}
 										username='Mike Scheinder'
 										avatar={require('assets/img/mike.jpg')}
 										channels={channels}
@@ -133,7 +179,7 @@ const PageProfile = props => {
 							</Row>
 							<Row>
 								<Col md='12'>
-									<CarouselLightBoxPropedProfile />
+									<CarouselLightBoxPropedProfile items={data.carousel} />
 								</Col>
 							</Row>
 						</Container>
@@ -142,7 +188,7 @@ const PageProfile = props => {
 			)}
 		</WrapperStoreWrapperPropedProfile>
 	) : (
-		<PageError404 />
+		<PageError404 generic={genericError} />
 	)
 }
 
