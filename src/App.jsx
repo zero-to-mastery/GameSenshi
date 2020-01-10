@@ -37,7 +37,7 @@ const {
 	SignInPage,
 	SignUpPage,
 	PasswordResetPage,
-	Error404Page,
+	PageError404,
 	FormSignInStoreSignInPropedApp,
 	ModalStoreModalPropedAuth,
 	PoliciesPage,
@@ -60,7 +60,7 @@ const MapRoutesToPages = {
 	[ROUTE_PAGE_SETTINGS_COMMON]: SettingsPage,
 	[ROUTE_PAGE_CHAT]: ChatPage,
 	[ROUTE_PAGE_PASSWORD_RESET]: PasswordResetPage,
-	[ROUTE_PAGE_404]: Error404Page,
+	[ROUTE_PAGE_404]: PageError404,
 }
 
 const App = () => {

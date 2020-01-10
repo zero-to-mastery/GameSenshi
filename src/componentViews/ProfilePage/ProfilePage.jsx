@@ -4,6 +4,8 @@ import Loader from 'react-loader-spinner'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 import { ROUTE_PARAM_ID } from 'routes'
+import { docSenshiProfileGet } from 'fireStored'
+
 const {
 	CarouselLightBoxPropedProfile,
 	CardGiftWithProps,
@@ -17,6 +19,7 @@ const {
 	TAB_NAME,
 	TAB_CONTENT,
 	TabProductPropedProfile,
+	PageError404,
 } = stopUndefined(Exports)
 
 // fake data
@@ -42,11 +45,25 @@ const ProfilePage = props => {
 		},
 	} = props
 	const [loading, setLoading] = useState(true)
+	const [exist, setExist] = useState(true)
+	useEffect(() => {
+		docSenshiProfileGet(id).then(doc => {
+			setLoading(false)
+			if (doc.exists) {
+				setExist(true)
+			} else {
+				setExist(false)
+			}
+		})
+	}, [id])
 
-	return (
+	return exist ? (
 		<WrapperStoreWrapperPropedProfile>
 			{loading ? (
-				<Row className='w-100 align-items-center' style={{ height: '100vh' }}>
+				<Row
+					className='w-100 align-items-center'
+					style={{ height: '100vh', marginTop: '-5rem' }}
+				>
 					<Col align='center'>
 						<Loader
 							type='Ball-Triangle'
@@ -55,7 +72,7 @@ const ProfilePage = props => {
 							width='20vh'
 						/>
 						<br />
-						<p style={{ 'font-size': '180%' }}>Loading, Please Wait ...</p>
+						<p style={{ fontSize: '180%' }}>Loading, Please Wait ...</p>
 					</Col>
 				</Row>
 			) : (
@@ -124,6 +141,8 @@ const ProfilePage = props => {
 				</>
 			)}
 		</WrapperStoreWrapperPropedProfile>
+	) : (
+		<PageError404 />
 	)
 }
 

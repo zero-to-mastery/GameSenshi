@@ -1,17 +1,18 @@
 import React from 'react'
 import { stopUndefined } from 'utils'
 import { Container, Row, Col } from 'reactstrap'
-import { Exports } from 'componentpMultiOrganisms'
+import { Exports } from 'componentAtoms'
 const { WrapperStoreWrapperPropedError } = stopUndefined(Exports)
 
-const Error404Page = () => {
+const PageError404 = () => {
 	return (
 		<WrapperStoreWrapperPropedError>
 			<div className='page-header error-page header-filter'>
 				<div
 					className='page-header-image'
 					style={{
-						backgroundImage: 'url(' + require('assets/img/braden-collum.jpg') + ')',
+						backgroundImage:
+							'url(' + require('assets/img/braden-collum.jpg') + ')',
 					}}
 				/>
 				<Container>
@@ -29,4 +30,4 @@ const Error404Page = () => {
 	)
 }
 
-export { Error404Page }
+export { PageError404 }
