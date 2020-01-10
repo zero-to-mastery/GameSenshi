@@ -31,7 +31,6 @@ const handleSignUpWithEmailAndPassword = async (
 			)
 			return simplerResponseHandling(false, '', err)
 		} else {
-			console.log(err)
 			return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err)
 		}
 	}
