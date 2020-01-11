@@ -1,11 +1,14 @@
 import {
-	docSettingGeneralGet,
-	docSettingGeneralSet,
-	docSettingGeneralOnSnapshot,
-	docSettingNotificationGet,
-	docSettingNotificationSet,
-	docSettingGeneralAvatarSet,
-} from './Settings'
+	docUserSettingGeneralGet,
+	docUserSettingGeneralSet,
+	docUserSettingGeneralOnSnapshot,
+	docUserSettingNotificationGet,
+	docUserSettingNotificationSet,
+	docUserSettingGeneralAvatarSet,
+	docUserSenshiGet,
+	docUserSenshiSet,
+	docUserSenshiOnSnapshot,
+} from './UserSettings'
 
 import {
 	docSenshiProfileGet,
@@ -14,19 +17,22 @@ import {
 	docSenshiProfileAvatarSet,
 	docSenshiProfileCarouselSet,
 	docSenshiProfileChannelSet,
-} from './Profile'
+} from './SenshiSettings'
 
 export {
-	docSettingGeneralGet,
-	docSettingGeneralSet,
-	docSettingGeneralOnSnapshot,
-	docSettingNotificationGet,
-	docSettingNotificationSet,
-	docSettingGeneralAvatarSet,
+	docUserSettingGeneralGet,
+	docUserSettingGeneralSet,
+	docUserSettingGeneralOnSnapshot,
+	docUserSettingNotificationGet,
+	docUserSettingNotificationSet,
+	docUserSettingGeneralAvatarSet,
 	docSenshiProfileGet,
 	docSenshiProfileSet,
 	docSenshiProfileOnSnapshot,
 	docSenshiProfileAvatarSet,
 	docSenshiProfileCarouselSet,
 	docSenshiProfileChannelSet,
+	docUserSenshiGet,
+	docUserSenshiSet,
+	docUserSenshiOnSnapshot,
 }

@@ -1,7 +1,7 @@
-import { docSettingNotificationGet } from 'fireStored'
+import { docUserSettingNotificationGet } from 'fireStored'
 
 const handleNotificationSettingLoad = () => {
-	return docSettingNotificationGet().then(doc => doc.data())
+	return docUserSettingNotificationGet().then(doc => doc.data())
 }
 
 export { handleNotificationSettingLoad }

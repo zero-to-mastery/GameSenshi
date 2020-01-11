@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Container, Col, Row } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 import classnames from 'classnames'
 import Image from 'material-ui-image'
+import shorthash from 'shorthash'
 import {
 	SectionStyled,
 	DivStyledImage,
@@ -11,7 +12,12 @@ import {
 	ColStyledBadges,
 	TextStyledSubscribe,
 } from './styled'
-
+import {
+	FIRESTORE_SENSHI_SETTINGS_PROFILE_GENDER,
+	FIRESTORE_SENSHI_SETTINGS_PROFILE_AVATAR,
+	FIRESTORE_SENSHI_SETTINGS_PROFILE_DISPLAY_NAME,
+	FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS,
+} from 'constantValues'
 const {
 	BadgesPropedSenshi,
 	StatusPropedOnline,
@@ -21,23 +27,36 @@ const {
 } = stopUndefined(Exports)
 
 const CardUserHorizontal = props => {
-	const { badges, avatar, username, channels, online, favorite, uid } = props
+	const {
+		uid,
+		data: {
+			[FIRESTORE_SENSHI_SETTINGS_PROFILE_GENDER]: gender,
+			[FIRESTORE_SENSHI_SETTINGS_PROFILE_AVATAR]: avatar,
+			[FIRESTORE_SENSHI_SETTINGS_PROFILE_DISPLAY_NAME]: displayName,
+			[FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS]: channels,
+		},
+	} = props
+
+	const badges = useMemo(() => [gender], [gender])
+	const shortUid = useMemo(() => shorthash.unique(uid), [uid])
 
 	return (
 		<SectionStyled className={classnames('rounded-lg')}>
 			<Container>
-				<Row className='mb-3'>
-					<ColStyledBadges>
-						<BadgesPropedSenshi badges={badges} />
-					</ColStyledBadges>
-				</Row>
 				<Row>
 					<Col xs='12' lg='3'>
+						{badges.length > 0 && (
+							<Row className='mb-3'>
+								<ColStyledBadges>
+									<BadgesPropedSenshi badges={[gender]} />
+								</ColStyledBadges>
+							</Row>
+						)}
 						<Row className='flex-column'>
 							<Col align='center'>
 								<DivStyledImage>
 									<Image
-										alt={'picture of ' + username}
+										alt={'picture of ' + displayName}
 										color='transparent'
 										style={{ paddingTop: '0px', height: '100%' }}
 										className='img-center img-fluid rounded-circle'
@@ -46,21 +65,21 @@ const CardUserHorizontal = props => {
 								</DivStyledImage>
 							</Col>
 							<Col>
-								<StatusPropedOnline on={online} />
+								<StatusPropedOnline on={true} />
 							</Col>
 						</Row>
 					</Col>
 					<Col xs='12' lg='3'>
 						<RowStyledUsername className='flex-column'>
 							<Col>
-								<p className='text-white'>{username}</p>
+								<p className='text-white'>{displayName}</p>
 							</Col>
 							<Col>
-								<p className='text-white'>UID : {uid}</p>
+								<p className='text-white'>UID : {shortUid}</p>
 							</Col>
 							<Col>
 								<CheckBoxIconPropedTip />
-								<CheckBoxIconPropedFavorite checked={favorite} />
+								<CheckBoxIconPropedFavorite checked={true} uid={uid} />
 							</Col>
 						</RowStyledUsername>
 					</Col>

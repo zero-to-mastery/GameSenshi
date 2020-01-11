@@ -1,11 +1,11 @@
 import { simplerResponseHandling } from 'utils'
 import { auth, handleDifferentCredential } from 'firebaseInit'
-import { docSettingGeneralSet } from 'fireStored'
+import { docUserSettingGeneralSet } from 'fireStored'
 import {
 	FUNCTION_EMAIL,
 	FUNCTION_PASSWORD,
-	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
-	FIRESTORE_SETTINGS_GENERAL_LANGUAGES,
+	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
+	FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES,
 	UNEXPECTED_ERROR_CODE_5,
 	UNEXPECTED_ERROR_CODE_7,
 } from 'constantValues'
@@ -17,7 +17,7 @@ const handleSignUpWithEmailAndPassword = async (
 	const {
 		[FUNCTION_EMAIL]: email,
 		[FUNCTION_PASSWORD]: password,
-		[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
+		[FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
 	} = values
 	let credential = null
 	try {
@@ -41,9 +41,9 @@ const handleSignUpWithEmailAndPassword = async (
 	})
 
 	try {
-		await docSettingGeneralSet({
-			[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
-			[FIRESTORE_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
+		await docUserSettingGeneralSet({
+			[FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
+			[FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
 		})
 	} catch (err) {
 		return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_7, err)
@@ -59,5 +59,5 @@ export {
 	handleSignUpWithEmailAndPassword,
 	FUNCTION_EMAIL,
 	FUNCTION_PASSWORD,
-	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
+	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
 }

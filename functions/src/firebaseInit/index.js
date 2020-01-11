@@ -10,11 +10,11 @@ import {
 } from './core'
 
 import {
-	docSettingGeneralGet,
-	docSettingGeneralSet,
-	docSettingNotificationGet,
-	docSettingNotificationSet,
-	docSettingGeneralAvatarSet,
+	docUserSettingGeneralGet,
+	docUserSettingGeneralSet,
+	docUserSettingNotificationGet,
+	docUserSettingNotificationSet,
+	docUserSettingGeneralAvatarSet,
 } from './fireStored'
 
 export {
@@ -26,9 +26,9 @@ export {
 	APOLLO_ENGINE_API_KEY,
 	TWITCH_ID,
 	TWITCH_SECRET,
-	docSettingGeneralGet,
-	docSettingGeneralSet,
-	docSettingNotificationGet,
-	docSettingNotificationSet,
-	docSettingGeneralAvatarSet,
+	docUserSettingGeneralGet,
+	docUserSettingGeneralSet,
+	docUserSettingNotificationGet,
+	docUserSettingNotificationSet,
+	docUserSettingGeneralAvatarSet,
 }

@@ -28,13 +28,6 @@ const {
 	PageError404,
 } = stopUndefined(Exports)
 
-// fake data
-const channels = {
-	facebook: 'https://facebook.com',
-	twitch: 'https://twitch.com',
-	youtube: 'https://youtube.com',
-}
-const badges = ['female', 'verified', 'risingStar']
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
 
 const tabs = games.map((tab, index) => {
@@ -73,8 +66,7 @@ const PageProfile = props => {
 			}
 
 			if (doc && doc.exists) {
-				observer.current = docSenshiProfileOnSnapshot(
-					uid,
+				observer.current = docSenshiProfileOnSnapshot(uid)(
 					async docSnapshot => {
 						try {
 							const data = await docSnapshot.data()
@@ -136,18 +128,7 @@ const PageProfile = props => {
 						<Container>
 							<Row>
 								<Col>
-									<CardUserHorizontal
-										data={data}
-										username='Mike Scheinder'
-										avatar={require('assets/img/mike.jpg')}
-										channels={channels}
-										signature='Nice to meet you!'
-										badges={badges}
-										games={games}
-										online
-										uid={'123456'}
-										favorite
-									/>
+									<CardUserHorizontal data={data} uid={uid} />
 								</Col>
 							</Row>
 							<Row className='pt-5'>

@@ -45,11 +45,10 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 	}
 }
 
-const onAuthChange = docSettingGeneralOnSnapshot => {
+const onAuthChange = docUserSettingGeneralOnSnapshot => {
 	auth().onAuthStateChanged(userAuth => {
 		onAuthChanged(userAuth, (next, error) =>
-			docSettingGeneralOnSnapshot(
-				undefined,
+			docUserSettingGeneralOnSnapshot()(
 				{ includeMetadataChanges: true },
 				{ next, error }
 			)
