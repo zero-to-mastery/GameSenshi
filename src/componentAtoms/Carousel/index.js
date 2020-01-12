@@ -6,8 +6,6 @@ const CarouselPropedIndex = props => {
 	return (
 		<Carousel
 			showThumbnails={false}
-			showPlayButton={false}
-			showIndex={false}
 			autoPlay
 			aspectRatio={9 / 16}
 			items={itemsIndex}

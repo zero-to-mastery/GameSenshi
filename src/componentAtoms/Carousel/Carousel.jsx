@@ -115,6 +115,8 @@ const Carousel = props => {
 	return (
 		<ImageGallery
 			showFullscreenButton={false}
+			slideInterval={5000}
+			slideDuration={1000}
 			items={items_}
 			showIndex={showUI}
 			showBullets={showUI}
