@@ -46,7 +46,7 @@ const PageProfile = props => {
 	const [loading, setLoading] = useState(true)
 	const [exist, setExist] = useState(true)
 	const [data, setData] = useState(null)
-	const [genericError, setGenericError] = useState(false)
+	const [errorCode, setErrorCode] = useState(null)
 	const observer = useRef(() => {})
 
 	useEffect(() => {
@@ -66,18 +66,18 @@ const PageProfile = props => {
 						} else {
 							setExist(false)
 							setLoading(false)
-							setGenericError(false)
-							return storeModalSimpleError({}, UNEXPECTED_ERROR_CODE_15)
+							setErrorCode('404')
+							return
 						}
 					} catch (err) {
 						setExist(false)
-						setGenericError(true)
+						setErrorCode(true)
 						storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_17)
 					}
 				},
 				err => {
 					setExist(false)
-					setGenericError(true)
+					setErrorCode(true)
 					storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_16)
 				}
 			)
@@ -161,7 +161,7 @@ const PageProfile = props => {
 			)}
 		</WrapperStoreWrapperPropedProfile>
 	) : (
-		<PageError404 generic={genericError} />
+		<PageError404 code={errorCode} />
 	)
 }
 
