@@ -4,6 +4,7 @@ import 'react-image-gallery/styles/css/image-gallery.css'
 import ReactPlayer from 'react-player'
 import { ImageStyled } from './styled'
 import Image from 'material-ui-image'
+import styles from './styles.module.css'
 
 import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_YOUTUBE,
@@ -65,6 +66,7 @@ const Carousel = props => {
 					return <ImgThumb onClick={onImageClick} />
 				}
 				return {
+					originalClass: styles['bg-transparent'],
 					[RENDER_ITEM]: Img,
 					[RENDER_THUMB_INNER]: ImgThumb,
 				}
