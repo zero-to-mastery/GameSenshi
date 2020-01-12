@@ -5,7 +5,7 @@ import { Exports } from 'componentAtoms'
 const { WrapperStoreWrapperPropedError } = stopUndefined(Exports)
 
 const PageError404 = props => {
-	const { generic } = props
+	const { code } = props
 	return (
 		<WrapperStoreWrapperPropedError>
 			<div className='page-header error-page header-filter'>
@@ -19,14 +19,14 @@ const PageError404 = props => {
 				<Container>
 					<Row>
 						<Col md='12'>
-							<h1 className='title'>404</h1>
-							{generic ? (
+							{code === '404' ? (
 								<>
 									<h2 className='description'>Something went wrong :(</h2>
 									<h4 className='description'>Please try again later.</h4>
 								</>
 							) : (
 								<>
+									<h1 className='title'>404</h1>
 									<h2 className='description'>Page not found :(</h2>
 									<h4 className='description'>
 										Ooooups! Looks like you got lost.
