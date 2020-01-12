@@ -2,8 +2,9 @@ import React from 'react'
 import { Container } from 'unstated'
 import Interweave from 'interweave'
 import reactElementToJSXString from 'react-element-to-jsx-string'
-
+import { simplerErrorMessage } from 'utils'
 import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
+import { UNEXPECTED_ERROR_CODE_14 } from 'constantValues'
 
 const STORE_MODAL = 'Modal'
 const STORE_MODAL_STATE_BODY = 'body'
@@ -21,6 +22,11 @@ const REMOVE_ITEM = 'removeItem'
 const ON_AUTH_STATE_CHANGE = 'onAuthStateChange'
 const PROCESS_REDIRECT_RESULT = 'processRedirectResult'
 const ON_CONTINUE = 'onSuccessfulSubmission'
+const CLEAR = 'clear'
+const SIMPLE_ERROR = 'simpleError'
+const TIMEOUT_ID = 'timeOutID'
+const REDIRECT_URL = 'redirectURL'
+const GET_REDIRECT_URL = 'getRedirectUrl'
 
 const defaultValues = () => ({
 	[STORE_MODAL_STATE_BODY]: '',
@@ -35,6 +41,8 @@ class StoreModal extends Container {
 		super()
 		this[STATE] = defaultValues()
 		this[SET_STATE] = this[SET_STATE].bind(this)
+		this[TIMEOUT_ID] = -1
+		this[REDIRECT_URL] = window.location.href
 	}
 
 	[TOGGLE] = () => {
@@ -51,6 +59,7 @@ class StoreModal extends Container {
 	};
 
 	[CLOSE] = () => {
+		clearTimeout(this[TIMEOUT_ID])
 		this[SET_STATE]({ [STORE_MODAL_STATE_IS_OPEN]: false })
 		return this
 	};
@@ -70,15 +79,44 @@ class StoreModal extends Container {
 		return this
 	};
 
-	[SET_ITEM] = (title = '', body = '', restProps = {}) => {
+	[CLEAR] = () => {
+		this[REMOVE_ITEM]()
+		this[CLOSE]()
+		return this
+	};
+
+	[GET_REDIRECT_URL] = () => {
+		return this[REDIRECT_URL]
+	};
+
+	[SET_ITEM] = (title = '', body = '', items = {}) => {
 		sessionStorage.setItem(
 			STORE_MODAL,
 			JSON.stringify({
-				...restProps,
+				...items,
 				[STORE_MODAL_STATE_BODY]: body,
 				[STORE_MODAL_STATE_TITLE]: title,
 			})
 		)
+		return this
+	};
+
+	[INITIALIZE] = (callback = () => {}) => {
+		const item = this[GET_ITEM]()
+		if (item) {
+			callback(item)
+			const {
+				[STORE_MODAL_STATE_TITLE]: title,
+				[STORE_MODAL_STATE_BODY]: body,
+			} = item
+			if (body && title) {
+				this[SHOW](
+					<Interweave content={item[STORE_MODAL_STATE_TITLE]} />,
+					<Interweave content={item[STORE_MODAL_STATE_BODY]} />,
+					true
+				)
+			}
+		}
 		return this
 	};
 
@@ -88,30 +126,22 @@ class StoreModal extends Container {
 		loader = false,
 		afterContinueCallback = () => {}
 	) => {
-		this[SET_STATE]({
-			[STORE_MODAL_STATE_IS_OPEN]: true,
-			[STORE_MODAL_STATE_BODY]: body,
-			[STORE_MODAL_STATE_TITLE]: title,
-			[STORE_MODAL_STATE_LOADER]: loader,
-			[STORE_MODAL_STATE_CONTINUED_CALLBACK]: afterContinueCallback,
-		})
-		return this
-	};
-
-	[INITIALIZE] = () => {
-		const item = this[GET_ITEM]()
-		if (item) {
+		this[CLOSE]()
+		setTimeout(() => {
+			// clearTimeout(this[TIMEOUT_ID])
 			this[SET_STATE]({
-				[STORE_MODAL_STATE_BODY]: (
-					<Interweave content={item[STORE_MODAL_STATE_BODY]} />
-				),
 				[STORE_MODAL_STATE_IS_OPEN]: true,
-				[STORE_MODAL_STATE_TITLE]: (
-					<Interweave content={item[STORE_MODAL_STATE_TITLE]} />
-				),
-				[STORE_MODAL_STATE_LOADER]: true,
+				[STORE_MODAL_STATE_BODY]: body,
+				[STORE_MODAL_STATE_TITLE]: title,
+				[STORE_MODAL_STATE_LOADER]: loader,
+				[STORE_MODAL_STATE_CONTINUED_CALLBACK]: afterContinueCallback,
 			})
-		}
+			if (loader) {
+				this[TIMEOUT_ID] = setTimeout(() => {
+					this[SIMPLE_ERROR]({}, UNEXPECTED_ERROR_CODE_14)
+				}, 15000)
+			}
+		}, 150)
 		return this
 	};
 
@@ -121,42 +151,53 @@ class StoreModal extends Container {
 		return this
 	};
 
-	[PROCESS_REDIRECT_RESULT] = (
-		LinkedCallBack = () => {},
-		linkingCallBack = () => {}
+	[SIMPLE_ERROR] = (err = {}, defaultErrorMessage = ['']) => {
+		this[SHOW](
+			<span className='text-danger'>Error</span>,
+			<>
+				{simplerErrorMessage(err, defaultErrorMessage)}.
+				<br />
+				{`Code: ${defaultErrorMessage[0]}`}
+			</>,
+			false
+		)
+
+		this[REMOVE_ITEM]()
+
+		return this
+	};
+
+	[PROCESS_REDIRECT_RESULT] = async (
+		linkingCallBack = () => {},
+		linkedCallback = () => {}
 	) => {
 		const item = this[GET_ITEM]()
-		const {
-			name1,
-			name2,
-			isLinked,
-			provider2,
-			//credential,
-		} = item
-		if (isLinked) {
-			LinkedCallBack(name2)
-			this[REMOVE_ITEM]()
-		} else if (item) {
-			// show modal on link redirect
-			const JSXString = reactElementToJSXString(
-				<span>
-					Please wait while we linking your
-					<b> {name2} </b>
-					account to your<b> {name1} </b>account.
-				</span>
-			)
-			const restProps = {
-				...item,
-				isLinked: true,
+		if (item) {
+			const { name1, name2, isLinked, provider2, linking, credential } = item
+			if (linking) {
+				// show modal on link redirect
+				const JSXString = reactElementToJSXString(
+					<span>
+						Please wait while we linking your
+						<b> {name2} </b>
+						account to your<b> {name1} </b>account.
+					</span>
+				)
+				const restProps = {
+					...item,
+					isLinked: true,
+					linking: false,
+				}
+				this[SET_ITEM]('Linking...', JSXString, restProps)
+				linkingCallBack(provider2, credential)
+			} else if (isLinked) {
+				linkedCallback()
+				this[REMOVE_ITEM]()
+			} else {
+				this[CLEAR]()
 			}
-			this[SET_ITEM]('Linking...', JSXString, restProps)
-			// if (provider2 === 'password') {
-			// TODO allow user to create password account and link to existing social account
-			// } else {
-			linkingCallBack(provider2)
-			//}
+			return this
 		}
-		return this
 	}
 }
 
@@ -179,4 +220,7 @@ export {
 	ON_CONTINUE,
 	SET_STATE,
 	RESET_STATE,
+	CLEAR,
+	SIMPLE_ERROR,
+	GET_REDIRECT_URL,
 }

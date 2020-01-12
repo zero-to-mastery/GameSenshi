@@ -1,12 +1,11 @@
 // https://firebase.google.com/docs/functions/write-firebase-functions
-//import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
+import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
 
 import {
-	onUserCreation,
 	functions,
-	corsWhitelist,
-	playgroundEnabled,
-	apolloEngineApiKey,
+	CORS_WHITE_LIST,
+	PLAYGROUND_ENABLED,
+	APOLLO_ENGINE_API_KEY,
 } from 'firebaseInit'
 
 import cors from 'cors'
@@ -16,14 +15,14 @@ import express from 'express'
 
 import { typeDefs, resolvers } from 'resolvers'
 
-import { API_SIGN_UP_TWITCH } from 'constantValues'
-import { signUpTwitch } from 'endpoints'
+import { FUNCTION_SIGN_IN_TWITCH } from 'constantValues'
+import { onSignInTwitch, onCreateUser } from 'functions'
 
 const app = express()
 
 app.use(
 	cors({
-		origin: corsWhitelist.split(','),
+		origin: CORS_WHITE_LIST.split(','),
 		credentials: true,
 	})
 )
@@ -31,8 +30,8 @@ app.use(
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	introspection: playgroundEnabled, //https://github.com/apollographql/apollo-server/issues/1112
-	playground: playgroundEnabled,
+	introspection: PLAYGROUND_ENABLED, //https://github.com/apollographql/apollo-server/issues/1112
+	playground: PLAYGROUND_ENABLED === 'true',
 	persistedQueries: {
 		//https://www.apollographql.com/docs/apollo-server/whats-new/#automatic-persisted-queries
 		cache: new MemcachedCache(
@@ -42,7 +41,7 @@ const server = new ApolloServer({
 	},
 	engine: {
 		//https://www.apollographql.com/docs/apollo-server/whats-new/#performance-monitoring
-		apiKey: apolloEngineApiKey,
+		apiKey: APOLLO_ENGINE_API_KEY,
 	},
 	onHealthCheck: () =>
 		//https://www.apollographql.com/docs/apollo-server/whats-new/#health-checks
@@ -59,7 +58,7 @@ server.applyMiddleware({
 // unable to use property accessor in es6 non export, revert to es5 exports statement
 // es5 export also have clearner name
 module.exports = {
-	endpoint: functions.https.onRequest(app),
-	onUserCreation,
-	[API_SIGN_UP_TWITCH]: functions.https.onCall(signUpTwitch),
+	api: functions.https.onRequest(app),
+	onCreateUser,
+	[FUNCTION_SIGN_IN_TWITCH]: functions.https.onCall(onSignInTwitch),
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { FinalTextEmail, FINAL_TEXT_EMAIL } from './FinalTextEmail'
 // api
-import { handleIsEmailNotExist, handleIsPasswordResetAble } from 'api'
+import { handleIsEmailAccountNotExist, handleIsPasswordResetAble } from 'api'
 // validation
 import {
 	signUpEmailValidation,
@@ -17,7 +17,7 @@ const FinalTextEmailPropedSignUp = props => {
 	return (
 		<FinalTextEmail
 			validation={signUpEmailValidation}
-			serverValidation={handleIsEmailNotExist}
+			serverValidation={handleIsEmailAccountNotExist}
 			{...props}
 		/>
 	)

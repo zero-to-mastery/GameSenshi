@@ -5,25 +5,9 @@ import { stopUndefined } from 'utils'
 const { Button } = stopUndefined(Exports)
 
 const ButtonSubmit = props => {
-	const {
-		submitRef,
-		className,
-		color,
-		size,
-		submitting,
-		onClick,
-		children,
-		block,
-	} = props
+	const { submitting, children, ...otherProps } = props
 	return (
-		<Button
-			ref={submitRef}
-			block={block}
-			className={className}
-			color={color}
-			size={size}
-			onClick={onClick}
-		>
+		<Button {...otherProps}>
 			{submitting ? (
 				<>
 					<Loader type='Watch' color='#00BFFF' height='19px' width='19px' />

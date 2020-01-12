@@ -37,5 +37,6 @@
 	"tasks": {
 		"title": "Trello Tasks",
 		"desc": "We use Trello to manage the tasks within this project, [here](https://trello.com/invite/b/tAyH3oig/a5374e9eaa1bbe644f3e7367d1e23300/game-senshi) is your invitation. Further information on how to use Trello and claim a task can be found in the [CONTRIBUTING.md](https://github.com/zero-to-mastery/GameSenshi/blob/master/CONTRIBUTING.md) file on Github."
-	}
+	},
+	"welcomeMsg":"Please take a moment to read through the pinned messages. Here you will find important notes and how to get stated with the project!"
 }

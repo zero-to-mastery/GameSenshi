@@ -11,16 +11,14 @@ const BUTTONS_COMMON_COLOR = 'color'
 const BUTTONS_COMMON_TOOLTIP = 'tooltip'
 const BUTTONS_COMMON_HREF = 'href'
 const BUTTONS_COMMON_LABEL = 'label'
-const BUTTONS_COMMON_CLASS = 'class'
 const BUTTONS_COMMON_TO = 'to'
-const BUTTONS_COMMON_BASE_CLASS = 'baseClass'
 
 const ButtonsCommon = props => {
-	const { onClick, buttons, className, col } = props
+	const { onClick, buttons, className, col, baseClass, rowClass } = props
 
 	const EnclosureCol = col ? Col : Fragment
 	return (
-		<Row className={classnames('justify-content-center', className)}>
+		<Row className={classnames('justify-content-center', rowClass)}>
 			{buttons.map(button => {
 				const {
 					[BUTTONS_COMMON_ID]: id,
@@ -30,8 +28,6 @@ const ButtonsCommon = props => {
 					[BUTTONS_COMMON_HREF]: href,
 					[BUTTONS_COMMON_TO]: to,
 					[BUTTONS_COMMON_LABEL]: label,
-					[BUTTONS_COMMON_CLASS]: class_,
-					[BUTTONS_COMMON_BASE_CLASS]: baseClass,
 				} = button
 
 				const onClick_ = useCallback(
@@ -41,13 +37,12 @@ const ButtonsCommon = props => {
 					[onClick, button]
 				)
 				const id_ = 'ButtonsCommon' + id
-
 				return (
 					<EnclosureCol key={id_}>
 						<Button
 							size='lg'
 							baseClass={baseClass}
-							className={class_}
+							className={className || 'btn-icon btn-round'}
 							color={color}
 							id={id_}
 							{...(to && { tag: Link, to })} // visit other page
@@ -79,7 +74,5 @@ export {
 	BUTTONS_COMMON_TOOLTIP,
 	BUTTONS_COMMON_HREF,
 	BUTTONS_COMMON_LABEL,
-	BUTTONS_COMMON_CLASS,
 	BUTTONS_COMMON_TO,
-	BUTTONS_COMMON_BASE_CLASS,
 }

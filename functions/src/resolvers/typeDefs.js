@@ -1,14 +1,14 @@
 import { gql } from 'apollo-server-express'
 import {
-	API_SIGN_UP,
-	API_SIGN_UP_EMAIL,
-	API_SIGN_UP_PASSWORD,
-	API_SIGN_UP_DISPLAY_NAME,
-	API_SIGN_UP_INPUT,
-	API_CODE,
-	API_DATA,
-	API_STATUS,
-	API_MESSAGE,
+	FUNCTION_SIGN_IN,
+	FUNCTION_EMAIL,
+	FUNCTION_PASSWORD,
+	FUNCTION_DISPLAY_NAME,
+	FUNCTION_INPUT,
+	FUNCTION_CODE,
+	FUNCTION_DATA,
+	FUNCTION_STATUS,
+	FUNCTION_MESSAGE,
 } from 'constantValues'
 
 const typeDefs = gql`
@@ -17,32 +17,32 @@ const typeDefs = gql`
   }
 
 	type Mutation {
-		${API_SIGN_UP}(${API_DATA}: ${API_SIGN_UP_INPUT}!): SignUpRespond!
+		${FUNCTION_SIGN_IN}(${FUNCTION_DATA}: ${FUNCTION_INPUT}!): SignUpRespond!
   }
   
-  input ${API_SIGN_UP_INPUT}{
-    ${API_SIGN_UP_DISPLAY_NAME}:String!
-    ${API_SIGN_UP_EMAIL}:String!
-    ${API_SIGN_UP_PASSWORD}:String!
+  input ${FUNCTION_INPUT}{
+    ${FUNCTION_DISPLAY_NAME}:String!
+    ${FUNCTION_EMAIL}:String!
+    ${FUNCTION_PASSWORD}:String!
   }
 
   interface Respond{
-    ${API_STATUS}:Boolean!
-    ${API_CODE}: String!
-    ${API_MESSAGE}: String!
+    ${FUNCTION_STATUS}:Boolean!
+    ${FUNCTION_CODE}: String!
+    ${FUNCTION_MESSAGE}: String!
   }
 
   type SignUpData {
-    ${API_SIGN_UP_DISPLAY_NAME}:[String]
-    ${API_SIGN_UP_EMAIL}:[String]
-    ${API_SIGN_UP_PASSWORD}:[String]
+    ${FUNCTION_DISPLAY_NAME}:[String]
+    ${FUNCTION_EMAIL}:[String]
+    ${FUNCTION_PASSWORD}:[String]
   }
 
   type SignUpRespond implements Respond{
-    ${API_STATUS}:Boolean!
-    ${API_CODE}: String!
-    ${API_MESSAGE}: String!
-    ${API_DATA}: SignUpData!
+    ${FUNCTION_STATUS}:Boolean!
+    ${FUNCTION_CODE}: String!
+    ${FUNCTION_MESSAGE}: String!
+    ${FUNCTION_DATA}: SignUpData!
   }
 `
 

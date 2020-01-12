@@ -5,7 +5,7 @@ import classnames from 'classnames'
 // core components
 import { Exports } from 'componentAtoms'
 
-const { TextAlert, PopoverCommon } = stopUndefined(Exports)
+const { TextAlert, Popover } = stopUndefined(Exports)
 
 const DELAY = 1
 const DELAY2 = 1000
@@ -283,7 +283,7 @@ const FinalInput = memo(props => {
 							/>
 						</Component>
 						{popoverMessages_.length > 0 && (
-							<PopoverCommon
+							<Popover
 								isOpen={active}
 								target={name}
 								spinner={spinner}
@@ -309,7 +309,7 @@ const FinalInput = memo(props => {
 										)
 									})}
 								</ul>
-							</PopoverCommon>
+							</Popover>
 						)}
 					</>
 				)

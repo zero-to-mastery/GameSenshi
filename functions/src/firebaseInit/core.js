@@ -10,27 +10,28 @@ import {
 	ENV_TWITCH_SECRET,
 } from 'constantValues'
 
-admin.initializeApp(functions.config().firebase)
+admin.initializeApp()
 
 const env = functions.config()[ENV]
-const firestore = new admin.firestore.Firestore()
+const auth = admin.auth
+const fireStored = new admin.firestore.Firestore()
 let getServerTimestamp = admin.firestore.FieldValue.serverTimestamp
 const {
-	[ENV_CORS_WHITELIST]: corsWhitelist,
-	[ENV_ENABLE_PLAYGROUND]: playgroundEnabled,
-	[ENV_APOLLO_ENGINE_API_KEY]: apolloEngineApiKey,
-	[ENV_TWITCH_ID]: twitchID,
-	[ENV_TWITCH_SECRET]: twitchSecret,
+	[ENV_CORS_WHITELIST]: CORS_WHITE_LIST,
+	[ENV_ENABLE_PLAYGROUND]: PLAYGROUND_ENABLED,
+	[ENV_APOLLO_ENGINE_API_KEY]: APOLLO_ENGINE_API_KEY,
+	[ENV_TWITCH_ID]: TWITCH_ID,
+	[ENV_TWITCH_SECRET]: TWITCH_SECRET,
 } = env
 
 export {
-	admin,
+	auth,
 	functions,
-	corsWhitelist,
-	playgroundEnabled,
-	apolloEngineApiKey,
+	CORS_WHITE_LIST,
+	PLAYGROUND_ENABLED,
+	APOLLO_ENGINE_API_KEY,
 	getServerTimestamp,
-	firestore,
-	twitchID,
-	twitchSecret,
+	fireStored,
+	TWITCH_ID,
+	TWITCH_SECRET,
 }

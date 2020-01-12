@@ -16,7 +16,11 @@ const handleSignInWithEmailAndPassword = async (email, password) => {
 				case 'auth/user-disabled':
 				case 'auth/user-not-found':
 				case 'auth/wrong-password':
-					return simplerResponseHandling(false, 'Invalid Email or Password')
+					return simplerResponseHandling(
+						false,
+						'Invalid Email or Password',
+						err
+					)
 				default:
 					return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_4, err)
 			}

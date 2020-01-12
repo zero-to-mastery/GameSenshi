@@ -17,6 +17,9 @@ import {
 	ON_CONTINUE,
 	SET_STATE,
 	RESET_STATE,
+	CLEAR,
+	SIMPLE_ERROR,
+	GET_REDIRECT_URL,
 } from './StoreModal'
 
 const storeModal = new StoreModal()
@@ -28,10 +31,13 @@ const storeModalSetItem = storeModal[SET_ITEM]
 const storeModalInitialize = storeModal[INITIALIZE]
 const storeModalRemoveItem = storeModal[REMOVE_ITEM]
 const storeModalOnAuthStateChange = storeModal[ON_AUTH_STATE_CHANGE]
-const storeModalProcessRedirectResult = storeModal[PROCESS_REDIRECT_RESULT]
+const storeModalProcessLinking = storeModal[PROCESS_REDIRECT_RESULT]
 const storeModalOnContinue = storeModal[ON_CONTINUE]
 const storeModalSetState = storeModal[SET_STATE]
 const storeModalResetState = storeModal[RESET_STATE]
+const storeModalClear = storeModal[CLEAR]
+const storeModalSimpleError = storeModal[SIMPLE_ERROR]
+const storeModalGetRedirectUrl = storeModal[GET_REDIRECT_URL]
 
 export {
 	storeModal,
@@ -43,10 +49,13 @@ export {
 	storeModalInitialize,
 	storeModalRemoveItem,
 	storeModalOnAuthStateChange,
-	storeModalProcessRedirectResult,
+	storeModalProcessLinking,
 	storeModalOnContinue,
 	storeModalSetState,
 	storeModalResetState,
+	storeModalClear,
+	storeModalSimpleError,
+	storeModalGetRedirectUrl,
 	STORE_MODAL_STATE_BODY,
 	STORE_MODAL_STATE_IS_OPEN,
 	STORE_MODAL_STATE_TITLE,

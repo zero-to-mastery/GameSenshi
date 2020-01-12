@@ -10,7 +10,7 @@ import {
 import { stopUndefined } from 'utils'
 import { Exports } from 'componentAtoms'
 
-const { UncontrolledTooltip, ModalCommonPropedProfile } = stopUndefined(Exports)
+const { UncontrolledTooltip, Modal } = stopUndefined(Exports)
 
 const CARD_GIFT_IMAGE = 'image'
 const CARD_GIFT_TOOLTIP = 'tooltip'
@@ -20,7 +20,7 @@ const CardGift = props => {
 	const [modalId, setModalId] = useState('')
 	const { icons } = props
 
-	const onContinue = useCallback(e => { }, [])
+	const onContinue = useCallback(e => {}, [])
 
 	const toggleModal = useCallback(
 		(e, id) => {
@@ -58,7 +58,7 @@ const CardGift = props => {
 							</Fragment>
 						)
 					})}
-					<ModalCommonPropedProfile
+					<Modal
 						title='You have selected a gift'
 						isOpen={isOpen}
 						toggle={toggleModal}
@@ -72,7 +72,7 @@ const CardGift = props => {
 							Icon with : {modalId}
 							<Input label='No of gifts' placeholder='Select number of gifts' />
 						</ModalBodyWrapper>
-					</ModalCommonPropedProfile>
+					</Modal>
 				</GridContainer>
 			</GradientContainer>
 		</Col>

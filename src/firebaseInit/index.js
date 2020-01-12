@@ -1,4 +1,4 @@
-import { onAuthChanged } from './onAuthChanged'
+import { onAuthChange } from './onAuthChange'
 import { getRedirectResult } from './getRedirectResult'
 import { auth } from './core'
 import {
@@ -6,34 +6,16 @@ import {
 	storageUserAvatarSet,
 	storageUserAvatarRemove,
 } from './storage'
-import {
-	docGeneralSettingGet,
-	docGeneralSettingSet,
-	docGeneralSettingOnSnapshot,
-	docNotificationSettingGet,
-	docNotificationSettingSet,
-} from './firestore'
-
-// user auth listener
-auth().onAuthStateChanged(userAuth => {
-	onAuthChanged(userAuth, (next, error) =>
-		docGeneralSettingOnSnapshot(
-			{ includeMetadataChanges: true },
-			{ next, error }
-		)
-	)
-})
-
-// listener to get back sign in token from federated identity provider
-getRedirectResult()
+import { functSignInTwicth } from './cloudFunct'
+import { handleDifferentCredential } from './handleDifferentCredential'
 
 export {
 	auth,
-	docGeneralSettingGet,
-	docGeneralSettingSet,
-	docNotificationSettingGet,
-	docNotificationSettingSet,
 	storageUserAvatarGet,
 	storageUserAvatarSet,
 	storageUserAvatarRemove,
+	getRedirectResult,
+	onAuthChange,
+	functSignInTwicth,
+	handleDifferentCredential,
 }

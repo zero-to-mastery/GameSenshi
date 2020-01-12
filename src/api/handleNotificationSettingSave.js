@@ -1,7 +1,7 @@
-import { docNotificationSettingSet } from 'firebaseInit'
+import { docSettingNotificationSet } from 'fireStored'
 
 const handleNotificationSettingSave = data => {
-	return docNotificationSettingSet(data)
+	return docSettingNotificationSet(data)
 }
 
 export { handleNotificationSettingSave }

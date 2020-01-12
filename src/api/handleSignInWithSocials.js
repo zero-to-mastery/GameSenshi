@@ -1,7 +1,13 @@
 import { auth } from 'firebaseInit'
-import { API_GOOGLE, API_FACEBOOK, API_TWITCH } from 'constantValues'
-const providerGoogle = new auth.GoogleAuthProvider()
-const providerFacebook = new auth.FacebookAuthProvider()
+import {
+	AUTH_GOOGLE,
+	AUTH_FACEBOOK,
+	AUTH_TWITCH,
+	ENV_VALUE_TWITCH_OAUTH_LINK,
+} from 'constantValues'
+
+const providerGoogle = new auth.GoogleAuthProvider().addScope('email')
+const providerFacebook = new auth.FacebookAuthProvider().addScope('email')
 
 const NAME = 'name'
 const AUTH = 'auth'
@@ -12,16 +18,19 @@ const providerCreator = (name, auth) => ({
 })
 
 const providers = [
-	providerCreator(API_GOOGLE, providerGoogle),
-	providerCreator(API_FACEBOOK, providerFacebook),
+	providerCreator(AUTH_GOOGLE, providerGoogle),
+	providerCreator(AUTH_FACEBOOK, providerFacebook),
 ]
 
 const handleSignInWithSocials = providers.reduce((acc, provider) => {
-	acc[provider[NAME]] = provider => onFailure =>
-		auth()
-			.signInWithRedirect(provider)
-			.catch(onFailure)
+	acc[provider[NAME]] = () => {
+		return auth().signInWithRedirect(provider[AUTH])
+	}
 	return acc
 }, {})
+
+handleSignInWithSocials[AUTH_TWITCH] = async () => {
+	return (window.location = ENV_VALUE_TWITCH_OAUTH_LINK)
+}
 
 export { handleSignInWithSocials }

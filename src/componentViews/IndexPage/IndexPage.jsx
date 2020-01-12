@@ -7,7 +7,7 @@ import { TabDiscover } from './TabDiscover'
 const {
 	CardUserPropedDiscover,
 	ButtonsImagePropedIndex,
-	CarouselCommonPropedIndex,
+	CarouselPropedIndex,
 	Section,
 	WrapperStoreWrapperPropedIndex,
 	TextIconPropedPopularPlayer,
@@ -91,7 +91,7 @@ const IndexPage = () => {
 				<Container className='pt-3'>
 					<Row>
 						<Col>
-							<CarouselCommonPropedIndex />
+							<CarouselPropedIndex />
 						</Col>
 					</Row>
 					<Row>

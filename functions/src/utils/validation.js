@@ -1,10 +1,8 @@
 // in future this should turn into npm library so that backend can use the same code
 
 import { string, boolean, object } from 'yup'
-
-// filter
-import { badWords } from 'utils/badWords'
-import { reservedUsernames } from 'utils/reservedUsername'
+import { badWords } from './badWords'
+import { reservedUsernames } from './reservedUsername'
 
 const forbiddenName = [...badWords, ...reservedUsernames]
 

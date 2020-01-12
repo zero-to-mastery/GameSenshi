@@ -28,8 +28,15 @@ const ButtonsCommonPropedAuth = withLastLocation(props => {
 	)
 })
 
-const ButtonsCommonChatAndCheckout = () => {
-	return <ButtonsCommonOptioned buttons={buttonsCommonChatAndCheckout} />
+const ButtonsCommonChatAndCheckout = props => {
+	return (
+		<ButtonsCommonOptioned
+			buttons={buttonsCommonChatAndCheckout}
+			className='w-100'
+			baseClass='w-100'
+			{...props}
+		/>
+	)
 }
 
 export {

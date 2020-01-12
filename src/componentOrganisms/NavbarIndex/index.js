@@ -6,7 +6,7 @@ import { stopUndefined } from 'utils'
 import { storeWrapperSetOffsetTop } from 'state'
 import { Exports } from 'componentnCompounds'
 
-const { AlertCommonStoreAlert } = stopUndefined(Exports)
+const { AlertStoreAlert } = stopUndefined(Exports)
 
 const mapStoreAlertStateToProp = {
 	[NAVBAR_COLORED]: STORE_ALERT_STATE_IS_OPEN,
@@ -26,7 +26,7 @@ const NavbarIndexStoreAlertPropApp = props => {
 	return (
 		<NavbarIndexStoreAlert {...props}>
 			<ReactResizeDetector handleHeight onResize={onResize} />
-			<AlertCommonStoreAlert />
+			<AlertStoreAlert />
 		</NavbarIndexStoreAlert>
 	)
 }

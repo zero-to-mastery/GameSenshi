@@ -14,6 +14,8 @@
 # environments
 .config/dev.env
 .config/prod.env
+.config/devLocal.env
+.config/prodLocal.env
 .config.zip
 
 # cache

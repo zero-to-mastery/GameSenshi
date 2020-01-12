@@ -1,55 +1,110 @@
-import React from 'react'
-// states
 import {
-	storeAlertShow,
+	storeModalProcessLinking,
+	storeModalClear,
+	storeModalSimpleError,
 	storeModalRemoveItem,
-	storeModalProcessRedirectResult,
-	storeModalShow,
-	storeUserSetSigningIn,
-	storeModalClose,
+	storeModalGetRedirectUrl,
 } from 'state'
-
-import { handleDifferentCredential } from 'firebaseInit/handleDifferentCredential'
-import { simplerErrorMessage } from 'utils'
-import { UNEXPECTED_ERROR_CODE_6 } from 'constantValues'
+import {
+	handleDifferentCredential,
+	linkedThen,
+} from 'firebaseInit/handleDifferentCredential'
 import { auth } from 'firebaseInit/core'
+import {
+	UNEXPECTED_ERROR_CODE_6,
+	UNEXPECTED_ERROR_CODE_8,
+	UNEXPECTED_ERROR_CODE_9,
+	UNEXPECTED_ERROR_CODE_10,
+	UNEXPECTED_ERROR_CODE_12,
+	FUNCTION_OAUTH_CODE,
+	FUNCTION_REDIRECT_URI,
+	ENV_VALUE_TWITCH_REDIRECT,
+	FUNCTION_CUSTOM_TOKEN,
+} from 'constantValues'
+import { functSignInTwicth } from 'firebaseInit/cloudFunct'
 
-const getRedirectResult = () =>
-	auth()
-		.getRedirectResult()
-		.then(result => {
-			const { user } = result
-			// need this condition because this part run when webpage start
-			if (user) {
-				storeUserSetSigningIn(true)
-				// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
-				const showAlert = name2 => {
-					storeAlertShow(
-						<span>
-							Successfully linked your <strong>{name2}</strong> account!
-						</span>,
-						'success',
-						'tim-icons icon-bell-55'
-					)
-				}
-				const linkWithRedirect = provider2 => {
-					user.linkWithRedirect(new auth[provider2]())
-				}
-				storeModalProcessRedirectResult(showAlert, linkWithRedirect)
-			} else {
-				storeModalRemoveItem()
-				storeModalClose()
-			}
-		})
-		.catch(err => {
+// ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
+const linkWithRedirect = (provider2, credential) => {
+	if (provider2 === 'password') {
+		return auth()
+			.currentUser.linkWithCredential(auth.AuthCredential.fromJSON(credential))
+			.then(() => {
+				linkedThen()
+			})
+			.catch(err => {
+				storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_12)
+			})
+	} else {
+		return auth()
+			.currentUser.linkWithRedirect(new auth[provider2]())
+			.catch(err => {
+				storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_8)
+			})
+	}
+}
+
+const getRedirectResult = async () => {
+	let result = null
+	try {
+		result = await auth().getRedirectResult() // redirect run when website start
+	} catch (err) {
+		const { code, credential, email } = err
+		if (
+			code &&
+			code.includes('auth/account-exists-with-different-credential')
+		) {
+			handleDifferentCredential(email, credential)
+		} else {
+			console.log(err)
 			storeModalRemoveItem()
-			const { code, credential, email } = err
-			if (code === 'auth/account-exists-with-different-credential') {
-				handleDifferentCredential(auth, email, credential)
-			} else {
-				const body = simplerErrorMessage(false, UNEXPECTED_ERROR_CODE_6, err)
-				storeModalShow('Error', body, false)
+			storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_6)
+		}
+		return
+	}
+
+	const { user } = result
+	if (user) {
+		storeModalProcessLinking(linkWithRedirect, linkedThen)
+	} else {
+		const redirectUrl = storeModalGetRedirectUrl()
+		if (redirectUrl) {
+			const searchParams = new URLSearchParams(redirectUrl)
+			let oauthCode = null
+			for (let p of searchParams) {
+				if (p[0].includes('code')) {
+					oauthCode = p[1]
+				}
 			}
-		})
+			if (oauthCode) {
+				let customTokenData = null
+				try {
+					customTokenData = await functSignInTwicth({
+						[FUNCTION_OAUTH_CODE]: oauthCode,
+						[FUNCTION_REDIRECT_URI]: ENV_VALUE_TWITCH_REDIRECT,
+					})
+				} catch (err) {
+					console.log(err)
+					storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_9)
+				}
+
+				if (customTokenData) {
+					try {
+						await auth().signInWithCustomToken(
+							customTokenData.data[FUNCTION_CUSTOM_TOKEN]
+						)
+					} catch (err) {
+						console.log(err)
+						return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_10)
+					}
+					storeModalProcessLinking(linkWithRedirect, linkedThen)
+				}
+			} else {
+				storeModalClear()
+			}
+		} else {
+			storeModalClear()
+		}
+	}
+}
 
 export { getRedirectResult }

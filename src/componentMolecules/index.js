@@ -20,6 +20,7 @@ import {
 	COMMENT_NUM_COMMENTS,
 } from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
+import { CarouselLightBoxPropedProfile } from './CarouselLightBox'
 
 export const Exports = {
 	...ExportAtoms,
@@ -45,4 +46,5 @@ export const Exports = {
 	COMMENT_BODY,
 	COMMENT_NUM_COMMENTS,
 	PaginationCommonPropedDefault,
+	CarouselLightBoxPropedProfile,
 }

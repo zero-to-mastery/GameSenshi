@@ -1,33 +1,25 @@
 import {
 	handleSignUpWithEmailAndPassword,
-	API_SIGN_UP_EMAIL,
-	API_SIGN_UP_PASSWORD,
+	FUNCTION_EMAIL,
+	FUNCTION_PASSWORD,
 } from './handleSignUpWithEmailAndPassword'
-import { handleIsEmailNotExist } from './handleIsEmailNotExist'
+import { handleIsEmailAccountNotExist } from './handleIsEmailAccountNotExist'
 import { handleIsPasswordResetAble } from './handleIsPasswordResetAble'
 import { handleSignInWithEmailAndPassword } from './handleSignInWithEmailAndPassword'
 import { handleSignInWithSocials } from './handleSignInWithSocials'
 import { handlePasswordReset } from './handlePasswordReset'
 import { handleNotificationSettingLoad } from './handleNotificationSettingLoad'
 import { handleNotificationSettingSave } from './handleNotificationSettingSave'
-import { handleUserAvatarUrlSave } from './handleUserAvatarUrlSave'
-import { handleUserAvatarSave } from './handleUserAvatarSave'
-import { handleUserAvatarLoad } from './handleUserAvatarLoad'
-import { handleUserAvatarRemove } from './handleUserAvatarRemove'
 
 export {
 	handleSignUpWithEmailAndPassword,
-	API_SIGN_UP_EMAIL,
-	API_SIGN_UP_PASSWORD,
-	handleIsEmailNotExist,
+	FUNCTION_EMAIL,
+	FUNCTION_PASSWORD,
+	handleIsEmailAccountNotExist,
 	handleIsPasswordResetAble,
 	handleSignInWithSocials,
 	handleSignInWithEmailAndPassword,
 	handlePasswordReset,
 	handleNotificationSettingLoad,
 	handleNotificationSettingSave,
-	handleUserAvatarUrlSave,
-	handleUserAvatarSave,
-	handleUserAvatarLoad,
-	handleUserAvatarRemove,
 }

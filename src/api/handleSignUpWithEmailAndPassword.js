@@ -1,59 +1,64 @@
 import { simplerResponseHandling } from 'utils'
-import { auth, docGeneralSettingSet } from 'firebaseInit'
+import { auth, handleDifferentCredential } from 'firebaseInit'
+import { docSettingGeneralSet } from 'fireStored'
 import {
-	CREATED_AT,
-	UPDATED_AT,
-	FB_FS_SETTINGS_GENERAL_SHORT_ID,
-} from 'constantValues'
-import {
-	API_SIGN_UP_EMAIL,
-	API_SIGN_UP_PASSWORD,
-	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
-	FB_FS_SETTINGS_GENERAL_LANGUAGES,
+	FUNCTION_EMAIL,
+	FUNCTION_PASSWORD,
+	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
+	FIRESTORE_SETTINGS_GENERAL_LANGUAGES,
 	UNEXPECTED_ERROR_CODE_5,
 	UNEXPECTED_ERROR_CODE_7,
 } from 'constantValues'
-import nanoid from 'nanoid'
 
 const handleSignUpWithEmailAndPassword = async (
 	values,
 	onSuccessfulSignUp = () => {}
 ) => {
 	const {
-		[API_SIGN_UP_EMAIL]: email,
-		[API_SIGN_UP_PASSWORD]: password,
-		[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
+		[FUNCTION_EMAIL]: email,
+		[FUNCTION_PASSWORD]: password,
+		[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
 	} = values
+	let credential = null
+	try {
+		credential = await auth().createUserWithEmailAndPassword(email, password)
+	} catch (err) {
+		const { code } = err
+		if (code && code.includes('auth/email-already-in-use')) {
+			handleDifferentCredential(
+				email,
+				auth.EmailAuthProvider.credential(email, password)
+			)
+			return simplerResponseHandling(false, '', err)
+		} else {
+			console.log(err)
+			return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err)
+		}
+	}
+	const { user } = credential
+	onSuccessfulSignUp()
+	user.sendEmailVerification().catch(() => {
+		//this is not important, doesnt matter if it failed
+	})
 
-	return auth()
-		.createUserWithEmailAndPassword(email, password)
-		.then(async credential => {
-			const { user } = credential
-			onSuccessfulSignUp()
-			user.sendEmailVerification().catch()
-
-			const date = new Date()
-
-			try {
-				await docGeneralSettingSet({
-					[CREATED_AT]: date,
-					[UPDATED_AT]: date,
-					[FB_FS_SETTINGS_GENERAL_SHORT_ID]: nanoid(10),
-					[FB_FS_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
-					[FB_FS_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
-				})
-			} catch (err) {
-				return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_7, err)
-			}
-
-			return simplerResponseHandling(true)
+	try {
+		await docSettingGeneralSet({
+			[FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
+			[FIRESTORE_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
 		})
-		.catch(err => simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_5, err))
+	} catch (err) {
+		return simplerResponseHandling(false, UNEXPECTED_ERROR_CODE_7, err)
+	}
+
+	user.updateProfile({ displayName }).catch(() => {
+		//this is not important, doesnt matter if it failed
+	})
+	return simplerResponseHandling(true)
 }
 
 export {
 	handleSignUpWithEmailAndPassword,
-	API_SIGN_UP_EMAIL,
-	API_SIGN_UP_PASSWORD,
-	FB_FS_SETTINGS_GENERAL_DISPLAY_NAME,
+	FUNCTION_EMAIL,
+	FUNCTION_PASSWORD,
+	FIRESTORE_SETTINGS_GENERAL_DISPLAY_NAME,
 }

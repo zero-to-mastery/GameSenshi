@@ -8,6 +8,7 @@ import {
 	ROUTE_PAGE_SEARCHED,
 	ROUTE_PAGE_HELP,
 	ROUTE_PAGE_PROFILE,
+	ROUTE_PAGE_PROFILE_ID,
 	ROUTE_PAGE_SIGN_UP,
 	ROUTE_PAGE_SIGN_IN,
 	ROUTE_PAGE_POLICY_COMMON,
@@ -38,7 +39,7 @@ const {
 	PasswordResetPage,
 	Error404Page,
 	FormSignInStoreSignInPropedApp,
-	ModalCommonStoreModalPropedAuth,
+	ModalStoreModalPropedAuth,
 	PoliciesPage,
 	CheckoutPage,
 	Footer,
@@ -51,6 +52,7 @@ const MapRoutesToPages = {
 	[ROUTE_PAGE_SEARCHED]: SearchedPage,
 	[ROUTE_PAGE_HELP]: HelpPage,
 	[ROUTE_PAGE_PROFILE]: ProfilePage,
+	[ROUTE_PAGE_PROFILE_ID]: ProfilePage,
 	[ROUTE_PAGE_SIGN_UP]: SignUpPage,
 	[ROUTE_PAGE_SIGN_IN]: SignInPage,
 	[ROUTE_PAGE_POLICY_COMMON]: PoliciesPage,
@@ -92,7 +94,7 @@ const App = () => {
 									<>
 										<NavbarIndexStoreAlertPropApp />
 										<FormSignInStoreSignInPropedApp />
-										<ModalCommonStoreModalPropedAuth />
+										<ModalStoreModalPropedAuth />
 									</>
 								}
 								footer={<Footer />}

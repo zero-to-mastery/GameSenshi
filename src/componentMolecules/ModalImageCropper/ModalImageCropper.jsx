@@ -4,7 +4,7 @@ import 'cropperjs/dist/cropper.css'
 import { Exports } from 'componentAtoms'
 import { stopUndefined } from 'utils'
 
-const { ModalCommon } = stopUndefined(Exports)
+const { Modal } = stopUndefined(Exports)
 const emptyFunction = () => {}
 const ModalImageCropper = memo(props => {
 	const { src, toggle, onCrop, ...otherProps } = props
@@ -34,13 +34,10 @@ const ModalImageCropper = memo(props => {
 	)
 
 	return (
-		<ModalCommon
+		<Modal
 			title='Set New Profile Picture'
 			footer='Crop and Update Profile Image'
 			toggle={toggle}
-			backdrop='static'
-			modalClassName='modal-black'
-			wrapClassName='modal-backdrop'
 			onContinue={onContinue}
 			{...otherProps}
 		>
@@ -52,7 +49,7 @@ const ModalImageCropper = memo(props => {
 				aspectRatio={1}
 				crop={crop}
 			/>
-		</ModalCommon>
+		</Modal>
 	)
 })
 

@@ -1,5 +1,5 @@
 import { Subscribe, Provider } from 'unstated'
-import { STATE, RESET_STATE } from 'state/constants'
+import { STATE, RESET_STATE } from './constants'
 import { StateContainer } from './StateContainer'
 
 import {
@@ -24,10 +24,13 @@ import {
 	storeModalInitialize,
 	storeModalRemoveItem,
 	storeModalOnAuthStateChange,
-	storeModalProcessRedirectResult,
+	storeModalProcessLinking,
 	storeModalOnContinue,
 	storeModalSetState,
 	storeModalResetState,
+	storeModalClear,
+	storeModalSimpleError,
+	storeModalGetRedirectUrl,
 	STORE_MODAL_STATE_BODY,
 	STORE_MODAL_STATE_TITLE,
 	STORE_MODAL_STATE_LOADER,
@@ -162,10 +165,13 @@ export {
 	storeModalInitialize,
 	storeModalRemoveItem,
 	storeModalOnAuthStateChange,
-	storeModalProcessRedirectResult,
+	storeModalProcessLinking,
 	storeModalOnContinue,
 	storeModalSetState,
 	storeModalResetState,
+	storeModalClear,
+	storeModalSimpleError,
+	storeModalGetRedirectUrl,
 	STORE_MODAL_STATE_BODY,
 	STORE_MODAL_STATE_TITLE,
 	STORE_MODAL_STATE_LOADER,
