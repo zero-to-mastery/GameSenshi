@@ -58,7 +58,7 @@ const Modal = props => {
 				className={`d-flex justify-content-${loader ? 'center' : 'end'}`}
 			>
 				{loader ? (
-					<Loader type='Plane' color='#FFD700' height={80} width={80} />
+					<Loader type='Ball-Triangle' color='#FFD700' height={80} width={80} />
 				) : (
 					<Button color='primary' onClick={onContinue}>
 						{footer}
