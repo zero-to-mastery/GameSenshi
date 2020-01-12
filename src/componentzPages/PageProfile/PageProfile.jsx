@@ -55,40 +55,32 @@ const PageProfile = props => {
 
 	useEffect(() => {
 		const attachListener = async () => {
-			let doc = null
-			try {
-				doc = await docSenshiProfileGet(uid)
-			} catch (err) {
-				setLoading(false)
-				setExist(false)
-				setGenericError(true)
-				return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_15)
-			}
-
-			if (doc && doc.exists) {
-				observer.current = docSenshiProfileOnSnapshot(uid)(
-					async docSnapshot => {
-						try {
-							const data = await docSnapshot.data()
+			observer.current = docSenshiProfileOnSnapshot(uid)(
+				async docSnapshot => {
+					try {
+						const data = await docSnapshot.data()
+						if (data) {
 							setData(data)
 							setLoading(false)
 							setExist(true)
-						} catch (err) {
+						} else {
 							setExist(false)
-							setGenericError(true)
-							storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_17)
+							setLoading(false)
+							setGenericError(false)
+							return storeModalSimpleError({}, UNEXPECTED_ERROR_CODE_15)
 						}
-					},
-					err => {
+					} catch (err) {
 						setExist(false)
 						setGenericError(true)
-						storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_16)
+						storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_17)
 					}
-				)
-			} else {
-				setExist(false)
-				setGenericError(false)
-			}
+				},
+				err => {
+					setExist(false)
+					setGenericError(true)
+					storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_16)
+				}
+			)
 		}
 
 		attachListener()
