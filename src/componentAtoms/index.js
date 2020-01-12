@@ -71,7 +71,7 @@ import {
 	ButtonSoundStoreSoundPropedCardUser,
 } from './ButtonSound'
 import {
-	CheckBoxIconPropedFavorite,
+	CheckBoxIconPropedFavourite,
 	CheckBoxIconPropedTip,
 } from './CheckBoxIcon'
 import { Section } from './Section'
@@ -144,7 +144,7 @@ export const Exports = {
 	StatusPropedOnline,
 	ButtonSoundStoreSoundPropedGender,
 	ButtonSoundStoreSoundPropedCardUser,
-	CheckBoxIconPropedFavorite,
+	CheckBoxIconPropedFavourite,
 	CheckBoxIconPropedTip,
 	Carousel,
 	CarouselPropedIndex,

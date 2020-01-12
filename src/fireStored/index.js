@@ -8,7 +8,7 @@ import {
 	docUserSenshiGet,
 	docUserSenshiSet,
 	docUserSenshiOnSnapshot,
-} from './UserSettings'
+} from './userSettings'
 
 import {
 	docSenshiProfileGet,
@@ -17,7 +17,7 @@ import {
 	docSenshiProfileAvatarSet,
 	docSenshiProfileCarouselSet,
 	docSenshiProfileChannelSet,
-} from './SenshiSettings'
+} from './senshiSettings'
 
 export {
 	docUserSettingGeneralGet,
