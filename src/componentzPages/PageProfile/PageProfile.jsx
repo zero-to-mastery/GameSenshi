@@ -4,9 +4,8 @@ import Loader from 'react-loader-spinner'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentpMultiOrganisms'
 import { ROUTE_PARAM_UID } from 'routes'
-import { docSenshiProfileGet, docSenshiProfileOnSnapshot } from 'fireStored'
+import { docSenshiProfileOnSnapshot } from 'fireStored'
 import {
-	UNEXPECTED_ERROR_CODE_15,
 	UNEXPECTED_ERROR_CODE_16,
 	UNEXPECTED_ERROR_CODE_17,
 } from 'constantValues'
