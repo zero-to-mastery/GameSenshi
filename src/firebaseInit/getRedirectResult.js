@@ -18,7 +18,6 @@ import {
 	UNEXPECTED_ERROR_CODE_12,
 	FUNCTION_OAUTH_CODE,
 	FUNCTION_REDIRECT_URI,
-	ENV_VALUE_TWITCH_REDIRECT,
 	FUNCTION_CUSTOM_TOKEN,
 } from 'constantValues'
 import { functSignInTwicth } from 'firebaseInit/cloudFunct'
@@ -80,7 +79,7 @@ const getRedirectResult = async () => {
 				try {
 					customTokenData = await functSignInTwicth({
 						[FUNCTION_OAUTH_CODE]: oauthCode,
-						[FUNCTION_REDIRECT_URI]: ENV_VALUE_TWITCH_REDIRECT,
+						[FUNCTION_REDIRECT_URI]: window.location.origin,
 					})
 				} catch (err) {
 					console.log(err)

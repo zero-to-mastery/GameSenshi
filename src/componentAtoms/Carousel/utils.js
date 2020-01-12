@@ -11,7 +11,9 @@ const itemsIndex = [
 		[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_IMAGE]: getIndexImage('lol'),
 	},
 	{
-		[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_IMAGE]: getIndexImage('fornite'),
+		[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_IMAGE]: getIndexImage(
+			'fornite'
+		),
 	},
 ]
 

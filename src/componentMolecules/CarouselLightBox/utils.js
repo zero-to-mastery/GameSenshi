@@ -8,13 +8,17 @@ const getProfileImage = name => require(`assets/img/${name}.jpg`)
 
 const itemsProfile = [
 	{
-		[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_IMAGE]: getProfileImage('denys'),
+		[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_IMAGE]: getProfileImage(
+			'denys'
+		),
 	},
 	{
 		[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_YOUTUBE]: 'bdgTa9ni4S8',
 	},
 	{
-		[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_IMAGE]: getProfileImage('mark-finn'),
+		[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_IMAGE]: getProfileImage(
+			'mark-finn'
+		),
 	},
 	{
 		[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_YOUTUBE]: 'vZX8WJJyXvM',
