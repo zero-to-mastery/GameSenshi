@@ -55,13 +55,15 @@ const CheckBoxIcon = props => {
 	}, [])
 
 	return loading ? (
-		<Loader type='Circles' color='#00BFFF' height='18px' width='18px' />
+		<div className='d-inline-flex m-1'>
+			<Loader type='Circles' color='#00BFFF' height='18px' width='18px' />
+		</div>
 	) : (
 		<>
 			<Button
 				className={classnames(
 					{ 'btn-simple': !checked_ },
-					'btn-icon btn-round ml-1'
+					'btn-icon btn-round m-1'
 				)}
 				color={color}
 				type='button'
