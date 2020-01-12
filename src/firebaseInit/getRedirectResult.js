@@ -54,7 +54,6 @@ const getRedirectResult = async () => {
 		) {
 			handleDifferentCredential(email, credential)
 		} else {
-			console.log(err)
 			storeModalRemoveItem()
 			storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_6)
 		}
@@ -82,7 +81,6 @@ const getRedirectResult = async () => {
 						[FUNCTION_REDIRECT_URI]: window.location.origin,
 					})
 				} catch (err) {
-					console.log(err)
 					storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_9)
 				}
 
@@ -92,7 +90,6 @@ const getRedirectResult = async () => {
 							customTokenData.data[FUNCTION_CUSTOM_TOKEN]
 						)
 					} catch (err) {
-						console.log(err)
 						return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_10)
 					}
 					storeModalProcessLinking(linkWithRedirect, linkedThen)
