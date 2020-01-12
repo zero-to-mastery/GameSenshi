@@ -136,4 +136,7 @@ Please read [wiki](https://github.com/tylim88/GameSenshi/wiki) for details of ou
 
 Join our [Trello](https://trello.com/invite/b/tAyH3oig/a5374e9eaa1bbe644f3e7367d1e23300/game-senshi).
 
+Join our Discord Channel
+![joinChannel.png](./src/assets/img/readme/joinChannel.png)
+
 Please read [CONTRIBUTING.md](https://github.com/tylim88/GameSenshi/blob/master/CONTRIBUTING.md) for details on how to contribute.
