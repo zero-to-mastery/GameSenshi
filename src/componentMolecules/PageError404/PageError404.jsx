@@ -1,0 +1,47 @@
+import React from 'react'
+import { stopUndefined } from 'utils'
+import { Container, Row, Col } from 'reactstrap'
+import { Exports } from 'componentAtoms'
+const { WrapperStoreWrapperPropedError } = stopUndefined(Exports)
+
+const PageError404 = props => {
+	const { code } = props
+	return (
+		<WrapperStoreWrapperPropedError>
+			<div className='page-header error-page header-filter'>
+				<div
+					className='page-header-image'
+					style={{
+						backgroundImage:
+							'url(' + require('assets/img/braden-collum.jpg') + ')',
+					}}
+				/>
+				<Container>
+					<Row>
+						<Col md='12'>
+							{code === '404' ? (
+								<>
+									<h2 className='description'>Something went wrong :(</h2>
+									<h4 className='description'>Please try again later.</h4>
+								</>
+							) : (
+								<>
+									<h1 className='title'>404</h1>
+									<h2 className='description'>Page not found :(</h2>
+									<h4 className='description'>
+										Ooooups! Looks like you got lost.
+									</h4>
+									<h5 className='description'>
+										You might have typo in your url.
+									</h5>
+								</>
+							)}
+						</Col>
+					</Row>
+				</Container>
+			</div>
+		</WrapperStoreWrapperPropedError>
+	)
+}
+
+export { PageError404 }

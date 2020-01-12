@@ -17,29 +17,25 @@ const SectionStyled = styled(Section)`
 const DivStyledImage = styled.div`
 	height: 120px;
 	width: 120px;
-	@media (max-width: ${BREAKPOINTS_MD}px) {
-		margin-top: 2rem;
-	}
 `
 
 const RowStyledUsername = styled(Row)`
 	text-align: 'left';
+	margin-top: 2.5rem;
 	@media (max-width: ${BREAKPOINTS_MD}px) {
-		margin-top: 2rem;
+		margin-top: 1rem;
 		text-align: center;
 	}
 `
 
 const ColStyledBadges = styled(Col)`
-	text-align: 'left';
-	@media (max-width: ${BREAKPOINTS_MD}px) {
-		text-align: center;
-	}
+	text-align: center;
 `
 
 const TextStyledSubscribe = styled.p`
+	margin-top: 2.5rem;
 	@media (max-width: ${BREAKPOINTS_MD}px) {
-		margin-top: 2rem;
+		margin-top: 1rem;
 	}
 `
 export {

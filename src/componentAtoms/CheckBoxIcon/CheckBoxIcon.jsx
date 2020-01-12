@@ -3,10 +3,19 @@ import { Tooltip } from 'reactstrap'
 import classnames from 'classnames'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
+import Loader from 'react-loader-spinner'
 const { Button } = stopUndefined(Exports)
 
 const CheckBoxIcon = props => {
-	const { color, icon, onClick, checked, tooltipOn, tooltipOff } = props
+	const {
+		color,
+		icon,
+		onClick,
+		checked,
+		tooltipOn,
+		tooltipOff,
+		loading,
+	} = props
 	const [checked_, setChecked_] = useState(checked)
 	const [showTooltip, setShowTooltip] = useState(false)
 	const [tooltipMount, setTooltipMount] = useState(true)
@@ -45,12 +54,16 @@ const CheckBoxIcon = props => {
 		setShowTooltip(false)
 	}, [])
 
-	return (
+	return loading ? (
+		<div className='d-inline-flex m-1'>
+			<Loader type='Circles' color='#00BFFF' height='18px' width='18px' />
+		</div>
+	) : (
 		<>
 			<Button
 				className={classnames(
 					{ 'btn-simple': !checked_ },
-					'btn-icon btn-round ml-1'
+					'btn-icon btn-round m-1'
 				)}
 				color={color}
 				type='button'

@@ -8,7 +8,7 @@ import {
 	storeUserSetSigningIn,
 	STORE_USER_STATE_SIGNING_IN,
 } from 'state'
-import { docSettingGeneralOnSnapshot } from 'fireStored'
+import { docUserSettingGeneralOnSnapshot } from 'fireStored'
 import { goLastRoute } from 'routes'
 import { getRedirectResult, onAuthChange } from 'firebaseInit'
 import 'assets/css/nucleo-icons.css'
@@ -20,7 +20,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import 'slick-carousel/slick/slick-theme.css'
 
 //handle auth change
-onAuthChange(docSettingGeneralOnSnapshot)
+onAuthChange(docUserSettingGeneralOnSnapshot)
 
 //handle redirect
 getRedirectResult()

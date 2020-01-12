@@ -5,7 +5,7 @@ import { ApolloProvider } from 'react-apollo'
 import { Router } from 'routes'
 import {
 	ROUTE_PAGE_INDEX,
-	ROUTE_PAGE_SEARCHED,
+	ROUTE_PAGE_FILTER,
 	ROUTE_PAGE_HELP,
 	ROUTE_PAGE_PROFILE,
 	ROUTE_PAGE_PROFILE_ID,
@@ -26,41 +26,41 @@ import {
 	STATE,
 	STORE_USER_STATE_SIGNING_IN,
 } from 'state'
-import { Exports } from 'componentViews'
+import { Exports } from 'componentzPages'
 
 const {
-	SettingsPage,
+	PageSettings,
 	IndexPage,
-	SearchedPage,
+	PageFilter,
 	HelpPage,
-	ProfilePage,
+	PageProfile,
 	SignInPage,
-	SignUpPage,
-	PasswordResetPage,
-	Error404Page,
+	PageSignUp,
+	PagePasswordReset,
+	PageError404,
 	FormSignInStoreSignInPropedApp,
 	ModalStoreModalPropedAuth,
-	PoliciesPage,
+	PagePolicies,
 	CheckoutPage,
 	Footer,
 	NavbarIndexStoreAlertPropApp,
-	ChatPage,
+	PageChat,
 } = stopUndefined(Exports)
 
 const MapRoutesToPages = {
 	[ROUTE_PAGE_INDEX]: IndexPage,
-	[ROUTE_PAGE_SEARCHED]: SearchedPage,
+	[ROUTE_PAGE_FILTER]: PageFilter,
 	[ROUTE_PAGE_HELP]: HelpPage,
-	[ROUTE_PAGE_PROFILE]: ProfilePage,
-	[ROUTE_PAGE_PROFILE_ID]: ProfilePage,
-	[ROUTE_PAGE_SIGN_UP]: SignUpPage,
+	[ROUTE_PAGE_PROFILE]: PageProfile,
+	[ROUTE_PAGE_PROFILE_ID]: PageProfile,
+	[ROUTE_PAGE_SIGN_UP]: PageSignUp,
 	[ROUTE_PAGE_SIGN_IN]: SignInPage,
-	[ROUTE_PAGE_POLICY_COMMON]: PoliciesPage,
+	[ROUTE_PAGE_POLICY_COMMON]: PagePolicies,
 	[ROUTE_PAGE_CHECKOUT]: CheckoutPage,
-	[ROUTE_PAGE_SETTINGS_COMMON]: SettingsPage,
-	[ROUTE_PAGE_CHAT]: ChatPage,
-	[ROUTE_PAGE_PASSWORD_RESET]: PasswordResetPage,
-	[ROUTE_PAGE_404]: Error404Page,
+	[ROUTE_PAGE_SETTINGS_COMMON]: PageSettings,
+	[ROUTE_PAGE_CHAT]: PageChat,
+	[ROUTE_PAGE_PASSWORD_RESET]: PagePasswordReset,
+	[ROUTE_PAGE_404]: PageError404,
 }
 
 const App = () => {

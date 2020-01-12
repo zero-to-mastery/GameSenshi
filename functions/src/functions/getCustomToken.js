@@ -1,4 +1,4 @@
-import { auth, docSettingGeneralAvatarSet } from 'firebaseInit'
+import { auth, docUserSettingGeneralAvatarSet } from 'firebaseInit'
 import {
 	INTERNAL_ERROR_CODE_2,
 	INTERNAL_ERROR_CODE_4,
@@ -62,7 +62,7 @@ const getCustomToken = async (
 	}
 
 	if (newUser) {
-		docSettingGeneralAvatarSet(uid, profileImageUrl).catch(err => {
+		docUserSettingGeneralAvatarSet(uid, profileImageUrl).catch(err => {
 			const errObj = resObj(false, INTERNAL_ERROR_CODE_7, '')
 			console.log(errObj, err)
 			return errObj

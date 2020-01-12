@@ -1,14 +1,19 @@
 import React from 'react'
 import { CheckBoxIcon } from './CheckBoxIcon'
+import { useFavourite } from './utils'
 
-const CheckBoxIconPropedFavorite = props => {
+const CheckBoxIconPropedFavourite = props => {
+	const { uid, ...otherProps } = props
+	const { checked, loading } = useFavourite(uid)
 	return (
 		<CheckBoxIcon
 			color='primary'
 			tooltipOn='😘Favourite me! '
-			tooltipOff='😭unfavorite me...'
+			tooltipOff='Favourited!'
 			icon='tim-icons icon-heart-2'
-			{...props}
+			checked={checked}
+			loading={loading}
+			{...otherProps}
 		/>
 	)
 }
@@ -24,4 +29,4 @@ const CheckBoxIconPropedTip = props => {
 	)
 }
 
-export { CheckBoxIconPropedFavorite, CheckBoxIconPropedTip }
+export { CheckBoxIconPropedFavourite, CheckBoxIconPropedTip }

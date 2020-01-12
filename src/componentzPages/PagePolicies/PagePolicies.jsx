@@ -48,7 +48,7 @@ const policies = [
 		[TO]: ROUTE_PAGE_POLICY_TERMS,
 	},
 ]
-const PoliciesPage = props => {
+const PagePolicies = props => {
 	const {
 		location: { pathname },
 	} = props
@@ -118,4 +118,4 @@ const PoliciesPage = props => {
 		</WrapperStoreWrapperPropedIndex>
 	)
 }
-export { PoliciesPage }
+export { PagePolicies }

@@ -57,7 +57,7 @@ const settingTabs = [
 	},
 ]
 
-const SettingsPage = () => {
+const PageSettings = () => {
 	return (
 		<WrapperStoreWrapperPropedAccount>
 			<Section>
@@ -110,4 +110,4 @@ const SettingsPage = () => {
 	)
 }
 
-export { SettingsPage }
+export { PageSettings }

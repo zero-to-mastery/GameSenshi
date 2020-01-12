@@ -1,21 +1,16 @@
 import React from 'react'
 import { CardUser } from './CardUser'
-import { FIRESTORE_SENSHI_PROFILE_BADGES_ONLINE } from 'constantValues'
 
 const CardProfileOptioned = props => {
 	return <CardUser {...props} />
 }
 
 const CardUserPropedDiscover = props => {
-	return (
-		<CardProfileOptioned badge={[FIRESTORE_SENSHI_PROFILE_BADGES_ONLINE]} {...props} />
-	)
+	return <CardProfileOptioned badge={['online']} {...props} />
 }
 
 const CardProfilePropedSearch = props => {
-	return (
-		<CardProfileOptioned badge={[FIRESTORE_SENSHI_PROFILE_BADGES_ONLINE]} {...props} />
-	)
+	return <CardProfileOptioned badge={['online']} {...props} />
 }
 
 export { CardUserPropedDiscover, CardProfilePropedSearch }
