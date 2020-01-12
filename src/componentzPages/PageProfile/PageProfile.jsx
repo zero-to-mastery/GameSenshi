@@ -70,13 +70,13 @@ const PageProfile = props => {
 						}
 					} catch (err) {
 						setExist(false)
-						setErrorCode(true)
+						setErrorCode(null)
 						storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_17)
 					}
 				},
 				err => {
 					setExist(false)
-					setErrorCode(true)
+					setErrorCode(null)
 					storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_16)
 				}
 			)
