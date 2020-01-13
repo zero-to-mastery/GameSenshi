@@ -68,7 +68,7 @@ const FormSignInPropedSignInStoreSignIn = StateContainer(
 )
 
 const FormSignInStoreSignInPropedApp = props => {
-	return <FormSignInPropedSignInStoreSignIn modal passwordOnly {...props} />
+	return <FormSignInPropedSignInStoreSignIn modal {...props} />
 }
 
 export { FormSignInPropedSignIn, FormSignInStoreSignInPropedApp }

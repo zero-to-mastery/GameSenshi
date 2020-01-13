@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import { LastLocationProvider } from 'react-router-last-location'
 import { stopUndefined } from 'utils'
+import { storeSignInShow } from 'state'
 
 import {
 	ROUTE_PAGE_INDEX,
@@ -49,6 +50,7 @@ import { Exports } from 'componentpMultiOrganisms'
 
 const {
 	PageError,
+	PAGE_ERROR_CODE_UNAUTHORIZED,
 	FormSignInStoreSignInPropedApp,
 	ModalStoreModalPropedAuth,
 	Footer,
@@ -103,7 +105,8 @@ const Router = memo(props => {
 										if (accessibility === ROUTE_ACCESSIBILITY_PUBLIC) {
 											return <Page {...props} />
 										} else {
-											return <Redirect from={path} to={ROUTE_PAGE_SIGN_IN} />
+											storeSignInShow()
+											return <PageError code={PAGE_ERROR_CODE_UNAUTHORIZED} />
 										}
 									}
 								}}

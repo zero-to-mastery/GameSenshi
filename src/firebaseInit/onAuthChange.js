@@ -2,7 +2,6 @@
 import {
 	RESET_STATE,
 	storeAlert,
-	storeSignIn,
 	storeProgress,
 	storeUser,
 	storeWrapper,
@@ -32,13 +31,7 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 		storeUserOnSignOut()
 		unsubscribe()
 		unsubscribe = () => {}
-		const stores = [
-			storeAlert,
-			storeSignIn,
-			storeProgress,
-			storeUser,
-			storeWrapper,
-		]
+		const stores = [storeAlert, storeProgress, storeUser, storeWrapper]
 		stores.forEach(store => {
 			store[RESET_STATE]()
 		})
