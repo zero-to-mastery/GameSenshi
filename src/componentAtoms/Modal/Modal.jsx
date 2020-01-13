@@ -1,13 +1,18 @@
 // the purpose of this modal is to link user social auth
 import React from 'react'
 import Loader from 'react-loader-spinner'
-import { Modal as ModalRS, ModalBody, ModalFooter } from 'reactstrap'
+import {
+	Modal as ModalRS,
+	ModalBody,
+	ModalFooter,
+	ModalHeader,
+} from 'reactstrap'
 import { Exports } from 'componentaProton'
 import { stopUndefined } from 'utils'
 
 const { Button } = stopUndefined(Exports)
 
-const MODAL_STATE_BODY = 'body'
+const MODAL_STATE_CHILDREN = 'children'
 const MODAL_STATE_TITLE = 'title'
 const MODAL_STATE_LOADER = 'loader'
 const MODAL_STATE_IS_OPEN = 'isOpen'
@@ -17,14 +22,13 @@ const MODAL_ON_CONTINUE = 'onContinue'
 
 const Modal = props => {
 	const {
-		[MODAL_STATE_BODY]: body,
+		[MODAL_STATE_CHILDREN]: children,
 		[MODAL_STATE_TITLE]: title,
 		[MODAL_STATE_LOADER]: loader,
 		[MODAL_STATE_IS_OPEN]: isOpen,
 		[MODAL_TOGGLE]: toggle,
 		[MODAL_ON_CONTINUE]: onContinue,
 		[MODAL_STATE_FOOTER]: footer,
-		children,
 		...otherProps
 	} = props
 
@@ -38,7 +42,7 @@ const Modal = props => {
 			style={{ border: '1px solid #00d6d1', borderRadius: '5px' }}
 			{...otherProps}
 		>
-			<div className='modal-header'>
+			<ModalHeader>
 				<button
 					type='button'
 					className='close'
@@ -49,11 +53,8 @@ const Modal = props => {
 					<i className='tim-icons icon-simple-remove' />
 				</button>
 				<h5 className='modal-title'>{title}</h5>
-			</div>
-			<ModalBody>
-				{body}
-				{children}
-			</ModalBody>
+			</ModalHeader>
+			<ModalBody>{children}</ModalBody>
 			<ModalFooter
 				className={`d-flex justify-content-${loader ? 'center' : 'end'}`}
 			>
@@ -71,7 +72,7 @@ const Modal = props => {
 
 export {
 	Modal,
-	MODAL_STATE_BODY,
+	MODAL_STATE_CHILDREN,
 	MODAL_STATE_TITLE,
 	MODAL_STATE_LOADER,
 	MODAL_STATE_IS_OPEN,
