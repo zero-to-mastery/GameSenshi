@@ -25,7 +25,7 @@ import {
 	history,
 } from 'routes/constants'
 
-const routes = [
+const ROUTES = [
 	{
 		[ROUTE_PATH]: ROUTE_PAGE_INDEX,
 		[ROUTE_ACCESSIBILITY]: ROUTE_ACCESSIBILITY_FREE,
@@ -77,7 +77,7 @@ const routes = [
 ]
 
 // the order of array is very important, the lowest is the root path
-const redirects = [
+const REDIRECTS = [
 	{
 		[ROUTE_FROM]: ROUTE_PAGE_POLICY,
 		[ROUTE_TO]: ROUTE_PAGE_POLICY_PRIVACY,
@@ -93,7 +93,7 @@ const redirects = [
 ]
 
 const isLocationPublic = lastLocation => {
-	const isCurrentLocationPublic = routes.some(route => {
+	const isCurrentLocationPublic = ROUTES.some(route => {
 		return (
 			route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PUBLIC &&
 			route[ROUTE_PATH].toLowerCase() ===
@@ -101,7 +101,7 @@ const isLocationPublic = lastLocation => {
 		)
 	})
 	if (isCurrentLocationPublic && lastLocation) {
-		const isLastLocationPublic = routes.some(route => {
+		const isLastLocationPublic = ROUTES.some(route => {
 			return (
 				route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PUBLIC &&
 				route[ROUTE_PATH].toLowerCase() === lastLocation.pathname.toLowerCase()
@@ -115,4 +115,4 @@ const isLocationPublic = lastLocation => {
 	}
 }
 
-export { routes, redirects, isLocationPublic }
+export { ROUTES, REDIRECTS, isLocationPublic }
