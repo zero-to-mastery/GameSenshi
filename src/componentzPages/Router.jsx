@@ -51,6 +51,7 @@ import { Exports } from 'componentpMultiOrganisms'
 const {
 	PageError,
 	PAGE_ERROR_CODE_UNAUTHORIZED,
+	PAGE_ERROR_CODE_NOT_FOUND,
 	FormSignInStoreSignInPropedApp,
 	ModalStoreModalPropedAuth,
 	Footer,
@@ -106,7 +107,12 @@ const Router = memo(props => {
 											return <Page {...props} />
 										} else {
 											storeSignInShow()
-											return <PageError code={PAGE_ERROR_CODE_UNAUTHORIZED} />
+											return (
+												<PageError
+													code={PAGE_ERROR_CODE_UNAUTHORIZED}
+													{...props}
+												/>
+											)
 										}
 									}
 								}}
@@ -120,7 +126,7 @@ const Router = memo(props => {
 					<Route
 						path='/'
 						render={props => {
-							return <PageError {...props} />
+							return <PageError code={PAGE_ERROR_CODE_NOT_FOUND} {...props} />
 						}}
 					/>
 				</Switch>

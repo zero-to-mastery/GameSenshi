@@ -52,10 +52,8 @@ const FormSignIn = props => {
 	const TopElement = useMemo(() => {
 		return modal ? ModalSimple : Fragment_
 	}, [modal])
-
 	const onSuccessfulSubmission_ = useCallback(() => {
 		onSuccessfulSubmission && onSuccessfulSubmission()
-		toggle && toggle()
 	}, [onSuccessfulSubmission])
 
 	return (
