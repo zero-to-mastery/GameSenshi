@@ -1,7 +1,6 @@
 import React, { useMemo, useRef, Fragment, useCallback } from 'react'
 import { stopUndefined } from 'utils'
 import {
-	Modal,
 	Input,
 	InputGroupText,
 	InputGroup,
@@ -26,6 +25,7 @@ const {
 	FinalTextPasswordPropedSignIn,
 	FINAL_TEXT_PASSWORD,
 	Link,
+	ModalSimple,
 } = stopUndefined(Exports)
 
 const SIGN_IN_FORM_STATE_EMAIL = 'email'
@@ -34,32 +34,6 @@ const SIGN_IN_FORM_TOGGLE = 'toggle'
 const SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
 const Fragment_ = props => <Fragment>{props.children}</Fragment>
-
-const Modal_ = props => {
-	const { isOpen, toggle, children } = props
-	return (
-		<Modal
-			backdrop='static'
-			isOpen={isOpen}
-			toggle={toggle}
-			wrapClassName='modal-backdrop'
-			fade
-		>
-			<div align='right' style={{ height: '0' }} className='p-0 fixed-top'>
-				<button
-					type='button'
-					className='close mt-2 mr-2'
-					data-dismiss='modal'
-					aria-label='Close'
-					onClick={toggle}
-				>
-					<i className='tim-icons icon-simple-remove text-primary' />
-				</button>
-			</div>
-			{children}
-		</Modal>
-	)
-}
 
 const FormSignIn = props => {
 	const submitButton = useRef(null) //submit button reference
@@ -76,7 +50,7 @@ const FormSignIn = props => {
 	} = props
 
 	const TopElement = useMemo(() => {
-		return modal ? Modal_ : Fragment_
+		return modal ? ModalSimple : Fragment_
 	}, [modal])
 
 	const onSuccessfulSubmission_ = useCallback(() => {

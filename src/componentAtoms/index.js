@@ -88,6 +88,7 @@ import {
 import { CardUserSimple } from './CardUserSimple'
 import { Tab, TAB_NAME, TAB_CONTENT } from './Tab'
 import { LightBox } from './LightBox'
+import { ModalSimple } from './ModalSimple'
 
 export const Exports = {
 	...ExportProtons,
@@ -169,4 +170,5 @@ export const Exports = {
 	TAB_NAME,
 	TAB_CONTENT,
 	LightBox,
+	ModalSimple,
 }
