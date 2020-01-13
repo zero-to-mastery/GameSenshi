@@ -39,7 +39,7 @@ const Modal = props => {
 			backdrop='static'
 			wrapClassName='modal-backdrop'
 			modalClassName='modal-black'
-			style={{ border: '1px solid #00d6d1', borderRadius: '5px' }}
+			className='border border-success rounded-lg'
 			{...otherProps}
 		>
 			<ModalHeader>
