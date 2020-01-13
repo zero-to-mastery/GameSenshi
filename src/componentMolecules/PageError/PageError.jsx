@@ -35,8 +35,8 @@ const PageError = props => {
 								</>
 							) : code === PAGE_ERROR_CODE_UNAUTHORIZED ? (
 								<>
-									<h2 className='description'>Unauthorized!(</h2>
-									<h4 className='description'>Unknown life form!</h4>
+									<h2 className='description'>Unauthorized :(</h2>
+									<h4 className='description'>Unknown life form detected!</h4>
 									<h5 className='description'>Please login before proceed.</h5>
 								</>
 							) : (
