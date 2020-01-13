@@ -5,7 +5,7 @@ import { Router } from './Router'
 
 import { setLastRoute, removeLastRoute, goLastRoute } from './getSetLastRoute'
 
-import { toIndexIfPublic } from './routes'
+import { isLocationPublic } from './routes'
 
 import {
 	history,
@@ -46,7 +46,7 @@ export {
 	setLastRoute,
 	removeLastRoute,
 	goLastRoute,
-	toIndexIfPublic,
+	isLocationPublic,
 	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_FILTER,
 	ROUTE_PAGE_PROFILE,

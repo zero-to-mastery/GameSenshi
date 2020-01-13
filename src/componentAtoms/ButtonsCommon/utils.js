@@ -9,7 +9,7 @@ import {
 } from './ButtonsCommon'
 import {
 	setLastRoute,
-	toIndexIfPublic,
+	isLocationPublic,
 	ROUTE_PAGE_CHECKOUT,
 	ROUTE_PAGE_CHAT,
 } from 'routes'
@@ -111,7 +111,7 @@ const buttonCommonAuthOnClick = lastLocation => {
 	return (e, button) => {
 		const { [BUTTONS_COMMON_ID]: id } = button
 		storeModalSetItem(null, null, { [STORE_USER_STATE_SIGNING_IN]: true })
-		setLastRoute(toIndexIfPublic(lastLocation))
+		setLastRoute(isLocationPublic(lastLocation))
 		handleSignInWithSocials[id]().catch(err => {
 			storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_13)
 		})
@@ -132,22 +132,3 @@ export {
 	buttonsCommonAuth,
 	buttonsCommonChatAndCheckout,
 }
-
-// const body = (
-// 	<>
-// 		Please wait while we signing you in with{' '}
-// 		<b className='text-success'>{id}</b>.
-// 	</>
-// )
-// const title = 'Signing You In...'
-// storeModalShow(title, body, true)
-// const body2 = reactElementToJSXString(
-// 	<span>
-// 		Signing in with <b className='text-success'>{id}</b>...
-// 		<br />
-// 		<br />
-// 		Almost there!
-// 	</span>
-// )
-// const title2 = 'Signing You In...'
-// storeModalSetItem(title2, body2)

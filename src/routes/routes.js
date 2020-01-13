@@ -92,15 +92,27 @@ const redirects = [
 	},
 ]
 
-const toIndexIfPublic = location => {
-	const pathname = location ? location.pathname : history.location.pathname
-	const isPublic = routes.some(route => {
+const isLocationPublic = lastLocation => {
+	const isCurrentLocationPublic = routes.some(route => {
 		return (
 			route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PUBLIC &&
-			route[ROUTE_PATH].toLowerCase() === pathname.toLowerCase()
+			route[ROUTE_PATH].toLowerCase() ===
+				history.location.pathname.toLowerCase()
 		)
 	})
-	return isPublic ? ROUTE_PAGE_INDEX : pathname
+	if (isCurrentLocationPublic && lastLocation) {
+		const isLastLocationPublic = routes.some(route => {
+			return (
+				route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PUBLIC &&
+				route[ROUTE_PATH].toLowerCase() === lastLocation.pathname.toLowerCase()
+			)
+		})
+		return isLastLocationPublic ? ROUTE_PAGE_INDEX : lastLocation.pathname
+	} else if (isCurrentLocationPublic && !lastLocation) {
+		return ROUTE_PAGE_INDEX
+	} else {
+		return lastLocation.pathname
+	}
 }
 
-export { routes, redirects, toIndexIfPublic }
+export { routes, redirects, isLocationPublic }
