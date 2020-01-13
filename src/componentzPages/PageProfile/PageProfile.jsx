@@ -24,7 +24,8 @@ const {
 	TAB_NAME,
 	TAB_CONTENT,
 	TabProductPropedProfile,
-	PageError404,
+	PageError,
+	PAGE_ERROR_CODE_NOT_FOUND,
 } = stopUndefined(Exports)
 
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
@@ -65,7 +66,7 @@ const PageProfile = props => {
 						} else {
 							setExist(false)
 							setLoading(false)
-							setErrorCode('404')
+							setErrorCode(PAGE_ERROR_CODE_NOT_FOUND)
 							return
 						}
 					} catch (err) {
@@ -160,7 +161,7 @@ const PageProfile = props => {
 			)}
 		</WrapperStoreWrapperPropedProfile>
 	) : (
-		<PageError404 code={errorCode} />
+		<PageError code={errorCode} />
 	)
 }
 

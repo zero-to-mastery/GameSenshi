@@ -4,7 +4,10 @@ import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'componentAtoms'
 const { WrapperStoreWrapperPropedError } = stopUndefined(Exports)
 
-const PageError404 = props => {
+const PAGE_ERROR_CODE_NOT_FOUND = '404'
+const PAGE_ERROR_CODE_UNAUTHORIZED = '401'
+
+const PageError = props => {
 	const { code } = props
 	return (
 		<WrapperStoreWrapperPropedError>
@@ -19,20 +22,29 @@ const PageError404 = props => {
 				<Container>
 					<Row>
 						<Col md='12'>
-							{code === '404' ? (
+							<h1 className='title'>{code}</h1>
+							{code === PAGE_ERROR_CODE_NOT_FOUND ? (
 								<>
-									<h2 className='description'>Something went wrong :(</h2>
-									<h4 className='description'>Please try again later.</h4>
-								</>
-							) : (
-								<>
-									<h1 className='title'>404</h1>
 									<h2 className='description'>Page not found :(</h2>
 									<h4 className='description'>
 										Ooooups! Looks like you got lost.
 									</h4>
 									<h5 className='description'>
 										You might have typo in your url.
+									</h5>
+								</>
+							) : code === PAGE_ERROR_CODE_UNAUTHORIZED ? (
+								<>
+									<h2 className='description'>Unauthorized!(</h2>
+									<h4 className='description'>Unknown life form!</h4>
+									<h5 className='description'>Please login before proceed.</h5>
+								</>
+							) : (
+								<>
+									<h2 className='description'>Something went wrong :(</h2>
+									<h4 className='description'>Please try again later.</h4>
+									<h5 className='description'>
+										Contact support if issue persist.
 									</h5>
 								</>
 							)}
@@ -44,4 +56,4 @@ const PageError404 = props => {
 	)
 }
 
-export { PageError404 }
+export { PageError, PAGE_ERROR_CODE_NOT_FOUND, PAGE_ERROR_CODE_UNAUTHORIZED }

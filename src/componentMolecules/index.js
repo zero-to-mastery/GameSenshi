@@ -21,7 +21,11 @@ import {
 } from './Comment'
 import { PaginationCommonPropedDefault } from './PaginationCommon'
 import { CarouselLightBoxPropedProfile } from './CarouselLightBox'
-import { PageError404 } from './PageError404'
+import {
+	PageError,
+	PAGE_ERROR_CODE_NOT_FOUND,
+	PAGE_ERROR_CODE_UNAUTHORIZED,
+} from './PageError'
 
 export const Exports = {
 	...ExportAtoms,
@@ -48,5 +52,7 @@ export const Exports = {
 	COMMENT_NUM_COMMENTS,
 	PaginationCommonPropedDefault,
 	CarouselLightBoxPropedProfile,
-	PageError404,
+	PageError,
+	PAGE_ERROR_CODE_NOT_FOUND,
+	PAGE_ERROR_CODE_UNAUTHORIZED,
 }

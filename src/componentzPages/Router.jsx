@@ -48,7 +48,7 @@ import { PageChat } from './PageChat'
 import { Exports } from 'componentpMultiOrganisms'
 
 const {
-	PageError404,
+	PageError,
 	FormSignInStoreSignInPropedApp,
 	ModalStoreModalPropedAuth,
 	Footer,
@@ -117,7 +117,7 @@ const Router = memo(props => {
 					<Route
 						path='/'
 						render={props => {
-							return <PageError404 {...props} />
+							return <PageError {...props} />
 						}}
 					/>
 				</Switch>
