@@ -1,6 +1,5 @@
 import React, { useRef, Fragment } from 'react'
 import { stopUndefined } from 'utils'
-// reactstrap components
 import {
 	Modal,
 	Input,
@@ -17,7 +16,6 @@ import {
 	Col,
 	Row,
 } from 'reactstrap'
-// core components
 import { Exports } from 'componentnCompounds'
 const {
 	ButtonsCommonPropedAuth,
@@ -39,10 +37,9 @@ const FormSignIn = props => {
 	const submitButton = useRef(null) //submit button reference
 
 	const {
-		[SIGN_IN_FORM_STATE_EMAIL]: email,
+		[SIGN_IN_FORM_STATE_EMAIL]: predefinedEmail,
 		[SIGN_IN_FORM_STATE_IS_OPEN]: isOpen,
 		modal,
-		passwordOnly,
 		forgotPasswordLink,
 		[SIGN_IN_FORM_TOGGLE]: toggle,
 		onSubmit,
@@ -63,7 +60,7 @@ const FormSignIn = props => {
 				<CardHeader>
 					<CardImg alt='...' src={require('assets/img/square-purple-1.png')} />
 					<CardTitle tag='h4'>Login</CardTitle>
-					{passwordOnly && (
+					{predefinedEmail && (
 						<button
 							aria-label='Close'
 							className='close'
@@ -78,13 +75,15 @@ const FormSignIn = props => {
 				<CardBody>
 					<div className='text-muted text-center ml-auto mr-auto'>
 						<h3 className='mb-0'>
-							{passwordOnly ? 'Sign In With Existing Account' : 'Sign in with'}
+							{predefinedEmail
+								? 'Sign In With Existing Account'
+								: 'Sign in with'}
 						</h3>
 					</div>
 				</CardBody>
 				<FinalForm
 					initialValues={{
-						[FINAL_TEXT_EMAIL]: passwordOnly ? email : '',
+						[FINAL_TEXT_EMAIL]: predefinedEmail ? predefinedEmail : '',
 						[FINAL_TEXT_PASSWORD]: '',
 					}}
 					onSubmit={onSubmit}
@@ -93,7 +92,7 @@ const FormSignIn = props => {
 					{({ submitError, handleSubmit, submitting }) => (
 						<Form action='' className='form' method=''>
 							<CardBody>
-								{passwordOnly ? (
+								{predefinedEmail ? (
 									<InputGroup>
 										<InputGroupAddon addonType='prepend'>
 											<InputGroupText
@@ -105,11 +104,7 @@ const FormSignIn = props => {
 												<i className='tim-icons icon-email-85' />
 											</InputGroupText>
 										</InputGroupAddon>
-										<Input
-											disabled
-											placeholder={passwordOnly ? email : 'Email'}
-											type='text'
-										/>
+										<Input disabled placeholder={predefinedEmail} type='text' />
 									</InputGroup>
 								) : (
 									<>
