@@ -1,4 +1,4 @@
-import React, { useRef, Fragment } from 'react'
+import React, { useMemo, useRef, Fragment, useCallback } from 'react'
 import { stopUndefined } from 'utils'
 import {
 	Modal,
@@ -33,6 +33,34 @@ const SIGN_IN_FORM_STATE_IS_OPEN = 'isOPne'
 const SIGN_IN_FORM_TOGGLE = 'toggle'
 const SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION = 'onSuccessfulSubmission'
 
+const Fragment_ = props => <Fragment>{props.children}</Fragment>
+
+const Modal_ = props => {
+	const { isOpen, toggle, children } = props
+	return (
+		<Modal
+			backdrop='static'
+			isOpen={isOpen}
+			toggle={toggle}
+			wrapClassName='modal-backdrop'
+			fade
+		>
+			<div align='right' style={{ height: '0' }} className='p-0 fixed-top'>
+				<button
+					type='button'
+					className='close mt-2 mr-2'
+					data-dismiss='modal'
+					aria-label='Close'
+					onClick={toggle}
+				>
+					<i className='tim-icons icon-simple-remove text-primary' />
+				</button>
+			</div>
+			{children}
+		</Modal>
+	)
+}
+
 const FormSignIn = props => {
 	const submitButton = useRef(null) //submit button reference
 
@@ -40,22 +68,24 @@ const FormSignIn = props => {
 		[SIGN_IN_FORM_STATE_EMAIL]: predefinedEmail,
 		[SIGN_IN_FORM_STATE_IS_OPEN]: isOpen,
 		modal,
+		createAccountLink,
 		forgotPasswordLink,
 		[SIGN_IN_FORM_TOGGLE]: toggle,
 		onSubmit,
 		[SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
 	} = props
 
-	const TopElement = modal
-		? props => (
-				<Modal isOpen={isOpen} toggle={toggle} modalClassName='modal-login'>
-					{props.children}
-				</Modal>
-		  )
-		: props => <Fragment>{props.children}</Fragment>
+	const TopElement = useMemo(() => {
+		return modal ? Modal_ : Fragment_
+	}, [modal])
+
+	const onSuccessfulSubmission_ = useCallback(() => {
+		onSuccessfulSubmission && onSuccessfulSubmission()
+		toggle && toggle()
+	}, [onSuccessfulSubmission])
 
 	return (
-		<TopElement>
+		<TopElement toggle={toggle} isOpen={isOpen}>
 			<Card className='card-login'>
 				<CardHeader>
 					<CardImg alt='...' src={require('assets/img/square-purple-1.png')} />
@@ -83,11 +113,11 @@ const FormSignIn = props => {
 				</CardBody>
 				<FinalForm
 					initialValues={{
-						[FINAL_TEXT_EMAIL]: predefinedEmail ? predefinedEmail : '',
+						[FINAL_TEXT_EMAIL]: predefinedEmail || '',
 						[FINAL_TEXT_PASSWORD]: '',
 					}}
 					onSubmit={onSubmit}
-					onSuccessfulSubmission={onSuccessfulSubmission}
+					onSuccessfulSubmission={onSuccessfulSubmission_}
 				>
 					{({ submitError, handleSubmit, submitting }) => (
 						<Form action='' className='form' method=''>
@@ -119,26 +149,36 @@ const FormSignIn = props => {
 								)}
 								<FinalTextPasswordPropedSignIn submitRef={submitButton} />
 							</CardBody>
-							<CardFooter className='text-center'>
-								{submitError && !submitting && `Error: ${submitError}`}
-								<ButtonSubmit
-									ref={submitButton}
-									block
-									submitting={submitting}
-									onClick={handleSubmit}
-									size='lg'
-									color='primary'
-									className='btn-round'
-								>
-									{submitting ? 'Signing In' : 'Sign In'}
-								</ButtonSubmit>
+							<CardFooter>
+								<Row className='d-flex text-center text-white'>
+									<Col>
+										{submitError && !submitting && `Error: ${submitError}`}
+									</Col>
+								</Row>
+								<Row className='d-flex'>
+									<Col xs='2' />
+									<Col className='px-0 d-flex justify-content-center'>
+										<ButtonSubmit
+											ref={submitButton}
+											block
+											submitting={submitting}
+											onClick={handleSubmit}
+											size='lg'
+											color='primary'
+											className='btn-round'
+										>
+											{submitting ? 'Signing In' : 'Sign In'}
+										</ButtonSubmit>
+									</Col>
+									<Col xs='2' />
+								</Row>
 							</CardFooter>
 							<div className='pull-left ml-3 mb-3'>
 								<h6>
 									<Link
 										className='link footer-link'
 										style={{ color: '#ba54f5', fontSize: 12 }}
-										to='signUp'
+										to={createAccountLink}
 									>
 										Create Account
 									</Link>

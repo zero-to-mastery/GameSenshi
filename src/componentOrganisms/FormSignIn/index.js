@@ -2,7 +2,11 @@ import React, { useCallback } from 'react'
 // routing
 import { withLastLocation } from 'routes'
 // constants
-import { ROUTE_PAGE_PASSWORD_RESET, onSignedInRouting } from 'routes'
+import {
+	ROUTE_PAGE_PASSWORD_RESET,
+	ROUTE_PAGE_SIGN_UP,
+	onSignedInRouting,
+} from 'routes'
 // api
 import { handleSignInWithEmailAndPassword } from 'api'
 // component
@@ -43,6 +47,7 @@ const FormSignInPropedSignIn = withLastLocation(props => {
 	return (
 		<FormSignIn
 			forgotPasswordLink={ROUTE_PAGE_PASSWORD_RESET}
+			createAccountLink={ROUTE_PAGE_SIGN_UP}
 			onSubmit={onSubmit}
 			onSuccessfulSubmission={onSuccessfulSubmission}
 			{...restProps}

@@ -71,7 +71,7 @@ const FormSignUp = props => {
 							<FinalTextPasswordPropedSignUp submitRef={submitButton} />
 						</CardBody>
 						<CardFooter>
-							<Row className='d-flex text-center'>
+							<Row className='d-flex text-center text-white'>
 								<Col>{submitError && !submitting && `${submitError}`}</Col>
 							</Row>
 							<Row className='d-flex'>
