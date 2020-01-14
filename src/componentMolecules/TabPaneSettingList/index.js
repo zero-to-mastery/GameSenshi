@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import {
 	TabPaneSettingList,
 	TAB_PANE_SETTING_LIST_STATE_NAME,
@@ -6,9 +6,9 @@ import {
 } from './TabPaneSettingList'
 import { settingListNotification } from './utils'
 import {
-	handleNotificationSettingLoad,
-	handleNotificationSettingSave,
-} from 'api'
+	docUserSettingNotificationSet,
+	docUserSettingNotificationGet,
+} from 'fireStored'
 import {
 	storeUser,
 	StateContainer,
@@ -30,11 +30,15 @@ const TabPaneSettingListStoreUser = StateContainer(
 )
 
 const TabPaneSettingListStoreUserPropedNotification = props => {
+	const loadApi = useCallback(
+		() => docUserSettingNotificationGet().then(doc => doc.data()),
+		[]
+	)
 	return (
 		<TabPaneSettingListStoreUser
 			settingList={settingListNotification()}
-			saveApi={handleNotificationSettingSave}
-			loadApi={handleNotificationSettingLoad}
+			saveApi={docUserSettingNotificationSet}
+			loadApi={loadApi}
 			{...props}
 		/>
 	)

@@ -8,8 +8,6 @@ import { handleIsPasswordResetAble } from './handleIsPasswordResetAble'
 import { handleSignInWithEmailAndPassword } from './handleSignInWithEmailAndPassword'
 import { handleSignInWithSocials } from './handleSignInWithSocials'
 import { handlePasswordReset } from './handlePasswordReset'
-import { handleNotificationSettingLoad } from './handleNotificationSettingLoad'
-import { handleNotificationSettingSave } from './handleNotificationSettingSave'
 
 export {
 	handleSignUpWithEmailAndPassword,
@@ -20,6 +18,4 @@ export {
 	handleSignInWithSocials,
 	handleSignInWithEmailAndPassword,
 	handlePasswordReset,
-	handleNotificationSettingLoad,
-	handleNotificationSettingSave,
 }
