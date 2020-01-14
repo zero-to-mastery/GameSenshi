@@ -1,10 +1,8 @@
 import React, { useCallback } from 'react'
 import {
-	withLastLocation,
 	ROUTE_PAGE_PASSWORD_RESET,
 	ROUTE_PAGE_SIGN_UP,
-	isLocationPublic,
-	history,
+	useLastLocation,
 } from 'routes'
 import { handleSignInWithEmailAndPassword } from 'api'
 import {
@@ -23,12 +21,10 @@ import {
 	storeSignInOnSuccessfulSubmission,
 	STORE_SIGN_IN_STATE_EMAIL,
 	STORE_SIGN_IN_STATE_IS_OPEN,
-	storeUserSetSigningIn,
 } from 'state'
+import { onLogin } from 'component9Utils'
 
-const FormSignInPropedSignIn = withLastLocation(props => {
-	const { lastLocation, ...restProps } = props
-
+const FormSignInPropedSignIn = props => {
 	const onSubmit = useCallback(values => {
 		return handleSignInWithEmailAndPassword(
 			values[FINAL_TEXT_EMAIL],
@@ -36,9 +32,10 @@ const FormSignInPropedSignIn = withLastLocation(props => {
 		)
 	}, [])
 
-	const onSuccessfulSubmission = useCallback(() => {
-		history.replace(isLocationPublic(lastLocation))
-		storeUserSetSigningIn(true)
+	const lastLocation = useLastLocation()
+
+	const onLogin_ = useCallback(() => {
+		onLogin(lastLocation)
 	}, [lastLocation])
 
 	return (
@@ -46,11 +43,11 @@ const FormSignInPropedSignIn = withLastLocation(props => {
 			forgotPasswordLink={ROUTE_PAGE_PASSWORD_RESET}
 			createAccountLink={ROUTE_PAGE_SIGN_UP}
 			onSubmit={onSubmit}
-			onSuccessfulSubmission={onSuccessfulSubmission}
-			{...restProps}
+			onSuccessfulSubmission={onLogin_}
+			{...props}
 		/>
 	)
-})
+}
 
 const mapStoreSignInStateToProp = {
 	[SIGN_IN_FORM_STATE_EMAIL]: STORE_SIGN_IN_STATE_EMAIL,

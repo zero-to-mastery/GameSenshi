@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
 import {
 	Router as ReactRouter,
 	Route,
@@ -8,7 +8,7 @@ import {
 import { LastLocationProvider } from 'react-router-last-location'
 import { stopUndefined } from 'utils'
 import { storeSignInShow } from 'state'
-
+import { onLogin } from 'component9Utils'
 import {
 	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_SIGN_IN,
@@ -32,6 +32,7 @@ import {
 	history,
 	ROUTES,
 	REDIRECTS,
+	useLastLocation,
 } from 'routes'
 
 import { PageProfile } from './PageProfile'
@@ -75,6 +76,11 @@ const MapRoutesToPages = {
 
 const Router = memo(props => {
 	const { isUserSignedIn } = props
+	const lastLocation = useLastLocation()
+	const onLogin_ = useCallback(() => {
+		onLogin(lastLocation)
+	}, [lastLocation])
+
 	return (
 		<ReactRouter history={history}>
 			<LastLocationProvider>
@@ -106,7 +112,7 @@ const Router = memo(props => {
 										if (accessibility === ROUTE_ACCESSIBILITY_PUBLIC) {
 											return <Page {...props} />
 										} else {
-											storeSignInShow()
+											storeSignInShow(null, onLogin_)
 											return (
 												<PageError
 													code={PAGE_ERROR_CODE_UNAUTHORIZED}

@@ -1,4 +1,4 @@
-import { withLastLocation } from 'react-router-last-location'
+import { withLastLocation, useLastLocation } from 'react-router-last-location'
 import {
 	isLocationPublic,
 	setLastRoute,
@@ -48,6 +48,7 @@ import {
 
 export {
 	withLastLocation,
+	useLastLocation,
 	setLastRoute,
 	goLastRoute,
 	isLocationPublic,
