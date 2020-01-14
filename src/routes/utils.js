@@ -25,19 +25,44 @@ const goLastRoute = () => {
 	}
 }
 
+const parseRouteParamValues = route => {
+	const [pathnameNoParam, param] = route.split(':')
+	if (param) {
+		try {
+			const paramValues = param
+				.split('(')[1]
+				.split(')')[0]
+				.split('|')
+
+			return paramValues.map(paramValue =>
+				(pathnameNoParam + paramValue).toLowerCase()
+			)
+		} catch (err) {
+			return [pathnameNoParam]
+		}
+	} else {
+		return [route]
+	}
+}
+
 const isLocationPublic = lastLocation => {
 	const isCurrentLocationPublic = ROUTES.some(route => {
+		const pathnames = parseRouteParamValues(route[ROUTE_PATH])
 		return (
 			route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PUBLIC &&
-			route[ROUTE_PATH].toLowerCase() ===
-				history.location.pathname.toLowerCase()
+			pathnames.some(pathname =>
+				history.location.pathname.toLowerCase().includes(pathname)
+			)
 		)
 	})
 	if (isCurrentLocationPublic && lastLocation) {
 		const isLastLocationPublic = ROUTES.some(route => {
+			const pathnames = parseRouteParamValues(route[ROUTE_PATH])
 			return (
 				route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PUBLIC &&
-				route[ROUTE_PATH].toLowerCase() === lastLocation.pathname.toLowerCase()
+				pathnames.some(pathname =>
+					lastLocation.pathname.toLowerCase().includes(pathname)
+				)
 			)
 		})
 		return isLastLocationPublic ? ROUTE_PAGE_INDEX : lastLocation.pathname
@@ -50,9 +75,12 @@ const isLocationPublic = lastLocation => {
 
 const isLocationPrivate = () => {
 	const isCurrentLocationPrivate = ROUTES.some(route => {
+		const pathnames = parseRouteParamValues(route[ROUTE_PATH])
 		return (
 			route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PRIVATE &&
-			route[ROUTE_PATH].toLowerCase() === window.location.pathname.toLowerCase()
+			pathnames.some(pathname =>
+				window.location.pathname.toLowerCase().includes(pathname)
+			)
 		)
 	})
 
