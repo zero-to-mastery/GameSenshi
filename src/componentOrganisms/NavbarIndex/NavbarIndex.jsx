@@ -99,8 +99,8 @@ const NavbarIndex = props => {
 								<IconNotificationStoreUserPropedNavbar small />
 								<ButtonSignUpStoreUserPropedIndexNavbar small />
 								<ButtonSignInStoreUserPropedIndexNavbar small />
+								<MenuHamburger isOpen={collapseOpen} toggle={toggleCollapse} />
 							</LoaderNavLinkStoreUserPropedNavbar>
-							<MenuHamburger isOpen={collapseOpen} toggle={toggleCollapse} />
 						</Nav>
 					</div>
 					<Collapse
