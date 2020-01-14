@@ -1,18 +1,13 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap'
-
 import {
 	LIST_NAV_ITEM_PROPS_TO,
 	LIST_NAV_ITEM_PROPS_BODY,
 	LIST_NAV_ITEM_PROPS_LINK_CLASS_NAME,
 	LIST_NAV_ITEM_ON_CLICK,
 } from './ListNavItem'
-
 import { AvatarUserStoreUser } from 'componentAtoms/AvatarUser'
 import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from 'state'
-
-import { auth } from 'firebaseInit'
-
 import {
 	ROUTE_PAGE_JOIN,
 	ROUTE_PAGE_APPOINTMENTS,
@@ -23,10 +18,7 @@ import {
 	ROUTE_PAGE_SIGN_IN,
 	ROUTE_PAGE_SIGN_UP,
 } from 'routes'
-
-const signOut = () => {
-	auth().signOut()
-}
+import { signOut } from 'component9Utils'
 
 const simpleIconLabel = (icon, children) => {
 	return (

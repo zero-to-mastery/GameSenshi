@@ -52,8 +52,7 @@ const isLocationPrivate = () => {
 	const isCurrentLocationPrivate = ROUTES.some(route => {
 		return (
 			route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PRIVATE &&
-			route[ROUTE_PATH].toLowerCase() ===
-				history.location.pathname.toLowerCase()
+			route[ROUTE_PATH].toLowerCase() === window.location.pathname.toLowerCase()
 		)
 	})
 

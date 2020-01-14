@@ -12,11 +12,7 @@ import {
 	ROUTE_PAGE_PROFILE,
 } from 'routes'
 import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from 'state'
-import { auth } from 'firebaseInit'
-
-const signOut = () => {
-	auth().signOut()
-}
+import { signOut } from 'component9Utils'
 
 const NavbarIndexItems = () => [
 	{
