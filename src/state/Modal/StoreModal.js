@@ -19,7 +19,6 @@ const SET_ITEM = 'setItem'
 const GET_ITEM = 'getItem'
 const INITIALIZE = 'initialize'
 const REMOVE_ITEM = 'removeItem'
-const ON_AUTH_STATE_CHANGE = 'onAuthStateChange'
 const PROCESS_REDIRECT_RESULT = 'processRedirectResult'
 const ON_CONTINUE = 'onSuccessfulSubmission'
 const CLEAR = 'clear'
@@ -145,12 +144,6 @@ class StoreModal extends Container {
 		return this
 	};
 
-	[ON_AUTH_STATE_CHANGE] = () => {
-		const item = this[GET_ITEM]()
-		!item && this[SET_STATE]({ [STORE_MODAL_STATE_IS_OPEN]: false })
-		return this
-	};
-
 	[SIMPLE_ERROR] = (err = {}, defaultErrorMessage = ['']) => {
 		this[SHOW](
 			<span className='text-danger'>Error</span>,
@@ -215,7 +208,6 @@ export {
 	SET_ITEM,
 	INITIALIZE,
 	REMOVE_ITEM,
-	ON_AUTH_STATE_CHANGE,
 	PROCESS_REDIRECT_RESULT,
 	ON_CONTINUE,
 	SET_STATE,

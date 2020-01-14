@@ -6,15 +6,11 @@ import {
 	storeUser,
 	storeWrapper,
 	storeUserOnSignIn,
-	storeModalOnAuthStateChange,
-	storeUserOnSignOut,
 } from 'state'
 import { auth } from 'firebaseInit/core'
 
-let unsubscribe = () => {}
-
 const onAuthChanged = (userAuth, onSnapshot) => {
-	storeModalOnAuthStateChange()
+	let unsubscribe = () => {}
 	if (userAuth) {
 		unsubscribe = onSnapshot(
 			doc => {
@@ -28,7 +24,6 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 	}
 	// reset all store if user sign out
 	else {
-		storeUserOnSignOut()
 		unsubscribe()
 		unsubscribe = () => {}
 		const stores = [storeAlert, storeProgress, storeUser, storeWrapper]

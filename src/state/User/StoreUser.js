@@ -29,7 +29,6 @@ const SET_SIGNING_IN = 'setIsSigningIn'
 const INITIALIZE = 'initialize'
 const RESET_AVATAR = 'resetAvatar'
 const ON_SIGN_IN = 'onSignIn'
-const ON_SIGN_OUT = 'onSignOut'
 const TIMEOUT_ID = 'timeOutID'
 
 const defaultValues = () => ({
@@ -57,10 +56,10 @@ class StoreUser extends Container {
 	}
 
 	[RESET_STATE] = () => {
-		// prevent signing in state from reset because this is needed during redirect
+		localStorage.removeItem(STORE_USER)
 		this[SET_STATE]({
 			...defaultValues(),
-			[STORE_USER_STATE_SIGNING_IN]: this[STATE][STORE_USER_STATE_SIGNING_IN],
+			[STORE_USER_STATE_SIGNING_IN]: this[STATE][STORE_USER_STATE_SIGNING_IN], // prevent signing in state from reset because this is needed during redirect
 		})
 		return this
 	};
@@ -140,13 +139,6 @@ class StoreUser extends Container {
 		})
 
 		return this
-	};
-
-	[ON_SIGN_OUT] = () => {
-		this[RESET_STATE]()
-		localStorage.removeItem(STORE_USER)
-
-		return this
 	}
 }
 
@@ -171,5 +163,4 @@ export {
 	INITIALIZE,
 	RESET_AVATAR,
 	ON_SIGN_IN,
-	ON_SIGN_OUT,
 }
