@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { DropdownMenu, DropdownItem } from 'reactstrap'
 
 import { Exports } from 'componentaProton'
@@ -24,18 +24,19 @@ const DropdownMenuNavbar = props => {
 					[DROP_DOWN_MENU_NAVBAR_ON_CLICK]: onClick,
 				} = item
 				return (
-					<Fragment key={body}>
+					<div key={body}>
 						<DropdownItem
 							to={to}
 							tag={Link}
 							className='text-dark mt-0 py-1 px-4'
+							baseClass='w-100'
 							style={{ fontSize: '1rem' }}
 							onClick={onClick}
 						>
 							{body}
 						</DropdownItem>
 						{divider && <DropdownItem divider />}
-					</Fragment>
+					</div>
 				)
 			})}
 		</DropdownMenu>
