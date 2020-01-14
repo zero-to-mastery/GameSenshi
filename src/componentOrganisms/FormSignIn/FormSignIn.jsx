@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, Fragment, useCallback } from 'react'
+import React, { useMemo, useRef, Fragment } from 'react'
 import { stopUndefined } from 'utils'
 import {
 	Input,
@@ -52,9 +52,6 @@ const FormSignIn = props => {
 	const TopElement = useMemo(() => {
 		return modal ? ModalSimple : Fragment_
 	}, [modal])
-	const onSuccessfulSubmission_ = useCallback(() => {
-		onSuccessfulSubmission && onSuccessfulSubmission()
-	}, [onSuccessfulSubmission])
 
 	return (
 		<TopElement toggle={toggle} isOpen={isOpen}>
@@ -89,7 +86,7 @@ const FormSignIn = props => {
 						[FINAL_TEXT_PASSWORD]: '',
 					}}
 					onSubmit={onSubmit}
-					onSuccessfulSubmission={onSuccessfulSubmission_}
+					onSuccessfulSubmission={onSuccessfulSubmission}
 				>
 					{({ submitError, handleSubmit, submitting }) => (
 						<Form action='' className='form' method=''>

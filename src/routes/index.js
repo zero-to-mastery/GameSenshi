@@ -1,9 +1,5 @@
 import { withLastLocation } from 'react-router-last-location'
-import { onSignedInRouting } from './onSignedInRouting'
-
-import { setLastRoute, removeLastRoute, goLastRoute } from './getSetLastRoute'
-
-import { ROUTES, REDIRECTS, isLocationPublic } from './routes'
+import { isLocationPublic, setLastRoute, goLastRoute } from './utils'
 
 import {
 	history,
@@ -41,13 +37,13 @@ import {
 	ROUTE_PAGE_POLICY_TERMS,
 	ROUTE_PAGE_POLICY_PRIVACY,
 	ROUTE_PAGE_CHECKOUT,
+	ROUTES,
+	REDIRECTS,
 } from './constants'
 
 export {
 	withLastLocation,
-	onSignedInRouting,
 	setLastRoute,
-	removeLastRoute,
 	goLastRoute,
 	isLocationPublic,
 	ROUTES,

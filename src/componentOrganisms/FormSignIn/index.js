@@ -1,15 +1,12 @@
 import React, { useCallback } from 'react'
-// routing
-import { withLastLocation } from 'routes'
-// constants
 import {
+	withLastLocation,
 	ROUTE_PAGE_PASSWORD_RESET,
 	ROUTE_PAGE_SIGN_UP,
-	onSignedInRouting,
+	isLocationPublic,
+	history,
 } from 'routes'
-// api
 import { handleSignInWithEmailAndPassword } from 'api'
-// component
 import {
 	FormSignIn,
 	SIGN_IN_FORM_STATE_EMAIL,
@@ -19,7 +16,6 @@ import {
 	FINAL_TEXT_EMAIL,
 	FINAL_TEXT_PASSWORD,
 } from './FormSignIn'
-// store
 import {
 	storeSignIn,
 	StateContainer,
@@ -41,9 +37,10 @@ const FormSignInPropedSignIn = withLastLocation(props => {
 	}, [])
 
 	const onSuccessfulSubmission = useCallback(() => {
-		onSignedInRouting(lastLocation)
+		history.replace(isLocationPublic(lastLocation))
 		storeUserSetSigningIn(true)
 	}, [lastLocation])
+
 	return (
 		<FormSignIn
 			forgotPasswordLink={ROUTE_PAGE_PASSWORD_RESET}
