@@ -9,8 +9,9 @@ import {
 } from 'state'
 import { auth } from 'firebaseInit/core'
 
+let unsubscribe = () => {} // ! dont move this into onAuthStateChenged
+
 const onAuthChanged = (userAuth, onSnapshot) => {
-	let unsubscribe = () => {}
 	if (userAuth) {
 		unsubscribe = onSnapshot(
 			doc => {
