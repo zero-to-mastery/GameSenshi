@@ -3,6 +3,7 @@ import {
 	ROUTE_PATH,
 	ROUTE_ACCESSIBILITY,
 	ROUTE_ACCESSIBILITY_PUBLIC,
+	ROUTE_ACCESSIBILITY_PRIVATE,
 	ROUTE_PAGE_INDEX,
 	history,
 } from 'routes/constants'
@@ -47,4 +48,16 @@ const isLocationPublic = lastLocation => {
 	}
 }
 
-export { isLocationPublic, setLastRoute, goLastRoute }
+const isLocationPrivate = () => {
+	const isCurrentLocationPrivate = ROUTES.some(route => {
+		return (
+			route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PRIVATE &&
+			route[ROUTE_PATH].toLowerCase() ===
+				history.location.pathname.toLowerCase()
+		)
+	})
+
+	return isCurrentLocationPrivate ? ROUTE_PAGE_INDEX : window.location.pathname
+}
+
+export { isLocationPublic, setLastRoute, goLastRoute, isLocationPrivate }

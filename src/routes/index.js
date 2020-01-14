@@ -1,5 +1,10 @@
 import { withLastLocation } from 'react-router-last-location'
-import { isLocationPublic, setLastRoute, goLastRoute } from './utils'
+import {
+	isLocationPublic,
+	setLastRoute,
+	goLastRoute,
+	isLocationPrivate,
+} from './utils'
 
 import {
 	history,
@@ -46,6 +51,7 @@ export {
 	setLastRoute,
 	goLastRoute,
 	isLocationPublic,
+	isLocationPrivate,
 	ROUTES,
 	REDIRECTS,
 	history,
