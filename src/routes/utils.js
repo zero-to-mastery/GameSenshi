@@ -45,27 +45,33 @@ const parseRouteParamValues = route => {
 	}
 }
 
-const isLocationPublic = lastLocation => {
-	const isCurrentLocationPublic = ROUTES.some(route => {
+const locationAccessibilityMatch = (location, accessibility) => {
+	const targetPathname = location
+	return ROUTES.some(route => {
 		const pathnames = parseRouteParamValues(route[ROUTE_PATH])
 		return (
-			route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PUBLIC &&
-			pathnames.some(pathname =>
-				history.location.pathname.toLowerCase().includes(pathname)
+			route[ROUTE_ACCESSIBILITY] === accessibility &&
+			pathnames.some(
+				pathname =>
+					targetPathname.toLowerCase().includes(pathname) &&
+					(targetPathname.match(/\//g) || []).length ===
+						(pathname.match(/\//g) || []).length
 			)
 		)
 	})
+}
+
+const isLocationPublic = lastLocation => {
+	const isCurrentLocationPublic = locationAccessibilityMatch(
+		history.location.pathname,
+		ROUTE_ACCESSIBILITY_PUBLIC
+	)
+
 	if (isCurrentLocationPublic && lastLocation) {
-		const isLastLocationPublic = ROUTES.some(route => {
-			const pathnames = parseRouteParamValues(route[ROUTE_PATH])
-			return (
-				route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PUBLIC &&
-				pathnames.some(pathname =>
-					lastLocation.pathname.toLowerCase().includes(pathname)
-				)
-			)
-		})
-		return isLastLocationPublic ? ROUTE_PAGE_INDEX : lastLocation.pathname
+		const lastPathname = lastLocation.pathname
+		return locationAccessibilityMatch(lastPathname, ROUTE_ACCESSIBILITY_PUBLIC)
+			? ROUTE_PAGE_INDEX
+			: lastPathname
 	} else if (isCurrentLocationPublic && !lastLocation) {
 		return ROUTE_PAGE_INDEX
 	} else if (!isCurrentLocationPublic && lastLocation) {
@@ -79,17 +85,14 @@ const isLocationPublic = lastLocation => {
 }
 
 const isLocationPrivate = () => {
-	const isCurrentLocationPrivate = ROUTES.some(route => {
-		const pathnames = parseRouteParamValues(route[ROUTE_PATH])
-		return (
-			route[ROUTE_ACCESSIBILITY] === ROUTE_ACCESSIBILITY_PRIVATE &&
-			pathnames.some(pathname =>
-				window.location.pathname.toLowerCase().includes(pathname)
-			)
-		)
-	})
+	const currentPathname = window.location.pathname
 
-	return isCurrentLocationPrivate ? ROUTE_PAGE_INDEX : window.location.pathname
+	return locationAccessibilityMatch(
+		currentPathname,
+		ROUTE_ACCESSIBILITY_PRIVATE
+	)
+		? ROUTE_PAGE_INDEX
+		: currentPathname
 }
 
 export { isLocationPublic, setLastRoute, goLastRoute, isLocationPrivate }
