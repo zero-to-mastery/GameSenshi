@@ -87,8 +87,8 @@ const isLocationPrivate = () => {
 		currentPathname,
 		ROUTE_ACCESSIBILITY_PRIVATE
 	)
-		? ROUTE_PAGE_INDEX
-		: currentPathname
+		? [history.push, ROUTE_PAGE_INDEX]
+		: [history.replace, currentPathname]
 }
 
 export { isLocationPublic, setLastRoute, goLastRoute, isLocationPrivate }
