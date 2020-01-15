@@ -26,6 +26,7 @@ const STORE_USER_STATE_PROVIDER_DATA = 'providerData'
 const STORE_USER_STATE_EMAIL_VERIFIED = 'emailVerified'
 const STORE_USER_STATE_SIGNING_IN = 'signingIn'
 const SET_SIGNING_IN = 'setIsSigningIn'
+const GET_SIGNED_IN = 'getSignedIn'
 const INITIALIZE = 'initialize'
 const RESET_AVATAR = 'resetAvatar'
 const ON_SIGN_IN = 'onSignIn'
@@ -79,6 +80,15 @@ class StoreUser extends Container {
 		return this
 	};
 
+	[RESET_AVATAR] = () => {
+		this[SET_STATE]({ [STORE_USER_STATE_AVATAR]: defaultAvatar })
+		return this
+	};
+
+	[GET_SIGNED_IN] = () => {
+		return this[STATE][STORE_USER_STATE_SIGNED_IN]
+	};
+
 	[SET_SIGNING_IN] = (
 		value = false,
 		callback = () => {},
@@ -94,11 +104,6 @@ class StoreUser extends Container {
 				}
 			}, 15000)
 		}
-		return this
-	};
-
-	[RESET_AVATAR] = () => {
-		this[SET_STATE]({ [STORE_USER_STATE_AVATAR]: defaultAvatar })
 		return this
 	};
 
@@ -163,4 +168,5 @@ export {
 	INITIALIZE,
 	RESET_AVATAR,
 	ON_SIGN_IN,
+	GET_SIGNED_IN,
 }

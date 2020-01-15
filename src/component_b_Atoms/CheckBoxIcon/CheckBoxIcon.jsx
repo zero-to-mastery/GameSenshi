@@ -36,7 +36,7 @@ const CheckBoxIcon = props => {
 	)
 
 	useEffect(() => {
-		// this is needed when parent component rerender
+		// this is needed when parent component rerender with props
 		setChecked_(checked)
 	}, [checked])
 

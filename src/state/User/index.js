@@ -19,6 +19,7 @@ import {
 	INITIALIZE,
 	RESET_AVATAR,
 	ON_SIGN_IN,
+	GET_SIGNED_IN,
 } from './StoreUser'
 
 const storeUser = new StoreUser()
@@ -28,6 +29,7 @@ const storeUserSetSigningIn = storeUser[SET_SIGNING_IN]
 const storeUserInitialize = storeUser[INITIALIZE]
 const storeUserResetAvatar = storeUser[RESET_AVATAR]
 const storeUserOnSignIn = storeUser[ON_SIGN_IN]
+const storeUserGetSignedIn = storeUser[GET_SIGNED_IN]
 
 export {
 	storeUser,
@@ -37,6 +39,7 @@ export {
 	storeUserInitialize,
 	storeUserResetAvatar,
 	storeUserOnSignIn,
+	storeUserGetSignedIn,
 	STORE_USER_STATE_BIRTH_DATE,
 	STORE_USER_STATE_LANGUAGES,
 	STORE_USER_STATE_SIGNED_IN,

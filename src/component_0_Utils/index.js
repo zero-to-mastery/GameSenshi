@@ -1,6 +1,10 @@
 import { auth } from 'firebaseInit'
 import { history, isLocationPrivate, isLocationPublic } from 'routes'
-import { storeUserSetSigningIn } from 'state'
+import {
+	storeUserSetSigningIn,
+	storeUserGetSignedIn,
+	storeSignInShow,
+} from 'state'
 
 const signOut = () => {
 	auth().signOut()
@@ -12,4 +16,10 @@ const onLogin = lastLocation => {
 	storeUserSetSigningIn(true)
 }
 
-export { signOut, onLogin }
+const needLoginToClick = () => {
+	if (!storeUserGetSignedIn()) {
+		storeSignInShow()
+	}
+}
+
+export { signOut, onLogin, needLoginToClick }
