@@ -9,10 +9,19 @@ import {
 } from 'state'
 import { auth } from 'firebaseInit/core'
 
+const ACTION = 'action'
+
 let unsubscribe = () => {} // ! dont move this into onAuthStateChenged
+let nonLoginUserLastIntendedAction = { [ACTION]: () => {} }
+
+const setNonLoginUserLastIntendedAction = callback => {
+	nonLoginUserLastIntendedAction[ACTION] = callback
+}
 
 const onAuthChanged = (userAuth, onSnapshot) => {
 	if (userAuth) {
+		nonLoginUserLastIntendedAction[ACTION]()
+		nonLoginUserLastIntendedAction[ACTION] = () => {}
 		unsubscribe = onSnapshot(
 			doc => {
 				const userData = doc.data()
@@ -45,4 +54,4 @@ const onAuthChange = docUserSettingGeneralOnSnapshot => {
 	})
 }
 
-export { onAuthChange }
+export { onAuthChange, setNonLoginUserLastIntendedAction }

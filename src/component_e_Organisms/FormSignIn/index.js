@@ -25,6 +25,11 @@ import {
 import { onLogin } from 'component_0_Utils'
 
 const FormSignInPropedSignIn = props => {
+	const {
+		[SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
+		...otherProps
+	} = props
+
 	const onSubmit = useCallback(values => {
 		return handleSignInWithEmailAndPassword(
 			values[FINAL_TEXT_EMAIL],
@@ -36,6 +41,7 @@ const FormSignInPropedSignIn = props => {
 
 	const onLogin_ = useCallback(() => {
 		onLogin(lastLocation)
+		onSuccessfulSubmission && onSuccessfulSubmission()
 	}, [lastLocation])
 
 	return (
@@ -44,7 +50,7 @@ const FormSignInPropedSignIn = props => {
 			createAccountLink={ROUTE_PAGE_SIGN_UP}
 			onSubmit={onSubmit}
 			onSuccessfulSubmission={onLogin_}
-			{...props}
+			{...otherProps}
 		/>
 	)
 }

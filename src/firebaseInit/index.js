@@ -1,4 +1,4 @@
-import { onAuthChange } from './onAuthChange'
+import { onAuthChange, setNonLoginUserLastIntendedAction } from './onAuthChange'
 import { getRedirectResult } from './getRedirectResult'
 import { auth } from './core'
 import {
@@ -18,4 +18,5 @@ export {
 	onAuthChange,
 	functSignInTwicth,
 	handleDifferentCredential,
+	setNonLoginUserLastIntendedAction,
 }

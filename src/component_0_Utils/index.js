@@ -5,10 +5,12 @@ import {
 	storeUserGetSignedIn,
 	storeSignInShow,
 } from 'state'
+import { setNonLoginUserLastIntendedAction } from 'firebaseInit'
 
 const signOut = () => {
 	auth().signOut()
-	history.push(isLocationPrivate())
+	const [action, pathname] = isLocationPrivate()
+	action(pathname)
 }
 
 const onLogin = lastLocation => {
@@ -16,8 +18,11 @@ const onLogin = lastLocation => {
 	storeUserSetSigningIn(true)
 }
 
-const needLoginToClick = () => {
-	if (!storeUserGetSignedIn()) {
+const needLoginToClick = (triggerOnClick, onClick) => {
+	if (storeUserGetSignedIn()) {
+		onClick()
+	} else {
+		setNonLoginUserLastIntendedAction(triggerOnClick)
 		storeSignInShow()
 	}
 }

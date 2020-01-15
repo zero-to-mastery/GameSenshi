@@ -7,8 +7,19 @@ const CheckBoxIconPropedFavourite = props => {
 	const { uid, ...otherProps } = props
 	const { checked, loading } = useFavourite(uid)
 
-	const onClick = useCallback(() => {
-		needLoginToClick()
+	const onClick = useCallback((e, setChecked_, ref) => {
+		needLoginToClick(
+			() => {
+				try {
+					ref.current.onClick()
+				} catch (err) {
+					console.log(err)
+				}
+			},
+			() => {
+				setChecked_(state => !state)
+			}
+		)
 	}, [])
 
 	return (
