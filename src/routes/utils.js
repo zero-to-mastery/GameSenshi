@@ -62,25 +62,21 @@ const locationAccessibilityMatch = (location, accessibility) => {
 }
 
 const isLocationPublic = lastLocation => {
+	const currentPath = history.location.pathname
 	const isCurrentLocationPublic = locationAccessibilityMatch(
-		history.location.pathname,
+		currentPath,
 		ROUTE_ACCESSIBILITY_PUBLIC
 	)
 
-	if (isCurrentLocationPublic && lastLocation) {
+	if (isCurrentLocationPublic) {
 		const lastPathname = lastLocation.pathname
 		return locationAccessibilityMatch(lastPathname, ROUTE_ACCESSIBILITY_PUBLIC)
 			? ROUTE_PAGE_INDEX
-			: lastPathname
-	} else if (isCurrentLocationPublic && !lastLocation) {
-		return ROUTE_PAGE_INDEX
-	} else if (!isCurrentLocationPublic && lastLocation) {
-		// normally this case would not be trigger because it is not possible for non sign in user to enter private route (because private Link is hidden if user not sign in)
-		// the only way for non sign in user to enter private route is manually type in the browser url where in this case the lastLocation is null
-		// but still add this case for safety
-		return lastLocation.pathname
+			: lastLocation
+			? lastPathname
+			: ROUTE_PAGE_INDEX
 	} else {
-		return ROUTE_PAGE_INDEX
+		return currentPath
 	}
 }
 
