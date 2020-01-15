@@ -17,9 +17,9 @@ route:profile/1
 route:signup
 note: each sign up method can be linked to each other, example:
 
-1. sign up with password account than link with Google account
-2. sign up with Google account than link with password account.
-3. sign up with Twitch account than link with Facebook account.
+1. sign up with password account then link with Google account
+2. sign up with Google account then link with password account.
+3. sign up with Twitch account then link with Facebook account.
 
 ![signUp.png](./src/assets/img/readme/signUp.png)
 
