@@ -10,7 +10,7 @@ const GridContainer = styled.div`
 	display: grid;
 	grid-template-columns: repeat(5, 64px);
 	grid-template-rows: repeat(4, 64px);
-	gap: 15px;
+	gap: 5px;
 `
 
 const GradientContainer = styled.div`
@@ -22,8 +22,8 @@ const GradientContainer = styled.div`
 `
 
 const ImageWrapper = styled.div`
-	width: 64px;
-	height: 64px;
+	width: 48px;
+	height: 48px;
 	border: 1px solid #000000;
 	cursor: pointer;
 `
