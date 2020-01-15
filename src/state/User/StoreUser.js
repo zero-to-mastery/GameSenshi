@@ -107,7 +107,7 @@ class StoreUser extends Container {
 		return this
 	};
 
-	[ON_SIGN_IN] = (userAuth, userData) => {
+	[ON_SIGN_IN] = (userAuth, userData, callback = () => {}) => {
 		// * need set signing in because subscribe cause a little lag
 		this[SET_SIGNING_IN](true, () => {
 			const userData_ = userData || {
@@ -132,7 +132,7 @@ class StoreUser extends Container {
 					[STORE_USER_STATE_SIGNED_IN]: true,
 					[STORE_USER_STATE_SIGNING_IN]: false,
 				}
-			})
+			}, callback)
 
 			// do not store sensitive information in localStorage
 			localStorage.setItem(

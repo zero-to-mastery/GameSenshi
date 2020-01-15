@@ -20,12 +20,13 @@ const setNonLoginUserLastIntendedAction = callback => {
 
 const onAuthChanged = (userAuth, onSnapshot) => {
 	if (userAuth) {
-		nonLoginUserLastIntendedAction[ACTION]()
-		nonLoginUserLastIntendedAction[ACTION] = () => {}
 		unsubscribe = onSnapshot(
 			doc => {
 				const userData = doc.data()
-				storeUserOnSignIn(userAuth, userData)
+				storeUserOnSignIn(userAuth, userData, () => {
+					nonLoginUserLastIntendedAction[ACTION]()
+					nonLoginUserLastIntendedAction[ACTION] = () => {}
+				})
 			},
 			() => {
 				//handle error here

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, memo } from 'react'
 import { Field } from 'react-final-form'
 import { stopUndefined } from 'utils'
 import classnames from 'classnames'
-// core components
 import { Exports } from 'component_b_Atoms'
 
 const { TextAlert, Popover } = stopUndefined(Exports)
