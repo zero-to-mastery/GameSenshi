@@ -2,25 +2,31 @@
 import {
 	RESET_STATE,
 	storeAlert,
-	storeSignIn,
 	storeProgress,
 	storeUser,
 	storeWrapper,
 	storeUserOnSignIn,
-	storeModalOnAuthStateChange,
-	storeUserOnSignOut,
 } from 'state'
 import { auth } from 'firebaseInit/core'
 
-let unsubscribe = () => {}
+const ACTION = 'action'
+
+let unsubscribe = () => {} // ! dont move this into onAuthStateChenged
+let nonLoginUserLastIntendedAction = { [ACTION]: () => {} }
+
+const setNonLoginUserLastIntendedAction = callback => {
+	nonLoginUserLastIntendedAction[ACTION] = callback
+}
 
 const onAuthChanged = (userAuth, onSnapshot) => {
-	storeModalOnAuthStateChange()
 	if (userAuth) {
 		unsubscribe = onSnapshot(
 			doc => {
 				const userData = doc.data()
-				storeUserOnSignIn(userAuth, userData)
+				storeUserOnSignIn(userAuth, userData, () => {
+					nonLoginUserLastIntendedAction[ACTION]()
+					nonLoginUserLastIntendedAction[ACTION] = () => {}
+				})
 			},
 			() => {
 				//handle error here
@@ -29,16 +35,9 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 	}
 	// reset all store if user sign out
 	else {
-		storeUserOnSignOut()
 		unsubscribe()
 		unsubscribe = () => {}
-		const stores = [
-			storeAlert,
-			storeSignIn,
-			storeProgress,
-			storeUser,
-			storeWrapper,
-		]
+		const stores = [storeAlert, storeProgress, storeUser, storeWrapper]
 		stores.forEach(store => {
 			store[RESET_STATE]()
 		})
@@ -56,4 +55,4 @@ const onAuthChange = docUserSettingGeneralOnSnapshot => {
 	})
 }
 
-export { onAuthChange }
+export { onAuthChange, setNonLoginUserLastIntendedAction }

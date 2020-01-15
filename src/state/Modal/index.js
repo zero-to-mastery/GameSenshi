@@ -12,7 +12,6 @@ import {
 	SET_ITEM,
 	INITIALIZE,
 	REMOVE_ITEM,
-	ON_AUTH_STATE_CHANGE,
 	PROCESS_REDIRECT_RESULT,
 	ON_CONTINUE,
 	SET_STATE,
@@ -30,7 +29,6 @@ const storeModalGetItem = storeModal[GET_ITEM]
 const storeModalSetItem = storeModal[SET_ITEM]
 const storeModalInitialize = storeModal[INITIALIZE]
 const storeModalRemoveItem = storeModal[REMOVE_ITEM]
-const storeModalOnAuthStateChange = storeModal[ON_AUTH_STATE_CHANGE]
 const storeModalProcessLinking = storeModal[PROCESS_REDIRECT_RESULT]
 const storeModalOnContinue = storeModal[ON_CONTINUE]
 const storeModalSetState = storeModal[SET_STATE]
@@ -48,7 +46,6 @@ export {
 	storeModalSetItem,
 	storeModalInitialize,
 	storeModalRemoveItem,
-	storeModalOnAuthStateChange,
 	storeModalProcessLinking,
 	storeModalOnContinue,
 	storeModalSetState,

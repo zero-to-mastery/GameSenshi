@@ -17,9 +17,9 @@ route:profile/1
 route:signup
 note: each sign up method can be linked to each other, example:
 
-1. sign up with password account than link with Google account
-2. sign up with Google account than link with password account.
-3. sign up with Twitch account than link with Facebook account.
+1. sign up with password account then link with Google account
+2. sign up with Google account then link with password account.
+3. sign up with Twitch account then link with Facebook account.
 
 ![signUp.png](./src/assets/img/readme/signUp.png)
 
@@ -135,5 +135,8 @@ Please read [wiki](https://github.com/tylim88/GameSenshi/wiki) for details of ou
 ## Contributing
 
 Join our [Trello](https://trello.com/invite/b/tAyH3oig/a5374e9eaa1bbe644f3e7367d1e23300/game-senshi).
+
+Join our Discord Channel
+![joinChannel.png](./src/assets/img/readme/joinChannel.png)
 
 Please read [CONTRIBUTING.md](https://github.com/tylim88/GameSenshi/blob/master/CONTRIBUTING.md) for details on how to contribute.

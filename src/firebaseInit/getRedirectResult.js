@@ -18,7 +18,6 @@ import {
 	UNEXPECTED_ERROR_CODE_12,
 	FUNCTION_OAUTH_CODE,
 	FUNCTION_REDIRECT_URI,
-	ENV_VALUE_TWITCH_REDIRECT,
 	FUNCTION_CUSTOM_TOKEN,
 } from 'constantValues'
 import { functSignInTwicth } from 'firebaseInit/cloudFunct'
@@ -55,7 +54,6 @@ const getRedirectResult = async () => {
 		) {
 			handleDifferentCredential(email, credential)
 		} else {
-			console.log(err)
 			storeModalRemoveItem()
 			storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_6)
 		}
@@ -80,10 +78,9 @@ const getRedirectResult = async () => {
 				try {
 					customTokenData = await functSignInTwicth({
 						[FUNCTION_OAUTH_CODE]: oauthCode,
-						[FUNCTION_REDIRECT_URI]: ENV_VALUE_TWITCH_REDIRECT,
+						[FUNCTION_REDIRECT_URI]: window.location.origin,
 					})
 				} catch (err) {
-					console.log(err)
 					storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_9)
 				}
 
@@ -93,7 +90,6 @@ const getRedirectResult = async () => {
 							customTokenData.data[FUNCTION_CUSTOM_TOKEN]
 						)
 					} catch (err) {
-						console.log(err)
 						return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_10)
 					}
 					storeModalProcessLinking(linkWithRedirect, linkedThen)

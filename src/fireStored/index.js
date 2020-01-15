@@ -17,7 +17,7 @@ import {
 	docSenshiProfileAvatarSet,
 	docSenshiProfileCarouselSet,
 	docSenshiProfileChannelSet,
-} from './senshiSettings'
+} from './SenshiSettings'
 
 export {
 	docUserSettingGeneralGet,

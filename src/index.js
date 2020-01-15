@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom'
 import App from 'App'
 import * as serviceWorker from 'serviceWorker'
 import {
+	storeSignInClose,
 	storeModalInitialize,
 	storeUserInitialize,
 	storeUserSetSigningIn,
 	STORE_USER_STATE_SIGNING_IN,
 } from 'state'
+import { history } from 'routes'
 import { docUserSettingGeneralOnSnapshot } from 'fireStored'
 import { goLastRoute } from 'routes'
 import { getRedirectResult, onAuthChange } from 'firebaseInit'
@@ -25,7 +27,7 @@ onAuthChange(docUserSettingGeneralOnSnapshot)
 //handle redirect
 getRedirectResult()
 
-// check if user data in indexed db, pre-sign in user
+// check if user data in local storage, pre-sign in user
 storeUserInitialize()
 goLastRoute()
 
@@ -35,6 +37,11 @@ storeModalInitialize(items => {
 	if (signingIn) {
 		storeUserSetSigningIn(true)
 	}
+})
+
+history.listen(() => {
+	// close sign in modal whenever route change
+	storeSignInClose()
 })
 
 ReactDOM.render(<App />, document.getElementById('root'))
