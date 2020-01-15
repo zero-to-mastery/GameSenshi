@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { Tooltip } from 'reactstrap'
 import classnames from 'classnames'
 import { Exports } from 'component_a_Protons'
@@ -18,28 +18,22 @@ const CheckBoxIcon = props => {
 	} = props
 	const [checked_, setChecked_] = useState(checked)
 	const [showTooltip, setShowTooltip] = useState(false)
-	const [tooltipMount, setTooltipMount] = useState(true)
+	const ref = useRef(null)
 	const id = icon.replace(/ /g, '')
 
 	const onClick_ = useCallback(
 		e => {
-			onClick && onClick(e, setChecked_)
-			if (tooltipOff) {
+			onClick && onClick(e, setChecked_, ref)
+			if (!tooltipOff) {
 				// if tooltip off is not provided, this is not treated as checkbox
-				setChecked_(!checked_)
-				// unmount tooltip upon click
-				setTooltipMount(false)
+				setChecked_(state => !state)
+				setTimeout(() => {
+					setChecked_(state => !state)
+				}, 150)
 			}
 		},
-		[onClick, checked_]
+		[onClick, ref, tooltipOff]
 	)
-
-	useEffect(() => {
-		// this is needed to remount tooltip so that it display text correctly after click
-		if (!tooltipMount) {
-			setTooltipMount(true)
-		}
-	}, [tooltipMount])
 
 	useEffect(() => {
 		// this is needed when parent component rerender
@@ -65,6 +59,7 @@ const CheckBoxIcon = props => {
 					{ 'btn-simple': !checked_ },
 					'btn-icon btn-round m-1'
 				)}
+				ref={ref}
 				color={color}
 				type='button'
 				onClick={onClick_}
@@ -74,11 +69,9 @@ const CheckBoxIcon = props => {
 			>
 				<i className={icon} />
 			</Button>
-			{tooltipMount && (
-				<Tooltip delay={100} target={id} isOpen={showTooltip} placement='top'>
-					{checked_ ? (tooltipOff ? tooltipOff : tooltipOn) : tooltipOn}
-				</Tooltip>
-			)}
+			<Tooltip delay={100} target={id} isOpen={showTooltip} placement='top'>
+				{checked_ ? (tooltipOff ? tooltipOff : tooltipOn) : tooltipOn}
+			</Tooltip>
 		</>
 	)
 }
