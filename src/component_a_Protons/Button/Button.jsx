@@ -1,4 +1,4 @@
-import React, { forwardRef, Fragment } from 'react'
+import React, { forwardRef, Fragment, useMemo } from 'react'
 import { Button as ButtonRS } from 'reactstrap'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import classnames from 'classnames'
@@ -6,7 +6,7 @@ import styles from './styles.module.css'
 
 const Button = forwardRef((props, ref) => {
 	const { baseClass, baseStyle, className, tag, ...otherProps } = props
-	const Enclosure = tag ? Fragment : ButtonBase
+	const Enclosure = useMemo(() => (tag ? Fragment : ButtonBase), [tag])
 	const className_ = className || ''
 	return (
 		<Enclosure
