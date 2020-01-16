@@ -11,6 +11,7 @@ import {
 	stopUndefined,
 	checkDuplicatedObject,
 	createGetOptions,
+	convertToArrayIfNotArray,
 } from './codeToolings'
 
 import {
@@ -41,6 +42,7 @@ export {
 	stopUndefined,
 	checkDuplicatedObject,
 	createGetOptions,
+	convertToArrayIfNotArray,
 	signUpEmailValidation,
 	signUpPasswordValidation,
 	checkBoxValidation,
