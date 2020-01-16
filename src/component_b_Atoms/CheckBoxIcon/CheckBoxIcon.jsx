@@ -19,15 +19,17 @@ const CheckBoxIcon = props => {
 	const [checked_, setChecked_] = useState(checked)
 	const [showTooltip, setShowTooltip] = useState(false)
 	const ref = useRef(null)
-	const id = icon.replace(/ /g, '')
+	const timeoutId = useRef(-1)
 
+	const id = icon.replace(/ /g, '')
 	const onClick_ = useCallback(
 		e => {
 			onClick && onClick(e, setChecked_, ref)
 			if (!tooltipOff) {
 				// if tooltip off is not provided, this is not treated as checkbox
+				clearTimeout(timeoutId.current)
 				setChecked_(state => !state)
-				setTimeout(() => {
+				timeoutId.current = setTimeout(() => {
 					setChecked_(state => !state)
 				}, 150)
 			}
@@ -48,15 +50,19 @@ const CheckBoxIcon = props => {
 		setShowTooltip(false)
 	}, [])
 
-	return loading ? (
-		<div className='d-inline-flex m-1'>
-			<Loader type='Circles' color='#00BFFF' height='18px' width='18px' />
-		</div>
-	) : (
+	return (
 		<>
+			<div
+				className={classnames('m-1', {
+					'd-none': !loading,
+					'd-inline-flex': loading,
+				})}
+			>
+				<Loader type='Circles' color='#00BFFF' height='18px' width='18px' />
+			</div>
 			<Button
 				className={classnames(
-					{ 'btn-simple': !checked_ },
+					{ 'btn-simple': !checked_, 'd-none': loading },
 					'btn-icon btn-round m-1'
 				)}
 				ref={ref}
