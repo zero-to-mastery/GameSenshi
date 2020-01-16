@@ -1,6 +1,7 @@
 import React from 'react'
 import { Subscribe } from 'unstated'
 import { STATE } from 'state/constants'
+import { convertToArrayIfNotArray } from 'utils'
 
 const StateContainer = (
 	Component,
@@ -8,20 +9,24 @@ const StateContainer = (
 	stateToPropsMaps = [],
 	methodToPropsMaps = []
 ) => {
+	const stores_ = convertToArrayIfNotArray(stores)
+	const stateToPropsMaps_ = convertToArrayIfNotArray(stateToPropsMaps)
+	const methodToPropsMaps_ = convertToArrayIfNotArray(methodToPropsMaps)
+
 	return props => (
-		<Subscribe to={stores}>
+		<Subscribe to={stores_}>
 			{() => {
-				const accProps = stores.reduce((accProps, store, i) => {
-					for (const prop in stateToPropsMaps[i]) {
-						const value = stateToPropsMaps[i][prop]
+				const accProps = stores_.reduce((accProps, store, i) => {
+					for (const prop in stateToPropsMaps_[i]) {
+						const value = stateToPropsMaps_[i][prop]
 						if (value instanceof Function) {
 							accProps[prop] = value(store[STATE])
 						} else {
 							accProps[prop] = store[STATE][value]
 						}
 					}
-					for (const prop in methodToPropsMaps[i]) {
-						accProps[prop] = methodToPropsMaps[i][prop]
+					for (const prop in methodToPropsMaps_[i]) {
+						accProps[prop] = methodToPropsMaps_[i][prop]
 					}
 					return accProps
 				}, {})
