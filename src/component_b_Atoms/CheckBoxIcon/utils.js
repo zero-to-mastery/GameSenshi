@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { docUserSenshiGet } from 'fireStored'
-//import { storeModalSimpleError } from 'state'
+import { storeModalSimpleError } from 'state'
 import {
-	//UNEXPECTED_ERROR_CODE_18,
+	UNEXPECTED_ERROR_CODE_18,
 	FIRESTORE_USER_SENSHI_FAVOURITE,
 } from 'constantValues'
+import { needLoginToClick } from 'component_0_Utils'
 
-const useFavourite = uid => {
+const useFavourite = (uid, signingIn, signedIn) => {
 	const [loading, setLoading] = useState(true)
 	const [checked, setChecked] = useState(false)
 
@@ -17,8 +18,7 @@ const useFavourite = uid => {
 				doc = await docUserSenshiGet(undefined, uid)
 			} catch (err) {
 				setLoading(false)
-				return
-				//storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_18)
+				return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_18)
 			}
 			if (doc && doc.exists) {
 				setLoading(false)
@@ -27,9 +27,29 @@ const useFavourite = uid => {
 				setLoading(false)
 			}
 		}
-		getUserSenshi()
-	}, [uid])
-	return { loading, checked }
+
+		if (signedIn) {
+			getUserSenshi()
+		} else if (signingIn) {
+			setLoading(true)
+		} else {
+			setLoading(false)
+			setChecked(false)
+		}
+	}, [uid, signingIn, signedIn])
+
+	const onClick = useCallback((e, setChecked_, ref) => {
+		needLoginToClick(
+			() => {
+				ref.current.onClick()
+			},
+			() => {
+				setChecked_(false)
+			}
+		)
+	}, [])
+
+	return [loading, checked, onClick]
 }
 
 export { useFavourite }

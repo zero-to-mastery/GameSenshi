@@ -21,7 +21,7 @@ import {
 const {
 	BadgesPropedSenshi,
 	StatusPropedOnline,
-	CheckBoxIconPropedFavourite,
+	CheckBoxIconPropedFavouriteStoreUser,
 	CheckBoxIconPropedTip,
 	ButtonsCommonOptioned,
 } = stopUndefined(Exports)
@@ -79,7 +79,7 @@ const CardUserHorizontal = props => {
 							</Col>
 							<Col>
 								<CheckBoxIconPropedTip />
-								<CheckBoxIconPropedFavourite uid={uid} />
+								<CheckBoxIconPropedFavouriteStoreUser uid={uid} />
 							</Col>
 						</RowStyledUsername>
 					</Col>
