@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback } from 'react'
-import { docUserSenshiGet } from 'fireStored'
+import { docUserSenshiGet, docUserSenshiSet } from 'fireStored'
 import { storeModalSimpleError } from 'state'
 import {
 	UNEXPECTED_ERROR_CODE_18,
 	FIRESTORE_USER_SENSHI_FAVOURITE,
+	UNEXPECTED_ERROR_CODE_19,
 } from 'constantValues'
 import { needLoginToClick } from 'component_0_Utils'
 
@@ -38,13 +39,22 @@ const useFavourite = (uid, signingIn, signedIn) => {
 		}
 	}, [uid, signingIn, signedIn])
 
-	const onClick = useCallback((e, setChecked_, ref) => {
+	const onClick = useCallback((e, ref, setChecked, checked) => {
 		needLoginToClick(
 			() => {
 				ref.current.onClick()
 			},
-			() => {
-				setChecked_(false)
+			async () => {
+				setLoading(true)
+				docUserSenshiSet({ [FIRESTORE_USER_SENSHI_FAVOURITE]: !checked })
+					.then(() => {
+						setLoading(false)
+						setChecked(!checked)
+					})
+					.catch(err => {
+						setLoading(false)
+						return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_19)
+					})
 			}
 		)
 	}, [])

@@ -24,7 +24,7 @@ const CheckBoxIcon = props => {
 	const id = icon.replace(/ /g, '')
 	const onClick_ = useCallback(
 		e => {
-			onClick && onClick(e, setChecked_, ref)
+			onClick && onClick(e, ref, setChecked_, checked_)
 			if (!tooltipOff) {
 				// if tooltip off is not provided, this is not treated as checkbox
 				clearTimeout(timeoutId.current)
@@ -34,7 +34,7 @@ const CheckBoxIcon = props => {
 				}, 150)
 			}
 		},
-		[onClick, ref, tooltipOff]
+		[onClick, ref, tooltipOff, checked_]
 	)
 
 	useEffect(() => {
@@ -53,12 +53,12 @@ const CheckBoxIcon = props => {
 	return (
 		<>
 			<div
-				className={classnames('m-1', {
+				className={classnames('m-2', {
 					'd-none': !loading,
 					'd-inline-flex': loading,
 				})}
 			>
-				<Loader type='Circles' color='#00BFFF' height='18px' width='18px' />
+				<Loader type='Circles' color='#00BFFF' height='30px' width='30px' />
 			</div>
 			<Button
 				className={classnames(
