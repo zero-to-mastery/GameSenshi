@@ -85,7 +85,7 @@ const CardUserHorizontal = props => {
 							</Col>
 						</RowStyledUsername>
 					</Col>
-					{channels.length > 0 && (
+					{Object.keys(channels).length > 0 && (
 						<Col xs='12' lg='3'>
 							<Row>
 								<Col align='center'>
