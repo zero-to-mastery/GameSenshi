@@ -1,6 +1,6 @@
 import { onAuthChange, setNonLoginUserLastIntendedAction } from './onAuthChange'
 import { getRedirectResult } from './getRedirectResult'
-import { auth } from './core'
+import { auth, fireStored, getServerTimestamp } from './core'
 import {
 	storageUserAvatarGet,
 	storageUserAvatarSet,
@@ -11,6 +11,8 @@ import { handleDifferentCredential } from './handleDifferentCredential'
 
 export {
 	auth,
+	fireStored,
+	getServerTimestamp,
 	storageUserAvatarGet,
 	storageUserAvatarSet,
 	storageUserAvatarRemove,
