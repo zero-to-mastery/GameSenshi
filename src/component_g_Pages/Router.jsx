@@ -35,7 +35,7 @@ import {
 	useLastLocation,
 } from 'routes'
 
-import { PageProfile } from './PageProfile'
+import { PageProfileStoreUser } from './PageProfile'
 import { PageSettings } from './PageSettings'
 import { SignInPage } from './PageSignIn'
 import { PageSignUp } from './PageSignUp'
@@ -63,8 +63,8 @@ const MapRoutesToPages = {
 	[ROUTE_PAGE_INDEX]: IndexPage,
 	[ROUTE_PAGE_FILTER]: PageFilter,
 	[ROUTE_PAGE_HELP]: HelpPage,
-	[ROUTE_PAGE_PROFILE]: PageProfile,
-	[ROUTE_PAGE_PROFILE_COMMON]: PageProfile,
+	[ROUTE_PAGE_PROFILE]: PageProfileStoreUser,
+	[ROUTE_PAGE_PROFILE_COMMON]: PageProfileStoreUser,
 	[ROUTE_PAGE_SIGN_UP]: PageSignUp,
 	[ROUTE_PAGE_SIGN_IN]: SignInPage,
 	[ROUTE_PAGE_POLICY_COMMON]: PagePolicies,

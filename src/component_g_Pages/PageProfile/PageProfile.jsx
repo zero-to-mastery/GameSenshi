@@ -26,6 +26,7 @@ const {
 	TabProductPropedProfile,
 	PageError,
 	PAGE_ERROR_CODE_NOT_FOUND,
+	PAGE_ERROR_CODE_NOT_A_SENSHI,
 } = stopUndefined(Exports)
 
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
@@ -37,12 +38,17 @@ const tabs = games.map((tab, index) => {
 	}
 })
 
+const PAGE_PROFILE_CURRENT_USER_UID = 'currentUserUid'
+
 const PageProfile = props => {
+	let uid = null
 	const {
-		match: {
-			params: { [ROUTE_PARAM_UID]: uid },
-		},
+		match: { params },
+		[PAGE_PROFILE_CURRENT_USER_UID]: currentUserUid,
 	} = props
+
+	params && (uid = params[ROUTE_PARAM_UID])
+
 	const [loading, setLoading] = useState(true)
 	const [exist, setExist] = useState(true)
 	const [data, setData] = useState(null)
@@ -55,7 +61,7 @@ const PageProfile = props => {
 
 	useEffect(() => {
 		const attachListener = async () => {
-			observer.current = docSenshiProfileOnSnapshot(uid)(
+			observer.current = docSenshiProfileOnSnapshot(uid || currentUserUid)(
 				async docSnapshot => {
 					try {
 						const data = await docSnapshot.data()
@@ -66,7 +72,11 @@ const PageProfile = props => {
 						} else {
 							setExist(false)
 							setLoading(false)
-							setErrorCode(PAGE_ERROR_CODE_NOT_FOUND)
+							if (uid) {
+								setErrorCode(PAGE_ERROR_CODE_NOT_FOUND)
+							} else if (currentUserUid) {
+								setErrorCode(PAGE_ERROR_CODE_NOT_A_SENSHI)
+							}
 							return
 						}
 					} catch (err) {
@@ -82,9 +92,8 @@ const PageProfile = props => {
 				}
 			)
 		}
-
 		attachListener()
-	}, [uid])
+	}, [uid, currentUserUid])
 
 	return exist ? (
 		<WrapperStoreWrapperPropedProfile>
@@ -165,4 +174,4 @@ const PageProfile = props => {
 	)
 }
 
-export { PageProfile }
+export { PageProfile, PAGE_PROFILE_CURRENT_USER_UID }
