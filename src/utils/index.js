@@ -31,6 +31,8 @@ import {
 	usernameLength,
 } from './validation'
 
+import { defaultAvatar } from './defaults'
+
 export {
 	resObj,
 	simplerResponseHandling,
@@ -57,4 +59,5 @@ export {
 	cardCvcValidation,
 	cardExpiryValidation,
 	usernameLength,
+	defaultAvatar,
 }
