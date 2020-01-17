@@ -1,24 +1,16 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useMemo } from 'react'
 import Image from 'material-ui-image'
-
-const ICON_IMAGE = 'image'
-const ICON_EMOJI = 'emoji'
-const ICON_ICON = 'icon'
 
 const Icon = props => {
 	const [error, setError] = useState(false)
 
-	const {
-		[ICON_IMAGE]: image,
-		[ICON_EMOJI]: emoji,
-		[ICON_ICON]: icon,
-		'aria-label': aria,
-		className,
-	} = props
+	const { image, emoji, icon, 'aria-label': aria, className } = props
 
 	const onError = useCallback(() => {
 		setError(true)
 	}, [])
+
+	const icon_ = useMemo(() => (icon ? icon : () => {}), [icon])
 
 	return (
 		(image || emoji || icon) && (
@@ -40,10 +32,10 @@ const Icon = props => {
 						{emoji}
 					</span>
 				)}
-				{(!image || (icon && error)) && <i className={icon} />}
+				{(!image || (icon && error)) && icon_()}
 			</span>
 		)
 	)
 }
 
-export { Icon, ICON_IMAGE, ICON_EMOJI, ICON_ICON }
+export { Icon }
