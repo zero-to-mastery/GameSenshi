@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react'
+import React, { useState, useCallback } from 'react'
 import Image from 'material-ui-image'
 
 const Icon = props => {
@@ -9,8 +9,6 @@ const Icon = props => {
 	const onError = useCallback(() => {
 		setError(true)
 	}, [])
-
-	const icon_ = useMemo(() => (icon ? icon : () => {}), [icon])
 
 	return (
 		(image || emoji || icon) && (
@@ -32,7 +30,7 @@ const Icon = props => {
 						{emoji}
 					</span>
 				)}
-				{(!image || (icon && error)) && icon_()}
+				{(!image || (icon && error)) && icon && icon()}
 			</span>
 		)
 	)
