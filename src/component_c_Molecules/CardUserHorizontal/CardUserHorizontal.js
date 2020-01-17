@@ -18,6 +18,8 @@ import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_DISPLAY_NAME,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS,
 } from 'constantValues'
+import { defaultAvatar } from 'utils'
+
 const {
 	BadgesPropedSenshi,
 	StatusPropedOnline,
@@ -60,7 +62,7 @@ const CardUserHorizontal = props => {
 										color='transparent'
 										style={{ paddingTop: '0px', height: '100%' }}
 										className='img-center img-fluid rounded-circle'
-										src={avatar}
+										src={avatar || defaultAvatar}
 									/>
 								</DivStyledImage>
 							</Col>
@@ -83,20 +85,22 @@ const CardUserHorizontal = props => {
 							</Col>
 						</RowStyledUsername>
 					</Col>
-					<Col xs='12' lg='3'>
-						<Row>
-							<Col align='center'>
-								<TextStyledSubscribe className='text-success font-weight-bold text-nowrap'>
-									Subscribe to my channels:
-								</TextStyledSubscribe>
-							</Col>
-						</Row>
-						<Row>
-							<Col>
-								<ButtonsCommonOptioned buttons={channels} />
-							</Col>
-						</Row>
-					</Col>
+					{channels.length > 0 && (
+						<Col xs='12' lg='3'>
+							<Row>
+								<Col align='center'>
+									<TextStyledSubscribe className='text-success font-weight-bold text-nowrap'>
+										Subscribe to my channels:
+									</TextStyledSubscribe>
+								</Col>
+							</Row>
+							<Row>
+								<Col>
+									<ButtonsCommonOptioned buttons={channels} />
+								</Col>
+							</Row>
+						</Col>
+					)}
 				</Row>
 			</Container>
 		</SectionStyled>
