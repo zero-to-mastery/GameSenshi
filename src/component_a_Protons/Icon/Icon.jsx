@@ -13,6 +13,7 @@ const Icon = props => {
 		[ICON_EMOJI]: emoji,
 		[ICON_ICON]: icon,
 		'aria-label': aria,
+		className,
 	} = props
 
 	const onError = useCallback(() => {
@@ -20,27 +21,28 @@ const Icon = props => {
 	}, [])
 
 	return (
-		<>
-			{image && !error && (
-				<Image
-					src={image}
-					onError={onError}
-					color='transparent'
-					style={{
-						width: 'auto',
-						height: '100%',
-						padding: 0,
-					}}
-				/>
-			)}
-			{(!image || (emoji && error)) && (
-				<span role='img' aria-label={aria}>
-					{emoji}
-				</span>
-			)}
-			{(!image || (icon && error)) && <i className={icon} />}
-			{(image || emoji || icon) && <>&nbsp;&nbsp;</>}
-		</>
+		(image || emoji || icon) && (
+			<span className={className}>
+				{image && !error && (
+					<Image
+						src={image}
+						onError={onError}
+						color='transparent'
+						style={{
+							width: 'auto',
+							height: '100%',
+							padding: 0,
+						}}
+					/>
+				)}
+				{(!image || (emoji && error)) && (
+					<span role='img' aria-label={aria}>
+						{emoji}
+					</span>
+				)}
+				{(!image || (icon && error)) && <i className={icon} />}
+			</span>
+		)
 	)
 }
 
