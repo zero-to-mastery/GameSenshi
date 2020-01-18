@@ -11,11 +11,9 @@ import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE_UPDATED_AT,
 } from 'constantValues'
 
-const [
-	docSenshiProfileGet,
-	docSenshiProfileSet,
-	docSenshiProfileOnSnapshot,
-] = createDocGetSet(fireStorePathSenshiSettingProfile)
+const [, docSenshiProfileSet, docSenshiProfileOnSnapshot] = createDocGetSet(
+	fireStorePathSenshiSettingProfile
+)
 
 const docSenshiProfileAvatarSet = url =>
 	docSenshiProfileSet()({
@@ -41,8 +39,6 @@ const docdocSenshiProfileOnlineSet = online =>
 	})
 
 export {
-	docSenshiProfileGet,
-	docSenshiProfileSet,
 	docSenshiProfileOnSnapshot,
 	docSenshiProfileAvatarSet,
 	docSenshiProfileCarouselSet,

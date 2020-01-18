@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { docUserSenshiGet, docUserSenshiSet } from 'fireStored'
+import { docUserSenshiGet, docUserSenshiSetFavourite } from 'fireStored'
 import { storeModalSimpleError } from 'state'
 import {
 	UNEXPECTED_ERROR_CODE_18,
@@ -46,10 +46,7 @@ const useFavourite = (uid, signingIn, signedIn) => {
 			},
 			async () => {
 				setLoading(true)
-				docUserSenshiSet(
-					undefined,
-					uid
-				)({ [FIRESTORE_USER_SENSHI_FAVOURITE]: !checked })
+				docUserSenshiSetFavourite(uid, !checked)
 					.then(() => {
 						setLoading(false)
 						setChecked(!checked)
