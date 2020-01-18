@@ -41,7 +41,7 @@ const handleSignUpWithEmailAndPassword = async (
 	})
 
 	try {
-		await docUserSettingGeneralSet({
+		await docUserSettingGeneralSet()({
 			[FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME]: displayName,
 			[FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
 		})

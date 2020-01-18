@@ -47,11 +47,9 @@ const useFavourite = (uid, signingIn, signedIn) => {
 			async () => {
 				setLoading(true)
 				docUserSenshiSet(
-					{ [FIRESTORE_USER_SENSHI_FAVOURITE]: !checked },
-					undefined,
 					undefined,
 					uid
-				)
+				)({ [FIRESTORE_USER_SENSHI_FAVOURITE]: !checked })
 					.then(() => {
 						setLoading(false)
 						setChecked(!checked)

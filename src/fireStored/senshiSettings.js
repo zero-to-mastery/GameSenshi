@@ -14,17 +14,17 @@ const [
 ] = createDocGetSet(fireStorePathSenshiSettingProfile)
 
 const docSenshiProfileAvatarSet = url =>
-	docSenshiProfileSet({
+	docSenshiProfileSet()({
 		[FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR]: url,
 	})
 
 const docSenshiProfileCarouselSet = url =>
-	docSenshiProfileSet({
+	docSenshiProfileSet()({
 		[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL]: url,
 	})
 
 const docSenshiProfileChannelSet = url =>
-	docSenshiProfileSet({
+	docSenshiProfileSet()({
 		[FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS]: url,
 	})
 

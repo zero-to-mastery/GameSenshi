@@ -17,8 +17,9 @@ const [
 	docUserSettingNotificationGet,
 	docUserSettingNotificationSet,
 ] = createDocGetSet(fireStorePathUserSettingsNotification)
+
 const docUserSettingGeneralAvatarSet = url =>
-	docUserSettingGeneralSet({
+	docUserSettingGeneralSet()({
 		[FIRESTORE_SENSHI_SETTINGS_PROFILE_AVATAR]: url,
 	})
 

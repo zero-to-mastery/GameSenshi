@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import {
 	TabPaneSettingList,
 	TAB_PANE_SETTING_LIST_STATE_NAME,
@@ -34,10 +34,14 @@ const TabPaneSettingListStoreUserPropedNotification = props => {
 		() => docUserSettingNotificationGet().then(doc => doc.data()),
 		[]
 	)
+	const docUserSettingNotificationSet_ = useMemo(
+		() => docUserSettingNotificationSet(),
+		[]
+	)
 	return (
 		<TabPaneSettingListStoreUser
 			settingList={settingListNotification()}
-			saveApi={docUserSettingNotificationSet}
+			saveApi={docUserSettingNotificationSet_}
 			loadApi={loadApi}
 			{...props}
 		/>
