@@ -13,9 +13,12 @@ import {
 admin.initializeApp()
 
 const env = functions.config()[ENV]
+const firestoreF = functions.firestore
 const auth = admin.auth
 const fireStored = new admin.firestore.Firestore()
-let getServerTimestamp = admin.firestore.FieldValue.serverTimestamp
+const onCall = functions.https.onCall
+const getServerTimestamp = admin.firestore.FieldValue.serverTimestamp
+
 const {
 	[ENV_CORS_WHITELIST]: CORS_WHITE_LIST,
 	[ENV_ENABLE_PLAYGROUND]: PLAYGROUND_ENABLED,
@@ -26,7 +29,9 @@ const {
 
 export {
 	auth,
+	onCall,
 	functions,
+	firestoreF,
 	CORS_WHITE_LIST,
 	PLAYGROUND_ENABLED,
 	APOLLO_ENGINE_API_KEY,
