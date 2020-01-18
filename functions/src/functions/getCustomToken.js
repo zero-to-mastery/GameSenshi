@@ -62,7 +62,7 @@ const getCustomToken = async (
 	}
 
 	if (newUser) {
-		docUserSettingGeneralAvatarSet(uid, profileImageUrl).catch(err => {
+		docUserSettingGeneralAvatarSet(uid)(profileImageUrl).catch(err => {
 			const errObj = resObj(false, INTERNAL_ERROR_CODE_7, '')
 			console.log(errObj, err)
 			return errObj
