@@ -18,7 +18,6 @@ import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_DISPLAY_NAME,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE,
-	FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE_STATE,
 } from 'constantValues'
 import { defaultAvatar } from 'utils'
 
@@ -70,12 +69,7 @@ const CardUserHorizontal = props => {
 								</DivStyledImage>
 							</Col>
 							<Col>
-								<StatusPropedOnline
-									on={
-										online &&
-										online[FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE_STATE]
-									}
-								/>
+								<StatusPropedOnline on={online} />
 							</Col>
 						</Row>
 					</Col>
