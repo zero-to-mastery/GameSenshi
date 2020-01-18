@@ -6,7 +6,7 @@
 
 A platform for gamers/streamers to provide their casual service and link up with others in the community.
 
-[**Demo Page**](https://www.gamesenshi.com/index)
+<<<[**Demo Page**](https://gamessenshi.firebaseapp.com/)>>>
 
 route: index
 ![index.png](./src/assets/img/readme/index.png)
