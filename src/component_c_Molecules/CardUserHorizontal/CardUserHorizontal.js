@@ -17,6 +17,8 @@ import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_AVATAR,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_DISPLAY_NAME,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS,
+	FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE,
+	FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE_STATE,
 } from 'constantValues'
 import { defaultAvatar } from 'utils'
 
@@ -36,6 +38,7 @@ const CardUserHorizontal = props => {
 			[FIRESTORE_SENSHI_SETTINGS_PROFILE_AVATAR]: avatar,
 			[FIRESTORE_SENSHI_SETTINGS_PROFILE_DISPLAY_NAME]: displayName,
 			[FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS]: channels,
+			[FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE]: online,
 		},
 	} = props
 
@@ -67,7 +70,12 @@ const CardUserHorizontal = props => {
 								</DivStyledImage>
 							</Col>
 							<Col>
-								<StatusPropedOnline on={true} />
+								<StatusPropedOnline
+									on={
+										online &&
+										online[FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE_STATE]
+									}
+								/>
 							</Col>
 						</Row>
 					</Col>
