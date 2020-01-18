@@ -46,7 +46,7 @@ const useFavourite = (uid, signingIn, signedIn) => {
 			},
 			async () => {
 				setLoading(true)
-				docUserSenshiSetFavourite(uid, !checked)
+				docUserSenshiSetFavourite(uid)(!checked)
 					.then(() => {
 						setLoading(false)
 						setChecked(!checked)

@@ -40,11 +40,11 @@ const [
 	docUserSenshiOnSnapshot,
 ] = createDocGetSet(fireStorePathUserSenshi)
 
-const docUserSenshiSetFavourite = (uid, checked) =>
+const docUserSenshiSetFavourite = uid => checked =>
 	docUserSenshiSet(
 		undefined,
 		uid
-	)({ [FIRESTORE_USER_SENSHI_FAVOURITE]: !checked })
+	)({ [FIRESTORE_USER_SENSHI_FAVOURITE]: checked })
 
 export {
 	docUserSettingGeneralGet,
