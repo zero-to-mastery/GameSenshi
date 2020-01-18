@@ -8,7 +8,7 @@ const paths = [
 const [onCreateDoc, onCreateDocSub] = paths.map(path =>
 	firestoreF.document(path).onCreate(snap => {
 		const timestamp = getServerTimestamp()
-		snap.ref.set(
+		return snap.ref.set(
 			{
 				[CREATED_AT]: timestamp,
 				[UPDATED_AT]: timestamp,
