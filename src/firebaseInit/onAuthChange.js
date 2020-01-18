@@ -8,6 +8,10 @@ import {
 	storeUserOnSignIn,
 } from 'state'
 import { auth } from 'firebaseInit/core'
+import {
+	databaseConnectionRefOn,
+	databaseConnectionRefOff,
+} from 'firebaseInit/userPresence'
 
 const ACTION = 'action'
 
@@ -20,6 +24,7 @@ const setNonLoginUserLastIntendedAction = callback => {
 
 const onAuthChanged = (userAuth, onSnapshot) => {
 	if (userAuth) {
+		databaseConnectionRefOn()
 		unsubscribe = onSnapshot(
 			doc => {
 				const userData = doc.data()
@@ -35,6 +40,7 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 	}
 	// reset all store if user sign out
 	else {
+		databaseConnectionRefOff()
 		unsubscribe()
 		unsubscribe = () => {}
 		const stores = [storeAlert, storeProgress, storeUser, storeWrapper]

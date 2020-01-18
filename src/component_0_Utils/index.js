@@ -5,9 +5,13 @@ import {
 	storeUserGetSignedIn,
 	storeSignInShow,
 } from 'state'
-import { setNonLoginUserLastIntendedAction } from 'firebaseInit'
+import {
+	setNonLoginUserLastIntendedAction,
+	uerPresenceOffline,
+} from 'firebaseInit'
 
 const signOut = () => {
+	uerPresenceOffline()
 	auth().signOut()
 	const [action, pathname] = isLocationPrivate()
 	action(pathname)

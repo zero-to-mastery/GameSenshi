@@ -1,6 +1,6 @@
 import { onAuthChange, setNonLoginUserLastIntendedAction } from './onAuthChange'
 import { getRedirectResult } from './getRedirectResult'
-import { auth, fireStored, getServerTimestamp } from './core'
+import { auth, fireStored, getServerTimestamp, database } from './core'
 import {
 	storageUserAvatarGet,
 	storageUserAvatarSet,
@@ -8,11 +8,13 @@ import {
 } from './storage'
 import { functSignInTwicth } from './cloudFunct'
 import { handleDifferentCredential } from './handleDifferentCredential'
+import { uerPresenceOffline } from './userPresence'
 
 export {
 	auth,
 	fireStored,
 	getServerTimestamp,
+	database,
 	storageUserAvatarGet,
 	storageUserAvatarSet,
 	storageUserAvatarRemove,
@@ -21,4 +23,5 @@ export {
 	functSignInTwicth,
 	handleDifferentCredential,
 	setNonLoginUserLastIntendedAction,
+	uerPresenceOffline,
 }
