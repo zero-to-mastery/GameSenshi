@@ -1,6 +1,8 @@
 import {
 	auth,
+	onCall,
 	functions,
+	firestoreF,
 	getServerTimestamp,
 	CORS_WHITE_LIST,
 	PLAYGROUND_ENABLED,
@@ -19,7 +21,9 @@ import {
 
 export {
 	auth,
+	onCall,
 	functions,
+	firestoreF,
 	getServerTimestamp,
 	CORS_WHITE_LIST,
 	PLAYGROUND_ENABLED,

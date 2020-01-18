@@ -1,6 +1,4 @@
 import {
-	CREATED_AT,
-	UPDATED_AT,
 	FIRESTORE_USER_SETTINGS_NOTIFICATION_EMAIL,
 	FIRESTORE_USER_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES,
 	FIRESTORE_USER_SETTINGS_NOTIFICATION_EMAIL_NEWS_LETTER,
@@ -16,7 +14,6 @@ import {
 import nanoid from 'nanoid'
 import {
 	functions,
-	getServerTimestamp,
 	docUserSettingGeneralSetOnUserCreate,
 	docUserSettingNotificationSet,
 } from 'firebaseInit'
@@ -28,8 +25,6 @@ const onCreateUser_ = async userRecord => {
 	const isPasswordExist = userRecord.providerData.some(
 		data => data.providerId === 'password'
 	)
-
-	const serverTimestamp = getServerTimestamp()
 
 	const shortId = nanoid(10)
 
@@ -44,8 +39,6 @@ const onCreateUser_ = async userRecord => {
 	}
 	try {
 		await docUserSettingNotificationSet(uid)({
-			[CREATED_AT]: serverTimestamp,
-			[UPDATED_AT]: serverTimestamp,
 			[FIRESTORE_USER_SETTINGS_NOTIFICATION_EMAIL]: {
 				[FIRESTORE_USER_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES]: true,
 				[FIRESTORE_USER_SETTINGS_NOTIFICATION_EMAIL_CHATS]: true,
