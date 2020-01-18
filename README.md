@@ -11,7 +11,7 @@ A platform for gamers/streamers to provide their casual service and link up with
 route: index
 ![index.png](./src/assets/img/readme/index.png)
 
-route: profile/1
+route: profile/2QvJMnyN73SnBXaLuRR0REQpY8X2
 ![profile.png](./src/assets/img/readme/profile.png)
 
 route: signup
