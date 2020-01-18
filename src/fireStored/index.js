@@ -17,6 +17,7 @@ import {
 	docSenshiProfileAvatarSet,
 	docSenshiProfileCarouselSet,
 	docSenshiProfileChannelSet,
+	docdocSenshiProfileOnlineSet,
 } from './senshiSettings'
 
 export {
@@ -32,6 +33,7 @@ export {
 	docSenshiProfileAvatarSet,
 	docSenshiProfileCarouselSet,
 	docSenshiProfileChannelSet,
+	docdocSenshiProfileOnlineSet,
 	docUserSenshiGet,
 	docUserSenshiSet,
 	docUserSenshiOnSnapshot,

@@ -1,4 +1,5 @@
-import { database, auth } from 'firebaseInit/core'
+import { database, auth } from 'firebaseInit'
+import { docdocSenshiProfileOnlineSet } from 'fireStored'
 
 const userStatusDatabaseRef = (uid = auth().currentUser.uid) =>
 	database().ref('/status/' + uid)
@@ -22,8 +23,11 @@ const databaseConnectionRefOn = () => {
 				.onDisconnect()
 				.set(isOfflineForDatabase)
 				.then(function() {
+					docdocSenshiProfileOnlineSet(true)
 					userStatusDatabaseRef().set(isOnlineForDatabase)
 				})
+		} else {
+			docdocSenshiProfileOnlineSet(false)
 		}
 	})
 }
@@ -32,8 +36,13 @@ const databaseConnectionRefOff = () => {
 	databaseConnectionRef.off()
 }
 
-const uerPresenceOffline = () => {
+const setUserPresenceOffline = () => {
+	docdocSenshiProfileOnlineSet(false)
 	userStatusDatabaseRef().set(isOfflineForDatabase)
 }
 
-export { databaseConnectionRefOn, databaseConnectionRefOff, uerPresenceOffline }
+export {
+	databaseConnectionRefOn,
+	databaseConnectionRefOff,
+	setUserPresenceOffline,
+}

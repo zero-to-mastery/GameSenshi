@@ -1,10 +1,14 @@
 import { createDocGetSet } from './utils'
+import { getServerTimestamp } from 'firebaseInit'
 
 import {
 	fireStorePathSenshiSettingProfile,
 	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL,
+	FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE,
+	FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE_STATE,
+	FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE_UPDATED_AT,
 } from 'constantValues'
 
 const [
@@ -28,6 +32,14 @@ const docSenshiProfileChannelSet = url =>
 		[FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS]: url,
 	})
 
+const docdocSenshiProfileOnlineSet = online =>
+	docSenshiProfileSet()({
+		[FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE]: {
+			[FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE_STATE]: online,
+			[FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE_UPDATED_AT]: getServerTimestamp(),
+		},
+	})
+
 export {
 	docSenshiProfileGet,
 	docSenshiProfileSet,
@@ -35,4 +47,5 @@ export {
 	docSenshiProfileAvatarSet,
 	docSenshiProfileCarouselSet,
 	docSenshiProfileChannelSet,
+	docdocSenshiProfileOnlineSet,
 }

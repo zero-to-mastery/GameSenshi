@@ -7,11 +7,12 @@ import {
 	storeWrapper,
 	storeUserOnSignIn,
 } from 'state'
-import { auth } from 'firebaseInit/core'
+import { auth } from 'firebaseInit'
 import {
 	databaseConnectionRefOn,
 	databaseConnectionRefOff,
-} from 'firebaseInit/userPresence'
+} from 'onAuthStateChange/userPresence'
+import { docUserSettingGeneralOnSnapshot } from 'fireStored'
 
 const ACTION = 'action'
 
@@ -50,7 +51,7 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 	}
 }
 
-const onAuthChange = docUserSettingGeneralOnSnapshot => {
+const onAuthStateChange = () => {
 	auth().onAuthStateChanged(userAuth => {
 		onAuthChanged(userAuth, (next, error) =>
 			docUserSettingGeneralOnSnapshot()(
@@ -61,4 +62,4 @@ const onAuthChange = docUserSettingGeneralOnSnapshot => {
 	})
 }
 
-export { onAuthChange, setNonLoginUserLastIntendedAction }
+export { onAuthStateChange, setNonLoginUserLastIntendedAction }
