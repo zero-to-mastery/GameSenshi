@@ -11,7 +11,7 @@ const PAGE_ERROR_CODE_NOT_A_SENSHI = 'Not A Senshi'
 const PageError = props => {
 	const { code } = props
 	return (
-		<div className='page-header error-page header-filter mt-n1'>
+		<div className='page-header error-page header-filter'>
 			<div
 				className='page-header-image'
 				style={{
