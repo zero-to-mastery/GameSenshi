@@ -94,13 +94,23 @@ const options = [
 	},
 ]
 
+const getVideoUrl = () => ({
+	[FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_FACEBOOK]:
+		'https://www.facebook.com/',
+	[FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_TWITCH]: 'https://www.twitch.tv/',
+	[FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_YOUTUBE]:
+		'https://www.youtube.com/channel/',
+})
+
 const getButtonsCommon = buttons => {
 	const getButtons = []
 	checkDuplicatedObject(options, BUTTONS_COMMON_ID)
 	for (let prop in buttons) {
 		getButtons.push({
 			...options.find(option => option[BUTTONS_COMMON_ID] === prop),
-			...(buttons[prop] && { [BUTTONS_COMMON_HREF]: buttons[prop] }),
+			...(buttons[prop] && {
+				[BUTTONS_COMMON_HREF]: getVideoUrl()[prop] + buttons[prop],
+			}),
 		})
 	}
 	return getButtons
