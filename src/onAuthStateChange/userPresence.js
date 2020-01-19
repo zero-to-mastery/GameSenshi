@@ -41,8 +41,13 @@ const databaseUserPresenceSetOffline = () => {
 	userStatusDatabaseRef().set(isOfflineForDatabase)
 }
 
-const databaseUserPresenceOnSnapshot = (...args) =>
-	userStatusDatabaseRef.on('value', ...args)
+const databaseUserPresenceOnSnapshot = uid => callback => {
+	userStatusDatabaseRef(uid).on('value', snapshot => {
+		const value = snapshot.val()
+		callback(value[DATABASE_STATUS_ONLINE], value[DATABASE_STATUS_ONLINE_LAST])
+	})
+	return userStatusDatabaseRef(uid).off
+}
 
 export {
 	databaseConnectionRefOn,
