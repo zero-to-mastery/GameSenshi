@@ -48,6 +48,7 @@ const PageProfile = props => {
 	} = props
 
 	params && (uid = params[ROUTE_PARAM_UID])
+	const uid_ = uid || currentUserUid
 
 	const [loading, setLoading] = useState(true)
 	const [exist, setExist] = useState(true)
@@ -129,7 +130,7 @@ const PageProfile = props => {
 						<Container>
 							<Row>
 								<Col>
-									<CardUserHorizontal data={data} uid={uid} />
+									<CardUserHorizontal data={data} uid={uid_} />
 								</Col>
 							</Row>
 							<Row className='pt-5'>
