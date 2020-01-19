@@ -8,6 +8,7 @@ import { docSenshiProfileOnSnapshot } from 'fireStored'
 import {
 	UNEXPECTED_ERROR_CODE_16,
 	UNEXPECTED_ERROR_CODE_17,
+	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL,
 } from 'constantValues'
 import { storeModalSimpleError } from 'state'
 
@@ -57,12 +58,8 @@ const PageProfile = props => {
 	const observer = useRef(() => {})
 
 	useEffect(() => {
-		return observer.current
-	}, [])
-
-	useEffect(() => {
 		const attachListener = async () => {
-			observer.current = docSenshiProfileOnSnapshot(uid || currentUserUid)(
+			observer.current = docSenshiProfileOnSnapshot(uid_)(
 				async docSnapshot => {
 					try {
 						const data = await docSnapshot.data()
@@ -94,7 +91,8 @@ const PageProfile = props => {
 			)
 		}
 		attachListener()
-	}, [uid, currentUserUid])
+		return observer.current
+	}, [uid, currentUserUid, uid_])
 
 	return exist ? (
 		<WrapperStoreWrapperPropedProfile>
@@ -162,7 +160,9 @@ const PageProfile = props => {
 							</Row>
 							<Row>
 								<Col md='12'>
-									<CarouselLightBoxPropedProfile items={data.carousel} />
+									<CarouselLightBoxPropedProfile
+										items={data[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL]}
+									/>
 								</Col>
 							</Row>
 						</Container>
