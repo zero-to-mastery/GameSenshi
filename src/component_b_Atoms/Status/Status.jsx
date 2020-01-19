@@ -9,7 +9,7 @@ const Status = props => {
 	return (
 		<div className={classnames(className, 'd-flex align-items-center')}>
 			{loading ? (
-				<Loader type='Circles' color='#00BFFF' height='30px' width='30px' />
+				<Loader type='Circles' color='#00BFFF' height='21px' width='21px' />
 			) : (
 				<>
 					<span
@@ -21,14 +21,14 @@ const Status = props => {
 							{
 								[animate.heartBeat]: on,
 								[styles.on]: on,
-								[styles.off]: !on,
+								'd-none': !on,
 							}
 						)}
 					/>
 					<p
-						className={classnames('mb-0', {
-							'text-muted': !on,
+						className={classnames('mb-0 pt-1', {
 							'text-white': on,
+							'd-none': !on,
 						})}
 					>
 						{on ? bodyOn : bodyOff}
