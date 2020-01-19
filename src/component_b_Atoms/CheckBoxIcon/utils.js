@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react'
 import { docUserSenshiGet, docUserSenshiSetFavourite } from 'fireStored'
 import { storeModalSimpleError } from 'state'
 import {
-	UNEXPECTED_ERROR_CODE_18,
 	FIRESTORE_USER_SENSHI_FAVOURITE,
 	UNEXPECTED_ERROR_CODE_19,
 } from 'constantValues'
@@ -19,7 +18,7 @@ const useFavourite = (uid, signingIn, signedIn) => {
 				doc = await docUserSenshiGet(undefined, uid)
 			} catch (err) {
 				setLoading(false)
-				return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_18)
+				return
 			}
 			if (doc && doc.exists) {
 				setLoading(false)
