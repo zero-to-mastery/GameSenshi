@@ -12,10 +12,10 @@ import {
 } from 'constantValues'
 
 const createDocGetSet = path => {
-	const ref = uid => fireStored.doc(path(uid))
-	const get = uid => ref(uid).get()
-	const set = uid => (data, options = { merge: true }) =>
-		ref(uid).set(
+	const ref = (...args) => fireStored.doc(path(...args))
+	const get = (...args) => ref(...args).get()
+	const set = (...args) => (data, options = { merge: true }) =>
+		ref(...args).set(
 			{
 				[UPDATED_AT]: getServerTimestamp(),
 				...data,
