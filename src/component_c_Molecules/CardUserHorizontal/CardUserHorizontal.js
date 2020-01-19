@@ -74,10 +74,12 @@ const CardUserHorizontal = props => {
 					<Col xs='12' lg='3'>
 						<RowStyledUsername className='flex-column'>
 							<Col>
-								<p className='text-white'>{displayName}</p>
+								<h3 className='text-white font-weight-bold mb-1'>
+									{displayName}
+								</h3>
 							</Col>
-							<Col>
-								<p className='text-white'>UID : {shortUid}</p>
+							<Col className='mb-3'>
+								<p className='text-muted'>UID : {shortUid}</p>
 							</Col>
 							<Col>
 								<CheckBoxIconPropedTip />
