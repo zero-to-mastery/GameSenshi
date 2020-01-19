@@ -7,11 +7,11 @@ import {
 } from 'state'
 import {
 	setNonLoginUserLastIntendedAction,
-	setUserPresenceOffline,
+	databaseUserPresenceSetOffline,
 } from 'onAuthStateChange'
 
 const signOut = () => {
-	setUserPresenceOffline()
+	databaseUserPresenceSetOffline()
 	auth().signOut()
 	const [action, pathname] = isLocationPrivate()
 	action(pathname)

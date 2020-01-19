@@ -6,8 +6,8 @@ import {
 	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL,
-	FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE,
-	FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE_LAST,
+	DATABASE_STATUS_ONLINE,
+	DATABASE_STATUS_ONLINE_LAST,
 } from 'constantValues'
 
 const [, docSenshiProfileSet, docSenshiProfileOnSnapshot] = createDocGetSet(
@@ -31,8 +31,8 @@ const docSenshiProfileChannelSet = url =>
 
 const docdocSenshiProfileOnlineSet = online =>
 	docSenshiProfileSet()({
-		[FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE]: online,
-		[FIRESTORE_SENSHI_SETTINGS_PROFILE_ONLINE_LAST]: getServerTimestamp(),
+		[DATABASE_STATUS_ONLINE]: online,
+		[DATABASE_STATUS_ONLINE_LAST]: getServerTimestamp(),
 	})
 
 export {

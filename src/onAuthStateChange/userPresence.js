@@ -1,17 +1,21 @@
-import { database, auth } from 'firebaseInit'
-import { docdocSenshiProfileOnlineSet } from 'fireStored'
+import { database, auth, getServerTimestamp } from 'firebaseInit'
+import {
+	DATABASE_STATUS_ONLINE,
+	DATABASE_STATUS_ONLINE_LAST,
+	databasePathStatus,
+} from 'constantValues'
 
 const userStatusDatabaseRef = (uid = auth().currentUser.uid) =>
-	database().ref('/status/' + uid)
+	database().ref(databasePathStatus(uid))
 
 const isOfflineForDatabase = {
-	state: 'offline',
-	last_changed: database.ServerValue.TIMESTAMP,
+	[DATABASE_STATUS_ONLINE]: false,
+	[DATABASE_STATUS_ONLINE_LAST]: getServerTimestamp(),
 }
 
 const isOnlineForDatabase = {
-	state: 'online',
-	last_changed: database.ServerValue.TIMESTAMP,
+	[DATABASE_STATUS_ONLINE]: true,
+	[DATABASE_STATUS_ONLINE_LAST]: getServerTimestamp(),
 }
 
 const databaseConnectionRef = database().ref('.info/connected')
@@ -23,11 +27,8 @@ const databaseConnectionRefOn = () => {
 				.onDisconnect()
 				.set(isOfflineForDatabase)
 				.then(function() {
-					docdocSenshiProfileOnlineSet(true)
 					userStatusDatabaseRef().set(isOnlineForDatabase)
 				})
-		} else {
-			docdocSenshiProfileOnlineSet(false)
 		}
 	})
 }
@@ -36,13 +37,16 @@ const databaseConnectionRefOff = () => {
 	databaseConnectionRef.off()
 }
 
-const setUserPresenceOffline = () => {
-	docdocSenshiProfileOnlineSet(false)
+const databaseUserPresenceSetOffline = () => {
 	userStatusDatabaseRef().set(isOfflineForDatabase)
 }
+
+const databaseUserPresenceOnSnapshot = (...args) =>
+	userStatusDatabaseRef.on('value', ...args)
 
 export {
 	databaseConnectionRefOn,
 	databaseConnectionRefOff,
-	setUserPresenceOffline,
+	databaseUserPresenceSetOffline,
+	databaseUserPresenceOnSnapshot,
 }

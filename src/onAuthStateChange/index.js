@@ -1,10 +1,16 @@
-import { setUserPresenceOffline } from './userPresence'
+import {
+	databaseUserPresenceSetOffline,
+	databaseUserPresenceOnSnapshot,
+} from './userPresence'
+
 import {
 	onAuthStateChange,
 	setNonLoginUserLastIntendedAction,
 } from './onAuthStateChange'
+
 export {
-	setUserPresenceOffline,
+	databaseUserPresenceSetOffline,
 	onAuthStateChange,
 	setNonLoginUserLastIntendedAction,
+	databaseUserPresenceOnSnapshot,
 }
