@@ -5,8 +5,7 @@ import {
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
 } from 'constantValues'
-
-import defaultAvatar from 'assets/img/placeholder.jpg'
+import { defaultAvatar } from 'utils'
 
 const STORE_USER = 'User'
 const STORE_USER_STATE_AUTH = 'auth'

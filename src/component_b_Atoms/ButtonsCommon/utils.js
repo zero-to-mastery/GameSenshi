@@ -1,3 +1,4 @@
+import React from 'react'
 import {
 	BUTTONS_COMMON_ID,
 	BUTTONS_COMMON_ICON,
@@ -28,9 +29,7 @@ import {
 	AUTH_TWITCH,
 	UNEXPECTED_ERROR_CODE_13,
 } from 'constantValues'
-import { Exports } from 'component_a_Protons'
-import { stopUndefined, checkDuplicatedObject } from 'utils'
-const { ICON_ICON } = stopUndefined(Exports)
+import { checkDuplicatedObject } from 'utils'
 
 const CHECKOUT = 'checkout'
 const CHAT = 'chat'
@@ -39,61 +38,69 @@ const EDIT = 'edit'
 const options = [
 	{
 		[BUTTONS_COMMON_ID]: AUTH_GOOGLE,
-		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-google' },
+		[BUTTONS_COMMON_ICON]: () => <i className='fab fa-google' />,
 		[BUTTONS_COMMON_COLOR]: 'google',
 		[BUTTONS_COMMON_TOOLTIP]: 'Sign in with Google!',
 	},
 	{
 		[BUTTONS_COMMON_ID]: AUTH_FACEBOOK,
-		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-facebook-square' },
+		[BUTTONS_COMMON_ICON]: () => <i className='fab fa-facebook-f' />,
 		[BUTTONS_COMMON_COLOR]: 'facebook',
 		[BUTTONS_COMMON_TOOLTIP]: 'Sign in with Facebook!',
 	},
 	{
 		[BUTTONS_COMMON_ID]: AUTH_TWITCH,
-		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-twitch' },
+		[BUTTONS_COMMON_ICON]: () => <i className='fab fa-twitch' />,
 		[BUTTONS_COMMON_COLOR]: 'twitch',
 		[BUTTONS_COMMON_TOOLTIP]: 'Sign in with Twitch!',
 	},
 	{
 		[BUTTONS_COMMON_ID]: FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_FACEBOOK,
-		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-facebook-f font-1-6' },
+		[BUTTONS_COMMON_ICON]: () => <i className='fab fa-facebook-f' />,
 		[BUTTONS_COMMON_COLOR]: 'facebook',
 		[BUTTONS_COMMON_TOOLTIP]: 'Follow me on my Facebook!',
 	},
 	{
 		[BUTTONS_COMMON_ID]: FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_TWITCH,
-		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-twitch font-1-6' },
+		[BUTTONS_COMMON_ICON]: () => <i className='fab fa-twitch' />,
 		[BUTTONS_COMMON_COLOR]: 'twitch',
 		[BUTTONS_COMMON_TOOLTIP]: 'Subscribe to my Twitch channel!',
 	},
 	{
 		[BUTTONS_COMMON_ID]: FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_YOUTUBE,
-		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'fab fa-youtube font-1-6' },
+		[BUTTONS_COMMON_ICON]: () => <i className='fab fa-youtube ' />,
 		[BUTTONS_COMMON_COLOR]: 'youtube',
 		[BUTTONS_COMMON_TOOLTIP]: 'Subscribe to my Youtube channel!',
 	},
 	{
 		[BUTTONS_COMMON_ID]: EDIT,
-		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'far fa-edit' },
+		[BUTTONS_COMMON_ICON]: () => <i className='far fa-edit' />,
 		[BUTTONS_COMMON_COLOR]: 'success',
 		[BUTTONS_COMMON_TOOLTIP]: 'Click to Edit',
 	},
 	{
 		[BUTTONS_COMMON_ID]: CHAT,
-		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'tim-icons icon-chat-33' },
+		[BUTTONS_COMMON_ICON]: () => <i className='tim-icons icon-chat-33' />,
 		[BUTTONS_COMMON_COLOR]: 'success',
 		[BUTTONS_COMMON_LABEL]: 'Chat',
 		[BUTTONS_COMMON_TO]: ROUTE_PAGE_CHAT,
 	},
 	{
 		[BUTTONS_COMMON_ID]: CHECKOUT,
-		[BUTTONS_COMMON_ICON]: { [ICON_ICON]: 'tim-icons icon-cart' },
+		[BUTTONS_COMMON_ICON]: () => <i className='tim-icons icon-cart' />,
 		[BUTTONS_COMMON_COLOR]: 'warning',
 		[BUTTONS_COMMON_LABEL]: 'Checkout',
 		[BUTTONS_COMMON_TO]: ROUTE_PAGE_CHECKOUT,
 	},
 ]
+
+const getVideoUrl = () => ({
+	[FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_FACEBOOK]:
+		'https://www.facebook.com/',
+	[FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_TWITCH]: 'https://www.twitch.tv/',
+	[FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_YOUTUBE]:
+		'https://www.youtube.com/channel/',
+})
 
 const getButtonsCommon = buttons => {
 	const getButtons = []
@@ -101,7 +108,9 @@ const getButtonsCommon = buttons => {
 	for (let prop in buttons) {
 		getButtons.push({
 			...options.find(option => option[BUTTONS_COMMON_ID] === prop),
-			...(buttons[prop] && { [BUTTONS_COMMON_HREF]: buttons[prop] }),
+			...(buttons[prop] && {
+				[BUTTONS_COMMON_HREF]: getVideoUrl()[prop] + buttons[prop],
+			}),
 		})
 	}
 	return getButtons

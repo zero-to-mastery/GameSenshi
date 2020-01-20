@@ -45,18 +45,20 @@ const parseRouteParamValues = route => {
 	}
 }
 
-const locationAccessibilityMatch = (location, accessibility) => {
-	const targetPathname = location
+const locationAccessibilityMatch = (pathname, accessibility) => {
+	const targetPathname = pathname.toLowerCase()
 	return ROUTES.some(route => {
 		const pathnames = parseRouteParamValues(route[ROUTE_PATH])
 		return (
 			route[ROUTE_ACCESSIBILITY] === accessibility &&
-			pathnames.some(
-				pathname =>
-					targetPathname.toLowerCase().includes(pathname) &&
+			pathnames.some(pathname => {
+				const pathname_ = pathname.toLowerCase()
+				return (
+					targetPathname.includes(pathname_.toLowerCase()) &&
 					(targetPathname.match(/\//g) || []).length ===
-						(pathname.match(/\//g) || []).length
-			)
+						(pathname_.match(/\//g) || []).length
+				)
+			})
 		)
 	})
 }

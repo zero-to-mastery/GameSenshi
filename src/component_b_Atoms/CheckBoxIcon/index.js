@@ -1,28 +1,30 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { CheckBoxIcon } from './CheckBoxIcon'
 import { useFavourite } from './utils'
-import { needLoginToClick } from 'component_0_Utils'
+import {
+	StateContainer,
+	storeUser,
+	STORE_USER_STATE_SIGNING_IN,
+	STORE_USER_STATE_SIGNED_IN,
+} from 'state'
+
+const SIGNED_IN = 'signedIn'
+const SIGNING_IN = 'signingIn'
 
 const CheckBoxIconPropedFavourite = props => {
-	const { uid, ...otherProps } = props
-	const { checked, loading } = useFavourite(uid)
-
-	const onClick = useCallback((e, setChecked_, ref) => {
-		needLoginToClick(
-			() => {
-				ref.current.onClick()
-			},
-			() => {
-				setChecked_(true)
-			}
-		)
-	}, [])
+	const {
+		[SIGNING_IN]: signingIn,
+		[SIGNED_IN]: signedIn,
+		uid,
+		...otherProps
+	} = props
+	const [loading, checked, onClick] = useFavourite(uid, signingIn, signedIn)
 
 	return (
 		<CheckBoxIcon
 			color='primary'
-			tooltipOn='😘Favourite me! '
-			tooltipOff='Favourited!'
+			tooltipOn='😘Please Favourite Me! '
+			tooltipOff='💖Favourited!'
 			icon='tim-icons icon-heart-2'
 			checked={checked}
 			loading={loading}
@@ -31,6 +33,15 @@ const CheckBoxIconPropedFavourite = props => {
 		/>
 	)
 }
+
+const CheckBoxIconPropedFavouriteStoreUser = StateContainer(
+	CheckBoxIconPropedFavourite,
+	storeUser,
+	{
+		[SIGNING_IN]: STORE_USER_STATE_SIGNING_IN,
+		[SIGNED_IN]: STORE_USER_STATE_SIGNED_IN,
+	}
+)
 
 const CheckBoxIconPropedTip = props => {
 	return (
@@ -43,4 +54,4 @@ const CheckBoxIconPropedTip = props => {
 	)
 }
 
-export { CheckBoxIconPropedFavourite, CheckBoxIconPropedTip }
+export { CheckBoxIconPropedFavouriteStoreUser, CheckBoxIconPropedTip }

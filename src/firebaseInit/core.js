@@ -3,6 +3,7 @@ import 'firebase/auth' // https://stackoverflow.com/questions/48592656/firebase-
 import 'firebase/functions'
 import 'firebase/storage'
 import 'firebase/firestore'
+import 'firebase/database'
 import { ENV_VALUE_FIREBASE_CONFIG } from 'constantValues'
 
 firebase.initializeApp(ENV_VALUE_FIREBASE_CONFIG)
@@ -17,7 +18,16 @@ const auth = firebase.auth
 
 const firebaseStorage = firebase.storage
 
+const database = firebase.database
+
 // use device default language
 auth().useDeviceLanguage()
 
-export { fireFunct, fireStored, auth, firebaseStorage, getServerTimestamp }
+export {
+	fireFunct,
+	fireStored,
+	auth,
+	firebaseStorage,
+	getServerTimestamp,
+	database,
+}

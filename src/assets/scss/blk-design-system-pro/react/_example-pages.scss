@@ -1,21 +1,21 @@
 .presentation-page {
-	.section-pricing {
-		.card-pricing ul.b-left {
-			&:after {
-				background: $info;
-			}
-			li {
-				&:after {
-					border-color: $info;
-				}
-			}
-		}
-	}
+  .section-pricing{
+    .card-pricing ul.b-left{
+      &:after{
+        background: $info;
+      }
+      li{
+        &:after{
+          border-color: $info;
+        }
+      }
+    }
+  }
 }
 
-.landing-page .section-lg {
-	overflow: unset;
+.landing-page .section-lg{
+  overflow: unset;
 }
-.profile-page .page-header .container {
-	z-index: 2;
+.profile-page .page-header .container{
+  z-index: 2;
 }

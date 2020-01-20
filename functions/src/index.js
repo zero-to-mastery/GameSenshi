@@ -1,22 +1,23 @@
 // https://firebase.google.com/docs/functions/write-firebase-functions
 import '@babel/polyfill' // https://stackoverflow.com/questions/49253746/error-regeneratorruntime-is-not-defined-with-babel-7
-
 import {
 	functions,
 	CORS_WHITE_LIST,
 	PLAYGROUND_ENABLED,
 	APOLLO_ENGINE_API_KEY,
 } from 'firebaseInit'
-
 import cors from 'cors'
 import { ApolloServer } from 'apollo-server-express'
 import { MemcachedCache } from 'apollo-server-cache-memcached'
 import express from 'express'
-
 import { typeDefs, resolvers } from 'resolvers'
-
 import { FUNCTION_SIGN_IN_TWITCH } from 'constantValues'
-import { onSignInTwitch, onCreateUser } from 'functions'
+import {
+	onSignInTwitch,
+	onCreateUser,
+	onCreateDoc,
+	onCreateDocSub,
+} from 'functions'
 
 const app = express()
 
@@ -56,9 +57,11 @@ server.applyMiddleware({
 })
 
 // unable to use property accessor in es6 non export, revert to es5 exports statement
-// es5 export also have clearner name
+// es5 export also have cleaner name
 module.exports = {
 	api: functions.https.onRequest(app),
 	onCreateUser,
-	[FUNCTION_SIGN_IN_TWITCH]: functions.https.onCall(onSignInTwitch),
+	onCreateDoc,
+	onCreateDocSub,
+	[FUNCTION_SIGN_IN_TWITCH]: onSignInTwitch,
 }

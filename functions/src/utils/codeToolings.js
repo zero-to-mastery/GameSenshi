@@ -30,4 +30,12 @@ const createGetOptions = (fullOptions, prop) => arrayString => {
 	return getOptions
 }
 
-export { stopUndefined, checkDuplicatedObject, createGetOptions }
+const convertToArrayIfNotArray = value =>
+	Array.isArray(value) ? value : [value]
+
+export {
+	stopUndefined,
+	checkDuplicatedObject,
+	createGetOptions,
+	convertToArrayIfNotArray,
+}

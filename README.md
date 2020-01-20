@@ -6,15 +6,15 @@
 
 A platform for gamers/streamers to provide their casual service and link up with others in the community.
 
-[**Demo Page**](https://www.gamesenshi.com/index)
+<<<[**Demo Page**](https://gamessenshi.firebaseapp.com/)>>>
 
-route:index
+route: index
 ![index.png](./src/assets/img/readme/index.png)
 
-route:profile/1
+route: profile/2QvJMnyN73SnBXaLuRR0REQpY8X2
 ![profile.png](./src/assets/img/readme/profile.png)
 
-route:signup
+route: signup
 note: each sign up method can be linked to each other, example:
 
 1. sign up with password account then link with Google account
@@ -23,17 +23,20 @@ note: each sign up method can be linked to each other, example:
 
 ![signUp.png](./src/assets/img/readme/signUp.png)
 
-route:signin
+route: signin
 ![signIn.png](./src/assets/img/readme/signIn.png)
 
-route:reset
+route: reset
 ![reset.png](./src/assets/img/readme/reset.png)
 
-route:settings
+route: settings
 ![settings.png](./src/assets/img/readme/settings.png)
 
-route:policy
+route: policy
 ![policy.png](./src/assets/img/readme/policy.png)
+
+route: `none of above`
+![error.png](./src/assets/img/readme/error.png)
 
 ## Introduction
 

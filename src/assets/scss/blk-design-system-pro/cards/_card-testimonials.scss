@@ -1,59 +1,56 @@
-.card-testimonial {
+
+.card-testimonial{
 	@extend %card-profile;
-	background-color: $purple;
-	max-width: 250px;
-	max-height: 250px;
-	padding: 20px;
-	.card-body {
-		padding-top: 25px;
-	}
+    .card-body{
+        padding-top: 25px;
+    }
 
-	.card-avatar {
-		max-width: 150px;
-		max-height: 150px;
-		margin-top: 15px;
-	}
-	.card-footer {
-		margin-bottom: 1.5rem;
-	}
-	.card-description {
-		& + .card-title {
-			margin-top: 30px;
-		}
-	}
-	.icon {
-		i {
-			font-size: 32px;
-		}
+    .card-avatar{
+        max-width: 100px;
+        max-height: 100px;
+        margin-top: -50px;
+    }
+    .card-footer{
+        margin-bottom: 1.5rem;
+    }
+    .card-description{
+        & + .card-title{
+            margin-top: 30px;
+        }
+    }
+    .icon{
+        i{
+          font-size: 32px;
+        }
 
-		&.icon-primary i {
-			color: $primary;
-		}
+        &.icon-primary i{
+            color: $primary;
+        }
 
-		&.icon-info i {
-			color: $info;
-		}
+        &.icon-info i{
+            color: $info;
+        }
 
-		&.icon-danger i {
-			color: $danger;
-		}
+        &.icon-danger i{
+            color: $danger;
+        }
 
-		&.icon-warning i {
-			color: $warning;
-		}
+        &.icon-warning i{
+            color: $warning;
+        }
 
-		&.icon-success i {
-			color: $success;
-		}
-	}
+        &.icon-success i{
+            color: $success;
+        }
+    }
 
-	& .card-description + .card-title {
-		margin-top: 20px;
+	& .card-description + .card-title{
+	    margin-top: 20px;
 	}
 }
 
-@media screen and (max-width: 991px) {
-	.testimonials-4 .positioned {
+@media screen and (max-width:991px){
+	.testimonials-4 .positioned{
 		position: relative;
 	}
 }

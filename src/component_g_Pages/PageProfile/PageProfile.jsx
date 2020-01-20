@@ -1,15 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import { stopUndefined } from 'utils'
 import Loader from 'react-loader-spinner'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'component_f_MultiOrganisms'
 import { ROUTE_PARAM_UID } from 'routes'
-import { docSenshiProfileOnSnapshot } from 'fireStored'
-import {
-	UNEXPECTED_ERROR_CODE_16,
-	UNEXPECTED_ERROR_CODE_17,
-} from 'constantValues'
-import { storeModalSimpleError } from 'state'
+import { FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL } from 'constantValues'
+import { useData } from './utils'
 
 const {
 	CarouselLightBoxPropedProfile,
@@ -25,7 +21,6 @@ const {
 	TAB_CONTENT,
 	TabProductPropedProfile,
 	PageError,
-	PAGE_ERROR_CODE_NOT_FOUND,
 } = stopUndefined(Exports)
 
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
@@ -37,54 +32,19 @@ const tabs = games.map((tab, index) => {
 	}
 })
 
+const PAGE_PROFILE_CURRENT_USER_UID = 'currentUserUid'
+
 const PageProfile = props => {
+	let uid = null
 	const {
-		match: {
-			params: { [ROUTE_PARAM_UID]: uid },
-		},
+		match: { params },
+		[PAGE_PROFILE_CURRENT_USER_UID]: currentUserUid,
 	} = props
-	const [loading, setLoading] = useState(true)
-	const [exist, setExist] = useState(true)
-	const [data, setData] = useState(null)
-	const [errorCode, setErrorCode] = useState(null)
-	const observer = useRef(() => {})
 
-	useEffect(() => {
-		return observer.current
-	}, [])
+	params && (uid = params[ROUTE_PARAM_UID])
+	const uid_ = uid || currentUserUid
 
-	useEffect(() => {
-		const attachListener = async () => {
-			observer.current = docSenshiProfileOnSnapshot(uid)(
-				async docSnapshot => {
-					try {
-						const data = await docSnapshot.data()
-						if (data) {
-							setData(data)
-							setLoading(false)
-							setExist(true)
-						} else {
-							setExist(false)
-							setLoading(false)
-							setErrorCode(PAGE_ERROR_CODE_NOT_FOUND)
-							return
-						}
-					} catch (err) {
-						setExist(false)
-						setErrorCode(null)
-						storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_17)
-					}
-				},
-				err => {
-					setExist(false)
-					setErrorCode(null)
-					storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_16)
-				}
-			)
-		}
-
-		attachListener()
-	}, [uid])
+	const [loading, exist, data, errorCode] = useData(uid, currentUserUid)
 
 	return exist ? (
 		<WrapperStoreWrapperPropedProfile>
@@ -120,7 +80,7 @@ const PageProfile = props => {
 						<Container>
 							<Row>
 								<Col>
-									<CardUserHorizontal data={data} uid={uid} />
+									<CardUserHorizontal data={data} uid={uid_} />
 								</Col>
 							</Row>
 							<Row className='pt-5'>
@@ -152,7 +112,9 @@ const PageProfile = props => {
 							</Row>
 							<Row>
 								<Col md='12'>
-									<CarouselLightBoxPropedProfile items={data.carousel} />
+									<CarouselLightBoxPropedProfile
+										items={data[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL]}
+									/>
 								</Col>
 							</Row>
 						</Container>
@@ -165,4 +127,4 @@ const PageProfile = props => {
 	)
 }
 
-export { PageProfile }
+export { PageProfile, PAGE_PROFILE_CURRENT_USER_UID }

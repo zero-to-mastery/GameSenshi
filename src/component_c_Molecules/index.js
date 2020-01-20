@@ -25,6 +25,7 @@ import {
 	PageError,
 	PAGE_ERROR_CODE_NOT_FOUND,
 	PAGE_ERROR_CODE_UNAUTHORIZED,
+	PAGE_ERROR_CODE_NOT_A_SENSHI,
 } from './PageError'
 
 export const Exports = {
@@ -55,4 +56,5 @@ export const Exports = {
 	PageError,
 	PAGE_ERROR_CODE_NOT_FOUND,
 	PAGE_ERROR_CODE_UNAUTHORIZED,
+	PAGE_ERROR_CODE_NOT_A_SENSHI,
 }

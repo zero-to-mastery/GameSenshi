@@ -11,6 +11,7 @@ import {
 	stopUndefined,
 	checkDuplicatedObject,
 	createGetOptions,
+	convertToArrayIfNotArray,
 } from './codeToolings'
 
 import {
@@ -30,6 +31,8 @@ import {
 	usernameLength,
 } from './validation'
 
+import { defaultAvatar } from './defaults'
+
 export {
 	resObj,
 	simplerResponseHandling,
@@ -41,6 +44,7 @@ export {
 	stopUndefined,
 	checkDuplicatedObject,
 	createGetOptions,
+	convertToArrayIfNotArray,
 	signUpEmailValidation,
 	signUpPasswordValidation,
 	checkBoxValidation,
@@ -55,4 +59,5 @@ export {
 	cardCvcValidation,
 	cardExpiryValidation,
 	usernameLength,
+	defaultAvatar,
 }

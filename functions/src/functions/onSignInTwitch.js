@@ -1,4 +1,5 @@
-import { TWITCH_ID, TWITCH_SECRET } from 'firebaseInit'
+import { TWITCH_ID, TWITCH_SECRET, onCall } from 'firebaseInit'
+
 import axios from 'axios'
 import {
 	INTERNAL_ERROR_CODE_1,
@@ -11,7 +12,7 @@ import { getCustomToken } from 'functions/getCustomToken'
 
 // ! cannot return complex object (no nested object)
 
-const onSignInTwitch = async data => {
+const onSignInTwitch = onCall(async data => {
 	const {
 		[FUNCTION_OAUTH_CODE]: code,
 		[FUNCTION_REDIRECT_URI]: redirectUri,
@@ -48,6 +49,6 @@ const onSignInTwitch = async data => {
 
 	const { id, email, display_name, profile_image_url } = userData
 	return getCustomToken('twitch_', id, email, display_name, profile_image_url)
-}
+})
 
 export { onSignInTwitch }

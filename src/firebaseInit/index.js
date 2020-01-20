@@ -1,6 +1,5 @@
-import { onAuthChange, setNonLoginUserLastIntendedAction } from './onAuthChange'
 import { getRedirectResult } from './getRedirectResult'
-import { auth } from './core'
+import { auth, fireStored, getServerTimestamp, database } from './core'
 import {
 	storageUserAvatarGet,
 	storageUserAvatarSet,
@@ -11,12 +10,13 @@ import { handleDifferentCredential } from './handleDifferentCredential'
 
 export {
 	auth,
+	fireStored,
+	getServerTimestamp,
+	database,
 	storageUserAvatarGet,
 	storageUserAvatarSet,
 	storageUserAvatarRemove,
 	getRedirectResult,
-	onAuthChange,
 	functSignInTwicth,
 	handleDifferentCredential,
-	setNonLoginUserLastIntendedAction,
 }

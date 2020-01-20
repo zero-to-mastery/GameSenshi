@@ -3,7 +3,7 @@ import { Row, Col } from 'reactstrap'
 import classnames from 'classnames'
 import { Exports } from 'component_a_Protons'
 import { stopUndefined } from 'utils'
-const { Button, UncontrolledTooltip, Icon, Link } = stopUndefined(Exports)
+const { Button, UncontrolledTooltip, Link } = stopUndefined(Exports)
 
 const BUTTONS_COMMON_ID = 'id'
 const BUTTONS_COMMON_ICON = 'icon'
@@ -53,7 +53,7 @@ const ButtonsCommon = props => {
 							})} // visit third party website
 							onClick={onClick_}
 						>
-							<Icon {...icon} />
+							{icon()}
 							{label}
 						</Button>
 						<UncontrolledTooltip delay={0} target={id_}>

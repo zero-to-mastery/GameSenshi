@@ -15,131 +15,142 @@
 
  */
 
-@import 'blk-design-system-pro/custom/functions';
-@import 'blk-design-system-pro/bootstrap/functions';
+ @import "blk-design-system-pro/custom/functions";
+ @import "blk-design-system-pro/bootstrap/functions";
 
-@import 'blk-design-system-pro/variables';
-@import 'blk-design-system-pro/bootstrap/variables';
+ @import "blk-design-system-pro/variables";
+ @import "blk-design-system-pro/bootstrap/variables";
 
-@import 'blk-design-system-pro/custom/mixins';
-@import 'blk-design-system-pro/bootstrap/mixins';
+ @import "blk-design-system-pro/custom/mixins";
+ @import "blk-design-system-pro/bootstrap/mixins";
 
-// Bootstrap components
+ // Bootstrap components
 
-@import 'blk-design-system-pro/bootstrap/root';
-@import 'blk-design-system-pro/bootstrap/reboot';
-@import 'blk-design-system-pro/bootstrap/type';
-@import 'blk-design-system-pro/bootstrap/images';
-@import 'blk-design-system-pro/bootstrap/code';
-@import 'blk-design-system-pro/bootstrap/grid';
-@import 'blk-design-system-pro/bootstrap/tables';
-@import 'blk-design-system-pro/bootstrap/forms';
-@import 'blk-design-system-pro/bootstrap/buttons';
-@import 'blk-design-system-pro/bootstrap/transitions';
-@import 'blk-design-system-pro/bootstrap/dropdown';
-@import 'blk-design-system-pro/bootstrap/button-group';
-@import 'blk-design-system-pro/bootstrap/input-group';
-@import 'blk-design-system-pro/bootstrap/custom-forms';
-@import 'blk-design-system-pro/bootstrap/nav';
-@import 'blk-design-system-pro/bootstrap/navbar';
-@import 'blk-design-system-pro/bootstrap/card';
-@import 'blk-design-system-pro/bootstrap/breadcrumb';
-@import 'blk-design-system-pro/bootstrap/pagination';
-@import 'blk-design-system-pro/bootstrap/badge';
-@import 'blk-design-system-pro/bootstrap/jumbotron';
-@import 'blk-design-system-pro/bootstrap/alert';
-@import 'blk-design-system-pro/bootstrap/progress';
-@import 'blk-design-system-pro/bootstrap/media';
-@import 'blk-design-system-pro/bootstrap/list-group';
-@import 'blk-design-system-pro/bootstrap/close';
-@import 'blk-design-system-pro/bootstrap/modal';
-@import 'blk-design-system-pro/bootstrap/tooltip';
-@import 'blk-design-system-pro/bootstrap/popover';
-@import 'blk-design-system-pro/bootstrap/carousel';
-@import 'blk-design-system-pro/bootstrap/utilities';
-@import 'blk-design-system-pro/bootstrap/print';
+@import "blk-design-system-pro/bootstrap/root";
+@import "blk-design-system-pro/bootstrap/reboot";
+@import "blk-design-system-pro/bootstrap/type";
+@import "blk-design-system-pro/bootstrap/images";
+@import "blk-design-system-pro/bootstrap/code";
+@import "blk-design-system-pro/bootstrap/grid";
+@import "blk-design-system-pro/bootstrap/tables";
+@import "blk-design-system-pro/bootstrap/forms";
+@import "blk-design-system-pro/bootstrap/buttons";
+@import "blk-design-system-pro/bootstrap/transitions";
+@import "blk-design-system-pro/bootstrap/dropdown";
+@import "blk-design-system-pro/bootstrap/button-group";
+@import "blk-design-system-pro/bootstrap/input-group";
+@import "blk-design-system-pro/bootstrap/custom-forms";
+@import "blk-design-system-pro/bootstrap/nav";
+@import "blk-design-system-pro/bootstrap/navbar";
+@import "blk-design-system-pro/bootstrap/card";
+@import "blk-design-system-pro/bootstrap/breadcrumb";
+@import "blk-design-system-pro/bootstrap/pagination";
+@import "blk-design-system-pro/bootstrap/badge";
+@import "blk-design-system-pro/bootstrap/jumbotron";
+@import "blk-design-system-pro/bootstrap/alert";
+@import "blk-design-system-pro/bootstrap/progress";
+@import "blk-design-system-pro/bootstrap/media";
+@import "blk-design-system-pro/bootstrap/list-group";
+@import "blk-design-system-pro/bootstrap/close";
+@import "blk-design-system-pro/bootstrap/modal";
+@import "blk-design-system-pro/bootstrap/tooltip";
+@import "blk-design-system-pro/bootstrap/popover";
+@import "blk-design-system-pro/bootstrap/carousel";
+@import "blk-design-system-pro/bootstrap/utilities";
+@import "blk-design-system-pro/bootstrap/print";
 
 // Custom components
 
-@import 'blk-design-system-pro/custom/alerts.scss';
-@import 'blk-design-system-pro/custom/buttons.scss';
-@import 'blk-design-system-pro/custom/dropdown.scss';
-@import 'blk-design-system-pro/custom/footer.scss';
-@import 'blk-design-system-pro/custom/forms.scss';
-@import 'blk-design-system-pro/custom/images.scss';
-@import 'blk-design-system-pro/custom/modal.scss';
-@import 'blk-design-system-pro/custom/navbar.scss';
-@import 'blk-design-system-pro/custom/type.scss';
-@import 'blk-design-system-pro/custom/icons.scss';
-@import 'blk-design-system-pro/custom/checkboxes-radio';
-@import 'blk-design-system-pro/custom/fixed-plugin';
-@import 'blk-design-system-pro/custom/pagination.scss';
-@import 'blk-design-system-pro/custom/misc.scss';
-@import 'blk-design-system-pro/custom/rtl.scss';
-@import 'blk-design-system-pro/custom/input-group.scss';
-@import 'blk-design-system-pro/custom/progress.scss';
-@import 'blk-design-system-pro/custom/badge.scss';
-@import 'blk-design-system-pro/custom/pills.scss';
-@import 'blk-design-system-pro/custom/tabs.scss';
-@import 'blk-design-system-pro/info-areas.scss';
-@import 'blk-design-system-pro/misc-extend.scss';
-@import 'blk-design-system-pro/sections-extend.scss';
-@import 'blk-design-system-pro/footers.scss';
-@import 'blk-design-system-pro/tables.scss';
+@import "blk-design-system-pro/custom/alerts.scss";
+@import "blk-design-system-pro/custom/buttons.scss";
+@import "blk-design-system-pro/custom/dropdown.scss";
+@import "blk-design-system-pro/custom/footer.scss";
+@import "blk-design-system-pro/custom/forms.scss";
+@import "blk-design-system-pro/custom/images.scss";
+@import "blk-design-system-pro/custom/modal.scss";
+@import "blk-design-system-pro/custom/navbar.scss";
+@import "blk-design-system-pro/custom/type.scss";
+@import "blk-design-system-pro/custom/icons.scss";
+@import "blk-design-system-pro/custom/checkboxes-radio";
+@import "blk-design-system-pro/custom/fixed-plugin";
+@import "blk-design-system-pro/custom/pagination.scss";
+@import "blk-design-system-pro/custom/misc.scss";
+@import "blk-design-system-pro/custom/rtl.scss";
+@import "blk-design-system-pro/custom/input-group.scss";
+@import "blk-design-system-pro/custom/progress.scss";
+@import "blk-design-system-pro/custom/badge.scss";
+@import "blk-design-system-pro/custom/pills.scss";
+@import "blk-design-system-pro/custom/tabs.scss";
+@import "blk-design-system-pro/info-areas.scss";
+@import "blk-design-system-pro/misc-extend.scss";
+@import "blk-design-system-pro/sections-extend.scss";
+@import "blk-design-system-pro/footers.scss";
+@import "blk-design-system-pro/tables.scss";
+
 
 // Pro components
 
-@import 'blk-design-system-pro/example-pages.scss';
-@import 'blk-design-system-pro/social-buttons.scss';
-@import 'blk-design-system-pro/media.scss';
-@import 'blk-design-system-pro/modals-extend.scss';
-@import 'blk-design-system-pro/navbar-extend.scss';
-@import 'blk-design-system-pro/buttons-extend.scss';
-@import 'blk-design-system-pro/pills-extend.scss';
-@import 'blk-design-system-pro/dropdown-extend.scss';
+@import "blk-design-system-pro/example-pages.scss";
+@import "blk-design-system-pro/social-buttons.scss";
+@import "blk-design-system-pro/media.scss";
+@import "blk-design-system-pro/modals-extend.scss";
+@import "blk-design-system-pro/navbar-extend.scss";
+@import "blk-design-system-pro/buttons-extend.scss";
+@import "blk-design-system-pro/pills-extend.scss";
+@import "blk-design-system-pro/dropdown-extend.scss";
+
+
+
 
 // Sections
-@import 'blk-design-system-pro/custom/sections.scss';
+@import "blk-design-system-pro/custom/sections.scss";
 
-// Vendor / Plugins
 
-@import 'blk-design-system-pro/custom/vendor/plugin-perfect-scrollbar.scss';
-@import 'blk-design-system-pro/custom/vendor/plugin-animate-bootstrap-notify.scss';
-@import 'blk-design-system-pro/custom/vendor/plugin-bootstrap-switch.scss';
-@import 'blk-design-system-pro/custom/vendor/plugin-nouislider.scss';
-@import 'blk-design-system-pro/custom/vendor/plugin-datetimepicker.scss';
-@import 'blk-design-system-pro/plugins/plugin-tagsinput.scss';
-@import 'blk-design-system-pro/plugins/plugin-bootstrap-select';
-@import 'blk-design-system-pro/plugins/plugin-jasny-fileupload.scss';
-@import 'blk-design-system-pro/plugins/plugin-carousel-slick.scss';
+
+ // Vendor / Plugins
+
+@import "blk-design-system-pro/custom/vendor/plugin-perfect-scrollbar.scss";
+@import "blk-design-system-pro/custom/vendor/plugin-animate-bootstrap-notify.scss";
+@import "blk-design-system-pro/custom/vendor/plugin-bootstrap-switch.scss";
+@import "blk-design-system-pro/custom/vendor/plugin-nouislider.scss";
+@import "blk-design-system-pro/custom/vendor/plugin-datetimepicker.scss";
+@import "blk-design-system-pro/plugins/plugin-tagsinput.scss";
+@import "blk-design-system-pro/plugins/plugin-bootstrap-select";
+@import "blk-design-system-pro/plugins/plugin-jasny-fileupload.scss";
+@import "blk-design-system-pro/plugins/plugin-carousel-slick.scss";
+
+
 
 // Cards
 
 @import 'blk-design-system-pro/custom/card';
-@import 'blk-design-system-pro/custom/cards/card-chart';
-@import 'blk-design-system-pro/custom/cards/card-map';
-@import 'blk-design-system-pro/custom/cards/card-user';
-@import 'blk-design-system-pro/custom/cards/card-task';
-@import 'blk-design-system-pro/custom/cards/card-plain';
-@import 'blk-design-system-pro/custom/cards/card-register';
-@import 'blk-design-system-pro/custom/cards/card-stats';
-@import 'blk-design-system-pro/custom/cards/card-chart';
-@import 'blk-design-system-pro/cards/card-background';
-@import 'blk-design-system-pro/cards/card-blog';
-@import 'blk-design-system-pro/cards/card-profile';
-@import 'blk-design-system-pro/cards/card-pricing';
-@import 'blk-design-system-pro/cards/card-login';
-@import 'blk-design-system-pro/cards/card-testimonials';
-@import 'blk-design-system-pro/cards/card-product';
+@import "blk-design-system-pro/custom/cards/card-chart";
+@import "blk-design-system-pro/custom/cards/card-map";
+@import "blk-design-system-pro/custom/cards/card-user";
+@import "blk-design-system-pro/custom/cards/card-task";
+@import "blk-design-system-pro/custom/cards/card-plain";
+@import "blk-design-system-pro/custom/cards/card-register";
+@import "blk-design-system-pro/custom/cards/card-stats";
+@import "blk-design-system-pro/custom/cards/card-chart";
+@import "blk-design-system-pro/cards/card-background";
+@import "blk-design-system-pro/cards/card-blog";
+@import "blk-design-system-pro/cards/card-profile";
+@import "blk-design-system-pro/cards/card-pricing";
+@import "blk-design-system-pro/cards/card-login";
+@import "blk-design-system-pro/cards/card-testimonials";
+@import "blk-design-system-pro/cards/card-product";
+
 
 // Avatars
 
-@import 'blk-design-system-pro/avatars/avatar-group';
-@import 'blk-design-system-pro/avatars/avatar';
+@import "blk-design-system-pro/avatars/avatar-group";
+@import "blk-design-system-pro/avatars/avatar";
+
 
 // Responsive
 
-@import 'blk-design-system-pro/responsive';
+@import "blk-design-system-pro/responsive";
+
 
 // React Differences
-@import 'blk-design-system-pro/react/react-differences';
+@import "blk-design-system-pro/react/react-differences";

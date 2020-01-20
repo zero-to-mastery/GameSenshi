@@ -18,10 +18,12 @@ import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_DISPLAY_NAME,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS,
 } from 'constantValues'
+import { defaultAvatar } from 'utils'
+
 const {
 	BadgesPropedSenshi,
 	StatusPropedOnline,
-	CheckBoxIconPropedFavourite,
+	CheckBoxIconPropedFavouriteStoreUser,
 	CheckBoxIconPropedTip,
 	ButtonsCommonOptioned,
 } = stopUndefined(Exports)
@@ -60,43 +62,47 @@ const CardUserHorizontal = props => {
 										color='transparent'
 										style={{ paddingTop: '0px', height: '100%' }}
 										className='img-center img-fluid rounded-circle'
-										src={avatar}
+										src={avatar || defaultAvatar}
 									/>
 								</DivStyledImage>
 							</Col>
 							<Col>
-								<StatusPropedOnline on={true} />
+								<StatusPropedOnline uid={uid} />
 							</Col>
 						</Row>
 					</Col>
 					<Col xs='12' lg='3'>
 						<RowStyledUsername className='flex-column'>
 							<Col>
-								<p className='text-white'>{displayName}</p>
+								<h3 className='text-white font-weight-bold mb-1'>
+									{displayName}
+								</h3>
 							</Col>
-							<Col>
-								<p className='text-white'>UID : {shortUid}</p>
+							<Col className='mb-3'>
+								<p className='text-muted'>UID : {shortUid}</p>
 							</Col>
 							<Col>
 								<CheckBoxIconPropedTip />
-								<CheckBoxIconPropedFavourite uid={uid} />
+								<CheckBoxIconPropedFavouriteStoreUser uid={uid} />
 							</Col>
 						</RowStyledUsername>
 					</Col>
-					<Col xs='12' lg='3'>
-						<Row>
-							<Col align='center'>
-								<TextStyledSubscribe className='text-success font-weight-bold text-nowrap'>
-									Subscribe to my channels:
-								</TextStyledSubscribe>
-							</Col>
-						</Row>
-						<Row>
-							<Col>
-								<ButtonsCommonOptioned buttons={channels} />
-							</Col>
-						</Row>
-					</Col>
+					{Object.keys(channels).length > 0 && (
+						<Col xs='12' lg='3'>
+							<Row>
+								<Col align='center'>
+									<TextStyledSubscribe className='text-success font-weight-bold text-nowrap'>
+										Subscribe to my channels:
+									</TextStyledSubscribe>
+								</Col>
+							</Row>
+							<Row>
+								<Col>
+									<ButtonsCommonOptioned buttons={channels} />
+								</Col>
+							</Row>
+						</Col>
+					)}
 				</Row>
 			</Container>
 		</SectionStyled>
