@@ -5,8 +5,8 @@
 .form-control:focus ~ .input-group-prepend .input-group-text,
 .input-group-focus .input-group-prepend .input-group-text,
 .input-group-focus .input-group-append .input-group-text {
-	border-color: $info;
+  border-color: $info;
 }
 .has-danger .form-control:focus {
-	border-color: lighten($danger-states, 5%);
+  border-color: lighten($danger-states,5%);
 }

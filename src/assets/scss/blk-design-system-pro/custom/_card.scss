@@ -1,207 +1,213 @@
 .card {
-	background: $card-black-background;
-	border: 0;
-	position: relative;
-	width: 100%;
-	box-shadow: $box-shadow;
-	border-radius: 7px;
+    background: $card-black-background;
+    border: 0;
+    position: relative;
+    width: 100%;
+    box-shadow: $box-shadow;
+    border-radius: 7px;
+    margin-top: 30px;
 
-	label {
-		color: rgba($white, 0.6);
-	}
+    label {
+      color: rgba($white, 0.6);
+    }
 
-	.card-title {
-		margin-bottom: 0.75rem;
-	}
+    .card-title {
+      margin-bottom: .75rem;
+    }
 
-	.card-body {
-		padding: 15px;
+    .card-body {
+      padding: 15px;
 
-		&.table-full-width {
-			padding-left: 0;
-			padding-right: 0;
-		}
+      &.table-full-width {
+        padding-left: 0;
+        padding-right: 0;
+      }
 
-		.card-title {
-			color: $white;
-			text-transform: inherit;
-			font-weight: $font-weight-light;
-			margin-bottom: 0.75rem;
-			margin-top: 15px;
-			line-height: 1.25em;
-		}
+      .card-title {
+        color: $white;
+        text-transform: inherit;
+        font-weight: $font-weight-light;
+        margin-bottom: .75rem;
+        margin-top: 15px;
+        line-height: 1.25em;
+      }
 
-		.card-description,
-		.card-category {
-			color: rgba($white, 0.6);
-		}
-	}
-	.category,
-	.category-social {
-		.tim-icons {
-			margin-right: 3px;
-		}
-	}
+      .card-description, .card-category {
+        color: rgba($white, 0.6);
+      }
 
-	.card-header {
-		&:not([data-background-color]) {
-			background-color: transparent;
-		}
-		padding: 15px 15px 0;
-		border: 0;
-		color: rgba($white, 0.8);
+    }
+    .category,
+    .category-social {
+      .tim-icons {
+        margin-right: 3px;
+      }
+    }
 
-		.card-title {
-			color: $white;
-			font-weight: 100;
-		}
 
-		.card-category {
-			color: $dark-gray;
-			margin-bottom: 5px;
-			font-weight: 300;
-		}
-	}
+    .card-header {
+      &:not([data-background-color]) {
+        background-color: transparent;
+      }
+      padding: 15px 15px 0;
+      border: 0;
+      color: rgba($white,0.8);
 
-	.map {
-		border-radius: $border-radius-sm;
+      .card-title{
+          color: $white;
+          font-weight: 100;
+      }
 
-		&.map-big {
-			height: 420px;
-		}
-	}
+      .card-category {
+        color: $dark-gray;
+        margin-bottom: 5px;
+        font-weight: 300;
+      }
+    }
 
-	&.card-plain {
-		background: transparent;
-		box-shadow: none;
-	}
+    .map {
+        border-radius: $border-radius-sm;
 
-	.image {
-		overflow: hidden;
-		height: 200px;
-		position: relative;
-	}
+        &.map-big{
+          height: 420px;
+        }
+    }
 
-	.avatar {
-		width: 30px;
-		height: 30px;
-		overflow: hidden;
-		border-radius: 50%;
-		margin-right: 5px;
-	}
+    &.card-plain {
+      background: transparent;
+      box-shadow: none;
+    }
 
-	label {
-		font-size: $font-size-sm;
-		margin-bottom: 5px;
-	}
+    .image {
+      overflow: hidden;
+      height: 200px;
+      position: relative;
+    }
 
-	.card-footer {
-		background-color: transparent;
-		border: 0;
-		padding: 0px;
-		margin-top: 15px;
+    .avatar {
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
 
-		.stats {
-			i {
-				margin-right: 5px;
-				position: relative;
-			}
+    label{
+        font-size: $font-size-sm;
+        margin-bottom: 5px;
 
-			&.stats-right {
-				float: right;
-				line-height: 30px;
-			}
-		}
+    }
 
-		h6 {
-			margin-bottom: 0;
-			padding: 7px 0;
-		}
+    .card-footer{
+        background-color: transparent;
+        border: 0;
+        padding: 0px;
+        margin-top: 15px;
 
-		div {
-			display: inline-block;
-		}
-	}
 
-	&.card-coin {
-		border: 2px solid $default;
+        .stats{
+            i{
+              margin-right: 5px;
+              position: relative;
 
-		.card-header {
-			margin: -100px auto 20px;
-		}
+            }
 
-		img {
-			width: 150px;
-		}
-		hr {
-			width: 20%;
-			margin: 15px auto;
-		}
-		.list-group {
-			margin: 0 auto;
-			text-align: center;
+          &.stats-right {
+            float: right;
+            line-height: 30px;
+          }
+        }
 
-			.list-group-item {
-				background-color: transparent;
-				border: none;
-				padding: 0.4rem 1rem;
-			}
-		}
+        h6{
+          margin-bottom: 0;
+          padding: 7px 0;
+        }
 
-		.card-footer {
-			padding-bottom: 15px;
-		}
-	}
+        div {
+          display: inline-block;
+        }
+    }
 
-	&[data-background-color='gray'] {
-		background-color: $default;
-	}
+  &.card-coin {
+    border: 2px solid $default;
 
-	&[data-background-color='purple'] {
-		background-color: $primary;
-	}
+    .card-header {
+      margin: -100px auto 20px;
+    }
 
-	&[data-background-color='red'] {
-		background-color: $danger;
-	}
+    img {
+      width: 150px;
+    }
+    hr {
+      width: 20%;
+      margin: 15px auto;
+    }
+    .list-group {
+      margin: 0 auto;
+      text-align: center;
 
-	&[data-background-color='yellow'] {
-		background-color: $warning;
-	}
+      .list-group-item {
+        background-color: transparent;
+        border: none;
+        padding: .4rem 1rem;
+      }
+    }
 
-	&[data-background-color='blue'] {
-		background-color: $info;
-	}
+    .card-footer {
+      padding-bottom: 15px;
+    }
+  }
 
-	&[data-background-color='green'] {
-		background-color: darken($success, 5%);
-	}
+  &[data-background-color="gray"]{
+      background-color: $default;
+  }
+
+  &[data-background-color="purple"]{
+      background-color: $primary;
+  }
+
+  &[data-background-color="red"]{
+      background-color: $danger;
+  }
+
+  &[data-background-color="yellow"]{
+      background-color: $warning;
+  }
+
+  &[data-background-color="blue"]{
+      background-color: $info;
+  }
+
+  &[data-background-color="green"]{
+      background-color: darken($success, 5%);
+  }
 }
 
-.card-body {
-	padding: $card-spacer-y;
+.card-body{
+  padding: $card-spacer-y;
 }
 
 @include media-breakpoint-down(sm) {
-	.card.card-chart .card-header {
-		.btn-group-toggle .tim-icons {
-			font-size: 0.875rem;
-			top: -1px;
-		}
-	}
+  .card.card-chart .card-header {
+    .btn-group-toggle .tim-icons {
+      font-size: .875rem;
+      top: -1px;
+    }
+  }
 }
 
 @include media-breakpoint-down(xs) {
-	.card.card-coin {
-		margin-top: 80px;
-	}
+  .card.card-coin{
+    margin-top: 80px;
+  }
 }
 
-.text-on-back {
-	position: relative;
-	z-index: 1;
-	font-size: 9.5em;
-	margin-left: -4px;
-	font-weight: 900;
-	color: rgba(255, 255, 255, 0.2) !important;
+
+.text-on-back{
+  position: relative;
+  z-index: 1;
+  font-size: 9.5em;
+  margin-left: -4px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.2) !important;
 }

@@ -1,13 +1,13 @@
 .headroom {
-	will-change: transform;
-	background-color: inherit;
-	@include transition($transition-base);
+    will-change: transform;
+    background-color: inherit;
+    @include transition($transition-base);
 }
 .headroom--pinned {
 	@extend .position-fixed;
-	transform: translateY(0%);
+    transform: translateY(0%);
 }
 .headroom--unpinned {
 	@extend .position-fixed;
-	transform: translateY(-100%);
+    transform: translateY(-100%);
 }

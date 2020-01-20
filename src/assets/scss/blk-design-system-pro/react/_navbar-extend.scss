@@ -1,11 +1,11 @@
-@media screen and (max-width: 350px) {
-	.navbar .navbar-brand {
-		margin: 0;
-	}
+@media screen and (max-width: 350px){
+  .navbar .navbar-brand {
+    margin: 0;
+  }
 }
-@media screen and (max-width: 991px) {
-	.navbar .navbar-collapse {
-		max-height: calc(100vh - 1.4rem);
-		overflow: scroll;
-	}
+@media screen and (max-width: 991px){
+  .navbar .navbar-collapse {
+    max-height: calc(100vh - 1.4rem);
+    overflow: scroll;
+  }
 }

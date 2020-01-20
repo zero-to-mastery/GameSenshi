@@ -15,16 +15,17 @@
 	height: 48px;
 	width: 48px;
 
-	img {
-		width: 100%;
-		border-radius: 50%;
-	}
+    img {
+    	width: 100%;
+    	border-radius: 50%;
+    }
 
-	+ .avatar-content {
-		display: inline-block;
-		margin-left: 0.75rem;
-	}
+    + .avatar-content {
+    	display: inline-block;
+    	margin-left: .75rem;
+    }
 }
+
 
 // Avatar size variations
 

@@ -1,115 +1,117 @@
-.phone-container {
-	img {
-		width: 100%;
-	}
+.phone-container{
+    img{
+        width: 100%;
+    }
 }
 
 .features-2,
 .features-1,
-.features-3 {
-	text-align: center;
+.features-3{
+    text-align: center;
 }
 
 .features-2 {
-	.container {
-		.description {
-			margin-bottom: 20px;
-		}
-	}
-	.info {
-		padding: 30px 10px 30px;
-		margin: 30px auto 0;
-		opacity: 0.9;
+  .container {
+    .description {
+      margin-bottom: 20px;
+    }
+  }
+  .info {
+    padding: 30px 10px 30px;
+    margin: 30px auto 0;
+    opacity: .9;
 
-		&:hover {
-			opacity: 1;
-		}
+    &:hover {
+      opacity: 1;
+    }
 
-		&.info-raised {
-			margin-top: -5px;
-		}
+    &.info-raised {
+      margin-top: -5px;
+    }
 
-		.icon {
-			margin-left: 15px;
+    .icon {
+      margin-left: 15px;
 
-			i {
-				font-size: 2.5em;
-			}
-		}
+      i {
+        font-size: 2.5em;
+      }
+    }
 
-		.info-title {
-			font-weight: bold;
-		}
+    .info-title {
+      font-weight: bold;
+    }
 
-		.description {
-			color: $white;
-			opacity: 0.8;
-		}
-	}
+    .description {
+      color: $white;
+      opacity: .8;
+    }
+  }
+
 }
 
-.features-4 {
-	.info {
-		text-align: left;
-		padding: 30px;
 
-		.info-title {
-			padding: 0;
-		}
+.features-4{
+  .info {
+    text-align: left;
+    padding: 30px;
 
-		.description {
-			padding-left: 0;
-		}
+    .info-title {
+      padding: 0;
+    }
 
-		i {
-			font-size: 2.5em;
-		}
+    .description {
+      padding-left: 0;
+    }
 
-		&:hover {
-			transition: all 300ms ease 0s;
+    i {
+      font-size: 2.5em;
+    }
 
-			.description {
-				color: $white;
-			}
-		}
-	}
+    &:hover {
+      transition: all 300ms ease 0s;
+
+      .description {
+        color: $white;
+      }
+    }
+  }
 }
 
 .features-5 {
-	.title,
-	.category {
-		margin-left: 25px;
-	}
+  .title,
+  .category {
+    margin-left: 25px;
+  }
 
-	h6 {
-		text-transform: uppercase;
-	}
+  h6 {
+    text-transform: uppercase;
+  }
 
-	.info {
-		text-align: left;
-		padding: 10px;
-	}
+  .info {
+    text-align: left;
+    padding: 10px;
+  }
 }
 
 .features-6 {
-	.info {
-		padding: 10px 10px 30px 10px;
-	}
+  .info {
+    padding: 10px 10px 30px 10px;
+  }
 
-	.shape {
-		opacity: 0.02;
-		position: absolute;
-	}
+  .shape {
+    opacity: .02;
+    position: absolute;
+  }
 }
 
-@media screen and (max-width: 768px) {
-	.features-2 .info {
-		margin-bottom: 25px;
-	}
+@media screen and (max-width: 768px){
+  .features-2 .info{
+    margin-bottom: 25px;
+  }
 }
 
-@media screen and (max-width: 576px) {
-	.features-6 {
-		overflow: hidden;
-	}
+@media screen and (max-width: 576px){
+  .features-6{
+    overflow: hidden;
+  }
 }

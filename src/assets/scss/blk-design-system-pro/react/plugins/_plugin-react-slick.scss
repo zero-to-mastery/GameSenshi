@@ -1,43 +1,42 @@
 .slick-slide {
-	float: none;
+  float: none;
 }
 .slick-track {
-	display: flex;
+  display: flex;
 }
-.slick-prev,
-.slick-next {
-	z-index: 1;
+.slick-prev, .slick-next {
+  z-index: 1;
 }
 .slick-buttons-under {
-	.slick-arrow {
-		position: absolute;
-		top: 100%;
-		right: 48%;
-		&.slick-prev {
-			margin-right: 50px;
-		}
-	}
+  .slick-arrow {
+    position: absolute;
+    top: 100%;
+    right: 48%;
+    &.slick-prev {
+      margin-right: 50px;
+    }
+  }
 }
-.testimonials-4 .slick-arrow {
-	&.slick-prev {
-		left: calc(100% - 65% - #{$icon-size-regular});
-		margin-left: 0;
-	}
-	&.slick-next {
-		left: calc(100% - 65% + #{$icon-size-regular} / 2);
-	}
-}
-
-.testimonials-4 .slick-arrow.slick-prev {
-	position: absolute;
-	bottom: 0;
+.testimonials-4 .slick-arrow{
+  &.slick-prev{
+    left: calc(100% - 65% - #{$icon-size-regular});
+    margin-left: 0;
+  }
+  &.slick-next{
+    left: calc(100% - 65% + #{$icon-size-regular} / 2);
+  }
 }
 
-.blog-post .slick-arrow.slick-prev {
-	position: absolute;
-	bottom: 0;
+.testimonials-4 .slick-arrow.slick-prev{
+  position: absolute;
+  bottom: 0;
 }
 
-.blog-post .slick-arrow.slick-next {
-	margin-left: 50px;
+.blog-post .slick-arrow.slick-prev{
+  position: absolute;
+  bottom: 0;
+}
+
+.blog-post .slick-arrow.slick-next{
+  margin-left: 50px;
 }
