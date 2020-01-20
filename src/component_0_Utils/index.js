@@ -1,5 +1,5 @@
 import { auth } from 'firebaseInit'
-import { history, isLocationPrivate, isLocationPublic } from 'routes'
+import { isLocationPrivate, isLocationPublic } from 'routes'
 import {
 	storeUserSetSigningIn,
 	storeUserGetSignedIn,
@@ -18,7 +18,8 @@ const signOut = () => {
 }
 
 const onLogin = lastLocation => {
-	history.replace(isLocationPublic(lastLocation))
+	const [action, pathname] = isLocationPublic(lastLocation)
+	action(pathname)
 	storeUserSetSigningIn(true)
 }
 

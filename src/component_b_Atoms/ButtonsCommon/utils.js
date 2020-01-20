@@ -120,7 +120,7 @@ const buttonCommonAuthOnClick = lastLocation => {
 	return (e, button) => {
 		const { [BUTTONS_COMMON_ID]: id } = button
 		storeModalSetItem(null, null, { [STORE_USER_STATE_SIGNING_IN]: true })
-		setLastRoute(isLocationPublic(lastLocation))
+		setLastRoute(isLocationPublic(lastLocation)[1])
 		handleSignInWithSocials[id]().catch(err => {
 			storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_13)
 		})
