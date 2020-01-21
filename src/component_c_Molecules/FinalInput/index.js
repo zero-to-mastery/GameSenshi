@@ -12,6 +12,9 @@ const FinalInputText = props => {
 
 	const onChange_ = useCallback(
 		e => {
+			// eslint-disable-next-line
+			console.log('') // ! this line of console.log is needed or else firefox cannot detect the autofill input and result in 'required' error
+			// ! very weird, need explanation
 			return onChange ? onChange(e, onValueChange || (() => {})) : undefined
 		},
 		[onChange, onValueChange]
