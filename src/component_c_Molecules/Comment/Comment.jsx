@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
-import { Media, Input } from 'reactstrap'
+import { Media } from 'reactstrap'
 import { Exports } from 'component_b_Atoms'
 import { stopUndefined } from 'utils'
 
-const { Button, AvatarUserStoreUser } = stopUndefined(Exports)
+const { Button } = stopUndefined(Exports)
 
 const COMMENT_ID = 'id'
 const COMMENT_NAME = 'name'
@@ -11,9 +11,6 @@ const COMMENT_POSTED_TIME = 'postedTime'
 const COMMENT_AVATAR = 'avatar'
 const COMMENT_BODY = 'body'
 const COMMENT_NUM_COMMENTS = 'numComments'
-
-const AVATAR_WIDTH = 64
-const AVATAR_HEIGHT = 64
 
 const Comments = props => {
 	const { comments } = props
@@ -73,49 +70,12 @@ const Comment = props => {
 	)
 }
 
-const CreateCommentInput = props => {
-	return (
-		<Media className='media-post'>
-			<a
-				className='pull-left author'
-				href='#pablo'
-				onClick={e => e.preventDefault()}
-			>
-				<div className='avatar pl-3'>
-					<AvatarUserStoreUser height={AVATAR_HEIGHT} width={AVATAR_WIDTH} />
-				</div>
-			</a>
-			<Media body>
-				<Input
-					placeholder='Write a nice reply or go home...'
-					rows='4'
-					type='textarea'
-				/>
-				<div className='media-footer'>
-					<Button
-						className='btn-simple pull-right'
-						color='primary'
-						href='#pablo'
-						onClick={e => e.preventDefault()}
-					>
-						<i className='tim-icons icon-send' /> Reply
-					</Button>
-				</div>
-			</Media>
-		</Media>
-	)
-}
-
 const CommentsList = props => {
 	const { comments } = props
 	return (
 		<Fragment>
 			<div className='container'>
-				<h3 className='title text-center'>Post your comment</h3>
-				<CreateCommentInput />
-				<div className='container'>
-					<Comments comments={comments} />
-				</div>
+				<Comments comments={comments} />
 			</div>
 		</Fragment>
 	)
