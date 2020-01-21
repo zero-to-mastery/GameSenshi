@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useCallback } from 'react'
-import { Col, Input } from 'reactstrap'
+import { Col, Row, Input } from 'reactstrap'
 import Image from 'material-ui-image'
 import {
 	ModalBodyWrapper,
@@ -32,50 +32,41 @@ const CardGift = props => {
 	)
 
 	return (
-		<Col>
-			<GradientContainer>
-				<GridContainer>
-					{icons.map((icon, index) => {
-						const {
-							[CARD_GIFT_IMAGE]: src,
-							[CARD_GIFT_TOOLTIP]: tooltip,
-						} = icon
-						const id_ = `Id${index + 1}`
-						return (
-							<Fragment key={id_}>
-								<div onClick={e => toggleModal(e, id_)} id={id_}>
-									<ImageWrapper>
-										<Image src={src} alt={src} />
-									</ImageWrapper>
-									<UncontrolledTooltip
-										placement='bottom'
-										delay={0}
-										target={id_}
-									>
-										Gift number {index + 1}
-									</UncontrolledTooltip>
-								</div>
-							</Fragment>
-						)
-					})}
-					<Modal
-						title='You have selected a gift'
-						isOpen={isOpen}
-						toggle={toggleModal}
-						onContinue={onContinue}
-						backdrop='static'
-						modalClassName='modal-black'
-						size='sm'
-						footer='Send a gift'
-					>
-						<ModalBodyWrapper>
-							Icon with : {modalId}
-							<Input label='No of gifts' placeholder='Select number of gifts' />
-						</ModalBodyWrapper>
-					</Modal>
-				</GridContainer>
-			</GradientContainer>
-		</Col>
+		<GradientContainer>
+			<GridContainer>
+				{icons.map((icon, index) => {
+					const { [CARD_GIFT_IMAGE]: src, [CARD_GIFT_TOOLTIP]: tooltip } = icon
+					const id_ = `Id${index + 1}`
+					return (
+						<Fragment key={id_}>
+							<div onClick={e => toggleModal(e, id_)} id={id_}>
+								<ImageWrapper>
+									<Image src={src} alt={src} />
+								</ImageWrapper>
+								<UncontrolledTooltip placement='bottom' delay={0} target={id_}>
+									Gift number {index + 1}
+								</UncontrolledTooltip>
+							</div>
+						</Fragment>
+					)
+				})}
+				<Modal
+					title='You have selected a gift'
+					isOpen={isOpen}
+					toggle={toggleModal}
+					onContinue={onContinue}
+					backdrop='static'
+					modalClassName='modal-black'
+					size='sm'
+					footer='Send a gift'
+				>
+					<ModalBodyWrapper>
+						Icon with : {modalId}
+						<Input label='No of gifts' placeholder='Select number of gifts' />
+					</ModalBodyWrapper>
+				</Modal>
+			</GridContainer>
+		</GradientContainer>
 	)
 }
 

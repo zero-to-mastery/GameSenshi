@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { BREAKPOINTS_MD } from 'constantValues'
 
 const ModalBodyWrapper = styled.div`
 	padding: 15px;
@@ -6,18 +7,20 @@ const ModalBodyWrapper = styled.div`
 
 const GridContainer = styled.div`
 	margin: 0 auto;
-	padding: 3rem 0;
+	padding: 1rem;
 	display: grid;
-	grid-template-columns: repeat(5, 64px);
-	grid-template-rows: repeat(4, 64px);
+	grid-template-columns: repeat(5, 48px);
+	grid-template-rows: repeat(4, 48px);
 	gap: 5px;
+	@media (max-width: ${BREAKPOINTS_MD}px) {
+		margin: 1rem auto;
+	}
 `
 
 const GradientContainer = styled.div`
 	background: linear-gradient(to right bottom, #667eea, #764ba2) !important;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	width: calc(5 * 48px + 2 * 1rem + 4 * 5px);
+	height: auto;
 	border-radius: 5px;
 `
 
