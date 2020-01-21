@@ -15,8 +15,8 @@ const CardUserSimple = props => {
 			rel='noopener noreferrer'
 			className='w-100'
 		>
-			<Card className='card-testimonial p-2 bg-deep-blue'>
-				<div className='card-avatar w-100 '>
+			<Card className='card-testimonial p-2 bg-deep-blue mt-0'>
+				<div className='card-avatar w-100 mt-4'>
 					<Image
 						alt={name}
 						className='img img-raised'

@@ -64,21 +64,22 @@ const locationAccessibilityMatch = (pathname, accessibility) => {
 }
 
 const isLocationPublic = lastLocation => {
-	const currentPath = history.location.pathname
+	const currentPathname = history.location.pathname
 	const isCurrentLocationPublic = locationAccessibilityMatch(
-		currentPath,
+		currentPathname,
 		ROUTE_ACCESSIBILITY_PUBLIC
 	)
 
 	if (isCurrentLocationPublic) {
-		const lastPathname = lastLocation.pathname
-		return locationAccessibilityMatch(lastPathname, ROUTE_ACCESSIBILITY_PUBLIC)
-			? ROUTE_PAGE_INDEX
-			: lastLocation
-			? lastPathname
-			: ROUTE_PAGE_INDEX
+		const lastPathname = lastLocation ? lastLocation.pathname : ROUTE_PAGE_INDEX
+		return [
+			history.replace,
+			locationAccessibilityMatch(lastPathname, ROUTE_ACCESSIBILITY_PUBLIC)
+				? ROUTE_PAGE_INDEX
+				: lastPathname,
+		]
 	} else {
-		return currentPath
+		return [() => {}, currentPathname]
 	}
 }
 
@@ -90,7 +91,7 @@ const isLocationPrivate = () => {
 		ROUTE_ACCESSIBILITY_PRIVATE
 	)
 		? [history.push, ROUTE_PAGE_INDEX]
-		: [history.replace, currentPathname]
+		: [() => {}, currentPathname]
 }
 
 export { isLocationPublic, setLastRoute, goLastRoute, isLocationPrivate }

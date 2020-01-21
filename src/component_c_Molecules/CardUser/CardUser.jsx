@@ -48,7 +48,7 @@ const CardUser = props => {
 				rel='noopener noreferrer'
 				className='w-100'
 			>
-				<Card className='card-profile bg-blue-gradient'>
+				<Card className='card-profile bg-blue-gradient mt-0'>
 					<DivStyledHover
 						styledHover={hover}
 						styledLeave={leave}
