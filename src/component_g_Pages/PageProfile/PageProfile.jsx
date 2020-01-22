@@ -92,15 +92,10 @@ const PageProfile = props => {
 								</Col>
 							</Row>
 							<Row>
-								<Col
-									xs={{ size: 12, offset: 2 }}
-									sm={{ size: 12, offset: 3 }}
-									md={{ size: 12, offset: 4 }}
-									lg={{ size: 4, offset: 0 }}
-								>
+								<Col xs='12' lg='4' align='center'>
 									<CardGiftWithProps />
 								</Col>
-								<Col md={{ size: 12 }} lg={{ size: 8 }}>
+								<Col md='12' lg='8'>
 									<CommentWithPaginationPropedDefault />
 								</Col>
 							</Row>
