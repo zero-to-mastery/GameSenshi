@@ -1,8 +1,6 @@
 import React from 'react'
 import { ButtonSignInUp, BUTTON_SIGN_IN_STATE_SHOW } from './ButtonSignInUp'
-import { withRouter } from 'react-router-dom'
-//constants
-import { ROUTE_PAGE_SIGN_IN, ROUTE_PAGE_SIGN_UP } from 'routes'
+import { ROUTE_PAGE_SIGN_IN, ROUTE_PAGE_SIGN_UP, useLocation } from 'routes'
 import { StateContainer, storeUser, STORE_USER_STATE_SIGNED_IN } from 'state'
 
 const mapStoreUserStateToProp = {
@@ -16,11 +14,9 @@ const ButtonSignInUpStoreUser = StateContainer(
 	[]
 )
 
-const ButtonSignInStoreUserPropedIndexNavbar = withRouter(props => {
-	const {
-		small,
-		location: { pathname },
-	} = props
+const ButtonSignInStoreUserPropedIndexNavbar = props => {
+	const { pathname } = useLocation()
+	const { small } = props
 	return (
 		((small && pathname.toLowerCase() === ROUTE_PAGE_SIGN_UP.toLowerCase()) ||
 			!small) && (
@@ -34,7 +30,7 @@ const ButtonSignInStoreUserPropedIndexNavbar = withRouter(props => {
 			</ButtonSignInUpStoreUser>
 		)
 	)
-})
+}
 
 const ButtonSignUpStoreUserPropedIndexNavbar = props => {
 	return (

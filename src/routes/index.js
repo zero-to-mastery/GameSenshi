@@ -5,6 +5,7 @@ import {
 	goLastRoute,
 	isLocationPrivate,
 } from './utils'
+import { useParams, useLocation } from 'react-router-dom'
 
 import {
 	history,
@@ -47,6 +48,8 @@ import {
 } from './constants'
 
 export {
+	useParams,
+	useLocation,
 	withLastLocation,
 	useLastLocation,
 	setLastRoute,

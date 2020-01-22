@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useCallback } from 'react'
-import { Col, Row, Input } from 'reactstrap'
+import { Input } from 'reactstrap'
 import Image from 'material-ui-image'
 import {
 	ModalBodyWrapper,
@@ -35,7 +35,7 @@ const CardGift = props => {
 		<GradientContainer>
 			<GridContainer>
 				{icons.map((icon, index) => {
-					const { [CARD_GIFT_IMAGE]: src, [CARD_GIFT_TOOLTIP]: tooltip } = icon
+					const { [CARD_GIFT_IMAGE]: src } = icon
 					const id_ = `Id${index + 1}`
 					return (
 						<Fragment key={id_}>

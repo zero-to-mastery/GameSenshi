@@ -3,7 +3,7 @@ import { stopUndefined } from 'utils'
 import Loader from 'react-loader-spinner'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'component_f_MultiOrganisms'
-import { ROUTE_PARAM_UID } from 'routes'
+import { ROUTE_PARAM_UID, useParams } from 'routes'
 import { FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL } from 'constantValues'
 import { useData } from './utils'
 
@@ -36,10 +36,8 @@ const PAGE_PROFILE_CURRENT_USER_UID = 'currentUserUid'
 
 const PageProfile = props => {
 	let uid = null
-	const {
-		match: { params },
-		[PAGE_PROFILE_CURRENT_USER_UID]: currentUserUid,
-	} = props
+	const params = useParams()
+	const { [PAGE_PROFILE_CURRENT_USER_UID]: currentUserUid } = props
 
 	params && (uid = params[ROUTE_PARAM_UID])
 	const uid_ = uid || currentUserUid
