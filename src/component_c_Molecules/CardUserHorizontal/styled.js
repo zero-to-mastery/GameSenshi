@@ -9,6 +9,12 @@ const { Section } = stopUndefined(Exports)
 const SectionStyled = styled(Section)`
 	border: 2px solid #344675;
 	z-index: 3;
+	border-radius: 50rem;
+	/* rounded-pill */
+	@media (max-width: ${BREAKPOINTS_MD}px) {
+		border-radius: 0.4285rem;
+		/* rounded-lg */
+	}
 	@media (max-width: ${BREAKPOINTS_SX}px) {
 		display: none;
 	}
