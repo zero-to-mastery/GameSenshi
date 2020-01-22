@@ -9,19 +9,21 @@ const { Button } = stopUndefined(Exports)
 const CheckBoxIcon = props => {
 	const {
 		color,
-		icon,
 		onClick,
 		checked,
 		tooltipOn,
 		tooltipOff,
 		loading,
+		className,
+		children,
+		id,
+		...otherProps
 	} = props
 	const [checked_, setChecked_] = useState(checked)
 	const [showTooltip, setShowTooltip] = useState(false)
 	const ref = useRef(null)
 	const timeoutId = useRef(-1)
 
-	const id = icon.replace(/ /g, '')
 	const onClick_ = useCallback(
 		e => {
 			onClick && onClick(e, ref, setChecked_, checked_)
@@ -63,7 +65,11 @@ const CheckBoxIcon = props => {
 			<Button
 				className={classnames(
 					{ 'btn-simple': !checked_, 'd-none': loading },
-					'btn-icon btn-round m-1'
+					'm-1',
+					'rounded-lg',
+					'd-flex',
+					'align-items-center',
+					className
 				)}
 				ref={ref}
 				color={color}
@@ -71,9 +77,11 @@ const CheckBoxIcon = props => {
 				onClick={onClick_}
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
+				size='sm'
 				id={id}
+				{...otherProps}
 			>
-				<i className={icon} />
+				{children}
 			</Button>
 			<Tooltip delay={100} target={id} isOpen={showTooltip} placement='top'>
 				{checked_ ? (tooltipOff ? tooltipOff : tooltipOn) : tooltipOn}
