@@ -43,7 +43,7 @@ const CardUserHorizontal = props => {
 	const shortUid = useMemo(() => shorthash.unique(uid), [uid])
 
 	return (
-		<SectionStyled className={classnames('rounded-lg')}>
+		<SectionStyled className={classnames('rounded-pill')}>
 			<Container>
 				<Row>
 					<Col xs='12' lg='3'>
