@@ -46,7 +46,9 @@ const databaseUserPresenceOnSnapshot = uid => callback => {
 		const value = snapshot.val()
 		callback(value[DATABASE_STATUS_ONLINE], value[DATABASE_STATUS_ONLINE_LAST])
 	})
-	return userStatusDatabaseRef(uid).off
+	return () => {
+		userStatusDatabaseRef(uid).off()
+	} // ! must return in arrow callback or else it will lose `this` reference
 }
 
 export {
