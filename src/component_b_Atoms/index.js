@@ -55,7 +55,6 @@ import {
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
 	TextIconPropedProfileGift,
-	TextIconPropedProfileGallery,
 	TextIconPropedProfileComments,
 } from './TextIcon'
 
@@ -162,7 +161,6 @@ export const Exports = {
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
 	TextIconPropedProfileGift,
-	TextIconPropedProfileGallery,
 	TextIconPropedProfileComments,
 	CardUserSimple,
 	ButtonsCommonChatAndCheckout,

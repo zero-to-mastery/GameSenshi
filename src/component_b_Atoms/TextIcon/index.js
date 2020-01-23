@@ -89,20 +89,6 @@ const TextIconPropedProfileGift = props => {
 	)
 }
 
-const TextIconPropedProfileGallery = props => {
-	const { className, ...otherProps } = props
-	return (
-		<TextIconPropedProfile
-			className={classnames('text-warning', className)}
-			aria='discover'
-			emoji='📸'
-			{...otherProps}
-		>
-			Images
-		</TextIconPropedProfile>
-	)
-}
-
 const TextIconPropedProfileComments = props => {
 	const { className, ...otherProps } = props
 	return (
@@ -122,6 +108,5 @@ export {
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
 	TextIconPropedProfileGift,
-	TextIconPropedProfileGallery,
 	TextIconPropedProfileComments,
 }
