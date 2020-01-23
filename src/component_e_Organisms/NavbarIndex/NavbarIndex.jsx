@@ -45,14 +45,15 @@ const NavbarIndex = props => {
 	}
 
 	const changeColor = () => {
+		const breakpoint = 50
 		if (
-			document.documentElement.scrollTop > 330 ||
-			document.body.scrollTop > 330
+			document.documentElement.scrollTop > breakpoint ||
+			document.body.scrollTop > breakpoint
 		) {
 			setColor(bgColor)
 		} else if (
-			document.documentElement.scrollTop < 300 ||
-			document.body.scrollTop < 300
+			document.documentElement.scrollTop < breakpoint ||
+			document.body.scrollTop < breakpoint
 		) {
 			setColor((colored && bgColor) || 'navbar-transparent')
 		}
