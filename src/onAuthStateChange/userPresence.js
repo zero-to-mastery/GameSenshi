@@ -42,12 +42,13 @@ const databaseUserPresenceSetOffline = () => {
 }
 
 const databaseUserPresenceOnSnapshot = uid => callback => {
-	userStatusDatabaseRef(uid).on('value', snapshot => {
+	const ref = userStatusDatabaseRef(uid)
+	ref.on('value', snapshot => {
 		const value = snapshot.val()
 		callback(value[DATABASE_STATUS_ONLINE], value[DATABASE_STATUS_ONLINE_LAST])
 	})
 	return () => {
-		userStatusDatabaseRef(uid).off()
+		ref.off()
 	} // ! must return in arrow callback or else it will lose `this` reference
 }
 
