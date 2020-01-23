@@ -6,11 +6,13 @@ import { Exports } from 'component_f_MultiOrganisms'
 import { ROUTE_PARAM_UID, useParams } from 'routes'
 import { FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL } from 'constantValues'
 import { useData } from './utils'
+import classnames from 'classnames'
 
 const {
 	CarouselLightBoxPropedProfile,
 	CardGiftPropedProfile,
 	TextIconPropedProfileGift,
+	TextIconPropedProfileReviews,
 	CardUserHorizontal,
 	CommentWithPaginationPropedDefault,
 	Section,
@@ -30,6 +32,20 @@ const tabs = games.map((tab, index) => {
 		[TAB_CONTENT]: TabProductPropedProfile[index],
 	}
 })
+
+const ColStyled = props => {
+	const { className, ...otherProps } = props
+	return (
+		<Col
+			className={classnames(
+				className,
+				'py-4 px-3',
+				'rounded-lg bg-dark-navy-gradient'
+			)}
+			{...otherProps}
+		/>
+	)
+}
 
 const PAGE_PROFILE_CURRENT_USER_UID = 'currentUserUid'
 
@@ -86,34 +102,39 @@ const PageProfile = props => {
 						<Container>
 							<Row>
 								<Col xs='5'>
-									<Row>
-										<Col>
+									<Row className='pr-4'>
+										<Col className='bg-dark-navy-gradient p-0'>
 											<CarouselLightBoxPropedProfile
 												items={data[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL]}
 											/>
 										</Col>
 									</Row>
-									<Row>
-										<Col align='center'>
-											<CardGiftPropedProfile />
-										</Col>
-									</Row>
-								</Col>
-								<Col xs='7'>
-									<Row>
-										<Col>
-											<Tab tabs={tabs} />
-										</Col>
-									</Row>
-									<Row>
+									<Row className='pr-4'>
 										<Col>
 											<TextIconPropedProfileGift />
 										</Col>
 									</Row>
+									<Row className='pr-4'>
+										<ColStyled align='center'>
+											<CardGiftPropedProfile />
+										</ColStyled>
+									</Row>
+								</Col>
+								<Col xs='7'>
 									<Row>
-										<Col md='12' lg='8'>
-											<CommentWithPaginationPropedDefault />
+										<ColStyled>
+											<Tab tabs={tabs} />
+										</ColStyled>
+									</Row>
+									<Row>
+										<Col>
+											<TextIconPropedProfileReviews />
 										</Col>
+									</Row>
+									<Row>
+										<ColStyled>
+											<CommentWithPaginationPropedDefault />
+										</ColStyled>
 									</Row>
 								</Col>
 							</Row>

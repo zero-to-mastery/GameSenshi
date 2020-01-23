@@ -55,7 +55,7 @@ import {
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
 	TextIconPropedProfileGift,
-	TextIconPropedProfileComments,
+	TextIconPropedProfileReviews,
 } from './TextIcon'
 
 import { BadgesOptioned, Badges, BadgesPropedSenshi } from './Badges'
@@ -161,7 +161,7 @@ export const Exports = {
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
 	TextIconPropedProfileGift,
-	TextIconPropedProfileComments,
+	TextIconPropedProfileReviews,
 	CardUserSimple,
 	ButtonsCommonChatAndCheckout,
 	Tab,

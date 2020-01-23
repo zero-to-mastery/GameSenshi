@@ -89,7 +89,7 @@ const TextIconPropedProfileGift = props => {
 	)
 }
 
-const TextIconPropedProfileComments = props => {
+const TextIconPropedProfileReviews = props => {
 	const { className, ...otherProps } = props
 	return (
 		<TextIconPropedProfile
@@ -98,7 +98,7 @@ const TextIconPropedProfileComments = props => {
 			emoji='💬'
 			{...otherProps}
 		>
-			Comments
+			Reviews
 		</TextIconPropedProfile>
 	)
 }
@@ -108,5 +108,5 @@ export {
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
 	TextIconPropedProfileGift,
-	TextIconPropedProfileComments,
+	TextIconPropedProfileReviews,
 }

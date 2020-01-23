@@ -42,7 +42,7 @@ const CardUserHorizontal = props => {
 	const shortUid = useMemo(() => shorthash.unique(uid), [uid])
 
 	return (
-		<SectionStyled>
+		<SectionStyled className='border border-success'>
 			<Container>
 				<Row>
 					<Col xs='12' lg='3'>
