@@ -9,9 +9,8 @@ import { useData } from './utils'
 
 const {
 	CarouselLightBoxPropedProfile,
-	CardGiftWithProps,
+	CardGiftPropedProfile,
 	TextIconPropedProfileGift,
-	TextIconPropedProfileGallery,
 	CardUserHorizontal,
 	CommentWithPaginationPropedDefault,
 	Section,
@@ -81,38 +80,41 @@ const PageProfile = props => {
 									<CardUserHorizontal data={data} uid={uid_} />
 								</Col>
 							</Row>
-							<Row className='pt-5'>
-								<Col>
-									<Tab tabs={tabs} />
-								</Col>
-							</Row>
-							<Row>
-								<Col>
-									<TextIconPropedProfileGift />
-								</Col>
-							</Row>
-							<Row>
-								<Col xs='12' lg='4' align='center'>
-									<CardGiftWithProps />
-								</Col>
-								<Col md='12' lg='8'>
-									<CommentWithPaginationPropedDefault />
-								</Col>
-							</Row>
 						</Container>
 					</Section>
 					<Section>
 						<Container>
 							<Row>
-								<Col>
-									<TextIconPropedProfileGallery />
+								<Col xs='5'>
+									<Row>
+										<Col>
+											<CarouselLightBoxPropedProfile
+												items={data[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL]}
+											/>
+										</Col>
+									</Row>
+									<Row>
+										<Col align='center'>
+											<CardGiftPropedProfile />
+										</Col>
+									</Row>
 								</Col>
-							</Row>
-							<Row>
-								<Col md='12'>
-									<CarouselLightBoxPropedProfile
-										items={data[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL]}
-									/>
+								<Col xs='7'>
+									<Row>
+										<Col>
+											<Tab tabs={tabs} />
+										</Col>
+									</Row>
+									<Row>
+										<Col>
+											<TextIconPropedProfileGift />
+										</Col>
+									</Row>
+									<Row>
+										<Col md='12' lg='8'>
+											<CommentWithPaginationPropedDefault />
+										</Col>
+									</Row>
 								</Col>
 							</Row>
 						</Container>

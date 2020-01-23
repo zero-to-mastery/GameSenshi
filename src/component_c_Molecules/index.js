@@ -9,7 +9,7 @@ import { PanelSortBy } from './PanelSortBy'
 import { PanelFilterSearch } from './PanelFilterSearch'
 import { ChatContactListWithProps } from './ChatContactList'
 import { CarouselCardSimplePropedNew } from './CarouselCardSimple'
-import { CardGiftWithProps } from './CardGift'
+import { CardGiftPropedProfile } from './CardGift'
 import {
 	CommentCommonPropedDefault,
 	COMMENT_ID,
@@ -43,7 +43,7 @@ export const Exports = {
 	CardProfilePropedSearch,
 	ChatContactListWithProps,
 	CarouselCardSimplePropedNew,
-	CardGiftWithProps,
+	CardGiftPropedProfile,
 	CommentCommonPropedDefault,
 	COMMENT_ID,
 	COMMENT_NAME,
