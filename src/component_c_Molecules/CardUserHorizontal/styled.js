@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Exports } from 'component_b_Atoms'
 import { stopUndefined } from 'utils'
-import { BREAKPOINTS_SX, BREAKPOINTS_MD } from 'constantValues'
+import { BREAKPOINTS_MD } from 'constantValues'
 import { Col, Row } from 'reactstrap'
 
 const { Section } = stopUndefined(Exports)
@@ -14,9 +14,6 @@ const SectionStyled = styled(Section)`
 	@media (max-width: ${BREAKPOINTS_MD}px) {
 		border-radius: 0.4285rem;
 		/* rounded-lg */
-	}
-	@media (max-width: ${BREAKPOINTS_SX}px) {
-		display: none;
 	}
 `
 

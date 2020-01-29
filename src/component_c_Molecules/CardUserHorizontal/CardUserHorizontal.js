@@ -36,13 +36,14 @@ const CardUserHorizontal = props => {
 			[FIRESTORE_SENSHI_SETTINGS_PROFILE_DISPLAY_NAME]: displayName,
 			[FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS]: channels,
 		},
+		...otherProps
 	} = props
 
 	const badges = useMemo(() => [gender], [gender])
 	const shortUid = useMemo(() => shorthash.unique(uid), [uid])
 
 	return (
-		<SectionStyled className='border border-success'>
+		<SectionStyled className='border border-success' {...otherProps}>
 			<Container>
 				<Row>
 					<Col xs='12' lg='3'>

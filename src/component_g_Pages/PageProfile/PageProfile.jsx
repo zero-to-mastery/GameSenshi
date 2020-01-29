@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+import styled from 'styled-components/macro'
 import React from 'react'
 import { stopUndefined } from 'utils'
 import Loader from 'react-loader-spinner'
@@ -7,6 +9,7 @@ import { ROUTE_PARAM_UID, useParams } from 'routes'
 import { FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL } from 'constantValues'
 import { useData } from './utils'
 import classnames from 'classnames'
+import { hideInMobile } from 'assets/styled'
 
 const {
 	CarouselLightBoxPropedProfile,
@@ -93,7 +96,11 @@ const PageProfile = props => {
 						<Container>
 							<Row>
 								<Col>
-									<CardUserHorizontal data={data} uid={uid_} />
+									<CardUserHorizontal
+										data={data}
+										uid={uid_}
+										css={hideInMobile}
+									/>
 								</Col>
 							</Row>
 						</Container>
@@ -115,7 +122,7 @@ const PageProfile = props => {
 										</Col>
 									</Row>
 									<Row className='pr-4'>
-										<ColStyled align='center'>
+										<ColStyled align='center' className='px-5'>
 											<CardGiftPropedProfile />
 										</ColStyled>
 									</Row>
