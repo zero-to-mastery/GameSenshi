@@ -41,12 +41,12 @@ const CardGift = props => {
 				</ModalBodyWrapper>
 			</Modal>
 			<Container className='bg-purple-gradient-2 rounded-lg'>
-				<Row xs='1' sm='2' md='3' lg='4' xl='5' className='p-3'>
+				<Row xs='2' sm='3' md='4' lg='5' xl='6' className='p-2'>
 					{icons.map((icon, index) => {
 						const { [CARD_GIFT_IMAGE]: src } = icon
 						const id_ = `Id${index + 1}`
 						return (
-							<Col onClick={toggleModal} className='p-2' id={id_} key={id_}>
+							<Col onClick={toggleModal} className='p-1' id={id_} key={id_}>
 								<Image
 									className='border border-dark rounded-0'
 									src={src}

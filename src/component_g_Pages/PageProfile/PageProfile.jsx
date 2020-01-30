@@ -122,11 +122,7 @@ const PageProfile = props => {
 										</Col>
 									</Row>
 									<Row className='pr-4'>
-										<ColStyled
-											align='center'
-											className='px-5'
-											css={hideInMobile}
-										>
+										<ColStyled align='center' css={hideInMobile}>
 											<CardGiftPropedProfile />
 										</ColStyled>
 									</Row>
