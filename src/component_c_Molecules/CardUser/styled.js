@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BREAKPOINTS_SX } from 'constantValues'
+import { BREAKPOINTS_SX } from 'assets/styled'
 import { Col } from 'reactstrap'
 
 const ColStyledSound = styled(Col)`

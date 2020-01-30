@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BREAKPOINTS_MD } from 'constantValues'
+import { BREAKPOINTS_MD } from 'assets/styled'
 
 const ModalBodyWrapper = styled.div`
 	padding: 15px;

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Exports } from 'component_b_Atoms'
 import { stopUndefined } from 'utils'
-import { BREAKPOINTS_MD } from 'constantValues'
+import { BREAKPOINTS_MD } from 'assets/styled'
 import { Col, Row } from 'reactstrap'
 
 const { Section } = stopUndefined(Exports)
