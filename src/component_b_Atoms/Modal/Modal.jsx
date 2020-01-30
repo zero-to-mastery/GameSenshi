@@ -52,7 +52,7 @@ const Modal = props => {
 				>
 					<i className='tim-icons icon-simple-remove' />
 				</button>
-				<h5 className='modal-title'>{title}</h5>
+				{title}
 			</ModalHeader>
 			<ModalBody>{children}</ModalBody>
 			<ModalFooter
