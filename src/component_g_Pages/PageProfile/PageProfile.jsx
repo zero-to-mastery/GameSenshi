@@ -3,13 +3,12 @@ import styled from 'styled-components/macro'
 import React from 'react'
 import { stopUndefined } from 'utils'
 import Loader from 'react-loader-spinner'
-import { Container, Row, Col } from 'reactstrap'
+import { Container } from 'reactstrap'
 import { Exports } from 'component_f_MultiOrganisms'
 import { ROUTE_PARAM_UID, useParams } from 'routes'
 import { FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL } from 'constantValues'
 import { useSenshiProfileData } from './utils'
 import classnames from 'classnames'
-import { hideInMobile } from 'assets/styled'
 
 const {
 	CarouselLightBoxPropedProfile,
@@ -25,6 +24,8 @@ const {
 	TAB_CONTENT,
 	TabProductPropedProfile,
 	PageError,
+	Row,
+	Col,
 } = stopUndefined(Exports)
 
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
@@ -98,12 +99,8 @@ const PageProfile = props => {
 						/>
 						<Container>
 							<Row>
-								<Col>
-									<CardUserHorizontal
-										data={data}
-										uid={uid_}
-										css={hideInMobile}
-									/>
+								<Col sx='0'>
+									<CardUserHorizontal data={data} uid={uid_} />
 								</Col>
 							</Row>
 						</Container>
@@ -118,7 +115,7 @@ const PageProfile = props => {
 												items={data[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL]}
 											/>
 										</Col>
-										<Col css={hideInMobile}>
+										<Col sx='0'>
 											<Row xs='1'>
 												<Col>
 													<TextIconPropedProfileGift />
