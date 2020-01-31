@@ -4,16 +4,33 @@ import React, { memo, useMemo } from 'react'
 import { Row as RowRS, Col as ColRs } from 'reactstrap'
 import { responsiveCssGenerator } from 'assets/styled'
 
-const [Row, Col] = [RowRS, ColRs].map(Comp => {
+const [Row, Col] = [RowRS, ColRs].map((Comp, i) => {
 	return memo(props => {
-		const { xs, sm, md, lg, xl } = props
-		const { sx, css, ...otherProps } = props
+		const { xs, sx, sm, md, lg, xl, css, ...otherProps } = props
 
 		const Component = useMemo(() => {
 			const obj = { xs, sx, sm, md, lg, xl }
 			let responsiveness = {}
 			for (const props in obj) {
-				responsiveness[props] = obj[props] === '0' ? 'display:none;' : undefined
+				const value = i ? (obj[props] * 100) / 12 : 100 / obj[props]
+				responsiveness[props] =
+					obj[props] === undefined
+						? undefined
+						: obj[props] === '0'
+						? 'display:none;'
+						: obj[props] === 'auto'
+						? `&&&{
+							display:block;
+							-ms-flex: 0 0 auto;
+							flex: 0 0 auto;
+							max-width: 100%;
+							}`
+						: `&&&{
+						display:block;
+						-ms-flex: 0 0 ${value}%;
+						flex: 0 0 ${value}%;
+						max-width: ${value}%;
+						}`
 			}
 			return styled(Comp)`
 				${responsiveCssGenerator(responsiveness)}

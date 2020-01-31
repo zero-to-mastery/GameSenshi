@@ -99,7 +99,7 @@ const PageProfile = props => {
 						/>
 						<Container>
 							<Row>
-								<Col sx='0'>
+								<Col xs='0' sm='12'>
 									<CardUserHorizontal data={data} uid={uid_} />
 								</Col>
 							</Row>
@@ -115,7 +115,7 @@ const PageProfile = props => {
 												items={data[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL]}
 											/>
 										</Col>
-										<Col sx='0'>
+										<Col xs='0' sm='12'>
 											<Row xs='1'>
 												<Col>
 													<TextIconPropedProfileGift />
