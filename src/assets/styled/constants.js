@@ -21,7 +21,7 @@ const responsiveCssGenerator = responsiveness => {
 
 	let cssString = xl ? xl : ''
 	for (const props in mapping) {
-		if (mapping[props]) {
+		if (mapping[props] !== undefined) {
 			cssString = `${cssString}
 			@media (max-width: ${props}px) {
 				${mapping[props]}
