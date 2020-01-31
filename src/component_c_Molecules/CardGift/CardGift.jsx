@@ -76,7 +76,7 @@ const CardGift = props => {
 				<Tooltip id={CARD_GIFT_MODAL} name={name} price={price} />
 			</Modal>
 			<Container className='bg-purple-gradient-2 rounded-lg'>
-				<Row xs='2' sm='3' md='4' lg='5' xl='6' className='p-2'>
+				<Row xs='6' className='p-2'>
 					{icons.map(icon => {
 						const {
 							[CARD_GIFT_IMAGE]: src,

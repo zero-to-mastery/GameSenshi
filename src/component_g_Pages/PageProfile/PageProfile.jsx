@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'component_f_MultiOrganisms'
 import { ROUTE_PARAM_UID, useParams } from 'routes'
 import { FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL } from 'constantValues'
-import { useData } from './utils'
+import { useSenshiProfileData } from './utils'
 import classnames from 'classnames'
 import { hideInMobile } from 'assets/styled'
 
@@ -60,7 +60,10 @@ const PageProfile = props => {
 	params && (uid = params[ROUTE_PARAM_UID])
 	const uid_ = uid || currentUserUid
 
-	const [loading, exist, data, errorCode] = useData(uid, currentUserUid)
+	const [loading, exist, data, errorCode] = useSenshiProfileData(
+		uid,
+		currentUserUid
+	)
 
 	return exist ? (
 		<WrapperStoreWrapperPropedProfile>
@@ -108,26 +111,26 @@ const PageProfile = props => {
 					<Section>
 						<Container>
 							<Row>
-								<Col xs='5'>
-									<Row className='pr-4'>
+								<Col xs='12' lg='5'>
+									<Row className='pr-4' lg='1'>
 										<Col className='bg-dark-navy-gradient p-0'>
 											<CarouselLightBoxPropedProfile
 												items={data[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL]}
 											/>
 										</Col>
-									</Row>
-									<Row className='pr-4'>
 										<Col css={hideInMobile}>
-											<TextIconPropedProfileGift />
+											<Row xs='1'>
+												<Col>
+													<TextIconPropedProfileGift />
+												</Col>
+												<ColStyled align='center'>
+													<CardGiftPropedProfile />
+												</ColStyled>
+											</Row>
 										</Col>
 									</Row>
-									<Row className='pr-4'>
-										<ColStyled align='center' css={hideInMobile}>
-											<CardGiftPropedProfile />
-										</ColStyled>
-									</Row>
 								</Col>
-								<Col xs='7'>
+								<Col xs='12' lg='7'>
 									<Row>
 										<ColStyled>
 											<Tab tabs={tabs} />

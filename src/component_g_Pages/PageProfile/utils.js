@@ -13,7 +13,7 @@ const {
 	PAGE_ERROR_CODE_NOT_A_SENSHI,
 } = stopUndefined(Exports)
 
-const useData = (uid, currentUserUid) => {
+const useSenshiProfileData = (uid, currentUserUid) => {
 	const [loading, setLoading] = useState(true)
 	const [exist, setExist] = useState(true)
 	const [data, setData] = useState(null)
@@ -60,4 +60,4 @@ const useData = (uid, currentUserUid) => {
 	return [loading, exist, data, errorCode]
 }
 
-export { useData }
+export { useSenshiProfileData }
