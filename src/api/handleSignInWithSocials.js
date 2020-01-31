@@ -10,6 +10,7 @@ const providerGoogle = new auth.GoogleAuthProvider()
 	.addScope('email')
 	.setCustomParameters({ prompt: 'select_account' })
 const providerFacebook = new auth.FacebookAuthProvider().addScope('email')
+//.setCustomParameters({ auth_type: 'reauthenticate' }) request password every new session, not convenient
 
 const NAME = 'name'
 const AUTH = 'auth'
