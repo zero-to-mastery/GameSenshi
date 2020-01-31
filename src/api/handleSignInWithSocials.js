@@ -6,7 +6,9 @@ import {
 	ENV_VALUE_TWITCH_OAUTH_LINK,
 } from 'constantValues'
 
-const providerGoogle = new auth.GoogleAuthProvider().addScope('email')
+const providerGoogle = new auth.GoogleAuthProvider()
+	.addScope('email')
+	.setCustomParameters({ prompt: 'select_account' })
 const providerFacebook = new auth.FacebookAuthProvider().addScope('email')
 
 const NAME = 'name'
