@@ -1,11 +1,11 @@
 import { css } from 'styled-components'
 import {
-	BREAKPOINTS_XS,
 	BREAKPOINTS_SX,
+	BREAKPOINTS_XS,
 	BREAKPOINTS_SM,
 	BREAKPOINTS_MD,
 	BREAKPOINTS_LG,
-	BREAKPOINTS_XL,
+	responsiveGenerator,
 } from './constants'
 
 const hideInMobile = css`
@@ -16,10 +16,10 @@ const hideInMobile = css`
 
 export {
 	hideInMobile,
-	BREAKPOINTS_XS,
 	BREAKPOINTS_SX,
+	BREAKPOINTS_XS,
 	BREAKPOINTS_SM,
 	BREAKPOINTS_MD,
 	BREAKPOINTS_LG,
-	BREAKPOINTS_XL,
+	responsiveGenerator,
 }
