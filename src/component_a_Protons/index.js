@@ -2,6 +2,7 @@ import { Link, LinkNoBase } from './Link'
 import { Button } from './Button'
 import { UncontrolledTooltip } from './UncontrolledTooltip'
 import { Icon } from './Icon'
+import { Row, Col } from './RowCol'
 
 export const Exports = {
 	Link,
@@ -9,4 +10,6 @@ export const Exports = {
 	Button,
 	UncontrolledTooltip,
 	Icon,
+	Row,
+	Col,
 }
