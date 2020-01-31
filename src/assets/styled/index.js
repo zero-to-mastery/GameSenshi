@@ -5,7 +5,7 @@ import {
 	BREAKPOINTS_SM,
 	BREAKPOINTS_MD,
 	BREAKPOINTS_LG,
-	responsiveGenerator,
+	responsiveCssGenerator,
 } from './constants'
 
 const hideInMobile = css`
@@ -21,5 +21,5 @@ export {
 	BREAKPOINTS_SM,
 	BREAKPOINTS_MD,
 	BREAKPOINTS_LG,
-	responsiveGenerator,
+	responsiveCssGenerator,
 }
