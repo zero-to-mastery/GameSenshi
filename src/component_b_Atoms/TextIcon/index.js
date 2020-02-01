@@ -108,11 +108,11 @@ const TextIconPropedAppointments = props => {
 	return (
 		<TextIconPropedProfile
 			className={classnames('text-warning', className)}
-			aria='Make Apointments'
+			aria='Make Appointments'
 			emoji='💌'
 			{...otherProps}
 		>
-			Make Your Apointments
+			Appointments
 		</TextIconPropedProfile>
 	)
 }
