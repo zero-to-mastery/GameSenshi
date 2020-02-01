@@ -16,20 +16,24 @@ const [Row, Col] = [RowRS, ColRs].map((Comp, i) => {
 			const obj = { xs, sx, sm, md, lg, xl }
 			let responsiveness = {}
 			for (const props in obj) {
-				const value = i ? (obj[props] * 100) / 12 : 100 / obj[props]
+				const value = i === 0 ? 100 / obj[props] : (obj[props] * 100) / 12
+				const selector = i === 0 ? '> * ' : ''
+
 				responsiveness[props] =
 					obj[props] === undefined
 						? undefined
 						: obj[props] === '0'
-						? 'display:none;'
+						? `&& ${selector} {
+							display:none;
+							}`
 						: obj[props] === 'auto'
-						? `&&&{
+						? `&& ${selector} {
 							display:block;
 							-ms-flex: 0 0 auto;
 							flex: 0 0 auto;
 							max-width: 100%;
 							}`
-						: `&&&{
+						: `&& ${selector} {
 						display:block;
 						-ms-flex: 0 0 ${value}%;
 						flex: 0 0 ${value}%;
