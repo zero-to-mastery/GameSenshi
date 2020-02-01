@@ -64,10 +64,14 @@ const CheckBoxIcon = props => {
 			</div>
 			<Button
 				className={classnames(
-					{ 'btn-simple': !checked_, 'd-none': loading },
+					{
+						'btn-simple': !checked_,
+						'd-none': loading,
+						'd-inline-flex': !loading,
+					},
 					'm-1',
 					'rounded-lg',
-					'd-flex',
+
 					'align-items-center',
 					className
 				)}
