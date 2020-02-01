@@ -24,7 +24,7 @@ const RowStyledUsername = styled(Row)`
 	${responsiveCssGenerator({
 		xs: `text-align: center;
 		margin-top: 1rem;`,
-		md: `text-align: left;
+		lg: `text-align: left;
 		margin-top: 2.5rem;`,
 	})}
 `
@@ -37,7 +37,7 @@ const TextStyledSubscribe = styled.p`
 	margin-top: 2.5rem;
 	${responsiveCssGenerator({
 		xs: `margin-top: 1rem;`,
-		md: `margin-top: 2.5rem;`,
+		lg: `margin-top: 2.5rem;`,
 	})}
 `
 export {
