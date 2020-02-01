@@ -143,3 +143,15 @@ Join our Discord Channel
 ![joinChannel.png](./src/assets/img/readme/joinChannel.png)
 
 Please read [CONTRIBUTING.md](https://github.com/tylim88/GameSenshi/blob/master/CONTRIBUTING.md) for details on how to contribute.
+
+## Not Sure Know What To Do?
+
+1. Test : Start with testing the code for any bugs, if found raise an issue about it. (Always check first if someone has already raised an issue for the same.)
+
+2. Suggest features: Look for possible improvements and provide suggestions in the comment section.
+
+3. Design: Considering the fact that practice is the main objective, try to make little changes on your forked repository and make a pull-request about it. Commit often and provide appropriate messages to your commits.
+
+4. You can also help in providing proper documentation of the various projects.
+
+Read more [Here](https://github.com/zero-to-mastery/start-here-guidelines/blob/master/Get%20Started.md#how-can-i-contribute-to-projects)
