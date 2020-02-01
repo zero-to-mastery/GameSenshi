@@ -9,7 +9,7 @@ const {
 	WrapperStoreWrapperPropedCheckout,
 } = stopUndefined(Exports)
 
-const CheckoutPage = () => {
+const PageCheckout = () => {
 	return (
 		<WrapperStoreWrapperPropedCheckout>
 			<Section>
@@ -26,4 +26,4 @@ const CheckoutPage = () => {
 	)
 }
 
-export { CheckoutPage }
+export { PageCheckout }

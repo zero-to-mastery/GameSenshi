@@ -7,7 +7,7 @@ import { Container, Row, Col } from 'reactstrap'
 
 const { WrapperStoreWrapperPropedIndex } = stopUndefined(Exports)
 
-const HelpPage = () => {
+const PageHelp = () => {
 	useEffect(() => {
 		document.body.classList.add('index-page')
 		document.documentElement.scrollTop = 0
@@ -29,4 +29,4 @@ const HelpPage = () => {
 	)
 }
 
-export { HelpPage }
+export { PageHelp }

@@ -84,7 +84,7 @@ const Cards = () => {
 	})
 }
 
-const IndexPage = () => {
+const PageIndex = () => {
 	return (
 		<WrapperStoreWrapperPropedIndex>
 			<Section>
@@ -132,4 +132,4 @@ const IndexPage = () => {
 	)
 }
 
-export { IndexPage }
+export { PageIndex }

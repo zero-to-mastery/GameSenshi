@@ -41,10 +41,10 @@ import { SignInPage } from './PageSignIn'
 import { PageSignUp } from './PageSignUp'
 import { PagePasswordReset } from './PagePasswordReset'
 import { PagePolicies } from './PagePolicies'
-import { CheckoutPage } from './CheckoutPage'
-import { IndexPage } from './IndexPage'
+import { PageCheckout } from './PageCheckout'
+import { PageIndex } from './PageIndex'
 import { PageFilter } from './PageFilter'
-import { HelpPage } from './HelpPage'
+import { PageHelp } from './PageHelp'
 import { PageChat } from './PageChat'
 
 import { Exports } from 'component_f_MultiOrganisms'
@@ -60,15 +60,15 @@ const {
 } = stopUndefined(Exports)
 
 const MapRoutesToPages = {
-	[ROUTE_PAGE_INDEX]: IndexPage,
+	[ROUTE_PAGE_INDEX]: PageIndex,
 	[ROUTE_PAGE_FILTER]: PageFilter,
-	[ROUTE_PAGE_HELP]: HelpPage,
+	[ROUTE_PAGE_HELP]: PageHelp,
 	[ROUTE_PAGE_PROFILE]: PageProfileStoreUser,
 	[ROUTE_PAGE_PROFILE_COMMON]: PageProfileStoreUser,
 	[ROUTE_PAGE_SIGN_UP]: PageSignUp,
 	[ROUTE_PAGE_SIGN_IN]: SignInPage,
 	[ROUTE_PAGE_POLICY_COMMON]: PagePolicies,
-	[ROUTE_PAGE_CHECKOUT]: CheckoutPage,
+	[ROUTE_PAGE_CHECKOUT]: PageCheckout,
 	[ROUTE_PAGE_SETTINGS_COMMON]: PageSettings,
 	[ROUTE_PAGE_CHAT]: PageChat,
 	[ROUTE_PAGE_PASSWORD_RESET]: PagePasswordReset,
