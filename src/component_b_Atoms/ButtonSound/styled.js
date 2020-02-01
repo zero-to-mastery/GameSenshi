@@ -1,5 +1,5 @@
 import { Col } from 'reactstrap'
-import { responsiveCssGenerator } from 'assets/styled'
+import { responsiveCssGenerator } from 'styled'
 import styled from 'styled-components'
 
 const ColStyledPlay = styled(Col)`
