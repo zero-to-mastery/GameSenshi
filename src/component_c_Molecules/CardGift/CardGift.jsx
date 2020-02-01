@@ -83,7 +83,7 @@ const CardGift = props => {
 				<Tooltip id={CARD_GIFT_MODAL} name={name} price={price} />
 			</Modal>
 			<Container>
-				<Row xs='6' className='m-2 p-0'>
+				<Row xs='7' sm='10' md='12' lg='6' className='m-2 p-0'>
 					{icons.map(icon => {
 						const {
 							[CARD_GIFT_IMAGE]: src,

@@ -1,5 +1,3 @@
-// eslint-disable-next-line
-import styled from 'styled-components/macro'
 import React from 'react'
 import { stopUndefined } from 'utils'
 import Loader from 'react-loader-spinner'
@@ -7,7 +5,12 @@ import { Exports } from 'component_f_MultiOrganisms'
 import { ROUTE_PARAM_UID, useParams } from 'routes'
 import { FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL } from 'constantValues'
 import { useSenshiProfileData } from './utils'
-import classnames from 'classnames'
+import {
+	ColStyledSection,
+	ColStyledGiftCard,
+	RowStyledCarousel,
+	ColStyledGiftTitle,
+} from './styled'
 
 const {
 	CarouselLightBoxPropedProfile,
@@ -26,6 +29,7 @@ const {
 	Row,
 	Col,
 	Container,
+	TextIconPropedAppointments,
 } = stopUndefined(Exports)
 
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
@@ -36,20 +40,6 @@ const tabs = games.map((tab, index) => {
 		[TAB_CONTENT]: TabProductPropedProfile[index],
 	}
 })
-
-const ColStyled = props => {
-	const { className, ...otherProps } = props
-	return (
-		<Col
-			className={classnames(
-				className,
-				'py-4 px-3',
-				'rounded-lg bg-dark-navy-gradient'
-			)}
-			{...otherProps}
-		/>
-	)
-}
 
 const PAGE_PROFILE_CURRENT_USER_UID = 'currentUserUid'
 
@@ -95,7 +85,7 @@ const PageProfile = props => {
 					<Section>
 						<Container>
 							<Row>
-								<Col xs='0' sm='12'>
+								<Col>
 									<CardUserHorizontal data={data} uid={uid_} />
 								</Col>
 							</Row>
@@ -104,43 +94,57 @@ const PageProfile = props => {
 					<Section>
 						<Container>
 							<Row>
-								<Col xs='12' lg='5'>
-									<Row className='pr-4' lg='1'>
+								<Col lg='5'>
+									<RowStyledCarousel xs='1'>
 										<Col className='bg-dark-navy-gradient p-0'>
 											<CarouselLightBoxPropedProfile
 												items={data[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL]}
 											/>
 										</Col>
-										<Col xs='0' sm='12'>
+										<Col xs='0' lg='12'>
 											<Row xs='1'>
-												<Col>
+												<ColStyledGiftTitle>
 													<TextIconPropedProfileGift />
-												</Col>
-												<Col
-													align='center'
-													className='bg-purple-gradient-2 rounded-lg p-2'
-												>
+												</ColStyledGiftTitle>
+												<ColStyledGiftCard>
 													<CardGiftPropedProfile />
-												</Col>
+												</ColStyledGiftCard>
 											</Row>
 										</Col>
-									</Row>
+									</RowStyledCarousel>
 								</Col>
-								<Col xs='12' lg='7'>
-									<Row>
-										<ColStyled>
-											<Tab tabs={tabs} />
-										</ColStyled>
-									</Row>
-									<Row>
+								<Col lg='7'>
+									<Row xs='1'>
 										<Col>
-											<TextIconPropedProfileReviews />
+											<Row xs='1'>
+												<ColStyledGiftTitle lg='0'>
+													<TextIconPropedAppointments />
+												</ColStyledGiftTitle>
+												<ColStyledSection>
+													<Tab tabs={tabs} />
+												</ColStyledSection>
+											</Row>
 										</Col>
-									</Row>
-									<Row>
-										<ColStyled>
-											<CommentWithPaginationPropedDefault />
-										</ColStyled>
+										<Col lg='0'>
+											<Row xs='1'>
+												<ColStyledGiftTitle>
+													<TextIconPropedProfileGift />
+												</ColStyledGiftTitle>
+												<ColStyledGiftCard>
+													<CardGiftPropedProfile />
+												</ColStyledGiftCard>
+											</Row>
+										</Col>
+										<Col>
+											<Row xs='1'>
+												<ColStyledGiftTitle>
+													<TextIconPropedProfileReviews />
+												</ColStyledGiftTitle>
+												<ColStyledSection>
+													<CommentWithPaginationPropedDefault />
+												</ColStyledSection>
+											</Row>
+										</Col>
 									</Row>
 								</Col>
 							</Row>
