@@ -23,7 +23,7 @@ const ImgThumb = props => {
 	const { onClick, src, aspectRatio } = props
 	return (
 		<ImageStyled
-			className='img img-raised rounded-lg'
+			className='rounded-0'
 			color='transparent'
 			src={src}
 			style={{ padding: `${aspectRatio}% 0` }}
@@ -71,6 +71,7 @@ const PlayerThumb = props => {
 	const { src, aspectRatio } = props
 	return (
 		<Image
+			className='rounded-0'
 			src={getYoutubeThumnailUrl(src)}
 			style={{ padding: `${aspectRatio}% 0` }}
 		/>
