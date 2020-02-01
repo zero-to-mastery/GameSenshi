@@ -66,7 +66,7 @@ const TextIconPropedRandomPlayer = props => {
 	return (
 		<TextIconPropedIndex
 			className={classnames('text-warning', className)}
-			aria='discover'
+			aria='Random Players'
 			emoji='🏆'
 			{...otherProps}
 		>
@@ -80,7 +80,7 @@ const TextIconPropedProfileGift = props => {
 	return (
 		<TextIconPropedProfile
 			className={classnames('text-warning', className)}
-			aria='discover'
+			aria='Gift'
 			emoji='🎁'
 			{...otherProps}
 		>
@@ -94,11 +94,25 @@ const TextIconPropedProfileReviews = props => {
 	return (
 		<TextIconPropedProfile
 			className={classnames('text-warning', className)}
-			aria='discover'
+			aria='Reviews'
 			emoji='💬'
 			{...otherProps}
 		>
 			Reviews
+		</TextIconPropedProfile>
+	)
+}
+
+const TextIconPropedAppointments = props => {
+	const { className, ...otherProps } = props
+	return (
+		<TextIconPropedProfile
+			className={classnames('text-warning', className)}
+			aria='Make Apointments'
+			emoji='💌'
+			{...otherProps}
+		>
+			Make Your Apointments
 		</TextIconPropedProfile>
 	)
 }
@@ -109,4 +123,5 @@ export {
 	TextIconPropedRandomPlayer,
 	TextIconPropedProfileGift,
 	TextIconPropedProfileReviews,
+	TextIconPropedAppointments,
 }
