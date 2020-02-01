@@ -3,7 +3,6 @@ import styled from 'styled-components/macro'
 import React from 'react'
 import { stopUndefined } from 'utils'
 import Loader from 'react-loader-spinner'
-import { Container } from 'reactstrap'
 import { Exports } from 'component_f_MultiOrganisms'
 import { ROUTE_PARAM_UID, useParams } from 'routes'
 import { FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL } from 'constantValues'
@@ -26,6 +25,7 @@ const {
 	PageError,
 	Row,
 	Col,
+	Container,
 } = stopUndefined(Exports)
 
 const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
@@ -68,35 +68,31 @@ const PageProfile = props => {
 
 	return exist ? (
 		<WrapperStoreWrapperPropedProfile>
+			<img alt='...' className='dots' src={require('assets/img/dots.png')} />
+			<img alt='...' className='path' src={require('assets/img/path4.png')} />
 			{loading ? (
-				<Row
-					className='w-100 align-items-center'
-					style={{ height: '100vh', marginTop: '-5rem' }}
-				>
-					<Col align='center'>
-						<Loader
-							type='Ball-Triangle'
-							color='#FFD700'
-							height='20vh'
-							width='20vh'
-						/>
-						<br />
-						<p style={{ fontSize: '180%' }}>Loading, Please Wait ...</p>
-					</Col>
-				</Row>
+				<Section>
+					<Container>
+						<Row
+							className='w-100 align-items-center'
+							style={{ height: '100vh', marginTop: '-5rem' }}
+						>
+							<Col align='center'>
+								<Loader
+									type='Ball-Triangle'
+									color='#FFD700'
+									height='20vh'
+									width='20vh'
+								/>
+								<br />
+								<p style={{ fontSize: '180%' }}>Loading, Please Wait ...</p>
+							</Col>
+						</Row>
+					</Container>
+				</Section>
 			) : (
 				<>
 					<Section>
-						<img
-							alt='...'
-							className='dots'
-							src={require('assets/img/dots.png')}
-						/>
-						<img
-							alt='...'
-							className='path'
-							src={require('assets/img/path4.png')}
-						/>
 						<Container>
 							<Row>
 								<Col xs='0' sm='12'>
@@ -120,9 +116,12 @@ const PageProfile = props => {
 												<Col>
 													<TextIconPropedProfileGift />
 												</Col>
-												<ColStyled align='center'>
+												<Col
+													align='center'
+													className='bg-purple-gradient-2 rounded-lg p-2'
+												>
 													<CardGiftPropedProfile />
-												</ColStyled>
+												</Col>
 											</Row>
 										</Col>
 									</Row>

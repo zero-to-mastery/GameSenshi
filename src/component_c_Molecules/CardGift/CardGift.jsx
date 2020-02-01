@@ -1,10 +1,17 @@
 import React, { useState, useCallback } from 'react'
-import { Input, Col, Row, Container } from 'reactstrap'
+import { Input } from 'reactstrap'
 import Image from 'material-ui-image'
 import { stopUndefined } from 'utils'
 import { Exports } from 'component_b_Atoms'
 
-const { UncontrolledTooltip, Modal, Button } = stopUndefined(Exports)
+const {
+	UncontrolledTooltip,
+	Modal,
+	Button,
+	Col,
+	Row,
+	Container,
+} = stopUndefined(Exports)
 
 const CARD_GIFT_IMAGE = 'image'
 const CARD_GIFT_NAME = 'tooltip'
@@ -28,7 +35,7 @@ const CardGift = props => {
 	const [number, setNumber] = useState('1')
 	const [name, setName] = useState('')
 	const [price, setPrice] = useState('')
-	const { icons, ...otherProps } = props
+	const { icons } = props
 
 	const onContinue = useCallback(() => {}, [])
 
@@ -41,7 +48,7 @@ const CardGift = props => {
 	}, [])
 
 	return (
-		<span {...otherProps}>
+		<>
 			<Modal
 				title='Show Your Player Some Love!'
 				isOpen={isOpen}
@@ -75,8 +82,8 @@ const CardGift = props => {
 				</Container>
 				<Tooltip id={CARD_GIFT_MODAL} name={name} price={price} />
 			</Modal>
-			<Container className='bg-purple-gradient-2 rounded-lg'>
-				<Row xs='6' className='p-2'>
+			<Container>
+				<Row xs='6' className='m-2 p-0'>
 					{icons.map(icon => {
 						const {
 							[CARD_GIFT_IMAGE]: src,
@@ -110,7 +117,7 @@ const CardGift = props => {
 					})}
 				</Row>
 			</Container>
-		</span>
+		</>
 	)
 }
 
