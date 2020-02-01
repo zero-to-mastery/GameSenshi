@@ -1,7 +1,6 @@
 import React from 'react'
 import { stopUndefined } from 'utils'
 import { Exports } from 'component_f_MultiOrganisms'
-import { Container, Row, Col } from 'reactstrap'
 import audioSample from 'assets/audio/sampleVoice.mp3'
 import { TabDiscover } from './TabDiscover'
 const {
@@ -14,6 +13,9 @@ const {
 	TextIconPropedNewPlayer,
 	TextIconPropedRandomPlayer,
 	CarouselCardSimplePropedNew,
+	Row,
+	Col,
+	Container,
 } = stopUndefined(Exports)
 
 const CARD_PROFILE_NAME = 'name'
@@ -82,12 +84,10 @@ const Cards = () => {
 	})
 }
 
-const containerClass = 'bg-dark-navy-gradient pt-2 pb-3 px-4 rounded-lg'
-
 const IndexPage = () => {
 	return (
 		<WrapperStoreWrapperPropedIndex>
-			<Section className='bg-dark-navy-gradient'>
+			<Section>
 				<Container className='pt-3'>
 					<Row>
 						<Col>
@@ -102,7 +102,7 @@ const IndexPage = () => {
 				</Container>
 			</Section>
 			<Section>
-				<Container className={containerClass}>
+				<Container>
 					<TextIconPropedPopularPlayer />
 					<Row>
 						<Cards />
@@ -113,7 +113,7 @@ const IndexPage = () => {
 				</Container>
 			</Section>
 			<Section>
-				<Container className={containerClass}>
+				<Container>
 					<TextIconPropedNewPlayer />
 					<Row>
 						<Col>
@@ -123,7 +123,7 @@ const IndexPage = () => {
 				</Container>
 			</Section>
 			<Section>
-				<Container className={containerClass}>
+				<Container>
 					<TextIconPropedRandomPlayer />
 					<TabDiscover />
 				</Container>
