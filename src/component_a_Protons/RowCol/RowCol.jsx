@@ -1,7 +1,11 @@
 // eslint-disable-next-line
 import styled from 'styled-components'
 import React, { memo, useMemo } from 'react'
-import { Row as RowRS, Col as ColRs } from 'reactstrap'
+import {
+	Row as RowRS,
+	Col as ColRs,
+	Container as ContainerRS,
+} from 'reactstrap'
 import { responsiveCssGenerator } from 'assets/styled'
 
 const [Row, Col] = [RowRS, ColRs].map((Comp, i) => {
@@ -42,4 +46,8 @@ const [Row, Col] = [RowRS, ColRs].map((Comp, i) => {
 	})
 })
 
-export { Row, Col }
+const Container = props => {
+	return <ContainerRS className='p-0' {...props} />
+}
+
+export { Row, Col, Container }

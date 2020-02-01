@@ -1,3 +1,3 @@
-import { Row, Col } from './RowCol'
+import { Row, Col, Container } from './RowCol'
 
-export { Row, Col }
+export { Row, Col, Container }
