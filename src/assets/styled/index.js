@@ -1,17 +1,3 @@
-import {
-	BREAKPOINTS_SX,
-	BREAKPOINTS_XS,
-	BREAKPOINTS_SM,
-	BREAKPOINTS_MD,
-	BREAKPOINTS_LG,
-	responsiveCssGenerator,
-} from './constants'
+import { responsiveCssGenerator } from './constants'
 
-export {
-	BREAKPOINTS_SX,
-	BREAKPOINTS_XS,
-	BREAKPOINTS_SM,
-	BREAKPOINTS_MD,
-	BREAKPOINTS_LG,
-	responsiveCssGenerator,
-}
+export { responsiveCssGenerator }

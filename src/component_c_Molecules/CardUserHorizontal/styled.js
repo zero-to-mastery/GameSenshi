@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Exports } from 'component_b_Atoms'
 import { stopUndefined } from 'utils'
-import { BREAKPOINTS_MD } from 'assets/styled'
+import { responsiveCssGenerator } from 'assets/styled'
 import { Col, Row } from 'reactstrap'
 
 const { Section } = stopUndefined(Exports)
@@ -9,12 +9,10 @@ const { Section } = stopUndefined(Exports)
 const SectionStyled = styled(Section)`
 	border: 2px solid #344675;
 	z-index: 3;
-	border-radius: 50rem;
-	/* rounded-pill */
-	@media (max-width: ${BREAKPOINTS_MD}px) {
-		border-radius: 0.4285rem;
-		/* rounded-lg */
-	}
+	${responsiveCssGenerator({
+		xs: `border-radius: 0.4285rem; // rounded-lg`,
+		lg: `border-radius: 50rem; // rounded-pill`,
+	})}
 `
 
 const DivStyledImage = styled.div`
@@ -23,12 +21,12 @@ const DivStyledImage = styled.div`
 `
 
 const RowStyledUsername = styled(Row)`
-	text-align: 'left';
-	margin-top: 2.5rem;
-	@media (max-width: ${BREAKPOINTS_MD}px) {
-		margin-top: 1rem;
-		text-align: center;
-	}
+	${responsiveCssGenerator({
+		xs: `text-align: center;
+		margin-top: 1rem;`,
+		md: `text-align: left;
+		margin-top: 2.5rem;`,
+	})}
 `
 
 const ColStyledBadges = styled(Col)`
@@ -37,9 +35,10 @@ const ColStyledBadges = styled(Col)`
 
 const TextStyledSubscribe = styled.p`
 	margin-top: 2.5rem;
-	@media (max-width: ${BREAKPOINTS_MD}px) {
-		margin-top: 1rem;
-	}
+	${responsiveCssGenerator({
+		xs: `margin-top: 1rem;`,
+		md: `margin-top: 2.5rem;`,
+	})}
 `
 export {
 	SectionStyled,

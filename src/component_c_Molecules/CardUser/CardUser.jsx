@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useRef } from 'react'
-import { Card, CardBody, Row, Col } from 'reactstrap'
+import { Card, CardBody } from 'reactstrap'
 import classnames from 'classnames'
 import Image from 'material-ui-image'
-import { ColStyledSound, DivStyledHover, TextStyledYellow } from './styled'
+import { DivStyledHover, TextStyledYellow } from './styled'
 import { Exports } from 'component_b_Atoms'
 import { stopUndefined } from 'utils'
 
@@ -10,6 +10,8 @@ const {
 	ButtonSoundStoreSoundPropedCardUser,
 	BadgesOptioned,
 	Link,
+	Row,
+	Col,
 } = stopUndefined(Exports)
 
 const CardUser = props => {
@@ -82,17 +84,13 @@ const CardUser = props => {
 							</Col>
 						</Row>
 						<Row className='align-items-center my-1'>
-							<ColStyledSound
-								xs='8'
-								className={classnames('pr-0')}
-								align='left'
-							>
+							<Col sm='8' className={classnames('pr-0')} align='left'>
 								<ButtonSoundStoreSoundPropedCardUser
 									gender={gender}
 									url={audioSrc}
 								/>
-							</ColStyledSound>
-							<Col className='pl-0'>
+							</Col>
+							<Col sm='4' className='pl-0'>
 								<TextStyledYellow
 									align='right'
 									className={classnames('title my-0 text-white text-nowrap')}

@@ -1,17 +1,12 @@
 import { Col } from 'reactstrap'
-import { BREAKPOINTS_SX } from 'assets/styled'
+import { responsiveCssGenerator } from 'assets/styled'
 import styled from 'styled-components'
 
-const ColStyledHidden = styled(Col)`
-	@media (max-width: ${BREAKPOINTS_SX}px) {
-		display: none;
-	}
-`
-
 const ColStyledPlay = styled(Col)`
-	@media (max-width: ${BREAKPOINTS_SX}px) {
-		justify-content: center;
-	}
+	${responsiveCssGenerator({
+		xs: `justify-content: center;`,
+		sm: `justify-content: flex-start`,
+	})}
 `
 
-export { ColStyledHidden, ColStyledPlay }
+export { ColStyledPlay }

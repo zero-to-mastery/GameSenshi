@@ -1,33 +1,19 @@
 import styled from 'styled-components'
-import { BREAKPOINTS_SX } from 'assets/styled'
-import { Col } from 'reactstrap'
-
-const ColStyledSound = styled(Col)`
-	&& {
-		@media (max-width: ${BREAKPOINTS_SX}px) {
-			flex: 0 0 50%;
-		}
-	}
-`
 
 const DivStyledHover = styled.div`
 	${props =>
 		props.styledHover
-			? `
-  	transform: scale(1.05);
-	-webkit-transition: transform 0.5s;
-	transition: transform 0.5s;
-  `
+			? `transform: scale(1.05);
+	    -webkit-transition: transform 0.5s;
+			transition: transform 0.5s;`
 			: ''}
 
 	&& {
 		${props =>
 			props.styledLeave
-				? `
-      transform: scale(1);
-	-webkit-transition: transform 0.5s;
-	transition: transform 0.5s;
-      `
+				? `transform: scale(1);
+				-webkit-transition: transform 0.5s;
+				transition: transform 0.5s;`
 				: ''}
 	}
 
@@ -43,4 +29,4 @@ const TextStyledYellow = styled.h4`
 	}
 `
 
-export { ColStyledSound, DivStyledHover, TextStyledYellow }
+export { DivStyledHover, TextStyledYellow }

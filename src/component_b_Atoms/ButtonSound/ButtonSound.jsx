@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import Sound from 'react-sound'
-import { Row, Container } from 'reactstrap'
+import { Container } from 'reactstrap'
 import VolumeMuteIcon from '@material-ui/icons/VolumeMute'
 import VolumeDownIcon from '@material-ui/icons/VolumeDown'
 import VolumeUpIcon from '@material-ui/icons/VolumeUp'
@@ -9,8 +9,8 @@ import classnames from 'classnames'
 import uuidV4 from 'uuid/v4'
 import { Exports } from 'component_a_Protons'
 import { stopUndefined } from 'utils'
-import { ColStyledHidden, ColStyledPlay } from './styled'
-const { Button } = stopUndefined(Exports)
+import { ColStyledPlay } from './styled'
+const { Button, Col, Row } = stopUndefined(Exports)
 
 const BUTTON_SOUND_SET_UUID = 'setUuid'
 const BUTTON_SOUND_STATE_UUID = 'uuid'
@@ -135,9 +135,9 @@ const ButtonSound = props => {
 		>
 			<Container>
 				<Row className='align-items-center'>
-					<ColStyledHidden xs='4' className={classnames('p-0')}>
+					<Col xs='0' sm='4' className={classnames('p-0')}>
 						<Icon />
-					</ColStyledHidden>
+					</Col>
 					<ColStyledPlay className={classnames('p-0')}>
 						{loading ? Spinner : playStatus === STOPPED ? duration : position}
 					</ColStyledPlay>
