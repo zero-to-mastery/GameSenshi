@@ -7,38 +7,40 @@ const { CardUserSimple } = stopUndefined(Exports)
 const CARD_SIMPLE_NAME = 'name'
 const CARD_SIMPLE_IMAGE = 'image'
 
+const settings = {
+	infinite: false,
+	slidesToShow: 5,
+	slidesToScroll: 3,
+	speed: 500,
+	autoplaySpeed: 3000,
+	responsive: [
+		{
+			breakpoint: 1200,
+			settings: {
+				slidesToShow: 4,
+				slidesToScroll: 2,
+			},
+		},
+		{
+			breakpoint: 992,
+			settings: {
+				slidesToShow: 3,
+				slidesToScroll: 1,
+			},
+		},
+		{
+			breakpoint: 768,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 1,
+			},
+		},
+	],
+}
+
 const CarouselCardSimple = props => {
 	const { cards } = props
-	const settings = {
-		infinite: false,
-		slidesToShow: 5,
-		slidesToScroll: 3,
-		speed: 500,
-		autoplaySpeed: 3000,
-		responsive: [
-			{
-				breakpoint: 1200,
-				settings: {
-					slidesToShow: 4,
-					slidesToScroll: 2,
-				},
-			},
-			{
-				breakpoint: 992,
-				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 1,
-				},
-			},
-			{
-				breakpoint: 768,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 1,
-				},
-			},
-		],
-	}
+
 	return (
 		<Slider {...settings}>
 			{cards.map(card => {
