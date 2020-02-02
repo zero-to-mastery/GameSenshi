@@ -58,8 +58,18 @@ const PageProfile = props => {
 
 	return exist ? (
 		<WrapperStoreWrapperPropedProfile>
-			<img alt='...' className='dots' src={require('assets/img/dots.png')} />
-			<img alt='...' className='path' src={require('assets/img/path4.png')} />
+			<img
+				alt='...'
+				className='dots'
+				src={require('assets/img/dots.png')}
+				style={{ zIndex: 0 }}
+			/>
+			<img
+				alt='...'
+				className='path'
+				src={require('assets/img/path4.png')}
+				style={{ zIndex: 0 }}
+			/>
 			<Container>
 				{loading ? (
 					<Section>
