@@ -87,9 +87,9 @@ const Cards = () => {
 const PageIndex = () => {
 	return (
 		<WrapperStoreWrapperPropedIndex>
-			<Section>
-				<Container className='pt-3'>
-					<Row>
+			<Container>
+				<Section>
+					<Row className='pt-3'>
 						<Col>
 							<CarouselPropedIndex />
 						</Col>
@@ -99,10 +99,8 @@ const PageIndex = () => {
 							<ButtonsImagePropedIndex />
 						</Col>
 					</Row>
-				</Container>
-			</Section>
-			<Section>
-				<Container>
+				</Section>
+				<Section>
 					<TextIconPropedPopularPlayer />
 					<Row>
 						<Cards />
@@ -110,24 +108,20 @@ const PageIndex = () => {
 					<Row>
 						<Cards />
 					</Row>
-				</Container>
-			</Section>
-			<Section>
-				<Container>
+				</Section>
+				<Section>
 					<TextIconPropedNewPlayer />
 					<Row>
 						<Col>
 							<CarouselCardSimplePropedNew />
 						</Col>
 					</Row>
-				</Container>
-			</Section>
-			<Section>
-				<Container>
+				</Section>
+				<Section>
 					<TextIconPropedRandomPlayer />
 					<TabDiscover />
-				</Container>
-			</Section>
+				</Section>
+			</Container>
 		</WrapperStoreWrapperPropedIndex>
 	)
 }
