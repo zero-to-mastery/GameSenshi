@@ -60,9 +60,9 @@ const PageProfile = props => {
 		<WrapperStoreWrapperPropedProfile>
 			<img alt='...' className='dots' src={require('assets/img/dots.png')} />
 			<img alt='...' className='path' src={require('assets/img/path4.png')} />
-			{loading ? (
-				<Section>
-					<Container>
+			<Container>
+				{loading ? (
+					<Section>
 						<Row
 							className='w-100 align-items-center'
 							style={{ height: '100vh', marginTop: '-5rem' }}
@@ -78,21 +78,17 @@ const PageProfile = props => {
 								<p style={{ fontSize: '180%' }}>Loading, Please Wait ...</p>
 							</Col>
 						</Row>
-					</Container>
-				</Section>
-			) : (
-				<>
-					<Section>
-						<Container>
+					</Section>
+				) : (
+					<>
+						<Section>
 							<Row>
 								<Col>
 									<CardUserHorizontal data={data} uid={uid_} />
 								</Col>
 							</Row>
-						</Container>
-					</Section>
-					<Section>
-						<Container>
+						</Section>
+						<Section>
 							<Row>
 								<Col lg='5'>
 									<RowStyledCarousel xs='1'>
@@ -148,10 +144,10 @@ const PageProfile = props => {
 									</Row>
 								</Col>
 							</Row>
-						</Container>
-					</Section>
-				</>
-			)}
+						</Section>
+					</>
+				)}
+			</Container>
 		</WrapperStoreWrapperPropedProfile>
 	) : (
 		<PageError code={errorCode} />
