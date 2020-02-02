@@ -23,7 +23,7 @@ const Tab = props => {
 					value={value}
 					onChange={onChange_}
 					variant='scrollable'
-					scrollButtons='auto'
+					scrollButtons='on'
 					aria-label='scrollable tabs'
 				>
 					{tabs.map((tab, index) => {

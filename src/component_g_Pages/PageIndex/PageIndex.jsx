@@ -71,9 +71,8 @@ const Cards = () => {
 			[CARD_PROFILE_DESCRIPTION]: description,
 		} = card
 		return (
-			<Col xs='6' lg='3' className='p-2'>
+			<Col xs='6' lg='3' className='p-2' key={name}>
 				<CardUserPropedDiscover
-					key={name}
 					audioSrc={audioSrc}
 					name={name}
 					src={src}
