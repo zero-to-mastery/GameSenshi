@@ -1,54 +1,60 @@
-import React, { useState, useCallback, Fragment } from 'react'
-import { Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap'
-import ButtonBase from '@material-ui/core/ButtonBase'
-import classnames from 'classnames'
+import React, { useState, useCallback } from 'react'
+import { AppBar, Tabs, Tab as TabMU, Typography, Box } from '@material-ui/core'
 
 const TAB_NAME = 'tabName'
 const TAB_CONTENT = 'tabContent'
 
 const Tab = props => {
 	const { tabs } = props
-	const [tabName, setTabName] = useState(tabs[0][TAB_NAME])
+	const [value, setValue] = useState(0)
+
+	const onChange_ = useCallback((event, newValue) => {
+		setValue(newValue)
+	}, [])
 
 	return (
-		<Fragment>
-			<Nav className='nav-pills-neutral' pills role='tablist'>
-				{tabs.map(tab => {
-					const { [TAB_NAME]: tabName_ } = tab
-					const toggleTabs = useCallback(
-						e => {
-							e.preventDefault()
-							setTabName(tabName_)
-						},
-						[tabName_]
-					)
-
-					return (
-						<NavItem style={{ zIndex: 99 }} key={tabName_}>
-							<NavLink
-								className={classnames({
-									active: tabName === tabName_,
-								})}
-								onClick={toggleTabs}
-								tag={ButtonBase}
-							>
-								{tabName_}
-							</NavLink>
-						</NavItem>
-					)
-				})}
-			</Nav>
-			<TabContent activeTab={tabName}>
-				{tabs.map(tab => {
-					const { [TAB_NAME]: tabName_, [TAB_CONTENT]: tabContent } = tab
-					return (
-						<TabPane tabId={tabName_} key={tabName_}>
-							{tabContent}
-						</TabPane>
-					)
-				})}
-			</TabContent>
-		</Fragment>
+		<>
+			<AppBar position='static' color='default'>
+				<Tabs
+					classes={{
+						root: ` bg-dark text-danger font-weight-bolder`,
+						indicator: ` bg-danger`,
+					}}
+					value={value}
+					onChange={onChange_}
+					variant='scrollable'
+					scrollButtons='auto'
+					aria-label='scrollable tabs'
+				>
+					{tabs.map((tab, index) => {
+						const { [TAB_NAME]: name } = tab
+						return (
+							<TabMU
+								key={name}
+								label={name}
+								id={`scrollable-auto-tab-${index}`}
+								aria-controls={`scrollable-auto-tabpanel-${index}`}
+							/>
+						)
+					})}
+				</Tabs>
+			</AppBar>
+			{tabs.map((tab, index) => {
+				const { [TAB_CONTENT]: content, [TAB_NAME]: name } = tab
+				return (
+					<Typography
+						key={name}
+						component='div'
+						role='tabpanel'
+						hidden={value !== index}
+						id={`scrollable-auto-tabpanel-${index}`}
+						aria-labelledby={`scrollable-auto-tab-${index}`}
+					>
+						<Box p={3}>{content}</Box>
+					</Typography>
+				)
+			})}
+		</>
 	)
 }
 
