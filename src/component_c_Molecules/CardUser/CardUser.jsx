@@ -35,81 +35,75 @@ const CardUser = props => {
 	}, [])
 
 	return (
-		<Col
-			xs='6'
-			lg='3'
-			className='p-2'
+		<Link
 			onMouseEnter={setHoverTrue}
 			onMouseLeave={setHoverFalse}
 			onMouseMove={setHoverTrue}
+			baseClass='w-100'
+			to='#pablo'
+			target='_blank'
+			rel='noopener noreferrer'
+			className='w-100'
 		>
-			<Link
-				baseClass='w-100'
-				to='#pablo'
-				target='_blank'
-				rel='noopener noreferrer'
-				className='w-100'
-			>
-				<Card className='card-profile bg-blue-gradient mt-0'>
-					<DivStyledHover
-						styledHover={hover}
-						styledLeave={leave}
-						className={classnames('card-image')}
-					>
-						<Row className='w-100 position-absolute mt-3' style={{ zIndex: 2 }}>
-							<Col className='px-0' align='right'>
-								<BadgesOptioned badges={badge} className='m-0' />
-							</Col>
-						</Row>
-						<div className='px-2 pt-2'>
-							<Image
-								alt={name}
-								className='img img-raised rounded-lg'
-								color='transparent' //this is needed or else there is tiny white background even when OTHER image in carousel move, very weird behavior
-								src={src}
+			<Card className='card-profile bg-blue-gradient mt-0'>
+				<DivStyledHover
+					styledHover={hover}
+					styledLeave={leave}
+					className={classnames('card-image')}
+				>
+					<Row className='w-100 position-absolute mt-3' style={{ zIndex: 2 }}>
+						<Col className='px-0' align='right'>
+							<BadgesOptioned badges={badge} className='m-0' />
+						</Col>
+					</Row>
+					<div className='px-2 pt-2'>
+						<Image
+							alt={name}
+							className='img img-raised rounded-lg'
+							color='transparent' //this is needed or else there is tiny white background even when OTHER image in carousel move, very weird behavior
+							src={src}
+						/>
+					</div>
+				</DivStyledHover>
+				<CardBody>
+					<Row className='align-items-center'>
+						<Col align='left'>
+							<h4
+								className={classnames(
+									'title my-0 font-weight-bold text-nowrap text-white'
+								)}
+								align='left'
+							>
+								{name}
+							</h4>
+						</Col>
+					</Row>
+					<Row className='align-items-center my-1'>
+						<Col sm='8' className={classnames('pr-0')} align='left'>
+							<ButtonSoundStoreSoundPropedCardUser
+								gender={gender}
+								url={audioSrc}
 							/>
-						</div>
-					</DivStyledHover>
-					<CardBody>
-						<Row className='align-items-center'>
-							<Col align='left'>
-								<h4
-									className={classnames(
-										'title my-0 font-weight-bold text-nowrap text-white'
-									)}
-									align='left'
-								>
-									{name}
-								</h4>
-							</Col>
-						</Row>
-						<Row className='align-items-center my-1'>
-							<Col sm='8' className={classnames('pr-0')} align='left'>
-								<ButtonSoundStoreSoundPropedCardUser
-									gender={gender}
-									url={audioSrc}
-								/>
-							</Col>
-							<Col sm='4' className='pl-0'>
-								<TextStyledYellow
-									align='right'
-									className={classnames('title my-0 text-white text-nowrap')}
-								>
-									${price}/h
-								</TextStyledYellow>
-							</Col>
-						</Row>
-						<Row>
-							<Col>
-								<p align='left' className='text-white m-0 text-nowrap'>
-									{description}
-								</p>
-							</Col>
-						</Row>
-					</CardBody>
-				</Card>
-			</Link>
-		</Col>
+						</Col>
+						<Col sm='4' className='pl-0'>
+							<TextStyledYellow
+								align='right'
+								className={classnames('title my-0 text-white text-nowrap')}
+							>
+								${price}/h
+							</TextStyledYellow>
+						</Col>
+					</Row>
+					<Row>
+						<Col>
+							<p align='left' className='text-white m-0 text-nowrap'>
+								{description}
+							</p>
+						</Col>
+					</Row>
+				</CardBody>
+			</Card>
+		</Link>
 	)
 }
 
