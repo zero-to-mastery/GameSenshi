@@ -17,8 +17,8 @@ const Tab = props => {
 			<AppBar position='static' color='default'>
 				<Tabs
 					classes={{
-						root: ` bg-dark text-danger font-weight-bolder`,
-						indicator: ` bg-danger`,
+						root: 'bg-dark text-danger',
+						indicator: 'bg-danger',
 					}}
 					value={value}
 					onChange={onChange_}
