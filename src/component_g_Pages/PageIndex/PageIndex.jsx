@@ -71,15 +71,17 @@ const Cards = () => {
 			[CARD_PROFILE_DESCRIPTION]: description,
 		} = card
 		return (
-			<CardUserPropedDiscover
-				key={name}
-				audioSrc={audioSrc}
-				name={name}
-				src={src}
-				gender={gender}
-				price={price}
-				description={description}
-			/>
+			<Col xs='6' lg='3' className='p-2'>
+				<CardUserPropedDiscover
+					key={name}
+					audioSrc={audioSrc}
+					name={name}
+					src={src}
+					gender={gender}
+					price={price}
+					description={description}
+				/>
+			</Col>
 		)
 	})
 }
@@ -89,37 +91,43 @@ const PageIndex = () => {
 		<WrapperStoreWrapperPropedIndex>
 			<Container>
 				<Section>
-					<Row className='pt-3'>
+					<Row className='pt-3' xs='1'>
 						<Col>
 							<CarouselPropedIndex />
 						</Col>
-					</Row>
-					<Row>
 						<Col>
 							<ButtonsImagePropedIndex />
 						</Col>
 					</Row>
 				</Section>
 				<Section>
-					<TextIconPropedPopularPlayer />
-					<Row>
+					<Row xs='1'>
+						<Col>
+							<TextIconPropedPopularPlayer />
+						</Col>
 						<Cards />
-					</Row>
-					<Row>
 						<Cards />
 					</Row>
 				</Section>
 				<Section>
-					<TextIconPropedNewPlayer />
-					<Row>
+					<Row xs='1'>
+						<Col>
+							<TextIconPropedNewPlayer />
+						</Col>
 						<Col>
 							<CarouselCardSimplePropedNew />
 						</Col>
 					</Row>
 				</Section>
 				<Section>
-					<TextIconPropedRandomPlayer />
-					<TabDiscover />
+					<Row xs='1'>
+						<Col>
+							<TextIconPropedRandomPlayer />
+						</Col>
+						<Col className='bg-dark-navy-gradient p-0'>
+							<TabDiscover />
+						</Col>
+					</Row>
 				</Section>
 			</Container>
 		</WrapperStoreWrapperPropedIndex>

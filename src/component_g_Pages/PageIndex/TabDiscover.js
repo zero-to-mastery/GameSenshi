@@ -2,12 +2,16 @@ import React from 'react'
 import audioSample from 'assets/audio/sampleVoice.mp3'
 import { stopUndefined } from 'utils'
 import { Exports } from 'component_f_MultiOrganisms'
-import { Row } from 'reactstrap'
 import suffle from 'array-shuffle'
 
-const { CardUserPropedDiscover, Tab, TAB_NAME, TAB_CONTENT } = stopUndefined(
-	Exports
-)
+const {
+	Row,
+	Col,
+	CardUserPropedDiscover,
+	Tab,
+	TAB_NAME,
+	TAB_CONTENT,
+} = stopUndefined(Exports)
 
 const CARD_DISCOVER_NAME = 'name'
 const CARD_DISCOVER_IMAGE = 'image'
@@ -61,15 +65,17 @@ const Cards = discoverSections.map(card => {
 		[CARD_DISCOVER_DESCRIPTION]: description,
 	} = card
 	return (
-		<CardUserPropedDiscover
-			key={name}
-			audioSrc={audioSrc}
-			name={name}
-			src={src}
-			gender={gender}
-			price={price}
-			description={description}
-		/>
+		<Col xs='6' lg='3' className='p-2'>
+			<CardUserPropedDiscover
+				key={name}
+				audioSrc={audioSrc}
+				name={name}
+				src={src}
+				gender={gender}
+				price={price}
+				description={description}
+			/>
+		</Col>
 	)
 })
 const tabNames = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
