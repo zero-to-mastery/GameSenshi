@@ -20,6 +20,10 @@
 	background-color: #5603ad;
 }
 
+.bg-pink-gradient {
+	background: linear-gradient(40deg, #e14eca, #f0a6e4);
+}
+
 .bg-blue-gradient {
 	background: linear-gradient(40deg, #4568dc, #b06ab3);
 }
