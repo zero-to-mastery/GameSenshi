@@ -11,7 +11,7 @@ const ColStyledSection = props => {
 	const { className, ...otherProps } = props
 	return (
 		<Col
-			className={classnames(className, 'py-4 px-3 bg-dark-navy-gradient')}
+			className={classnames(className, 'bg-dark-navy-gradient')}
 			{...otherProps}
 		/>
 	)
@@ -27,7 +27,7 @@ const ColStyledGiftCard = props => {
 	)
 }
 
-const ColStyledGiftTitle = props => {
+const ColStyledTitle = props => {
 	const { className, ...otherProps } = props
 	return <Col className={classnames(className, 'mt-3')} {...otherProps} />
 }
@@ -47,5 +47,5 @@ export {
 	ColStyledSection,
 	ColStyledGiftCard,
 	RowStyledCarousel,
-	ColStyledGiftTitle,
+	ColStyledTitle,
 }

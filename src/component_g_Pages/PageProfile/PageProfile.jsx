@@ -9,7 +9,7 @@ import {
 	ColStyledSection,
 	ColStyledGiftCard,
 	RowStyledCarousel,
-	ColStyledGiftTitle,
+	ColStyledTitle,
 } from './styled'
 
 const {
@@ -99,9 +99,9 @@ const PageProfile = props => {
 										</Col>
 										<Col xs='0' lg='12'>
 											<Row xs='1'>
-												<ColStyledGiftTitle>
+												<ColStyledTitle>
 													<TextIconPropedProfileGift />
-												</ColStyledGiftTitle>
+												</ColStyledTitle>
 												<ColStyledGiftCard>
 													<CardGiftPropedProfile />
 												</ColStyledGiftCard>
@@ -113,19 +113,19 @@ const PageProfile = props => {
 									<Row xs='1'>
 										<Col>
 											<Row xs='1'>
-												<ColStyledGiftTitle lg='0'>
+												<ColStyledTitle lg='0'>
 													<TextIconPropedAppointments />
-												</ColStyledGiftTitle>
-												<ColStyledSection>
+												</ColStyledTitle>
+												<ColStyledSection className='p-0'>
 													<Tab tabs={tabs} />
 												</ColStyledSection>
 											</Row>
 										</Col>
 										<Col lg='0'>
 											<Row xs='1'>
-												<ColStyledGiftTitle>
+												<ColStyledTitle>
 													<TextIconPropedProfileGift />
-												</ColStyledGiftTitle>
+												</ColStyledTitle>
 												<ColStyledGiftCard>
 													<CardGiftPropedProfile />
 												</ColStyledGiftCard>
@@ -133,10 +133,10 @@ const PageProfile = props => {
 										</Col>
 										<Col>
 											<Row xs='1'>
-												<ColStyledGiftTitle>
+												<ColStyledTitle>
 													<TextIconPropedProfileReviews />
-												</ColStyledGiftTitle>
-												<ColStyledSection>
+												</ColStyledTitle>
+												<ColStyledSection className='pt-5'>
 													<CommentWithPaginationPropedDefault />
 												</ColStyledSection>
 											</Row>
