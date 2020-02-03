@@ -10,7 +10,7 @@ import {
 } from './InputSelect'
 import { InputText } from './InputText'
 import { Popover } from './Popover'
-import Footer from './Footers/Footer'
+import { Footer } from './Footer'
 import { ButtonsCommonOptioned, ButtonsCommonPropedAuth } from './ButtonsCommon'
 import {
 	ButtonSignInStoreUserPropedIndexNavbar,
