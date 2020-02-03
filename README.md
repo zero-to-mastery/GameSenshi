@@ -128,8 +128,9 @@ after deployment, you can view it at
 ## Built With
 
 - [Create-React-App](http://www.dropwizard.io/1.0.2/docs/) - React Project Generator
-- [Blk• Design System React](https://github.com/creativetimofficial/blk-design-system-react/) - Bootstrap
-- [Styled Component](https://www.styled-components.com/) - CSS
+- [Blk• Design System React(Bootstrap)](https://github.com/creativetimofficial/blk-design-system-react/) - CSS
+- [Styled Component](https://www.styled-components.com/) - CSS in JS
+- [Reactstrap](https://reactstrap.github.io/) - Components
 - [Firebase](https://firebase.google.com/) - Authentication, Storage, Database, Chat and Endpoint
 - [Stripe](https://stripe.com/) - Payment
 
