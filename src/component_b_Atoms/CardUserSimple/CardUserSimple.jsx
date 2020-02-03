@@ -15,15 +15,18 @@ const CardUserSimple = props => {
 			rel='noopener noreferrer'
 			className='w-100'
 		>
-			<Card className='card-testimonial p-2 bg-deep-blue mt-0'>
-				<div className='card-avatar w-100 mt-4'>
-					<Image
-						alt={name}
-						className='img img-raised'
-						color='transparent'
-						src={src}
-					/>
-				</div>
+			<Card className='card-testimonial p-2 bg-deep-blue mt-0 align-items-center'>
+				<Image
+					alt={name}
+					imageStyle={{
+						width: '150px',
+						height: '150px',
+					}}
+					className='img img-raised position-static mt-4 rounded-circle'
+					color='transparent'
+					src={src}
+					style={{ paddingTop: '0px' }}
+				/>
 				<CardFooter className='mb-0'>
 					<h4 className=' text-default font-weight-bold text-nowrap'>{name}</h4>
 				</CardFooter>
