@@ -5,7 +5,15 @@ import { docSenshiProfileOnSnapshot } from 'fireStored'
 import {
 	UNEXPECTED_ERROR_CODE_16,
 	UNEXPECTED_ERROR_CODE_17,
+	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL,
 } from 'constantValues'
+import {
+	PAGE_PROFILE_STATE_LOADING,
+	PAGE_PROFILE_STATE_DATA_USER,
+	PAGE_PROFILE_STATE_DATA_CAROUSEL,
+	PAGE_PROFILE_STATE_EXIST,
+	PAGE_PROFILE_STATE_ERROR_CODE,
+} from './PageProfile'
 import { storeModalSimpleError } from 'state'
 
 const {
@@ -13,7 +21,7 @@ const {
 	PAGE_ERROR_CODE_NOT_A_SENSHI,
 } = stopUndefined(Exports)
 
-const useSenshiProfileData = (uid, currentUserUid) => {
+const useData = (uid, currentUserUid) => {
 	const [loading, setLoading] = useState(true)
 	const [exist, setExist] = useState(true)
 	const [data, setData] = useState(null)
@@ -59,7 +67,14 @@ const useSenshiProfileData = (uid, currentUserUid) => {
 		return observer.current
 	}, [uid, currentUserUid])
 
-	return [loading, exist, data, errorCode]
+	return {
+		[PAGE_PROFILE_STATE_LOADING]: loading,
+		[PAGE_PROFILE_STATE_EXIST]: exist,
+		[PAGE_PROFILE_STATE_DATA_USER]: data,
+		[PAGE_PROFILE_STATE_DATA_CAROUSEL]:
+			data && data[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL],
+		[PAGE_PROFILE_STATE_ERROR_CODE]: errorCode,
+	}
 }
 
-export { useSenshiProfileData }
+export { useData }
