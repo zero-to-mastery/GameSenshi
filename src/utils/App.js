@@ -1,3 +1,5 @@
 import defaultAvatar from 'assets/img/placeholder.jpg'
 
-export { defaultAvatar }
+const Brand = 'Game Senshi'
+
+export { defaultAvatar, Brand }
