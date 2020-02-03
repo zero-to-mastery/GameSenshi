@@ -31,7 +31,7 @@ import {
 	usernameLength,
 } from './validation'
 
-import { defaultAvatar } from './defaults'
+import { defaultAvatar } from './App'
 
 export {
 	resObj,
