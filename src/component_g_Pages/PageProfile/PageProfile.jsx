@@ -65,7 +65,7 @@ const PageProfile = props => {
 		[PAGE_PROFILE_STATE_ERROR_CODE]: errorCode,
 	} = useData(uid, currentUserUid)
 
-	return exist ? (
+	return loading || exist ? (
 		<WrapperStoreWrapperPropedProfile>
 			<img
 				alt='...'
