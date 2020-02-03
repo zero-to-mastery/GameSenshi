@@ -3,6 +3,7 @@ import { Button } from './Button'
 import { UncontrolledTooltip } from './UncontrolledTooltip'
 import { Icon } from './Icon'
 import { Row, Col, Container } from './RowCol'
+import { Helmet } from './Helmet'
 
 export const Exports = {
 	Link,
@@ -13,4 +14,5 @@ export const Exports = {
 	Row,
 	Col,
 	Container,
+	Helmet,
 }
