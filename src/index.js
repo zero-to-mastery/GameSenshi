@@ -14,12 +14,12 @@ import { goLastRoute } from 'routes'
 import { getRedirectResult } from 'firebaseInit'
 import { onAuthStateChange } from 'onAuthStateChange'
 import 'assets/css/nucleo-icons.css'
-import 'assets/css/App.css'
 import 'assets/scss/blk-design-system-pro-react.scss?v1.0.0'
 import 'assets/demo/demo.css'
 import 'assets/demo/react-demo.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import 'slick-carousel/slick/slick-theme.css'
+import 'assets/css/App.css'
 
 //handle auth change
 onAuthStateChange()
