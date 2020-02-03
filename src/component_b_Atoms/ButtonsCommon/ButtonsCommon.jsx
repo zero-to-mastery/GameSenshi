@@ -45,12 +45,9 @@ const ButtonsCommon = props => {
 							className={className || 'btn-icon btn-round'}
 							color={color}
 							id={id_}
-							{...(to && { tag: Link, to })} // visit other page
-							{...(href && {
-								target: '_blank',
-								rel: 'noopener noreferrer',
-								href,
-							})} // visit third party website
+							{...((to || href) && { tag: Link })}
+							to={to}
+							href={href}
 							onClick={onClick_}
 						>
 							{icon()}
