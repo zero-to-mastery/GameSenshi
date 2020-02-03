@@ -1,4 +1,4 @@
-import { responsiveCssGenerator } from './constants'
+import { responsiveCssGenerator } from './utils'
 import {
 	mt_0,
 	mb_0,
