@@ -1,23 +1,16 @@
 import styled from 'styled-components'
+import { responsiveCssGenerator } from 'styled'
 import { Exports } from 'component_b_Atoms'
 import { stopUndefined } from 'utils'
-import { responsiveCssGenerator } from 'styled'
-import { Col, Row } from 'reactstrap'
+const { Container, Col, Row } = stopUndefined(Exports)
 
-const { Section } = stopUndefined(Exports)
-
-const SectionStyled = styled(Section)`
+const ContainerStyled = styled(Container)`
 	border: 2px solid #344675;
 	z-index: 3;
 	${responsiveCssGenerator({
 		xs: `border-radius: 0.4285rem; // rounded-lg`,
 		lg: `border-radius: 50rem; // rounded-pill`,
 	})}
-`
-
-const DivStyledImage = styled.div`
-	height: 120px;
-	width: 120px;
 `
 
 const RowStyledUsername = styled(Row)`
@@ -41,8 +34,7 @@ const TextStyledSubscribe = styled.p`
 	})}
 `
 export {
-	SectionStyled,
-	DivStyledImage,
+	ContainerStyled,
 	RowStyledUsername,
 	ColStyledBadges,
 	TextStyledSubscribe,

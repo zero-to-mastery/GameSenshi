@@ -1,12 +1,10 @@
 import React, { useMemo } from 'react'
-import { Container, Col, Row } from 'reactstrap'
 import { Exports } from 'component_b_Atoms'
 import { stopUndefined } from 'utils'
 import Image from 'material-ui-image'
 import shorthash from 'shorthash'
 import {
-	SectionStyled,
-	DivStyledImage,
+	ContainerStyled,
 	RowStyledUsername,
 	ColStyledBadges,
 	TextStyledSubscribe,
@@ -25,6 +23,9 @@ const {
 	CheckBoxIconPropedFavouriteStoreUser,
 	CheckBoxIconPropedTip,
 	ButtonsCommonOptioned,
+	Col,
+	Row,
+	Helmet,
 } = stopUndefined(Exports)
 
 const CardUserHorizontal = props => {
@@ -43,69 +44,63 @@ const CardUserHorizontal = props => {
 	const shortUid = useMemo(() => shorthash.unique(uid), [uid])
 
 	return (
-		<SectionStyled className='border border-success' {...otherProps}>
-			<Container>
-				<Row>
-					<Col xs='12' lg='3'>
+		<ContainerStyled className='border border-success' {...otherProps}>
+			<Helmet title={displayName} />
+			<Row className='my-3'>
+				<Col xs='12' lg='3'>
+					<Row xs='1'>
 						{badges.length > 0 && (
-							<Row className='mb-3'>
-								<ColStyledBadges>
-									<BadgesPropedSenshi badges={[gender]} />
-								</ColStyledBadges>
-							</Row>
+							<ColStyledBadges className='mb-1'>
+								<BadgesPropedSenshi badges={[gender]} />
+							</ColStyledBadges>
 						)}
-						<Row className='flex-column'>
+						<Col align='center'>
+							<Image
+								imageStyle={{ width: '120px', height: '120px' }}
+								alt={'picture of ' + displayName}
+								color='transparent'
+								style={{ paddingTop: '0px' }}
+								className='img-center img-fluid rounded-circle position-static'
+								src={avatar || defaultAvatar}
+							/>
+						</Col>
+						<Col>
+							<StatusPropedOnline uid={uid} />
+						</Col>
+					</Row>
+				</Col>
+				<Col xs='12' lg='3'>
+					<RowStyledUsername className='flex-column'>
+						<Col>
+							<h3 className='text-white font-weight-bold mb-1'>
+								{displayName}
+							</h3>
+						</Col>
+						<Col className='mb-3'>
+							<p className='text-muted'>UID : {shortUid}</p>
+						</Col>
+						<Col>
+							<CheckBoxIconPropedTip />
+							<CheckBoxIconPropedFavouriteStoreUser uid={uid} />
+						</Col>
+					</RowStyledUsername>
+				</Col>
+				{Object.keys(channels).length > 0 && (
+					<Col xs='12' lg='3'>
+						<Row xs='1'>
 							<Col align='center'>
-								<DivStyledImage>
-									<Image
-										alt={'picture of ' + displayName}
-										color='transparent'
-										style={{ paddingTop: '0px', height: '100%' }}
-										className='img-center img-fluid rounded-circle'
-										src={avatar || defaultAvatar}
-									/>
-								</DivStyledImage>
+								<TextStyledSubscribe className='text-success font-weight-bold text-nowrap'>
+									Subscribe to my channels:
+								</TextStyledSubscribe>
 							</Col>
 							<Col>
-								<StatusPropedOnline uid={uid} />
+								<ButtonsCommonOptioned buttons={channels} />
 							</Col>
 						</Row>
 					</Col>
-					<Col xs='12' lg='3'>
-						<RowStyledUsername className='flex-column'>
-							<Col>
-								<h3 className='text-white font-weight-bold mb-1'>
-									{displayName}
-								</h3>
-							</Col>
-							<Col className='mb-3'>
-								<p className='text-muted'>UID : {shortUid}</p>
-							</Col>
-							<Col>
-								<CheckBoxIconPropedTip />
-								<CheckBoxIconPropedFavouriteStoreUser uid={uid} />
-							</Col>
-						</RowStyledUsername>
-					</Col>
-					{Object.keys(channels).length > 0 && (
-						<Col xs='12' lg='3'>
-							<Row>
-								<Col align='center'>
-									<TextStyledSubscribe className='text-success font-weight-bold text-nowrap'>
-										Subscribe to my channels:
-									</TextStyledSubscribe>
-								</Col>
-							</Row>
-							<Row>
-								<Col>
-									<ButtonsCommonOptioned buttons={channels} />
-								</Col>
-							</Row>
-						</Col>
-					)}
-				</Row>
-			</Container>
-		</SectionStyled>
+				)}
+			</Row>
+		</ContainerStyled>
 	)
 }
 
