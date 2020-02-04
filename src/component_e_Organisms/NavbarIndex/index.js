@@ -4,7 +4,7 @@ import { StateContainer, storeAlert, STORE_ALERT_STATE_IS_OPEN } from '2_state'
 import ReactResizeDetector from 'react-resize-detector'
 import { stopUndefined } from '1_utils'
 import { storeWrapperSetOffsetTop } from '2_state'
-import { Exports } from 'component_d_Compounds'
+import { Exports } from '4_comp_4'
 
 const { AlertStoreAlert } = stopUndefined(Exports)
 

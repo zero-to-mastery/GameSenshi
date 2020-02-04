@@ -3,7 +3,7 @@ import { stopUndefined } from '1_utils'
 // reactstrap components
 import { Row, Col, Form } from 'reactstrap'
 
-import { Exports } from 'component_d_Compounds'
+import { Exports } from '4_comp_4'
 const {
 	FinalForm,
 	ButtonSubmit,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { stopUndefined } from '1_utils'
-import { Exports } from 'component_d_Compounds'
+import { Exports } from '4_comp_4'
 import { Collapse, Navbar, Nav, Container } from 'reactstrap'
 
 const widthBreakPoint = 991

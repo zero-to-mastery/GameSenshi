@@ -1,4 +1,4 @@
-import { Exports as ExportCompounds } from 'component_d_Compounds'
+import { Exports as ExportCompounds } from '4_comp_4'
 import {
 	FormSignInPropedSignIn,
 	FormSignInStoreSignInPropedApp,

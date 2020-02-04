@@ -15,7 +15,7 @@ import {
 	Col,
 	Row,
 } from 'reactstrap'
-import { Exports } from 'component_d_Compounds'
+import { Exports } from '4_comp_4'
 const {
 	ButtonsCommonPropedAuth,
 	FinalForm,

@@ -11,7 +11,7 @@ import {
 	Form,
 } from 'reactstrap'
 import Cards from 'react-credit-cards'
-import { Exports } from 'component_d_Compounds'
+import { Exports } from '4_comp_4'
 import 'react-credit-cards/lib/styles.scss'
 
 const {
