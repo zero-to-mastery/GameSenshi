@@ -1,4 +1,4 @@
-import { Exports as ExportOrganisms } from 'component_e_Organisms'
+import { Exports as ExportOrganisms } from '5_comp_4'
 import { TabPanePaymentSettings } from './TabPanePaymentSettings'
 
 export const Exports = {
