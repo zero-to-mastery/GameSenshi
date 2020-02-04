@@ -5,13 +5,13 @@ import {
 	CORS_WHITE_LIST,
 	PLAYGROUND_ENABLED,
 	APOLLO_ENGINE_API_KEY,
-} from '1_fire_Init'
+} from '1_fire_init'
 import cors from 'cors'
 import { ApolloServer } from 'apollo-server-express'
 import { MemcachedCache } from 'apollo-server-cache-memcached'
 import express from 'express'
 import { typeDefs, resolvers } from 'resolvers'
-import { FUNCTION_SIGN_IN_TWITCH } from '0_constantValues'
+import { FUNCTION_SIGN_IN_TWITCH } from '0_constants'
 import {
 	onSignInTwitch,
 	onCreateUser,

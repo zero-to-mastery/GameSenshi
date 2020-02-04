@@ -1,5 +1,5 @@
-import { fireStored, auth, getServerTimestamp } from '1_fire_Init'
-import { UPDATED_AT } from '0_constantValues'
+import { fireStored, auth, getServerTimestamp } from '1_fire_init'
+import { UPDATED_AT } from '0_constants'
 
 const createDocGetSet = path => {
 	const ref = (uid = auth().currentUser.uid, ...args) =>

@@ -1,11 +1,11 @@
-import { auth, docUserSettingGeneralAvatarSet } from '1_fire_Init'
+import { auth, docUserSettingGeneralAvatarSet } from '1_fire_init'
 import {
 	INTERNAL_ERROR_CODE_2,
 	INTERNAL_ERROR_CODE_4,
 	INTERNAL_ERROR_CODE_7,
 	INTERNAL_ERROR_CODE_8,
 	FUNCTION_CUSTOM_TOKEN,
-} from '0_constantValues'
+} from '0_constants'
 import { resObj } from '1_utils'
 
 // ! cannot return complex object (no nested object)

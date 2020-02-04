@@ -1,4 +1,4 @@
-import { TWITCH_ID, TWITCH_SECRET, onCall } from '1_fire_Init'
+import { TWITCH_ID, TWITCH_SECRET, onCall } from '1_fire_init'
 
 import axios from 'axios'
 import {
@@ -6,7 +6,7 @@ import {
 	INTERNAL_ERROR_CODE_3,
 	FUNCTION_OAUTH_CODE,
 	FUNCTION_REDIRECT_URI,
-} from '0_constantValues'
+} from '0_constants'
 import { resObj } from '1_utils'
 import { getCustomToken } from 'functions/getCustomToken'
 

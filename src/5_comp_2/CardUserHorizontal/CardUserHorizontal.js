@@ -14,7 +14,7 @@ import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_AVATAR,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_DISPLAY_NAME,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS,
-} from '0_constantValues'
+} from '0_constants'
 import { defaultAvatar } from '1_utils'
 
 const {

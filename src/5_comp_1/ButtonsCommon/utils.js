@@ -28,7 +28,7 @@ import {
 	AUTH_FACEBOOK,
 	AUTH_TWITCH,
 	UNEXPECTED_ERROR_CODE_13,
-} from '0_constantValues'
+} from '0_constants'
 import { checkDuplicatedObject } from '1_utils'
 
 const CHECKOUT = 'checkout'

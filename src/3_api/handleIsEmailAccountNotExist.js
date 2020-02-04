@@ -1,6 +1,6 @@
-import { auth } from '1_fire_Init'
+import { auth } from '1_fire_init'
 import { simplerResponseHandling } from '1_utils'
-import { UNEXPECTED_ERROR_CODE_2 } from '0_constantValues'
+import { UNEXPECTED_ERROR_CODE_2 } from '0_constants'
 
 const handleIsEmailAccountNotExist = email => {
 	return auth()

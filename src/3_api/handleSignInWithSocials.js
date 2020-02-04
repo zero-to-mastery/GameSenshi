@@ -1,10 +1,10 @@
-import { auth } from '1_fire_Init'
+import { auth } from '1_fire_init'
 import {
 	AUTH_GOOGLE,
 	AUTH_FACEBOOK,
 	AUTH_TWITCH,
 	ENV_VALUE_TWITCH_OAUTH_LINK,
-} from '0_constantValues'
+} from '0_constants'
 
 const providerGoogle = new auth.GoogleAuthProvider()
 	.addScope('email')

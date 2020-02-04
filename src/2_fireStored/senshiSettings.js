@@ -1,5 +1,5 @@
 import { createDocGetSet } from './utils'
-import { getServerTimestamp } from '1_fire_Init'
+import { getServerTimestamp } from '1_fire_init'
 
 import {
 	fireStorePathSenshiSettingProfile,
@@ -8,7 +8,7 @@ import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL,
 	DATABASE_STATUS_ONLINE,
 	DATABASE_STATUS_ONLINE_LAST,
-} from '0_constantValues'
+} from '0_constants'
 
 const [, docSenshiProfileSet, docSenshiProfileOnSnapshot] = createDocGetSet(
 	fireStorePathSenshiSettingProfile

@@ -4,7 +4,7 @@ import 'firebase/functions'
 import 'firebase/storage'
 import 'firebase/firestore'
 import 'firebase/database'
-import { ENV_VALUE_FIREBASE_CONFIG } from '0_constantValues'
+import { ENV_VALUE_FIREBASE_CONFIG } from '0_constants'
 
 firebase.initializeApp(ENV_VALUE_FIREBASE_CONFIG)
 

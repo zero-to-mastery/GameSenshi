@@ -1,5 +1,5 @@
-import { auth } from '1_fire_Init'
-import { UNEXPECTED_ERROR_CODE_1 } from '0_constantValues'
+import { auth } from '1_fire_init'
+import { UNEXPECTED_ERROR_CODE_1 } from '0_constants'
 import { simplerResponseHandling } from '1_utils'
 
 const handleIsPasswordResetAble = email => {

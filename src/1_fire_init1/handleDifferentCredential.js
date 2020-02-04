@@ -13,8 +13,8 @@ import {
 	UNEXPECTED_ERROR_CODE_11,
 	AUTH_TWITCH,
 	ENV_VALUE_TWITCH_OAUTH_LINK,
-} from '0_constantValues'
-import { auth } from '1_fire_Init/core'
+} from '0_constants'
+import { auth } from '1_fire_init/core'
 
 const linkedThen = () => {
 	storeModalClear()

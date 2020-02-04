@@ -5,10 +5,10 @@
 // 	INTERNAL_ERROR_CODE_9,
 // 	INTERNAL_ERROR_CODE_10,
 // 	INTERNAL_ERROR_CODE_11,
-// } from '0_constantValues'
+// } from '0_constants'
 // import axios from 'axios'
 // import { resObj } from '1_utils'
-// import { auth } from '1_fire_Init'
+// import { auth } from '1_fire_init'
 
 // // not in use
 

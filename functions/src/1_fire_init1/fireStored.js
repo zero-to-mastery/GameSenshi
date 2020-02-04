@@ -1,15 +1,15 @@
-import { fireStored, getServerTimestamp } from '1_fire_Init/core'
+import { fireStored, getServerTimestamp } from '1_fire_init/core'
 
 import {
 	firestorePathSettingsGeneral,
 	fireStorePathUserSettingsNotification,
 	UPDATED_AT,
-} from '0_constantValues'
+} from '0_constants'
 import {
 	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
 	FIRESTORE_USER_SETTINGS_GENERAL_SHORT_ID,
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
-} from '0_constantValues'
+} from '0_constants'
 
 const createDocGetSet = path => {
 	const ref = (...args) => fireStored.doc(path(...args))

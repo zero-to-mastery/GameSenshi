@@ -4,7 +4,7 @@ import Interweave from 'interweave'
 import reactElementToJSXString from 'react-element-to-jsx-string'
 import { simplerErrorMessage } from '1_utils'
 import { STATE, SET_STATE, RESET_STATE } from '2_state/constants'
-import { UNEXPECTED_ERROR_CODE_14 } from '0_constantValues'
+import { UNEXPECTED_ERROR_CODE_14 } from '0_constants'
 
 const STORE_MODAL = 'Modal'
 const STORE_MODAL_STATE_BODY = 'body'

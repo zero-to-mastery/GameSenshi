@@ -4,7 +4,7 @@ import {
 	FUNCTION_EMAIL,
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
-} from '0_constantValues'
+} from '0_constants'
 import { defaultAvatar } from '1_utils'
 
 const STORE_USER = 'User'

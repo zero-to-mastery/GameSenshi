@@ -1,9 +1,9 @@
-import { database, auth, getServerTimestamp } from '1_fire_Init'
+import { database, auth, getServerTimestamp } from '1_fire_init'
 import {
 	DATABASE_STATUS_ONLINE,
 	DATABASE_STATUS_ONLINE_LAST,
 	databasePathStatus,
-} from '0_constantValues'
+} from '0_constants'
 
 const userStatusDatabaseRef = (uid = auth().currentUser.uid) =>
 	database().ref(databasePathStatus(uid))

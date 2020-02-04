@@ -4,7 +4,7 @@ import { storeModalSimpleError } from '2_state'
 import {
 	FIRESTORE_USER_SENSHI_FAVOURITE,
 	UNEXPECTED_ERROR_CODE_19,
-} from '0_constantValues'
+} from '0_constants'
 import { needLoginToClick } from '4_comp_utils'
 
 const useFavourite = (uid, signingIn, signedIn) => {

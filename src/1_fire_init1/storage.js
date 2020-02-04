@@ -1,6 +1,6 @@
-import { firebaseStorage, auth } from '1_fire_Init/core'
+import { firebaseStorage, auth } from '1_fire_init/core'
 
-import { storagePathUserAvatar } from '0_constantValues'
+import { storagePathUserAvatar } from '0_constants'
 
 const storageSetGenerator = path => {
 	const ref = () => firebaseStorage().ref(path(auth().currentUser.uid))

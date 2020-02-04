@@ -1,4 +1,4 @@
-import { auth } from '1_fire_Init'
+import { auth } from '1_fire_init'
 import { isLocationPrivate, isLocationPublic } from '2_routes'
 import {
 	storeUserSetSigningIn,

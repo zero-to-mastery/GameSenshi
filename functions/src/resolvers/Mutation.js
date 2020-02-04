@@ -1,4 +1,4 @@
-import { FUNCTION_SIGN_IN } from '0_constantValues'
+import { FUNCTION_SIGN_IN } from '0_constants'
 
 const Mutation = {
 	[FUNCTION_SIGN_IN]: () => {},

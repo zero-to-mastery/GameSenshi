@@ -8,7 +8,7 @@ import {
 	ENV_APOLLO_ENGINE_API_KEY,
 	ENV_TWITCH_ID,
 	ENV_TWITCH_SECRET,
-} from '0_constantValues'
+} from '0_constants'
 
 admin.initializeApp()
 

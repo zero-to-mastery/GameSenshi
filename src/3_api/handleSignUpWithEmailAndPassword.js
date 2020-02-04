@@ -1,5 +1,5 @@
 import { simplerResponseHandling } from '1_utils'
-import { auth, handleDifferentCredential } from '1_fire_Init'
+import { auth, handleDifferentCredential } from '1_fire_init'
 import { docUserSettingGeneralSetOnSignUpWithEmail } from '2_fireStored'
 import {
 	FUNCTION_EMAIL,
@@ -7,7 +7,7 @@ import {
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
 	UNEXPECTED_ERROR_CODE_5,
 	UNEXPECTED_ERROR_CODE_7,
-} from '0_constantValues'
+} from '0_constants'
 
 const handleSignUpWithEmailAndPassword = async (
 	values,

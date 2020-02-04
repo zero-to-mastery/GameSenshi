@@ -20,7 +20,7 @@ import {
 } from '3_api'
 // utils
 import { onSuccessfulSignUp } from './utils'
-import { FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME } from '0_constantValues'
+import { FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME } from '0_constants'
 
 const FormSignUpPropedDefault = withLastLocation(props => {
 	const onSubmit = useCallback(values => {

@@ -3,7 +3,7 @@ import FsLightBox from 'fslightbox-react'
 import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_YOUTUBE,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_IMAGE,
-} from '0_constantValues'
+} from '0_constants'
 
 const LightBox = props => {
 	const { toggle, sources, ...otherProps } = props

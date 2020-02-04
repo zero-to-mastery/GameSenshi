@@ -10,13 +10,13 @@ import {
 	FIRESTORE_USER_SETTINGS_NOTIFICATION_PUSH_COMMENTS,
 	INTERNAL_ERROR_CODE_5,
 	INTERNAL_ERROR_CODE_6,
-} from '0_constantValues'
+} from '0_constants'
 import nanoid from 'nanoid'
 import {
 	functions,
 	docUserSettingGeneralSetOnUserCreate,
 	docUserSettingNotificationSet,
-} from '1_fire_Init'
+} from '1_fire_init'
 import { resObj } from '1_utils'
 
 const onCreateUser_ = async userRecord => {
