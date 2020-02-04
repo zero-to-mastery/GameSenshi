@@ -1,7 +1,7 @@
 import React from 'react'
 import { stopUndefined } from '1_utils'
 //components
-import { Exports } from '4_comp_3_Molecules'
+import { Exports } from '5_comp_2'
 
 const { FinalInputText } = stopUndefined(Exports)
 
