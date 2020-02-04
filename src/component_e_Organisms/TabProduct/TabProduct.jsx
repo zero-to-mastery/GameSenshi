@@ -1,7 +1,7 @@
 import React from 'react'
 import { stopUndefined } from '1_utils'
 import { Container, Row, Col } from 'reactstrap'
-import { Exports } from 'component_c_Molecules'
+import { Exports } from '4_comp_3_Molecules'
 
 const {
 	ImagesTooltipPropedTabs,

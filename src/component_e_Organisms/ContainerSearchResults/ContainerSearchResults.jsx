@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { stopUndefined } from '1_utils'
-import { Exports } from 'component_c_Molecules'
+import { Exports } from '4_comp_3_Molecules'
 
 const {
 	PanelSortBy,

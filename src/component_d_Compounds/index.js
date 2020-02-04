@@ -1,4 +1,4 @@
-import { Exports as ExportMolecules } from 'component_c_Molecules'
+import { Exports as ExportMolecules } from '4_comp_3_Molecules'
 import {
 	FinalTextCardNumberPropedDefault,
 	FINAL_TEXT_CARD_NUMBER,

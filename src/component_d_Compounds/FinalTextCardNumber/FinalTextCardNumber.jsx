@@ -3,7 +3,7 @@ import React from 'react'
 import { stopUndefined } from '1_utils'
 import { string } from 'yup'
 //components
-import { Exports } from 'component_c_Molecules'
+import { Exports } from '4_comp_3_Molecules'
 
 const { FinalInputText } = stopUndefined(Exports)
 
