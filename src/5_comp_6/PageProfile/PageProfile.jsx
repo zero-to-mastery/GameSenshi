@@ -3,12 +3,7 @@ import { stopUndefined } from '1_utils'
 import Loader from 'react-loader-spinner'
 import { Exports } from '5_comp_5'
 import { ROUTE_PARAM_UID, useParams } from '2_routes'
-import {
-	ColStyledSection,
-	ColStyledGiftCard,
-	RowStyledCarousel,
-	ColStyledTitle,
-} from './styled'
+import { ColStyledSection, ColStyledGiftCard, ColStyledTitle } from './styled'
 
 const {
 	CarouselLightBoxPropedProfile,
@@ -109,8 +104,8 @@ const PageProfile = props => {
 						</Section>
 						<Section>
 							<Row>
-								<Col lg='5'>
-									<RowStyledCarousel xs='1'>
+								<Col lg='4.75'>
+									<Row xs='1'>
 										<Col className='bg-dark-navy-gradient p-0'>
 											<CarouselLightBoxPropedProfile items={dataCarousel} />
 										</Col>
@@ -124,9 +119,10 @@ const PageProfile = props => {
 												</ColStyledGiftCard>
 											</Row>
 										</Col>
-									</RowStyledCarousel>
+									</Row>
 								</Col>
-								<Col lg='7'>
+								<Col xs='0' lg='0.25' />
+								<Col lg='6.8'>
 									<Row xs='1'>
 										<Col>
 											<Row xs='1'>

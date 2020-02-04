@@ -32,20 +32,4 @@ const ColStyledTitle = props => {
 	return <Col className={classnames(className, 'mt-3')} {...otherProps} />
 }
 
-const RowStyledCarousel = props => {
-	return (
-		<Row
-			css={responsiveCssGenerator({
-				lg: pr_4,
-			})}
-			{...props}
-		/>
-	)
-}
-
-export {
-	ColStyledSection,
-	ColStyledGiftCard,
-	RowStyledCarousel,
-	ColStyledTitle,
-}
+export { ColStyledSection, ColStyledGiftCard, ColStyledTitle }
