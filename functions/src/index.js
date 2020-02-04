@@ -17,7 +17,7 @@ import {
 	onCreateUser,
 	onCreateDoc,
 	onCreateDocSub,
-} from 'functions'
+} from '2_functions'
 
 const app = express()
 
