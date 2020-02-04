@@ -12,7 +12,7 @@ import {
 	Form,
 } from 'reactstrap'
 // core components
-import { Exports } from '4_comp_4'
+import { Exports } from '5_comp_3'
 
 const {
 	FinalForm,
