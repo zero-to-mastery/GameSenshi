@@ -3,20 +3,15 @@ import { STATE, SET_STATE, RESET_STATE } from '2_state/constants'
 
 const STORE_ALERT_STATE_BODY = 'body'
 const STORE_ALERT_STATE_IS_OPEN = 'isOpen'
-const STORE_ALERT_STATE_COLOR = 'color'
-const STORE_ALERT_STATE_ICON = 'icon'
+const STORE_ALERT_STATE_STATUS = 'status'
 
 const TOGGLE = 'toggle'
 const SHOW = 'show'
 
-const DEFAULT_ICON = 'tim-icons icon-bell-55'
-const DEFAULT_COLOR = 'success'
-
 const defaultValues = () => ({
 	[STORE_ALERT_STATE_BODY]: '',
 	[STORE_ALERT_STATE_IS_OPEN]: false,
-	[STORE_ALERT_STATE_COLOR]: DEFAULT_COLOR,
-	[STORE_ALERT_STATE_ICON]: DEFAULT_ICON,
+	[STORE_ALERT_STATE_STATUS]: true,
 })
 
 class StoreAlert extends Container {
@@ -31,12 +26,11 @@ class StoreAlert extends Container {
 		return this
 	};
 
-	[SHOW] = (body = '', color = DEFAULT_COLOR, icon = DEFAULT_ICON) => {
+	[SHOW] = (body = '', status = true) => {
 		this[SET_STATE]({
 			[STORE_ALERT_STATE_BODY]: body,
 			[STORE_ALERT_STATE_IS_OPEN]: true,
-			[STORE_ALERT_STATE_COLOR]: color,
-			[STORE_ALERT_STATE_ICON]: icon,
+			[STORE_ALERT_STATE_STATUS]: status,
 		})
 		return this
 	};
@@ -53,8 +47,7 @@ export {
 	StoreAlert,
 	STORE_ALERT_STATE_BODY,
 	STORE_ALERT_STATE_IS_OPEN,
-	STORE_ALERT_STATE_COLOR,
-	STORE_ALERT_STATE_ICON,
+	STORE_ALERT_STATE_STATUS,
 	SHOW,
 	TOGGLE,
 	SET_STATE,
