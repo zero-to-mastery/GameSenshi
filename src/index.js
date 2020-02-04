@@ -11,7 +11,7 @@ import {
 } from '2_state'
 import { history } from '2_routes'
 import { goLastRoute } from '2_routes'
-import { onAuthStateChange, getRedirectResult } from '3_onAppEvent'
+import { onAuthStateChange, getRedirectResult } from '3_app_event'
 import '0_assets/css/nucleo-icons.css'
 import '0_assets/scss/blk-design-system-pro-react.scss?v1.0.0'
 import '0_assets/demo/demo.css'

@@ -11,7 +11,7 @@ import { auth } from '1_fire_init'
 import {
 	databaseConnectionRefOn,
 	databaseConnectionRefOff,
-} from '3_onAppEvent/userPresence'
+} from '3_app_event/userPresence'
 import { docUserSettingGeneralOnSnapshot } from '2_fire_store'
 
 const ACTION = 'action'
