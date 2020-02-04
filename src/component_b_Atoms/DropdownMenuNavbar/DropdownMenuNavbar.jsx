@@ -1,7 +1,7 @@
 import React from 'react'
 import { DropdownMenu, DropdownItem } from 'reactstrap'
 
-import { Exports } from 'component_a_Protons'
+import { Exports } from '4_comp_1_Protons'
 import { stopUndefined } from '1_utils'
 
 const { Link } = stopUndefined(Exports)

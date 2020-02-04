@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from 'react'
 import Image from 'material-ui-image'
-import { Exports } from 'component_a_Protons'
+import { Exports } from '4_comp_1_Protons'
 import { stopUndefined } from '1_utils'
 const { Button } = stopUndefined(Exports)
 

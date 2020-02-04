@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 // reactstrap
 import { Media, NavbarBrand } from 'reactstrap'
 // components
-import { Exports } from 'component_a_Protons'
+import { Exports } from '4_comp_1_Protons'
 import { stopUndefined } from '1_utils'
 
 const { Link } = stopUndefined(Exports)

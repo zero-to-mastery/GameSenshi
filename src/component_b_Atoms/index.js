@@ -1,4 +1,4 @@
-import { Exports as ExportProtons } from 'component_a_Protons'
+import { Exports as ExportProtons } from '4_comp_1_Protons'
 import { FinalForm } from './FinalForm'
 import { TextAlert } from './TextAlert'
 import {

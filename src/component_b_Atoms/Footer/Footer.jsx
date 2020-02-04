@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavItem, NavLink, Nav } from 'reactstrap'
 import { ROUTE_PAGE_PROFILE } from '2_routes'
-import { Exports } from 'component_a_Protons'
+import { Exports } from '4_comp_1_Protons'
 import { stopUndefined } from '1_utils'
 import { H1Styled, H3Styled } from './styled'
 

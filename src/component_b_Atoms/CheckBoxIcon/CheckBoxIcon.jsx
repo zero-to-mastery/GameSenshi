@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { Tooltip } from 'reactstrap'
 import classnames from 'classnames'
-import { Exports } from 'component_a_Protons'
+import { Exports } from '4_comp_1_Protons'
 import { stopUndefined } from '1_utils'
 import Loader from 'react-loader-spinner'
 const { Button } = stopUndefined(Exports)
