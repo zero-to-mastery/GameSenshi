@@ -19,65 +19,72 @@ const Footer = () => {
 		<footer className='footer'>
 			<Container>
 				<Row xs='1'>
-					<Col lg='2'>
-						<H1Styled className='title'>GAME SENSHI</H1Styled>
+					<Col lg='2.5'>
+						<H1Styled className='title text-nowrap'>GAME SENSHI</H1Styled>
 					</Col>
-					<Col lg='3'>
-						<Nav className='w-100'>
-							<NavItem>
-								<NavLink to='/' tag={Link}>
-									Home
-								</NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink to='/landing-page' tag={Link}>
-									Landing
-								</NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink to='/register-page' tag={Link}>
-									Register
-								</NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink to={ROUTE_PAGE_PROFILE} tag={Link}>
-									Profile
-								</NavLink>
-							</NavItem>
-						</Nav>
-					</Col>
-					<Col lg='3'>
-						<Nav className='w-100'>
-							<NavItem>
-								<NavLink
-									href='https://creative-tim.com/contact-us?ref=blkdsr-footer'
-									tag={Link}
-								>
-									Contact Us
-								</NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink
-									tag={Link}
-									href='https://creative-tim.com/about-us?ref=blkdsr-footer'
-								>
-									About Us
-								</NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink
-									tag={Link}
-									href='https://creative-tim.com/blog?ref=blkdsr-footer'
-								>
-									Blog
-								</NavLink>
-							</NavItem>
-							<NavItem>
-								<NavLink tag={Link} href='https://opensource.org/licenses/MIT'>
-									License
-								</NavLink>
-							</NavItem>
-						</Nav>
+					<Col lg='5.5'>
+						<Row className='justify-content-center'>
+							<Col xs='4' lg='6'>
+								<Nav className='w-100'>
+									<NavItem>
+										<NavLink to='/' tag={Link}>
+											Home
+										</NavLink>
+									</NavItem>
+									<NavItem>
+										<NavLink to='/landing-page' tag={Link}>
+											Landing
+										</NavLink>
+									</NavItem>
+									<NavItem>
+										<NavLink to='/register-page' tag={Link}>
+											Register
+										</NavLink>
+									</NavItem>
+									<NavItem>
+										<NavLink to={ROUTE_PAGE_PROFILE} tag={Link}>
+											Profile
+										</NavLink>
+									</NavItem>
+								</Nav>
+							</Col>
+							<Col xs='4' lg='6'>
+								<Nav className='w-100'>
+									<NavItem>
+										<NavLink
+											href='https://creative-tim.com/contact-us?ref=blkdsr-footer'
+											tag={Link}
+										>
+											Contact Us
+										</NavLink>
+									</NavItem>
+									<NavItem>
+										<NavLink
+											tag={Link}
+											href='https://creative-tim.com/about-us?ref=blkdsr-footer'
+										>
+											About Us
+										</NavLink>
+									</NavItem>
+									<NavItem>
+										<NavLink
+											tag={Link}
+											href='https://creative-tim.com/blog?ref=blkdsr-footer'
+										>
+											Blog
+										</NavLink>
+									</NavItem>
+									<NavItem>
+										<NavLink
+											tag={Link}
+											href='https://opensource.org/licenses/MIT'
+										>
+											License
+										</NavLink>
+									</NavItem>
+								</Nav>
+							</Col>
+						</Row>
 					</Col>
 					<Col lg='4'>
 						<H3Styled className='title'>Follow us:</H3Styled>
