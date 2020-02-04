@@ -150,7 +150,7 @@ class StoreModal extends Container {
 			<>
 				{simplerErrorMessage(err, defaultErrorMessage)}.
 				<br />
-				{`Code: ${defaultErrorMessage[0]}`}
+				{`Error Code: ${defaultErrorMessage[0]}`}
 			</>,
 			false
 		)

@@ -18,11 +18,7 @@ import { auth } from '1_fire_init/core'
 
 const linkedThen = () => {
 	storeModalClear()
-	storeAlertShow(
-		'Social login linked successfully!',
-		'success',
-		'tim-icons icon-bell-55'
-	)
+	storeAlertShow('Social login linked successfully!', true)
 }
 
 const getProvider = method => {
