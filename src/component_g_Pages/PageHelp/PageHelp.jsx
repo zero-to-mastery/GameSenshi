@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { stopUndefined } from '1_utils'
-import { Exports } from 'component_f_MultiOrganisms'
+import { Exports } from '5_comp_5'
 
 // reactstrap components
 import { Container, Row, Col } from 'reactstrap'

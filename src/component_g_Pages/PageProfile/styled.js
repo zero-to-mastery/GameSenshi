@@ -4,7 +4,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { stopUndefined } from '1_utils'
 import { responsiveCssGenerator, pr_4 } from '0_styled'
-import { Exports } from 'component_f_MultiOrganisms'
+import { Exports } from '5_comp_5'
 const { Col, Row } = stopUndefined(Exports)
 
 const ColStyledSection = props => {

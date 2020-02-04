@@ -1,6 +1,6 @@
 import React from 'react'
 import { stopUndefined } from '1_utils'
-import { Exports } from 'component_f_MultiOrganisms'
+import { Exports } from '5_comp_5'
 import audioSample from '0_assets/audio/sampleVoice.mp3'
 import { TabDiscover } from './TabDiscover'
 const {

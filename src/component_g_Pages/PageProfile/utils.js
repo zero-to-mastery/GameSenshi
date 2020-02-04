@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { stopUndefined } from '1_utils'
-import { Exports } from 'component_f_MultiOrganisms'
+import { Exports } from '5_comp_5'
 import { docSenshiProfileOnSnapshot } from '2_fireStored'
 import {
 	UNEXPECTED_ERROR_CODE_16,

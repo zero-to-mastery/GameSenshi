@@ -7,7 +7,7 @@ import {
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
 } from '2_routes'
 import { stopUndefined } from '1_utils'
-import { Exports } from 'component_f_MultiOrganisms'
+import { Exports } from '5_comp_5'
 import { Route, Switch } from 'react-router-dom'
 
 const GENERAL = 'General'

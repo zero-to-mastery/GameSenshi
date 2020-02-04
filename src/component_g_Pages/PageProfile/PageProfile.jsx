@@ -1,7 +1,7 @@
 import React from 'react'
 import { stopUndefined } from '1_utils'
 import Loader from 'react-loader-spinner'
-import { Exports } from 'component_f_MultiOrganisms'
+import { Exports } from '5_comp_5'
 import { ROUTE_PARAM_UID, useParams } from '2_routes'
 import {
 	ColStyledSection,

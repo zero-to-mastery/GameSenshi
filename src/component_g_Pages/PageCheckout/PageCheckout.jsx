@@ -1,7 +1,7 @@
 import React from 'react'
 import { stopUndefined } from '1_utils'
 import { Container, Row, Col } from 'reactstrap'
-import { Exports } from 'component_f_MultiOrganisms'
+import { Exports } from '5_comp_5'
 
 const {
 	CheckoutCardPropedDefault,

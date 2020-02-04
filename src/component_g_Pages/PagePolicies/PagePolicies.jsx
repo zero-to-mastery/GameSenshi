@@ -13,7 +13,7 @@ import {
 	ROUTE_PAGE_POLICY_PRIVACY,
 } from '2_routes'
 import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap'
-import { Exports } from 'component_f_MultiOrganisms'
+import { Exports } from '5_comp_5'
 import ButtonBase from '@material-ui/core/ButtonBase'
 
 const { LinkNoBase, Section, WrapperStoreWrapperPropedIndex } = stopUndefined(

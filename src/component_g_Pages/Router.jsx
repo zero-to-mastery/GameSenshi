@@ -47,7 +47,7 @@ import { PageFilter } from './PageFilter'
 import { PageHelp } from './PageHelp'
 import { PageChat } from './PageChat'
 
-import { Exports } from 'component_f_MultiOrganisms'
+import { Exports } from '5_comp_5'
 
 const {
 	PageError,
