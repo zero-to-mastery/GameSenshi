@@ -16,7 +16,7 @@ const storeAlertToggle = storeAlert[TOGGLE]
 const storeAlertSetState = storeAlert[SET_STATE]
 const storeAlertResetState = storeAlert[RESET_STATE]
 
-// why no export state? Because it lose reference easily
+// why no export state? Because it lose reference
 // no need to output method constant as they are now variable name
 export {
 	storeAlert,

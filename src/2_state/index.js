@@ -101,6 +101,18 @@ import {
 	STORE_SOUND_STATE_UUID,
 } from './Sound'
 
+import {
+	storeAlertSide,
+	storeAlertSideShow,
+	storeAlertSideToggle,
+	storeAlertSideSetState,
+	storeAlertSideResetState,
+	STORE_ALERT_SIDE_STATE_BODY,
+	STORE_ALERT_SIDE_STATE_IS_OPEN,
+	STORE_ALERT_SIDE_STATE_COLOR,
+	STORE_ALERT_SIDE_STATE_ICON,
+} from 'AlertSide'
+
 export {
 	STATE,
 	RESET_STATE,
@@ -185,4 +197,13 @@ export {
 	storeSoundResetState,
 	storeSoundSetUuid,
 	STORE_SOUND_STATE_UUID,
+	storeAlertSide,
+	storeAlertSideShow,
+	storeAlertSideToggle,
+	storeAlertSideSetState,
+	storeAlertSideResetState,
+	STORE_ALERT_SIDE_STATE_BODY,
+	STORE_ALERT_SIDE_STATE_IS_OPEN,
+	STORE_ALERT_SIDE_STATE_COLOR,
+	STORE_ALERT_SIDE_STATE_ICON,
 }
