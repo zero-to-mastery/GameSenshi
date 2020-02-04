@@ -12,7 +12,7 @@ import {
 	ROUTE_PAGE_PROFILE,
 } from '2_routes'
 import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from '2_state'
-import { signOut } from 'component_0_Utils'
+import { signOut } from '4_comp_0_Utils'
 
 const NavbarIndexItems = () => [
 	{

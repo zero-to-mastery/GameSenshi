@@ -22,7 +22,7 @@ import {
 	STORE_SIGN_IN_STATE_EMAIL,
 	STORE_SIGN_IN_STATE_IS_OPEN,
 } from '2_state'
-import { onLogin } from 'component_0_Utils'
+import { onLogin } from '4_comp_0_Utils'
 
 const FormSignInPropedSignIn = props => {
 	const {
