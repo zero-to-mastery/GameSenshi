@@ -1,4 +1,4 @@
-import { auth, docUserSettingGeneralAvatarSet } from 'firebaseInit'
+import { auth, docUserSettingGeneralAvatarSet } from '1_firebaseInit'
 import {
 	INTERNAL_ERROR_CODE_2,
 	INTERNAL_ERROR_CODE_4,

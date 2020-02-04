@@ -8,7 +8,7 @@
 // } from '0_constantValues'
 // import axios from 'axios'
 // import { resObj } from '1_utils'
-// import { auth } from 'firebaseInit'
+// import { auth } from '1_firebaseInit'
 
 // // not in use
 

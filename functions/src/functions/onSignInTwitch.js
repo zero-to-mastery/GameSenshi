@@ -1,4 +1,4 @@
-import { TWITCH_ID, TWITCH_SECRET, onCall } from 'firebaseInit'
+import { TWITCH_ID, TWITCH_SECRET, onCall } from '1_firebaseInit'
 
 import axios from 'axios'
 import {

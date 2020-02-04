@@ -1,4 +1,4 @@
-import { database, auth, getServerTimestamp } from 'firebaseInit'
+import { database, auth, getServerTimestamp } from '1_firebaseInit'
 import {
 	DATABASE_STATUS_ONLINE,
 	DATABASE_STATUS_ONLINE_LAST,

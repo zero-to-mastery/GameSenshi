@@ -1,4 +1,4 @@
-import { fireStored, auth, getServerTimestamp } from 'firebaseInit'
+import { fireStored, auth, getServerTimestamp } from '1_firebaseInit'
 import { UPDATED_AT } from '0_constantValues'
 
 const createDocGetSet = path => {

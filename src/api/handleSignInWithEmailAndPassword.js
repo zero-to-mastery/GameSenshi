@@ -1,4 +1,4 @@
-import { auth } from 'firebaseInit'
+import { auth } from '1_firebaseInit'
 import { UNEXPECTED_ERROR_CODE_4 } from '0_constantValues'
 import { simplerResponseHandling } from '1_utils'
 

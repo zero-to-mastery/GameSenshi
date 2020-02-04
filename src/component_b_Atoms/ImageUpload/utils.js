@@ -1,5 +1,5 @@
 import { storeAlertShow, storeUserResetAvatar } from '2_state'
-import { storageUserAvatarRemove } from 'firebaseInit'
+import { storageUserAvatarRemove } from '1_firebaseInit'
 import { docUserSettingGeneralAvatarSet } from 'fireStored'
 const emptyString = ''
 

@@ -7,7 +7,7 @@ import {
 	storeWrapper,
 	storeUserOnSignIn,
 } from '2_state'
-import { auth } from 'firebaseInit'
+import { auth } from '1_firebaseInit'
 import {
 	databaseConnectionRefOn,
 	databaseConnectionRefOff,

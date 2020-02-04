@@ -5,7 +5,7 @@ import {
 	CORS_WHITE_LIST,
 	PLAYGROUND_ENABLED,
 	APOLLO_ENGINE_API_KEY,
-} from 'firebaseInit'
+} from '1_firebaseInit'
 import cors from 'cors'
 import { ApolloServer } from 'apollo-server-express'
 import { MemcachedCache } from 'apollo-server-cache-memcached'

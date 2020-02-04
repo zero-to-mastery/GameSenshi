@@ -1,5 +1,5 @@
 import { storeAlertShow, storeProgress } from '2_state'
-import { storageUserAvatarSet, storageUserAvatarGet } from 'firebaseInit'
+import { storageUserAvatarSet, storageUserAvatarGet } from '1_firebaseInit'
 import { docUserSettingGeneralAvatarSet } from 'fireStored'
 
 const onCrop = (e, dataUrl, toggle) => {

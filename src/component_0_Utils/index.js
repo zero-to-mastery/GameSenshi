@@ -1,4 +1,4 @@
-import { auth } from 'firebaseInit'
+import { auth } from '1_firebaseInit'
 import { isLocationPrivate, isLocationPublic } from '2_routes'
 import {
 	storeUserSetSigningIn,
