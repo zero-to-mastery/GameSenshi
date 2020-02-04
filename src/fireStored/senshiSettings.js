@@ -8,7 +8,7 @@ import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL,
 	DATABASE_STATUS_ONLINE,
 	DATABASE_STATUS_ONLINE_LAST,
-} from 'constantValues'
+} from '0_constantValues'
 
 const [, docSenshiProfileSet, docSenshiProfileOnSnapshot] = createDocGetSet(
 	fireStorePathSenshiSettingProfile

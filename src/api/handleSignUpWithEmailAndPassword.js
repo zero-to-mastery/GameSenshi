@@ -7,7 +7,7 @@ import {
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
 	UNEXPECTED_ERROR_CODE_5,
 	UNEXPECTED_ERROR_CODE_7,
-} from 'constantValues'
+} from '0_constantValues'
 
 const handleSignUpWithEmailAndPassword = async (
 	values,

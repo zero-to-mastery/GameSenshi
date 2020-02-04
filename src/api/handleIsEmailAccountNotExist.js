@@ -1,6 +1,6 @@
 import { auth } from 'firebaseInit'
 import { simplerResponseHandling } from 'utils'
-import { UNEXPECTED_ERROR_CODE_2 } from 'constantValues'
+import { UNEXPECTED_ERROR_CODE_2 } from '0_constantValues'
 
 const handleIsEmailAccountNotExist = email => {
 	return auth()

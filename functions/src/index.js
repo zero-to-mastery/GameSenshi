@@ -11,7 +11,7 @@ import { ApolloServer } from 'apollo-server-express'
 import { MemcachedCache } from 'apollo-server-cache-memcached'
 import express from 'express'
 import { typeDefs, resolvers } from 'resolvers'
-import { FUNCTION_SIGN_IN_TWITCH } from 'constantValues'
+import { FUNCTION_SIGN_IN_TWITCH } from '0_constantValues'
 import {
 	onSignInTwitch,
 	onCreateUser,

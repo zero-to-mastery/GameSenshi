@@ -4,12 +4,12 @@ import {
 	firestorePathSettingsGeneral,
 	fireStorePathUserSettingsNotification,
 	UPDATED_AT,
-} from 'constantValues'
+} from '0_constantValues'
 import {
 	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
 	FIRESTORE_USER_SETTINGS_GENERAL_SHORT_ID,
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
-} from 'constantValues'
+} from '0_constantValues'
 
 const createDocGetSet = path => {
 	const ref = (...args) => fireStored.doc(path(...args))

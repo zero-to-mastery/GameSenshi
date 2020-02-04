@@ -6,7 +6,7 @@ import {
 	INTERNAL_ERROR_CODE_3,
 	FUNCTION_OAUTH_CODE,
 	FUNCTION_REDIRECT_URI,
-} from 'constantValues'
+} from '0_constantValues'
 import { resObj } from 'utils'
 import { getCustomToken } from 'functions/getCustomToken'
 

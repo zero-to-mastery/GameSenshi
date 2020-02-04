@@ -4,7 +4,7 @@ import {
 	AUTH_FACEBOOK,
 	AUTH_TWITCH,
 	ENV_VALUE_TWITCH_OAUTH_LINK,
-} from 'constantValues'
+} from '0_constantValues'
 
 const providerGoogle = new auth.GoogleAuthProvider()
 	.addScope('email')

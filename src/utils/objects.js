@@ -3,7 +3,7 @@ import {
 	FUNCTION_CODE,
 	FUNCTION_MESSAGE,
 	FUNCTION_DATA,
-} from 'constantValues'
+} from '0_constantValues'
 
 const simplerErrorMessage = (error = {}, defaultErrorMessage = ['']) => {
 	const { code, message } = error

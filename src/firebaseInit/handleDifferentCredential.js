@@ -13,7 +13,7 @@ import {
 	UNEXPECTED_ERROR_CODE_11,
 	AUTH_TWITCH,
 	ENV_VALUE_TWITCH_OAUTH_LINK,
-} from 'constantValues'
+} from '0_constantValues'
 import { auth } from 'firebaseInit/core'
 
 const linkedThen = () => {

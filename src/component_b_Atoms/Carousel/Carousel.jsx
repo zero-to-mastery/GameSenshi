@@ -9,7 +9,7 @@ import styles from './styles.module.css'
 import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_YOUTUBE,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_IMAGE,
-} from 'constantValues'
+} from '0_constantValues'
 
 const RENDER_ITEM = 'renderItem'
 const RENDER_THUMB_INNER = 'renderThumbInner'

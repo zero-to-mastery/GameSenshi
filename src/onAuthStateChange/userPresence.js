@@ -3,7 +3,7 @@ import {
 	DATABASE_STATUS_ONLINE,
 	DATABASE_STATUS_ONLINE_LAST,
 	databasePathStatus,
-} from 'constantValues'
+} from '0_constantValues'
 
 const userStatusDatabaseRef = (uid = auth().currentUser.uid) =>
 	database().ref(databasePathStatus(uid))

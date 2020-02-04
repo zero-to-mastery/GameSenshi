@@ -1,5 +1,5 @@
 import React from 'react'
-import { FIRESTORE_SENSHI_SETTINGS_PROFILE_GENDER_FEMALE } from 'constantValues'
+import { FIRESTORE_SENSHI_SETTINGS_PROFILE_GENDER_FEMALE } from '0_constantValues'
 import { BADGES_COLOR, BADGES_BODY, BADGES_ID, BADGES_CLASS } from './Badges'
 import { createGetOptions } from 'utils'
 import styles from './styles.module.css'

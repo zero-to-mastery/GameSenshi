@@ -7,7 +7,7 @@ import {
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES,
 	FIRESTORE_USER_SENSHI_FAVOURITE,
-} from 'constantValues'
+} from '0_constantValues'
 import { auth } from 'firebaseInit'
 
 const [

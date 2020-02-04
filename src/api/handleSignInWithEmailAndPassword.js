@@ -1,5 +1,5 @@
 import { auth } from 'firebaseInit'
-import { UNEXPECTED_ERROR_CODE_4 } from 'constantValues'
+import { UNEXPECTED_ERROR_CODE_4 } from '0_constantValues'
 import { simplerResponseHandling } from 'utils'
 
 const handleSignInWithEmailAndPassword = async (email, password) => {

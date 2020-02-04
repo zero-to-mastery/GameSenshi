@@ -9,7 +9,7 @@ import {
 	FUNCTION_DATA,
 	FUNCTION_STATUS,
 	FUNCTION_MESSAGE,
-} from 'constantValues'
+} from '0_constantValues'
 
 const typeDefs = gql`
   type Query {

@@ -1,5 +1,5 @@
 import { firestoreF, getServerTimestamp } from 'firebaseInit'
-import { CREATED_AT, UPDATED_AT } from 'constantValues'
+import { CREATED_AT, UPDATED_AT } from '0_constantValues'
 
 const paths = [
 	'{collecId}/{docId}',
