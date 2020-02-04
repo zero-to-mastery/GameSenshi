@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { Exports } from '4_comp_2_Atoms'
+import { Exports } from '5_comp_1'
 import { stopUndefined } from '1_utils'
 import Image from 'material-ui-image'
 import shorthash from 'shorthash'

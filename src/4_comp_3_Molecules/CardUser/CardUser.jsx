@@ -3,7 +3,7 @@ import { Card, CardBody } from 'reactstrap'
 import classnames from 'classnames'
 import Image from 'material-ui-image'
 import { DivStyledHover, TextStyledYellow } from './styled'
-import { Exports } from '4_comp_2_Atoms'
+import { Exports } from '5_comp_1'
 import { stopUndefined } from '1_utils'
 
 const {

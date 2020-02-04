@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { FinalInput } from './FinalInput'
-import { Exports } from '4_comp_2_Atoms'
+import { Exports } from '5_comp_1'
 import { stopUndefined } from '1_utils'
 
 const { InputText, InputSelect, InputDate } = stopUndefined(Exports)

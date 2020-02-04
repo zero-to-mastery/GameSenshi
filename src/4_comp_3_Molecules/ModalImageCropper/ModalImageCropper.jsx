@@ -1,7 +1,7 @@
 import React, { useRef, useCallback, useState, memo } from 'react'
 import Cropper from 'react-cropper'
 import 'cropperjs/dist/cropper.css'
-import { Exports } from '4_comp_2_Atoms'
+import { Exports } from '5_comp_1'
 import { stopUndefined } from '1_utils'
 
 const { Modal } = stopUndefined(Exports)

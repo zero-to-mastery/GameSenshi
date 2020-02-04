@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { stopUndefined } from '1_utils'
-import { Exports } from '4_comp_2_Atoms'
+import { Exports } from '5_comp_1'
 const { Carousel, LightBox } = stopUndefined(Exports)
 
 const CarouselLightBox = props => {
