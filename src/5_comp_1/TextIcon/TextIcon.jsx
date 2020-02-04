@@ -17,7 +17,7 @@ const TextIcon = props => {
 	} = props
 
 	return (
-		<H className={classnames('d-flex', className)} {...otherProps}>
+		<H className={classnames('d-flex text-nowrap', className)} {...otherProps}>
 			<Icon image={image} emoji={emoji} icon={icon} aria-label={aria} />
 			{children}
 		</H>
