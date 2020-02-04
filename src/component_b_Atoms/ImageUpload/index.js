@@ -11,7 +11,7 @@ import {
 	storeUser,
 	storeUserResetAvatar,
 	STORE_USER_STATE_AVATAR,
-} from 'state'
+} from '2_state'
 
 const mapStoreUserStateToProps = {
 	[IMAGE_UPLOAD_STATE_IMAGE]: STORE_USER_STATE_AVATAR,

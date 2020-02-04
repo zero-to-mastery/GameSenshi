@@ -9,7 +9,7 @@ import {
 	STORE_USER_STATE_SIGNED_IN,
 	STATE,
 	STORE_USER_STATE_SIGNING_IN,
-} from 'state'
+} from '2_state'
 
 const App = () => {
 	const [apolloClient, setApolloClient] = useState(tempClient)

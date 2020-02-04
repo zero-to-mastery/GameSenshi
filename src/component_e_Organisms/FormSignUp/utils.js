@@ -1,6 +1,6 @@
 import React from 'react'
 // state management
-import { storeAlertShow, storeUserSetSigningIn } from 'state'
+import { storeAlertShow, storeUserSetSigningIn } from '2_state'
 import { FINAL_TEXT_EMAIL, FINAL_TEXT_NAME } from './FormSignUp'
 
 const onSuccessfulSignUp = values => {

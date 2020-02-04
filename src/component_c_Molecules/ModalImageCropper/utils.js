@@ -1,4 +1,4 @@
-import { storeAlertShow, storeProgress } from 'state'
+import { storeAlertShow, storeProgress } from '2_state'
 import { storageUserAvatarSet, storageUserAvatarGet } from 'firebaseInit'
 import { docUserSettingGeneralAvatarSet } from 'fireStored'
 

@@ -7,7 +7,7 @@ import {
 	LIST_NAV_ITEM_ON_CLICK,
 } from './ListNavItem'
 import { AvatarUserStoreUser } from 'component_b_Atoms/AvatarUser'
-import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from 'state'
+import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from '2_state'
 import {
 	ROUTE_PAGE_JOIN,
 	ROUTE_PAGE_APPOINTMENTS,

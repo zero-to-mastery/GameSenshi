@@ -6,7 +6,7 @@ import {
 	storeUser,
 	STORE_USER_STATE_SIGNING_IN,
 	STORE_USER_STATE_SIGNED_IN,
-} from 'state'
+} from '2_state'
 
 const SIGNED_IN = 'signedIn'
 const SIGNING_IN = 'signingIn'

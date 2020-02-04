@@ -1,6 +1,6 @@
 import React from 'react'
 import { Subscribe } from 'unstated'
-import { STATE } from 'state/constants'
+import { STATE } from '2_state/constants'
 import { convertToArrayIfNotArray } from '1_utils'
 
 const StateContainer = (

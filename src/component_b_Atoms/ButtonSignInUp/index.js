@@ -1,7 +1,7 @@
 import React from 'react'
 import { ButtonSignInUp, BUTTON_SIGN_IN_STATE_SHOW } from './ButtonSignInUp'
 import { ROUTE_PAGE_SIGN_IN, ROUTE_PAGE_SIGN_UP, useLocation } from '2_routes'
-import { StateContainer, storeUser, STORE_USER_STATE_SIGNED_IN } from 'state'
+import { StateContainer, storeUser, STORE_USER_STATE_SIGNED_IN } from '2_state'
 
 const mapStoreUserStateToProp = {
 	[BUTTON_SIGN_IN_STATE_SHOW]: state => !state[STORE_USER_STATE_SIGNED_IN],

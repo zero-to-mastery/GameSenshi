@@ -7,7 +7,7 @@ import {
 	storeModalSetItem,
 	storeModalSimpleError,
 	storeModalClear,
-} from 'state'
+} from '2_state'
 import {
 	UNEXPECTED_ERROR_CODE_8,
 	UNEXPECTED_ERROR_CODE_11,

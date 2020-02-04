@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { ListNavItem, LIST_NAV_ITEM_STATE_SHOW } from './ListNavItem'
-import { StateContainer, storeUser, STORE_USER_STATE_SIGNED_IN } from 'state'
+import { StateContainer, storeUser, STORE_USER_STATE_SIGNED_IN } from '2_state'
 import {
 	signedInNavItems,
 	signedInNavItemsCollapsed,

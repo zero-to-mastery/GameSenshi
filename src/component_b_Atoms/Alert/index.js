@@ -15,7 +15,7 @@ import {
 	STORE_ALERT_STATE_IS_OPEN,
 	STORE_ALERT_STATE_COLOR,
 	storeAlertToggle,
-} from 'state'
+} from '2_state'
 
 const mapStoreAlertStateToProp = {
 	[ALERT_STATE_BODY]: STORE_ALERT_STATE_BODY,

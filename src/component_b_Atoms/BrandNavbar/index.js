@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { ROUTE_PAGE_INDEX } from '2_routes'
 import { BrandNavbar, NAVBAR_BRAND_ON_ERROR } from './BrandNavbar'
 import logo from '0_assets/img/favicon.ico'
-import { StateContainer, storeUser, storeUserResetAvatar } from 'state'
+import { StateContainer, storeUser, storeUserResetAvatar } from '2_state'
 
 const BrandNavbarStoreUserPropedNavbar = memo(props => {
 	return (

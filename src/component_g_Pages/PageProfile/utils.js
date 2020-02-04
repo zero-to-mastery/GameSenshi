@@ -14,7 +14,7 @@ import {
 	PAGE_PROFILE_STATE_EXIST,
 	PAGE_PROFILE_STATE_ERROR_CODE,
 } from './PageProfile'
-import { storeModalSimpleError } from 'state'
+import { storeModalSimpleError } from '2_state'
 
 const {
 	PAGE_ERROR_CODE_NOT_FOUND,

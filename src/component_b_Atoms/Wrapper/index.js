@@ -4,7 +4,7 @@ import {
 	StateContainer,
 	storeWrapper,
 	STORE_WRAPPER_STATE_OFFSET_TOP,
-} from 'state'
+} from '2_state'
 
 const mapStoreWrapperStateToProp = {
 	[WRAPPER_STATE_OFFSET_TOP]: STORE_WRAPPER_STATE_OFFSET_TOP,

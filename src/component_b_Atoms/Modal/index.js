@@ -19,7 +19,7 @@ import {
 	STORE_MODAL_STATE_TITLE,
 	STORE_MODAL_STATE_LOADER,
 	STORE_MODAL_STATE_IS_OPEN,
-} from 'state'
+} from '2_state'
 
 const mapStoreModalStateToProp = {
 	[MODAL_STATE_CHILDREN]: STORE_MODAL_STATE_BODY,

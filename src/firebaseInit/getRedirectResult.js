@@ -4,7 +4,7 @@ import {
 	storeModalSimpleError,
 	storeModalRemoveItem,
 	storeModalGetRedirectUrl,
-} from 'state'
+} from '2_state'
 import {
 	handleDifferentCredential,
 	linkedThen,

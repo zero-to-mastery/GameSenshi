@@ -8,7 +8,7 @@ import {
 	storeUserInitialize,
 	storeUserSetSigningIn,
 	STORE_USER_STATE_SIGNING_IN,
-} from 'state'
+} from '2_state'
 import { history } from '2_routes'
 import { goLastRoute } from '2_routes'
 import { getRedirectResult } from 'firebaseInit'

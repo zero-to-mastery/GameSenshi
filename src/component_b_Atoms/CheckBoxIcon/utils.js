@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { docUserSenshiGet, docUserSenshiSetFavourite } from 'fireStored'
-import { storeModalSimpleError } from 'state'
+import { storeModalSimpleError } from '2_state'
 import {
 	FIRESTORE_USER_SENSHI_FAVOURITE,
 	UNEXPECTED_ERROR_CODE_19,

@@ -11,7 +11,7 @@ import {
 	STORE_PROGRESS_STATE_IS_OPEN,
 	STORE_PROGRESS_STATE_COLOR,
 	STORE_PROGRESS_STATE_VALUE,
-} from 'state'
+} from '2_state'
 
 const mapStoreProgressStateToProp = {
 	[PROGRESS_STATE_IS_OPEN]: STORE_PROGRESS_STATE_IS_OPEN,

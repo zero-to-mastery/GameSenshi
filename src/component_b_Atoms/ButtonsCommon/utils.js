@@ -19,7 +19,7 @@ import {
 	STORE_USER_STATE_SIGNING_IN,
 	storeModalSetItem,
 	storeModalSimpleError,
-} from 'state'
+} from '2_state'
 import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_FACEBOOK,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_TWITCH,

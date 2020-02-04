@@ -21,7 +21,7 @@ import {
 	storeSignInOnSuccessfulSubmission,
 	STORE_SIGN_IN_STATE_EMAIL,
 	STORE_SIGN_IN_STATE_IS_OPEN,
-} from 'state'
+} from '2_state'
 import { onLogin } from 'component_0_Utils'
 
 const FormSignInPropedSignIn = props => {

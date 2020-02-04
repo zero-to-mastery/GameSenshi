@@ -1,5 +1,5 @@
 import { Container } from 'unstated'
-import { STATE, SET_STATE, RESET_STATE } from 'state/constants'
+import { STATE, SET_STATE, RESET_STATE } from '2_state/constants'
 import {
 	FUNCTION_EMAIL,
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,

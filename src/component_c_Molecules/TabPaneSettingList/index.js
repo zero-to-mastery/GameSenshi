@@ -14,7 +14,7 @@ import {
 	StateContainer,
 	STORE_USER_STATE_UID,
 	STORE_USER_STATE_SIGNING_IN,
-} from 'state'
+} from '2_state'
 
 const mapStoreUserStateToProps = {
 	[TAB_PANE_SETTING_LIST_STATE_NAME]: state =>

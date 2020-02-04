@@ -10,7 +10,7 @@ import {
 	storeSound,
 	storeSoundSetUuid,
 	STORE_SOUND_STATE_UUID,
-} from 'state'
+} from '2_state'
 
 const mapStoreButtonSoundStateToProp = {
 	[BUTTON_SOUND_STATE_UUID]: STORE_SOUND_STATE_UUID,

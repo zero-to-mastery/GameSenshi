@@ -1,5 +1,5 @@
 import { DropdownNavbar, DROPDOWN_NAVBAR_STATE_SHOW } from './DropdownNavbar'
-import { StateContainer, storeUser, STORE_USER_STATE_SIGNED_IN } from 'state'
+import { StateContainer, storeUser, STORE_USER_STATE_SIGNED_IN } from '2_state'
 
 const mapStoreUserStateToProp = {
 	[DROPDOWN_NAVBAR_STATE_SHOW]: STORE_USER_STATE_SIGNED_IN,

@@ -1,6 +1,6 @@
 import { AvatarUser, AVATAR_USER_STATE_SRC } from './AvatarUser'
 
-import { StateContainer, storeUser, STORE_USER_STATE_AVATAR } from 'state'
+import { StateContainer, storeUser, STORE_USER_STATE_AVATAR } from '2_state'
 
 const mapStoreUserStateToProps = {
 	[AVATAR_USER_STATE_SRC]: STORE_USER_STATE_AVATAR,

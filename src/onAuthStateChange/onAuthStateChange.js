@@ -6,7 +6,7 @@ import {
 	storeUser,
 	storeWrapper,
 	storeUserOnSignIn,
-} from 'state'
+} from '2_state'
 import { auth } from 'firebaseInit'
 import {
 	databaseConnectionRefOn,

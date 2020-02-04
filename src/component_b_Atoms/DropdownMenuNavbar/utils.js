@@ -11,7 +11,7 @@ import {
 	ROUTE_PAGE_APPOINTMENTS,
 	ROUTE_PAGE_PROFILE,
 } from '2_routes'
-import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from 'state'
+import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from '2_state'
 import { signOut } from 'component_0_Utils'
 
 const NavbarIndexItems = () => [

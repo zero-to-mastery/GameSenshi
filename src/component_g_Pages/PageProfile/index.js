@@ -1,6 +1,6 @@
 import React from 'react'
 import { PageProfile, PAGE_PROFILE_STATE_CURRENT_USER_UID } from './PageProfile'
-import { StateContainer, storeUser, STORE_USER_STATE_UID } from 'state'
+import { StateContainer, storeUser, STORE_USER_STATE_UID } from '2_state'
 import { useData } from './utils'
 
 const PageProfilePropedData = props => (
