@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { responsiveCssGenerator } from 'styled'
+import { responsiveCssGenerator } from '0_styled'
 
 const titleCss = [
 	'&&&{',

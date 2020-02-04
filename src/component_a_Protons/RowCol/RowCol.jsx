@@ -5,7 +5,7 @@ import {
 	Col as ColRs,
 	Container as ContainerRS,
 } from 'reactstrap'
-import { responsiveCssGenerator } from 'styled'
+import { responsiveCssGenerator } from '0_styled'
 
 const [Row, Col] = [RowRS, ColRs].map((Comp, i) => {
 	return memo(props => {
