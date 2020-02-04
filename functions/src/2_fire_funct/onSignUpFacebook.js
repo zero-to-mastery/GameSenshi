@@ -1,4 +1,4 @@
-// import { getCustomToken } from '2_functions/getCustomToken'
+// import { getCustomToken } from '2_fire_funct/getCustomToken'
 // import {
 // 	FUNCTION_ID_TOKEN,
 // 	FUNCTION_ACCESS_TOKEN,

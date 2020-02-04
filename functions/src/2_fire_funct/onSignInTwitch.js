@@ -8,7 +8,7 @@ import {
 	FUNCTION_REDIRECT_URI,
 } from '0_constants'
 import { resObj } from '1_utils'
-import { getCustomToken } from '2_functions/getCustomToken'
+import { getCustomToken } from '2_fire_funct/getCustomToken'
 
 // ! cannot return complex object (no nested object)
 
