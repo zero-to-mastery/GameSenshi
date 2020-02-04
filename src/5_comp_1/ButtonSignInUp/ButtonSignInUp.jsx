@@ -25,7 +25,9 @@ const ButtonSignInUp = memo(props => {
 		show &&
 		pathname.toLowerCase() !== to.toLowerCase() && (
 			<NavItem
-				className={classnames(navItemClass, { 'navbar-toggler': small })}
+				className={classnames(navItemClass, {
+					'navbar-toggler': small,
+				})}
 			>
 				<NavLink className='p-0' data-placement='bottom' to={to} tag={Link}>
 					<Button

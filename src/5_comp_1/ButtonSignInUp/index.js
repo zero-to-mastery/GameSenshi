@@ -21,8 +21,7 @@ const ButtonSignInStoreUserPropedIndexNavbar = props => {
 		((small && pathname.toLowerCase() === ROUTE_PAGE_SIGN_UP.toLowerCase()) ||
 			!small) && (
 			<ButtonSignInUpStoreUser
-				navItemClass='p-0'
-				baseClass='mx-1'
+				navItemClass='p-0 mx-2'
 				buttonClass='btn-simple font-weight-bold'
 				to={ROUTE_PAGE_SIGN_IN}
 				{...props}
@@ -36,8 +35,7 @@ const ButtonSignInStoreUserPropedIndexNavbar = props => {
 const ButtonSignUpStoreUserPropedIndexNavbar = props => {
 	return (
 		<ButtonSignInUpStoreUser
-			navItemClass='active'
-			baseClass='mx-1'
+			navItemClass='active mx-2'
 			buttonClass='text-nowrap'
 			to={ROUTE_PAGE_SIGN_UP}
 			{...props}
