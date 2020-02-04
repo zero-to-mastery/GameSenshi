@@ -1,13 +1,13 @@
 import React from 'react'
 import { Helmet as HelmetRH } from 'react-helmet'
-import { Brand } from '1_utils'
+import { brand } from '0_app_flavor'
 
 const Helmet = props => {
 	const { title, descr } = props
 	return (
 		<HelmetRH>
-			{title && <title>{`${title} | ${Brand}`}</title>}
-			{descr && <meta name='description' content={`${descr} | ${Brand}`} />}
+			{title && <title>{`${title} | ${brand}`}</title>}
+			{descr && <meta name='description' content={`${descr} | ${brand}`} />}
 		</HelmetRH>
 	)
 }
