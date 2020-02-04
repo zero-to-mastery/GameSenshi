@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { tempClient, initApollo, setClient } from '0_apolloInit'
 import { ApolloProvider } from 'react-apollo'
-import { Router } from 'component_g_Pages/Router'
+import { Router } from '5_comp_6/Router'
 import {
 	Provider,
 	Subscribe,
