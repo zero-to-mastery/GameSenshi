@@ -18,6 +18,7 @@ const ButtonSignInUp = memo(props => {
 		navItemClass,
 		to,
 		children,
+		baseClass,
 		[BUTTON_SIGN_IN_STATE_SHOW]: show,
 	} = props
 	return (
@@ -27,7 +28,12 @@ const ButtonSignInUp = memo(props => {
 				className={classnames(navItemClass, { 'navbar-toggler': small })}
 			>
 				<NavLink className='p-0' data-placement='bottom' to={to} tag={Link}>
-					<Button className={buttonClass} color='primary' type='button'>
+					<Button
+						className={buttonClass}
+						baseClass={baseClass}
+						color='primary'
+						type='button'
+					>
 						{children}
 					</Button>
 				</NavLink>

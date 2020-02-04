@@ -77,13 +77,13 @@ const CardUser = props => {
 						</Col>
 					</Row>
 					<Row className='align-items-center my-1'>
-						<Col sm='8' className={classnames('pr-0')} align='left'>
+						<Col sm='5' lg='6' className={classnames('pr-0')} align='left'>
 							<ButtonSoundStoreSoundPropedCardUser
 								gender={gender}
 								url={audioSrc}
 							/>
 						</Col>
-						<Col sm='4' className='pl-0'>
+						<Col className='pl-0' align='right'>
 							<TextStyledYellow
 								align='right'
 								className={classnames('title my-0 text-white text-nowrap')}

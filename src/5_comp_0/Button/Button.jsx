@@ -8,21 +8,22 @@ const Button = forwardRef((props, ref) => {
 	const { baseClass, baseStyle, className, tag, ...otherProps } = props
 	const Enclosure = useMemo(() => (tag ? Fragment : ButtonBase), [tag])
 	const className_ = className || ''
+
 	return (
 		<Enclosure
 			{...(!tag && {
 				component: 'span',
-				className: classnames(baseClass, {
-					[styles['btn']]: !className_.includes('btn-round'),
-					[styles['btn-round']]: className_.includes('btn-round'),
-				}),
+				className: classnames(
+					baseClass,
+					className_.includes('btn-round') ? styles['btn-round'] : styles.btn
+				),
 				style: baseStyle,
 			})}
 		>
 			<ButtonRS
 				ref={ref}
 				tag={tag}
-				className={classnames(className)}
+				className={classnames('text-nowrap w-100 mx-0', className)}
 				{...otherProps}
 				{...(tag && { baseClass, baseStyle })}
 			/>

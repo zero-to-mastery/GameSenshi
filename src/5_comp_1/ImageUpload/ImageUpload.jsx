@@ -2,7 +2,7 @@ import React, { useRef, useCallback } from 'react'
 import Image from 'material-ui-image'
 import { Exports } from '5_comp_0'
 import { stopUndefined } from '1_utils'
-const { Button } = stopUndefined(Exports)
+const { Button, Row, Col } = stopUndefined(Exports)
 
 const emptyFunction = () => {}
 
@@ -52,45 +52,52 @@ const ImageUpload = props => {
 		onRemove_()
 	}, [onRemove_, fileInput.current])
 	return (
-		<div
-			className='fileinput text-center w-100 h-100'
+		<Row
+			xs='1'
+			align='center'
+			className='fileinput w-100 h-100 '
 			style={{ maxWidth: 250, maxHeight: 250 }}
 		>
 			<input type='file' onChange={handleImageChange} ref={fileInput} />
-			{/* Our cropper component */}
-			<div className='thumbnail d-block'>
-				<Image src={image} alt='user avatar' />
-			</div>
-			<div>
-				{image === defaultImage ? (
-					<Button
-						className='w-100 btn-round'
-						color='primary'
-						onClick={handleClick}
-					>
+			<Col className='mb-2'>
+				<Image
+					src={image}
+					alt='user avatar'
+					className='thumbnail d-block'
+					color='transparent'
+				/>
+			</Col>
+			{image === defaultImage ? (
+				<Col>
+					<Button className='btn-round' color='primary' onClick={handleClick}>
 						Edit Image
 					</Button>
-				) : (
-					<span>
+				</Col>
+			) : (
+				<>
+					<Col xs='12' lg='8'>
 						<Button
-							className='w-100 btn-round'
+							baseClass='w-100'
+							className='btn-round'
 							color='primary'
 							onClick={handleClick}
 						>
 							Change
 						</Button>
-						<br />
+					</Col>
+					<Col xs='12' lg='8'>
 						<Button
-							className='w-100 btn-round'
+							baseClass='w-100'
+							className='btn-round'
 							color='danger'
 							onClick={handleRemove}
 						>
 							<i className='fa fa-times' /> Remove
 						</Button>
-					</span>
-				)}
-			</div>
-		</div>
+					</Col>
+				</>
+			)}
+		</Row>
 	)
 }
 

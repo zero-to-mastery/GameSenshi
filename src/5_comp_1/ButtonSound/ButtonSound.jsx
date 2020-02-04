@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import Sound from 'react-sound'
-import { Container } from 'reactstrap'
 import VolumeMuteIcon from '@material-ui/icons/VolumeMute'
 import VolumeDownIcon from '@material-ui/icons/VolumeDown'
 import VolumeUpIcon from '@material-ui/icons/VolumeUp'
@@ -126,23 +125,23 @@ const ButtonSound = props => {
 
 	return (
 		<Button
-			baseClass='w-100 justify-content-start'
-			baseStyle={{ maxWidth: 100 }}
-			className='btn-round p-1 w-100'
+			baseClass='w-100'
+			className='btn-round p-1 '
 			color={color}
 			type='button'
 			onClick={onClick}
 		>
-			<Container>
-				<Row className='align-items-center'>
-					<Col xs='0' sm='4' className={classnames('p-0')}>
-						<Icon />
-					</Col>
-					<ColStyledPlay className={classnames('p-0')}>
-						{loading ? Spinner : playStatus === STOPPED ? duration : position}
-					</ColStyledPlay>
-				</Row>
-			</Container>
+			<Row className='align-items-center'>
+				<Col xs='0' sm='4'>
+					<Icon />
+				</Col>
+				<Col xs='0' sm='8' className={classnames('p-0')}>
+					{loading ? Spinner : playStatus === STOPPED ? duration : position}
+				</Col>
+				<ColStyledPlay>
+					{loading ? Spinner : playStatus === STOPPED ? <Icon /> : position}
+				</ColStyledPlay>
+			</Row>
 			<Sound
 				url={url || ''}
 				ignoreMobileRestrictions
