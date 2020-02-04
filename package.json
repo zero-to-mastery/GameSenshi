@@ -89,6 +89,7 @@
 		"react-helmet": "^5.2.1",
 		"react-image-gallery": "^0.9.1",
 		"react-loader-spinner": "^2.3.0",
+		"react-notification-alert": "0.0.12",
 		"react-perfect-scrollbar": "^1.5.3",
 		"react-player": "^1.13.0",
 		"react-resize-detector": "^4.2.1",
