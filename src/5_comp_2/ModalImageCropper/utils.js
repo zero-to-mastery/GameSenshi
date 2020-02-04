@@ -1,5 +1,5 @@
 import { storeAlertShow, storeProgress } from '2_state'
-import { storageUserAvatarSet, storageUserAvatarGet } from '1_fire_init'
+import { storageUserAvatarSet, storageUserAvatarGet } from '2_fire_storage'
 import { docUserSettingGeneralAvatarSet } from '2_fire_store'
 
 const onCrop = (e, dataUrl, toggle) => {

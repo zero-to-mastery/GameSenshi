@@ -1,9 +1,10 @@
-import { auth, fireStored, getServerTimestamp, database } from './core'
 import {
-	storageUserAvatarGet,
-	storageUserAvatarSet,
-	storageUserAvatarRemove,
-} from './storage'
+	auth,
+	fireStored,
+	getServerTimestamp,
+	database,
+	fireFunct,
+} from './core'
 
 import {
 	handleDifferentCredential,
@@ -15,9 +16,7 @@ export {
 	fireStored,
 	getServerTimestamp,
 	database,
-	storageUserAvatarGet,
-	storageUserAvatarSet,
-	storageUserAvatarRemove,
 	handleDifferentCredential,
 	linkedThen,
+	fireFunct,
 }

@@ -1,5 +1,5 @@
 import { storeAlertShow, storeUserResetAvatar } from '2_state'
-import { storageUserAvatarRemove } from '1_fire_init'
+import { storageUserAvatarRemove } from '2_fire_storage'
 import { docUserSettingGeneralAvatarSet } from '2_fire_store'
 const emptyString = ''
 
