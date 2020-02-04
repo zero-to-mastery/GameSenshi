@@ -37,7 +37,7 @@ const PageError = props => {
 							<>
 								<h2 className='description'>Unauthorized :(</h2>
 								<h4 className='description'>Unknown life form detected!</h4>
-								<h5 className='description'>Please login before proceed.</h5>
+								<h5 className='description'>Please sign in to proceed.</h5>
 							</>
 						) : code === PAGE_ERROR_CODE_NOT_A_SENSHI ? (
 							<>

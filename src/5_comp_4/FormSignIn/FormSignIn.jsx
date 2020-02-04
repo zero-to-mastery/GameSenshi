@@ -57,7 +57,10 @@ const FormSignIn = props => {
 		<TopElement toggle={toggle} isOpen={isOpen}>
 			<Card className='card-login'>
 				<CardHeader>
-					<CardImg alt='...' src={require('0_assets/img/square-purple-1.png')} />
+					<CardImg
+						alt='...'
+						src={require('0_assets/img/square-purple-1.png')}
+					/>
 					<CardTitle tag='h4'>Login</CardTitle>
 					{predefinedEmail && (
 						<button
@@ -74,8 +77,8 @@ const FormSignIn = props => {
 				<CardBody>
 					<div className='text-muted text-center ml-auto mr-auto'>
 						<h3 className='mb-0'>
-							{predefinedEmail
-								? 'Sign In With Existing Account'
+							{predefinedEmail || modal
+								? 'Please Sign In To Proceed'
 								: 'Sign in with'}
 						</h3>
 					</div>
