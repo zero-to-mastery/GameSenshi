@@ -4,7 +4,7 @@ import {
 	ROUTE_PAGE_SETTINGS_PAYMENT,
 	ROUTE_PAGE_SETTINGS_ACCOUNT,
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
-} from 'routes'
+} from '2_routes'
 
 const settingPageTabList = [
 	{

@@ -6,7 +6,7 @@ import {
 	ROUTE_ACCESSIBILITY_PRIVATE,
 	ROUTE_PAGE_INDEX,
 	history,
-} from 'routes/constants'
+} from '2_routes/constants'
 
 const LAST_ROUTE = 'lastRoute'
 const LAST_ROUTE_REAL = 'lastRouteReal'

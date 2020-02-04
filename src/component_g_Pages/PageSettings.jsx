@@ -5,7 +5,7 @@ import {
 	ROUTE_PAGE_SETTINGS_PAYMENT,
 	ROUTE_PAGE_SETTINGS_ACCOUNT,
 	ROUTE_PAGE_SETTINGS_NOTIFICATION,
-} from 'routes'
+} from '2_routes'
 import { stopUndefined } from '1_utils'
 import { Exports } from 'component_f_MultiOrganisms'
 import { Route, Switch } from 'react-router-dom'

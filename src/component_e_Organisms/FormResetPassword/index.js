@@ -3,7 +3,7 @@ import { FormResetPassword, FINAL_TEXT_EMAIL } from './FormResetPassword'
 // api
 import { handlePasswordReset } from 'api'
 // route
-import { ROUTE_PAGE_SIGN_IN } from 'routes'
+import { ROUTE_PAGE_SIGN_IN } from '2_routes'
 
 const FormResetPasswordPropedDefault = props => {
 	const onSubmit = useCallback(

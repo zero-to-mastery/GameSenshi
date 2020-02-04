@@ -5,7 +5,7 @@ import {
 	TAB_LIST_VERTICAL_TO,
 	TAB_LIST_VERTICAL_ICON,
 } from './TabListVertical'
-import { useLocation } from 'routes'
+import { useLocation } from '2_routes'
 
 const TabListVerticalPropedWithRouter = props => {
 	const { pathname } = useLocation()

@@ -2,7 +2,7 @@ import React from 'react'
 import { stopUndefined } from '1_utils'
 import Loader from 'react-loader-spinner'
 import { Exports } from 'component_f_MultiOrganisms'
-import { ROUTE_PARAM_UID, useParams } from 'routes'
+import { ROUTE_PARAM_UID, useParams } from '2_routes'
 import {
 	ColStyledSection,
 	ColStyledGiftCard,

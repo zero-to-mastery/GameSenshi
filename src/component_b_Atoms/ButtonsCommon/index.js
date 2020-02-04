@@ -6,7 +6,7 @@ import {
 	getButtonsCommon,
 	buttonsCommonChatAndCheckout,
 } from './utils'
-import { withLastLocation } from 'routes'
+import { withLastLocation } from '2_routes'
 
 const ButtonsCommonOptioned = props => {
 	const { buttons, ...otherProps } = props

@@ -33,7 +33,7 @@ import {
 	ROUTES,
 	REDIRECTS,
 	useLastLocation,
-} from 'routes'
+} from '2_routes'
 
 import { PageProfileStoreUser } from './PageProfile'
 import { PageSettings } from './PageSettings'

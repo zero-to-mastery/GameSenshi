@@ -9,8 +9,8 @@ import {
 	storeUserSetSigningIn,
 	STORE_USER_STATE_SIGNING_IN,
 } from 'state'
-import { history } from 'routes'
-import { goLastRoute } from 'routes'
+import { history } from '2_routes'
+import { goLastRoute } from '2_routes'
 import { getRedirectResult } from 'firebaseInit'
 import { onAuthStateChange } from 'onAuthStateChange'
 import '0_assets/css/nucleo-icons.css'

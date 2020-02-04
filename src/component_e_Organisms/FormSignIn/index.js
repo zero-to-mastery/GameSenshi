@@ -3,7 +3,7 @@ import {
 	ROUTE_PAGE_PASSWORD_RESET,
 	ROUTE_PAGE_SIGN_UP,
 	useLastLocation,
-} from 'routes'
+} from '2_routes'
 import { handleSignInWithEmailAndPassword } from 'api'
 import {
 	FormSignIn,

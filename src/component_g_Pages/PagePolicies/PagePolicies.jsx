@@ -11,7 +11,7 @@ import {
 	ROUTE_PAGE_POLICY_COOKIES,
 	ROUTE_PAGE_POLICY_TERMS,
 	ROUTE_PAGE_POLICY_PRIVACY,
-} from 'routes'
+} from '2_routes'
 import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap'
 import { Exports } from 'component_f_MultiOrganisms'
 import ButtonBase from '@material-ui/core/ButtonBase'

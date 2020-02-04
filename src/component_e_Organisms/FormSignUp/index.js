@@ -11,7 +11,7 @@ import {
 	ROUTE_PAGE_SIGN_IN,
 	ROUTE_PAGE_POLICY_PRIVACY,
 	ROUTE_PAGE_POLICY_TERMS,
-} from 'routes'
+} from '2_routes'
 // api
 import {
 	handleSignUpWithEmailAndPassword,

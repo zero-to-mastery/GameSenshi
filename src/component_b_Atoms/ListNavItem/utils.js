@@ -17,7 +17,7 @@ import {
 	ROUTE_PAGE_HELP,
 	ROUTE_PAGE_SIGN_IN,
 	ROUTE_PAGE_SIGN_UP,
-} from 'routes'
+} from '2_routes'
 import { signOut } from 'component_0_Utils'
 
 const simpleIconLabel = (icon, children) => {
