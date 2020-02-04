@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, Fragment } from 'react'
 import { stopUndefined } from '1_utils'
 import { Form, Container, Row, Col } from 'reactstrap'
-import { Exports } from 'component_b_Atoms'
+import { Exports } from '4_comp_2_Atoms'
 
 const { CheckBox, HeaderLined, TabPaneContainer } = stopUndefined(Exports)
 

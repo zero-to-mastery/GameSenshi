@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Media } from 'reactstrap'
-import { Exports } from 'component_b_Atoms'
+import { Exports } from '4_comp_2_Atoms'
 import { stopUndefined } from '1_utils'
 
 const { Button } = stopUndefined(Exports)

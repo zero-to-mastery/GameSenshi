@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { responsiveCssGenerator } from '0_styled'
-import { Exports } from 'component_b_Atoms'
+import { Exports } from '4_comp_2_Atoms'
 import { stopUndefined } from '1_utils'
 const { Container, Col, Row } = stopUndefined(Exports)
 

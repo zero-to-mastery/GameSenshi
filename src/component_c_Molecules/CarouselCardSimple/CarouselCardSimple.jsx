@@ -1,7 +1,7 @@
 import React from 'react'
 import Slider from 'react-slick'
 import { stopUndefined } from '1_utils'
-import { Exports } from 'component_b_Atoms'
+import { Exports } from '4_comp_2_Atoms'
 const { CardUserSimple } = stopUndefined(Exports)
 
 const CARD_SIMPLE_NAME = 'name'

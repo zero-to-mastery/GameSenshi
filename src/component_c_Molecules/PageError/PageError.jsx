@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 //import { stopUndefined } from '1_utils'
-//import { Exports } from 'component_b_Atoms'
+//import { Exports } from '4_comp_2_Atoms'
 //const { WrapperStoreWrapperPropedError } = stopUndefined(Exports)
 
 const PAGE_ERROR_CODE_NOT_FOUND = '404'

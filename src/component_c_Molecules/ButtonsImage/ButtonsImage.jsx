@@ -1,6 +1,6 @@
 import React from 'react'
 import { Label, Row, Col } from 'reactstrap'
-import { Exports } from 'component_b_Atoms'
+import { Exports } from '4_comp_2_Atoms'
 import { stopUndefined } from '1_utils'
 const { ImagesTooltipOptioned, Link, Button } = stopUndefined(Exports)
 

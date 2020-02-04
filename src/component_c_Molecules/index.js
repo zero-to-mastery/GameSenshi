@@ -1,4 +1,4 @@
-import { Exports as ExportAtoms } from 'component_b_Atoms'
+import { Exports as ExportAtoms } from '4_comp_2_Atoms'
 import { FinalInputText, FinalInputSelect, FinalInputDate } from './FinalInput'
 import { TabPaneSettingListStoreUserPropedNotification } from './TabPaneSettingList'
 import { ModalImageCropperPropedSettings } from './ModalImageCropper'
