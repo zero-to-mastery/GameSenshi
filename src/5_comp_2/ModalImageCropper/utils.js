@@ -1,53 +1,43 @@
-import { storeAlertShow, storeProgress } from '2_state'
-import { storageUserAvatarSet, storageUserAvatarGet } from '2_fire_storage'
+import { storeAlertShow, storeProgress, storeAlertSimpleError } from '2_state'
+import { storageUserAvatarGet, storageUserAvatarOn } from '2_fire_storage'
 import { docUserSettingGeneralAvatarSet } from '2_fire_store'
+import {
+	UNEXPECTED_ERROR_CODE_20,
+	UNEXPECTED_ERROR_CODE_21,
+	UNEXPECTED_ERROR_CODE_22,
+} from '0_constants'
 
 const onCrop = (e, dataUrl, toggle) => {
-	storageUserAvatarSet(dataUrl).on(
-		'state_changed',
-		snapshot => {
+	storageUserAvatarOn(dataUrl, {
+		next: snapshot => {
 			const { bytesTransferred, totalBytes } = snapshot
 			const percentage = Math.floor((bytesTransferred / totalBytes) * 100)
 			storeProgress.show(percentage)
 		},
-		() => {
-			storeAlertShow(
-				'Something went wrong, upload profile image failed',
-				'danger',
-				'tim-icons icon-alert-circle-exc'
-			)
+		error: err => {
+			storeAlertSimpleError(err, UNEXPECTED_ERROR_CODE_20)
 		},
-		async () => {
+		complete: async () => {
 			toggle()
 
-			const url = await storageUserAvatarGet().catch(() => {
-				storeAlertShow(
-					'Something went wrong, unable to update image',
-					'danger',
-					'tim-icons icon-alert-circle-exc'
-				)
+			const url = await storageUserAvatarGet().catch(err => {
+				storeAlertSimpleError(err, UNEXPECTED_ERROR_CODE_21)
 			})
+			storeProgress.close()
 			if (url) {
 				docUserSettingGeneralAvatarSet(url)
 					.then(() => {
-						storeProgress.close()
 						storeAlertShow(
-							'Profile picture updated, It may take a few moments to update across the site.',
-							'success',
-							'tim-icons icon-bell-55'
+							'Profile picture updated, it may take a few moments to update across the site.',
+							true
 						)
 					})
-					.catch(() => {
-						storeProgress.close()
-						storeAlertShow(
-							'Something went wrong, unable to update profile picture',
-							'danger',
-							'tim-icons icon-alert-circle-exc'
-						)
+					.catch(err => {
+						storeAlertSimpleError(err, UNEXPECTED_ERROR_CODE_22)
 					})
 			}
-		}
-	)
+		},
+	})
 }
 
 export { onCrop }

@@ -6,8 +6,9 @@ import {
 } from '0_constants'
 
 const simplerErrorMessage = (error = {}, defaultErrorMessage = ['']) => {
+	// * do error report/log/feedback here
 	const { code, message } = error
-	// code is error from firebase, message is error from graphql
+	// code is error from firebase
 	if (
 		(code && code.includes('network-request-failed')) ||
 		(message && message.includes('Network error: Failed to fetch'))

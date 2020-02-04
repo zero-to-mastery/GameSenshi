@@ -18,6 +18,4 @@ const H3Styled = styled.h3`
 	${titleCss}
 `
 
-console.log(titleCss.join())
-
 export { H1Styled, H3Styled }

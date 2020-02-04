@@ -6,6 +6,12 @@ const [
 	storageUserAvatarGet,
 	storageUserAvatarSet,
 	storageUserAvatarRemove,
+	storageUserAvatarOn,
 ] = storageSetGenerator(storagePathUserAvatar)
 
-export { storageUserAvatarGet, storageUserAvatarSet, storageUserAvatarRemove }
+export {
+	storageUserAvatarGet,
+	storageUserAvatarSet,
+	storageUserAvatarRemove,
+	storageUserAvatarOn,
+}

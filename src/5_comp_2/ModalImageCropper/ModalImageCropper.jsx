@@ -45,7 +45,6 @@ const ModalImageCropper = memo(props => {
 				ref={cropperRef}
 				src={src}
 				style={{ height: '100%', width: '100%' }}
-				// Cropper.js options
 				aspectRatio={1}
 				crop={crop}
 			/>

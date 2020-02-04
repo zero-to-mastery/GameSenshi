@@ -1,5 +1,8 @@
+import React from 'react'
 import { Container } from 'unstated'
 import { STATE, SET_STATE, RESET_STATE } from '2_state/constants'
+import { simplerErrorMessage } from '1_utils'
+import { UNEXPECTED_ERROR_CODE_14 } from '0_constants'
 
 const STORE_ALERT_STATE_BODY = 'body'
 const STORE_ALERT_STATE_IS_OPEN = 'isOpen'
@@ -7,6 +10,7 @@ const STORE_ALERT_STATE_STATUS = 'status'
 
 const TOGGLE = 'toggle'
 const SHOW = 'show'
+const SIMPLE_ERROR = 'simpleError'
 
 const defaultValues = () => ({
 	[STORE_ALERT_STATE_BODY]: '',
@@ -40,6 +44,21 @@ class StoreAlert extends Container {
 			state[STORE_ALERT_STATE_IS_OPEN] = !state[STORE_ALERT_STATE_IS_OPEN]
 			return this
 		})
+	};
+
+	[SIMPLE_ERROR] = (
+		err = {},
+		defaultErrorMessage = UNEXPECTED_ERROR_CODE_14
+	) => {
+		this.show(
+			<>
+				{simplerErrorMessage(err, defaultErrorMessage)}.
+				<br />
+				{`Error Code: ${defaultErrorMessage[0]}`}
+			</>,
+			false
+		)
+		return this
 	}
 }
 
@@ -52,4 +71,5 @@ export {
 	TOGGLE,
 	SET_STATE,
 	RESET_STATE,
+	SIMPLE_ERROR,
 }

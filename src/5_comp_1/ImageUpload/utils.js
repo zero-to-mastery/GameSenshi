@@ -1,25 +1,24 @@
-import { storeAlertShow, storeUserResetAvatar } from '2_state'
+import {
+	storeAlertShow,
+	storeAlertSimpleError,
+	storeUserResetAvatar,
+} from '2_state'
 import { storageUserAvatarRemove } from '2_fire_storage'
 import { docUserSettingGeneralAvatarSet } from '2_fire_store'
-const emptyString = ''
+import { UNEXPECTED_ERROR_CODE_18 } from '0_constants'
 
 const onRemove = async () => {
-	const removed = await docUserSettingGeneralAvatarSet(emptyString)
+	const removed = await docUserSettingGeneralAvatarSet('')
 		.then(() => {
 			storeUserResetAvatar()
 			storeAlertShow(
-				'Profile picture removed, It may take a few moments to update across the site.',
-				'success',
-				'tim-icons icon-bell-55'
+				'Profile picture removed, it may take a few moments to update across the site..',
+				true
 			)
 			return true
 		})
-		.catch(() => {
-			storeAlertShow(
-				'Something went wrong, unable to remove profile picture',
-				'danger',
-				'tim-icons icon-alert-circle-exc'
-			)
+		.catch(err => {
+			storeAlertSimpleError(err, UNEXPECTED_ERROR_CODE_18)
 			return false
 		})
 
