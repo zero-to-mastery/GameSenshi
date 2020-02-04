@@ -1,12 +1,16 @@
-import { getRedirectResult } from './getRedirectResult'
 import { auth, fireStored, getServerTimestamp, database } from './core'
 import {
 	storageUserAvatarGet,
 	storageUserAvatarSet,
 	storageUserAvatarRemove,
 } from './storage'
+
 import { functSignInTwicth } from './cloudFunct'
-import { handleDifferentCredential } from './handleDifferentCredential'
+
+import {
+	handleDifferentCredential,
+	linkedThen,
+} from './handleDifferentCredential'
 
 export {
 	auth,
@@ -16,7 +20,7 @@ export {
 	storageUserAvatarGet,
 	storageUserAvatarSet,
 	storageUserAvatarRemove,
-	getRedirectResult,
 	functSignInTwicth,
 	handleDifferentCredential,
+	linkedThen,
 }

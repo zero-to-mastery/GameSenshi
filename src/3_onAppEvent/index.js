@@ -3,6 +3,8 @@ import {
 	databaseUserPresenceOnSnapshot,
 } from './userPresence'
 
+import { getRedirectResult } from './getRedirectResult'
+
 import {
 	onAuthStateChange,
 	setNonLoginUserLastIntendedAction,
@@ -13,4 +15,5 @@ export {
 	onAuthStateChange,
 	setNonLoginUserLastIntendedAction,
 	databaseUserPresenceOnSnapshot,
+	getRedirectResult,
 }

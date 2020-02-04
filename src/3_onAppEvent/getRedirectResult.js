@@ -5,11 +5,14 @@ import {
 	storeModalRemoveItem,
 	storeModalGetRedirectUrl,
 } from '2_state'
+
 import {
 	handleDifferentCredential,
 	linkedThen,
-} from '1_fire_init/handleDifferentCredential'
-import { auth } from '1_fire_init/core'
+	auth,
+	functSignInTwicth,
+} from '1_fire_init'
+
 import {
 	UNEXPECTED_ERROR_CODE_6,
 	UNEXPECTED_ERROR_CODE_8,
@@ -20,7 +23,6 @@ import {
 	FUNCTION_REDIRECT_URI,
 	FUNCTION_CUSTOM_TOKEN,
 } from '0_constants'
-import { functSignInTwicth } from '1_fire_init/cloudFunct'
 
 // ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 const linkWithRedirect = (provider2, credential) => {
