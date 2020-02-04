@@ -14,7 +14,7 @@ import {
 	AUTH_TWITCH,
 	ENV_VALUE_TWITCH_OAUTH_LINK,
 } from '0_constantValues'
-import { auth } from '1_firebaseInit/core'
+import { auth } from '1_fire_Init/core'
 
 const linkedThen = () => {
 	storeModalClear()

@@ -1,4 +1,4 @@
-import { firebaseStorage, auth } from '1_firebaseInit/core'
+import { firebaseStorage, auth } from '1_fire_Init/core'
 
 import { storagePathUserAvatar } from '0_constantValues'
 

@@ -7,7 +7,7 @@ import VolumeUpIcon from '@material-ui/icons/VolumeUp'
 import Loader from 'react-loader-spinner'
 import classnames from 'classnames'
 import uuidV4 from 'uuid/v4'
-import { Exports } from '4_comp_1_Protons'
+import { Exports } from '5_comp_0'
 import { stopUndefined } from '1_utils'
 import { ColStyledPlay } from './styled'
 const { Button, Col, Row } = stopUndefined(Exports)

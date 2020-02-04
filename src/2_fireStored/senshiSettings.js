@@ -1,5 +1,5 @@
 import { createDocGetSet } from './utils'
-import { getServerTimestamp } from '1_firebaseInit'
+import { getServerTimestamp } from '1_fire_Init'
 
 import {
 	fireStorePathSenshiSettingProfile,

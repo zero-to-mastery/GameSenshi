@@ -1,4 +1,4 @@
-import { firestoreF, getServerTimestamp } from '1_firebaseInit'
+import { firestoreF, getServerTimestamp } from '1_fire_Init'
 import { CREATED_AT, UPDATED_AT } from '0_constantValues'
 
 const paths = [

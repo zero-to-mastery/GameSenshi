@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import Loader from 'react-loader-spinner'
-import { Exports } from '4_comp_1_Protons'
+import { Exports } from '5_comp_0'
 import { stopUndefined } from '1_utils'
 const { Button } = stopUndefined(Exports)
 

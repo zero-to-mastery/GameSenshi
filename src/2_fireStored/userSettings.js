@@ -8,7 +8,7 @@ import {
 	FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES,
 	FIRESTORE_USER_SENSHI_FAVOURITE,
 } from '0_constantValues'
-import { auth } from '1_firebaseInit'
+import { auth } from '1_fire_Init'
 
 const [
 	docUserSettingGeneralGet,

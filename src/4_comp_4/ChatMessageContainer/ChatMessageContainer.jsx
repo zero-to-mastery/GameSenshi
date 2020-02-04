@@ -22,7 +22,7 @@ import {
 
 import classnames from 'classnames'
 
-import { Exports } from '4_comp_1_Protons'
+import { Exports } from '5_comp_0'
 import { stopUndefined } from '1_utils'
 const { Button, UncontrolledTooltip } = stopUndefined(Exports)
 

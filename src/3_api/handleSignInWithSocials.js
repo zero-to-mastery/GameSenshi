@@ -1,4 +1,4 @@
-import { auth } from '1_firebaseInit'
+import { auth } from '1_fire_Init'
 import {
 	AUTH_GOOGLE,
 	AUTH_FACEBOOK,

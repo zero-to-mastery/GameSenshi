@@ -8,8 +8,8 @@ import {
 import {
 	handleDifferentCredential,
 	linkedThen,
-} from '1_firebaseInit/handleDifferentCredential'
-import { auth } from '1_firebaseInit/core'
+} from '1_fire_Init/handleDifferentCredential'
+import { auth } from '1_fire_Init/core'
 import {
 	UNEXPECTED_ERROR_CODE_6,
 	UNEXPECTED_ERROR_CODE_8,
@@ -20,7 +20,7 @@ import {
 	FUNCTION_REDIRECT_URI,
 	FUNCTION_CUSTOM_TOKEN,
 } from '0_constantValues'
-import { functSignInTwicth } from '1_firebaseInit/cloudFunct'
+import { functSignInTwicth } from '1_fire_Init/cloudFunct'
 
 // ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
 const linkWithRedirect = (provider2, credential) => {

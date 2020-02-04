@@ -16,7 +16,7 @@ import {
 	functions,
 	docUserSettingGeneralSetOnUserCreate,
 	docUserSettingNotificationSet,
-} from '1_firebaseInit'
+} from '1_fire_Init'
 import { resObj } from '1_utils'
 
 const onCreateUser_ = async userRecord => {
