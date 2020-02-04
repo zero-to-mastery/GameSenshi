@@ -3,7 +3,7 @@ import {
 	FinalTextCardNumber,
 	FINAL_TEXT_CARD_NUMBER,
 } from './FinalTextCardNumber'
-import { cardNumberValidation } from 'utils'
+import { cardNumberValidation } from '1_utils'
 import { Col, Row } from 'reactstrap'
 
 const FinalTextCardNumberPropedDefault = props => {

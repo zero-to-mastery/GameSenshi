@@ -6,7 +6,7 @@ import {
 	INTERNAL_ERROR_CODE_8,
 	FUNCTION_CUSTOM_TOKEN,
 } from '0_constantValues'
-import { resObj } from 'utils'
+import { resObj } from '1_utils'
 
 // ! cannot return complex object (no nested object)
 

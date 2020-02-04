@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { Badge, Row, Col } from 'reactstrap'
 import classnames from 'classnames'
 import { Exports } from 'component_a_Protons'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 
 const { UncontrolledTooltip } = stopUndefined(Exports)
 

@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import Image from 'material-ui-image'
 import { DivStyledHover, TextStyledYellow } from './styled'
 import { Exports } from 'component_b_Atoms'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 
 const {
 	ButtonSoundStoreSoundPropedCardUser,

@@ -2,7 +2,7 @@ import React, { useRef, useCallback, useState, memo } from 'react'
 import Cropper from 'react-cropper'
 import 'cropperjs/dist/cropper.css'
 import { Exports } from 'component_b_Atoms'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 
 const { Modal } = stopUndefined(Exports)
 const emptyFunction = () => {}

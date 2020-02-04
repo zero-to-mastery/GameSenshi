@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import { Exports } from 'component_f_MultiOrganisms'
 import { docSenshiProfileOnSnapshot } from 'fireStored'
 import {

@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 //components
 import { Exports } from 'component_c_Molecules'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col, Label, Input, FormGroup } from 'reactstrap'
 import { Exports } from 'component_a_Protons'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 const { Button } = stopUndefined(Exports)
 
 const ButtonGroup = () => {

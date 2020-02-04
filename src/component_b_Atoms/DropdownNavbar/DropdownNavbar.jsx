@@ -1,6 +1,6 @@
 import React from 'react'
 import { Exports } from 'component_a_Protons'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import { UncontrolledDropdown, DropdownToggle } from 'reactstrap'
 
 const { Link } = stopUndefined(Exports)

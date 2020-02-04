@@ -1,5 +1,5 @@
 import React from 'react'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import { Container, Row, Col } from 'reactstrap'
 import { Exports } from 'component_f_MultiOrganisms'
 

@@ -2,7 +2,7 @@ import React, { Fragment, useCallback } from 'react'
 import { Row, Col } from 'reactstrap'
 import classnames from 'classnames'
 import { Exports } from 'component_a_Protons'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 const { Button, UncontrolledTooltip, Link } = stopUndefined(Exports)
 
 const BUTTONS_COMMON_ID = 'id'

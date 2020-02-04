@@ -1,6 +1,6 @@
 import React from 'react'
 import audioSample from 'assets/audio/sampleVoice.mp3'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import { Exports } from 'component_f_MultiOrganisms'
 import suffle from 'array-shuffle'
 

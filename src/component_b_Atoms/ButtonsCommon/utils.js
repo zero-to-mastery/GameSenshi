@@ -29,7 +29,7 @@ import {
 	AUTH_TWITCH,
 	UNEXPECTED_ERROR_CODE_13,
 } from '0_constantValues'
-import { checkDuplicatedObject } from 'utils'
+import { checkDuplicatedObject } from '1_utils'
 
 const CHECKOUT = 'checkout'
 const CHAT = 'chat'

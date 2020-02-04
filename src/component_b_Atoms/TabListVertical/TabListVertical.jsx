@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import { NavItem, NavLink, Nav } from 'reactstrap'
 
 import { Exports } from 'component_a_Protons'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 
 const { Link } = stopUndefined(Exports)
 

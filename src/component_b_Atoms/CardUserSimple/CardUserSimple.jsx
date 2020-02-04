@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, CardFooter } from 'reactstrap'
 import Image from 'material-ui-image'
 import { Exports } from 'component_a_Protons'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 const { Link } = stopUndefined(Exports)
 
 const CardUserSimple = props => {

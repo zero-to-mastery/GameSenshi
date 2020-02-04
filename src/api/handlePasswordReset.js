@@ -1,6 +1,6 @@
 import { auth } from 'firebaseInit'
 import { UNEXPECTED_ERROR_CODE_3 } from '0_constantValues'
-import { simplerResponseHandling } from 'utils'
+import { simplerResponseHandling } from '1_utils'
 
 const handlePasswordReset = email => {
 	return auth()

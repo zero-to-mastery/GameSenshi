@@ -8,7 +8,7 @@ import Loader from 'react-loader-spinner'
 import classnames from 'classnames'
 import uuidV4 from 'uuid/v4'
 import { Exports } from 'component_a_Protons'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import { ColStyledPlay } from './styled'
 const { Button, Col, Row } = stopUndefined(Exports)
 

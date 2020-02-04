@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Row, Col } from 'reactstrap'
 import Select from 'react-select'
 import { Exports } from 'component_a_Protons'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 const { Button } = stopUndefined(Exports)
 
 const PanelSortBy = () => {

@@ -11,7 +11,7 @@ import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_GAMES_APEX,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_GAMES_FORTNITE,
 } from '0_constantValues'
-import { createGetOptions } from 'utils'
+import { createGetOptions } from '1_utils'
 
 const gameIconsPath = game => require(`assets/icons/games/${game}.ico`)
 

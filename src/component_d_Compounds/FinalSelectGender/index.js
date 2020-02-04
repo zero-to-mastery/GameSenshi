@@ -2,7 +2,7 @@ import React from 'react'
 import { FinalSelectGender, FINAL_SELECT_GENDER } from './FinalSelectGender'
 
 // components
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import { Exports } from 'component_c_Molecules'
 
 const { LabelForm } = stopUndefined(Exports)

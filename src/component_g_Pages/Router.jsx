@@ -6,7 +6,7 @@ import {
 	Redirect,
 } from 'react-router-dom'
 import { LastLocationProvider } from 'react-router-last-location'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import { storeSignInShow } from 'state'
 import { onLogin } from 'component_0_Utils'
 import {

@@ -7,6 +7,7 @@ import {
 	FUNCTION_MESSAGE,
 	FUNCTION_DATA,
 } from './objects'
+
 import {
 	stopUndefined,
 	checkDuplicatedObject,

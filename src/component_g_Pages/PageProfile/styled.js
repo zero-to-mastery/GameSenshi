@@ -2,7 +2,7 @@
 import styled from 'styled-components/macro'
 import React from 'react'
 import classnames from 'classnames'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import { responsiveCssGenerator, pr_4 } from 'styled'
 import { Exports } from 'component_f_MultiOrganisms'
 const { Col, Row } = stopUndefined(Exports)

@@ -1,6 +1,6 @@
 import { auth } from 'firebaseInit'
 import { UNEXPECTED_ERROR_CODE_1 } from '0_constantValues'
-import { simplerResponseHandling } from 'utils'
+import { simplerResponseHandling } from '1_utils'
 
 const handleIsPasswordResetAble = email => {
 	return auth()

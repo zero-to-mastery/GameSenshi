@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import {
 	Card,
 	CardHeader,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Label, Row, Col } from 'reactstrap'
 import { Exports } from 'component_b_Atoms'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 const { ImagesTooltipOptioned, Link, Button } = stopUndefined(Exports)
 
 const BUTTONS_COMMON_IMAGE_ID = 'id'

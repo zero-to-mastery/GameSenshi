@@ -1,6 +1,6 @@
 import React from 'react'
 import { Helmet as HelmetRH } from 'react-helmet'
-import { Brand } from 'utils'
+import { Brand } from '1_utils'
 
 const Helmet = props => {
 	const { title, descr } = props

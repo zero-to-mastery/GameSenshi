@@ -7,7 +7,7 @@ import {
 	FUNCTION_OAUTH_CODE,
 	FUNCTION_REDIRECT_URI,
 } from '0_constantValues'
-import { resObj } from 'utils'
+import { resObj } from '1_utils'
 import { getCustomToken } from 'functions/getCustomToken'
 
 // ! cannot return complex object (no nested object)

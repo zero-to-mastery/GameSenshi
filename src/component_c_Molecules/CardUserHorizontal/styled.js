@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { responsiveCssGenerator } from 'styled'
 import { Exports } from 'component_b_Atoms'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 const { Container, Col, Row } = stopUndefined(Exports)
 
 const ContainerStyled = styled(Container)`

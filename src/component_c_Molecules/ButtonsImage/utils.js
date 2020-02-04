@@ -4,7 +4,7 @@ import {
 	BUTTONS_COMMON_IMAGE_ICON,
 } from './ButtonsImage'
 
-import { createGetOptions } from 'utils'
+import { createGetOptions } from '1_utils'
 
 import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_GAMES_DOTA2,

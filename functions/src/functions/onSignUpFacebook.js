@@ -7,7 +7,7 @@
 // 	INTERNAL_ERROR_CODE_11,
 // } from '0_constantValues'
 // import axios from 'axios'
-// import { resObj } from 'utils'
+// import { resObj } from '1_utils'
 // import { auth } from 'firebaseInit'
 
 // // not in use

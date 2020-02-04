@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, Fragment } from 'react'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import {
 	Input,
 	InputGroupText,

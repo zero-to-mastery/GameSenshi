@@ -1,7 +1,7 @@
 import React from 'react'
 import { CommentWithPagination } from './CommentWithPagination'
 import { Exports } from 'component_c_Molecules'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 const {
 	COMMENT_ID,
 	COMMENT_NAME,

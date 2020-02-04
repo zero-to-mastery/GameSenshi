@@ -23,7 +23,7 @@ import {
 import classnames from 'classnames'
 
 import { Exports } from 'component_a_Protons'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 const { Button, UncontrolledTooltip } = stopUndefined(Exports)
 
 const CHAT_MESSAGE_BODY = 'body'

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { Exports } from 'component_b_Atoms'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import Image from 'material-ui-image'
 import shorthash from 'shorthash'
 import {
@@ -15,7 +15,7 @@ import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_DISPLAY_NAME,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS,
 } from '0_constantValues'
-import { defaultAvatar } from 'utils'
+import { defaultAvatar } from '1_utils'
 
 const {
 	BadgesPropedSenshi,

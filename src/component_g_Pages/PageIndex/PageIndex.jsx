@@ -1,5 +1,5 @@
 import React from 'react'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import { Exports } from 'component_f_MultiOrganisms'
 import audioSample from 'assets/audio/sampleVoice.mp3'
 import { TabDiscover } from './TabDiscover'

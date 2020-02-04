@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import { stopUndefined } from 'utils'
+import { stopUndefined } from '1_utils'
 import { Cookie } from './Cookie'
 import { Terms } from './Terms'
 import { Privacy } from './Privacy'
