@@ -3,7 +3,7 @@ import { getServerTimestamp } from '1_fire_init'
 
 import {
 	fireStorePathSenshiSettingProfile,
-	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
+	FIRESTORE_SENSHI_SETTINGS_PROFILE_AVATAR,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS,
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL,
 	DATABASE_STATUS_ONLINE,
@@ -16,7 +16,7 @@ const [, docSenshiProfileSet, docSenshiProfileOnSnapshot] = createDocGetSet(
 
 const docSenshiProfileAvatarSet = url =>
 	docSenshiProfileSet()({
-		[FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR]: url,
+		[FIRESTORE_SENSHI_SETTINGS_PROFILE_AVATAR]: url,
 	})
 
 const docSenshiProfileCarouselSet = url =>

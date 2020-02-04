@@ -17,7 +17,7 @@ import {
 	ButtonSignUpStoreUserPropedIndexNavbar,
 } from './ButtonSignInUp'
 import { ErrorBoundary } from './ErrorBoundary/ErrorBoundary'
-import { ImageUploadStoreUserPropedSettings } from './ImageUpload'
+import { ImageUploadPropedDefaultAvatar } from './ImageUpload'
 import { AlertStoreAlert } from './Alert'
 import { ProgressStoreProgress } from './Progress'
 import { CheckBox } from './CheckBox'
@@ -95,7 +95,7 @@ export const Exports = {
 	Footer,
 	FinalForm,
 	ErrorBoundary,
-	ImageUploadStoreUserPropedSettings,
+	ImageUploadPropedDefaultAvatar,
 	AlertStoreAlert,
 	ProgressStoreProgress,
 	ButtonsCommonOptioned,

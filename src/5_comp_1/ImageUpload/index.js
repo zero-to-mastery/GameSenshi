@@ -1,38 +1,9 @@
 import React from 'react'
-import {
-	ImageUpload,
-	IMAGE_UPLOAD_STATE_IMAGE,
-	IMAGE_UPLOAD_ON_REMOVE,
-} from './ImageUpload'
-import { onRemove } from './utils'
-import defaultAvatar from '0_assets/img/placeholder.jpg'
-import {
-	StateContainer,
-	storeUser,
-	storeUserResetAvatar,
-	STORE_USER_STATE_AVATAR,
-} from '2_state'
+import { ImageUpload } from './ImageUpload'
+import { defaultAvatar } from '0_app_flavor'
 
-const mapStoreUserStateToProps = {
-	[IMAGE_UPLOAD_STATE_IMAGE]: STORE_USER_STATE_AVATAR,
+const ImageUploadPropedDefaultAvatar = props => {
+	return <ImageUpload defaultImage={defaultAvatar} {...props} />
 }
 
-const mapStoreUserMethodToProps = {
-	[IMAGE_UPLOAD_ON_REMOVE]: () => {
-		storeUserResetAvatar()
-		onRemove()
-	},
-}
-
-const ImageUploadStoreUser = StateContainer(
-	ImageUpload,
-	[storeUser],
-	[mapStoreUserStateToProps],
-	[mapStoreUserMethodToProps]
-)
-
-const ImageUploadStoreUserPropedSettings = props => {
-	return <ImageUploadStoreUser defaultImage={defaultAvatar} {...props} />
-}
-
-export { ImageUploadStoreUserPropedSettings }
+export { ImageUploadPropedDefaultAvatar }

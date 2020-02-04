@@ -22,7 +22,7 @@ const {
 	TabPaneAccountSettings,
 	TabPaneSettingListStoreUserPropedNotification,
 	TabListVerticalPropedWithRouter,
-	UploaderUserAvatar,
+	UploaderAvatarStoreUser,
 	TAB_LIST_VERTICAL_NAME,
 	TAB_LIST_VERTICAL_TO,
 	TAB_LIST_VERTICAL_ICON,
@@ -67,7 +67,7 @@ const PageSettings = () => {
 							<Section>
 								{/* User Information */}
 								<section className='text-center'>
-									<UploaderUserAvatar />
+									<UploaderAvatarStoreUser />
 								</section>
 								{/* User Information */}
 								{/* Profile Sidebar */}

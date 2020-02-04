@@ -3,7 +3,7 @@ import {
 	firestorePathSettingsGeneral,
 	fireStorePathUserSettingsNotification,
 	fireStorePathUserSenshi,
-	FIRESTORE_SENSHI_SETTINGS_PROFILE_AVATAR,
+	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES,
 	FIRESTORE_USER_SENSHI_FAVOURITE,
@@ -25,7 +25,7 @@ const docUserSettingNotificationSet_ = docUserSettingNotificationSet()
 
 const docUserSettingGeneralAvatarSet = url =>
 	docUserSettingGeneralSet()({
-		[FIRESTORE_SENSHI_SETTINGS_PROFILE_AVATAR]: url,
+		[FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR]: url,
 	})
 
 const docUserSettingGeneralSetOnSignUpWithEmail = displayName =>
