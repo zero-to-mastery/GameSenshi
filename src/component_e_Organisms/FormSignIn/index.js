@@ -4,7 +4,7 @@ import {
 	ROUTE_PAGE_SIGN_UP,
 	useLastLocation,
 } from '2_routes'
-import { handleSignInWithEmailAndPassword } from 'api'
+import { handleSignInWithEmailAndPassword } from '3_api'
 import {
 	FormSignIn,
 	SIGN_IN_FORM_STATE_EMAIL,

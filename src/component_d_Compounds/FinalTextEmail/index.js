@@ -1,7 +1,7 @@
 import React from 'react'
 import { FinalTextEmail, FINAL_TEXT_EMAIL } from './FinalTextEmail'
 // api
-import { handleIsEmailAccountNotExist, handleIsPasswordResetAble } from 'api'
+import { handleIsEmailAccountNotExist, handleIsPasswordResetAble } from '3_api'
 // validation
 import {
 	signUpEmailValidation,

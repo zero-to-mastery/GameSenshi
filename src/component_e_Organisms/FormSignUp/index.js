@@ -17,7 +17,7 @@ import {
 	handleSignUpWithEmailAndPassword,
 	FUNCTION_EMAIL,
 	FUNCTION_PASSWORD,
-} from 'api'
+} from '3_api'
 // utils
 import { onSuccessfulSignUp } from './utils'
 import { FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME } from '0_constantValues'

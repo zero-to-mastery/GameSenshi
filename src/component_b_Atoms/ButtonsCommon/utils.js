@@ -14,7 +14,7 @@ import {
 	ROUTE_PAGE_CHECKOUT,
 	ROUTE_PAGE_CHAT,
 } from '2_routes'
-import { handleSignInWithSocials } from 'api'
+import { handleSignInWithSocials } from '3_api'
 import {
 	STORE_USER_STATE_SIGNING_IN,
 	storeModalSetItem,
