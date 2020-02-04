@@ -11,8 +11,8 @@ import { auth } from '1_firebaseInit'
 import {
 	databaseConnectionRefOn,
 	databaseConnectionRefOff,
-} from 'onAuthStateChange/userPresence'
-import { docUserSettingGeneralOnSnapshot } from 'fireStored'
+} from '3_onAppEvent/userPresence'
+import { docUserSettingGeneralOnSnapshot } from '2_fireStored'
 
 const ACTION = 'action'
 

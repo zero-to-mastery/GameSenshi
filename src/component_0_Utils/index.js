@@ -8,7 +8,7 @@ import {
 import {
 	setNonLoginUserLastIntendedAction,
 	databaseUserPresenceSetOffline,
-} from 'onAuthStateChange'
+} from '3_onAppEvent'
 
 const signOut = () => {
 	databaseUserPresenceSetOffline()

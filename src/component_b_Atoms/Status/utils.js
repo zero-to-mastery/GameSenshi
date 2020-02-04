@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { databaseUserPresenceOnSnapshot } from 'onAuthStateChange'
+import { databaseUserPresenceOnSnapshot } from '3_onAppEvent'
 
 const useOnline = uid => {
 	const [loading, setLoading] = useState(true)

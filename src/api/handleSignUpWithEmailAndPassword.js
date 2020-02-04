@@ -1,6 +1,6 @@
 import { simplerResponseHandling } from '1_utils'
 import { auth, handleDifferentCredential } from '1_firebaseInit'
-import { docUserSettingGeneralSetOnSignUpWithEmail } from 'fireStored'
+import { docUserSettingGeneralSetOnSignUpWithEmail } from '2_fireStored'
 import {
 	FUNCTION_EMAIL,
 	FUNCTION_PASSWORD,

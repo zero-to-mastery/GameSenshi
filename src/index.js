@@ -12,7 +12,7 @@ import {
 import { history } from '2_routes'
 import { goLastRoute } from '2_routes'
 import { getRedirectResult } from '1_firebaseInit'
-import { onAuthStateChange } from 'onAuthStateChange'
+import { onAuthStateChange } from '3_onAppEvent'
 import '0_assets/css/nucleo-icons.css'
 import '0_assets/scss/blk-design-system-pro-react.scss?v1.0.0'
 import '0_assets/demo/demo.css'
