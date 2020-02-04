@@ -12,7 +12,7 @@ import {
 	databaseConnectionRefOn,
 	databaseConnectionRefOff,
 } from '3_onAppEvent/userPresence'
-import { docUserSettingGeneralOnSnapshot } from '2_fireStored'
+import { docUserSettingGeneralOnSnapshot } from '2_fire_store'
 
 const ACTION = 'action'
 

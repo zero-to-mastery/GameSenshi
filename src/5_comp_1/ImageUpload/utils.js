@@ -1,6 +1,6 @@
 import { storeAlertShow, storeUserResetAvatar } from '2_state'
 import { storageUserAvatarRemove } from '1_fire_init'
-import { docUserSettingGeneralAvatarSet } from '2_fireStored'
+import { docUserSettingGeneralAvatarSet } from '2_fire_store'
 const emptyString = ''
 
 const onRemove = async () => {

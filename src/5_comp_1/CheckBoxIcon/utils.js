@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { docUserSenshiGet, docUserSenshiSetFavourite } from '2_fireStored'
+import { docUserSenshiGet, docUserSenshiSetFavourite } from '2_fire_store'
 import { storeModalSimpleError } from '2_state'
 import {
 	FIRESTORE_USER_SENSHI_FAVOURITE,

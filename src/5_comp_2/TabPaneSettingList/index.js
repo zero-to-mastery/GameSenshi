@@ -8,7 +8,7 @@ import { settingListNotification } from './utils'
 import {
 	docUserSettingNotificationSet_,
 	docUserSettingNotificationGet,
-} from '2_fireStored'
+} from '2_fire_store'
 import {
 	storeUser,
 	StateContainer,
