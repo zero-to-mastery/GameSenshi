@@ -31,7 +31,7 @@ import {
 	usernameLength,
 } from './validation'
 
-import { defaultAvatar } from './defaults'
+import { defaultAvatar, Brand } from './App'
 
 export {
 	resObj,
@@ -60,4 +60,5 @@ export {
 	cardExpiryValidation,
 	usernameLength,
 	defaultAvatar,
+	Brand,
 }
