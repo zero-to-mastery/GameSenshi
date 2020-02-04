@@ -32,8 +32,6 @@ import {
 	usernameLength,
 } from './validation'
 
-import { defaultAvatar, Brand } from './App'
-
 export {
 	resObj,
 	simplerResponseHandling,
@@ -60,6 +58,4 @@ export {
 	cardCvcValidation,
 	cardExpiryValidation,
 	usernameLength,
-	defaultAvatar,
-	Brand,
 }
