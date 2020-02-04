@@ -58,19 +58,16 @@ const options = [
 		[BUTTONS_COMMON_ID]: FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_FACEBOOK,
 		[BUTTONS_COMMON_ICON]: () => <i className='fab fa-facebook-f' />,
 		[BUTTONS_COMMON_COLOR]: 'facebook',
-		[BUTTONS_COMMON_TOOLTIP]: 'Follow me on my Facebook!',
 	},
 	{
 		[BUTTONS_COMMON_ID]: FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_TWITCH,
 		[BUTTONS_COMMON_ICON]: () => <i className='fab fa-twitch' />,
 		[BUTTONS_COMMON_COLOR]: 'twitch',
-		[BUTTONS_COMMON_TOOLTIP]: 'Subscribe to my Twitch channel!',
 	},
 	{
 		[BUTTONS_COMMON_ID]: FIRESTORE_SENSHI_SETTINGS_PROFILE_CHANNELS_YOUTUBE,
 		[BUTTONS_COMMON_ICON]: () => <i className='fab fa-youtube ' />,
 		[BUTTONS_COMMON_COLOR]: 'youtube',
-		[BUTTONS_COMMON_TOOLTIP]: 'Subscribe to my Youtube channel!',
 	},
 	{
 		[BUTTONS_COMMON_ID]: EDIT,

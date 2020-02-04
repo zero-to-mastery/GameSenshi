@@ -90,7 +90,7 @@ const CardUserHorizontal = props => {
 						<Row xs='1'>
 							<Col align='center'>
 								<TextStyledSubscribe className='text-success font-weight-bold text-nowrap'>
-									Subscribe to my channels:
+									Subscribe And Follow Me!
 								</TextStyledSubscribe>
 							</Col>
 							<Col>
