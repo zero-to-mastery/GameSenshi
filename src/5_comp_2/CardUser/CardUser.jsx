@@ -64,7 +64,7 @@ const CardUser = props => {
 					/>
 				</DivStyledHover>
 				<CardBody>
-					<Row className='align-items-center'>
+					<Row xs='1'>
 						<Col align='left'>
 							<h4
 								className={classnames(
@@ -75,24 +75,24 @@ const CardUser = props => {
 								{name}
 							</h4>
 						</Col>
-					</Row>
-					<Row className='align-items-center my-1'>
-						<Col sm='5' lg='6' className={classnames('pr-0')} align='left'>
-							<ButtonSoundStoreSoundPropedCardUser
-								gender={gender}
-								url={audioSrc}
-							/>
+						<Col className='mt-1 mb-1'>
+							<Row className='align-items-center'>
+								<Col xs='7' sm='6' lg='7' align='left'>
+									<ButtonSoundStoreSoundPropedCardUser
+										gender={gender}
+										url={audioSrc}
+									/>
+								</Col>
+								<Col align='right'>
+									<TextStyledYellow
+										align='right'
+										className={classnames('title my-0 text-white text-nowrap')}
+									>
+										${price}/h
+									</TextStyledYellow>
+								</Col>
+							</Row>
 						</Col>
-						<Col className='pl-0' align='right'>
-							<TextStyledYellow
-								align='right'
-								className={classnames('title my-0 text-white text-nowrap')}
-							>
-								${price}/h
-							</TextStyledYellow>
-						</Col>
-					</Row>
-					<Row>
 						<Col>
 							<p align='left' className='text-white m-0 text-nowrap'>
 								{description}
