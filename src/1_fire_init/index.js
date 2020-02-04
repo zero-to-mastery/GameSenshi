@@ -5,8 +5,6 @@ import {
 	storageUserAvatarRemove,
 } from './storage'
 
-import { functSignInTwicth } from './cloudFunct'
-
 import {
 	handleDifferentCredential,
 	linkedThen,
@@ -20,7 +18,6 @@ export {
 	storageUserAvatarGet,
 	storageUserAvatarSet,
 	storageUserAvatarRemove,
-	functSignInTwicth,
 	handleDifferentCredential,
 	linkedThen,
 }

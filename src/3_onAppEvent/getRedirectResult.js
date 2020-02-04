@@ -6,12 +6,9 @@ import {
 	storeModalGetRedirectUrl,
 } from '2_state'
 
-import {
-	handleDifferentCredential,
-	linkedThen,
-	auth,
-	functSignInTwicth,
-} from '1_fire_init'
+import { handleDifferentCredential, linkedThen, auth } from '1_fire_init'
+
+import { functSignInTwicth } from '2_fire_funct'
 
 import {
 	UNEXPECTED_ERROR_CODE_6,
