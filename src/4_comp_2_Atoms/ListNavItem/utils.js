@@ -18,7 +18,7 @@ import {
 	ROUTE_PAGE_SIGN_IN,
 	ROUTE_PAGE_SIGN_UP,
 } from '2_routes'
-import { signOut } from '4_comp_0_Utils'
+import { signOut } from '4_comp_utils'
 
 const simpleIconLabel = (icon, children) => {
 	return (

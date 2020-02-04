@@ -8,7 +8,7 @@ import {
 import { LastLocationProvider } from 'react-router-last-location'
 import { stopUndefined } from '1_utils'
 import { storeSignInShow } from '2_state'
-import { onLogin } from '4_comp_0_Utils'
+import { onLogin } from '4_comp_utils'
 import {
 	ROUTE_PAGE_INDEX,
 	ROUTE_PAGE_SIGN_IN,
