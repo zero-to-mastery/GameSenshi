@@ -13,7 +13,7 @@ import {
 } from '0_constantValues'
 import { createGetOptions } from '1_utils'
 
-const gameIconsPath = game => require(`assets/icons/games/${game}.ico`)
+const gameIconsPath = game => require(`0_assets/icons/games/${game}.ico`)
 
 const options = [
 	{

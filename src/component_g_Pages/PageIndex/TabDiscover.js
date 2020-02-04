@@ -1,5 +1,5 @@
 import React from 'react'
-import audioSample from 'assets/audio/sampleVoice.mp3'
+import audioSample from '0_assets/audio/sampleVoice.mp3'
 import { stopUndefined } from '1_utils'
 import { Exports } from 'component_f_MultiOrganisms'
 import suffle from 'array-shuffle'
@@ -23,7 +23,7 @@ const CARD_DISCOVER_DESCRIPTION = 'description'
 const discoverSections = [
 	{
 		[CARD_DISCOVER_NAME]: 'Dylan Wyatt',
-		[CARD_DISCOVER_IMAGE]: require('assets/img/christian.jpg'),
+		[CARD_DISCOVER_IMAGE]: require('0_assets/img/christian.jpg'),
 		[CARD_DISCOVER_GENDER]: false,
 		[CARD_DISCOVER_AUDIO]: audioSample,
 		[CARD_DISCOVER_PRICE]: '30',
@@ -31,7 +31,7 @@ const discoverSections = [
 	},
 	{
 		[CARD_DISCOVER_NAME]: 'Mila Skylar',
-		[CARD_DISCOVER_IMAGE]: require('assets/img/johana.jpg'),
+		[CARD_DISCOVER_IMAGE]: require('0_assets/img/johana.jpg'),
 		[CARD_DISCOVER_GENDER]: true,
 		[CARD_DISCOVER_AUDIO]: audioSample,
 		[CARD_DISCOVER_PRICE]: '40',
@@ -39,7 +39,7 @@ const discoverSections = [
 	},
 	{
 		[CARD_DISCOVER_NAME]: 'Mark Johnsson',
-		[CARD_DISCOVER_IMAGE]: require('assets/img/mike.jpeg'),
+		[CARD_DISCOVER_IMAGE]: require('0_assets/img/mike.jpeg'),
 		[CARD_DISCOVER_GENDER]: false,
 		[CARD_DISCOVER_AUDIO]: audioSample,
 		[CARD_DISCOVER_PRICE]: '50',
@@ -47,7 +47,7 @@ const discoverSections = [
 	},
 	{
 		[CARD_DISCOVER_NAME]: 'Olivia Smith',
-		[CARD_DISCOVER_IMAGE]: require('assets/img/olivia.jpg'),
+		[CARD_DISCOVER_IMAGE]: require('0_assets/img/olivia.jpg'),
 		[CARD_DISCOVER_GENDER]: true,
 		[CARD_DISCOVER_AUDIO]: audioSample,
 		[CARD_DISCOVER_PRICE]: '60',

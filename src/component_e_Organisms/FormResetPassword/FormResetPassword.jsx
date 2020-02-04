@@ -50,7 +50,7 @@ const FormResetPassword = props => {
 					return (
 						<Form action='' className='form' method=''>
 							<CardHeader>
-								<CardImg alt='...' src={require('assets/img/shape.png')} />
+								<CardImg alt='...' src={require('0_assets/img/shape.png')} />
 								<CardTitle tag='h4'>Reset Password</CardTitle>
 							</CardHeader>
 							{sent ? (

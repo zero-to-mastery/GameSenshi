@@ -9,10 +9,10 @@ A platform for gamers/streamers to provide their casual service and link up with
 <<<[**Demo Page**](https://gamessenshi.firebaseapp.com/)>>>
 
 route: index
-![index.png](./src/assets/img/readme/index.png)
+![index.png](./src/0_assets/img/readme/index.png)
 
 route: profile/2QvJMnyN73SnBXaLuRR0REQpY8X2
-![profile.png](./src/assets/img/readme/profile.png)
+![profile.png](./src/0_assets/img/readme/profile.png)
 
 route: signup
 note: each sign up method can be linked to each other, example:
@@ -21,22 +21,22 @@ note: each sign up method can be linked to each other, example:
 2. sign up with Google account then link with password account.
 3. sign up with Twitch account then link with Facebook account.
 
-![signUp.png](./src/assets/img/readme/signUp.png)
+![signUp.png](./src/0_assets/img/readme/signUp.png)
 
 route: signin
-![signIn.png](./src/assets/img/readme/signIn.png)
+![signIn.png](./src/0_assets/img/readme/signIn.png)
 
 route: reset
-![reset.png](./src/assets/img/readme/reset.png)
+![reset.png](./src/0_assets/img/readme/reset.png)
 
 route: settings
-![settings.png](./src/assets/img/readme/settings.png)
+![settings.png](./src/0_assets/img/readme/settings.png)
 
 route: policy
-![policy.png](./src/assets/img/readme/policy.png)
+![policy.png](./src/0_assets/img/readme/policy.png)
 
 route: `none of above`
-![error.png](./src/assets/img/readme/error.png)
+![error.png](./src/0_assets/img/readme/error.png)
 
 ## Introduction
 
@@ -141,7 +141,7 @@ Please read [wiki](https://github.com/tylim88/GameSenshi/wiki) for details of ou
 Join our [Trello](https://trello.com/invite/b/tAyH3oig/a5374e9eaa1bbe644f3e7367d1e23300/game-senshi).
 
 Join our Discord Channel
-![joinChannel.png](./src/assets/img/readme/joinChannel.png)
+![joinChannel.png](./src/0_assets/img/readme/joinChannel.png)
 
 Please read [CONTRIBUTING.md](https://github.com/tylim88/GameSenshi/blob/master/CONTRIBUTING.md) for details on how to contribute.
 

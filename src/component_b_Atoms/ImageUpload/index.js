@@ -5,7 +5,7 @@ import {
 	IMAGE_UPLOAD_ON_REMOVE,
 } from './ImageUpload'
 import { onRemove } from './utils'
-import defaultAvatar from 'assets/img/placeholder.jpg'
+import defaultAvatar from '0_assets/img/placeholder.jpg'
 import {
 	StateContainer,
 	storeUser,

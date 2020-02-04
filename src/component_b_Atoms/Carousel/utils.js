@@ -1,7 +1,7 @@
 // temp data array
 import { FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_IMAGE } from '0_constantValues'
 
-const getIndexImage = name => require(`assets/img/index/${name}.jpg`)
+const getIndexImage = name => require(`0_assets/img/index/${name}.jpg`)
 
 const itemsIndex = [
 	{

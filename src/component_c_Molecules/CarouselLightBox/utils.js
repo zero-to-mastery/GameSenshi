@@ -4,7 +4,7 @@ import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_YOUTUBE,
 } from '0_constantValues'
 
-const getProfileImage = name => require(`assets/img/${name}.jpg`)
+const getProfileImage = name => require(`0_assets/img/${name}.jpg`)
 
 const itemsProfile = [
 	{

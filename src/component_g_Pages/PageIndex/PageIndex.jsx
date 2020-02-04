@@ -1,7 +1,7 @@
 import React from 'react'
 import { stopUndefined } from '1_utils'
 import { Exports } from 'component_f_MultiOrganisms'
-import audioSample from 'assets/audio/sampleVoice.mp3'
+import audioSample from '0_assets/audio/sampleVoice.mp3'
 import { TabDiscover } from './TabDiscover'
 const {
 	CardUserPropedDiscover,
@@ -28,7 +28,7 @@ const CARD_PROFILE_DESCRIPTION = 'description'
 const cardPlayers = [
 	{
 		[CARD_PROFILE_NAME]: 'Dylan Wyatt',
-		[CARD_PROFILE_IMAGE]: require('assets/img/christian.jpg'),
+		[CARD_PROFILE_IMAGE]: require('0_assets/img/christian.jpg'),
 		[CARD_PROFILE_GENDER]: false,
 		[CARD_PROFILE_AUDIO]: audioSample,
 		[CARD_PROFILE_PRICE]: '30',
@@ -36,7 +36,7 @@ const cardPlayers = [
 	},
 	{
 		[CARD_PROFILE_NAME]: 'Mila Skylar',
-		[CARD_PROFILE_IMAGE]: require('assets/img/johana.jpg'),
+		[CARD_PROFILE_IMAGE]: require('0_assets/img/johana.jpg'),
 		[CARD_PROFILE_GENDER]: true,
 		[CARD_PROFILE_AUDIO]: audioSample,
 		[CARD_PROFILE_PRICE]: '40',
@@ -44,7 +44,7 @@ const cardPlayers = [
 	},
 	{
 		[CARD_PROFILE_NAME]: 'Mark Johnsson',
-		[CARD_PROFILE_IMAGE]: require('assets/img/mike.jpeg'),
+		[CARD_PROFILE_IMAGE]: require('0_assets/img/mike.jpeg'),
 		[CARD_PROFILE_GENDER]: false,
 		[CARD_PROFILE_AUDIO]: audioSample,
 		[CARD_PROFILE_PRICE]: '50',
@@ -52,7 +52,7 @@ const cardPlayers = [
 	},
 	{
 		[CARD_PROFILE_NAME]: 'Olivia Smith',
-		[CARD_PROFILE_IMAGE]: require('assets/img/olivia.jpg'),
+		[CARD_PROFILE_IMAGE]: require('0_assets/img/olivia.jpg'),
 		[CARD_PROFILE_GENDER]: true,
 		[CARD_PROFILE_AUDIO]: audioSample,
 		[CARD_PROFILE_PRICE]: '60',

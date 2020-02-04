@@ -70,13 +70,13 @@ const PageProfile = props => {
 			<img
 				alt='...'
 				className='dots'
-				src={require('assets/img/dots.png')}
+				src={require('0_assets/img/dots.png')}
 				style={{ zIndex: 0 }}
 			/>
 			<img
 				alt='...'
 				className='path'
-				src={require('assets/img/path4.png')}
+				src={require('0_assets/img/path4.png')}
 				style={{ zIndex: 0 }}
 			/>
 			<Container>

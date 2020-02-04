@@ -106,7 +106,7 @@ const ChatMessageContainer = props => {
 								<img
 									alt='...'
 									className='avatar'
-									src={require('assets/img/p10.jpg')}
+									src={require('0_assets/img/p10.jpg')}
 								/>
 								<Media body>
 									<h6 className='mb-0 d-block'>Charlie Watson</h6>

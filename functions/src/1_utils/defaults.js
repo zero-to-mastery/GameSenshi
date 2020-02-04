@@ -1,3 +1,3 @@
-import defaultAvatar from 'assets/img/placeholder.jpg'
+import defaultAvatar from '0_assets/img/placeholder.jpg'
 
 export { defaultAvatar }

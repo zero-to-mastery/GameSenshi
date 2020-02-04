@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 import styles from './styles.module.css'
-import animate from 'assets/css/animate.module.css'
+import animate from '0_assets/css/animate.module.css'
 import Loader from 'react-loader-spinner'
 
 const Status = props => {

@@ -57,7 +57,7 @@ const FormSignIn = props => {
 		<TopElement toggle={toggle} isOpen={isOpen}>
 			<Card className='card-login'>
 				<CardHeader>
-					<CardImg alt='...' src={require('assets/img/square-purple-1.png')} />
+					<CardImg alt='...' src={require('0_assets/img/square-purple-1.png')} />
 					<CardTitle tag='h4'>Login</CardTitle>
 					{predefinedEmail && (
 						<button

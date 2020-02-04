@@ -36,7 +36,7 @@ const FormSignUp = props => {
 			<CardHeader>
 				<CardImg
 					alt='...'
-					src={require('assets/img/square1.png')}
+					src={require('0_assets/img/square1.png')}
 					style={{ top: '-8%' }}
 				/>
 				<CardTitle tag='h4'>Sign Up</CardTitle>

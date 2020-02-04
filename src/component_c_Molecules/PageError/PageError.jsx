@@ -16,7 +16,7 @@ const PageError = props => {
 				className='page-header-image'
 				style={{
 					backgroundImage:
-						'url(' + require('assets/img/braden-collum.jpg') + ')',
+						'url(' + require('0_assets/img/braden-collum.jpg') + ')',
 				}}
 			/>
 			<Container>

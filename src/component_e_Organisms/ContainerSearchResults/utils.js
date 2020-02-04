@@ -6,12 +6,12 @@ import {
 	CARD_SEARCHED_PRICE,
 	CARD_SEARCHED_DESCRIPTION,
 } from './ContainerSearchResults'
-import audioSample from 'assets/audio/sampleVoice.mp3'
+import audioSample from '0_assets/audio/sampleVoice.mp3'
 
 const cardPlayers = [
 	{
 		[CARD_SEARCHED_NAME]: 'Dylan Wyatt',
-		[CARD_SEARCHED_IMAGE]: require('assets/img/christian.jpg'),
+		[CARD_SEARCHED_IMAGE]: require('0_assets/img/christian.jpg'),
 		[CARD_SEARCHED_GENDER]: false,
 		[CARD_SEARCHED_AUDIO]: audioSample,
 		[CARD_SEARCHED_PRICE]: '30',
@@ -19,7 +19,7 @@ const cardPlayers = [
 	},
 	{
 		[CARD_SEARCHED_NAME]: 'Mila Skylar',
-		[CARD_SEARCHED_IMAGE]: require('assets/img/johana.jpg'),
+		[CARD_SEARCHED_IMAGE]: require('0_assets/img/johana.jpg'),
 		[CARD_SEARCHED_GENDER]: true,
 		[CARD_SEARCHED_AUDIO]: audioSample,
 		[CARD_SEARCHED_PRICE]: '40',
@@ -27,7 +27,7 @@ const cardPlayers = [
 	},
 	{
 		[CARD_SEARCHED_NAME]: 'Mark Johnsson',
-		[CARD_SEARCHED_IMAGE]: require('assets/img/mike.jpg'),
+		[CARD_SEARCHED_IMAGE]: require('0_assets/img/mike.jpg'),
 		[CARD_SEARCHED_GENDER]: false,
 		[CARD_SEARCHED_AUDIO]: audioSample,
 		[CARD_SEARCHED_PRICE]: '50',
@@ -35,7 +35,7 @@ const cardPlayers = [
 	},
 	{
 		[CARD_SEARCHED_NAME]: 'Olivia Smith',
-		[CARD_SEARCHED_IMAGE]: require('assets/img/olivia.jpg'),
+		[CARD_SEARCHED_IMAGE]: require('0_assets/img/olivia.jpg'),
 		[CARD_SEARCHED_GENDER]: true,
 		[CARD_SEARCHED_AUDIO]: audioSample,
 		[CARD_SEARCHED_PRICE]: '60',
