@@ -14,16 +14,7 @@ const Icon = props => {
 		(image || emoji || icon) && (
 			<span className={className}>
 				{image && !error && (
-					<Image
-						src={image}
-						onError={onError}
-						color='transparent'
-						style={{
-							width: 'auto',
-							height: '100%',
-							padding: 0,
-						}}
-					/>
+					<Image src={image} onError={onError} color='transparent' />
 				)}
 				{(!image || (emoji && error)) && (
 					<span role='img' aria-label={aria}>
