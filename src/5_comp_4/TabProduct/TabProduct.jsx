@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'reactstrap'
 import { Exports } from '5_comp_2'
 
 const {
-	ImagesTooltipPropedTabs,
+	ImagesTooltipOptioned,
 	ButtonSoundStoreSoundPropedCardUser,
 	QuantityProfile,
 	ButtonsCommonChatAndCheckout,
@@ -26,7 +26,7 @@ const TabProduct = props => {
 		<Container style={{ zIndex: 99 }}>
 			<Row className='py-2 d-flex align-items-center'>
 				<Col>
-					<ImagesTooltipPropedTabs icons={icon} />
+					<ImagesTooltipOptioned icons={icon} />
 				</Col>
 				<Col>
 					<div style={{ width: '200px' }}>

@@ -60,11 +60,7 @@ import {
 } from './TextIcon'
 
 import { BadgesOptioned, Badges, BadgesPropedSenshi } from './Badges'
-import {
-	ImagesTooltipOptioned,
-	ImagesTooltipPropedTabs,
-	ImagesTooltip,
-} from './ImagesTooltip'
+import { ImagesTooltipOptioned } from './ImagesTooltip'
 import { StatusPropedOnline } from './Status'
 import {
 	ButtonSoundStoreSoundPropedGender,
@@ -139,9 +135,7 @@ export const Exports = {
 	BadgesOptioned,
 	Badges,
 	BadgesPropedSenshi,
-	ImagesTooltipPropedTabs,
 	ImagesTooltipOptioned,
-	ImagesTooltip,
 	StatusPropedOnline,
 	ButtonSoundStoreSoundPropedGender,
 	ButtonSoundStoreSoundPropedCardUser,
