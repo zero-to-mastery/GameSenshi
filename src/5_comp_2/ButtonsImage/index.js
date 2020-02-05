@@ -14,7 +14,15 @@ const ButtonsImageOptioned = props => {
 
 const ButtonsImagePropedIndex = props => {
 	return (
-		<ButtonsImageOptioned className='mt-3' buttons={buttonsIndex} {...props} />
+		<ButtonsImageOptioned
+			className='justify-content-around'
+			buttonFlex={{
+				xs: '1.5',
+				lg: '1.25',
+			}}
+			buttons={buttonsIndex}
+			{...props}
+		/>
 	)
 }
 

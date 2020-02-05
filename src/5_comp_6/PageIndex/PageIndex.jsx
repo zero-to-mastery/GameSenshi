@@ -94,7 +94,7 @@ const PageIndex = () => {
 						<Col>
 							<CarouselPropedIndex />
 						</Col>
-						<Col>
+						<Col className='mt-4'>
 							<ButtonsImagePropedIndex />
 						</Col>
 					</Row>
