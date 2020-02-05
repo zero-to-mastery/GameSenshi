@@ -53,7 +53,7 @@ import {
 	FinalDateBirthDatePropedGeneraL,
 	FINAL_DATE_BIRTH_DATE,
 } from './FinalDateBirthDate'
-import { UploaderAvatarStoreUser } from './UploaderAvatar'
+import { UploaderAvatarPropedCropStoreUser } from './UploaderAvatar'
 import {
 	FinalSelectGamePropedGeneraL,
 	FINAL_SELECT_GAME,
@@ -93,7 +93,7 @@ export const Exports = {
 	FINAL_SELECT_LANGUAGES,
 	FinalDateBirthDatePropedGeneraL,
 	FINAL_DATE_BIRTH_DATE,
-	UploaderAvatarStoreUser,
+	UploaderAvatarPropedCropStoreUser,
 	FinalSelectGamePropedGeneraL,
 	FINAL_SELECT_GAME,
 	CommentWithPaginationPropedDefault,

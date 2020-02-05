@@ -2,10 +2,9 @@ import React, { useState, useCallback } from 'react'
 import { stopUndefined } from '1_utils'
 import { Exports } from '5_comp_2'
 
-const {
-	ImageUploadPropedDefaultAvatar,
-	ModalImageCropperPropedSettings,
-} = stopUndefined(Exports)
+const { ImageUploadPropedDefaultAvatar, ModalImageCropper } = stopUndefined(
+	Exports
+)
 
 const UPLOADER_AVATAR_STATE_IMAGE = 'image'
 const UPLOADER_AVATAR_ON_REMOVE = 'onRemove'
@@ -14,6 +13,7 @@ const UploaderAvatar = props => {
 	const {
 		[UPLOADER_AVATAR_STATE_IMAGE]: image,
 		[UPLOADER_AVATAR_ON_REMOVE]: onRemove,
+		onCrop,
 	} = props
 	const [imageDataUrl, setImageDataUrl] = useState('')
 	const [openCropper, setOpenCropper] = useState(false)
@@ -32,7 +32,8 @@ const UploaderAvatar = props => {
 
 	return (
 		<>
-			<ModalImageCropperPropedSettings
+			<ModalImageCropper
+				onCrop={onCrop}
 				isOpen={openCropper}
 				toggle={toggleCropper}
 				src={imageDataUrl}

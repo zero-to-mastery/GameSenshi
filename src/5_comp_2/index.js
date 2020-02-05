@@ -1,7 +1,7 @@
 import { Exports as ExportAtoms } from '5_comp_1'
 import { FinalInputText, FinalInputSelect, FinalInputDate } from './FinalInput'
 import { TabPaneSettingListStoreUserPropedNotification } from './TabPaneSettingList'
-import { ModalImageCropperPropedSettings } from './ModalImageCropper'
+import { ModalImageCropper } from './ModalImageCropper'
 import { CardUserHorizontal } from './CardUserHorizontal'
 import { CardUserPropedDiscover, CardProfilePropedSearch } from './CardUser'
 import { ButtonsImagePropedIndex } from './ButtonsImage'
@@ -34,7 +34,7 @@ export const Exports = {
 	FinalInputText,
 	FinalInputSelect,
 	FinalInputDate,
-	ModalImageCropperPropedSettings,
+	ModalImageCropper,
 	CardUserHorizontal,
 	CardUserPropedDiscover,
 	ButtonsImagePropedIndex,
