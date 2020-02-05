@@ -1,5 +1,4 @@
-// the purpose of this modal is to link user social auth
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import Loader from 'react-loader-spinner'
 import {
 	Modal as ModalRS,
@@ -21,6 +20,7 @@ const MODAL_TOGGLE = 'toggle'
 const MODAL_ON_CONTINUE = 'onContinue'
 
 const Modal = props => {
+	const [disabled, setDisabled] = useState(false)
 	const {
 		[MODAL_STATE_CHILDREN]: children,
 		[MODAL_STATE_TITLE]: title,
@@ -31,6 +31,11 @@ const Modal = props => {
 		[MODAL_STATE_FOOTER]: footer,
 		...otherProps
 	} = props
+
+	const onClick_ = useCallback(() => {
+		setDisabled(true)
+		onContinue()
+	}, [onContinue])
 
 	return (
 		<ModalRS
@@ -61,7 +66,7 @@ const Modal = props => {
 				{loader ? (
 					<Loader type='Ball-Triangle' color='#FFD700' height={80} width={80} />
 				) : (
-					<Button color='primary' onClick={onContinue}>
+					<Button color='primary' onClick={onClick_} disabled={disabled}>
 						{footer}
 					</Button>
 				)}
