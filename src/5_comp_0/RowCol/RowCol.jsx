@@ -50,7 +50,7 @@ const [Row, Col] = [RowRS, ColRs].map((Comp, i) => {
 })
 
 const Container = props => {
-	return <ContainerRS className='p-0' {...props} />
+	return <ContainerRS {...props} />
 }
 
 export { Row, Col, Container }

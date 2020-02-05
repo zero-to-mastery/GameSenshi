@@ -82,41 +82,39 @@ const CardGift = props => {
 				</Container>
 				<Tooltip id={CARD_GIFT_MODAL} name={name} price={price} />
 			</Modal>
-			<Container>
-				<Row xs='7' sx='8' sm='10' md='12' lg='6' className='m-2 p-0'>
-					{icons.map(icon => {
-						const {
-							[CARD_GIFT_IMAGE]: src,
-							[CARD_GIFT_NAME]: name,
-							[CARD_GIFT_PRICE]: price,
-						} = icon
-						const id = `cardGift${name}`
-						const onClick_ = useCallback(() => {
-							setIsOpen(true)
-							setIconSrc(src)
-							setNumber(1)
-							setName(name)
-							setPrice(price)
-						}, [src])
-						return (
-							<Col className='p-1' id={id} key={id}>
-								<Button
-									onClick={onClick_}
-									className='p-0 w-100'
-									baseClass='w-100'
-								>
-									<Image
-										className='border border-dark rounded-0'
-										src={src}
-										alt={src}
-									/>
-								</Button>
-								<Tooltip id={id} name={name} price={price} />
-							</Col>
-						)
-					})}
-				</Row>
-			</Container>
+			<Row xs='7' sx='8' sm='10' md='12' lg='6' className='m-2 p-0'>
+				{icons.map(icon => {
+					const {
+						[CARD_GIFT_IMAGE]: src,
+						[CARD_GIFT_NAME]: name,
+						[CARD_GIFT_PRICE]: price,
+					} = icon
+					const id = `cardGift${name}`
+					const onClick_ = useCallback(() => {
+						setIsOpen(true)
+						setIconSrc(src)
+						setNumber(1)
+						setName(name)
+						setPrice(price)
+					}, [src])
+					return (
+						<Col className='p-1' id={id} key={id}>
+							<Button
+								onClick={onClick_}
+								className='p-0 w-100'
+								baseClass='w-100'
+							>
+								<Image
+									className='border border-dark rounded-0'
+									src={src}
+									alt={src}
+								/>
+							</Button>
+							<Tooltip id={id} name={name} price={price} />
+						</Col>
+					)
+				})}
+			</Row>
 		</>
 	)
 }
