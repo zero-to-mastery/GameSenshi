@@ -1,5 +1,13 @@
+import styled from 'styled-components'
 import { responsiveCssGenerator } from './utils'
 import {
+	mt_auto,
+	mb_auto,
+	ml_auto,
+	mr_auto,
+	mx_auto,
+	my_auto,
+	m_auto,
 	mt_0,
 	mb_0,
 	ml_0,
@@ -77,9 +85,13 @@ import {
 	mx_n5,
 	my_n5,
 	m_n5,
-} from './margin'
-
-import {
+	pt_auto,
+	pb_auto,
+	pl_auto,
+	pr_auto,
+	px_auto,
+	py_auto,
+	p_auto,
 	pt_0,
 	pb_0,
 	pl_0,
@@ -157,10 +169,18 @@ import {
 	px_n5,
 	py_n5,
 	p_n5,
-} from './padding'
+} from './marPad'
 
 export {
+	styled,
 	responsiveCssGenerator,
+	mt_auto,
+	mb_auto,
+	ml_auto,
+	mr_auto,
+	mx_auto,
+	my_auto,
+	m_auto,
 	mt_0,
 	mb_0,
 	ml_0,
@@ -238,6 +258,13 @@ export {
 	mx_n5,
 	my_n5,
 	m_n5,
+	pt_auto,
+	pb_auto,
+	pl_auto,
+	pr_auto,
+	px_auto,
+	py_auto,
+	p_auto,
 	pt_0,
 	pb_0,
 	pl_0,
