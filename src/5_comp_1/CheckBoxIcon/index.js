@@ -32,7 +32,7 @@ const CheckBoxIconPropedFavourite = props => {
 			{...otherProps}
 		>
 			<i className='tim-icons icon-heart-2' />
-			&nbsp; Favourite
+			&nbsp; Favor
 		</CheckBoxIcon>
 	)
 }
