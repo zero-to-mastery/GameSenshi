@@ -1,6 +1,13 @@
 import styled from 'styled-components'
 import { responsiveCssGenerator } from './utils'
 import {
+	justify_content_start,
+	justify_content_end,
+	justify_content_center,
+	justify_content_between,
+	justify_content_around,
+} from './justify'
+import {
 	mt_auto,
 	mb_auto,
 	ml_auto,
@@ -342,4 +349,9 @@ export {
 	px_n5,
 	py_n5,
 	p_n5,
+	justify_content_start,
+	justify_content_end,
+	justify_content_center,
+	justify_content_between,
+	justify_content_around,
 }
