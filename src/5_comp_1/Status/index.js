@@ -8,7 +8,6 @@ const StatusPropedOnline = props => {
 	return (
 		<Status
 			bodyOn='Online!'
-			bodyOff='Offline'
 			className='justify-content-center mt-2'
 			on={online}
 			loading={loading}

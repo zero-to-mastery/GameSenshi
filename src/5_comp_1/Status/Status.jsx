@@ -3,37 +3,48 @@ import classnames from 'classnames'
 import styles from './styles.module.css'
 import animate from '0_assets/css/animate.module.css'
 import Loader from 'react-loader-spinner'
+import { stopUndefined } from '1_utils'
+import { Exports } from '5_comp_0'
+const { Col, Row } = stopUndefined(Exports)
 
 const Status = props => {
-	const { on, bodyOn, bodyOff, className, loading } = props
+	const { on, bodyOn, bodyOff, className, loading, loader } = props
 	return (
 		<div className={classnames(className, 'd-flex align-items-center')}>
-			{loading ? (
+			{loading && loader && (
 				<Loader type='Circles' color='#00BFFF' height='21px' width='21px' />
-			) : (
-				<>
-					<span
-						className={classnames(
-							styles.dot,
-							'mr-1',
-							animate.animated,
-							animate.infinite,
-							{
-								[animate.heartBeat]: on,
-								[styles.on]: on,
-								'd-none': !on,
-							}
-						)}
-					/>
-					<p
-						className={classnames('mb-0 pt-1', {
-							'text-white': on,
-							'd-none': !on,
-						})}
-					>
-						{on ? bodyOn : bodyOff}
-					</p>
-				</>
+			)}
+			{!loading && (
+				<Row
+					className={classnames('align-items-center', {
+						'd-none': (!on && !bodyOff) || (on && !bodyOn),
+					})}
+				>
+					<Col xs='3'>
+						<div
+							className={classnames(
+								styles.dot,
+								animate.animated,
+								animate.infinite,
+								{
+									[animate.heartBeat]: on,
+									[styles.on]: on,
+									[styles.off]: !on,
+								}
+							)}
+						/>
+					</Col>
+					<Col className='pl-1'>
+						<p
+							className={classnames('mb-0 pt-1', {
+								'text-white': on,
+								'text-muted': !on,
+							})}
+						>
+							{on ? bodyOn : bodyOff}
+						</p>
+					</Col>
+				</Row>
 			)}
 		</div>
 	)
