@@ -1,12 +1,13 @@
 import { Col } from 'reactstrap'
-import { responsiveCssGenerator } from '0_styled'
-import styled from 'styled-components'
+import { styled } from '0_styled'
 
-const ColStyledPlay = styled(Col)`
-	${responsiveCssGenerator({
+const ColStyledPlay = styled(
+	Col,
+	{
 		xs: `justify-content: center;`,
 		sm: `display: none;`,
-	})}
-`
+	},
+	3
+)
 
 export { ColStyledPlay }

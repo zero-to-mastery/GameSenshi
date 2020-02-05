@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { responsiveCssGenerator } from './utils'
+import { responsiveCssGenerator, styled } from './utils'
 import {
 	justify_content_start,
 	justify_content_end,

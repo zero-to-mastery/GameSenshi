@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import styledSC from 'styled-components'
 const BPOINTS_XS = 0
 const BPOINTS_SX = 500
 const BPOINTS_SM = 576
@@ -32,4 +33,14 @@ const responsiveCssGenerator = responsiveness => {
 	`
 }
 
-export { responsiveCssGenerator }
+const styled = (component, responsivenessObject, specificity = 3) => {
+	return (typeof component === 'string'
+		? styledSC[component]
+		: styledSC(component))`
+	 ${'&'.repeat(specificity)} {
+		 ${responsiveCssGenerator(responsivenessObject)}
+		}
+	 `
+}
+
+export { responsiveCssGenerator, styled }
