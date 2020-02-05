@@ -4,6 +4,7 @@ import { UncontrolledTooltip } from './UncontrolledTooltip'
 import { Icon } from './Icon'
 import { Row, Col, Container } from './RowCol'
 import { Helmet } from './Helmet'
+import { Image } from './Image'
 
 export const Exports = {
 	Link,
@@ -15,4 +16,5 @@ export const Exports = {
 	Col,
 	Container,
 	Helmet,
+	Image,
 }
