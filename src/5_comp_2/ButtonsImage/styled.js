@@ -1,9 +1,9 @@
-import { styled, p_0, p_1, p_2, p_3 } from '0_styled'
+import { styledR, p_0, p_1, p_2, p_3 } from '0_styled'
 import { Exports } from '5_comp_1'
 import { stopUndefined } from '1_utils'
 const { Button, Col } = stopUndefined(Exports)
 
-const ButtonStyled = styled(
+const ButtonStyled = styledR(
 	Button,
 	{
 		xs: p_1,
@@ -13,7 +13,7 @@ const ButtonStyled = styled(
 	3
 )
 
-const ColStyled = styled(
+const ColStyled = styledR(
 	Col,
 	{
 		xs: p_0,

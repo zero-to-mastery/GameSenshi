@@ -1,4 +1,4 @@
-import { responsiveCssGenerator, styled, css } from './utils'
+import { cssR, styledR, css } from './utils'
 import {
 	justify_content_start,
 	justify_content_end,
@@ -178,9 +178,9 @@ import {
 } from './marPad'
 
 export {
-	styled,
+	styledR,
 	css,
-	responsiveCssGenerator,
+	cssR,
 	mt_auto,
 	mb_auto,
 	ml_auto,

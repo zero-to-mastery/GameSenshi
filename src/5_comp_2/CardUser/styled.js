@@ -1,10 +1,10 @@
-import { styled, css, pl_0, pr_0, pl_3, pr_3 } from '0_styled'
+import { styledR, css, pl_0, pr_0, pl_3, pr_3 } from '0_styled'
 import { Exports } from '5_comp_1'
 import { stopUndefined } from '1_utils'
 
 const { Col } = stopUndefined(Exports)
 
-const DivStyledHover = styled(
+const DivStyledHover = styledR(
 	'div',
 	{
 		xs: css`
@@ -31,7 +31,7 @@ const DivStyledHover = styled(
 	3
 )
 
-const TextStyledYellow = styled(
+const TextStyledYellow = styledR(
 	'h4',
 	{
 		xs: `color: #ffc72c !important;`,
@@ -39,12 +39,12 @@ const TextStyledYellow = styled(
 	3
 )
 
-const ColStyledPrice = styled(Col, {
+const ColStyledPrice = styledR(Col, {
 	xs: pl_0,
 	sm: pl_3,
 })
 
-const ColStyledSound = styled(Col, {
+const ColStyledSound = styledR(Col, {
 	xs: pr_0,
 	sm: pr_3,
 })

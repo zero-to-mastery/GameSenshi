@@ -9,10 +9,7 @@ const { Col } = stopUndefined(Exports)
 const ColStyledSection = props => {
 	const { className, ...otherProps } = props
 	return (
-		<Col
-			className={clsx(className, 'bg-dark-navy-gradient')}
-			{...otherProps}
-		/>
+		<Col className={clsx(className, 'bg-dark-navy-gradient')} {...otherProps} />
 	)
 }
 

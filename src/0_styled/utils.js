@@ -1,47 +1,75 @@
-import styledSC, { css } from 'styled-components'
-const BPOINTS_XS = 0
-const BPOINTS_SX = 500
-const BPOINTS_SM = 576
-const BPOINTS_MD = 768
-const BPOINTS_LG = 992
-const BPOINTS_XL = 1200
+import styled, { css } from 'styled-components'
+import React, { memo } from 'react'
 
-const responsiveCssGenerator = responsiveness => {
-	const { xs, sx, sm, md, lg, xl } = responsiveness
-	const mapping = {
-		[BPOINTS_XS]: xs,
-		[BPOINTS_SX]: sx,
-		[BPOINTS_SM]: sm,
-		[BPOINTS_MD]: md,
-		[BPOINTS_LG]: lg,
-		[BPOINTS_XL]: xl,
-	}
-
-	let cssString = []
-	for (const props in mapping) {
-		if (mapping[props] !== undefined) {
-			cssString = [
-				...cssString,
-				`
-			@media (min-width: ${props}px) {`,
-				mapping[props],
-				`
+const responsiveCssGenerator = (mapping = {}, min = true) => {
+	const cssR = responsiveness => {
+		let cssString = null
+		if (typeof responsiveness === 'string') {
+			cssString = responsiveness
+		} else {
+			cssString = []
+			for (const props in responsiveness) {
+				if (
+					responsiveness[props] !== undefined &&
+					mapping[props] !== undefined
+				) {
+					cssString = [
+						...cssString,
+						`
+			@media (${min ? 'min' : 'max'}-width: ${mapping[props]}px) {`,
+						responsiveness[props],
+						`
 		}
 			`,
-			]
+					]
+				}
+			}
 		}
+		return cssString
 	}
-	return cssString
-}
 
-const styled = (component, responsivenessObject, specificity = 3) => {
-	return (typeof component === 'string'
-		? styledSC[component]
-		: styledSC(component))`
+	const isComponentHtml = component =>
+		typeof component === 'string' ? styled[component] : styled(component)
+
+	const specificity = (cssString, level) =>
+		'&'.repeat(level) + '{' + cssR(cssString) + '}'
+
+	// const styledR = (component, responsiveness, level = 3) => {
+	// 	return isComponentHtml(component)`
+	//  ${specificity(responsiveness, level)}	 `
+	// }
+	const styledR = (component, responsivenessObject, specificity = 3) => {
+		return (typeof component === 'string'
+			? styled[component]
+			: styled(component))`
 	 ${'&'.repeat(specificity)} {
-		 ${responsiveCssGenerator(responsivenessObject)}
+		 ${cssR(responsivenessObject)}
 		}
 	 `
+	}
+	const styledHOC = Comp => {
+		const STYLED_CSS = 'styledCss'
+		const CompNew = memo(props => {
+			//eslint-disable-next-line
+			const { [STYLED_CSS]: styledCss, ...otherProps } = props // prevent xs,sx,sm,md,lg,xl from entering Comp props
+			return <Comp {...otherProps} />
+		})
+
+		return styled(CompNew)``
+	}
+
+	return { cssR, styledR, styledHOC }
 }
 
-export { responsiveCssGenerator, styled, css }
+const mapping = {
+	xs: 0,
+	sx: 500,
+	sm: 576,
+	md: 768,
+	lg: 992,
+	xl: 1200,
+}
+
+const { cssR, styledR } = responsiveCssGenerator(mapping, true)
+
+export { cssR, styledR, css }

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import React, { memo } from 'react'
 import { Row as RowRS, Col as ColRs, Container } from 'reactstrap'
-import { responsiveCssGenerator } from '0_styled'
+import { cssR } from '0_styled'
 
 const [Row, Col] = [RowRS, ColRs].map((Comp, i) => {
 	const CompNew = memo(props => {
@@ -41,7 +41,7 @@ const [Row, Col] = [RowRS, ColRs].map((Comp, i) => {
 						max-width: ${value}%;
 						}`
 				}
-				return responsiveCssGenerator(responsiveness)
+				return cssR(responsiveness)
 			}}
 		}
 	`

@@ -1,7 +1,7 @@
 import { Col } from 'reactstrap'
-import { styled } from '0_styled'
+import { styledR } from '0_styled'
 
-const ColStyledPlay = styled(
+const ColStyledPlay = styledR(
 	Col,
 	{
 		xs: `justify-content: center;`,
