@@ -2,7 +2,12 @@ import React, { useState, useCallback, useRef } from 'react'
 import { Card, CardBody } from 'reactstrap'
 import classnames from 'classnames'
 import Image from 'material-ui-image'
-import { DivStyledHover, TextStyledYellow } from './styled'
+import {
+	DivStyledHover,
+	TextStyledYellow,
+	ColStyledSound,
+	ColStyledPrice,
+} from './styled'
 import { Exports } from '5_comp_1'
 import { stopUndefined } from '1_utils'
 
@@ -77,20 +82,20 @@ const CardUser = props => {
 						</Col>
 						<Col className='mt-1 mb-1'>
 							<Row className='align-items-center'>
-								<Col xs='7' sm='6' lg='7' align='left'>
+								<ColStyledSound xs='6' sm='6' lg='7' align='left'>
 									<ButtonSoundStoreSoundPropedCardUser
 										gender={gender}
 										url={audioSrc}
 									/>
-								</Col>
-								<Col align='right'>
+								</ColStyledSound>
+								<ColStyledPrice align='right'>
 									<TextStyledYellow
 										align='right'
 										className={classnames('title my-0 text-white text-nowrap')}
 									>
 										${price}/h
 									</TextStyledYellow>
-								</Col>
+								</ColStyledPrice>
 							</Row>
 						</Col>
 						<Col>

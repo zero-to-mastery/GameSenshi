@@ -1,4 +1,4 @@
-import { responsiveCssGenerator, styled } from './utils'
+import { responsiveCssGenerator, styled, css } from './utils'
 import {
 	justify_content_start,
 	justify_content_end,
@@ -179,6 +179,7 @@ import {
 
 export {
 	styled,
+	css,
 	responsiveCssGenerator,
 	mt_auto,
 	mb_auto,

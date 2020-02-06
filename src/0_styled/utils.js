@@ -1,5 +1,4 @@
-import { css } from 'styled-components'
-import styledSC from 'styled-components'
+import styledSC, { css } from 'styled-components'
 const BPOINTS_XS = 0
 const BPOINTS_SX = 500
 const BPOINTS_SM = 576
@@ -18,19 +17,21 @@ const responsiveCssGenerator = responsiveness => {
 		[BPOINTS_XL]: xl,
 	}
 
-	let cssString = ''
+	let cssString = []
 	for (const props in mapping) {
 		if (mapping[props] !== undefined) {
-			cssString = `${cssString}
-			@media (min-width: ${props}px) {
-				${mapping[props]}
+			cssString = [
+				...cssString,
+				`
+			@media (min-width: ${props}px) {`,
+				mapping[props],
+				`
 		}
-			`
+			`,
+			]
 		}
 	}
-	return css`
-		${cssString}
-	`
+	return cssString
 }
 
 const styled = (component, responsivenessObject, specificity = 3) => {
@@ -43,4 +44,4 @@ const styled = (component, responsivenessObject, specificity = 3) => {
 	 `
 }
 
-export { responsiveCssGenerator, styled }
+export { responsiveCssGenerator, styled, css }
