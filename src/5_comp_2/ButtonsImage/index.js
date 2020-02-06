@@ -18,7 +18,7 @@ const ButtonsImagePropedIndex = props => {
 			className='justify-content-around'
 			buttonFlex={{
 				xs: '1.5',
-				lg: '1.25',
+				xl: '1.25',
 			}}
 			buttons={buttonsIndex}
 			{...props}
