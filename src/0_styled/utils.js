@@ -41,7 +41,7 @@ const responsiveCssGenerator = (mapping = {}, min = true) => {
 	 ${specificityWrapper(responsiveness, level)}
 	 `
 	}
-	const styledHOC = Comp => {
+	const styledHOC = (Comp, level = 3) => {
 		const STYLED_CSS = 'styledCss'
 		const CompNew = memo(props => {
 			//eslint-disable-next-line
@@ -52,7 +52,7 @@ const responsiveCssGenerator = (mapping = {}, min = true) => {
 		return styled(CompNew)`
 			${props => {
 				const { [STYLED_CSS]: styledCss } = props
-				return cssR(styledCss)
+				return specificityWrapper(styledCss, level)
 			}}
 		`
 	}

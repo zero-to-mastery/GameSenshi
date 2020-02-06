@@ -13,7 +13,8 @@ const DivStyledHover = styledR(
 					? `transform: scale(1.05);
 	    -webkit-transition: transform 0.5s;
 			transition: transform 0.5s;`
-					: ''} {
+					: ''}
+			&& {
 				${props =>
 					props.styledLeave
 						? `transform: scale(1);
