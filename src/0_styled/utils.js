@@ -38,10 +38,10 @@ const responsiveCssGenerator = (mapping = {}, min = true) => {
 	// 	return isComponentHtml(component)`
 	//  ${specificity(responsiveness, level)}	 `
 	// }
-	const styledR = (component, responsivenessObject, specificity = 3) => {
+	const styledR = (component, responsiveness, level = 3) => {
 		return isComponentHtml(component)`
-	 ${'&'.repeat(specificity)} {
-		 ${cssR(responsivenessObject)}
+	 ${'&'.repeat(level)} {
+		 ${cssR(responsiveness)}
 		}
 	 `
 	}
@@ -49,7 +49,7 @@ const responsiveCssGenerator = (mapping = {}, min = true) => {
 		const STYLED_CSS = 'styledCss'
 		const CompNew = memo(props => {
 			//eslint-disable-next-line
-			const { [STYLED_CSS]: styledCss, ...otherProps } = props // prevent xs,sx,sm,md,lg,xl from entering Comp props
+			const { [STYLED_CSS]: styledCss, ...otherProps } = props // prevent styledCss from entering Comp props
 			return <Comp {...otherProps} />
 		})
 
