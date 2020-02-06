@@ -1,10 +1,10 @@
 import React from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 const Section = props => {
 	const { className, ...otherProps } = props
 	return (
-		<div className={classnames('section py-3', className)} {...otherProps} />
+		<div className={clsx('section py-3', className)} {...otherProps} />
 	)
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { Row, Col, Alert } from 'reactstrap'
 
 const TextAlert = props => {
@@ -25,7 +25,7 @@ const TextAlert = props => {
 			>
 				<Row>
 					<Col xs='1'>
-						<i className={classnames('text-success', icon)} />
+						<i className={clsx('text-success', icon)} />
 					</Col>
 					<Col xs='auto'>
 						<small className='text-muted'>{message}</small>

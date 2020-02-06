@@ -4,7 +4,7 @@ import VolumeMuteIcon from '@material-ui/icons/VolumeMute'
 import VolumeDownIcon from '@material-ui/icons/VolumeDown'
 import VolumeUpIcon from '@material-ui/icons/VolumeUp'
 import Loader from 'react-loader-spinner'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import uuidV4 from 'uuid/v4'
 import { Exports } from '5_comp_0'
 import { stopUndefined } from '1_utils'
@@ -135,7 +135,7 @@ const ButtonSound = props => {
 				<Col xs='0' sm='4'>
 					<Icon />
 				</Col>
-				<Col xs='0' sm='8' className={classnames('p-0')}>
+				<Col xs='0' sm='8' className={clsx('p-0')}>
 					{loading ? Spinner : playStatus === STOPPED ? duration : position}
 				</Col>
 				<ColStyledPlay>

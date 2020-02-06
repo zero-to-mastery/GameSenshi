@@ -1,5 +1,5 @@
 import React from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { FormGroup } from 'reactstrap'
 import ReactDatetime from 'react-datetime'
 
@@ -18,7 +18,7 @@ const InputDate = props => {
 		<FormGroup>
 			<ReactDatetime
 				inputProps={{
-					className: classnames(className, {
+					className: clsx(className, {
 						'has-danger': hasDanger,
 						'has-success': hasSuccess,
 						'input-group-focus': hasFocus,

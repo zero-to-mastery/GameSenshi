@@ -1,5 +1,5 @@
 import React from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import Loader from 'react-loader-spinner'
 import {
 	Input,
@@ -26,7 +26,7 @@ const InputText = props => {
 	return (
 		<FormGroup>
 			<Group
-				className={classnames(className, {
+				className={clsx(className, {
 					'has-danger': hasDanger,
 					'has-success': hasSuccess,
 					'input-group-focus': hasFocus,

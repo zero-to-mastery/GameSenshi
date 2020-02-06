@@ -1,6 +1,6 @@
 import React, { Fragment, useCallback } from 'react'
 import { Row, Col } from 'reactstrap'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { Exports } from '5_comp_0'
 import { stopUndefined } from '1_utils'
 const { Button, UncontrolledTooltip, Link } = stopUndefined(Exports)
@@ -18,7 +18,7 @@ const ButtonsCommon = props => {
 
 	const EnclosureCol = col ? Col : Fragment
 	return (
-		<Row className={classnames('justify-content-center', rowClass)}>
+		<Row className={clsx('justify-content-center', rowClass)}>
 			{buttons.map(button => {
 				const {
 					[BUTTONS_COMMON_ID]: id,

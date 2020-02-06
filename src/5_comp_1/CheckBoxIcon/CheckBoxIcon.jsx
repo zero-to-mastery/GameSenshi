@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { Tooltip } from 'reactstrap'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { Exports } from '5_comp_0'
 import { stopUndefined } from '1_utils'
 import Loader from 'react-loader-spinner'
@@ -55,7 +55,7 @@ const CheckBoxIcon = props => {
 	return (
 		<>
 			<div
-				className={classnames('m-2', {
+				className={clsx('m-2', {
 					'd-none': !loading,
 					'd-inline-flex': loading,
 				})}
@@ -63,7 +63,7 @@ const CheckBoxIcon = props => {
 				<Loader type='Circles' color='#00BFFF' height='30px' width='30px' />
 			</div>
 			<Button
-				className={classnames(
+				className={clsx(
 					{
 						'btn-simple': !checked_,
 						'd-none': loading,

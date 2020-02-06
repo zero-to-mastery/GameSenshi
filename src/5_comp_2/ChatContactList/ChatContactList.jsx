@@ -14,7 +14,7 @@ import {
 	ListGroupItem,
 	Badge,
 } from 'reactstrap'
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 const CHAT_CONTACT_NAME = 'name'
 const CHAT_CONTACT_IMAGE = 'src'
@@ -90,7 +90,7 @@ const ChatContactList = props => {
 				<Card className='card-plain'>
 					<CardHeader className='mb-3'>
 						<InputGroup
-							className={classnames('form-control-lg', {
+							className={clsx('form-control-lg', {
 								'input-group-focus': searchContact,
 							})}
 						>

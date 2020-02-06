@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { useLocation } from '2_routes'
 import { NavItem, NavLink } from 'reactstrap'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { Exports } from '5_comp_0'
 import { stopUndefined } from '1_utils'
 const { Link, Button } = stopUndefined(Exports)
@@ -25,7 +25,7 @@ const ButtonSignInUp = memo(props => {
 		show &&
 		pathname.toLowerCase() !== to.toLowerCase() && (
 			<NavItem
-				className={classnames(navItemClass, {
+				className={clsx(navItemClass, {
 					'navbar-toggler': small,
 				})}
 			>

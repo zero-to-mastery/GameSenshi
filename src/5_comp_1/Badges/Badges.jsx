@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Badge, Row, Col } from 'reactstrap'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { Exports } from '5_comp_0'
 import { stopUndefined } from '1_utils'
 
@@ -17,7 +17,7 @@ const Badges = props => {
 	const EnclosureCol = col ? Col : Fragment
 	const EnclosureRow = row ? Row : Fragment
 	return (
-		<EnclosureRow {...(row && { className: classnames(className) })}>
+		<EnclosureRow {...(row && { className: clsx(className) })}>
 			{badges.map(badge => {
 				const {
 					[BADGES_COLOR]: color,
@@ -30,7 +30,7 @@ const Badges = props => {
 					<EnclosureCol key={id}>
 						<Badge
 							color={color}
-							className={classnames(badgeClass, classname)}
+							className={clsx(badgeClass, classname)}
 							id={id}
 						>
 							{body}

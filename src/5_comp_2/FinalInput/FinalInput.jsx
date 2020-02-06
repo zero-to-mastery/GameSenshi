@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, memo } from 'react'
 import { Field } from 'react-final-form'
 import { stopUndefined } from '1_utils'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { Exports } from '5_comp_1'
 
 const { TextAlert, Popover } = stopUndefined(Exports)
@@ -264,7 +264,7 @@ const FinalInput = memo(props => {
 							{...restProps}
 						>
 							<TextAlert
-								icon={classnames('tim-icons', {
+								icon={clsx('tim-icons', {
 									'icon-check-2': valid,
 									'icon-alert-circle-exc': !valid,
 								})}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { TextIcon } from './TextIcon'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { Row, Col } from 'reactstrap'
 
 const TextIconPropedIndex = props => {
@@ -10,7 +10,7 @@ const TextIconPropedIndex = props => {
 			<Col>
 				<TextIcon
 					h='h1'
-					className={classnames('font-weight-bold title mt-3 mb-3', className)}
+					className={clsx('font-weight-bold title mt-3 mb-3', className)}
 					{...otherProps}
 				/>
 			</Col>
@@ -25,7 +25,7 @@ const TextIconPropedProfile = props => {
 			<Col>
 				<TextIcon
 					h='h1'
-					className={classnames('font-weight-bold title mt-3 mb-3', className)}
+					className={clsx('font-weight-bold title mt-3 mb-3', className)}
 					{...otherProps}
 				/>
 			</Col>
@@ -37,7 +37,7 @@ const TextIconPropedPopularPlayer = props => {
 	const { className, ...otherProps } = props
 	return (
 		<TextIconPropedIndex
-			className={classnames('text-primary', className)}
+			className={clsx('text-primary', className)}
 			aria='recommended player'
 			emoji='💖'
 			{...otherProps}
@@ -51,7 +51,7 @@ const TextIconPropedNewPlayer = props => {
 	const { className, ...otherProps } = props
 	return (
 		<TextIconPropedIndex
-			className={classnames('text-success', className)}
+			className={clsx('text-success', className)}
 			aria='new player'
 			emoji='🌻'
 			{...otherProps}
@@ -65,7 +65,7 @@ const TextIconPropedRandomPlayer = props => {
 	const { className, ...otherProps } = props
 	return (
 		<TextIconPropedIndex
-			className={classnames('text-warning', className)}
+			className={clsx('text-warning', className)}
 			aria='Random Players'
 			emoji='🏆'
 			{...otherProps}
@@ -79,7 +79,7 @@ const TextIconPropedProfileGift = props => {
 	const { className, ...otherProps } = props
 	return (
 		<TextIconPropedProfile
-			className={classnames('text-warning', className)}
+			className={clsx('text-warning', className)}
 			aria='Gift'
 			emoji='🎁'
 			{...otherProps}
@@ -93,7 +93,7 @@ const TextIconPropedProfileReviews = props => {
 	const { className, ...otherProps } = props
 	return (
 		<TextIconPropedProfile
-			className={classnames('text-warning', className)}
+			className={clsx('text-warning', className)}
 			aria='Reviews'
 			emoji='💬'
 			{...otherProps}
@@ -107,7 +107,7 @@ const TextIconPropedAppointments = props => {
 	const { className, ...otherProps } = props
 	return (
 		<TextIconPropedProfile
-			className={classnames('text-warning', className)}
+			className={clsx('text-warning', className)}
 			aria='Make Appointments'
 			emoji='💌'
 			{...otherProps}

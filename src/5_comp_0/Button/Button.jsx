@@ -1,7 +1,7 @@
 import React, { forwardRef, Fragment, useMemo } from 'react'
 import { Button as ButtonRS } from 'reactstrap'
 import ButtonBase from '@material-ui/core/ButtonBase'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import styles from './styles.module.css'
 
 const Button = forwardRef((props, ref) => {
@@ -13,7 +13,7 @@ const Button = forwardRef((props, ref) => {
 		<Enclosure
 			{...(!tag && {
 				component: 'span',
-				className: classnames(
+				className: clsx(
 					baseClass,
 					className_.includes('btn-round') ? styles['btn-round'] : styles.btn
 				),
@@ -23,7 +23,7 @@ const Button = forwardRef((props, ref) => {
 			<ButtonRS
 				ref={ref}
 				tag={tag}
-				className={classnames('text-nowrap w-100 mx-0', className)}
+				className={clsx('text-nowrap w-100 mx-0', className)}
 				{...otherProps}
 				{...(tag && { baseClass, baseStyle })}
 			/>

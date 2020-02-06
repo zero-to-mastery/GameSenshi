@@ -4,7 +4,7 @@ import {
 	BUTTON_SOUND_STATE_UUID,
 	BUTTON_SOUND_SET_UUID,
 } from './ButtonSound'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import {
 	StateContainer,
 	storeSound,
@@ -31,7 +31,7 @@ const ButtonSoundStoreSoundPropedGender = props => {
 	const { gender, ...otherProps } = props
 	return (
 		<ButtonSoundStoreSound
-			color={classnames({
+			color={clsx({
 				primary: gender,
 				success: !gender,
 			})}

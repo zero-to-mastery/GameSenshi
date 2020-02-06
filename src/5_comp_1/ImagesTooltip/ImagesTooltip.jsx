@@ -1,5 +1,5 @@
 import React from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { Exports } from '5_comp_0'
 import { stopUndefined } from '1_utils'
 const { UncontrolledTooltip, Row, Col, Image } = stopUndefined(Exports)
@@ -26,7 +26,7 @@ const ImagesTooltip = props => {
 							src={path}
 							alt={tooltip}
 							id={id_}
-							className={classnames(className)}
+							className={clsx(className)}
 							{...otherProps}
 						/>
 						<UncontrolledTooltip delay={0} target={id_}>

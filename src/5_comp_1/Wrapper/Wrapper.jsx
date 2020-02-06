@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 const WRAPPER_STATE_OFFSET_TOP = 'offsetTop'
 
@@ -26,7 +26,7 @@ const Wrapper = props => {
 
 	return (
 		<div
-			className={classnames('wrapper pt-2 pb-5', className)}
+			className={clsx('wrapper pt-2 pb-5', className)}
 			ref={wrapper}
 			{...otherProps}
 		>

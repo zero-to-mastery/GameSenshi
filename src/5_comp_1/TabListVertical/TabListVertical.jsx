@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 // nodejs library that concatenates classes
-import classnames from 'classnames'
+import clsx from 'clsx'
 // reactstrap components
 import { NavItem, NavLink, Nav } from 'reactstrap'
 
@@ -28,7 +28,7 @@ const TabListVertical = props => {
 					<Fragment key={to}>
 						<NavItem>
 							<NavLink
-								className={classnames({
+								className={clsx({
 									active: pathname.toLowerCase() === to.toLowerCase(),
 								})}
 								onClick={onClick}

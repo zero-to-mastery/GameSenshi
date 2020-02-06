@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef } from 'react'
 import { Card, CardBody } from 'reactstrap'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import Image from 'material-ui-image'
 import {
 	DivStyledHover,
@@ -54,7 +54,7 @@ const CardUser = props => {
 				<DivStyledHover
 					styledHover={hover}
 					styledLeave={leave}
-					className={classnames('card-image')}
+					className={clsx('card-image')}
 				>
 					<Row className='w-100 position-absolute mt-3' style={{ zIndex: 2 }}>
 						<Col className='px-0' align='right'>
@@ -72,7 +72,7 @@ const CardUser = props => {
 					<Row xs='1'>
 						<Col align='left'>
 							<h4
-								className={classnames(
+								className={clsx(
 									'title my-0 font-weight-bold text-nowrap text-white'
 								)}
 								align='left'
@@ -91,7 +91,7 @@ const CardUser = props => {
 								<ColStyledPrice align='right'>
 									<TextStyledYellow
 										align='right'
-										className={classnames('title my-0 text-white text-nowrap')}
+										className={clsx('title my-0 text-white text-nowrap')}
 									>
 										${price}/h
 									</TextStyledYellow>

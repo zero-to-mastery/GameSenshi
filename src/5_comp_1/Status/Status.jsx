@@ -1,5 +1,5 @@
 import React from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import styles from './styles.module.css'
 import animate from '0_assets/css/animate.module.css'
 import Loader from 'react-loader-spinner'
@@ -10,19 +10,19 @@ const { Col, Row } = stopUndefined(Exports)
 const Status = props => {
 	const { on, bodyOn, bodyOff, className, loading, loader } = props
 	return (
-		<div className={classnames(className, 'd-flex align-items-center')}>
+		<div className={clsx(className, 'd-flex align-items-center')}>
 			{loading && loader && (
 				<Loader type='Circles' color='#00BFFF' height='21px' width='21px' />
 			)}
 			{!loading && (
 				<Row
-					className={classnames('align-items-center', {
+					className={clsx('align-items-center', {
 						'd-none': (!on && !bodyOff) || (on && !bodyOn),
 					})}
 				>
 					<Col xs='3'>
 						<div
-							className={classnames(
+							className={clsx(
 								styles.dot,
 								animate.animated,
 								animate.infinite,
@@ -36,7 +36,7 @@ const Status = props => {
 					</Col>
 					<Col className='pl-1'>
 						<p
-							className={classnames('mb-0 pt-1', {
+							className={clsx('mb-0 pt-1', {
 								'text-white': on,
 								'text-muted': !on,
 							})}

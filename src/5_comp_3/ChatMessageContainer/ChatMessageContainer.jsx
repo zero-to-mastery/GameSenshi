@@ -20,7 +20,7 @@ import {
 	InputGroupText,
 } from 'reactstrap'
 
-import classnames from 'classnames'
+import clsx from 'clsx'
 
 import { Exports } from '5_comp_0'
 import { stopUndefined } from '1_utils'
@@ -171,7 +171,7 @@ const ChatMessageContainer = props => {
 				<CardFooter className='d-block'>
 					<Form className='align-items-center'>
 						<InputGroup
-							className={classnames('d-flex', 'form-control-lg', {
+							className={clsx('d-flex', 'form-control-lg', {
 								'input-group-focus': yourMessage,
 							})}
 						>

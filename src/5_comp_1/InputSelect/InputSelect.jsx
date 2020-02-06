@@ -1,7 +1,7 @@
 import React from 'react'
 import Select from 'react-select'
 import { FormGroup } from 'reactstrap'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import './styles.css'
 
 const INPUT_SELECT_VALUE = 'value'
@@ -22,7 +22,7 @@ const InputSelect = props => {
 	return (
 		<FormGroup>
 			<Select
-				className={classnames(
+				className={clsx(
 					'react-select mb-0',
 					{
 						'react-select-danger': hasDanger,

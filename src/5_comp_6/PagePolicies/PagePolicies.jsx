@@ -1,5 +1,5 @@
 import React from 'react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { stopUndefined } from '1_utils'
 import { Cookie } from './Cookie'
 import { Terms } from './Terms'
@@ -69,7 +69,7 @@ const PagePolicies = props => {
 										return (
 											<NavLink
 												key={name}
-												className={classnames({
+												className={clsx({
 													active: pathname.toLowerCase() === to.toLowerCase(),
 												})}
 												to={to}
