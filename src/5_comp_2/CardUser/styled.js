@@ -4,8 +4,7 @@ import { stopUndefined } from '1_utils'
 
 const { Col } = stopUndefined(Exports)
 
-const DivStyledHover = styledR(
-	'div',
+const DivStyledHover = styledR('div')(
 	{
 		xs: css`
 			${props =>
@@ -32,21 +31,21 @@ const DivStyledHover = styledR(
 	3
 )
 
-const TextStyledYellow = styledR(
-	'h4',
+const TextStyledYellow = styledR('h4')(
 	{
 		xs: `color: #ffc72c !important;`,
 	},
 	3
 )
 
-const ColStyledPrice = styledR(Col, {
+const ColStyledPrice = styledR(Col)({
 	xs: pl_0,
 	sm: pl_3,
 })
 
-const ColStyledSound = styledR(Col, {
+const ColStyledSound = styledR(Col)({
 	xs: pr_0,
 	sm: pr_3,
 })
+
 export { DivStyledHover, TextStyledYellow, ColStyledSound, ColStyledPrice }

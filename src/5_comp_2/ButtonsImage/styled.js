@@ -3,8 +3,7 @@ import { Exports } from '5_comp_1'
 import { stopUndefined } from '1_utils'
 const { Button, Col } = stopUndefined(Exports)
 
-const ButtonStyled = styledR(
-	Button,
+const ButtonStyled = styledR(Button)(
 	{
 		xs: p_1,
 		sm: p_2,
@@ -13,8 +12,7 @@ const ButtonStyled = styledR(
 	3
 )
 
-const ColStyled = styledR(
-	Col,
+const ColStyled = styledR(Col)(
 	{
 		xs: p_0,
 		sm: p_1,

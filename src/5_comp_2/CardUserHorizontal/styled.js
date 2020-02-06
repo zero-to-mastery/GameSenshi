@@ -3,8 +3,7 @@ import { Exports } from '5_comp_1'
 import { stopUndefined } from '1_utils'
 const { Container, Col, Row } = stopUndefined(Exports)
 
-const ContainerStyled = styledR(
-	Container,
+const ContainerStyled = styledR(Container)(
 	{
 		xs: `border: 2px solid #344675;
 		z-index: 3;
@@ -14,8 +13,7 @@ const ContainerStyled = styledR(
 	3
 )
 
-const RowStyledUsername = styledR(
-	Row,
+const RowStyledUsername = styledR(Row)(
 	{
 		xs: `text-align: center;
 		${mt_3};`,
@@ -25,12 +23,11 @@ const RowStyledUsername = styledR(
 	3
 )
 
-const ColStyledBadges = styledR(Col, {
+const ColStyledBadges = styledR(Col)({
 	xs: `text-align: center;`,
 })
 
-const TextStyledSubscribe = styledR(
-	'p',
+const TextStyledSubscribe = styledR('p')(
 	{
 		xs: mt_3,
 		lg: mt_4,

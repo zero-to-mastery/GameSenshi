@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components'
 import React, { memo } from 'react'
 
-const responsiveCssGenerator = (mapping = {}, min = true) => {
+const responsiveCssGenerator = config => {
+	const { mapping, min, sLevel } = config
+
 	const cssR = (responsiveness = '') => {
 		const type = typeof responsiveness
 		if (type === 'string') {
@@ -30,18 +32,18 @@ const responsiveCssGenerator = (mapping = {}, min = true) => {
 	const isComponentHtml = component =>
 		typeof component === 'string' ? styled[component] : styled(component)
 
-	const specificityWrapper = (responsiveness = '', level) => css`
+	const specificityWrapper = (responsiveness = '', level = sLevel) => css`
 		${'&'.repeat(level)} {
 			${cssR(responsiveness)}
 		}
 	`
 
-	const styledR = (component, responsiveness = '', level = 3) => {
-		return isComponentHtml(component)`
+	const styledR = comp => (responsiveness = '', level = sLevel) => {
+		return isComponentHtml(comp)`
 	 ${specificityWrapper(responsiveness, level)}
 	 `
 	}
-	const styledHOC = (Comp, level = 3) => {
+	const styledHOC = Comp => (level = sLevel) => {
 		const STYLED_CSS = 'styledCss'
 		const CompNew = memo(props => {
 			//eslint-disable-next-line
@@ -69,6 +71,12 @@ const mapping = {
 	xl: 1200,
 }
 
-const { cssR, styledR, styledHOC } = responsiveCssGenerator(mapping, true)
+const config = {
+	mapping,
+	min: true,
+	sLevel: 3,
+}
+
+const { cssR, styledR, styledHOC } = responsiveCssGenerator(config)
 
 export { cssR, styledR, styledHOC, css }

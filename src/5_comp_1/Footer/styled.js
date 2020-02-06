@@ -5,8 +5,8 @@ const titleCss = {
 	xs: 'text-align: center !important;',
 }
 
-const H1Styled = styledR('h1', titleCss, 3)
+const H1Styled = styledR('h1')(titleCss, 3)
 
-const H3Styled = styledR('h3', titleCss, 3)
+const H3Styled = styledR('h3')(titleCss, 3)
 
 export { H1Styled, H3Styled }
