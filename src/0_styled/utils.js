@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import React, { memo } from 'react'
 
 const responsiveCssGenerator = (mapping = {}, min = true) => {
-	const cssR = responsiveness => {
+	const cssR = (responsiveness = '') => {
 		let cssString = null
 		if (typeof responsiveness === 'string') {
 			cssString = responsiveness
@@ -31,18 +31,19 @@ const responsiveCssGenerator = (mapping = {}, min = true) => {
 	const isComponentHtml = component =>
 		typeof component === 'string' ? styled[component] : styled(component)
 
-	const specificity = (cssString, level) =>
-		'&'.repeat(level) + '{' + cssR(cssString) + '}'
+	const specificityWrapper = (responsiveness = '', level) => css`
+		${'&'.repeat(level)} {
+			${cssR(responsiveness)}
+		}
+	`
 
 	// const styledR = (component, responsiveness, level = 3) => {
 	// 	return isComponentHtml(component)`
 	//  ${specificity(responsiveness, level)}	 `
 	// }
-	const styledR = (component, responsiveness, level = 3) => {
+	const styledR = (component, responsiveness = '', level = 3) => {
 		return isComponentHtml(component)`
-	 ${'&'.repeat(level)} {
-		 ${cssR(responsiveness)}
-		}
+	 ${specificityWrapper(responsiveness, level)}
 	 `
 	}
 	const styledHOC = Comp => {
