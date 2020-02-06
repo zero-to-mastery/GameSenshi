@@ -39,9 +39,7 @@ const responsiveCssGenerator = (mapping = {}, min = true) => {
 	//  ${specificity(responsiveness, level)}	 `
 	// }
 	const styledR = (component, responsivenessObject, specificity = 3) => {
-		return (typeof component === 'string'
-			? styled[component]
-			: styled(component))`
+		return isComponentHtml(component)`
 	 ${'&'.repeat(specificity)} {
 		 ${cssR(responsivenessObject)}
 		}
