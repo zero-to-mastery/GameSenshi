@@ -1,10 +1,9 @@
 import React from 'react'
-import createLinkNoStack from 'react-router-link-nostack'
-import { Link as Link1, withRouter } from 'react-router-dom'
+import LinkNoStack from 'react-router-link-nostack'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import clsx from 'clsx'
 
-const LinkNoBase = createLinkNoStack(Link1, withRouter)
+const LinkNoBase = LinkNoStack
 
 const Link = props => {
 	const {
@@ -17,11 +16,7 @@ const Link = props => {
 		...otherProps
 	} = props
 	return (
-		<ButtonBase
-			component='span'
-			className={clsx(baseClass)}
-			style={baseStyle}
-		>
+		<ButtonBase component='span' className={clsx(baseClass)} style={baseStyle}>
 			{to && (
 				<LinkNoBase
 					to={to}
