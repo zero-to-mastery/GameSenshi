@@ -8,16 +8,13 @@ const responsiveCssGenerator = (mapping = {}, min = true) => {
 			cssString = responsiveness
 		} else {
 			cssString = []
-			for (const props in responsiveness) {
-				if (
-					responsiveness[props] !== undefined &&
-					mapping[props] !== undefined
-				) {
+			for (const prop in responsiveness) {
+				if (responsiveness[prop] !== undefined && mapping[prop] !== undefined) {
 					cssString = [
 						...cssString,
 						`
-			@media (${min ? 'min' : 'max'}-width: ${mapping[props]}px) {`,
-						responsiveness[props],
+			@media (${min ? 'min' : 'max'}-width: ${mapping[prop]}px) {`,
+						responsiveness[prop],
 						`
 		}
 			`,
@@ -37,10 +34,6 @@ const responsiveCssGenerator = (mapping = {}, min = true) => {
 		}
 	`
 
-	// const styledR = (component, responsiveness, level = 3) => {
-	// 	return isComponentHtml(component)`
-	//  ${specificity(responsiveness, level)}	 `
-	// }
 	const styledR = (component, responsiveness = '', level = 3) => {
 		return isComponentHtml(component)`
 	 ${specificityWrapper(responsiveness, level)}
@@ -54,7 +47,16 @@ const responsiveCssGenerator = (mapping = {}, min = true) => {
 			return <Comp {...otherProps} />
 		})
 
-		return styled(CompNew)``
+		return styled(CompNew)`
+			${props => {
+				const { [STYLED_CSS]: styledCss } = props
+				if (styledCss) {
+					//for(const prop)
+				} else {
+					return ''
+				}
+			}}
+		`
 	}
 
 	return { cssR, styledR, styledHOC }
