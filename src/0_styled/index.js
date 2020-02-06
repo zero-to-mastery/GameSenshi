@@ -1,4 +1,4 @@
-import { cssR, styledR, css } from './utils'
+import { cssR, styledR, css, styledHOC } from './utils'
 import {
 	justify_content_start,
 	justify_content_end,
@@ -181,6 +181,7 @@ export {
 	styledR,
 	css,
 	cssR,
+	styledHOC,
 	mt_auto,
 	mb_auto,
 	ml_auto,

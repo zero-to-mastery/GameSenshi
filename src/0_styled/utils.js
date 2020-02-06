@@ -3,11 +3,11 @@ import React, { memo } from 'react'
 
 const responsiveCssGenerator = (mapping = {}, min = true) => {
 	const cssR = (responsiveness = '') => {
-		let cssString = null
-		if (typeof responsiveness === 'string') {
-			cssString = responsiveness
-		} else {
-			cssString = []
+		const type = typeof responsiveness
+		if (type === 'string') {
+			return responsiveness
+		} else if (type === 'object' && responsiveness) {
+			let cssString = []
 			for (const prop in responsiveness) {
 				if (responsiveness[prop] !== undefined && mapping[prop] !== undefined) {
 					cssString = [
@@ -21,8 +21,10 @@ const responsiveCssGenerator = (mapping = {}, min = true) => {
 					]
 				}
 			}
+			return cssString
+		} else {
+			return ''
 		}
-		return cssString
 	}
 
 	const isComponentHtml = component =>
@@ -50,11 +52,7 @@ const responsiveCssGenerator = (mapping = {}, min = true) => {
 		return styled(CompNew)`
 			${props => {
 				const { [STYLED_CSS]: styledCss } = props
-				if (styledCss) {
-					//for(const prop)
-				} else {
-					return ''
-				}
+				return cssR(styledCss)
 			}}
 		`
 	}
@@ -71,6 +69,6 @@ const mapping = {
 	xl: 1200,
 }
 
-const { cssR, styledR } = responsiveCssGenerator(mapping, true)
+const { cssR, styledR, styledHOC } = responsiveCssGenerator(mapping, true)
 
-export { cssR, styledR, css }
+export { cssR, styledR, styledHOC, css }
