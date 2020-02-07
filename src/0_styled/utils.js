@@ -6,7 +6,7 @@ const responsiveCssGenerator = config => {
 
 	const cssR = (responsiveness = '') => {
 		const type = typeof responsiveness
-		if (type === 'string') {
+		if (type === 'string' || Array.isArray(responsiveness)) {
 			return responsiveness
 		} else if (type === 'object' && responsiveness) {
 			let cssString = []
