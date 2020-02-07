@@ -6,7 +6,9 @@ const Helmet = props => {
 	const { title, descr } = props
 	return (
 		<HelmetRH>
-			{title && <title>{`${title} | ${brand}`}</title>}
+			{title && (
+				<title>{`${title !== brand ? title + ' | ' : ''}${brand}`}</title>
+			)}
 			{descr && <meta name='description' content={`${descr} | ${brand}`} />}
 		</HelmetRH>
 	)
