@@ -18,7 +18,7 @@ const gameIconsPath = game => require(`0_assets/icons/games/${game}.ico`)
 const options = [
 	{
 		[ICONS_COMMON_ID]: FIRESTORE_SENSHI_SETTINGS_PROFILE_GAMES_DOTA2,
-		[ICON_COMMON_PATH]: gameIconsPath('Dota2'),
+		[ICON_COMMON_PATH]: require(`0_assets/icons/games/Dota2.png`),
 		[ICONS_COMMON_TOOLTIP]: 'Dota 2',
 	},
 	{
