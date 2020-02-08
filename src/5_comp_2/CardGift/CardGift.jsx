@@ -1,16 +1,16 @@
 import React, { useState, useCallback } from 'react'
 import { Input } from 'reactstrap'
-import Image from 'material-ui-image'
 import { stopUndefined } from '1_utils'
 import { Exports } from '5_comp_1'
+import { ButtonBase } from '@material-ui/core'
 
 const {
 	UncontrolledTooltip,
 	Modal,
-	Button,
 	Col,
 	Row,
 	Container,
+	Image,
 } = stopUndefined(Exports)
 
 const CARD_GIFT_IMAGE = 'image'
@@ -58,14 +58,13 @@ const CardGift = props => {
 				size='sm'
 			>
 				<Container className='my-3'>
-					<Row className='justify-content-center'>
-						<Col xs='2' id={CARD_GIFT_MODAL}>
+					<Row className='justify-content-center align-items-center'>
+						<Col xs='3' id={CARD_GIFT_MODAL}>
 							<Image
-								className='border border-dark rounded-0'
+								className='position-static'
+								style={{ padding: 0 }}
 								src={iconSrc}
 								alt={iconSrc}
-								style={{ height: '38px', width: '38px', padding: '0' }}
-								imageStyle={{ height: '38px', width: '38px' }}
 							/>
 						</Col>
 						<Col xs='4'>
@@ -99,17 +98,17 @@ const CardGift = props => {
 					}, [src])
 					return (
 						<Col className='p-1' id={id} key={id}>
-							<Button
-								onClick={onClick_}
-								className='p-0 w-100'
-								baseClass='w-100'
-							>
-								<Image
-									className='border border-dark rounded-0'
-									src={src}
-									alt={src}
-								/>
-							</Button>
+							<ButtonBase className='w-100'>
+								<button
+									onClick={onClick_}
+									className='p-0 bg-transparent w-100'
+									style={{
+										borderColor: 'transparent',
+									}}
+								>
+									<Image src={src} alt={src} />
+								</button>
+							</ButtonBase>
 							<Tooltip id={id} name={name} price={price} />
 						</Col>
 					)

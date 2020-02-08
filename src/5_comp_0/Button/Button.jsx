@@ -1,6 +1,6 @@
 import React, { forwardRef, Fragment, useMemo } from 'react'
 import { Button as ButtonRS } from 'reactstrap'
-import ButtonBase from '@material-ui/core/ButtonBase'
+import { ButtonBase } from '@material-ui/core'
 import clsx from 'clsx'
 import styles from './styles.module.css'
 
