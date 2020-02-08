@@ -18,7 +18,14 @@ const CarouselLightBox = props => {
 	return (
 		<>
 			<LightBox sources={items} slide={slide + 1} toggle={toggle} />
-			<Carousel items={items} onSlide={onSlide} onImageClick={onImageClick} />
+			<Carousel
+				items={items}
+				onSlide={onSlide}
+				onImageClick={onImageClick}
+				showIndex={false}
+				showBullets={false}
+				showPlayButton={false}
+			/>
 		</>
 	)
 }
