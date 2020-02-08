@@ -1,6 +1,5 @@
 import React from 'react'
 import { stopUndefined } from '1_utils'
-import { Container, Row, Col } from 'reactstrap'
 import { Exports } from '5_comp_2'
 
 const {
@@ -8,6 +7,8 @@ const {
 	ButtonSoundStoreSoundPropedCardUser,
 	QuantityProfile,
 	ButtonsCommonChatAndCheckout,
+	Row,
+	Col,
 } = stopUndefined(Exports)
 
 const TAB_PRODUCT_PRICE = 'price'
@@ -23,20 +24,37 @@ const TabProduct = props => {
 		[TAB_PRODUCT_DESCRIPTION]: description,
 	} = props
 	return (
-		<Container style={{ zIndex: 99 }}>
-			<Row className='py-2 d-flex align-items-center'>
-				<Col>
+		<>
+			<Row>
+				<Col xs='3'>
 					<ImagesTooltipOptioned icons={icon} />
 				</Col>
 				<Col>
-					<div style={{ width: '200px' }}>
-						<h4>{price}$ per hour</h4>
-						<h4>
-							<i className='tim-icons icon-check-2 text-success'></i> {orders}{' '}
-							orders completed
-						</h4>
-						<ButtonSoundStoreSoundPropedCardUser gender={true} />
-					</div>
+					<Row xs='1'>
+						<Col>
+							<p>
+								<span style={{ color: 'yellow' }}>$</span>
+								<span
+									style={{
+										color: 'yellow',
+										fontSize: '2rem',
+									}}
+								>
+									{price}
+								</span>
+								/hour
+							</p>
+						</Col>
+						<Col>
+							<p className='text-white lead'>
+								<i className='tim-icons icon-notes text-success pb-1'></i>{' '}
+								{orders} orders completed
+							</p>
+						</Col>
+						<Col xs='8'>
+							<ButtonSoundStoreSoundPropedCardUser gender={true} />
+						</Col>
+					</Row>
 				</Col>
 				<Col>
 					<QuantityProfile />
@@ -57,7 +75,7 @@ const TabProduct = props => {
 					<ButtonsCommonChatAndCheckout />
 				</Col>
 			</Row>
-		</Container>
+		</>
 	)
 }
 
