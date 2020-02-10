@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef } from 'react'
 import { Card, CardBody } from 'reactstrap'
 import clsx from 'clsx'
-import Image from 'material-ui-image'
 import {
 	DivStyledHover,
 	TextStyledYellow,
@@ -17,6 +16,7 @@ const {
 	Link,
 	Row,
 	Col,
+	Image,
 } = stopUndefined(Exports)
 
 const CardUser = props => {
@@ -61,12 +61,7 @@ const CardUser = props => {
 							<BadgesOptioned badges={badge} className='m-0' />
 						</Col>
 					</Row>
-					<Image
-						alt={name}
-						className='img img-raised rounded-lg position-absolute'
-						color='transparent' //this is needed or else there is tiny white background even when OTHER image in carousel move, very weird behavior
-						src={src}
-					/>
+					<Image alt={name} className='img img-raised rounded-lg ' src={src} />
 				</DivStyledHover>
 				<CardBody>
 					<Row xs='1'>

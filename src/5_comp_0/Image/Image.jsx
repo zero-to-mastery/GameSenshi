@@ -1,8 +1,17 @@
 import React from 'react'
 import ImageMU from 'material-ui-image'
+import clsx from 'clsx'
 
 const Image = props => {
-	return <ImageMU color='transparent' {...props} />
+	const { className, style, ...otherProp } = props
+	return (
+		<ImageMU
+			color='transparent'
+			style={{ padding: 0, ...style }}
+			className={clsx('position-static', className)}
+			{...otherProp}
+		/>
+	)
 }
 
 export { Image }

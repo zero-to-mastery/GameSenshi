@@ -60,12 +60,7 @@ const CardGift = props => {
 				<Container className='my-3'>
 					<Row className='justify-content-center align-items-center'>
 						<Col xs='3' id={CARD_GIFT_MODAL}>
-							<Image
-								className='position-static'
-								style={{ padding: 0 }}
-								src={iconSrc}
-								alt={iconSrc}
-							/>
+							<Image src={iconSrc} alt={iconSrc} />
 						</Col>
 						<Col xs='4'>
 							<Input
@@ -98,16 +93,8 @@ const CardGift = props => {
 					}, [src])
 					return (
 						<Col className='p-1' id={id} key={id}>
-							<ButtonBase className='w-100'>
-								<button
-									onClick={onClick_}
-									className='p-0 bg-transparent w-100'
-									style={{
-										borderColor: 'transparent',
-									}}
-								>
-									<Image src={src} alt={src} />
-								</button>
+							<ButtonBase className='w-100' onClick={onClick_}>
+								<Image src={src} alt={src} />
 							</ButtonBase>
 							<Tooltip id={id} name={name} price={price} />
 						</Col>

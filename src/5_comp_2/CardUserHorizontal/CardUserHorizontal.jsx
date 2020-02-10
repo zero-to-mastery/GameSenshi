@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 import { Exports } from '5_comp_1'
 import { stopUndefined } from '1_utils'
-import Image from 'material-ui-image'
 import shorthash from 'shorthash'
 import {
 	ContainerStyled,
@@ -26,6 +25,7 @@ const {
 	Col,
 	Row,
 	Helmet,
+	Image,
 } = stopUndefined(Exports)
 
 const CardUserHorizontal = props => {
@@ -58,9 +58,7 @@ const CardUserHorizontal = props => {
 							<Image
 								imageStyle={{ width: '120px', height: '120px' }}
 								alt={'picture of ' + displayName}
-								color='transparent'
-								style={{ paddingTop: '0px' }}
-								className='img-center img-fluid rounded-circle position-static'
+								className='img-center img-fluid rounded-circle'
 								src={avatar || defaultAvatar}
 							/>
 						</Col>

@@ -1,8 +1,8 @@
 import React, { useRef, useCallback } from 'react'
-import Image from 'material-ui-image'
+import { ButtonBase } from '@material-ui/core'
 import { Exports } from '5_comp_0'
 import { stopUndefined } from '1_utils'
-const { Button, Row, Col } = stopUndefined(Exports)
+const { Button, Row, Col, Image } = stopUndefined(Exports)
 
 const emptyFunction = () => {}
 
@@ -58,14 +58,13 @@ const ImageUpload = props => {
 			className='fileinput w-100 h-100 '
 			style={{ maxWidth: 250, maxHeight: 250 }}
 		>
-			<input type='file' onChange={handleImageChange} ref={fileInput} />
+			<Col xs='0'>
+				<input type='file' onChange={handleImageChange} ref={fileInput} />
+			</Col>
 			<Col className='mb-2'>
-				<Image
-					src={image}
-					alt='user avatar'
-					className='thumbnail d-block'
-					color='transparent'
-				/>
+				<ButtonBase className='w-100' onClick={handleClick}>
+					<Image src={image} alt='user avatar' className='thumbnail ' />
+				</ButtonBase>
 			</Col>
 			{image === defaultImage ? (
 				<Col>
