@@ -17,7 +17,6 @@ const {
 	MenuHamburger,
 	HeaderCollapsedPropedNavbarIndex,
 	DropdownMenuNavbarStoreUserPropedNavbar,
-	AvatarUserStoreUser,
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
@@ -125,7 +124,7 @@ const NavbarIndex = props => {
 									{/* big screen size or not collapsed*/}
 									<ListNavItemStoreUserPropedNavbarIndex />
 									<IconNotificationStoreUserPropedNavbar className='d-none d-lg-inline-flex' />
-									<DropdownNavbarStoreUser avatar={AvatarUserStoreUser}>
+									<DropdownNavbarStoreUser>
 										<DropdownMenuNavbarStoreUserPropedNavbar />
 									</DropdownNavbarStoreUser>
 									<ButtonSignInStoreUserPropedIndexNavbar />
