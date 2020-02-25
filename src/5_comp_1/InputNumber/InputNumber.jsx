@@ -9,7 +9,7 @@ const { Button } = stopUndefined(Exports)
 const InputStyled = styledHOC(Input)(2)
 
 const InputNumber = props => {
-	const { className, min, max, setValue, value, ...restProps } = props
+	const { className, min, max, setValue, onChange, value, ...restProps } = props
 
 	const increment = useCallback(() => {
 		setValue(value => Math.min(max, value + 1))
@@ -19,8 +19,9 @@ const InputNumber = props => {
 		setValue(value => Math.max(min, value - 1))
 	}, [setValue])
 
-	const onChange = useCallback(
+	const onChange_ = useCallback(
 		e => {
+			onChange && onChange(e)
 			const inputValue = parseInt(e.target.value)
 			if (inputValue > max) {
 				setValue(max)
@@ -30,11 +31,11 @@ const InputNumber = props => {
 				setValue(inputValue)
 			}
 		},
-		[setValue]
+		[setValue, onChange, min, max]
 	)
 
 	return (
-		<InputGroup>
+		<InputGroup className='mb-0'>
 			<InputGroupAddon addonType='prepend'>
 				<Button onClick={decrement} className='btn btn-info btn-sm m-0 h-100'>
 					<i className='tim-icons icon-simple-delete'></i>
@@ -57,7 +58,7 @@ const InputNumber = props => {
 				type='number'
 				min='1'
 				max='5'
-				onChange={onChange}
+				onChange={onChange_}
 				{...restProps}
 			/>
 			<InputGroupAddon addonType='append'>

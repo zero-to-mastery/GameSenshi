@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react'
-import { Input } from 'reactstrap'
 import { stopUndefined } from '1_utils'
 import { Exports } from '5_comp_1'
 import { ButtonBase } from '@material-ui/core'
@@ -11,6 +10,7 @@ const {
 	Row,
 	Container,
 	Image,
+	InputNumber,
 } = stopUndefined(Exports)
 
 const CARD_GIFT_IMAGE = 'image'
@@ -43,14 +43,10 @@ const CardGift = props => {
 		setIsOpen(false)
 	}, [])
 
-	const onChange_ = useCallback(e => {
-		setNumber(e.target.value)
-	}, [])
-
 	return (
 		<>
 			<Modal
-				title='Show Your Player Some Love!'
+				title='Shower Your Player With Some Love!'
 				isOpen={isOpen}
 				toggle={toggleModal}
 				onContinue={onContinue}
@@ -62,12 +58,11 @@ const CardGift = props => {
 						<Col xs='3' id={CARD_GIFT_MODAL}>
 							<Image src={iconSrc} alt={iconSrc} />
 						</Col>
-						<Col xs='4'>
-							<Input
+						<Col xs='7'>
+							<InputNumber
 								label='No of gifts'
 								value={number}
-								type='number'
-								onChange={onChange_}
+								setValue={setNumber}
 								min='1'
 								max='99'
 							/>
