@@ -48,7 +48,7 @@ import { DropdownMenuNavbarStoreUserPropedNavbar } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
 import { ButtonsCommonChatAndCheckout } from './ButtonsCommon'
-import { QuantityProfile } from './Quantity'
+import { InputNumber } from './InputNumber'
 import { Carousel, CarouselPropedIndex } from './Carousel'
 import {
 	TextIconPropedPopularPlayer,
@@ -131,7 +131,7 @@ export const Exports = {
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
-	QuantityProfile,
+	InputNumber,
 	BadgesOptioned,
 	Badges,
 	BadgesPropedSenshi,
