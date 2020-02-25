@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { stopUndefined } from '1_utils'
-import { Exports } from '5_comp_2'
+import { Exports } from '5_comp_1'
 
 const {
 	ImagesTooltipOptioned,
 	ButtonSoundStoreSoundPropedCardUser,
-	QuantityProfile,
+	InputNumber,
 	ButtonsCommonChatAndCheckout,
 	Row,
 	Col,
@@ -17,6 +17,7 @@ const TAB_PRODUCT_ICON = 'icon'
 const TAB_PRODUCT_DESCRIPTION = 'description'
 
 const TabProduct = props => {
+	const [quantity, setQuantity] = useState(1)
 	const {
 		[TAB_PRODUCT_PRICE]: price,
 		[TAB_PRODUCT_NUM_ORDERS]: orders,
@@ -47,7 +48,7 @@ const TabProduct = props => {
 						</Col>
 						<Col>
 							<p className='text-white lead'>
-								<i className='tim-icons icon-notes text-success pb-1'></i>{' '}
+								<i className='tim-icons icon-notes text-success pb-1'></i>
 								{orders} orders completed
 							</p>
 						</Col>
@@ -57,7 +58,12 @@ const TabProduct = props => {
 					</Row>
 				</Col>
 				<Col>
-					<QuantityProfile />
+					<InputNumber
+						min={1}
+						max={23}
+						value={quantity}
+						setValue={setQuantity}
+					/>
 				</Col>
 			</Row>
 			<Row className='pt-3'>
