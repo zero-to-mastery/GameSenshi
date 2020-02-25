@@ -1,6 +1,5 @@
 import React from 'react'
 import { stopUndefined } from '1_utils'
-//components
 import { Exports } from '5_comp_2'
 
 const {

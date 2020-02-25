@@ -1,6 +1,5 @@
 import React from 'react'
 import { stopUndefined } from '1_utils'
-//components
 import { Exports } from '5_comp_2'
 
 const { FinalInputText } = stopUndefined(Exports)
@@ -19,7 +18,6 @@ const onChange = (e, onValueChange = () => {}) => {
 }
 
 const FinalTextCardCVC = props => {
-	const { ...restProps } = props
 	return (
 		<FinalInputText
 			name={FINAL_TEXT_CARD_CVC}
@@ -28,7 +26,7 @@ const FinalTextCardCVC = props => {
 			hideSuccess
 			onChange={onChange}
 			icon='tim-icons icon-lock-circle'
-			{...restProps}
+			{...props}
 		/>
 	)
 }

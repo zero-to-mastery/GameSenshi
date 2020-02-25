@@ -1,8 +1,6 @@
 import React from 'react'
-// utils
 import { stopUndefined } from '1_utils'
 import { string } from 'yup'
-//components
 import { Exports } from '5_comp_2'
 
 const { FinalInputText } = stopUndefined(Exports)
