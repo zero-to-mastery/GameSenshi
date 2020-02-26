@@ -33,7 +33,7 @@ const ButtonCommonChat = props => {
 	return (
 		<ButtonsCommonOptioned
 			buttons={buttonCommonChat}
-			className='btn'
+			className='px-0 rounded-0'
 			baseClass='w-100'
 			col
 			{...props}
@@ -44,7 +44,7 @@ const ButtonsCommonCheckout = props => {
 	return (
 		<ButtonsCommonOptioned
 			buttons={buttonsCommonCheckout}
-			className='btn'
+			className='px-0 rounded-0'
 			baseClass='w-100'
 			col
 			{...props}

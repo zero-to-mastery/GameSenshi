@@ -32,35 +32,51 @@ const TabProduct = props => {
 					<ImagesTooltipOptioned icons={icon} />
 				</Col>
 				<Col>
-					<Row xs='1'>
+					<Row className='align-items-center h-100'>
 						<Col>
-							<p>
-								<span style={{ color: 'yellow' }}>$</span>
-								<span
-									style={{
-										color: 'yellow',
-										fontSize: '2rem',
-									}}
-								>
-									{price}
-								</span>
-								/hour
-							</p>
+							<Row xs='1'>
+								<Col>
+									<p>
+										<span style={{ color: 'yellow' }}>$</span>
+										<span
+											style={{
+												color: 'yellow',
+												fontSize: '2rem',
+											}}
+										>
+											{price}
+										</span>
+										/hour
+									</p>
+								</Col>
+								<Col xs='8'>
+									<ButtonSoundStoreSoundPropedCardUser gender={true} />
+								</Col>
+							</Row>
 						</Col>
+					</Row>
+				</Col>
+				<Col>
+					<Row xs='1' className='align-items-center h-100'>
+						<Col />
 						<Col>
 							<p className='text-white lead'>
 								<i className='tim-icons icon-notes text-success pb-1'></i>
 								{orders} orders completed
 							</p>
 						</Col>
-						<Col xs='8'>
-							<ButtonSoundStoreSoundPropedCardUser gender={true} />
-						</Col>
+						<Col />
 					</Row>
 				</Col>
+			</Row>
+			<Row className='my-5'>
+				<Col xs='3' />
 				<Col>
-					<Row xs='1'>
-						<Col>
+					<Row className='align-items-center mb-2'>
+						<Col xs='3'>
+							<p className='m-0'>Hours:</p>
+						</Col>
+						<Col xs='5'>
 							<InputNumber
 								min={1}
 								max={23}
@@ -68,22 +84,19 @@ const TabProduct = props => {
 								setValue={setQuantity}
 							/>
 						</Col>
-						<Col>
-							<ButtonsCommonCheckout />
-						</Col>
-						<Col>
+					</Row>
+					<Row>
+						<Col xs='4.5' className='pr-1'>
 							<ButtonCommonChat />
+						</Col>
+						<Col xs='4.5' className='pl-1'>
+							<ButtonsCommonCheckout />
 						</Col>
 					</Row>
 				</Col>
 			</Row>
-			<Row className='pt-3'>
-				<Col md='12'>
-					<hr className='line-primary' />
-				</Col>
-			</Row>
 			<Row>
-				<Col>
+				<Col className='px-5'>
 					<p>{description}</p>
 				</Col>
 			</Row>
