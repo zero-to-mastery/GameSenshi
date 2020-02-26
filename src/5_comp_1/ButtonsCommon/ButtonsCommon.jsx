@@ -29,7 +29,7 @@ const ButtonsCommon = props => {
 	return (
 		<EnclosureRow
 			align='center'
-			className={clsx('justify-content-center', rowClass)}
+			{...(col && { className: clsx('justify-content-center', rowClass) })}
 		>
 			{buttons.map(button => {
 				const {
@@ -50,7 +50,7 @@ const ButtonsCommon = props => {
 				)
 				const id_ = 'ButtonsCommon' + id
 				return (
-					<EnclosureCol key={id_} className={clsx(colClass)}>
+					<EnclosureCol key={id_} {...(col && { className: clsx(colClass) })}>
 						<Button
 							size='lg'
 							baseClass={baseClass}
