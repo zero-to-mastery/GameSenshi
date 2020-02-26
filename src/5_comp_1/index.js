@@ -11,7 +11,10 @@ import {
 import { InputText } from './InputText'
 import { Popover } from './Popover'
 import { Footer } from './Footer'
-import { ButtonsCommonOptioned, ButtonsCommonPropedAuth } from './ButtonsCommon'
+import {
+	ButtonsCommonOptioned,
+	ButtonsCommonPropedSocial,
+} from './ButtonsCommon'
 import {
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
@@ -95,7 +98,7 @@ export const Exports = {
 	AlertStoreAlert,
 	ProgressStoreProgress,
 	ButtonsCommonOptioned,
-	ButtonsCommonPropedAuth,
+	ButtonsCommonPropedSocial,
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
 	TextAlert,

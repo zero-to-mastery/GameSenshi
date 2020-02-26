@@ -17,7 +17,7 @@ import {
 } from 'reactstrap'
 import { Exports } from '5_comp_3'
 const {
-	ButtonsCommonPropedAuth,
+	ButtonsCommonPropedSocial,
 	FinalForm,
 	ButtonSubmit,
 	FinalTextEmailPropedSignIn,
@@ -110,7 +110,7 @@ const FormSignIn = props => {
 									</InputGroup>
 								) : (
 									<>
-										<ButtonsCommonPropedAuth />
+										<ButtonsCommonPropedSocial />
 										<Row>
 											<Col className='text-center text-muted mb-4 mt-3' xs='12'>
 												<small>Or Classically</small>

@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
 import { ButtonsCommon } from './ButtonsCommon'
 import {
-	buttonCommonAuthOnClick,
-	buttonsCommonAuth,
+	buttonCommonSocialOnClick,
+	buttonsCommonSocial,
 	getButtonsCommon,
 	buttonsCommonChatAndCheckout,
 } from './utils'
@@ -14,15 +14,15 @@ const ButtonsCommonOptioned = props => {
 	return <ButtonsCommon buttons={buttons_} {...otherProps} />
 }
 
-const ButtonsCommonPropedAuth = withLastLocation(props => {
+const ButtonsCommonPropedSocial = withLastLocation(props => {
 	const { lastLocation, ...restProps } = props
-	const onClick = useMemo(() => buttonCommonAuthOnClick(lastLocation), [
+	const onClick = useMemo(() => buttonCommonSocialOnClick(lastLocation), [
 		lastLocation,
 	])
 	return (
 		<ButtonsCommonOptioned
 			onClick={onClick}
-			buttons={buttonsCommonAuth}
+			buttons={buttonsCommonSocial}
 			{...restProps}
 		/>
 	)
@@ -40,7 +40,7 @@ const ButtonsCommonChatAndCheckout = props => {
 }
 
 export {
-	ButtonsCommonPropedAuth,
+	ButtonsCommonPropedSocial,
 	ButtonsCommonOptioned,
 	ButtonsCommonChatAndCheckout,
 }

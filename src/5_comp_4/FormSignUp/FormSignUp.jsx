@@ -15,7 +15,7 @@ import {
 import { Exports } from '5_comp_3'
 
 const {
-	ButtonsCommonPropedAuth,
+	ButtonsCommonPropedSocial,
 	FinalForm,
 	ButtonSubmit,
 	FinalTextEmailPropedSignUp,
@@ -58,7 +58,7 @@ const FormSignUp = props => {
 				{({ handleSubmit, submitting, submitError }) => (
 					<Form className='form'>
 						<CardBody>
-							<ButtonsCommonPropedAuth />
+							<ButtonsCommonPropedSocial />
 							<Row>
 								<Col />
 								<Col className='text-center text-muted mb-4 mt-3 col-auto'>

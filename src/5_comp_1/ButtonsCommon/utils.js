@@ -113,7 +113,7 @@ const getButtonsCommon = buttons => {
 	return getButtons
 }
 
-const buttonCommonAuthOnClick = lastLocation => {
+const buttonCommonSocialOnClick = lastLocation => {
 	return (e, button) => {
 		const { [BUTTONS_COMMON_ID]: id } = button
 		storeModalSetItem(null, null, { [STORE_USER_STATE_SIGNING_IN]: true })
@@ -124,7 +124,7 @@ const buttonCommonAuthOnClick = lastLocation => {
 	}
 }
 
-const buttonsCommonAuth = {
+const buttonsCommonSocial = {
 	[AUTH_GOOGLE]: '',
 	[AUTH_FACEBOOK]: '',
 	[AUTH_TWITCH]: '',
@@ -133,8 +133,8 @@ const buttonsCommonAuth = {
 const buttonsCommonChatAndCheckout = { [CHAT]: '', [CHECKOUT]: '' }
 
 export {
-	buttonCommonAuthOnClick,
+	buttonCommonSocialOnClick,
 	getButtonsCommon,
-	buttonsCommonAuth,
+	buttonsCommonSocial,
 	buttonsCommonChatAndCheckout,
 }
