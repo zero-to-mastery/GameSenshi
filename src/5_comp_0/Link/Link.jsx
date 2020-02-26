@@ -3,8 +3,6 @@ import LinkNoStack from 'react-router-link-nostack'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import clsx from 'clsx'
 
-const LinkNoBase = LinkNoStack
-
 const Link = props => {
 	const {
 		baseClass,
@@ -18,13 +16,13 @@ const Link = props => {
 	return (
 		<ButtonBase component='span' className={clsx(baseClass)} style={baseStyle}>
 			{to && (
-				<LinkNoBase
+				<LinkNoStack
 					to={to}
 					className={clsx('text-nowrap w-100 mx-0', className)}
 					{...otherProps}
 				>
 					{children}
-				</LinkNoBase>
+				</LinkNoStack>
 			)}
 			{!to && href && (
 				<a
@@ -41,4 +39,4 @@ const Link = props => {
 	)
 }
 
-export { Link, LinkNoBase }
+export { Link, LinkNoStack }

@@ -16,7 +16,7 @@ import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap'
 import { Exports } from '5_comp_5'
 import ButtonBase from '@material-ui/core/ButtonBase'
 
-const { LinkNoBase, Section, WrapperStoreWrapperPropedIndex } = stopUndefined(
+const { LinkNoStack, Section, WrapperStoreWrapperPropedIndex } = stopUndefined(
 	Exports
 )
 
@@ -73,7 +73,7 @@ const PagePolicies = props => {
 													active: pathname.toLowerCase() === to.toLowerCase(),
 												})}
 												to={to}
-												tag={LinkNoBase}
+												tag={LinkNoStack}
 											>
 												<ButtonBase>
 													<Container>

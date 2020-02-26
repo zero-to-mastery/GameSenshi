@@ -1,4 +1,4 @@
-import { Link, LinkNoBase } from './Link'
+import { Link, LinkNoStack } from './Link'
 import { Button } from './Button'
 import { UncontrolledTooltip } from './UncontrolledTooltip'
 import { Icon } from './Icon'
@@ -8,7 +8,7 @@ import { Image } from './Image'
 
 export const Exports = {
 	Link,
-	LinkNoBase,
+	LinkNoStack,
 	Button,
 	UncontrolledTooltip,
 	Icon,
