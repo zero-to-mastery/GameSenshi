@@ -27,46 +27,36 @@ const TabProduct = props => {
 	} = props
 	return (
 		<>
-			<Row>
+			<Row className='align-items-center h-100'>
 				<Col xs='3'>
 					<ImagesTooltipOptioned icons={icon} />
 				</Col>
 				<Col>
-					<Row className='align-items-center h-100'>
+					<Row xs='1'>
 						<Col>
-							<Row xs='1'>
-								<Col>
-									<p>
-										<span style={{ color: 'yellow' }}>$</span>
-										<span
-											style={{
-												color: 'yellow',
-												fontSize: '2rem',
-											}}
-										>
-											{price}
-										</span>
-										/hour
-									</p>
-								</Col>
-								<Col xs='8'>
-									<ButtonSoundStoreSoundPropedCardUser gender={true} />
-								</Col>
-							</Row>
+							<p>
+								<span style={{ color: 'yellow' }}>$</span>
+								<span
+									style={{
+										color: 'yellow',
+										fontSize: '2rem',
+									}}
+								>
+									{price}
+								</span>
+								/hour
+							</p>
+						</Col>
+						<Col xs='8'>
+							<ButtonSoundStoreSoundPropedCardUser gender={true} />
 						</Col>
 					</Row>
 				</Col>
 				<Col>
-					<Row xs='1' className='align-items-center h-100'>
-						<Col />
-						<Col>
-							<p className='text-white lead'>
-								<i className='tim-icons icon-notes text-success pb-1'></i>
-								{orders} orders completed
-							</p>
-						</Col>
-						<Col />
-					</Row>
+					<p className='text-white lead'>
+						<i className='tim-icons icon-notes text-success pb-1'></i>
+						{orders} orders completed
+					</p>
 				</Col>
 			</Row>
 			<Row className='mt-4 mb-5'>
