@@ -69,10 +69,10 @@ const TabProduct = props => {
 					</Row>
 				</Col>
 			</Row>
-			<Row className='my-5'>
+			<Row className='mt-4 mb-5'>
 				<Col xs='3' />
 				<Col>
-					<Row className='align-items-center mb-2'>
+					<Row className='align-items-center mb-3'>
 						<Col xs='3'>
 							<p className='m-0'>Hours:</p>
 						</Col>
