@@ -130,11 +130,13 @@ const buttonsCommonSocial = {
 	[AUTH_TWITCH]: '',
 }
 
-const buttonsCommonChatAndCheckout = { [CHAT]: '', [CHECKOUT]: '' }
+const buttonCommonChat = { [CHAT]: '' }
+const buttonsCommonCheckout = { [CHECKOUT]: '' }
 
 export {
 	buttonCommonSocialOnClick,
 	getButtonsCommon,
 	buttonsCommonSocial,
-	buttonsCommonChatAndCheckout,
+	buttonCommonChat,
+	buttonsCommonCheckout,
 }

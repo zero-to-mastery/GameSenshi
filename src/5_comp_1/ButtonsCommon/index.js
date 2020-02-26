@@ -4,7 +4,8 @@ import {
 	buttonCommonSocialOnClick,
 	buttonsCommonSocial,
 	getButtonsCommon,
-	buttonsCommonChatAndCheckout,
+	buttonCommonChat,
+	buttonsCommonCheckout,
 } from './utils'
 import { withLastLocation } from '2_routes'
 
@@ -28,12 +29,24 @@ const ButtonsCommonPropedSocial = withLastLocation(props => {
 	)
 })
 
-const ButtonsCommonChatAndCheckout = props => {
+const ButtonCommonChat = props => {
 	return (
 		<ButtonsCommonOptioned
-			buttons={buttonsCommonChatAndCheckout}
-			className='w-100'
+			buttons={buttonCommonChat}
+			className='btn'
 			baseClass='w-100'
+			col
+			{...props}
+		/>
+	)
+}
+const ButtonsCommonCheckout = props => {
+	return (
+		<ButtonsCommonOptioned
+			buttons={buttonsCommonCheckout}
+			className='btn'
+			baseClass='w-100'
+			col
 			{...props}
 		/>
 	)
@@ -42,5 +55,6 @@ const ButtonsCommonChatAndCheckout = props => {
 export {
 	ButtonsCommonPropedSocial,
 	ButtonsCommonOptioned,
-	ButtonsCommonChatAndCheckout,
+	ButtonCommonChat,
+	ButtonsCommonCheckout,
 }

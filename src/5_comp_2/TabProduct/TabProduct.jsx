@@ -6,7 +6,8 @@ const {
 	ImagesTooltipOptioned,
 	ButtonSoundStoreSoundPropedCardUser,
 	InputNumber,
-	ButtonsCommonChatAndCheckout,
+	ButtonCommonChat,
+	ButtonsCommonCheckout,
 	Row,
 	Col,
 } = stopUndefined(Exports)
@@ -58,12 +59,22 @@ const TabProduct = props => {
 					</Row>
 				</Col>
 				<Col>
-					<InputNumber
-						min={1}
-						max={23}
-						value={quantity}
-						setValue={setQuantity}
-					/>
+					<Row xs='1'>
+						<Col>
+							<InputNumber
+								min={1}
+								max={23}
+								value={quantity}
+								setValue={setQuantity}
+							/>
+						</Col>
+						<Col>
+							<ButtonsCommonCheckout />
+						</Col>
+						<Col>
+							<ButtonCommonChat />
+						</Col>
+					</Row>
 				</Col>
 			</Row>
 			<Row className='pt-3'>
@@ -74,11 +85,6 @@ const TabProduct = props => {
 			<Row>
 				<Col>
 					<p>{description}</p>
-				</Col>
-			</Row>
-			<Row className='pt-5 text-right'>
-				<Col md={{ offset: 8, size: 4 }}>
-					<ButtonsCommonChatAndCheckout />
 				</Col>
 			</Row>
 		</>

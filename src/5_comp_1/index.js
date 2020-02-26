@@ -14,6 +14,8 @@ import { Footer } from './Footer'
 import {
 	ButtonsCommonOptioned,
 	ButtonsCommonPropedSocial,
+	ButtonsCommonCheckout,
+	ButtonCommonChat,
 } from './ButtonsCommon'
 import {
 	ButtonSignInStoreUserPropedIndexNavbar,
@@ -50,7 +52,6 @@ import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbar } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
-import { ButtonsCommonChatAndCheckout } from './ButtonsCommon'
 import { InputNumber } from './InputNumber'
 import { Carousel, CarouselPropedIndex } from './Carousel'
 import {
@@ -99,6 +100,7 @@ export const Exports = {
 	ProgressStoreProgress,
 	ButtonsCommonOptioned,
 	ButtonsCommonPropedSocial,
+	ButtonsCommonCheckout,
 	ButtonSignInStoreUserPropedIndexNavbar,
 	ButtonSignUpStoreUserPropedIndexNavbar,
 	TextAlert,
@@ -162,7 +164,7 @@ export const Exports = {
 	TextIconPropedProfileReviews,
 	TextIconPropedAppointments,
 	CardUserSimple,
-	ButtonsCommonChatAndCheckout,
+	ButtonCommonChat,
 	Tab,
 	TAB_NAME,
 	TAB_CONTENT,
