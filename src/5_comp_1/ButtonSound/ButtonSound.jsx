@@ -27,7 +27,7 @@ const convertToMinutes = duration => {
 const ButtonSound = props => {
 	const [playStatus, setPlayStatus] = useState(STOPPED)
 	const [position, setPosition] = useState(Spinner)
-	const [duration, setDuration] = useState('Play')
+	const [duration, setDuration] = useState('Sound')
 	const [loading, setLoading] = useState(false)
 	const [Icon, setIcon] = useState(() => VolumeUpIcon)
 	const ref = useRef(uuidV4())
