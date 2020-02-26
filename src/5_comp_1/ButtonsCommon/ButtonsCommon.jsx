@@ -14,11 +14,23 @@ const BUTTONS_COMMON_LABEL = 'label'
 const BUTTONS_COMMON_TO = 'to'
 
 const ButtonsCommon = props => {
-	const { onClick, buttons, className, col, baseClass, rowClass } = props
+	const {
+		onClick,
+		buttons,
+		className,
+		col,
+		colClass,
+		baseClass,
+		rowClass,
+	} = props
 
 	const EnclosureCol = col ? Col : Fragment
+	const EnclosureRow = col ? Row : 'div'
 	return (
-		<Row className={clsx('justify-content-center', rowClass)}>
+		<EnclosureRow
+			align='center'
+			className={clsx('justify-content-center', rowClass)}
+		>
 			{buttons.map(button => {
 				const {
 					[BUTTONS_COMMON_ID]: id,
@@ -38,7 +50,7 @@ const ButtonsCommon = props => {
 				)
 				const id_ = 'ButtonsCommon' + id
 				return (
-					<EnclosureCol key={id_}>
+					<EnclosureCol key={id_} className={clsx(colClass)}>
 						<Button
 							size='lg'
 							baseClass={baseClass}
@@ -58,7 +70,7 @@ const ButtonsCommon = props => {
 					</EnclosureCol>
 				)
 			})}
-		</Row>
+		</EnclosureRow>
 	)
 }
 
