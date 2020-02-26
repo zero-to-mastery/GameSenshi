@@ -5,7 +5,15 @@ import clsx from 'clsx'
 import styles from './styles.module.css'
 
 const Button = forwardRef((props, ref) => {
-	const { baseClass, baseStyle, className, tag, ...otherProps } = props
+	const {
+		baseClass,
+		baseStyle,
+		className,
+		tag,
+		// eslint-disable-next-line
+		staticContext,
+		...otherProps
+	} = props
 	const Enclosure = tag ? Fragment : ButtonBase
 	const className_ = className || ''
 
@@ -14,8 +22,8 @@ const Button = forwardRef((props, ref) => {
 			{...(!tag && {
 				component: 'span',
 				className: clsx(
-					baseClass,
-					className_.includes('btn-round') ? styles['btn-round'] : styles.btn
+					className_.includes('btn-round') ? styles['btn-round'] : styles.btn,
+					baseClass
 				),
 				style: baseStyle,
 			})}

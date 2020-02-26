@@ -22,6 +22,7 @@ const ButtonsCommon = props => {
 		colClass,
 		baseClass,
 		rowClass,
+		...otherProps
 	} = props
 
 	const EnclosureCol = col ? Col : Fragment
@@ -61,6 +62,7 @@ const ButtonsCommon = props => {
 							to={to}
 							href={href}
 							onClick={onClick_}
+							{...otherProps}
 						>
 							{icon()} {label}
 						</Button>

@@ -8,6 +8,8 @@ const { Button } = stopUndefined(Exports)
 
 const InputStyled = styledHOC(Input)(2)
 
+const buttonClass = 'btn btn-info btn-sm m-0 h-100 rounded-0 btn-simple'
+
 const InputNumber = props => {
 	const { className, min, max, setValue, onChange, value, ...restProps } = props
 
@@ -37,7 +39,7 @@ const InputNumber = props => {
 	return (
 		<InputGroup className='mb-0'>
 			<InputGroupAddon addonType='prepend'>
-				<Button onClick={decrement} className='btn btn-info btn-sm m-0 h-100'>
+				<Button onClick={decrement} className={buttonClass}>
 					<i className='tim-icons icon-simple-delete'></i>
 				</Button>
 			</InputGroupAddon>
@@ -62,7 +64,7 @@ const InputNumber = props => {
 				{...restProps}
 			/>
 			<InputGroupAddon addonType='append'>
-				<Button onClick={increment} className='btn btn-info btn-sm m-0 h-100'>
+				<Button onClick={increment} className={buttonClass}>
 					<i className='tim-icons icon-simple-add'></i>
 				</Button>
 			</InputGroupAddon>
