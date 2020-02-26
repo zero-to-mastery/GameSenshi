@@ -11,39 +11,37 @@ const [Row, Col] = [RowRS, ColRs].map((Comp, i) => {
 	})
 
 	return styled(CompNew)`
-		&&& {
-			${props => {
-				const { xs, sx, sm, md, lg, xl } = props
-				const obj = { xs, sx, sm, md, lg, xl }
-				let responsiveness = {}
-				for (const prop in obj) {
-					const value = i === 0 ? 100 / obj[prop] : (obj[prop] * 100) / 12
-					const selector = i === 0 ? '> * ' : ''
+		${props => {
+			const { xs, sx, sm, md, lg, xl } = props
+			const obj = { xs, sx, sm, md, lg, xl }
+			let responsiveness = {}
+			for (const prop in obj) {
+				const value = i === 0 ? 100 / obj[prop] : (obj[prop] * 100) / 12
+				const selector = i === 0 ? '> * ' : ''
 
-					responsiveness[prop] =
-						obj[prop] === undefined
-							? undefined
-							: obj[prop] === '0'
-							? `${selector} {
+				responsiveness[prop] =
+					obj[prop] === undefined
+						? undefined
+						: obj[prop] === '0'
+						? `${selector} {
 							display:none;
 							}`
-							: obj[prop] === 'auto'
-							? `${selector} {
+						: obj[prop] === 'auto'
+						? `${selector} {
 							display:block;
 							-ms-flex: 0 0 auto;
 							flex: 0 0 auto;
 							max-width: 100%;
 							}`
-							: `${selector} {
+						: `${selector} {
 						display:block;
 						-ms-flex: 0 0 ${value}%;
 						flex: 0 0 ${value}%;
 						max-width: ${value}%;
 						}`
-				}
-				return cssR(responsiveness)
-			}}
-		}
+			}
+			return cssR(responsiveness)
+		}}
 	`
 })
 
