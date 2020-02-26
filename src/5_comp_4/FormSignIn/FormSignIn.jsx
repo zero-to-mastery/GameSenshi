@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, Fragment } from 'react'
+import React, { useRef, Fragment } from 'react'
 import { stopUndefined } from '1_utils'
 import {
 	Input,
@@ -49,9 +49,7 @@ const FormSignIn = props => {
 		[SIGN_IN_FORM_ON_SUCCESSFUL_SUBMISSION]: onSuccessfulSubmission,
 	} = props
 
-	const TopElement = useMemo(() => {
-		return modal ? ModalSimple : Fragment_
-	}, [modal])
+	const TopElement = modal ? ModalSimple : Fragment_
 
 	return (
 		<TopElement toggle={toggle} isOpen={isOpen}>

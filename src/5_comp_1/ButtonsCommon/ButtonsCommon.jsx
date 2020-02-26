@@ -50,8 +50,7 @@ const ButtonsCommon = props => {
 							href={href}
 							onClick={onClick_}
 						>
-							{icon()}
-							{label}
+							{icon()} {label}
 						</Button>
 						<UncontrolledTooltip delay={0} target={id_}>
 							{tooltip}
