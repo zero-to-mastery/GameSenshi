@@ -6,7 +6,7 @@ const { Carousel, LightBox } = stopUndefined(Exports)
 const CarouselLightBox = props => {
 	const [slide, setSlide] = useState(0)
 	const [toggle, setToggle] = useState(false)
-	const { items } = props
+	const { items, aspectRatio } = props
 
 	const onSlide = useCallback(currentIndex => {
 		setSlide(currentIndex)
@@ -25,6 +25,7 @@ const CarouselLightBox = props => {
 				showIndex={false}
 				showBullets={false}
 				showPlayButton={false}
+				aspectRatio={aspectRatio}
 			/>
 		</>
 	)

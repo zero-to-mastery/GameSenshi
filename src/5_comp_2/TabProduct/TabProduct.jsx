@@ -87,7 +87,7 @@ const TabProduct = props => {
 			</Row>
 			<Row>
 				<Col>
-					<h4>Introduction</h4>
+					<h4 className='font-weight-bold'>Introduction</h4>
 					<p>{description}</p>
 				</Col>
 			</Row>
