@@ -4,7 +4,6 @@ import 'react-image-gallery/styles/css/image-gallery.css'
 import ReactPlayer from 'react-player'
 import { ImageStyled } from './styled'
 import Image from 'material-ui-image'
-import styles from './styles.module.css'
 
 import {
 	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL_YOUTUBE,
@@ -122,7 +121,7 @@ const Carousel = props => {
 
 			if (image) {
 				return {
-					originalClass: styles['bg-transparent'],
+					originalClass: 'bg-transparent',
 					[RENDER_ITEM]: () => {
 						return (
 							<Img
