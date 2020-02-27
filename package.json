@@ -49,7 +49,8 @@
 		"p-deploy": "env-cmd .config/prod.env npm run deploy",
 		"p-fs-rule": "env-cmd .config/prod.env npm run fs-rule",
 		"divider4": "-------------------------------------------------all-----------------------------------------------------------------",
-		"a-deploy": "npm run d-deploy && npm run p-deploy"
+		"a-deploy": "npm run d-deploy && npm run p-deploy",
+		"a-fs-rule": "npm run d-fs-rule && npm run p-fs-rule"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "^5.11.2",

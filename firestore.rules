@@ -5,10 +5,22 @@ service cloud.firestore {
     allow get, create: if request.auth !=null && request.auth.uid == userId;
     
     	match /settings/notifications {
-      allow read, write;}
+      	allow read, write;
+      }
       match /settings/general {
-      allow read;
-      allow write: if request.auth !=null && request.auth.uid == userId;}
+      	allow read;
+      	allow write: if request.auth !=null && request.auth.uid == userId;
+      }
+      match /senshi/{senshiUid}{
+    		allow read, write: if request.auth !=null && request.auth.uid == userId;
+      }
+    }
+    match /senshi/{senshiId}{
+    allow get;
+  		match /settings/profile{
+      	allow get;
+        allow write: if request.auth !=null && request.auth.uid == senshiId;
+      }
     }
   }
 }
