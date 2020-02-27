@@ -5,7 +5,7 @@ import { Exports } from '5_comp_1'
 const {
 	ImagesTooltipOptioned,
 	ButtonSoundStoreSoundPropedCardUser,
-	InputNumber,
+	InputInteger,
 	ButtonCommonChat,
 	ButtonsCommonCheckout,
 	Row,
@@ -67,7 +67,7 @@ const TabProduct = props => {
 							<p className='m-0'>Hours:</p>
 						</Col>
 						<Col xs='5'>
-							<InputNumber
+							<InputInteger
 								min={1}
 								max={23}
 								value={quantity}
@@ -86,7 +86,8 @@ const TabProduct = props => {
 				</Col>
 			</Row>
 			<Row>
-				<Col className='px-5'>
+				<Col>
+					<h4>Introduction</h4>
 					<p>{description}</p>
 				</Col>
 			</Row>

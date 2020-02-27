@@ -52,7 +52,7 @@ import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbar } from './DropdownMenuNavbar'
 import { AvatarUserStoreUser } from './AvatarUser'
 import { DropdownNavbarStoreUser } from './DropdownNavbar'
-import { InputNumber } from './InputNumber'
+import { InputInteger } from './InputInteger'
 import { Carousel, CarouselPropedIndex } from './Carousel'
 import {
 	TextIconPropedPopularPlayer,
@@ -136,7 +136,7 @@ export const Exports = {
 	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
-	InputNumber,
+	InputInteger,
 	BadgesOptioned,
 	Badges,
 	BadgesPropedSenshi,

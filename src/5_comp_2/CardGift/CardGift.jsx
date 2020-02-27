@@ -10,7 +10,7 @@ const {
 	Row,
 	Container,
 	Image,
-	InputNumber,
+	InputInteger,
 } = stopUndefined(Exports)
 
 const CARD_GIFT_IMAGE = 'image'
@@ -59,12 +59,12 @@ const CardGift = props => {
 							<Image src={iconSrc} alt={iconSrc} />
 						</Col>
 						<Col xs='7'>
-							<InputNumber
+							<InputInteger
 								label='No of gifts'
 								value={number}
 								setValue={setNumber}
 								min='1'
-								max='99'
+								max='9999'
 							/>
 						</Col>
 					</Row>

@@ -10,7 +10,7 @@ const InputStyled = styledHOC(Input)(2)
 
 const buttonClass = 'btn btn-info btn-sm m-0 h-100 rounded-0 btn-simple'
 
-const InputNumber = props => {
+const InputInteger = props => {
 	const { className, min, max, setValue, onChange, value, ...restProps } = props
 
 	const increment = useCallback(() => {
@@ -72,4 +72,4 @@ const InputNumber = props => {
 	)
 }
 
-export { InputNumber }
+export { InputInteger }
