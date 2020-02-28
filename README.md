@@ -85,6 +85,8 @@ request the `.config` folder(s) from `tylim#9831` in `Discord`
 node install.js
 ```
 
+## Development (Front End)
+
 ```bash
 npm run dev
 // run with dev env var, this may not work as dev is connect to dev server (experiment server)  
@@ -95,7 +97,20 @@ npm run prod
 
 Now you can start hacking on front end!
 
-## Deployment
+## Deployment (Front End)
+
+```bash
+npm run d-deploy // deploy to dev server  
+npm run p-deploy // deploy to prod server
+npm run a-deploy // deploy to both dev and prod server
+```
+
+after deployment, you can view it at
+
+1. [prod](https://gamesenshi.com/)
+2. [dev](https://game-senshi.firebaseapp.com/)
+
+## Deployment (Back End)
 
 🛑 Ignore this deployment section if you don't want to work with back end (firebase).
 
@@ -104,11 +119,7 @@ Direct message `tylim#9831` in `Discord` your email to become user of this fireb
 If you skip this step you have to setup your own firebase project.
 
 ```bash
-npm i -g firebase-tools
-```
-
-```bash
-firebase login
+npm i && firebase login
 ```
 
 above command is one time setup, anytime you want to run deploy, simply
@@ -116,14 +127,10 @@ above command is one time setup, anytime you want to run deploy, simply
 ```bash
 npm run d-deploy // deploy to dev server  
 npm run p-deploy // deploy to prod server
+npm run a-deploy // deploy to both dev and prod server
 ```
 
-It will automatically inject production environment variable, build and deploy front end or back end (if you run the command in functions folder).
-
-after deployment, you can view it at
-
-1. [prod](https://gamesenshi.com/)
-2. [dev](https://game-senshi.firebaseapp.com/)
+It will automatically inject production environment variable, build and deploy front end or back end (make sure the command is run in /functions folder).
 
 ## Built With
 
