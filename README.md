@@ -14,7 +14,7 @@ route: index
 route: profile/2QvJMnyN73SnBXaLuRR0REQpY8X2
 ![profile.png](./src/0_assets/img/readme/profile.png)
 
-route: signup
+route: signup  
 note: each sign up method can be linked to each other, example:
 
 1. sign up with password account then link with Google account
