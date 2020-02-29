@@ -6,7 +6,7 @@ import {
 	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES,
-	FIRESTORE_USER_SENSHI_FAVOURITE,
+	FIRESTORE_USER_SELLER_FAVOURITE,
 } from '0_constants'
 import { auth } from '1_fire_init'
 
@@ -44,7 +44,7 @@ const docUserSenshiSetFavourite = uid => checked =>
 	docUserSenshiSet(
 		undefined,
 		uid
-	)({ [FIRESTORE_USER_SENSHI_FAVOURITE]: checked })
+	)({ [FIRESTORE_USER_SELLER_FAVOURITE]: checked })
 
 export {
 	docUserSettingGeneralGet,

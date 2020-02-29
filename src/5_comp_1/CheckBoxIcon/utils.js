@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { docUserSenshiGet, docUserSenshiSetFavourite } from '2_fire_store'
 import { storeModalSimpleError } from '2_state'
 import {
-	FIRESTORE_USER_SENSHI_FAVOURITE,
+	FIRESTORE_USER_SELLER_FAVOURITE,
 	UNEXPECTED_ERROR_CODE_19,
 } from '0_constants'
 import { needLoginToClick } from '4_comp_utils'
@@ -22,7 +22,7 @@ const useFavourite = (uid, signingIn, signedIn) => {
 			}
 			if (doc && doc.exists) {
 				setLoading(false)
-				setChecked(doc.data()[FIRESTORE_USER_SENSHI_FAVOURITE])
+				setChecked(doc.data()[FIRESTORE_USER_SELLER_FAVOURITE])
 			} else {
 				setLoading(false)
 			}

@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { stopUndefined } from '1_utils'
 import { Exports } from '5_comp_5'
-import { docSenshiProfileOnSnapshot } from '2_fire_store'
+import { docSellerProfileOnSnapshot } from '2_fire_store'
 import {
 	UNEXPECTED_ERROR_CODE_16,
 	UNEXPECTED_ERROR_CODE_17,
-	FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL,
+	FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL,
 } from '0_constants'
 import {
 	PAGE_PROFILE_STATE_LOADING,
@@ -30,7 +30,7 @@ const useData = (uid, currentUserUid) => {
 	useEffect(() => {
 		let listener = null
 		const attachListener = async () => {
-			listener = docSenshiProfileOnSnapshot(uid || currentUserUid)(
+			listener = docSellerProfileOnSnapshot(uid || currentUserUid)(
 				async docSnapshot => {
 					try {
 						const data = await docSnapshot.data()
@@ -72,7 +72,7 @@ const useData = (uid, currentUserUid) => {
 		[PAGE_PROFILE_STATE_EXIST]: exist,
 		[PAGE_PROFILE_STATE_DATA_USER]: data,
 		[PAGE_PROFILE_STATE_DATA_CAROUSEL]:
-			data && data[FIRESTORE_SENSHI_SETTINGS_PROFILE_CAROUSEL],
+			data && data[FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL],
 		[PAGE_PROFILE_STATE_ERROR_CODE]: errorCode,
 	}
 }

@@ -1,12 +1,12 @@
 import React from 'react'
-import { FIRESTORE_SENSHI_SETTINGS_PROFILE_GENDER_FEMALE } from '0_constants'
+import { FIRESTORE_SELLER_SETTINGS_PROFILE_GENDER_FEMALE } from '0_constants'
 import { BADGES_COLOR, BADGES_BODY, BADGES_ID, BADGES_CLASS } from './Badges'
 import { createGetOptions } from '1_utils'
 import styles from './styles.module.css'
 
 const options = [
 	{
-		[BADGES_ID]: FIRESTORE_SENSHI_SETTINGS_PROFILE_GENDER_FEMALE,
+		[BADGES_ID]: FIRESTORE_SELLER_SETTINGS_PROFILE_GENDER_FEMALE,
 		[BADGES_COLOR]: 'primary',
 		[BADGES_BODY]: (
 			<>

@@ -11,12 +11,12 @@ import {
 } from './userSettings'
 
 import {
-	docSenshiProfileOnSnapshot,
-	docSenshiProfileAvatarSet,
-	docSenshiProfileCarouselSet,
-	docSenshiProfileChannelSet,
-	docdocSenshiProfileOnlineSet,
-} from './senshiSettings'
+	docSellerProfileOnSnapshot,
+	docSellerProfileAvatarSet,
+	docSellerProfileCarouselSet,
+	docSellerProfileChannelSet,
+	docSellerProfileOnlineSet,
+} from './sellerSettings'
 
 export {
 	docUserSettingGeneralGet,
@@ -25,11 +25,11 @@ export {
 	docUserSettingNotificationGet,
 	docUserSettingNotificationSet_,
 	docUserSettingGeneralAvatarSet,
-	docSenshiProfileOnSnapshot,
-	docSenshiProfileAvatarSet,
-	docSenshiProfileCarouselSet,
-	docSenshiProfileChannelSet,
-	docdocSenshiProfileOnlineSet,
+	docSellerProfileOnSnapshot,
+	docSellerProfileAvatarSet,
+	docSellerProfileCarouselSet,
+	docSellerProfileChannelSet,
+	docSellerProfileOnlineSet,
 	docUserSenshiGet,
 	docUserSenshiSetFavourite,
 	docUserSenshiOnSnapshot,
