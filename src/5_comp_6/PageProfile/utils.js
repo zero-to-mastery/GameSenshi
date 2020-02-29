@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { stopUndefined } from '1_utils'
 import { Exports } from '5_comp_5'
 import { docSenshiProfileOnSnapshot } from '2_fire_store'
@@ -26,11 +26,11 @@ const useData = (uid, currentUserUid) => {
 	const [exist, setExist] = useState(true)
 	const [data, setData] = useState(null)
 	const [errorCode, setErrorCode] = useState(null)
-	const observer = useRef(() => {})
 
 	useEffect(() => {
+		let listener = null
 		const attachListener = async () => {
-			observer.current = docSenshiProfileOnSnapshot(uid || currentUserUid)(
+			listener = docSenshiProfileOnSnapshot(uid || currentUserUid)(
 				async docSnapshot => {
 					try {
 						const data = await docSnapshot.data()
@@ -64,7 +64,7 @@ const useData = (uid, currentUserUid) => {
 			)
 		}
 		attachListener()
-		return observer.current
+		return listener
 	}, [uid, currentUserUid])
 
 	return {
