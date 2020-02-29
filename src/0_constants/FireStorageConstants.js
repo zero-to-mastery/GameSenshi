@@ -11,7 +11,7 @@ const FIRESTORE_USER = 'users/'
 const FIRESTORE_USER_SETTINGS = 'settings/'
 
 const fireStorePathUserSettingsNotification = uid => {
-	return FIRESTORE_USER + uid + '/' + FIRESTORE_USER_SETTINGS + 'notifications/'
+	return FIRESTORE_USER + uid + '/' + FIRESTORE_USER_SETTINGS + 'notifications'
 }
 
 const FIRESTORE_USER_SETTINGS_NOTIFICATION_EMAIL = 'email'
@@ -27,11 +27,11 @@ const FIRESTORE_USER_SETTINGS_NOTIFICATION_PUSH_COMMENTS = 'comments'
 const FIRESTORE_USER_SELLER_FAVOURITE = 'favourite'
 
 const fireStorePathUserSenshi = (uid, senshiUid) => {
-	return FIRESTORE_USER + uid + '/' + FIRESTORE_SENSHI + senshiUid + '/'
+	return FIRESTORE_USER + uid + '/' + FIRESTORE_SENSHI + senshiUid
 }
 
 const firestorePathSettingsGeneral = uid => {
-	return FIRESTORE_USER + uid + '/' + FIRESTORE_USER_SETTINGS + 'general/'
+	return FIRESTORE_USER + uid + '/' + FIRESTORE_USER_SETTINGS + 'general'
 }
 
 const FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME = 'displayName'
@@ -51,7 +51,7 @@ const storagePathSenshiCarousel = uid => {
 }
 
 const fireStorePathSenshiSettingProfile = uid => {
-	return FIRESTORE_SENSHI + uid + '/' + FIRESTORE_USER_SETTINGS + 'profile/'
+	return FIRESTORE_SENSHI + uid + '/' + FIRESTORE_USER_SETTINGS + 'profile'
 }
 
 const DATABASE_STATUS_ONLINE = 'online'
