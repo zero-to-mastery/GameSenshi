@@ -18,6 +18,7 @@ import {
 	docSellerProfileOnlineSet,
 	docSellerProfileDisplayNameSet,
 	docSellerProfileGenderSet,
+	docSellerProfileServicesSet,
 } from './sellerSettings'
 
 export {
@@ -34,6 +35,7 @@ export {
 	docSellerProfileOnlineSet,
 	docSellerProfileDisplayNameSet,
 	docSellerProfileGenderSet,
+	docSellerProfileServicesSet,
 	docUserSenshiGet,
 	docUserSenshiSetFavourite,
 	docUserSenshiOnSnapshot,

@@ -27,7 +27,12 @@ import {
 	PAGE_ERROR_CODE_UNAUTHORIZED,
 	PAGE_ERROR_CODE_NOT_A_SENSHI,
 } from './PageError'
-import { TabProductPropedProfile } from './TabProduct'
+import {
+	TAB_PRODUCT_DESCRIPTION,
+	TAB_PRODUCT_NUM_ORDERS,
+	TAB_PRODUCT_PRICE,
+	TabPanelService,
+} from './TabPanelService'
 
 export const Exports = {
 	...ExportAtoms,
@@ -58,5 +63,8 @@ export const Exports = {
 	PAGE_ERROR_CODE_NOT_FOUND,
 	PAGE_ERROR_CODE_UNAUTHORIZED,
 	PAGE_ERROR_CODE_NOT_A_SENSHI,
-	TabProductPropedProfile,
+	TAB_PRODUCT_DESCRIPTION,
+	TAB_PRODUCT_NUM_ORDERS,
+	TAB_PRODUCT_PRICE,
+	TabPanelService,
 }

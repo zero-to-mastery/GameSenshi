@@ -14,25 +14,13 @@ const {
 	CommentWithPaginationPropedDefault,
 	Section,
 	WrapperStoreWrapperPropedProfile,
-	Tab,
-	TAB_NAME,
-	TAB_CONTENT,
-	TabProductPropedProfile,
 	PageError,
 	Row,
 	Col,
 	Container,
 	TextIconPropedAppointments,
+	TabServices,
 } = stopUndefined(Exports)
-
-const games = ['Dota2', 'PUBG', 'LOL', 'Apex', 'Fortnite']
-
-const tabs = games.map((tab, index) => {
-	return {
-		[TAB_NAME]: tab,
-		[TAB_CONTENT]: TabProductPropedProfile[index],
-	}
-})
 
 const PAGE_PROFILE_STATE_CURRENT_USER_UID = 'currentUserUid'
 const PAGE_PROFILE_STATE_LOADING = 'loading'
@@ -40,6 +28,7 @@ const PAGE_PROFILE_STATE_DATA_USER = 'dataUser'
 const PAGE_PROFILE_STATE_DATA_CAROUSEL = 'dataCarousel'
 const PAGE_PROFILE_STATE_EXIST = 'exist'
 const PAGE_PROFILE_STATE_ERROR_CODE = 'errorCode'
+const PAGE_PROFILE_STATE_SERVICES = 'services'
 
 const PageProfile = props => {
 	let uid = null
@@ -58,6 +47,7 @@ const PageProfile = props => {
 		[PAGE_PROFILE_STATE_DATA_USER]: dataUser,
 		[PAGE_PROFILE_STATE_DATA_CAROUSEL]: dataCarousel,
 		[PAGE_PROFILE_STATE_ERROR_CODE]: errorCode,
+		[PAGE_PROFILE_STATE_SERVICES]: services,
 	} = useData(uid, currentUserUid)
 
 	return loading || exist ? (
@@ -130,7 +120,7 @@ const PageProfile = props => {
 													<TextIconPropedAppointments />
 												</ColStyledTitle>
 												<ColStyledSection className='p-0'>
-													<Tab tabs={tabs} />
+													<TabServices services={services} />
 												</ColStyledSection>
 											</Row>
 										</Col>
@@ -175,4 +165,5 @@ export {
 	PAGE_PROFILE_STATE_DATA_CAROUSEL,
 	PAGE_PROFILE_STATE_EXIST,
 	PAGE_PROFILE_STATE_ERROR_CODE,
+	PAGE_PROFILE_STATE_SERVICES,
 }

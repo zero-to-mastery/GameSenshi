@@ -15,8 +15,11 @@ const UNEXPECTED_ERROR_CODE_14 = [14, 'Something is Wrong, Please Try Again!']
 const UNEXPECTED_ERROR_CODE_15 = [15, 'Get Senshi Profile Error']
 const UNEXPECTED_ERROR_CODE_16 = [16, 'Senshi Profile Observer Error']
 const UNEXPECTED_ERROR_CODE_17 = [17, 'Get Senshi Profile Data Error']
-const UNEXPECTED_ERROR_CODE_18 = [18, '']
+const UNEXPECTED_ERROR_CODE_18 = [18, 'Remove Profile Picture Error']
 const UNEXPECTED_ERROR_CODE_19 = [19, 'Set User Favoruite Error']
+const UNEXPECTED_ERROR_CODE_20 = [20, 'Upload User Avatar Error']
+const UNEXPECTED_ERROR_CODE_21 = [21, 'Get User Avatar Error ']
+const UNEXPECTED_ERROR_CODE_22 = [20, 'Set User Avatar Error']
 
 export {
 	UNEXPECTED_ERROR_CODE_1,
@@ -38,4 +41,7 @@ export {
 	UNEXPECTED_ERROR_CODE_17,
 	UNEXPECTED_ERROR_CODE_18,
 	UNEXPECTED_ERROR_CODE_19,
+	UNEXPECTED_ERROR_CODE_20,
+	UNEXPECTED_ERROR_CODE_21,
+	UNEXPECTED_ERROR_CODE_22,
 }

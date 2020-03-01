@@ -10,6 +10,7 @@ import {
 	DATABASE_STATUS_ONLINE_LAST,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_DISPLAY_NAME,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_GENDER,
+	FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES,
 } from '0_constants'
 
 const [, docSellerProfileSet, docSellerProfileOnSnapshot] = createDocGetSet(
@@ -47,6 +48,11 @@ const docSellerProfileGenderSet = gender =>
 		[FIRESTORE_SELLER_SETTINGS_PROFILE_GENDER]: gender,
 	})
 
+const docSellerProfileServicesSet = services =>
+	docSellerProfileSet()({
+		[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES]: services,
+	})
+
 export {
 	docSellerProfileOnSnapshot,
 	docSellerProfileAvatarSet,
@@ -55,4 +61,5 @@ export {
 	docSellerProfileOnlineSet,
 	docSellerProfileDisplayNameSet,
 	docSellerProfileGenderSet,
+	docSellerProfileServicesSet,
 }

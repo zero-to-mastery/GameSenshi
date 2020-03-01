@@ -14,15 +14,15 @@ const {
 
 const TAB_PRODUCT_PRICE = 'price'
 const TAB_PRODUCT_NUM_ORDERS = 'orders'
-const TAB_PRODUCT_ICON = 'icon'
+
 const TAB_PRODUCT_DESCRIPTION = 'description'
 
-const TabProduct = props => {
+const TabPanelService = props => {
 	const [quantity, setQuantity] = useState(1)
 	const {
 		[TAB_PRODUCT_PRICE]: price,
 		[TAB_PRODUCT_NUM_ORDERS]: orders,
-		[TAB_PRODUCT_ICON]: icon,
+		icon,
 		[TAB_PRODUCT_DESCRIPTION]: description,
 	} = props
 	return (
@@ -96,9 +96,8 @@ const TabProduct = props => {
 }
 
 export {
-	TabProduct,
+	TabPanelService,
 	TAB_PRODUCT_DESCRIPTION,
-	TAB_PRODUCT_ICON,
 	TAB_PRODUCT_NUM_ORDERS,
 	TAB_PRODUCT_PRICE,
 }

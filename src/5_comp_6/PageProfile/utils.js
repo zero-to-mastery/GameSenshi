@@ -6,6 +6,7 @@ import {
 	UNEXPECTED_ERROR_CODE_16,
 	UNEXPECTED_ERROR_CODE_17,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL,
+	FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES,
 } from '0_constants'
 import {
 	PAGE_PROFILE_STATE_LOADING,
@@ -13,6 +14,7 @@ import {
 	PAGE_PROFILE_STATE_DATA_CAROUSEL,
 	PAGE_PROFILE_STATE_EXIST,
 	PAGE_PROFILE_STATE_ERROR_CODE,
+	PAGE_PROFILE_STATE_SERVICES,
 } from './PageProfile'
 import { storeModalSimpleError } from '2_state'
 
@@ -24,7 +26,7 @@ const {
 const useData = (uid, currentUserUid) => {
 	const [loading, setLoading] = useState(true)
 	const [exist, setExist] = useState(true)
-	const [data, setData] = useState(null)
+	const [data, setData] = useState({})
 	const [errorCode, setErrorCode] = useState(null)
 
 	useEffect(() => {
@@ -67,13 +69,18 @@ const useData = (uid, currentUserUid) => {
 		return listener
 	}, [uid, currentUserUid])
 
+	const {
+		[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES]: services,
+		[FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL]: carousel,
+	} = data
+
 	return {
 		[PAGE_PROFILE_STATE_LOADING]: loading,
 		[PAGE_PROFILE_STATE_EXIST]: exist,
 		[PAGE_PROFILE_STATE_DATA_USER]: data,
-		[PAGE_PROFILE_STATE_DATA_CAROUSEL]:
-			data && data[FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL],
+		[PAGE_PROFILE_STATE_DATA_CAROUSEL]: carousel,
 		[PAGE_PROFILE_STATE_ERROR_CODE]: errorCode,
+		[PAGE_PROFILE_STATE_SERVICES]: services,
 	}
 }
 
