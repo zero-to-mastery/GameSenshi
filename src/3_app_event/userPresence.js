@@ -5,6 +5,8 @@ import {
 	databasePathStatus,
 } from '0_constants'
 
+import { docSellerProfileOnlineSet } from './2_fire_store'
+
 const userStatusDatabaseRef = (uid = auth().currentUser.uid) =>
 	database().ref(databasePathStatus(uid))
 
@@ -27,6 +29,7 @@ const databaseConnectionRefOn = () => {
 				.onDisconnect()
 				.set(isOfflineForDatabase)
 				.then(function() {
+					docSellerProfileOnlineSet(true)
 					userStatusDatabaseRef().set(isOnlineForDatabase)
 				})
 		}
@@ -34,6 +37,7 @@ const databaseConnectionRefOn = () => {
 }
 
 const databaseConnectionRefOff = () => {
+	docSellerProfileOnlineSet(false)
 	databaseConnectionRef.off()
 }
 

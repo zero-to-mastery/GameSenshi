@@ -32,7 +32,7 @@ const docSellerProfileChannelSet = url =>
 const docSellerProfileOnlineSet = online =>
 	docSellerProfileSet()({
 		[DATABASE_STATUS_ONLINE]: online,
-		[DATABASE_STATUS_ONLINE_LAST]: getServerTimestamp(),
+		...(online && { [DATABASE_STATUS_ONLINE_LAST]: getServerTimestamp() }),
 	})
 
 export {
