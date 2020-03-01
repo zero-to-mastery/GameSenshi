@@ -121,8 +121,8 @@ const FinalInput = memo(props => {
 			name={name}
 			defaultValue={defaultValue}
 			validate={value => {
-				// run it in background for first time even if it is not focused (initial focus state is true)
-				// we need this because to prevent every field to run validation
+				// run it in background at first render even if it is not focused (initial focus state is true)
+				// we need this to prevent every field run validation after initial render
 				if (state.focused) {
 					return (state.promise = new Promise(resolve => {
 						// cancel and invalidate previous validation (did not cancel server validation)
@@ -137,12 +137,12 @@ const FinalInput = memo(props => {
 							validation(value || '')
 								.then(() => {
 									if (serverValidation) {
-										showSpinner('ThreeDots')
 										// server side validation on typing
+										showSpinner('ThreeDots')
+										// clear timeout if user resume typing before server validation end
 										clearTimeout(state.timeOutID)
 										const timeOutID = setTimeout(() => {
 											serverValidation(value || '').then(validationResult => {
-												// do not close run this if user resume typing before server validation end
 												generateTextListWithState(
 													validationResult,
 													resolve,
@@ -163,8 +163,10 @@ const FinalInput = memo(props => {
 					}))
 				}
 				return state.promise
-				// this prevent from returning undefined which is valid validation when component is not focused
-				// this happen because final form run validation on all form even though there is only one field is onChange
+				// this prevent from returning undefined when component is not focused
+				// we don't want return undefined because returning undefined mean it is valid
+				// this is needed because final form run validation on all forms even though there is only one field is onChange
+				// hence all forms return undefined when one form undergo validation
 				// so always return your own promise that has been made
 			}}
 		>
