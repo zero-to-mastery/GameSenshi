@@ -8,6 +8,8 @@ import {
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL,
 	DATABASE_STATUS_ONLINE,
 	DATABASE_STATUS_ONLINE_LAST,
+	FIRESTORE_SELLER_SETTINGS_PROFILE_DISPLAY_NAME,
+	FIRESTORE_SELLER_SETTINGS_PROFILE_GENDER,
 } from '0_constants'
 
 const [, docSellerProfileSet, docSellerProfileOnSnapshot] = createDocGetSet(
@@ -35,10 +37,22 @@ const docSellerProfileOnlineSet = online =>
 		...(online && { [DATABASE_STATUS_ONLINE_LAST]: getServerTimestamp() }),
 	})
 
+const docSellerProfileDisplayNameSet = displayName =>
+	docSellerProfileSet()({
+		[FIRESTORE_SELLER_SETTINGS_PROFILE_DISPLAY_NAME]: displayName,
+	})
+
+const docSellerProfileGenderSet = gender =>
+	docSellerProfileSet()({
+		[FIRESTORE_SELLER_SETTINGS_PROFILE_GENDER]: gender,
+	})
+
 export {
 	docSellerProfileOnSnapshot,
 	docSellerProfileAvatarSet,
 	docSellerProfileCarouselSet,
 	docSellerProfileChannelSet,
 	docSellerProfileOnlineSet,
+	docSellerProfileDisplayNameSet,
+	docSellerProfileGenderSet,
 }

@@ -5,7 +5,7 @@ import {
 	databasePathStatus,
 } from '0_constants'
 
-import { docSellerProfileOnlineSet } from './2_fire_store'
+import { docSellerProfileOnlineSet } from '2_fire_store'
 
 const userStatusDatabaseRef = (uid = auth().currentUser.uid) =>
 	database().ref(databasePathStatus(uid))

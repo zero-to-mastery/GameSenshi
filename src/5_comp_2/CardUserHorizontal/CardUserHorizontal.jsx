@@ -15,6 +15,7 @@ import {
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS,
 } from '0_constants'
 import { defaultAvatar } from '0_app_flavor'
+import { seedData } from './utils'
 
 const {
 	BadgesPropedSenshi,
@@ -26,6 +27,7 @@ const {
 	Row,
 	Helmet,
 	Image,
+	Button,
 } = stopUndefined(Exports)
 
 const CardUserHorizontal = props => {
@@ -91,9 +93,16 @@ const CardUserHorizontal = props => {
 									Subscribe And Follow Me!
 								</TextStyledSubscribe>
 							</Col>
-							<Col>
+							<Col align='center'>
 								<ButtonsCommonOptioned buttons={channels} />
 							</Col>
+							{process.env.NODE_ENV === 'development' && (
+								<Col align='center'>
+									<Button onClick={seedData} className='btn-simple'>
+										Seeding Data(dev only)
+									</Button>
+								</Col>
+							)}
 						</Row>
 					</Col>
 				)}
