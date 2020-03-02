@@ -2,7 +2,7 @@ import { createDocGetSet } from './utils'
 import {
 	firestorePathSettingsGeneral,
 	fireStorePathUserSettingsNotification,
-	fireStorePathUserSenshi,
+	fireStorePathUser_Seller,
 	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES,
@@ -38,7 +38,7 @@ const [
 	docUserSenshiGet,
 	docUserSenshiSet,
 	docUserSenshiOnSnapshot,
-] = createDocGetSet(fireStorePathUserSenshi)
+] = createDocGetSet(fireStorePathUser_Seller)
 
 const docUserSenshiSetFavourite = uid => checked =>
 	docUserSenshiSet(

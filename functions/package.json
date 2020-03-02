@@ -48,7 +48,6 @@
 		"firebase-functions": "^3.1.0",
 		"graphql": "^14.4.2",
 		"nanoid": "^2.1.7",
-		"uuid-v4": "^0.1.0",
 		"web-push": "^3.3.3",
 		"yup": "^0.27.0"
 	},

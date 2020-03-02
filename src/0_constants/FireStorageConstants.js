@@ -1,3 +1,5 @@
+import uuidV4 from 'uuid/v4'
+
 const STORAGE_USER_AVATAR = 'userAvatar'
 
 const storagePathUserAvatar = uid => {
@@ -26,8 +28,8 @@ const FIRESTORE_USER_SETTINGS_NOTIFICATION_PUSH_COMMENTS = 'comments'
 
 const FIRESTORE_USER_SELLER_FAVOURITE = 'favourite'
 
-const fireStorePathUserSenshi = (uid, senshiUid) => {
-	return `${FIRESTORE_USER}/${uid}/${FIRESTORE_SELLER}/${senshiUid}`
+const fireStorePathUser_Seller = (uid, sellerUid) => {
+	return `${FIRESTORE_USER}/${uid}/${FIRESTORE_SELLER}/${sellerUid}`
 }
 
 const firestorePathSettingsGeneral = uid => {
@@ -38,18 +40,16 @@ const FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME = 'displayName'
 const FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES = 'languages'
 const FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR = STORAGE_USER_AVATAR
 
-const STORAGE_SELLER_AVATAR = 'senshiAvatar'
-const STORAGE_SELLER_CAROUSEL = 'senshiCarousel'
+const STORAGE_SELLER_AVATAR = STORAGE_USER_AVATAR
+const STORAGE_SELLER_CAROUSEL = 'sellerCarousel'
 
-const storagePathSenshiAvatar = uid => {
-	return `${STORAGE_SELLER_AVATAR}/${uid}.jpg`
+const storagePathSellerAvatar = storagePathUserAvatar
+
+const storagePathSellerCarousel = (uid, name = uuidV4()) => {
+	return `${STORAGE_SELLER_CAROUSEL}/${uid}/${name}.jpg`
 }
 
-const storagePathSenshiCarousel = uid => {
-	return `${STORAGE_SELLER_CAROUSEL}/${uid}.jpg`
-}
-
-const fireStorePathSenshiSettingProfile = uid => {
+const fireStorePathSellerSettingProfile = uid => {
 	return `${FIRESTORE_SELLER}/${uid}/${FIRESTORE_USER_SETTINGS}/profile`
 }
 
@@ -123,9 +123,9 @@ export {
 	FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_FORTNITE,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL_IMAGE,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL_YOUTUBE,
-	fireStorePathSenshiSettingProfile,
-	storagePathSenshiCarousel,
-	storagePathSenshiAvatar,
+	fireStorePathSellerSettingProfile,
+	storagePathSellerCarousel,
+	storagePathSellerAvatar,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_AVATAR,
@@ -134,5 +134,5 @@ export {
 	FIRESTORE_SELLER_SETTINGS_PROFILE_DISPLAY_NAME,
 	FIRESTORE_USER_SELLER_FAVOURITE,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_VERIFIED,
-	fireStorePathUserSenshi,
+	fireStorePathUser_Seller,
 }

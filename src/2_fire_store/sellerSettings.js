@@ -2,7 +2,7 @@ import { createDocGetSet } from './utils'
 import { getServerTimestamp } from '1_fire_init'
 
 import {
-	fireStorePathSenshiSettingProfile,
+	fireStorePathSellerSettingProfile,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_AVATAR,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL,
@@ -14,7 +14,7 @@ import {
 } from '0_constants'
 
 const [, docSellerProfileSet, docSellerProfileOnSnapshot] = createDocGetSet(
-	fireStorePathSenshiSettingProfile
+	fireStorePathSellerSettingProfile
 )
 
 const docSellerProfileAvatarSet = url =>
