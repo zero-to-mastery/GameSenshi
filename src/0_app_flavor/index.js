@@ -1,5 +1,6 @@
-import defaultAvatar from '0_assets/img/placeholder.jpg'
+import AVATAR_DEFAULT from '0_assets/img/placeholder.jpg'
 
-const brand = 'Game Senshi'
+const BRAND = 'Game Senshi'
+const SELLER = 'Senshi'
 
-export { defaultAvatar, brand }
+export { AVATAR_DEFAULT, BRAND, SELLER }

@@ -1,9 +1,13 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
+import { Exports } from '5_comp_0'
+import { stopUndefined } from '1_utils'
+import { SELLER } from '0_app_flavor'
+
+const { Container, Row, Col } = stopUndefined(Exports)
 
 const PAGE_ERROR_CODE_NOT_FOUND = '404'
 const PAGE_ERROR_CODE_UNAUTHORIZED = '401'
-const PAGE_ERROR_CODE_NOT_A_SENSHI = 'Not A Senshi'
+const PAGE_ERROR_CODE_NOT_A_SELLER = `Not A ${SELLER}`
 
 const PageError = props => {
 	const { code } = props
@@ -36,7 +40,7 @@ const PageError = props => {
 								<h4 className='description'>Unknown life form detected!</h4>
 								<h5 className='description'>Please sign in to proceed.</h5>
 							</>
-						) : code === PAGE_ERROR_CODE_NOT_A_SENSHI ? (
+						) : code === PAGE_ERROR_CODE_NOT_A_SELLER ? (
 							<>
 								<h2 className='description'>
 									There is no data about you as a Senshi :(
@@ -68,5 +72,5 @@ export {
 	PageError,
 	PAGE_ERROR_CODE_NOT_FOUND,
 	PAGE_ERROR_CODE_UNAUTHORIZED,
-	PAGE_ERROR_CODE_NOT_A_SENSHI,
+	PAGE_ERROR_CODE_NOT_A_SELLER,
 }

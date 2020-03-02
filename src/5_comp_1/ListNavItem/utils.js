@@ -11,7 +11,7 @@ import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from '2_state'
 import {
 	ROUTE_PAGE_JOIN,
 	ROUTE_PAGE_APPOINTMENTS,
-	ROUTE_PAGE_SENSHI,
+	ROUTE_PAGE_SELLER,
 	ROUTE_PAGE_SETTINGS_GENERAL,
 	ROUTE_PAGE_PROFILE,
 	ROUTE_PAGE_HELP,
@@ -69,7 +69,7 @@ const signedInNavItemsCollapsed = () => [
 		),
 	},
 	{
-		[LIST_NAV_ITEM_PROPS_TO]: ROUTE_PAGE_SENSHI,
+		[LIST_NAV_ITEM_PROPS_TO]: ROUTE_PAGE_SELLER,
 		[LIST_NAV_ITEM_PROPS_BODY]: simpleIconLabel(
 			'tim-icons icon-key-25',
 			'Senshi Portal'

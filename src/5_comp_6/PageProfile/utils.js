@@ -20,7 +20,7 @@ import { storeModalSimpleError } from '2_state'
 
 const {
 	PAGE_ERROR_CODE_NOT_FOUND,
-	PAGE_ERROR_CODE_NOT_A_SENSHI,
+	PAGE_ERROR_CODE_NOT_A_SELLER,
 } = stopUndefined(Exports)
 
 const useData = (uid, currentUserUid) => {
@@ -45,7 +45,7 @@ const useData = (uid, currentUserUid) => {
 							if (uid) {
 								setErrorCode(PAGE_ERROR_CODE_NOT_FOUND)
 							} else if (currentUserUid) {
-								setErrorCode(PAGE_ERROR_CODE_NOT_A_SENSHI)
+								setErrorCode(PAGE_ERROR_CODE_NOT_A_SELLER)
 							}
 							setLoading(false)
 							return

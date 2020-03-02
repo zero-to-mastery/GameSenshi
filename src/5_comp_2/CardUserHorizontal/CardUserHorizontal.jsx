@@ -14,7 +14,7 @@ import {
 	FIRESTORE_SELLER_SETTINGS_PROFILE_DISPLAY_NAME,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS,
 } from '0_constants'
-import { defaultAvatar } from '0_app_flavor'
+import { AVATAR_DEFAULT } from '0_app_flavor'
 import { seedData } from './utils'
 
 const {
@@ -61,7 +61,7 @@ const CardUserHorizontal = props => {
 								imageStyle={{ width: '120px', height: '120px' }}
 								alt={'picture of ' + displayName}
 								className='img-center img-fluid rounded-circle'
-								src={avatar || defaultAvatar}
+								src={avatar || AVATAR_DEFAULT}
 							/>
 						</Col>
 						<Col>

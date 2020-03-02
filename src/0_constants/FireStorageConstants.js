@@ -7,12 +7,12 @@ const storagePathUserAvatar = uid => {
 const CREATED_AT = 'createdAt'
 const UPDATED_AT = 'updatedAt'
 
-const FIRESTORE_USER = 'users/'
-const FIRESTORE_USER_SETTINGS = 'settings/'
+const FIRESTORE_USER = 'users'
+const FIRESTORE_SELLER = 'senshi'
+const FIRESTORE_USER_SETTINGS = 'settings'
 
-const fireStorePathUserSettingsNotification = uid => {
-	return FIRESTORE_USER + uid + '/' + FIRESTORE_USER_SETTINGS + 'notifications'
-}
+const fireStorePathUserSettingsNotification = uid =>
+	`${FIRESTORE_USER}/${uid}/${FIRESTORE_USER_SETTINGS}/notifications`
 
 const FIRESTORE_USER_SETTINGS_NOTIFICATION_EMAIL = 'email'
 const FIRESTORE_USER_SETTINGS_NOTIFICATION_EMAIL_ORDER_UPDATES = 'orderUpdates'
@@ -27,18 +27,17 @@ const FIRESTORE_USER_SETTINGS_NOTIFICATION_PUSH_COMMENTS = 'comments'
 const FIRESTORE_USER_SELLER_FAVOURITE = 'favourite'
 
 const fireStorePathUserSenshi = (uid, senshiUid) => {
-	return FIRESTORE_USER + uid + '/' + FIRESTORE_SENSHI + senshiUid
+	return `${FIRESTORE_USER}/${uid}/${FIRESTORE_SELLER}/${senshiUid}`
 }
 
 const firestorePathSettingsGeneral = uid => {
-	return FIRESTORE_USER + uid + '/' + FIRESTORE_USER_SETTINGS + 'general'
+	return `${FIRESTORE_USER}/${uid}/${FIRESTORE_USER_SETTINGS}/general`
 }
 
 const FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME = 'displayName'
 const FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES = 'languages'
 const FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR = STORAGE_USER_AVATAR
 
-const FIRESTORE_SENSHI = 'senshi/'
 const STORAGE_SELLER_AVATAR = 'senshiAvatar'
 const STORAGE_SELLER_CAROUSEL = 'senshiCarousel'
 
@@ -51,7 +50,7 @@ const storagePathSenshiCarousel = uid => {
 }
 
 const fireStorePathSenshiSettingProfile = uid => {
-	return FIRESTORE_SENSHI + uid + '/' + FIRESTORE_USER_SETTINGS + 'profile'
+	return `${FIRESTORE_SELLER}/${uid}/${FIRESTORE_USER_SETTINGS}/profile`
 }
 
 const DATABASE_STATUS_ONLINE = 'online'

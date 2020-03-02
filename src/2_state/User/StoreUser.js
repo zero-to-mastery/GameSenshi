@@ -5,7 +5,7 @@ import {
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
 	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
 } from '0_constants'
-import { defaultAvatar } from '0_app_flavor'
+import { AVATAR_DEFAULT } from '0_app_flavor'
 
 const STORE_USER = 'User'
 const STORE_USER_STATE_AUTH = 'auth'
@@ -38,7 +38,7 @@ const defaultValues = () => ({
 	[STORE_USER_STATE_GENDER]: '',
 	[STORE_USER_STATE_COUNTRY]: '',
 	[STORE_USER_STATE_LANGUAGES]: ['English'],
-	[STORE_USER_STATE_AVATAR]: defaultAvatar,
+	[STORE_USER_STATE_AVATAR]: AVATAR_DEFAULT,
 	[STORE_USER_STATE_SIGNED_IN]: false,
 	[STORE_USER_STATE_BIRTH_DATE]: new Date(2000, 0, 1),
 	[STORE_USER_STATE_DISPLAY_NAME]: '',
@@ -80,7 +80,7 @@ class StoreUser extends Container {
 	};
 
 	[RESET_AVATAR] = () => {
-		this[SET_STATE]({ [STORE_USER_STATE_AVATAR]: defaultAvatar })
+		this[SET_STATE]({ [STORE_USER_STATE_AVATAR]: AVATAR_DEFAULT })
 		return this
 	};
 
@@ -111,10 +111,10 @@ class StoreUser extends Container {
 		this[SET_SIGNING_IN](true, () => {
 			const userData_ = userData || {
 				[STORE_USER_STATE_DISPLAY_NAME]: '',
-				[STORE_USER_STATE_AVATAR]: defaultAvatar,
+				[STORE_USER_STATE_AVATAR]: AVATAR_DEFAULT,
 			}
 			userData_[STORE_USER_STATE_AVATAR] =
-				userData_[STORE_USER_STATE_AVATAR] || defaultAvatar
+				userData_[STORE_USER_STATE_AVATAR] || AVATAR_DEFAULT
 			const publicInfo = {
 				[STORE_USER_STATE_DISPLAY_NAME]:
 					userData_[STORE_USER_STATE_DISPLAY_NAME],

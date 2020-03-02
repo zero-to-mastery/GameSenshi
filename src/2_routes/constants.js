@@ -1,6 +1,7 @@
 import { createBrowserHistory } from 'history'
-const history = createBrowserHistory()
+import { SELLER } from '0_app_flavor'
 
+const history = createBrowserHistory()
 const ROUTE = 'route'
 const ROUTE_TO = ROUTE + 'To'
 const ROUTE_FROM = ROUTE + 'From'
@@ -22,7 +23,7 @@ const ROUTE_PAGE_CHECKOUT = '/checkout'
 const ROUTE_PAGE_JOIN = '/join'
 const ROUTE_PAGE_HELP = '/help'
 const ROUTE_PAGE_APPOINTMENTS = '/appointments'
-const ROUTE_PAGE_SENSHI = '/senshi'
+const ROUTE_PAGE_SELLER = '/' + SELLER
 const ROUTE_PAGE_CHAT = '/chat'
 const ROUTE_PAGE_PASSWORD_RESET = '/passwordReset'
 const ROUTE_PAGE_POLICY = '/policy'
@@ -140,7 +141,7 @@ export {
 	ROUTE_PAGE_JOIN,
 	ROUTE_PAGE_HELP,
 	ROUTE_PAGE_APPOINTMENTS,
-	ROUTE_PAGE_SENSHI,
+	ROUTE_PAGE_SELLER,
 	ROUTE_PAGE_CHAT,
 	ROUTE_PAGE_POLICY,
 	ROUTE_PAGE_POLICY_COMMON,

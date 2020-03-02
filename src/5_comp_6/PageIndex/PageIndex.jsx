@@ -3,7 +3,7 @@ import { stopUndefined } from '1_utils'
 import { Exports } from '5_comp_5'
 import audioSample from '0_assets/audio/sampleVoice.mp3'
 import { TabDiscover } from './TabDiscover'
-import { brand } from '0_app_flavor'
+import { BRAND } from '0_app_flavor'
 const {
 	CardUserPropedDiscover,
 	ButtonsImagePropedIndex,
@@ -90,7 +90,7 @@ const Cards = () => {
 const PageIndex = () => {
 	return (
 		<WrapperStoreWrapperPropedIndex>
-			<Helmet title={brand} />
+			<Helmet title={BRAND} />
 			<Container>
 				<Section>
 					<Row className='pt-3' xs='1'>
