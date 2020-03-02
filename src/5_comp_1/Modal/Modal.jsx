@@ -34,11 +34,16 @@ const Modal = props => {
 
 	const onClick_ = useCallback(() => {
 		setDisabled(true)
-		onContinue()
+		onContinue && onContinue()
 	}, [onContinue])
+
+	const onOpened = useCallback(() => {
+		setDisabled(false)
+	}, [])
 
 	return (
 		<ModalRS
+			onOpened={onOpened}
 			isOpen={isOpen}
 			toggle={toggle}
 			backdrop='static'
