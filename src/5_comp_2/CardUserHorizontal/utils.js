@@ -34,8 +34,7 @@ const seedData = () => {
 				'https://firebasestorage.googleapis.com/v0/b/gamessenshi.appspot.com/o/senshiCarousel%2Ffabien-bazanegue.jpg?alt=media&token=156d5a8a-75c5-4955-8e17-ce4ea0fe4ced',
 		},
 		{
-			[FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL_YOUTUBE]:
-				'https://firebasestorage.googleapis.com/v0/b/gamessenshi.appspot.com/o/senshiCarousel%2Fmark-finn.jpg?alt=media&token=79c222b9-0e91-4d10-bf29-85ffe4cabbbf',
+			[FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL_YOUTUBE]: 'dRwoKN_Kvqs',
 		},
 		{
 			[FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL_IMAGE]:

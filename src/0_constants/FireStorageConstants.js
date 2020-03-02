@@ -1,6 +1,6 @@
 import uuidV4 from 'uuid/v4'
 
-const STORAGE_USER_AVATAR = 'userAvatar'
+const STORAGE_USER_AVATAR = 'avatar'
 
 const storagePathUserAvatar = uid => {
 	return `${STORAGE_USER_AVATAR}/${uid}.jpg`

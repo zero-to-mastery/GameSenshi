@@ -9,7 +9,6 @@ import {
 	storageUserAvatarGet,
 	storageUserAvatarOn,
 } from '2_fire_storage'
-import { docUserSettingGeneralAvatarSet } from '2_fire_store'
 import {
 	UNEXPECTED_ERROR_CODE_18,
 	UNEXPECTED_ERROR_CODE_20,
@@ -17,8 +16,10 @@ import {
 	UNEXPECTED_ERROR_CODE_22,
 } from '0_constants'
 
+import { docUserAndSellerAvatarSet } from '4_comp_utils'
+
 const onRemove = async () => {
-	const removed = await docUserSettingGeneralAvatarSet('')
+	const removed = await docUserAndSellerAvatarSet('')
 		.then(() => {
 			storeUserResetAvatar()
 			storeAlertShow(
@@ -55,7 +56,7 @@ const onCrop = (e, dataUrl, toggle) => {
 			})
 			storeProgress.close()
 			if (url) {
-				docUserSettingGeneralAvatarSet(url)
+				docUserAndSellerAvatarSet(url)
 					.then(() => {
 						storeAlertShow(
 							'Profile picture updated, it may take a few moments to update across the site.',

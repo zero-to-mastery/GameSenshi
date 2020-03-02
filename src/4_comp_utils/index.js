@@ -9,6 +9,10 @@ import {
 	setNonLoginUserLastIntendedAction,
 	databaseUserPresenceSetOffline,
 } from '3_app_event'
+import {
+	docSellerProfileAvatarSet,
+	docUserSettingGeneralAvatarSet,
+} from '2_fire_store'
 
 const signOut = () => {
 	databaseUserPresenceSetOffline()
@@ -32,4 +36,11 @@ const needLoginToClick = (triggerOnClick, onClick) => {
 	}
 }
 
-export { signOut, onLogin, needLoginToClick }
+const docUserAndSellerAvatarSet = url => {
+	return Promise.all([
+		docSellerProfileAvatarSet(url),
+		docUserSettingGeneralAvatarSet(url),
+	])
+}
+
+export { signOut, onLogin, needLoginToClick, docUserAndSellerAvatarSet }
