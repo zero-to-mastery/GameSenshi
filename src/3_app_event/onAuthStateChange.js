@@ -51,8 +51,9 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 	}
 }
 
-const onAuthStateChange = () => {
+const onAuthStateChange = (callback = () => {}) => {
 	auth().onAuthStateChanged(userAuth => {
+		callback(userAuth)
 		onAuthChanged(userAuth, (next, error) =>
 			docUserSettingGeneralOnSnapshot()(
 				{ includeMetadataChanges: true },

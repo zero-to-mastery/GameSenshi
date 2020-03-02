@@ -10,7 +10,7 @@ const CREATED_AT = 'createdAt'
 const UPDATED_AT = 'updatedAt'
 
 const FIRESTORE_USER = 'users'
-const FIRESTORE_SELLER = 'senshi'
+const FIRESTORE_SELLER = 'sellers'
 const FIRESTORE_USER_SETTINGS = 'settings'
 
 const fireStorePathUserSettingsNotification = uid =>

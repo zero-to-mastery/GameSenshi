@@ -24,7 +24,7 @@ const {
 
 const PAGE_PROFILE_STATE_CURRENT_USER_UID = 'currentUserUid'
 const PAGE_PROFILE_STATE_LOADING = 'loading'
-const PAGE_PROFILE_STATE_DATA_USER = 'dataUser'
+const PAGE_PROFILE_STATE_DATA_SELLER = 'dataUser'
 const PAGE_PROFILE_STATE_DATA_CAROUSEL = 'dataCarousel'
 const PAGE_PROFILE_STATE_EXIST = 'exist'
 const PAGE_PROFILE_STATE_ERROR_CODE = 'errorCode'
@@ -44,7 +44,7 @@ const PageProfile = props => {
 	const {
 		[PAGE_PROFILE_STATE_LOADING]: loading,
 		[PAGE_PROFILE_STATE_EXIST]: exist,
-		[PAGE_PROFILE_STATE_DATA_USER]: dataUser,
+		[PAGE_PROFILE_STATE_DATA_SELLER]: dataSeller,
 		[PAGE_PROFILE_STATE_DATA_CAROUSEL]: dataCarousel,
 		[PAGE_PROFILE_STATE_ERROR_CODE]: errorCode,
 		[PAGE_PROFILE_STATE_SERVICES]: services,
@@ -88,7 +88,7 @@ const PageProfile = props => {
 						<Section>
 							<Row>
 								<Col>
-									<CardUserHorizontal data={dataUser} uid={uid_} />
+									<CardUserHorizontal data={dataSeller} uid={uid_} />
 								</Col>
 							</Row>
 						</Section>
@@ -161,7 +161,7 @@ export {
 	PageProfile,
 	PAGE_PROFILE_STATE_CURRENT_USER_UID,
 	PAGE_PROFILE_STATE_LOADING,
-	PAGE_PROFILE_STATE_DATA_USER,
+	PAGE_PROFILE_STATE_DATA_SELLER,
 	PAGE_PROFILE_STATE_DATA_CAROUSEL,
 	PAGE_PROFILE_STATE_EXIST,
 	PAGE_PROFILE_STATE_ERROR_CODE,

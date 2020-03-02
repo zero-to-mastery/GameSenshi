@@ -43,13 +43,13 @@ const PageError = props => {
 						) : code === PAGE_ERROR_CODE_NOT_A_SELLER ? (
 							<>
 								<h2 className='description'>
-									There is no data about you as a Senshi :(
+									There is no data about you as a {SELLER} :(
 								</h2>
 								<h4 className='description'>
-									You need to become a Senshi in order to view your profile!
+									You need to become a {SELLER} in order to view your profile!
 								</h4>
 								<h5 className='description'>
-									Please register as a Senshi before proceed.
+									Please register as a {SELLER} before proceed.
 								</h5>
 							</>
 						) : (

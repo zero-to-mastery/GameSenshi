@@ -13,6 +13,7 @@ import {
 	docSellerProfileAvatarSet,
 	docUserSettingGeneralAvatarSet,
 } from '2_fire_store'
+import { seedData } from './seedData'
 
 const signOut = () => {
 	databaseUserPresenceSetOffline()
@@ -43,4 +44,10 @@ const docUserAndSellerAvatarSet = url => {
 	])
 }
 
-export { signOut, onLogin, needLoginToClick, docUserAndSellerAvatarSet }
+export {
+	signOut,
+	onLogin,
+	needLoginToClick,
+	docUserAndSellerAvatarSet,
+	seedData,
+}

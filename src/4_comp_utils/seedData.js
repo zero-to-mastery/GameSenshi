@@ -4,6 +4,7 @@ import {
 	docSellerProfileDisplayNameSet,
 	docSellerProfileGenderSet,
 	docSellerProfileServicesSet,
+	docSellerProfileChannelSet,
 } from '2_fire_store'
 
 import {
@@ -17,6 +18,9 @@ import {
 	FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_LOL,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_APEX,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_ORDERS,
+	FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS_FACEBOOK,
+	FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS_TWITCH,
+	FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS_YOUTUBE,
 } from '0_constants'
 
 const seedData = () => {
@@ -42,6 +46,12 @@ const seedData = () => {
 		},
 		{ [FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL_YOUTUBE]: 'vtjorh21b8Q' },
 	])
+
+	docSellerProfileChannelSet({
+		[FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS_FACEBOOK]: 'CollegeHumor',
+		[FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS_TWITCH]: 'drdisrespect',
+		[FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS_YOUTUBE]: 'singsing',
+	})
 
 	docSellerProfileDisplayNameSet('Mike Scheinder')
 

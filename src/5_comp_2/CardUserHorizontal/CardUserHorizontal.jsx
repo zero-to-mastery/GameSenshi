@@ -15,7 +15,7 @@ import {
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS,
 } from '0_constants'
 import { AVATAR_DEFAULT } from '0_app_flavor'
-import { seedData } from './utils'
+import { seedData } from '4_comp_utils'
 
 const {
 	BadgesPropedSenshi,
@@ -85,7 +85,7 @@ const CardUserHorizontal = props => {
 						</Col>
 					</RowStyledUsername>
 				</Col>
-				{Object.keys(channels).length > 0 && (
+				{Object.keys(channels || {}).length > 0 && (
 					<Col xs='12' lg='3'>
 						<Row xs='1'>
 							<Col align='center'>
