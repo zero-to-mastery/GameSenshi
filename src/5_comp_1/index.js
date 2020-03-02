@@ -89,6 +89,12 @@ import { CardUserSimple } from './CardUserSimple'
 import { Tab, TAB_NAME, TAB_CONTENT } from './Tab'
 import { LightBox } from './LightBox'
 import { ModalSimple } from './ModalSimple'
+import {
+	PageError,
+	PAGE_ERROR_CODE_NOT_FOUND,
+	PAGE_ERROR_CODE_UNAUTHORIZED,
+	PAGE_ERROR_CODE_NOT_A_SELLER,
+} from './PageError'
 
 export const Exports = {
 	...ExportProtons,
@@ -170,4 +176,8 @@ export const Exports = {
 	TAB_CONTENT,
 	LightBox,
 	ModalSimple,
+	PageError,
+	PAGE_ERROR_CODE_NOT_FOUND,
+	PAGE_ERROR_CODE_UNAUTHORIZED,
+	PAGE_ERROR_CODE_NOT_A_SELLER,
 }

@@ -22,12 +22,6 @@ import {
 import { PaginationCommonPropedDefault } from './PaginationCommon'
 import { CarouselLightBoxPropedProfile } from './CarouselLightBox'
 import {
-	PageError,
-	PAGE_ERROR_CODE_NOT_FOUND,
-	PAGE_ERROR_CODE_UNAUTHORIZED,
-	PAGE_ERROR_CODE_NOT_A_SELLER,
-} from './PageError'
-import {
 	TAB_PRODUCT_DESCRIPTION,
 	TAB_PRODUCT_NUM_ORDERS,
 	TAB_PRODUCT_PRICE,
@@ -59,10 +53,6 @@ export const Exports = {
 	COMMENT_NUM_COMMENTS,
 	PaginationCommonPropedDefault,
 	CarouselLightBoxPropedProfile,
-	PageError,
-	PAGE_ERROR_CODE_NOT_FOUND,
-	PAGE_ERROR_CODE_UNAUTHORIZED,
-	PAGE_ERROR_CODE_NOT_A_SELLER,
 	TAB_PRODUCT_DESCRIPTION,
 	TAB_PRODUCT_NUM_ORDERS,
 	TAB_PRODUCT_PRICE,
