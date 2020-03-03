@@ -17,6 +17,7 @@ import {
 	onCreateUser,
 	onCreateDoc,
 	onCreateDocSub,
+	stopBilling,
 } from '2_fire_funct'
 
 const app = express()
@@ -64,4 +65,5 @@ module.exports = {
 	onCreateDoc,
 	onCreateDocSub,
 	[FUNCTION_SIGN_IN_TWITCH]: onSignInTwitch,
+	stopBilling,
 }

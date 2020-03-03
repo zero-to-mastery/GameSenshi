@@ -9,6 +9,7 @@ import {
 	APOLLO_ENGINE_API_KEY,
 	TWITCH_ID,
 	TWITCH_SECRET,
+	PROJECT_ID,
 } from './core'
 
 import {
@@ -30,6 +31,7 @@ export {
 	APOLLO_ENGINE_API_KEY,
 	TWITCH_ID,
 	TWITCH_SECRET,
+	PROJECT_ID,
 	docUserSettingGeneralGet,
 	docUserSettingGeneralSet,
 	docUserSettingNotificationGet,

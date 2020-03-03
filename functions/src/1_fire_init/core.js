@@ -8,6 +8,7 @@ import {
 	ENV_APOLLO_ENGINE_API_KEY,
 	ENV_TWITCH_ID,
 	ENV_TWITCH_SECRET,
+	ENV_PROJECT_ID,
 } from '0_constants'
 
 admin.initializeApp()
@@ -25,6 +26,7 @@ const {
 	[ENV_APOLLO_ENGINE_API_KEY]: APOLLO_ENGINE_API_KEY,
 	[ENV_TWITCH_ID]: TWITCH_ID,
 	[ENV_TWITCH_SECRET]: TWITCH_SECRET,
+	[ENV_PROJECT_ID]: PROJECT_ID,
 } = env
 
 export {
@@ -39,4 +41,5 @@ export {
 	fireStored,
 	TWITCH_ID,
 	TWITCH_SECRET,
+	PROJECT_ID,
 }
