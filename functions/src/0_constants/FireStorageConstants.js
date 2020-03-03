@@ -10,7 +10,7 @@ const CREATED_AT = 'createdAt'
 const UPDATED_AT = 'updatedAt'
 
 const FIRESTORE_USER = 'users'
-const FIRESTORE_SELLER = 'senshi'
+const FIRESTORE_SELLER = 'sellers'
 const FIRESTORE_USER_SETTINGS = 'settings'
 
 const fireStorePathUserSettingsNotification = uid =>
@@ -41,13 +41,8 @@ const FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES = 'languages'
 const FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR = STORAGE_USER_AVATAR
 
 const STORAGE_SELLER_AVATAR = STORAGE_USER_AVATAR
-const STORAGE_SELLER_CAROUSEL = 'sellerCarousel'
 
 const storagePathSellerAvatar = storagePathUserAvatar
-
-const storagePathSellerCarousel = (uid, name = uuidV4()) => {
-	return `${STORAGE_SELLER_CAROUSEL}/${uid}/${name}.jpg`
-}
 
 const fireStorePathSellerSettingProfile = uid => {
 	return `${FIRESTORE_SELLER}/${uid}/${FIRESTORE_USER_SETTINGS}/profile`
@@ -71,17 +66,19 @@ const FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS_TWITCH = 'twitch'
 const FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS_YOUTUBE = 'youtube'
 
 const FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES = 'services'
-
 const FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_DOTA2 = 'Dota2'
 const FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_PUBG = 'PUBG'
 const FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_LOL = 'LOL'
 const FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_APEX = 'Apex'
 const FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_FORTNITE = 'Fortnite'
-
 const FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_PRICE = 'price'
 const FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_DESCR = 'description'
 const FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_ORDERS = 'orders'
 
+const STORAGE_SELLER_CAROUSEL = 'sellerCarousel'
+const storagePathSellerCarousel = (uid, name = uuidV4()) => {
+	return `${STORAGE_SELLER_CAROUSEL}/${uid}/${name}.jpg`
+}
 const FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL = 'carousel'
 const FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL_IMAGE = 'image'
 const FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL_YOUTUBE = 'youtube'

@@ -62,28 +62,36 @@ const seedData = () => {
 			[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_DOTA2]: {
 				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_ORDERS]: 100,
 				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_PRICE]: 10,
-				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_DESCR]: '===intro1===',
+				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_DESCR]: `===intro1===
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+				`,
 			},
 		},
 		{
 			[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_PUBG]: {
 				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_ORDERS]: 150,
 				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_PRICE]: 15,
-				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_DESCR]: '===intro2===',
+				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_DESCR]: `===intro2===
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+				`,
 			},
 		},
 		{
 			[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_LOL]: {
 				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_ORDERS]: 200,
 				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_PRICE]: 20,
-				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_DESCR]: '===intro3===',
+				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_DESCR]: `===intro3===
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+				`,
 			},
 		},
 		{
 			[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_APEX]: {
 				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_ORDERS]: 250,
 				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_PRICE]: 25,
-				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_DESCR]: '===intro4===',
+				[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES_DESCR]: `===intro4===
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+				`,
 			},
 		},
 	]) // we dont use object here but array instead is used here because firestore automatically sort object key
