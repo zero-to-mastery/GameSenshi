@@ -122,7 +122,7 @@ If you skip this step you have to setup your own firebase project.
 npm i && firebase login
 ```
 
-above command is one time setup, anytime you want to run deploy, simply
+above command is one time setup, anytime you want to run deploy, in the `functions` folder, simply
 
 ```bash
 npm run d-deploy // deploy to dev server  
