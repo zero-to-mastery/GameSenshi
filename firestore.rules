@@ -21,7 +21,7 @@ service cloud.firestore {
       	allow get;
         allow write: if request.auth !=null && request.auth.uid == sellerUid;
       }
-      match /comments/{commentsUid}{
+      match /reviews/{commentsUid}{
         allow get;
       }
     }
