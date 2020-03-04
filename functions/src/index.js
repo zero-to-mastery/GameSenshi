@@ -17,7 +17,7 @@ import {
 	onCreateUser,
 	onCreateDoc,
 	onCreateDocSub,
-	stopBilling,
+	onStopBilling,
 	onUpdateDoc,
 	onUpdateDocSub,
 } from '2_fire_funct'
@@ -67,7 +67,7 @@ module.exports = {
 	onCreateDoc,
 	onCreateDocSub,
 	[FUNCTION_SIGN_IN_TWITCH]: onSignInTwitch,
-	stopBilling,
+	onStopBilling,
 	onUpdateDoc,
 	onUpdateDocSub,
 }

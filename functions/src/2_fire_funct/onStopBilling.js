@@ -2,8 +2,7 @@
 // ! this should be removed because it may stop all services
 import { google } from 'googleapis'
 import { auth } from 'google-auth-library'
-
-import { PROJECT_ID, onCall } from '1_fire_init'
+import { PROJECT_ID, pubSub } from '1_fire_init'
 
 const PROJECT_NAME = `projects/${PROJECT_ID}`
 const billing = google.cloudbilling('v1').projects
@@ -51,7 +50,7 @@ const _disableBillingForProject = async projectName => {
 	return `Billing disabled: ${JSON.stringify(res.data)}`
 }
 
-const stopBilling = onCall(async pubsubEvent => {
+const onStopBilling = pubSub('stopBilling', async pubsubEvent => {
 	const pubsubData = JSON.parse(
 		Buffer.from(pubsubEvent.data, 'base64').toString()
 	)
@@ -67,4 +66,4 @@ const stopBilling = onCall(async pubsubEvent => {
 	}
 })
 
-export { stopBilling }
+export { onStopBilling }
