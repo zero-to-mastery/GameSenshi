@@ -49,8 +49,8 @@ const fireStorePathSeller = uid => {
 	return `${FIRESTORE_SELLER}/${uid}`
 }
 
-const FIRESTORE_SELLER_RATINGS = 'ratings'
-const FIRESTORE_SELLER_STARS = 'stars'
+const FIRESTORE_SELLER_TOTAL_REVIEWS = 'totalReview'
+const FIRESTORE_SELLER_TOTAL_STARS = 'totalStar'
 
 const fireStorePathSellerReviews = (uid, reviewUid) => {
 	return `${FIRESTORE_SELLER}/${uid}/reviews/${reviewUid}`
@@ -118,8 +118,8 @@ export {
 	FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES,
 	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
 	fireStorePathSeller,
-	FIRESTORE_SELLER_RATINGS,
-	FIRESTORE_SELLER_STARS,
+	FIRESTORE_SELLER_TOTAL_REVIEWS,
+	FIRESTORE_SELLER_TOTAL_STARS,
 	fireStorePathSellerReviews,
 	FIRESTORE_SELLER_REVIEWS_COMMENT,
 	FIRESTORE_SELLER_REVIEWS_NO,

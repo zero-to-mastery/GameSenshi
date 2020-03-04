@@ -20,6 +20,10 @@ import {
 	docSellerProfileServicesSet,
 } from './sellerSettings'
 
+import { docSellereOnSnapShot } from './seller'
+
+import { docSellereReviewsOnSnapShot } from './sellerReviews'
+
 export {
 	docUserSettingGeneralGet,
 	docUserSettingGeneralSetOnSignUpWithEmail,
@@ -37,4 +41,6 @@ export {
 	docUserSenshiGet,
 	docUserSenshiSetFavourite,
 	docUserSenshiOnSnapshot,
+	docSellereOnSnapShot,
+	docSellereReviewsOnSnapShot,
 }
