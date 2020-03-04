@@ -1,8 +1,8 @@
 import { fireStored, auth } from '1_fire_init'
 
 const createDocGetSet = path => {
-	const ref = (uid = auth().currentUser.uid, ...args) =>
-		fireStored().doc(path(uid, ...args))
+	const ref = (uid = auth().currentUser.uid, ...otherArgs) =>
+		fireStored().doc(path(uid, ...otherArgs))
 	const get = (...args) => ref(...args).get()
 	const set = (...args) => (data, options = { merge: true }) =>
 		ref(...args).set(data, options)

@@ -7,9 +7,9 @@ const storageSetGenerator = path => {
 	const get = () => ref().getDownloadURL()
 	const set = (dataUrl = '') => ref().putString(dataUrl, 'data_url')
 	const remove = () => ref().delete()
-	const on = (dataUrl = '', task = {}) =>
+	const onSnapShot = (dataUrl = '', task = {}) =>
 		set(dataUrl).on(taskEvent.STATE_CHANGED, task)
-	return [get, set, remove, on]
+	return [get, set, remove, onSnapShot]
 }
 
 export { storageSetGenerator }
