@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap'
+import {
+	Pagination as PaginationRS,
+	PaginationItem,
+	PaginationLink,
+} from 'reactstrap'
 
 const range = (from, to, step = 1) => {
 	let i = from
@@ -16,7 +20,7 @@ const range = (from, to, step = 1) => {
 const LEFT_PAGE = 'LEFT'
 const RIGHT_PAGE = 'RIGHT'
 
-const PaginationCommon = props => {
+const Pagination = props => {
 	const [totalPages, setTotalPages] = useState(0)
 	const {
 		totalRecords,
@@ -71,7 +75,7 @@ const PaginationCommon = props => {
 
 	const pages = fetchPageNumbers()
 	return (
-		<Pagination aria-label='Page navigation'>
+		<PaginationRS aria-label='Page navigation'>
 			<PaginationItem>
 				<PaginationLink first onClick={e => onPageChanged(e, 1)} />
 			</PaginationItem>
@@ -116,8 +120,8 @@ const PaginationCommon = props => {
 					onClick={e => onPageChanged(e, pages[pages.length - 1])}
 				/>
 			</PaginationItem>
-		</Pagination>
+		</PaginationRS>
 	)
 }
 
-export { PaginationCommon }
+export { Pagination }

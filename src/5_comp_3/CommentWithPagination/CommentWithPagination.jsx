@@ -2,10 +2,7 @@ import React, { useState, useCallback } from 'react'
 import { stopUndefined } from '1_utils'
 import { Exports } from '5_comp_2'
 
-const {
-	CommentCommonPropedDefault,
-	PaginationCommonPropedDefault,
-} = stopUndefined(Exports)
+const { Comments, Pagination } = stopUndefined(Exports)
 
 const CommentWithPagination = props => {
 	const { comments } = props
@@ -27,8 +24,8 @@ const CommentWithPagination = props => {
 	)
 	return (
 		<div className='d-flex flex-column align-items-center'>
-			<CommentCommonPropedDefault comments={currentComments} />
-			<PaginationCommonPropedDefault
+			<Comments comments={currentComments} />
+			<Pagination
 				totalRecords={NUM_OF_RECORDS}
 				pageLimit={LIMIT}
 				pageNeighbours={PAGE_NEIGHBOURS}

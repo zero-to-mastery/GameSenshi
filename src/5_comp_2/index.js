@@ -10,16 +10,7 @@ import { PanelFilterSearch } from './PanelFilterSearch'
 import { ChatContactListWithProps } from './ChatContactList'
 import { CarouselCardSimplePropedNew } from './CarouselCardSimple'
 import { CardGiftPropedProfile } from './CardGift'
-import {
-	CommentCommonPropedDefault,
-	COMMENT_ID,
-	COMMENT_NAME,
-	COMMENT_POSTED_TIME,
-	COMMENT_AVATAR,
-	COMMENT_BODY,
-	COMMENT_NUM_COMMENTS,
-} from './Comment'
-import { PaginationCommonPropedDefault } from './PaginationCommon'
+import { Pagination } from './Pagination'
 import { CarouselLightBoxPropedProfile } from './CarouselLightBox'
 import {
 	TAB_PRODUCT_DESCRIPTION,
@@ -44,14 +35,7 @@ export const Exports = {
 	ChatContactListWithProps,
 	CarouselCardSimplePropedNew,
 	CardGiftPropedProfile,
-	CommentCommonPropedDefault,
-	COMMENT_ID,
-	COMMENT_NAME,
-	COMMENT_POSTED_TIME,
-	COMMENT_AVATAR,
-	COMMENT_BODY,
-	COMMENT_NUM_COMMENTS,
-	PaginationCommonPropedDefault,
+	Pagination,
 	CarouselLightBoxPropedProfile,
 	TAB_PRODUCT_DESCRIPTION,
 	TAB_PRODUCT_NUM_ORDERS,

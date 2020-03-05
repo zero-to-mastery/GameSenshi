@@ -11,7 +11,7 @@ const {
 	TextIconPropedProfileGift,
 	TextIconPropedProfileReviews,
 	CardUserHorizontal,
-	CommentWithPaginationPropedDefault,
+	CommentWithPagination,
 	Section,
 	WrapperStoreWrapperPropedProfile,
 	PageError,
@@ -36,6 +36,7 @@ const PageProfile = props => {
 	const {
 		[PAGE_PROFILE_STATE_CURRENT_USER_UID]: currentUserUid,
 		useData,
+		comments,
 	} = props
 
 	params && (uid = params[ROUTE_PARAM_UID])
@@ -140,7 +141,7 @@ const PageProfile = props => {
 													<TextIconPropedProfileReviews />
 												</ColStyledTitle>
 												<ColStyledSection className='pt-5'>
-													<CommentWithPaginationPropedDefault />
+													<CommentWithPagination comments={comments} />
 												</ColStyledSection>
 											</Row>
 										</Col>

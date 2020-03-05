@@ -58,7 +58,7 @@ import {
 	FinalSelectGamePropedGeneraL,
 	FINAL_SELECT_GAME,
 } from './FinalSelectGame'
-import { CommentWithPaginationPropedDefault } from './CommentWithPagination'
+import { CommentWithPagination } from './CommentWithPagination'
 import { ChatMessageContainerWithProps } from './ChatMessageContainer'
 import { TabServices } from './TabServices'
 
@@ -97,7 +97,7 @@ export const Exports = {
 	UploaderAvatarPropedCropStoreUser,
 	FinalSelectGamePropedGeneraL,
 	FINAL_SELECT_GAME,
-	CommentWithPaginationPropedDefault,
+	CommentWithPagination,
 	ChatMessageContainerWithProps,
 	TabServices,
 }

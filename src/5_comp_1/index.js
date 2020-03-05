@@ -95,7 +95,7 @@ import {
 	PAGE_ERROR_CODE_UNAUTHORIZED,
 	PAGE_ERROR_CODE_NOT_A_SELLER,
 } from './PageError'
-
+import { Comments } from '../5_comp_1/Comments'
 export const Exports = {
 	...ExportProtons,
 	Footer,
@@ -180,4 +180,5 @@ export const Exports = {
 	PAGE_ERROR_CODE_NOT_FOUND,
 	PAGE_ERROR_CODE_UNAUTHORIZED,
 	PAGE_ERROR_CODE_NOT_A_SELLER,
+	Comments,
 }
