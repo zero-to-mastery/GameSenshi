@@ -10,7 +10,6 @@ import { PanelFilterSearch } from './PanelFilterSearch'
 import { ChatContactListWithProps } from './ChatContactList'
 import { CarouselCardSimplePropedNew } from './CarouselCardSimple'
 import { CardGiftPropedProfile } from './CardGift'
-import { Pagination } from './Pagination'
 import { CarouselLightBoxPropedProfile } from './CarouselLightBox'
 import {
 	TAB_PRODUCT_DESCRIPTION,
@@ -18,6 +17,7 @@ import {
 	TAB_PRODUCT_PRICE,
 	TabPanelService,
 } from './TabPanelService'
+import { CommentWithPagination } from './CommentWithPagination'
 
 export const Exports = {
 	...ExportAtoms,
@@ -35,10 +35,10 @@ export const Exports = {
 	ChatContactListWithProps,
 	CarouselCardSimplePropedNew,
 	CardGiftPropedProfile,
-	Pagination,
 	CarouselLightBoxPropedProfile,
 	TAB_PRODUCT_DESCRIPTION,
 	TAB_PRODUCT_NUM_ORDERS,
 	TAB_PRODUCT_PRICE,
 	TabPanelService,
+	CommentWithPagination,
 }

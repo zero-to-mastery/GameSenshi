@@ -95,7 +95,9 @@ import {
 	PAGE_ERROR_CODE_UNAUTHORIZED,
 	PAGE_ERROR_CODE_NOT_A_SELLER,
 } from './PageError'
-import { Comments } from '../5_comp_1/Comments'
+import { Comments } from './Comments'
+import { Pagination } from './Pagination'
+
 export const Exports = {
 	...ExportProtons,
 	Footer,
@@ -181,4 +183,5 @@ export const Exports = {
 	PAGE_ERROR_CODE_UNAUTHORIZED,
 	PAGE_ERROR_CODE_NOT_A_SELLER,
 	Comments,
+	Pagination,
 }

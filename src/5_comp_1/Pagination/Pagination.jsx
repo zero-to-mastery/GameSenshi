@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import {
 	Pagination as PaginationRS,
 	PaginationItem,
@@ -32,9 +32,9 @@ const Pagination = props => {
 
 	useEffect(() => {
 		setTotalPages(Math.ceil(totalRecords / pageLimit))
-	}, [currentPage])
+	}, [totalRecords, pageLimit])
 
-	const fetchPageNumbers = () => {
+	const pages = useMemo(() => {
 		const totalNumbers = pageNeighbours * 2 + 3
 		const totalBlocks = totalNumbers + 2
 
@@ -71,54 +71,61 @@ const Pagination = props => {
 			return [1, ...pages, totalPages]
 		}
 		return range(1, totalPages)
-	}
+	}, [pageNeighbours, currentPage, totalPages])
 
-	const pages = fetchPageNumbers()
+	const goFirstPage = useCallback(e => onPageChanged(e, 1), [onPageChanged])
+
+	const goPreviousPage = useCallback(e => onPageChanged(e, currentPage - 1), [
+		onPageChanged,
+		currentPage,
+	])
+	const goNextPage = useCallback(e => onPageChanged(e, currentPage + 1), [
+		onPageChanged,
+		currentPage,
+	])
+	const goLastPage = useCallback(
+		e => onPageChanged(e, pages[pages.length - 1]),
+		[onPageChanged, pages]
+	)
+
 	return (
 		<PaginationRS aria-label='Page navigation'>
 			<PaginationItem>
-				<PaginationLink first onClick={e => onPageChanged(e, 1)} />
+				<PaginationLink first onClick={goFirstPage} />
 			</PaginationItem>
 			{pages &&
 				pages.map(page => {
-					if (page === LEFT_PAGE)
+					if (page === LEFT_PAGE) {
 						return (
 							<PaginationItem key={page} disabled={currentPage <= 0}>
 								<PaginationLink
-									onClick={e => onPageChanged(e, currentPage - 1)}
+									onClick={goPreviousPage}
 									aria-label='Previous'
 									previous
 								/>
 							</PaginationItem>
 						)
-
-					if (page === RIGHT_PAGE)
+					} else if (page === RIGHT_PAGE) {
 						return (
 							<PaginationItem
 								key={page}
 								disabled={currentPage >= totalPages - 1}
 							>
-								<PaginationLink
-									onClick={e => onPageChanged(e, currentPage + 1)}
-									aria-label='Next'
-									next
-								/>
+								<PaginationLink onClick={goNextPage} aria-label='Next' next />
 							</PaginationItem>
 						)
-
-					return (
-						<PaginationItem key={page} active={currentPage === page}>
-							<PaginationLink onClick={e => onPageChanged(e, page)}>
-								{page}
-							</PaginationLink>
-						</PaginationItem>
-					)
+					} else {
+						return (
+							<PaginationItem key={page} active={currentPage === page}>
+								<PaginationLink onClick={e => onPageChanged(e, page)}>
+									{page}
+								</PaginationLink>
+							</PaginationItem>
+						)
+					}
 				})}
 			<PaginationItem>
-				<PaginationLink
-					last
-					onClick={e => onPageChanged(e, pages[pages.length - 1])}
-				/>
+				<PaginationLink last onClick={goLastPage} />
 			</PaginationItem>
 		</PaginationRS>
 	)
