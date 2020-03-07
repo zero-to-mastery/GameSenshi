@@ -50,6 +50,7 @@
 		"googleapis": "^47.0.0",
 		"graphql": "^14.6.0",
 		"nanoid": "^2.1.11",
+		"random-item": "^3.0.0",
 		"web-push": "^3.4.3",
 		"yup": "^0.27.0"
 	},
