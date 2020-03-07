@@ -11,7 +11,7 @@ import { ApolloServer } from 'apollo-server-express'
 import { MemcachedCache } from 'apollo-server-cache-memcached'
 import express from 'express'
 import { typeDefs, resolvers } from 'resolvers'
-import { FUNCTION_SIGN_IN_TWITCH } from '0_constants'
+import { FUNCTION_ON_TWITCH_SIGN_IN, FUNCTION_ON_SEED_DATA } from '0_constants'
 import {
 	onSignInTwitch,
 	onCreateUser,
@@ -20,6 +20,7 @@ import {
 	onStopBilling,
 	onUpdateDoc,
 	onUpdateDocSub,
+	onSeedData,
 } from '3_fire_funct'
 
 const app = express()
@@ -66,8 +67,9 @@ module.exports = {
 	onCreateUser,
 	onCreateDoc,
 	onCreateDocSub,
-	[FUNCTION_SIGN_IN_TWITCH]: onSignInTwitch,
+	[FUNCTION_ON_TWITCH_SIGN_IN]: onSignInTwitch,
 	onStopBilling,
 	onUpdateDoc,
 	onUpdateDocSub,
+	[FUNCTION_ON_SEED_DATA]: onSeedData,
 }

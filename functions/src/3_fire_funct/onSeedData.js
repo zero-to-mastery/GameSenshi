@@ -5,9 +5,9 @@ import {
 	docSellerProfileGenderSet,
 	docSellerProfileServicesSet,
 	docSellerProfileChannelSet,
-	docSellerReviewsAdd,
+	docSellerReviewsBatch,
 } from '2_fire_store'
-
+import { onCall } from '1_fire_init'
 import {
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL_IMAGE,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL_YOUTUBE,
@@ -53,7 +53,7 @@ const buyerAvatars = [
 ]
 const buyerId = ['jdgwgd73', 'e78yzn737', 'z7JN@Yen2', 'sd7n32z', 'z3zeyYJE*']
 
-const reviews = [...Array(100)].map(() => ({
+const reviews = [...Array(20)].map(() => ({
 	[FIRESTORE_SELLER_REVIEWS_COMMENT]: randomItem(comments),
 	[FIRESTORE_SELLER_REVIEWS_STAR]: randomItem(stars),
 	[FIRESTORE_SELLER_REVIEWS_ORDER_ID]: randomItem(orderId),
@@ -62,7 +62,7 @@ const reviews = [...Array(100)].map(() => ({
 	[FIRESTORE_SELLER_REVIEWS_BUYER_ID]: randomItem(buyerId),
 }))
 
-const seedData = () => {
+const onSeedData = onCall(() => {
 	docSellerProfileAvatarSet(uid)(
 		'https://firebasestorage.googleapis.com/v0/b/gamessenshi.appspot.com/o/senshiAvatar%2Fmike.jpg?alt=media&token=3801d968-206d-41ae-8a72-158a7baa2cac'
 	)
@@ -138,6 +138,14 @@ const seedData = () => {
 	]) // we dont use object here but array instead is used here because firestore automatically sort object key
 	// it is possible to exempt from sorting however it is better to deal with it in code so less configuration needed on firebase console
 	// which is more convenient if you want to create more project using this template especially if you have a loy of field to exempt
-}
+	const {
+		add: docSellerReviewsBatchAdd,
+		commit: docSellerReviewsBatchCommit,
+	} = docSellerReviewsBatch(uid)
+	reviews.forEach(review => {
+		docSellerReviewsBatchAdd(review)
+	})
+	docSellerReviewsBatchCommit()
+})
 
-export { seedData }
+export { onSeedData }

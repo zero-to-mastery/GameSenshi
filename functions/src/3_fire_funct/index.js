@@ -3,6 +3,7 @@ import { onCreateUser } from './onCreateUser'
 import { onCreateDoc, onCreateDocSub } from './onCreateDoc'
 import { onStopBilling } from './onStopBilling'
 import { onUpdateDoc, onUpdateDocSub } from './onUpdateDoc'
+import { onSeedData } from './onSeedData'
 export {
 	onSignInTwitch,
 	onCreateUser,
@@ -11,4 +12,5 @@ export {
 	onStopBilling,
 	onUpdateDoc,
 	onUpdateDocSub,
+	onSeedData,
 }

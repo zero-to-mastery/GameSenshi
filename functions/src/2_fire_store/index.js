@@ -6,7 +6,7 @@ import {
 	docUserSettingGeneralAvatarSet,
 } from './userSettings'
 
-import { docSellerReviewsAdd } from './senshiReviews'
+import { docSellerReviewsBatch } from './senshiReviews'
 
 import {
 	docSellerProfileAvatarSet,
@@ -23,7 +23,7 @@ export {
 	docUserSettingNotificationGet,
 	docUserSettingNotificationSet,
 	docUserSettingGeneralAvatarSet,
-	docSellerReviewsAdd,
+	docSellerReviewsBatch,
 	docSellerProfileAvatarSet,
 	docSellerProfileCarouselSet,
 	docSellerProfileChannelSet,

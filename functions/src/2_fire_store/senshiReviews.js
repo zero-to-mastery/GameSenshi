@@ -2,6 +2,8 @@ import { createDocGetSet } from './utils'
 
 import { fireStorePathSellerReviews } from '0_constants'
 
-const { add: docSellerReviewsAdd } = createDocGetSet(fireStorePathSellerReviews)
+const { batch: docSellerReviewsBatch } = createDocGetSet(
+	fireStorePathSellerReviews
+)
 
-export { docSellerReviewsAdd }
+export { docSellerReviewsBatch }

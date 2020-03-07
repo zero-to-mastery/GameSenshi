@@ -12,7 +12,7 @@ const fireFunct = firebase.functions
 
 const fireStored = firebase.firestore
 
-const fireStoreBatch = fireStored().batch()
+const fireStoreBatch = fireStored().batch
 
 const getServerTimestamp = fireStored.FieldValue.serverTimestamp
 
