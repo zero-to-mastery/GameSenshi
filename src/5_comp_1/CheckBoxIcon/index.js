@@ -24,14 +24,14 @@ const CheckBoxIconPropedFavourite = props => {
 		<CheckBoxIcon
 			color='primary'
 			tooltipOn='😘Please Favourite Me! '
-			tooltipOff='💖Favourited!'
+			tooltipOff='💖Favourite!'
 			checked={checked}
 			loading={loading}
 			onClick={onClick}
 			id='facvouriteMe'
 			{...otherProps}
 		>
-			<i className='tim-icons icon-heart-2' />
+			<i className='tim-icons icon-heart-2 d-flex align-items-center' />
 			&nbsp; Favor
 		</CheckBoxIcon>
 	)
@@ -49,7 +49,8 @@ const CheckBoxIconPropedFavouriteStoreUser = StateContainer(
 const CheckBoxIconPropedTip = props => {
 	return (
 		<CheckBoxIcon color='success' tooltipOn='💖Tip me!' id='tipMe' {...props}>
-			<i className='tim-icons icon-coins h-100' /> &nbsp; Tip
+			<i className='tim-icons icon-coins d-flex align-items-center' /> &nbsp;
+			Tip
 		</CheckBoxIcon>
 	)
 }

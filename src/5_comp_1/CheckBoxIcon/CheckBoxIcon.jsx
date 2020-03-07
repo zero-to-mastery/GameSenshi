@@ -54,20 +54,10 @@ const CheckBoxIcon = props => {
 
 	return (
 		<>
-			<div
-				className={clsx('m-2', {
-					'd-none': !loading,
-					'd-inline-flex': loading,
-				})}
-			>
-				<Loader type='Circles' color='#00BFFF' height='30px' width='30px' />
-			</div>
 			<Button
 				className={clsx(
 					{
 						'btn-simple': !checked_,
-						'd-none': loading,
-						'd-inline-flex': !loading,
 					},
 					'm-1',
 					'rounded-lg',
@@ -85,7 +75,29 @@ const CheckBoxIcon = props => {
 				id={id}
 				{...otherProps}
 			>
-				{children}
+				<span
+					className={clsx(
+						{
+							'd-none': loading,
+							'd-inline-flex': !loading,
+						},
+						'align-items-center'
+					)}
+				>
+					{children}
+				</span>
+				<span
+					className={clsx(
+						{
+							'd-none': !loading,
+							'd-inline-flex': loading,
+						},
+						'align-items-center justify-content-center'
+					)}
+					style={{ width: '59.813px' }}
+				>
+					<Loader type='Circles' color='#00BFFF' height='18px' width='18px' />
+				</span>
 			</Button>
 			<Tooltip delay={100} target={id} isOpen={showTooltip} placement='top'>
 				{checked_ ? (tooltipOff ? tooltipOff : tooltipOn) : tooltipOn}

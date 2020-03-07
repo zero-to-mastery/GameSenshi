@@ -73,7 +73,7 @@ const CardUserHorizontal = props => {
 					</Row>
 				</Col>
 				<Col xs='12' lg='3'>
-					<RowStyledUsername className='flex-column'>
+					<RowStyledUsername xs='1'>
 						<Col>
 							<h3 className='text-white font-weight-bold mb-1'>
 								{displayName}
