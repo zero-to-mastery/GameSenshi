@@ -5,7 +5,7 @@ import {
 	INTERNAL_ERROR_CODE_4,
 	INTERNAL_ERROR_CODE_7,
 	INTERNAL_ERROR_CODE_8,
-	FUNCTION_CUSTOM_TOKEN,
+	FUNCTION_TOKEN_CUSTOM,
 } from '0_constants'
 import { resObj } from '1_utils'
 
@@ -38,7 +38,7 @@ const getCustomToken = async (
 	let tokenData = null
 	try {
 		customToken = await auth().createCustomToken(uid)
-		tokenData = { [FUNCTION_CUSTOM_TOKEN]: customToken }
+		tokenData = { [FUNCTION_TOKEN_CUSTOM]: customToken }
 		if (isUserExist) {
 			return tokenData
 		}

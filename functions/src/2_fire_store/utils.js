@@ -1,4 +1,4 @@
-import { fireStored, fireStoreBatch } from '1_fire_init/core'
+import { fireStored } from '1_fire_init/core'
 
 const createDocGetSet = path => {
 	const ref = (...args) => fireStored.doc(path(...args))
@@ -12,7 +12,7 @@ const createDocGetSet = path => {
 	}
 	const add = (...args) => data => colRef(...args).add(data)
 	const batch = (...args) => {
-		const newBatch = fireStoreBatch()
+		const newBatch = fireStored.batch()
 		const set = (data, options = { merge: true }) =>
 			newBatch.set(ref(...args), data, options)
 		const add = data => newBatch.set(colRef(...args).doc(), data)

@@ -17,7 +17,6 @@ const env = functions.config()[ENV]
 const firestoreF = functions.firestore
 const auth = admin.auth
 const fireStored = new admin.firestore.Firestore()
-const fireStoreBatch = fireStored.batch
 const onCall = functions.https.onCall
 const getServerTimestamp = admin.firestore.FieldValue.serverTimestamp
 const pubSub = (topic, callback) =>
@@ -37,7 +36,6 @@ export {
 	onCall,
 	functions,
 	firestoreF,
-	fireStoreBatch,
 	pubSub,
 	CORS_WHITE_LIST,
 	PLAYGROUND_ENABLED,

@@ -1,3 +1,3 @@
-import { functSignInTwicth } from './cloudFunct'
+import { functSignInTwicth, functOnSeedData } from './cloudFunct'
 
-export { functSignInTwicth }
+export { functSignInTwicth, functOnSeedData }

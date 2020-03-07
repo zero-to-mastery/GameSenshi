@@ -18,7 +18,7 @@ import {
 	UNEXPECTED_ERROR_CODE_12,
 	FUNCTION_OAUTH_CODE,
 	FUNCTION_REDIRECT_URI,
-	FUNCTION_CUSTOM_TOKEN,
+	FUNCTION_TOKEN_CUSTOM,
 } from '0_constants'
 
 // ! google unlink facebook: https://github.com/firebase/firebase-js-sdk/issues/569
@@ -86,7 +86,7 @@ const getRedirectResult = async () => {
 				if (customTokenData) {
 					try {
 						await auth().signInWithCustomToken(
-							customTokenData.data[FUNCTION_CUSTOM_TOKEN]
+							customTokenData.data[FUNCTION_TOKEN_CUSTOM]
 						)
 					} catch (err) {
 						return storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_10)

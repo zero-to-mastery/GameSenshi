@@ -1,6 +1,9 @@
 import { fireFunct } from '1_fire_init'
-import { FUNCTION_ON_TWITCH_SIGN_IN } from '0_constants'
+import { FUNCTION_ON_TWITCH_SIGN_IN, FUNCTION_ON_SEED_DATA } from '0_constants'
 
-const functSignInTwicth = fireFunct().httpsCallable(FUNCTION_ON_TWITCH_SIGN_IN)
+const httpsCallable = fireFunct().httpsCallable
 
-export { functSignInTwicth }
+const functSignInTwicth = httpsCallable(FUNCTION_ON_TWITCH_SIGN_IN)
+const functOnSeedData = httpsCallable(FUNCTION_ON_SEED_DATA)
+
+export { functSignInTwicth, functOnSeedData }

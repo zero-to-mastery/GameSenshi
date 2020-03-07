@@ -15,7 +15,7 @@ import {
 	FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS,
 } from '0_constants'
 import { AVATAR_DEFAULT } from '0_app_flavor'
-import { seedData } from '4_comp_utils'
+import { functOnSeedData } from '2_fire_funct'
 
 const {
 	BadgesPropedSenshi,
@@ -98,7 +98,7 @@ const CardUserHorizontal = props => {
 							</Col>
 							{process.env.NODE_ENV === 'development' && (
 								<Col align='center'>
-									<Button onClick={seedData} className='btn-simple'>
+									<Button onClick={functOnSeedData} className='btn-simple'>
 										Seeding Data(dev only)
 									</Button>
 								</Col>

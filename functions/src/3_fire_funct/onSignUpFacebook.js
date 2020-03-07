@@ -1,6 +1,6 @@
 // import { getCustomToken } from '3_fire_funct/getCustomToken'
 // import {
-// 	FUNCTION_ID_TOKEN,
+// 	FUNCTION_TOKEN_ID,
 // 	FUNCTION_ACCESS_TOKEN,
 // 	INTERNAL_ERROR_CODE_9,
 // 	INTERNAL_ERROR_CODE_10,
@@ -14,7 +14,7 @@
 
 // const onSignUpFacebook = async data => {
 // 	const {
-// 		[FUNCTION_ID_TOKEN]: idToken,
+// 		[FUNCTION_TOKEN_ID]: idToken,
 // 		[FUNCTION_ACCESS_TOKEN]: accessToken,
 // 	} = data
 
