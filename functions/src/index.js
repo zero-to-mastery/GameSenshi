@@ -20,7 +20,7 @@ import {
 	onStopBilling,
 	onUpdateDoc,
 	onUpdateDocSub,
-} from '2_fire_funct'
+} from '3_fire_funct'
 
 const app = express()
 
