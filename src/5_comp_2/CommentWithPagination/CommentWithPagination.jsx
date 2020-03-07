@@ -2,7 +2,7 @@ import React, { useState, useCallback, useMemo } from 'react'
 import { stopUndefined } from '1_utils'
 import { Exports } from '5_comp_1'
 
-const { Comments, Pagination } = stopUndefined(Exports)
+const { Comments, Pagination, Row, Col } = stopUndefined(Exports)
 
 const CommentWithPagination = props => {
 	const {
@@ -28,16 +28,20 @@ const CommentWithPagination = props => {
 		[currentPage, limit_, comments]
 	)
 	return (
-		<div className='d-flex flex-column align-items-center'>
-			<Comments comments={currentComments} />
-			<Pagination
-				totalRecords={length}
-				pageLimit={limit_}
-				pageNeighbours={pageNeighbours_}
-				onPageChanged={onPageChanged}
-				currentPage={currentPage}
-			/>
-		</div>
+		<Row xs='1'>
+			<Col>
+				<Comments comments={currentComments} />
+			</Col>
+			<Col className='d-flex justify-content-center'>
+				<Pagination
+					totalRecords={length}
+					pageLimit={limit_}
+					pageNeighbours={pageNeighbours_}
+					onPageChanged={onPageChanged}
+					currentPage={currentPage}
+				/>
+			</Col>
+		</Row>
 	)
 }
 
