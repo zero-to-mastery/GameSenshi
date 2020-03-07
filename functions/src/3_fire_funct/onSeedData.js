@@ -28,12 +28,11 @@ import {
 	FIRESTORE_SELLER_REVIEWS_BUYER,
 	FIRESTORE_SELLER_REVIEWS_BUYER_AVATAR,
 	FIRESTORE_SELLER_REVIEWS_BUYER_ID,
+	FUNCTION_UID,
 } from '0_constants'
 
 import randomItem from 'random-item'
 import cryptoRandomString from 'crypto-random-string'
-
-const uid = '2QvJMnyN73SnBXaLuRR0REQpY8X2'
 
 const comments = [
 	'Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits.',
@@ -62,6 +61,7 @@ const reviews = [...Array(20)].map(() => ({
 }))
 
 const onSeedData = onCall((data, context) => {
+	const { [FUNCTION_UID]: uid } = data
 	try {
 		if (context.auth.uid === 'twitch_238533965') {
 			docSellerProfileAvatarSet(uid)(

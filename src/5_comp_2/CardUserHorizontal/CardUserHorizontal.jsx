@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useCallback } from 'react'
 import { Exports } from '5_comp_1'
 import { stopUndefined } from '1_utils'
 import shorthash from 'shorthash'
@@ -44,6 +44,9 @@ const CardUserHorizontal = props => {
 
 	const badges = useMemo(() => [gender], [gender])
 	const shortUid = useMemo(() => shorthash.unique(uid), [uid])
+	const seedData = useCallback(() => {
+		functOnSeedData(uid)
+	}, [uid])
 
 	return (
 		<ContainerStyled className='border border-success' {...otherProps}>
@@ -98,7 +101,7 @@ const CardUserHorizontal = props => {
 							</Col>
 							{process.env.NODE_ENV === 'development' && (
 								<Col align='center'>
-									<Button onClick={functOnSeedData} className='btn-simple'>
+									<Button onClick={seedData} className='btn-simple'>
 										Seeding Data(dev only)
 									</Button>
 								</Col>

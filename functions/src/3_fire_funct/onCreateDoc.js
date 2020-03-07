@@ -1,5 +1,5 @@
 import { firestoreF, getServerTimestamp } from '1_fire_init'
-import { CREATED_AT, UPDATED_AT } from '0_constants'
+import { CREATED_AT } from '0_constants'
 import { allPaths } from './constants'
 
 const [onCreateDoc, onCreateDocSub] = allPaths.map(path =>
@@ -8,7 +8,6 @@ const [onCreateDoc, onCreateDocSub] = allPaths.map(path =>
 		return snap.ref.set(
 			{
 				[CREATED_AT]: timestamp,
-				[UPDATED_AT]: timestamp,
 			},
 			{ merge: true }
 		)

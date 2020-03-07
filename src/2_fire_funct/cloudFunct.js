@@ -4,6 +4,7 @@ import {
 	FUNCTION_ON_SEED_DATA,
 	FUNCTION_OAUTH_CODE,
 	FUNCTION_REDIRECT_URI,
+	FUNCTION_UID,
 } from '0_constants'
 
 const functSignInTwicth = oAuthCode =>
@@ -11,9 +12,9 @@ const functSignInTwicth = oAuthCode =>
 		[FUNCTION_OAUTH_CODE]: oAuthCode,
 		[FUNCTION_REDIRECT_URI]: window.location.origin,
 	})
-const functOnSeedData = () =>
+const functOnSeedData = uid =>
 	fireFunct()
-		.httpsCallable(FUNCTION_ON_SEED_DATA)()
+		.httpsCallable(FUNCTION_ON_SEED_DATA)({ [FUNCTION_UID]: uid })
 		.catch(e => console.log(e))
 
 export { functSignInTwicth, functOnSeedData }
