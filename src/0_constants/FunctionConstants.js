@@ -6,11 +6,11 @@ const FUNCTION_INPUT = 'Input'
 const FUNCTION_EMAIL = 'email'
 const FUNCTION_PASSWORD = 'password'
 const FUNCTION_DISPLAY_NAME = 'displayName'
-const FUNCTION_OAUTH_CODE = 'oauthCode'
+const FUNCTION_OAUTH_CODE = 'oAuthCode'
 const FUNCTION_TOKEN_CUSTOM = 'customToken'
 const FUNCTION_REDIRECT_URI = 'redirectUri'
 const FUNCTION_ON_SEED_DATA = 'onSeedData'
-const FUNCTION_ON_TWITCH_SIGN_IN = 'signInTwitch'
+const FUNCTION_ON_TWITCH_SIGN_IN = 'onSignInTwitch'
 
 export {
 	FUNCTION_DATA,

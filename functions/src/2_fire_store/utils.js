@@ -8,7 +8,7 @@ const createDocGetSet = path => {
 	const colRef = (...args) => {
 		const path_ = path(...args).split('/')
 		path_.pop()
-		return fireStored.collection(path.join('/'))
+		return fireStored.collection(path_.join('/'))
 	}
 	const add = (...args) => data => colRef(...args).add(data)
 	const batch = (...args) => {

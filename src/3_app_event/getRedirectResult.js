@@ -16,8 +16,6 @@ import {
 	UNEXPECTED_ERROR_CODE_9,
 	UNEXPECTED_ERROR_CODE_10,
 	UNEXPECTED_ERROR_CODE_12,
-	FUNCTION_OAUTH_CODE,
-	FUNCTION_REDIRECT_URI,
 	FUNCTION_TOKEN_CUSTOM,
 } from '0_constants'
 
@@ -66,20 +64,18 @@ const getRedirectResult = async () => {
 		const redirectUrl = storeModalGetRedirectUrl()
 		if (redirectUrl) {
 			const searchParams = new URLSearchParams(redirectUrl)
-			let oauthCode = null
+			let oAuthCode = null
 			for (let p of searchParams) {
 				if (p[0].includes('code')) {
-					oauthCode = p[1]
+					oAuthCode = p[1]
 				}
 			}
-			if (oauthCode) {
+			if (oAuthCode) {
 				let customTokenData = null
 				try {
-					customTokenData = await functSignInTwicth({
-						[FUNCTION_OAUTH_CODE]: oauthCode,
-						[FUNCTION_REDIRECT_URI]: window.location.origin,
-					})
+					customTokenData = await functSignInTwicth(oAuthCode)
 				} catch (err) {
+					console.log(err)
 					storeModalSimpleError(err, UNEXPECTED_ERROR_CODE_9)
 				}
 
