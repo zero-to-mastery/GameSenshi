@@ -1,23 +1,13 @@
-import { fireStored, getServerTimestamp } from '1_fire_init/core'
-
 import {
 	firestorePathSettingsGeneral,
 	fireStorePathUserSettingsNotification,
-	UPDATED_AT,
 } from '0_constants'
 import {
 	FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR,
 	FIRESTORE_USER_SETTINGS_GENERAL_SHORT_ID,
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
 } from '0_constants'
-
-const createDocGetSet = path => {
-	const ref = (...args) => fireStored.doc(path(...args))
-	const get = (...args) => ref(...args).get()
-	const set = (...args) => (data, options = { merge: true }) =>
-		ref(...args).set(data, options)
-	return [get, set]
-}
+import { createDocGetSet } from './utils'
 
 const [docUserSettingGeneralGet, docUserSettingGeneralSet] = createDocGetSet(
 	firestorePathSettingsGeneral
@@ -32,10 +22,7 @@ const docUserSettingGeneralSetOnUserCreate = uid => (
 	displayName,
 	isPasswordExist
 ) => {
-	const serverTimestamp = getServerTimestamp()
-
 	return docUserSettingGeneralSet(uid)({
-		[UPDATED_AT]: serverTimestamp,
 		[FIRESTORE_USER_SETTINGS_GENERAL_SHORT_ID]: shortId,
 		...(!isPasswordExist && {
 			[FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME]: displayName || shortId,

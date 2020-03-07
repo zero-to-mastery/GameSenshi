@@ -21,8 +21,6 @@ const [
 	docUserSettingNotificationSet,
 ] = createDocGetSet(fireStorePathUserSettingsNotification)
 
-const docUserSettingNotificationSet_ = docUserSettingNotificationSet()
-
 const docUserSettingGeneralAvatarSet = url =>
 	docUserSettingGeneralSet()({
 		[FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR]: url,
@@ -51,7 +49,7 @@ export {
 	docUserSettingGeneralSetOnSignUpWithEmail,
 	docUserSettingGeneralOnSnapshot,
 	docUserSettingNotificationGet,
-	docUserSettingNotificationSet_,
+	docUserSettingNotificationSet,
 	docUserSettingGeneralAvatarSet,
 	docUserSenshiGet,
 	docUserSenshiSetFavourite,

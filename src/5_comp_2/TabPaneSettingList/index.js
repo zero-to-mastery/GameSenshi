@@ -6,7 +6,7 @@ import {
 } from './TabPaneSettingList'
 import { settingListNotification } from './utils'
 import {
-	docUserSettingNotificationSet_,
+	docUserSettingNotificationSet,
 	docUserSettingNotificationGet,
 } from '2_fire_store'
 import {
@@ -34,10 +34,11 @@ const TabPaneSettingListStoreUserPropedNotification = props => {
 		() => docUserSettingNotificationGet().then(doc => doc.data()),
 		[]
 	)
+	const saveApi = useCallback(data => docUserSettingNotificationSet()(data), [])
 	return (
 		<TabPaneSettingListStoreUser
 			settingList={settingListNotification()}
-			saveApi={docUserSettingNotificationSet_}
+			saveApi={saveApi}
 			loadApi={loadApi}
 			{...props}
 		/>

@@ -12,12 +12,12 @@ import {
 	INTERNAL_ERROR_CODE_6,
 } from '0_constants'
 import nanoid from 'nanoid'
+import { functions } from '1_fire_init'
+import { resObj } from '1_utils'
 import {
-	functions,
 	docUserSettingGeneralSetOnUserCreate,
 	docUserSettingNotificationSet,
-} from '1_fire_init'
-import { resObj } from '1_utils'
+} from '2_fire_store'
 
 const onCreateUser_ = async userRecord => {
 	const { uid, displayName } = userRecord

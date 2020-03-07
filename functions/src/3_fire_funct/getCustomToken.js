@@ -1,4 +1,5 @@
-import { auth, docUserSettingGeneralAvatarSet } from '1_fire_init'
+import { auth } from '1_fire_init'
+import { docUserSettingGeneralAvatarSet } from '2_fire_store'
 import {
 	INTERNAL_ERROR_CODE_2,
 	INTERNAL_ERROR_CODE_4,

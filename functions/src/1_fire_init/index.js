@@ -13,14 +13,6 @@ import {
 	PROJECT_ID,
 } from './core'
 
-import {
-	docUserSettingGeneralGet,
-	docUserSettingGeneralSet,
-	docUserSettingNotificationGet,
-	docUserSettingNotificationSet,
-	docUserSettingGeneralAvatarSet,
-} from './fireStored'
-
 export {
 	auth,
 	onCall,
@@ -34,9 +26,4 @@ export {
 	TWITCH_ID,
 	TWITCH_SECRET,
 	PROJECT_ID,
-	docUserSettingGeneralGet,
-	docUserSettingGeneralSet,
-	docUserSettingNotificationGet,
-	docUserSettingNotificationSet,
-	docUserSettingGeneralAvatarSet,
 }
