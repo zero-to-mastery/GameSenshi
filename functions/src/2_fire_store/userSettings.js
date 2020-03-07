@@ -9,13 +9,14 @@ import {
 } from '0_constants'
 import { createDocGetSet } from './utils'
 
-const [docUserSettingGeneralGet, docUserSettingGeneralSet] = createDocGetSet(
-	firestorePathSettingsGeneral
-)
-const [
-	docUserSettingNotificationGet,
-	docUserSettingNotificationSet,
-] = createDocGetSet(fireStorePathUserSettingsNotification)
+const {
+	get: docUserSettingGeneralGet,
+	set: docUserSettingGeneralSet,
+} = createDocGetSet(firestorePathSettingsGeneral)
+const {
+	get: docUserSettingNotificationGet,
+	set: docUserSettingNotificationSet,
+} = createDocGetSet(fireStorePathUserSettingsNotification)
 
 const docUserSettingGeneralSetOnUserCreate = uid => (
 	shortId,

@@ -9,7 +9,12 @@ const createDocGetSet = path => {
 	const onSanpshot = (...args) => (...args1) => {
 		return ref(...args).onSnapshot(...args1)
 	}
-	return [get, set, onSanpshot]
+	const add = (...args) => data => {
+		const path_ = path(...args).split('/')
+		path_.pop()
+		return fireStored.doc(path.join('/')).add(data)
+	}
+	return { get, set, onSanpshot, add }
 }
 
 export { createDocGetSet }

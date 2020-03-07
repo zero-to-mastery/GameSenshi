@@ -10,43 +10,41 @@ import {
 	FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES,
 } from '0_constants'
 
-const {
-	set: docSellerProfileSet,
-	on: docSellerProfileOnSnapshot,
-} = createDocGetSet(fireStorePathSellerSettingProfile)
+const { set: docSellerProfileSet } = createDocGetSet(
+	fireStorePathSellerSettingProfile
+)
 
-const docSellerProfileAvatarSet = url =>
-	docSellerProfileSet()({
+const docSellerProfileAvatarSet = uid => url =>
+	docSellerProfileSet(uid)({
 		[FIRESTORE_SELLER_SETTINGS_PROFILE_AVATAR]: url,
 	})
 
-const docSellerProfileCarouselSet = url =>
-	docSellerProfileSet()({
+const docSellerProfileCarouselSet = uid => url =>
+	docSellerProfileSet(uid)({
 		[FIRESTORE_SELLER_SETTINGS_PROFILE_CAROUSEL]: url,
 	})
 
-const docSellerProfileChannelSet = url =>
-	docSellerProfileSet()({
+const docSellerProfileChannelSet = uid => url =>
+	docSellerProfileSet(uid)({
 		[FIRESTORE_SELLER_SETTINGS_PROFILE_CHANNELS]: url,
 	})
 
-const docSellerProfileDisplayNameSet = displayName =>
-	docSellerProfileSet()({
+const docSellerProfileDisplayNameSet = uid => displayName =>
+	docSellerProfileSet(uid)({
 		[FIRESTORE_SELLER_SETTINGS_PROFILE_DISPLAY_NAME]: displayName,
 	})
 
-const docSellerProfileGenderSet = gender =>
-	docSellerProfileSet()({
+const docSellerProfileGenderSet = uid => gender =>
+	docSellerProfileSet(uid)({
 		[FIRESTORE_SELLER_SETTINGS_PROFILE_GENDER]: gender,
 	})
 
-const docSellerProfileServicesSet = services =>
-	docSellerProfileSet()({
+const docSellerProfileServicesSet = uid => services =>
+	docSellerProfileSet(uid)({
 		[FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES]: services,
 	})
 
 export {
-	docSellerProfileOnSnapshot,
 	docSellerProfileAvatarSet,
 	docSellerProfileCarouselSet,
 	docSellerProfileChannelSet,

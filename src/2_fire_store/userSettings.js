@@ -10,11 +10,11 @@ import {
 } from '0_constants'
 import { auth } from '1_fire_init'
 
-const [
-	docUserSettingGeneralGet,
-	docUserSettingGeneralSet,
-	docUserSettingGeneralOnSnapshot,
-] = createDocGetSet(firestorePathSettingsGeneral)
+const {
+	get: docUserSettingGeneralGet,
+	set: docUserSettingGeneralSet,
+	on: docUserSettingGeneralOnSnapshot,
+} = createDocGetSet(firestorePathSettingsGeneral)
 
 const [
 	docUserSettingNotificationGet,

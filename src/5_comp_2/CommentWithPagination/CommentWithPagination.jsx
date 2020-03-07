@@ -14,7 +14,7 @@ const CommentWithPagination = props => {
 	const [currentPage, setCurrentPage] = useState(1)
 
 	const pageNeighbours_ = pageNeighbours || 1
-	const limit_ = limit || 3
+	const limit_ = limit || 5
 
 	const onPageChanged = useCallback((event, page) => {
 		setCurrentPage(page)
