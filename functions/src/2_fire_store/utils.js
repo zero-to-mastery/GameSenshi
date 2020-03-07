@@ -10,7 +10,7 @@ const createDocGetSet = path => {
 		path_.pop()
 		return fireStored.doc(path.join('/')).add(data)
 	}
-	return { get, set, add }
+	return { ref, get, set, add }
 }
 
 export { createDocGetSet }

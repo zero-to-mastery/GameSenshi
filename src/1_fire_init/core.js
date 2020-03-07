@@ -12,6 +12,8 @@ const fireFunct = firebase.functions
 
 const fireStored = firebase.firestore
 
+const fireStoreBatch = fireStored().batch()
+
 const getServerTimestamp = fireStored.FieldValue.serverTimestamp
 
 const auth = firebase.auth
@@ -27,6 +29,7 @@ export {
 	fireFunct,
 	fireStored,
 	auth,
+	fireStoreBatch,
 	firebaseStorage,
 	getServerTimestamp,
 	database,

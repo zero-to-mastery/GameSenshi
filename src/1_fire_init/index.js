@@ -4,6 +4,7 @@ import {
 	getServerTimestamp,
 	database,
 	fireFunct,
+	fireStoreBatch,
 } from './core'
 
 import {
@@ -19,4 +20,5 @@ export {
 	handleDifferentCredential,
 	linkedThen,
 	fireFunct,
+	fireStoreBatch,
 }

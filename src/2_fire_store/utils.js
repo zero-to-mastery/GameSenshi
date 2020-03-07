@@ -6,7 +6,7 @@ const createDocGetSet = path => {
 	const get = (...args) => ref(...args).get()
 	const set = (...args) => (data, options = { merge: true }) =>
 		ref(...args).set(data, options)
-	const onSanpshot = (...args) => (...args1) => {
+	const on = (...args) => (...args1) => {
 		return ref(...args).onSnapshot(...args1)
 	}
 	const add = (...args) => data => {
@@ -14,7 +14,7 @@ const createDocGetSet = path => {
 		path_.pop()
 		return fireStored.doc(path.join('/')).add(data)
 	}
-	return { get, set, onSanpshot, add }
+	return { ref, get, set, on, add }
 }
 
 export { createDocGetSet }

@@ -16,10 +16,10 @@ const {
 	on: docUserSettingGeneralOnSnapshot,
 } = createDocGetSet(firestorePathSettingsGeneral)
 
-const [
-	docUserSettingNotificationGet,
-	docUserSettingNotificationSet,
-] = createDocGetSet(fireStorePathUserSettingsNotification)
+const {
+	get: docUserSettingNotificationGet,
+	set: docUserSettingNotificationSet,
+} = createDocGetSet(fireStorePathUserSettingsNotification)
 
 const docUserSettingGeneralAvatarSet = url =>
 	docUserSettingGeneralSet()({
@@ -32,11 +32,11 @@ const docUserSettingGeneralSetOnSignUpWithEmail = displayName =>
 		[FIRESTORE_USER_SETTINGS_GENERAL_LANGUAGES]: [auth().languageCode],
 	})
 
-const [
-	docUserSenshiGet,
-	docUserSenshiSet,
-	docUserSenshiOnSnapshot,
-] = createDocGetSet(fireStorePathUser_Seller)
+const {
+	get: docUserSenshiGet,
+	set: docUserSenshiSet,
+	on: docUserSenshiOnSnapshot,
+} = createDocGetSet(fireStorePathUser_Seller)
 
 const docUserSenshiSetFavourite = uid => checked =>
 	docUserSenshiSet(
