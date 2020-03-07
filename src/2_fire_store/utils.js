@@ -9,12 +9,14 @@ const createDocGetSet = path => {
 	const on = (...args) => (...args1) => {
 		return ref(...args).onSnapshot(...args1)
 	}
-	const add = (...args) => data => {
-		const path_ = path(...args).split('/')
+	const colRef = (uid = auth().currentUser.uid, ...otherArgs) => {
+		const path_ = path(uid, ...otherArgs).split('/')
 		path_.pop()
-		return fireStored.doc(path.join('/')).add(data)
+		return fireStored().collection(path.join('/'))
 	}
-	return { ref, get, set, on, add }
+	const add = (...args) => data => colRef(...args).add(data)
+
+	return { ref, get, set, on, add, colRef }
 }
 
 export { createDocGetSet }
