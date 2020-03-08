@@ -12,8 +12,6 @@ const fireFunct = firebase.functions
 
 const fireStored = firebase.firestore
 
-const getServerTimestamp = fireStored.FieldValue.serverTimestamp
-
 const auth = firebase.auth
 
 const firebaseStorage = firebase.storage
@@ -23,11 +21,4 @@ const database = firebase.database
 // use device default language
 auth().useDeviceLanguage()
 
-export {
-	fireFunct,
-	fireStored,
-	auth,
-	firebaseStorage,
-	getServerTimestamp,
-	database,
-}
+export { fireFunct, fireStored, auth, firebaseStorage, database }

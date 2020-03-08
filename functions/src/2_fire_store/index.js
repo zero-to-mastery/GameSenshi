@@ -1,4 +1,14 @@
 import {
+	docGetSetBatch,
+	getTimestamp,
+	fieldIncrement,
+	fieldDelete,
+	docOnCreate,
+	docOnUpdate,
+	docOnDelete,
+} from './utils'
+
+import {
 	docUserSettingGeneralGet,
 	docUserSettingGeneralSet,
 	docUserSettingNotificationGet,
@@ -18,6 +28,13 @@ import {
 } from './sellerSettings'
 
 export {
+	docGetSetBatch,
+	getTimestamp,
+	fieldIncrement,
+	fieldDelete,
+	docOnCreate,
+	docOnUpdate,
+	docOnDelete,
 	docUserSettingGeneralGet,
 	docUserSettingGeneralSet,
 	docUserSettingNotificationGet,

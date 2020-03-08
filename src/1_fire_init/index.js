@@ -1,10 +1,4 @@
-import {
-	auth,
-	fireStored,
-	getServerTimestamp,
-	database,
-	fireFunct,
-} from './core'
+import { auth, fireStored, database, fireFunct } from './core'
 
 import {
 	handleDifferentCredential,
@@ -14,7 +8,6 @@ import {
 export {
 	auth,
 	fireStored,
-	getServerTimestamp,
 	database,
 	handleDifferentCredential,
 	linkedThen,

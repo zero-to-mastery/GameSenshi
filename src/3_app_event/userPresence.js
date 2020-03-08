@@ -1,4 +1,5 @@
-import { database, auth, getServerTimestamp } from '1_fire_init'
+import { database, auth } from '1_fire_init'
+import { getTimestamp } from '2_fire_store'
 import {
 	DATABASE_STATUS_ONLINE,
 	DATABASE_STATUS_ONLINE_LAST,
@@ -10,12 +11,12 @@ const userStatusDatabaseRef = (uid = auth().currentUser.uid) =>
 
 const isOfflineForDatabase = {
 	[DATABASE_STATUS_ONLINE]: false,
-	[DATABASE_STATUS_ONLINE_LAST]: getServerTimestamp(),
+	[DATABASE_STATUS_ONLINE_LAST]: getTimestamp(),
 }
 
 const isOnlineForDatabase = {
 	[DATABASE_STATUS_ONLINE]: true,
-	[DATABASE_STATUS_ONLINE_LAST]: getServerTimestamp(),
+	[DATABASE_STATUS_ONLINE_LAST]: getTimestamp(),
 }
 
 const databaseConnectionRef = database().ref('.info/connected')

@@ -1,8 +1,8 @@
-import { createDocGetSet } from './utils'
+import { docGetSetBatch } from './utils'
 
 import { fireStorePathSellerReviews } from '0_constants'
 
-const { on: docSellereReviewsOnSnapShot } = createDocGetSet(
+const { on: docSellereReviewsOnSnapShot } = docGetSetBatch(
 	fireStorePathSellerReviews
 )
 

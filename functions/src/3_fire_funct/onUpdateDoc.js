@@ -1,10 +1,10 @@
-import { firestoreF, getServerTimestamp } from '1_fire_init'
+import { docOnUpdate, getTimestamp } from '2_fire_store'
 import { UPDATED_AT } from '0_constants'
 import { allPaths } from './constants'
 
 const [onUpdateDoc, onUpdateDocSub] = allPaths.map(path =>
-	firestoreF.document(path).onUpdate(change => {
-		const timestamp = getServerTimestamp()
+	docOnUpdate(path)(change => {
+		const timestamp = getTimestamp()
 		//eslint-disable-next-line
 		const { [UPDATED_AT]: updatedAt, ...newData } = change.after.data()
 		//eslint-disable-next-line

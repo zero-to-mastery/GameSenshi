@@ -1,4 +1,4 @@
-import { createDocGetSet } from './utils'
+import { docGetSetBatch } from './utils'
 
 import {
 	fireStorePathSellerSettingProfile,
@@ -10,7 +10,7 @@ import {
 	FIRESTORE_SELLER_SETTINGS_PROFILE_SERVICES,
 } from '0_constants'
 
-const { set: docSellerProfileSet } = createDocGetSet(
+const { set: docSellerProfileSet } = docGetSetBatch(
 	fireStorePathSellerSettingProfile
 )
 

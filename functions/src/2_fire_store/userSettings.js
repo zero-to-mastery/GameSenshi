@@ -7,16 +7,16 @@ import {
 	FIRESTORE_USER_SETTINGS_GENERAL_SHORT_ID,
 	FIRESTORE_USER_SETTINGS_GENERAL_DISPLAY_NAME,
 } from '0_constants'
-import { createDocGetSet } from './utils'
+import { docGetSetBatch } from './utils'
 
 const {
 	get: docUserSettingGeneralGet,
 	set: docUserSettingGeneralSet,
-} = createDocGetSet(firestorePathSettingsGeneral)
+} = docGetSetBatch(firestorePathSettingsGeneral)
 const {
 	get: docUserSettingNotificationGet,
 	set: docUserSettingNotificationSet,
-} = createDocGetSet(fireStorePathUserSettingsNotification)
+} = docGetSetBatch(fireStorePathUserSettingsNotification)
 
 const docUserSettingGeneralSetOnUserCreate = uid => (
 	shortId,

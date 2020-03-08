@@ -1,6 +1,8 @@
-import { fireStored } from '1_fire_init/core'
+import { firestore, functions } from '1_fire_init'
 
-const createDocGetSet = path => {
+const fireStored = new firestore.Firestore()
+
+const docGetSetBatch = path => {
 	const ref = (...args) => fireStored.doc(path(...args))
 	const get = (...args) => ref(...args).get()
 	const set = (...args) => (data, options = { merge: true }) =>
@@ -22,4 +24,28 @@ const createDocGetSet = path => {
 	return { ref, get, set, add, colRef, batch }
 }
 
-export { createDocGetSet }
+const FieldValue = firestore.FieldValue
+
+const getTimestamp = FieldValue.serverTimestamp
+
+const fieldIncrement = FieldValue.increment
+
+const fieldDelete = FieldValue.delete
+
+const docTrigger = functions.firestore.document
+
+const docOnCreate = path => callback => docTrigger(path).onCreate(callback)
+
+const docOnUpdate = path => callback => docTrigger(path).onUpdate(callback)
+
+const docOnDelete = path => callback => docTrigger(path).onDelete(callback)
+
+export {
+	docGetSetBatch,
+	getTimestamp,
+	fieldIncrement,
+	fieldDelete,
+	docOnCreate,
+	docOnUpdate,
+	docOnDelete,
+}

@@ -1,4 +1,4 @@
-import { createDocGetSet } from './utils'
+import { docGetSetBatch } from './utils'
 
 import {
 	fireStorePathSellerSettingProfile,
@@ -13,7 +13,7 @@ import {
 const {
 	set: docSellerProfileSet,
 	on: docSellerProfileOnSnapshot,
-} = createDocGetSet(fireStorePathSellerSettingProfile)
+} = docGetSetBatch(fireStorePathSellerSettingProfile)
 
 const docSellerProfileAvatarSet = url =>
 	docSellerProfileSet()({

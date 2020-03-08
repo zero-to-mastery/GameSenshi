@@ -14,11 +14,9 @@ import {
 admin.initializeApp()
 
 const env = functions.config()[ENV]
-const firestoreF = functions.firestore
 const auth = admin.auth
-const fireStored = new admin.firestore.Firestore()
+const firestore = admin.firestore
 const onCall = functions.https.onCall
-const getServerTimestamp = admin.firestore.FieldValue.serverTimestamp
 const pubSub = (topic, callback) =>
 	functions.pubsub.topic(topic).onPublish(callback)
 
@@ -32,16 +30,14 @@ const {
 } = env
 
 export {
+	firestore,
 	auth,
 	onCall,
 	functions,
-	firestoreF,
 	pubSub,
 	CORS_WHITE_LIST,
 	PLAYGROUND_ENABLED,
 	APOLLO_ENGINE_API_KEY,
-	getServerTimestamp,
-	fireStored,
 	TWITCH_ID,
 	TWITCH_SECRET,
 	PROJECT_ID,

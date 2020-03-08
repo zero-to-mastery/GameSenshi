@@ -1,4 +1,4 @@
-import { createDocGetSet } from './utils'
+import { docGetSetBatch } from './utils'
 import {
 	firestorePathSettingsGeneral,
 	fireStorePathUserSettingsNotification,
@@ -14,12 +14,12 @@ const {
 	get: docUserSettingGeneralGet,
 	set: docUserSettingGeneralSet,
 	on: docUserSettingGeneralOnSnapshot,
-} = createDocGetSet(firestorePathSettingsGeneral)
+} = docGetSetBatch(firestorePathSettingsGeneral)
 
 const {
 	get: docUserSettingNotificationGet,
 	set: docUserSettingNotificationSet,
-} = createDocGetSet(fireStorePathUserSettingsNotification)
+} = docGetSetBatch(fireStorePathUserSettingsNotification)
 
 const docUserSettingGeneralAvatarSet = url =>
 	docUserSettingGeneralSet()({
@@ -36,7 +36,7 @@ const {
 	get: docUserSenshiGet,
 	set: docUserSenshiSet,
 	on: docUserSenshiOnSnapshot,
-} = createDocGetSet(fireStorePathUser_Seller)
+} = docGetSetBatch(fireStorePathUser_Seller)
 
 const docUserSenshiSetFavourite = uid => checked =>
 	docUserSenshiSet(

@@ -1,6 +1,6 @@
 import { fireStored, auth } from '1_fire_init'
 
-const createDocGetSet = path => {
+const docGetSetBatch = path => {
 	const ref = (uid = auth().currentUser.uid, ...otherArgs) =>
 		fireStored().doc(path(uid, ...otherArgs))
 	const get = (...args) => ref(...args).get()
@@ -27,4 +27,6 @@ const createDocGetSet = path => {
 	return { ref, get, set, on, add, colRef, batch }
 }
 
-export { createDocGetSet }
+const getTimestamp = fireStored.FieldValue.serverTimestamp
+
+export { docGetSetBatch, getTimestamp }

@@ -24,6 +24,8 @@ import { docSellereOnSnapShot } from './seller'
 
 import { docSellereReviewsOnSnapShot } from './sellerReviews'
 
+import { getTimestamp } from './utils'
+
 export {
 	docUserSettingGeneralGet,
 	docUserSettingGeneralSetOnSignUpWithEmail,
@@ -43,4 +45,5 @@ export {
 	docUserSenshiOnSnapshot,
 	docSellereOnSnapShot,
 	docSellereReviewsOnSnapShot,
+	getTimestamp,
 }

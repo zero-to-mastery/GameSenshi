@@ -7,6 +7,9 @@ import {
 	FUNCTION_UID,
 } from '0_constants'
 
+//! why this cannot use
+// const httpsCallable =fireFunct().httpsCallable
+
 const functSignInTwicth = oAuthCode =>
 	fireFunct().httpsCallable(FUNCTION_ON_TWITCH_SIGN_IN)({
 		[FUNCTION_OAUTH_CODE]: oAuthCode,

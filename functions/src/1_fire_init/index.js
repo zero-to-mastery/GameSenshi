@@ -1,10 +1,9 @@
 import {
+	firestore,
 	auth,
 	onCall,
 	functions,
-	firestoreF,
 	pubSub,
-	getServerTimestamp,
 	CORS_WHITE_LIST,
 	PLAYGROUND_ENABLED,
 	APOLLO_ENGINE_API_KEY,
@@ -14,12 +13,11 @@ import {
 } from './core'
 
 export {
+	firestore,
 	auth,
 	onCall,
 	functions,
-	firestoreF,
 	pubSub,
-	getServerTimestamp,
 	CORS_WHITE_LIST,
 	PLAYGROUND_ENABLED,
 	APOLLO_ENGINE_API_KEY,
