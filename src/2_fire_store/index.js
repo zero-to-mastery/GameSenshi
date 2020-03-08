@@ -24,7 +24,7 @@ import { docSellereOnSnapShot } from './seller'
 
 import { docSellereReviewsOnSnapShot } from './sellerReviews'
 
-import { getTimestamp } from './utils'
+import { getTimestamp, createBatch, runTransaction } from './utils'
 
 export {
 	docUserSettingGeneralGet,
@@ -46,4 +46,6 @@ export {
 	docSellereOnSnapShot,
 	docSellereReviewsOnSnapShot,
 	getTimestamp,
+	createBatch,
+	runTransaction,
 }

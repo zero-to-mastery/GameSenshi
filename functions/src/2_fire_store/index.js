@@ -6,6 +6,8 @@ import {
 	docOnCreate,
 	docOnUpdate,
 	docOnDelete,
+	createBatch,
+	runTransaction,
 } from './utils'
 
 import {
@@ -27,6 +29,8 @@ import {
 	docSellerProfileServicesSet,
 } from './sellerSettings'
 
+import { docSellerSet, docSellerGet } from './seller'
+
 export {
 	docGetSetBatch,
 	getTimestamp,
@@ -35,6 +39,8 @@ export {
 	docOnCreate,
 	docOnUpdate,
 	docOnDelete,
+	createBatch,
+	runTransaction,
 	docUserSettingGeneralGet,
 	docUserSettingGeneralSet,
 	docUserSettingNotificationGet,
@@ -47,4 +53,6 @@ export {
 	docSellerProfileDisplayNameSet,
 	docSellerProfileGenderSet,
 	docSellerProfileServicesSet,
+	docSellerSet,
+	docSellerGet,
 }

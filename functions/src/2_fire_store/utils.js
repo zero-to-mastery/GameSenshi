@@ -13,8 +13,7 @@ const docGetSetBatch = path => {
 		return fireStored.collection(path_.join('/'))
 	}
 	const add = (...args) => data => colRef(...args).add(data)
-	const batch = (...args) => {
-		const newBatch = fireStored.batch()
+	const batch = (newBatch = createBatch()) => (...args) => {
 		const set = (data, options = { merge: true }) =>
 			newBatch.set(ref(...args), data, options)
 		const add = data => newBatch.set(colRef(...args).doc(), data)
@@ -24,7 +23,11 @@ const docGetSetBatch = path => {
 	return { ref, get, set, add, colRef, batch }
 }
 
+const createBatch = fireStored.batch
+
 const FieldValue = firestore.FieldValue
+
+const runTransaction = fireStored.runTransaction
 
 const getTimestamp = FieldValue.serverTimestamp
 
@@ -48,4 +51,6 @@ export {
 	docOnCreate,
 	docOnUpdate,
 	docOnDelete,
+	createBatch,
+	runTransaction,
 }

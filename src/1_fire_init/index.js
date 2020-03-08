@@ -1,4 +1,4 @@
-import { auth, fireStored, database, fireFunct } from './core'
+import { auth, firestore, database, fireFunct } from './core'
 
 import {
 	handleDifferentCredential,
@@ -7,7 +7,7 @@ import {
 
 export {
 	auth,
-	fireStored,
+	firestore,
 	database,
 	handleDifferentCredential,
 	linkedThen,

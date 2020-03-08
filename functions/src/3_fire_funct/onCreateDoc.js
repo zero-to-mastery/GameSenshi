@@ -5,12 +5,11 @@ import { allPaths } from './constants'
 const [onCreateDoc, onCreateDocSub] = allPaths.map(path =>
 	docOnCreate(path)(snap => {
 		const timestamp = getTimestamp()
-		return snap.ref.set(
-			{
+		return snap.ref
+			.update({
 				[CREATED_AT]: timestamp,
-			},
-			{ merge: true }
-		)
+			})
+			.catch(console.log)
 	})
 )
 

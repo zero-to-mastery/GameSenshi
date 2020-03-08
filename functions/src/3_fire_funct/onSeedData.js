@@ -6,6 +6,7 @@ import {
 	docSellerProfileServicesSet,
 	docSellerProfileChannelSet,
 	docSellerReviewsBatch,
+	createBatch,
 } from '2_fire_store'
 import { onCall } from '1_fire_init'
 import {
@@ -142,7 +143,7 @@ const onSeedData = onCall((data, context) => {
 			const {
 				add: docSellerReviewsBatchAdd,
 				commit: docSellerReviewsBatchCommit,
-			} = docSellerReviewsBatch(uid)
+			} = docSellerReviewsBatch(createBatch())(uid)
 			reviews.forEach(review => {
 				docSellerReviewsBatchAdd(review)
 			})

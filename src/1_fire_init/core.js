@@ -10,7 +10,7 @@ firebase.initializeApp(ENV_VALUE_FIREBASE_CONFIG)
 
 const fireFunct = firebase.functions
 
-const fireStored = firebase.firestore
+const firestore = firebase.firestore
 
 const auth = firebase.auth
 
@@ -21,4 +21,4 @@ const database = firebase.database
 // use device default language
 auth().useDeviceLanguage()
 
-export { fireFunct, fireStored, auth, firebaseStorage, database }
+export { fireFunct, firestore, auth, firebaseStorage, database }
