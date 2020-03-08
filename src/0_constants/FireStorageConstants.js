@@ -51,6 +51,7 @@ const fireStorePathSeller = uid => {
 
 const FIRESTORE_SELLER_TOTAL_REVIEWS = 'totalReview'
 const FIRESTORE_SELLER_TOTAL_STARS = 'totalStar'
+const FIRESTORE_SELLER_LATEST_COMMENTS = 'latestComments'
 
 const fireStorePathSellerReviews = (uid, reviewUid) => {
 	return `${FIRESTORE_SELLER}/${uid}/reviews/${reviewUid}`
@@ -123,6 +124,7 @@ export {
 	fireStorePathSeller,
 	FIRESTORE_SELLER_TOTAL_REVIEWS,
 	FIRESTORE_SELLER_TOTAL_STARS,
+	FIRESTORE_SELLER_LATEST_COMMENTS,
 	fireStorePathSellerReviews,
 	FIRESTORE_SELLER_REVIEWS_COMMENT,
 	FIRESTORE_SELLER_REVIEWS_STAR,
