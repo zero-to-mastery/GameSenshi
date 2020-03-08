@@ -2,8 +2,10 @@ import { docGetSetBatch } from './utils'
 
 import { fireStorePathSeller } from '0_constants'
 
-const { set: docSellerSet, get: docSellerGet } = docGetSetBatch(
-	fireStorePathSeller
-)
+const {
+	ref: docSellerRef,
+	set: docSellerSet,
+	get: docSellerGet,
+} = docGetSetBatch(fireStorePathSeller)
 
-export { docSellerSet, docSellerGet }
+export { docSellerSet, docSellerGet, docSellerRef }

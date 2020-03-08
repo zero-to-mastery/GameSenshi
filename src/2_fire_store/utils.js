@@ -17,7 +17,9 @@ const docGetSetBatch = path => {
 		return fireStored.collection(path.join('/'))
 	}
 	const add = (...args) => data => colRef(...args).add(data)
-	const batch = (newBatch = createBatch()) => (...args) => {
+	const batch = (newBatch = fireStored.batch()) => (...args) => {
+		//const { set: set_, commit } = newBatch
+		//! cannot destructure, must create with newBatch
 		const set = (data, options = { merge: true }) =>
 			newBatch.set(ref(...args), data, options)
 		const add = data => newBatch.set(colRef(...args).doc(), data)
@@ -28,10 +30,10 @@ const docGetSetBatch = path => {
 	return { ref, get, set, on, add, colRef, batch }
 }
 
-const runTransaction = fireStored.runTransaction
-
-const createBatch = fireStored.batch
+// const createBatch = fireStored.batch
+// const runTransaction = fireStored.runTransaction
+// ! not able to get createBatch and runTransaction, must create with fireStored
 
 const getTimestamp = firestore.FieldValue.serverTimestamp
 
-export { docGetSetBatch, getTimestamp, createBatch, runTransaction }
+export { fireStored, docGetSetBatch, getTimestamp }

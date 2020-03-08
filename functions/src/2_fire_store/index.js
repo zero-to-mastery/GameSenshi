@@ -1,4 +1,5 @@
 import {
+	fireStored,
 	docGetSetBatch,
 	getTimestamp,
 	fieldIncrement,
@@ -6,8 +7,6 @@ import {
 	docOnCreate,
 	docOnUpdate,
 	docOnDelete,
-	createBatch,
-	runTransaction,
 } from './utils'
 
 import {
@@ -21,6 +20,7 @@ import {
 import { docSellerReviewsBatch } from './senshiReviews'
 
 import {
+	docSellerProfileSet,
 	docSellerProfileAvatarSet,
 	docSellerProfileCarouselSet,
 	docSellerProfileChannelSet,
@@ -29,9 +29,10 @@ import {
 	docSellerProfileServicesSet,
 } from './sellerSettings'
 
-import { docSellerSet, docSellerGet } from './seller'
+import { docSellerSet, docSellerGet, docSellerRef } from './seller'
 
 export {
+	fireStored,
 	docGetSetBatch,
 	getTimestamp,
 	fieldIncrement,
@@ -39,13 +40,12 @@ export {
 	docOnCreate,
 	docOnUpdate,
 	docOnDelete,
-	createBatch,
-	runTransaction,
 	docUserSettingGeneralGet,
 	docUserSettingGeneralSet,
 	docUserSettingNotificationGet,
 	docUserSettingNotificationSet,
 	docUserSettingGeneralAvatarSet,
+	docSellerProfileSet,
 	docSellerReviewsBatch,
 	docSellerProfileAvatarSet,
 	docSellerProfileCarouselSet,
@@ -55,4 +55,5 @@ export {
 	docSellerProfileServicesSet,
 	docSellerSet,
 	docSellerGet,
+	docSellerRef,
 }

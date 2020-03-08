@@ -1,8 +1,8 @@
 import {
 	docOnCreate,
 	fieldIncrement,
-	docSellerSet,
-	docSellerGet,
+	fireStored,
+	docSellerRef,
 } from '2_fire_store'
 import {
 	FIRESTORE_SELLER_REVIEWS_STAR,
@@ -16,15 +16,29 @@ const sellerId = 'sellerId'
 
 const onCreateComment = docOnCreate(
 	fireStorePathSellerReviews(`{${sellerId}}`, '{reviewId}')
-)(async (snap, context) => {
+)((snap, context) => {
 	const { [FIRESTORE_SELLER_REVIEWS_STAR]: star } = snap.data()
-	const {
-		[FIRESTORE_SELLER_LATEST_COMMENTS]: latestComments,
-	} = await docSellerGet().data()
-	return docSellerSet(context.params[sellerId])({
-		[FIRESTORE_SELLER_TOTAL_REVIEWS]: fieldIncrement(1),
-		[FIRESTORE_SELLER_TOTAL_STARS]: fieldIncrement(star),
-	}).catch(console.log)
+	const { [sellerId]: uid } = context.params
+	return fireStored.runTransaction(transaction => {
+		const docRef = docSellerRef(uid)
+		//const { get, update } = transaction
+		//! cannot destructure, must create with transaction
+		return transaction
+			.get(docRef)
+			.then(doc => {
+				const {
+					[FIRESTORE_SELLER_LATEST_COMMENTS]: latestComments,
+				} = doc.data()
+
+				return transaction
+					.update(docRef, {
+						[FIRESTORE_SELLER_TOTAL_REVIEWS]: fieldIncrement(1),
+						[FIRESTORE_SELLER_TOTAL_STARS]: fieldIncrement(star),
+					})
+					.catch(console.log)
+			})
+			.catch(console.log)
+	})
 })
 
 export { onCreateComment }

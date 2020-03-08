@@ -13,21 +13,31 @@ const docGetSetBatch = path => {
 		return fireStored.collection(path_.join('/'))
 	}
 	const add = (...args) => data => colRef(...args).add(data)
-	const batch = (newBatch = createBatch()) => (...args) => {
+	const batch = (newBatch = fireStored.batch()) => (...args) => {
+		//const { set: set_, commit } = newBatch
+		//! cannot destructure, must create with newBatch
 		const set = (data, options = { merge: true }) =>
 			newBatch.set(ref(...args), data, options)
 		const add = data => newBatch.set(colRef(...args).doc(), data)
 		const commit = () => newBatch.commit()
 		return { set, add, commit }
 	}
+	// const batch = () => (...args) => {
+	// 	const newBatch = createBatch()
+	// 	const set = (data, options = { merge: true }) =>
+	// 		newBatch.set(ref(...args), data, options)
+	// 	const add = data => newBatch.set(colRef(...args).doc(), data)
+	// 	const commit = () => newBatch.commit()
+	// 	return { set, add, commit }
+	// }
 	return { ref, get, set, add, colRef, batch }
 }
 
-const createBatch = fireStored.batch
+// const createBatch = fireStored.batch
+// const runTransaction = fireStored.runTransaction
+// ! not able to get createBatch and runTransaction, must create with fireStored
 
 const FieldValue = firestore.FieldValue
-
-const runTransaction = fireStored.runTransaction
 
 const getTimestamp = FieldValue.serverTimestamp
 
@@ -44,6 +54,7 @@ const docOnUpdate = path => callback => docTrigger(path).onUpdate(callback)
 const docOnDelete = path => callback => docTrigger(path).onDelete(callback)
 
 export {
+	fireStored,
 	docGetSetBatch,
 	getTimestamp,
 	fieldIncrement,
@@ -51,6 +62,4 @@ export {
 	docOnCreate,
 	docOnUpdate,
 	docOnDelete,
-	createBatch,
-	runTransaction,
 }

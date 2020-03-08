@@ -51,4 +51,5 @@ export {
 	docSellerProfileDisplayNameSet,
 	docSellerProfileGenderSet,
 	docSellerProfileServicesSet,
+	docSellerProfileSet,
 }
