@@ -1,14 +1,16 @@
-import { firebaseStorage, auth } from '1_fire_init/core'
+import { fbStorage, auth } from '1_fire_init'
 
-const taskEvent = firebaseStorage.TaskEvent
+const taskEvent = fbStorage.TaskEvent
 
 const storageSetGenerator = path => {
-	const ref = () => firebaseStorage().ref(path(auth().currentUser.uid))
-	const get = () => ref().getDownloadURL()
-	const set = (dataUrl = '') => ref().putString(dataUrl, 'data_url')
-	const remove = () => ref().delete()
-	const onSnapShot = (dataUrl = '', task = {}) =>
-		set(dataUrl).on(taskEvent.STATE_CHANGED, task)
+	const ref = (uid = auth().currentUser.uid, ...otherArgs) =>
+		fbStorage().ref(path(uid, ...otherArgs))
+	const get = (...args) => ref(...args).getDownloadURL()
+	const set = (...args) => (dataUrl = '') =>
+		ref(...args).putString(dataUrl, 'data_url')
+	const remove = (...args) => ref(...args).delete()
+	const onSnapShot = (...args) => (dataUrl = '', task = {}) =>
+		set(...args)(dataUrl).on(taskEvent.STATE_CHANGED, task)
 	return [get, set, remove, onSnapShot]
 }
 

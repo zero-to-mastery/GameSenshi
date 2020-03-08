@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import ImageMU from 'material-ui-image'
 import clsx from 'clsx'
 
-const Image = props => {
+const Image = memo(props => {
 	const { className, style, ...otherProp } = props
 	return (
 		<ImageMU
@@ -12,6 +12,6 @@ const Image = props => {
 			{...otherProp}
 		/>
 	)
-}
+})
 
 export { Image }

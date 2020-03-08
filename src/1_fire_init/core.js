@@ -14,11 +14,11 @@ const firestore = firebase.firestore
 
 const auth = firebase.auth
 
-const firebaseStorage = firebase.storage
+const fbStorage = firebase.storage
 
 const database = firebase.database
 
 // use device default language
 auth().useDeviceLanguage()
 
-export { fireFunct, firestore, auth, firebaseStorage, database }
+export { fireFunct, firestore, auth, fbStorage, database }

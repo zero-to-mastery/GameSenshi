@@ -39,7 +39,7 @@ const onRemove = async () => {
 }
 
 const onCrop = (e, dataUrl, toggle) => {
-	storageUserAvatarOn(dataUrl, {
+	storageUserAvatarOn()(dataUrl, {
 		next: snapshot => {
 			const { bytesTransferred, totalBytes } = snapshot
 			const percentage = Math.floor((bytesTransferred / totalBytes) * 100)

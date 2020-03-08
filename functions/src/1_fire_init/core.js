@@ -19,6 +19,7 @@ const firestore = admin.firestore
 const onCall = functions.https.onCall
 const pubSub = (topic, callback) =>
 	functions.pubsub.topic(topic).onPublish(callback)
+const fbStorage = admin.storage().bucket()
 
 const {
 	[ENV_CORS_WHITELIST]: CORS_WHITE_LIST,
@@ -30,6 +31,7 @@ const {
 } = env
 
 export {
+	fbStorage,
 	firestore,
 	auth,
 	onCall,

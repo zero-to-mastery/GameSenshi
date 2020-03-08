@@ -18,15 +18,18 @@ import {
 	docUserSettingGeneralSetOnUserCreate,
 	docUserSettingNotificationSet,
 } from '2_fire_store'
+import { downloadAndStoreUserAvatar } from './utils'
 
 const onCreateUser_ = async userRecord => {
-	const { uid, displayName } = userRecord
+	const { uid, displayName, photoURL } = userRecord
 
 	const isPasswordExist = userRecord.providerData.some(
 		data => data.providerId === 'password'
 	)
 
 	const shortId = nanoid(10)
+
+	downloadAndStoreUserAvatar(uid, photoURL)
 
 	try {
 		await docUserSettingGeneralSetOnUserCreate(uid)(

@@ -15,6 +15,7 @@ import {
 	docUserSettingNotificationGet,
 	docUserSettingNotificationSet,
 	docUserSettingGeneralAvatarSet,
+	docUserSettingGeneralSetOnUserCreate,
 } from './userSettings'
 
 import { docSellerReviewsBatch } from './senshiReviews'
@@ -45,6 +46,7 @@ export {
 	docUserSettingNotificationGet,
 	docUserSettingNotificationSet,
 	docUserSettingGeneralAvatarSet,
+	docUserSettingGeneralSetOnUserCreate,
 	docSellerProfileSet,
 	docSellerReviewsBatch,
 	docSellerProfileAvatarSet,

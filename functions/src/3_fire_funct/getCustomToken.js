@@ -1,13 +1,12 @@
 import { auth } from '1_fire_init'
-import { docUserSettingGeneralAvatarSet } from '2_fire_store'
 import {
 	INTERNAL_ERROR_CODE_2,
 	INTERNAL_ERROR_CODE_4,
-	INTERNAL_ERROR_CODE_7,
 	INTERNAL_ERROR_CODE_8,
 	FUNCTION_TOKEN_CUSTOM,
 } from '0_constants'
 import { resObj } from '1_utils'
+import { downloadAndStoreUserAvatar } from './utils'
 
 // ! cannot return complex object (no nested object)
 
@@ -16,7 +15,7 @@ const getCustomToken = async (
 	id = '',
 	email = '',
 	displayName = '',
-	profileImageUrl = ''
+	avatarUrl = ''
 ) => {
 	let customToken = null
 	let uid = null
@@ -63,11 +62,8 @@ const getCustomToken = async (
 	}
 
 	if (newUser) {
-		docUserSettingGeneralAvatarSet(uid)(profileImageUrl).catch(err => {
-			const errObj = resObj(false, INTERNAL_ERROR_CODE_7, '')
-			console.log(errObj, err)
-			return errObj
-		})
+		console.log(avatarUrl)
+		downloadAndStoreUserAvatar(uid, avatarUrl)
 		return tokenData
 	}
 }

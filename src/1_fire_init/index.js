@@ -1,4 +1,4 @@
-import { auth, firestore, database, fireFunct } from './core'
+import { auth, firestore, database, fireFunct, fbStorage } from './core'
 
 import {
 	handleDifferentCredential,
@@ -6,6 +6,7 @@ import {
 } from './handleDifferentCredential'
 
 export {
+	fbStorage,
 	auth,
 	firestore,
 	database,

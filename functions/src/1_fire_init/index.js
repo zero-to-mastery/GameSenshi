@@ -1,4 +1,5 @@
 import {
+	fbStorage,
 	firestore,
 	auth,
 	onCall,
@@ -13,6 +14,7 @@ import {
 } from './core'
 
 export {
+	fbStorage,
 	firestore,
 	auth,
 	onCall,
