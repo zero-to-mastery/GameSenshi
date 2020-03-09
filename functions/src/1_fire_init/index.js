@@ -1,5 +1,5 @@
 import {
-	fbStorage,
+	bucketDefault,
 	firestore,
 	auth,
 	onCall,
@@ -14,7 +14,7 @@ import {
 } from './core'
 
 export {
-	fbStorage,
+	bucketDefault,
 	firestore,
 	auth,
 	onCall,

@@ -1,14 +1,14 @@
-import { fbStorage } from '1_fire_init'
+import { bucketDefault } from '1_fire_init'
 
 const storageSetGenerator = path => {
-	const ref = (...args) => fbStorage.file(path(...args))
-	const get = (...args) => ref(...args).get()
+	const file = (...args) => bucketDefault.file(path(...args))
+	const get = (...args) => file(...args).get()
 	const set = (...args) => (content, options) =>
-		ref(...args).save(content, options)
-	const del = (...args) => ref(...args).delete()
+		file(...args).save(content, options)
+	const del = (...args) => file(...args).delete()
 	const writeStream = (...args) => config =>
-		ref(...args).createWriteStream(config)
-	return { get, set, del, writeStream }
+		file(...args).createWriteStream(config)
+	return { get, set, del, writeStream, file }
 }
 
-export { storageSetGenerator }
+export { storageSetGenerator, bucketDefault }

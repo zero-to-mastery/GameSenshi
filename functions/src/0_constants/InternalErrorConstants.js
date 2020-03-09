@@ -23,6 +23,8 @@ const INTERNAL_ERROR_CODE_10 = ['10', 'Verify Id Token Internal Error']
 const INTERNAL_ERROR_CODE_11 = ['11', 'Get User Via Uid Internal Error']
 const INTERNAL_ERROR_CODE_12 = ['12', 'Get New User Initial Avatar failed']
 const INTERNAL_ERROR_CODE_13 = ['13', 'Save New User Initial Avatar failed']
+const INTERNAL_ERROR_CODE_14 = ['14', 'Get Initial Avatar Signed Url Failed']
+
 export {
 	INTERNAL_ERROR_CODE_1,
 	INTERNAL_ERROR_CODE_2,
@@ -37,4 +39,5 @@ export {
 	INTERNAL_ERROR_CODE_11,
 	INTERNAL_ERROR_CODE_12,
 	INTERNAL_ERROR_CODE_13,
+	INTERNAL_ERROR_CODE_14,
 }
