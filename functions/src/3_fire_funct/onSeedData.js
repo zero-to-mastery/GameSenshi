@@ -18,7 +18,6 @@ import {
 	FIRESTORE_SELLER_REVIEWS_STAR,
 	FIRESTORE_SELLER_REVIEWS_ORDER_ID,
 	FIRESTORE_SELLER_REVIEWS_BUYER,
-	FIRESTORE_SELLER_REVIEWS_BUYER_AVATAR,
 	FIRESTORE_SELLER_REVIEWS_BUYER_ID,
 	FUNCTION_UID,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_AVATAR,
@@ -41,20 +40,12 @@ const comments = [
 ]
 const stars = [1, 2, 3, 4, 5]
 const buyer = ['buyer1', 'buyer2', 'buyer3', 'buyer4', 'buyer5']
-const buyerAvatars = [
-	'https://firebasestorage.googleapis.com/v0/b/gamessenshi.appspot.com/o/avatar%2Fchristian.jpg?alt=media',
-	'https://firebasestorage.googleapis.com/v0/b/gamessenshi.appspot.com/o/avatar%2Fjames.jpg?alt=media',
-	'https://firebasestorage.googleapis.com/v0/b/gamessenshi.appspot.com/o/avatar%2Fjohana.jpg?alt=media',
-	'https://firebasestorage.googleapis.com/v0/b/gamessenshi.appspot.com/o/avatar%2Fkareya-saleh.jpg?alt=media',
-	'https://firebasestorage.googleapis.com/v0/b/gamessenshi.appspot.com/o/avatar%2Fmichael.jpg?alt=media',
-]
 
 const reviews = [...Array(20)].map(() => ({
 	[FIRESTORE_SELLER_REVIEWS_COMMENT]: randomItem(comments),
 	[FIRESTORE_SELLER_REVIEWS_STAR]: randomItem(stars),
 	[FIRESTORE_SELLER_REVIEWS_ORDER_ID]: cryptoRandomString({ length: 10 }),
 	[FIRESTORE_SELLER_REVIEWS_BUYER]: randomItem(buyer),
-	[FIRESTORE_SELLER_REVIEWS_BUYER_AVATAR]: randomItem(buyerAvatars),
 	[FIRESTORE_SELLER_REVIEWS_BUYER_ID]: cryptoRandomString({ length: 10 }),
 }))
 

@@ -7,8 +7,7 @@ import {
 	FIRESTORE_SELLER_REVIEWS_COMMENT,
 	FIRESTORE_SELLER_REVIEWS_STAR,
 	FIRESTORE_SELLER_REVIEWS_ORDER_ID,
-	FIRESTORE_SELLER_REVIEWS_BUYER,
-	FIRESTORE_SELLER_REVIEWS_BUYER_AVATAR,
+	FIRESTORE_SELLER_REVIEWS_BUYER_NAME,
 	CREATED_AT,
 } from '0_constants'
 const { Row, Col } = stopUndefined(Exports)
@@ -22,9 +21,9 @@ const Comments = props => {
 				{comments_.map(comment => {
 					const {
 						[FIRESTORE_SELLER_REVIEWS_ORDER_ID]: orderId,
-						[FIRESTORE_SELLER_REVIEWS_BUYER]: name,
+						[FIRESTORE_SELLER_REVIEWS_BUYER_NAME]: name,
 						[CREATED_AT]: time,
-						[FIRESTORE_SELLER_REVIEWS_BUYER_AVATAR]: avatar,
+						avatar,
 						[FIRESTORE_SELLER_REVIEWS_COMMENT]: body,
 						[FIRESTORE_SELLER_REVIEWS_STAR]: star,
 					} = comment
