@@ -11,16 +11,14 @@ import {
 	ROUTE_PAGE_APPOINTMENTS,
 	ROUTE_PAGE_PROFILE,
 } from '2_routes'
-import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from '2_state'
+import { STORE_USER_STATE_DISPLAY_NAME, storeUserGet } from '2_state'
 import { signOut } from '4_comp_utils'
 
 const NavbarIndexItems = () => [
 	{
 		[DROP_DOWN_MENU_NAVBAR_PROPS_TO]: ROUTE_PAGE_PROFILE,
 		[DROP_DOWN_MENU_NAVBAR_PROPS_BODY]: (
-			<strong>
-				{storeUser[STATE][STORE_USER_STATE_DISPLAY_NAME]} Welcome!
-			</strong>
+			<strong>{storeUserGet(STORE_USER_STATE_DISPLAY_NAME)} Welcome!</strong>
 		),
 		[DROP_DOWN_MENU_NAVBAR_PROPS_DIVIDER]: true,
 	},

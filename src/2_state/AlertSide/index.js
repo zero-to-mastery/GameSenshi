@@ -7,6 +7,7 @@ import {
 	TOGGLE,
 	SET_STATE,
 	RESET_STATE,
+	STATE,
 	SIMPLE_ERROR,
 } from './StoreAlertSide'
 
@@ -16,6 +17,7 @@ const storeAlertSideToggle = storeAlertSide[TOGGLE]
 const storeAlertSideSetState = storeAlertSide[SET_STATE]
 const storeAlertSideResetState = storeAlertSide[RESET_STATE]
 const storeAlertSideSimpleError = storeAlertSide[SIMPLE_ERROR]
+const storeAlertSideGet = state => storeAlertSide[STATE][state]
 
 export {
 	storeAlertSide,
@@ -27,4 +29,5 @@ export {
 	STORE_ALERT_SIDE_STATE_BODY,
 	STORE_ALERT_SIDE_STATE_IS_OPEN,
 	STORE_ALERT_SIDE_STATE_STATUS,
+	storeAlertSideGet,
 }

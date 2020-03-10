@@ -73,5 +73,6 @@ export {
 	TOGGLE,
 	SET_STATE,
 	RESET_STATE,
+	STATE,
 	SIMPLE_ERROR,
 }

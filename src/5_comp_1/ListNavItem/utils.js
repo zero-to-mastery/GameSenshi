@@ -7,7 +7,7 @@ import {
 	LIST_NAV_ITEM_ON_CLICK,
 } from './ListNavItem'
 import { AvatarUserStoreUser } from '5_comp_1/AvatarUser'
-import { storeUser, STATE, STORE_USER_STATE_DISPLAY_NAME } from '2_state'
+import { storeUserGet, STORE_USER_STATE_DISPLAY_NAME } from '2_state'
 import {
 	ROUTE_PAGE_JOIN,
 	ROUTE_PAGE_APPOINTMENTS,
@@ -56,7 +56,7 @@ const signedInNavItemsCollapsed = () => [
 					<AvatarUserStoreUser height={24} width={24} />
 				</Col>
 				<Col>
-					<p>{storeUser[STATE][STORE_USER_STATE_DISPLAY_NAME]}</p>
+					<p>{storeUserGet(STORE_USER_STATE_DISPLAY_NAME)}</p>
 				</Col>
 			</Row>
 		),

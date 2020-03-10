@@ -14,6 +14,7 @@ import {
 	STORE_USER_STATE_EMAIL_VERIFIED,
 	STORE_USER_STATE_SIGNING_IN,
 	SET_STATE,
+	STATE,
 	RESET_STATE,
 	SET_SIGNING_IN,
 	INITIALIZE,
@@ -30,6 +31,7 @@ const storeUserInitialize = storeUser[INITIALIZE]
 const storeUserResetAvatar = storeUser[RESET_AVATAR]
 const storeUserOnSignIn = storeUser[ON_SIGN_IN]
 const storeUserGetSignedIn = storeUser[GET_SIGNED_IN]
+const storeUserGet = state => storeUser[STATE][state]
 
 export {
 	storeUser,
@@ -53,4 +55,5 @@ export {
 	STORE_USER_STATE_PROVIDER_DATA,
 	STORE_USER_STATE_EMAIL_VERIFIED,
 	STORE_USER_STATE_SIGNING_IN,
+	storeUserGet,
 }

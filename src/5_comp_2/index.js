@@ -18,6 +18,7 @@ import {
 	TabPanelService,
 } from './TabPanelService'
 import { CommentWithPagination } from './CommentWithPagination'
+import { DropdownNavbarStoreUser } from './DropdownNavbar'
 
 export const Exports = {
 	...ExportAtoms,
@@ -40,5 +41,6 @@ export const Exports = {
 	TAB_PRODUCT_NUM_ORDERS,
 	TAB_PRODUCT_PRICE,
 	TabPanelService,
+	DropdownNavbarStoreUser,
 	CommentWithPagination,
 }

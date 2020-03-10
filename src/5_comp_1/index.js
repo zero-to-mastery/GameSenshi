@@ -50,8 +50,7 @@ import {
 import { MenuHamburger } from './MenuHamburger'
 import { HeaderCollapsedPropedNavbarIndex } from './HeaderCollapsed'
 import { DropdownMenuNavbarStoreUserPropedNavbar } from './DropdownMenuNavbar'
-import { AvatarUserStoreUser } from './AvatarUser'
-import { DropdownNavbarStoreUser } from './DropdownNavbar'
+import { AvatarUserStoreUser, AvatarUser } from './AvatarUser'
 import { InputInteger } from './InputInteger'
 import { Carousel, CarouselPropedIndex } from './Carousel'
 import {
@@ -140,8 +139,8 @@ export const Exports = {
 	MenuHamburger,
 	HeaderCollapsedPropedNavbarIndex,
 	DropdownMenuNavbarStoreUserPropedNavbar,
+	AvatarUser,
 	AvatarUserStoreUser,
-	DropdownNavbarStoreUser,
 	ListNavItemStoreUserPropedCollapsed,
 	ListNavItemStoreUserPropedCollapsedUnsigned,
 	InputInteger,

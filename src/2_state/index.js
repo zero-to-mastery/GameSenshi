@@ -12,10 +12,12 @@ import {
 	STORE_ALERT_STATE_BODY,
 	STORE_ALERT_STATE_IS_OPEN,
 	STORE_ALERT_STATE_STATUS,
+	storeAlertGet,
 } from './Alert'
 
 import {
 	storeModal,
+	storeModalGet,
 	storeModalShow,
 	storeModalClose,
 	storeModalToggle,
@@ -39,6 +41,7 @@ import {
 
 import {
 	storeSignIn,
+	storeSignInGet,
 	storeSignInShow,
 	storeSignInClose,
 	storeSignInToggle,
@@ -52,6 +55,7 @@ import {
 
 import {
 	storeProgress,
+	storeProgressGet,
 	storeProgressShow,
 	storeProgressClose,
 	storeProgressSetState,
@@ -63,6 +67,7 @@ import {
 
 import {
 	storeUser,
+	storeUserGet,
 	storeUserSetState,
 	storeUserResetState,
 	storeUserSetSigningIn,
@@ -87,6 +92,7 @@ import {
 
 import {
 	storeWrapper,
+	storeWrapperGet,
 	storeWrapperSetState,
 	storeWrapperResetState,
 	storeWrapperSetOffsetTop,
@@ -95,6 +101,7 @@ import {
 
 import {
 	storeSound,
+	storeSoundGet,
 	storeSoundSetState,
 	storeSoundResetState,
 	storeSoundSetUuid,
@@ -111,6 +118,7 @@ import {
 	STORE_ALERT_SIDE_STATE_BODY,
 	STORE_ALERT_SIDE_STATE_IS_OPEN,
 	STORE_ALERT_SIDE_STATE_STATUS,
+	storeAlertSideGet,
 } from './AlertSide'
 
 export {
@@ -120,6 +128,7 @@ export {
 	Subscribe,
 	StateContainer,
 	storeUser,
+	storeUserGet,
 	storeUserSetState,
 	storeUserResetState,
 	storeUserSetSigningIn,
@@ -141,6 +150,7 @@ export {
 	STORE_USER_STATE_EMAIL_VERIFIED,
 	STORE_USER_STATE_SIGNING_IN,
 	storeAlert,
+	storeAlertGet,
 	storeAlertShow,
 	storeAlertToggle,
 	storeAlertSetState,
@@ -150,6 +160,7 @@ export {
 	STORE_ALERT_STATE_IS_OPEN,
 	STORE_ALERT_STATE_STATUS,
 	storeProgress,
+	storeProgressGet,
 	storeProgressShow,
 	storeProgressClose,
 	storeProgressSetState,
@@ -158,6 +169,7 @@ export {
 	STORE_PROGRESS_STATE_COLOR,
 	STORE_PROGRESS_STATE_IS_OPEN,
 	storeSignIn,
+	storeSignInGet,
 	storeSignInShow,
 	storeSignInClose,
 	storeSignInToggle,
@@ -168,6 +180,7 @@ export {
 	STORE_SIGN_IN_STATE_IS_OPEN,
 	STORE_SIGN_IN_STATE_SUBMITTED_CALLBACK,
 	storeModal,
+	storeModalGet,
 	storeModalShow,
 	storeModalClose,
 	storeModalToggle,
@@ -188,16 +201,19 @@ export {
 	STORE_MODAL_STATE_IS_OPEN,
 	STORE_MODAL_STATE_CONTINUED_CALLBACK,
 	storeWrapper,
+	storeWrapperGet,
 	storeWrapperSetState,
 	storeWrapperResetState,
 	storeWrapperSetOffsetTop,
 	STORE_WRAPPER_STATE_OFFSET_TOP,
 	storeSound,
+	storeSoundGet,
 	storeSoundSetState,
 	storeSoundResetState,
 	storeSoundSetUuid,
 	STORE_SOUND_STATE_UUID,
 	storeAlertSide,
+	storeAlertSideGet,
 	storeAlertSideShow,
 	storeAlertSideToggle,
 	storeAlertSideSetState,

@@ -53,4 +53,5 @@ export {
 	CLOSE,
 	SET_STATE,
 	RESET_STATE,
+	STATE,
 }

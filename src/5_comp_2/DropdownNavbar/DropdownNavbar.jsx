@@ -1,9 +1,9 @@
 import React from 'react'
-import { Exports } from '5_comp_0'
+import { Exports } from '5_comp_1'
 import { stopUndefined } from '1_utils'
 import { UncontrolledDropdown, DropdownToggle } from 'reactstrap'
 
-const { Link, Image } = stopUndefined(Exports)
+const { Link, AvatarUser } = stopUndefined(Exports)
 const DROPDOWN_NAVBAR_STATE_SHOW = 'show'
 const DROPDOWN_NAVBAR_STATE_AVATAR = 'avatar'
 
@@ -31,7 +31,7 @@ const DropdownNavbar = props => {
 					id='navbarDropdownMenuLink'
 					className='d-flex align-items-center py-0'
 				>
-					<Image
+					<AvatarUser
 						alt='user avatar'
 						className='img-raised media avatar'
 						style={{ height: 36, width: 36 }}

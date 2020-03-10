@@ -13,4 +13,4 @@ const AvatarUserStoreUser = StateContainer(
 	[]
 )
 
-export { AvatarUserStoreUser }
+export { AvatarUserStoreUser, AvatarUser }

@@ -16,6 +16,7 @@ import {
 	ON_CONTINUE,
 	SET_STATE,
 	RESET_STATE,
+	STATE,
 	CLEAR,
 	SIMPLE_ERROR,
 	GET_REDIRECT_URL,
@@ -36,6 +37,7 @@ const storeModalResetState = storeModal[RESET_STATE]
 const storeModalClear = storeModal[CLEAR]
 const storeModalSimpleError = storeModal[SIMPLE_ERROR]
 const storeModalGetRedirectUrl = storeModal[GET_REDIRECT_URL]
+const storeModalGet = state => storeModal[STATE][state]
 
 export {
 	storeModal,
@@ -58,4 +60,5 @@ export {
 	STORE_MODAL_STATE_TITLE,
 	STORE_MODAL_STATE_LOADER,
 	STORE_MODAL_STATE_CONTINUED_CALLBACK,
+	storeModalGet,
 }

@@ -7,6 +7,7 @@ import {
 	CLOSE,
 	SET_STATE,
 	RESET_STATE,
+	STATE,
 } from './StoreProgress'
 
 const storeProgress = new StoreProgress()
@@ -14,6 +15,7 @@ const storeProgressShow = storeProgress[SHOW]
 const storeProgressClose = storeProgress[CLOSE]
 const storeProgressSetState = storeProgress[SET_STATE]
 const storeProgressResetState = storeProgress[RESET_STATE]
+const storeProgressGet = state => storeProgress[STATE][state]
 
 export {
 	storeProgress,
@@ -24,4 +26,5 @@ export {
 	STORE_PROGRESS_STATE_VALUE,
 	STORE_PROGRESS_STATE_COLOR,
 	STORE_PROGRESS_STATE_IS_OPEN,
+	storeProgressGet,
 }

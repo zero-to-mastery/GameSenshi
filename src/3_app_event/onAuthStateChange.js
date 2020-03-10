@@ -13,8 +13,6 @@ import {
 	databaseConnectionRefOff,
 } from './userPresence'
 import { docUserSettingGeneralOnSnapshot } from '2_fire_store'
-import { storageUserAvatarGet } from '2_fire_storage'
-import { FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR } from '0_constants'
 
 const ACTION = 'action'
 
@@ -30,18 +28,11 @@ const onAuthChanged = (userAuth, onSnapshot) => {
 		databaseConnectionRefOn()
 		unsubscribe = onSnapshot(
 			doc => {
-				storageUserAvatarGet(userAuth.uid).then(url => {
-					const userData = {
-						...doc.data(),
-						[FIRESTORE_USER_SETTINGS_GENERAL_USER_AVATAR]: url,
-						// * avatar now read from Storage
-						// * the reason we still need to set avatar path in firestore is to trigger this onSnapshot
-						// * because Storage not able to listen to change like firestore
-					}
-					storeUserOnSignIn(userAuth, userData, () => {
-						nonLoginUserLastIntendedAction[ACTION]()
-						nonLoginUserLastIntendedAction[ACTION] = () => {}
-					})
+				const userData = doc.data()
+
+				storeUserOnSignIn(userAuth, userData, () => {
+					nonLoginUserLastIntendedAction[ACTION]()
+					nonLoginUserLastIntendedAction[ACTION] = () => {}
 				})
 			},
 			() => {
