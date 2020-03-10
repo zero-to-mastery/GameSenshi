@@ -14,7 +14,7 @@ import {
 
 const sellerId = 'sellerId'
 
-const onCreateComment = docOnCreate(
+const onCommentCreate = docOnCreate(
 	fireStorePathSellerReviews(`{${sellerId}}`, '{reviewId}')
 )((snap, context) => {
 	const { [FIRESTORE_SELLER_REVIEWS_STAR]: star } = snap.data()
@@ -41,4 +41,4 @@ const onCreateComment = docOnCreate(
 	})
 })
 
-export { onCreateComment }
+export { onCommentCreate }

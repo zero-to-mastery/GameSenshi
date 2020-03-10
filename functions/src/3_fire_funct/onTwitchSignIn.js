@@ -12,7 +12,7 @@ import { getCustomToken } from './getCustomToken'
 
 // ! cannot return complex object (no nested object)
 
-const onSignInTwitch = onCall(async data => {
+const onTwitchSignIn = onCall(async data => {
 	const {
 		[FUNCTION_OAUTH_CODE]: code,
 		[FUNCTION_REDIRECT_URI]: redirectUri,
@@ -51,4 +51,4 @@ const onSignInTwitch = onCall(async data => {
 	return getCustomToken('twitch_', id, email, display_name, profile_image_url)
 })
 
-export { onSignInTwitch }
+export { onTwitchSignIn }

@@ -17,7 +17,7 @@ import {
 	FIRESTORE_SELLER_REVIEWS_COMMENT,
 	FIRESTORE_SELLER_REVIEWS_STAR,
 	FIRESTORE_SELLER_REVIEWS_ORDER_ID,
-	FIRESTORE_SELLER_REVIEWS_BUYER,
+	FIRESTORE_SELLER_REVIEWS_BUYER_NAME,
 	FIRESTORE_SELLER_REVIEWS_BUYER_ID,
 	FUNCTION_UID,
 	FIRESTORE_SELLER_SETTINGS_PROFILE_AVATAR,
@@ -45,11 +45,11 @@ const reviews = [...Array(20)].map(() => ({
 	[FIRESTORE_SELLER_REVIEWS_COMMENT]: randomItem(comments),
 	[FIRESTORE_SELLER_REVIEWS_STAR]: randomItem(stars),
 	[FIRESTORE_SELLER_REVIEWS_ORDER_ID]: cryptoRandomString({ length: 10 }),
-	[FIRESTORE_SELLER_REVIEWS_BUYER]: randomItem(buyer),
+	[FIRESTORE_SELLER_REVIEWS_BUYER_NAME]: randomItem(buyer),
 	[FIRESTORE_SELLER_REVIEWS_BUYER_ID]: cryptoRandomString({ length: 10 }),
 }))
 
-const onSeedData = onCall((data, context) => {
+const onSellerSeed = onCall((data, context) => {
 	const { [FUNCTION_UID]: uid } = data
 	try {
 		if (context.auth.uid === 'twitch_238533965') {
@@ -142,4 +142,4 @@ const onSeedData = onCall((data, context) => {
 	}
 })
 
-export { onSeedData }
+export { onSellerSeed }

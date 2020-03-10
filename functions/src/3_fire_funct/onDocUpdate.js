@@ -2,7 +2,7 @@ import { docOnUpdate, getTimestamp } from '2_fire_store'
 import { UPDATED_AT } from '0_constants'
 import { allPaths } from './constants'
 
-const [onUpdateDoc, onUpdateDocSub] = allPaths.map(path =>
+const [onDocUpdate, onDocSubUpdate] = allPaths.map(path =>
 	docOnUpdate(path)(change => {
 		const timestamp = getTimestamp()
 		//eslint-disable-next-line
@@ -20,4 +20,4 @@ const [onUpdateDoc, onUpdateDocSub] = allPaths.map(path =>
 	})
 )
 
-export { onUpdateDoc, onUpdateDocSub }
+export { onDocUpdate, onDocSubUpdate }

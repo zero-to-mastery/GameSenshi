@@ -2,7 +2,7 @@ import { docOnCreate, getTimestamp } from '2_fire_store'
 import { CREATED_AT } from '0_constants'
 import { allPaths } from './constants'
 
-const [onCreateDoc, onCreateDocSub] = allPaths.map(path =>
+const [onDocCreate, onDocSubCreate] = allPaths.map(path =>
 	docOnCreate(path)(snap => {
 		const timestamp = getTimestamp()
 		return snap.ref
@@ -13,4 +13,4 @@ const [onCreateDoc, onCreateDocSub] = allPaths.map(path =>
 	})
 )
 
-export { onCreateDoc, onCreateDocSub }
+export { onDocCreate, onDocSubCreate }

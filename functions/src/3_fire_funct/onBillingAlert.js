@@ -50,7 +50,7 @@ const _disableBillingForProject = async projectName => {
 	return `Billing disabled: ${JSON.stringify(res.data)}`
 }
 
-const onStopBilling = pubSub('stopBilling', async pubsubEvent => {
+const onBillingAlert = pubSub('stopBilling', async pubsubEvent => {
 	const pubsubData = JSON.parse(
 		Buffer.from(pubsubEvent.data, 'base64').toString()
 	)
@@ -66,4 +66,4 @@ const onStopBilling = pubSub('stopBilling', async pubsubEvent => {
 	}
 })
 
-export { onStopBilling }
+export { onBillingAlert }

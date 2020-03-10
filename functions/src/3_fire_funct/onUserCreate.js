@@ -20,7 +20,7 @@ import {
 } from '2_fire_store'
 import { downloadAndStoreUserAvatar } from './utils'
 
-const onCreateUser_ = async userRecord => {
+const onUserCreate = functions.auth.user().onCreate(async userRecord => {
 	const { uid, displayName, photoURL } = userRecord
 
 	const isPasswordExist = userRecord.providerData.some(
@@ -57,12 +57,6 @@ const onCreateUser_ = async userRecord => {
 	} catch (err) {
 		return console.log(resObj(false, INTERNAL_ERROR_CODE_6, err))
 	}
-}
+})
 
-const onCreateUser = functions.auth
-	.user()
-	.onCreate((userRecord, eventContext) => {
-		return onCreateUser_(userRecord, eventContext)
-	})
-
-export { onCreateUser }
+export { onUserCreate }

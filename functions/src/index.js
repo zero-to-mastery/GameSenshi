@@ -11,17 +11,17 @@ import { ApolloServer } from 'apollo-server-express'
 import { MemcachedCache } from 'apollo-server-cache-memcached'
 import express from 'express'
 import { typeDefs, resolvers } from 'resolvers'
-import { FUNCTION_ON_TWITCH_SIGN_IN, FUNCTION_ON_SEED_DATA } from '0_constants'
+import { FUNCTION_ON_TWITCH_SIGN_IN, FUNCTION_ON_DATA_SEED } from '0_constants'
 import {
-	onSignInTwitch,
-	onCreateUser,
-	onCreateDoc,
-	onCreateDocSub,
-	onStopBilling,
-	onUpdateDoc,
-	onUpdateDocSub,
-	onSeedData,
-	onCreateComment,
+	onTwitchSignIn,
+	onUserCreate,
+	onDocCreate,
+	onDocSubCreate,
+	onBillingAlert,
+	onDocUpdate,
+	onDocSubUpdate,
+	onSellerSeed,
+	onCommentCreate,
 } from '3_fire_funct'
 
 const app = express()
@@ -65,13 +65,13 @@ server.applyMiddleware({
 // es5 export also have cleaner name
 module.exports = {
 	api: functions.https.onRequest(app),
-	onCreateUser,
-	onCreateDoc,
-	onCreateDocSub,
-	[FUNCTION_ON_TWITCH_SIGN_IN]: onSignInTwitch,
-	onStopBilling,
-	onUpdateDoc,
-	onUpdateDocSub,
-	[FUNCTION_ON_SEED_DATA]: onSeedData,
-	onCreateComment,
+	onUserCreate,
+	onDocCreate,
+	onDocSubCreate,
+	[FUNCTION_ON_TWITCH_SIGN_IN]: onTwitchSignIn,
+	onBillingAlert,
+	onDocUpdate,
+	onDocSubUpdate,
+	[FUNCTION_ON_DATA_SEED]: onSellerSeed,
+	onCommentCreate,
 }
