@@ -42,7 +42,7 @@ const onTwitchSignIn = onCall(async data => {
 			})
 			.then(respond => respond.data.data[0])
 	} catch (err) {
-		const errObj = resObj(false, INTERNAL_ERROR_CODE_3, '')
+		const errObj = resObj(false, INTERNAL_ERROR_CODE_3, err)
 		console.log(errObj, err)
 		return errObj
 	}

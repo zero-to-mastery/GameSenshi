@@ -10,7 +10,7 @@ const FUNCTION_OAUTH_CODE = 'oAuthCode'
 const FUNCTION_TOKEN_CUSTOM = 'customToken'
 const FUNCTION_REDIRECT_URI = 'redirectUri'
 const FUNCTION_UID = 'uid'
-const FUNCTION_ON_DATA_SEED = 'onDataSeed'
+const FUNCTION_ON_DATA_SEED = 'onSellerSeed'
 const FUNCTION_ON_TWITCH_SIGN_IN = 'onTwitchSignIn'
 
 export {

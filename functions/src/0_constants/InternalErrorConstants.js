@@ -21,9 +21,13 @@ const INTERNAL_ERROR_CODE_8 = ['8', 'Get User By Email Internal Error']
 const INTERNAL_ERROR_CODE_9 = ['9', 'Get Facebook User Info Internal Error']
 const INTERNAL_ERROR_CODE_10 = ['10', 'Verify Id Token Internal Error']
 const INTERNAL_ERROR_CODE_11 = ['11', 'Get User Via Uid Internal Error']
-const INTERNAL_ERROR_CODE_12 = ['12', 'Get New User Initial Avatar failed']
-const INTERNAL_ERROR_CODE_13 = ['13', 'Save New User Initial Avatar failed']
+const INTERNAL_ERROR_CODE_12 = ['12', 'Get New User Initial Avatar Failed']
+const INTERNAL_ERROR_CODE_13 = ['13', 'Save New User Initial Avatar Failed']
 const INTERNAL_ERROR_CODE_14 = ['14', 'Get Initial Avatar Signed Url Failed']
+const INTERNAL_ERROR_CODE_15 = ['15', 'Create Comment Update Failed']
+const INTERNAL_ERROR_CODE_16 = ['16', 'Create Comment Get Failed']
+
+const INTERNAL_ERROR_CODE_17 = ['17', 'Create Comment Transaction Failed']
 
 export {
 	INTERNAL_ERROR_CODE_1,
@@ -40,4 +44,7 @@ export {
 	INTERNAL_ERROR_CODE_12,
 	INTERNAL_ERROR_CODE_13,
 	INTERNAL_ERROR_CODE_14,
+	INTERNAL_ERROR_CODE_15,
+	INTERNAL_ERROR_CODE_16,
+	INTERNAL_ERROR_CODE_17,
 }
