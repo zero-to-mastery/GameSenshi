@@ -1,5 +1,5 @@
 import {
-	docOnCreate,
+	docOnDelete,
 	fieldIncrement,
 	fireStored,
 	docSellerRef,
@@ -13,22 +13,24 @@ import {
 	INTERNAL_ERROR_CODE_15,
 	INTERNAL_ERROR_CODE_16,
 	INTERNAL_ERROR_CODE_17,
+	FIRESTORE_SELLER_REVIEWS_ORDER_ID,
 } from '0_constants'
 import { resObj } from '1_utils'
 
 const sellerId = 'sellerId'
 
-const onCommentCreate = docOnCreate(
+const onCommentDelete = docOnDelete(
 	fireStorePathSellerReviews(`{${sellerId}}`, '{reviewId}')
 )((snap, context) => {
 	const review = snap.data()
-	const { [FIRESTORE_SELLER_REVIEWS_STAR]: star } = review
+	const {
+		[FIRESTORE_SELLER_REVIEWS_ORDER_ID]: orderId,
+		[FIRESTORE_SELLER_REVIEWS_STAR]: star,
+	} = review
 	const { [sellerId]: uid } = context.params
 	return fireStored
 		.runTransaction(transaction => {
 			const docRef = docSellerRef(uid)
-			//const { get, update } = transaction
-			//! cannot destructure, must create with transaction
 			return transaction
 				.get(docRef)
 				.then(async doc => {
@@ -36,18 +38,20 @@ const onCommentCreate = docOnCreate(
 						[FIRESTORE_SELLER_LATEST_COMMENTS]: latestComments,
 					} = doc.data()
 
-					const latestComments_ = latestComments || []
-
-					latestComments_.push(review)
-
-					if (latestComments_.length > 50) {
-						latestComments_.shift()
+					if (latestComments) {
+						latestComments.some((comment, index) => {
+							if (comment[FIRESTORE_SELLER_REVIEWS_ORDER_ID] === orderId) {
+								latestComments.splice(index, 1)
+								return true
+							}
+						})
 					}
+
 					try {
 						return await transaction.update(docRef, {
-							[FIRESTORE_SELLER_TOTAL_REVIEWS]: fieldIncrement(1),
-							[FIRESTORE_SELLER_TOTAL_STARS]: fieldIncrement(star),
-							[FIRESTORE_SELLER_LATEST_COMMENTS]: latestComments_,
+							[FIRESTORE_SELLER_TOTAL_REVIEWS]: fieldIncrement(-1),
+							[FIRESTORE_SELLER_TOTAL_STARS]: fieldIncrement(star * -1),
+							[FIRESTORE_SELLER_LATEST_COMMENTS]: latestComments,
 						})
 					} catch (err) {
 						console.log(resObj(false, INTERNAL_ERROR_CODE_15, err))
@@ -62,4 +66,4 @@ const onCommentCreate = docOnCreate(
 		})
 })
 
-export { onCommentCreate }
+export { onCommentDelete }

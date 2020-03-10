@@ -22,6 +22,7 @@ import {
 	onDocSubUpdate,
 	onSellerSeed,
 	onCommentCreate,
+	onCommentDelete,
 } from '3_fire_funct'
 
 const app = express()
@@ -74,4 +75,5 @@ module.exports = {
 	onDocSubUpdate,
 	[FUNCTION_ON_DATA_SEED]: onSellerSeed,
 	onCommentCreate,
+	onCommentDelete,
 }

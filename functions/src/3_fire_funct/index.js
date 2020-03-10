@@ -5,6 +5,8 @@ import { onBillingAlert } from './onBillingAlert'
 import { onDocUpdate, onDocSubUpdate } from './onDocUpdate'
 import { onSellerSeed } from './onSellerSeed'
 import { onCommentCreate } from './onCommentCreate'
+import { onCommentDelete } from './onCommentDelete'
+
 export {
 	onTwitchSignIn,
 	onUserCreate,
@@ -15,4 +17,5 @@ export {
 	onDocSubUpdate,
 	onSellerSeed,
 	onCommentCreate,
+	onCommentDelete,
 }
